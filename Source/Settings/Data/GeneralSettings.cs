@@ -35,5 +35,11 @@ namespace ModTemplate
 			enablePawnMenu = true;
 			showTechTreeButton = true;
 		}
+
+		/// <summary>本页没有非法值；保留统一接口。</summary>
+		public bool Validate()
+		{
+			return false;
+		}
 	}
 }

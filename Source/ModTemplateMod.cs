@@ -38,9 +38,27 @@ namespace ModTemplate
 		{
 			Instance = this;
 
+			// 先备份旧设置，再读取；迁移失败时至少还有 .bak 可回退。
+			SettingsMigration.BackupSettings(content.FolderName, GetType().Name);
+
 			// 提前触发一次读取：设置文件损坏 / 权限不足之类的错误会暴露在启动阶段，
 			// 而不是等玩家第一次打开设置页才炸。
 			GetSettings<ModTemplateSettings>();
+
+			// 迁移或校验改过值就立即回写，避免下一局又重复迁移。
+			if (SettingsMigration.ConsumeDirty())
+			{
+				WriteSettings();
+			}
+		}
+
+		/// <summary>
+		/// 写设置前再校验一次，保证手动改坏字段/旧版本升级后落盘的是合法值。
+		/// </summary>
+		public override void WriteSettings()
+		{
+			Settings?.Validate();
+			base.WriteSettings();
 		}
 
 		/// <summary>

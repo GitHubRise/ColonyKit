@@ -1,3 +1,4 @@
+using System;
 using Verse;
 
 namespace ModTemplate
@@ -59,6 +60,56 @@ namespace ModTemplate
 			verboseSpawnLog = false;
 			logIntervalTicks = 60000;
 			customPrefix = "";
+		}
+
+		/// <summary>把间隔夹到 600–60000、前缀截到 24 字符，并校验枚举合法。</summary>
+		public bool Validate()
+		{
+			bool changed = false;
+
+			if (logIntervalTicks < 600)
+			{
+				logIntervalTicks = 600;
+				changed = true;
+			}
+			else if (logIntervalTicks > 60000)
+			{
+				logIntervalTicks = 60000;
+				changed = true;
+			}
+
+			if (customPrefix == null)
+			{
+				customPrefix = "";
+				changed = true;
+			}
+			else
+			{
+				string trimmed = customPrefix.Trim();
+				if (trimmed.Length > 24)
+				{
+					trimmed = trimmed.Substring(0, 24);
+				}
+				if (trimmed != customPrefix)
+				{
+					customPrefix = trimmed;
+					changed = true;
+				}
+			}
+
+			if (!Enum.IsDefined(typeof(LogDetail), detail))
+			{
+				detail = LogDetail.Summary;
+				changed = true;
+			}
+
+			if (!Enum.IsDefined(typeof(ModLogLevel), logLevel))
+			{
+				logLevel = ModLogLevel.Info;
+				changed = true;
+			}
+
+			return changed;
 		}
 	}
 }

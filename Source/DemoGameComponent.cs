@@ -15,11 +15,17 @@ namespace ModTemplate
 	/// </remarks>
 	public class DemoGameComponent : GameComponent
 	{
+		/// <summary>当前存档数据版本；字段/语义变化时递增。</summary>
+		private const int CurrentSaveVersion = 1;
+
 		/// <summary>累计统计到的殖民者生成次数，随存档持久化。</summary>
 		private int spawnsTracked;
 
 		/// <summary>下一次写汇总日志的 tick。-1 表示还没初始化。</summary>
 		private int nextLogTick = -1;
+
+		/// <summary>存档 schema 版本；0 表示旧存档。</summary>
+		private int saveVersion = CurrentSaveVersion;
 
 		/// <param name="game">
 		/// 反射实例化时传入。本模板用不到，但签名不能省，否则运行时构造失败。
@@ -34,8 +40,30 @@ namespace ModTemplate
 		public override void ExposeData()
 		{
 			// 这两个 key 是存档契约：改名会让老存档丢数据。
+			Scribe_Values.Look(ref saveVersion, "saveVersion", 0);
 			Scribe_Values.Look(ref spawnsTracked, "spawnsTracked", 0);
 			Scribe_Values.Look(ref nextLogTick, "nextLogTick", -1);
+
+			if (Scribe.mode == LoadSaveMode.PostLoadInit)
+			{
+				MigrateSave();
+			}
+		}
+
+		/// <summary>
+		/// 存档数据迁移：旧存档没有版本号，按 v0 处理；字段未变时只补版本号。
+		/// 以后改字段/语义就在这里按 from 版本补迁移步骤。
+		/// </summary>
+		private void MigrateSave()
+		{
+			if (saveVersion >= CurrentSaveVersion)
+			{
+				return;
+			}
+
+			int from = saveVersion;
+			saveVersion = CurrentSaveVersion;
+			ModLog.Info("Migration", $"save data migrated {from} -> {CurrentSaveVersion}");
 		}
 
 		/// <summary>

@@ -24,5 +24,21 @@ namespace ModTemplate
 			enabled = true;
 			cooldownTicks = 600;
 		}
+
+		/// <summary>把冷却夹到 60–6000 tick。</summary>
+		public bool Validate()
+		{
+			if (cooldownTicks < 60)
+			{
+				cooldownTicks = 60;
+				return true;
+			}
+			if (cooldownTicks > 6000)
+			{
+				cooldownTicks = 6000;
+				return true;
+			}
+			return false;
+		}
 	}
 }

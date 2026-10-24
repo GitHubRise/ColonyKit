@@ -24,9 +24,14 @@ namespace ModTemplate
 		public NotificationSettings notifications = new NotificationSettings();
 		public ModuleSettings modules = new ModuleSettings();
 
+		/// <summary>设置 schema 版本；0 表示旧扁平结构。迁移后写入当前版本。</summary>
+		public int schemaVersion;
+
 		public override void ExposeData()
 		{
 			base.ExposeData();
+
+			Scribe_Values.Look(ref schemaVersion, "schemaVersion", 0);
 
 			// Scribe_Deep 在读档时会创建新实例并替换字段，所以这里不能用其他对象长期持有引用。
 			// 页面每次绘制都通过 ModTemplateSettings 取数据，天然规避了“旧引用失效”的问题。
@@ -40,6 +45,28 @@ namespace ModTemplate
 			if (logging == null) logging = new LoggingSettings();
 			if (notifications == null) notifications = new NotificationSettings();
 			if (modules == null) modules = new ModuleSettings();
+
+			if (Scribe.mode == LoadSaveMode.PostLoadInit)
+			{
+				SettingsMigration.Migrate(this);
+			}
+		}
+
+		/// <summary>把非法值夹回合法范围；返回是否发生了修改。</summary>
+		public bool Validate()
+		{
+			bool changed = false;
+			changed |= general.Validate();
+			changed |= logging.Validate();
+			changed |= notifications.Validate();
+			changed |= modules.Validate();
+
+			if (changed)
+			{
+				Log.Warning("[ModTemplate][Settings] invalid values corrected.");
+			}
+
+			return changed;
 		}
 	}
 }
