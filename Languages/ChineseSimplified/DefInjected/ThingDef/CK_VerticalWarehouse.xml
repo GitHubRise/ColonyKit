@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 	<CK_VerticalWarehouse.label>立体库</CK_VerticalWarehouse.label>
-	<CK_VerticalWarehouse.description>3×3 的内部仓库。小人可以把物品存入库内，从检视面板取出；物品不占地图格。</CK_VerticalWarehouse.description>
+	<CK_VerticalWarehouse.description>4×4 的内部仓库。小人可以把物品存入库内，从检视面板取出；物品不占地图格。四边可接履带，自动入/出库必须连接履带；自带可调温控，默认 4°C。</CK_VerticalWarehouse.description>
 </LanguageData>

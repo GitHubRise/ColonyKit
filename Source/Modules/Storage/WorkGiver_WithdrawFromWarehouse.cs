@@ -26,6 +26,7 @@ namespace ColonyKit.Modules.Storage
 		{
 			if (!(thing is Building_VerticalWarehouse warehouse)
 				|| !warehouse.HasPower
+				|| !warehouse.HasAnyConveyorConnection
 				|| !warehouse.Spawned
 				|| warehouse.Container.Count == 0)
 			{

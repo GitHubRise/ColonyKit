@@ -166,13 +166,14 @@
 	<CK.VerticalWarehouse.Tab>立体库</CK.VerticalWarehouse.Tab>
 	<CK.VerticalWarehouse.Inspect>库存 {0}/{1} 堆，共 {2} 件</CK.VerticalWarehouse.Inspect>
 	<CK.VerticalWarehouse.NoPower>未通电，无法存取。</CK.VerticalWarehouse.NoPower>
+	<CK.VerticalWarehouse.NoConveyor>未连接履带；自动入/出库停止，请在本建筑四边接上履带。</CK.VerticalWarehouse.NoConveyor>
 	<CK.VerticalWarehouse.Empty>仓库为空。</CK.VerticalWarehouse.Empty>
 	<CK.VerticalWarehouse.Withdraw>取出</CK.VerticalWarehouse.Withdraw>
 	<CK.VerticalWarehouse.Collect>收集附近物品</CK.VerticalWarehouse.Collect>
 	<CK.VerticalWarehouse.CollectDesc>把周围 8 格内未禁用的可堆叠物品直接收进仓库（原型调试用，不是搬运 Job）。</CK.VerticalWarehouse.CollectDesc>
 	<CK.VerticalWarehouse.Collected>已存入 {0} 件物品。</CK.VerticalWarehouse.Collected>
 	<CK.VerticalWarehouse.WithdrawAll>取出全部</CK.VerticalWarehouse.WithdrawAll>
-	<CK.VerticalWarehouse.WithdrawAllDesc>把库内所有物品放到建筑旁边。</CK.VerticalWarehouse.WithdrawAllDesc>
+	<CK.VerticalWarehouse.WithdrawAllDesc>把库内所有物品放到建筑旁或已连接的履带端口。</CK.VerticalWarehouse.WithdrawAllDesc>
 	<CK.VerticalWarehouse.Withdrawn>已取出全部物品。</CK.VerticalWarehouse.Withdrawn>
 
 	<CK.WithdrawFromWarehouse.report>正在从立体库取货。</CK.WithdrawFromWarehouse.report>

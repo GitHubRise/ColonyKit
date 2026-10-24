@@ -7,8 +7,9 @@ using Verse;
 namespace ColonyKit.Modules.Storage
 {
 	/// <summary>
-	/// 3×3 立体库原型：内部 <see cref="ThingOwner{T}"/> 保管物品，面板/Gizmo 直接存取。
-	/// 当前不接搬运 Job、不接原版账单；先验证内部库存、容量、存读档和电力。
+	/// 4×4 立体库原型：内部 <see cref="ThingOwner{T}"/> 保管物品，面板/Gizmo 直接存取。
+	/// 四个方向各有一个履带接口；自动入/出库要求至少接一条履带。
+	/// 自带可调温控（CompTempControl），默认 4°C，像原版空调一样用 Gizmo 调温。
 	/// </summary>
 	public class Building_VerticalWarehouse : Building, IThingHolder, IStoreSettingsParent
 	{
@@ -16,6 +17,8 @@ namespace ColonyKit.Modules.Storage
 
 		private ThingOwner<Thing> innerContainer;
 		private RimWorld.StorageSettings storeSettings;
+		private CompTempControl compTempControl;
+		private CompPowerTrader compPowerTrader;
 
 		public ThingOwner<Thing> Container
 		{
@@ -44,9 +47,63 @@ namespace ColonyKit.Modules.Storage
 			return Container;
 		}
 
-		public bool HasPower => GetComp<CompPowerTrader>()?.PowerOn ?? false;
+		public bool HasPower => compPowerTrader?.PowerOn ?? GetComp<CompPowerTrader>()?.PowerOn ?? false;
 
 		public bool IsFull => UsedStacks >= MaxStacks;
+
+		public override void SpawnSetup(Map map, bool respawningAfterLoad)
+		{
+			base.SpawnSetup(map, respawningAfterLoad);
+			compTempControl = GetComp<CompTempControl>();
+			compPowerTrader = GetComp<CompPowerTrader>();
+		}
+
+		/// <summary>4×4 每条边的中央接口格（建筑外侧）。</summary>
+		public IntVec3 PortCell(Rot4 side)
+		{
+			switch (side.AsInt)
+			{
+				case 0:
+					return Position + new IntVec3(2, 0, 4); // North
+				case 1:
+					return Position + new IntVec3(4, 0, 2); // East
+				case 2:
+					return Position + new IntVec3(2, 0, -1); // South
+				default:
+					return Position + new IntVec3(-1, 0, 2); // West
+			}
+		}
+
+		public bool HasConveyorConnection(Rot4 side)
+		{
+			if (!Spawned || Map == null)
+			{
+				return false;
+			}
+			IntVec3 port = PortCell(side);
+			return port.InBounds(Map) && port.GetEdifice(Map) is Building_ConveyorBase;
+		}
+
+		public bool HasAnyConveyorConnection =>
+			HasConveyorConnection(Rot4.North)
+			|| HasConveyorConnection(Rot4.East)
+			|| HasConveyorConnection(Rot4.South)
+			|| HasConveyorConnection(Rot4.West);
+
+		public bool TryFindConnectedPort(out IntVec3 port)
+		{
+			Rot4[] sides = { Rot4.North, Rot4.East, Rot4.South, Rot4.West };
+			for (int i = 0; i < sides.Length; i++)
+			{
+				if (HasConveyorConnection(sides[i]))
+				{
+					port = PortCell(sides[i]);
+					return true;
+				}
+			}
+			port = IntVec3.Invalid;
+			return false;
+		}
 
 		public Building_VerticalWarehouse()
 		{
@@ -118,7 +175,7 @@ namespace ColonyKit.Modules.Storage
 
 		public bool CanStore(Thing thing)
 		{
-			if (!HasPower || !Accepts(thing))
+			if (!HasPower || !HasAnyConveyorConnection || !Accepts(thing))
 			{
 				return false;
 			}
@@ -153,7 +210,8 @@ namespace ColonyKit.Modules.Storage
 			{
 				if (!thing.Spawned && Map != null)
 				{
-					GenPlace.TryPlaceThing(thing, InteractionCell, Map, ThingPlaceMode.Near, out _);
+					IntVec3 drop = TryFindConnectedPort(out IntVec3 port) ? port : InteractionCell;
+					GenPlace.TryPlaceThing(thing, drop, Map, ThingPlaceMode.Near, out _);
 				}
 				return false;
 			}
@@ -173,7 +231,9 @@ namespace ColonyKit.Modules.Storage
 				return false;
 			}
 
-			if (!GenPlace.TryPlaceThing(taken, InteractionCell, Map, ThingPlaceMode.Near, out _))
+			IntVec3 drop = TryFindConnectedPort(out IntVec3 port) ? port : InteractionCell;
+			if (!GenPlace.TryPlaceThing(taken, drop, Map, ThingPlaceMode.Direct, out _)
+				&& !GenPlace.TryPlaceThing(taken, drop, Map, ThingPlaceMode.Near, out _))
 			{
 				Container.TryAdd(taken, false);
 				return false;
@@ -189,9 +249,106 @@ namespace ColonyKit.Modules.Storage
 			}
 		}
 
+		/// <summary>
+		/// 像原版空调一样把所在房间的温度调向 TargetTemperature。
+		/// 默认 4°C；CompTempControl 自带 +/- 10°、+/-1°、重置按钮。
+		/// </summary>
+		public override void TickRare()
+		{
+			base.TickRare();
+			if (!Spawned || Map == null)
+			{
+				return;
+			}
+
+			compTempControl ??= GetComp<CompTempControl>();
+			compPowerTrader ??= GetComp<CompPowerTrader>();
+
+			if (compTempControl == null || compPowerTrader == null)
+			{
+				return;
+			}
+
+			if (!compPowerTrader.PowerOn)
+			{
+				compTempControl.operatingAtHighPower = false;
+				return;
+			}
+
+			Room room = FindRoom();
+			if (room == null || room.UsesOutdoorTemperature)
+			{
+				compTempControl.operatingAtHighPower = false;
+				SetIdlePower();
+				return;
+			}
+
+			IntVec3 roomCell = IntVec3.Invalid;
+			foreach (IntVec3 cell in room.Cells)
+			{
+				roomCell = cell;
+				break;
+			}
+			if (!roomCell.IsValid)
+			{
+				SetIdlePower();
+				return;
+			}
+
+			float energy = compTempControl.Props.energyPerSecond * 4.1666665f;
+			float change = GenTemperature.ControlTemperatureTempChange(
+				roomCell,
+				Map,
+				energy,
+				compTempControl.TargetTemperature);
+			bool active = !Mathf.Approximately(change, 0f);
+			if (active)
+			{
+				room.Temperature += change;
+			}
+
+			compTempControl.operatingAtHighPower = active;
+			float power = compPowerTrader.Props.PowerConsumption;
+			compPowerTrader.PowerOutput = active
+				? -power
+				: -power * compTempControl.Props.lowPowerConsumptionFactor;
+		}
+
+		private void SetIdlePower()
+		{
+			if (compTempControl == null || compPowerTrader == null)
+			{
+				return;
+			}
+			compPowerTrader.PowerOutput =
+				-compPowerTrader.Props.PowerConsumption * compTempControl.Props.lowPowerConsumptionFactor;
+		}
+
+		private Room FindRoom()
+		{
+			Room best = null;
+			foreach (IntVec3 cell in GenAdj.CellsAdjacent8Way(this))
+			{
+				if (!cell.InBounds(Map))
+				{
+					continue;
+				}
+				Room room = cell.GetRoom(Map);
+				if (room == null || room.UsesOutdoorTemperature)
+				{
+					continue;
+				}
+				if (best == null || room.CellCount > best.CellCount)
+				{
+					best = room;
+				}
+			}
+			return best;
+		}
+
 		public int CollectNearby(int radius = 8)
 		{
-			if (!HasPower || Map == null)
+			if (!HasPower || !HasAnyConveyorConnection || Map == null)
 			{
 				return 0;
 			}
@@ -249,6 +406,10 @@ namespace ColonyKit.Modules.Storage
 			if (!HasPower)
 			{
 				text += "\n" + "CK.VerticalWarehouse.NoPower".Translate();
+			}
+			if (!HasAnyConveyorConnection)
+			{
+				text += "\n" + "CK.VerticalWarehouse.NoConveyor".Translate();
 			}
 			return text;
 		}
