@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Xml;
 using Verse;
 
@@ -61,7 +62,15 @@ namespace ModTemplate
 
 		private static string GameTranslate(string key, object[] args)
 		{
-			return args == null || args.Length == 0 ? key.Translate() : key.Translate(args);
+			if (args == null || args.Length == 0)
+			{
+				return key.Translate();
+			}
+
+			NamedArgument[] namedArgs = args
+				.Select(arg => new NamedArgument(arg, null))
+				.ToArray();
+			return TranslatorFormattedStringExtensions.Translate(key, namedArgs);
 		}
 
 		private static string Format(string text, object[] args)

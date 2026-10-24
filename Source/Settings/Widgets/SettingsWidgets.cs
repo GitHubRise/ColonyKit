@@ -324,6 +324,12 @@ namespace ModTemplate
 				return;
 			}
 
+			List<T> list = options?.ToList() ?? new List<T>();
+			if (list.Count == 0)
+			{
+				return;
+			}
+
 			Rect rect = listing.GetRect(30f);
 			DrawControlHover(rect);
 			Widgets.Label(rect.LeftPart(0.42f), label);
@@ -334,7 +340,7 @@ namespace ModTemplate
 			}
 
 			List<FloatMenuOption> menu = new List<FloatMenuOption>();
-			foreach (T option in options.ToList())
+			foreach (T option in list)
 			{
 				T captured = option;
 				string text = optionLabel(captured);
