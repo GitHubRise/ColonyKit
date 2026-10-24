@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 设置页字符串。键名对应 Source/Settings 下的 Translate 调用。 -->
+<LanguageData>
+	<ModTemplate.SettingsCategory>Mod 架构模板</ModTemplate.SettingsCategory>
+
+	<ModTemplate.Settings.Hint>修改立即生效，关闭窗口时保存。</ModTemplate.Settings.Hint>
+	<ModTemplate.Settings.ResetPage>重置本页</ModTemplate.Settings.ResetPage>
+	<ModTemplate.Settings.ResetAll>全部重置</ModTemplate.Settings.ResetAll>
+	<ModTemplate.Settings.ResetAll.Confirm>确定把所有设置页恢复为默认值？</ModTemplate.Settings.ResetAll.Confirm>
+
+	<ModTemplate.Settings.Tab.General>常规</ModTemplate.Settings.Tab.General>
+	<ModTemplate.Settings.Tab.Logging>日志</ModTemplate.Settings.Tab.Logging>
+	<ModTemplate.Settings.Tab.About>关于</ModTemplate.Settings.Tab.About>
+
+	<ModTemplate.Settings.Section.Behavior>行为</ModTemplate.Settings.Section.Behavior>
+	<ModTemplate.Settings.Section.Notes>说明</ModTemplate.Settings.Section.Notes>
+	<ModTemplate.Settings.Section.Level>级别</ModTemplate.Settings.Section.Level>
+	<ModTemplate.Settings.Section.Output>输出</ModTemplate.Settings.Section.Output>
+	<ModTemplate.Settings.Section.Metadata>元数据</ModTemplate.Settings.Section.Metadata>
+	<ModTemplate.Settings.Section.DemoDef>演示 Def</ModTemplate.Settings.Section.DemoDef>
+
+	<ModTemplate.TrackSpawns>统计殖民者生成</ModTemplate.TrackSpawns>
+	<ModTemplate.TrackSpawns.Desc>统计本局殖民者的生成次数，并按设定间隔把总数写进日志。不改变玩法。</ModTemplate.TrackSpawns.Desc>
+	<ModTemplate.Settings.General.Hint>本页只做只读统计，不改变玩法。</ModTemplate.Settings.General.Hint>
+
+	<ModTemplate.Settings.Logging.Detail>统计明细</ModTemplate.Settings.Logging.Detail>
+	<ModTemplate.Settings.Logging.FrameworkLevel>框架日志级别</ModTemplate.Settings.Logging.FrameworkLevel>
+	<ModTemplate.LogLevel.Debug>调试</ModTemplate.LogLevel.Debug>
+	<ModTemplate.LogLevel.Info>信息</ModTemplate.LogLevel.Info>
+	<ModTemplate.LogLevel.Warn>警告</ModTemplate.LogLevel.Warn>
+	<ModTemplate.LogLevel.Error>错误</ModTemplate.LogLevel.Error>
+	<ModTemplate.Settings.LogDetail.Off>关闭</ModTemplate.Settings.LogDetail.Off>
+	<ModTemplate.Settings.LogDetail.Summary>摘要</ModTemplate.Settings.LogDetail.Summary>
+	<ModTemplate.Settings.LogDetail.Verbose>详细</ModTemplate.Settings.LogDetail.Verbose>
+
+	<ModTemplate.Settings.Logging.VerboseSpawn>记录每次生成</ModTemplate.Settings.Logging.VerboseSpawn>
+	<ModTemplate.Settings.Logging.VerboseSpawn.Desc>每生成一个殖民者写一行日志。</ModTemplate.Settings.Logging.VerboseSpawn.Desc>
+	<ModTemplate.Settings.Logging.VerboseSpawn.Locked>只有日志级别为「详细」时才可勾选。</ModTemplate.Settings.Logging.VerboseSpawn.Locked>
+
+	<ModTemplate.Settings.Logging.Interval>汇总间隔</ModTemplate.Settings.Logging.Interval>
+	<ModTemplate.Settings.Logging.IntervalValue>{0} tick（约 {1} 天）</ModTemplate.Settings.Logging.IntervalValue>
+	<ModTemplate.Settings.Logging.Prefix>日志前缀</ModTemplate.Settings.Logging.Prefix>
+	<ModTemplate.Settings.Logging.Prefix.Desc>留空表示 [ModTemplate]，最多 24 字符。</ModTemplate.Settings.Logging.Prefix.Desc>
+	<ModTemplate.Settings.Logging.EffectivePrefix>当前生效前缀：{0}</ModTemplate.Settings.Logging.EffectivePrefix>
+	<ModTemplate.Settings.Logging.TestLog>写一条测试日志</ModTemplate.Settings.Logging.TestLog>
+	<ModTemplate.Settings.Section.Diagnostics>诊断</ModTemplate.Settings.Section.Diagnostics>
+	<ModTemplate.Settings.Diagnostics.Hint>把设置、服务状态和最近日志写到 Config/ModTemplate-diagnostics.txt。</ModTemplate.Settings.Diagnostics.Hint>
+	<ModTemplate.Settings.Diagnostics.Dump>输出诊断报告</ModTemplate.Settings.Diagnostics.Dump>
+	<ModTemplate.Settings.Diagnostics.Reset>清空日志去重/节流状态</ModTemplate.Settings.Diagnostics.Reset>
+	<ModTemplate.Notification.Diagnostics>诊断报告已写入 Config/ModTemplate-diagnostics.txt。</ModTemplate.Notification.Diagnostics>
+
+	<ModTemplate.Settings.About.Name>名称：{0}</ModTemplate.Settings.About.Name>
+	<ModTemplate.Settings.About.PackageId>包名：{0}</ModTemplate.Settings.About.PackageId>
+	<ModTemplate.Settings.About.Version>版本：{0}</ModTemplate.Settings.About.Version>
+	<ModTemplate.Settings.About.Greeting>XML 问候语：{0}</ModTemplate.Settings.About.Greeting>
+	<ModTemplate.Settings.About.Note>补丁备注：{0}</ModTemplate.Settings.About.Note>
+	<ModTemplate.Settings.About.Hint>只读页；同时用来验证 XML → DefOf → UI 这条链路。</ModTemplate.Settings.About.Hint>
+
+	<ModTemplate.Settings.Section.TechTree>科技树</ModTemplate.Settings.Section.TechTree>
+	<ModTemplate.Settings.TechTree.Hint>打开独立的科技树窗口：按前置分层、可滚动、点击节点设为当前研究。</ModTemplate.Settings.TechTree.Hint>
+	<ModTemplate.Settings.TechTree.Open>打开科技树</ModTemplate.Settings.TechTree.Open>
+	<ModTemplate.TechTree.Mode.Tiers>布局：按前置</ModTemplate.TechTree.Mode.Tiers>
+	<ModTemplate.TechTree.Mode.Vanilla>布局：原版坐标</ModTemplate.TechTree.Mode.Vanilla>
+	<ModTemplate.TechTree.Summary>{0} 个节点 · {1}</ModTemplate.TechTree.Summary>
+	<ModTemplate.TechTree.BuildFailed>科技树构建失败，详见 Player.log。</ModTemplate.TechTree.BuildFailed>
+	<ModTemplate.TechTree.Tooltip.Cost>花费：{0}</ModTemplate.TechTree.Tooltip.Cost>
+	<ModTemplate.TechTree.Tooltip.Prerequisites>前置：{0}</ModTemplate.TechTree.Tooltip.Prerequisites>
+	<ModTemplate.TechTree.Tooltip.None>无</ModTemplate.TechTree.Tooltip.None>
+	<ModTemplate.TechTree.Tooltip.Click>点击设为当前研究</ModTemplate.TechTree.Tooltip.Click>
+	<ModTemplate.TechTree.Tooltip.Finished>已完成</ModTemplate.TechTree.Tooltip.Finished>
+	<ModTemplate.TechTree.Tooltip.Available>可研究</ModTemplate.TechTree.Tooltip.Available>
+	<ModTemplate.TechTree.Tooltip.Locked>未解锁</ModTemplate.TechTree.Tooltip.Locked>
+
+	<ModTemplate.Settings.Section.Interface>界面</ModTemplate.Settings.Section.Interface>
+	<ModTemplate.Settings.Section.Throttle>节流</ModTemplate.Settings.Section.Throttle>
+	<ModTemplate.Settings.Section.Test>测试</ModTemplate.Settings.Section.Test>
+	<ModTemplate.EnablePawnMenu>启用右键小人菜单</ModTemplate.EnablePawnMenu>
+	<ModTemplate.EnablePawnMenu.Desc>右键殖民者时显示本 Mod 追加的菜单项。</ModTemplate.EnablePawnMenu.Desc>
+	<ModTemplate.ShowTechTreeButton>显示科技树按钮</ModTemplate.ShowTechTreeButton>
+	<ModTemplate.ShowTechTreeButton.Desc>在底部主菜单显示「科技树」按钮。</ModTemplate.ShowTechTreeButton.Desc>
+
+	<ModTemplate.Settings.Tab.Notifications>通知</ModTemplate.Settings.Tab.Notifications>
+	<ModTemplate.Settings.Notifications.Enabled>启用通知</ModTemplate.Settings.Notifications.Enabled>
+	<ModTemplate.Settings.Notifications.Enabled.Desc>关闭后 NotificationService 不再发送消息和信件。</ModTemplate.Settings.Notifications.Enabled.Desc>
+	<ModTemplate.Settings.Notifications.Cooldown>节流冷却</ModTemplate.Settings.Notifications.Cooldown>
+	<ModTemplate.Settings.Notifications.CooldownValue>{0} tick</ModTemplate.Settings.Notifications.CooldownValue>
+	<ModTemplate.Settings.Notifications.TestHint>下面三个按钮直接调用 NotificationService。</ModTemplate.Settings.Notifications.TestHint>
+	<ModTemplate.Settings.Notifications.TestMessage>发送测试消息</ModTemplate.Settings.Notifications.TestMessage>
+	<ModTemplate.Settings.Notifications.TestLetter>发送测试信件</ModTemplate.Settings.Notifications.TestLetter>
+	<ModTemplate.Settings.Notifications.TestThrottled>测试节流消息</ModTemplate.Settings.Notifications.TestThrottled>
+
+	<ModTemplate.Notification.TestMessage>ModTemplate 测试消息。</ModTemplate.Notification.TestMessage>
+	<ModTemplate.Notification.TestLetterLabel>ModTemplate</ModTemplate.Notification.TestLetterLabel>
+	<ModTemplate.Notification.TestLetterText>这是一封来自 ModTemplate 的测试信件。</ModTemplate.Notification.TestLetterText>
+	<ModTemplate.Notification.TestThrottled>节流测试消息（每个冷却周期最多一次）。</ModTemplate.Notification.TestThrottled>
+	<ModTemplate.Notification.PawnLogged>已记录 {0}。</ModTemplate.Notification.PawnLogged>
+	<ModTemplate.Notification.SelfTest>ModTemplate 自检通知。</ModTemplate.Notification.SelfTest>
+
+	<ModTemplate.Menu.LogPawn>记录该殖民者</ModTemplate.Menu.LogPawn>
+	<ModTemplate.Menu.BuildWall>在附近建造演示墙</ModTemplate.Menu.BuildWall>
+	<ModTemplate.Build.OutOfBounds>目标格在地图外。</ModTemplate.Build.OutOfBounds>
+	<ModTemplate.Build.Rejected>这里不能建造。</ModTemplate.Build.Rejected>
+</LanguageData>

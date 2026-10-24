@@ -1,0 +1,7 @@
+# 构建产物（模板仓库不跟踪 DLL；需要时用 build.ps1 生成）
+Assemblies/
+Source/obj/
+Source/bin/
+dist/
+*.user
+build-error.log

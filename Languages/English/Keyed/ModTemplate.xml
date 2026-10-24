@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 设置页字符串。键名对应 Source/Settings 下的 Translate 调用。 -->
+<LanguageData>
+	<ModTemplate.SettingsCategory>Mod Template</ModTemplate.SettingsCategory>
+
+	<ModTemplate.Settings.Hint>Changes apply immediately; they are saved when this window closes.</ModTemplate.Settings.Hint>
+	<ModTemplate.Settings.ResetPage>Reset page</ModTemplate.Settings.ResetPage>
+	<ModTemplate.Settings.ResetAll>Reset all</ModTemplate.Settings.ResetAll>
+	<ModTemplate.Settings.ResetAll.Confirm>Reset every settings page to its defaults?</ModTemplate.Settings.ResetAll.Confirm>
+
+	<ModTemplate.Settings.Tab.General>General</ModTemplate.Settings.Tab.General>
+	<ModTemplate.Settings.Tab.Logging>Logging</ModTemplate.Settings.Tab.Logging>
+	<ModTemplate.Settings.Tab.About>About</ModTemplate.Settings.Tab.About>
+
+	<ModTemplate.Settings.Section.Behavior>Behavior</ModTemplate.Settings.Section.Behavior>
+	<ModTemplate.Settings.Section.Notes>Notes</ModTemplate.Settings.Section.Notes>
+	<ModTemplate.Settings.Section.Level>Level</ModTemplate.Settings.Section.Level>
+	<ModTemplate.Settings.Section.Output>Output</ModTemplate.Settings.Section.Output>
+	<ModTemplate.Settings.Section.Metadata>Metadata</ModTemplate.Settings.Section.Metadata>
+	<ModTemplate.Settings.Section.DemoDef>Demo Def</ModTemplate.Settings.Section.DemoDef>
+
+	<ModTemplate.TrackSpawns>Track colonist spawns</ModTemplate.TrackSpawns>
+	<ModTemplate.TrackSpawns.Desc>Counts colonist spawns in the current game and logs the total at the configured interval. This does not change gameplay.</ModTemplate.TrackSpawns.Desc>
+	<ModTemplate.Settings.General.Hint>This page only counts spawns; it never changes gameplay.</ModTemplate.Settings.General.Hint>
+
+	<ModTemplate.Settings.Logging.Detail>Stat detail</ModTemplate.Settings.Logging.Detail>
+	<ModTemplate.Settings.Logging.FrameworkLevel>Framework log level</ModTemplate.Settings.Logging.FrameworkLevel>
+	<ModTemplate.LogLevel.Debug>Debug</ModTemplate.LogLevel.Debug>
+	<ModTemplate.LogLevel.Info>Info</ModTemplate.LogLevel.Info>
+	<ModTemplate.LogLevel.Warn>Warn</ModTemplate.LogLevel.Warn>
+	<ModTemplate.LogLevel.Error>Error</ModTemplate.LogLevel.Error>
+	<ModTemplate.Settings.LogDetail.Off>Off</ModTemplate.Settings.LogDetail.Off>
+	<ModTemplate.Settings.LogDetail.Summary>Summary</ModTemplate.Settings.LogDetail.Summary>
+	<ModTemplate.Settings.LogDetail.Verbose>Verbose</ModTemplate.Settings.LogDetail.Verbose>
+
+	<ModTemplate.Settings.Logging.VerboseSpawn>Log every spawn</ModTemplate.Settings.Logging.VerboseSpawn>
+	<ModTemplate.Settings.Logging.VerboseSpawn.Desc>Write one line for each colonist spawn.</ModTemplate.Settings.Logging.VerboseSpawn.Desc>
+	<ModTemplate.Settings.Logging.VerboseSpawn.Locked>Available only when log level is Verbose.</ModTemplate.Settings.Logging.VerboseSpawn.Locked>
+
+	<ModTemplate.Settings.Logging.Interval>Summary interval</ModTemplate.Settings.Logging.Interval>
+	<ModTemplate.Settings.Logging.IntervalValue>{0} ticks (~{1} days)</ModTemplate.Settings.Logging.IntervalValue>
+	<ModTemplate.Settings.Logging.Prefix>Log prefix</ModTemplate.Settings.Logging.Prefix>
+	<ModTemplate.Settings.Logging.Prefix.Desc>Empty means [ModTemplate]. Max 24 characters.</ModTemplate.Settings.Logging.Prefix.Desc>
+	<ModTemplate.Settings.Logging.EffectivePrefix>Effective prefix: {0}</ModTemplate.Settings.Logging.EffectivePrefix>
+	<ModTemplate.Settings.Logging.TestLog>Write a test log line</ModTemplate.Settings.Logging.TestLog>
+	<ModTemplate.Settings.Section.Diagnostics>Diagnostics</ModTemplate.Settings.Section.Diagnostics>
+	<ModTemplate.Settings.Diagnostics.Hint>Write a report with settings, service state and recent logs to Config/ModTemplate-diagnostics.txt.</ModTemplate.Settings.Diagnostics.Hint>
+	<ModTemplate.Settings.Diagnostics.Dump>Write diagnostics report</ModTemplate.Settings.Diagnostics.Dump>
+	<ModTemplate.Settings.Diagnostics.Reset>Reset log dedup/throttle state</ModTemplate.Settings.Diagnostics.Reset>
+	<ModTemplate.Notification.Diagnostics>Diagnostics report written to Config/ModTemplate-diagnostics.txt.</ModTemplate.Notification.Diagnostics>
+
+	<ModTemplate.Settings.About.Name>Name: {0}</ModTemplate.Settings.About.Name>
+	<ModTemplate.Settings.About.PackageId>PackageId: {0}</ModTemplate.Settings.About.PackageId>
+	<ModTemplate.Settings.About.Version>Version: {0}</ModTemplate.Settings.About.Version>
+	<ModTemplate.Settings.About.Greeting>XML greeting: {0}</ModTemplate.Settings.About.Greeting>
+	<ModTemplate.Settings.About.Note>Patch note: {0}</ModTemplate.Settings.About.Note>
+	<ModTemplate.Settings.About.Hint>Read-only. It also proves the XML to DefOf to UI chain works.</ModTemplate.Settings.About.Hint>
+
+	<ModTemplate.Settings.Section.TechTree>Tech tree</ModTemplate.Settings.Section.TechTree>
+	<ModTemplate.Settings.TechTree.Hint>Opens a custom tech tree window: prerequisite-based layout, scroll, click to select research.</ModTemplate.Settings.TechTree.Hint>
+	<ModTemplate.Settings.TechTree.Open>Open tech tree</ModTemplate.Settings.TechTree.Open>
+	<ModTemplate.TechTree.Mode.Tiers>Layout: prerequisites</ModTemplate.TechTree.Mode.Tiers>
+	<ModTemplate.TechTree.Mode.Vanilla>Layout: vanilla coords</ModTemplate.TechTree.Mode.Vanilla>
+	<ModTemplate.TechTree.Summary>{0} nodes in {1}</ModTemplate.TechTree.Summary>
+	<ModTemplate.TechTree.BuildFailed>Tech tree build failed; see Player.log.</ModTemplate.TechTree.BuildFailed>
+	<ModTemplate.TechTree.Tooltip.Cost>Cost: {0}</ModTemplate.TechTree.Tooltip.Cost>
+	<ModTemplate.TechTree.Tooltip.Prerequisites>Prerequisites: {0}</ModTemplate.TechTree.Tooltip.Prerequisites>
+	<ModTemplate.TechTree.Tooltip.None>none</ModTemplate.TechTree.Tooltip.None>
+	<ModTemplate.TechTree.Tooltip.Click>Click to set as current research</ModTemplate.TechTree.Tooltip.Click>
+	<ModTemplate.TechTree.Tooltip.Finished>Finished</ModTemplate.TechTree.Tooltip.Finished>
+	<ModTemplate.TechTree.Tooltip.Available>Available</ModTemplate.TechTree.Tooltip.Available>
+	<ModTemplate.TechTree.Tooltip.Locked>Locked</ModTemplate.TechTree.Tooltip.Locked>
+
+	<ModTemplate.Settings.Section.Interface>Interface</ModTemplate.Settings.Section.Interface>
+	<ModTemplate.Settings.Section.Throttle>Throttling</ModTemplate.Settings.Section.Throttle>
+	<ModTemplate.Settings.Section.Test>Test</ModTemplate.Settings.Section.Test>
+	<ModTemplate.EnablePawnMenu>Enable pawn context menu</ModTemplate.EnablePawnMenu>
+	<ModTemplate.EnablePawnMenu.Desc>Show the extra options this mod adds when right-clicking a colonist.</ModTemplate.EnablePawnMenu.Desc>
+	<ModTemplate.ShowTechTreeButton>Show tech tree button</ModTemplate.ShowTechTreeButton>
+	<ModTemplate.ShowTechTreeButton.Desc>Show a "Tech tree" button in the bottom main bar.</ModTemplate.ShowTechTreeButton.Desc>
+
+	<ModTemplate.Settings.Tab.Notifications>Notifications</ModTemplate.Settings.Tab.Notifications>
+	<ModTemplate.Settings.Notifications.Enabled>Enable notifications</ModTemplate.Settings.Notifications.Enabled>
+	<ModTemplate.Settings.Notifications.Enabled.Desc>Turn off to silence messages and letters sent through NotificationService.</ModTemplate.Settings.Notifications.Enabled.Desc>
+	<ModTemplate.Settings.Notifications.Cooldown>Throttle cooldown</ModTemplate.Settings.Notifications.Cooldown>
+	<ModTemplate.Settings.Notifications.CooldownValue>{0} ticks</ModTemplate.Settings.Notifications.CooldownValue>
+	<ModTemplate.Settings.Notifications.TestHint>These buttons call NotificationService directly.</ModTemplate.Settings.Notifications.TestHint>
+	<ModTemplate.Settings.Notifications.TestMessage>Send test message</ModTemplate.Settings.Notifications.TestMessage>
+	<ModTemplate.Settings.Notifications.TestLetter>Send test letter</ModTemplate.Settings.Notifications.TestLetter>
+	<ModTemplate.Settings.Notifications.TestThrottled>Test throttled message</ModTemplate.Settings.Notifications.TestThrottled>
+
+	<ModTemplate.Notification.TestMessage>ModTemplate test message.</ModTemplate.Notification.TestMessage>
+	<ModTemplate.Notification.TestLetterLabel>ModTemplate</ModTemplate.Notification.TestLetterLabel>
+	<ModTemplate.Notification.TestLetterText>This is a test letter from ModTemplate.</ModTemplate.Notification.TestLetterText>
+	<ModTemplate.Notification.TestThrottled>Throttled test message (at most once per cooldown).</ModTemplate.Notification.TestThrottled>
+	<ModTemplate.Notification.PawnLogged>{0} logged.</ModTemplate.Notification.PawnLogged>
+	<ModTemplate.Notification.SelfTest>ModTemplate self-test notification.</ModTemplate.Notification.SelfTest>
+
+	<ModTemplate.Menu.LogPawn>Log this pawn</ModTemplate.Menu.LogPawn>
+	<ModTemplate.Menu.BuildWall>Build a demo wall nearby</ModTemplate.Menu.BuildWall>
+	<ModTemplate.Build.OutOfBounds>Target cell is out of bounds.</ModTemplate.Build.OutOfBounds>
+	<ModTemplate.Build.Rejected>Cannot build here.</ModTemplate.Build.Rejected>
+</LanguageData>

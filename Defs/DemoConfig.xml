@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!--
+		自定义 Def 的根元素名 = 类型的完整名称（命名空间 + 类名）。
+		游戏用 GenTypes.GetTypeInAnyAssembly 按名字解析，所以这里必须是 ModTemplate.DemoConfigDef。
+	-->
+	<ModTemplate.DemoConfigDef>
+		<defName>Default</defName>
+		<label>demo config</label>
+		<description>从 XML 反序列化到强类型 Def 的演示数据。</description>
+		<!-- 启动自检时打印，用来确认 XML → 强类型对象这条链路通了 -->
+		<greeting>Hello from ModTemplate</greeting>
+		<!-- 60000 tick = 游戏内 1 天；仅在“详细日志”开启时使用 -->
+		<logIntervalTicks>60000</logIntervalTicks>
+	</ModTemplate.DemoConfigDef>
+</Defs>

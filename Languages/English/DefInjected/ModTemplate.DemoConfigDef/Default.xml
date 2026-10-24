@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 目录名 = Def 类型全名；键格式 = <defName>.<字段名>，只翻译可翻译字段。 -->
+<LanguageData>
+	<Default.label>demo config</Default.label>
+	<Default.description>Template data loaded from XML into a strongly typed Def.</Default.description>
+</LanguageData>

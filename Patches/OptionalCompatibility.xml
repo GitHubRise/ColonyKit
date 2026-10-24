@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<!--
+		条件补丁示例：只在目标 Mod 激活时给演示 Def 追加一个 note 节点。
+
+		注意：PatchOperationFindMod 匹配的是 Mod 的「显示名」（mod.Name），
+		不是 packageId。Biotech 的显示名就是 "Biotech"；写 packageId 不会命中。
+		要做 packageId 匹配，用 MayRequire 属性，或自己在 C# 里判断。
+	-->
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Biotech</li>
+		</mods>
+		<match Class="PatchOperationAdd">
+			<xpath>Defs/ModTemplate.DemoConfigDef[defName="Default"]</xpath>
+			<value>
+				<note>Biotech detected by optional patch.</note>
+			</value>
+		</match>
+	</Operation>
+</Patch>
