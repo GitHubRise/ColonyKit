@@ -38,7 +38,7 @@ namespace ModTemplate
 				"ModTemplate.ShowTechTreeButton.Desc".Translate());
 
 			SettingsWidgets.Section(listing, "ModTemplate.Settings.Section.Notes".Translate());
-			listing.Label("ModTemplate.Settings.General.Hint".Translate());
+			SettingsWidgets.Label(listing, "ModTemplate.Settings.General.Hint".Translate());
 		}
 
 		public override void Reset(ModTemplateSettings settings)

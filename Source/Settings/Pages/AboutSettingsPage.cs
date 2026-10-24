@@ -24,28 +24,28 @@ namespace ModTemplate
 
 			SettingsWidgets.Section(listing, "ModTemplate.Settings.Section.Metadata".Translate());
 
-			listing.Label("ModTemplate.Settings.About.Name".Translate(content?.Name ?? "?"));
-			listing.Label("ModTemplate.Settings.About.PackageId".Translate(
+			SettingsWidgets.Label(listing, "ModTemplate.Settings.About.Name".Translate(content?.Name ?? "?"));
+			SettingsWidgets.Label(listing, "ModTemplate.Settings.About.PackageId".Translate(
 				content?.PackageIdPlayerFacing ?? "?"));
-			listing.Label("ModTemplate.Settings.About.Version".Translate(
+			SettingsWidgets.Label(listing, "ModTemplate.Settings.About.Version".Translate(
 				content?.ModMetaData?.ModVersion ?? "?"));
 
 			SettingsWidgets.Section(listing, "ModTemplate.Settings.Section.DemoDef".Translate());
 
 			// 这两个值来自 Defs/DemoConfig.xml；note 可能被可选补丁改写。
 			DemoConfigDef config = ModTemplateDefOf.Default;
-			listing.Label("ModTemplate.Settings.About.Greeting".Translate(config?.greeting ?? "<missing>"));
+			SettingsWidgets.Label(listing, "ModTemplate.Settings.About.Greeting".Translate(config?.greeting ?? "<missing>"));
 
 			string note = config != null && !config.note.NullOrEmpty() ? config.note : "-";
-			listing.Label("ModTemplate.Settings.About.Note".Translate(note));
+			SettingsWidgets.Label(listing, "ModTemplate.Settings.About.Note".Translate(note));
 
 			listing.Gap();
-			listing.Label("ModTemplate.Settings.About.Hint".Translate());
+			SettingsWidgets.Label(listing, "ModTemplate.Settings.About.Hint".Translate());
 
 			SettingsWidgets.Section(listing, "ModTemplate.Settings.Section.TechTree".Translate());
-			listing.Label("ModTemplate.Settings.TechTree.Hint".Translate());
+			SettingsWidgets.Label(listing, "ModTemplate.Settings.TechTree.Hint".Translate());
 
-			if (listing.ButtonText("ModTemplate.Settings.TechTree.Open".Translate()))
+			if (SettingsWidgets.Button(listing, "ModTemplate.Settings.TechTree.Open".Translate()))
 			{
 				if (!ModuleRegistry.IsEnabled("tech-tree"))
 				{

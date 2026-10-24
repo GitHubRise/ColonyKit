@@ -8,27 +8,57 @@ namespace ModTemplate
 {
 	/// <summary>
 	/// 设置页的通用控件库：把原版零散的 Widgets 调用包成「一行一个控件」，
-	/// 页面代码只关心值和标签，不用重复摆 Rect。
+	/// 页面代码只关心值和标签，不用重复摆 Rect。所有控件都参与检索过滤。
 	/// </summary>
 	/// <remarks>
-	/// 所有控件都接收 <see cref="Listing_Standard"/>，由调用方决定行顺序；
-	/// 控件内部只做布局、交互和 Tooltip，不持有设置数据。
+	/// 检索启用时，控件先检查标签/Tooltip/当前 Section 是否包含查询：
+	/// 不匹配就跳过绘制并返回原值；匹配时补画之前挂起的 Section。
 	/// </remarks>
 	public static class SettingsWidgets
 	{
+		private static string pendingSection;
+
+		/// <summary>每页开始绘制前重置挂起的 Section。</summary>
+		public static void BeginPage()
+		{
+			pendingSection = null;
+		}
+
 		/// <summary>
 		/// 小标题 + 分隔线，用来在同一个页签里分区。
-		/// 例：日志页分成「级别」「输出」两段。
+		/// 检索启用时先挂起，等第一个匹配控件出现再画，避免空标题。
 		/// </summary>
 		public static void Section(Listing_Standard listing, string title)
 		{
-			listing.Gap(10f);
-			listing.GapLine(6f);
+			if (SettingsSearch.Active)
+			{
+				pendingSection = title;
+				return;
+			}
 
-			Color previousColor = GUI.color;
-			GUI.color = new Color(0.82f, 0.82f, 0.82f);
-			listing.Label(title);
-			GUI.color = previousColor;
+			DrawSection(listing, title);
+		}
+
+		/// <summary>只读文本行，参与检索。</summary>
+		public static void Label(Listing_Standard listing, string text)
+		{
+			if (!BeginControl(listing, text, null))
+			{
+				return;
+			}
+
+			listing.Label(text);
+		}
+
+		/// <summary>按钮，参与检索；未命中时返回 false。</summary>
+		public static bool Button(Listing_Standard listing, string label)
+		{
+			if (!BeginControl(listing, label, null))
+			{
+				return false;
+			}
+
+			return listing.ButtonText(label);
 		}
 
 		/// <summary>
@@ -42,6 +72,11 @@ namespace ModTemplate
 			string tooltip = null,
 			bool enabled = true)
 		{
+			if (!BeginControl(listing, label, tooltip))
+			{
+				return value;
+			}
+
 			Rect rect = listing.GetRect(Text.LineHeight);
 			Widgets.CheckboxLabeled(rect, label, ref value, disabled: !enabled);
 
@@ -65,6 +100,11 @@ namespace ModTemplate
 			float step = -1f,
 			Func<float, string> format = null)
 		{
+			if (!BeginControl(listing, label, null))
+			{
+				return value;
+			}
+
 			Rect rect = listing.GetRect(30f);
 			Widgets.Label(rect.LeftPart(0.42f), label);
 
@@ -102,6 +142,11 @@ namespace ModTemplate
 			Func<T, string> optionLabel,
 			Action<T> onChanged)
 		{
+			if (!BeginControl(listing, label, null))
+			{
+				return;
+			}
+
 			Rect rect = listing.GetRect(30f);
 			Widgets.Label(rect.LeftPart(0.42f), label);
 
@@ -139,6 +184,11 @@ namespace ModTemplate
 			int maxLength = 64,
 			string tooltip = null)
 		{
+			if (!BeginControl(listing, label, tooltip))
+			{
+				return value;
+			}
+
 			Rect rect = listing.GetRect(Text.LineHeight);
 			Widgets.Label(rect.LeftPart(0.42f), label);
 
@@ -149,6 +199,44 @@ namespace ModTemplate
 			}
 
 			return result;
+		}
+
+		private static bool BeginControl(Listing_Standard listing, string label, string tooltip)
+		{
+			if (!SettingsSearch.Active)
+			{
+				return true;
+			}
+
+			bool match = SettingsSearch.Matches(label)
+				|| SettingsSearch.Matches(tooltip)
+				|| SettingsSearch.Matches(pendingSection);
+
+			if (!match)
+			{
+				return false;
+			}
+
+			SettingsSearch.PageMatches++;
+
+			if (!pendingSection.NullOrEmpty())
+			{
+				DrawSection(listing, pendingSection);
+				pendingSection = null;
+			}
+
+			return true;
+		}
+
+		private static void DrawSection(Listing_Standard listing, string title)
+		{
+			listing.Gap(10f);
+			listing.GapLine(6f);
+
+			Color previousColor = GUI.color;
+			GUI.color = new Color(0.82f, 0.82f, 0.82f);
+			listing.Label(title);
+			GUI.color = previousColor;
 		}
 	}
 }

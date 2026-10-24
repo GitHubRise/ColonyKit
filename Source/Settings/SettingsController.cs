@@ -30,6 +30,7 @@ namespace ModTemplate
 		private const float ContentGap = 8f;
 		private const float ButtonWidth = 110f;
 		private const float ButtonGap = 10f;
+		private const float SearchGap = 8f;
 
 		private readonly ModTemplateSettings settings;
 		private readonly List<SettingsPage> pages;
@@ -138,14 +139,41 @@ namespace ModTemplate
 
 		private void DrawToolbar(Rect inRect)
 		{
-			// 提示文字 + 右侧两个按钮；宽度不够时优先保证按钮。
-			float reserved = (ButtonWidth + ButtonGap) * 2f;
-			float hintWidth = Mathf.Max(0f, inRect.width - reserved);
+			// 左侧检索框；中间提示；右侧两个按钮。宽度不够时优先保证按钮。
+			float searchWidth = Mathf.Clamp(inRect.width * 0.28f, 140f, 260f);
+			Rect searchRect = new Rect(inRect.x, inRect.y, searchWidth, inRect.height);
 
-			TextAnchor previousAnchor = Text.Anchor;
-			Text.Anchor = TextAnchor.MiddleLeft;
-			Widgets.Label(new Rect(inRect.x, inRect.y, hintWidth, inRect.height), "ModTemplate.Settings.Hint".Translate());
-			Text.Anchor = previousAnchor;
+			string typed = Widgets.TextField(searchRect, SettingsSearch.Query ?? "");
+			if (!string.Equals(typed, SettingsSearch.Query, StringComparison.Ordinal))
+			{
+				SettingsSearch.Query = typed ?? "";
+				pageHeights.Clear();
+				scrollPositions.Clear();
+			}
+
+			// TextField 没有 placeholder，空查询时盖一层灰字提示。
+			if (SettingsSearch.Query.NullOrEmpty())
+			{
+				Color previousColor = GUI.color;
+				TextAnchor previousAnchor = Text.Anchor;
+				GUI.color = new Color(1f, 1f, 1f, 0.35f);
+				Text.Anchor = TextAnchor.MiddleLeft;
+				Widgets.Label(searchRect.ContractedBy(4f), "ModTemplate.Settings.Search.Hint".Translate());
+				Text.Anchor = previousAnchor;
+				GUI.color = previousColor;
+			}
+
+			float reserved = (ButtonWidth + ButtonGap) * 2f;
+			float hintX = searchRect.xMax + SearchGap;
+			float hintWidth = Mathf.Max(0f, inRect.xMax - reserved - hintX);
+
+			if (hintWidth > 0f)
+			{
+				TextAnchor previousAnchor = Text.Anchor;
+				Text.Anchor = TextAnchor.MiddleLeft;
+				Widgets.Label(new Rect(hintX, inRect.y, hintWidth, inRect.height), "ModTemplate.Settings.Hint".Translate());
+				Text.Anchor = previousAnchor;
+			}
 
 			Rect resetAllRect = new Rect(inRect.xMax - ButtonWidth, inRect.y, ButtonWidth, inRect.height);
 			Rect resetPageRect = new Rect(
@@ -184,22 +212,21 @@ namespace ModTemplate
 				height = 0f;
 			}
 
-			// 用上一帧的内容高度撑开 viewRect，滚动条第二帧才准确。
-			// 这是原版设置页的常规做法，比每次画两遍页面便宜。
-			float viewHeight = Mathf.Max(contentRect.height, height);
-			Rect viewRect = new Rect(0f, 0f, contentRect.width - 16f, viewHeight);
+			SettingsSearch.BeginPage();
+			SettingsWidgets.BeginPage();
 
-			Widgets.BeginScrollView(contentRect, ref scroll, viewRect);
+			// AutoScrollView 用上一帧高度估算 viewRect：内容超过视口时自动出现滚动条。
+			AutoScrollView.Draw(contentRect, ref scroll, ref height, listing =>
+			{
+				page.DoContents(listing, settings);
 
-			Listing_Standard listing = new Listing_Standard();
-			listing.Begin(viewRect);
-			page.DoContents(listing, settings);
-			listing.End();
+				if (SettingsSearch.Active && SettingsSearch.PageMatches == 0)
+				{
+					listing.Label("ModTemplate.Settings.Search.NoResults".Translate());
+				}
+			});
 
-			pageHeights[page.Id] = listing.CurHeight;
-
-			Widgets.EndScrollView();
-
+			pageHeights[page.Id] = height;
 			scrollPositions[page.Id] = scroll;
 		}
 

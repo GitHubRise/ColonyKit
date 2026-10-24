@@ -4,6 +4,8 @@
 	<ModTemplate.SettingsCategory>Mod Template</ModTemplate.SettingsCategory>
 
 	<ModTemplate.Settings.Hint>Changes apply immediately; they are saved when this window closes.</ModTemplate.Settings.Hint>
+	<ModTemplate.Settings.Search.Hint>Search this page…</ModTemplate.Settings.Search.Hint>
+	<ModTemplate.Settings.Search.NoResults>No matching setting on this page.</ModTemplate.Settings.Search.NoResults>
 	<ModTemplate.Settings.ResetPage>Reset page</ModTemplate.Settings.ResetPage>
 	<ModTemplate.Settings.ResetAll>Reset all</ModTemplate.Settings.ResetAll>
 	<ModTemplate.Settings.ResetAll.Confirm>Reset every settings page to its defaults?</ModTemplate.Settings.ResetAll.Confirm>

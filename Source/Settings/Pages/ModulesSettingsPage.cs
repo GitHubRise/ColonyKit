@@ -19,7 +19,7 @@ namespace ModTemplate
 		public override void DoContents(Listing_Standard listing, ModTemplateSettings settings)
 		{
 			SettingsWidgets.Section(listing, "ModTemplate.Settings.Section.Modules".Translate());
-			listing.Label("ModTemplate.Settings.Modules.Hint".Translate());
+			SettingsWidgets.Label(listing, "ModTemplate.Settings.Modules.Hint".Translate());
 
 			foreach (IModTemplateModule module in ModuleRegistry.All)
 			{
@@ -46,7 +46,7 @@ namespace ModTemplate
 			}
 
 			listing.Gap();
-			listing.Label("ModTemplate.Settings.Modules.RestartHint".Translate());
+			SettingsWidgets.Label(listing, "ModTemplate.Settings.Modules.RestartHint".Translate());
 		}
 
 		public override void Reset(ModTemplateSettings settings)

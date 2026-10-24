@@ -35,21 +35,21 @@ namespace ModTemplate
 				value => "ModTemplate.Settings.Notifications.CooldownValue".Translate((int)value).ToString());
 
 			SettingsWidgets.Section(listing, "ModTemplate.Settings.Section.Test".Translate());
-			listing.Label("ModTemplate.Settings.Notifications.TestHint".Translate());
+			SettingsWidgets.Label(listing, "ModTemplate.Settings.Notifications.TestHint".Translate());
 
-			if (listing.ButtonText("ModTemplate.Settings.Notifications.TestMessage".Translate()))
+			if (SettingsWidgets.Button(listing, "ModTemplate.Settings.Notifications.TestMessage".Translate()))
 			{
 				NotificationService.Message("ModTemplate.Notification.TestMessage".Translate());
 			}
 
-			if (listing.ButtonText("ModTemplate.Settings.Notifications.TestLetter".Translate()))
+			if (SettingsWidgets.Button(listing, "ModTemplate.Settings.Notifications.TestLetter".Translate()))
 			{
 				NotificationService.Letter(
 					"ModTemplate.Notification.TestLetterLabel".Translate(),
 					"ModTemplate.Notification.TestLetterText".Translate());
 			}
 
-			if (listing.ButtonText("ModTemplate.Settings.Notifications.TestThrottled".Translate()))
+			if (SettingsWidgets.Button(listing, "ModTemplate.Settings.Notifications.TestThrottled".Translate()))
 			{
 				NotificationService.ThrottledMessage(
 					"settings.test",

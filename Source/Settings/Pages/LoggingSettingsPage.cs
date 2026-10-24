@@ -89,23 +89,23 @@ namespace ModTemplate
 				24,
 				"ModTemplate.Settings.Logging.Prefix.Desc".Translate()).Trim();
 
-			listing.Label("ModTemplate.Settings.Logging.EffectivePrefix".Translate(data.EffectivePrefix));
+			SettingsWidgets.Label(listing, "ModTemplate.Settings.Logging.EffectivePrefix".Translate(data.EffectivePrefix));
 
-			if (data.detail != LogDetail.Off && listing.ButtonText("ModTemplate.Settings.Logging.TestLog".Translate()))
+			if (data.detail != LogDetail.Off && SettingsWidgets.Button(listing, "ModTemplate.Settings.Logging.TestLog".Translate()))
 			{
 				ModLog.Info("Settings", "test log line from the settings page");
 			}
 
 			SettingsWidgets.Section(listing, "ModTemplate.Settings.Section.Diagnostics".Translate());
-			listing.Label("ModTemplate.Settings.Diagnostics.Hint".Translate());
+			SettingsWidgets.Label(listing, "ModTemplate.Settings.Diagnostics.Hint".Translate());
 
-			if (listing.ButtonText("ModTemplate.Settings.Diagnostics.Dump".Translate()))
+			if (SettingsWidgets.Button(listing, "ModTemplate.Settings.Diagnostics.Dump".Translate()))
 			{
 				Diagnostics.Dump();
 				NotificationService.Message("ModTemplate.Notification.Diagnostics".Translate());
 			}
 
-			if (listing.ButtonText("ModTemplate.Settings.Diagnostics.Reset".Translate()))
+			if (SettingsWidgets.Button(listing, "ModTemplate.Settings.Diagnostics.Reset".Translate()))
 			{
 				ModLog.ResetRuntimeState();
 				NotificationService.ResetThrottle();
