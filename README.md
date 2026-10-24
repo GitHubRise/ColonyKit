@@ -13,7 +13,7 @@
 | 目标框架 | `net472` + `Krafs.Rimworld.Ref` |
 | 硬依赖 | Harmony（`brrainz.harmony`） |
 | 可选兼容 | DBH、Stack XXL、RJW（只检测/适配，不做硬依赖） |
-| 工程状态 | 0.0.2 框架已生成（M0 完成）；汉化模块已移植，其余三个参考模块占位 |
+| 工程状态 | 0.0.2 框架已生成（M0 完成）；汉化已移植，立体库堆叠/内部库存/双向自动 Job/2×2 履带实体已落地；淋浴/RJW 仍占位 |
 
 > 本文件 2026-10-25 曾按 `CustomEnhance`（自定义强化）立项，同日先调整为 `ColonyKit` 五系统，随后追加智能机器人模块；旧的强化设计未实施。
 
@@ -27,7 +27,8 @@
 | 构建 | ✅ | `build.ps1 -Clean` 0 error / 0 warning |
 | 静态校验 | ✅ | `verify.ps1` 0 问题 / 0 警告 |
 | 汉化模块 | ✅ 已移植 | 开发者菜单 Debug 标签 + tooltip + 翻译方案设置；quicktest 自检通过，UI 未人工点击 |
-| 淋浴 / 立体库 / RJW | 📄 占位 | `hygiene` / `storage` / `rjw`，`OnDefsLoaded` 只写日志 + 检测来源 Mod |
+| 立体库 | ✅ 0.0.2 | 堆叠规则、3×3 内部库存、过滤/优先级、双向自动入库/出库、2×2 双向履带实体；账单/温控/T2-T3 未做 |
+| 淋浴 / RJW | 📄 占位 | `hygiene` / `rjw`，`OnDefsLoaded` 只写日志 + 检测来源 Mod |
 | 实机 | ✅ quicktest | `-Deploy` + `-quicktest` 通过；未人工点 Debug 菜单/设置页 |
 | 来源映射 | ✅ | [docs/参考源码映射.md](docs/参考源码映射.md) |
 

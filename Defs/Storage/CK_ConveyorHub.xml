@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_ConveyorHub</defName>
+		<label>bidirectional conveyor hub</label>
+		<description>A 2x2 bidirectional conveyor hub. Items can enter and leave from any of the four sides; the central turntable handles turns. The texture is symmetric, so rotating the building does not change the footprint.</description>
+		<size>(2,2)</size>
+		<graphicData>
+			<texPath>Things/Building/Storage/CK_ConveyorHub</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<rotatable>true</rotatable>
+		<designationCategory>Furniture</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.15</fillPercent>
+		<staticSunShadowHeight>0.15</staticSunShadowHeight>
+		<castEdgeShadows>true</castEdgeShadows>
+		<uiIconScale>0.75</uiIconScale>
+		<costList>
+			<Steel>60</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<Mass>20</Mass>
+			<WorkToBuild>800</WorkToBuild>
+			<Beauty>-2</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+	</ThingDef>
+</Defs>
