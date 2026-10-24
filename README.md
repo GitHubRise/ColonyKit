@@ -23,7 +23,7 @@
 1. 启用 `Mod Template`（放在 Harmony 之后）；
 2. 开发者模式打开，进一局；
 3. `Player.log` 里应有 `[ModTemplate] loaded; greeting="Hello from ModTemplate"`；
-4. 选项 → Mod 设置 → `Mod 架构模板`：默认五个页签（模块 / 常规 / 日志 / 通知 / 关于）。顶栏有检索框（过滤当前页控件）；模块页可关闭可选功能；日志页演示下拉框（统计明细 / 框架日志级别）、滑块（间隔）、输入框（前缀）、禁用态勾选，以及「输出诊断报告」；通知页有测试消息/信件/节流按钮。
+4. 选项 → Mod 设置 → `Mod 架构模板`：默认五个页签（模块 / 常规 / 日志 / 通知 / 关于）。顶栏有检索框（过滤当前页控件）；常规页可切换三种选项控件（下拉框 / ◀ ▶ / ✓ ✗）；模块页可关闭可选功能；日志页演示下拉框（统计明细 / 框架日志级别）、滑块（间隔）、输入框（前缀）、禁用态勾选，以及「输出诊断报告」；通知页有测试消息/信件/节流按钮。
 5. 关于页 → 「打开科技树」：独立窗口，按前置分层绘制节点和连线，可切研究 tab / 切布局、点击节点设为当前研究。
 6. 右键一个殖民者：应看到「记录该殖民者」「在附近建造演示墙」两项（常规页可关）。
 7. 底部主菜单：应出现「科技树」按钮（常规页可隐藏）。
@@ -114,6 +114,7 @@ mod-template/
 | 设置与存档迁移 | `Source/Settings/SettingsMigration.cs` | schema 版本 / `.bak` / `Validate` / 存档版本 |
 | 通用控件 | `Settings/Widgets/SettingsWidgets.cs` | 下拉框 / 滑块 / 输入框 / 禁用勾选 / 页内分区标题 |
 | 设置检索与滚动 | `Settings/SettingsSearch.cs` + `UI/AutoScrollView.cs` | 当前页过滤 + 内容超高自动滚动条 |
+| 选项控件模式 | `SettingsWidgets` + `GeneralSettings.controlMode` | 下拉框 / ◀ ▶ 循环 / ✓ ✗ 打勾 |
 | 科技树 | `Source/TechTree/*` | 前置分层绘制、节点/连线/状态、前置条件统一 API |
 | 右键小人菜单 | `Source/UI/PawnMenu*` | Provider 自动发现 + 注册表 + 设置开关 |
 | 通知消息 | `Source/Notifications/*` | 消息 / 信件 / 按 key 节流 |
@@ -154,6 +155,7 @@ mod-template/
 - 结构化日志与诊断（`ModLog` / `Diagnostics`）：编译 / 校验 / 打包通过；日志级别、Once/Throttled、诊断报告待 quicktest 复跑（游戏运行中，DLL 无法覆盖）。运行时可用日志页「输出诊断报告」或 `-modtemplate-selftest`。
 - 模块系统 + 设置/存档迁移（`Core/Modules` / `SettingsMigration`）：编译 / 校验 / 打包通过；模块开关、`.bak` 备份、schema 迁移与 `Validate` 待 quicktest 复跑（游戏运行中）。
 - 设置检索与自动滚动（`SettingsSearch` / `AutoScrollView`）：编译 / 校验通过；搜索框过滤、无结果提示、第一帧/第二帧滚动条待 UI 截图复验（游戏运行中）。
+- 选项控件模式（`controlMode`）：编译 / 校验通过；下拉框 / ◀ ▶ / ✓ ✗ 三种渲染待实机点击验证（游戏运行中）。
 - 尚未覆盖（截图自动化已就位，待实机跑）：多页签/通知页/控件的实际绘制、右键菜单与底部按钮的实际点击、科技树绘制、诊断按钮、存读档后 `ExposeData` 的持久化、Biotech 可选补丁（本机未装 Biotech，`note` 为空）、DefInjected 译文在 UI 中的显示。
 - `Patches/OptionalCompatibility.xml` 用 Biotech 举例，装上 Biotech 后可在设置页看到 `Patch note`。
 

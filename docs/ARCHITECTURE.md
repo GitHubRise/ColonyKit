@@ -262,6 +262,7 @@ TechTreeService.Changed += () => { /* 重建 UI */ };
 
 - `SettingsSearch` 持有当前页查询；`SettingsController.DrawToolbar` 画搜索框，查询变化时清空高度/滚动缓存。
 - `SettingsWidgets` 的 `Checkbox/Slider/Dropdown/TextField/Label/Button` 统一走 `BeginControl`：按标签/Tooltip/当前 Section 过滤；`Section` 在检索时延迟到第一个命中控件前绘制。
+- 选项控件由 `GeneralSettings.controlMode` 决定：`Dropdown` 走 `FloatMenu`，`Cycle` 走 ◀ / ▶ 首尾循环，`CheckCross` 走 ✓ / ✗ 列表；三者都保留检索过滤。
 - `AutoScrollView` 用上一帧 `Listing_Standard.CurHeight` 撑开 `viewRect`，内容超过视口自动出现滚动条；第一帧可能滞后，第二帧校正。
 
 详见 [设置检索与自动滚动](设置检索与自动滚动.md)。

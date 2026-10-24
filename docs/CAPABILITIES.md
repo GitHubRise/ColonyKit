@@ -63,6 +63,7 @@
 | 存档版本迁移 | ✅ | `DemoGameComponent.saveVersion` |
 | 通用控件：下拉框 / 滑块 / 输入框 / 禁用勾选 / 分区标题 | ✅ | `Settings/Widgets/SettingsWidgets.cs` |
 | 当前页检索（标签 / Tooltip / Section） | ✅ | `SettingsSearch` + `SettingsWidgets` |
+| 选项控件：下拉框 / ◀ ▶ 循环 / ✓ ✗ 打勾 | ✅ | `SettingsWidgets.Dropdown` / `Cycle` / `CheckCross` + `controlMode` |
 | 按内容高度自动滚动条 | ✅ | `AutoScrollView` |
 | 跨页全局搜索 | ❌ | 需要页面搜索索引 |
 | 下拉框演示（日志级别枚举） | 🧩 | `LoggingSettings.detail` + `LogDetail` |
