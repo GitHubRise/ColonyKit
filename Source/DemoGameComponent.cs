@@ -85,6 +85,19 @@ namespace ModTemplate
 				Find.WindowStack.Add(new TechTreeWindow());
 			}
 
+			if (GenCommandLine.CommandLineArgPassed("modtemplate-settings") && Find.WindowStack != null)
+			{
+				ModTemplateMod mod = ModTemplateMod.Instance;
+				if (mod != null)
+				{
+					mod.SelectSettingsPage("general");
+					Find.WindowStack.Add(new Dialog_ModSettings(mod)
+					{
+						forcePause = false
+					});
+				}
+			}
+
 			if (GenCommandLine.CommandLineArgPassed("modtemplate-selftest"))
 			{
 				RunSelfTest();

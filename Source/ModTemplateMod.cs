@@ -64,7 +64,7 @@ namespace ModTemplate
 		/// <summary>
 		/// 设置页左侧的分类名。返回空字符串会导致本 Mod 根本不出现在设置列表里。
 		/// </summary>
-		public override string SettingsCategory() => "ModTemplate.SettingsCategory".Translate();
+		public override string SettingsCategory() => "ModTemplate.SettingsCategory".Loc();
 
 		/// <summary>
 		/// 设置页内容。多页签、滚动、重置都委托给 <see cref="SettingsController"/>，

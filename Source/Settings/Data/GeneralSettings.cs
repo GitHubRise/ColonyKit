@@ -37,6 +37,9 @@ namespace ModTemplate
 		/// <summary>选项控件展示方式：下拉框或 ◀ / ▶ 循环。</summary>
 		public SettingsControlMode controlMode = SettingsControlMode.Dropdown;
 
+		/// <summary>设置界面语言；不影响游戏全局语言。</summary>
+		public ModLanguage language = ModLanguage.Auto;
+
 		public void ExposeData()
 		{
 			// key 是配置文件契约，发布后不要改名。
@@ -44,6 +47,7 @@ namespace ModTemplate
 			Scribe_Values.Look(ref enablePawnMenu, "enablePawnMenu", true);
 			Scribe_Values.Look(ref showTechTreeButton, "showTechTreeButton", true);
 			Scribe_Values.Look(ref controlMode, "controlMode", SettingsControlMode.Dropdown);
+			Scribe_Values.Look(ref language, "language", ModLanguage.Auto);
 		}
 
 		/// <summary>恢复本页默认值。只改内存，关窗时统一落盘。</summary>
@@ -53,18 +57,27 @@ namespace ModTemplate
 			enablePawnMenu = true;
 			showTechTreeButton = true;
 			controlMode = SettingsControlMode.Dropdown;
+			language = ModLanguage.Auto;
 		}
 
-		/// <summary>校验枚举合法；非法值回退下拉框。</summary>
+		/// <summary>校验枚举合法；非法值回退默认。</summary>
 		public bool Validate()
 		{
+			bool changed = false;
+
 			if (!Enum.IsDefined(typeof(SettingsControlMode), controlMode))
 			{
 				controlMode = SettingsControlMode.Dropdown;
-				return true;
+				changed = true;
 			}
 
-			return false;
+			if (!Enum.IsDefined(typeof(ModLanguage), language))
+			{
+				language = ModLanguage.Auto;
+				changed = true;
+			}
+
+			return changed;
 		}
 	}
 }

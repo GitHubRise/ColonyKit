@@ -17,43 +17,43 @@ namespace ModTemplate
 		{
 			NotificationSettings data = settings.notifications;
 
-			SettingsWidgets.Section(listing, "ModTemplate.Settings.Section.Behavior".Translate());
+			SettingsWidgets.Section(listing, "ModTemplate.Settings.Section.Behavior".Loc());
 			SettingsWidgets.Checkbox(
 				listing,
-				"ModTemplate.Settings.Notifications.Enabled".Translate(),
+				"ModTemplate.Settings.Notifications.Enabled".Loc(),
 				ref data.enabled,
-				"ModTemplate.Settings.Notifications.Enabled.Desc".Translate());
+				"ModTemplate.Settings.Notifications.Enabled.Desc".Loc());
 
-			SettingsWidgets.Section(listing, "ModTemplate.Settings.Section.Throttle".Translate());
+			SettingsWidgets.Section(listing, "ModTemplate.Settings.Section.Throttle".Loc());
 			data.cooldownTicks = (int)SettingsWidgets.Slider(
 				listing,
-				"ModTemplate.Settings.Notifications.Cooldown".Translate(),
+				"ModTemplate.Settings.Notifications.Cooldown".Loc(),
 				data.cooldownTicks,
 				60f,
 				6000f,
 				60f,
-				value => "ModTemplate.Settings.Notifications.CooldownValue".Translate((int)value).ToString());
+				value => "ModTemplate.Settings.Notifications.CooldownValue".Loc((int)value).ToString());
 
-			SettingsWidgets.Section(listing, "ModTemplate.Settings.Section.Test".Translate());
-			SettingsWidgets.Label(listing, "ModTemplate.Settings.Notifications.TestHint".Translate());
+			SettingsWidgets.Section(listing, "ModTemplate.Settings.Section.Test".Loc());
+			SettingsWidgets.Label(listing, "ModTemplate.Settings.Notifications.TestHint".Loc());
 
-			if (SettingsWidgets.Button(listing, "ModTemplate.Settings.Notifications.TestMessage".Translate()))
+			if (SettingsWidgets.Button(listing, "ModTemplate.Settings.Notifications.TestMessage".Loc()))
 			{
-				NotificationService.Message("ModTemplate.Notification.TestMessage".Translate());
+				NotificationService.Message("ModTemplate.Notification.TestMessage".Loc());
 			}
 
-			if (SettingsWidgets.Button(listing, "ModTemplate.Settings.Notifications.TestLetter".Translate()))
+			if (SettingsWidgets.Button(listing, "ModTemplate.Settings.Notifications.TestLetter".Loc()))
 			{
 				NotificationService.Letter(
-					"ModTemplate.Notification.TestLetterLabel".Translate(),
-					"ModTemplate.Notification.TestLetterText".Translate());
+					"ModTemplate.Notification.TestLetterLabel".Loc(),
+					"ModTemplate.Notification.TestLetterText".Loc());
 			}
 
-			if (SettingsWidgets.Button(listing, "ModTemplate.Settings.Notifications.TestThrottled".Translate()))
+			if (SettingsWidgets.Button(listing, "ModTemplate.Settings.Notifications.TestThrottled".Loc()))
 			{
 				NotificationService.ThrottledMessage(
 					"settings.test",
-					"ModTemplate.Notification.TestThrottled".Translate());
+					"ModTemplate.Notification.TestThrottled".Loc());
 			}
 		}
 

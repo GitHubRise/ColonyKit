@@ -131,6 +131,128 @@ namespace ModTemplate
 		}
 
 		/// <summary>
+		/// 三种选项控件并排预览：✓ / ✗、◀ / ▶、下拉框。
+		/// 点击任意卡片切换全局 <see cref="GeneralSettings.controlMode"/>；卡片本身只做示例，不嵌套交互。
+		/// </summary>
+		public static void ControlModePicker(
+			Listing_Standard listing,
+			string label,
+			SettingsControlMode current,
+			Action<SettingsControlMode> onChanged)
+		{
+			if (!BeginControl(listing, label, null))
+			{
+				return;
+			}
+
+			Widgets.Label(listing.GetRect(Text.LineHeight), label);
+			listing.Gap(4f);
+
+			const float gap = 12f;
+			const float cardHeight = 110f;
+			float cardWidth = (listing.ColumnWidth - gap * 2f) / 3f;
+			Rect row = listing.GetRect(cardHeight);
+
+			SettingsControlMode[] modes =
+			{
+				SettingsControlMode.CheckCross,
+				SettingsControlMode.Cycle,
+				SettingsControlMode.Dropdown
+			};
+
+			for (int i = 0; i < modes.Length; i++)
+			{
+				SettingsControlMode mode = modes[i];
+				Rect card = new Rect(
+					row.x + i * (cardWidth + gap),
+					row.y,
+					cardWidth,
+					cardHeight);
+
+				bool selected = current == mode;
+				// 悬停也套用选中样式（RJW 的列表手感）：鼠标经过即可预览。
+				Widgets.DrawOptionBackground(card, selected || Mouse.IsOver(card));
+				Widgets.DrawBox(card);
+				DrawControlModePreview(card, mode);
+
+				if (Widgets.ButtonInvisible(card))
+				{
+					onChanged(mode);
+				}
+
+				TooltipHandler.TipRegion(card, "ModTemplate.Settings.ControlMode.Pick".Loc());
+			}
+
+			listing.Gap(6f);
+		}
+
+		private static void DrawControlModePreview(Rect card, SettingsControlMode mode)
+		{
+			Rect inner = card.ContractedBy(8f);
+			float headerHeight = 20f;
+			Rect header = new Rect(inner.x, inner.y, inner.width, headerHeight);
+			Rect body = new Rect(
+				inner.x,
+				header.yMax + 4f,
+				inner.width,
+				Mathf.Max(0f, inner.height - headerHeight - 4f));
+
+			TextAnchor previousAnchor = Text.Anchor;
+			GameFont previousFont = Text.Font;
+			Color previousColor = GUI.color;
+
+			Text.Anchor = TextAnchor.MiddleCenter;
+			Text.Font = GameFont.Small;
+			Widgets.Label(header, ("ModTemplate.Settings.ControlMode." + mode).Loc());
+
+			string low = "ModTemplate.Settings.ControlMode.Sample.Low".Loc();
+			string medium = "ModTemplate.Settings.ControlMode.Sample.Medium".Loc();
+			string high = "ModTemplate.Settings.ControlMode.Sample.High".Loc();
+
+			switch (mode)
+			{
+				case SettingsControlMode.CheckCross:
+					DrawPreviewLine(body, 0f, "✓ " + medium, new Color(0.55f, 0.9f, 0.55f));
+					DrawPreviewLine(body, 24f, "✗ " + low, new Color(0.75f, 0.75f, 0.75f));
+					DrawPreviewLine(body, 48f, "✗ " + high, new Color(0.75f, 0.75f, 0.75f));
+					break;
+
+				case SettingsControlMode.Cycle:
+					Rect previousArrow = new Rect(body.center.x - 64f, body.y, 30f, body.height);
+					Rect nextArrow = new Rect(body.center.x + 34f, body.y, 30f, body.height);
+					Text.Anchor = TextAnchor.MiddleCenter;
+					Widgets.Label(previousArrow, "◀");
+					Widgets.Label(body, medium);
+					Widgets.Label(nextArrow, "▶");
+					break;
+
+				default:
+					Rect box = new Rect(body.x + 4f, body.y + 6f, body.width - 8f, 30f);
+					Widgets.DrawBoxSolid(box, new Color(0.18f, 0.18f, 0.18f, 0.85f));
+					Widgets.DrawBox(box);
+					Text.Anchor = TextAnchor.MiddleCenter;
+					Widgets.Label(box, medium + " ▼");
+					break;
+			}
+
+			Text.Anchor = previousAnchor;
+			Text.Font = previousFont;
+			GUI.color = previousColor;
+		}
+
+		private static void DrawPreviewLine(Rect body, float y, string text, Color color)
+		{
+			Rect line = new Rect(body.x, body.y + y, body.width, 18f);
+			Color previous = GUI.color;
+			GUI.color = color;
+			TextAnchor previousAnchor = Text.Anchor;
+			Text.Anchor = TextAnchor.MiddleLeft;
+			Widgets.Label(line, text);
+			Text.Anchor = previousAnchor;
+			GUI.color = previous;
+		}
+
+		/// <summary>
 		/// 下拉框：点击后弹出原生 <see cref="FloatMenu"/>，当前项带 ✓。
 		/// 选项数量不多时最省事；上百项请换带搜索的窗口。
 		/// </summary>
@@ -171,7 +293,7 @@ namespace ModTemplate
 			Rect rect = listing.GetRect(30f);
 			Widgets.Label(rect.LeftPart(0.42f), label);
 
-			if (!Widgets.ButtonText(rect.RightPart(0.58f), optionLabel(current)))
+			if (!Widgets.ButtonText(rect.RightPart(0.58f), optionLabel(current) + " ▼"))
 			{
 				return;
 			}
@@ -225,12 +347,27 @@ namespace ModTemplate
 				string text = (selected ? "✓ " : "✗ ") + optionLabel(option);
 				Rect row = listing.GetRect(24f);
 
-				if (Widgets.ButtonText(row, text))
+				// 选中与悬停共用同一套高亮，鼠标扫过就能看出“会选中谁”。
+				Widgets.DrawOptionBackground(row, selected || Mouse.IsOver(row));
+				Widgets.DrawBox(row);
+
+				Color previousColor = GUI.color;
+				GUI.color = selected
+					? new Color(0.55f, 0.9f, 0.55f)
+					: new Color(0.82f, 0.82f, 0.82f);
+				TextAnchor previousAnchor = Text.Anchor;
+				Text.Anchor = TextAnchor.MiddleLeft;
+				Widgets.Label(row.ContractedBy(4f), text);
+				Text.Anchor = previousAnchor;
+				GUI.color = previousColor;
+
+				if (Widgets.ButtonInvisible(row))
 				{
 					result = option;
 				}
 
-				TooltipHandler.TipRegion(row, "ModTemplate.Settings.CheckCross.Select".Translate());
+				TooltipHandler.TipRegion(row, "ModTemplate.Settings.CheckCross.Select".Loc());
+				listing.Gap(4f);
 			}
 
 			listing.Gap();
@@ -266,12 +403,15 @@ namespace ModTemplate
 			Widgets.Label(rect.LeftPart(0.42f), label);
 
 			Rect right = rect.RightPart(0.58f);
-			Rect previousRect = new Rect(right.x, right.y, 30f, right.height);
-			Rect nextRect = new Rect(right.xMax - 30f, right.y, 30f, right.height);
+			const float arrowWidth = 30f;
+			float groupWidth = Mathf.Min(right.width, 220f);
+			float groupX = right.center.x - groupWidth / 2f;
+			Rect previousRect = new Rect(groupX, right.y, arrowWidth, right.height);
+			Rect nextRect = new Rect(groupX + groupWidth - arrowWidth, right.y, arrowWidth, right.height);
 			Rect valueRect = new Rect(
-				previousRect.xMax,
+				previousRect.xMax + 4f,
 				right.y,
-				Mathf.Max(0f, nextRect.x - previousRect.xMax),
+				Mathf.Max(0f, nextRect.x - previousRect.xMax - 8f),
 				right.height);
 
 			int target = index;
@@ -285,8 +425,8 @@ namespace ModTemplate
 				target = index < 0 ? 0 : (index >= list.Count - 1 ? 0 : index + 1);
 			}
 
-			TooltipHandler.TipRegion(previousRect, "ModTemplate.Settings.Cycle.Previous".Translate());
-			TooltipHandler.TipRegion(nextRect, "ModTemplate.Settings.Cycle.Next".Translate());
+			TooltipHandler.TipRegion(previousRect, "ModTemplate.Settings.Cycle.Previous".Loc());
+			TooltipHandler.TipRegion(nextRect, "ModTemplate.Settings.Cycle.Next".Loc());
 
 			string shown = index >= 0 ? optionLabel(list[index]) : optionLabel(current);
 			TextAnchor previousAnchor = Text.Anchor;

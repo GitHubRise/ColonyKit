@@ -18,41 +18,44 @@ namespace ModTemplate
 		{
 			GeneralSettings data = settings.general;
 
-			SettingsWidgets.Section(listing, "ModTemplate.Settings.Section.Behavior".Translate());
+			SettingsWidgets.Section(listing, "ModTemplate.Settings.Section.Behavior".Loc());
 			SettingsWidgets.Checkbox(
 				listing,
-				"ModTemplate.TrackSpawns".Translate(),
+				"ModTemplate.TrackSpawns".Loc(),
 				ref data.trackSpawns,
-				"ModTemplate.TrackSpawns.Desc".Translate());
+				"ModTemplate.TrackSpawns.Desc".Loc());
 
-			SettingsWidgets.Section(listing, "ModTemplate.Settings.Section.Interface".Translate());
+			SettingsWidgets.Section(listing, "ModTemplate.Settings.Section.Interface".Loc());
 			SettingsWidgets.Checkbox(
 				listing,
-				"ModTemplate.EnablePawnMenu".Translate(),
+				"ModTemplate.EnablePawnMenu".Loc(),
 				ref data.enablePawnMenu,
-				"ModTemplate.EnablePawnMenu.Desc".Translate());
+				"ModTemplate.EnablePawnMenu.Desc".Loc());
 			SettingsWidgets.Checkbox(
 				listing,
-				"ModTemplate.ShowTechTreeButton".Translate(),
+				"ModTemplate.ShowTechTreeButton".Loc(),
 				ref data.showTechTreeButton,
-				"ModTemplate.ShowTechTreeButton.Desc".Translate());
+				"ModTemplate.ShowTechTreeButton.Desc".Loc());
 
+			SettingsWidgets.ControlModePicker(
+				listing,
+				"ModTemplate.Settings.ControlMode".Loc(),
+				data.controlMode,
+				mode => data.controlMode = mode);
+			SettingsWidgets.Label(listing, "ModTemplate.Settings.ControlMode.Desc".Loc());
+
+			SettingsWidgets.Section(listing, "ModTemplate.Settings.Section.Language".Loc());
 			SettingsWidgets.Dropdown(
 				listing,
-				"ModTemplate.Settings.ControlMode".Translate(),
-				data.controlMode,
-				new[]
-				{
-					SettingsControlMode.Dropdown,
-					SettingsControlMode.Cycle,
-					SettingsControlMode.CheckCross
-				},
-				mode => ("ModTemplate.Settings.ControlMode." + mode).Translate(),
-				mode => data.controlMode = mode);
-			SettingsWidgets.Label(listing, "ModTemplate.Settings.ControlMode.Desc".Translate());
+				"ModTemplate.Settings.Language".Loc(),
+				data.language,
+				new[] { ModLanguage.Auto, ModLanguage.English, ModLanguage.ChineseSimplified },
+				language => ("ModTemplate.Settings.Language." + language).Loc(),
+				language => data.language = language);
+			SettingsWidgets.Label(listing, "ModTemplate.Settings.Language.Desc".Loc());
 
-			SettingsWidgets.Section(listing, "ModTemplate.Settings.Section.Notes".Translate());
-			SettingsWidgets.Label(listing, "ModTemplate.Settings.General.Hint".Translate());
+			SettingsWidgets.Section(listing, "ModTemplate.Settings.Section.Notes".Loc());
+			SettingsWidgets.Label(listing, "ModTemplate.Settings.General.Hint".Loc());
 		}
 
 		public override void Reset(ModTemplateSettings settings)

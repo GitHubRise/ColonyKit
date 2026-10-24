@@ -7,7 +7,18 @@
 	<ModTemplate.Settings.Search.Hint>检索本页设置…</ModTemplate.Settings.Search.Hint>
 	<ModTemplate.Settings.Search.NoResults>本页没有匹配的设置。</ModTemplate.Settings.Search.NoResults>
 	<ModTemplate.Settings.ControlMode>选项控件</ModTemplate.Settings.ControlMode>
-	<ModTemplate.Settings.ControlMode.Desc>枚举/少选项设置的展示方式：下拉框或 ◀ / ▶ 循环切换。</ModTemplate.Settings.ControlMode.Desc>
+	<ModTemplate.Settings.ControlMode.Desc>点击卡片选择枚举/少选项设置的展示方式。</ModTemplate.Settings.ControlMode.Desc>
+	<ModTemplate.Settings.ControlMode.Pick>使用这种控件样式</ModTemplate.Settings.ControlMode.Pick>
+	<ModTemplate.Settings.ControlMode.Sample.Low>低</ModTemplate.Settings.ControlMode.Sample.Low>
+	<ModTemplate.Settings.ControlMode.Sample.Medium>中</ModTemplate.Settings.ControlMode.Sample.Medium>
+	<ModTemplate.Settings.ControlMode.Sample.High>高</ModTemplate.Settings.ControlMode.Sample.High>
+
+	<ModTemplate.Settings.Section.Language>语言</ModTemplate.Settings.Section.Language>
+	<ModTemplate.Settings.Language>界面语言</ModTemplate.Settings.Language>
+	<ModTemplate.Settings.Language.Desc>只改本 Mod 的设置窗口；游戏其他界面仍跟随游戏语言。</ModTemplate.Settings.Language.Desc>
+	<ModTemplate.Settings.Language.Auto>自动（跟随游戏）</ModTemplate.Settings.Language.Auto>
+	<ModTemplate.Settings.Language.English>English</ModTemplate.Settings.Language.English>
+	<ModTemplate.Settings.Language.ChineseSimplified>简体中文</ModTemplate.Settings.Language.ChineseSimplified>
 	<ModTemplate.Settings.ControlMode.Dropdown>下拉框</ModTemplate.Settings.ControlMode.Dropdown>
 	<ModTemplate.Settings.ControlMode.Cycle>◀ / ▶ 循环</ModTemplate.Settings.ControlMode.Cycle>
 	<ModTemplate.Settings.ControlMode.CheckCross>✓ / ✗ 打勾</ModTemplate.Settings.ControlMode.CheckCross>

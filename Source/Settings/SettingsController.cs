@@ -132,7 +132,7 @@ namespace ModTemplate
 
 				TextAnchor previousAnchor = Text.Anchor;
 				Text.Anchor = TextAnchor.MiddleCenter;
-				Widgets.Label(tabRect, pages[i].TitleKey.Translate());
+				Widgets.Label(tabRect, pages[i].TitleKey.Loc());
 				Text.Anchor = previousAnchor;
 			}
 		}
@@ -158,7 +158,7 @@ namespace ModTemplate
 				TextAnchor previousAnchor = Text.Anchor;
 				GUI.color = new Color(1f, 1f, 1f, 0.35f);
 				Text.Anchor = TextAnchor.MiddleLeft;
-				Widgets.Label(searchRect.ContractedBy(4f), "ModTemplate.Settings.Search.Hint".Translate());
+				Widgets.Label(searchRect.ContractedBy(4f), "ModTemplate.Settings.Search.Hint".Loc());
 				Text.Anchor = previousAnchor;
 				GUI.color = previousColor;
 			}
@@ -171,7 +171,7 @@ namespace ModTemplate
 			{
 				TextAnchor previousAnchor = Text.Anchor;
 				Text.Anchor = TextAnchor.MiddleLeft;
-				Widgets.Label(new Rect(hintX, inRect.y, hintWidth, inRect.height), "ModTemplate.Settings.Hint".Translate());
+				Widgets.Label(new Rect(hintX, inRect.y, hintWidth, inRect.height), "ModTemplate.Settings.Hint".Loc());
 				Text.Anchor = previousAnchor;
 			}
 
@@ -184,16 +184,16 @@ namespace ModTemplate
 
 			SettingsPage page = pages[selectedIndex];
 
-			if (page.CanReset && Widgets.ButtonText(resetPageRect, "ModTemplate.Settings.ResetPage".Translate()))
+			if (page.CanReset && Widgets.ButtonText(resetPageRect, "ModTemplate.Settings.ResetPage".Loc()))
 			{
 				page.Reset(settings);
 			}
 
-			if (Widgets.ButtonText(resetAllRect, "ModTemplate.Settings.ResetAll".Translate()))
+			if (Widgets.ButtonText(resetAllRect, "ModTemplate.Settings.ResetAll".Loc()))
 			{
 				// 重置全部是破坏性操作，走原版确认框，避免误点。
 				Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation(
-					"ModTemplate.Settings.ResetAll.Confirm".Translate(),
+					"ModTemplate.Settings.ResetAll.Confirm".Loc(),
 					ResetAllPages,
 					destructive: true));
 			}
@@ -222,7 +222,7 @@ namespace ModTemplate
 
 				if (SettingsSearch.Active && SettingsSearch.PageMatches == 0)
 				{
-					listing.Label("ModTemplate.Settings.Search.NoResults".Translate());
+					listing.Label("ModTemplate.Settings.Search.NoResults".Loc());
 				}
 			});
 

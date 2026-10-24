@@ -7,7 +7,18 @@
 	<ModTemplate.Settings.Search.Hint>Search this page…</ModTemplate.Settings.Search.Hint>
 	<ModTemplate.Settings.Search.NoResults>No matching setting on this page.</ModTemplate.Settings.Search.NoResults>
 	<ModTemplate.Settings.ControlMode>Option control</ModTemplate.Settings.ControlMode>
-	<ModTemplate.Settings.ControlMode.Desc>How enum / small-option settings are shown: dropdown menu or ◀ / ▶ cycling.</ModTemplate.Settings.ControlMode.Desc>
+	<ModTemplate.Settings.ControlMode.Desc>Click a card to choose how enum / small-option settings are shown.</ModTemplate.Settings.ControlMode.Desc>
+	<ModTemplate.Settings.ControlMode.Pick>Use this control style</ModTemplate.Settings.ControlMode.Pick>
+	<ModTemplate.Settings.ControlMode.Sample.Low>Low</ModTemplate.Settings.ControlMode.Sample.Low>
+	<ModTemplate.Settings.ControlMode.Sample.Medium>Medium</ModTemplate.Settings.ControlMode.Sample.Medium>
+	<ModTemplate.Settings.ControlMode.Sample.High>High</ModTemplate.Settings.ControlMode.Sample.High>
+
+	<ModTemplate.Settings.Section.Language>Language</ModTemplate.Settings.Section.Language>
+	<ModTemplate.Settings.Language>UI language</ModTemplate.Settings.Language>
+	<ModTemplate.Settings.Language.Desc>Only changes this mod's settings window; the rest of the game keeps its language.</ModTemplate.Settings.Language.Desc>
+	<ModTemplate.Settings.Language.Auto>Auto (game language)</ModTemplate.Settings.Language.Auto>
+	<ModTemplate.Settings.Language.English>English</ModTemplate.Settings.Language.English>
+	<ModTemplate.Settings.Language.ChineseSimplified>简体中文</ModTemplate.Settings.Language.ChineseSimplified>
 	<ModTemplate.Settings.ControlMode.Dropdown>Dropdown</ModTemplate.Settings.ControlMode.Dropdown>
 	<ModTemplate.Settings.ControlMode.Cycle>◀ / ▶ cycle</ModTemplate.Settings.ControlMode.Cycle>
 	<ModTemplate.Settings.ControlMode.CheckCross>✓ / ✗ marks</ModTemplate.Settings.ControlMode.CheckCross>

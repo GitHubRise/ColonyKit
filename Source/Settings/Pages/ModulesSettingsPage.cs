@@ -18,23 +18,23 @@ namespace ModTemplate
 
 		public override void DoContents(Listing_Standard listing, ModTemplateSettings settings)
 		{
-			SettingsWidgets.Section(listing, "ModTemplate.Settings.Section.Modules".Translate());
-			SettingsWidgets.Label(listing, "ModTemplate.Settings.Modules.Hint".Translate());
+			SettingsWidgets.Section(listing, "ModTemplate.Settings.Section.Modules".Loc());
+			SettingsWidgets.Label(listing, "ModTemplate.Settings.Modules.Hint".Loc());
 
 			foreach (IModTemplateModule module in ModuleRegistry.All)
 			{
 				bool enabled = ModuleRegistry.IsEnabled(module.Id);
 				bool before = enabled;
 
-				string tooltip = module.DescriptionKey.Translate().ToString();
+				string tooltip = module.DescriptionKey.Loc().ToString();
 				if (module.Locked)
 				{
-					tooltip += "\n" + "ModTemplate.Settings.Module.Locked".Translate();
+					tooltip += "\n" + "ModTemplate.Settings.Module.Locked".Loc();
 				}
 
 				SettingsWidgets.Checkbox(
 					listing,
-					module.DisplayNameKey.Translate(),
+					module.DisplayNameKey.Loc(),
 					ref enabled,
 					tooltip,
 					enabled: !module.Locked);
@@ -46,7 +46,7 @@ namespace ModTemplate
 			}
 
 			listing.Gap();
-			SettingsWidgets.Label(listing, "ModTemplate.Settings.Modules.RestartHint".Translate());
+			SettingsWidgets.Label(listing, "ModTemplate.Settings.Modules.RestartHint".Loc());
 		}
 
 		public override void Reset(ModTemplateSettings settings)
