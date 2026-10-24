@@ -21,6 +21,14 @@ namespace ModTemplate
 				return;
 			}
 
+			// 打开抽屉时收起其他主菜单页签，避免抽屉叠在已打开的 Architect/Work/Research 上；
+			// 世界菜单例外，保持打开。
+			MainButtonDef currentTab = Find.MainTabsRoot?.OpenTab;
+			if (currentTab != null && currentTab != MainButtonDefOf.World)
+			{
+				Find.MainTabsRoot.EscapeCurrentTab(false);
+			}
+
 			Find.WindowStack.Add(new DemoDrawerWindow());
 		}
 	}
