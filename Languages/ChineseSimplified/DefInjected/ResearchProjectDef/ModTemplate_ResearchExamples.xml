@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<MT_Research_VanillaPrereq.label>示例：原版前置</MT_Research_VanillaPrereq.label>
+	<MT_Research_VanillaPrereq.description>以原版「电力」为前置，演示原版研究连接到示例研究。</MT_Research_VanillaPrereq.description>
+	<MT_Research_Independent.label>示例：独立研究</MT_Research_Independent.label>
+	<MT_Research_Independent.description>没有前置，演示独立于原版研究链的根节点。</MT_Research_Independent.description>
+	<MT_Research_Linear_1.label>示例：线性格 I</MT_Research_Linear_1.label>
+	<MT_Research_Linear_1.description>三级线性示例链的起点。</MT_Research_Linear_1.description>
+	<MT_Research_Linear_2.label>示例：线性格 II</MT_Research_Linear_2.label>
+	<MT_Research_Linear_2.description>线性示例链的第二级，需要线性格 I。</MT_Research_Linear_2.description>
+	<MT_Research_Linear_3.label>示例：线性格 III</MT_Research_Linear_3.label>
+	<MT_Research_Linear_3.description>线性示例链的第三级，需要线性格 II。</MT_Research_Linear_3.description>
+	<MT_Research_Branch_1.label>示例：分叉根</MT_Research_Branch_1.label>
+	<MT_Research_Branch_1.description>三级后分叉的示例链起点。</MT_Research_Branch_1.description>
+	<MT_Research_Branch_2.label>示例：分叉干</MT_Research_Branch_2.label>
+	<MT_Research_Branch_2.description>分叉示例链的第二级。</MT_Research_Branch_2.description>
+	<MT_Research_Branch_3.label>示例：分叉点</MT_Research_Branch_3.label>
+	<MT_Research_Branch_3.description>分叉示例链的第三级，下一步分成两个分支。</MT_Research_Branch_3.description>
+	<MT_Research_Branch_Left.label>示例：分叉左</MT_Research_Branch_Left.label>
+	<MT_Research_Branch_Left.description>分叉后的两个示例分支之一。</MT_Research_Branch_Left.description>
+	<MT_Research_Branch_Right.label>示例：分叉右</MT_Research_Branch_Right.label>
+	<MT_Research_Branch_Right.description>分叉后的另一个示例分支。</MT_Research_Branch_Right.description>
+	<MT_Research_Fork_1.label>示例：条件分叉根</MT_Research_Fork_1.label>
+	<MT_Research_Fork_1.description>分叉后两个选项前置不同的示例链起点。</MT_Research_Fork_1.description>
+	<MT_Research_Fork_2.label>示例：条件分叉干</MT_Research_Fork_2.label>
+	<MT_Research_Fork_2.description>条件分叉示例链的第二级。</MT_Research_Fork_2.description>
+	<MT_Research_Fork_WithExtra.label>示例：分叉（含额外前置）</MT_Research_Fork_WithExtra.label>
+	<MT_Research_Fork_WithExtra.description>需要条件分叉干和「独立研究」这个额外前置。</MT_Research_Fork_WithExtra.description>
+	<MT_Research_Fork_WithoutExtra.label>示例：分叉（无额外前置）</MT_Research_Fork_WithoutExtra.label>
+	<MT_Research_Fork_WithoutExtra.description>只需要条件分叉干，没有额外研究前置。</MT_Research_Fork_WithoutExtra.description>
+	<MT_Research_Production.label>示例：生产研究</MT_Research_Production.label>
+	<MT_Research_Production.description>解锁生产工业组件的机械加工配方。</MT_Research_Production.description>
+
+</LanguageData>

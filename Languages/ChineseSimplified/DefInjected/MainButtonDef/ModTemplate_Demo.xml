@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<ModTemplate_Demo.label>模板演示</ModTemplate_Demo.label>
+	<ModTemplate_Demo.description>底部菜单测试按钮，点击弹出一条演示消息。</ModTemplate_Demo.description>
+</LanguageData>

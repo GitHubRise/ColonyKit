@@ -97,8 +97,9 @@
 	<ModTemplate.Settings.Section.Test>Test</ModTemplate.Settings.Section.Test>
 	<ModTemplate.EnablePawnMenu>Enable pawn context menu</ModTemplate.EnablePawnMenu>
 	<ModTemplate.EnablePawnMenu.Desc>Show the extra options this mod adds when right-clicking a colonist.</ModTemplate.EnablePawnMenu.Desc>
-	<ModTemplate.ShowTechTreeButton>Show research tree button</ModTemplate.ShowTechTreeButton>
-	<ModTemplate.ShowTechTreeButton.Desc>Show a "Research tree" button in the bottom main bar.</ModTemplate.ShowTechTreeButton.Desc>
+	<ModTemplate.ShowDemoButton>Show bottom demo button</ModTemplate.ShowDemoButton>
+	<ModTemplate.ShowDemoButton.Desc>Show the separate bottom-menu test button (not the research tree).</ModTemplate.ShowDemoButton.Desc>
+	<ModTemplate.DemoButton.Message>Bottom menu demo button activated.</ModTemplate.DemoButton.Message>
 
 	<ModTemplate.Settings.Tab.Notifications>Notifications</ModTemplate.Settings.Tab.Notifications>
 	<ModTemplate.Settings.Notifications.Enabled>Enable notifications</ModTemplate.Settings.Notifications.Enabled>

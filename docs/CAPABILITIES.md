@@ -85,7 +85,7 @@
 | 右键小人菜单（Provider 自动发现 + 注册表） | ✅ | `PawnMenuService` + `ModTemplatePawnMenuProvider` |
 | 通知消息 / 信件 / 按 key 节流 | ✅ | `NotificationService` |
 | 建造放置校验 + 规则 + 程序化放蓝图 | ✅ | `BuildControlService` + `Patch_GenConstruct_CanPlaceBlueprintAt` |
-| 底部主菜单显示 / 隐藏 / 排序 + 自定义按钮 | ✅ | `MainButtonService` + `MainButtonWorker_TechTree` |
+| 底部主菜单显示 / 隐藏 / 排序 + 自定义演示按钮 | ✅ | `MainButtonService` + `MainButtonWorker_Demo` |
 | Prefix / Transpiler 示例 | ❌ | 需要时按同样模式加 |
 | 暴露给其他 Mod 的 API / 服务接口 | ✅ | `PawnMenuService` / `NotificationService` / `BuildControlService` / `MainButtonService` |
 
@@ -100,9 +100,10 @@
 | 环检测（拒绝新增成环）、隐藏前置 | ✅ | `TechPrerequisites` + `TechTreeService` |
 | 前置变化通知（`Changed` 事件） | ✅ | `TechTreeService` |
 | 独立窗口：tab 切换 / 布局切换 / 滚动 | ✅ | `TechTreeWindow` |
+| 原版 Research 窗口新增示例页签 | ✅ | `ResearchTabDef MT_ResearchTab` + 15 个示例 `ResearchProjectDef` |
 | 开发用自动打开参数 | 🧩 | `-modtemplate-techtree` |
 | 缩放、搜索、拖拽平移画布 | ❌ | 需要自己加 |
-| 自定义研究内容 demo（ResearchProjectDef） | ❌ | 模板不新增研究，只展示原版树 |
+| 自定义研究内容 demo（ResearchProjectDef） | ✅ | `Defs/Research/ModTemplate_ResearchExamples.xml` |
 
 ## 7. 质量与文档
 

@@ -16,8 +16,8 @@ namespace ModTemplate
 	/// </remarks>
 	public static class MainButtonService
 	{
-		/// <summary>模板自带的研究树按钮 defName。</summary>
-		public const string TechTreeButtonDefName = "ModTemplate_TechTree";
+		/// <summary>模板自带的底部演示按钮 defName。</summary>
+		public const string DemoButtonDefName = "ModTemplate_Demo";
 
 		private static readonly Dictionary<string, bool> visibleOverrides =
 			new Dictionary<string, bool>();
@@ -76,9 +76,8 @@ namespace ModTemplate
 				return false;
 			}
 
-			if (def.defName == TechTreeButtonDefName
-				&& (!ModuleRegistry.IsEnabled("tech-tree")
-					|| !(ModTemplateMod.Settings?.general?.showTechTreeButton ?? true)))
+			if (def.defName == DemoButtonDefName
+				&& !(ModTemplateMod.Settings?.general?.showDemoButton ?? true))
 			{
 				return false;
 			}

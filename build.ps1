@@ -110,10 +110,11 @@ try {
 		$target = Join-Path $ModsPath 'ModTemplate'
 		Write-Host "[deploy] $target" -ForegroundColor Cyan
 		# robocopy 的 0–7 都是成功码（1 表示确实复制了文件），8 及以上才是失败。
+		# /MIR 同步删除源里已移除的旧文件，避免重命名 Def/Worker 后留下陈旧 XML。
 		foreach ($name in 'About', 'Assemblies', 'Defs', 'Patches', 'Languages', 'Textures', 'Sounds') {
 			$src = Join-Path $root $name
 			if (-not (Test-Path $src)) { continue }
-			& robocopy $src (Join-Path $target $name) /E /NFL /NDL /NJH /NJS /NP | Out-Null
+			& robocopy $src (Join-Path $target $name) /MIR /NFL /NDL /NJH /NJS /NP | Out-Null
 			if ($LASTEXITCODE -ge 8) { throw "robocopy 失败：$name（exit $LASTEXITCODE）" }
 		}
 

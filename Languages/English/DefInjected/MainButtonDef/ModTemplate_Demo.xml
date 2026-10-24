@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<ModTemplate_Demo.label>Template demo</ModTemplate_Demo.label>
+	<ModTemplate_Demo.description>Bottom menu test button; opens a small demo message.</ModTemplate_Demo.description>
+</LanguageData>

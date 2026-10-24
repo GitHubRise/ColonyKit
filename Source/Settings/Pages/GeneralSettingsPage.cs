@@ -33,9 +33,9 @@ namespace ModTemplate
 				"ModTemplate.EnablePawnMenu.Desc".Loc());
 			SettingsWidgets.Checkbox(
 				listing,
-				"ModTemplate.ShowTechTreeButton".Loc(),
-				ref data.showTechTreeButton,
-				"ModTemplate.ShowTechTreeButton.Desc".Loc());
+				"ModTemplate.ShowDemoButton".Loc(),
+				ref data.showDemoButton,
+				"ModTemplate.ShowDemoButton.Desc".Loc());
 
 			SettingsWidgets.ControlModePicker(
 				listing,

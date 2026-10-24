@@ -40,11 +40,11 @@
 2. 开发者模式打开，进一局；
 3. `Player.log` 里应有 `[ModTemplate] loaded; greeting="Hello from ModTemplate"`；
 4. 选项 → Mod 设置 → `Mod 架构模板`：默认五个页签（模块 / 常规 / 日志 / 通知 / 关于）。顶栏有检索框（过滤当前页控件）；常规页可切换三种选项控件（下拉框 / ◀ ▶ / ✓ ✗），也可把设置窗口切到 English / 简体中文（不改游戏语言）；模块页可关闭可选功能；日志页演示下拉框（统计明细 / 框架日志级别）、滑块（间隔）、输入框（前缀）、禁用态勾选，以及「输出诊断报告」；通知页有测试消息/信件/节流按钮。
-5. 关于页 → 「打开研究树」：独立窗口，按前置分层绘制节点和连线，可切研究 tab / 切布局、点击节点设为当前研究。
+5. 原版底部 **Research** → 「示例研究」页签：15 个示例研究覆盖原版前置、独立根、线性、分叉、条件分叉、生产解锁；设置「关于」仍可打开独立研究树窗口。
 6. 右键一个殖民者：应看到「记录该殖民者」「在附近建造演示墙」两项（常规页可关）。
-7. 底部主菜单：应出现「研究树」按钮（常规页可隐藏）。
+7. 底部主菜单：多出一个独立的「模板演示」测试按钮（常规页可隐藏）；它与 Research/研究树无关，原版 Research 保持不变。
 8. 生成/招募几个殖民者，开「详细日志」后看 `[ModTemplate] spawn:` 行；也可带 `-modtemplate-selftest` 看服务自检日志。
-9. 带 `-modtemplate-ui-test` 启动会依次截取底部栏 / 通知页 / 右键菜单 / 研究树 / 底部按钮，PNG 在 `Config/ModTemplateUiTests/`。
+9. 带 `-modtemplate-ui-test` 启动会依次截取底部栏 / 通知页 / 右键菜单 / 研究树窗口 / 模板演示按钮，PNG 在 `Config/ModTemplateUiTests/`。
 
 ## 生成新 Mod
 
@@ -66,7 +66,8 @@
 mod-template/
 ├─ About/About.xml               Mod 元数据（packageId / supportedVersions / Harmony 依赖）
 ├─ Defs/DemoConfig.xml           自定义 Def 的 XML
-├─ Defs/Core/MainButton_TechTree.xml  底部「研究树」按钮 Def
+├─ Defs/Core/MainButton_Demo.xml  底部「模板演示」按钮 Def（独立测试项）
+├─ Defs/Research/ModTemplate_ResearchExamples.xml  示例研究页签 + 15 个研究 + 生产配方
 ├─ Patches/OptionalCompatibility.xml  条件补丁（PatchOperationFindMod）
 ├─ Languages/
 │  ├─ English/{Keyed,DefInjected}
@@ -88,7 +89,7 @@ mod-template/
 │  │  ├─ PawnMenuService.cs      右键小人菜单注册表
 │  │  ├─ ModTemplatePawnMenuProvider.cs  原版 Provider 入口
 │  │  ├─ MainButtonService.cs    底部按钮显示/顺序
-│  │  ├─ MainButtonWorker_TechTree.cs  自定义按钮 Worker
+│  │  ├─ MainButtonWorker_Demo.cs  模板演示按钮 Worker
 │  │  ├─ Patch_MainButton*.cs    可见性/排序 Patch
 │  │  ├─ UiAutomationService.cs  截图式 UI 自动化
 │  │  └─ Patch_Root_Update_UiAutomation.cs  每帧驱动
@@ -135,11 +136,12 @@ mod-template/
 | 选项控件模式 | `SettingsWidgets` + `GeneralSettings.controlMode` | 下拉框 / ◀ ▶ 循环 / ✓ ✗ 打勾 |
 | 设置语言切换 | `Localization/ModLoc.cs` + `general.language` | 仅设置窗口切中/英，不改游戏语言 |
 | 研究树 | `Source/TechTree/*` | 前置分层绘制、节点/连线/状态、前置条件统一 API |
+| 研究示例 | `Defs/Research/ModTemplate_ResearchExamples.xml` | 原版 Research 新页签 + 6 类最小测试项 |
 | 右键小人菜单 | `Source/UI/PawnMenu*` | Provider 自动发现 + 注册表 + 设置开关 |
 | 通知消息 | `Source/Notifications/*` | 消息 / 信件 / 按 key 节流 |
 | 结构化日志与诊断 | `Source/ModLog.cs` / `Source/Diagnostics.cs` | 级别/分类/Once/Throttled + 诊断报告 |
 | 建筑建造 | `Source/Build/*` | 放置校验、规则、程序化放蓝图 |
-| 底部主菜单 | `Source/UI/MainButton*` | 按钮显示/隐藏/排序 + 自定义按钮 |
+| 底部主菜单 | `Source/UI/MainButton*` | 按钮显示/隐藏/排序 + 独立模板演示按钮 |
 | UI 自动化绘制 | `Source/UI/UiAutomation*` | 场景数据 → 开窗/等待/截图/点击/关闭 |
 | 启动钩子 | `Bootstrap.cs` | Def 就绪后做一次初始化 |
 
@@ -164,11 +166,11 @@ mod-template/
 - `build.ps1` / `verify.ps1` / `package.ps1` / `new-mod.ps1` 均通过（0 错误 0 警告；包 12 个文件）。
 - `smoke-test.ps1` PASSED：clean rebuild、迁移/自检/诊断/备份断言全部命中；CI 配置在 `.github/workflows/ci.yml`。
 - `[ModTemplate][Migration] settings migrated 0 -> 2` + `.bak` —— 设置 schema 迁移与备份生效。
-- `[ModTemplate][Bootstrap] loaded`；`[ModTemplate][Selftest] modules=6, schema=2, pawnMenu=2, buildRules=0, notifications=True, mainButton=True, wallPlacement=False`。
+- `[ModTemplate][Bootstrap] loaded`；`[ModTemplate][Selftest] modules=6, schema=2, pawnMenu=2, buildRules=0, notifications=True, demoButton=True, demoResearch=15, wallPlacement=False`。
 - Debug/Info/Warn 三行与 `[ModTemplate][Diag] diagnostics report written` —— 日志级别过滤和诊断报告生效。
 - 设置页五页签、三卡片选项控件、下拉 `▼`、普通配置行（统计殖民者生成）悬停蒙版已通过实机截图确认。
 - 英文游戏下把设置窗口切到简体中文成功；`DefInjected` 和原版 Close 按钮仍跟随游戏语言。
-- 尚未覆盖：设置检索的实际输入/无结果、自动滚动条长页面、研究树绘制、UI 自动化截图（`-modtemplate-ui-test`）、建筑规则非空路径、旧存档 `saveVersion` 迁移、Biotech 可选补丁（本机未装，`note` 为空）。
+- 尚未覆盖：设置检索的实际输入/无结果、自动滚动条长页面、研究树独立窗口绘制、示例研究页签/配方实际点击、UI 自动化截图（`-modtemplate-ui-test`）、建筑规则非空路径、旧存档 `saveVersion` 迁移、Biotech 可选补丁（本机未装，`note` 为空）。
 - `Patches/OptionalCompatibility.xml` 用 Biotech 举例，装上 Biotech 后可在设置页看到 `Patch note`。
 
 详细验证与限制见 [docs/版本记录.md](docs/版本记录.md)；逐项能力见 [docs/CAPABILITIES.md](docs/CAPABILITIES.md)。
@@ -176,7 +178,7 @@ mod-template/
 ## 相关文档
 
 - 工作区 [docs/Index.md](../../docs/Index.md)：加载机制、语言支持、开发须知。
-- 本工程 [docs/Index.md](docs/Index.md)：功能文档索引（模块 / 生命周期 / 迁移 / Def / 补丁 / 存档 / 设置 / 检索滚动 / 选项模式 / 语言 / 研究树 / 右键菜单 / 通知 / 日志诊断 / 建造 / 底部菜单 / UI 自动化 / 本地化 / 构建）。
+- 本工程 [docs/Index.md](docs/Index.md)：功能文档索引（模块 / 生命周期 / 迁移 / Def / 补丁 / 存档 / 设置 / 检索滚动 / 选项模式 / 语言 / 研究树 / 研究树示例 / 右键菜单 / 通知 / 日志诊断 / 建造 / 底部菜单 / UI 自动化 / 本地化 / 构建）。
 - 本工程 [docs/版本记录.md](docs/版本记录.md)：0.0.2 范围、验证、限制与发版检查清单。
 - 本工程 [CHANGELOG.md](CHANGELOG.md)：逐版本变更。
 - 本工程 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)：分层与生命周期。

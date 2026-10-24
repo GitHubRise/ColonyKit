@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<!--
+		研究页签最小测试矩阵（在 vanilla Research 窗口中新增一个 tab）：
+		1. 原版 Electricity → 示例研究
+		2. 无前置的独立研究
+		3. Linear 1 → 2 → 3 线性晋级
+		4. Branch 1 → 2 → 3 → Left/Right 线性后分叉
+		5. Fork 1 → 2 → WithExtra（额外前置 Independent）/ WithoutExtra
+		6. Production 解锁工业生产配方
+	-->
+
+	<ResearchTabDef>
+		<defName>MT_ResearchTab</defName>
+		<label>Demo research</label>
+		<generalTitle>Demo research projects</generalTitle>
+		<generalDescription>Minimal research examples: vanilla prerequisite, independent root, linear chain, fork, conditional fork, and production unlock.</generalDescription>
+	</ResearchTabDef>
+
+	<ResearchProjectDef>
+		<defName>MT_Research_VanillaPrereq</defName>
+		<label>Demo: vanilla prerequisite</label>
+		<description>Requires vanilla Electricity; demonstrates an edge from a vanilla research into a demo project.</description>
+		<baseCost>150</baseCost>
+		<techLevel>Industrial</techLevel>
+		<researchViewX>0</researchViewX>
+		<researchViewY>0</researchViewY>
+		<tab>MT_ResearchTab</tab>
+		<prerequisites>
+			<li>Electricity</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>MT_Research_Independent</defName>
+		<label>Demo: independent</label>
+		<description>No prerequisites; demonstrates a root that is independent of the vanilla research chains.</description>
+		<baseCost>100</baseCost>
+		<techLevel>Industrial</techLevel>
+		<researchViewX>0</researchViewX>
+		<researchViewY>2</researchViewY>
+		<tab>MT_ResearchTab</tab>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>MT_Research_Linear_1</defName>
+		<label>Demo: linear I</label>
+		<description>Start of a three-step linear demo chain.</description>
+		<baseCost>100</baseCost>
+		<techLevel>Industrial</techLevel>
+		<researchViewX>2</researchViewX>
+		<researchViewY>0</researchViewY>
+		<tab>MT_ResearchTab</tab>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>MT_Research_Linear_2</defName>
+		<label>Demo: linear II</label>
+		<description>Second step of the linear demo chain; requires linear I.</description>
+		<baseCost>150</baseCost>
+		<techLevel>Industrial</techLevel>
+		<researchViewX>4</researchViewX>
+		<researchViewY>0</researchViewY>
+		<tab>MT_ResearchTab</tab>
+		<prerequisites>
+			<li>MT_Research_Linear_1</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>MT_Research_Linear_3</defName>
+		<label>Demo: linear III</label>
+		<description>Third step of the linear demo chain; requires linear II.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Industrial</techLevel>
+		<researchViewX>6</researchViewX>
+		<researchViewY>0</researchViewY>
+		<tab>MT_ResearchTab</tab>
+		<prerequisites>
+			<li>MT_Research_Linear_2</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>MT_Research_Branch_1</defName>
+		<label>Demo: branch root</label>
+		<description>Start of a demo chain that forks after three steps.</description>
+		<baseCost>100</baseCost>
+		<techLevel>Industrial</techLevel>
+		<researchViewX>2</researchViewX>
+		<researchViewY>2</researchViewY>
+		<tab>MT_ResearchTab</tab>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>MT_Research_Branch_2</defName>
+		<label>Demo: branch stem</label>
+		<description>Second step of the branching demo chain.</description>
+		<baseCost>150</baseCost>
+		<techLevel>Industrial</techLevel>
+		<researchViewX>4</researchViewX>
+		<researchViewY>2</researchViewY>
+		<tab>MT_ResearchTab</tab>
+		<prerequisites>
+			<li>MT_Research_Branch_1</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>MT_Research_Branch_3</defName>
+		<label>Demo: branch fork</label>
+		<description>Third step of the branching demo chain; the next step splits into two.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Industrial</techLevel>
+		<researchViewX>6</researchViewX>
+		<researchViewY>2</researchViewY>
+		<tab>MT_ResearchTab</tab>
+		<prerequisites>
+			<li>MT_Research_Branch_2</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>MT_Research_Branch_Left</defName>
+		<label>Demo: branch left</label>
+		<description>One of two demo branches after the fork.</description>
+		<baseCost>150</baseCost>
+		<techLevel>Industrial</techLevel>
+		<researchViewX>8</researchViewX>
+		<researchViewY>3</researchViewY>
+		<tab>MT_ResearchTab</tab>
+		<prerequisites>
+			<li>MT_Research_Branch_3</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>MT_Research_Branch_Right</defName>
+		<label>Demo: branch right</label>
+		<description>The other demo branch after the fork.</description>
+		<baseCost>150</baseCost>
+		<techLevel>Industrial</techLevel>
+		<researchViewX>8</researchViewX>
+		<researchViewY>1</researchViewY>
+		<tab>MT_ResearchTab</tab>
+		<prerequisites>
+			<li>MT_Research_Branch_3</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>MT_Research_Fork_1</defName>
+		<label>Demo: fork root</label>
+		<description>Start of a demo chain where the post-fork options differ by prerequisites.</description>
+		<baseCost>100</baseCost>
+		<techLevel>Industrial</techLevel>
+		<researchViewX>2</researchViewX>
+		<researchViewY>4</researchViewY>
+		<tab>MT_ResearchTab</tab>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>MT_Research_Fork_2</defName>
+		<label>Demo: fork stem</label>
+		<description>Second step of the conditional-fork demo chain.</description>
+		<baseCost>150</baseCost>
+		<techLevel>Industrial</techLevel>
+		<researchViewX>4</researchViewX>
+		<researchViewY>4</researchViewY>
+		<tab>MT_ResearchTab</tab>
+		<prerequisites>
+			<li>MT_Research_Fork_1</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>MT_Research_Fork_WithExtra</defName>
+		<label>Demo: fork + extra prerequisite</label>
+		<description>Requires the fork stem and the independent demo research.</description>
+		<baseCost>250</baseCost>
+		<techLevel>Industrial</techLevel>
+		<researchViewX>6</researchViewX>
+		<researchViewY>6</researchViewY>
+		<tab>MT_ResearchTab</tab>
+		<prerequisites>
+			<li>MT_Research_Fork_2</li>
+			<li>MT_Research_Independent</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>MT_Research_Fork_WithoutExtra</defName>
+		<label>Demo: fork without extra prerequisite</label>
+		<description>Requires only the fork stem; no extra research.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Industrial</techLevel>
+		<researchViewX>6</researchViewX>
+		<researchViewY>4</researchViewY>
+		<tab>MT_ResearchTab</tab>
+		<prerequisites>
+			<li>MT_Research_Fork_2</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>MT_Research_Production</defName>
+		<label>Demo: production research</label>
+		<description>Unlocks a machining recipe that produces industrial components.</description>
+		<baseCost>300</baseCost>
+		<techLevel>Industrial</techLevel>
+		<researchViewX>8</researchViewX>
+		<researchViewY>0</researchViewY>
+		<tab>MT_ResearchTab</tab>
+		<prerequisites>
+			<li>MT_Research_Linear_2</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<RecipeDef>
+		<defName>MT_Make_ComponentIndustrial</defName>
+		<label>assemble demo component</label>
+		<description>Assemble an industrial component from steel. Unlocked by the production demo research.</description>
+		<workAmount>400</workAmount>
+		<workSkill>Crafting</workSkill>
+		<researchPrerequisite>MT_Research_Production</researchPrerequisite>
+		<recipeUsers>
+			<li>TableMachining</li>
+		</recipeUsers>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<products>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</products>
+	</RecipeDef>
+
+</Defs>

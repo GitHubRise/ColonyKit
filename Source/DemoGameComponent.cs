@@ -117,14 +117,21 @@ namespace ModTemplate
 				: AcceptanceReport.WasRejected;
 
 			MainButtonDef button = DefDatabase<MainButtonDef>
-				.GetNamedSilentFail(MainButtonService.TechTreeButtonDefName);
+				.GetNamedSilentFail(MainButtonService.DemoButtonDefName);
+
+			ResearchTabDef demoTab = DefDatabase<ResearchTabDef>.GetNamedSilentFail("MT_ResearchTab");
+			int demoResearch = demoTab == null
+				? 0
+				: DefDatabase<ResearchProjectDef>.AllDefsListForReading
+					.Count(project => project.tab == demoTab);
 
 			ModLog.Info(
 				"Selftest",
 				$"modules={ModuleRegistry.All.Count}, schema={ModTemplateMod.Settings?.schemaVersion}, " +
 				$"pawnMenu={PawnMenuService.Count}, buildRules={BuildControlService.RuleCount}, " +
 				$"notifications={NotificationService.Enabled}, " +
-				$"mainButton={(button != null && MainButtonService.IsVisible(button))}, " +
+				$"demoButton={(button != null && MainButtonService.IsVisible(button))}, " +
+				$"demoResearch={demoResearch}, " +
 				$"wallPlacement={buildReport.Accepted}");
 
 			// 验证级别过滤：默认 Info 下 Debug 行不会出现；切到 Debug 后可见。

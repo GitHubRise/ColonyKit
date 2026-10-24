@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 底部菜单测试项：独立的演示按钮，与研究页签/研究树解耦。 -->
+	<MainButtonDef>
+		<defName>ModTemplate_Demo</defName>
+		<label>Template demo</label>
+		<description>Bottom menu test button; opens a small demo message.</description>
+		<workerClass>ModTemplate.MainButtonWorker_Demo</workerClass>
+		<order>90</order>
+		<buttonVisible>true</buttonVisible>
+		<validWithoutMap>false</validWithoutMap>
+	</MainButtonDef>
+</Defs>

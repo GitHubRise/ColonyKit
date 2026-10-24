@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<MT_ResearchTab.label>Demo research</MT_ResearchTab.label>
+	<MT_ResearchTab.generalTitle>Demo research projects</MT_ResearchTab.generalTitle>
+	<MT_ResearchTab.generalDescription>Minimal research examples: vanilla prerequisite, independent root, linear chain, fork, conditional fork, and production unlock.</MT_ResearchTab.generalDescription>
+
+</LanguageData>

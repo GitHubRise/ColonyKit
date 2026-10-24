@@ -80,7 +80,7 @@ namespace ModTemplate
 			Register(new UiScenario(
 				"05-bottom-button",
 				null,
-				ClickTechTreeButton));
+				ClickDemoButton));
 		}
 
 		public static void Register(UiScenario scenario)
@@ -279,18 +279,18 @@ namespace ModTemplate
 			ModLog.Message("ui-test: first pawn menu option executed");
 		}
 
-		private static void ClickTechTreeButton()
+		private static void ClickDemoButton()
 		{
 			MainButtonDef def = DefDatabase<MainButtonDef>
-				.GetNamedSilentFail(MainButtonService.TechTreeButtonDefName);
+				.GetNamedSilentFail(MainButtonService.DemoButtonDefName);
 			if (def == null)
 			{
-				ModLog.Warning("ui-test: research tree button def missing");
+				ModLog.Warning("ui-test: demo bottom button def missing");
 				return;
 			}
 
 			def.Worker.InterfaceTryActivate();
-			ModLog.Message("ui-test: research tree button activated");
+			ModLog.Message("ui-test: demo bottom button activated");
 		}
 	}
 }

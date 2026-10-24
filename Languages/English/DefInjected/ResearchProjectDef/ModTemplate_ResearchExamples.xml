@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<MT_Research_VanillaPrereq.label>Demo: vanilla prerequisite</MT_Research_VanillaPrereq.label>
+	<MT_Research_VanillaPrereq.description>Requires vanilla Electricity; demonstrates an edge from a vanilla research into a demo project.</MT_Research_VanillaPrereq.description>
+	<MT_Research_Independent.label>Demo: independent</MT_Research_Independent.label>
+	<MT_Research_Independent.description>No prerequisites; demonstrates a root independent of the vanilla research chains.</MT_Research_Independent.description>
+	<MT_Research_Linear_1.label>Demo: linear I</MT_Research_Linear_1.label>
+	<MT_Research_Linear_1.description>Start of a three-step linear demo chain.</MT_Research_Linear_1.description>
+	<MT_Research_Linear_2.label>Demo: linear II</MT_Research_Linear_2.label>
+	<MT_Research_Linear_2.description>Second step of the linear demo chain; requires linear I.</MT_Research_Linear_2.description>
+	<MT_Research_Linear_3.label>Demo: linear III</MT_Research_Linear_3.label>
+	<MT_Research_Linear_3.description>Third step of the linear demo chain; requires linear II.</MT_Research_Linear_3.description>
+	<MT_Research_Branch_1.label>Demo: branch root</MT_Research_Branch_1.label>
+	<MT_Research_Branch_1.description>Start of a demo chain that forks after three steps.</MT_Research_Branch_1.description>
+	<MT_Research_Branch_2.label>Demo: branch stem</MT_Research_Branch_2.label>
+	<MT_Research_Branch_2.description>Second step of the branching demo chain.</MT_Research_Branch_2.description>
+	<MT_Research_Branch_3.label>Demo: branch fork</MT_Research_Branch_3.label>
+	<MT_Research_Branch_3.description>Third step of the branching demo chain; the next step splits into two.</MT_Research_Branch_3.description>
+	<MT_Research_Branch_Left.label>Demo: branch left</MT_Research_Branch_Left.label>
+	<MT_Research_Branch_Left.description>One of two demo branches after the fork.</MT_Research_Branch_Left.description>
+	<MT_Research_Branch_Right.label>Demo: branch right</MT_Research_Branch_Right.label>
+	<MT_Research_Branch_Right.description>The other demo branch after the fork.</MT_Research_Branch_Right.description>
+	<MT_Research_Fork_1.label>Demo: fork root</MT_Research_Fork_1.label>
+	<MT_Research_Fork_1.description>Start of a demo chain where post-fork options differ by prerequisites.</MT_Research_Fork_1.description>
+	<MT_Research_Fork_2.label>Demo: fork stem</MT_Research_Fork_2.label>
+	<MT_Research_Fork_2.description>Second step of the conditional-fork demo chain.</MT_Research_Fork_2.description>
+	<MT_Research_Fork_WithExtra.label>Demo: fork + extra prerequisite</MT_Research_Fork_WithExtra.label>
+	<MT_Research_Fork_WithExtra.description>Requires the fork stem and the independent demo research.</MT_Research_Fork_WithExtra.description>
+	<MT_Research_Fork_WithoutExtra.label>Demo: fork without extra prerequisite</MT_Research_Fork_WithoutExtra.label>
+	<MT_Research_Fork_WithoutExtra.description>Requires only the fork stem; no extra research.</MT_Research_Fork_WithoutExtra.description>
+	<MT_Research_Production.label>Demo: production research</MT_Research_Production.label>
+	<MT_Research_Production.description>Unlocks a machining recipe that produces industrial components.</MT_Research_Production.description>
+
+</LanguageData>

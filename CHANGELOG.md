@@ -6,11 +6,19 @@
 
 ### Changed
 
-- 玩家可见文案统一为「研究树 / Research tree」；代码类型、Def 名和翻译键保留 `TechTree*` / `ModTemplate_TechTree`，避免破坏 API 与已有引用。
+- 玩家可见文案统一为「研究树 / Research tree」；代码类型和翻译键保留 `TechTree*`，避免破坏 API。
+- 研究入口改为原版 Research 窗口的新增页签 `MT_ResearchTab`；不再注册研究树底部按钮。
+- 底部菜单保留独立「模板演示」按钮作为单独的测试项，与研究页签/研究树解耦。
+
+### Added
+
+- `Defs/Research/ModTemplate_ResearchExamples.xml`：15 个示例研究，覆盖原版前置、独立根、线性链、线性后分叉、条件分叉、生产研究解锁配方。
+- `ResearchTabDef MT_ResearchTab` + 研究/配方 DefInjected。
 
 ### Fixed
 
 - `build.ps1` 部署后 `LASTEXITCODE` 被 robocopy 成功码（1–7）污染，导致 `smoke-test.ps1` 误判构建失败；成功路径现在显式归零。
+- 配方 `products` 改为字典语法 `<ComponentIndustrial>1</ComponentIndustrial>`。
 
 ## [0.0.2] - 2026-10-25
 

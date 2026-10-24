@@ -160,6 +160,8 @@ try {
 		'\[ModTemplate\]\[Bootstrap\] loaded',
 		'\[ModTemplate\]\[Migration\] settings migrated 0 -> 2',
 		'\[ModTemplate\]\[Selftest\] modules=6, schema=2',
+		'\[ModTemplate\]\[Selftest\].*demoButton=True',
+		'\[ModTemplate\]\[Selftest\].*demoResearch=15',
 		'\[ModTemplate\]\[Selftest\] debug-level line',
 		'\[ModTemplate\]\[Diag\] diagnostics report written'
 	)
