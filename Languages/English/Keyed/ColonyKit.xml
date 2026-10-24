@@ -152,6 +152,17 @@
 	<ColonyKit.Module.Rjw.Name>RJW integration</ColonyKit.Module.Rjw.Name>
 	<ColonyKit.Module.Rjw.Desc>Compatibility patches only; RJW itself is not copied.</ColonyKit.Module.Rjw.Desc>
 
+	<ColonyKit.Settings.Tab.Storage>Storage</ColonyKit.Settings.Tab.Storage>
+	<ColonyKit.Settings.Storage.Hint>The first stage only provides global stack rules: normal stackable items are scaled; weapons, apparel, corpses and minified buildings keep vanilla limits. Warehouse buildings and conveyors come next.</ColonyKit.Settings.Storage.Hint>
+	<ColonyKit.Settings.Storage.Enabled>Enable stack enhancement</ColonyKit.Settings.Storage.Enabled>
+	<ColonyKit.Settings.Storage.Enabled.Desc>Multiplies stackLimit for stackable items; disabling restores vanilla limits.</ColonyKit.Settings.Storage.Enabled.Desc>
+	<ColonyKit.Settings.Storage.Multiplier>Stack multiplier</ColonyKit.Settings.Storage.Multiplier>
+	<ColonyKit.Settings.Storage.LogChanges>Log each changed item</ColonyKit.Settings.Storage.LogChanges>
+	<ColonyKit.Settings.Storage.LogChanges.Desc>Only for compatibility debugging; writes one line per changed Def.</ColonyKit.Settings.Storage.LogChanges.Desc>
+	<ColonyKit.Settings.Storage.Apply>Apply again</ColonyKit.Settings.Storage.Apply>
+	<ColonyKit.Settings.Storage.Applied>Stack rules reapplied.</ColonyKit.Settings.Storage.Applied>
+	<ColonyKit.Settings.Storage.StackXXLWarn>Stack XXL is also active; this module leaves stack limits untouched to avoid stacking multipliers.</ColonyKit.Settings.Storage.StackXXLWarn>
+
 	<ColonyKit.Settings.Tab.Localization>Localization</ColonyKit.Settings.Tab.Localization>
 	<ColonyKit.Settings.Section.Localization>Dev menu localization</ColonyKit.Settings.Section.Localization>
 	<ColonyKit.Settings.Section.TranslationScheme>Translation scheme</ColonyKit.Settings.Section.TranslationScheme>

@@ -22,26 +22,6 @@ namespace ColonyKit.Modules
 		}
 	}
 
-	/// <summary>立体库/物品堆叠模块占位：后续从 StackXXL 的仓库实现移植。</summary>
-	public sealed class StorageModule : ColonyKitModule
-	{
-		public override string Id => "storage";
-
-		public override string DisplayNameKey => "ColonyKit.Module.Storage.Name";
-
-		public override string DescriptionKey => "ColonyKit.Module.Storage.Desc";
-
-		public override int InitOrder => 110;
-
-		public override void OnDefsLoaded()
-		{
-			ModLog.Info(
-				"Storage",
-				"module loaded (0.0.2 stub); source reference: stackxxl warehouse; " +
-				$"StackXXL active={ModsConfig.IsActive("indeed.stackxxl")}");
-		}
-	}
-
 	/// <summary>RJW 集成模块占位：后续只做兼容补丁，不复制 RJW 主体。</summary>
 	public sealed class RjwModule : ColonyKitModule
 	{
