@@ -75,6 +75,8 @@ namespace ColonyKit.Modules.Storage
 
 			storeSettings = new RimWorld.StorageSettings(this);
 			storeSettings.filter.SetAllowAll(null);
+			// 默认低于普通库存区：普通库存区有位置时，物品会从仓库自动流出去。
+			storeSettings.Priority = StoragePriority.Low;
 		}
 
 		public bool StorageTabVisible => true;

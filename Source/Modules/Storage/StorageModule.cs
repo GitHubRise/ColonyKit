@@ -1,3 +1,4 @@
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -28,6 +29,11 @@ namespace ColonyKit.Modules.Storage
 				"Storage",
 				$"module loaded; stack rules enabled={settings.enabled}, x{settings.stackMultiplier}, " +
 				$"StackXXL active={StorageStackLimitManager.StackXxlActive}");
+			ModLog.Info(
+				"Storage",
+				$"jobs: inbound={DefDatabase<WorkGiverDef>.GetNamedSilentFail("CK_HaulToWarehouse") != null}, " +
+				$"outbound={DefDatabase<WorkGiverDef>.GetNamedSilentFail("CK_WithdrawFromWarehouse") != null}, " +
+				$"jobDef={CKDefOf.CK_WithdrawFromWarehouse != null}");
 		}
 
 		public override void ResetRuntimeState()

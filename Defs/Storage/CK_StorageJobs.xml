@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<WorkGiverDef>
+		<defName>CK_HaulToWarehouse</defName>
+		<label>haul to vertical warehouse</label>
+		<giverClass>ColonyKit.Modules.Storage.WorkGiver_HaulToWarehouse</giverClass>
+		<workType>Hauling</workType>
+		<priorityInType>14</priorityInType>
+		<verb>haul</verb>
+		<gerund>hauling</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>CK_WithdrawFromWarehouse</defName>
+		<label>withdraw from vertical warehouse</label>
+		<giverClass>ColonyKit.Modules.Storage.WorkGiver_WithdrawFromWarehouse</giverClass>
+		<workType>Hauling</workType>
+		<priorityInType>16</priorityInType>
+		<verb>withdraw</verb>
+		<gerund>withdrawing</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<JobDef>
+		<defName>CK_WithdrawFromWarehouse</defName>
+		<driverClass>ColonyKit.Modules.Storage.JobDriver_WithdrawFromWarehouse</driverClass>
+		<reportString>CK.WithdrawFromWarehouse.report</reportString>
+	</JobDef>
+</Defs>

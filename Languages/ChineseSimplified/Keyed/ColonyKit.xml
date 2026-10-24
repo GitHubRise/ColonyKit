@@ -175,6 +175,7 @@
 	<CK.VerticalWarehouse.WithdrawAllDesc>把库内所有物品放到建筑旁边。</CK.VerticalWarehouse.WithdrawAllDesc>
 	<CK.VerticalWarehouse.Withdrawn>已取出全部物品。</CK.VerticalWarehouse.Withdrawn>
 
+	<CK.WithdrawFromWarehouse.report>正在从立体库取货。</CK.WithdrawFromWarehouse.report>
 	<ColonyKit.Settings.Tab.GeneralSettings>常规设置</ColonyKit.Settings.Tab.GeneralSettings>
 	<ColonyKit.Settings.Section.DefaultLanguage>默认语言</ColonyKit.Settings.Section.DefaultLanguage>
 	<ColonyKit.Settings.Section.LogOutput>日志输出</ColonyKit.Settings.Section.LogOutput>

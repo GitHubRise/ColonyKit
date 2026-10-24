@@ -175,6 +175,7 @@
 	<CK.VerticalWarehouse.WithdrawAllDesc>Drop every stored item next to the building.</CK.VerticalWarehouse.WithdrawAllDesc>
 	<CK.VerticalWarehouse.Withdrawn>All items withdrawn.</CK.VerticalWarehouse.Withdrawn>
 
+	<CK.WithdrawFromWarehouse.report>Withdrawing from the vertical warehouse.</CK.WithdrawFromWarehouse.report>
 	<ColonyKit.Settings.Tab.GeneralSettings>General settings</ColonyKit.Settings.Tab.GeneralSettings>
 	<ColonyKit.Settings.Section.DefaultLanguage>Default language</ColonyKit.Settings.Section.DefaultLanguage>
 	<ColonyKit.Settings.Section.LogOutput>Log output</ColonyKit.Settings.Section.LogOutput>
