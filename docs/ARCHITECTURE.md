@@ -267,6 +267,14 @@ TechTreeService.Changed += () => { /* 重建 UI */ };
 
 详见 [设置检索与自动滚动](设置检索与自动滚动.md)。
 
+### 4.12 设置语言覆盖
+
+- `GeneralSettings.language`（Auto/English/ChineseSimplified）只控制设置窗口，不改游戏全局语言。
+- 设置界面统一走 `"Key".Loc()` → `ModLoc.Translate`：Auto 用游戏 `Translate`，指定语言则从 `Languages/<Lang>/Keyed` 的字典取值；缺键回退游戏翻译。
+- 语言选择器本身也是普通设置控件，会跟随下拉/循环/打勾模式；DefInjected、右键菜单、通知、科技树等未接入，仍跟随游戏语言。
+
+详见 [设置语言切换](设置语言切换.md)。
+
 ## 5. 存档兼容
 
 - `Scribe_Values.Look(ref x, "name", default)` 的 key 是存档契约：**改名 = 丢数据**。
