@@ -10,11 +10,12 @@ namespace ColonyKit.Modules.Storage
 	/// 3×3 立体库原型：内部 <see cref="ThingOwner{T}"/> 保管物品，面板/Gizmo 直接存取。
 	/// 当前不接搬运 Job、不接原版账单；先验证内部库存、容量、存读档和电力。
 	/// </summary>
-	public class Building_VerticalWarehouse : Building, IThingHolder
+	public class Building_VerticalWarehouse : Building, IThingHolder, IStoreSettingsParent
 	{
 		public const int MaxStacks = 24;
 
 		private ThingOwner<Thing> innerContainer;
+		private RimWorld.StorageSettings storeSettings;
 
 		public ThingOwner<Thing> Container
 		{
@@ -50,16 +51,48 @@ namespace ColonyKit.Modules.Storage
 		public Building_VerticalWarehouse()
 		{
 			innerContainer = new ThingOwner<Thing>(this);
+			EnsureStoreSettings();
 		}
 
 		public override void ExposeData()
 		{
 			base.ExposeData();
 			Scribe_Deep.Look(ref innerContainer, "innerContainer", this);
+			Scribe_Deep.Look(ref storeSettings, "storeSettings", this);
 			if (innerContainer == null)
 			{
 				innerContainer = new ThingOwner<Thing>(this);
 			}
+			EnsureStoreSettings();
+		}
+
+		private void EnsureStoreSettings()
+		{
+			if (storeSettings != null)
+			{
+				return;
+			}
+
+			storeSettings = new RimWorld.StorageSettings(this);
+			storeSettings.filter.SetAllowAll(null);
+		}
+
+		public bool StorageTabVisible => true;
+
+		public RimWorld.StorageSettings GetStoreSettings()
+		{
+			EnsureStoreSettings();
+			return storeSettings;
+		}
+
+		public RimWorld.StorageSettings GetParentStoreSettings()
+		{
+			return null;
+		}
+
+		public void Notify_SettingsChanged()
+		{
+			// 过滤器/优先级变化由 ITab_Storage 直接写进 storeSettings；这里不需要额外缓存。
 		}
 
 		public bool Accepts(Thing thing)
@@ -76,7 +109,9 @@ namespace ColonyKit.Modules.Storage
 			{
 				return false;
 			}
-			return true;
+
+			EnsureStoreSettings();
+			return storeSettings.AllowedToAccept(thing);
 		}
 
 		public bool CanStore(Thing thing)

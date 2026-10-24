@@ -35,6 +35,7 @@
 		</comps>
 		<inspectorTabs>
 			<li>ColonyKit.Modules.Storage.ITab_VerticalWarehouse</li>
+			<li>RimWorld.ITab_Storage</li>
 		</inspectorTabs>
 	</ThingDef>
 </Defs>
