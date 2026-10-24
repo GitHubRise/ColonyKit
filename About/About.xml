@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>殖民地套件</name>
+	<author>local</author>
+	<packageId>local.colonykit</packageId>
+	<supportedVersions>
+		<li>1.6</li>
+	</supportedVersions>
+	<modVersion>0.0.1</modVersion>
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li>
+	</modDependencies>
+	<loadAfter>
+		<li>brrainz.harmony</li>
+	</loadAfter>
+	<description>殖民地套件 0.0.1：基于 mod-template 0.0.1 复制的模块化框架。
+
+当前已落地：
+- 框架内核：模块注册/生命周期、设置窗口、结构化日志、诊断报告、存档迁移；
+- 模板自带的框架能力：通知、建造控制、科技树、右键菜单、诊断；
+- 汉化模块：开发者模式 Debug 菜单标签中文替换，外置翻译表 + 可切换翻译方案；
+- 淋浴 / 立体库 / RJW 三个模块占位，后续按 docs/参考源码映射.md 移植。
+
+汉化只替换开发者菜单显示文本，不改玩法、Def 或存档。0.0.1 尚未做完整实机验证，功能会按里程碑逐个补齐。</description>
+</ModMetaData>

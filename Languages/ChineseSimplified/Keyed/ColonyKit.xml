@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 设置页字符串。键名对应 Source/Settings 下的 Translate 调用。 -->
+<LanguageData>
+	<ColonyKit.SettingsCategory>殖民地套件</ColonyKit.SettingsCategory>
+
+	<ColonyKit.Settings.Hint>修改立即生效，关闭窗口时保存。</ColonyKit.Settings.Hint>
+	<ColonyKit.Settings.Search.Hint>检索本页设置…</ColonyKit.Settings.Search.Hint>
+	<ColonyKit.Settings.Search.NoResults>本页没有匹配的设置。</ColonyKit.Settings.Search.NoResults>
+	<ColonyKit.Settings.ControlMode>选项控件</ColonyKit.Settings.ControlMode>
+	<ColonyKit.Settings.ControlMode.Desc>点击卡片选择枚举/少选项设置的展示方式。</ColonyKit.Settings.ControlMode.Desc>
+	<ColonyKit.Settings.ControlMode.Pick>使用这种控件样式</ColonyKit.Settings.ControlMode.Pick>
+	<ColonyKit.Settings.ControlMode.Sample.Low>低</ColonyKit.Settings.ControlMode.Sample.Low>
+	<ColonyKit.Settings.ControlMode.Sample.Medium>中</ColonyKit.Settings.ControlMode.Sample.Medium>
+	<ColonyKit.Settings.ControlMode.Sample.High>高</ColonyKit.Settings.ControlMode.Sample.High>
+
+	<ColonyKit.Settings.Section.Language>语言</ColonyKit.Settings.Section.Language>
+	<ColonyKit.Settings.Language>界面语言</ColonyKit.Settings.Language>
+	<ColonyKit.Settings.Language.Desc>只改本 Mod 的设置窗口；游戏其他界面仍跟随游戏语言。</ColonyKit.Settings.Language.Desc>
+	<ColonyKit.Settings.Language.Auto>自动（跟随游戏）</ColonyKit.Settings.Language.Auto>
+	<ColonyKit.Settings.Language.English>English</ColonyKit.Settings.Language.English>
+	<ColonyKit.Settings.Language.ChineseSimplified>简体中文</ColonyKit.Settings.Language.ChineseSimplified>
+	<ColonyKit.Settings.ControlMode.Dropdown>下拉框</ColonyKit.Settings.ControlMode.Dropdown>
+	<ColonyKit.Settings.ControlMode.Cycle>◀ / ▶ 循环</ColonyKit.Settings.ControlMode.Cycle>
+	<ColonyKit.Settings.ControlMode.CheckCross>✓ / ✗ 打勾</ColonyKit.Settings.ControlMode.CheckCross>
+	<ColonyKit.Settings.Cycle.Previous>上一项</ColonyKit.Settings.Cycle.Previous>
+	<ColonyKit.Settings.Cycle.Next>下一项</ColonyKit.Settings.Cycle.Next>
+	<ColonyKit.Settings.CheckCross.Select>选择该项</ColonyKit.Settings.CheckCross.Select>
+	<ColonyKit.Settings.ResetPage>重置本页</ColonyKit.Settings.ResetPage>
+	<ColonyKit.Settings.ResetAll>全部重置</ColonyKit.Settings.ResetAll>
+	<ColonyKit.Settings.ResetAll.Confirm>确定把所有设置页恢复为默认值？</ColonyKit.Settings.ResetAll.Confirm>
+
+	<ColonyKit.Settings.Tab.General>常规</ColonyKit.Settings.Tab.General>
+	<ColonyKit.Settings.Tab.Logging>日志</ColonyKit.Settings.Tab.Logging>
+	<ColonyKit.Settings.Tab.About>关于</ColonyKit.Settings.Tab.About>
+
+	<ColonyKit.Settings.Section.Behavior>行为</ColonyKit.Settings.Section.Behavior>
+	<ColonyKit.Settings.Section.Notes>说明</ColonyKit.Settings.Section.Notes>
+	<ColonyKit.Settings.Section.Level>级别</ColonyKit.Settings.Section.Level>
+	<ColonyKit.Settings.Section.Output>输出</ColonyKit.Settings.Section.Output>
+	<ColonyKit.Settings.Section.Metadata>元数据</ColonyKit.Settings.Section.Metadata>
+	<ColonyKit.Settings.Section.DemoDef>演示 Def</ColonyKit.Settings.Section.DemoDef>
+
+	<ColonyKit.TrackSpawns>统计殖民者生成</ColonyKit.TrackSpawns>
+	<ColonyKit.TrackSpawns.Desc>统计本局殖民者的生成次数，并按设定间隔把总数写进日志。不改变玩法。</ColonyKit.TrackSpawns.Desc>
+	<ColonyKit.Settings.General.Hint>本页只做只读统计，不改变玩法。</ColonyKit.Settings.General.Hint>
+
+	<ColonyKit.Settings.Logging.Detail>统计明细</ColonyKit.Settings.Logging.Detail>
+	<ColonyKit.Settings.Logging.FrameworkLevel>框架日志级别</ColonyKit.Settings.Logging.FrameworkLevel>
+	<ColonyKit.LogLevel.Debug>调试</ColonyKit.LogLevel.Debug>
+	<ColonyKit.LogLevel.Info>信息</ColonyKit.LogLevel.Info>
+	<ColonyKit.LogLevel.Warn>警告</ColonyKit.LogLevel.Warn>
+	<ColonyKit.LogLevel.Error>错误</ColonyKit.LogLevel.Error>
+	<ColonyKit.Settings.LogDetail.Off>关闭</ColonyKit.Settings.LogDetail.Off>
+	<ColonyKit.Settings.LogDetail.Summary>摘要</ColonyKit.Settings.LogDetail.Summary>
+	<ColonyKit.Settings.LogDetail.Verbose>详细</ColonyKit.Settings.LogDetail.Verbose>
+
+	<ColonyKit.Settings.Logging.VerboseSpawn>记录每次生成</ColonyKit.Settings.Logging.VerboseSpawn>
+	<ColonyKit.Settings.Logging.VerboseSpawn.Desc>每生成一个殖民者写一行日志。</ColonyKit.Settings.Logging.VerboseSpawn.Desc>
+	<ColonyKit.Settings.Logging.VerboseSpawn.Locked>只有日志级别为「详细」时才可勾选。</ColonyKit.Settings.Logging.VerboseSpawn.Locked>
+
+	<ColonyKit.Settings.Logging.Interval>汇总间隔</ColonyKit.Settings.Logging.Interval>
+	<ColonyKit.Settings.Logging.IntervalValue>{0} tick（约 {1} 天）</ColonyKit.Settings.Logging.IntervalValue>
+	<ColonyKit.Settings.Logging.Prefix>日志前缀</ColonyKit.Settings.Logging.Prefix>
+	<ColonyKit.Settings.Logging.Prefix.Desc>留空表示 [ColonyKit]，最多 24 字符。</ColonyKit.Settings.Logging.Prefix.Desc>
+	<ColonyKit.Settings.Logging.EffectivePrefix>当前生效前缀：{0}</ColonyKit.Settings.Logging.EffectivePrefix>
+	<ColonyKit.Settings.Logging.TestLog>写一条测试日志</ColonyKit.Settings.Logging.TestLog>
+	<ColonyKit.Settings.Section.Diagnostics>诊断</ColonyKit.Settings.Section.Diagnostics>
+	<ColonyKit.Settings.Diagnostics.Hint>把设置、服务状态和最近日志写到 Config/ColonyKit-diagnostics.txt。</ColonyKit.Settings.Diagnostics.Hint>
+	<ColonyKit.Settings.Diagnostics.Dump>输出诊断报告</ColonyKit.Settings.Diagnostics.Dump>
+	<ColonyKit.Settings.Diagnostics.Reset>清空日志去重/节流状态</ColonyKit.Settings.Diagnostics.Reset>
+	<ColonyKit.Notification.Diagnostics>诊断报告已写入 Config/ColonyKit-diagnostics.txt。</ColonyKit.Notification.Diagnostics>
+
+	<ColonyKit.Settings.About.Name>名称：{0}</ColonyKit.Settings.About.Name>
+	<ColonyKit.Settings.About.PackageId>包名：{0}</ColonyKit.Settings.About.PackageId>
+	<ColonyKit.Settings.About.Version>版本：{0}</ColonyKit.Settings.About.Version>
+	<ColonyKit.Settings.About.Greeting>XML 问候语：{0}</ColonyKit.Settings.About.Greeting>
+	<ColonyKit.Settings.About.Note>补丁备注：{0}</ColonyKit.Settings.About.Note>
+	<ColonyKit.Settings.About.Hint>只读页；同时用来验证 XML → DefOf → UI 这条链路。</ColonyKit.Settings.About.Hint>
+
+	<ColonyKit.Settings.Section.TechTree>科技树</ColonyKit.Settings.Section.TechTree>
+	<ColonyKit.Settings.TechTree.Hint>打开独立的科技树窗口：按前置分层、可滚动、点击节点设为当前研究。</ColonyKit.Settings.TechTree.Hint>
+	<ColonyKit.Settings.TechTree.Open>打开科技树</ColonyKit.Settings.TechTree.Open>
+	<ColonyKit.TechTree.Mode.Tiers>布局：按前置</ColonyKit.TechTree.Mode.Tiers>
+	<ColonyKit.TechTree.Mode.Vanilla>布局：原版坐标</ColonyKit.TechTree.Mode.Vanilla>
+	<ColonyKit.TechTree.Summary>{0} 个节点 · {1}</ColonyKit.TechTree.Summary>
+	<ColonyKit.TechTree.BuildFailed>科技树构建失败，详见 Player.log。</ColonyKit.TechTree.BuildFailed>
+	<ColonyKit.TechTree.Tooltip.Cost>花费：{0}</ColonyKit.TechTree.Tooltip.Cost>
+	<ColonyKit.TechTree.Tooltip.Prerequisites>前置：{0}</ColonyKit.TechTree.Tooltip.Prerequisites>
+	<ColonyKit.TechTree.Tooltip.None>无</ColonyKit.TechTree.Tooltip.None>
+	<ColonyKit.TechTree.Tooltip.Click>点击设为当前研究</ColonyKit.TechTree.Tooltip.Click>
+	<ColonyKit.TechTree.Tooltip.Finished>已完成</ColonyKit.TechTree.Tooltip.Finished>
+	<ColonyKit.TechTree.Tooltip.Available>可研究</ColonyKit.TechTree.Tooltip.Available>
+	<ColonyKit.TechTree.Tooltip.Locked>未解锁</ColonyKit.TechTree.Tooltip.Locked>
+
+	<ColonyKit.Settings.Section.Interface>界面</ColonyKit.Settings.Section.Interface>
+	<ColonyKit.Settings.Section.Throttle>节流</ColonyKit.Settings.Section.Throttle>
+	<ColonyKit.Settings.Section.Test>测试</ColonyKit.Settings.Section.Test>
+	<ColonyKit.EnablePawnMenu>启用右键小人菜单</ColonyKit.EnablePawnMenu>
+	<ColonyKit.EnablePawnMenu.Desc>右键殖民者时显示本 Mod 追加的菜单项。</ColonyKit.EnablePawnMenu.Desc>
+	<ColonyKit.ShowTechTreeButton>显示科技树按钮</ColonyKit.ShowTechTreeButton>
+	<ColonyKit.ShowTechTreeButton.Desc>在底部主菜单显示「科技树」按钮。</ColonyKit.ShowTechTreeButton.Desc>
+
+	<ColonyKit.Settings.Tab.Notifications>通知</ColonyKit.Settings.Tab.Notifications>
+	<ColonyKit.Settings.Notifications.Enabled>启用通知</ColonyKit.Settings.Notifications.Enabled>
+	<ColonyKit.Settings.Notifications.Enabled.Desc>关闭后 NotificationService 不再发送消息和信件。</ColonyKit.Settings.Notifications.Enabled.Desc>
+	<ColonyKit.Settings.Notifications.Cooldown>节流冷却</ColonyKit.Settings.Notifications.Cooldown>
+	<ColonyKit.Settings.Notifications.CooldownValue>{0} tick</ColonyKit.Settings.Notifications.CooldownValue>
+	<ColonyKit.Settings.Notifications.TestHint>下面三个按钮直接调用 NotificationService。</ColonyKit.Settings.Notifications.TestHint>
+	<ColonyKit.Settings.Notifications.TestMessage>发送测试消息</ColonyKit.Settings.Notifications.TestMessage>
+	<ColonyKit.Settings.Notifications.TestLetter>发送测试信件</ColonyKit.Settings.Notifications.TestLetter>
+	<ColonyKit.Settings.Notifications.TestThrottled>测试节流消息</ColonyKit.Settings.Notifications.TestThrottled>
+
+	<ColonyKit.Notification.TestMessage>ColonyKit 测试消息。</ColonyKit.Notification.TestMessage>
+	<ColonyKit.Notification.TestLetterLabel>ColonyKit</ColonyKit.Notification.TestLetterLabel>
+	<ColonyKit.Notification.TestLetterText>这是一封来自 ColonyKit 的测试信件。</ColonyKit.Notification.TestLetterText>
+	<ColonyKit.Notification.TestThrottled>节流测试消息（每个冷却周期最多一次）。</ColonyKit.Notification.TestThrottled>
+	<ColonyKit.Notification.PawnLogged>已记录 {0}。</ColonyKit.Notification.PawnLogged>
+	<ColonyKit.Notification.SelfTest>ColonyKit 自检通知。</ColonyKit.Notification.SelfTest>
+
+	<ColonyKit.Menu.LogPawn>记录该殖民者</ColonyKit.Menu.LogPawn>
+	<ColonyKit.Menu.BuildWall>在附近建造演示墙</ColonyKit.Menu.BuildWall>
+	<ColonyKit.Build.OutOfBounds>目标格在地图外。</ColonyKit.Build.OutOfBounds>
+	<ColonyKit.Build.Rejected>这里不能建造。</ColonyKit.Build.Rejected>
+
+	<ColonyKit.Settings.Tab.Modules>模块</ColonyKit.Settings.Tab.Modules>
+	<ColonyKit.Settings.Section.Modules>模块</ColonyKit.Settings.Section.Modules>
+	<ColonyKit.Settings.Modules.Hint>关闭可选模块，不需要卸载 Mod；内核与设置不能关闭。</ColonyKit.Settings.Modules.Hint>
+	<ColonyKit.Settings.Modules.RestartHint>部分补丁与静态注册需要重启游戏才完全生效。</ColonyKit.Settings.Modules.RestartHint>
+	<ColonyKit.Settings.Module.Locked>始终启用。</ColonyKit.Settings.Module.Locked>
+	<ColonyKit.Module.Disabled>该模块已在设置里关闭。</ColonyKit.Module.Disabled>
+	<ColonyKit.Build.ModuleDisabled>建造控制模块已关闭。</ColonyKit.Build.ModuleDisabled>
+
+	<ColonyKit.Module.Core.Name>内核</ColonyKit.Module.Core.Name>
+	<ColonyKit.Module.Core.Desc>Mod 入口、Bootstrap、设置与日志，始终启用。</ColonyKit.Module.Core.Desc>
+	<ColonyKit.Module.PawnMenu.Name>右键小人菜单</ColonyKit.Module.PawnMenu.Name>
+	<ColonyKit.Module.PawnMenu.Desc>给殖民者追加右键菜单项。</ColonyKit.Module.PawnMenu.Desc>
+	<ColonyKit.Module.Notifications.Name>通知</ColonyKit.Module.Notifications.Name>
+	<ColonyKit.Module.Notifications.Desc>消息、信件与节流通知。</ColonyKit.Module.Notifications.Desc>
+	<ColonyKit.Module.Build.Name>建筑建造</ColonyKit.Module.Build.Name>
+	<ColonyKit.Module.Build.Desc>放置规则与程序化蓝图。</ColonyKit.Module.Build.Desc>
+	<ColonyKit.Module.TechTree.Name>科技树</ColonyKit.Module.TechTree.Name>
+	<ColonyKit.Module.TechTree.Desc>科技树窗口与底部按钮。</ColonyKit.Module.TechTree.Desc>
+	<ColonyKit.Module.Diagnostics.Name>诊断</ColonyKit.Module.Diagnostics.Name>
+	<ColonyKit.Module.Diagnostics.Desc>日志缓冲与诊断报告。</ColonyKit.Module.Diagnostics.Desc>
+
+	<ColonyKit.Module.Hygiene.Name>淋浴</ColonyKit.Module.Hygiene.Name>
+	<ColonyKit.Module.Hygiene.Desc>卫生需求、淋浴与热水；参考 DBH 的淋浴实现。</ColonyKit.Module.Hygiene.Desc>
+	<ColonyKit.Module.Storage.Name>立体库 / 物品堆叠</ColonyKit.Module.Storage.Name>
+	<ColonyKit.Module.Storage.Desc>立体库与堆叠作业；参考 StackXXL 的仓库实现。</ColonyKit.Module.Storage.Desc>
+	<ColonyKit.Module.Localization.Name>汉化</ColonyKit.Module.Localization.Name>
+	<ColonyKit.Module.Localization.Desc>文本替换与汉化管线；参考 DevMenuChinese。</ColonyKit.Module.Localization.Desc>
+	<ColonyKit.Module.Rjw.Name>RJW 集成</ColonyKit.Module.Rjw.Name>
+	<ColonyKit.Module.Rjw.Desc>只做兼容补丁，不复制 RJW 主体。</ColonyKit.Module.Rjw.Desc>
+
+	<ColonyKit.Settings.Tab.Localization>汉化</ColonyKit.Settings.Tab.Localization>
+	<ColonyKit.Settings.Section.Localization>开发者菜单汉化</ColonyKit.Settings.Section.Localization>
+	<ColonyKit.Settings.Section.TranslationScheme>翻译方案</ColonyKit.Settings.Section.TranslationScheme>
+	<ColonyKit.Settings.Localization.Enabled>启用开发者菜单汉化</ColonyKit.Settings.Localization.Enabled>
+	<ColonyKit.Settings.Localization.Enabled.Desc>只替换开发者模式 Debug 菜单的显示文本，不改玩法、Def 或存档。</ColonyKit.Settings.Localization.Enabled.Desc>
+	<ColonyKit.Settings.Localization.Conflict>检测到 DevMenuChinese 同时启用；两个补丁都会处理标签，建议只保留一个。本模块仍按当前方案翻译全部 34 个菜单组。</ColonyKit.Settings.Localization.Conflict>
+	<ColonyKit.Settings.Localization.NotLoaded>翻译表尚未加载；检查 Translations/DevMenuLabels.xml 或点“重新加载”。</ColonyKit.Settings.Localization.NotLoaded>
+	<ColonyKit.Settings.Localization.Status>词条 {0} / 菜单 {1} / 当前生效 {2}</ColonyKit.Settings.Localization.Status>
+	<ColonyKit.Settings.Localization.Source>翻译表：{0}</ColonyKit.Settings.Localization.Source>
+	<ColonyKit.Settings.Localization.CurrentScheme>当前方案：{0}</ColonyKit.Settings.Localization.CurrentScheme>
+	<ColonyKit.Settings.Localization.EditSchemes>编辑翻译方案</ColonyKit.Settings.Localization.EditSchemes>
+	<ColonyKit.Settings.Localization.Reload>重新加载翻译表</ColonyKit.Settings.Localization.Reload>
+	<ColonyKit.Settings.Localization.Reloaded>翻译表已重新加载：{0} 词条 / {1} 菜单。</ColonyKit.Settings.Localization.Reloaded>
+	<ColonyKit.Settings.Localization.Hint>开发者菜单只在开启开发者模式后可见；改方案后重开 Debug 菜单即可生效，翻译表改动建议重启游戏。</ColonyKit.Settings.Localization.Hint>
+</LanguageData>

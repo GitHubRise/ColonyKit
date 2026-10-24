@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 设置页字符串。键名对应 Source/Settings 下的 Translate 调用。 -->
+<LanguageData>
+	<ColonyKit.SettingsCategory>Colony Kit</ColonyKit.SettingsCategory>
+
+	<ColonyKit.Settings.Hint>Changes apply immediately; they are saved when this window closes.</ColonyKit.Settings.Hint>
+	<ColonyKit.Settings.Search.Hint>Search this page…</ColonyKit.Settings.Search.Hint>
+	<ColonyKit.Settings.Search.NoResults>No matching setting on this page.</ColonyKit.Settings.Search.NoResults>
+	<ColonyKit.Settings.ControlMode>Option control</ColonyKit.Settings.ControlMode>
+	<ColonyKit.Settings.ControlMode.Desc>Click a card to choose how enum / small-option settings are shown.</ColonyKit.Settings.ControlMode.Desc>
+	<ColonyKit.Settings.ControlMode.Pick>Use this control style</ColonyKit.Settings.ControlMode.Pick>
+	<ColonyKit.Settings.ControlMode.Sample.Low>Low</ColonyKit.Settings.ControlMode.Sample.Low>
+	<ColonyKit.Settings.ControlMode.Sample.Medium>Medium</ColonyKit.Settings.ControlMode.Sample.Medium>
+	<ColonyKit.Settings.ControlMode.Sample.High>High</ColonyKit.Settings.ControlMode.Sample.High>
+
+	<ColonyKit.Settings.Section.Language>Language</ColonyKit.Settings.Section.Language>
+	<ColonyKit.Settings.Language>UI language</ColonyKit.Settings.Language>
+	<ColonyKit.Settings.Language.Desc>Only changes this mod's settings window; the rest of the game keeps its language.</ColonyKit.Settings.Language.Desc>
+	<ColonyKit.Settings.Language.Auto>Auto (game language)</ColonyKit.Settings.Language.Auto>
+	<ColonyKit.Settings.Language.English>English</ColonyKit.Settings.Language.English>
+	<ColonyKit.Settings.Language.ChineseSimplified>简体中文</ColonyKit.Settings.Language.ChineseSimplified>
+	<ColonyKit.Settings.ControlMode.Dropdown>Dropdown</ColonyKit.Settings.ControlMode.Dropdown>
+	<ColonyKit.Settings.ControlMode.Cycle>◀ / ▶ cycle</ColonyKit.Settings.ControlMode.Cycle>
+	<ColonyKit.Settings.ControlMode.CheckCross>✓ / ✗ marks</ColonyKit.Settings.ControlMode.CheckCross>
+	<ColonyKit.Settings.Cycle.Previous>Previous option</ColonyKit.Settings.Cycle.Previous>
+	<ColonyKit.Settings.Cycle.Next>Next option</ColonyKit.Settings.Cycle.Next>
+	<ColonyKit.Settings.CheckCross.Select>Select this option</ColonyKit.Settings.CheckCross.Select>
+	<ColonyKit.Settings.ResetPage>Reset page</ColonyKit.Settings.ResetPage>
+	<ColonyKit.Settings.ResetAll>Reset all</ColonyKit.Settings.ResetAll>
+	<ColonyKit.Settings.ResetAll.Confirm>Reset every settings page to its defaults?</ColonyKit.Settings.ResetAll.Confirm>
+
+	<ColonyKit.Settings.Tab.General>General</ColonyKit.Settings.Tab.General>
+	<ColonyKit.Settings.Tab.Logging>Logging</ColonyKit.Settings.Tab.Logging>
+	<ColonyKit.Settings.Tab.About>About</ColonyKit.Settings.Tab.About>
+
+	<ColonyKit.Settings.Section.Behavior>Behavior</ColonyKit.Settings.Section.Behavior>
+	<ColonyKit.Settings.Section.Notes>Notes</ColonyKit.Settings.Section.Notes>
+	<ColonyKit.Settings.Section.Level>Level</ColonyKit.Settings.Section.Level>
+	<ColonyKit.Settings.Section.Output>Output</ColonyKit.Settings.Section.Output>
+	<ColonyKit.Settings.Section.Metadata>Metadata</ColonyKit.Settings.Section.Metadata>
+	<ColonyKit.Settings.Section.DemoDef>Demo Def</ColonyKit.Settings.Section.DemoDef>
+
+	<ColonyKit.TrackSpawns>Track colonist spawns</ColonyKit.TrackSpawns>
+	<ColonyKit.TrackSpawns.Desc>Counts colonist spawns in the current game and logs the total at the configured interval. This does not change gameplay.</ColonyKit.TrackSpawns.Desc>
+	<ColonyKit.Settings.General.Hint>This page only counts spawns; it never changes gameplay.</ColonyKit.Settings.General.Hint>
+
+	<ColonyKit.Settings.Logging.Detail>Stat detail</ColonyKit.Settings.Logging.Detail>
+	<ColonyKit.Settings.Logging.FrameworkLevel>Framework log level</ColonyKit.Settings.Logging.FrameworkLevel>
+	<ColonyKit.LogLevel.Debug>Debug</ColonyKit.LogLevel.Debug>
+	<ColonyKit.LogLevel.Info>Info</ColonyKit.LogLevel.Info>
+	<ColonyKit.LogLevel.Warn>Warn</ColonyKit.LogLevel.Warn>
+	<ColonyKit.LogLevel.Error>Error</ColonyKit.LogLevel.Error>
+	<ColonyKit.Settings.LogDetail.Off>Off</ColonyKit.Settings.LogDetail.Off>
+	<ColonyKit.Settings.LogDetail.Summary>Summary</ColonyKit.Settings.LogDetail.Summary>
+	<ColonyKit.Settings.LogDetail.Verbose>Verbose</ColonyKit.Settings.LogDetail.Verbose>
+
+	<ColonyKit.Settings.Logging.VerboseSpawn>Log every spawn</ColonyKit.Settings.Logging.VerboseSpawn>
+	<ColonyKit.Settings.Logging.VerboseSpawn.Desc>Write one line for each colonist spawn.</ColonyKit.Settings.Logging.VerboseSpawn.Desc>
+	<ColonyKit.Settings.Logging.VerboseSpawn.Locked>Available only when log level is Verbose.</ColonyKit.Settings.Logging.VerboseSpawn.Locked>
+
+	<ColonyKit.Settings.Logging.Interval>Summary interval</ColonyKit.Settings.Logging.Interval>
+	<ColonyKit.Settings.Logging.IntervalValue>{0} ticks (~{1} days)</ColonyKit.Settings.Logging.IntervalValue>
+	<ColonyKit.Settings.Logging.Prefix>Log prefix</ColonyKit.Settings.Logging.Prefix>
+	<ColonyKit.Settings.Logging.Prefix.Desc>Empty means [ColonyKit]. Max 24 characters.</ColonyKit.Settings.Logging.Prefix.Desc>
+	<ColonyKit.Settings.Logging.EffectivePrefix>Effective prefix: {0}</ColonyKit.Settings.Logging.EffectivePrefix>
+	<ColonyKit.Settings.Logging.TestLog>Write a test log line</ColonyKit.Settings.Logging.TestLog>
+	<ColonyKit.Settings.Section.Diagnostics>Diagnostics</ColonyKit.Settings.Section.Diagnostics>
+	<ColonyKit.Settings.Diagnostics.Hint>Write a report with settings, service state and recent logs to Config/ColonyKit-diagnostics.txt.</ColonyKit.Settings.Diagnostics.Hint>
+	<ColonyKit.Settings.Diagnostics.Dump>Write diagnostics report</ColonyKit.Settings.Diagnostics.Dump>
+	<ColonyKit.Settings.Diagnostics.Reset>Reset log dedup/throttle state</ColonyKit.Settings.Diagnostics.Reset>
+	<ColonyKit.Notification.Diagnostics>Diagnostics report written to Config/ColonyKit-diagnostics.txt.</ColonyKit.Notification.Diagnostics>
+
+	<ColonyKit.Settings.About.Name>Name: {0}</ColonyKit.Settings.About.Name>
+	<ColonyKit.Settings.About.PackageId>PackageId: {0}</ColonyKit.Settings.About.PackageId>
+	<ColonyKit.Settings.About.Version>Version: {0}</ColonyKit.Settings.About.Version>
+	<ColonyKit.Settings.About.Greeting>XML greeting: {0}</ColonyKit.Settings.About.Greeting>
+	<ColonyKit.Settings.About.Note>Patch note: {0}</ColonyKit.Settings.About.Note>
+	<ColonyKit.Settings.About.Hint>Read-only. It also proves the XML to DefOf to UI chain works.</ColonyKit.Settings.About.Hint>
+
+	<ColonyKit.Settings.Section.TechTree>Tech tree</ColonyKit.Settings.Section.TechTree>
+	<ColonyKit.Settings.TechTree.Hint>Opens a custom tech tree window: prerequisite-based layout, scroll, click to select research.</ColonyKit.Settings.TechTree.Hint>
+	<ColonyKit.Settings.TechTree.Open>Open tech tree</ColonyKit.Settings.TechTree.Open>
+	<ColonyKit.TechTree.Mode.Tiers>Layout: prerequisites</ColonyKit.TechTree.Mode.Tiers>
+	<ColonyKit.TechTree.Mode.Vanilla>Layout: vanilla coords</ColonyKit.TechTree.Mode.Vanilla>
+	<ColonyKit.TechTree.Summary>{0} nodes in {1}</ColonyKit.TechTree.Summary>
+	<ColonyKit.TechTree.BuildFailed>Tech tree build failed; see Player.log.</ColonyKit.TechTree.BuildFailed>
+	<ColonyKit.TechTree.Tooltip.Cost>Cost: {0}</ColonyKit.TechTree.Tooltip.Cost>
+	<ColonyKit.TechTree.Tooltip.Prerequisites>Prerequisites: {0}</ColonyKit.TechTree.Tooltip.Prerequisites>
+	<ColonyKit.TechTree.Tooltip.None>none</ColonyKit.TechTree.Tooltip.None>
+	<ColonyKit.TechTree.Tooltip.Click>Click to set as current research</ColonyKit.TechTree.Tooltip.Click>
+	<ColonyKit.TechTree.Tooltip.Finished>Finished</ColonyKit.TechTree.Tooltip.Finished>
+	<ColonyKit.TechTree.Tooltip.Available>Available</ColonyKit.TechTree.Tooltip.Available>
+	<ColonyKit.TechTree.Tooltip.Locked>Locked</ColonyKit.TechTree.Tooltip.Locked>
+
+	<ColonyKit.Settings.Section.Interface>Interface</ColonyKit.Settings.Section.Interface>
+	<ColonyKit.Settings.Section.Throttle>Throttling</ColonyKit.Settings.Section.Throttle>
+	<ColonyKit.Settings.Section.Test>Test</ColonyKit.Settings.Section.Test>
+	<ColonyKit.EnablePawnMenu>Enable pawn context menu</ColonyKit.EnablePawnMenu>
+	<ColonyKit.EnablePawnMenu.Desc>Show the extra options this mod adds when right-clicking a colonist.</ColonyKit.EnablePawnMenu.Desc>
+	<ColonyKit.ShowTechTreeButton>Show tech tree button</ColonyKit.ShowTechTreeButton>
+	<ColonyKit.ShowTechTreeButton.Desc>Show a "Tech tree" button in the bottom main bar.</ColonyKit.ShowTechTreeButton.Desc>
+
+	<ColonyKit.Settings.Tab.Notifications>Notifications</ColonyKit.Settings.Tab.Notifications>
+	<ColonyKit.Settings.Notifications.Enabled>Enable notifications</ColonyKit.Settings.Notifications.Enabled>
+	<ColonyKit.Settings.Notifications.Enabled.Desc>Turn off to silence messages and letters sent through NotificationService.</ColonyKit.Settings.Notifications.Enabled.Desc>
+	<ColonyKit.Settings.Notifications.Cooldown>Throttle cooldown</ColonyKit.Settings.Notifications.Cooldown>
+	<ColonyKit.Settings.Notifications.CooldownValue>{0} ticks</ColonyKit.Settings.Notifications.CooldownValue>
+	<ColonyKit.Settings.Notifications.TestHint>These buttons call NotificationService directly.</ColonyKit.Settings.Notifications.TestHint>
+	<ColonyKit.Settings.Notifications.TestMessage>Send test message</ColonyKit.Settings.Notifications.TestMessage>
+	<ColonyKit.Settings.Notifications.TestLetter>Send test letter</ColonyKit.Settings.Notifications.TestLetter>
+	<ColonyKit.Settings.Notifications.TestThrottled>Test throttled message</ColonyKit.Settings.Notifications.TestThrottled>
+
+	<ColonyKit.Notification.TestMessage>ColonyKit test message.</ColonyKit.Notification.TestMessage>
+	<ColonyKit.Notification.TestLetterLabel>ColonyKit</ColonyKit.Notification.TestLetterLabel>
+	<ColonyKit.Notification.TestLetterText>This is a test letter from ColonyKit.</ColonyKit.Notification.TestLetterText>
+	<ColonyKit.Notification.TestThrottled>Throttled test message (at most once per cooldown).</ColonyKit.Notification.TestThrottled>
+	<ColonyKit.Notification.PawnLogged>{0} logged.</ColonyKit.Notification.PawnLogged>
+	<ColonyKit.Notification.SelfTest>ColonyKit self-test notification.</ColonyKit.Notification.SelfTest>
+
+	<ColonyKit.Menu.LogPawn>Log this pawn</ColonyKit.Menu.LogPawn>
+	<ColonyKit.Menu.BuildWall>Build a demo wall nearby</ColonyKit.Menu.BuildWall>
+	<ColonyKit.Build.OutOfBounds>Target cell is out of bounds.</ColonyKit.Build.OutOfBounds>
+	<ColonyKit.Build.Rejected>Cannot build here.</ColonyKit.Build.Rejected>
+
+	<ColonyKit.Settings.Tab.Modules>Modules</ColonyKit.Settings.Tab.Modules>
+	<ColonyKit.Settings.Section.Modules>Modules</ColonyKit.Settings.Section.Modules>
+	<ColonyKit.Settings.Modules.Hint>Turn optional modules off without removing the mod. Core and settings cannot be disabled.</ColonyKit.Settings.Modules.Hint>
+	<ColonyKit.Settings.Modules.RestartHint>Some patches and static registrations take effect after a restart.</ColonyKit.Settings.Modules.RestartHint>
+	<ColonyKit.Settings.Module.Locked>Always enabled.</ColonyKit.Settings.Module.Locked>
+	<ColonyKit.Module.Disabled>That module is disabled in settings.</ColonyKit.Module.Disabled>
+	<ColonyKit.Build.ModuleDisabled>Building control module is disabled.</ColonyKit.Build.ModuleDisabled>
+
+	<ColonyKit.Module.Core.Name>Core</ColonyKit.Module.Core.Name>
+	<ColonyKit.Module.Core.Desc>Mod entry, bootstrap, settings and logging. Always on.</ColonyKit.Module.Core.Desc>
+	<ColonyKit.Module.PawnMenu.Name>Pawn context menu</ColonyKit.Module.PawnMenu.Name>
+	<ColonyKit.Module.PawnMenu.Desc>Extra right-click options on colonists.</ColonyKit.Module.PawnMenu.Desc>
+	<ColonyKit.Module.Notifications.Name>Notifications</ColonyKit.Module.Notifications.Name>
+	<ColonyKit.Module.Notifications.Desc>Messages, letters and throttled notifications.</ColonyKit.Module.Notifications.Desc>
+	<ColonyKit.Module.Build.Name>Building control</ColonyKit.Module.Build.Name>
+	<ColonyKit.Module.Build.Desc>Placement rules and programmatic blueprints.</ColonyKit.Module.Build.Desc>
+	<ColonyKit.Module.TechTree.Name>Tech tree</ColonyKit.Module.TechTree.Name>
+	<ColonyKit.Module.TechTree.Desc>Tech tree window and bottom-bar button.</ColonyKit.Module.TechTree.Desc>
+	<ColonyKit.Module.Diagnostics.Name>Diagnostics</ColonyKit.Module.Diagnostics.Name>
+	<ColonyKit.Module.Diagnostics.Desc>Log buffer and diagnostics report.</ColonyKit.Module.Diagnostics.Desc>
+
+	<ColonyKit.Module.Hygiene.Name>Shower</ColonyKit.Module.Hygiene.Name>
+	<ColonyKit.Module.Hygiene.Desc>Hygiene need, shower and hot water; based on DBH.</ColonyKit.Module.Hygiene.Desc>
+	<ColonyKit.Module.Storage.Name>Warehouse / stacking</ColonyKit.Module.Storage.Name>
+	<ColonyKit.Module.Storage.Desc>Warehouse and stacking jobs; based on StackXXL.</ColonyKit.Module.Storage.Desc>
+	<ColonyKit.Module.Localization.Name>Localization</ColonyKit.Module.Localization.Name>
+	<ColonyKit.Module.Localization.Desc>Text replacement and Chinese localization; based on DevMenuChinese.</ColonyKit.Module.Localization.Desc>
+	<ColonyKit.Module.Rjw.Name>RJW integration</ColonyKit.Module.Rjw.Name>
+	<ColonyKit.Module.Rjw.Desc>Compatibility patches only; RJW itself is not copied.</ColonyKit.Module.Rjw.Desc>
+
+	<ColonyKit.Settings.Tab.Localization>Localization</ColonyKit.Settings.Tab.Localization>
+	<ColonyKit.Settings.Section.Localization>Dev menu localization</ColonyKit.Settings.Section.Localization>
+	<ColonyKit.Settings.Section.TranslationScheme>Translation scheme</ColonyKit.Settings.Section.TranslationScheme>
+	<ColonyKit.Settings.Localization.Enabled>Enable dev menu localization</ColonyKit.Settings.Localization.Enabled>
+	<ColonyKit.Settings.Localization.Enabled.Desc>Only replaces labels in the developer Debug menu; gameplay, Defs and saves are untouched.</ColonyKit.Settings.Localization.Enabled.Desc>
+	<ColonyKit.Settings.Localization.Conflict>DevMenuChinese is also active; both patches process labels, so keeping one is recommended. This module still translates all 34 menu groups.</ColonyKit.Settings.Localization.Conflict>
+	<ColonyKit.Settings.Localization.NotLoaded>Translation table is not loaded; check Translations/DevMenuLabels.xml or click Reload.</ColonyKit.Settings.Localization.NotLoaded>
+	<ColonyKit.Settings.Localization.Status>Entries {0} / menus {1} / enabled {2}</ColonyKit.Settings.Localization.Status>
+	<ColonyKit.Settings.Localization.Source>Table: {0}</ColonyKit.Settings.Localization.Source>
+	<ColonyKit.Settings.Localization.CurrentScheme>Current scheme: {0}</ColonyKit.Settings.Localization.CurrentScheme>
+	<ColonyKit.Settings.Localization.EditSchemes>Edit schemes</ColonyKit.Settings.Localization.EditSchemes>
+	<ColonyKit.Settings.Localization.Reload>Reload table</ColonyKit.Settings.Localization.Reload>
+	<ColonyKit.Settings.Localization.Reloaded>Table reloaded: {0} entries / {1} menus.</ColonyKit.Settings.Localization.Reloaded>
+	<ColonyKit.Settings.Localization.Hint>Dev menus are only visible in developer mode. Reopen the Debug menu after changing schemes; restart after editing the XML table.</ColonyKit.Settings.Localization.Hint>
+</LanguageData>
