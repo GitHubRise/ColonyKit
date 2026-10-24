@@ -16,7 +16,9 @@ namespace ModTemplate
 	{
 		private static readonly Dictionary<string, int> nextAllowedTick = new Dictionary<string, int>();
 
-		public static bool Enabled => ModTemplateMod.Settings?.notifications?.enabled ?? true;
+		public static bool Enabled =>
+			ModuleRegistry.IsEnabled("notifications")
+			&& (ModTemplateMod.Settings?.notifications?.enabled ?? true);
 
 		/// <summary>当前节流表里有多少个 key（诊断用）。</summary>
 		public static int ThrottleCount => nextAllowedTick.Count;

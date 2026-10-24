@@ -77,7 +77,8 @@ namespace ModTemplate
 			}
 
 			if (def.defName == TechTreeButtonDefName
-				&& !(ModTemplateMod.Settings?.general?.showTechTreeButton ?? true))
+				&& (!ModuleRegistry.IsEnabled("tech-tree")
+					|| !(ModTemplateMod.Settings?.general?.showTechTreeButton ?? true)))
 			{
 				return false;
 			}

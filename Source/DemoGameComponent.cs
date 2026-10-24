@@ -48,9 +48,8 @@ namespace ModTemplate
 		{
 			base.FinalizeInit();
 
-			// 新游戏/读档后 tick 会重新计数，清掉上一局留下的去重与节流状态。
-			ModLog.ResetRuntimeState();
-			NotificationService.ResetThrottle();
+			// 新游戏/读档后 tick 会重新计数，让各模块清掉上一局留下的静态状态。
+			ModuleRegistry.NotifyGameLoaded(Current.Game);
 
 			if (GenCommandLine.CommandLineArgPassed("modtemplate-techtree") && Find.WindowStack != null)
 			{

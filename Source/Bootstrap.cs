@@ -25,6 +25,9 @@ namespace ModTemplate
 				// id 用 packageId，保证和别的 Mod 不冲突。
 				new Harmony("local.modtemplate").PatchAll(typeof(Bootstrap).Assembly);
 
+				RegisterModules();
+				ModuleRegistry.InitAll();
+
 				// 自检：能读到 DefOf 就说明 XML → 类型 → 绑定这条链路是通的。
 				// note 为空表示可选补丁没有命中（例如没装 Biotech）。
 				DemoConfigDef config = ModTemplateDefOf.Default;
@@ -36,6 +39,16 @@ namespace ModTemplate
 			{
 				ModLog.Error("Bootstrap", "bootstrap failed", e);
 			}
+		}
+
+		private static void RegisterModules()
+		{
+			ModuleRegistry.Register(new CoreModule());
+			ModuleRegistry.Register(new PawnMenuModule());
+			ModuleRegistry.Register(new NotificationModule());
+			ModuleRegistry.Register(new BuildModule());
+			ModuleRegistry.Register(new TechTreeModule());
+			ModuleRegistry.Register(new DiagnosticsModule());
 		}
 	}
 }

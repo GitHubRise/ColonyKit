@@ -45,6 +45,7 @@ namespace ModTemplate
 			// 页面按 Order 排序；Visible 留给以后按 DLC / 其他 Mod 隐藏。
 			pages = new List<SettingsPage>
 			{
+				new ModulesSettingsPage(),
 				new GeneralSettingsPage(),
 				new LoggingSettingsPage(),
 				new NotificationSettingsPage(),

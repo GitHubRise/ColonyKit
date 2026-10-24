@@ -110,7 +110,9 @@ namespace ModTemplate
 		/// <summary>按设置与条件生成当前小人的菜单项。</summary>
 		public static IEnumerable<FloatMenuOption> GetOptions(Pawn pawn)
 		{
-			if (pawn == null || !(ModTemplateMod.Settings?.general?.enablePawnMenu ?? true))
+			if (pawn == null
+				|| !ModuleRegistry.IsEnabled("pawn-menu")
+				|| !(ModTemplateMod.Settings?.general?.enablePawnMenu ?? true))
 			{
 				yield break;
 			}

@@ -100,4 +100,25 @@
 	<ModTemplate.Menu.BuildWall>Build a demo wall nearby</ModTemplate.Menu.BuildWall>
 	<ModTemplate.Build.OutOfBounds>Target cell is out of bounds.</ModTemplate.Build.OutOfBounds>
 	<ModTemplate.Build.Rejected>Cannot build here.</ModTemplate.Build.Rejected>
+
+	<ModTemplate.Settings.Tab.Modules>Modules</ModTemplate.Settings.Tab.Modules>
+	<ModTemplate.Settings.Section.Modules>Modules</ModTemplate.Settings.Section.Modules>
+	<ModTemplate.Settings.Modules.Hint>Turn optional modules off without removing the mod. Core and settings cannot be disabled.</ModTemplate.Settings.Modules.Hint>
+	<ModTemplate.Settings.Modules.RestartHint>Some patches and static registrations take effect after a restart.</ModTemplate.Settings.Modules.RestartHint>
+	<ModTemplate.Settings.Module.Locked>Always enabled.</ModTemplate.Settings.Module.Locked>
+	<ModTemplate.Module.Disabled>That module is disabled in settings.</ModTemplate.Module.Disabled>
+	<ModTemplate.Build.ModuleDisabled>Building control module is disabled.</ModTemplate.Build.ModuleDisabled>
+
+	<ModTemplate.Module.Core.Name>Core</ModTemplate.Module.Core.Name>
+	<ModTemplate.Module.Core.Desc>Mod entry, bootstrap, settings and logging. Always on.</ModTemplate.Module.Core.Desc>
+	<ModTemplate.Module.PawnMenu.Name>Pawn context menu</ModTemplate.Module.PawnMenu.Name>
+	<ModTemplate.Module.PawnMenu.Desc>Extra right-click options on colonists.</ModTemplate.Module.PawnMenu.Desc>
+	<ModTemplate.Module.Notifications.Name>Notifications</ModTemplate.Module.Notifications.Name>
+	<ModTemplate.Module.Notifications.Desc>Messages, letters and throttled notifications.</ModTemplate.Module.Notifications.Desc>
+	<ModTemplate.Module.Build.Name>Building control</ModTemplate.Module.Build.Name>
+	<ModTemplate.Module.Build.Desc>Placement rules and programmatic blueprints.</ModTemplate.Module.Build.Desc>
+	<ModTemplate.Module.TechTree.Name>Tech tree</ModTemplate.Module.TechTree.Name>
+	<ModTemplate.Module.TechTree.Desc>Tech tree window and bottom-bar button.</ModTemplate.Module.TechTree.Desc>
+	<ModTemplate.Module.Diagnostics.Name>Diagnostics</ModTemplate.Module.Diagnostics.Name>
+	<ModTemplate.Module.Diagnostics.Desc>Log buffer and diagnostics report.</ModTemplate.Module.Diagnostics.Desc>
 </LanguageData>

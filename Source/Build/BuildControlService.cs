@@ -83,6 +83,14 @@ namespace ModTemplate
 				return null;
 			}
 
+			if (!ModuleRegistry.IsEnabled("build-control"))
+			{
+				NotificationService.Message(
+					"ModTemplate.Build.ModuleDisabled".Translate(),
+					MessageTypeDefOf.RejectInput);
+				return null;
+			}
+
 			AcceptanceReport report = CanPlace(def, center, map, rot, stuff);
 			if (!report.Accepted)
 			{
@@ -106,7 +114,7 @@ namespace ModTemplate
 			ThingDef stuff,
 			AcceptanceReport current)
 		{
-			if (!current.Accepted || rules.Count == 0)
+			if (!current.Accepted || rules.Count == 0 || !ModuleRegistry.IsEnabled("build-control"))
 			{
 				return current;
 			}

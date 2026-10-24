@@ -1,3 +1,4 @@
+using RimWorld;
 using Verse;
 
 namespace ModTemplate
@@ -46,7 +47,16 @@ namespace ModTemplate
 
 			if (listing.ButtonText("ModTemplate.Settings.TechTree.Open".Translate()))
 			{
-				Find.WindowStack.Add(new TechTreeWindow());
+				if (!ModuleRegistry.IsEnabled("tech-tree"))
+				{
+					NotificationService.Message(
+						"ModTemplate.Module.Disabled".Translate(),
+						MessageTypeDefOf.RejectInput);
+				}
+				else
+				{
+					Find.WindowStack.Add(new TechTreeWindow());
+				}
 			}
 		}
 	}

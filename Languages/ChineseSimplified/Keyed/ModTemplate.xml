@@ -100,4 +100,25 @@
 	<ModTemplate.Menu.BuildWall>在附近建造演示墙</ModTemplate.Menu.BuildWall>
 	<ModTemplate.Build.OutOfBounds>目标格在地图外。</ModTemplate.Build.OutOfBounds>
 	<ModTemplate.Build.Rejected>这里不能建造。</ModTemplate.Build.Rejected>
+
+	<ModTemplate.Settings.Tab.Modules>模块</ModTemplate.Settings.Tab.Modules>
+	<ModTemplate.Settings.Section.Modules>模块</ModTemplate.Settings.Section.Modules>
+	<ModTemplate.Settings.Modules.Hint>关闭可选模块，不需要卸载 Mod；内核与设置不能关闭。</ModTemplate.Settings.Modules.Hint>
+	<ModTemplate.Settings.Modules.RestartHint>部分补丁与静态注册需要重启游戏才完全生效。</ModTemplate.Settings.Modules.RestartHint>
+	<ModTemplate.Settings.Module.Locked>始终启用。</ModTemplate.Settings.Module.Locked>
+	<ModTemplate.Module.Disabled>该模块已在设置里关闭。</ModTemplate.Module.Disabled>
+	<ModTemplate.Build.ModuleDisabled>建造控制模块已关闭。</ModTemplate.Build.ModuleDisabled>
+
+	<ModTemplate.Module.Core.Name>内核</ModTemplate.Module.Core.Name>
+	<ModTemplate.Module.Core.Desc>Mod 入口、Bootstrap、设置与日志，始终启用。</ModTemplate.Module.Core.Desc>
+	<ModTemplate.Module.PawnMenu.Name>右键小人菜单</ModTemplate.Module.PawnMenu.Name>
+	<ModTemplate.Module.PawnMenu.Desc>给殖民者追加右键菜单项。</ModTemplate.Module.PawnMenu.Desc>
+	<ModTemplate.Module.Notifications.Name>通知</ModTemplate.Module.Notifications.Name>
+	<ModTemplate.Module.Notifications.Desc>消息、信件与节流通知。</ModTemplate.Module.Notifications.Desc>
+	<ModTemplate.Module.Build.Name>建筑建造</ModTemplate.Module.Build.Name>
+	<ModTemplate.Module.Build.Desc>放置规则与程序化蓝图。</ModTemplate.Module.Build.Desc>
+	<ModTemplate.Module.TechTree.Name>科技树</ModTemplate.Module.TechTree.Name>
+	<ModTemplate.Module.TechTree.Desc>科技树窗口与底部按钮。</ModTemplate.Module.TechTree.Desc>
+	<ModTemplate.Module.Diagnostics.Name>诊断</ModTemplate.Module.Diagnostics.Name>
+	<ModTemplate.Module.Diagnostics.Desc>日志缓冲与诊断报告。</ModTemplate.Module.Diagnostics.Desc>
 </LanguageData>

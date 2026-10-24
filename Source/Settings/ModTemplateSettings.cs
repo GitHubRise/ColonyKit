@@ -22,6 +22,7 @@ namespace ModTemplate
 		public GeneralSettings general = new GeneralSettings();
 		public LoggingSettings logging = new LoggingSettings();
 		public NotificationSettings notifications = new NotificationSettings();
+		public ModuleSettings modules = new ModuleSettings();
 
 		public override void ExposeData()
 		{
@@ -32,11 +33,13 @@ namespace ModTemplate
 			Scribe_Deep.Look(ref general, "general");
 			Scribe_Deep.Look(ref logging, "logging");
 			Scribe_Deep.Look(ref notifications, "notifications");
+			Scribe_Deep.Look(ref modules, "modules");
 
 			// 老配置文件里没有这些节点时，用默认对象补上，避免后续空引用。
 			if (general == null) general = new GeneralSettings();
 			if (logging == null) logging = new LoggingSettings();
 			if (notifications == null) notifications = new NotificationSettings();
+			if (modules == null) modules = new ModuleSettings();
 		}
 	}
 }
