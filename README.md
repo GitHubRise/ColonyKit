@@ -7,6 +7,20 @@
 - 目标版本：1.6.4871（`net472` + `Krafs.Rimworld.Ref`）。
 - 依赖：Harmony（创意工坊 `2009463077`）。
 
+## 框架契约
+
+> **框架只提供契约，Mod 只通过契约接入；升级框架不改 Mod 代码，升级 Mod 不改框架文件。**
+
+- 契约面（公开 API）：
+  - 模块：`IModTemplateModule`、`ModTemplateModule`、`ModuleRegistry`；
+  - 服务：`PawnMenuService`、`NotificationService`、`BuildControlService`、`MainButtonService`；
+  - 设置：`SettingsPage`、`SettingsWidgets`、`SettingsSearch`；
+  - 日志/诊断：`ModLog`、`Diagnostics`；
+  - 本地化：`Languages/*/Keyed` 的键名。
+- 升级框架：不破坏上述公开签名和 Keyed 键；破坏性变更必须在 [CHANGELOG.md](CHANGELOG.md) 按 minor/major 说明迁移方式。
+- 升级 Mod：只新增/修改自己的模块、服务、资源与翻译，不修改框架的 `Bootstrap`、`SettingsController`、`About` 和核心 `Defs`。
+- **0.0.1 边界**：模块仍编译在同一个 DLL，模块注册与设置页列表仍有核心侧硬编码；独立程序集、页面贡献、补丁归属尚未落地。因此上面的声明是**契约目标与代码审查基线**，不是 0.0.1 已完成的物理隔离保证。
+
 ## 快速开始
 
 ```powershell
