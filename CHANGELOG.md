@@ -2,6 +2,16 @@
 
 本项目遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/) 的基本格式，版本号使用 `0.0.x` 预发布序列。
 
+## [Unreleased]
+
+### Changed
+
+- 玩家可见文案统一为「研究树 / Research tree」；代码类型、Def 名和翻译键保留 `TechTree*` / `ModTemplate_TechTree`，避免破坏 API 与已有引用。
+
+### Fixed
+
+- `build.ps1` 部署后 `LASTEXITCODE` 被 robocopy 成功码（1–7）污染，导致 `smoke-test.ps1` 误判构建失败；成功路径现在显式归零。
+
 ## [0.0.2] - 2026-10-25
 
 0.0.1 的补丁版本：修复发布审查发现的 P0 问题，并把冒烟测试与 CI 纳入流水线。
