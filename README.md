@@ -570,6 +570,47 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 
 **M8 完成标准**：zip 在干净环境可加载，六模块按文档可玩，日志干净。
 
+### 构想池（未排期）
+
+> 记录「已确认想要、但还没排期」的构想；不占 M 编号、不改交付节奏。立项前先写 spike/ADR，通过 Go 条件才升级为正式里程碑。
+
+- [ ] **G1 地下室（7000 候选）**：在地面殖民地建地下室入口，通往一张独立口袋地图；地下与地面经桥接共用**水、电**，**不受天气影响**，温度**近乎恒定**。
+
+  **硬需求（2026-10-25 指定）**
+
+  1. **水电接入地面**：地下室的电力、用水来自地面网络，经入口/管线井桥接；不允许凭空产电/产水；地面断水、断电时地下室同步停机；桥接有损耗和流量上限（数值进 `balance.md`）。
+  2. **不受天气影响**：地下室不出现降雨、降雪、雷暴、大风等天气；季节、寒潮、热浪不改变地下室环境；全图厚岩顶。
+  3. **近乎恒温**：默认 15°C，可设 10–20°C；无人为热源/火灾时，连续 10 天（含寒潮/热浪）保持目标 ±2°C。
+
+  **MVP 范围**
+
+  - `CK_BasementHatch`（3×3，每图一个）：建在地面，首次进入生成 50×50 口袋地图；`CK_BasementExit` 返回地面。
+  - `CK_Basement` 地图：`isUnderground` + `RoofRockThick` + `Underground` biome/weather + `pocketMapProperties.temperature=15`。
+  - `CK_UtilityBridge`（2×2）：地面 ↔ 地下电力/水网桥；可开关、显示流量；只搬运，不生产。
+  - 恒温保障：`MapComponent_BasementClimate` 或 `MapTemperature.OutdoorTemp` Postfix；屏蔽地下室上的温度/天气 `GameCondition`。
+  - 存读档、设置（目标温度/桥接损耗/地图尺寸）、Alert（断水/断电/温度异常）。
+
+  **非目标（MVP 不做）**
+
+  - 上层楼层/多层；跨图自动搬运、账单、种植、洗澡——工作仍按当前地图扫描，地下室以手动搬运 + 显式桥接为主。
+  - 空投/袭击直达地下室、天窗、地下水培自动化、Gravship 多层。
+  - Odyssey 硬依赖；如果自研贴图无法在无 DLC 下跑通，再评估声明 Odyssey 依赖。
+
+  **验收**
+
+  - [ ] 地面电网断电 → 地下室同步断电；地面水网断水 → 地下室同步断水；桥接不产生净能量/净水量。
+  - [ ] 寒潮/热浪/风雨 10 天，地下室无人为热源时 15±2°C，无降雨/降雪/雷暴。
+  - [ ] 存读档后地图、入口/出口、桥接、温度状态一致。
+  - [ ] 50×50 地图 + 10 殖民者 3 倍速无 tick 尖峰；`Player.log` 无 error。
+  - [ ] 无 DLC 环境可运行（或明确记录必须 Odyssey）。
+
+  **前置**
+
+  - 先做 [`docs/decisions/basement.md`](docs/decisions/basement.md) 的 2–3 天 spike；Go 条件不满足就停在构想池，不升级为 M9。
+  - 水电桥接依赖 M1 水网；建议排在 M2/M3 之后。
+
+  **参考**：[`docs/decisions/basement.md`](docs/decisions/basement.md)；Private Basement（口袋地图 + 水电桥/天窗）、MultiFloors / Z-Levels（跨图）、As above, So below 2（同图分层备选）。
+
 ---
 
 ## 6. 交付节奏
@@ -637,7 +678,7 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 12. **充电数值**：普通对接 8h/2000W、休眠 4h/4000W 是否符合预期？用户只给了「休眠 4h 充满」和「满电 12h 行动」，普通充电时长是草案。
 13. **战斗机器人**：只能手动 draft，还是要自动防御/巡逻？
 14. **机器人损坏**：受伤后靠充电自修、需要维修 Job，还是直接留残骸可拆？是否要 Biotech 机械师联动（本机未装 DLC，默认不做）？
-15. **地下室**：是否引入？走口袋地图（需先 spike，工坊同类实现均要求 Odyssey 资源）、同图逻辑楼层（不建议自研），还是只做同图地窖/兼容现有分层 Mod？见 [`docs/decisions/basement.md`](docs/decisions/basement.md)。
+15. **地下室（G1 构想）**：已登记硬需求——地面水电接入、不受天气、近乎恒温；**未排期**。走口袋地图 + 水电桥（需先 spike）还是同图方案，待 spike 后定。见 [`docs/decisions/basement.md`](docs/decisions/basement.md)。
 
 ---
 
