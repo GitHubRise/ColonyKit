@@ -1,4 +1,4 @@
-#Requires -Version 5.1
+﻿#Requires -Version 5.1
 <#
 .SYNOPSIS
 	Headless smoke test for the Mod Template: deploy, quicktest, assert log markers.

@@ -2,6 +2,27 @@
 
 本项目遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/) 的基本格式，版本号使用 `0.0.x` 预发布序列。
 
+## [0.0.2] - 2026-10-25
+
+0.0.1 的补丁版本：修复发布审查发现的 P0 问题，并把冒烟测试与 CI 纳入流水线。
+
+### Fixed
+
+- `ModLoc` 的格式化回退改用 `TranslatorFormattedStringExtensions` + `NamedArgument`，清洁重建不再有 `CS0618`。
+- `NotificationService.ThrottledMessage` 在 `Current.Game == null` 时不再访问 `Find.TickManager`。
+- `SettingsWidgets.Dropdown` 对 `null` / 空 options 做保护。
+- `MainButtonService.ApplyOrder` 在反射字段缺失或类型不符时用 `ModLog.Once` 留下明确警告，而不是静默失效。
+
+### Added
+
+- `smoke-test.ps1`：verify → build + deploy → quicktest → 断言 Bootstrap/Migration/Selftest/Diag/备份/诊断文件 → 关闭游戏；使用独立 `-savedatafolder`。
+- `.github/workflows/ci.yml`：Windows runner 上执行 build / verify / package；游戏冒烟测试留给本机或 self-hosted runner。
+
+### Changed
+
+- `build.ps1` 默认 `-t:Rebuild`，并把编译警告视为失败；日常增量构建可显式加 `-NoRebuild`。
+- 没有工作区 `.tools` 时，restore 自动走 PATH 里的 dotnet + 默认 NuGet 缓存，便于 CI。
+
 ## [0.0.1] - 2026-10-25
 
 首个可运行的架构模板版本，目标是「拉下来能编译、进游戏能看到、改功能有章可循」，不是完整玩法 Mod。

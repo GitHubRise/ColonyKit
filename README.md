@@ -3,7 +3,7 @@
 一个**能直接跑起来**的 RimWorld 1.6 Mod 架构模板：把常见的几种开发方式放在同一个工程里，演示「加载 → 配置 → 补丁 → 存档 → 设置」整条链路，本身不改变游戏平衡。
 
 - 演示内容：统计本局殖民者生成次数，按设定间隔写日志。
-- 当前版本：**0.0.1**（2026-10-25），记录见 [CHANGELOG.md](CHANGELOG.md) 与 [docs/版本记录.md](docs/版本记录.md)。
+- 当前版本：**0.0.2**（2026-10-25），记录见 [CHANGELOG.md](CHANGELOG.md) 与 [docs/版本记录.md](docs/版本记录.md)。
 - 目标版本：1.6.4871（`net472` + `Krafs.Rimworld.Ref`）。
 - 依赖：Harmony（创意工坊 `2009463077`）。
 
@@ -19,7 +19,7 @@
   - 本地化：`Languages/*/Keyed` 的键名。
 - 升级框架：不破坏上述公开签名和 Keyed 键；破坏性变更必须在 [CHANGELOG.md](CHANGELOG.md) 按 minor/major 说明迁移方式。
 - 升级 Mod：只新增/修改自己的模块、服务、资源与翻译，不修改框架的 `Bootstrap`、`SettingsController`、`About` 和核心 `Defs`。
-- **0.0.1 边界**：模块仍编译在同一个 DLL，模块注册与设置页列表仍有核心侧硬编码；独立程序集、页面贡献、补丁归属尚未落地。因此上面的声明是**契约目标与代码审查基线**，不是 0.0.1 已完成的物理隔离保证。
+- **0.0.2 边界**：模块仍编译在同一个 DLL，模块注册与设置页列表仍有核心侧硬编码；独立程序集、页面贡献、补丁归属尚未落地。因此上面的声明是**契约目标与代码审查基线**，不是 0.0.2 已完成的物理隔离保证。
 
 ## 快速开始
 
@@ -30,6 +30,7 @@
 .\build.ps1 -Deploy      # 编译并部署到 Mods\ModTemplate（需先退出游戏）
 
 .\verify.ps1             # 静态检查：packageId、XML、补丁 xpath、程序集
+.\smoke-test.ps1         # 本机 quicktest 冒烟（需先退出游戏）
 .\package.ps1            # 校验 + 编译 + 打包 → dist\ModTemplate-<version>.zip
 ```
 
@@ -110,7 +111,8 @@ mod-template/
 │  ├─ TechTreeService.cs                 前置条件统一 API + Changed 事件
 │  ├─ TechTreeView.cs                    节点 / 连线 / 状态 / 进度绘制
 │  └─ TechTreeWindow.cs                  独立窗口（tab / 布局切换）
-├─ build.ps1 / verify.ps1 / package.ps1 / new-mod.ps1
+├─ build.ps1 / verify.ps1 / smoke-test.ps1 / package.ps1 / new-mod.ps1
+├─ .github/workflows/ci.yml      CI：build / verify / package
 ├─ docs/ARCHITECTURE.md          设计说明：分层、生命周期、扩展点、坑
 └─ Assemblies/                   构建产物（.gitignore 忽略）
 ```
@@ -157,9 +159,10 @@ mod-template/
 
 ## 已知状态
 
-**0.0.1 基线**（2026-10-25，RimWorld 1.6.4871，`-quicktest` + 独立 `-savedatafolder`，只启用 Core + Harmony + 本 Mod）：
+**0.0.2 基线**（2026-10-25，RimWorld 1.6.4871，`-quicktest` + 独立 `-savedatafolder`，只启用 Core + Harmony + 本 Mod）：
 
 - `build.ps1` / `verify.ps1` / `package.ps1` / `new-mod.ps1` 均通过（0 错误 0 警告；包 12 个文件）。
+- `smoke-test.ps1` PASSED：clean rebuild、迁移/自检/诊断/备份断言全部命中；CI 配置在 `.github/workflows/ci.yml`。
 - `[ModTemplate][Migration] settings migrated 0 -> 2` + `.bak` —— 设置 schema 迁移与备份生效。
 - `[ModTemplate][Bootstrap] loaded`；`[ModTemplate][Selftest] modules=6, schema=2, pawnMenu=2, buildRules=0, notifications=True, mainButton=True, wallPlacement=False`。
 - Debug/Info/Warn 三行与 `[ModTemplate][Diag] diagnostics report written` —— 日志级别过滤和诊断报告生效。
@@ -174,7 +177,7 @@ mod-template/
 
 - 工作区 [docs/Index.md](../../docs/Index.md)：加载机制、语言支持、开发须知。
 - 本工程 [docs/Index.md](docs/Index.md)：功能文档索引（模块 / 生命周期 / 迁移 / Def / 补丁 / 存档 / 设置 / 检索滚动 / 选项模式 / 语言 / 科技树 / 右键菜单 / 通知 / 日志诊断 / 建造 / 底部菜单 / UI 自动化 / 本地化 / 构建）。
-- 本工程 [docs/版本记录.md](docs/版本记录.md)：0.0.1 范围、验证、限制与发版检查清单。
+- 本工程 [docs/版本记录.md](docs/版本记录.md)：0.0.2 范围、验证、限制与发版检查清单。
 - 本工程 [CHANGELOG.md](CHANGELOG.md)：逐版本变更。
 - 本工程 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)：分层与生命周期。
 - 本工程 [docs/CAPABILITIES.md](docs/CAPABILITIES.md)：能力清单（✅ 已实现 / 🧩 示例 / 📄 仅文档 / ❌ 未提供）。
