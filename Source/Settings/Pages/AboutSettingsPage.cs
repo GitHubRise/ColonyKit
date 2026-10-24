@@ -1,4 +1,3 @@
-using RimWorld;
 using Verse;
 
 namespace ColonyKit
@@ -31,23 +30,6 @@ namespace ColonyKit
 
 			listing.Gap();
 			SettingsWidgets.Label(listing, "ColonyKit.Settings.About.Hint".Loc());
-
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Section.TechTree".Loc());
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.TechTree.Hint".Loc());
-
-			if (SettingsWidgets.Button(listing, "ColonyKit.Settings.TechTree.Open".Loc()))
-			{
-				if (!ModuleRegistry.IsEnabled("tech-tree"))
-				{
-					NotificationService.Message(
-						"ColonyKit.Module.Disabled".Loc(),
-						MessageTypeDefOf.RejectInput);
-				}
-				else
-				{
-					Find.WindowStack.Add(new TechTreeWindow());
-				}
-			}
 		}
 	}
 }
