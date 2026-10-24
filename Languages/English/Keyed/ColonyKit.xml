@@ -176,6 +176,8 @@
 	<CK.VerticalWarehouse.Withdrawn>All items withdrawn.</CK.VerticalWarehouse.Withdrawn>
 
 	<ColonyKit.Settings.Tab.GeneralSettings>General settings</ColonyKit.Settings.Tab.GeneralSettings>
+	<ColonyKit.Settings.Section.DefaultLanguage>Default language</ColonyKit.Settings.Section.DefaultLanguage>
+	<ColonyKit.Settings.Section.LogOutput>Log output</ColonyKit.Settings.Section.LogOutput>
 	<ColonyKit.Settings.Tab.Localization>Localization</ColonyKit.Settings.Tab.Localization>
 	<ColonyKit.Settings.Section.Localization>Dev menu localization</ColonyKit.Settings.Section.Localization>
 	<ColonyKit.Settings.Section.TranslationScheme>Translation scheme</ColonyKit.Settings.Section.TranslationScheme>

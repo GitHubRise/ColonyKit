@@ -34,7 +34,7 @@ namespace ColonyKit
 		{
 			GeneralSettings general = settings.general;
 
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Section.Language".Loc());
+			SettingsWidgets.Section(listing, "ColonyKit.Settings.Section.DefaultLanguage".Loc());
 			SettingsWidgets.Dropdown(
 				listing,
 				"ColonyKit.Settings.Language".Loc(),
@@ -46,7 +46,7 @@ namespace ColonyKit
 
 			LoggingSettings logging = settings.logging;
 
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Section.Level".Loc());
+			SettingsWidgets.Section(listing, "ColonyKit.Settings.Section.LogOutput".Loc());
 			SettingsWidgets.Dropdown(
 				listing,
 				"ColonyKit.Settings.Logging.Detail".Loc(),
@@ -72,7 +72,6 @@ namespace ColonyKit
 					: "ColonyKit.Settings.Logging.VerboseSpawn.Locked".Loc(),
 				enabled: canLogSpawns);
 
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Section.Output".Loc());
 			logging.logIntervalTicks = (int)SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Logging.Interval".Loc(),
@@ -101,7 +100,6 @@ namespace ColonyKit
 				ModLog.Info("Settings", "test log line from the settings page");
 			}
 
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Section.Diagnostics".Loc());
 			SettingsWidgets.Label(listing, "ColonyKit.Settings.Diagnostics.Hint".Loc());
 
 			if (SettingsWidgets.Button(listing, "ColonyKit.Settings.Diagnostics.Dump".Loc()))
