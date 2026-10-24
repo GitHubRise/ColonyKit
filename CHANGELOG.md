@@ -12,6 +12,8 @@
 
 ### Added
 
+- 1×1 `CK_ConveyorBelt` 直线履带：15 钢/1 零部件，支持正向/反向、30 tick/格移动，和 1×1/2×2 相邻履带互通。
+- 履带跑马灯：`DrawAt` 叠加移动箭头，沿出口方向循环；2×2 与 1×1 共用基类。
 - `CK_ConveyorHub` 2×2 双向转向履带实体：256×256 四向/转盘贴图、可旋转、可通行、`maxItemsInCell=1`、30 tick/格实际移动、建筑朝向/反向 Gizmo 控制出口；`tools/generate_conveyor_texture.py` 可重新生成。
 - 立体库双向自动 Job：`WorkGiver_HaulToWarehouse`（库存区满/无库存区或仓库优先级更高时复用原版 `HaulToContainer`）+ `WorkGiver_WithdrawFromWarehouse`/`JobDriver_WithdrawFromWarehouse`（送到更高优先级库存区）；仓库默认 Low 优先级做缓冲。
 - `CK_VerticalWarehouse` 接入原版 `IStoreSettingsParent`/`ITab_Storage`：过滤、优先级、搜索；`Accepts` 按过滤器拒收。

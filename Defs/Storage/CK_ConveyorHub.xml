@@ -13,6 +13,7 @@
 		</graphicData>
 		<rotatable>true</rotatable>
 		<tickerType>Normal</tickerType>
+		<drawerType>RealtimeOnly</drawerType>
 		<designationCategory>Furniture</designationCategory>
 		<passability>PassThroughOnly</passability>
 		<building>
