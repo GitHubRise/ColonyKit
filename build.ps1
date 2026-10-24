@@ -127,3 +127,6 @@ try {
 finally {
 	Pop-Location
 }
+
+# robocopy 的成功码是 0–7，直接在调用方看 $LASTEXITCODE 会误判为失败。
+$global:LASTEXITCODE = 0
