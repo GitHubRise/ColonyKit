@@ -34,19 +34,30 @@ namespace ColonyKit.Modules.Storage
 				return false;
 			}
 
-			// 有普通库存区能放时让原版搬运优先；仓库只做「库存区放不下」的缓冲。
+			Building_VerticalWarehouse warehouse = FindWarehouse(pawn, thing);
+			if (warehouse == null)
+			{
+				return false;
+			}
+
+			// 普通库存区只要优先级不低于仓库，就让原版搬运优先；
+			// 仓库优先级更高（或库存区满了）时才由仓库接手。
 			if (StoreUtility.TryFindBestBetterStoreCellFor(
 				thing,
 				pawn,
 				pawn.Map,
 				StoragePriority.Unstored,
 				pawn.Faction,
-				out _))
+				out IntVec3 stockpileCell))
 			{
-				return false;
+				SlotGroup group = stockpileCell.GetSlotGroup(pawn.Map);
+				if (group != null && warehouse.GetStoreSettings().Priority <= group.Settings.Priority)
+				{
+					return false;
+				}
 			}
 
-			return FindWarehouse(pawn, thing) != null;
+			return true;
 		}
 
 		public override Job JobOnThing(Pawn pawn, Thing thing, bool forced = false)

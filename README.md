@@ -488,7 +488,7 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 - [ ] **M3-0** 存储内核验证（最高优先）：按 §4.2 的 A/B/C 各做最小原型，验证原版账单/搬运/搜索能否看到库存、Stack XXL 下的堆叠、存读档与性能；写 `docs/decisions/storage-kernel.md` 定稿。
 - [ ] **M3-1** `CK_VerticalWarehouse` + `CompWarehouse`：`ThingOwner`、容量、过滤/优先级、禁用清单、填充度、存读档。
 	- 已完成：3×3 建筑、`ThingOwner` 存读档、24 堆、250W、原版 `ITab_Storage` 过滤/优先级；禁用清单/填充度/自动 Job 未做。
-- [x] **M3-2** 入库：`WorkGiver_HaulToWarehouse` + 原版 `HaulToContainer`（库存区满/无库存区时接手，堆叠合并）。
+- [x] **M3-2** 入库：`WorkGiver_HaulToWarehouse` + 原版 `HaulToContainer`（库存区满/无库存区或仓库优先级更高时接手，堆叠合并）。
 	- 原型完成：入库口/拒收原因文本未单独做；过滤/容量/电力在接活时检查。
 - [x] **M3-3** 出库：`WorkGiver_WithdrawFromWarehouse` + `JobDriver_WithdrawFromWarehouse`（自动送到更高优先级库存区；ITab 手动逐堆取出）。
 	- 原型完成：整堆；按数量/固定出库口/账单未做。
