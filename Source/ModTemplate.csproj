@@ -2,6 +2,7 @@
 	<PropertyGroup>
 		<TargetFramework>net472</TargetFramework>
 		<AssemblyName>ModTemplate</AssemblyName>
+		<Version>0.0.1</Version>
 		<RootNamespace>ModTemplate</RootNamespace>
 		<LangVersion>latest</LangVersion>
 		<Nullable>disable</Nullable>

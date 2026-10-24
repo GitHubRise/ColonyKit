@@ -3,6 +3,7 @@
 一个**能直接跑起来**的 RimWorld 1.6 Mod 架构模板：把常见的几种开发方式放在同一个工程里，演示「加载 → 配置 → 补丁 → 存档 → 设置」整条链路，本身不改变游戏平衡。
 
 - 演示内容：统计本局殖民者生成次数，按设定间隔写日志。
+- 当前版本：**0.0.1**（2026-10-25），记录见 [CHANGELOG.md](CHANGELOG.md) 与 [docs/版本记录.md](docs/版本记录.md)。
 - 目标版本：1.6.4871（`net472` + `Krafs.Rimworld.Ref`）。
 - 依赖：Harmony（创意工坊 `2009463077`）。
 
@@ -135,36 +136,31 @@ mod-template/
 ## 约定
 
 - 目录名、程序集名、命名空间三者一致；程序集名必须全局唯一（否则 `Assembly.LoadFrom` 会直接复用别人的程序集）。
-- 所有日志走 `ModLog`，统一 `[ModTemplate]` 前缀，方便在 `Player.log` 里筛。
+- 所有日志走 `ModLog`，格式 `[前缀][分类]`，方便在 `Player.log` 里按模块筛。
 - 存档字段只增不改名；要改就加 `[Obsolete]` 兼容或迁移。
 - XML 与 `.cs` 用 TAB 缩进；XML 一律 UTF-8。
 - 注释按 [docs/ARCHITECTURE.md §9](docs/ARCHITECTURE.md#9-注释约定)：文件头写职责/时机/约束，公开成员写 `///`，行内只解释「为什么」。
 
 ## 已知状态
 
-- `build.ps1` / `verify.ps1` / `package.ps1` / `new-mod.ps1` 均已在本机跑通（0 错误 0 警告）。
-- **实机验证通过（单页设置版本）**（2026-10-25，RimWorld 1.6.4871，`-quicktest` + 独立 `-savedatafolder`，只启用 Core + Harmony + 本 Mod）：
-  - `[ModTemplate] loaded; greeting="Hello from ModTemplate", note=""` —— About 解析、程序集加载、Bootstrap、Harmony `PatchAll`、Def XML + DefOf 全部走通；
-  - 3 条 `[ModTemplate] spawn: ...` —— Harmony Postfix 生效，且只统计殖民者；
-  - `[ModTemplate] tick 301: tracked 3 colonist spawn(s)` —— GameComponent 自动实例化、`GameComponentTick` 与设置里的 300 tick 间隔生效；
-  - 全程没有本 Mod 相关的错误或翻译缺失日志。
-- 多页签设置重构（`Settings/SettingsController` + `Settings/Pages/*`）：编译 / 校验 / 打包通过；嵌套 settings 的运行时读写与页签 UI 尚未实机复测——测试时 RimWorld 正在运行，DLL 无法覆盖，等游戏退出后按上面的步骤跑一次即可。
-- 科技树（`Source/TechTree/*`）：编译 / 校验 / 打包通过；窗口绘制尚未实机验证。游戏退出后可带 `-modtemplate-techtree` 跑 quicktest，进游戏会自动打开窗口。
-- 外围控制（右键菜单 / 通知 / 建造 / 底部菜单）2026-10-25 quicktest 自检通过：
-  `[ModTemplate] selftest: pawnMenu=2, buildRules=0, notifications=True, mainButton=True, wallPlacement=False`
-  —— Provider 被发现、菜单注册表有 2 项、通知设置读入、按钮 Def 加载且可见、建造校验可调用且不崩（`wallPlacement=False` 是地图中心被占用的正常拒绝）。
-- UI 自动化（`UiAutomationService`）：编译 / 校验 / 打包通过；`-modtemplate-ui-test` 会截取底部栏 / 通知页 / 右键菜单 / 科技树 / 底部按钮。截图场景尚未跑（测试时游戏运行中），退出后可直接补。
-- 结构化日志与诊断（`ModLog` / `Diagnostics`）：编译 / 校验 / 打包通过；日志级别、Once/Throttled、诊断报告待 quicktest 复跑（游戏运行中，DLL 无法覆盖）。运行时可用日志页「输出诊断报告」或 `-modtemplate-selftest`。
-- 模块系统 + 设置/存档迁移（`Core/Modules` / `SettingsMigration`）：编译 / 校验 / 打包通过；模块开关、`.bak` 备份、schema 迁移与 `Validate` 待 quicktest 复跑（游戏运行中）。
-- 设置检索与自动滚动（`SettingsSearch` / `AutoScrollView`）：编译 / 校验通过；搜索框过滤、无结果提示、第一帧/第二帧滚动条待 UI 截图复验（游戏运行中）。
-- 选项控件模式（`controlMode`）：编译 / 校验通过；下拉框 / ◀ ▶ / ✓ ✗ 三种渲染待实机点击验证（游戏运行中）。
-- 设置语言切换（`ModLoc`）：已实机验证英文游戏下切到简体中文设置界面；下拉箭头与卡片间距已按截图反馈调整。
-- 尚未覆盖（截图自动化已就位，待实机跑）：多页签/通知页/控件的实际绘制、右键菜单与底部按钮的实际点击、科技树绘制、诊断按钮、存读档后 `ExposeData` 的持久化、Biotech 可选补丁（本机未装 Biotech，`note` 为空）、DefInjected 译文在 UI 中的显示。
+**0.0.1 基线**（2026-10-25，RimWorld 1.6.4871，`-quicktest` + 独立 `-savedatafolder`，只启用 Core + Harmony + 本 Mod）：
+
+- `build.ps1` / `verify.ps1` / `package.ps1` / `new-mod.ps1` 均通过（0 错误 0 警告；包 12 个文件）。
+- `[ModTemplate][Migration] settings migrated 0 -> 2` + `.bak` —— 设置 schema 迁移与备份生效。
+- `[ModTemplate][Bootstrap] loaded`；`[ModTemplate][Selftest] modules=6, schema=2, pawnMenu=2, buildRules=0, notifications=True, mainButton=True, wallPlacement=False`。
+- Debug/Info/Warn 三行与 `[ModTemplate][Diag] diagnostics report written` —— 日志级别过滤和诊断报告生效。
+- 设置页五页签、三卡片选项控件、下拉 `▼`、普通配置行（统计殖民者生成）悬停蒙版已通过实机截图确认。
+- 英文游戏下把设置窗口切到简体中文成功；`DefInjected` 和原版 Close 按钮仍跟随游戏语言。
+- 尚未覆盖：设置检索的实际输入/无结果、自动滚动条长页面、科技树绘制、UI 自动化截图（`-modtemplate-ui-test`）、建筑规则非空路径、旧存档 `saveVersion` 迁移、Biotech 可选补丁（本机未装，`note` 为空）。
 - `Patches/OptionalCompatibility.xml` 用 Biotech 举例，装上 Biotech 后可在设置页看到 `Patch note`。
+
+详细验证与限制见 [docs/版本记录.md](docs/版本记录.md)；逐项能力见 [docs/CAPABILITIES.md](docs/CAPABILITIES.md)。
 
 ## 相关文档
 
 - 工作区 [docs/Index.md](../../docs/Index.md)：加载机制、语言支持、开发须知。
 - 本工程 [docs/Index.md](docs/Index.md)：功能文档索引（模块 / 生命周期 / 迁移 / Def / 补丁 / 存档 / 设置 / 检索滚动 / 选项模式 / 语言 / 科技树 / 右键菜单 / 通知 / 日志诊断 / 建造 / 底部菜单 / UI 自动化 / 本地化 / 构建）。
+- 本工程 [docs/版本记录.md](docs/版本记录.md)：0.0.1 范围、验证、限制与发版检查清单。
+- 本工程 [CHANGELOG.md](CHANGELOG.md)：逐版本变更。
 - 本工程 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)：分层与生命周期。
 - 本工程 [docs/CAPABILITIES.md](docs/CAPABILITIES.md)：能力清单（✅ 已实现 / 🧩 示例 / 📄 仅文档 / ❌ 未提供）。

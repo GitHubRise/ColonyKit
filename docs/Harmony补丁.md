@@ -1,6 +1,6 @@
 # Harmony 补丁
 
-> 状态：✅ 已实现　适用：Mod Template 0.1.0（RimWorld 1.6.4871）　最后更新：2026-10-25
+> 状态：✅ 已实现　适用：Mod Template 0.0.1（RimWorld 1.6.4871）　最后更新：2026-10-25
 > 本文件说明模板里的最小 Postfix：打在哪、怎么注入、为什么要跳过读档、怎么把结果交给 GameComponent。
 
 ## TOC快速预览

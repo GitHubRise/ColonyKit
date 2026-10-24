@@ -1,6 +1,6 @@
 # 自定义 Def 与 DefOf
 
-> 状态：✅ 已实现　适用：Mod Template 0.1.0（RimWorld 1.6.4871）　最后更新：2026-10-25
+> 状态：✅ 已实现　适用：Mod Template 0.0.1（RimWorld 1.6.4871）　最后更新：2026-10-25
 > 本文件说明自定义 Def 子类怎么写、XML 根元素为什么是类型全名、DefOf 怎么绑定、DefInjected 放哪。
 
 ## TOC快速预览
