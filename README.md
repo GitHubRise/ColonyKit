@@ -611,6 +611,45 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 
   **参考**：[`docs/decisions/basement.md`](docs/decisions/basement.md)；Private Basement（口袋地图 + 水电桥/天窗）、MultiFloors / Z-Levels（跨图）、As above, So below 2（同图分层备选）。
 
+- [ ] **G2 空中力量（8000 候选）**：引入无人机、直升机、歼击机、战斗机、轰炸机和地面防空系统；空中单位可见、可击落，防空形成「雷达发现 → 拦截 → 战果/残骸」闭环；敌人也有空中力量。
+
+  **构想目标（草案，2026-10-25 提出，待确认）**
+
+  1. **六类齐全、各有职责**：无人机侦察/巡飞、直升机运输/武装、歼击机制空、战斗机多用途、轰炸机面杀伤、地面防空（雷达/高炮/近防/SAM）。
+  2. **可见可击落**：有高度感（影子/缩放/飞行姿态），能被防空武器锁定、击落或迫降，留下残骸/飞行员/战果。
+  3. **克制三角**：防空 > 空中 > 地面 > 防空；没有一种单位通吃。
+  4. **无 DLC、不硬依赖**：不依赖 Odyssey shuttle/gravship，也不硬依赖 Aerial Framework / Vehicle Framework / CE；只做兼容检测。
+  5. **性能**：同屏 ≤ 12 架，3 倍速无 tick 尖峰；无人机蜂群不按「一机一 Pawn」硬堆。
+  6. **经济**：一个架次油弹/维修 ≈ 一次小袭击收益的 1/3；一架战斗机 ≈ 一次远征；防空必须比飞机便宜数倍。
+  7. **独立可玩**：8000 单独启用也能玩；与 2000 立体库/6000 机器人/7000 地下室只做可选联动。
+
+  **MVP 范围（建议 Phase 1，仅无人机 + 防空）**
+
+  - 1 种侦察/自杀无人机（可见、可击落）+ 1 种高炮/CIWS（`ckAntiAir` 判定）+ 1 座雷达（`TickRare` 探测）+ 敌方无人机空袭事件。
+  - 空袭/通场先用 `Bombardment` / `Skyfaller` 表现，不要求全六类；击落后生成残骸（可拆）与飞行员/战果。
+  - 空中单位优先做「Pawn + 空中状态」；若补丁/性能/存档 spike 失败，退回「抽象空袭」（塔台呼叫 + 防空掷骰）。
+
+  **非目标（MVP 不做）**
+
+  - 六类全量、空对空狗斗、跑道/大型机场、电子战/SEAD、飞行员养成、王牌/勋章。
+  - 替代 Odyssey shuttle/gravship；与 Aerial Framework/CE 的数值兼容；联机同步。
+  - 写实飞机贴图（首版占位几何/剪影，遵守 README §1「内置美术资源」范围之外）。
+
+  **验收**
+
+  - [ ] 无人机无视墙体/水飞行，不卡寻路；步枪/近战打不到，防空炮能击落；击落后有残骸。
+  - [ ] 飞行中存读档，位置/状态/油弹恢复，`Player.log` 无 error。
+  - [ ] 10 架无人机 + 2 座防空 + 1 座雷达，3 倍速 10 分钟无 tick 尖峰。
+  - [ ] 无 DLC 可运行；与 Aerial Framework/CE 同装不崩（或明确记录不兼容）。
+
+  **前置**
+
+  - 先做 [`docs/decisions/air-power.md`](docs/decisions/air-power.md) 的 2–3 天 spike；Go 条件不满足就停在构想池，不升级为 M9。
+  - **建议排在 1.0（M8）之后**；它会把 ColonyKit 从「生活设施」扩展到「战斗/军事」，不应混进 1.0 范围。
+  - 与 G1 地下室联动：地下免疫轰炸、防空必须在地面、加固机库可挡部分轰炸。
+
+  **参考**：[`docs/decisions/air-power.md`](docs/decisions/air-power.md)；SRTS/ELIF 直升机（运输）、Aerocraft/Aerial Framework（地图内飞行）、Anti-Air Weapon/CIWS（防空）、Vehicle Framework（载具底座）。
+
 ---
 
 ## 6. 交付节奏
@@ -679,6 +718,7 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 13. **战斗机器人**：只能手动 draft，还是要自动防御/巡逻？
 14. **机器人损坏**：受伤后靠充电自修、需要维修 Job，还是直接留残骸可拆？是否要 Biotech 机械师联动（本机未装 DLC，默认不做）？
 15. **地下室（G1 构想）**：已登记硬需求——地面水电接入、不受天气、近乎恒温；**未排期**。走口袋地图 + 水电桥（需先 spike）还是同图方案，待 spike 后定。见 [`docs/decisions/basement.md`](docs/decisions/basement.md)。
+16. **空中力量（G2 构想）**：六类单位（无人机/直升机/歼击机/战斗机/轰炸机/地面防空）**未排期**，建议 1.0 后评估。先做「无人机 + 防空」spike；操控方式（亲自驾驶 vs 呼叫支援）、是否空对空、燃料/弹药是否新增物品，待确认。见 [`docs/decisions/air-power.md`](docs/decisions/air-power.md)。
 
 ---
 
@@ -691,7 +731,7 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 | [`docs/参考源码映射.md`](docs/参考源码映射.md) | DBH / StackXXL / DevMenuChinese / RJW 四个来源的逐文件映射、移植顺序与风险 |
 | [`docs/框架升级-0.0.2.md`](docs/框架升级-0.0.2.md) | 0.0.2 框架同步记录：已移植 / 跳过 / 下次流程 |
 | [`docs/调查指南.md`](docs/调查指南.md) | 5 分钟定位：日志 tag、稳定标识、症状检查、数据位置 |
-| [`docs/decisions/Index.md`](docs/decisions/Index.md) | 决策记录模板与六个待定选型（水网/存储/肥力/蓝图/机器人/淋浴） |
+| [`docs/decisions/Index.md`](docs/decisions/Index.md) | 决策记录模板与八个待定选型（水网/淋浴/存储/肥力/蓝图/机器人/地下室/空中力量） |
 | [`../mod-template/docs/ARCHITECTURE.md`](../mod-template/docs/ARCHITECTURE.md) | 分层、生命周期、扩展点、常见失败模式（本工程架构文档的底稿） |
 | [`../../docs/开发Mod须知.md`](../../docs/开发Mod须知.md) | 六条硬性规定、发布前自检 |
 | [`../../docs/Mod加载机制.md`](../../docs/Mod加载机制.md) | 加载顺序、程序集/XML/Patch 流水线 |
@@ -719,3 +759,4 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 | 2026-10-25 | 任务清单补 `M7-0`（开发者菜单汉化移植）并勾选，任务总数 79 → 80。 |
 | 2026-10-25 | 扩展点自动发现：`ModuleRegistry.DiscoverFromAssembly` 替代 `Bootstrap` 硬编码；`SettingsController` 自动发现 `SettingsPage`；模块设置走 `IColonyKitModuleSettings` + `moduleSettings` 列表，不再改 `ColonyKitSettings` 字段。quicktest：`modules=10 (discovered=10)`、页面 6 个、设置 XML 正确写入 `Class=...LocalizationSettings`。 |
 | 2026-10-25 | 同步 mod-template 0.0.2：build.ps1 改为 Rebuild/警告失败/`-MIR`，补 Notification/Dropdown/MainButton 守卫；版本升 0.0.2；模板 demo 抽屉/示例研究不引入，详见 `docs/框架升级-0.0.2.md`。 |
+| 2026-10-25 | 登记 **G2 空中力量**构想（无人机/直升机/歼击机/战斗机/轰炸机/地面防空，8000 候选，未排期）；新增 `docs/decisions/air-power.md`（13 个现有 Mod 调研、原版 1.6 航空 API、六类单位/克制三角、三条主路线 + 世界地图备选与 spike）；README §5/§9/§10、0000 索引、decisions 索引同步。 |
