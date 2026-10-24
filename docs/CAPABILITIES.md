@@ -47,7 +47,7 @@
 
 | 能力 | 状态 | 入口 |
 |---|---|---|
-| 默认多页签（常规 / 日志 / 通知 / 关于） | ✅ | `SettingsController` + `Settings/Pages/*` |
+| 默认多页签（模块 / 常规 / 日志 / 通知 / 关于） | ✅ | `SettingsController` + `Settings/Pages/*` |
 | 标签栏排序、选中态、切换音效 | ✅ | `SettingsController.DrawTabs` |
 | 每页独立滚动位置 / 内容高度缓存 | ✅ | `SettingsController.DrawPage` |
 | 重置本页（`CanReset` 控制显隐） | ✅ | `SettingsController.DrawToolbar` |
@@ -56,10 +56,14 @@
 | 修改立即生效、关窗统一落盘 | ✅ | 字段直读 + `PreClose` |
 | 中英文页签 / 文案 | ✅ | `Languages/*/Keyed/` |
 | 通知页（开关 / 节流 / 测试按钮） | ✅ | `NotificationSettingsPage` |
+| 模块系统（注册 / 生命周期 / 每模块开关） | ✅ | `ModuleRegistry` + `Core/Modules` |
+| 模块设置页 | 🧩 | `ModulesSettingsPage` |
+| 设置 schema 迁移 + `.bak` 备份 | ✅ | `SettingsMigration` |
+| 统一 `Validate()`（迁移/写盘前） | ✅ | `ModTemplateSettings.Validate` + 各页 |
+| 存档版本迁移 | ✅ | `DemoGameComponent.saveVersion` |
 | 通用控件：下拉框 / 滑块 / 输入框 / 禁用勾选 / 分区标题 | ✅ | `Settings/Widgets/SettingsWidgets.cs` |
 | 下拉框演示（日志级别枚举） | 🧩 | `LoggingSettings.detail` + `LogDetail` |
 | 设置搜索、预设、导入 / 导出、快捷键 | ❌ | 需要自己加 |
-| 统一的 `Validate()` 钩子（非法值纠正） | ❌ | 目前只在控件层夹取范围 |
 
 ## 5. 运行期逻辑
 

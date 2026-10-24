@@ -108,6 +108,7 @@ namespace ModTemplate
 
 			ModLog.Info(
 				"Selftest",
+				$"modules={ModuleRegistry.All.Count}, schema={ModTemplateMod.Settings?.schemaVersion}, " +
 				$"pawnMenu={PawnMenuService.Count}, buildRules={BuildControlService.RuleCount}, " +
 				$"notifications={NotificationService.Enabled}, " +
 				$"mainButton={(button != null && MainButtonService.IsVisible(button))}, " +

@@ -23,7 +23,7 @@
 1. 启用 `Mod Template`（放在 Harmony 之后）；
 2. 开发者模式打开，进一局；
 3. `Player.log` 里应有 `[ModTemplate] loaded; greeting="Hello from ModTemplate"`；
-4. 选项 → Mod 设置 → `Mod 架构模板`：默认四个页签（常规 / 日志 / 通知 / 关于）。日志页演示下拉框（统计明细 / 框架日志级别）、滑块（间隔）、输入框（前缀）、禁用态勾选，以及「输出诊断报告」；通知页有测试消息/信件/节流按钮。
+4. 选项 → Mod 设置 → `Mod 架构模板`：默认五个页签（模块 / 常规 / 日志 / 通知 / 关于）。模块页可关闭可选功能；日志页演示下拉框（统计明细 / 框架日志级别）、滑块（间隔）、输入框（前缀）、禁用态勾选，以及「输出诊断报告」；通知页有测试消息/信件/节流按钮。
 5. 关于页 → 「打开科技树」：独立窗口，按前置分层绘制节点和连线，可切研究 tab / 切布局、点击节点设为当前研究。
 6. 右键一个殖民者：应看到「记录该殖民者」「在附近建造演示墙」两项（常规页可关）。
 7. 底部主菜单：应出现「科技树」按钮（常规页可隐藏）。
@@ -65,6 +65,7 @@ mod-template/
 │  ├─ Patch_Pawn_SpawnSetup.cs   最小 Harmony Postfix
 │  ├─ ModLog.cs                  结构化日志（级别/分类/去重/节流）
 │  ├─ Diagnostics.cs             诊断报告（设置/服务/最近日志）
+│  ├─ Core/Modules/              模块契约 / 注册表 / 六个内置模块
 │  ├─ UI/
 │  │  ├─ PawnMenuService.cs      右键小人菜单注册表
 │  │  ├─ ModTemplatePawnMenuProvider.cs  原版 Provider 入口
@@ -78,12 +79,13 @@ mod-template/
 │  │  └─ Patch_GenConstruct_CanPlaceBlueprintAt.cs
 │  ├─ Notifications/NotificationService.cs  消息/信件/节流
 │  └─ Settings/
-│     ├─ ModTemplateSettings.cs  设置根：Scribe 各页数据
+│     ├─ ModTemplateSettings.cs  设置根：Scribe 各页数据 + schemaVersion
+│     ├─ SettingsMigration.cs    schema 迁移 / .bak 备份
 │     ├─ SettingsPage.cs         页抽象（标题 / 顺序 / 绘制 / 重置）
 │     ├─ SettingsController.cs   统一调度：标签栏 + 滚动 + 重置
 │     ├─ Widgets/SettingsWidgets.cs  通用控件：下拉 / 滑块 / 输入 / 禁用勾选 / 分区标题
-│     ├─ Data/{General,Logging,Notification}Settings.cs
-│     └─ Pages/{General,Logging,Notification,About}SettingsPage.cs
+│     ├─ Data/{General,Logging,Notification,Module}Settings.cs
+│     └─ Pages/{Modules,General,Logging,Notification,About}SettingsPage.cs
 ├─ Source/TechTree/
 │  ├─ TechNode.cs / TechTree.cs          节点、前置边、两种布局
 │  ├─ TechPrerequisites.cs               前置遍历 + 环检测
@@ -106,6 +108,8 @@ mod-template/
 | Harmony | `Patch_Pawn_SpawnSetup.cs` | 改原版行为（本模板只做只读统计） |
 | `GameComponent` | `DemoGameComponent.cs` | 每存档状态、随存档持久化 |
 | 多页签设置 | `Settings/SettingsController.cs` + `Settings/Pages/*` | 页签调度、滚动、重置、按页持久化 |
+| 模块系统 | `Source/Core/Modules/*` + `ModuleSettings` | 契约 / 注册表 / 生命周期 / 每模块开关 |
+| 设置与存档迁移 | `Source/Settings/SettingsMigration.cs` | schema 版本 / `.bak` / `Validate` / 存档版本 |
 | 通用控件 | `Settings/Widgets/SettingsWidgets.cs` | 下拉框 / 滑块 / 输入框 / 禁用勾选 / 页内分区标题 |
 | 科技树 | `Source/TechTree/*` | 前置分层绘制、节点/连线/状态、前置条件统一 API |
 | 右键小人菜单 | `Source/UI/PawnMenu*` | Provider 自动发现 + 注册表 + 设置开关 |
@@ -145,12 +149,13 @@ mod-template/
   —— Provider 被发现、菜单注册表有 2 项、通知设置读入、按钮 Def 加载且可见、建造校验可调用且不崩（`wallPlacement=False` 是地图中心被占用的正常拒绝）。
 - UI 自动化（`UiAutomationService`）：编译 / 校验 / 打包通过；`-modtemplate-ui-test` 会截取底部栏 / 通知页 / 右键菜单 / 科技树 / 底部按钮。截图场景尚未跑（测试时游戏运行中），退出后可直接补。
 - 结构化日志与诊断（`ModLog` / `Diagnostics`）：编译 / 校验 / 打包通过；日志级别、Once/Throttled、诊断报告待 quicktest 复跑（游戏运行中，DLL 无法覆盖）。运行时可用日志页「输出诊断报告」或 `-modtemplate-selftest`。
+- 模块系统 + 设置/存档迁移（`Core/Modules` / `SettingsMigration`）：编译 / 校验 / 打包通过；模块开关、`.bak` 备份、schema 迁移与 `Validate` 待 quicktest 复跑（游戏运行中）。
 - 尚未覆盖（截图自动化已就位，待实机跑）：多页签/通知页/控件的实际绘制、右键菜单与底部按钮的实际点击、科技树绘制、诊断按钮、存读档后 `ExposeData` 的持久化、Biotech 可选补丁（本机未装 Biotech，`note` 为空）、DefInjected 译文在 UI 中的显示。
 - `Patches/OptionalCompatibility.xml` 用 Biotech 举例，装上 Biotech 后可在设置页看到 `Patch note`。
 
 ## 相关文档
 
 - 工作区 [docs/Index.md](../../docs/Index.md)：加载机制、语言支持、开发须知。
-- 本工程 [docs/Index.md](docs/Index.md)：功能文档索引（生命周期 / Def / 补丁 / 存档 / 设置 / 科技树 / 右键菜单 / 通知 / 日志诊断 / 建造 / 底部菜单 / UI 自动化 / 本地化 / 构建）。
+- 本工程 [docs/Index.md](docs/Index.md)：功能文档索引（模块 / 生命周期 / 迁移 / Def / 补丁 / 存档 / 设置 / 科技树 / 右键菜单 / 通知 / 日志诊断 / 建造 / 底部菜单 / UI 自动化 / 本地化 / 构建）。
 - 本工程 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)：分层与生命周期。
 - 本工程 [docs/CAPABILITIES.md](docs/CAPABILITIES.md)：能力清单（✅ 已实现 / 🧩 示例 / 📄 仅文档 / ❌ 未提供）。

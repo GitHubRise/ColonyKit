@@ -249,6 +249,15 @@ TechTreeService.Changed += () => { /* 重建 UI */ };
 
 详见 [右键菜单控制](右键菜单控制.md)、[通知消息控制](通知消息控制.md)、[建筑建造控制](建筑建造控制.md)、[底部菜单控制](底部菜单控制.md)。
 
+### 4.10 模块与迁移
+
+- **模块系统**：`Core/Modules/IModTemplateModule` + `ModuleRegistry`；内置 `core`（锁定）、`pawn-menu`、`notifications`、`build-control`、`tech-tree`、`diagnostics`。`Bootstrap` 注册并 `InitAll`，`DemoGameComponent.FinalizeInit` 调 `NotifyGameLoaded`；服务用 `ModuleRegistry.IsEnabled` 门控。
+- **设置迁移**：`ModTemplateSettings.schemaVersion` + `SettingsMigration`（当前 v2）；启动先备份 `Config/Mod_*.xml` 为 `.bak`，`PostLoadInit` 逐级迁移，`ConsumeDirty` 后回写。
+- **Validate**：各页数据实现 `Validate()`，迁移后与 `WriteSettings` 前各调一次；日志间隔/前缀/枚举/冷却/模块列表都在这里夹回合法值。
+- **存档迁移**：`DemoGameComponent.saveVersion` + `MigrateSave()`；旧存档缺版本号按 0 处理。
+
+详见 [模块系统](模块系统.md)、[设置与存档迁移](设置与存档迁移.md)。
+
 ## 5. 存档兼容
 
 - `Scribe_Values.Look(ref x, "name", default)` 的 key 是存档契约：**改名 = 丢数据**。
