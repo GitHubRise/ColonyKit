@@ -17,7 +17,7 @@ namespace ColonyKit.Modules
 		{
 			ModLog.Info(
 				"Hygiene",
-				"module loaded (0.0.1 stub); source reference: dbh shower; " +
+				"module loaded (0.0.2 stub); source reference: dbh shower; " +
 				$"DBH active={ModsConfig.IsActive("dubwise.dubsbadhygiene")}");
 		}
 	}
@@ -37,7 +37,7 @@ namespace ColonyKit.Modules
 		{
 			ModLog.Info(
 				"Storage",
-				"module loaded (0.0.1 stub); source reference: stackxxl warehouse; " +
+				"module loaded (0.0.2 stub); source reference: stackxxl warehouse; " +
 				$"StackXXL active={ModsConfig.IsActive("indeed.stackxxl")}");
 		}
 	}
@@ -57,7 +57,7 @@ namespace ColonyKit.Modules
 		{
 			ModLog.Info(
 				"RJW",
-				"module loaded (0.0.1 stub); source reference: rjw; " +
+				"module loaded (0.0.2 stub); source reference: rjw; " +
 				$"RJW active={ModsConfig.IsActive("rim.job.world")}");
 		}
 	}

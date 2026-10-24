@@ -59,7 +59,7 @@ namespace ColonyKit
 				return;
 			}
 
-			int now = Find.TickManager?.TicksGame ?? 0;
+			int now = Current.Game != null ? Find.TickManager?.TicksGame ?? 0 : 0;
 			int cooldown = cooldownTicks >= 0
 				? cooldownTicks
 				: ColonyKitMod.Settings?.notifications?.cooldownTicks ?? 600;

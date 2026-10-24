@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<TargetFramework>net472</TargetFramework>
 		<AssemblyName>ColonyKit</AssemblyName>
-		<Version>0.0.1</Version>
+		<Version>0.0.2</Version>
 		<RootNamespace>ColonyKit</RootNamespace>
 		<LangVersion>latest</LangVersion>
 		<Nullable>disable</Nullable>

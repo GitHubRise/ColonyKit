@@ -2,7 +2,7 @@
 
 > 一个**模块化**的殖民地生活设施框架 + 六套子系统：淋浴、立体库、农业、蓝图、智能机器人、汉化集合。
 >
-> 本文件是**规划稿 + 任务清单**，不是完工说明。0.0.1 框架已从 `mod-template` 0.0.1 复制生成；`localization`（开发者菜单汉化）已移植，其余三个参考模块仍是占位。
+> 本文件是**规划稿 + 任务清单**，不是完工说明。0.0.2 框架已从 `mod-template` 0.0.2 同步；`localization`（开发者菜单汉化）已移植，其余三个参考模块仍是占位。
 
 | 项目 | 值 |
 |---|---|
@@ -13,17 +13,17 @@
 | 目标框架 | `net472` + `Krafs.Rimworld.Ref` |
 | 硬依赖 | Harmony（`brrainz.harmony`） |
 | 可选兼容 | DBH、Stack XXL、RJW（只检测/适配，不做硬依赖） |
-| 工程状态 | 0.0.1 框架已生成（M0 完成）；汉化模块已移植，其余三个参考模块占位 |
+| 工程状态 | 0.0.2 框架已生成（M0 完成）；汉化模块已移植，其余三个参考模块占位 |
 
 > 本文件 2026-10-25 曾按 `CustomEnhance`（自定义强化）立项，同日先调整为 `ColonyKit` 五系统，随后追加智能机器人模块；旧的强化设计未实施。
 
 ---
 
-## 0. 0.0.1 实现状态
+## 0. 0.0.2 实现状态
 
 | 项 | 状态 | 说明 |
 |---|---|---|
-| 框架复制 | ✅ | 从 `sources/mod-template` 0.0.1 复制，未修改模板本身 |
+| 框架复制 | ✅ | 基线来自 `sources/mod-template` 0.0.1；已同步 0.0.2 的框架修复与构建改进 |
 | 构建 | ✅ | `build.ps1 -Clean` 0 error / 0 warning |
 | 静态校验 | ✅ | `verify.ps1` 0 问题 / 0 警告 |
 | 汉化模块 | ✅ 已移植 | 开发者菜单 Debug 标签 + tooltip + 翻译方案设置；quicktest 自检通过，UI 未人工点击 |
@@ -31,7 +31,7 @@
 | 实机 | ✅ quicktest | `-Deploy` + `-quicktest` 通过；未人工点 Debug 菜单/设置页 |
 | 来源映射 | ✅ | [docs/参考源码映射.md](docs/参考源码映射.md) |
 
-> 0.0.1 不改变游戏平衡；它验证「框架复制 → 改名 → 模块注册 → 构建/校验」链路，为后续移植 DBH / StackXXL / DevMenuChinese / RJW 的代码做准备。
+> 0.0.2 不改变游戏平衡；它验证「框架复制 → 改名 → 模块注册 → 构建/校验」链路，并同步 0.0.2 的 P0 修复；为后续移植 DBH / StackXXL / DevMenuChinese / RJW 的代码做准备。
 
 ---
 
@@ -238,7 +238,7 @@ sources/ColonyKit/
 │  ├─ English/{Keyed,DefInjected}
 │  ├─ ChineseSimplified/{Keyed,DefInjected}
 │  └─ ChineseTraditional/{Keyed,DefInjected}   ← M7-4 可选
-├─ Translations/DevMenuLabels.xml       ← 开发者菜单翻译表（0.0.1 已用）
+├─ Translations/DevMenuLabels.xml       ← 开发者菜单翻译表（0.0.2 已用）
 ├─ Source/
 │  ├─ ColonyKit.csproj
 │  ├─ Core/
@@ -275,7 +275,7 @@ sources/ColonyKit/
 └─ dist/                              ← 打包产物，不提交
 ```
 
-> **0.0.1 实际骨架**：上面的目录是目标形态；当前 `Source/` 仍是 mod-template 0.0.1 的 `Core/Modules`、`Settings/`、`UI/`、`TechTree/` 等，新增了 `Source/Modules/ReferenceModules.cs`。功能模块落地时再按目标目录迁移。
+> **0.0.2 实际骨架**：上面的目录是目标形态；当前 `Source/` 仍是 mod-template 的 `Core/Modules`、`Settings/`、`UI/`、`TechTree/` 等，新增了 `Source/Modules/ReferenceModules.cs` 与 `Source/Modules/Localization/`。功能模块落地时再按目标目录迁移。
 
 ### 3.7 常用命令
 
@@ -647,6 +647,7 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 | [`../mod-template/README.md`](../mod-template/README.md) | 模板能力、目录、脚本用法 |
 | [`docs/Index.md`](docs/Index.md) | 本工程功能文档索引（框架内核 / 设置 / 六模块 / 构建发布） |
 | [`docs/参考源码映射.md`](docs/参考源码映射.md) | DBH / StackXXL / DevMenuChinese / RJW 四个来源的逐文件映射、移植顺序与风险 |
+| [`docs/框架升级-0.0.2.md`](docs/框架升级-0.0.2.md) | 0.0.2 框架同步记录：已移植 / 跳过 / 下次流程 |
 | [`docs/调查指南.md`](docs/调查指南.md) | 5 分钟定位：日志 tag、稳定标识、症状检查、数据位置 |
 | [`docs/decisions/Index.md`](docs/decisions/Index.md) | 决策记录模板与六个待定选型（水网/存储/肥力/蓝图/机器人/淋浴） |
 | [`../mod-template/docs/ARCHITECTURE.md`](../mod-template/docs/ARCHITECTURE.md) | 分层、生命周期、扩展点、常见失败模式（本工程架构文档的底稿） |
@@ -675,3 +676,4 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 | 2026-10-25 | 新增 `5004-汉化-开发者菜单汉化.md`，功能页总数 27；`0000-索引.md` 与 `5000-汉化索引.md` 同步。 |
 | 2026-10-25 | 任务清单补 `M7-0`（开发者菜单汉化移植）并勾选，任务总数 79 → 80。 |
 | 2026-10-25 | 扩展点自动发现：`ModuleRegistry.DiscoverFromAssembly` 替代 `Bootstrap` 硬编码；`SettingsController` 自动发现 `SettingsPage`；模块设置走 `IColonyKitModuleSettings` + `moduleSettings` 列表，不再改 `ColonyKitSettings` 字段。quicktest：`modules=10 (discovered=10)`、页面 6 个、设置 XML 正确写入 `Class=...LocalizationSettings`。 |
+| 2026-10-25 | 同步 mod-template 0.0.2：build.ps1 改为 Rebuild/警告失败/`-MIR`，补 Notification/Dropdown/MainButton 守卫；版本升 0.0.2；模板 demo 抽屉/示例研究不引入，详见 `docs/框架升级-0.0.2.md`。 |

@@ -14,6 +14,9 @@
 .PARAMETER Clean
 	构建前删除 Source\obj、Source\bin、Assemblies。
 
+.PARAMETER NoRebuild
+	跳过 -t:Rebuild（日常增量构建用；发布/CI 不要用，避免漏掉编译警告）。
+
 .EXAMPLE
 	.\build.ps1
 	.\build.ps1 -Clean
@@ -23,6 +26,7 @@
 param(
 	[switch]$Deploy,
 	[switch]$Clean,
+	[switch]$NoRebuild,
 	[ValidateSet('Debug', 'Release')]
 	[string]$Configuration = 'Release',
 	[string]$ModsPath = 'E:\SteamLibrary\steamapps\common\RimWorld\Mods'
@@ -66,22 +70,30 @@ try {
 	$assets = Join-Path (Join-Path $root 'Source') 'obj\project.assets.json'
 	if (-not (Test-Path $assets)) {
 		Write-Host '[restore] dotnet restore' -ForegroundColor Cyan
-		& $dotnet restore $project --packages $nuget 2>&1 | Out-String | Write-Verbose
+		if (Test-Path (Join-Path $workspace '.tools')) {
+			& $dotnet restore $project --packages $nuget 2>&1 | Out-String | Write-Verbose
+		}
+		else {
+			# CI / 没有工作区内置工具链时走 PATH 里的 dotnet 与默认 NuGet 缓存。
+			& $dotnet restore $project 2>&1 | Out-String | Write-Verbose
+		}
 		if ($LASTEXITCODE -ne 0) { throw "restore 失败（exit $LASTEXITCODE）" }
 	}
 
 	Write-Host "[build] $Configuration" -ForegroundColor Cyan
-	$log = & $dotnet build $project -c $Configuration --no-restore 2>&1 | Out-String
+	$buildArgs = @('build', $project, '-c', $Configuration, '--no-restore')
+	if (-not $NoRebuild) { $buildArgs += '-t:Rebuild' }
+	$log = & $dotnet @buildArgs 2>&1 | Out-String
 	$exit = $LASTEXITCODE
 
 	$errors   = [regex]::Matches($log, ': error ')
 	$warnings = [regex]::Matches($log, ': warning ')
 	Write-Host ("[build] 错误 {0} 个，警告 {1} 个" -f $errors.Count, $warnings.Count) -ForegroundColor Yellow
 
-	if ($exit -ne 0 -or $errors.Count -gt 0) {
+	if ($exit -ne 0 -or $errors.Count -gt 0 -or $warnings.Count -gt 0) {
 		$log | Set-Content (Join-Path $root 'build-error.log') -Encoding utf8
-		$log -split "`n" | Where-Object { $_ -match ': error ' } | Select-Object -First 20 | Write-Host
-		throw "编译失败（exit $exit），完整日志：$root\build-error.log"
+		$log -split "`n" | Where-Object { $_ -match ': (error|warning) ' } | Select-Object -First 20 | Write-Host
+		throw "编译失败或存在警告（exit $exit，error $($errors.Count)，warning $($warnings.Count)）：$root\build-error.log"
 	}
 
 	$dll = Join-Path $assemblies 'ColonyKit.dll'
@@ -98,10 +110,11 @@ try {
 		$target = Join-Path $ModsPath 'ColonyKit'
 		Write-Host "[deploy] $target" -ForegroundColor Cyan
 		# robocopy 的 0–7 都是成功码（1 表示确实复制了文件），8 及以上才是失败。
+		# /MIR 同步删除源里已移除的旧文件，避免重命名 Def/Worker 后留下陈旧 XML。
 		foreach ($name in 'About', 'Assemblies', 'Defs', 'Patches', 'Languages', 'Translations', 'Textures', 'Sounds') {
 			$src = Join-Path $root $name
 			if (-not (Test-Path $src)) { continue }
-			& robocopy $src (Join-Path $target $name) /E /NFL /NDL /NJH /NJS /NP | Out-Null
+			& robocopy $src (Join-Path $target $name) /MIR /NFL /NDL /NJH /NJS /NP | Out-Null
 			if ($LASTEXITCODE -ge 8) { throw "robocopy 失败：$name（exit $LASTEXITCODE）" }
 		}
 
@@ -115,3 +128,6 @@ try {
 finally {
 	Pop-Location
 }
+
+# robocopy 的成功码是 0–7，直接在调用方看 $LASTEXITCODE 会误判为失败。
+$global:LASTEXITCODE = 0

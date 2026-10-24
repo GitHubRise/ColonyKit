@@ -97,13 +97,28 @@ namespace ColonyKit
 
 		internal static void ApplyOrder(MainButtonsRoot root)
 		{
-			if (root == null || ButtonsField == null)
+			if (root == null)
 			{
+				return;
+			}
+
+			if (ButtonsField == null)
+			{
+				ModLog.Once(
+					"mainbutton.field-missing",
+					ModLogLevel.Warn,
+					"MainButton",
+					"allButtonsInOrder not found; order overrides are ignored.");
 				return;
 			}
 
 			if (!(ButtonsField.GetValue(root) is List<MainButtonDef> buttons))
 			{
+				ModLog.Once(
+					"mainbutton.field-type",
+					ModLogLevel.Warn,
+					"MainButton",
+					"allButtonsInOrder is not List<MainButtonDef>; order overrides are ignored.");
 				return;
 			}
 

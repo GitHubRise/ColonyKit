@@ -1,12 +1,12 @@
-# 架构说明（0.0.1）
+# 架构说明（0.0.2）
 
-> 状态：0.0.1 框架已生成（M0 完成） · 适用：ColonyKit 0.0.1 / RimWorld 1.6.4871 · 最后更新：2026-10-25
+> 状态：0.0.2 框架已生成（M0 完成） · 适用：ColonyKit 0.0.2 / RimWorld 1.6.4871 · 最后更新：2026-10-25
 >
 > 本文说明 ColonyKit 当前实际骨架、模块生命周期、与模板的关系，以及四个参考模块的落点。设计细节见 [`框架内核.md`](框架内核.md)、[`设置系统.md`](设置系统.md)、[`模块系统`](../../mod-template/docs/模块系统.md)（模板原文）。
 
 ## 1. 来源与约束
 
-- 本工程由 [`sources/mod-template`](../../mod-template/) **0.0.1 复制**生成，再改名为 `ColonyKit`；**没有修改模板本身**。
+- 本工程由 [`sources/mod-template`](../../mod-template/) **0.0.1 复制**生成，后同步 **0.0.2** 的框架修复；**没有修改模板本身**。
 - 复制时保留：`Source/Core/Modules`、`Source/Settings`、`Source/UI`、`Source/TechTree`、`Source/Build`、`Source/Notifications`、`Source/Localization`、`build/verify/package.ps1`。
 - 复制后删除：`DemoConfig`、`ColonyKitDefOf`、`Patch_Pawn_SpawnSetup`、`Patches/OptionalCompatibility.xml`；`DemoGameComponent` 改为 `ColonyKitGameComponent`。
 - 新增：四个参考模块占位 `Source/Modules/ReferenceModules.cs`、`docs/参考源码映射.md`、本文件。
@@ -14,7 +14,7 @@
 ## 2. 实际分层
 
 ```
-About/            Mod 元数据（name=殖民地套件, packageId=local.colonykit, modVersion=0.0.1）
+About/            Mod 元数据（name=殖民地套件, packageId=local.colonykit, modVersion=0.0.2）
 Defs/             目前只有 Core/MainButton_TechTree.xml（模板科技树按钮）
 Languages/        English / ChineseSimplified：Keyed + DefInjected
 Source/
@@ -66,9 +66,9 @@ Def 反序列化 / DefOf 绑定
 - 软停用：模块关闭后不调用 `OnDefsLoaded` / `OnGameLoaded`，但仍调用 `ResetRuntimeState`；**Def 仍会加载**，不会从存档/地图消失。详见 README §3.4。
 - 设置：沿用模板的多页签（模块/常规/日志/通知/汉化/关于）；模块细分设置放 `IColonyKitModuleSettings`，不再往设置根加字段。
 
-## 5. 0.0.1 的 10 个模块
+## 5. 0.0.2 的 10 个模块
 
-| Id | 来源 | 0.0.1 行为 |
+| Id | 来源 | 0.0.2 行为 |
 |---|---|---|
 | `core` | 模板 | 锁定；生命周期基准 |
 | `pawn-menu` | 模板 | 右键菜单服务（模板能力） |
@@ -94,7 +94,7 @@ Def 反序列化 / DefOf 绑定
 cd sources\ColonyKit
 .\build.ps1 -Clean   # 0 error / 0 warning
 .\verify.ps1         # 0 问题 / 0 警告
-.\package.ps1        # dist\ColonyKit-0.0.1.zip
+.\package.ps1        # dist\ColonyKit-0.0.2.zip
 ```
 
 当前结果：构建 0/0、verify 0/0、zip 9 文件（含 `Translations`）；`-Deploy` + `-quicktest` 通过（`modules=10`，翻译表 882/882，自检 tooltip/品质返回中文）；未人工点 Debug 菜单/设置页。
