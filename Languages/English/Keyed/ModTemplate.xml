@@ -99,7 +99,10 @@
 	<ModTemplate.EnablePawnMenu.Desc>Show the extra options this mod adds when right-clicking a colonist.</ModTemplate.EnablePawnMenu.Desc>
 	<ModTemplate.ShowDemoButton>Show bottom demo button</ModTemplate.ShowDemoButton>
 	<ModTemplate.ShowDemoButton.Desc>Show the separate bottom-menu test button (not the research tree).</ModTemplate.ShowDemoButton.Desc>
-	<ModTemplate.DemoButton.Message>Bottom menu demo button activated.</ModTemplate.DemoButton.Message>
+	<ModTemplate.DemoDrawer.Title>Template demo</ModTemplate.DemoDrawer.Title>
+	<ModTemplate.DemoDrawer.Text>This drawer slides up from the bottom bar. It does not pause the game and does not absorb input outside the panel, so the map can still be dragged.</ModTemplate.DemoDrawer.Text>
+	<ModTemplate.DemoDrawer.OpenResearchTree>Open research tree</ModTemplate.DemoDrawer.OpenResearchTree>
+	<ModTemplate.DemoDrawer.Close>Close</ModTemplate.DemoDrawer.Close>
 
 	<ModTemplate.Settings.Tab.Notifications>Notifications</ModTemplate.Settings.Tab.Notifications>
 	<ModTemplate.Settings.Notifications.Enabled>Enable notifications</ModTemplate.Settings.Notifications.Enabled>

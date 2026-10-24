@@ -8,12 +8,13 @@
 
 - 玩家可见文案统一为「研究树 / Research tree」；代码类型和翻译键保留 `TechTree*`，避免破坏 API。
 - 研究入口改为原版 Research 窗口的新增页签 `MT_ResearchTab`；不再注册研究树底部按钮。
-- 底部菜单保留独立「模板演示」按钮作为单独的测试项，与研究页签/研究树解耦。
+- 底部菜单保留独立「模板演示」按钮作为单独的测试项，与研究页签/研究树解耦；点击打开贴底全宽抽屉（向上滑入、不暂停、面板外仍可拖地图）。
 
 ### Added
 
 - `Defs/Research/ModTemplate_ResearchExamples.xml`：15 个示例研究，覆盖原版前置、独立根、线性链、线性后分叉、条件分叉、生产研究解锁配方。
 - `ResearchTabDef MT_ResearchTab` + 研究/配方 DefInjected。
+- `DemoDrawerWindow` + `UiAutomationService` 的 `05-demo-drawer` 截图场景。
 
 ### Fixed
 

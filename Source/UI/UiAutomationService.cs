@@ -78,9 +78,8 @@ namespace ModTemplate
 				() => new TechTreeWindow()));
 
 			Register(new UiScenario(
-				"05-bottom-button",
-				null,
-				ClickDemoButton));
+				"05-demo-drawer",
+				() => new DemoDrawerWindow()));
 		}
 
 		public static void Register(UiScenario scenario)

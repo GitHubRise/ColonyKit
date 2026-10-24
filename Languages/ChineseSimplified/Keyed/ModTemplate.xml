@@ -99,7 +99,10 @@
 	<ModTemplate.EnablePawnMenu.Desc>右键殖民者时显示本 Mod 追加的菜单项。</ModTemplate.EnablePawnMenu.Desc>
 	<ModTemplate.ShowDemoButton>显示底部演示按钮</ModTemplate.ShowDemoButton>
 	<ModTemplate.ShowDemoButton.Desc>显示独立的底部菜单测试按钮（不是研究树入口）。</ModTemplate.ShowDemoButton.Desc>
-	<ModTemplate.DemoButton.Message>底部菜单演示按钮已触发。</ModTemplate.DemoButton.Message>
+	<ModTemplate.DemoDrawer.Title>模板演示</ModTemplate.DemoDrawer.Title>
+	<ModTemplate.DemoDrawer.Text>这个抽屉贴着底部菜单向上展开；不暂停游戏，也不吸收面板外的输入，所以仍然可以拖动地图。</ModTemplate.DemoDrawer.Text>
+	<ModTemplate.DemoDrawer.OpenResearchTree>打开研究树</ModTemplate.DemoDrawer.OpenResearchTree>
+	<ModTemplate.DemoDrawer.Close>关闭</ModTemplate.DemoDrawer.Close>
 
 	<ModTemplate.Settings.Tab.Notifications>通知</ModTemplate.Settings.Tab.Notifications>
 	<ModTemplate.Settings.Notifications.Enabled>启用通知</ModTemplate.Settings.Notifications.Enabled>

@@ -85,7 +85,7 @@
 | 右键小人菜单（Provider 自动发现 + 注册表） | ✅ | `PawnMenuService` + `ModTemplatePawnMenuProvider` |
 | 通知消息 / 信件 / 按 key 节流 | ✅ | `NotificationService` |
 | 建造放置校验 + 规则 + 程序化放蓝图 | ✅ | `BuildControlService` + `Patch_GenConstruct_CanPlaceBlueprintAt` |
-| 底部主菜单显示 / 隐藏 / 排序 + 自定义演示按钮 | ✅ | `MainButtonService` + `MainButtonWorker_Demo` |
+| 底部主菜单显示 / 隐藏 / 排序 + 贴底演示抽屉 | ✅ | `MainButtonService` + `MainButtonWorker_Demo` + `DemoDrawerWindow` |
 | Prefix / Transpiler 示例 | ❌ | 需要时按同样模式加 |
 | 暴露给其他 Mod 的 API / 服务接口 | ✅ | `PawnMenuService` / `NotificationService` / `BuildControlService` / `MainButtonService` |
 
