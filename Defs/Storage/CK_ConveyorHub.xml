@@ -5,14 +5,19 @@
 		<label>bidirectional conveyor hub</label>
 		<description>A 2x2 bidirectional conveyor hub. Items can enter and leave from any of the four sides; the central turntable handles turns. The texture is symmetric, so rotating the building does not change the footprint.</description>
 		<size>(2,2)</size>
+		<thingClass>ColonyKit.Modules.Storage.Building_ConveyorHub</thingClass>
 		<graphicData>
 			<texPath>Things/Building/Storage/CK_ConveyorHub</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(2,2)</drawSize>
 		</graphicData>
 		<rotatable>true</rotatable>
+		<tickerType>Normal</tickerType>
 		<designationCategory>Furniture</designationCategory>
 		<passability>PassThroughOnly</passability>
+		<building>
+			<maxItemsInCell>1</maxItemsInCell>
+		</building>
 		<fillPercent>0.15</fillPercent>
 		<staticSunShadowHeight>0.15</staticSunShadowHeight>
 		<castEdgeShadows>true</castEdgeShadows>

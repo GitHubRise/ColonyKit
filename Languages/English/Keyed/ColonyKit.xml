@@ -176,6 +176,11 @@
 	<CK.VerticalWarehouse.Withdrawn>All items withdrawn.</CK.VerticalWarehouse.Withdrawn>
 
 	<CK.WithdrawFromWarehouse.report>Withdrawing from the vertical warehouse.</CK.WithdrawFromWarehouse.report>
+	<CK.ConveyorHub.Status>Output: {0}{1}</CK.ConveyorHub.Status>
+	<CK.ConveyorHub.ReversedSuffix> (reversed)</CK.ConveyorHub.ReversedSuffix>
+	<CK.ConveyorHub.Reverse>Reverse direction</CK.ConveyorHub.Reverse>
+	<CK.ConveyorHub.ReverseDesc>Switch the output to the opposite side of the building's facing. Items still enter from any side and move toward the current output.</CK.ConveyorHub.ReverseDesc>
+	<CK.ConveyorHub.Reversed>Conveyor direction reversed.</CK.ConveyorHub.Reversed>
 	<ColonyKit.Settings.Tab.GeneralSettings>General settings</ColonyKit.Settings.Tab.GeneralSettings>
 	<ColonyKit.Settings.Section.DefaultLanguage>Default language</ColonyKit.Settings.Section.DefaultLanguage>
 	<ColonyKit.Settings.Section.LogOutput>Log output</ColonyKit.Settings.Section.LogOutput>

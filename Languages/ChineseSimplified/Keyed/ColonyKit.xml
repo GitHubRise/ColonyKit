@@ -176,6 +176,11 @@
 	<CK.VerticalWarehouse.Withdrawn>已取出全部物品。</CK.VerticalWarehouse.Withdrawn>
 
 	<CK.WithdrawFromWarehouse.report>正在从立体库取货。</CK.WithdrawFromWarehouse.report>
+	<CK.ConveyorHub.Status>出口：{0}{1}</CK.ConveyorHub.Status>
+	<CK.ConveyorHub.ReversedSuffix>（反向）</CK.ConveyorHub.ReversedSuffix>
+	<CK.ConveyorHub.Reverse>反向运行</CK.ConveyorHub.Reverse>
+	<CK.ConveyorHub.ReverseDesc>把履带出口切到建筑朝向的对侧；物品仍从四边进入，按当前出口移动。</CK.ConveyorHub.ReverseDesc>
+	<CK.ConveyorHub.Reversed>履带方向已反向。</CK.ConveyorHub.Reversed>
 	<ColonyKit.Settings.Tab.GeneralSettings>常规设置</ColonyKit.Settings.Tab.GeneralSettings>
 	<ColonyKit.Settings.Section.DefaultLanguage>默认语言</ColonyKit.Settings.Section.DefaultLanguage>
 	<ColonyKit.Settings.Section.LogOutput>日志输出</ColonyKit.Settings.Section.LogOutput>
