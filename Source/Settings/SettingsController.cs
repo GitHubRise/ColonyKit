@@ -43,24 +43,55 @@ namespace ColonyKit
 		{
 			this.settings = settings ?? throw new ArgumentNullException(nameof(settings));
 
-			// 页面按 Order 排序；Visible 留给以后按 DLC / 其他 Mod 隐藏。
-			pages = new List<SettingsPage>
-			{
-				new ModulesSettingsPage(),
-				new GeneralSettingsPage(),
-				new LoggingSettingsPage(),
-				new NotificationSettingsPage(),
-				new LocalizationSettingsPage(),
-				new AboutSettingsPage()
-			}
-			.Where(page => page.Visible)
-			.OrderBy(page => page.Order)
-			.ToList();
+			// 页面由程序集自动发现：新增 SettingsPage 子类即可，不需要改本文件。
+			pages = DiscoverPages();
 
 			if (pages.Count == 0)
 			{
 				throw new InvalidOperationException("SettingsController 至少需要一个可见的设置页。");
 			}
+		}
+
+		private static List<SettingsPage> DiscoverPages()
+		{
+			var discovered = new List<SettingsPage>();
+
+			foreach (Type type in typeof(SettingsController).Assembly.GetTypes())
+			{
+				if (type == null
+					|| !type.IsClass
+					|| type.IsAbstract
+					|| !typeof(SettingsPage).IsAssignableFrom(type)
+					|| type.GetConstructor(Type.EmptyTypes) == null)
+				{
+					continue;
+				}
+
+				try
+				{
+					if (Activator.CreateInstance(type) is SettingsPage page && page.Visible)
+					{
+						discovered.Add(page);
+					}
+				}
+				catch (Exception exception)
+				{
+					ModLog.Error("Settings", $"failed to create settings page '{type.FullName}'", exception);
+				}
+			}
+
+			// 同一 Id 只保留第一个，避免重复注册导致滚动位置/深链接冲突。
+			List<SettingsPage> result = discovered
+				.GroupBy(page => page.Id)
+				.Select(group => group.First())
+				.OrderBy(page => page.Order)
+				.ToList();
+
+			ModLog.Info(
+				"Settings",
+				"discovered pages: " + string.Join(", ", result.Select(page => page.Id)));
+
+			return result;
 		}
 
 		/// <summary>

@@ -25,7 +25,7 @@ namespace ColonyKit.Modules
 		{
 			get
 			{
-				LocalizationSettings settings = ColonyKitMod.Settings?.localization;
+				LocalizationSettings settings = ColonyKitMod.Settings?.GetModuleSettings<LocalizationSettings>();
 				return ModuleRegistry.IsEnabled(IdValue)
 					&& settings != null
 					&& settings.enabled;

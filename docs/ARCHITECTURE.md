@@ -42,7 +42,7 @@ Def XML 合并 + Patch
 Def 反序列化 / DefOf 绑定
   └─ Bootstrap 静态构造
         ├─ Harmony.PatchAll("local.colonykit")
-        ├─ RegisterModules()：模板 6 + 参考 4 = 10
+        ├─ ModuleRegistry.DiscoverFromAssembly(...)：自动发现 10 个模块
         └─ ModuleRegistry.InitAll()
               └─ each enabled module.OnDefsLoaded()（try/catch 隔离）
 
@@ -60,8 +60,11 @@ Def 反序列化 / DefOf 绑定
 
 - 契约：`IColonyKitModule`（`Id` / `DisplayNameKey` / `DescriptionKey` / `InitOrder` / `Locked` / `EnabledByDefault` / `OnDefsLoaded` / `OnGameLoaded` / `ResetRuntimeState`）。
 - 注册表：`ModuleRegistry.Register` 去重 + 按 `InitOrder` 排序；`IsEnabled` 读 `ModuleSettings.disabled`；锁定模块始终启用。
+- **模块自动发现**：`Bootstrap` 只调 `ModuleRegistry.DiscoverFromAssembly(typeof(Bootstrap).Assembly)`；新增模块只要实现 `IColonyKitModule` + 无参构造，不改 `Bootstrap`。
+- **设置页自动发现**：`SettingsController` 扫描程序集里的 `SettingsPage` 子类，按 `Order` 排序、按 `Id` 去重；新增页面不改 `SettingsController`。
+- **模块设置自动挂载**：模块设置实现 `IColonyKitModuleSettings`，通过 `ColonyKitSettings.GetModuleSettings<T>()` 取/建；持久化在 `moduleSettings` 列表里，不改 `ColonyKitSettings` 的字段列表。
 - 软停用：模块关闭后不调用 `OnDefsLoaded` / `OnGameLoaded`，但仍调用 `ResetRuntimeState`；**Def 仍会加载**，不会从存档/地图消失。详见 README §3.4。
-- 设置：当前沿用模板的 `ModuleSettings`（开关）+ 五个页签；功能模块的细分设置待移植时再加。
+- 设置：沿用模板的多页签（模块/常规/日志/通知/汉化/关于）；模块细分设置放 `IColonyKitModuleSettings`，不再往设置根加字段。
 
 ## 5. 0.0.1 的 10 个模块
 

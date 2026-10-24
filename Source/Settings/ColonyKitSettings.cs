@@ -1,4 +1,5 @@
-using ColonyKit.Modules.Localization;
+using System.Collections.Generic;
+using System.Linq;
 using Verse;
 
 namespace ColonyKit
@@ -12,22 +13,43 @@ namespace ColonyKit
 	/// <code>
 	/// &lt;ModSettings Class="ColonyKit.ColonyKitSettings"&gt;
 	///   &lt;general Class="ColonyKit.GeneralSettings"&gt;...&lt;/general&gt;
-	///   &lt;logging Class="ColonyKit.LoggingSettings"&gt;...&lt;/logging&gt;
+	///   &lt;moduleSettings&gt;
+	///     &lt;li Class="ColonyKit.Modules.Localization.LocalizationSettings"&gt;...&lt;/li&gt;
+	///   &lt;/moduleSettings&gt;
 	/// &lt;/ModSettings&gt;
 	/// </code>
-	/// 新增一页时：加一个数据类、加一个 <see cref="SettingsPage"/>、在
-	/// <see cref="SettingsController"/> 的页面列表里注册，并在本类补一行 <c>Scribe_Deep</c>。
+	/// 模块设置通过 <see cref="IColonyKitModuleSettings"/> 注册到 <see cref="moduleSettings"/>，
+	/// 新增模块不再修改本类的字段列表。
 	/// </remarks>
 	public class ColonyKitSettings : ModSettings
 	{
 		public GeneralSettings general = new GeneralSettings();
 		public LoggingSettings logging = new LoggingSettings();
 		public NotificationSettings notifications = new NotificationSettings();
-		public LocalizationSettings localization = new LocalizationSettings();
 		public ModuleSettings modules = new ModuleSettings();
 
-		/// <summary>设置 schema 版本；0 表示旧扁平结构。迁移后写入当前版本。</summary>
+		/// <summary>各模块自带的设置对象；按实际类型做 Deep Scribe，接口元素会写入 Class 属性。</summary>
+		public List<IColonyKitModuleSettings> moduleSettings = new List<IColonyKitModuleSettings>();
+
+		/// <summary>设置 schema 版本；0 表示旧扁平结构。</summary>
 		public int schemaVersion;
+
+		/// <summary>取模块设置；没有就创建并加入列表。</summary>
+		public T GetModuleSettings<T>() where T : class, IColonyKitModuleSettings, new()
+		{
+			if (moduleSettings == null)
+			{
+				moduleSettings = new List<IColonyKitModuleSettings>();
+			}
+
+			T found = moduleSettings.OfType<T>().FirstOrDefault();
+			if (found == null)
+			{
+				found = new T();
+				moduleSettings.Add(found);
+			}
+			return found;
+		}
 
 		public override void ExposeData()
 		{
@@ -40,15 +62,17 @@ namespace ColonyKit
 			Scribe_Deep.Look(ref general, "general");
 			Scribe_Deep.Look(ref logging, "logging");
 			Scribe_Deep.Look(ref notifications, "notifications");
-			Scribe_Deep.Look(ref localization, "localization");
 			Scribe_Deep.Look(ref modules, "modules");
+
+			// LookMode.Deep：每个元素写入/读取 <li Class="...">，因此可以存接口列表。
+			Scribe_Collections.Look(ref moduleSettings, "moduleSettings", LookMode.Deep);
 
 			// 老配置文件里没有这些节点时，用默认对象补上，避免后续空引用。
 			if (general == null) general = new GeneralSettings();
 			if (logging == null) logging = new LoggingSettings();
 			if (notifications == null) notifications = new NotificationSettings();
-			if (localization == null) localization = new LocalizationSettings();
 			if (modules == null) modules = new ModuleSettings();
+			if (moduleSettings == null) moduleSettings = new List<IColonyKitModuleSettings>();
 
 			if (Scribe.mode == LoadSaveMode.PostLoadInit)
 			{
@@ -63,8 +87,26 @@ namespace ColonyKit
 			changed |= general.Validate();
 			changed |= logging.Validate();
 			changed |= notifications.Validate();
-			changed |= localization.Validate();
 			changed |= modules.Validate();
+
+			if (moduleSettings == null)
+			{
+				moduleSettings = new List<IColonyKitModuleSettings>();
+				changed = true;
+			}
+
+			for (int i = moduleSettings.Count - 1; i >= 0; i--)
+			{
+				IColonyKitModuleSettings data = moduleSettings[i];
+				if (data == null)
+				{
+					moduleSettings.RemoveAt(i);
+					changed = true;
+					continue;
+				}
+
+				changed |= data.Validate();
+			}
 
 			if (changed)
 			{

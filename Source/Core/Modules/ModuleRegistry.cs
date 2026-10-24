@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Verse;
 
 namespace ColonyKit
@@ -19,6 +20,61 @@ namespace ColonyKit
 			new Dictionary<string, IColonyKitModule>();
 
 		public static IReadOnlyList<IColonyKitModule> All => modules;
+
+		/// <summary>
+		/// 扫描程序集里所有可实例化的 <see cref="IColonyKitModule"/> 并注册。
+		/// 新增模块只要实现接口 + 无参构造，不需要改 <see cref="Bootstrap"/>。
+		/// </summary>
+		public static int DiscoverFromAssembly(Assembly assembly)
+		{
+			if (assembly == null)
+			{
+				return 0;
+			}
+
+			int count = 0;
+			foreach (Type type in GetLoadableTypes(assembly))
+			{
+				if (type == null
+					|| !type.IsClass
+					|| type.IsAbstract
+					|| !typeof(IColonyKitModule).IsAssignableFrom(type)
+					|| type.GetConstructor(Type.EmptyTypes) == null)
+				{
+					continue;
+				}
+
+				try
+				{
+					IColonyKitModule module = (IColonyKitModule)Activator.CreateInstance(type);
+					if (module == null || byId.ContainsKey(module.Id))
+					{
+						continue;
+					}
+
+					Register(module);
+					count++;
+				}
+				catch (Exception exception)
+				{
+					ModLog.Error("Module", $"failed to create module type '{type.FullName}'", exception);
+				}
+			}
+
+			return count;
+		}
+
+		private static IEnumerable<Type> GetLoadableTypes(Assembly assembly)
+		{
+			try
+			{
+				return assembly.GetTypes();
+			}
+			catch (ReflectionTypeLoadException exception)
+			{
+				return exception.Types.Where(type => type != null);
+			}
+		}
 
 		public static void Register(IColonyKitModule module)
 		{

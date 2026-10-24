@@ -15,10 +15,10 @@ namespace ColonyKit
 	public static class SettingsMigration
 	{
 		/// <summary>
-		/// 1：嵌套设置结构；2：模块开关 + 框架日志级别。
+		/// 1：嵌套设置结构；2：模块开关 + 框架日志级别；3：模块设置改为 moduleSettings 列表。
 		/// 加新字段/改结构时递增，并在 <see cref="Migrate"/> 里补一步。
 		/// </summary>
-		public const int CurrentVersion = 2;
+		public const int CurrentVersion = 3;
 
 		private const string LogPrefix = "[ColonyKit][Migration] ";
 		private static bool dirty;
@@ -57,6 +57,12 @@ namespace ColonyKit
 			if (from < 2 && settings.modules == null)
 			{
 				settings.modules = new ModuleSettings();
+				changed = true;
+			}
+
+			if (from < 3 && settings.moduleSettings == null)
+			{
+				settings.moduleSettings = new System.Collections.Generic.List<IColonyKitModuleSettings>();
 				changed = true;
 			}
 

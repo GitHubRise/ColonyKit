@@ -311,7 +311,7 @@ namespace ColonyKit.Modules.Localization
 
 		private static bool IsEnabled(Entry entry)
 		{
-			LocalizationSettings settings = ColonyKitMod.Settings?.localization;
+			LocalizationSettings settings = ColonyKitMod.Settings?.GetModuleSettings<LocalizationSettings>();
 			if (settings == null || settings.enabled == false)
 			{
 				return false;

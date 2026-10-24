@@ -164,17 +164,22 @@ Get-ChildItem -Recurse -File -Include *.cs, *.csproj, *.xml, *.ps1 |
 ### 3.2 模块契约
 
 ```csharp
-public interface IColonyModule
+public interface IColonyKitModule
 {
-	string Id { get; }            // Hygiene / Storage / ...
-	string DisplayName { get; }
-	int InitOrder { get; }        // 小者先初始化
-	void OnDefsLoaded();          // [StaticConstructorOnStartup] 之后，可安全读 Def
-	void OnGameLoaded(Game game); // 读档/新游戏后，注册地图组件、恢复状态
+	string Id { get; }                  // Hygiene / Storage / ...
+	string DisplayNameKey { get; }
+	string DescriptionKey { get; }
+	int InitOrder { get; }              // 小者先初始化
+	bool Locked { get; }                // core / diagnostics
+	void OnDefsLoaded();                // [StaticConstructorOnStartup] 之后，可安全读 Def
+	void OnGameLoaded(Game game);       // 读档/新游戏后，注册地图组件、恢复状态
+	void ResetRuntimeState();           // 清静态缓存（禁用模块也会调）
 }
 ```
 
-- `ModuleRegistry` 在 `Bootstrap` 里注册模块并调用 `OnDefsLoaded()`；单个模块抛异常只记 error，不拖垮其他模块。
+- `ModuleRegistry.DiscoverFromAssembly` 扫描程序集里所有 `IColonyKitModule` 实现并注册；`Bootstrap` 不再硬编码模块列表。单个模块抛异常只记 error，不拖垮其他模块。
+- `SettingsController` 自动发现 `SettingsPage` 子类，按 `Order` 排序、`Id` 去重；新增设置页不改控制器。
+- 模块设置实现 `IColonyKitModuleSettings`，通过 `ColonyKitSettings.GetModuleSettings<T>()` 取/建，持久化在 `moduleSettings` 列表；新增模块设置不改设置根字段。
 - `ColonyKitGameComponent` 在游戏加载后统一调用 `OnGameLoaded()`，并持有蓝图库等全局状态。
 - Harmony 补丁**按模块分文件**、按模块命名（`Patch_<Target>_<Module>`）；补丁内部第一行判断模块是否启用（见 §3.4）。
 - 每个模块一个 `DefOf` 类（`HygieneDefOf`、`StorageDefOf`、`RoboticsDefOf`…），不要把所有字段堆进一个巨型类。
@@ -440,10 +445,10 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 	- 完成：删除 `DemoConfig` / `ColonyKitDefOf` / `Patch_Pawn_SpawnSetup` / `OptionalCompatibility`；`DemoGameComponent` 改为 `ColonyKitGameComponent`。
 - [x] **M0-3** 改写 `About/About.xml`：`name=殖民地套件`、`author`、`packageId=local.colonykit`、`supportedVersions=1.6`、`modVersion=0.0.1`、`description`、Harmony 依赖 + `loadAfter`。
 	- 完成：0.0.1；描述改为框架 + 四个参考模块占位。
-- [x] **M0-4** 模块内核：`IColonyKitModule`、`ModuleRegistry`、`ColonyKitGameComponent`；注册模板 6 个模块 + 4 个参考模块占位，`OnDefsLoaded` / `OnGameLoaded` 有日志。
-	- 完成：模板 6 个（core/pawn-menu/notifications/build-control/tech-tree/diagnostics）+ `hygiene` / `storage` / `localization` / `rjw` 四个占位。
-- [x] **M0-5** 设置壳：沿用模板的多页签设置框架（模块/常规/日志/通知/关于），模块开关由 `ModuleSettings` 持久化；功能模块的细分设置待移植时再加。
-	- 偏差：没有按 `ck_<module>_*` 新建嵌套设置类；0.0.1 先用模板的 `ModuleSettings`，后续模块落地时再扩。
+- [x] **M0-4** 模块内核：`IColonyKitModule`、`ModuleRegistry`、`ColonyKitGameComponent`；`ModuleRegistry.DiscoverFromAssembly` 自动发现 10 个模块，`OnDefsLoaded` / `OnGameLoaded` 有日志。
+	- 完成：模板 6 个（core/pawn-menu/notifications/build-control/tech-tree/diagnostics）+ `hygiene` / `storage` / `localization` / `rjw` 四个；新增模块不再改 `Bootstrap`。
+- [x] **M0-5** 设置壳：沿用模板的多页签设置框架（模块/常规/日志/通知/汉化/关于），`SettingsController` 自动发现页面；模块开关由 `ModuleSettings` 持久化，模块细分设置走 `IColonyKitModuleSettings` + `GetModuleSettings<T>()`。
+	- 偏差：没有按 `ck_<module>_*` 新建嵌套设置类；0.0.1 用 `moduleSettings` 通用列表，设置页自动发现。
 - [x] **M0-6** 文档：改写 `docs/ARCHITECTURE.md`（模块契约、生命周期、软停用限制、水网/存储/肥力/机器人约束）；维护 `docs/0000-索引.md` 与各模块索引/功能页；更新 [`sources/Index.md`](../Index.md) 增加本工程条目与构建命令。
 	- 完成：新增 `docs/ARCHITECTURE.md`（0.0.1 实际骨架/生命周期）；`sources/Index.md` 已加 ColonyKit 段；`docs/0000-索引.md` 与 27 个功能页已维护。
 - [x] **M0-7** `.\build.ps1` 0 错误 0 警告 + `.\verify.ps1` 0 问题 + `-Deploy` 后 `Player.log` 出现 `[ColonyKit] loaded; modules=10`，无红字。
@@ -669,3 +674,4 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 | 2026-10-25 | 移植 `localization` 开发者菜单汉化：`Translations/DevMenuLabels.xml`（约 72 KB）、`DebugActionNode.LabelNow` Postfix、Debug 窗口 tooltip Transpiler、翻译方案设置页/编辑窗口；检测原 DevMenuChinese 冲突；build 0/0、verify 0/0、zip 9 文件；quicktest 自检 882/882 + tooltip/品质翻译通过。 |
 | 2026-10-25 | 新增 `5004-汉化-开发者菜单汉化.md`，功能页总数 27；`0000-索引.md` 与 `5000-汉化索引.md` 同步。 |
 | 2026-10-25 | 任务清单补 `M7-0`（开发者菜单汉化移植）并勾选，任务总数 79 → 80。 |
+| 2026-10-25 | 扩展点自动发现：`ModuleRegistry.DiscoverFromAssembly` 替代 `Bootstrap` 硬编码；`SettingsController` 自动发现 `SettingsPage`；模块设置走 `IColonyKitModuleSettings` + `moduleSettings` 列表，不再改 `ColonyKitSettings` 字段。quicktest：`modules=10 (discovered=10)`、页面 6 个、设置 XML 正确写入 `Class=...LocalizationSettings`。 |

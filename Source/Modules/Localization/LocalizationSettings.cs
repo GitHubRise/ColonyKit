@@ -25,11 +25,13 @@ namespace ColonyKit.Modules.Localization
 	}
 
 	/// <summary>
-	/// 开发者菜单汉化设置：总开关、翻译方案、表加载状态。作为 ColonyKitSettings 的嵌套对象持久化。
+	/// 开发者菜单汉化设置：总开关、翻译方案、表加载状态。作为 ColonyKitSettings.moduleSettings 的一项持久化。
 	/// </summary>
-	public class LocalizationSettings : IExposable
+	public class LocalizationSettings : IColonyKitModuleSettings
 	{
 		public const int MaxSchemes = 10;
+
+		public string SettingsKey => "localization";
 
 		public bool enabled = true;
 		public List<TranslationScheme> schemes = new List<TranslationScheme>();

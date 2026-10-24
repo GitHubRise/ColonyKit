@@ -1,6 +1,5 @@
 using System;
 using HarmonyLib;
-using ColonyKit.Modules;
 using Verse;
 
 namespace ColonyKit
@@ -26,32 +25,16 @@ namespace ColonyKit
 				// id 用 packageId，保证和别的 Mod 不冲突。
 				new Harmony("local.colonykit").PatchAll(typeof(Bootstrap).Assembly);
 
-				RegisterModules();
+				// 模块由程序集自动发现：新增模块不需要改本文件。
+				int discovered = ModuleRegistry.DiscoverFromAssembly(typeof(Bootstrap).Assembly);
 				ModuleRegistry.InitAll();
 
-				ModLog.Info("Bootstrap", $"loaded; modules={ModuleRegistry.All.Count}");
+				ModLog.Info("Bootstrap", $"loaded; modules={ModuleRegistry.All.Count} (discovered={discovered})");
 			}
 			catch (Exception e)
 			{
 				ModLog.Error("Bootstrap", "bootstrap failed", e);
 			}
-		}
-
-		private static void RegisterModules()
-		{
-			// 0.0.1 框架自带模块。
-			ModuleRegistry.Register(new CoreModule());
-			ModuleRegistry.Register(new PawnMenuModule());
-			ModuleRegistry.Register(new NotificationModule());
-			ModuleRegistry.Register(new BuildModule());
-			ModuleRegistry.Register(new TechTreeModule());
-			ModuleRegistry.Register(new DiagnosticsModule());
-
-			// 参考来源的四个功能模块（0.0.1 仅占位）。
-			ModuleRegistry.Register(new HygieneModule());
-			ModuleRegistry.Register(new StorageModule());
-			ModuleRegistry.Register(new LocalizationModule());
-			ModuleRegistry.Register(new RjwModule());
 		}
 	}
 }

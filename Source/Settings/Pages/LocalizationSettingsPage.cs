@@ -19,7 +19,7 @@ namespace ColonyKit
 
 		public override void DoContents(Listing_Standard listing, ColonyKitSettings settings)
 		{
-			LocalizationSettings data = settings.localization;
+			LocalizationSettings data = settings.GetModuleSettings<LocalizationSettings>();
 
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Section.Localization".Loc());
 
@@ -78,7 +78,7 @@ namespace ColonyKit
 
 		public override void Reset(ColonyKitSettings settings)
 		{
-			settings.localization.Reset();
+			settings.GetModuleSettings<LocalizationSettings>().Reset();
 			LocalizationModule.Reload();
 		}
 	}
