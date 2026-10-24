@@ -69,7 +69,7 @@ namespace ModTemplate
 		public override int InitOrder => 40;
 	}
 
-	/// <summary>诊断模块：游戏加载时清空日志去重/节流/最近日志。</summary>
+	/// <summary>诊断模块：游戏加载时清空日志去重/节流/最近日志；始终启用，保证支持信息可用。</summary>
 	public sealed class DiagnosticsModule : ModTemplateModule
 	{
 		public override string Id => "diagnostics";
@@ -79,6 +79,8 @@ namespace ModTemplate
 		public override string DescriptionKey => "ModTemplate.Module.Diagnostics.Desc";
 
 		public override int InitOrder => 90;
+
+		public override bool Locked => true;
 
 		public override void ResetRuntimeState()
 		{
