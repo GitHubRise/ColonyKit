@@ -4,6 +4,12 @@
 
 ## [Unreleased]
 
+### Changed
+
+- 设置页签精简为 **模块 / 立体库 / 汉化 / 常规设置 / 关于** 5 个；移除模板「常规 / 日志 / 通知」三个测试页。
+- 新增「常规设置」页（位于「关于」前）：Mod 设置语言默认 **简体中文**，可切 Auto/English/简体中文；日志级别、间隔、前缀、测试日志和诊断入口移入本页。
+- `GeneralSettings.language` 默认值与 `ModLoc` 回退语言改为 `ChineseSimplified`。
+
 ### Added
 
 - `storage` 第一阶段：全局堆叠规则（1–20×，默认 10×）、原值缓存/恢复、Stack XXL 共存检测、设置页（开关/倍率/逐 Def 日志/重新应用）。

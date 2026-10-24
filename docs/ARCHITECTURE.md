@@ -64,7 +64,7 @@ Def 反序列化 / DefOf 绑定
 - **设置页自动发现**：`SettingsController` 扫描程序集里的 `SettingsPage` 子类，按 `Order` 排序、按 `Id` 去重；新增页面不改 `SettingsController`。
 - **模块设置自动挂载**：模块设置实现 `IColonyKitModuleSettings`，通过 `ColonyKitSettings.GetModuleSettings<T>()` 取/建；持久化在 `moduleSettings` 列表里，不改 `ColonyKitSettings` 的字段列表。
 - 软停用：模块关闭后不调用 `OnDefsLoaded` / `OnGameLoaded`，但仍调用 `ResetRuntimeState`；**Def 仍会加载**，不会从存档/地图消失。详见 README §3.4。
-- 设置：沿用模板的多页签（模块/常规/日志/通知/汉化/关于）；模块细分设置放 `IColonyKitModuleSettings`，不再往设置根加字段。
+- 设置：多页签现为 **模块 / 立体库 / 汉化 / 常规设置 / 关于** 5 页；「常规设置」含 Mod 设置语言（默认简中）与日志/诊断；旧模板「常规 / 日志 / 通知」测试页已移除；模块细分设置放 `IColonyKitModuleSettings`，不再往设置根加字段。
 
 ## 5. 0.0.2 的 10 个模块
 

@@ -40,7 +40,7 @@ namespace ColonyKit
 				return "";
 			}
 
-			ModLanguage language = ColonyKitMod.Settings?.general?.language ?? ModLanguage.Auto;
+			ModLanguage language = ColonyKitMod.Settings?.general?.language ?? ModLanguage.ChineseSimplified;
 			if (language == ModLanguage.Auto)
 			{
 				return GameTranslate(key, args);

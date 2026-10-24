@@ -1,66 +1,127 @@
+using RimWorld;
 using Verse;
 
 namespace ColonyKit
 {
 	/// <summary>
-	/// 「常规」页：开关殖民者统计。数据在 <see cref="GeneralSettings"/>。
-	/// 本页演示「同一页签下用 Section 分区」。
+	/// 「常规设置」页：设置界面语言（默认简体中文）+ 日志/诊断。
+	/// 旧「常规 / 日志 / 通知」三个模板页签已移除，页面数量减少到 5 个。
 	/// </summary>
 	public sealed class GeneralSettingsPage : SettingsPage
 	{
-		public override string Id => "general";
+		private static readonly LogDetail[] Details =
+		{
+			LogDetail.Off,
+			LogDetail.Summary,
+			LogDetail.Verbose
+		};
 
-		public override string TitleKey => "ColonyKit.Settings.Tab.General";
+		private static readonly ModLogLevel[] Levels =
+		{
+			ModLogLevel.Debug,
+			ModLogLevel.Info,
+			ModLogLevel.Warn,
+			ModLogLevel.Error
+		};
 
-		public override int Order => 10;
+		public override string Id => "general-settings";
+
+		public override string TitleKey => "ColonyKit.Settings.Tab.GeneralSettings";
+
+		public override int Order => 80;
 
 		public override void DoContents(Listing_Standard listing, ColonyKitSettings settings)
 		{
-			GeneralSettings data = settings.general;
-
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Section.Behavior".Loc());
-			SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.TrackSpawns".Loc(),
-				ref data.trackSpawns,
-				"ColonyKit.TrackSpawns.Desc".Loc());
-
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Section.Interface".Loc());
-			SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.EnablePawnMenu".Loc(),
-				ref data.enablePawnMenu,
-				"ColonyKit.EnablePawnMenu.Desc".Loc());
-			SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.ShowTechTreeButton".Loc(),
-				ref data.showTechTreeButton,
-				"ColonyKit.ShowTechTreeButton.Desc".Loc());
-
-			SettingsWidgets.ControlModePicker(
-				listing,
-				"ColonyKit.Settings.ControlMode".Loc(),
-				data.controlMode,
-				mode => data.controlMode = mode);
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.ControlMode.Desc".Loc());
+			GeneralSettings general = settings.general;
 
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Section.Language".Loc());
 			SettingsWidgets.Dropdown(
 				listing,
 				"ColonyKit.Settings.Language".Loc(),
-				data.language,
+				general.language,
 				new[] { ModLanguage.Auto, ModLanguage.English, ModLanguage.ChineseSimplified },
 				language => ("ColonyKit.Settings.Language." + language).Loc(),
-				language => data.language = language);
+				language => general.language = language);
 			SettingsWidgets.Label(listing, "ColonyKit.Settings.Language.Desc".Loc());
 
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Section.Notes".Loc());
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.General.Hint".Loc());
+			LoggingSettings logging = settings.logging;
+
+			SettingsWidgets.Section(listing, "ColonyKit.Settings.Section.Level".Loc());
+			SettingsWidgets.Dropdown(
+				listing,
+				"ColonyKit.Settings.Logging.Detail".Loc(),
+				logging.detail,
+				Details,
+				detail => ("ColonyKit.Settings.LogDetail." + detail).Loc(),
+				detail => logging.detail = detail);
+			SettingsWidgets.Dropdown(
+				listing,
+				"ColonyKit.Settings.Logging.FrameworkLevel".Loc(),
+				logging.logLevel,
+				Levels,
+				level => ("ColonyKit.LogLevel." + level).Loc(),
+				level => logging.logLevel = level);
+
+			bool canLogSpawns = logging.detail == LogDetail.Verbose;
+			SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Logging.VerboseSpawn".Loc(),
+				ref logging.verboseSpawnLog,
+				canLogSpawns
+					? "ColonyKit.Settings.Logging.VerboseSpawn.Desc".Loc()
+					: "ColonyKit.Settings.Logging.VerboseSpawn.Locked".Loc(),
+				enabled: canLogSpawns);
+
+			SettingsWidgets.Section(listing, "ColonyKit.Settings.Section.Output".Loc());
+			logging.logIntervalTicks = (int)SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Logging.Interval".Loc(),
+				logging.logIntervalTicks,
+				600f,
+				60000f,
+				600f,
+				value => "ColonyKit.Settings.Logging.IntervalValue".Loc(
+					(int)value,
+					(value / GenDate.TicksPerDay).ToString("0.0")).ToString());
+
+			logging.customPrefix = SettingsWidgets.TextField(
+				listing,
+				"ColonyKit.Settings.Logging.Prefix".Loc(),
+				logging.customPrefix,
+				24,
+				"ColonyKit.Settings.Logging.Prefix.Desc".Loc()).Trim();
+
+			SettingsWidgets.Label(
+				listing,
+				"ColonyKit.Settings.Logging.EffectivePrefix".Loc(logging.EffectivePrefix));
+
+			if (logging.detail != LogDetail.Off
+				&& SettingsWidgets.Button(listing, "ColonyKit.Settings.Logging.TestLog".Loc()))
+			{
+				ModLog.Info("Settings", "test log line from the settings page");
+			}
+
+			SettingsWidgets.Section(listing, "ColonyKit.Settings.Section.Diagnostics".Loc());
+			SettingsWidgets.Label(listing, "ColonyKit.Settings.Diagnostics.Hint".Loc());
+
+			if (SettingsWidgets.Button(listing, "ColonyKit.Settings.Diagnostics.Dump".Loc()))
+			{
+				Diagnostics.Dump();
+				NotificationService.Message("ColonyKit.Notification.Diagnostics".Loc());
+			}
+
+			if (SettingsWidgets.Button(listing, "ColonyKit.Settings.Diagnostics.Reset".Loc()))
+			{
+				ModLog.ResetRuntimeState();
+				NotificationService.ResetThrottle();
+				ModLog.Info("Settings", "log/menu throttle state reset");
+			}
 		}
 
 		public override void Reset(ColonyKitSettings settings)
 		{
 			settings.general.Reset();
+			settings.logging.Reset();
 		}
 	}
 }

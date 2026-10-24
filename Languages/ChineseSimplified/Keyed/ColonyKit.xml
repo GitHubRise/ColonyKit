@@ -175,6 +175,7 @@
 	<CK.VerticalWarehouse.WithdrawAllDesc>把库内所有物品放到建筑旁边。</CK.VerticalWarehouse.WithdrawAllDesc>
 	<CK.VerticalWarehouse.Withdrawn>已取出全部物品。</CK.VerticalWarehouse.Withdrawn>
 
+	<ColonyKit.Settings.Tab.GeneralSettings>常规设置</ColonyKit.Settings.Tab.GeneralSettings>
 	<ColonyKit.Settings.Tab.Localization>汉化</ColonyKit.Settings.Tab.Localization>
 	<ColonyKit.Settings.Section.Localization>开发者菜单汉化</ColonyKit.Settings.Section.Localization>
 	<ColonyKit.Settings.Section.TranslationScheme>翻译方案</ColonyKit.Settings.Section.TranslationScheme>

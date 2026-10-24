@@ -17,7 +17,7 @@ namespace ColonyKit
 	}
 
 	/// <summary>
-	/// 「常规」页的数据。只放字段和 Scribe，不画 UI（UI 在 <see cref="GeneralSettingsPage"/>）。
+	/// 「常规设置」页的数据。只放字段和 Scribe，不画 UI（UI 在 <see cref="GeneralSettingsPage"/>）。
 	/// </summary>
 	/// <remarks>
 	/// 由 <see cref="ColonyKitSettings"/> 用 <c>Scribe_Deep</c> 落盘，
@@ -37,8 +37,8 @@ namespace ColonyKit
 		/// <summary>选项控件展示方式：下拉框或 ◀ / ▶ 循环。</summary>
 		public SettingsControlMode controlMode = SettingsControlMode.Dropdown;
 
-		/// <summary>设置界面语言；不影响游戏全局语言。</summary>
-		public ModLanguage language = ModLanguage.Auto;
+		/// <summary>设置界面语言；默认简体中文，不影响游戏全局语言。</summary>
+		public ModLanguage language = ModLanguage.ChineseSimplified;
 
 		public void ExposeData()
 		{
@@ -47,7 +47,7 @@ namespace ColonyKit
 			Scribe_Values.Look(ref enablePawnMenu, "enablePawnMenu", true);
 			Scribe_Values.Look(ref showTechTreeButton, "showTechTreeButton", true);
 			Scribe_Values.Look(ref controlMode, "controlMode", SettingsControlMode.Dropdown);
-			Scribe_Values.Look(ref language, "language", ModLanguage.Auto);
+			Scribe_Values.Look(ref language, "language", ModLanguage.ChineseSimplified);
 		}
 
 		/// <summary>恢复本页默认值。只改内存，关窗时统一落盘。</summary>
@@ -57,7 +57,7 @@ namespace ColonyKit
 			enablePawnMenu = true;
 			showTechTreeButton = true;
 			controlMode = SettingsControlMode.Dropdown;
-			language = ModLanguage.Auto;
+			language = ModLanguage.ChineseSimplified;
 		}
 
 		/// <summary>校验枚举合法；非法值回退默认。</summary>
@@ -73,7 +73,7 @@ namespace ColonyKit
 
 			if (!Enum.IsDefined(typeof(ModLanguage), language))
 			{
-				language = ModLanguage.Auto;
+				language = ModLanguage.ChineseSimplified;
 				changed = true;
 			}
 
