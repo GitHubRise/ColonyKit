@@ -57,7 +57,7 @@ namespace ModTemplate
 		public override int InitOrder => 30;
 	}
 
-	/// <summary>科技树模块。</summary>
+	/// <summary>研究树模块。</summary>
 	public sealed class TechTreeModule : ModTemplateModule
 	{
 		public override string Id => "tech-tree";

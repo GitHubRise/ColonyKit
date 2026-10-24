@@ -68,7 +68,7 @@ namespace ModTemplate
 
 		/// <summary>
 		/// 开发用开关：
-		///   - <c>-modtemplate-techtree</c> 自动打开科技树窗口；
+		///   - <c>-modtemplate-techtree</c> 自动打开研究树窗口；
 		///   - <c>-modtemplate-selftest</c> 打印菜单/通知/建造/主菜单服务的自检结果。
 		/// 正常游戏不会触发。
 		/// </summary>
@@ -81,7 +81,7 @@ namespace ModTemplate
 
 			if (GenCommandLine.CommandLineArgPassed("modtemplate-techtree") && Find.WindowStack != null)
 			{
-				ModLog.Info("Debug", "opening tech tree window (-modtemplate-techtree)");
+				ModLog.Info("Debug", "opening research tree window (-modtemplate-techtree)");
 				Find.WindowStack.Add(new TechTreeWindow());
 			}
 

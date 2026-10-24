@@ -187,9 +187,9 @@ data.customPrefix = SettingsWidgets.TextField(listing, label, data.customPrefix,
 - `<li>` 还支持 `IfModActive` / `IfModActiveAll` / `IfModNotActive` 属性，可以按激活的 Mod 选目录。
 - **别忘了**把 `1.7` 加进 `About.xml` 的 `supportedVersions`，否则加载器会报 `ModLoadFolderDefinesUnsupportedGameVersion`。
 
-### 4.8 科技树（TechTree）
+### 4.8 研究树（TechTree）
 
-科技树不替换原版研究界面，而是在其之上提供「构图 + 布局 + 绘制 + 前置管理」：
+研究树不替换原版研究界面，而是在其之上提供「构图 + 布局 + 绘制 + 前置管理」：
 
 | 角色 | 文件 | 职责 |
 |---|---|---|
@@ -228,7 +228,7 @@ TechTreeService.Changed += () => { /* 重建 UI */ };
 
 **绘制**：`TechTreeView.Draw(rect, tree, ref scroll, onClick)`。先画前置连线（前置已完成变绿），再画节点：已完成深绿、可研究土黄、锁定深灰；当前研究项目额外黄框，底部按 `ProgressPercent` 画进度条。点击节点调用 `Find.ResearchManager.SetCurrentProject`。
 
-**入口**：设置 → 关于 → 「打开科技树」；开发时可用 `-modtemplate-techtree` 启动参数自动打开（`DemoGameComponent.FinalizeInit` 里的调试钩子）。
+**入口**：设置 → 关于 → 「打开研究树」；开发时可用 `-modtemplate-techtree` 启动参数自动打开（`DemoGameComponent.FinalizeInit` 里的调试钩子）。
 
 **注意**：
 
@@ -271,7 +271,7 @@ TechTreeService.Changed += () => { /* 重建 UI */ };
 
 - `GeneralSettings.language`（Auto/English/ChineseSimplified）只控制设置窗口，不改游戏全局语言。
 - 设置界面统一走 `"Key".Loc()` → `ModLoc.Translate`：Auto 用游戏 `Translate`，指定语言则从 `Languages/<Lang>/Keyed` 的字典取值；缺键回退游戏翻译。
-- 语言选择器本身也是普通设置控件，会跟随下拉/循环/打勾模式；DefInjected、右键菜单、通知、科技树等未接入，仍跟随游戏语言。
+- 语言选择器本身也是普通设置控件，会跟随下拉/循环/打勾模式；DefInjected、右键菜单、通知、研究树等未接入，仍跟随游戏语言。
 
 详见 [设置语言切换](设置语言切换.md)。
 

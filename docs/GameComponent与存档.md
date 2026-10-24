@@ -16,7 +16,7 @@
 
 ## 简介
 
-`DemoGameComponent` 是「每存档一份」的状态容器：统计殖民者生成次数、按设置间隔写汇总日志，并在带调试参数启动时自动打开科技树窗口或跑一次服务自检。它演示 GameComponent 的自动实例化、`ExposeData` 持久化和 tick 成本控制。
+`DemoGameComponent` 是「每存档一份」的状态容器：统计殖民者生成次数、按设置间隔写汇总日志，并在带调试参数启动时自动打开研究树窗口或跑一次服务自检。它演示 GameComponent 的自动实例化、`ExposeData` 持久化和 tick 成本控制。
 
 ## 描述
 
@@ -25,7 +25,7 @@
 - tick：`GameComponentTick` 每 tick 调用，先做最便宜的设置/级别判断，再取 `Find.TickManager.TicksGame`；到点才写日志。
 - 日志级别：`LoggingSettings.detail == Off` 直接返回；`Summary/Verbose` 都写汇总；明细由 `verboseSpawnLog` 控制。
 - 调试开关：`-modtemplate-techtree` 自动打开 `TechTreeWindow`；`-modtemplate-selftest` 打印服务自检、级别日志与诊断报告；`-modtemplate-ui-test` 运行截图式 UI 自动化。
-- 不负责：UI 绘制（设置页/科技树窗口各自负责），也不做重计算。
+- 不负责：UI 绘制（设置页/研究树窗口各自负责），也不做重计算。
 
 ## 绘制调用逻辑图
 
@@ -75,7 +75,7 @@ Pawn.SpawnSetup Postfix
 | `Scribe` 持久化 | ✅ | `spawnsTracked` / `nextLogTick` 写入存档节点 |
 | 定时汇总日志 | ✅ | quicktest 日志 `tick 301: tracked 3 colonist spawn(s)` |
 | 明细日志开关 | ✅ | 受 `detail == Verbose && verboseSpawnLog` 控制 |
-| 调试自动开科技树 | ✅ | `-modtemplate-techtree` 触发 |
+| 调试自动开研究树 | ✅ | `-modtemplate-techtree` 触发 |
 | 服务自检 | ✅ | `-modtemplate-selftest` 打印 `pawnMenu/buildRules/notifications/mainButton` |
 | 新游戏清空日志/通知节流 | ✅ | `FinalizeInit` 调用 `ResetRuntimeState` / `ResetThrottle` |
 | UI 自动化入口 | ✅ | `-modtemplate-ui-test` 启动 `UiAutomationService` |
@@ -96,13 +96,13 @@ Pawn.SpawnSetup Postfix
 - 每存档计数与 `Scribe` 持久化；
 - 每 tick 轻量判断与定时日志；
 - 日志级别/明细开关；
-- 调试启动参数自动打开科技树；
+- 调试启动参数自动打开研究树；
 - 只读计数供 UI/调试读取。
 
 ## 相关文档
 
 - [Harmony补丁.md](Harmony补丁.md)
-- [科技树.md](科技树.md)
+- [研究树.md](研究树.md)
 - [多页签设置框架.md](多页签设置框架.md)
 - [ARCHITECTURE.md](ARCHITECTURE.md) §4.4
 - 工作区：[开发Mod须知](../../../docs/开发Mod须知.md)

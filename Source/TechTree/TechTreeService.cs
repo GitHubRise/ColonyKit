@@ -5,7 +5,7 @@ using Verse;
 
 namespace ModTemplate
 {
-	/// <summary>研究项目在科技树里的状态，绘制时决定配色。</summary>
+	/// <summary>研究项目在研究树里的状态，绘制时决定配色。</summary>
 	public enum TechAvailability
 	{
 		Finished,
@@ -14,7 +14,7 @@ namespace ModTemplate
 	}
 
 	/// <summary>
-	/// 科技树的统一管理接口：前置条件的增删查、环检测、状态查询。
+	/// 研究树的统一管理接口：前置条件的增删查、环检测、状态查询。
 	/// 所有写操作都直接改 <see cref="ResearchProjectDef"/>，因此原版研究窗口也会同步生效。
 	/// </summary>
 	/// <remarks>

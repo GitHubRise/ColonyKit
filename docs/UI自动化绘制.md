@@ -16,7 +16,7 @@
 
 ## 简介
 
-`UiAutomationService` 把「打开界面 → 等几帧绘制 → `ScreenCapture` 截图 → 触发一次动作 → 关闭」做成通用循环。右键菜单、设置页、科技树、底部主菜单都能用同一条流水线验证绘制，不需要人工点。
+`UiAutomationService` 把「打开界面 → 等几帧绘制 → `ScreenCapture` 截图 → 触发一次动作 → 关闭」做成通用循环。右键菜单、设置页、研究树、底部主菜单都能用同一条流水线验证绘制，不需要人工点。
 
 带 `-modtemplate-ui-test` 启动时运行内置的 5 个场景，截图写到 `Config/ModTemplateUiTests/`。
 
@@ -30,7 +30,7 @@
   2. `02-settings-notifications`：打开 `Dialog_ModSettings` 并预选「通知」页；
   3. `03-pawn-menu`：用 `PawnMenuService.GetOptions` 构造 `FloatMenu`，截图后执行第一项 action；
   4. `04-tech-tree`：打开 `TechTreeWindow`；
-  5. `05-bottom-button`：截当前界面后调用科技树按钮的 `InterfaceTryActivate()`，模拟点击。
+  5. `05-bottom-button`：截当前界面后调用研究树按钮的 `InterfaceTryActivate()`，模拟点击。
 - 调度：每帧由 `Root.Update` 的 Postfix 驱动（设置窗口 `forcePause` 会停 `GameComponentUpdate`，所以不能放那里）。
 - 等待：打开后等 20 帧再截图，截图后等 20 帧再关闭，避免截到半帧或文件未落盘。
 - 输出：`Config/ModTemplateUiTests/<id>.png`；日志打印每个路径和最终 `ui-test: done, captured=N, skipped=N`。
@@ -75,7 +75,7 @@ Root.Update() Postfix（每帧）
 | 项目 | 状态 | 说明 |
 |---|---|---|
 | 场景注册/调度/截图/关闭 | ✅ | 编译通过 |
-| 5 个内置场景 | ✅ | 底部条/通知页/右键菜单/科技树/底部按钮 |
+| 5 个内置场景 | ✅ | 底部条/通知页/右键菜单/研究树/底部按钮 |
 | 右键菜单 action 触发 | ✅ | 截图后执行第一项 |
 | 底部按钮点击 | ✅ | `InterfaceTryActivate()` |
 | 设置页深链接 | ✅ | `SelectSettingsPage("notifications")` |
@@ -98,7 +98,7 @@ Root.Update() Postfix（每帧）
 - 声明式 UI 场景（只传窗口工厂/动作）；
 - 打开、等待、截图、触发、关闭的完整循环；
 - 设置页深链接；
-- 右键菜单/科技树/底部按钮/通知页的场景覆盖；
+- 右键菜单/研究树/底部按钮/通知页的场景覆盖；
 - 独立于 `forcePause` 的帧驱动；
 - 日志化截图路径与结果。
 
@@ -107,5 +107,5 @@ Root.Update() Postfix（每帧）
 - [右键菜单控制.md](右键菜单控制.md)
 - [底部菜单控制.md](底部菜单控制.md)
 - [通知消息控制.md](通知消息控制.md)
-- [科技树.md](科技树.md)
+- [研究树.md](研究树.md)
 - [GameComponent与存档.md](GameComponent与存档.md)

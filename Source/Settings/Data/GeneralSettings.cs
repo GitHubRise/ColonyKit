@@ -31,7 +31,7 @@ namespace ModTemplate
 		/// <summary>是否启用右键小人菜单里的扩展项。</summary>
 		public bool enablePawnMenu = true;
 
-		/// <summary>是否显示底部菜单里的「科技树」按钮。</summary>
+		/// <summary>是否显示底部菜单里的「研究树」按钮。</summary>
 		public bool showTechTreeButton = true;
 
 		/// <summary>选项控件展示方式：下拉框或 ◀ / ▶ 循环。</summary>

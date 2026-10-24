@@ -16,7 +16,7 @@ namespace ModTemplate
 	/// </remarks>
 	public static class MainButtonService
 	{
-		/// <summary>模板自带的科技树按钮 defName。</summary>
+		/// <summary>模板自带的研究树按钮 defName。</summary>
 		public const string TechTreeButtonDefName = "ModTemplate_TechTree";
 
 		private static readonly Dictionary<string, bool> visibleOverrides =

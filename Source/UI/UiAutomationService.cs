@@ -285,12 +285,12 @@ namespace ModTemplate
 				.GetNamedSilentFail(MainButtonService.TechTreeButtonDefName);
 			if (def == null)
 			{
-				ModLog.Warning("ui-test: tech tree button def missing");
+				ModLog.Warning("ui-test: research tree button def missing");
 				return;
 			}
 
 			def.Worker.InterfaceTryActivate();
-			ModLog.Message("ui-test: tech tree button activated");
+			ModLog.Message("ui-test: research tree button activated");
 		}
 	}
 }

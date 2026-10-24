@@ -6,7 +6,7 @@ using Verse;
 
 namespace ModTemplate
 {
-	/// <summary>科技树布局策略。</summary>
+	/// <summary>研究树布局策略。</summary>
 	public enum TechTreeLayoutMode
 	{
 		/// <summary>按前置深度分列、同层按原版 Y 坐标排序，结构最清楚（默认）。</summary>
@@ -17,7 +17,7 @@ namespace ModTemplate
 	}
 
 	/// <summary>
-	/// 某个 <see cref="ResearchTabDef"/> 下的科技树：节点、前置边、布局尺寸。
+	/// 某个 <see cref="ResearchTabDef"/> 下的研究树：节点、前置边、布局尺寸。
 	/// 只读视图；前置条件的修改走 <see cref="TechTreeService"/>。
 	/// </summary>
 	/// <remarks>

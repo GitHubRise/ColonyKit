@@ -89,7 +89,7 @@
 | Prefix / Transpiler 示例 | ❌ | 需要时按同样模式加 |
 | 暴露给其他 Mod 的 API / 服务接口 | ✅ | `PawnMenuService` / `NotificationService` / `BuildControlService` / `MainButtonService` |
 
-## 6. 科技树
+## 6. 研究树
 
 | 能力 | 状态 | 入口 |
 |---|---|---|

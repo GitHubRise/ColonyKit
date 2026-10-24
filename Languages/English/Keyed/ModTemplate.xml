@@ -77,13 +77,13 @@
 	<ModTemplate.Settings.About.Note>Patch note: {0}</ModTemplate.Settings.About.Note>
 	<ModTemplate.Settings.About.Hint>Read-only. It also proves the XML to DefOf to UI chain works.</ModTemplate.Settings.About.Hint>
 
-	<ModTemplate.Settings.Section.TechTree>Tech tree</ModTemplate.Settings.Section.TechTree>
-	<ModTemplate.Settings.TechTree.Hint>Opens a custom tech tree window: prerequisite-based layout, scroll, click to select research.</ModTemplate.Settings.TechTree.Hint>
-	<ModTemplate.Settings.TechTree.Open>Open tech tree</ModTemplate.Settings.TechTree.Open>
+	<ModTemplate.Settings.Section.TechTree>Research tree</ModTemplate.Settings.Section.TechTree>
+	<ModTemplate.Settings.TechTree.Hint>Opens a custom research tree window: prerequisite-based layout, scroll, click to select research.</ModTemplate.Settings.TechTree.Hint>
+	<ModTemplate.Settings.TechTree.Open>Open research tree</ModTemplate.Settings.TechTree.Open>
 	<ModTemplate.TechTree.Mode.Tiers>Layout: prerequisites</ModTemplate.TechTree.Mode.Tiers>
 	<ModTemplate.TechTree.Mode.Vanilla>Layout: vanilla coords</ModTemplate.TechTree.Mode.Vanilla>
 	<ModTemplate.TechTree.Summary>{0} nodes in {1}</ModTemplate.TechTree.Summary>
-	<ModTemplate.TechTree.BuildFailed>Tech tree build failed; see Player.log.</ModTemplate.TechTree.BuildFailed>
+	<ModTemplate.TechTree.BuildFailed>Research tree build failed; see Player.log.</ModTemplate.TechTree.BuildFailed>
 	<ModTemplate.TechTree.Tooltip.Cost>Cost: {0}</ModTemplate.TechTree.Tooltip.Cost>
 	<ModTemplate.TechTree.Tooltip.Prerequisites>Prerequisites: {0}</ModTemplate.TechTree.Tooltip.Prerequisites>
 	<ModTemplate.TechTree.Tooltip.None>none</ModTemplate.TechTree.Tooltip.None>
@@ -97,8 +97,8 @@
 	<ModTemplate.Settings.Section.Test>Test</ModTemplate.Settings.Section.Test>
 	<ModTemplate.EnablePawnMenu>Enable pawn context menu</ModTemplate.EnablePawnMenu>
 	<ModTemplate.EnablePawnMenu.Desc>Show the extra options this mod adds when right-clicking a colonist.</ModTemplate.EnablePawnMenu.Desc>
-	<ModTemplate.ShowTechTreeButton>Show tech tree button</ModTemplate.ShowTechTreeButton>
-	<ModTemplate.ShowTechTreeButton.Desc>Show a "Tech tree" button in the bottom main bar.</ModTemplate.ShowTechTreeButton.Desc>
+	<ModTemplate.ShowTechTreeButton>Show research tree button</ModTemplate.ShowTechTreeButton>
+	<ModTemplate.ShowTechTreeButton.Desc>Show a "Research tree" button in the bottom main bar.</ModTemplate.ShowTechTreeButton.Desc>
 
 	<ModTemplate.Settings.Tab.Notifications>Notifications</ModTemplate.Settings.Tab.Notifications>
 	<ModTemplate.Settings.Notifications.Enabled>Enable notifications</ModTemplate.Settings.Notifications.Enabled>
@@ -138,8 +138,8 @@
 	<ModTemplate.Module.Notifications.Desc>Messages, letters and throttled notifications.</ModTemplate.Module.Notifications.Desc>
 	<ModTemplate.Module.Build.Name>Building control</ModTemplate.Module.Build.Name>
 	<ModTemplate.Module.Build.Desc>Placement rules and programmatic blueprints.</ModTemplate.Module.Build.Desc>
-	<ModTemplate.Module.TechTree.Name>Tech tree</ModTemplate.Module.TechTree.Name>
-	<ModTemplate.Module.TechTree.Desc>Tech tree window and bottom-bar button.</ModTemplate.Module.TechTree.Desc>
+	<ModTemplate.Module.TechTree.Name>Research tree</ModTemplate.Module.TechTree.Name>
+	<ModTemplate.Module.TechTree.Desc>Research tree window and bottom-bar button.</ModTemplate.Module.TechTree.Desc>
 	<ModTemplate.Module.Diagnostics.Name>Diagnostics</ModTemplate.Module.Diagnostics.Name>
 	<ModTemplate.Module.Diagnostics.Desc>Log buffer and diagnostics report.</ModTemplate.Module.Diagnostics.Desc>
 </LanguageData>

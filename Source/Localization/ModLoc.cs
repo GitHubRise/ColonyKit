@@ -20,7 +20,7 @@ namespace ModTemplate
 	/// 读取本 Mod 自己的 Keyed 文件，按设置选择中英文；不改变游戏全局语言。
 	/// </summary>
 	/// <remarks>
-	/// 只覆盖设置界面使用的 <c>".Loc()"</c> 调用；菜单/通知/科技树等仍由游戏语言决定。
+	/// 只覆盖设置界面使用的 <c>".Loc()"</c> 调用；菜单/通知/研究树等仍由游戏语言决定。
 	/// 字典在第一次使用时从 <c>Languages/&lt;Lang&gt;/Keyed</c> 加载，缺失时回退游戏翻译。
 	/// </remarks>
 	public static class ModLoc

@@ -7,7 +7,7 @@ using Verse;
 namespace ModTemplate
 {
 	/// <summary>
-	/// 科技树绘制：先画前置连线，再画节点；只负责画布内的内容，
+	/// 研究树绘制：先画前置连线，再画节点；只负责画布内的内容，
 	/// 滚动和窗口框架由 <see cref="TechTreeWindow"/> 处理。
 	/// </summary>
 	/// <remarks>

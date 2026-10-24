@@ -5,7 +5,7 @@ using Verse;
 namespace ModTemplate
 {
 	/// <summary>
-	/// 科技树里的一个节点：包一层 <see cref="ResearchProjectDef"/>，
+	/// 研究树里的一个节点：包一层 <see cref="ResearchProjectDef"/>，
 	/// 加上布局结果（层、行、屏幕矩形）和树内前置引用。
 	/// </summary>
 	/// <remarks>

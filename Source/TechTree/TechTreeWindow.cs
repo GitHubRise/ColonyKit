@@ -8,7 +8,7 @@ using Verse;
 namespace ModTemplate
 {
 	/// <summary>
-	/// 独立科技树窗口：标签选择研究 tab、切换布局方式、滚动查看整棵树。
+	/// 独立研究树窗口：标签选择研究 tab、切换布局方式、滚动查看整棵树。
 	/// 从设置「关于」页的按钮打开；不替换原版研究界面。
 	/// </summary>
 	public sealed class TechTreeWindow : Window
@@ -135,7 +135,7 @@ namespace ModTemplate
 			}
 			catch (Exception exception)
 			{
-				ModLog.Error("TechTree", "tech tree build failed", exception);
+				ModLog.Error("TechTree", "research tree build failed", exception);
 				tree = null;
 			}
 		}

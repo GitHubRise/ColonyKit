@@ -34,7 +34,7 @@
 - 设置框架：五页签（模块 / 常规 / 日志 / 通知 / 关于）、通用控件库、当前页检索、按内容高度自动滚动、下拉框 / ◀ ▶ 循环 / ✓ ✗ 打勾三种选项控件、设置窗口中英文切换。
 - 设置与存档迁移：`schemaVersion`、启动 `.bak` 备份、迁移链、`Validate`、存档 `saveVersion`。
 - 日志与诊断：结构化 `ModLog`（级别/分类/Once/Throttled/最近日志）、`Diagnostics` 报告、设置页诊断按钮。
-- 交互能力：右键小人菜单、通知消息/信件/节流、建筑放置规则与蓝图、底部主菜单按钮、科技树窗口。
+- 交互能力：右键小人菜单、通知消息/信件/节流、建筑放置规则与蓝图、底部主菜单按钮、研究树窗口。
 - 本地化：中英 Keyed 各 125 键、DefInjected、`ModLoc` 设置窗口语言覆盖。
 - 工程流水线：`build.ps1` / `verify.ps1` / `package.ps1` / `new-mod.ps1`，以及 `-modtemplate-selftest`、`-modtemplate-settings`、`-modtemplate-techtree`、`-modtemplate-ui-test` 调试参数。
 
@@ -57,4 +57,4 @@
 - 所有模块仍在同一个 `ModTemplate.dll`，没有独立程序集/热卸载；禁用模块只是逻辑门控。
 - `DefInjected`、原版 `Dialog_ModSettings` 的 Close 按钮仍跟随游戏语言。
 - 设置检索只覆盖当前页，不支持跨页全局搜索。
-- 科技树绘制、UI 自动化截图、建筑规则非空路径等仍建议在发布前人工复验。
+- 研究树绘制、UI 自动化截图、建筑规则非空路径等仍建议在发布前人工复验。
