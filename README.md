@@ -488,8 +488,10 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 - [ ] **M3-0** 存储内核验证（最高优先）：按 §4.2 的 A/B/C 各做最小原型，验证原版账单/搬运/搜索能否看到库存、Stack XXL 下的堆叠、存读档与性能；写 `docs/decisions/storage-kernel.md` 定稿。
 - [ ] **M3-1** `CK_VerticalWarehouse` + `CompWarehouse`：`ThingOwner`、容量、过滤/优先级、禁用清单、填充度、存读档。
 	- 已完成：3×3 建筑、`ThingOwner` 存读档、24 堆、250W、原版 `ITab_Storage` 过滤/优先级；禁用清单/填充度/自动 Job 未做。
-- [ ] **M3-2** 入库：`WorkGiver_HaulToWarehouse` + `JobDriver_StoreInWarehouse`（入库口、堆叠合并、拒收原因）。
-- [ ] **M3-3** 出库：`JobDriver_WithdrawFromWarehouse` + UI「取出」（整堆/数量、出库口、目标库存区）。
+- [x] **M3-2** 入库：`WorkGiver_HaulToWarehouse` + 原版 `HaulToContainer`（库存区满/无库存区时接手，堆叠合并）。
+	- 原型完成：入库口/拒收原因文本未单独做；过滤/容量/电力在接活时检查。
+- [x] **M3-3** 出库：`WorkGiver_WithdrawFromWarehouse` + `JobDriver_WithdrawFromWarehouse`（自动送到更高优先级库存区；ITab 手动逐堆取出）。
+	- 原型完成：整堆；按数量/固定出库口/账单未做。
 - [ ] **M3-4** 原版账单集成：验证账单是否能拿到库内物品；不能则设计「仓库链接/取货请求」最小方案，并记录限制。
 - [ ] **M3-5** UI：`ITab`（库存列表、过滤、优先级、排序）、Gizmo（清空/禁止入库/升级）、填充度贴图。
 	- 已完成：库存 ITab、原版 Storage 页过滤/优先级、收集附近/全部取出 Gizmo；排序/禁止入库/升级/填充度未做。
