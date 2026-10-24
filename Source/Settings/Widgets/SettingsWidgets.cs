@@ -544,10 +544,13 @@ namespace ColonyKit
 			listing.Gap(10f);
 			listing.GapLine(6f);
 
+			GameFont previousFont = Text.Font;
 			Color previousColor = GUI.color;
-			GUI.color = new Color(0.82f, 0.82f, 0.82f);
+			Text.Font = GameFont.Medium;
+			GUI.color = Color.yellow;
 			listing.Label(title);
 			GUI.color = previousColor;
+			Text.Font = previousFont;
 		}
 	}
 }
