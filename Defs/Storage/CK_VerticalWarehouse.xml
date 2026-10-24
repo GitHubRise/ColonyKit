@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_VerticalWarehouse</defName>
+		<label>vertical warehouse</label>
+		<description>A 3x3 internal warehouse. Colonists can drop items into it and take them out from the inspect pane; contents are stored inside the building and do not occupy map cells.</description>
+		<thingClass>ColonyKit.Modules.Storage.Building_VerticalWarehouse</thingClass>
+		<size>(3,3)</size>
+		<graphicData>
+			<texPath>Things/Building/Storage/CK_VerticalWarehouse</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,3)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>Furniture</designationCategory>
+		<staticSunShadowHeight>0.5</staticSunShadowHeight>
+		<castEdgeShadows>true</castEdgeShadows>
+		<uiIconScale>0.75</uiIconScale>
+		<costList>
+			<Steel>150</Steel>
+			<ComponentIndustrial>8</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<MaxHitPoints>400</MaxHitPoints>
+			<Mass>60</Mass>
+			<WorkToBuild>3000</WorkToBuild>
+			<Beauty>-10</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>250</basePowerConsumption>
+			</li>
+		</comps>
+		<inspectorTabs>
+			<li>ColonyKit.Modules.Storage.ITab_VerticalWarehouse</li>
+		</inspectorTabs>
+	</ThingDef>
+</Defs>
