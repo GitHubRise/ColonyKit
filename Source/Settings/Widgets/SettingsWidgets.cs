@@ -339,13 +339,14 @@ namespace ModTemplate
 			}
 
 			Widgets.Label(listing.GetRect(Text.LineHeight), label);
+			listing.Gap(4f);
 
 			T result = current;
 			foreach (T option in list)
 			{
 				bool selected = EqualityComparer<T>.Default.Equals(option, current);
 				string text = (selected ? "✓ " : "✗ ") + optionLabel(option);
-				Rect row = listing.GetRect(24f);
+				Rect row = listing.GetRect(26f);
 
 				// 选中与悬停共用同一套高亮，鼠标扫过就能看出“会选中谁”。
 				Widgets.DrawOptionBackground(row, selected || Mouse.IsOver(row));
@@ -367,10 +368,10 @@ namespace ModTemplate
 				}
 
 				TooltipHandler.TipRegion(row, "ModTemplate.Settings.CheckCross.Select".Loc());
-				listing.Gap(4f);
+				listing.Gap(8f);
 			}
 
-			listing.Gap();
+			listing.Gap(4f);
 			return result;
 		}
 
