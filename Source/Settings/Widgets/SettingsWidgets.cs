@@ -142,6 +142,27 @@ namespace ModTemplate
 			Func<T, string> optionLabel,
 			Action<T> onChanged)
 		{
+			// 展示方式由常规页的 controlMode 决定；Cycle 模式下复用同一行布局。
+			if (ModTemplateMod.Settings?.general?.controlMode == SettingsControlMode.Cycle)
+			{
+				T result = Cycle(listing, label, current, options, optionLabel);
+				if (!EqualityComparer<T>.Default.Equals(result, current))
+				{
+					onChanged(result);
+				}
+				return;
+			}
+
+			if (ModTemplateMod.Settings?.general?.controlMode == SettingsControlMode.CheckCross)
+			{
+				T result = CheckCross(listing, label, current, options, optionLabel);
+				if (!EqualityComparer<T>.Default.Equals(result, current))
+				{
+					onChanged(result);
+				}
+				return;
+			}
+
 			if (!BeginControl(listing, label, null))
 			{
 				return;
@@ -171,6 +192,110 @@ namespace ModTemplate
 			{
 				Find.WindowStack.Add(new FloatMenu(menu));
 			}
+		}
+
+		/// <summary>
+		/// ✓ / ✗ 列表：每个选项一行，选中打 ✓、未选中打 ✗，点击整行切换。
+		/// 适合 2–5 个选项，比下拉少一次点击。
+		/// </summary>
+		public static T CheckCross<T>(
+			Listing_Standard listing,
+			string label,
+			T current,
+			IEnumerable<T> options,
+			Func<T, string> optionLabel)
+		{
+			if (!BeginControl(listing, label, null))
+			{
+				return current;
+			}
+
+			List<T> list = options?.ToList() ?? new List<T>();
+			if (list.Count == 0)
+			{
+				return current;
+			}
+
+			Widgets.Label(listing.GetRect(Text.LineHeight), label);
+
+			T result = current;
+			foreach (T option in list)
+			{
+				bool selected = EqualityComparer<T>.Default.Equals(option, current);
+				string text = (selected ? "✓ " : "✗ ") + optionLabel(option);
+				Rect row = listing.GetRect(24f);
+
+				if (Widgets.ButtonText(row, text))
+				{
+					result = option;
+				}
+
+				TooltipHandler.TipRegion(row, "ModTemplate.Settings.CheckCross.Select".Translate());
+			}
+
+			listing.Gap();
+			return result;
+		}
+
+		/// <summary>
+		/// ◀ / ▶ 循环选择：左侧标签，右侧「上一项 / 当前值 / 下一项」。
+		/// 首尾相接；当前值不在选项里时，第一次点击落到第一项（◀ 落到最后一项）。
+		/// </summary>
+		public static T Cycle<T>(
+			Listing_Standard listing,
+			string label,
+			T current,
+			IEnumerable<T> options,
+			Func<T, string> optionLabel)
+		{
+			if (!BeginControl(listing, label, null))
+			{
+				return current;
+			}
+
+			List<T> list = options?.ToList() ?? new List<T>();
+			if (list.Count == 0)
+			{
+				return current;
+			}
+
+			int index = list.FindIndex(option =>
+				EqualityComparer<T>.Default.Equals(option, current));
+
+			Rect rect = listing.GetRect(30f);
+			Widgets.Label(rect.LeftPart(0.42f), label);
+
+			Rect right = rect.RightPart(0.58f);
+			Rect previousRect = new Rect(right.x, right.y, 30f, right.height);
+			Rect nextRect = new Rect(right.xMax - 30f, right.y, 30f, right.height);
+			Rect valueRect = new Rect(
+				previousRect.xMax,
+				right.y,
+				Mathf.Max(0f, nextRect.x - previousRect.xMax),
+				right.height);
+
+			int target = index;
+
+			if (Widgets.ButtonText(previousRect, "◀"))
+			{
+				target = index < 0 ? list.Count - 1 : (index == 0 ? list.Count - 1 : index - 1);
+			}
+			else if (Widgets.ButtonText(nextRect, "▶"))
+			{
+				target = index < 0 ? 0 : (index >= list.Count - 1 ? 0 : index + 1);
+			}
+
+			TooltipHandler.TipRegion(previousRect, "ModTemplate.Settings.Cycle.Previous".Translate());
+			TooltipHandler.TipRegion(nextRect, "ModTemplate.Settings.Cycle.Next".Translate());
+
+			string shown = index >= 0 ? optionLabel(list[index]) : optionLabel(current);
+			TextAnchor previousAnchor = Text.Anchor;
+			Text.Anchor = TextAnchor.MiddleCenter;
+			Widgets.Label(valueRect, shown);
+			Text.Anchor = previousAnchor;
+
+			listing.Gap();
+			return target >= 0 && target < list.Count ? list[target] : current;
 		}
 
 		/// <summary>

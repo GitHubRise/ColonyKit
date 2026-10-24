@@ -6,6 +6,14 @@
 	<ModTemplate.Settings.Hint>修改立即生效，关闭窗口时保存。</ModTemplate.Settings.Hint>
 	<ModTemplate.Settings.Search.Hint>检索本页设置…</ModTemplate.Settings.Search.Hint>
 	<ModTemplate.Settings.Search.NoResults>本页没有匹配的设置。</ModTemplate.Settings.Search.NoResults>
+	<ModTemplate.Settings.ControlMode>选项控件</ModTemplate.Settings.ControlMode>
+	<ModTemplate.Settings.ControlMode.Desc>枚举/少选项设置的展示方式：下拉框或 ◀ / ▶ 循环切换。</ModTemplate.Settings.ControlMode.Desc>
+	<ModTemplate.Settings.ControlMode.Dropdown>下拉框</ModTemplate.Settings.ControlMode.Dropdown>
+	<ModTemplate.Settings.ControlMode.Cycle>◀ / ▶ 循环</ModTemplate.Settings.ControlMode.Cycle>
+	<ModTemplate.Settings.ControlMode.CheckCross>✓ / ✗ 打勾</ModTemplate.Settings.ControlMode.CheckCross>
+	<ModTemplate.Settings.Cycle.Previous>上一项</ModTemplate.Settings.Cycle.Previous>
+	<ModTemplate.Settings.Cycle.Next>下一项</ModTemplate.Settings.Cycle.Next>
+	<ModTemplate.Settings.CheckCross.Select>选择该项</ModTemplate.Settings.CheckCross.Select>
 	<ModTemplate.Settings.ResetPage>重置本页</ModTemplate.Settings.ResetPage>
 	<ModTemplate.Settings.ResetAll>全部重置</ModTemplate.Settings.ResetAll>
 	<ModTemplate.Settings.ResetAll.Confirm>确定把所有设置页恢复为默认值？</ModTemplate.Settings.ResetAll.Confirm>

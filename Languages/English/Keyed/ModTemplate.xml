@@ -6,6 +6,14 @@
 	<ModTemplate.Settings.Hint>Changes apply immediately; they are saved when this window closes.</ModTemplate.Settings.Hint>
 	<ModTemplate.Settings.Search.Hint>Search this page…</ModTemplate.Settings.Search.Hint>
 	<ModTemplate.Settings.Search.NoResults>No matching setting on this page.</ModTemplate.Settings.Search.NoResults>
+	<ModTemplate.Settings.ControlMode>Option control</ModTemplate.Settings.ControlMode>
+	<ModTemplate.Settings.ControlMode.Desc>How enum / small-option settings are shown: dropdown menu or ◀ / ▶ cycling.</ModTemplate.Settings.ControlMode.Desc>
+	<ModTemplate.Settings.ControlMode.Dropdown>Dropdown</ModTemplate.Settings.ControlMode.Dropdown>
+	<ModTemplate.Settings.ControlMode.Cycle>◀ / ▶ cycle</ModTemplate.Settings.ControlMode.Cycle>
+	<ModTemplate.Settings.ControlMode.CheckCross>✓ / ✗ marks</ModTemplate.Settings.ControlMode.CheckCross>
+	<ModTemplate.Settings.Cycle.Previous>Previous option</ModTemplate.Settings.Cycle.Previous>
+	<ModTemplate.Settings.Cycle.Next>Next option</ModTemplate.Settings.Cycle.Next>
+	<ModTemplate.Settings.CheckCross.Select>Select this option</ModTemplate.Settings.CheckCross.Select>
 	<ModTemplate.Settings.ResetPage>Reset page</ModTemplate.Settings.ResetPage>
 	<ModTemplate.Settings.ResetAll>Reset all</ModTemplate.Settings.ResetAll>
 	<ModTemplate.Settings.ResetAll.Confirm>Reset every settings page to its defaults?</ModTemplate.Settings.ResetAll.Confirm>

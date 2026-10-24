@@ -37,6 +37,20 @@ namespace ModTemplate
 				ref data.showTechTreeButton,
 				"ModTemplate.ShowTechTreeButton.Desc".Translate());
 
+			SettingsWidgets.Dropdown(
+				listing,
+				"ModTemplate.Settings.ControlMode".Translate(),
+				data.controlMode,
+				new[]
+				{
+					SettingsControlMode.Dropdown,
+					SettingsControlMode.Cycle,
+					SettingsControlMode.CheckCross
+				},
+				mode => ("ModTemplate.Settings.ControlMode." + mode).Translate(),
+				mode => data.controlMode = mode);
+			SettingsWidgets.Label(listing, "ModTemplate.Settings.ControlMode.Desc".Translate());
+
 			SettingsWidgets.Section(listing, "ModTemplate.Settings.Section.Notes".Translate());
 			SettingsWidgets.Label(listing, "ModTemplate.Settings.General.Hint".Translate());
 		}
