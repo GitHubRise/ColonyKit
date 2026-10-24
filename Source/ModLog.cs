@@ -128,7 +128,7 @@ namespace ModTemplate
 				return;
 			}
 
-			int now = Find.TickManager?.TicksGame ?? 0;
+			int now = Math.Max(0, CurrentTick);
 			string throttleKey = key ?? category + ":" + message;
 
 			lock (gate)
@@ -168,6 +168,20 @@ namespace ModTemplate
 			WriteCore(level, category, message);
 		}
 
+		private static int CurrentTick
+		{
+			get
+			{
+				// 启动早期 Current.Game 还是 null，Find.TickManager 不能直接取。
+				if (Current.Game == null)
+				{
+					return -1;
+				}
+
+				return Find.TickManager?.TicksGame ?? -1;
+			}
+		}
+
 		private static void WriteCore(ModLogLevel level, string category, string message)
 		{
 			string safeCategory = category.NullOrEmpty() ? "Core" : category;
@@ -187,7 +201,7 @@ namespace ModTemplate
 					break;
 			}
 
-			int tick = Find.TickManager?.TicksGame ?? -1;
+			int tick = CurrentTick;
 			lock (gate)
 			{
 				recent.Add(new ModLogEntry(level, safeCategory, safeMessage, tick));

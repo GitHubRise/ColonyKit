@@ -53,7 +53,7 @@ namespace ModTemplate
 
 			builder.AppendLine("=== ModTemplate diagnostics ===");
 			builder.AppendLine("time=" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-			builder.AppendLine("tick=" + (Find.TickManager?.TicksGame ?? -1));
+			builder.AppendLine("tick=" + (Current.Game != null ? Find.TickManager?.TicksGame ?? -1 : -1));
 			builder.AppendLine(
 				"mod=" + (content?.Name ?? "?")
 				+ " packageId=" + (content?.PackageIdPlayerFacing ?? "?")
@@ -95,9 +95,13 @@ namespace ModTemplate
 			builder.AppendLine(
 				"  techTreeButton=" + (techButton != null && MainButtonService.IsVisible(techButton)));
 
-			ResearchTabDef tab = Find.ResearchManager?.GetProject()?.tab ?? ResearchTabDefOf.Main;
-			int researchNodes = DefDatabase<ResearchProjectDef>.AllDefsListForReading
-				.Count(project => project.tab == tab);
+			ResearchTabDef tab = Current.Game != null
+				? Find.ResearchManager?.GetProject()?.tab ?? ResearchTabDefOf.Main
+				: null;
+			int researchNodes = tab == null
+				? 0
+				: DefDatabase<ResearchProjectDef>.AllDefsListForReading
+					.Count(project => project.tab == tab);
 			builder.AppendLine(
 				"  researchTab=" + (tab?.defName ?? "?")
 				+ " researchProjects=" + researchNodes);
