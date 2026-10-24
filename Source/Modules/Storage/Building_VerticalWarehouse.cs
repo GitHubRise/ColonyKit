@@ -11,6 +11,7 @@ namespace ColonyKit.Modules.Storage
 	/// 四个方向各有一个履带接口；自动入/出库要求至少接一条履带。
 	/// 自带可调温控（CompTempControl），默认 4°C，像原版空调一样用 Gizmo 调温。
 	/// </summary>
+	[StaticConstructorOnStartup]
 	public class Building_VerticalWarehouse : Building, IThingHolder, IStoreSettingsParent
 	{
 		public const int MaxStacks = 24;
@@ -19,6 +20,25 @@ namespace ColonyKit.Modules.Storage
 		private RimWorld.StorageSettings storeSettings;
 		private CompTempControl compTempControl;
 		private CompPowerTrader compPowerTrader;
+		private int networkCacheTick = -1;
+		private bool networkCache;
+		private static Graphic conveyorWarning;
+
+		private static Graphic ConveyorWarning
+		{
+			get
+			{
+				if (conveyorWarning == null)
+				{
+					conveyorWarning = GraphicDatabase.Get<Graphic_Single>(
+						"Things/Building/Storage/CK_ConveyorWarning",
+						ShaderDatabase.Cutout,
+						new Vector2(0.7f, 0.7f),
+						Color.white);
+				}
+				return conveyorWarning;
+			}
+		}
 
 		public ThingOwner<Thing> Container
 		{
@@ -58,6 +78,25 @@ namespace ColonyKit.Modules.Storage
 			compPowerTrader = GetComp<CompPowerTrader>();
 		}
 
+		protected override void DrawAt(Vector3 drawLoc, bool flip = false)
+		{
+			base.DrawAt(drawLoc, flip);
+
+			if (HasAnyConveyorConnection || Find.TickManager == null)
+			{
+				return;
+			}
+
+			// 没接履带时，像断电图标一样闪烁；网络里任意一台接了履带就不会闪。
+			if ((Find.TickManager.TicksGame / 30) % 2 != 0)
+			{
+				return;
+			}
+
+			Vector3 position = drawLoc + new Vector3(0f, 0.55f, 0f);
+			ConveyorWarning.Draw(position, Rot4.North, this);
+		}
+
 		/// <summary>4×4 每条边的中央接口格（建筑外侧）。</summary>
 		public IntVec3 PortCell(Rot4 side)
 		{
@@ -84,13 +123,118 @@ namespace ColonyKit.Modules.Storage
 			return port.InBounds(Map) && port.GetEdifice(Map) is Building_ConveyorBase;
 		}
 
-		public bool HasAnyConveyorConnection =>
-			HasConveyorConnection(Rot4.North)
-			|| HasConveyorConnection(Rot4.East)
-			|| HasConveyorConnection(Rot4.South)
-			|| HasConveyorConnection(Rot4.West);
+		public bool HasAnyConveyorConnection
+		{
+			get
+			{
+				if (!Spawned || Map == null)
+				{
+					return false;
+				}
+
+				int tick = Find.TickManager?.TicksGame ?? -1;
+				if (tick == networkCacheTick)
+				{
+					return networkCache;
+				}
+
+				networkCache = ComputeNetworkConnection();
+				networkCacheTick = tick;
+				return networkCache;
+			}
+		}
+
+		/// <summary>立体库互联：8 向相邻的仓库组成一张网络，任一仓库有履带即全网络可用。</summary>
+		private bool ComputeNetworkConnection()
+		{
+			var visited = new HashSet<Building_VerticalWarehouse>();
+			var stack = new Stack<Building_VerticalWarehouse>();
+			stack.Push(this);
+
+			while (stack.Count > 0)
+			{
+				Building_VerticalWarehouse current = stack.Pop();
+				if (current == null || !visited.Add(current))
+				{
+					continue;
+				}
+
+				if (current.HasDirectConveyorConnection())
+				{
+					return true;
+				}
+
+				foreach (Building_VerticalWarehouse neighbor in current.AdjacentWarehouses())
+				{
+					if (!visited.Contains(neighbor))
+					{
+						stack.Push(neighbor);
+					}
+				}
+			}
+
+			return false;
+		}
+
+		private IEnumerable<Building_VerticalWarehouse> AdjacentWarehouses()
+		{
+			foreach (IntVec3 cell in GenAdj.CellsAdjacent8Way(this))
+			{
+				if (!cell.InBounds(Map))
+				{
+					continue;
+				}
+				foreach (Thing thing in Map.thingGrid.ThingsListAt(cell))
+				{
+					if (thing is Building_VerticalWarehouse warehouse && warehouse != this)
+					{
+						yield return warehouse;
+					}
+				}
+			}
+		}
+
+		private bool HasDirectConveyorConnection()
+		{
+			return HasConveyorConnection(Rot4.North)
+				|| HasConveyorConnection(Rot4.East)
+				|| HasConveyorConnection(Rot4.South)
+				|| HasConveyorConnection(Rot4.West);
+		}
 
 		public bool TryFindConnectedPort(out IntVec3 port)
+		{
+			var visited = new HashSet<Building_VerticalWarehouse>();
+			var stack = new Stack<Building_VerticalWarehouse>();
+			stack.Push(this);
+
+			while (stack.Count > 0)
+			{
+				Building_VerticalWarehouse current = stack.Pop();
+				if (current == null || !visited.Add(current))
+				{
+					continue;
+				}
+
+				if (current.TryFindDirectPort(out port))
+				{
+					return true;
+				}
+
+				foreach (Building_VerticalWarehouse neighbor in current.AdjacentWarehouses())
+				{
+					if (!visited.Contains(neighbor))
+					{
+						stack.Push(neighbor);
+					}
+				}
+			}
+
+			port = IntVec3.Invalid;
+			return false;
+		}
+
+		private bool TryFindDirectPort(out IntVec3 port)
 		{
 			Rot4[] sides = { Rot4.North, Rot4.East, Rot4.South, Rot4.West };
 			for (int i = 0; i < sides.Length; i++)
