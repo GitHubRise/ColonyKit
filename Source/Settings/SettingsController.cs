@@ -122,6 +122,10 @@ namespace ModTemplate
 
 				bool selected = i == selectedIndex;
 				Widgets.DrawOptionBackground(tabRect, selected);
+				if (Mouse.IsOver(tabRect))
+				{
+					Widgets.DrawHighlight(tabRect);
+				}
 
 				// 用不可见按钮接管点击，自己画背景和文字，选中态才受控。
 				if (Widgets.ButtonInvisible(tabRect, false))

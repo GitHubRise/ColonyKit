@@ -78,6 +78,7 @@ namespace ModTemplate
 			}
 
 			Rect rect = listing.GetRect(Text.LineHeight);
+			DrawControlHover(rect);
 			Widgets.CheckboxLabeled(rect, label, ref value, disabled: !enabled);
 
 			if (!tooltip.NullOrEmpty())
@@ -106,6 +107,7 @@ namespace ModTemplate
 			}
 
 			Rect rect = listing.GetRect(30f);
+			DrawControlHover(rect);
 			Widgets.Label(rect.LeftPart(0.42f), label);
 
 			// 显示值也按步长吸附，否则拖动过程中会出现 1234 这种中间值。
@@ -170,9 +172,10 @@ namespace ModTemplate
 					cardHeight);
 
 				bool selected = current == mode;
-				// 悬停也套用选中样式（RJW 的列表手感）：鼠标经过即可预览。
-				Widgets.DrawOptionBackground(card, selected || Mouse.IsOver(card));
+				// 选中用实心底色；悬停再用亮色蒙版 + 边框，两者能区分开。
+				Widgets.DrawOptionBackground(card, selected);
 				Widgets.DrawBox(card);
+				DrawHoverDecoration(card);
 				DrawControlModePreview(card, mode);
 
 				if (Widgets.ButtonInvisible(card))
@@ -240,6 +243,37 @@ namespace ModTemplate
 			GUI.color = previousColor;
 		}
 
+		private static void DrawControlHover(Rect rect)
+		{
+			if (!Mouse.IsOver(rect))
+			{
+				return;
+			}
+
+			// 普通配置项（勾选/滑条/输入/下拉）的悬停：灰色蒙版 + 边框 + 左侧强调条。
+			Widgets.DrawBoxSolid(rect, new Color(0.5f, 0.5f, 0.5f, 0.24f));
+			Widgets.DrawBox(rect);
+			Widgets.DrawBoxSolid(
+				new Rect(rect.x, rect.y, 3f, rect.height),
+				new Color(1f, 0.82f, 0.25f));
+		}
+
+		private static void DrawHoverDecoration(Rect rect)
+		{
+			if (!Mouse.IsOver(rect))
+			{
+				return;
+			}
+
+			// 比 DrawOptionBackground 更明显的悬停反馈：亮色蒙版 + 2px 边框 + 左侧强调条。
+			Widgets.DrawHighlight(rect);
+			Widgets.DrawBoxSolid(rect, new Color(1f, 1f, 1f, 0.08f));
+			Widgets.DrawBox(rect, 2);
+			Widgets.DrawBoxSolid(
+				new Rect(rect.x, rect.y, 3f, rect.height),
+				new Color(1f, 0.82f, 0.25f));
+		}
+
 		private static void DrawPreviewLine(Rect body, float y, string text, Color color)
 		{
 			Rect line = new Rect(body.x, body.y + y, body.width, 18f);
@@ -291,6 +325,7 @@ namespace ModTemplate
 			}
 
 			Rect rect = listing.GetRect(30f);
+			DrawControlHover(rect);
 			Widgets.Label(rect.LeftPart(0.42f), label);
 
 			if (!Widgets.ButtonText(rect.RightPart(0.58f), optionLabel(current) + " ▼"))
@@ -347,15 +382,17 @@ namespace ModTemplate
 				bool selected = EqualityComparer<T>.Default.Equals(option, current);
 				string text = (selected ? "✓ " : "✗ ") + optionLabel(option);
 				Rect row = listing.GetRect(26f);
+				bool hover = Mouse.IsOver(row);
 
-				// 选中与悬停共用同一套高亮，鼠标扫过就能看出“会选中谁”。
-				Widgets.DrawOptionBackground(row, selected || Mouse.IsOver(row));
+				// 选中用实心底色；悬停再用亮色蒙版 + 边框，两者能区分开。
+				Widgets.DrawOptionBackground(row, selected);
 				Widgets.DrawBox(row);
+				DrawHoverDecoration(row);
 
 				Color previousColor = GUI.color;
-				GUI.color = selected
-					? new Color(0.55f, 0.9f, 0.55f)
-					: new Color(0.82f, 0.82f, 0.82f);
+				GUI.color = hover
+					? Color.white
+					: (selected ? new Color(0.55f, 0.9f, 0.55f) : new Color(0.82f, 0.82f, 0.82f));
 				TextAnchor previousAnchor = Text.Anchor;
 				Text.Anchor = TextAnchor.MiddleLeft;
 				Widgets.Label(row.ContractedBy(4f), text);
@@ -401,6 +438,7 @@ namespace ModTemplate
 				EqualityComparer<T>.Default.Equals(option, current));
 
 			Rect rect = listing.GetRect(30f);
+			DrawControlHover(rect);
 			Widgets.Label(rect.LeftPart(0.42f), label);
 
 			Rect right = rect.RightPart(0.58f);
@@ -456,6 +494,7 @@ namespace ModTemplate
 			}
 
 			Rect rect = listing.GetRect(Text.LineHeight);
+			DrawControlHover(rect);
 			Widgets.Label(rect.LeftPart(0.42f), label);
 
 			string result = Widgets.TextField(rect.RightPart(0.58f), value ?? "", maxLength);
