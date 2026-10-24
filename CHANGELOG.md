@@ -2,45 +2,38 @@
 
 本项目遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/) 的基本格式，版本号使用 `0.0.x` 预发布序列。
 
-## [Unreleased]
+## [0.0.2] - 2026-10-25
+
+Defines the bottom drawer as the default mod opening interaction, adds the vanilla Research demo tab, and folds in the P0 fixes plus smoke/CI.
+
+### Added
+
+- **Default opening interaction**：底部按钮打开贴底全宽 `ModDrawerWindow`，向上滑入、不暂停、不吸收面板外输入；点其他底部菜单自动收起，打开时收起其他主菜单页签（World 例外）。
+- `Defs/Research/ModTemplate_ResearchExamples.xml`：原版 Research 新增 `MT_ResearchTab` 页签 + 15 个示例研究，覆盖原版前置、独立根、线性链、线性后分叉、条件分叉、生产研究解锁配方。
+- 研究/页签/配方 DefInjected；`smoke-test.ps1`；`.github/workflows/ci.yml`；UI 自动化 `05-demo-drawer` 场景。
 
 ### Changed
 
 - 玩家可见文案统一为「研究树 / Research tree」；代码类型和翻译键保留 `TechTree*`，避免破坏 API。
-- 研究入口改为原版 Research 窗口的新增页签 `MT_ResearchTab`；不再注册研究树底部按钮。
-- 底部菜单保留独立「模板演示」按钮作为单独的测试项，与研究页签/研究树解耦；点击先收起其他主菜单页签（World 例外），再打开贴底全宽抽屉（向上滑入、不暂停、面板外仍可拖地图），点其他底部菜单自动收起。
-
-### Added
-
-- `Defs/Research/ModTemplate_ResearchExamples.xml`：15 个示例研究，覆盖原版前置、独立根、线性链、线性后分叉、条件分叉、生产研究解锁配方。
-- `ResearchTabDef MT_ResearchTab` + 研究/配方 DefInjected。
-- `DemoDrawerWindow` + `UiAutomationService` 的 `05-demo-drawer` 截图场景。
+- 研究入口改为原版 Research 页签，不再注册研究树底部按钮；底部「模板演示」成为独立测试项。
+- `build.ps1` 默认 `-t:Rebuild`，警告视为失败；新增 `-NoRebuild`；部署改为 `/MIR` 清理陈旧文件。
 
 ### Fixed
 
-- `build.ps1` 部署后 `LASTEXITCODE` 被 robocopy 成功码（1–7）污染，导致 `smoke-test.ps1` 误判构建失败；成功路径现在显式归零。
-- 配方 `products` 改为字典语法 `<ComponentIndustrial>1</ComponentIndustrial>`。
-
-## [0.0.2] - 2026-10-25
-
-0.0.1 的补丁版本：修复发布审查发现的 P0 问题，并把冒烟测试与 CI 纳入流水线。
-
-### Fixed
-
-- `ModLoc` 的格式化回退改用 `TranslatorFormattedStringExtensions` + `NamedArgument`，清洁重建不再有 `CS0618`。
+- `ModLoc` 格式化回退改用 `TranslatorFormattedStringExtensions` + `NamedArgument`，清洁重建不再有 `CS0618`。
 - `NotificationService.ThrottledMessage` 在 `Current.Game == null` 时不再访问 `Find.TickManager`。
 - `SettingsWidgets.Dropdown` 对 `null` / 空 options 做保护。
-- `MainButtonService.ApplyOrder` 在反射字段缺失或类型不符时用 `ModLog.Once` 留下明确警告，而不是静默失效。
+- `MainButtonService.ApplyOrder` 反射字段缺失/类型不符时用 `ModLog.Once` 警告。
+- `build.ps1` 部署后 `LASTEXITCODE` 被 robocopy 成功码污染；成功路径显式归零。
+- 配方 `products` 改为字典语法 `<ComponentIndustrial>1</ComponentIndustrial>`。
+- 修复 `MainButtonWorker_TechTree` 陈旧 Def 与 `ComponentIndustrial1` 解析错误。
 
-### Added
+### Validated
 
-- `smoke-test.ps1`：verify → build + deploy → quicktest → 断言 Bootstrap/Migration/Selftest/Diag/备份/诊断文件 → 关闭游戏；使用独立 `-savedatafolder`。
-- `.github/workflows/ci.yml`：Windows runner 上执行 build / verify / package；游戏冒烟测试留给本机或 self-hosted runner。
-
-### Changed
-
-- `build.ps1` 默认 `-t:Rebuild`，并把编译警告视为失败；日常增量构建可显式加 `-NoRebuild`。
-- 没有工作区 `.tools` 时，restore 自动走 PATH 里的 dotnet + 默认 NuGet 缓存，便于 CI。
+- clean rebuild 0 error / 0 warning；`verify.ps1` 0 问题；`package.ps1` 19 个文件。
+- `smoke-test.ps1` PASSED：`demoButton=True, demoResearch=15`，迁移/诊断/备份命中。
+- UI 自动化 5 场景截图，含 `05-demo-drawer` 贴底抽屉。
+- 中英 Keyed 各 129 键。
 
 ## [0.0.1] - 2026-10-25
 
@@ -49,31 +42,14 @@
 ### Added
 
 - 核心生命周期：`Mod` 入口、`Bootstrap`、`Def`/`DefOf`、`GameComponent` 持久化、Harmony Postfix 示例。
-- 模块系统：`IModTemplateModule` + `ModuleRegistry`，内置 `core`、`pawn-menu`、`notifications`、`build-control`、`tech-tree`、`diagnostics` 六个模块，支持开关、初始化顺序、异常隔离和游戏加载重置。
-- 设置框架：五页签（模块 / 常规 / 日志 / 通知 / 关于）、通用控件库、当前页检索、按内容高度自动滚动、下拉框 / ◀ ▶ 循环 / ✓ ✗ 打勾三种选项控件、设置窗口中英文切换。
-- 设置与存档迁移：`schemaVersion`、启动 `.bak` 备份、迁移链、`Validate`、存档 `saveVersion`。
-- 日志与诊断：结构化 `ModLog`（级别/分类/Once/Throttled/最近日志）、`Diagnostics` 报告、设置页诊断按钮。
-- 交互能力：右键小人菜单、通知消息/信件/节流、建筑放置规则与蓝图、底部主菜单按钮、研究树窗口。
-- 本地化：中英 Keyed 各 125 键、DefInjected、`ModLoc` 设置窗口语言覆盖。
-- 工程流水线：`build.ps1` / `verify.ps1` / `package.ps1` / `new-mod.ps1`，以及 `-modtemplate-selftest`、`-modtemplate-settings`、`-modtemplate-techtree`、`-modtemplate-ui-test` 调试参数。
-
-### Changed
-
-- 设置页选项控件从单一列表改为三卡片预览；悬停使用灰色蒙版/边框/左侧强调条，选中与悬停能区分。
-- 下拉框按钮统一显示 `▼`；`✓ / ✗` 行增加 8px 垂直间距。
-- 设置窗口语言覆盖只影响本 Mod 的设置内容，不修改游戏全局语言。
-
-### Validated
-
-- `build.ps1`：0 error / 0 warning。
-- `verify.ps1`：0 问题。
-- `package.ps1`：`dist/ModTemplate-0.0.1.zip`，12 个文件，第一层 `About/Assemblies/Defs/Languages/Patches`。
-- quicktest（RimWorld 1.6.4871）：`modules=6, schema=2, pawnMenu=2, notifications=True, mainButton=True, wallPlacement=False`。
-- 设置窗口简体中文切换、普通配置行/卡片悬停、下拉 `▼` 已通过实机截图确认。
+- 模块系统：`IModTemplateModule` + `ModuleRegistry`，六个内置模块、开关、初始化顺序、异常隔离。
+- 设置框架：五页签、控件库、检索、自动滚动、下拉/循环/打勾三模式、设置窗口语言覆盖、迁移/备份/Validate。
+- 日志与诊断、右键小人菜单、通知、建造控制、底部菜单、科技树窗口。
+- 中英 125 Keyed、build / verify / package / new-mod、UI 自动化截图入口。
 
 ### Known limitations
 
-- 所有模块仍在同一个 `ModTemplate.dll`，没有独立程序集/热卸载；禁用模块只是逻辑门控。
-- `DefInjected`、原版 `Dialog_ModSettings` 的 Close 按钮仍跟随游戏语言。
-- 设置检索只覆盖当前页，不支持跨页全局搜索。
-- 研究树绘制、UI 自动化截图、建筑规则非空路径等仍建议在发布前人工复验。
+- 模块仍在同一个 DLL，没有独立程序集/热卸载。
+- `DefInjected`、原版 Close 按钮不参与 `ModLoc` 设置语言覆盖。
+- 检索只覆盖当前页。
+- 科技树独立窗口绘制、配方实际制作等需人工复验。

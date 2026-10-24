@@ -42,7 +42,7 @@
 4. 选项 → Mod 设置 → `Mod 架构模板`：默认五个页签（模块 / 常规 / 日志 / 通知 / 关于）。顶栏有检索框（过滤当前页控件）；常规页可切换三种选项控件（下拉框 / ◀ ▶ / ✓ ✗），也可把设置窗口切到 English / 简体中文（不改游戏语言）；模块页可关闭可选功能；日志页演示下拉框（统计明细 / 框架日志级别）、滑块（间隔）、输入框（前缀）、禁用态勾选，以及「输出诊断报告」；通知页有测试消息/信件/节流按钮。
 5. 原版底部 **Research** → 「示例研究」页签：15 个示例研究覆盖原版前置、独立根、线性、分叉、条件分叉、生产解锁；设置「关于」仍可打开独立研究树窗口。
 6. 右键一个殖民者：应看到「记录该殖民者」「在附近建造演示墙」两项（常规页可关）。
-7. 底部主菜单：多出一个独立的「模板演示」测试按钮（常规页可隐藏）；点击先收起当前其他主菜单页签（World 例外），再从底栏向上展开全宽抽屉，再次点击/Close/X 关闭，点其他底部菜单会自动收起；不暂停、面板外仍可拖地图；它与 Research/研究树无关。
+7. 默认打开交互：底部 **Template demo** 按钮先收起其他主菜单页签（World 例外），再从底栏向上展开全宽抽屉；再次点击/Close/X 关闭，点其他底部菜单自动收起；不暂停、面板外仍可拖地图。它与 Research/研究树无关。
 8. 生成/招募几个殖民者，开「详细日志」后看 `[ModTemplate] spawn:` 行；也可带 `-modtemplate-selftest` 看服务自检日志。
 9. 带 `-modtemplate-ui-test` 启动会依次截取底部栏 / 通知页 / 右键菜单 / 研究树窗口 / 模板演示按钮，PNG 在 `Config/ModTemplateUiTests/`。
 
@@ -90,7 +90,7 @@ mod-template/
 │  │  ├─ ModTemplatePawnMenuProvider.cs  原版 Provider 入口
 │  │  ├─ MainButtonService.cs    底部按钮显示/顺序
 │  │  ├─ MainButtonWorker_Demo.cs  模板演示按钮 Worker
-│  │  ├─ DemoDrawerWindow.cs    贴底演示抽屉
+│  │  ├─ ModDrawerWindow.cs    贴底演示抽屉
 │  │  ├─ Patch_MainButton*.cs    可见性/排序 Patch
 │  │  ├─ UiAutomationService.cs  截图式 UI 自动化
 │  │  └─ Patch_Root_Update_UiAutomation.cs  每帧驱动
@@ -142,7 +142,7 @@ mod-template/
 | 通知消息 | `Source/Notifications/*` | 消息 / 信件 / 按 key 节流 |
 | 结构化日志与诊断 | `Source/ModLog.cs` / `Source/Diagnostics.cs` | 级别/分类/Once/Throttled + 诊断报告 |
 | 建筑建造 | `Source/Build/*` | 放置校验、规则、程序化放蓝图 |
-| 底部主菜单 | `Source/UI/MainButton*` + `DemoDrawerWindow` | 按钮显示/隐藏/排序 + 贴底抽屉 |
+| 底部主菜单 | `Source/UI/MainButton*` + `ModDrawerWindow` | 按钮显示/隐藏/排序 + 贴底抽屉 |
 | UI 自动化绘制 | `Source/UI/UiAutomation*` | 场景数据 → 开窗/等待/截图/点击/关闭 |
 | 启动钩子 | `Bootstrap.cs` | Def 就绪后做一次初始化 |
 
@@ -164,7 +164,7 @@ mod-template/
 
 **0.0.2 基线**（2026-10-25，RimWorld 1.6.4871，`-quicktest` + 独立 `-savedatafolder`，只启用 Core + Harmony + 本 Mod）：
 
-- `build.ps1` / `verify.ps1` / `package.ps1` / `new-mod.ps1` 均通过（0 错误 0 警告；包 12 个文件）。
+- `build.ps1` / `verify.ps1` / `package.ps1` / `new-mod.ps1` 均通过（0 错误 0 警告；包 19 个文件）。
 - `smoke-test.ps1` PASSED：clean rebuild、迁移/自检/诊断/备份断言全部命中；CI 配置在 `.github/workflows/ci.yml`。
 - `[ModTemplate][Migration] settings migrated 0 -> 2` + `.bak` —— 设置 schema 迁移与备份生效。
 - `[ModTemplate][Bootstrap] loaded`；`[ModTemplate][Selftest] modules=6, schema=2, pawnMenu=2, buildRules=0, notifications=True, demoButton=True, demoResearch=15, wallPlacement=False`。

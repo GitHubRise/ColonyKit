@@ -30,7 +30,7 @@
   2. `02-settings-notifications`：打开 `Dialog_ModSettings` 并预选「通知」页；
   3. `03-pawn-menu`：用 `PawnMenuService.GetOptions` 构造 `FloatMenu`，截图后执行第一项 action；
   4. `04-tech-tree`：打开 `TechTreeWindow`；
-  5. `05-demo-drawer`：打开贴底 `DemoDrawerWindow`，截图验证抽屉形态。
+  5. `05-demo-drawer`：打开贴底 `ModDrawerWindow`，截图验证抽屉形态。
 - 调度：每帧由 `Root.Update` 的 Postfix 驱动（设置窗口 `forcePause` 会停 `GameComponentUpdate`，所以不能放那里）。
 - 等待：打开后等 20 帧再截图，截图后等 20 帧再关闭，避免截到半帧或文件未落盘。
 - 输出：`Config/ModTemplateUiTests/<id>.png`；日志打印每个路径和最终 `ui-test: done, captured=N, skipped=N`。

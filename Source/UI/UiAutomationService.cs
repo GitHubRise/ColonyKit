@@ -79,7 +79,7 @@ namespace ModTemplate
 
 			Register(new UiScenario(
 				"05-demo-drawer",
-				() => new DemoDrawerWindow()));
+				() => new ModDrawerWindow()));
 		}
 
 		public static void Register(UiScenario scenario)

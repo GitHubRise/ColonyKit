@@ -12,8 +12,8 @@ namespace ModTemplate
 	{
 		public override void Activate()
 		{
-			DemoDrawerWindow open = Find.WindowStack.Windows
-				.OfType<DemoDrawerWindow>()
+			ModDrawerWindow open = Find.WindowStack.Windows
+				.OfType<ModDrawerWindow>()
 				.FirstOrDefault();
 			if (open != null)
 			{
@@ -29,7 +29,7 @@ namespace ModTemplate
 				Find.MainTabsRoot.EscapeCurrentTab(false);
 			}
 
-			Find.WindowStack.Add(new DemoDrawerWindow());
+			Find.WindowStack.Add(new ModDrawerWindow());
 		}
 	}
 }
