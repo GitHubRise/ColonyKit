@@ -17,6 +17,7 @@ namespace ModTemplate
 		private float slideStartY;
 		private float slideTargetY;
 		private float slideStartedAt = -1f;
+		private MainButtonDef openTabWhenOpened;
 
 		public DemoDrawerWindow()
 		{
@@ -41,11 +42,20 @@ namespace ModTemplate
 			slideStartY = slideTargetY + 36f;
 			windowRect = new Rect(0f, slideStartY, UI.screenWidth, InitialSize.y);
 			slideStartedAt = Time.time;
+			openTabWhenOpened = Find.MainTabsRoot?.OpenTab;
 		}
 
 		public override void WindowUpdate()
 		{
 			base.WindowUpdate();
+
+			// 点其他底部主菜单会切换 MainTabsRoot.OpenTab；抽屉自动收起，
+			// 不需要给每个原版按钮单独打补丁。
+			if (Find.MainTabsRoot != null && Find.MainTabsRoot.OpenTab != openTabWhenOpened)
+			{
+				Close();
+				return;
+			}
 
 			if (slideStartedAt < 0f)
 			{
