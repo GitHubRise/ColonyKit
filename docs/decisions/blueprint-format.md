@@ -14,7 +14,7 @@
 
 约束：
 
-- 只依赖原版建造系统，最终仍生成原版 `Blueprint`，研究/材料/地形校验沿用 `GenConstruct`；
+- 只依赖原版建造系统，最终仍生成原版 `Blueprint`；研究/材质由模块先判，地形/占用/水域交给 `GenConstruct.CanPlaceBlueprintAt`；
 - 库要随存档保存；**模板要跨存档**，不能只存在某一局里；
 - 缺 Mod/缺 Def 时不能坏档，也不能让整个库反序列化失败；
 - 多格建筑的 `Position` 不是中心，旋转后不能直接把坐标当格子转；
@@ -33,39 +33,45 @@
 
 - `Config/ColonyKit/Blueprints/`：玩家配置目录，跟随用户、不跟存档；适合「模板收藏」。
 - `Saves/<存档>/Blueprints/`：只属于当前存档，换图即失。
-- Mod 目录：只读/更新会被覆盖，不适合玩家数据。
+- Mod 目录：只读/更新会被覆盖，不适合玩家数据；但适合放**内置默认模板**。
 
-选 `Config/ColonyKit/Blueprints/`，与 `GenFilePaths.ConfigFolderPath` 一致。
+玩家数据选 `Config/ColonyKit/Blueprints/`，与 `GenFilePaths.ConfigFolderPath` 一致；Mod 根目录 `Blueprints/` 只放随包发布的只读默认模板。
 
 ## 结论
 
 采用 **C**：
 
 - **存档库**：`BlueprintLibrary : IExposable`，由模块自己的 `BlueprintGameComponent` 持有；`Scribe_Collections.Look(..., LookMode.Deep)`。
-- **模板**：同一份 `BlueprintRecord` 写成 XML 到 `Config/ColonyKit/Blueprints/<名称>.xml`，根节点 `ColonyKitBlueprint`，`schema="1"`；载入时新建记录、重新分配 `id`，名字冲突追加 `(2)`。
-- **字段**：`defName` / `stuffDefName` / `rot` / 相对 `x,z`；不存耐久、品质、地形、物品。坐标原点 = 捕获范围左下角。
-- **多格建筑**：条目存建筑 `Position` 的相对偏移；旋转/镜像时先变换 `GenAdj.OccupiedRect`，再由新矩形反推新 `Position`（详见 `BlueprintPlacementUtility`），避免 1×2 床/门旋转错位。
+- **模板**：玩家模板写到 `Config/ColonyKit/Blueprints/<名称>.xml`，根节点 `ColonyKitBlueprint`，`schema="1"`；文件名清洗后同名加 ` (2)`，不覆盖。载入时新建记录、重新分配 `id`，库内名字冲突追加 ` (2)`。`schema` 属性当前只写出、读取时不校验/不迁移。
+- **内置模板**：Mod 根目录 `Blueprints/*.xml` 随包发布，只读；`LoadAll` 合并玩家目录与内置目录，同名玩家模板优先，最终按显示名 `OrdinalIgnoreCase` 排序。
+- **捕获**：拖框内只取界内、未雾格；只收玩家阵营、已完工建筑，跳过蓝图/框架/矿物/自然岩石/物品。蓝图尺寸/原点取**实际建筑占用矩形的包围盒**（拖框空白边距会被裁掉），条目按 `z` 再 `x` 排序。
+- **字段**：`defName` / `stuffDefName` / `rot` / 相对 `x,z`；不存耐久、品质、地形、物品。坐标原点 = 捕获到的建筑包围盒左下角，条目坐标是建筑 `Position` 的偏移。
+- **多格建筑**：旋转/镜像时先变换 `GenAdj.OccupiedRect`，再由新矩形反推新 `Position`（详见 `BlueprintPlacementUtility`），避免 1×2 床/门旋转错位。
 - **材料策略**（三档，默认「就地取材」）：
-  - 原材质优先：原材质仍可用于该 Def 就用，否则退回「有库存的最便宜」→「全局最便宜」；
+  - 原材质优先：原材质仍可用于该 Def 就直接用（不看库存）；否则退回「有库存的最便宜」→「全局最便宜」；
   - 就地取材：原材质有库存就用，否则有库存的最便宜，否则全局最便宜；
   - 最便宜：始终选该 Def 可用的最便宜材料。
-  - 候选只取 `stuffProps.canSuggestUseDefaultStuff`（木头/钢铁/石块等）；没有推荐项才放开到全部可用材质。候选列表按 Def 缓存。
+  - 「有库存」先要求 ≥ 单件 `CostStuffCount`，不够则退到任何库存 > 0；候选只取 `stuffProps.canSuggestUseDefaultStuff`（木头/钢铁/石块等），没有推荐项才放开到全部可用材质；候选列表按 Def 缓存。
 - **缺 Def**：放置时跳过该条并在消息/面板里报数量；不阻塞其余建筑。研究未完成则整张拒绝（玩家可以研究后再放）。
+- **上帝模式**：`DebugSettings.godMode` 下跳过研究检查、以 godMode 调用 `CanPlaceBlueprintAt`，落地直接 `ThingMaker.MakeThing` + `GenSpawn.Spawn` 生成完工建筑，不再生成施工蓝图。
 
 ## 影响
 
 - 存档：新增 `ck_blueprint_library` 节点；旧存档没有该节点时新建空库，不迁移旧数据。
-- 模板：`Config/ColonyKit/Blueprints/` 是玩家数据，不随 Mod 更新删除；损坏文件只报错不抛出。
+- 模板：`Config/ColonyKit/Blueprints/` 是玩家数据，不随 Mod 更新删除；Mod 根目录 `Blueprints/` 是只读内置模板，随包更新；损坏文件只报错不抛出。
 - 性能：
   - 捕获只在确认时遍历一次矩形；
-  - 预览只在**鼠标格变化/旋转/镜像/策略变化**时重算，最坏 O(条目数 × 单建筑占格) 次 `CanPlaceBlueprintAt`；典型房子 < 150 条；
+  - 预览只在**鼠标格/旋转/镜像/策略/地图变化**时重算，每个条目一次 `CanPlaceBlueprintAt`（O(条目数)）；典型房子 < 150 条；
   - 材料候选按建筑 Def 缓存，不在每帧扫描 `DefDatabase`。
 - 兼容：不改原版建造/存储系统；与「计划」设计器不冲突（蓝图是施工单，不是计划标记）。
 - 已知限制（首版）：
   - 不含地形/地板、物品、尸体、污渍；房间地板需要玩家另外铺；
   - 不含耐久/品质/艺术/染色，复刻后按新建处理；
-  - 旋转/镜像只处理方形建筑；非方形多格建筑的镜像朝向可能不完美；
-  - 蓝图不随研究门控：没有新增「蓝图管理」研究，入口常驻（后续可加）。
+  - 捕获按建筑包围盒记录，拖框空白边距不保留；雾格不参与捕获；
+  - 非方形多格建筑的镜像朝向可能不完美；
+  - 蓝图不随研究门控：没有新增「蓝图管理」研究，入口常驻（后续可加）；
+  - 模板载入不检查每存档库上限；蓝图页没有搜索/分页；
+  - 内置模板只读，同名玩家模板会遮住内置版本。
 
 ## 验证
 
