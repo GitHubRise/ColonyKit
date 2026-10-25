@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_DbhWaterPipe</defName>
+		<label>DBH-style water pipe</label>
+		<description>DBH-style water pipe. Connects pumps, tanks and fixtures.</description>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_WaterPipe</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<designationCategory>Furniture</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.05</fillPercent>
+		<costList>
+			<Steel>10</Steel>
+		</costList>
+		<statBases>
+			<MaxHitPoints>80</MaxHitPoints>
+			<Mass>3</Mass>
+			<WorkToBuild>200</WorkToBuild>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_HygieneResearch</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_DbhWaterTank</defName>
+		<label>DBH-style water tank</label>
+		<description>DBH-style water storage. Capacity: 2000 L.</description>
+		<thingClass>Building</thingClass>
+		<size>(2,2)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_WaterTank</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<designationCategory>Furniture</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.3</fillPercent>
+		<tickerType>Normal</tickerType>
+		<costList>
+			<Steel>80</Steel>
+		</costList>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Mass>25</Mass>
+			<WorkToBuild>500</WorkToBuild>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterStorage">
+				<WaterStorageCap>2000</WaterStorageCap>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_HygieneResearch</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_DbhWaterPump</defName>
+		<label>DBH-style water pump</label>
+		<description>DBH-style pump. Moves water into connected tanks. Capacity: 2000 L/day.</description>
+		<thingClass>Building</thingClass>
+		<size>(2,2)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_WaterPump</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<designationCategory>Furniture</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.25</fillPercent>
+		<costList>
+			<Steel>120</Steel>
+			<ComponentIndustrial>3</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Mass>40</Mass>
+			<WorkToBuild>1500</WorkToBuild>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>250</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterPumpingStation">
+				<Capacity>2000</Capacity>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_HygieneResearch</li>
+		</researchPrerequisites>
+	</ThingDef>
+</Defs>

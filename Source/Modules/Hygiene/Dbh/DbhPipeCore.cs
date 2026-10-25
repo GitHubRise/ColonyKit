@@ -211,9 +211,13 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		public HygienePipeMapComp PipeComp;
 		public HashSet<ThingWithComps> PipedThings = new HashSet<ThingWithComps>();
 		public List<CompWaterStorage> WaterTowers = new List<CompWaterStorage>();
+		public List<CompWaterPumpingStation> WaterPumps = new List<CompWaterPumpingStation>();
+		public List<CompWaterInlet> WaterWells = new List<CompWaterInlet>();
 		public List<CompPipe> Pipes = new List<CompPipe>();
 		public float WaterCap;
 		public float WaterPumpedPerTick;
+		public float PumpingCapacitySum;
+		public float GroundWaterCapacitySum;
 		public bool HasFilter => false;
 
 		public float WaterStorage => WaterTowers.Sum(t => t.WaterStorage);
@@ -222,6 +226,8 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		{
 			Pipes.Clear();
 			WaterTowers.Clear();
+			WaterPumps.Clear();
+			WaterWells.Clear();
 			foreach (ThingWithComps thing in PipedThings)
 			{
 				Pipes.AddRange(thing.GetComps<CompPipe>());
@@ -229,6 +235,16 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 				if (tank != null)
 				{
 					WaterTowers.Add(tank);
+				}
+				CompWaterPumpingStation pump = thing.TryGetComp<CompWaterPumpingStation>();
+				if (pump != null)
+				{
+					WaterPumps.Add(pump);
+				}
+				CompWaterInlet inlet = thing.TryGetComp<CompWaterInlet>();
+				if (inlet != null)
+				{
+					WaterWells.Add(inlet);
 				}
 			}
 		}
@@ -285,6 +301,11 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 			{
 				WaterCap += tank.Props.WaterStorageCap;
 			}
+			PumpingCapacitySum = WaterPumps.Sum(p => p.Capacity);
+			GroundWaterCapacitySum = WaterWells.Count > 0
+				? WaterWells.Sum(w => w.GroundWaterCapacity)
+				: PumpingCapacitySum;
+			WaterPumpedPerTick = Mathf.Min(PumpingCapacitySum, GroundWaterCapacitySum) / 60000f;
 		}
 	}
 }

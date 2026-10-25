@@ -127,7 +127,7 @@
 	<CK.Hygiene.TakeShower>去洗澡</CK.Hygiene.TakeShower>
 	<CK.Hygiene.TakeShowerDesc>让该殖民者前往最近的淋浴器。</CK.Hygiene.TakeShowerDesc>
 	<CK.Hygiene.NoShower>没有可用的淋浴器。</CK.Hygiene.NoShower>
-	<CK.Hygiene.FilthyRoom>肮脏房间系数: {0}</CK.Hygiene.FilthyRoom>
+	<CK.Hygiene.PumpCapacity>泵送能力: {0} 升/天</CK.Hygiene.PumpCapacity>`n	<CK.Hygiene.GroundWater>地下水能力: {0}</CK.Hygiene.GroundWater>`n	<CK.Hygiene.FilthyRoom>肮脏房间系数: {0}</CK.Hygiene.FilthyRoom>
 	<CK.Hygiene.TooHot>过热系数: {0}</CK.Hygiene.TooHot>
 	<CK.Hygiene.InRain>淋雨系数: {0}</CK.Hygiene.InRain>
 	<CK.Hygiene.TotalRate>卫生变化倍率: {0}</CK.Hygiene.TotalRate>

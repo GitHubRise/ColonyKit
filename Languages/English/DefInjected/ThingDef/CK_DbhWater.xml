@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_DbhWaterPipe.label>DBH-style water pipe</CK_DbhWaterPipe.label>
+	<CK_DbhWaterPipe.description>DBH-style water pipe. Connects pumps, tanks and fixtures.</CK_DbhWaterPipe.description>
+	<CK_DbhWaterTank.label>DBH-style water tank</CK_DbhWaterTank.label>
+	<CK_DbhWaterTank.description>DBH-style water storage. Capacity: 2000 L.</CK_DbhWaterTank.description>
+	<CK_DbhWaterPump.label>DBH-style water pump</CK_DbhWaterPump.label>
+	<CK_DbhWaterPump.description>Moves water into connected tanks. Capacity: 2000 L/day.</CK_DbhWaterPump.description>
+</LanguageData>

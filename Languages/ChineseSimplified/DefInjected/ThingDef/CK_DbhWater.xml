@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_DbhWaterPipe.label>DBH 式水管</CK_DbhWaterPipe.label>
+	<CK_DbhWaterPipe.description>连接水泵、水箱和洁具的 DBH 式水管。</CK_DbhWaterPipe.description>
+	<CK_DbhWaterTank.label>DBH 式水箱</CK_DbhWaterTank.label>
+	<CK_DbhWaterTank.description>DBH 式储水，容量 2000 升。</CK_DbhWaterTank.description>
+	<CK_DbhWaterPump.label>DBH 式水泵</CK_DbhWaterPump.label>
+	<CK_DbhWaterPump.description>把水送入连通水箱，容量 2000 升/天。</CK_DbhWaterPump.description>
+</LanguageData>
