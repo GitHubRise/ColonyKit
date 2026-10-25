@@ -81,7 +81,7 @@
 			<li Class="CompProperties_Flickable"/>
 		</comps>
 		<researchPrerequisites>
-			<li>CK_HygieneResearch</li>
+			<li>CK_AdvancedShowers</li>
 		</researchPrerequisites>
 	</ThingDef>
 </Defs>
