@@ -14,13 +14,17 @@
 
 ### Added
 
+- **淋浴等待 Job**：新增 `CK_WaitForShower`；`JobGiver_HaveWash` 在没有空淋浴器/浴缸但有一台正在使用且供水正常的淋浴器时，让 Pawn 到门口等待，占用者结束后自动接手 `CK_TakeShower`。不是严格 FIFO，多个等待者会竞争同一台淋浴器。
+- **洁具房间占用限制**：`Building_AssignableFixture` 新增 Gizmo「房间占用限制」；开启后房间里有其他 Pawn 时该洁具视为占用。`OccupancyCheck` 不再是死字段。
+- **锅炉功率档位与恒温**：`CompWaterHeater` 增加低/标准/高三档（供热能力 125/250/375，耗电同比例），热水罐最低温 ≥0.98 时进入恒温待机、≤0.85 或任意罐 `LowCap` 时重启；`LowCap` 不再未使用。
+- **洁具占用/排队 Alert**：`Alert_HygieneShowerBusy` 重命名为 `Alert_HygieneFixtureBusy`，扫描淋浴/浴缸/洗手池/马桶；占用 ≥1 小时或有人需要洗澡/上厕所但没有空位时提示。
 - **内置蓝图「永恒温室」**：`Blueprints/永恒温室.xml`，37×38 占地、35×33 单室冷库；北墙 18 台空调（冷侧朝库内、热侧朝北侧露天排气带）、南侧双门气闸、6 组十字形屋顶支撑柱；花岗岩墙体，适合在厚岩顶下按「先深冷、再断电」的方式做长时间保冷测试。
 - **调试动作「蓝图工具 → 全场空调设为 -273」**：`DebugActions_Blueprint`，一键把当前地图所有玩家空调的 `CompTempControl.TargetTemperature` 设为 -273°C，避免逐台点温度 Gizmo。
 - **肠道感染**：新增 `CK_GutBug` Hediff（呕吐、膀胱消耗加速、约 1 天恢复、可治疗）；`GiveNastyGutBug` 不再空实现，卫生污染累计后会真正致病并发送负面消息。
 - **淋浴后清理**：移植 `ShowerCleanup`，淋浴成功结束后清掉淋浴器周围 2.5 格的 RJW 精液污渍，并把小人自己房间最多 12 格污渍排成一条原版 `JobDefOf.Clean` 工作（`playerForced`）。
 - **热水澡与如厕隐私**：`CK_ShowerHot` 现在会在热水淋浴完成后实际施加；新增 `CK_ToiletPrivacy` 念头，`ToiletPrivacyLOS` 按视线/情人/动物/机械体/囚犯规则判断，不再恒返回 false。
 - **卫生设施 Alert**：新增 `Alert_HygieneFixture`，玩家淋浴器、浴缸、洗手池或马桶断水/堵塞/断电时提示，点击可跳到问题建筑。
-- **淋浴占用/排队 Alert**：新增 `Alert_HygieneShowerBusy`，淋浴器被占用超过 1 小时，或卫生值低于 0.2 的殖民者既没有空淋浴器也没有空浴缸时提示；记录占用起始 tick 并随存档保存。
+- **洁具占用计时**：`occupiedSinceTick` 上移到 `Building_AssignableFixture`，淋浴/浴缸/马桶/洗手池共用并随存档保存。
 - **DBH 式热水模型**：新增 `CompHeatStore` 热水罐（0–100% 归一化水温，`HeaterTemp` 随存档保存）；热水器/锅炉提供 `BoilerCapacity`，管网按 `HeatingCap = clamp01(BoilerCapacitySum / HeatStoreCapacitySum)` 决定目标水温；热水罐按 `RiseRate/FallRate` 升温/降温，洗澡时 `PullHotWater` 把 `heatPerTick × 热水用量倍率` 平均分摊到所有还有热水的罐。
 - **热水罐建筑 `CK_HotWaterTank`**：1×1、需要接到水网/热水器，可扩充热水容量；热水器 `CK_DbhWaterHeater` 改为 250 供热能力并自带一个小型热水罐，旧存档加载时会自动补齐新组件。
 - **热水用完会中途变冷**：淋浴每 tick 跟随 `PullHotWater` 结果更新 `cold`，浴缸同样；`CK.Hygiene.HotWaterTemp` 显示热水罐温度。
@@ -63,6 +67,7 @@
 
 ### Fixed
 
+- **清理死字段/死接口**：删除 `CompWaterStorage` 的 `AutoGenRate`/`Tickrate`/`Auto`/`AutoOnRain`、`Need_Bladder.GivingUpAndShittingOnTheFloorFunction()`、无参 `Building_Shower.TryUseWater()`；`OccupancyCheck` 通过洁具 Gizmo 真正可切换。
 - **淋浴/厕所自动工作重新生效**：`Patches/Hygiene/ThinkTree.xml` 的 xpath 缺少 `thinkRoot[@Class="ThinkNode_Tagger"]`，实际从未命中，殖民者不会自动去洗澡/上厕所；现在补上并改回 `success=Normal`。
 - **堵塞可修复**：堵塞现在真正阻止洁具使用；玩家的洁具新增「疏通堵塞」Gizmo，避免永久锁死。
 - **中断淋浴不再结算**：只有卫生刷满才清携带污渍、清污染标记、给浴室/水温念头；断水、断电、征兆或精神崩溃中断都不再算洗完。

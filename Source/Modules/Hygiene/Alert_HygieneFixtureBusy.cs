@@ -5,18 +5,18 @@ using Verse;
 
 namespace ColonyKit.Modules.Hygiene
 {
-	/// <summary>淋浴器长时间被占用，或有人需要洗澡但没有空位时提示。</summary>
-	public sealed class Alert_HygieneShowerBusy : Alert
+	/// <summary>卫生洁具长时间被占用，或有人需要洗澡/上厕所但没有空位时提示。</summary>
+	public sealed class Alert_HygieneFixtureBusy : Alert
 	{
 		private const int LongOccupiedTicks = 2500;
 
 		private readonly List<Thing> culprits = new List<Thing>();
 		private int waitingCount;
 
-		public Alert_HygieneShowerBusy()
+		public Alert_HygieneFixtureBusy()
 		{
 			defaultPriority = AlertPriority.Medium;
-			defaultLabel = "CK.Hygiene.Alert.ShowerBusy".Translate();
+			defaultLabel = "CK.Hygiene.Alert.FixtureBusy".Translate();
 		}
 
 		public override AlertReport GetReport()
@@ -31,15 +31,16 @@ namespace ColonyKit.Modules.Hygiene
 					continue;
 				}
 
-				List<Building_Shower> showers = new List<Building_Shower>(
-					map.listerBuildings.AllBuildingsColonistOfClass<Building_Shower>());
-				for (int i = 0; i < showers.Count; i++)
+				List<Building_AssignableFixture> fixtures =
+					new List<Building_AssignableFixture>(
+						map.listerBuildings.AllBuildingsColonistOfClass<Building_AssignableFixture>());
+				for (int i = 0; i < fixtures.Count; i++)
 				{
-					Building_Shower shower = showers[i];
-					if (shower.occupiedSinceTick >= 0
-						&& now - shower.occupiedSinceTick >= LongOccupiedTicks)
+					Building_AssignableFixture fixture = fixtures[i];
+					if (fixture.occupiedSinceTick >= 0
+						&& now - fixture.occupiedSinceTick >= LongOccupiedTicks)
 					{
-						culprits.Add(shower);
+						culprits.Add(fixture);
 					}
 				}
 
@@ -52,37 +53,20 @@ namespace ColonyKit.Modules.Hygiene
 					{
 						continue;
 					}
-					Need_Hygiene need = pawn.needs?.TryGetNeed<Need_Hygiene>();
-					if (need == null || need.CurLevel >= 0.2f)
+
+					Need_Bladder bladder = pawn.needs?.TryGetNeed<Need_Bladder>();
+					if (bladder != null && bladder.CurLevel < 0.15f)
 					{
+						if (!HasFreeToilet(map, pawn))
+						{
+							waitingCount++;
+						}
 						continue;
 					}
 
-					bool hasFreeShower = false;
-					for (int i = 0; i < showers.Count; i++)
-					{
-						if (!showers[i].IsForbidden(pawn) && showers[i].CanUse(pawn))
-						{
-							hasFreeShower = true;
-							break;
-						}
-					}
-					if (hasFreeShower)
-					{
-						continue;
-					}
-
-					bool hasBath = false;
-					foreach (Building_Bath bath in map.listerBuildings
-						.AllBuildingsColonistOfClass<Building_Bath>())
-					{
-						if (!bath.IsForbidden(pawn) && bath.CanUse(pawn))
-						{
-							hasBath = true;
-							break;
-						}
-					}
-					if (!hasBath)
+					Need_Hygiene hygiene = pawn.needs?.TryGetNeed<Need_Hygiene>();
+					if (hygiene != null && hygiene.CurLevel < 0.2f
+						&& !HasFreeWash(map, pawn))
 					{
 						waitingCount++;
 					}
@@ -102,19 +86,53 @@ namespace ColonyKit.Modules.Hygiene
 			int now = Find.TickManager.TicksGame;
 			for (int i = 0; i < culprits.Count; i++)
 			{
-				Building_Shower shower = culprits[i] as Building_Shower;
-				if (shower == null || shower.occupiedSinceTick < 0)
+				Building_AssignableFixture fixture = culprits[i] as Building_AssignableFixture;
+				if (fixture == null || fixture.occupiedSinceTick < 0)
 				{
 					continue;
 				}
-				float hours = (now - shower.occupiedSinceTick) / 2500f;
-				builder.AppendLine("CK.Hygiene.Alert.ShowerBusyLine".Translate(
-					shower.LabelShort,
+				float hours = (now - fixture.occupiedSinceTick) / 2500f;
+				builder.AppendLine("CK.Hygiene.Alert.FixtureBusyLine".Translate(
+					fixture.LabelShort,
 					hours.ToString("0.0")));
 			}
-			return "CK.Hygiene.Alert.ShowerBusyDesc".Translate(
+			return "CK.Hygiene.Alert.FixtureBusyDesc".Translate(
 				waitingCount,
 				builder.ToString().TrimEndNewlines());
+		}
+
+		private static bool HasFreeWash(Map map, Pawn pawn)
+		{
+			foreach (Building_Shower shower in map.listerBuildings
+				.AllBuildingsColonistOfClass<Building_Shower>())
+			{
+				if (!shower.IsForbidden(pawn) && shower.CanUse(pawn))
+				{
+					return true;
+				}
+			}
+			foreach (Building_Bath bath in map.listerBuildings
+				.AllBuildingsColonistOfClass<Building_Bath>())
+			{
+				if (!bath.IsForbidden(pawn) && bath.CanUse(pawn))
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		private static bool HasFreeToilet(Map map, Pawn pawn)
+		{
+			foreach (Building_Toilet toilet in map.listerBuildings
+				.AllBuildingsColonistOfClass<Building_Toilet>())
+			{
+				if (!toilet.IsForbidden(pawn) && toilet.CanUse(pawn))
+				{
+					return true;
+				}
+			}
+			return false;
 		}
 	}
 }

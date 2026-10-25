@@ -106,8 +106,6 @@ namespace ColonyKit.Modules.Hygiene
 			CurLevel = DebugSettings.godMode ? 0.1f : 1f;
 		}
 
-		public bool GivingUpAndShittingOnTheFloorFunction() => givenUp;
-
 		public override void NeedInterval()
 		{
 			if (IsFrozen) return;

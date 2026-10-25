@@ -39,6 +39,9 @@ namespace ColonyKit.Modules.Hygiene
 		public bool AnimalsOnly;
 		private bool occupancyCheck;
 
+		/// <summary>正在使用洁具的起始 tick；-1 表示空闲。用于占用/排队 Alert。</summary>
+		public int occupiedSinceTick = -1;
+
 		public virtual float waterUsed => 0f;
 
 		/// <summary>洁具必须接在同网有水的水管上；没有水网或自身阀门关闭时不可用。</summary>
@@ -55,7 +58,7 @@ namespace ColonyKit.Modules.Hygiene
 
 		public virtual bool CanSetGender => true;
 
-		public bool OccupancyCheck => occupancyCheck && !AnimalsOnly;
+		public bool OccupancyCheck => occupancyCheck && !AnimalsOnly && !ForPrisoners;
 
 		public bool ForPrisoners => Position.IsInPrisonCell(Map);
 
@@ -130,6 +133,7 @@ namespace ColonyKit.Modules.Hygiene
 			Scribe_Values.Look(ref AllowGuests, "AllowGuests", true);
 			Scribe_Values.Look(ref AnimalsOnly, "AnimalsOnly", false);
 			Scribe_Values.Look(ref occupancyCheck, "OccupancyCheckInt", false);
+			Scribe_Values.Look(ref occupiedSinceTick, "occupiedSinceTick", -1);
 			Scribe_Collections.Look(ref BedRefs, "bedRefs", LookMode.Reference);
 		}
 
@@ -164,6 +168,14 @@ namespace ColonyKit.Modules.Hygiene
 						: gender == Gender.Male ? Gender.Female : Gender.None
 				};
 			}
+
+			yield return new Command_Toggle
+			{
+				defaultLabel = "CK.Hygiene.OccupancyRestriction".Translate(),
+				defaultDesc = "CK.Hygiene.OccupancyRestrictionDesc".Translate(),
+				isActive = () => occupancyCheck,
+				toggleAction = () => occupancyCheck = !occupancyCheck
+			};
 
 			yield return new Command_Toggle
 			{

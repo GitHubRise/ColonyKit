@@ -16,16 +16,7 @@ namespace ColonyKit.Modules.Hygiene
 
 		public virtual float HeatUsedPerTick => 0.00025f;
 
-		/// <summary>正在洗澡的起始 tick；-1 表示没有占用。用于长期占用 Alert。</summary>
-		public int occupiedSinceTick = -1;
-
 		public override FixtureType fixture => FixtureType.Bath;
-
-		public override void ExposeData()
-		{
-			base.ExposeData();
-			Scribe_Values.Look(ref occupiedSinceTick, "occupiedSinceTick", -1);
-		}
 
 		/// <summary>Simple showers may run cold without power; the power shower overrides this.</summary>
 		public override bool PowerRequiredToUse => false;
@@ -69,11 +60,6 @@ namespace ColonyKit.Modules.Hygiene
 				cold = false;
 			}
 			return true;
-		}
-
-		public bool TryUseWater()
-		{
-			return TryUseWater(out _, out _);
 		}
 
 		public float WaterAvailable => pipe?.pipeNet?.WaterStorage ?? 0f;

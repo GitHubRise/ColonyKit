@@ -24,6 +24,13 @@ namespace ColonyKit.Modules.Hygiene
 				defaultCompleteMode = ToilCompleteMode.Delay
 			};
 			wash.FailOnDestroyedNullOrForbidden(TargetIndex.A);
+			wash.initAction = () =>
+			{
+				if (job.targetA.Thing is Building_Basin basin)
+				{
+					basin.occupiedSinceTick = Find.TickManager.TicksGame;
+				}
+			};
 			wash.tickAction = () =>
 			{
 				Building_Basin basin = job.targetA.Thing as Building_Basin;
@@ -40,6 +47,10 @@ namespace ColonyKit.Modules.Hygiene
 			};
 			wash.AddFinishAction(() =>
 			{
+				if (job.targetA.Thing is Building_Basin basin)
+				{
+					basin.occupiedSinceTick = -1;
+				}
 				SanitationUtil.ApplyBathroomThought(pawn, job.targetA.Thing as Building_AssignableFixture);
 				SanitationUtil.ContaminationCheckWater(pawn, waterQuality);
 				SanitationUtil.CheckForBlockage(job.targetA.Thing as Building);

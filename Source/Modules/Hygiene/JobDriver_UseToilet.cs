@@ -28,6 +28,7 @@ namespace ColonyKit.Modules.Hygiene
 				if (job.targetA.Thing is Building_Toilet toilet)
 				{
 					toilet.seatUp = true;
+					toilet.occupiedSinceTick = Find.TickManager.TicksGame;
 				}
 				PrivacyUtil.ToiletPrivacyLOS(pawn);
 				SanitationUtil.ApplyBathroomThought(pawn, job.targetA.Thing as Building_AssignableFixture);
@@ -40,6 +41,10 @@ namespace ColonyKit.Modules.Hygiene
 			use.AddFinishAction(() =>
 			{
 				Building_Toilet toilet = job.targetA.Thing as Building_Toilet;
+				if (toilet != null)
+				{
+					toilet.occupiedSinceTick = -1;
+				}
 				toilet?.TryUseFlush();
 				if (toilet != null && Rand.Chance(0.7f))
 				{

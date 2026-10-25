@@ -7,10 +7,6 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 	public class CompProperties_WaterStorage : CompProperties
 	{
 		public float WaterStorageCap = 10000f;
-		public float AutoGenRate;
-		public int Tickrate = 60;
-		public bool Auto;
-		public bool AutoOnRain;
 
 		public CompProperties_WaterStorage()
 		{
@@ -18,7 +14,7 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		}
 	}
 
-	/// <summary>DBH CompWaterStorage 的水量/水质子集；自动进水后续接入水井/水泵。</summary>
+	/// <summary>DBH CompWaterStorage 的水量/水质子集；进水由 PlumbingNet 的泵/井逻辑统一完成。</summary>
 	public class CompWaterStorage : ThingComp
 	{
 		public float WaterStorage;

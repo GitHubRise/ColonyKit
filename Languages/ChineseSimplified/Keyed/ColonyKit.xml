@@ -134,10 +134,19 @@
 	<CK.Hygiene.UnblockDesc>立即疏通该洁具的排水管，恢复使用。</CK.Hygiene.UnblockDesc>
 	<CK.Hygiene.HeaterOn>热水器运行中</CK.Hygiene.HeaterOn>
 	<CK.Hygiene.HeaterOff>热水器未运行</CK.Hygiene.HeaterOff>
+	<CK.Hygiene.HeaterStandby>热水器恒温待机</CK.Hygiene.HeaterStandby>
+	<CK.Hygiene.BoilerModeLine>功率档位: {0}</CK.Hygiene.BoilerModeLine>
+	<CK.Hygiene.BoilerModeButton>锅炉功率: {0}</CK.Hygiene.BoilerModeButton>
+	<CK.Hygiene.BoilerModeButtonDesc>点击切换低/标准/高功率；低功率省电但供热能力较低。</CK.Hygiene.BoilerModeButtonDesc>
+	<CK.Hygiene.BoilerMode.Low>低</CK.Hygiene.BoilerMode.Low>
+	<CK.Hygiene.BoilerMode.Normal>标准</CK.Hygiene.BoilerMode.Normal>
+	<CK.Hygiene.BoilerMode.High>高</CK.Hygiene.BoilerMode.High>
 	<CK.Hygiene.ConnectBed>连接床铺</CK.Hygiene.ConnectBed>
 	<CK.Hygiene.ConnectBedDesc>把该洁具连接到床铺，用于私人浴室归属。</CK.Hygiene.ConnectBedDesc>
 	<CK.Hygiene.Gender>性别: {0}</CK.Hygiene.Gender>
 	<CK.Hygiene.GenderDesc>切换共用/男/女。</CK.Hygiene.GenderDesc>
+	<CK.Hygiene.OccupancyRestriction>房间占用限制</CK.Hygiene.OccupancyRestriction>
+	<CK.Hygiene.OccupancyRestrictionDesc>开启后，只要房间里有其他人，这个洁具就被视为占用，避免多人同时使用同一房间。</CK.Hygiene.OccupancyRestrictionDesc>
 	<CK.Hygiene.AllowColonists>允许殖民者</CK.Hygiene.AllowColonists>
 	<CK.Hygiene.AllowColonistsDesc>关闭后殖民者不会使用。</CK.Hygiene.AllowColonistsDesc>
 	<CK.Hygiene.PumpCapacity>泵送能力: {0} 升/天</CK.Hygiene.PumpCapacity>
@@ -155,11 +164,11 @@
 	<CK.Hygiene.Alert.FixtureBlocked>卫生设施无法使用</CK.Hygiene.Alert.FixtureBlocked>
 	<CK.Hygiene.Alert.FixtureBlockedDesc>以下卫生设施断水、堵塞或断电：
 {0}</CK.Hygiene.Alert.FixtureBlockedDesc>
-	<CK.Hygiene.Alert.ShowerBusy>淋浴器排队/长期占用</CK.Hygiene.Alert.ShowerBusy>
-	<CK.Hygiene.Alert.ShowerBusyDesc>部分淋浴器长时间被占用，或有人需要洗澡但没有空位：
+	<CK.Hygiene.Alert.FixtureBusy>卫生设施排队/长期占用</CK.Hygiene.Alert.FixtureBusy>
+	<CK.Hygiene.Alert.FixtureBusyDesc>部分卫生设施长时间被占用，或有人需要洗澡/上厕所但没有空位：
 {1}
-等待洗澡：{0} 人</CK.Hygiene.Alert.ShowerBusyDesc>
-	<CK.Hygiene.Alert.ShowerBusyLine>  - {0}: 已占用 {1} 小时</CK.Hygiene.Alert.ShowerBusyLine>
+等待使用：{0} 人</CK.Hygiene.Alert.FixtureBusyDesc>
+	<CK.Hygiene.Alert.FixtureBusyLine>  - {0}: 已占用 {1} 小时</CK.Hygiene.Alert.FixtureBusyLine>
 	<CK.Hygiene.ColdWater>冷水澡（未通电）</CK.Hygiene.ColdWater>
 	<ColonyKit.Module.Hygiene.Name>淋浴</ColonyKit.Module.Hygiene.Name>
 	<ColonyKit.Module.Hygiene.Desc>卫生需求、淋浴与热水；参考 DBH 的淋浴实现。</ColonyKit.Module.Hygiene.Desc>

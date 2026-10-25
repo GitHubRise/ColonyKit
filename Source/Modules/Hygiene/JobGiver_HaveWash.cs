@@ -98,10 +98,42 @@ namespace ColonyKit.Modules.Hygiene
 
 			if (best == null)
 			{
+				// 没有空位但有人在洗：去门口排队，占用者结束后由等待 Job 接手。
+				Building_Shower busy = FindBusyShower(pawn);
+				if (busy != null)
+				{
+					JobDef waitDef = DefDatabase<JobDef>.GetNamedSilentFail("CK_WaitForShower");
+					return waitDef == null ? null : JobMaker.MakeJob(waitDef, busy);
+				}
 				return null;
 			}
 			JobDef jobDef = DefDatabase<JobDef>.GetNamedSilentFail("CK_TakeShower");
 			return jobDef == null ? null : JobMaker.MakeJob(jobDef, best);
+		}
+
+		private static Building_Shower FindBusyShower(Pawn pawn)
+		{
+			Building_Shower best = null;
+			float bestDistance = float.MaxValue;
+			foreach (Building_Shower shower in pawn.Map.listerBuildings
+				.AllBuildingsColonistOfClass<Building_Shower>())
+			{
+				bool reserved = shower.Map.reservationManager.IsReserved(shower);
+				if ((shower.occupiedSinceTick < 0 && !reserved)
+					|| shower.IsForbidden(pawn)
+					|| !shower.HasWaterSupply
+					|| !shower.Working().Accepted)
+				{
+					continue;
+				}
+				float distance = pawn.Position.DistanceTo(shower.Position);
+				if (distance < bestDistance)
+				{
+					bestDistance = distance;
+					best = shower;
+				}
+			}
+			return best;
 		}
 	}
 }

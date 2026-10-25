@@ -46,6 +46,13 @@ namespace ColonyKit.Modules.Hygiene
 				defaultCompleteMode = ToilCompleteMode.Delay
 			};
 			bathe.FailOnDestroyedNullOrForbidden(TargetIndex.A);
+			bathe.initAction = () =>
+			{
+				if (job.targetA.Thing is Building_Bath bath)
+				{
+					bath.occupiedSinceTick = Find.TickManager.TicksGame;
+				}
+			};
 			bathe.tickAction = () =>
 			{
 				Building_Bath bath = job.targetA.Thing as Building_Bath;
@@ -63,8 +70,12 @@ namespace ColonyKit.Modules.Hygiene
 			};
 			bathe.AddFinishAction(() =>
 			{
-				pawn.filth?.CarriedFilthListForReading?.Clear();
 				Building_Bath bath = job.targetA.Thing as Building_Bath;
+				if (bath != null)
+				{
+					bath.occupiedSinceTick = -1;
+				}
+				pawn.filth?.CarriedFilthListForReading?.Clear();
 				if (bath != null)
 				{
 					SanitationUtil.ApplyBathroomThought(pawn, bath);

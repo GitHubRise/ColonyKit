@@ -8,6 +8,12 @@
 		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
 	</JobDef>
 	<JobDef>
+		<defName>CK_WaitForShower</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_WaitForShower</driverClass>
+		<reportString>waiting for a shower.</reportString>
+		<casualInterruptible>true</casualInterruptible>
+	</JobDef>
+	<JobDef>
 		<defName>CK_WashHands</defName>
 		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_WashHands</driverClass>
 		<reportString>washing hands.</reportString>
