@@ -1,3 +1,4 @@
+using ColonyKit.Modules.Hygiene.Dbh;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -14,12 +15,22 @@ namespace ColonyKit.Modules.Hygiene
 
 		public bool TryUseFlush()
 		{
-			if (pipe?.pipeNet == null)
+			CompPipe waterPipe = pipe;
+			CompPipe sewagePipe = null;
+			foreach (CompPipe candidate in GetComps<CompPipe>())
 			{
-				return true;
+				if (candidate.mode == PipeType.Sewage)
+				{
+					sewagePipe = candidate;
+					break;
+				}
 			}
-			pipe.pipeNet.PushSewage(14f);
-			return pipe.pipeNet.PullWater(waterUsed, out _);
+			if (sewagePipe?.pipeNet != null)
+			{
+				sewagePipe.pipeNet.PushSewage(14f);
+			}
+			return waterPipe?.pipeNet == null
+				|| waterPipe.pipeNet.PullWater(waterUsed, out _);
 		}
 
 		public bool CanUse(Pawn pawn)

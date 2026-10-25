@@ -34,6 +34,9 @@
 			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
 				<mode>Water</mode>
 			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Sewage</mode>
+			</li>
 		</comps>
 		<researchPrerequisites>
 			<li>CK_HygieneResearch</li>
