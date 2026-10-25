@@ -2,8 +2,8 @@
 <ColonyKitBlueprint schema="1">
   <name>低版本永冻库房</name>
   <sizeX>41</sizeX>
-  <sizeZ>41</sizeZ>
-  <createdTick>503901</createdTick>
+  <sizeZ>40</sizeZ>
+  <createdTick>1010033</createdTick>
   <entries>
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="0" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="0" />
@@ -48,246 +48,208 @@
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="0" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="1" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="1" />
-    <entry def="PowerConduit" rot="0" x="1" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="2" z="1" />
+    <entry def="StandingLamp" rot="0" x="2" z="1" />
     <entry def="PowerConduit" rot="0" x="2" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="3" z="1" />
     <entry def="PowerConduit" rot="0" x="3" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="4" z="1" />
     <entry def="PowerConduit" rot="0" x="4" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="5" z="1" />
     <entry def="PowerConduit" rot="0" x="5" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="6" z="1" />
     <entry def="PowerConduit" rot="0" x="6" z="1" />
     <entry def="PowerConduit" rot="0" x="7" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="7" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="8" z="1" />
     <entry def="PowerConduit" rot="0" x="8" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="9" z="1" />
     <entry def="PowerConduit" rot="0" x="9" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="10" z="1" />
     <entry def="PowerConduit" rot="0" x="10" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="11" z="1" />
     <entry def="PowerConduit" rot="0" x="11" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="12" z="1" />
     <entry def="PowerConduit" rot="0" x="12" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="13" z="1" />
     <entry def="PowerConduit" rot="0" x="13" z="1" />
     <entry def="PowerConduit" rot="0" x="14" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="14" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="15" z="1" />
     <entry def="PowerConduit" rot="0" x="15" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="16" z="1" />
     <entry def="PowerConduit" rot="0" x="16" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="17" z="1" />
+    <entry def="StandingLamp" rot="0" x="17" z="1" />
     <entry def="PowerConduit" rot="0" x="17" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="18" z="1" />
     <entry def="PowerConduit" rot="0" x="18" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="20" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="1" />
+    <entry def="PowerConduit" rot="0" x="19" z="1" />
+    <entry def="PowerSwitch" rot="0" x="20" z="1" />
+    <entry def="PowerConduit" rot="0" x="21" z="1" />
     <entry def="PowerConduit" rot="0" x="22" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="22" z="1" />
+    <entry def="StandingLamp" rot="0" x="23" z="1" />
     <entry def="PowerConduit" rot="0" x="23" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="23" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="24" z="1" />
     <entry def="PowerConduit" rot="0" x="24" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="25" z="1" />
     <entry def="PowerConduit" rot="0" x="25" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="26" z="1" />
     <entry def="PowerConduit" rot="0" x="26" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="27" z="1" />
     <entry def="PowerConduit" rot="0" x="27" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="28" z="1" />
     <entry def="PowerConduit" rot="0" x="28" z="1" />
     <entry def="PowerConduit" rot="0" x="29" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="29" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="30" z="1" />
     <entry def="PowerConduit" rot="0" x="30" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="31" z="1" />
     <entry def="PowerConduit" rot="0" x="31" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="32" z="1" />
     <entry def="PowerConduit" rot="0" x="32" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="33" z="1" />
     <entry def="PowerConduit" rot="0" x="33" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="34" z="1" />
     <entry def="PowerConduit" rot="0" x="34" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="35" z="1" />
     <entry def="PowerConduit" rot="0" x="35" z="1" />
     <entry def="PowerConduit" rot="0" x="36" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="36" z="1" />
     <entry def="PowerConduit" rot="0" x="37" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="37" z="1" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="38" z="1" />
+    <entry def="StandingLamp" rot="0" x="38" z="1" />
     <entry def="PowerConduit" rot="0" x="38" z="1" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="1" />
-    <entry def="PowerConduit" rot="0" x="39" z="1" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="1" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="2" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="2" />
-    <entry def="PowerConduit" rot="0" x="1" z="2" />
-    <entry def="StandingLamp" rot="0" x="2" z="2" />
+    <entry def="PowerConduit" rot="0" x="2" z="2" />
     <entry def="PowerConduit" rot="0" x="10" z="2" />
-    <entry def="StandingLamp" rot="0" x="17" z="2" />
     <entry def="PowerConduit" rot="0" x="18" z="2" />
-    <entry def="PowerConduit" rot="0" x="19" z="2" />
-    <entry def="PowerSwitch" rot="0" x="20" z="2" />
-    <entry def="PowerConduit" rot="0" x="21" z="2" />
     <entry def="PowerConduit" rot="0" x="22" z="2" />
-    <entry def="StandingLamp" rot="0" x="23" z="2" />
     <entry def="PowerConduit" rot="0" x="30" z="2" />
-    <entry def="StandingLamp" rot="0" x="38" z="2" />
+    <entry def="PowerConduit" rot="0" x="38" z="2" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="2" />
-    <entry def="PowerConduit" rot="0" x="39" z="2" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="2" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="3" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="3" />
-    <entry def="PowerConduit" rot="0" x="1" z="3" />
+    <entry def="PowerConduit" rot="0" x="2" z="3" />
     <entry def="PowerConduit" rot="0" x="10" z="3" />
     <entry def="PowerConduit" rot="0" x="18" z="3" />
     <entry def="PowerConduit" rot="0" x="22" z="3" />
     <entry def="PowerConduit" rot="0" x="30" z="3" />
+    <entry def="PowerConduit" rot="0" x="38" z="3" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="3" />
-    <entry def="PowerConduit" rot="0" x="39" z="3" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="3" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="4" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="4" />
-    <entry def="PowerConduit" rot="0" x="1" z="4" />
+    <entry def="PowerConduit" rot="0" x="2" z="4" />
     <entry def="PowerConduit" rot="0" x="10" z="4" />
     <entry def="PowerConduit" rot="0" x="18" z="4" />
     <entry def="PowerConduit" rot="0" x="22" z="4" />
     <entry def="PowerConduit" rot="0" x="30" z="4" />
-    <entry def="PowerConduit" rot="0" x="39" z="4" />
+    <entry def="PowerConduit" rot="0" x="38" z="4" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="4" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="4" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="5" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="5" />
-    <entry def="PowerConduit" rot="0" x="1" z="5" />
+    <entry def="PowerConduit" rot="0" x="2" z="5" />
     <entry def="PowerConduit" rot="0" x="10" z="5" />
     <entry def="PowerConduit" rot="0" x="18" z="5" />
     <entry def="PowerConduit" rot="0" x="22" z="5" />
     <entry def="PowerConduit" rot="0" x="30" z="5" />
+    <entry def="PowerConduit" rot="0" x="38" z="5" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="5" />
-    <entry def="PowerConduit" rot="0" x="39" z="5" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="5" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="6" />
-    <entry def="PowerConduit" rot="0" x="1" z="6" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="6" />
+    <entry def="PowerConduit" rot="0" x="2" z="6" />
     <entry def="PowerConduit" rot="0" x="10" z="6" />
     <entry def="PowerConduit" rot="0" x="18" z="6" />
+    <entry def="Cooler" rot="2" x="20" z="6" />
     <entry def="PowerConduit" rot="0" x="22" z="6" />
     <entry def="PowerConduit" rot="0" x="30" z="6" />
+    <entry def="PowerConduit" rot="0" x="38" z="6" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="6" />
-    <entry def="PowerConduit" rot="0" x="39" z="6" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="6" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="7" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="7" />
-    <entry def="PowerConduit" rot="0" x="1" z="7" />
+    <entry def="PowerConduit" rot="0" x="2" z="7" />
     <entry def="PowerConduit" rot="0" x="10" z="7" />
     <entry def="PowerConduit" rot="0" x="18" z="7" />
-    <entry def="Cooler" rot="2" x="20" z="7" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="7" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="7" />
     <entry def="PowerConduit" rot="0" x="22" z="7" />
     <entry def="PowerConduit" rot="0" x="30" z="7" />
+    <entry def="PowerConduit" rot="0" x="38" z="7" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="7" />
-    <entry def="PowerConduit" rot="0" x="39" z="7" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="7" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="8" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="8" />
-    <entry def="PowerConduit" rot="0" x="1" z="8" />
+    <entry def="PowerConduit" rot="0" x="2" z="8" />
+    <entry def="StandingLamp" rot="0" x="9" z="8" />
     <entry def="PowerConduit" rot="0" x="10" z="8" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="10" z="8" />
+    <entry def="StandingLamp" rot="0" x="11" z="8" />
     <entry def="PowerConduit" rot="0" x="18" z="8" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="8" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="8" />
+    <entry def="Cooler" rot="2" x="20" z="8" />
     <entry def="PowerConduit" rot="0" x="22" z="8" />
+    <entry def="StandingLamp" rot="0" x="29" z="8" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="30" z="8" />
     <entry def="PowerConduit" rot="0" x="30" z="8" />
+    <entry def="StandingLamp" rot="0" x="31" z="8" />
+    <entry def="PowerConduit" rot="0" x="38" z="8" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="8" />
-    <entry def="PowerConduit" rot="0" x="39" z="8" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="8" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="9" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="9" />
-    <entry def="PowerConduit" rot="0" x="1" z="9" />
-    <entry def="StandingLamp" rot="0" x="9" z="9" />
+    <entry def="PowerConduit" rot="0" x="2" z="9" />
+    <entry def="PowerConduit" rot="0" x="3" z="9" />
+    <entry def="PowerConduit" rot="0" x="4" z="9" />
+    <entry def="PowerConduit" rot="0" x="5" z="9" />
+    <entry def="PowerConduit" rot="0" x="6" z="9" />
+    <entry def="PowerConduit" rot="0" x="7" z="9" />
+    <entry def="PowerConduit" rot="0" x="8" z="9" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="9" z="9" />
+    <entry def="PowerConduit" rot="0" x="9" z="9" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="10" z="9" />
     <entry def="PowerConduit" rot="0" x="10" z="9" />
-    <entry def="StandingLamp" rot="0" x="11" z="9" />
+    <entry def="PowerConduit" rot="0" x="11" z="9" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="11" z="9" />
+    <entry def="PowerConduit" rot="0" x="12" z="9" />
+    <entry def="PowerConduit" rot="0" x="13" z="9" />
+    <entry def="PowerConduit" rot="0" x="14" z="9" />
+    <entry def="PowerConduit" rot="0" x="15" z="9" />
+    <entry def="PowerConduit" rot="0" x="16" z="9" />
+    <entry def="PowerConduit" rot="0" x="17" z="9" />
     <entry def="PowerConduit" rot="0" x="18" z="9" />
-    <entry def="Cooler" rot="2" x="20" z="9" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="9" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="9" />
     <entry def="PowerConduit" rot="0" x="22" z="9" />
-    <entry def="StandingLamp" rot="0" x="29" z="9" />
+    <entry def="PowerConduit" rot="0" x="23" z="9" />
+    <entry def="PowerConduit" rot="0" x="24" z="9" />
+    <entry def="PowerConduit" rot="0" x="25" z="9" />
+    <entry def="PowerConduit" rot="0" x="26" z="9" />
+    <entry def="PowerConduit" rot="0" x="27" z="9" />
+    <entry def="PowerConduit" rot="0" x="28" z="9" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="29" z="9" />
+    <entry def="PowerConduit" rot="0" x="29" z="9" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="30" z="9" />
     <entry def="PowerConduit" rot="0" x="30" z="9" />
-    <entry def="StandingLamp" rot="0" x="31" z="9" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="31" z="9" />
+    <entry def="PowerConduit" rot="0" x="31" z="9" />
+    <entry def="PowerConduit" rot="0" x="32" z="9" />
+    <entry def="PowerConduit" rot="0" x="33" z="9" />
+    <entry def="PowerConduit" rot="0" x="34" z="9" />
+    <entry def="PowerConduit" rot="0" x="35" z="9" />
+    <entry def="PowerConduit" rot="0" x="36" z="9" />
+    <entry def="PowerConduit" rot="0" x="37" z="9" />
+    <entry def="PowerConduit" rot="0" x="38" z="9" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="9" />
-    <entry def="PowerConduit" rot="0" x="39" z="9" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="9" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="10" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="10" />
-    <entry def="PowerConduit" rot="0" x="1" z="10" />
     <entry def="PowerConduit" rot="0" x="2" z="10" />
-    <entry def="PowerConduit" rot="0" x="3" z="10" />
-    <entry def="PowerConduit" rot="0" x="4" z="10" />
-    <entry def="PowerConduit" rot="0" x="5" z="10" />
-    <entry def="PowerConduit" rot="0" x="6" z="10" />
-    <entry def="PowerConduit" rot="0" x="7" z="10" />
-    <entry def="PowerConduit" rot="0" x="8" z="10" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="9" z="10" />
-    <entry def="PowerConduit" rot="0" x="9" z="10" />
+    <entry def="StandingLamp" rot="0" x="9" z="10" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="10" z="10" />
     <entry def="PowerConduit" rot="0" x="10" z="10" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="11" z="10" />
-    <entry def="PowerConduit" rot="0" x="11" z="10" />
-    <entry def="PowerConduit" rot="0" x="12" z="10" />
-    <entry def="PowerConduit" rot="0" x="13" z="10" />
-    <entry def="PowerConduit" rot="0" x="14" z="10" />
-    <entry def="PowerConduit" rot="0" x="15" z="10" />
-    <entry def="PowerConduit" rot="0" x="16" z="10" />
-    <entry def="PowerConduit" rot="0" x="17" z="10" />
+    <entry def="StandingLamp" rot="0" x="11" z="10" />
     <entry def="PowerConduit" rot="0" x="18" z="10" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="10" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="10" />
+    <entry def="Cooler" rot="2" x="20" z="10" />
     <entry def="PowerConduit" rot="0" x="22" z="10" />
-    <entry def="PowerConduit" rot="0" x="23" z="10" />
-    <entry def="PowerConduit" rot="0" x="24" z="10" />
-    <entry def="PowerConduit" rot="0" x="25" z="10" />
-    <entry def="PowerConduit" rot="0" x="26" z="10" />
-    <entry def="PowerConduit" rot="0" x="27" z="10" />
-    <entry def="PowerConduit" rot="0" x="28" z="10" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="29" z="10" />
-    <entry def="PowerConduit" rot="0" x="29" z="10" />
-    <entry def="PowerConduit" rot="0" x="30" z="10" />
+    <entry def="StandingLamp" rot="0" x="29" z="10" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="30" z="10" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="31" z="10" />
-    <entry def="PowerConduit" rot="0" x="31" z="10" />
-    <entry def="PowerConduit" rot="0" x="32" z="10" />
-    <entry def="PowerConduit" rot="0" x="33" z="10" />
-    <entry def="PowerConduit" rot="0" x="34" z="10" />
-    <entry def="PowerConduit" rot="0" x="35" z="10" />
-    <entry def="PowerConduit" rot="0" x="36" z="10" />
-    <entry def="PowerConduit" rot="0" x="37" z="10" />
+    <entry def="PowerConduit" rot="0" x="30" z="10" />
+    <entry def="StandingLamp" rot="0" x="31" z="10" />
     <entry def="PowerConduit" rot="0" x="38" z="10" />
-    <entry def="PowerConduit" rot="0" x="39" z="10" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="10" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="10" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="11" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="11" />
-    <entry def="PowerConduit" rot="0" x="1" z="11" />
-    <entry def="StandingLamp" rot="0" x="9" z="11" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="10" z="11" />
+    <entry def="PowerConduit" rot="0" x="2" z="11" />
     <entry def="PowerConduit" rot="0" x="10" z="11" />
-    <entry def="StandingLamp" rot="0" x="11" z="11" />
     <entry def="PowerConduit" rot="0" x="18" z="11" />
-    <entry def="Cooler" rot="2" x="20" z="11" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="11" />
+    <entry def="Door" stuff="BlocksGranite" rot="0" x="20" z="11" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="11" />
     <entry def="PowerConduit" rot="0" x="22" z="11" />
-    <entry def="StandingLamp" rot="0" x="29" z="11" />
     <entry def="PowerConduit" rot="0" x="30" z="11" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="30" z="11" />
-    <entry def="StandingLamp" rot="0" x="31" z="11" />
-    <entry def="PowerConduit" rot="0" x="39" z="11" />
+    <entry def="PowerConduit" rot="0" x="38" z="11" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="11" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="11" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="12" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="12" />
-    <entry def="PowerConduit" rot="0" x="1" z="12" />
+    <entry def="PowerConduit" rot="0" x="2" z="12" />
     <entry def="PowerConduit" rot="0" x="10" z="12" />
     <entry def="PowerConduit" rot="0" x="18" z="12" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="12" />
@@ -295,12 +257,12 @@
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="12" />
     <entry def="PowerConduit" rot="0" x="22" z="12" />
     <entry def="PowerConduit" rot="0" x="30" z="12" />
-    <entry def="PowerConduit" rot="0" x="39" z="12" />
+    <entry def="PowerConduit" rot="0" x="38" z="12" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="12" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="12" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="13" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="13" />
-    <entry def="PowerConduit" rot="0" x="1" z="13" />
+    <entry def="PowerConduit" rot="0" x="2" z="13" />
     <entry def="PowerConduit" rot="0" x="10" z="13" />
     <entry def="PowerConduit" rot="0" x="18" z="13" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="13" />
@@ -308,26 +270,25 @@
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="13" />
     <entry def="PowerConduit" rot="0" x="22" z="13" />
     <entry def="PowerConduit" rot="0" x="30" z="13" />
+    <entry def="PowerConduit" rot="0" x="38" z="13" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="13" />
-    <entry def="PowerConduit" rot="0" x="39" z="13" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="13" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="14" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="14" />
-    <entry def="PowerConduit" rot="0" x="1" z="14" />
+    <entry def="PowerConduit" rot="0" x="2" z="14" />
     <entry def="PowerConduit" rot="0" x="10" z="14" />
     <entry def="PowerConduit" rot="0" x="18" z="14" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="14" />
     <entry def="Door" stuff="BlocksGranite" rot="0" x="20" z="14" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="14" />
     <entry def="PowerConduit" rot="0" x="22" z="14" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="28" z="14" />
     <entry def="PowerConduit" rot="0" x="30" z="14" />
-    <entry def="PowerConduit" rot="0" x="39" z="14" />
+    <entry def="PowerConduit" rot="0" x="38" z="14" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="14" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="14" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="15" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="15" />
-    <entry def="PowerConduit" rot="0" x="1" z="15" />
+    <entry def="PowerConduit" rot="0" x="2" z="15" />
     <entry def="PowerConduit" rot="0" x="10" z="15" />
     <entry def="PowerConduit" rot="0" x="18" z="15" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="15" />
@@ -335,12 +296,12 @@
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="15" />
     <entry def="PowerConduit" rot="0" x="22" z="15" />
     <entry def="PowerConduit" rot="0" x="30" z="15" />
+    <entry def="PowerConduit" rot="0" x="38" z="15" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="15" />
-    <entry def="PowerConduit" rot="0" x="39" z="15" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="15" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="16" />
-    <entry def="PowerConduit" rot="0" x="1" z="16" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="16" />
+    <entry def="PowerConduit" rot="0" x="2" z="16" />
     <entry def="PowerConduit" rot="0" x="10" z="16" />
     <entry def="PowerConduit" rot="0" x="18" z="16" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="16" />
@@ -348,202 +309,197 @@
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="16" />
     <entry def="PowerConduit" rot="0" x="22" z="16" />
     <entry def="PowerConduit" rot="0" x="30" z="16" />
+    <entry def="PowerConduit" rot="0" x="38" z="16" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="16" />
-    <entry def="PowerConduit" rot="0" x="39" z="16" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="16" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="17" />
-    <entry def="PowerConduit" rot="0" x="1" z="17" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="17" />
+    <entry def="StandingLamp" rot="0" x="2" z="17" />
+    <entry def="PowerConduit" rot="0" x="2" z="17" />
+    <entry def="PowerConduit" rot="0" x="3" z="17" />
+    <entry def="PowerConduit" rot="0" x="4" z="17" />
+    <entry def="PowerConduit" rot="0" x="5" z="17" />
+    <entry def="PowerConduit" rot="0" x="6" z="17" />
+    <entry def="PowerConduit" rot="0" x="7" z="17" />
+    <entry def="PowerConduit" rot="0" x="8" z="17" />
+    <entry def="PowerConduit" rot="0" x="9" z="17" />
     <entry def="PowerConduit" rot="0" x="10" z="17" />
+    <entry def="PowerConduit" rot="0" x="11" z="17" />
+    <entry def="PowerConduit" rot="0" x="12" z="17" />
+    <entry def="PowerConduit" rot="0" x="13" z="17" />
+    <entry def="PowerConduit" rot="0" x="14" z="17" />
+    <entry def="PowerConduit" rot="0" x="15" z="17" />
+    <entry def="PowerConduit" rot="0" x="16" z="17" />
+    <entry def="PowerConduit" rot="0" x="17" z="17" />
     <entry def="PowerConduit" rot="0" x="18" z="17" />
+    <entry def="StandingLamp" rot="0" x="18" z="17" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="17" />
     <entry def="Door" stuff="BlocksGranite" rot="0" x="20" z="17" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="17" />
     <entry def="PowerConduit" rot="0" x="22" z="17" />
+    <entry def="StandingLamp" rot="0" x="22" z="17" />
+    <entry def="PowerConduit" rot="0" x="23" z="17" />
+    <entry def="PowerConduit" rot="0" x="24" z="17" />
+    <entry def="PowerConduit" rot="0" x="25" z="17" />
+    <entry def="PowerConduit" rot="0" x="26" z="17" />
+    <entry def="PowerConduit" rot="0" x="27" z="17" />
+    <entry def="PowerConduit" rot="0" x="28" z="17" />
+    <entry def="PowerConduit" rot="0" x="29" z="17" />
     <entry def="PowerConduit" rot="0" x="30" z="17" />
+    <entry def="PowerConduit" rot="0" x="31" z="17" />
+    <entry def="PowerConduit" rot="0" x="32" z="17" />
+    <entry def="PowerConduit" rot="0" x="33" z="17" />
+    <entry def="PowerConduit" rot="0" x="34" z="17" />
+    <entry def="PowerConduit" rot="0" x="35" z="17" />
+    <entry def="PowerConduit" rot="0" x="36" z="17" />
+    <entry def="PowerConduit" rot="0" x="37" z="17" />
+    <entry def="StandingLamp" rot="0" x="38" z="17" />
+    <entry def="PowerConduit" rot="0" x="38" z="17" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="17" />
-    <entry def="PowerConduit" rot="0" x="39" z="17" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="17" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="18" />
-    <entry def="PowerConduit" rot="0" x="1" z="18" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="18" />
-    <entry def="StandingLamp" rot="0" x="2" z="18" />
     <entry def="PowerConduit" rot="0" x="2" z="18" />
-    <entry def="PowerConduit" rot="0" x="3" z="18" />
-    <entry def="PowerConduit" rot="0" x="4" z="18" />
-    <entry def="PowerConduit" rot="0" x="5" z="18" />
-    <entry def="PowerConduit" rot="0" x="6" z="18" />
-    <entry def="PowerConduit" rot="0" x="7" z="18" />
-    <entry def="PowerConduit" rot="0" x="8" z="18" />
-    <entry def="PowerConduit" rot="0" x="9" z="18" />
-    <entry def="PowerConduit" rot="0" x="10" z="18" />
-    <entry def="PowerConduit" rot="0" x="11" z="18" />
-    <entry def="PowerConduit" rot="0" x="12" z="18" />
-    <entry def="PowerConduit" rot="0" x="13" z="18" />
-    <entry def="PowerConduit" rot="0" x="14" z="18" />
-    <entry def="PowerConduit" rot="0" x="15" z="18" />
-    <entry def="PowerConduit" rot="0" x="16" z="18" />
-    <entry def="PowerConduit" rot="0" x="17" z="18" />
-    <entry def="PowerConduit" rot="0" x="18" z="18" />
-    <entry def="StandingLamp" rot="0" x="18" z="18" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="8" z="18" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="10" z="18" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="12" z="18" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="13" z="18" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="14" z="18" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="15" z="18" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="16" z="18" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="17" z="18" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="18" z="18" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="18" />
     <entry def="Door" stuff="BlocksGranite" rot="0" x="20" z="18" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="18" />
-    <entry def="PowerConduit" rot="0" x="22" z="18" />
-    <entry def="StandingLamp" rot="0" x="22" z="18" />
-    <entry def="PowerConduit" rot="0" x="23" z="18" />
-    <entry def="PowerConduit" rot="0" x="24" z="18" />
-    <entry def="PowerConduit" rot="0" x="25" z="18" />
-    <entry def="PowerConduit" rot="0" x="26" z="18" />
-    <entry def="PowerConduit" rot="0" x="27" z="18" />
-    <entry def="PowerConduit" rot="0" x="28" z="18" />
-    <entry def="PowerConduit" rot="0" x="29" z="18" />
-    <entry def="PowerConduit" rot="0" x="30" z="18" />
-    <entry def="PowerConduit" rot="0" x="31" z="18" />
-    <entry def="PowerConduit" rot="0" x="32" z="18" />
-    <entry def="PowerConduit" rot="0" x="33" z="18" />
-    <entry def="PowerConduit" rot="0" x="34" z="18" />
-    <entry def="PowerConduit" rot="0" x="35" z="18" />
-    <entry def="PowerConduit" rot="0" x="36" z="18" />
-    <entry def="PowerConduit" rot="0" x="37" z="18" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="22" z="18" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="23" z="18" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="24" z="18" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="25" z="18" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="26" z="18" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="27" z="18" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="28" z="18" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="30" z="18" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="32" z="18" />
     <entry def="PowerConduit" rot="0" x="38" z="18" />
-    <entry def="StandingLamp" rot="0" x="38" z="18" />
-    <entry def="PowerConduit" rot="0" x="39" z="18" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="18" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="18" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="19" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="19" />
-    <entry def="PowerConduit" rot="0" x="2" z="19" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="8" z="19" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="10" z="19" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="12" z="19" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="13" z="19" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="14" z="19" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="15" z="19" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="16" z="19" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="17" z="19" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="18" z="19" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="19" />
-    <entry def="Door" stuff="BlocksGranite" rot="0" x="20" z="19" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="19" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="22" z="19" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="23" z="19" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="24" z="19" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="25" z="19" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="26" z="19" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="27" z="19" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="28" z="19" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="30" z="19" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="32" z="19" />
-    <entry def="PowerConduit" rot="0" x="38" z="19" />
+    <entry def="PowerSwitch" rot="0" x="2" z="19" />
+    <entry def="Cooler" rot="3" x="7" z="19" />
+    <entry def="Cooler" rot="3" x="9" z="19" />
+    <entry def="Cooler" rot="3" x="11" z="19" />
+    <entry def="Door" stuff="BlocksGranite" rot="1" x="12" z="19" />
+    <entry def="Door" stuff="BlocksGranite" rot="1" x="13" z="19" />
+    <entry def="Door" stuff="BlocksGranite" rot="1" x="14" z="19" />
+    <entry def="Door" stuff="BlocksGranite" rot="1" x="15" z="19" />
+    <entry def="Door" stuff="BlocksGranite" rot="1" x="16" z="19" />
+    <entry def="Door" stuff="BlocksGranite" rot="1" x="17" z="19" />
+    <entry def="Door" stuff="BlocksGranite" rot="1" x="18" z="19" />
+    <entry def="Door" stuff="BlocksGranite" rot="1" x="19" z="19" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="20" z="19" />
+    <entry def="Door" stuff="BlocksGranite" rot="1" x="21" z="19" />
+    <entry def="Door" stuff="BlocksGranite" rot="1" x="22" z="19" />
+    <entry def="Door" stuff="BlocksGranite" rot="1" x="23" z="19" />
+    <entry def="Door" stuff="BlocksGranite" rot="1" x="24" z="19" />
+    <entry def="Door" stuff="BlocksGranite" rot="1" x="25" z="19" />
+    <entry def="Door" stuff="BlocksGranite" rot="1" x="26" z="19" />
+    <entry def="Door" stuff="BlocksGranite" rot="1" x="27" z="19" />
+    <entry def="Door" stuff="BlocksGranite" rot="1" x="28" z="19" />
+    <entry def="Cooler" rot="1" x="29" z="19" />
+    <entry def="Cooler" rot="1" x="31" z="19" />
+    <entry def="Cooler" rot="1" x="33" z="19" />
+    <entry def="PowerSwitch" rot="0" x="38" z="19" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="19" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="19" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="20" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="20" />
-    <entry def="PowerSwitch" rot="0" x="2" z="20" />
-    <entry def="Cooler" rot="3" x="7" z="20" />
-    <entry def="Cooler" rot="3" x="9" z="20" />
-    <entry def="Cooler" rot="3" x="11" z="20" />
-    <entry def="Door" stuff="BlocksGranite" rot="1" x="12" z="20" />
-    <entry def="Door" stuff="BlocksGranite" rot="1" x="13" z="20" />
-    <entry def="Door" stuff="BlocksGranite" rot="1" x="14" z="20" />
-    <entry def="Door" stuff="BlocksGranite" rot="1" x="15" z="20" />
-    <entry def="Door" stuff="BlocksGranite" rot="1" x="16" z="20" />
-    <entry def="Door" stuff="BlocksGranite" rot="1" x="17" z="20" />
-    <entry def="Door" stuff="BlocksGranite" rot="1" x="18" z="20" />
-    <entry def="Door" stuff="BlocksGranite" rot="1" x="19" z="20" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="20" z="20" />
-    <entry def="Door" stuff="BlocksGranite" rot="1" x="21" z="20" />
-    <entry def="Door" stuff="BlocksGranite" rot="1" x="22" z="20" />
-    <entry def="Door" stuff="BlocksGranite" rot="1" x="23" z="20" />
-    <entry def="Door" stuff="BlocksGranite" rot="1" x="24" z="20" />
-    <entry def="Door" stuff="BlocksGranite" rot="1" x="25" z="20" />
-    <entry def="Door" stuff="BlocksGranite" rot="1" x="26" z="20" />
-    <entry def="Door" stuff="BlocksGranite" rot="1" x="27" z="20" />
-    <entry def="Door" stuff="BlocksGranite" rot="1" x="28" z="20" />
-    <entry def="Cooler" rot="1" x="29" z="20" />
-    <entry def="Cooler" rot="1" x="31" z="20" />
-    <entry def="Cooler" rot="1" x="33" z="20" />
-    <entry def="PowerSwitch" rot="0" x="38" z="20" />
+    <entry def="PowerConduit" rot="0" x="2" z="20" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="8" z="20" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="10" z="20" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="12" z="20" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="13" z="20" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="14" z="20" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="15" z="20" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="16" z="20" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="17" z="20" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="18" z="20" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="20" />
+    <entry def="Door" stuff="BlocksGranite" rot="0" x="20" z="20" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="20" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="22" z="20" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="23" z="20" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="24" z="20" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="25" z="20" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="26" z="20" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="27" z="20" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="28" z="20" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="30" z="20" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="32" z="20" />
+    <entry def="PowerConduit" rot="0" x="38" z="20" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="20" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="20" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="21" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="21" />
     <entry def="PowerConduit" rot="0" x="2" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="8" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="10" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="12" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="13" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="14" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="15" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="16" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="17" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="18" z="21" />
+    <entry def="StandingLamp" rot="0" x="2" z="21" />
+    <entry def="PowerConduit" rot="0" x="4" z="21" />
+    <entry def="PowerConduit" rot="0" x="5" z="21" />
+    <entry def="PowerConduit" rot="0" x="6" z="21" />
+    <entry def="PowerConduit" rot="0" x="7" z="21" />
+    <entry def="PowerConduit" rot="0" x="8" z="21" />
+    <entry def="PowerConduit" rot="0" x="9" z="21" />
+    <entry def="PowerConduit" rot="0" x="10" z="21" />
+    <entry def="PowerConduit" rot="0" x="11" z="21" />
+    <entry def="PowerConduit" rot="0" x="12" z="21" />
+    <entry def="PowerConduit" rot="0" x="13" z="21" />
+    <entry def="PowerConduit" rot="0" x="14" z="21" />
+    <entry def="PowerConduit" rot="0" x="15" z="21" />
+    <entry def="PowerConduit" rot="0" x="16" z="21" />
+    <entry def="PowerConduit" rot="0" x="17" z="21" />
+    <entry def="PowerConduit" rot="0" x="18" z="21" />
+    <entry def="StandingLamp" rot="0" x="18" z="21" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="21" />
     <entry def="Door" stuff="BlocksGranite" rot="0" x="20" z="21" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="22" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="23" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="24" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="25" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="26" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="27" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="28" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="30" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="32" z="21" />
+    <entry def="PowerConduit" rot="0" x="22" z="21" />
+    <entry def="StandingLamp" rot="0" x="22" z="21" />
+    <entry def="PowerConduit" rot="0" x="23" z="21" />
+    <entry def="PowerConduit" rot="0" x="24" z="21" />
+    <entry def="PowerConduit" rot="0" x="25" z="21" />
+    <entry def="PowerConduit" rot="0" x="26" z="21" />
+    <entry def="PowerConduit" rot="0" x="27" z="21" />
+    <entry def="PowerConduit" rot="0" x="28" z="21" />
+    <entry def="PowerConduit" rot="0" x="29" z="21" />
+    <entry def="PowerConduit" rot="0" x="30" z="21" />
+    <entry def="PowerConduit" rot="0" x="31" z="21" />
+    <entry def="PowerConduit" rot="0" x="32" z="21" />
+    <entry def="PowerConduit" rot="0" x="33" z="21" />
+    <entry def="PowerConduit" rot="0" x="34" z="21" />
+    <entry def="PowerConduit" rot="0" x="35" z="21" />
+    <entry def="PowerConduit" rot="0" x="36" z="21" />
+    <entry def="PowerConduit" rot="0" x="37" z="21" />
     <entry def="PowerConduit" rot="0" x="38" z="21" />
+    <entry def="StandingLamp" rot="0" x="38" z="21" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="21" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="21" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="22" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="22" />
-    <entry def="PowerConduit" rot="0" x="1" z="22" />
     <entry def="PowerConduit" rot="0" x="2" z="22" />
-    <entry def="StandingLamp" rot="0" x="2" z="22" />
-    <entry def="PowerConduit" rot="0" x="3" z="22" />
-    <entry def="PowerConduit" rot="0" x="4" z="22" />
-    <entry def="PowerConduit" rot="0" x="5" z="22" />
-    <entry def="PowerConduit" rot="0" x="6" z="22" />
-    <entry def="PowerConduit" rot="0" x="7" z="22" />
-    <entry def="PowerConduit" rot="0" x="8" z="22" />
-    <entry def="PowerConduit" rot="0" x="9" z="22" />
     <entry def="PowerConduit" rot="0" x="10" z="22" />
-    <entry def="PowerConduit" rot="0" x="11" z="22" />
-    <entry def="PowerConduit" rot="0" x="12" z="22" />
-    <entry def="PowerConduit" rot="0" x="13" z="22" />
-    <entry def="PowerConduit" rot="0" x="14" z="22" />
-    <entry def="PowerConduit" rot="0" x="15" z="22" />
-    <entry def="PowerConduit" rot="0" x="16" z="22" />
-    <entry def="PowerConduit" rot="0" x="17" z="22" />
     <entry def="PowerConduit" rot="0" x="18" z="22" />
-    <entry def="StandingLamp" rot="0" x="18" z="22" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="22" />
     <entry def="Door" stuff="BlocksGranite" rot="0" x="20" z="22" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="22" />
     <entry def="PowerConduit" rot="0" x="22" z="22" />
-    <entry def="StandingLamp" rot="0" x="22" z="22" />
-    <entry def="PowerConduit" rot="0" x="23" z="22" />
-    <entry def="PowerConduit" rot="0" x="24" z="22" />
-    <entry def="PowerConduit" rot="0" x="25" z="22" />
-    <entry def="PowerConduit" rot="0" x="26" z="22" />
-    <entry def="PowerConduit" rot="0" x="27" z="22" />
-    <entry def="PowerConduit" rot="0" x="28" z="22" />
-    <entry def="PowerConduit" rot="0" x="29" z="22" />
     <entry def="PowerConduit" rot="0" x="30" z="22" />
-    <entry def="PowerConduit" rot="0" x="31" z="22" />
-    <entry def="PowerConduit" rot="0" x="32" z="22" />
-    <entry def="PowerConduit" rot="0" x="33" z="22" />
-    <entry def="PowerConduit" rot="0" x="34" z="22" />
-    <entry def="PowerConduit" rot="0" x="35" z="22" />
-    <entry def="PowerConduit" rot="0" x="36" z="22" />
-    <entry def="PowerConduit" rot="0" x="37" z="22" />
-    <entry def="StandingLamp" rot="0" x="38" z="22" />
     <entry def="PowerConduit" rot="0" x="38" z="22" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="22" />
-    <entry def="PowerConduit" rot="0" x="39" z="22" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="22" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="23" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="23" />
-    <entry def="PowerConduit" rot="0" x="1" z="23" />
+    <entry def="PowerConduit" rot="0" x="2" z="23" />
     <entry def="PowerConduit" rot="0" x="10" z="23" />
     <entry def="PowerConduit" rot="0" x="18" z="23" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="23" />
@@ -551,12 +507,12 @@
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="23" />
     <entry def="PowerConduit" rot="0" x="22" z="23" />
     <entry def="PowerConduit" rot="0" x="30" z="23" />
-    <entry def="PowerConduit" rot="0" x="39" z="23" />
+    <entry def="PowerConduit" rot="0" x="38" z="23" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="23" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="23" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="24" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="24" />
-    <entry def="PowerConduit" rot="0" x="1" z="24" />
+    <entry def="PowerConduit" rot="0" x="2" z="24" />
     <entry def="PowerConduit" rot="0" x="10" z="24" />
     <entry def="PowerConduit" rot="0" x="18" z="24" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="24" />
@@ -564,12 +520,12 @@
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="24" />
     <entry def="PowerConduit" rot="0" x="22" z="24" />
     <entry def="PowerConduit" rot="0" x="30" z="24" />
-    <entry def="PowerConduit" rot="0" x="39" z="24" />
+    <entry def="PowerConduit" rot="0" x="38" z="24" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="24" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="24" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="25" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="25" />
-    <entry def="PowerConduit" rot="0" x="1" z="25" />
+    <entry def="PowerConduit" rot="0" x="2" z="25" />
     <entry def="PowerConduit" rot="0" x="10" z="25" />
     <entry def="PowerConduit" rot="0" x="18" z="25" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="25" />
@@ -577,12 +533,12 @@
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="25" />
     <entry def="PowerConduit" rot="0" x="22" z="25" />
     <entry def="PowerConduit" rot="0" x="30" z="25" />
+    <entry def="PowerConduit" rot="0" x="38" z="25" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="25" />
-    <entry def="PowerConduit" rot="0" x="39" z="25" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="25" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="26" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="26" />
-    <entry def="PowerConduit" rot="0" x="1" z="26" />
+    <entry def="PowerConduit" rot="0" x="2" z="26" />
     <entry def="PowerConduit" rot="0" x="10" z="26" />
     <entry def="PowerConduit" rot="0" x="18" z="26" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="26" />
@@ -590,12 +546,12 @@
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="26" />
     <entry def="PowerConduit" rot="0" x="22" z="26" />
     <entry def="PowerConduit" rot="0" x="30" z="26" />
+    <entry def="PowerConduit" rot="0" x="38" z="26" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="26" />
-    <entry def="PowerConduit" rot="0" x="39" z="26" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="26" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="27" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="27" />
-    <entry def="PowerConduit" rot="0" x="1" z="27" />
+    <entry def="PowerConduit" rot="0" x="2" z="27" />
     <entry def="PowerConduit" rot="0" x="10" z="27" />
     <entry def="PowerConduit" rot="0" x="18" z="27" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="27" />
@@ -603,303 +559,280 @@
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="27" />
     <entry def="PowerConduit" rot="0" x="22" z="27" />
     <entry def="PowerConduit" rot="0" x="30" z="27" />
+    <entry def="PowerConduit" rot="0" x="38" z="27" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="27" />
-    <entry def="PowerConduit" rot="0" x="39" z="27" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="27" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="28" />
-    <entry def="PowerConduit" rot="0" x="1" z="28" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="28" />
+    <entry def="PowerConduit" rot="0" x="2" z="28" />
+    <entry def="StandingLamp" rot="0" x="9" z="28" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="10" z="28" />
     <entry def="PowerConduit" rot="0" x="10" z="28" />
+    <entry def="StandingLamp" rot="0" x="11" z="28" />
     <entry def="PowerConduit" rot="0" x="18" z="28" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="28" />
-    <entry def="Door" stuff="BlocksGranite" rot="0" x="20" z="28" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="28" />
+    <entry def="Cooler" rot="0" x="20" z="28" />
     <entry def="PowerConduit" rot="0" x="22" z="28" />
+    <entry def="StandingLamp" rot="0" x="29" z="28" />
     <entry def="PowerConduit" rot="0" x="30" z="28" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="30" z="28" />
+    <entry def="StandingLamp" rot="0" x="31" z="28" />
+    <entry def="PowerConduit" rot="0" x="38" z="28" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="28" />
-    <entry def="PowerConduit" rot="0" x="39" z="28" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="28" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="29" />
-    <entry def="PowerConduit" rot="0" x="1" z="29" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="29" />
-    <entry def="StandingLamp" rot="0" x="9" z="29" />
+    <entry def="PowerConduit" rot="0" x="2" z="29" />
+    <entry def="PowerConduit" rot="0" x="3" z="29" />
+    <entry def="PowerConduit" rot="0" x="4" z="29" />
+    <entry def="PowerConduit" rot="0" x="5" z="29" />
+    <entry def="PowerConduit" rot="0" x="6" z="29" />
+    <entry def="PowerConduit" rot="0" x="7" z="29" />
+    <entry def="PowerConduit" rot="0" x="8" z="29" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="9" z="29" />
+    <entry def="PowerConduit" rot="0" x="9" z="29" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="10" z="29" />
     <entry def="PowerConduit" rot="0" x="10" z="29" />
-    <entry def="StandingLamp" rot="0" x="11" z="29" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="11" z="29" />
+    <entry def="PowerConduit" rot="0" x="11" z="29" />
+    <entry def="PowerConduit" rot="0" x="12" z="29" />
+    <entry def="PowerConduit" rot="0" x="13" z="29" />
+    <entry def="PowerConduit" rot="0" x="14" z="29" />
+    <entry def="PowerConduit" rot="0" x="15" z="29" />
+    <entry def="PowerConduit" rot="0" x="16" z="29" />
+    <entry def="PowerConduit" rot="0" x="17" z="29" />
     <entry def="PowerConduit" rot="0" x="18" z="29" />
-    <entry def="Cooler" rot="0" x="20" z="29" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="29" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="29" />
     <entry def="PowerConduit" rot="0" x="22" z="29" />
-    <entry def="StandingLamp" rot="0" x="29" z="29" />
+    <entry def="PowerConduit" rot="0" x="23" z="29" />
+    <entry def="PowerConduit" rot="0" x="24" z="29" />
+    <entry def="PowerConduit" rot="0" x="25" z="29" />
+    <entry def="PowerConduit" rot="0" x="26" z="29" />
+    <entry def="PowerConduit" rot="0" x="27" z="29" />
+    <entry def="PowerConduit" rot="0" x="28" z="29" />
+    <entry def="PowerConduit" rot="0" x="29" z="29" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="29" z="29" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="30" z="29" />
     <entry def="PowerConduit" rot="0" x="30" z="29" />
-    <entry def="StandingLamp" rot="0" x="31" z="29" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="31" z="29" />
+    <entry def="PowerConduit" rot="0" x="31" z="29" />
+    <entry def="PowerConduit" rot="0" x="32" z="29" />
+    <entry def="PowerConduit" rot="0" x="33" z="29" />
+    <entry def="PowerConduit" rot="0" x="34" z="29" />
+    <entry def="PowerConduit" rot="0" x="35" z="29" />
+    <entry def="PowerConduit" rot="0" x="36" z="29" />
+    <entry def="PowerConduit" rot="0" x="37" z="29" />
+    <entry def="PowerConduit" rot="0" x="38" z="29" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="29" />
-    <entry def="PowerConduit" rot="0" x="39" z="29" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="29" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="30" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="30" />
-    <entry def="PowerConduit" rot="0" x="1" z="30" />
     <entry def="PowerConduit" rot="0" x="2" z="30" />
-    <entry def="PowerConduit" rot="0" x="3" z="30" />
-    <entry def="PowerConduit" rot="0" x="4" z="30" />
-    <entry def="PowerConduit" rot="0" x="5" z="30" />
-    <entry def="PowerConduit" rot="0" x="6" z="30" />
-    <entry def="PowerConduit" rot="0" x="7" z="30" />
-    <entry def="PowerConduit" rot="0" x="8" z="30" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="9" z="30" />
-    <entry def="PowerConduit" rot="0" x="9" z="30" />
-    <entry def="PowerConduit" rot="0" x="10" z="30" />
+    <entry def="StandingLamp" rot="0" x="9" z="30" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="10" z="30" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="11" z="30" />
-    <entry def="PowerConduit" rot="0" x="11" z="30" />
-    <entry def="PowerConduit" rot="0" x="12" z="30" />
-    <entry def="PowerConduit" rot="0" x="13" z="30" />
-    <entry def="PowerConduit" rot="0" x="14" z="30" />
-    <entry def="PowerConduit" rot="0" x="15" z="30" />
-    <entry def="PowerConduit" rot="0" x="16" z="30" />
-    <entry def="PowerConduit" rot="0" x="17" z="30" />
+    <entry def="PowerConduit" rot="0" x="10" z="30" />
+    <entry def="StandingLamp" rot="0" x="11" z="30" />
     <entry def="PowerConduit" rot="0" x="18" z="30" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="30" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="30" />
+    <entry def="Cooler" rot="0" x="20" z="30" />
     <entry def="PowerConduit" rot="0" x="22" z="30" />
-    <entry def="PowerConduit" rot="0" x="23" z="30" />
-    <entry def="PowerConduit" rot="0" x="24" z="30" />
-    <entry def="PowerConduit" rot="0" x="25" z="30" />
-    <entry def="PowerConduit" rot="0" x="26" z="30" />
-    <entry def="PowerConduit" rot="0" x="27" z="30" />
-    <entry def="PowerConduit" rot="0" x="28" z="30" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="29" z="30" />
-    <entry def="PowerConduit" rot="0" x="29" z="30" />
+    <entry def="StandingLamp" rot="0" x="29" z="30" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="30" z="30" />
     <entry def="PowerConduit" rot="0" x="30" z="30" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="31" z="30" />
-    <entry def="PowerConduit" rot="0" x="31" z="30" />
-    <entry def="PowerConduit" rot="0" x="32" z="30" />
-    <entry def="PowerConduit" rot="0" x="33" z="30" />
-    <entry def="PowerConduit" rot="0" x="34" z="30" />
-    <entry def="PowerConduit" rot="0" x="35" z="30" />
-    <entry def="PowerConduit" rot="0" x="36" z="30" />
-    <entry def="PowerConduit" rot="0" x="37" z="30" />
+    <entry def="StandingLamp" rot="0" x="31" z="30" />
     <entry def="PowerConduit" rot="0" x="38" z="30" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="30" />
-    <entry def="PowerConduit" rot="0" x="39" z="30" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="30" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="31" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="31" />
-    <entry def="PowerConduit" rot="0" x="1" z="31" />
-    <entry def="StandingLamp" rot="0" x="9" z="31" />
+    <entry def="PowerConduit" rot="0" x="2" z="31" />
     <entry def="PowerConduit" rot="0" x="10" z="31" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="10" z="31" />
-    <entry def="StandingLamp" rot="0" x="11" z="31" />
     <entry def="PowerConduit" rot="0" x="18" z="31" />
-    <entry def="Cooler" rot="0" x="20" z="31" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="31" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="31" />
     <entry def="PowerConduit" rot="0" x="22" z="31" />
-    <entry def="StandingLamp" rot="0" x="29" z="31" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="30" z="31" />
     <entry def="PowerConduit" rot="0" x="30" z="31" />
-    <entry def="StandingLamp" rot="0" x="31" z="31" />
+    <entry def="PowerConduit" rot="0" x="38" z="31" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="31" />
-    <entry def="PowerConduit" rot="0" x="39" z="31" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="31" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="32" />
-    <entry def="PowerConduit" rot="0" x="1" z="32" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="32" />
+    <entry def="PowerConduit" rot="0" x="2" z="32" />
     <entry def="PowerConduit" rot="0" x="10" z="32" />
     <entry def="PowerConduit" rot="0" x="18" z="32" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="32" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="32" />
+    <entry def="Cooler" rot="0" x="20" z="32" />
     <entry def="PowerConduit" rot="0" x="22" z="32" />
     <entry def="PowerConduit" rot="0" x="30" z="32" />
+    <entry def="PowerConduit" rot="0" x="38" z="32" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="32" />
-    <entry def="PowerConduit" rot="0" x="39" z="32" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="32" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="33" />
-    <entry def="PowerConduit" rot="0" x="1" z="33" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="33" />
+    <entry def="PowerConduit" rot="0" x="2" z="33" />
     <entry def="PowerConduit" rot="0" x="10" z="33" />
     <entry def="PowerConduit" rot="0" x="18" z="33" />
-    <entry def="Cooler" rot="0" x="20" z="33" />
     <entry def="PowerConduit" rot="0" x="22" z="33" />
     <entry def="PowerConduit" rot="0" x="30" z="33" />
+    <entry def="PowerConduit" rot="0" x="38" z="33" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="33" />
-    <entry def="PowerConduit" rot="0" x="39" z="33" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="33" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="34" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="34" />
-    <entry def="PowerConduit" rot="0" x="1" z="34" />
+    <entry def="PowerConduit" rot="0" x="2" z="34" />
     <entry def="PowerConduit" rot="0" x="10" z="34" />
     <entry def="PowerConduit" rot="0" x="18" z="34" />
     <entry def="PowerConduit" rot="0" x="22" z="34" />
     <entry def="PowerConduit" rot="0" x="30" z="34" />
-    <entry def="PowerConduit" rot="0" x="39" z="34" />
+    <entry def="PowerConduit" rot="0" x="38" z="34" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="34" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="34" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="35" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="35" />
-    <entry def="PowerConduit" rot="0" x="1" z="35" />
+    <entry def="PowerConduit" rot="0" x="2" z="35" />
     <entry def="PowerConduit" rot="0" x="10" z="35" />
     <entry def="PowerConduit" rot="0" x="18" z="35" />
     <entry def="PowerConduit" rot="0" x="22" z="35" />
     <entry def="PowerConduit" rot="0" x="30" z="35" />
+    <entry def="PowerConduit" rot="0" x="38" z="35" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="35" />
-    <entry def="PowerConduit" rot="0" x="39" z="35" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="35" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="36" />
-    <entry def="PowerConduit" rot="0" x="1" z="36" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="36" />
+    <entry def="PowerConduit" rot="0" x="2" z="36" />
     <entry def="PowerConduit" rot="0" x="10" z="36" />
     <entry def="PowerConduit" rot="0" x="18" z="36" />
     <entry def="PowerConduit" rot="0" x="22" z="36" />
     <entry def="PowerConduit" rot="0" x="30" z="36" />
+    <entry def="PowerConduit" rot="0" x="38" z="36" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="36" />
-    <entry def="PowerConduit" rot="0" x="39" z="36" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="36" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="37" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="37" />
-    <entry def="PowerConduit" rot="0" x="1" z="37" />
+    <entry def="StandingLamp" rot="0" x="2" z="37" />
+    <entry def="PowerConduit" rot="0" x="2" z="37" />
+    <entry def="PowerConduit" rot="0" x="3" z="37" />
+    <entry def="PowerConduit" rot="0" x="4" z="37" />
+    <entry def="PowerConduit" rot="0" x="5" z="37" />
+    <entry def="PowerConduit" rot="0" x="6" z="37" />
+    <entry def="PowerConduit" rot="0" x="7" z="37" />
+    <entry def="PowerConduit" rot="0" x="8" z="37" />
+    <entry def="PowerConduit" rot="0" x="9" z="37" />
     <entry def="PowerConduit" rot="0" x="10" z="37" />
+    <entry def="PowerConduit" rot="0" x="11" z="37" />
+    <entry def="PowerConduit" rot="0" x="12" z="37" />
+    <entry def="PowerConduit" rot="0" x="13" z="37" />
+    <entry def="PowerConduit" rot="0" x="14" z="37" />
+    <entry def="PowerConduit" rot="0" x="15" z="37" />
+    <entry def="PowerConduit" rot="0" x="16" z="37" />
+    <entry def="StandingLamp" rot="0" x="17" z="37" />
+    <entry def="PowerConduit" rot="0" x="17" z="37" />
     <entry def="PowerConduit" rot="0" x="18" z="37" />
+    <entry def="PowerConduit" rot="0" x="19" z="37" />
+    <entry def="PowerSwitch" rot="0" x="20" z="37" />
+    <entry def="PowerConduit" rot="0" x="21" z="37" />
     <entry def="PowerConduit" rot="0" x="22" z="37" />
+    <entry def="PowerConduit" rot="0" x="23" z="37" />
+    <entry def="StandingLamp" rot="0" x="23" z="37" />
+    <entry def="PowerConduit" rot="0" x="24" z="37" />
+    <entry def="PowerConduit" rot="0" x="25" z="37" />
+    <entry def="PowerConduit" rot="0" x="26" z="37" />
+    <entry def="PowerConduit" rot="0" x="27" z="37" />
+    <entry def="PowerConduit" rot="0" x="28" z="37" />
+    <entry def="PowerConduit" rot="0" x="29" z="37" />
     <entry def="PowerConduit" rot="0" x="30" z="37" />
+    <entry def="PowerConduit" rot="0" x="31" z="37" />
+    <entry def="PowerConduit" rot="0" x="32" z="37" />
+    <entry def="PowerConduit" rot="0" x="33" z="37" />
+    <entry def="PowerConduit" rot="0" x="34" z="37" />
+    <entry def="PowerConduit" rot="0" x="35" z="37" />
+    <entry def="PowerConduit" rot="0" x="36" z="37" />
+    <entry def="PowerConduit" rot="0" x="37" z="37" />
+    <entry def="StandingLamp" rot="0" x="38" z="37" />
+    <entry def="PowerConduit" rot="0" x="38" z="37" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="37" />
-    <entry def="PowerConduit" rot="0" x="39" z="37" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="37" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="38" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="38" />
-    <entry def="PowerConduit" rot="0" x="1" z="38" />
-    <entry def="StandingLamp" rot="0" x="2" z="38" />
-    <entry def="PowerConduit" rot="0" x="10" z="38" />
-    <entry def="StandingLamp" rot="0" x="17" z="38" />
-    <entry def="PowerConduit" rot="0" x="18" z="38" />
-    <entry def="PowerConduit" rot="0" x="19" z="38" />
-    <entry def="PowerSwitch" rot="0" x="20" z="38" />
-    <entry def="PowerConduit" rot="0" x="21" z="38" />
-    <entry def="PowerConduit" rot="0" x="22" z="38" />
-    <entry def="StandingLamp" rot="0" x="23" z="38" />
-    <entry def="PowerConduit" rot="0" x="30" z="38" />
-    <entry def="StandingLamp" rot="0" x="38" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="2" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="3" z="38" />
+    <entry def="Door" stuff="BlocksGranite" rot="0" x="4" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="5" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="6" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="7" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="8" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="9" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="10" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="11" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="12" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="13" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="14" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="15" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="16" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="17" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="18" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="38" />
+    <entry def="Door" stuff="BlocksGranite" rot="0" x="20" z="38" />
+    <entry def="PowerConduit" rot="0" x="20" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="22" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="23" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="24" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="25" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="26" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="27" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="28" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="29" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="30" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="31" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="32" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="33" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="34" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="35" z="38" />
+    <entry def="Door" stuff="BlocksGranite" rot="0" x="36" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="37" z="38" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="38" z="38" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="38" />
-    <entry def="PowerConduit" rot="0" x="39" z="38" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="38" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="39" />
-    <entry def="PowerConduit" rot="0" x="1" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="2" z="39" />
-    <entry def="PowerConduit" rot="0" x="2" z="39" />
-    <entry def="PowerConduit" rot="0" x="3" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="3" z="39" />
-    <entry def="PowerConduit" rot="0" x="4" z="39" />
     <entry def="Door" stuff="BlocksGranite" rot="0" x="4" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="5" z="39" />
-    <entry def="PowerConduit" rot="0" x="5" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="6" z="39" />
-    <entry def="PowerConduit" rot="0" x="6" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="7" z="39" />
-    <entry def="PowerConduit" rot="0" x="7" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="8" z="39" />
-    <entry def="PowerConduit" rot="0" x="8" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="9" z="39" />
-    <entry def="PowerConduit" rot="0" x="9" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="10" z="39" />
-    <entry def="PowerConduit" rot="0" x="10" z="39" />
-    <entry def="PowerConduit" rot="0" x="11" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="11" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="12" z="39" />
-    <entry def="PowerConduit" rot="0" x="12" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="13" z="39" />
-    <entry def="PowerConduit" rot="0" x="13" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="14" z="39" />
-    <entry def="PowerConduit" rot="0" x="14" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="15" z="39" />
-    <entry def="PowerConduit" rot="0" x="15" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="16" z="39" />
-    <entry def="PowerConduit" rot="0" x="16" z="39" />
-    <entry def="PowerConduit" rot="0" x="17" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="17" z="39" />
-    <entry def="PowerConduit" rot="0" x="18" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="18" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="39" />
     <entry def="Door" stuff="BlocksGranite" rot="0" x="20" z="39" />
     <entry def="PowerConduit" rot="0" x="20" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="22" z="39" />
-    <entry def="PowerConduit" rot="0" x="22" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="23" z="39" />
-    <entry def="PowerConduit" rot="0" x="23" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="24" z="39" />
-    <entry def="PowerConduit" rot="0" x="24" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="25" z="39" />
-    <entry def="PowerConduit" rot="0" x="25" z="39" />
-    <entry def="PowerConduit" rot="0" x="26" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="26" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="27" z="39" />
-    <entry def="PowerConduit" rot="0" x="27" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="28" z="39" />
-    <entry def="PowerConduit" rot="0" x="28" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="29" z="39" />
-    <entry def="PowerConduit" rot="0" x="29" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="30" z="39" />
-    <entry def="PowerConduit" rot="0" x="30" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="31" z="39" />
-    <entry def="PowerConduit" rot="0" x="31" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="32" z="39" />
-    <entry def="PowerConduit" rot="0" x="32" z="39" />
-    <entry def="PowerConduit" rot="0" x="33" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="33" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="34" z="39" />
-    <entry def="PowerConduit" rot="0" x="34" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="35" z="39" />
-    <entry def="PowerConduit" rot="0" x="35" z="39" />
     <entry def="Door" stuff="BlocksGranite" rot="0" x="36" z="39" />
-    <entry def="PowerConduit" rot="0" x="36" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="37" z="39" />
-    <entry def="PowerConduit" rot="0" x="37" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="38" z="39" />
-    <entry def="PowerConduit" rot="0" x="38" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="39" />
-    <entry def="PowerConduit" rot="0" x="39" z="39" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="39" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="2" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="3" z="40" />
-    <entry def="Door" stuff="BlocksGranite" rot="0" x="4" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="5" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="6" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="7" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="8" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="9" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="10" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="11" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="12" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="13" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="14" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="15" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="16" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="17" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="18" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="19" z="40" />
-    <entry def="Door" stuff="BlocksGranite" rot="0" x="20" z="40" />
-    <entry def="PowerConduit" rot="0" x="20" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="21" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="22" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="23" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="24" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="25" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="26" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="27" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="28" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="29" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="30" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="31" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="32" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="33" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="34" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="35" z="40" />
-    <entry def="Door" stuff="BlocksGranite" rot="0" x="36" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="37" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="38" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="39" z="40" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="40" z="40" />
   </entries>
 </ColonyKitBlueprint>
