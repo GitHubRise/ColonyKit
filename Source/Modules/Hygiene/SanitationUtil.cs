@@ -38,8 +38,14 @@ namespace ColonyKit.Modules.Hygiene
 
 		public static void ApplyBathroomThought(Pawn pawn, Building_AssignableFixture fixture)
 		{
-			if (pawn == null || fixture == null || fixture.AssignedPawns.NullOrEmpty()
-				|| !fixture.AssignedPawns.Contains(pawn))
+			if (pawn == null || fixture == null)
+			{
+				return;
+			}
+			Room room = fixture.Position.GetRoom(fixture.Map);
+			bool privateRoom = room?.Role?.defName == "CK_PrivateBathroom";
+			bool assigned = !fixture.AssignedPawns.NullOrEmpty() && fixture.AssignedPawns.Contains(pawn);
+			if (!privateRoom && !assigned)
 			{
 				return;
 			}
@@ -77,6 +83,11 @@ namespace ColonyKit.Modules.Hygiene
 					return true;
 				}
 			}
+			return false;
+		}
+
+		public static bool ToiletPrivacyLOS(Pawn source, float radius = 7f)
+		{
 			return false;
 		}
 

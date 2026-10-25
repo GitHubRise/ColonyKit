@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_Toilet.label>toilet</CK_Toilet.label>
+	<CK_Toilet.description>DBH-style toilet. Uses 14 L per flush; colonist bladder need uses it automatically.</CK_Toilet.description>
+	<CK_SewagePipe.label>sewage pipe</CK_SewagePipe.label>
+	<CK_SewagePipe.description>DBH-style sewage pipe. Connects toilets to septic tanks.</CK_SewagePipe.description>
+	<CK_SepticTank.label>septic tank</CK_SepticTank.label>
+	<CK_SepticTank.description>DBH-style septic tank. Stores sewage until emptied.</CK_SepticTank.description>
+</LanguageData>

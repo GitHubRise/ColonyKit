@@ -8,28 +8,35 @@ namespace ColonyKit.Modules.Hygiene
 	{
 		public static Need_Hygiene EnsureNeed(Pawn pawn)
 		{
+			return Ensure<Need_Hygiene>(pawn, "CK_Hygiene");
+		}
+
+		public static Need_Bladder EnsureBladder(Pawn pawn)
+		{
+			return Ensure<Need_Bladder>(pawn, "CK_Bladder");
+		}
+
+		private static T Ensure<T>(Pawn pawn, string defName) where T : Need
+		{
 			if (pawn?.needs == null)
 			{
 				return null;
 			}
-
-			Need_Hygiene existing = pawn.needs.TryGetNeed<Need_Hygiene>();
+			T existing = pawn.needs.TryGetNeed<T>();
 			if (existing != null)
 			{
 				return existing;
 			}
-
-			NeedDef def = DefDatabase<NeedDef>.GetNamedSilentFail("CK_Hygiene");
+			NeedDef def = DefDatabase<NeedDef>.GetNamedSilentFail(defName);
 			if (def == null || def.needClass == null)
 			{
 				return null;
 			}
-
 			Need need = (Need)Activator.CreateInstance(def.needClass, pawn);
 			need.def = def;
 			pawn.needs.AllNeeds.Add(need);
 			need.SetInitialLevel();
-			return need as Need_Hygiene;
+			return need as T;
 		}
 	}
 }

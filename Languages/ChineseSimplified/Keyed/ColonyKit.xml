@@ -127,6 +127,8 @@
 	<CK.Hygiene.TakeShower>去洗澡</CK.Hygiene.TakeShower>
 	<CK.Hygiene.TakeShowerDesc>让该殖民者前往最近的淋浴器。</CK.Hygiene.TakeShowerDesc>
 	<CK.Hygiene.NoShower>没有可用的淋浴器。</CK.Hygiene.NoShower>
+	<CK.Hygiene.Sewage>污水: {0}/{1}</CK.Hygiene.Sewage>
+	<CK.Hygiene.SewageBlocked>污水管堵塞</CK.Hygiene.SewageBlocked>
 	<CK.Hygiene.Blocked>排水堵塞</CK.Hygiene.Blocked>
 	<CK.Hygiene.HeaterOn>热水器运行中</CK.Hygiene.HeaterOn>
 	<CK.Hygiene.HeaterOff>热水器未运行</CK.Hygiene.HeaterOff>

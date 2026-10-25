@@ -214,6 +214,7 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		public List<CompWaterPumpingStation> WaterPumps = new List<CompWaterPumpingStation>();
 		public List<CompWaterInlet> WaterWells = new List<CompWaterInlet>();
 		public List<CompWaterHeater> Heaters = new List<CompWaterHeater>();
+		public List<CompSewageHandler> Sewers = new List<CompSewageHandler>();
 		public List<CompPipe> Pipes = new List<CompPipe>();
 		public float WaterCap;
 		public float WaterPumpedPerTick;
@@ -230,6 +231,19 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 			return HasHotWater;
 		}
 
+		public bool PushSewage(float amount)
+		{
+			foreach (CompSewageHandler sewer in Sewers)
+			{
+				if (sewer != null && !sewer.Blocked && sewer.sewageBuffer + amount <= sewer.Props.capacity)
+				{
+					sewer.sewageBuffer += amount;
+					return true;
+				}
+			}
+			return false;
+		}
+
 		public void InitNet()
 		{
 			Pipes.Clear();
@@ -237,6 +251,7 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 			WaterPumps.Clear();
 			WaterWells.Clear();
 			Heaters.Clear();
+			Sewers.Clear();
 			foreach (ThingWithComps thing in PipedThings)
 			{
 				Pipes.AddRange(thing.GetComps<CompPipe>());
@@ -259,6 +274,11 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 				if (heater != null)
 				{
 					Heaters.Add(heater);
+				}
+				CompSewageHandler sewer = thing.TryGetComp<CompSewageHandler>();
+				if (sewer != null)
+				{
+					Sewers.Add(sewer);
 				}
 			}
 		}

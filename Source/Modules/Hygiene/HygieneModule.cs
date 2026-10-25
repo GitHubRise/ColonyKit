@@ -31,6 +31,7 @@ namespace ColonyKit.Modules.Hygiene
 			}
 			int humanlikes = 0;
 			int withNeed = 0;
+			int withBladder = 0;
 			foreach (Map map in game.Maps)
 			{
 				foreach (Pawn pawn in map.mapPawns.AllPawnsSpawned)
@@ -44,9 +45,13 @@ namespace ColonyKit.Modules.Hygiene
 					{
 						withNeed++;
 					}
+					if (HygieneUtility.EnsureBladder(pawn) != null)
+					{
+						withBladder++;
+					}
 				}
 			}
-			ModLog.Info("Hygiene", $"need injection check: humanlikes={humanlikes}, withHygiene={withNeed}");
+			ModLog.Info("Hygiene", $"need injection check: humanlikes={humanlikes}, withHygiene={withNeed}, withBladder={withBladder}");
 		}
 	}
 
@@ -58,7 +63,8 @@ namespace ColonyKit.Modules.Hygiene
 
 		private static void Postfix(Pawn_NeedsTracker __instance, NeedDef nd, ref bool __result)
 		{
-			if (__result || nd == null || nd.defName != "CK_Hygiene")
+			if (__result || nd == null
+				|| (nd.defName != "CK_Hygiene" && nd.defName != "CK_Bladder"))
 			{
 				return;
 			}

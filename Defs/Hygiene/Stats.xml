@@ -14,6 +14,20 @@
 		<showOnMechanoids>false</showOnMechanoids>
 	</StatDef>
 
+	<StatDef>
+		<defName>CK_BladderRateMultiplier</defName>
+		<label>bladder rate multiplier</label>
+		<description>Multiplier for how quickly the bladder fills.</description>
+		<category>Basics</category>
+		<defaultBaseValue>1</defaultBaseValue>
+		<minValue>0</minValue>
+		<maxValue>10</maxValue>
+		<workerClass>StatWorker</workerClass>
+		<showOnHumanlikes>true</showOnHumanlikes>
+		<showOnAnimals>false</showOnAnimals>
+		<showOnMechanoids>false</showOnMechanoids>
+	</StatDef>
+
 	<HediffDef>
 		<defName>CK_BadHygiene</defName>
 		<label>bad hygiene</label>

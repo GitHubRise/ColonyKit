@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<RoomRoleDef>
+		<defName>CK_PrivateBathroom</defName>
+		<label>private bathroom</label>
+		<workerClass>ColonyKit.Modules.Hygiene.RoomRoleWorker_PrivateBathroom</workerClass>
+		<relatedStats>
+			<li>Beauty</li>
+			<li>Cleanliness</li>
+			<li>Wealth</li>
+			<li>Impressiveness</li>
+		</relatedStats>
+	</RoomRoleDef>
+
+	<RoomRoleDef>
+		<defName>CK_PublicBathroom</defName>
+		<label>public bathroom</label>
+		<workerClass>ColonyKit.Modules.Hygiene.RoomRoleWorker_PublicBathroom</workerClass>
+		<relatedStats>
+			<li>Beauty</li>
+			<li>Cleanliness</li>
+			<li>Wealth</li>
+			<li>Impressiveness</li>
+		</relatedStats>
+	</RoomRoleDef>
+</Defs>

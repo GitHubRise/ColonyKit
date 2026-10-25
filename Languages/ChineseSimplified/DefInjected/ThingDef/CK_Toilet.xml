@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_Toilet.label>马桶</CK_Toilet.label>
+	<CK_Toilet.description>DBH 式马桶。每次冲水使用 14 升水；膀胱需求低时自动使用。</CK_Toilet.description>
+	<CK_SewagePipe.label>污水管</CK_SewagePipe.label>
+	<CK_SewagePipe.description>连接马桶与化粪池的 DBH 式污水管。</CK_SewagePipe.description>
+	<CK_SepticTank.label>化粪池</CK_SepticTank.label>
+	<CK_SepticTank.description>DBH 式化粪池，储存污水直到清空。</CK_SepticTank.description>
+</LanguageData>
