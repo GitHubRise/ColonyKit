@@ -2,7 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using ColonyKit.Modules.Hygiene.Dbh;
 using RimWorld;
+using UnityEngine;
 using Verse;
+using Verse.AI;
 
 namespace ColonyKit.Modules.Hygiene
 {
@@ -29,6 +31,7 @@ namespace ColonyKit.Modules.Hygiene
 		public CompPipe pipe;
 		public CompPowerTrader powerComp;
 		public CompBlockage blockageComp;
+		internal List<Building_Bed> BedRefs;
 		public Gender gender = Gender.None;
 		public bool AllowColonists = true;
 		public bool AllowSlaves = true;
@@ -88,6 +91,30 @@ namespace ColonyKit.Modules.Hygiene
 			return AllowGuests;
 		}
 
+		public List<Building_Bed> AllSpawnedBeds()
+		{
+			if (BedRefs == null)
+			{
+				BedRefs = new List<Building_Bed>();
+				return BedRefs;
+			}
+			BedRefs.RemoveAll(bed => bed == null || !bed.Spawned);
+			return BedRefs;
+		}
+
+		public List<Pawn> AssignedPawns
+		{
+			get
+			{
+				var pawns = new List<Pawn>();
+				foreach (Building_Bed bed in AllSpawnedBeds())
+				{
+					pawns.AddRange(bed.CompAssignableToPawn.AssignedPawnsForReading);
+				}
+				return pawns;
+			}
+		}
+
 		public override void ExposeData()
 		{
 			base.ExposeData();
@@ -97,6 +124,7 @@ namespace ColonyKit.Modules.Hygiene
 			Scribe_Values.Look(ref AllowGuests, "AllowGuests", true);
 			Scribe_Values.Look(ref AnimalsOnly, "AnimalsOnly", false);
 			Scribe_Values.Look(ref occupancyCheck, "OccupancyCheckInt", false);
+			Scribe_Collections.Look(ref BedRefs, "bedRefs", LookMode.Reference);
 		}
 
 		public override void SpawnSetup(Map map, bool respawningAfterLoad)
@@ -138,6 +166,39 @@ namespace ColonyKit.Modules.Hygiene
 				isActive = () => AllowColonists,
 				toggleAction = () => AllowColonists = !AllowColonists
 			};
+
+			if (Faction == Faction.OfPlayer && !ForPrisoners)
+			{
+				yield return new Command_Action
+				{
+					defaultLabel = "CK.Hygiene.ConnectBed".Translate(),
+					defaultDesc = "CK.Hygiene.ConnectBedDesc".Translate(),
+					action = () => Find.Targeter.BeginTargeting(ForBed(),
+						x => SetBed(x, Input.GetKey(KeyCode.LeftShift)))
+				};
+			}
+		}
+
+		public static TargetingParameters ForBed()
+		{
+			return new TargetingParameters
+			{
+				canTargetPawns = false,
+				canTargetBuildings = true,
+				validator = t => t.HasThing && t.Thing is Building_Bed
+			};
+		}
+
+		public void SetBed(LocalTargetInfo target, bool shift)
+		{
+			if (!shift)
+			{
+				AllSpawnedBeds().Clear();
+			}
+			if (target.Thing is Building_Bed bed && !AllSpawnedBeds().Contains(bed))
+			{
+				AllSpawnedBeds().Add(bed);
+			}
 		}
 
 		public virtual AcceptanceReport Working(float WaterUsed = 0f)
