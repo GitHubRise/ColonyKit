@@ -2,7 +2,7 @@
 <Defs>
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_Shower</defName>
-		<label>shower</label>
+		<label>simple shower</label>
 		<description>A 2x2 shower. Needs water and a working water heater for hot showers; without hot water it is a cold shower.</description>
 		<thingClass>ColonyKit.Modules.Hygiene.Building_Shower</thingClass>
 		<size>(2,2)</size>
