@@ -15,10 +15,15 @@ namespace ColonyKit.Modules
 
 		public override void OnDefsLoaded()
 		{
-			ModLog.Info(
-				"RJW",
-				"module loaded (0.0.2 stub); source reference: rjw; " +
-				$"RJW active={ModsConfig.IsActive("rim.job.world")}");
+			bool externalRjw = ModsConfig.IsActive("rim.job.world");
+			ModLog.Info("RJW", $"bundled RJW 1.6 loaded; external rim.job.world active={externalRjw}");
+			if (externalRjw)
+			{
+				ModLog.Warn(
+					"RJW",
+					"external RimJobWorld is active together with the bundled RJW; " +
+					"disable one to avoid duplicate Defs/patches.");
+			}
 		}
 	}
 }

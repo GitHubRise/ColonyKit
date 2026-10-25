@@ -132,8 +132,8 @@
 	<ColonyKit.Module.Storage.Desc>Warehouse and stacking jobs; based on StackXXL.</ColonyKit.Module.Storage.Desc>
 	<ColonyKit.Module.Localization.Name>Localization</ColonyKit.Module.Localization.Name>
 	<ColonyKit.Module.Localization.Desc>Text replacement and Chinese localization; based on DevMenuChinese.</ColonyKit.Module.Localization.Desc>
-	<ColonyKit.Module.Rjw.Name>RJW integration</ColonyKit.Module.Rjw.Name>
-	<ColonyKit.Module.Rjw.Desc>Compatibility patches only; RJW itself is not copied.</ColonyKit.Module.Rjw.Desc>
+	<ColonyKit.Module.Rjw.Name>RJW (bundled)</ColonyKit.Module.Rjw.Name>
+	<ColonyKit.Module.Rjw.Desc>RJW 1.6 is bundled; do not enable an external RimJobWorld at the same time.</ColonyKit.Module.Rjw.Desc>
 
 	<ColonyKit.Settings.Tab.Storage>Storage</ColonyKit.Settings.Tab.Storage>
 	<ColonyKit.Settings.Storage.Hint>Global stack rules and warehouse capacity: capacity is counted in stacks and can be changed here; the stack multiplier only affects items per stack.</ColonyKit.Settings.Storage.Hint>

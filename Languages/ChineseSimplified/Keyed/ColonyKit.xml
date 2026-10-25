@@ -132,8 +132,8 @@
 	<ColonyKit.Module.Storage.Desc>立体库与堆叠作业；参考 StackXXL 的仓库实现。</ColonyKit.Module.Storage.Desc>
 	<ColonyKit.Module.Localization.Name>汉化</ColonyKit.Module.Localization.Name>
 	<ColonyKit.Module.Localization.Desc>文本替换与汉化管线；参考 DevMenuChinese。</ColonyKit.Module.Localization.Desc>
-	<ColonyKit.Module.Rjw.Name>RJW 集成</ColonyKit.Module.Rjw.Name>
-	<ColonyKit.Module.Rjw.Desc>只做兼容补丁，不复制 RJW 主体。</ColonyKit.Module.Rjw.Desc>
+	<ColonyKit.Module.Rjw.Name>RJW 本体</ColonyKit.Module.Rjw.Name>
+	<ColonyKit.Module.Rjw.Desc>内置 RJW 1.6；外部 RimJobWorld 请勿同时启用。</ColonyKit.Module.Rjw.Desc>
 
 	<ColonyKit.Settings.Tab.Storage>立体库</ColonyKit.Settings.Tab.Storage>
 	<ColonyKit.Settings.Storage.Hint>全局堆叠规则 + 立体库容量：仓库容量按堆计，可在本页调整；堆叠倍率只影响每堆件数。</ColonyKit.Settings.Storage.Hint>
