@@ -91,15 +91,33 @@ namespace ColonyKit
 				return;
 			}
 
-			loaded = true;
 			ModContentPack content = ColonyKitMod.Instance?.Content;
 			if (content == null)
 			{
 				return;
 			}
 
-			Load(Path.Combine(content.RootDir, "Languages", "English", "Keyed", "ColonyKit.xml"), english);
-			Load(Path.Combine(content.RootDir, "Languages", "ChineseSimplified", "Keyed", "ColonyKit.xml"), chinese);
+			loaded = true;
+
+			// 设置页的键分散在 ColonyKit/Insulation/Blueprint/Robotics 等多个 Keyed 文件里；
+			// 只读 ColonyKit.xml 会让新增页在「Mod 语言=简中、游戏语言=英文」时回退成英文。
+			LoadFolder(Path.Combine(content.RootDir, "Languages", "English", "Keyed"), english);
+			LoadFolder(Path.Combine(content.RootDir, "Languages", "ChineseSimplified", "Keyed"), chinese);
+		}
+
+		private static void LoadFolder(string folder, Dictionary<string, string> target)
+		{
+			if (!Directory.Exists(folder))
+			{
+				return;
+			}
+
+			string[] files = Directory.GetFiles(folder, "*.xml");
+			Array.Sort(files, StringComparer.OrdinalIgnoreCase);
+			foreach (string file in files)
+			{
+				Load(file, target);
+			}
 		}
 
 		private static void Load(string path, Dictionary<string, string> target)
