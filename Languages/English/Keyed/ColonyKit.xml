@@ -149,6 +149,7 @@
 
 	<CK.VerticalWarehouse.Tab>Vertical warehouse</CK.VerticalWarehouse.Tab>
 	<CK.VerticalWarehouse.Inspect>Stored {0}/{1} stacks, {2} items</CK.VerticalWarehouse.Inspect>
+	<CK.VerticalWarehouse.CurrentTemperature>Current temperature: {0}</CK.VerticalWarehouse.CurrentTemperature>
 	<CK.VerticalWarehouse.NoPower>No power; temperature control is off, but storage still works.</CK.VerticalWarehouse.NoPower>
 	<CK.VerticalWarehouse.NoConveyor>No conveyor connected; automatic input/output is disabled. Connect a conveyor to one of the four sides.</CK.VerticalWarehouse.NoConveyor>
 	<CK.VerticalWarehouse.AutoConveyor>Auto output to conveyor</CK.VerticalWarehouse.AutoConveyor>

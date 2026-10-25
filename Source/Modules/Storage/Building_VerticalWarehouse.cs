@@ -633,6 +633,12 @@ namespace ColonyKit.Modules.Storage
 
 		private Room FindRoom()
 		{
+			Room room = this.GetRoom();
+			if (room != null && !room.UsesOutdoorTemperature)
+			{
+				return room;
+			}
+
 			Room best = null;
 			foreach (IntVec3 cell in GenAdj.CellsAdjacent8Way(this))
 			{
@@ -640,17 +646,25 @@ namespace ColonyKit.Modules.Storage
 				{
 					continue;
 				}
-				Room room = cell.GetRoom(Map);
-				if (room == null || room.UsesOutdoorTemperature)
+				Room adjacent = cell.GetRoom(Map);
+				if (adjacent == null || adjacent.UsesOutdoorTemperature)
 				{
 					continue;
 				}
-				if (best == null || room.CellCount > best.CellCount)
+				if (best == null || adjacent.CellCount > best.CellCount)
 				{
-					best = room;
+					best = adjacent;
 				}
 			}
 			return best;
+		}
+
+		private float CurrentRoomTemperature()
+		{
+			Room room = FindRoom();
+			return room != null && !room.UsesOutdoorTemperature
+				? room.Temperature
+				: Map.mapTemperature.OutdoorTemp;
 		}
 
 		public int CollectNearby(int radius = 8)
@@ -709,6 +723,10 @@ namespace ColonyKit.Modules.Storage
 				UsedStacks,
 				MaxStacks,
 				UsedItems);
+
+			text += "\n" + string.Format(
+				"CK.VerticalWarehouse.CurrentTemperature".Translate(),
+				CurrentRoomTemperature().ToStringTemperature("F1"));
 
 			if (!HasPower)
 			{
