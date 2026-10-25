@@ -180,6 +180,8 @@
 	<CK.VerticalWarehouse.Withdrawn>已取出全部物品。</CK.VerticalWarehouse.Withdrawn>
 
 	<CK.WithdrawFromWarehouse.report>正在从立体库取货。</CK.WithdrawFromWarehouse.report>
+	<CK.ConveyorHub.Target>自动输送至最近的立体库 ({0},{1})</CK.ConveyorHub.Target>
+	<CK.ConveyorHub.NoTarget>附近没有可用的立体库。</CK.ConveyorHub.NoTarget>
 	<CK.ConveyorHub.Status>出口：{0}{1}</CK.ConveyorHub.Status>
 	<CK.ConveyorHub.ReversedSuffix>（反向）</CK.ConveyorHub.ReversedSuffix>
 	<CK.ConveyorHub.Reverse>反向运行</CK.ConveyorHub.Reverse>

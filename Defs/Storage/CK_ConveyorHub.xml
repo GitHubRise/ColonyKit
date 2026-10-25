@@ -16,6 +16,9 @@
 		<tickerType>Normal</tickerType>
 		<drawerType>RealtimeOnly</drawerType>
 		<designationCategory>Furniture</designationCategory>
+		<thingCategories>
+			<li>Buildings</li>
+		</thingCategories>
 		<passability>PassThroughOnly</passability>
 		<building>
 			<maxItemsInCell>1</maxItemsInCell>

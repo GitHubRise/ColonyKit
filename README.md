@@ -27,7 +27,7 @@
 | 构建 | ✅ | `build.ps1 -Clean` 0 error / 0 warning |
 | 静态校验 | ✅ | `verify.ps1` 0 问题 / 0 警告 |
 | 汉化模块 | ✅ 已移植 | 开发者菜单 Debug 标签 + tooltip + 翻译方案设置；quicktest 自检通过，UI 未人工点击 |
-| 立体库 | ✅ 0.0.2 | 堆叠规则、3×3 内部库存、四向履带接口、仓库互联、无履带闪烁警告、过滤/优先级、默认拒绝腐烂/尸体、双向自动入库/出库、可调温控、原版资源列表、底部管理标签页、立体库研究页签、自动输出履带、1×1 双向履带/转向盘 + 跑马灯；账单/T2-T3 未做 |
+| 立体库 | ✅ 0.0.2 | 堆叠规则、3×3 内部库存、履带自动路由、仓库互联、无履带闪烁警告、过滤/优先级、默认拒绝腐烂/尸体、双向自动入库/出库、可调温控、原版资源列表、底部管理标签页、立体库研究页签、履带自动路由到最近立体库、1×1 双向履带/转向盘 + 跑马灯；账单/T2-T3 未做 |
 | 淋浴 / RJW | 📄 占位 | `hygiene` / `rjw`，`OnDefsLoaded` 只写日志 + 检测来源 Mod |
 | 实机 | ✅ quicktest | `-Deploy` + `-quicktest` 通过；未人工点 Debug 菜单/设置页 |
 | 来源映射 | ✅ | [docs/参考源码映射.md](docs/参考源码映射.md) |
@@ -488,7 +488,7 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 
 - [ ] **M3-0** 存储内核验证（最高优先）：按 §4.2 的 A/B/C 各做最小原型，验证原版账单/搬运/搜索能否看到库存、Stack XXL 下的堆叠、存读档与性能；写 `docs/decisions/storage-kernel.md` 定稿。
 - [ ] **M3-1** `CK_VerticalWarehouse` + `CompWarehouse`：`ThingOwner`、容量、过滤/优先级、禁用清单、填充度、存读档。
-	- 已完成：3×3 建筑、四向履带端口、`ThingOwner` 存读档、24 堆、250W、可调温控、原版 `ITab_Storage` 过滤/优先级；禁用清单/填充度/自动 Job 未做。
+	- 已完成：3×3 建筑、履带自动接入、`ThingOwner` 存读档、24 堆、250W、可调温控、原版 `ITab_Storage` 过滤/优先级；禁用清单/填充度/自动 Job 未做。
 - [x] **M3-2** 入库：`WorkGiver_HaulToWarehouse` + 原版 `HaulToContainer`（库存区满/无库存区或仓库优先级更高时接手，堆叠合并）。
 	- 原型完成：入库口/拒收原因文本未单独做；过滤/容量/电力在接活时检查。
 - [x] **M3-3** 出库：`WorkGiver_WithdrawFromWarehouse` + `JobDriver_WithdrawFromWarehouse`（自动送到更高优先级库存区；ITab 手动逐堆取出）。

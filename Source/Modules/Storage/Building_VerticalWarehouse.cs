@@ -33,7 +33,6 @@ namespace ColonyKit.Modules.Storage
 		private int networkCacheTick = -1;
 		private bool networkCache;
 		private int settingsVersion;
-		private bool autoOutputToConveyor = true;
 		private static Graphic conveyorWarning;
 
 		private static Graphic ConveyorWarning
@@ -171,13 +170,8 @@ namespace ColonyKit.Modules.Storage
 			}
 		}
 
-		public bool HasConveyorConnection(Rot4 side)
-		{
-			return TryFindSideConveyor(side, out _);
-		}
-
-		/// <summary>检查 4×4 某一条边的所有外侧格（不只是中央端口）。</summary>
-		private bool TryFindSideConveyor(Rot4 side, out IntVec3 cell)
+		/// <summary>任一相邻的 1×1 履带都算连接，不再要求正中端口/方向。</summary>
+		private bool TryFindAdjacentConveyor(out IntVec3 cell)
 		{
 			cell = IntVec3.Invalid;
 			if (!Spawned || Map == null)
@@ -185,76 +179,22 @@ namespace ColonyKit.Modules.Storage
 				return false;
 			}
 
-			// 只接受 1×1 履带，而且必须在该边正中的端口格（偶数边有两个中央格）。
-			foreach (IntVec3 port in PortCandidates(side))
+			foreach (IntVec3 candidate in GenAdj.CellsAdjacent8Way(this))
 			{
-				if (!port.InBounds(Map))
+				if (!candidate.InBounds(Map))
 				{
 					continue;
 				}
 
-				Building edifice = port.GetEdifice(Map);
+				Building edifice = candidate.GetEdifice(Map);
 				if (edifice is Building_ConveyorBase conveyor
 					&& conveyor.def.size.x == 1
 					&& conveyor.def.size.z == 1)
 				{
-					cell = port;
+					cell = candidate;
 					return true;
 				}
 			}
-			return false;
-		}
-
-		/// <summary>手动切换第一个已连接端口的履带输入/输出方向。</summary>
-		public bool TryToggleConveyorDirection(out Rot4 side, out bool output)
-		{
-			Rot4[] sides = { Rot4.North, Rot4.East, Rot4.South, Rot4.West };
-			for (int i = 0; i < sides.Length; i++)
-			{
-				if (!TryFindSideConveyor(sides[i], out IntVec3 port))
-				{
-					continue;
-				}
-
-				Building edifice = port.GetEdifice(Map);
-				if (edifice is Building_ConveyorBase belt)
-				{
-					belt.ToggleReversed();
-					side = sides[i];
-					output = belt.OutputDirection == side;
-					if (output)
-					{
-						autoOutputToConveyor = true;
-					}
-					return true;
-				}
-			}
-
-			side = Rot4.Invalid;
-			output = false;
-			return false;
-		}
-
-		/// <summary>找朝向建筑外侧的端口履带，用于仓库自动输出。</summary>
-		private bool TryFindOutputPort(out IntVec3 cell)
-		{
-			Rot4[] sides = { Rot4.North, Rot4.East, Rot4.South, Rot4.West };
-			for (int i = 0; i < sides.Length; i++)
-			{
-				Rot4 side = sides[i];
-				if (!TryFindSideConveyor(side, out IntVec3 port))
-				{
-					continue;
-				}
-
-				Building conveyor = port.GetEdifice(Map);
-				if (conveyor is Building_ConveyorBase belt && belt.OutputDirection == side)
-				{
-					cell = port;
-					return true;
-				}
-			}
-			cell = IntVec3.Invalid;
 			return false;
 		}
 
@@ -331,10 +271,7 @@ namespace ColonyKit.Modules.Storage
 
 		private bool HasDirectConveyorConnection()
 		{
-			return HasConveyorConnection(Rot4.North)
-				|| HasConveyorConnection(Rot4.East)
-				|| HasConveyorConnection(Rot4.South)
-				|| HasConveyorConnection(Rot4.West);
+			return TryFindAdjacentConveyor(out _);
 		}
 
 		public bool TryFindConnectedPort(out IntVec3 port)
@@ -371,16 +308,7 @@ namespace ColonyKit.Modules.Storage
 
 		private bool TryFindDirectPort(out IntVec3 port)
 		{
-			Rot4[] sides = { Rot4.North, Rot4.East, Rot4.South, Rot4.West };
-			for (int i = 0; i < sides.Length; i++)
-			{
-				if (TryFindSideConveyor(sides[i], out port))
-				{
-					return true;
-				}
-			}
-			port = IntVec3.Invalid;
-			return false;
+			return TryFindAdjacentConveyor(out port);
 		}
 
 		public Building_VerticalWarehouse()
@@ -394,7 +322,6 @@ namespace ColonyKit.Modules.Storage
 		{
 			base.ExposeData();
 			Scribe_Values.Look(ref settingsVersion, "settingsVersion", 0);
-			Scribe_Values.Look(ref autoOutputToConveyor, "autoOutputToConveyor", true);
 			Scribe_Deep.Look(ref innerContainer, "innerContainer", this);
 			Scribe_Deep.Look(ref storeSettings, "storeSettings", this);
 			if (innerContainer == null)
@@ -584,9 +511,8 @@ namespace ColonyKit.Modules.Storage
 
 		public bool TryWithdraw(Thing thing)
 		{
-			// 手动取出优先放到输出履带；没有输出线就放到建筑旁，避免又滑回输入口。
-			IntVec3 drop = TryFindOutputPort(out IntVec3 port) ? port : InteractionCell;
-			return TryWithdrawAt(thing, drop);
+			// 取货由玩家/小人处理，不再自动放到履带上。
+			return TryWithdrawAt(thing, InteractionCell);
 		}
 
 		public bool TryWithdrawAt(Thing thing, IntVec3 drop)
@@ -633,8 +559,6 @@ namespace ColonyKit.Modules.Storage
 			}
 
 			// 存储与自动输出不依赖电力；断电只停止温控。
-			TryAutoOutputToConveyor();
-
 			compTempControl ??= GetComp<CompTempControl>();
 			compPowerTrader ??= GetComp<CompPowerTrader>();
 
@@ -695,25 +619,6 @@ namespace ColonyKit.Modules.Storage
 			compPowerTrader.PowerOutput = active
 				? -power
 				: -power * compTempControl.Props.lowPowerConsumptionFactor;
-		}
-
-		private void TryAutoOutputToConveyor()
-		{
-			if (!autoOutputToConveyor || Container.Count == 0 || !HasAnyConveyorConnection)
-			{
-				return;
-			}
-
-			if (!TryFindOutputPort(out IntVec3 port))
-			{
-				return;
-			}
-
-			Thing item = Container[0];
-			if (item != null)
-			{
-				TryWithdrawAt(item, port);
-			}
 		}
 
 		private void SetIdlePower()
@@ -813,33 +718,6 @@ namespace ColonyKit.Modules.Storage
 			{
 				text += "\n" + "CK.VerticalWarehouse.NoConveyor".Translate();
 			}
-			else
-			{
-				Rot4[] sides = { Rot4.North, Rot4.East, Rot4.South, Rot4.West };
-				for (int i = 0; i < sides.Length; i++)
-				{
-					Rot4 side = sides[i];
-					if (!TryFindSideConveyor(side, out IntVec3 port))
-					{
-						continue;
-					}
-
-					Building conveyor = port.GetEdifice(Map);
-					string role = "CK.VerticalWarehouse.PortMisaligned".Translate();
-					if (conveyor is Building_ConveyorBase belt)
-					{
-						if (belt.OutputDirection == side)
-						{
-							role = "CK.VerticalWarehouse.PortOutput".Translate();
-						}
-						else if (belt.OutputDirection == side.Opposite)
-						{
-							role = "CK.VerticalWarehouse.PortInput".Translate();
-						}
-					}
-					text += "\n" + "CK.VerticalWarehouse.PortStatus".Translate(side.ToString(), role);
-				}
-			}
 			return text;
 		}
 
@@ -849,43 +727,6 @@ namespace ColonyKit.Modules.Storage
 			{
 				yield return gizmo;
 			}
-
-			yield return new Command_Action
-			{
-				defaultLabel = "CK.VerticalWarehouse.ToggleConveyor".Translate(),
-				defaultDesc = "CK.VerticalWarehouse.ToggleConveyorDesc".Translate(),
-				action = () =>
-				{
-					if (TryToggleConveyorDirection(out Rot4 side, out bool output))
-					{
-						string state = output
-							? "CK.VerticalWarehouse.PortOutput".Translate()
-							: "CK.VerticalWarehouse.PortInput".Translate();
-						Messages.Message(
-							"CK.VerticalWarehouse.Toggled".Translate(side.ToString(), state),
-							MessageTypeDefOf.NeutralEvent,
-							false);
-					}
-					else
-					{
-						Messages.Message(
-							"CK.VerticalWarehouse.NoConveyorPort".Translate(),
-							MessageTypeDefOf.RejectInput,
-							false);
-					}
-				}
-			};
-
-			yield return new Command_Toggle
-			{
-				defaultLabel = "CK.VerticalWarehouse.AutoConveyor".Translate(),
-				defaultDesc = "CK.VerticalWarehouse.AutoConveyorDesc".Translate(),
-				isActive = () => autoOutputToConveyor,
-				toggleAction = () =>
-				{
-					autoOutputToConveyor = !autoOutputToConveyor;
-				}
-			};
 
 			yield return new Command_Action
 			{

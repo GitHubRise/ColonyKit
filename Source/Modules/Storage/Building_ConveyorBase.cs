@@ -7,15 +7,13 @@ using Verse;
 namespace ColonyKit.Modules.Storage
 {
 	/// <summary>
-	/// 履带基类：处理方向、反向、30 tick 移动、相邻履带互通。
-	/// 1×1 双向履带与 1×1 转向盘只实现自己的 <see cref="OutputCell"/> 和 <see cref="TryNextCell"/>。
+	/// 履带基类：不依赖玩家摆放方向，物品会自动寻找最近的立体库并沿相邻履带前进。
+	/// 所有 1×1 履带/转向盘共用这套“最近仓库”路由。
 	/// </summary>
 	[StaticConstructorOnStartup]
 	public abstract class Building_ConveyorBase : Building
 	{
 		protected const int MoveIntervalTicks = 30;
-
-		protected bool reversed;
 
 		private static Graphic movingArrow;
 
@@ -35,17 +33,6 @@ namespace ColonyKit.Modules.Storage
 			}
 		}
 
-		public Rot4 OutputDirection => reversed ? Rotation.Opposite : Rotation;
-
-		public bool Reversed => reversed;
-
-		public void ToggleReversed()
-		{
-			reversed = !reversed;
-		}
-
-		public abstract IntVec3 OutputCell { get; }
-
 		protected override void DrawAt(Vector3 drawLoc, bool flip = false)
 		{
 			base.DrawAt(drawLoc, flip);
@@ -55,16 +42,15 @@ namespace ColonyKit.Modules.Storage
 				return;
 			}
 
-			// 空闲时不显示方向；选中/有货物时才显示，便于查看当前出口。
 			bool selected = Find.Selector != null && Find.Selector.IsSelected(this);
 			if (!selected && !HasCargo())
 			{
 				return;
 			}
 
-			// 跑马灯：30 tick 走完一个循环，两个箭头错开半个循环。
+			Rot4 route = RouteDirection();
 			float phase = (Find.TickManager.TicksGame % MoveIntervalTicks) / (float)MoveIntervalTicks;
-			IntVec3 facing = OutputDirection.FacingCell;
+			IntVec3 facing = route.FacingCell;
 			Vector3 direction = new Vector3(facing.x, 0f, facing.z);
 			float halfLength = def.size.x > 1 ? 0.8f : 0.35f;
 
@@ -74,14 +60,8 @@ namespace ColonyKit.Modules.Storage
 				Vector3 position = drawLoc
 					+ direction * Mathf.Lerp(-halfLength, halfLength, t)
 					+ new Vector3(0f, 0.03f, 0f);
-				MovingArrow.Draw(position, OutputDirection, this);
+				MovingArrow.Draw(position, route, this);
 			}
-		}
-
-		public override void ExposeData()
-		{
-			base.ExposeData();
-			Scribe_Values.Look(ref reversed, "reversed", false);
 		}
 
 		protected override void Tick()
@@ -106,36 +86,94 @@ namespace ColonyKit.Modules.Storage
 						continue;
 					}
 
-					if (!TryNextCell(cell, out IntVec3 next, out bool leavesConveyor))
+					// 先看四邻是否直接贴着重立体库；任意一边都可以存入。
+					if (TryStoreAdjacent(item))
 					{
-						continue;
+						break;
 					}
 
-					if (leavesConveyor && next != OutputCell)
+					if (TryFindNextCell(cell, out IntVec3 next) && CanPlaceAt(next))
 					{
-						continue;
+						item.Position = next;
+						break;
 					}
-
-					// 履带出口对准立体库端口：直接送入内部库存，而不是把物品放在建筑格上。
-					if (next.GetEdifice(Map) is Building_VerticalWarehouse warehouse
-						&& warehouse.HasAnyConveyorConnection)
-					{
-						if (warehouse.TryStoreInNetwork(item))
-						{
-							break;
-						}
-						continue;
-					}
-
-					if (!CanPlaceAt(next))
-					{
-						continue;
-					}
-
-					item.Position = next;
-					break;
 				}
 			}
+		}
+
+		private bool TryStoreAdjacent(Thing item)
+		{
+			foreach (Building_VerticalWarehouse warehouse in Map.listerBuildings
+				.AllBuildingsColonistOfClass<Building_VerticalWarehouse>())
+			{
+				CellRect rect = GenAdj.OccupiedRect(warehouse);
+				if (rect.ExpandedBy(1).Contains(Position)
+					&& warehouse.TryStoreInNetwork(item))
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		/// <summary>向最近的立体库走一格；只走相邻履带，不判断建筑 Rotation。</summary>
+		private bool TryFindNextCell(IntVec3 from, out IntVec3 next)
+		{
+			next = from;
+			Building_VerticalWarehouse target = FindNearestWarehouse(from);
+			if (target == null)
+			{
+				return false;
+			}
+
+			int currentDistance = Distance(from, target.Position);
+			int bestDistance = currentDistance;
+			foreach (Rot4 side in AllDirections())
+			{
+				IntVec3 candidate = from + side.FacingCell;
+				if (!candidate.InBounds(Map) || !(candidate.GetEdifice(Map) is Building_ConveyorBase))
+				{
+					continue;
+				}
+
+				int distance = Distance(candidate, target.Position);
+				if (distance < bestDistance)
+				{
+					bestDistance = distance;
+					next = candidate;
+				}
+			}
+			return next != from;
+		}
+
+		private Building_VerticalWarehouse FindNearestWarehouse(IntVec3 from)
+		{
+			Building_VerticalWarehouse best = null;
+			int bestDistance = int.MaxValue;
+			foreach (Building_VerticalWarehouse warehouse in Map.listerBuildings
+				.AllBuildingsColonistOfClass<Building_VerticalWarehouse>())
+			{
+				int distance = Distance(from, warehouse.Position);
+				if (distance < bestDistance)
+				{
+					bestDistance = distance;
+					best = warehouse;
+				}
+			}
+			return best;
+		}
+
+		private Rot4 RouteDirection()
+		{
+			if (TryFindNextCell(Position, out IntVec3 next))
+			{
+				IntVec3 delta = next - Position;
+				if (delta.x > 0) return Rot4.East;
+				if (delta.x < 0) return Rot4.West;
+				if (delta.z > 0) return Rot4.North;
+				return Rot4.South;
+			}
+			return Rotation;
 		}
 
 		private bool HasCargo()
@@ -152,8 +190,6 @@ namespace ColonyKit.Modules.Storage
 			}
 			return false;
 		}
-
-		protected abstract bool TryNextCell(IntVec3 from, out IntVec3 next, out bool leavesConveyor);
 
 		protected static bool CanMove(Thing thing)
 		{
@@ -179,9 +215,21 @@ namespace ColonyKit.Modules.Storage
 				return false;
 			}
 
-			// 每格只放一堆；相邻履带已有一堆时等下一轮，避免重叠。
 			int max = cell.GetMaxItemsAllowedInCell(Map);
 			return max > 0 && cell.GetItemCount(Map) < max;
+		}
+
+		private static IEnumerable<Rot4> AllDirections()
+		{
+			yield return Rot4.North;
+			yield return Rot4.East;
+			yield return Rot4.South;
+			yield return Rot4.West;
+		}
+
+		private static int Distance(IntVec3 a, IntVec3 b)
+		{
+			return Mathf.Abs(a.x - b.x) + Mathf.Abs(a.z - b.z);
 		}
 
 		public override string GetInspectString()
@@ -192,30 +240,16 @@ namespace ColonyKit.Modules.Storage
 				text += "\n";
 			}
 
-			string suffix = reversed
-				? "CK.ConveyorHub.ReversedSuffix".Translate()
-				: "";
-			text += "CK.ConveyorHub.Status".Translate(OutputDirection.ToString(), suffix);
-			return text;
-		}
-
-		public override IEnumerable<Gizmo> GetGizmos()
-		{
-			foreach (Gizmo gizmo in base.GetGizmos())
+			Building_VerticalWarehouse target = FindNearestWarehouse(Position);
+			if (target != null)
 			{
-				yield return gizmo;
+				text += "CK.ConveyorHub.Target".Translate(target.Position.x, target.Position.z);
 			}
-
-			yield return new Command_Action
+			else
 			{
-				defaultLabel = "CK.ConveyorHub.Reverse".Translate(),
-				defaultDesc = "CK.ConveyorHub.ReverseDesc".Translate(),
-				action = () =>
-				{
-					ToggleReversed();
-					Messages.Message("CK.ConveyorHub.Reversed".Translate(), MessageTypeDefOf.NeutralEvent, false);
-				}
-			};
+				text += "CK.ConveyorHub.NoTarget".Translate();
+			}
+			return text;
 		}
 	}
 }
