@@ -11,8 +11,7 @@ namespace ColonyKit.Modules.Hygiene
 		{
 			// 模块关闭或检测到 DBH 时，即使旧存档里还留着 CK_Hygiene，
 			// 也不应该继续自动派洗澡工作。
-			if (!ModuleRegistry.IsEnabled("hygiene")
-				|| ModsConfig.IsActive("dubwise.dubsbadhygiene"))
+			if (!HygieneSettings.Current.ShouldRunHygiene)
 			{
 				return 0f;
 			}

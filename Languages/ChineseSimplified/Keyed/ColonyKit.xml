@@ -250,4 +250,41 @@
 	<ColonyKit.Settings.Blueprint.MaxRecords.Desc>达到上限后需要先删除旧蓝图。</ColonyKit.Settings.Blueprint.MaxRecords.Desc>
 	<ColonyKit.Settings.Blueprint.Verbose>记录蓝图明细</ColonyKit.Settings.Blueprint.Verbose>
 	<ColonyKit.Settings.Blueprint.Verbose.Desc>每次捕获/放置写一行日志，排查用。</ColonyKit.Settings.Blueprint.Verbose.Desc>
+
+	<ColonyKit.Settings.Tab.Hygiene>卫生</ColonyKit.Settings.Tab.Hygiene>
+	<ColonyKit.Settings.Hygiene.Hint>调整卫生需求下降速度、洁具耗水、污染风险、DBH 共存策略与需求豁免。修改策略或豁免后建议点「应用到现有小人」。</ColonyKit.Settings.Hygiene.Hint>
+	<ColonyKit.Settings.Hygiene.Section.Needs>需求速率</ColonyKit.Settings.Hygiene.Section.Needs>
+	<ColonyKit.Settings.Hygiene.NeedsRate>卫生下降速度</ColonyKit.Settings.Hygiene.NeedsRate>
+	<ColonyKit.Settings.Hygiene.NeedsRate.Desc>1.00 为默认；0 表示卫生不再自然下降。</ColonyKit.Settings.Hygiene.NeedsRate.Desc>
+	<ColonyKit.Settings.Hygiene.BladderRate>膀胱下降速度</ColonyKit.Settings.Hygiene.BladderRate>
+	<ColonyKit.Settings.Hygiene.BladderRate.Desc>1.00 为默认；0 表示膀胱不再自然下降。</ColonyKit.Settings.Hygiene.BladderRate.Desc>
+	<ColonyKit.Settings.Hygiene.Section.Water>水与污染</ColonyKit.Settings.Hygiene.Section.Water>
+	<ColonyKit.Settings.Hygiene.WaterUse>洁具耗水倍率</ColonyKit.Settings.Hygiene.WaterUse>
+	<ColonyKit.Settings.Hygiene.WaterUse.Desc>作用于淋浴、浴缸、洗手池和马桶；1.00 为默认。</ColonyKit.Settings.Hygiene.WaterUse.Desc>
+	<ColonyKit.Settings.Hygiene.Contamination>污染概率</ColonyKit.Settings.Hygiene.Contamination>
+	<ColonyKit.Settings.Hygiene.Contamination.Desc>脏水造成污染的概率倍率；100% 为默认，0 为关闭。</ColonyKit.Settings.Hygiene.Contamination.Desc>
+	<ColonyKit.Settings.Hygiene.Section.Dbh>DBH 兼容</ColonyKit.Settings.Hygiene.Section.Dbh>
+	<ColonyKit.Settings.Hygiene.Dbh.Policy>DBH 策略</ColonyKit.Settings.Hygiene.Dbh.Policy>
+	<ColonyKit.Settings.Hygiene.Dbh.Policy.Desc>检测到 Dubs Bad Hygiene 时如何处理本模块的卫生需求与自动工作。</ColonyKit.Settings.Hygiene.Dbh.Policy.Desc>
+	<ColonyKit.Settings.Hygiene.Dbh.SoftOff>检测到 DBH 时软停用（推荐）</ColonyKit.Settings.Hygiene.Dbh.SoftOff>
+	<ColonyKit.Settings.Hygiene.Dbh.AlwaysOn>始终启用（与 DBH 并存）</ColonyKit.Settings.Hygiene.Dbh.AlwaysOn>
+	<ColonyKit.Settings.Hygiene.Dbh.Disabled>禁用卫生系统</ColonyKit.Settings.Hygiene.Dbh.Disabled>
+	<ColonyKit.Settings.Hygiene.Dbh.Detected>已检测到 Dubs Bad Hygiene。</ColonyKit.Settings.Hygiene.Dbh.Detected>
+	<ColonyKit.Settings.Hygiene.Dbh.NotDetected>未检测到 Dubs Bad Hygiene。</ColonyKit.Settings.Hygiene.Dbh.NotDetected>
+	<ColonyKit.Settings.Hygiene.Section.Exemptions>需求豁免</ColonyKit.Settings.Hygiene.Section.Exemptions>
+	<ColonyKit.Settings.Hygiene.Exemptions.Hint>以下名单使用 defName，逗号或分号分隔；留空表示不豁免。</ColonyKit.Settings.Hygiene.Exemptions.Hint>
+	<ColonyKit.Settings.Hygiene.Prisoners>囚犯获得卫生需求</ColonyKit.Settings.Hygiene.Prisoners>
+	<ColonyKit.Settings.Hygiene.Prisoners.Desc>关闭后囚犯不会获得本模块的卫生/膀胱需求。</ColonyKit.Settings.Hygiene.Prisoners.Desc>
+	<ColonyKit.Settings.Hygiene.Guests>访客获得卫生需求</ColonyKit.Settings.Hygiene.Guests>
+	<ColonyKit.Settings.Hygiene.Guests.Desc>关闭后访客和任务借调者不会获得本模块的需求。</ColonyKit.Settings.Hygiene.Guests.Desc>
+	<ColonyKit.Settings.Hygiene.NonHuman>非人形种族获得卫生需求</ColonyKit.Settings.Hygiene.NonHuman>
+	<ColonyKit.Settings.Hygiene.NonHuman.Desc>关闭后非人类体型的异种人形不会获得本模块的需求。</ColonyKit.Settings.Hygiene.NonHuman.Desc>
+	<ColonyKit.Settings.Hygiene.ExemptRaces>豁免种族</ColonyKit.Settings.Hygiene.ExemptRaces>
+	<ColonyKit.Settings.Hygiene.ExemptRaces.Desc>例如 Ratkin, Orassan；留空表示不豁免。</ColonyKit.Settings.Hygiene.ExemptRaces.Desc>
+	<ColonyKit.Settings.Hygiene.ExemptBodies>豁免体型</ColonyKit.Settings.Hygiene.ExemptBodies>
+	<ColonyKit.Settings.Hygiene.ExemptBodies.Desc>默认排除 HumanoidTerminator/AIRobot/AIPawn。</ColonyKit.Settings.Hygiene.ExemptBodies.Desc>
+	<ColonyKit.Settings.Hygiene.ExemptHediffs>豁免 Hediff</ColonyKit.Settings.Hygiene.ExemptHediffs>
+	<ColonyKit.Settings.Hygiene.ExemptHediffs.Desc>拥有这些 Hediff 的小人不会获得本模块的需求。</ColonyKit.Settings.Hygiene.ExemptHediffs.Desc>
+	<ColonyKit.Settings.Hygiene.ApplyExemptions>应用到现有小人</ColonyKit.Settings.Hygiene.ApplyExemptions>
+	<ColonyKit.Settings.Hygiene.Applied>卫生需求已按当前设置重新评估。</ColonyKit.Settings.Hygiene.Applied>
 </LanguageData>

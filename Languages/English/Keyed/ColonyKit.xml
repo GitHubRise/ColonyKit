@@ -250,4 +250,41 @@
 	<ColonyKit.Settings.Blueprint.MaxRecords.Desc>Delete old blueprints after reaching this limit.</ColonyKit.Settings.Blueprint.MaxRecords.Desc>
 	<ColonyKit.Settings.Blueprint.Verbose>Log blueprint details</ColonyKit.Settings.Blueprint.Verbose>
 	<ColonyKit.Settings.Blueprint.Verbose.Desc>Write one log line per capture/placement for troubleshooting.</ColonyKit.Settings.Blueprint.Verbose.Desc>
+
+	<ColonyKit.Settings.Tab.Hygiene>Hygiene</ColonyKit.Settings.Tab.Hygiene>
+	<ColonyKit.Settings.Hygiene.Hint>Adjust hygiene and bladder decay, fixture water use, contamination risk, DBH coexistence and need exemptions. After changing policy or exemptions, use "Apply to existing pawns".</ColonyKit.Settings.Hygiene.Hint>
+	<ColonyKit.Settings.Hygiene.Section.Needs>Need rates</ColonyKit.Settings.Hygiene.Section.Needs>
+	<ColonyKit.Settings.Hygiene.NeedsRate>Hygiene decay rate</ColonyKit.Settings.Hygiene.NeedsRate>
+	<ColonyKit.Settings.Hygiene.NeedsRate.Desc>1.00 is default; 0 means hygiene no longer decays naturally.</ColonyKit.Settings.Hygiene.NeedsRate.Desc>
+	<ColonyKit.Settings.Hygiene.BladderRate>Bladder decay rate</ColonyKit.Settings.Hygiene.BladderRate>
+	<ColonyKit.Settings.Hygiene.BladderRate.Desc>1.00 is default; 0 means the bladder no longer fills naturally.</ColonyKit.Settings.Hygiene.BladderRate.Desc>
+	<ColonyKit.Settings.Hygiene.Section.Water>Water and contamination</ColonyKit.Settings.Hygiene.Section.Water>
+	<ColonyKit.Settings.Hygiene.WaterUse>Fixture water use</ColonyKit.Settings.Hygiene.WaterUse>
+	<ColonyKit.Settings.Hygiene.WaterUse.Desc>Applies to showers, baths, basins and toilets; 1.00 is default.</ColonyKit.Settings.Hygiene.WaterUse.Desc>
+	<ColonyKit.Settings.Hygiene.Contamination>Contamination chance</ColonyKit.Settings.Hygiene.Contamination>
+	<ColonyKit.Settings.Hygiene.Contamination.Desc>Multiplier for dirty-water contamination; 100% is default, 0 disables it.</ColonyKit.Settings.Hygiene.Contamination.Desc>
+	<ColonyKit.Settings.Hygiene.Section.Dbh>DBH compatibility</ColonyKit.Settings.Hygiene.Section.Dbh>
+	<ColonyKit.Settings.Hygiene.Dbh.Policy>DBH policy</ColonyKit.Settings.Hygiene.Dbh.Policy>
+	<ColonyKit.Settings.Hygiene.Dbh.Policy.Desc>How this module's hygiene needs and automatic jobs behave when Dubs Bad Hygiene is detected.</ColonyKit.Settings.Hygiene.Dbh.Policy.Desc>
+	<ColonyKit.Settings.Hygiene.Dbh.SoftOff>Soft-off when DBH is detected (recommended)</ColonyKit.Settings.Hygiene.Dbh.SoftOff>
+	<ColonyKit.Settings.Hygiene.Dbh.AlwaysOn>Always on (coexist with DBH)</ColonyKit.Settings.Hygiene.Dbh.AlwaysOn>
+	<ColonyKit.Settings.Hygiene.Dbh.Disabled>Disable hygiene system</ColonyKit.Settings.Hygiene.Dbh.Disabled>
+	<ColonyKit.Settings.Hygiene.Dbh.Detected>Dubs Bad Hygiene detected.</ColonyKit.Settings.Hygiene.Dbh.Detected>
+	<ColonyKit.Settings.Hygiene.Dbh.NotDetected>Dubs Bad Hygiene not detected.</ColonyKit.Settings.Hygiene.Dbh.NotDetected>
+	<ColonyKit.Settings.Hygiene.Section.Exemptions>Need exemptions</ColonyKit.Settings.Hygiene.Section.Exemptions>
+	<ColonyKit.Settings.Hygiene.Exemptions.Hint>Lists use defNames separated by commas or semicolons; leave empty for no exemption.</ColonyKit.Settings.Hygiene.Exemptions.Hint>
+	<ColonyKit.Settings.Hygiene.Prisoners>Prisoners get hygiene needs</ColonyKit.Settings.Hygiene.Prisoners>
+	<ColonyKit.Settings.Hygiene.Prisoners.Desc>If off, prisoners receive no hygiene or bladder need from this module.</ColonyKit.Settings.Hygiene.Prisoners.Desc>
+	<ColonyKit.Settings.Hygiene.Guests>Guests get hygiene needs</ColonyKit.Settings.Hygiene.Guests>
+	<ColonyKit.Settings.Hygiene.Guests.Desc>If off, guests and quest lodgers receive no needs from this module.</ColonyKit.Settings.Hygiene.Guests.Desc>
+	<ColonyKit.Settings.Hygiene.NonHuman>Non-human races get hygiene needs</ColonyKit.Settings.Hygiene.NonHuman>
+	<ColonyKit.Settings.Hygiene.NonHuman.Desc>If off, non-human humanlike body types receive no needs from this module.</ColonyKit.Settings.Hygiene.NonHuman.Desc>
+	<ColonyKit.Settings.Hygiene.ExemptRaces>Exempt races</ColonyKit.Settings.Hygiene.ExemptRaces>
+	<ColonyKit.Settings.Hygiene.ExemptRaces.Desc>For example Ratkin, Orassan; empty means no exemption.</ColonyKit.Settings.Hygiene.ExemptRaces.Desc>
+	<ColonyKit.Settings.Hygiene.ExemptBodies>Exempt body types</ColonyKit.Settings.Hygiene.ExemptBodies>
+	<ColonyKit.Settings.Hygiene.ExemptBodies.Desc>Defaults exclude HumanoidTerminator/AIRobot/AIPawn.</ColonyKit.Settings.Hygiene.ExemptBodies.Desc>
+	<ColonyKit.Settings.Hygiene.ExemptHediffs>Exempt hediffs</ColonyKit.Settings.Hygiene.ExemptHediffs>
+	<ColonyKit.Settings.Hygiene.ExemptHediffs.Desc>Pawns with any of these hediffs receive no needs from this module.</ColonyKit.Settings.Hygiene.ExemptHediffs.Desc>
+	<ColonyKit.Settings.Hygiene.ApplyExemptions>Apply to existing pawns</ColonyKit.Settings.Hygiene.ApplyExemptions>
+	<ColonyKit.Settings.Hygiene.Applied>Hygiene needs re-evaluated with the current settings.</ColonyKit.Settings.Hygiene.Applied>
 </LanguageData>

@@ -8,8 +8,7 @@ namespace ColonyKit.Modules.Hygiene
 	{
 		public override float GetPriority(Pawn pawn)
 		{
-			if (!ModuleRegistry.IsEnabled("hygiene")
-				|| ModsConfig.IsActive("dubwise.dubsbadhygiene"))
+			if (!HygieneSettings.Current.ShouldRunHygiene)
 			{
 				return 0f;
 			}

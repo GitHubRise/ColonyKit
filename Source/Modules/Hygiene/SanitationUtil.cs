@@ -26,10 +26,28 @@ namespace ColonyKit.Modules.Hygiene
 
 		public static void ContaminationCheckWater(Pawn pawn, ContaminationLevel level)
 		{
-			if (pawn?.health == null || level < ContaminationLevel.Contaminated)
+			if (pawn?.health == null || level < ContaminationLevel.Untreated)
 			{
 				return;
 			}
+			float chance = HygieneSettings.Current.contaminationChanceMultiplier;
+			if (chance <= 0f)
+			{
+				return;
+			}
+			if (level == ContaminationLevel.Untreated)
+			{
+				// 未处理水的基准概率沿用 DBH 的 0.2%，设置只做倍率。
+				if (!Rand.Chance(0.002f * chance))
+				{
+					return;
+				}
+			}
+			else if (chance < 1f && !Rand.Chance(chance))
+			{
+				return;
+			}
+
 			// 脏水洗完后要把污染标记重新打上；否则 CleanContamination 会把
 			// “这次用脏水洗过”也一起洗掉。
 			pawn.needs?.TryGetNeed<Need_Hygiene>()?.Contaminated();

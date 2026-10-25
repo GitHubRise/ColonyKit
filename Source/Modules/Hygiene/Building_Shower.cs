@@ -12,7 +12,7 @@ namespace ColonyKit.Modules.Hygiene
 
 		public virtual float WaterUsedPerTick => 0.13f;
 
-		public override float waterUsed => 50f;
+		public override float waterUsed => 50f * HygieneSettings.Current.waterUseMultiplier;
 
 		public virtual float HeatUsedPerTick => 0.00025f;
 
@@ -45,11 +45,12 @@ namespace ColonyKit.Modules.Hygiene
 		{
 			cold = true;
 			contam = ContaminationLevel.Treated;
-			if (!HasWaterSupply || !Working(WaterUsedPerTick).Accepted)
+			float amount = WaterUsedPerTick * HygieneSettings.Current.waterUseMultiplier;
+			if (!HasWaterSupply || !Working(amount).Accepted)
 			{
 				return false;
 			}
-			if (!pipe.pipeNet.PullWater(WaterUsedPerTick, out contam))
+			if (!pipe.pipeNet.PullWater(amount, out contam))
 			{
 				return false;
 			}

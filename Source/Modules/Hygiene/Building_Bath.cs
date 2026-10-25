@@ -15,7 +15,7 @@ namespace ColonyKit.Modules.Hygiene
 		public float WaterInTub;
 		private bool cold = true;
 
-		public override float waterUsed => 190f;
+		public override float waterUsed => 190f * HygieneSettings.Current.waterUseMultiplier;
 
 		public override FixtureType fixture => FixtureType.Bath;
 
@@ -29,11 +29,12 @@ namespace ColonyKit.Modules.Hygiene
 
 		public bool TryFillBath()
 		{
-			if (!HasWaterSupply || !Working(waterUsedPerTick).Accepted)
+			float amount = waterUsedPerTick * HygieneSettings.Current.waterUseMultiplier;
+			if (!HasWaterSupply || !Working(amount).Accepted)
 			{
 				return false;
 			}
-			if (!pipe.pipeNet.PullWater(waterUsedPerTick, out ContaminationLevel contam))
+			if (!pipe.pipeNet.PullWater(amount, out ContaminationLevel contam))
 			{
 				return false;
 			}
@@ -41,7 +42,7 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				contamination = contam;
 			}
-			WaterInTub += waterUsedPerTick;
+			WaterInTub += amount;
 			if (pipe.pipeNet.PullHotWater(heatUsedPerTick))
 			{
 				cold = false;

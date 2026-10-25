@@ -17,10 +17,12 @@ namespace ColonyKit.Modules.Hygiene
 
 		public override void OnDefsLoaded()
 		{
+			HygieneSettings hygieneSettings = HygieneSettings.Current;
 			ModLog.Info(
 				"Hygiene",
 				"module loaded (DBH shower migration); " +
-				$"DBH active={ModsConfig.IsActive("dubwise.dubsbadhygiene")}");
+				$"DBH active={hygieneSettings.DbhDetected}, " +
+				$"policy={hygieneSettings.dbhPolicy}, run={hygieneSettings.ShouldRunHygiene}");
 
 			ThingDef shower = DefDatabase<ThingDef>.GetNamedSilentFail("CK_Shower");
 			bool showerPower = false;
@@ -56,6 +58,8 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return;
 			}
+			// 让存档里已有的需求按当前策略/豁免重新评估；新需求由 ShouldHaveNeed 补丁负责。
+			HygieneUtility.RefreshAllPawns();
 			int humanlikes = 0;
 			int withNeed = 0;
 			int withBladder = 0;
@@ -78,7 +82,10 @@ namespace ColonyKit.Modules.Hygiene
 					}
 				}
 			}
-			ModLog.Info("Hygiene", $"need injection check: humanlikes={humanlikes}, withHygiene={withNeed}, withBladder={withBladder}");
+			ModLog.Info(
+				"Hygiene",
+				$"need injection check: humanlikes={humanlikes}, withHygiene={withNeed}, withBladder={withBladder}; " +
+				$"policy={HygieneSettings.Current.dbhPolicy}, run={HygieneSettings.Current.ShouldRunHygiene}");
 		}
 	}
 
@@ -95,16 +102,9 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return;
 			}
-			if (!ModuleRegistry.IsEnabled("hygiene")
-				|| ModsConfig.IsActive("dubwise.dubsbadhygiene"))
-			{
-				return;
-			}
 
 			Pawn pawn = PawnField(__instance);
-			if (pawn != null
-				&& pawn.RaceProps.Humanlike
-				&& !pawn.RaceProps.IsMechanoid)
+			if (pawn != null && HygieneUtility.ShouldInject(pawn, nd))
 			{
 				__result = true;
 			}

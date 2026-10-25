@@ -11,7 +11,7 @@ namespace ColonyKit.Modules.Hygiene
 		public float waterUsedPerTick = 0.04f;
 		public float HeatUsedPerTick = 0.00025f;
 
-		public override float waterUsed => 1f;
+		public override float waterUsed => 4f * HygieneSettings.Current.waterUseMultiplier;
 
 		public override FixtureType fixture => FixtureType.Basin;
 
@@ -22,11 +22,12 @@ namespace ColonyKit.Modules.Hygiene
 		public bool TryUseWater(out ContaminationLevel contam)
 		{
 			contam = ContaminationLevel.Treated;
-			if (!HasWaterSupply || !Working(waterUsedPerTick).Accepted)
+			float amount = waterUsedPerTick * HygieneSettings.Current.waterUseMultiplier;
+			if (!HasWaterSupply || !Working(amount).Accepted)
 			{
 				return false;
 			}
-			if (!pipe.pipeNet.PullWater(waterUsedPerTick, out contam))
+			if (!pipe.pipeNet.PullWater(amount, out contam))
 			{
 				return false;
 			}

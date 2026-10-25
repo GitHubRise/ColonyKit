@@ -67,7 +67,8 @@ namespace ColonyKit.Modules.Hygiene
 			}
 		}
 
-		private float FallPerTick => 5E-06f * HygieneRate * FallRateMulti21;
+		private float FallPerTick =>
+			5E-06f * HygieneRate * FallRateMulti21 * HygieneSettings.Current.hygieneRateMultiplier;
 
 		public override int GUIChangeArrow
 		{

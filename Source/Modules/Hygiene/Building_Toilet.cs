@@ -11,7 +11,7 @@ namespace ColonyKit.Modules.Hygiene
 		public bool seatUp;
 		private Graphic seatUpGraphic;
 
-		public override float waterUsed => 14f;
+		public override float waterUsed => 14f * HygieneSettings.Current.waterUseMultiplier;
 
 		public override FixtureType fixture => FixtureType.Toilet;
 
@@ -45,6 +45,8 @@ namespace ColonyKit.Modules.Hygiene
 			Scribe_Values.Look(ref seatUp, "seatUp", false);
 		}
 
+		public bool HasWaterSupply => pipe != null && !pipe.closed && pipe.pipeNet != null;
+
 		public bool TryUseFlush()
 		{
 			CompPipe waterPipe = pipe;
@@ -57,12 +59,19 @@ namespace ColonyKit.Modules.Hygiene
 					break;
 				}
 			}
+			if (!HasWaterSupply || !Working().Accepted)
+			{
+				return false;
+			}
+			if (!waterPipe.pipeNet.PullWater(waterUsed, out _))
+			{
+				return false;
+			}
 			if (sewagePipe?.pipeNet != null)
 			{
-				sewagePipe.pipeNet.PushSewage(14f);
+				sewagePipe.pipeNet.PushSewage(waterUsed);
 			}
-			return waterPipe?.pipeNet == null
-				|| waterPipe.pipeNet.PullWater(waterUsed, out _);
+			return true;
 		}
 
 		public bool CanUse(Pawn pawn)
@@ -71,7 +80,9 @@ namespace ColonyKit.Modules.Hygiene
 				&& PawnAllowed(pawn)
 				&& !Occupied(pawn)
 				&& pawn.CanReserve(this)
-				&& pawn.CanReach(this, PathEndMode.OnCell, Danger.Deadly);
+				&& pawn.CanReach(this, PathEndMode.OnCell, Danger.Deadly)
+				&& HasWaterSupply
+				&& Working().Accepted;
 		}
 	}
 }

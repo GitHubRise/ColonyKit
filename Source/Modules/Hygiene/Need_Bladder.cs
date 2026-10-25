@@ -42,7 +42,7 @@ namespace ColonyKit.Modules.Hygiene
 				{
 					value *= 0.15f;
 				}
-				return value * BladderRate;
+				return value * BladderRate * HygieneSettings.Current.bladderRateMultiplier;
 			}
 		}
 

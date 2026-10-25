@@ -40,18 +40,34 @@ namespace ColonyKit.Modules.Hygiene
 		}
 
 		/// <summary>
-		/// 手动补需求时也必须走和 ShouldHaveNeed 补丁一致的开关判断，
+		/// 手动补需求时也必须走和 ShouldHaveNeed 补丁一致的判断，
 		/// 否则读档时会把 DBH 已软停用的需求重新加回去。
 		/// </summary>
 		internal static bool ShouldInject(Pawn pawn, NeedDef def)
 		{
-			return pawn?.needs != null
-				&& def != null
-				&& ModuleRegistry.IsEnabled("hygiene")
-				&& !ModsConfig.IsActive("dubwise.dubsbadhygiene")
-				&& pawn.RaceProps.Humanlike
-				&& !pawn.RaceProps.IsMechanoid
-				&& (int)pawn.RaceProps.intelligence >= (int)def.minIntelligence;
+			return HygieneSettings.Current.ShouldInject(pawn, def);
+		}
+
+		/// <summary>设置里的策略/豁免变化后，让所有小人的需求列表立即重新评估。</summary>
+		public static void RefreshAllPawns()
+		{
+			if (Current.Game == null)
+			{
+				return;
+			}
+			foreach (Map map in Find.Maps)
+			{
+				foreach (Pawn pawn in map.mapPawns.AllPawnsSpawned)
+				{
+					if (pawn?.needs == null
+						|| !pawn.RaceProps.Humanlike
+						|| pawn.RaceProps.IsMechanoid)
+					{
+						continue;
+					}
+					pawn.needs.AddOrRemoveNeedsAsAppropriate();
+				}
+			}
 		}
 	}
 }
