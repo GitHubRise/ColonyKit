@@ -57,7 +57,7 @@ namespace ColonyKit.Modules.Hygiene
 
 		public bool Occupied(Pawn checker)
 		{
-			if (!OccupancyCheck)
+			if (!OccupancyCheck || !Spawned)
 			{
 				return false;
 			}

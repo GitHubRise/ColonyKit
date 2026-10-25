@@ -78,8 +78,14 @@ namespace ColonyKit.Modules.Hygiene
 			CurLevel = 1f;
 			if (pawn.needs?.mood != null && pawn.health.capacities.CanBeAwake)
 			{
-				pawn.needs.mood.thoughts.memories.TryGainMemory(
-					ThoughtDef.Named("SoiledSelf"));
+				// 优先用 ColonyKit 自己的 def；若同时装了 DBH，则退回它的同名 def。
+				ThoughtDef soiledSelf =
+					DefDatabase<ThoughtDef>.GetNamedSilentFail("CK_SoiledSelf")
+					?? DefDatabase<ThoughtDef>.GetNamedSilentFail("SoiledSelf");
+				if (soiledSelf != null)
+				{
+					pawn.needs.mood.thoughts.memories.TryGainMemory(soiledSelf);
+				}
 			}
 			ThingDef filth = DefDatabase<ThingDef>.GetNamedSilentFail(
 				Rand.Chance(0.5f) ? "FilthFaeces" : "FilthUrine");

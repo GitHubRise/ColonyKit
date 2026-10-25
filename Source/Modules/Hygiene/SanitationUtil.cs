@@ -39,7 +39,8 @@ namespace ColonyKit.Modules.Hygiene
 
 		public static void ApplyBathroomThought(Pawn pawn, Building_AssignableFixture fixture)
 		{
-			if (pawn == null || fixture == null)
+			// finish action 可能在设施被拆除/搬运后执行，此时 Map 为 null，GetRoom 会抛 NRE。
+			if (pawn == null || fixture == null || !fixture.Spawned || fixture.Map == null)
 			{
 				return;
 			}

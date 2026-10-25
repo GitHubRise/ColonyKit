@@ -65,6 +65,19 @@
 		</stages>
 	</ThoughtDef>
 	<ThoughtDef>
+		<defName>CK_SoiledSelf</defName>
+		<durationDays>1</durationDays>
+		<stackLimit>3</stackLimit>
+		<stages>
+			<li>
+				<label>soiled myself</label>
+				<description>I couldn't hold it in any longer and soiled myself.</description>
+				<baseMoodEffect>-8</baseMoodEffect>
+			</li>
+		</stages>
+		<showBubble>true</showBubble>
+	</ThoughtDef>
+	<ThoughtDef>
 		<defName>CK_PrivateBathroom</defName>
 		<durationDays>1</durationDays>
 		<stackLimit>1</stackLimit>
