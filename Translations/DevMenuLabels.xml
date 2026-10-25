@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!--
   开发者菜单汉化表（DevMenuChinese）
 
@@ -1018,8 +1018,8 @@
     <entry key="yrapmaida" menu="spawning" zh="尤兰莲衣" />
     <entry key="yuranheugwi" menu="spawning" zh="尤兰黑衣" />
     <entry key="yrapmaidb" menu="spawning" zh="尤兰黑衣" />
-    <entry key="yuranwikatyusha" menu="spawning" zh="尤兰喀秋莎外衣" />
-    <entry key="yrapmaidhat" menu="spawning" zh="尤兰喀秋莎外衣" />
+    <entry key="yuranwikatyusha" menu="spawning" zh="尤兰喀秋莎帽" />
+    <entry key="yrapmaidhat" menu="spawning" zh="尤兰喀秋莎帽" />
     <entry key="yuranjeogmu" menu="spawning" zh="尤兰赤舞" />
     <entry key="yrapmiko" menu="spawning" zh="尤兰赤舞" />
     <entry key="yuranjeogwol" menu="spawning" zh="尤兰赤月" />
@@ -1041,11 +1041,11 @@
     <entry key="yuranbaeglo" menu="spawning" zh="尤兰白鹭" />
     <entry key="yrapwhite" menu="spawning" zh="尤兰白鹭" />
     <entry key="yuranbaeglohat" menu="spawning" zh="尤兰白鹭帽" />
-    <entry key="yrapwhitehood" menu="spawning" zh="尤兰白鹭帽" />
+    <entry key="yrapwhitehood" menu="spawning" zh="尤兰白鹭兜帽" />
     <entry key="yuranbaegwol" menu="spawning" zh="尤兰白月" />
     <entry key="yrapwhitemoon" menu="spawning" zh="尤兰白月" />
     <entry key="yuranbaegun" menu="spawning" zh="尤兰白云" />
-    <entry key="yrapwhiteoutcloth" menu="spawning" zh="尤兰白云" />
+    <entry key="yrapwhiteoutcloth" menu="spawning" zh="尤兰白云外衣" />
     <entry key="cherryblossompetals" menu="spawning" zh="樱花花瓣" />
     <entry key="filthyrhana" menu="spawning" zh="樱花花瓣" />
     <entry key="dragonianbasicdress" menu="spawning" zh="龙族基础连衣裙" />
@@ -1106,5 +1106,247 @@
     <entry key="cloacalvagina" menu="spawning" zh="泄殖腔阴道" />
     <entry key="firefoampopperminified" menu="spawning" zh="灭火器（已打包）" />
     <entry key="firefoampopper" menu="spawning" zh="灭火器" />
+    <entry key="drjavelinbullet" menu="spawning" zh="龙族投矛" />
+    <entry key="javelin" menu="spawning" zh="龙族投矛" />
+    <entry key="wooldragonian" menu="spawning" zh="龙族毛" />
+    <entry key="dragonianwool" menu="spawning" zh="龙族毛" />
+    <entry key="arrowyrwpbow" menu="spawning" zh="尤兰箭" />
+    <entry key="arrow" menu="spawning" zh="尤兰箭" />
+    <entry key="arrowyrwpflowerspine" menu="spawning" zh="花瓣" />
+    <entry key="petal" menu="spawning" zh="花瓣" />
+    <entry key="arrowyrwpspear" menu="spawning" zh="尤兰长矛" />
+    <entry key="yuranspear" menu="spawning" zh="尤兰长矛" />
+    <entry key="arrowyrwpstaff" menu="spawning" zh="巫女法术弹" />
+    <entry key="spell" menu="spawning" zh="巫女法术弹" />
+    <entry key="arrowyrwpstaffc" menu="spawning" zh="巫女束缚术" />
+    <entry key="arrowyrwpstaffcblacksnake" menu="spawning" zh="黑蛇束缚术" />
+    <entry key="arrowyrwpstaffblacksnake" menu="spawning" zh="黑蛇法术弹" />
+    <entry key="arrowyrwpkunai" menu="spawning" zh="苦无" />
+    <entry key="kunai" menu="spawning" zh="苦无" />
+    <entry key="bulletyrdecoyturret" menu="spawning" zh="诱饵弹" />
+    <entry key="bait" menu="spawning" zh="诱饵弹" />
+    <entry key="bulletyrwpgun" menu="spawning" zh="火绳枪弹" />
+    <entry key="bullet" menu="spawning" zh="火绳枪弹" />
+    <entry key="bulletyrwpgunmono" menu="spawning" zh="充能火绳枪弹" />
+    <entry key="bulletyrwpsamuraigun" menu="spawning" zh="武士加特林弹" />
+    <entry key="filthbloodsmearyuranblacksnake" menu="spawning" zh="黑蛇血痕" />
+    <entry key="filthbloodyuranblacksnake" menu="spawning" zh="黑蛇血污" />
+    <entry key="filthyrhanayellow" menu="spawning" zh="金樱花花瓣" />
+    <entry key="gunyrsamuraidestroyer" menu="spawning" zh="尤兰手摇加特林" />
+    <entry key="yuranmanualgatling" menu="spawning" zh="尤兰手摇加特林" />
+    <entry key="motepsychicemanatoreffectyrtreeseed" menu="spawning" zh="灵能樱种特效" />
+    <entry key="moteyrspellcircle" menu="spawning" zh="法阵光效" />
+    <entry key="moteyrspellcirclesmall" menu="spawning" zh="小法阵光效" />
+    <entry key="moteyrspellcircleyellow" menu="spawning" zh="金色法阵光效" />
+    <entry key="moteyrspellclock" menu="spawning" zh="时钟法阵光效" />
+    <entry key="moteyrspellclockb" menu="spawning" zh="时钟法阵光效（旋转）" />
+    <entry key="moteyrspellclockbyellow" menu="spawning" zh="金色时钟法阵特效（旋转）" />
+    <entry key="moteyrspellclockyellow" menu="spawning" zh="金色时钟法阵光效" />
+    <entry key="moteyrspellword" menu="spawning" zh="咒文光效" />
+    <entry key="moteyrspellwordbig" menu="spawning" zh="大字咒文光效" />
+    <entry key="moteyrspellwordbigyellow" menu="spawning" zh="金色大字咒文光效" />
+    <entry key="moteyrspellwordsmall" menu="spawning" zh="小字咒文光效" />
+    <entry key="moteyrspellwordyellow" menu="spawning" zh="金色咒文光效" />
+    <entry key="moteyrtreeseed" menu="spawning" zh="樱树种子光效" />
+    <entry key="moteyrtreeseedyellow" menu="spawning" zh="金樱树种子光效" />
+    <entry key="moteyrwpguncharge" menu="spawning" zh="火绳枪充能光效" />
+    <entry key="moteyuranflowerhitslash" menu="spawning" zh="花斩命中光效" />
+    <entry key="moteyuranflowerhitstaff" menu="spawning" zh="花杖命中光效" />
+    <entry key="moteyuranflowerhitstaffyellow" menu="spawning" zh="金花杖命中光效" />
+    <entry key="moteyuranflowerhitone" menu="spawning" zh="花瓣命中光效" />
+    <entry key="moteyuranflowerhitoneyellow" menu="spawning" zh="金花瓣命中光效" />
+    <entry key="moteyuranflowerhitthree" menu="spawning" zh="花瓣命中光效（三连）" />
+    <entry key="moteyuranflowerhitthreeyellow" menu="spawning" zh="金花瓣命中光效（三连）" />
+    <entry key="yrapaddonblackcape" menu="spawning" zh="尤兰前开披风" />
+    <entry key="yuranfrontoffcapeforornaments" menu="spawning" zh="尤兰前开披风" />
+    <entry key="yrapaddonblackdress" menu="spawning" zh="尤兰黑裙" />
+    <entry key="yuranblackdressforornaments" menu="spawning" zh="尤兰黑裙" />
+    <entry key="yrapaddonblackskirt" menu="spawning" zh="尤兰前开短裙" />
+    <entry key="yuranfrontoffskirtforornaments" menu="spawning" zh="尤兰前开短裙" />
+    <entry key="yrapaddongoddessdress" menu="spawning" zh="尤兰圣裙" />
+    <entry key="yuransacreddress" menu="spawning" zh="尤兰圣裙" />
+    <entry key="yrapaddonnannydress" menu="spawning" zh="尤兰风花" />
+    <entry key="yuranpunghwa" menu="spawning" zh="尤兰风花" />
+    <entry key="yrapaddonsideopendress" menu="spawning" zh="尤兰侧开裙" />
+    <entry key="yuransideopendressforornaments" menu="spawning" zh="尤兰侧开裙" />
+    <entry key="yrapaddonwhitedress" menu="spawning" zh="尤兰白裙" />
+    <entry key="yuranwhitedressforornaments" menu="spawning" zh="尤兰白裙" />
+    <entry key="yrapaddonhoodshirt" menu="spawning" zh="尤兰连帽卫衣" />
+    <entry key="yuranhoodtshirtforornaments" menu="spawning" zh="尤兰连帽卫衣" />
+    <entry key="yrapaddonknitwear" menu="spawning" zh="尤兰宽松针织衫" />
+    <entry key="yuranoverfitknitforornaments" menu="spawning" zh="尤兰宽松针织衫" />
+    <entry key="yrapblacksun" menu="spawning" zh="尤兰黑日" />
+    <entry key="yuranheugil" menu="spawning" zh="尤兰黑日" />
+    <entry key="yrapblacksunhood" menu="spawning" zh="尤兰黑日兜帽" />
+    <entry key="yrapblacksunoutcloth" menu="spawning" zh="尤兰黑日外衣" />
+    <entry key="yrapblunt" menu="spawning" zh="尤兰森林护符" />
+    <entry key="yurantalismanoftheforest" menu="spawning" zh="尤兰森林护符" />
+    <entry key="yrapcombatclothblack" menu="spawning" zh="尤兰暗影战衣" />
+    <entry key="yrapcombatclothblackribbon" menu="spawning" zh="暗影发带" />
+    <entry key="amyeonghairband" menu="spawning" zh="暗影发带" />
+    <entry key="yrapcombatclothwhite" menu="spawning" zh="尤兰红莲" />
+    <entry key="yuranhonglyeon" menu="spawning" zh="尤兰红莲" />
+    <entry key="yrapdemigodnormal" menu="spawning" zh="尤兰半神" />
+    <entry key="yurandemigod" menu="spawning" zh="尤兰半神" />
+    <entry key="yrapdemigodyang" menu="spawning" zh="尤兰昼半神" />
+    <entry key="yurandaydemigod" menu="spawning" zh="尤兰昼半神" />
+    <entry key="yrapdemigodyin" menu="spawning" zh="尤兰夜半神" />
+    <entry key="yurannightdemigod" menu="spawning" zh="尤兰夜半神" />
+    <entry key="yrapwhitepuple" menu="spawning" zh="尤兰清风" />
+    <entry key="yurancheongpung" menu="spawning" zh="尤兰清风" />
+    <entry key="yrapwhitesee" menu="spawning" zh="尤兰明月" />
+    <entry key="yuranmyeongwol" menu="spawning" zh="尤兰明月" />
+    <entry key="yrapwhiteseecape" menu="spawning" zh="尤兰明月披风" />
+    <entry key="yrapbaegmyeong" menu="spawning" zh="尤兰白鸣" />
+    <entry key="yuranbaegmyeong" menu="spawning" zh="尤兰白鸣" />
+    <entry key="yrblacksnakeready" menu="spawning" zh="黑蛇术式（待发）" />
+    <entry key="yrbunkerfireblacksnake" menu="spawning" zh="黑蛇术式（发射）" />
+    <entry key="yrbunkerready" menu="spawning" zh="巫女术式（待发）" />
+    <entry key="yrbunkerreadyblacksnake" menu="spawning" zh="黑蛇术式（待发）" />
+    <entry key="yrbunkerreadyyellow" menu="spawning" zh="金色术式（待发）" />
+    <entry key="yrclothboxaddonblackskirt" menu="spawning" zh="尤兰黑裙披风衣箱" />
+    <entry key="yuranblackskirtcapebox" menu="spawning" zh="尤兰黑裙披风衣箱" />
+    <entry key="yrclothboxaddonwhite" menu="spawning" zh="尤兰白裙衣箱" />
+    <entry key="yuranwhitedressbox" menu="spawning" zh="尤兰白裙衣箱" />
+    <entry key="yrclothboxgoddessdress" menu="spawning" zh="尤兰圣裙衣箱" />
+    <entry key="yuransacreddressbox" menu="spawning" zh="尤兰圣裙衣箱" />
+    <entry key="yrcoin" menu="spawning" zh="尤兰流通币" />
+    <entry key="yurancoinofcirculation" menu="spawning" zh="尤兰流通币" />
+    <entry key="yrdecoyturret" menu="spawning" zh="诱饵炮塔" />
+    <entry key="yrdecoyturretgun" menu="spawning" zh="诱饵炮塔枪" />
+    <entry key="yrdoorlarge" menu="spawning" zh="尤兰障子门 3×1" />
+    <entry key="yuransyoji31" menu="spawning" zh="尤兰障子门 3×1" />
+    <entry key="yrdoormedium" menu="spawning" zh="尤兰障子门 2×1" />
+    <entry key="yuransyoji21" menu="spawning" zh="尤兰障子门 2×1" />
+    <entry key="yrdoorsmall" menu="spawning" zh="尤兰障子门 1×1" />
+    <entry key="yuransyoji11" menu="spawning" zh="尤兰障子门 1×1" />
+    <entry key="yreggshikigamiraccoon" menu="spawning" zh="浣熊式神蛋" />
+    <entry key="raccoonshikigami" menu="spawning" zh="浣熊式神蛋" />
+    <entry key="yreggshikigamiturtle" menu="spawning" zh="龟式神蛋" />
+    <entry key="turtleshikigami" menu="spawning" zh="龟式神蛋" />
+    <entry key="yrhanasake" menu="spawning" zh="花酒" />
+    <entry key="hanasake" menu="spawning" zh="花酒" />
+    <entry key="yrhanasakekoji" menu="spawning" zh="花曲" />
+    <entry key="hanakoji" menu="spawning" zh="花曲" />
+    <entry key="yrirorimedium" menu="spawning" zh="尤兰地炉 2×2" />
+    <entry key="yuranirori22" menu="spawning" zh="尤兰地炉 2×2" />
+    <entry key="yrirorismall" menu="spawning" zh="尤兰地炉 1×1" />
+    <entry key="yuranirori11" menu="spawning" zh="尤兰地炉 1×1" />
+    <entry key="yrmanekiusagibase" menu="spawning" zh="尤兰招财兔像" />
+    <entry key="yuranrabbitstatue" menu="spawning" zh="尤兰招财兔像" />
+    <entry key="yrmanekiusagiclearweather" menu="spawning" zh="招财兔像（晴空）" />
+    <entry key="yuranrabbitstatueclearweather" menu="spawning" zh="招财兔像（晴空）" />
+    <entry key="yrmanekiusagicooldown" menu="spawning" zh="招财兔像（冷却中）" />
+    <entry key="yuranrabbitstatuecooldown" menu="spawning" zh="招财兔像（冷却中）" />
+    <entry key="yrmanekiusagicraft" menu="spawning" zh="招财兔像（工艺祝福）" />
+    <entry key="blessingcrafting" menu="spawning" zh="招财兔像（工艺祝福）" />
+    <entry key="yrmanekiusagiheal" menu="spawning" zh="招财兔像（恢复祝福）" />
+    <entry key="blessingrecovery" menu="spawning" zh="招财兔像（恢复祝福）" />
+    <entry key="yrmanekiusagiimmunity" menu="spawning" zh="招财兔像（免疫祝福）" />
+    <entry key="blessingimmunity" menu="spawning" zh="招财兔像（免疫祝福）" />
+    <entry key="yrmanekiusagiplant" menu="spawning" zh="招财兔像（丰收祝福）" />
+    <entry key="blessingbountifulharvest" menu="spawning" zh="招财兔像（丰收祝福）" />
+    <entry key="yrmanekiusagirain" menu="spawning" zh="招财兔像（降雨）" />
+    <entry key="yuranrabbitstatuerain" menu="spawning" zh="招财兔像（降雨）" />
+    <entry key="yrmanekiusagistability" menu="spawning" zh="招财兔像（安定祝福）" />
+    <entry key="blessingstability" menu="spawning" zh="招财兔像（安定祝福）" />
+    <entry key="yrmedicineherbal" menu="spawning" zh="尤兰樱花药" />
+    <entry key="yurancherrymedicine" menu="spawning" zh="尤兰樱花药" />
+    <entry key="yrmotedemigodnormallinkline" menu="spawning" zh="半神连线光效" />
+    <entry key="yrpbrewery" menu="spawning" zh="尤兰酿酒坊" />
+    <entry key="yuranbrewery" menu="spawning" zh="尤兰酿酒坊" />
+    <entry key="yrpsmithy" menu="spawning" zh="尤兰铁匠铺" />
+    <entry key="yuransmithy" menu="spawning" zh="尤兰铁匠铺" />
+    <entry key="yrpsewingmachine" menu="spawning" zh="尤兰缝纫机" />
+    <entry key="yuransewingmachine" menu="spawning" zh="尤兰缝纫机" />
+    <entry key="yrpackgold" menu="spawning" zh="尤兰黄金包" />
+    <entry key="yrpackhyperweave" menu="spawning" zh="尤兰超织物包" />
+    <entry key="yrpackplasteel" menu="spawning" zh="尤兰塑钢包" />
+    <entry key="yrpacksilver" menu="spawning" zh="尤兰白银包" />
+    <entry key="yrpacksteel" menu="spawning" zh="尤兰钢铁包" />
+    <entry key="yrpacksynthread" menu="spawning" zh="尤兰合成纤维包" />
+    <entry key="yrplantbigtree" menu="spawning" zh="尤兰樱树" />
+    <entry key="yurancherrytree" menu="spawning" zh="尤兰樱树" />
+    <entry key="yrplantbigtreetall" menu="spawning" zh="尤兰高大樱树" />
+    <entry key="yurantallcherrytree" menu="spawning" zh="尤兰高大樱树" />
+    <entry key="yrplantbigtreetallyellow" menu="spawning" zh="尤兰高大金樱树" />
+    <entry key="yurantallgoldencherrytree" menu="spawning" zh="尤兰高大金樱树" />
+    <entry key="yrplantbigtreeyellow" menu="spawning" zh="尤兰金樱树" />
+    <entry key="yurangoldencherrytree" menu="spawning" zh="尤兰金樱树" />
+    <entry key="yrrandomlantern" menu="spawning" zh="尤兰莲花灯" />
+    <entry key="yuranlotuslantern" menu="spawning" zh="尤兰莲花灯" />
+    <entry key="yrredwood" menu="spawning" zh="红木" />
+    <entry key="redwood" menu="spawning" zh="红木" />
+    <entry key="yrsamuraidestroyer" menu="spawning" zh="尤兰武士毁灭者" />
+    <entry key="yuransamuraidestroyer" menu="spawning" zh="尤兰武士毁灭者" />
+    <entry key="yrshikigamiout" menu="spawning" zh="式神现身" />
+    <entry key="yrshikigamibuildingraccoontributebox" menu="spawning" zh="浣熊贡品箱" />
+    <entry key="raccoontributebox" menu="spawning" zh="浣熊贡品箱" />
+    <entry key="yrshikigamibuildingturtletributebox" menu="spawning" zh="龟贡品箱" />
+    <entry key="turtletributebox" menu="spawning" zh="龟贡品箱" />
+    <entry key="yrshikigamiraccoon" menu="spawning" zh="浣熊式神" />
+    <entry key="yrshikigamisnake" menu="spawning" zh="蛇式神" />
+    <entry key="yrshikigamispawnsnake" menu="spawning" zh="蛇式神现身" />
+    <entry key="yrshikigamiturtle" menu="spawning" zh="龟式神" />
+    <entry key="yrshine" menu="spawning" zh="尤兰神社" />
+    <entry key="yuranshrine" menu="spawning" zh="尤兰神社" />
+    <entry key="yrspellbase" menu="spawning" zh="术式基座" />
+    <entry key="yrstreetlamp" menu="spawning" zh="尤兰路灯" />
+    <entry key="yuranstreetlamp" menu="spawning" zh="尤兰路灯" />
+    <entry key="yrtorie" menu="spawning" zh="尤兰鸟居" />
+    <entry key="yurantorie" menu="spawning" zh="尤兰鸟居" />
+    <entry key="yrtreebaseplus" menu="spawning" zh="阴阳阵" />
+    <entry key="yinyangmark" menu="spawning" zh="阴阳阵" />
+    <entry key="yrtreebaseplustall" menu="spawning" zh="粗阴阳阵" />
+    <entry key="thickyinyangmark" menu="spawning" zh="粗阴阳阵" />
+    <entry key="yrtreebaseplustallyellow" menu="spawning" zh="金色粗阴阳阵" />
+    <entry key="goldenthickyinyangmark" menu="spawning" zh="金色粗阴阳阵" />
+    <entry key="yrtreebaseplusyellow" menu="spawning" zh="金色阴阳阵" />
+    <entry key="goldenyinyangmark" menu="spawning" zh="金色阴阳阵" />
+    <entry key="yrtreebox" menu="spawning" zh="尤兰大樱树箱" />
+    <entry key="yuranbigcherrybox" menu="spawning" zh="尤兰大樱树箱" />
+    <entry key="yrtriplebeda" menu="spawning" zh="尤兰三人被褥" />
+    <entry key="yurantriplefuton" menu="spawning" zh="尤兰三人被褥" />
+    <entry key="yrunfinishedkoji" menu="spawning" zh="未完成的曲" />
+    <entry key="unfinishedkoji" menu="spawning" zh="未完成的曲" />
+    <entry key="yrwpbow" menu="spawning" zh="尤兰弓" />
+    <entry key="yuranbow" menu="spawning" zh="尤兰弓" />
+    <entry key="yrwpgun" menu="spawning" zh="尤兰火绳枪" />
+    <entry key="yuranfirelock" menu="spawning" zh="尤兰火绳枪" />
+    <entry key="yrwpmonogun" menu="spawning" zh="尤兰充能火绳枪" />
+    <entry key="yuranchargefirelock" menu="spawning" zh="尤兰充能火绳枪" />
+    <entry key="yrwpnaginata" menu="spawning" zh="尤兰薙刀" />
+    <entry key="yurannaginata" menu="spawning" zh="尤兰薙刀" />
+    <entry key="yrwpsamuraidestroyer" menu="spawning" zh="尤兰便携加特林" />
+    <entry key="yuranportablemanualgatling" menu="spawning" zh="尤兰便携加特林" />
+    <entry key="yrwpspear" menu="spawning" zh="尤兰长矛" />
+    <entry key="yrwpstaff" menu="spawning" zh="尤兰法杖" />
+    <entry key="yuranstaff" menu="spawning" zh="尤兰法杖" />
+    <entry key="yrwpstaffblacksnake" menu="spawning" zh="黑蛇法杖" />
+    <entry key="blacksnakestaff" menu="spawning" zh="黑蛇法杖" />
+    <entry key="yrwpturtle" menu="spawning" zh="龟甲刀" />
+    <entry key="turtlekatana" menu="spawning" zh="龟甲刀" />
+    <entry key="yrwpkatana" menu="spawning" zh="尤兰武士刀" />
+    <entry key="yurankatana" menu="spawning" zh="尤兰武士刀" />
+    <entry key="yrwpkunai" menu="spawning" zh="尤兰苦无" />
+    <entry key="yurankunai" menu="spawning" zh="尤兰苦无" />
+    <entry key="yrwpmonokatana" menu="spawning" zh="尤兰单刃刀" />
+    <entry key="yuranmonokatana" menu="spawning" zh="尤兰单刃刀" />
+    <entry key="yrwindowcooler" menu="spawning" zh="尤兰窗式空调" />
+    <entry key="yurancooler" menu="spawning" zh="尤兰窗式空调" />
+    <entry key="yrwindowvent" menu="spawning" zh="尤兰窗式通风口" />
+    <entry key="yuranvent" menu="spawning" zh="尤兰窗式通风口" />
+    <entry key="yrthurible" menu="spawning" zh="尤兰香炉" />
+    <entry key="yuranthurible" menu="spawning" zh="尤兰香炉" />
+    <entry key="yryedoensisberries" menu="spawning" zh="樱桃" />
+    <entry key="cherry" menu="spawning" zh="樱桃" />
+    <entry key="yryedoensisberriesbig" menu="spawning" zh="大樱桃" />
+    <entry key="bigcherry" menu="spawning" zh="大樱桃" />
+    <entry key="yryedoensisberriesdango" menu="spawning" zh="尤兰樱桃团子" />
+    <entry key="yurancherrydango" menu="spawning" zh="尤兰樱桃团子" />
+    <entry key="yryedoensisberriesgrilledcorn" menu="spawning" zh="尤兰烤玉米" />
+    <entry key="yurangrilledcorn" menu="spawning" zh="尤兰烤玉米" />
+    <entry key="yryedoensisberriesriceball" menu="spawning" zh="尤兰饭团" />
+    <entry key="yuranriceball" menu="spawning" zh="尤兰饭团" />
   </entries>
 </DevMenuTranslations>
