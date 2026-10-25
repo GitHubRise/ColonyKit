@@ -42,6 +42,8 @@ namespace ColonyKit
 				if (enabled != before)
 				{
 					ModuleRegistry.SetEnabled(module.Id, enabled);
+					// 让模块清掉/重建依赖开关的运行时状态（例如卫生需求）。
+					module.ResetRuntimeState();
 				}
 			}
 

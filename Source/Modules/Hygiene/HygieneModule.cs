@@ -52,6 +52,12 @@ namespace ColonyKit.Modules.Hygiene
 			return DefDatabase<ThingDef>.GetNamedSilentFail(defName) != null;
 		}
 
+		public override void ResetRuntimeState()
+		{
+			// 模块开关/策略变化后立即把现有需求增删到正确状态。
+			HygieneUtility.RefreshAllPawns();
+		}
+
 		public override void OnGameLoaded(Game game)
 		{
 			if (game == null)
