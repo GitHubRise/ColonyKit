@@ -24,6 +24,7 @@ namespace ColonyKit.Modules.Hygiene
 		{
 			return Spawned
 				&& PawnAllowed(pawn)
+				&& !Occupied(pawn)
 				&& pawn.CanReserve(this)
 				&& pawn.CanReach(this, PathEndMode.Touch, Danger.Deadly);
 		}

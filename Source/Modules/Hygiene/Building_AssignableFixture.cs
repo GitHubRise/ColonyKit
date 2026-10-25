@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using ColonyKit.Modules.Hygiene.Dbh;
 using RimWorld;
 using Verse;
@@ -49,6 +50,17 @@ namespace ColonyKit.Modules.Hygiene
 		public bool ForPrisoners => Position.IsInPrisonCell(Map);
 
 		public string GenderText => gender == Gender.None ? "Unisex".Translate() : gender.ToString();
+
+		public bool Occupied(Pawn checker)
+		{
+			if (!OccupancyCheck)
+			{
+				return false;
+			}
+			Room room = Position.GetRoom(Map);
+			return room != null && room.ContainedAndAdjacentThings.Any(
+				t => t is Pawn pawn && pawn != checker);
+		}
 
 		public virtual bool PawnAllowed(Pawn pawn)
 		{
