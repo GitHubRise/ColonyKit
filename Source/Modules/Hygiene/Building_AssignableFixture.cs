@@ -50,6 +50,31 @@ namespace ColonyKit.Modules.Hygiene
 
 		public string GenderText => gender == Gender.None ? "Unisex".Translate() : gender.ToString();
 
+		public virtual bool PawnAllowed(Pawn pawn)
+		{
+			if (pawn == null || gender != Gender.None && pawn.gender != gender)
+			{
+				return false;
+			}
+			if (pawn.IsPrisonerOfColony)
+			{
+				return ForPrisoners;
+			}
+			if (pawn.IsSlave)
+			{
+				return AllowSlaves;
+			}
+			if (pawn.IsColonist)
+			{
+				return AllowColonists;
+			}
+			if (pawn.IsQuestLodger() || pawn.IsWildMan())
+			{
+				return AllowGuests;
+			}
+			return AllowGuests;
+		}
+
 		public override void ExposeData()
 		{
 			base.ExposeData();

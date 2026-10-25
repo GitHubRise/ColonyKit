@@ -23,6 +23,7 @@ namespace ColonyKit.Modules.Hygiene
 		public bool CanUse(Pawn pawn)
 		{
 			return Spawned
+				&& PawnAllowed(pawn)
 				&& pawn.CanReserve(this)
 				&& pawn.CanReach(this, PathEndMode.Touch, Danger.Deadly);
 		}
