@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<ColonyKit.Module.Insulation.Name>Multi-wall insulation</ColonyKit.Module.Insulation.Name>
+	<ColonyKit.Module.Insulation.Desc>Makes double and multi-layer walls actually reduce room heat loss. Configure the benefit and layer cap on the Insulation page.</ColonyKit.Module.Insulation.Desc>
+
+	<ColonyKit.Settings.Tab.Insulation>Insulation</ColonyKit.Settings.Tab.Insulation>
+	<ColonyKit.Settings.Insulation.Hint>Vanilla samples the cell two tiles outside the room, so extra wall layers do nothing. When enabled, the wall leak is scaled per edge by the number of consecutive wall layers d; roofs, doors and vents are unchanged.</ColonyKit.Settings.Insulation.Hint>
+	<ColonyKit.Settings.Insulation.Enabled>Enable multi-wall insulation</ColonyKit.Settings.Insulation.Enabled>
+	<ColonyKit.Settings.Insulation.Enabled.Desc>When off, vanilla behavior is used and wall thickness has no effect.</ColonyKit.Settings.Insulation.Enabled.Desc>
+	<ColonyKit.Settings.Insulation.Ratio>Wall-to-air resistance ratio r</ColonyKit.Settings.Insulation.Ratio>
+	<ColonyKit.Settings.Insulation.Ratio.Desc>Insulation factor f(d) = (1 + r) / (1 + r × d). Higher r means more benefit per extra layer; r = 3 gives about 57% for 2 layers, 40% for 3, 31% for 4.</ColonyKit.Settings.Insulation.Ratio.Desc>
+	<ColonyKit.Settings.Insulation.MaxLayers>Max layers counted</ColonyKit.Settings.Insulation.MaxLayers>
+	<ColonyKit.Settings.Insulation.MaxLayers.Desc>Layers beyond this are ignored, preventing extreme stacking in mountains or ultra-thick walls.</ColonyKit.Settings.Insulation.MaxLayers.Desc>
+	<ColonyKit.Settings.Insulation.NaturalRock>Count natural rock as walls</ColonyKit.Settings.Insulation.NaturalRock>
+	<ColonyKit.Settings.Insulation.NaturalRock.Desc>When enabled, natural rock also counts toward wall layers. Off by default.</ColonyKit.Settings.Insulation.NaturalRock.Desc>
+	<ColonyKit.Settings.Insulation.Formula>Current formula: d consecutive wall layers scale leak by (1 + r) / (1 + r × d); d ≤ 1 means no change.</ColonyKit.Settings.Insulation.Formula>
+</LanguageData>

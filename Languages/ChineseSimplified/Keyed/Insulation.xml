@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<ColonyKit.Module.Insulation.Name>多墙体保温</ColonyKit.Module.Insulation.Name>
+	<ColonyKit.Module.Insulation.Desc>让双层、多层墙真正降低房间漏热；在「保温」页配置收益与层数上限。</ColonyKit.Module.Insulation.Desc>
+
+	<ColonyKit.Settings.Tab.Insulation>保温</ColonyKit.Settings.Tab.Insulation>
+	<ColonyKit.Settings.Insulation.Hint>原版只按房间外第 2 格取温，墙砌几层都一样漏。开启后按每面墙的连续层数 d 计算保温系数，再乘到墙体漏热上；屋顶、门、通风口仍按原版。</ColonyKit.Settings.Insulation.Hint>
+	<ColonyKit.Settings.Insulation.Enabled>启用多墙体保温</ColonyKit.Settings.Insulation.Enabled>
+	<ColonyKit.Settings.Insulation.Enabled.Desc>关闭后完全按原版结算，墙厚不影响保温。</ColonyKit.Settings.Insulation.Enabled.Desc>
+	<ColonyKit.Settings.Insulation.Ratio>墙体热阻比 r</ColonyKit.Settings.Insulation.Ratio>
+	<ColonyKit.Settings.Insulation.Ratio.Desc>保温系数 f(d) = (1 + r) / (1 + r × d)。r 越大，每加一层墙收益越高；默认 3 时 2 层约 57%、3 层约 40%、4 层约 31%。</ColonyKit.Settings.Insulation.Ratio.Desc>
+	<ColonyKit.Settings.Insulation.MaxLayers>最大计入层数</ColonyKit.Settings.Insulation.MaxLayers>
+	<ColonyKit.Settings.Insulation.MaxLayers.Desc>超过该层数不再继续减漏，避免超厚墙或山洞无限叠加。</ColonyKit.Settings.Insulation.MaxLayers.Desc>
+	<ColonyKit.Settings.Insulation.NaturalRock>把自然岩层算作墙体</ColonyKit.Settings.Insulation.NaturalRock>
+	<ColonyKit.Settings.Insulation.NaturalRock.Desc>开启后山洞岩壁也参与层数计算；默认只算玩家建造的墙。</ColonyKit.Settings.Insulation.NaturalRock.Desc>
+	<ColonyKit.Settings.Insulation.Formula>当前公式：d 层连续墙体 → 漏热 × (1 + r) / (1 + r × d)；d ≤ 1 时不减。</ColonyKit.Settings.Insulation.Formula>
+</LanguageData>
