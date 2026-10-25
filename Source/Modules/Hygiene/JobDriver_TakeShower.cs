@@ -42,7 +42,7 @@ namespace ColonyKit.Modules.Hygiene
 				Need_Hygiene need = pawn.needs?.TryGetNeed<Need_Hygiene>();
 				if (need != null)
 				{
-					need.Clean(0.002f);
+					need.clean(0.002f);
 				}
 				pawn.GainComfortFromCellIfPossible(1);
 				if (need != null && need.CurLevel >= 1f)

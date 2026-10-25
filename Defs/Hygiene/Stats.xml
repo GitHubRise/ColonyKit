@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<StatDef>
+		<defName>CK_HygieneRateMultiplier</defName>
+		<label>hygiene rate multiplier</label>
+		<description>Multiplier for how quickly hygiene falls.</description>
+		<category>Pawn</category>
+		<defaultBaseValue>1</defaultBaseValue>
+		<minValue>0</minValue>
+		<maxValue>10</maxValue>
+		<workerClass>StatWorker</workerClass>
+		<showOnHumanlikes>true</showOnHumanlikes>
+		<showOnAnimals>false</showOnAnimals>
+		<showOnMechanoids>false</showOnMechanoids>
+	</StatDef>
+
+	<HediffDef>
+		<defName>CK_BadHygiene</defName>
+		<label>bad hygiene</label>
+		<description>Poor personal hygiene. Increases disease risk and social penalties.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(0.85,0.65,0.35)</defaultLabelColor>
+		<isBad>true</isBad>
+		<lethal>false</lethal>
+		<initialSeverity>0</initialSeverity>
+		<everCurableByItem>false</everCurableByItem>
+		<stages>
+			<li>
+				<label>grubby</label>
+				<description>Unwashed and uncomfortable.</description>
+				<becomeVisible>false</becomeVisible>
+			</li>
+			<li>
+				<label>filthy</label>
+				<description>Filthy. Other colonists are noticing.</description>
+				<becomeVisible>true</becomeVisible>
+			</li>
+		</stages>
+	</HediffDef>
+</Defs>

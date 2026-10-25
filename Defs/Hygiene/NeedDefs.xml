@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-	<NeedDef>
+	<NeedDef Class="ColonyKit.Modules.Hygiene.Needy">
 		<defName>CK_Hygiene</defName>
 		<needClass>ColonyKit.Modules.Hygiene.Need_Hygiene</needClass>
 		<label>hygiene</label>
@@ -9,5 +9,14 @@
 		<minIntelligence>Humanlike</minIntelligence>
 		<listPriority>321</listPriority>
 		<showOnNeedList>true</showOnNeedList>
+		<Exemptions>
+			<BodyDefs>
+				<li>HumanoidTerminator</li>
+				<li>AIRobot</li>
+				<li>AIPawn</li>
+			</BodyDefs>
+			<Hediffs />
+			<RaceDefs />
+		</Exemptions>
 	</NeedDef>
 </Defs>

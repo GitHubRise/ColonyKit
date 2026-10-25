@@ -127,6 +127,10 @@
 	<CK.Hygiene.TakeShower>Take a shower</CK.Hygiene.TakeShower>
 	<CK.Hygiene.TakeShowerDesc>Send this colonist to the nearest shower.</CK.Hygiene.TakeShowerDesc>
 	<CK.Hygiene.NoShower>No usable shower available.</CK.Hygiene.NoShower>
+	<CK.Hygiene.FilthyRoom>Filthy room multiplier: {0}</CK.Hygiene.FilthyRoom>
+	<CK.Hygiene.TooHot>Heat multiplier: {0}</CK.Hygiene.TooHot>
+	<CK.Hygiene.InRain>Rain multiplier: {0}</CK.Hygiene.InRain>
+	<CK.Hygiene.TotalRate>Total hygiene rate: {0}</CK.Hygiene.TotalRate>
 	<CK.Hygiene.WaterLevel>Water: {0}/{1} L</CK.Hygiene.WaterLevel>
 	<CK.Hygiene.ShowerWater>Supply: {0} L</CK.Hygiene.ShowerWater>
 	<CK.Hygiene.PumpNoPower>Pump has no power.</CK.Hygiene.PumpNoPower>

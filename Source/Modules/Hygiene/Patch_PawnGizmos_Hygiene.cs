@@ -25,17 +25,10 @@ namespace ColonyKit.Modules.Hygiene
 				yield break;
 			}
 
-			NeedDef needDef = DefDatabase<NeedDef>.GetNamedSilentFail("CK_Hygiene");
-			if (needDef == null)
+			Need_Hygiene need = HygieneUtility.EnsureNeed(__instance);
+			if (need == null)
 			{
 				yield break;
-			}
-			if (__instance.needs?.TryGetNeed<Need_Hygiene>() == null)
-			{
-				Need need = (Need)Activator.CreateInstance(needDef.needClass, __instance);
-				need.def = needDef;
-				__instance.needs.AllNeeds.Add(need);
-				need.SetInitialLevel();
 			}
 
 			yield return new Command_Action

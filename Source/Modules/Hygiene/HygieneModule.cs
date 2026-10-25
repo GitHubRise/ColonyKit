@@ -40,7 +40,7 @@ namespace ColonyKit.Modules.Hygiene
 						continue;
 					}
 					humanlikes++;
-					if (pawn.needs?.TryGetNeed<Need_Hygiene>() != null)
+					if (HygieneUtility.EnsureNeed(pawn) != null)
 					{
 						withNeed++;
 					}
