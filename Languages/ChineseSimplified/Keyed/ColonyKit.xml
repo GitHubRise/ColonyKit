@@ -124,6 +124,9 @@
 	<ColonyKit.Module.Diagnostics.Name>诊断</ColonyKit.Module.Diagnostics.Name>
 	<ColonyKit.Module.Diagnostics.Desc>日志缓冲与诊断报告。</ColonyKit.Module.Diagnostics.Desc>
 
+	<CK.Hygiene.TakeShower>去洗澡</CK.Hygiene.TakeShower>
+	<CK.Hygiene.TakeShowerDesc>让该殖民者前往最近的淋浴器。</CK.Hygiene.TakeShowerDesc>
+	<CK.Hygiene.NoShower>没有可用的淋浴器。</CK.Hygiene.NoShower>
 	<CK.Hygiene.HotWater>热水澡</CK.Hygiene.HotWater>
 	<CK.Hygiene.ColdWater>冷水澡（未通电）</CK.Hygiene.ColdWater>
 	<ColonyKit.Module.Hygiene.Name>淋浴</ColonyKit.Module.Hygiene.Name>

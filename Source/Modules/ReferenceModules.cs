@@ -2,7 +2,7 @@ using Verse;
 
 namespace ColonyKit.Modules
 {
-	/// <summary>RJW 集成模块占位：后续只做兼容补丁，不复制 RJW 主体。</summary>
+	/// <summary>RJW 本体模块：RJW 1.6 由随包构建的独立 RJW.dll 提供，这里只做加载检测。</summary>
 	public sealed class RjwModule : ColonyKitModule
 	{
 		public override string Id => "rjw";

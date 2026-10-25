@@ -124,6 +124,9 @@
 	<ColonyKit.Module.Diagnostics.Name>Diagnostics</ColonyKit.Module.Diagnostics.Name>
 	<ColonyKit.Module.Diagnostics.Desc>Log buffer and diagnostics report.</ColonyKit.Module.Diagnostics.Desc>
 
+	<CK.Hygiene.TakeShower>Take a shower</CK.Hygiene.TakeShower>
+	<CK.Hygiene.TakeShowerDesc>Send this colonist to the nearest shower.</CK.Hygiene.TakeShowerDesc>
+	<CK.Hygiene.NoShower>No usable shower available.</CK.Hygiene.NoShower>
 	<CK.Hygiene.HotWater>Hot shower</CK.Hygiene.HotWater>
 	<CK.Hygiene.ColdWater>Cold shower (no power)</CK.Hygiene.ColdWater>
 	<ColonyKit.Module.Hygiene.Name>Shower</ColonyKit.Module.Hygiene.Name>
