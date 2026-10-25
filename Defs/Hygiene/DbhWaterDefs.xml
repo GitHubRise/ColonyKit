@@ -7,7 +7,7 @@
 		<thingClass>Building</thingClass>
 		<size>(1,1)</size>
 		<graphicData>
-			<texPath>Things/Building/Hygiene/CK_WaterPipe</texPath>
+			<texPath>Things/Building/Hygiene/CK_DbhWaterPipe</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<designationCategory>Furniture</designationCategory>
@@ -38,7 +38,7 @@
 		<thingClass>Building</thingClass>
 		<size>(2,2)</size>
 		<graphicData>
-			<texPath>Things/Building/Hygiene/CK_WaterTank</texPath>
+			<texPath>Things/Building/Hygiene/CK_DbhWaterTank</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(2,2)</drawSize>
 		</graphicData>
@@ -74,7 +74,7 @@
 		<thingClass>Building</thingClass>
 		<size>(2,2)</size>
 		<graphicData>
-			<texPath>Things/Building/Hygiene/CK_WaterPump</texPath>
+			<texPath>Things/Building/Hygiene/CK_DbhWaterPump</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(2,2)</drawSize>
 		</graphicData>

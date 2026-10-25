@@ -57,17 +57,7 @@ namespace ColonyKit.Modules.Hygiene
 			return TryUseWater(out _, out _);
 		}
 
-		public float WaterAvailable
-		{
-			get
-			{
-				if (pipe?.pipeNet != null && pipe.pipeNet.WaterTowers.Count > 0)
-				{
-					return pipe.pipeNet.WaterStorage;
-				}
-				return WaterNetwork.TotalWater(this);
-			}
-		}
+		public float WaterAvailable => pipe?.pipeNet?.WaterStorage ?? 0f;
 
 		public override string GetInspectString()
 		{

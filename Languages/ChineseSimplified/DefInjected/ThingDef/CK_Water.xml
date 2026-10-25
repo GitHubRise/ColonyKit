@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LanguageData>
-	<CK_WaterPipe.label>水管</CK_WaterPipe.label>
-	<CK_WaterPipe.description>连接水泵、水箱和淋浴器。</CK_WaterPipe.description>
-	<CK_WaterTank.label>水箱</CK_WaterTank.label>
-	<CK_WaterTank.description>储存最多 500 升水，供淋浴使用。</CK_WaterTank.description>
-	<CK_WaterPump.label>水泵</CK_WaterPump.label>
-	<CK_WaterPump.description>为连通的水箱与淋浴器供水，需要电力。</CK_WaterPump.description>
-</LanguageData>
