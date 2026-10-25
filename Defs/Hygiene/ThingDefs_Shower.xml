@@ -6,6 +6,7 @@
 		<description>A 2x2 shower. Needs water and a working water heater for hot showers; without hot water it is a cold shower.</description>
 		<thingClass>ColonyKit.Modules.Hygiene.Building_Shower</thingClass>
 		<size>(2,2)</size>
+		<tickerType>Rare</tickerType>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_Shower</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -44,6 +45,7 @@
 		<description>DBH power shower: heats water on demand, cleans twice as fast, uses more water.</description>
 		<thingClass>ColonyKit.Modules.Hygiene.Building_PowerShower</thingClass>
 		<size>(2,2)</size>
+		<tickerType>Rare</tickerType>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_ShowerPower</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>

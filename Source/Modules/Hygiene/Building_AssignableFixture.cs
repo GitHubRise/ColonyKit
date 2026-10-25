@@ -107,6 +107,12 @@ namespace ColonyKit.Modules.Hygiene
 			blockageComp = GetComp<CompBlockage>();
 		}
 
+		public override void TickRare()
+		{
+			base.TickRare();
+			blockageComp?.CheckForBlockage();
+		}
+
 		public override IEnumerable<Gizmo> GetGizmos()
 		{
 			foreach (Gizmo gizmo in base.GetGizmos())
