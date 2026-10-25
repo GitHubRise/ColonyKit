@@ -37,6 +37,11 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 			{
 				WaterStorage = Mathf.Min(Props.WaterStorageCap, WaterStorage + pipe.pipeNet.WaterPumpedPerTick);
 			}
+			if (parent?.Map != null
+				&& parent.Map.GetComponent<MapComponent_SewagePollution>()?.WaterPolluted == true)
+			{
+				WaterQuality = ContaminationLevel.Contaminated;
+			}
 		}
 
 		public bool WorkingNow

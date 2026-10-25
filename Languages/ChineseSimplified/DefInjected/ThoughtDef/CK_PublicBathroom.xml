@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-	<CK_PublicBathroom.stages.0.label>公共浴室</CK_PublicBathroom.stages.0.label>
-	<CK_PublicBathroom.stages.0.description>我不得不用公共浴室。</CK_PublicBathroom.stages.0.description>
+	<CK_PublicBathroom.stages.0.label>糟糕的公共浴室</CK_PublicBathroom.stages.0.label>
+	<CK_PublicBathroom.stages.0.description>这公共浴室太糟糕了。</CK_PublicBathroom.stages.0.description>
+	<CK_PublicBathroom.stages.1.label>公共浴室</CK_PublicBathroom.stages.1.label>
+	<CK_PublicBathroom.stages.1.description>我不得不用公共浴室。</CK_PublicBathroom.stages.1.description>
+	<CK_PublicBathroom.stages.2.label>还行的公共浴室</CK_PublicBathroom.stages.2.label>
+	<CK_PublicBathroom.stages.2.description>这公共浴室还不错。</CK_PublicBathroom.stages.2.description>
+	<CK_PublicBathroom.stages.3.label>不错的公共浴室</CK_PublicBathroom.stages.3.label>
+	<CK_PublicBathroom.stages.3.description>这公共浴室挺不错。</CK_PublicBathroom.stages.3.description>
+	<CK_PublicBathroom.stages.4.label>豪华公共浴室</CK_PublicBathroom.stages.4.label>
+	<CK_PublicBathroom.stages.4.description>这公共浴室太棒了。</CK_PublicBathroom.stages.4.description>
 </LanguageData>

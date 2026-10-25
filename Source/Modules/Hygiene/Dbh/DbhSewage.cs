@@ -88,6 +88,7 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 			foreach (IntVec3 cell in parent.OccupiedRect())
 			{
 				FilthMaker.TryMakeFilth(cell, parent.Map, filth);
+				parent.Map.GetComponent<MapComponent_SewagePollution>()?.AddPollution(cell, 5f);
 			}
 		}
 

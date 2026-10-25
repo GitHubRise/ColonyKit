@@ -53,7 +53,11 @@ namespace ColonyKit.Modules.Hygiene
 					ThoughtDef publicThought = DefDatabase<ThoughtDef>.GetNamedSilentFail("CK_PublicBathroom");
 					if (publicThought != null)
 					{
-						pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(publicThought);
+						int publicStage = room == null ? 1
+							: RoomStatDefOf.Impressiveness.GetScoreStageIndex(
+								room.GetStat(RoomStatDefOf.Impressiveness));
+						publicStage = Mathf.Clamp(publicStage, 0, publicThought.stages.Count - 1);
+						pawn.needs?.mood?.thoughts?.memories?.TryGainMemoryFast(publicThought, publicStage);
 					}
 				}
 				return;
@@ -87,6 +91,12 @@ namespace ColonyKit.Modules.Hygiene
 					dirty = true;
 					break;
 				}
+			}
+			if (!dirty)
+			{
+				MapComponent_SewagePollution pollution =
+					pawn.Map.GetComponent<MapComponent_SewagePollution>();
+				dirty = pollution != null && pollution.PollutionAt(cell) > 0.5f;
 			}
 			if (dirty)
 			{

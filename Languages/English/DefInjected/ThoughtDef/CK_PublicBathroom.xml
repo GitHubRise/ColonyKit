@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-	<CK_PublicBathroom.stages.0.label>public bathroom</CK_PublicBathroom.stages.0.label>
-	<CK_PublicBathroom.stages.0.description>I had to use the public bathroom.</CK_PublicBathroom.stages.0.description>
+	<CK_PublicBathroom.stages.0.label>awful public bathroom</CK_PublicBathroom.stages.0.label>
+	<CK_PublicBathroom.stages.0.description>The public bathroom is awful.</CK_PublicBathroom.stages.0.description>
+	<CK_PublicBathroom.stages.1.label>public bathroom</CK_PublicBathroom.stages.1.label>
+	<CK_PublicBathroom.stages.1.description>I had to use the public bathroom.</CK_PublicBathroom.stages.1.description>
+	<CK_PublicBathroom.stages.2.label>decent public bathroom</CK_PublicBathroom.stages.2.label>
+	<CK_PublicBathroom.stages.2.description>The public bathroom is decent.</CK_PublicBathroom.stages.2.description>
+	<CK_PublicBathroom.stages.3.label>impressive public bathroom</CK_PublicBathroom.stages.3.label>
+	<CK_PublicBathroom.stages.3.description>The public bathroom is impressive.</CK_PublicBathroom.stages.3.description>
+	<CK_PublicBathroom.stages.4.label>wondrous public bathroom</CK_PublicBathroom.stages.4.label>
+	<CK_PublicBathroom.stages.4.description>The public bathroom is wonderful.</CK_PublicBathroom.stages.4.description>
 </LanguageData>
