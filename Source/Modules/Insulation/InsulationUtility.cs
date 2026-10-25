@@ -4,8 +4,19 @@ using Verse;
 
 namespace ColonyKit.Modules.Insulation
 {
+	/// <summary>一间房的外墙剖面：平均保温系数、最薄一侧墙层数、参与统计的墙边数。</summary>
+	public struct InsulationProfile
+	{
+		public float wallFactor;
+
+		public int minWallLayers;
+
+		public int wallEdges;
+	}
+
 	/// <summary>
-	/// 多墙体保温的几何计算：按房间四周的连续墙层数求平均保温系数。
+	/// 多墙体保温的几何计算：按房间四周的连续墙层数求平均保温系数，
+	/// 并给出“最薄一侧”的层数，供屋顶加厚判定。
 	/// </summary>
 	/// <remarks>
 	/// <para>
@@ -17,54 +28,92 @@ namespace ColonyKit.Modules.Insulation
 	/// </code>
 	/// <para>
 	/// 因此 f(1) = 1（与 1.6 原版结算完全一致），f(2) 在 r=3 时约 0.571，
-	/// f(3) 约 0.4。r 由设置页提供，默认 3，相当于“墙的热阻约是两侧空气膜合计的 3 倍”。
+	/// f(3) 约 0.4。r 由设置页提供，默认 3。
 	/// </para>
 	/// <para>
 	/// 采样直接复用 <see cref="RoomTempTracker.EqualizeCellsForReading"/>：那正是原版
 	/// 参与墙体均温的外圈格，已经随房间变化缓存好，避免每次重扫整间房。
 	/// 对每个外圈格反推方向，再从房间往外数连续墙层；朝向房间内部的边不计入。
+	/// 同一 tick 内屋顶项和墙体项会先后调用，这里用单条缓存复用剖面，避免重复扫描。
 	/// </para>
 	/// </remarks>
 	public static class InsulationUtility
 	{
 		private const int MaxSamples = 256;
 
-		/// <summary>房间墙体系数；未启用/无设置时返回 1（保持原版）。</summary>
-		public static float FactorFor(Room room, Map map, List<IntVec3> equalizeCells)
+		private static Room cachedRoom;
+		private static int cachedTick = -1;
+		private static InsulationProfile cachedProfile;
+
+		/// <summary>房间墙体/屋顶剖面；未启用/无设置时返回原版等价剖面。</summary>
+		public static InsulationProfile ProfileFor(Room room, Map map, List<IntVec3> equalizeCells)
 		{
-			InsulationSettings settings = InsulationSettingsUtility.Current;
-			if (room == null || map == null || settings == null || !settings.enabled || equalizeCells == null)
+			int tick = GenTicks.TicksGame;
+			if (room != null && room == cachedRoom && tick == cachedTick)
 			{
-				return 1f;
+				return cachedProfile;
 			}
 
-			float sum = 0f;
-			int edges = 0;
-			int step = equalizeCells.Count > MaxSamples
-				? equalizeCells.Count / MaxSamples
-				: 1;
+			InsulationProfile profile = new InsulationProfile { wallFactor = 1f };
+			InsulationSettings settings = InsulationSettingsUtility.Current;
 
-			for (int index = 0; index < equalizeCells.Count; index += step)
+			if (room != null && map != null && equalizeCells != null && settings != null && settings.enabled)
 			{
-				IntVec3 equalizeCell = equalizeCells[index];
+				float factorSum = 0f;
+				int edges = 0;
+				int wallEdges = 0;
+				int minLayers = int.MaxValue;
+				int step = equalizeCells.Count > MaxSamples ? equalizeCells.Count / MaxSamples : 1;
 
-				for (int i = 0; i < 4; i++)
+				for (int index = 0; index < equalizeCells.Count; index += step)
 				{
-					IntVec3 direction = GenAdj.CardinalDirections[i];
-					IntVec3 roomCell = equalizeCell - direction * 2;
-					if (!roomCell.InBounds(map) || roomCell.GetRoom(map) != room)
-					{
-						continue;
-					}
+					IntVec3 equalizeCell = equalizeCells[index];
 
-					int layers = WallLayers(equalizeCell - direction, direction, map, settings);
-					sum += layers > 0 ? Factor(layers, settings.wallResistanceRatio) : 1f;
-					edges++;
-					break;
+					for (int i = 0; i < 4; i++)
+					{
+						IntVec3 direction = GenAdj.CardinalDirections[i];
+						IntVec3 roomCell = equalizeCell - direction * 2;
+						if (!roomCell.InBounds(map) || roomCell.GetRoom(map) != room)
+						{
+							continue;
+						}
+
+						int layers = WallLayers(equalizeCell - direction, direction, map, settings);
+						if (layers > 0)
+						{
+							factorSum += Factor(layers, settings.wallResistanceRatio);
+							wallEdges++;
+							if (layers < minLayers)
+							{
+								minLayers = layers;
+							}
+						}
+						else
+						{
+							// 敞口/门：墙体项按原版漏，不参与“加厚”判定。
+							factorSum += 1f;
+						}
+
+						edges++;
+						break;
+					}
+				}
+
+				if (edges > 0)
+				{
+					profile.wallFactor = factorSum / edges;
+				}
+				if (wallEdges > 0)
+				{
+					profile.wallEdges = wallEdges;
+					profile.minWallLayers = minLayers;
 				}
 			}
 
-			return edges > 0 ? sum / edges : 1f;
+			cachedRoom = room;
+			cachedTick = tick;
+			cachedProfile = profile;
+			return profile;
 		}
 
 		/// <summary>f(d) = (1 + r) / (1 + r·d)；d ≤ 1 时返回 1。</summary>

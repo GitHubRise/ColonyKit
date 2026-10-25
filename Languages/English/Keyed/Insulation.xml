@@ -13,5 +13,10 @@
 	<ColonyKit.Settings.Insulation.MaxLayers.Desc>Layers beyond this are ignored, preventing extreme stacking in mountains or ultra-thick walls.</ColonyKit.Settings.Insulation.MaxLayers.Desc>
 	<ColonyKit.Settings.Insulation.NaturalRock>Count natural rock as walls</ColonyKit.Settings.Insulation.NaturalRock>
 	<ColonyKit.Settings.Insulation.NaturalRock.Desc>When enabled, natural rock also counts toward wall layers. Off by default.</ColonyKit.Settings.Insulation.NaturalRock.Desc>
+	<ColonyKit.Settings.Insulation.ThickenRoof>Thicken roof when walls are thick</ColonyKit.Settings.Insulation.ThickenRoof>
+	<ColonyKit.Settings.Insulation.ThickenRoof.Desc>When the thinnest outer wall reaches the layer count below, the thin-roof leak is scaled by the same layer factor. No-roof and thick rock roofs are unaffected.</ColonyKit.Settings.Insulation.ThickenRoof.Desc>
+	<ColonyKit.Settings.Insulation.RoofMinLayers>Wall layers required for thick roof</ColonyKit.Settings.Insulation.RoofMinLayers>
+	<ColonyKit.Settings.Insulation.RoofMinLayers.Desc>Default 3 (walls thicker than 2). Only counted walls apply; natural rock follows the toggle above.</ColonyKit.Settings.Insulation.RoofMinLayers.Desc>
+	<ColonyKit.Settings.Insulation.RoofFormula>Roof factor is also f(d) = (1 + r) / (1 + r × d), with d = the thinnest wall side.</ColonyKit.Settings.Insulation.RoofFormula>
 	<ColonyKit.Settings.Insulation.Formula>Current formula: d consecutive wall layers scale leak by (1 + r) / (1 + r × d); d ≤ 1 means no change.</ColonyKit.Settings.Insulation.Formula>
 </LanguageData>

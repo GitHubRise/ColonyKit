@@ -3,9 +3,7 @@ using Verse;
 
 namespace ColonyKit.Modules.Insulation
 {
-	/// <summary>
-	/// 把多墙体保温系数乘到原版墙体漏热上。
-	/// </summary>
+	/// <summary>把多墙体保温系数乘到原版墙体漏热上。</summary>
 	/// <remarks>
 	/// 只改 <c>RoomTempTracker.WallEqualizationTempChangePerInterval</c> 的返回值：
 	/// 屋顶（薄/厚/无）、门、通风口仍按原版；系数 1 时与原版完全一致。
@@ -40,7 +38,11 @@ namespace ColonyKit.Modules.Insulation
 				return;
 			}
 
-			__result *= InsulationUtility.FactorFor(room, room.Map, __instance.EqualizeCellsForReading);
+			InsulationProfile profile = InsulationUtility.ProfileFor(
+				room,
+				room.Map,
+				__instance.EqualizeCellsForReading);
+			__result *= profile.wallFactor;
 		}
 	}
 }

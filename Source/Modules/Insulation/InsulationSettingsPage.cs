@@ -55,7 +55,30 @@ namespace ColonyKit.Modules.Insulation
 				"ColonyKit.Settings.Insulation.NaturalRock.Desc".Loc());
 
 			listing.Gap();
+
+			data.thickenRoof = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Insulation.ThickenRoof".Loc(),
+				ref data.thickenRoof,
+				"ColonyKit.Settings.Insulation.ThickenRoof.Desc".Loc());
+
+			int roofLayers = Mathf.RoundToInt(SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Insulation.RoofMinLayers".Loc(),
+				data.roofMinWallLayers,
+				InsulationSettings.MinRoofWallLayers,
+				InsulationSettings.MaxRoofWallLayers,
+				1f,
+				value => value.ToString("0")));
+			data.roofMinWallLayers = Mathf.Clamp(
+				roofLayers,
+				InsulationSettings.MinRoofWallLayers,
+				InsulationSettings.MaxRoofWallLayers);
+			SettingsWidgets.Label(listing, "ColonyKit.Settings.Insulation.RoofMinLayers.Desc".Loc());
+
+			listing.Gap();
 			SettingsWidgets.Label(listing, "ColonyKit.Settings.Insulation.Formula".Loc());
+			SettingsWidgets.Label(listing, "ColonyKit.Settings.Insulation.RoofFormula".Loc());
 		}
 
 		public override void Reset(ColonyKitSettings settings)

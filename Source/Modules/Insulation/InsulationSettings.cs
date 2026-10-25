@@ -15,6 +15,10 @@ namespace ColonyKit.Modules.Insulation
 		public const int MaxLayers = 10;
 		public const int DefaultLayers = 6;
 
+		public const int MinRoofWallLayers = 2;
+		public const int MaxRoofWallLayers = 8;
+		public const int DefaultRoofWallLayers = 3;
+
 		public string SettingsKey => "insulation";
 
 		/// <summary>总开关；关闭时完全走原版结算（墙厚无效）。</summary>
@@ -29,12 +33,20 @@ namespace ColonyKit.Modules.Insulation
 		/// <summary>是否把自然岩层也算作墙体（山洞）。</summary>
 		public bool includeNaturalRock;
 
+		/// <summary>墙体够厚时，把薄屋顶按同等层数加厚结算。</summary>
+		public bool thickenRoof = true;
+
+		/// <summary>屋顶加厚所需的最小墙层数；默认 3，即“墙体大于 2”。</summary>
+		public int roofMinWallLayers = DefaultRoofWallLayers;
+
 		public void ExposeData()
 		{
 			Scribe_Values.Look(ref enabled, "ck_insulation_enabled", true);
 			Scribe_Values.Look(ref wallResistanceRatio, "ck_insulation_ratio", DefaultRatio);
 			Scribe_Values.Look(ref maxLayers, "ck_insulation_maxLayers", DefaultLayers);
 			Scribe_Values.Look(ref includeNaturalRock, "ck_insulation_naturalRock", false);
+			Scribe_Values.Look(ref thickenRoof, "ck_insulation_thickenRoof", true);
+			Scribe_Values.Look(ref roofMinWallLayers, "ck_insulation_roofMinWallLayers", DefaultRoofWallLayers);
 		}
 
 		public bool Validate()
@@ -53,6 +65,12 @@ namespace ColonyKit.Modules.Insulation
 				changed = true;
 			}
 
+			if (roofMinWallLayers < MinRoofWallLayers || roofMinWallLayers > MaxRoofWallLayers)
+			{
+				roofMinWallLayers = DefaultRoofWallLayers;
+				changed = true;
+			}
+
 			if (changed)
 			{
 				ModLog.Warn("Insulation", "invalid insulation settings corrected.");
@@ -67,6 +85,8 @@ namespace ColonyKit.Modules.Insulation
 			wallResistanceRatio = DefaultRatio;
 			maxLayers = DefaultLayers;
 			includeNaturalRock = false;
+			thickenRoof = true;
+			roofMinWallLayers = DefaultRoofWallLayers;
 		}
 	}
 

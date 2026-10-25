@@ -14,6 +14,7 @@
 
 ### Added
 
+- **厚墙加厚屋顶**：新增 `Patch_ThickRoof`。薄屋顶漏热（`ThinRoofEqualizationTempChangePerInterval`）在房间最薄外墙达到 `roofMinWallLayers`（默认 3，即“墙体大于 2”）时，按同一 `f(d)` 缩放；`d` 取所有墙边里最薄的一侧。无顶项与厚岩顶项不变；设置页新增「墙体够厚时加厚屋顶」开关与阈值滑条（2–8）。
 - **多墙体保温模块**：新增 `Insulation` 模块与「保温」设置页。原版 `RoomTempTracker.WallEqualizationTempChangePerInterval` 只取房间外第 2 格，双层墙与空地同值；模块在 Harmony Postfix 里按房间四周的连续墙层数 d 乘保温系数 `f(d) = (1 + r) / (1 + r × d)`（f(1)=1，与原版一致）。默认 r=3：2 层约 57%、3 层 40%、4 层 31%；可调 r（0.5–10）、最大层数（1–10）与「自然岩层算不算墙」。屋顶、门、通风口仍按原版；复用 `RoomTempTracker.EqualizeCellsForReading` 的缓存外圈格采样（上限 256 格），逐方向只统计朝向房间外的边。
 - **淋浴等待 Job**：新增 `CK_WaitForShower`；`JobGiver_HaveWash` 在没有空淋浴器/浴缸但有一台正在使用且供水正常的淋浴器时，让 Pawn 到门口等待，占用者结束后自动接手 `CK_TakeShower`。不是严格 FIFO，多个等待者会竞争同一台淋浴器。
 - **洁具房间占用限制**：`Building_AssignableFixture` 新增 Gizmo「房间占用限制」；开启后房间里有其他 Pawn 时该洁具视为占用。`OccupancyCheck` 不再是死字段。
