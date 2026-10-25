@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_StorageTab.label>立体仓库</CK_StorageTab.label>
+	<CK_StorageTab.generalTitle>立体仓库研究</CK_StorageTab.generalTitle>
+	<CK_StorageTab.generalDescription>研究高密度仓储、立体仓库核心与履带物流。</CK_StorageTab.generalDescription>
+	<CK_StorageTier1.label>一级立体仓库技术</CK_StorageTier1.label>
+	<CK_StorageTier1.description>可堆叠物品在当前上限上 ×10；研究费用 800，前置 Electricity。</CK_StorageTier1.description>
+	<CK_StorageTier2.label>二级立体仓库技术</CK_StorageTier2.label>
+	<CK_StorageTier2.description>再 ×3（合计 ×30）；解锁立体仓库核心，通电后把所在封闭房间压向 4°C。</CK_StorageTier2.description>
+	<CK_StorageTier3.label>三级立体仓库技术</CK_StorageTier3.label>
+	<CK_StorageTier3.description>再 ×2（合计 ×60）；解锁物品传送带，核心可设定 -20～30°C 目标温度。</CK_StorageTier3.description>
+</LanguageData>

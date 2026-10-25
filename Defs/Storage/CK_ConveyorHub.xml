@@ -34,5 +34,8 @@
 			<Beauty>-2</Beauty>
 			<Flammability>0</Flammability>
 		</statBases>
+		<researchPrerequisites>
+			<li>CK_StorageTier3</li>
+		</researchPrerequisites>
 	</ThingDef>
 </Defs>

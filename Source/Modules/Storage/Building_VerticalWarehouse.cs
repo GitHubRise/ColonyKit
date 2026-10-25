@@ -103,19 +103,21 @@ namespace ColonyKit.Modules.Storage
 			ConveyorWarning.Draw(position, Rot4.North, this);
 		}
 
-		/// <summary>3×3 每条边的中央接口格（建筑外侧）。</summary>
+		/// <summary>每条边中央的接口格（建筑外侧）；按 Def 实际尺寸计算。</summary>
 		public IntVec3 PortCell(Rot4 side)
 		{
+			int width = def.size.x;
+			int height = def.size.z;
 			switch (side.AsInt)
 			{
 				case 0:
-					return Position + new IntVec3(1, 0, 3); // North
+					return Position + new IntVec3(width / 2, 0, height); // North
 				case 1:
-					return Position + new IntVec3(3, 0, 1); // East
+					return Position + new IntVec3(width, 0, height / 2); // East
 				case 2:
-					return Position + new IntVec3(1, 0, -1); // South
+					return Position + new IntVec3(width / 2, 0, -1); // South
 				default:
-					return Position + new IntVec3(-1, 0, 1); // West
+					return Position + new IntVec3(-1, 0, height / 2); // West
 			}
 		}
 
@@ -133,21 +135,31 @@ namespace ColonyKit.Modules.Storage
 				return false;
 			}
 
-			for (int i = 0; i < 3; i++)
+			int width = def.size.x;
+			int height = def.size.z;
+			for (int i = 0; i < width; i++)
 			{
 				IntVec3 candidate;
 				switch (side.AsInt)
 				{
 					case 0:
-						candidate = Position + new IntVec3(i, 0, 3);
+						candidate = Position + new IntVec3(i, 0, height);
 						break;
 					case 1:
-						candidate = Position + new IntVec3(3, 0, i);
+						if (i >= height)
+						{
+							continue;
+						}
+						candidate = Position + new IntVec3(width, 0, i);
 						break;
 					case 2:
 						candidate = Position + new IntVec3(i, 0, -1);
 						break;
 					default:
+						if (i >= height)
+						{
+							continue;
+						}
 						candidate = Position + new IntVec3(-1, 0, i);
 						break;
 				}
@@ -530,6 +542,15 @@ namespace ColonyKit.Modules.Storage
 			}
 
 			float energy = compTempControl.Props.energyPerSecond * 4.1666665f;
+			if (!StorageResearch.Tier3Finished)
+			{
+				compTempControl.TargetTemperature = 4f;
+			}
+			else
+			{
+				compTempControl.TargetTemperature = Mathf.Clamp(
+					compTempControl.TargetTemperature, -20f, 30f);
+			}
 			float change = GenTemperature.ControlTemperatureTempChange(
 				roomCell,
 				Map,

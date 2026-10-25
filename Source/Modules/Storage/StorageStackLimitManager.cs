@@ -40,7 +40,10 @@ namespace ColonyKit.Modules.Storage
 			}
 
 			CaptureBaseLimits();
-			int multiplier = Math.Max(StorageSettings.MinMultiplier, Math.Min(StorageSettings.MaxMultiplier, settings.stackMultiplier));
+			int researchMultiplier = StorageResearch.StackMultiplier;
+			int multiplier = researchMultiplier > 0
+				? researchMultiplier
+				: Math.Max(StorageSettings.MinMultiplier, Math.Min(StorageSettings.MaxMultiplier, settings.stackMultiplier));
 
 			foreach (KeyValuePair<ThingDef, int> pair in BaseLimits)
 			{
