@@ -191,9 +191,9 @@
 	<ColonyKit.Settings.Tab.GeneralSettings>常规设置</ColonyKit.Settings.Tab.GeneralSettings>
 	<ColonyKit.Settings.Section.DefaultLanguage>默认语言</ColonyKit.Settings.Section.DefaultLanguage>
 	<ColonyKit.Settings.Section.LogOutput>日志输出</ColonyKit.Settings.Section.LogOutput>
-	<ColonyKit.Settings.Tab.Localization>汉化</ColonyKit.Settings.Tab.Localization>
 	<ColonyKit.Settings.Section.Localization>开发者菜单汉化</ColonyKit.Settings.Section.Localization>
 	<ColonyKit.Settings.Section.TranslationScheme>翻译方案</ColonyKit.Settings.Section.TranslationScheme>
+	<ColonyKit.Settings.Section.TranslationTable>翻译表配置</ColonyKit.Settings.Section.TranslationTable>
 	<ColonyKit.Settings.Localization.Enabled>启用开发者菜单汉化</ColonyKit.Settings.Localization.Enabled>
 	<ColonyKit.Settings.Localization.Enabled.Desc>只替换开发者模式 Debug 菜单的显示文本，不改玩法、Def 或存档。</ColonyKit.Settings.Localization.Enabled.Desc>
 	<ColonyKit.Settings.Localization.Conflict>检测到 DevMenuChinese 同时启用；两个补丁都会处理标签，建议只保留一个。本模块仍按当前方案翻译全部 34 个菜单组。</ColonyKit.Settings.Localization.Conflict>

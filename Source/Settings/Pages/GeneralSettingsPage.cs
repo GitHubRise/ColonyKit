@@ -1,11 +1,12 @@
+using ColonyKit.Modules.Localization;
 using RimWorld;
 using Verse;
 
 namespace ColonyKit
 {
 	/// <summary>
-	/// 「常规设置」页：设置界面语言（默认简体中文）+ 日志/诊断。
-	/// 旧「常规 / 日志 / 通知」三个模板页签已移除，页面数量减少到 5 个。
+	/// 「常规设置」页：设置界面语言（默认简体中文）+ 翻译方案 + 日志/诊断。
+	/// 旧「常规 / 日志 / 通知」三个模板页签与「汉化」页已移除，页面数量减少到 4 个。
 	/// </summary>
 	public sealed class GeneralSettingsPage : SettingsPage
 	{
@@ -43,6 +44,28 @@ namespace ColonyKit
 				language => ("ColonyKit.Settings.Language." + language).Loc(),
 				language => general.language = language);
 			SettingsWidgets.Label(listing, "ColonyKit.Settings.Language.Desc".Loc());
+
+			LocalizationSettings localization = settings.GetModuleSettings<LocalizationSettings>();
+			SettingsWidgets.Section(listing, "ColonyKit.Settings.Section.TranslationScheme".Loc());
+
+			bool translationEnabled = localization.enabled;
+			SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Localization.Enabled".Loc(),
+				ref translationEnabled,
+				"ColonyKit.Settings.Localization.Enabled.Desc".Loc());
+			localization.enabled = translationEnabled;
+
+			SettingsWidgets.Label(
+				listing,
+				"ColonyKit.Settings.Localization.CurrentScheme".Loc(localization.Current.name));
+
+			if (SettingsWidgets.Button(listing, "ColonyKit.Settings.Localization.EditSchemes".Loc()))
+			{
+				Find.WindowStack.Add(new Dialog_LocalizationSchemes(localization));
+			}
+
+			SettingsWidgets.Label(listing, "ColonyKit.Settings.Localization.Hint".Loc());
 
 			LoggingSettings logging = settings.logging;
 

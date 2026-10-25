@@ -1,3 +1,4 @@
+using ColonyKit.Modules;
 using ColonyKit.Modules.Localization;
 using RimWorld;
 using UnityEngine;
@@ -25,7 +26,7 @@ namespace ColonyKit
 			onlyOneOfTypeAllowed = true;
 		}
 
-		public override Vector2 InitialSize => new Vector2(780f, 760f);
+		public override Vector2 InitialSize => new Vector2(780f, 860f);
 
 		public override void DoWindowContents(Rect inRect)
 		{
@@ -116,6 +117,41 @@ namespace ColonyKit
 			if (string.IsNullOrEmpty(settings.Current.name))
 			{
 				settings.Current.name = "未命名";
+			}
+
+			listing.Gap(4f);
+			listing.GapLine();
+			listing.Label("ColonyKit.Settings.Section.TranslationTable".Loc());
+			listing.Gap(2f);
+
+			if (LocalizationModule.Conflict)
+			{
+				listing.Label("ColonyKit.Settings.Localization.Conflict".Loc());
+			}
+			else if (DevLabelTranslations.SourcePath == null)
+			{
+				listing.Label("ColonyKit.Settings.Localization.NotLoaded".Loc());
+			}
+			else
+			{
+				listing.Label(
+					"ColonyKit.Settings.Localization.Status".Loc(
+						DevLabelTranslations.Count,
+						DevLabelTranslations.MenuCount,
+						DevLabelTranslations.EnabledCount));
+				listing.Label(
+					"ColonyKit.Settings.Localization.Source".Loc(DevLabelTranslations.SourcePath));
+			}
+
+			if (SettingsWidgets.Button(listing, "ColonyKit.Settings.Localization.Reload".Loc()))
+			{
+				LocalizationModule.Reload();
+				Messages.Message(
+					"ColonyKit.Settings.Localization.Reloaded".Loc(
+						DevLabelTranslations.Count,
+						DevLabelTranslations.MenuCount),
+					MessageTypeDefOf.NeutralEvent,
+					false);
 			}
 
 			listing.Gap(4f);

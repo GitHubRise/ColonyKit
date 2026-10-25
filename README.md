@@ -448,7 +448,7 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 	- 完成：0.0.1；描述改为框架 + 四个参考模块占位。
 - [x] **M0-4** 模块内核：`IColonyKitModule`、`ModuleRegistry`、`ColonyKitGameComponent`；`ModuleRegistry.DiscoverFromAssembly` 自动发现 10 个模块，`OnDefsLoaded` / `OnGameLoaded` 有日志。
 	- 完成：模板 6 个（core/pawn-menu/notifications/build-control/tech-tree/diagnostics）+ `hygiene` / `storage` / `localization` / `rjw` 四个；新增模块不再改 `Bootstrap`。
-- [x] **M0-5** 设置壳：沿用模板的多页签设置框架，现为 **模块 / 立体库 / 汉化 / 常规设置 / 关于** 5 页；`SettingsController` 自动发现页面；常规设置里可切换 Mod 设置语言（默认简体中文）并包含日志/诊断；模块开关由 `ModuleSettings` 持久化，模块细分设置走 `IColonyKitModuleSettings` + `GetModuleSettings<T>()`。
+- [x] **M0-5** 设置壳：沿用模板的多页签设置框架，现为 **模块 / 立体库 / 常规设置 / 关于** 4 页（汉化页已并入常规设置）；`SettingsController` 自动发现页面；常规设置里可切换 Mod 设置语言（默认简体中文）、编辑翻译方案并包含日志/诊断；模块开关由 `ModuleSettings` 持久化，模块细分设置走 `IColonyKitModuleSettings` + `GetModuleSettings<T>()`。
 	- 偏差：没有按 `ck_<module>_*` 新建嵌套设置类；0.0.1 用 `moduleSettings` 通用列表，设置页自动发现。
 - [x] **M0-6** 文档：改写 `docs/ARCHITECTURE.md`（模块契约、生命周期、软停用限制、水网/存储/肥力/机器人约束）；维护 `docs/0000-索引.md` 与各模块索引/功能页；更新 [`sources/Index.md`](../Index.md) 增加本工程条目与构建命令。
 	- 完成：新增 `docs/ARCHITECTURE.md`（0.0.1 实际骨架/生命周期）；`sources/Index.md` 已加 ColonyKit 段；`docs/0000-索引.md` 与 27 个功能页已维护。
