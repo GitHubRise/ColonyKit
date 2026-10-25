@@ -3,13 +3,13 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_VerticalWarehouse</defName>
 		<label>vertical warehouse</label>
-		<description>A 4x4 internal warehouse. Colonists can drop items into it and take them out from the inspect pane; contents are stored inside the building and do not occupy map cells. Requires a conveyor on a side for automatic input/output; internal temperature is adjustable like a cooler.</description>
+		<description>A 3x3 internal warehouse. Colonists can drop items into it and take them out from the inspect pane; contents are stored inside the building and do not occupy map cells. Requires a conveyor on a side for automatic input/output; internal temperature is adjustable like a cooler.</description>
 		<thingClass>ColonyKit.Modules.Storage.Building_VerticalWarehouse</thingClass>
-		<size>(4,4)</size>
+		<size>(3,3)</size>
 		<graphicData>
 			<texPath>Things/Building/Storage/CK_VerticalWarehouse</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(4,4)</drawSize>
+			<drawSize>(3,3)</drawSize>
 		</graphicData>
 		<rotatable>false</rotatable>
 		<tickerType>Rare</tickerType>

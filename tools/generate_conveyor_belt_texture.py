@@ -1,12 +1,13 @@
-"""生成 1x1 直线履带的占位贴图（128x128）。
+"""生成 1x1 双向履带中性贴图（128x128）。
 
-默认朝北：竖直履带 + 上下双向箭头。建筑旋转 90° 后变成横向。
+静态贴图只保留底板、履带、导轨、中央转轴；方向箭头由运行时在
+履带上有物品时叠加。
 """
 
 from pathlib import Path
 from PIL import Image, ImageDraw
 
-S = 512  # 4x 超采样
+S = 512
 OUT = Path(__file__).resolve().parents[1] / "Textures" / "Things" / "Building" / "Storage" / "CK_ConveyorBelt.png"
 
 PLATE = (42, 47, 52, 255)
@@ -14,7 +15,6 @@ PLATE_DARK = (30, 34, 38, 255)
 LANE = (22, 26, 29, 255)
 RAIL = (126, 227, 240, 255)
 RAIL_DIM = (74, 135, 145, 255)
-AMBER = (232, 196, 90, 255)
 BOLT = (120, 132, 140, 255)
 
 
@@ -33,21 +33,9 @@ def main():
     d.rectangle((lane - half, 12, lane - half + rail, S - 12), fill=RAIL_DIM)
     d.rectangle((lane + half - rail, 12, lane + half, S - 12), fill=RAIL_DIM)
 
-    # 双向箭头：上、下各一个
-    shaft = 6
-    head = 18
-    d.line((lane, 58, lane, S // 2 - 24), fill=AMBER, width=shaft)
-    d.line((lane, S // 2 + 24, lane, S - 58), fill=AMBER, width=shaft)
-    d.polygon([(lane, 36), (lane - head, 72), (lane + head, 72)], fill=AMBER)
-    d.polygon([(lane, S - 36), (lane - head, S - 72), (lane + head, S - 72)], fill=AMBER)
-    d.polygon([(lane, S // 2 - 8), (lane - head, S // 2 - 44), (lane + head, S // 2 - 44)], fill=AMBER)
-    d.polygon([(lane, S // 2 + 8), (lane - head, S // 2 + 44), (lane + head, S // 2 + 44)], fill=AMBER)
-
-    # 中央转轴
     d.ellipse((lane - 30, S // 2 - 30, lane + 30, S // 2 + 30), fill=(38, 44, 49, 255), outline=RAIL, width=7)
     d.ellipse((lane - 12, S // 2 - 12, lane + 12, S // 2 + 12), fill=(24, 28, 32, 255), outline=RAIL_DIM, width=4)
 
-    # 四角螺栓
     for x, y in [(58, 58), (S - 58, 58), (58, S - 58), (S - 58, S - 58)]:
         d.ellipse((x - 7, y - 7, x + 7, y + 7), fill=BOLT, outline=(58, 64, 70, 255), width=2)
 

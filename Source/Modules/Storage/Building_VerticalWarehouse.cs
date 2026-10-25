@@ -102,19 +102,19 @@ namespace ColonyKit.Modules.Storage
 			ConveyorWarning.Draw(position, Rot4.North, this);
 		}
 
-		/// <summary>4×4 每条边的中央接口格（建筑外侧）。</summary>
+		/// <summary>3×3 每条边的中央接口格（建筑外侧）。</summary>
 		public IntVec3 PortCell(Rot4 side)
 		{
 			switch (side.AsInt)
 			{
 				case 0:
-					return Position + new IntVec3(2, 0, 4); // North
+					return Position + new IntVec3(1, 0, 3); // North
 				case 1:
-					return Position + new IntVec3(4, 0, 2); // East
+					return Position + new IntVec3(3, 0, 1); // East
 				case 2:
-					return Position + new IntVec3(2, 0, -1); // South
+					return Position + new IntVec3(1, 0, -1); // South
 				default:
-					return Position + new IntVec3(-1, 0, 2); // West
+					return Position + new IntVec3(-1, 0, 1); // West
 			}
 		}
 
@@ -132,16 +132,16 @@ namespace ColonyKit.Modules.Storage
 				return false;
 			}
 
-			for (int i = 0; i < 4; i++)
+			for (int i = 0; i < 3; i++)
 			{
 				IntVec3 candidate;
 				switch (side.AsInt)
 				{
 					case 0:
-						candidate = Position + new IntVec3(i, 0, 4);
+						candidate = Position + new IntVec3(i, 0, 3);
 						break;
 					case 1:
-						candidate = Position + new IntVec3(4, 0, i);
+						candidate = Position + new IntVec3(3, 0, i);
 						break;
 					case 2:
 						candidate = Position + new IntVec3(i, 0, -1);
@@ -288,7 +288,7 @@ namespace ColonyKit.Modules.Storage
 		public Building_VerticalWarehouse()
 		{
 			innerContainer = new ThingOwner<Thing>(this);
-			settingsVersion = 1;
+			settingsVersion = 2;
 			EnsureStoreSettings();
 		}
 
@@ -304,7 +304,7 @@ namespace ColonyKit.Modules.Storage
 			}
 			EnsureStoreSettings();
 
-			if (Scribe.mode == LoadSaveMode.PostLoadInit && settingsVersion < 1)
+			if (Scribe.mode == LoadSaveMode.PostLoadInit && settingsVersion < 2)
 			{
 				MigrateLegacyDefaults();
 			}
@@ -312,7 +312,7 @@ namespace ColonyKit.Modules.Storage
 
 		private void MigrateLegacyDefaults()
 		{
-			// 0.0.2 早期默认是 Low/21°C；旧存档首次加载时迁移到 Normal/4°C。
+			// 0.0.2 早期默认是 Low/21°C，且允许腐烂/尸体；旧存档首次加载时迁移。
 			if (storeSettings != null && storeSettings.Priority == StoragePriority.Low)
 			{
 				storeSettings.Priority = StoragePriority.Normal;
@@ -323,7 +323,9 @@ namespace ColonyKit.Modules.Storage
 			{
 				compTempControl.TargetTemperature = 4f;
 			}
-			settingsVersion = 1;
+
+			ApplyDefaultFilterRules();
+			settingsVersion = 2;
 		}
 
 		private void EnsureStoreSettings()
@@ -337,6 +339,25 @@ namespace ColonyKit.Modules.Storage
 			storeSettings.filter.SetAllowAll(null);
 			// 默认普通优先级，和原版库存区一致。
 			storeSettings.Priority = StoragePriority.Normal;
+			ApplyDefaultFilterRules();
+		}
+
+		private void ApplyDefaultFilterRules()
+		{
+			if (storeSettings?.filter == null)
+			{
+				return;
+			}
+
+			SpecialThingFilterDef rotten = DefDatabase<SpecialThingFilterDef>.GetNamedSilentFail("AllowRotten");
+			if (rotten != null)
+			{
+				storeSettings.filter.SetAllow(rotten, false);
+			}
+			if (ThingCategoryDefOf.Corpses != null)
+			{
+				storeSettings.filter.SetAllow(ThingCategoryDefOf.Corpses, false);
+			}
 		}
 
 		public bool StorageTabVisible => true;

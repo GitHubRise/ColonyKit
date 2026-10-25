@@ -1,4 +1,4 @@
-"""生成 4x4 立体库占位贴图（512x512）。
+"""生成 3x3 立体库占位贴图（384x384）。
 
 四边中央是履带接口，中央是温控/冷却单元；风格与履带一致。
 """
@@ -65,7 +65,7 @@ def main():
 
     d.rounded_rectangle((32, 32, S - 32, S - 32), radius=52, outline=(118, 132, 141, 255), width=5)
 
-    img = img.resize((512, 512), Image.Resampling.LANCZOS)
+    img = img.resize((384, 384), Image.Resampling.LANCZOS)
     OUT.parent.mkdir(parents=True, exist_ok=True)
     img.save(OUT)
     print(OUT)

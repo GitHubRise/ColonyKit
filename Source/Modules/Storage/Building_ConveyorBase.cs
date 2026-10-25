@@ -43,7 +43,7 @@ namespace ColonyKit.Modules.Storage
 		{
 			base.DrawAt(drawLoc, flip);
 
-			if (Find.TickManager == null)
+			if (Find.TickManager == null || !HasCargo())
 			{
 				return;
 			}
@@ -122,6 +122,21 @@ namespace ColonyKit.Modules.Storage
 					break;
 				}
 			}
+		}
+
+		private bool HasCargo()
+		{
+			foreach (IntVec3 cell in GenAdj.OccupiedRect(this))
+			{
+				foreach (Thing thing in Map.thingGrid.ThingsListAt(cell))
+				{
+					if (CanMove(thing))
+					{
+						return true;
+					}
+				}
+			}
+			return false;
 		}
 
 		protected abstract bool TryNextCell(IntVec3 from, out IntVec3 next, out bool leavesConveyor);

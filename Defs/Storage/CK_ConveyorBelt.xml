@@ -8,7 +8,7 @@
 		<thingClass>ColonyKit.Modules.Storage.Building_BidirectionalConveyor</thingClass>
 		<graphicData>
 			<texPath>Things/Building/Storage/CK_ConveyorBelt</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
+			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(1,1)</drawSize>
 		</graphicData>
 		<rotatable>true</rotatable>

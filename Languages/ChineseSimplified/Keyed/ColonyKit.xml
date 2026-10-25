@@ -168,6 +168,15 @@
 	<CK.VerticalWarehouse.NoPower>未通电，无法存取。</CK.VerticalWarehouse.NoPower>
 	<CK.VerticalWarehouse.NoConveyor>未连接履带；自动入/出库停止，请在本建筑四边接上履带。</CK.VerticalWarehouse.NoConveyor>
 	<CK.VerticalWarehouse.Empty>仓库为空。</CK.VerticalWarehouse.Empty>
+	<CK.StorageManagement.Title>立体库管理</CK.StorageManagement.Title>
+	<CK.StorageManagement.Search>检索立体库或物品</CK.StorageManagement.Search>
+	<CK.StorageManagement.None>本图没有匹配的立体库。</CK.StorageManagement.None>
+	<CK.StorageManagement.Select>选中</CK.StorageManagement.Select>
+	<CK.StorageManagement.Connected>已接履带</CK.StorageManagement.Connected>
+	<CK.StorageManagement.Disconnected>未接履带</CK.StorageManagement.Disconnected>
+	<CK.StorageManagement.Row>{0} ({1},{2})  {3}/{4} 堆  {5} 件  {6}</CK.StorageManagement.Row>
+	<CK.VerticalWarehouse.Search>检索物品</CK.VerticalWarehouse.Search>
+	<CK.VerticalWarehouse.NoMatch>没有匹配的物品。</CK.VerticalWarehouse.NoMatch>
 	<CK.VerticalWarehouse.Withdraw>取出</CK.VerticalWarehouse.Withdraw>
 	<CK.VerticalWarehouse.Collect>收集附近物品</CK.VerticalWarehouse.Collect>
 	<CK.VerticalWarehouse.CollectDesc>把周围 8 格内未禁用的可堆叠物品直接收进仓库（原型调试用，不是搬运 Job）。</CK.VerticalWarehouse.CollectDesc>

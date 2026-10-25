@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_StorageManagement.label>Storage</CK_StorageManagement.label>
+	<CK_StorageManagement.description>Manage all vertical warehouses on this map, with search and selection.</CK_StorageManagement.description>
+</LanguageData>

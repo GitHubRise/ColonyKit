@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<MainButtonDef>
+		<defName>CK_StorageManagement</defName>
+		<label>Storage</label>
+		<description>Manage all vertical warehouses on this map.</description>
+		<workerClass>ColonyKit.MainButtonWorker_Storage</workerClass>
+		<order>80</order>
+		<buttonVisible>true</buttonVisible>
+		<validWithoutMap>false</validWithoutMap>
+	</MainButtonDef>
+</Defs>

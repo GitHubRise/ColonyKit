@@ -168,6 +168,15 @@
 	<CK.VerticalWarehouse.NoPower>No power; storage is unavailable.</CK.VerticalWarehouse.NoPower>
 	<CK.VerticalWarehouse.NoConveyor>No conveyor connected; automatic input/output is disabled. Connect a conveyor to one of the four sides.</CK.VerticalWarehouse.NoConveyor>
 	<CK.VerticalWarehouse.Empty>The warehouse is empty.</CK.VerticalWarehouse.Empty>
+	<CK.StorageManagement.Title>Storage management</CK.StorageManagement.Title>
+	<CK.StorageManagement.Search>Search warehouses or items</CK.StorageManagement.Search>
+	<CK.StorageManagement.None>No matching warehouses on this map.</CK.StorageManagement.None>
+	<CK.StorageManagement.Select>Select</CK.StorageManagement.Select>
+	<CK.StorageManagement.Connected>conveyor connected</CK.StorageManagement.Connected>
+	<CK.StorageManagement.Disconnected>no conveyor</CK.StorageManagement.Disconnected>
+	<CK.StorageManagement.Row>{0} ({1},{2})  {3}/{4} stacks  {5} items  {6}</CK.StorageManagement.Row>
+	<CK.VerticalWarehouse.Search>Search items</CK.VerticalWarehouse.Search>
+	<CK.VerticalWarehouse.NoMatch>No matching items.</CK.VerticalWarehouse.NoMatch>
 	<CK.VerticalWarehouse.Withdraw>Withdraw</CK.VerticalWarehouse.Withdraw>
 	<CK.VerticalWarehouse.Collect>Collect nearby items</CK.VerticalWarehouse.Collect>
 	<CK.VerticalWarehouse.CollectDesc>Directly stores loose stackable items within 8 cells (prototype helper, not a hauling job).</CK.VerticalWarehouse.CollectDesc>
