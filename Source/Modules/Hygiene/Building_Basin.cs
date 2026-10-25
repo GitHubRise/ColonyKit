@@ -17,12 +17,14 @@ namespace ColonyKit.Modules.Hygiene
 
 		public override FixtureQuality Quality => FixtureQuality.normal;
 
+		public bool HasWaterSupply => pipe != null && !pipe.closed && pipe.pipeNet != null;
+
 		public bool TryUseWater(out ContaminationLevel contam)
 		{
 			contam = ContaminationLevel.Treated;
-			if (pipe?.pipeNet == null)
+			if (!HasWaterSupply || !Working(waterUsedPerTick).Accepted)
 			{
-				return true;
+				return false;
 			}
 			if (!pipe.pipeNet.PullWater(waterUsedPerTick, out contam))
 			{
@@ -38,7 +40,9 @@ namespace ColonyKit.Modules.Hygiene
 				&& PawnAllowed(pawn)
 				&& !Occupied(pawn)
 				&& pawn.CanReserve(this)
-				&& pawn.CanReach(this, PathEndMode.InteractionCell, Danger.Deadly);
+				&& pawn.CanReach(this, PathEndMode.InteractionCell, Danger.Deadly)
+				&& HasWaterSupply
+				&& Working().Accepted;
 		}
 	}
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
@@ -43,6 +44,25 @@ namespace ColonyKit.Modules.Hygiene
 		public override string CompInspectStringExtra()
 		{
 			return blocked ? "CK.Hygiene.Blocked".Translate() : null;
+		}
+
+		public override IEnumerable<Gizmo> CompGetGizmosExtra()
+		{
+			foreach (Gizmo gizmo in base.CompGetGizmosExtra())
+			{
+				yield return gizmo;
+			}
+
+			// 堵塞现在会真正阻止洁具使用；没有修复入口会把浴室永久锁死。
+			if (blocked && parent.Faction == Faction.OfPlayer)
+			{
+				yield return new Command_Action
+				{
+					defaultLabel = "CK.Hygiene.Unblock".Translate(),
+					defaultDesc = "CK.Hygiene.UnblockDesc".Translate(),
+					action = Notify_Repaired
+				};
+			}
 		}
 	}
 }

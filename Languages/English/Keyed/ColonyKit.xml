@@ -130,6 +130,8 @@
 	<CK.Hygiene.Sewage>Sewage: {0}/{1}</CK.Hygiene.Sewage>
 	<CK.Hygiene.SewageBlocked>Sewage blocked</CK.Hygiene.SewageBlocked>
 	<CK.Hygiene.Blocked>Drain blocked</CK.Hygiene.Blocked>
+	<CK.Hygiene.Unblock>Unblock drain</CK.Hygiene.Unblock>
+	<CK.Hygiene.UnblockDesc>Clear this fixture's blocked drain immediately and restore use.</CK.Hygiene.UnblockDesc>
 	<CK.Hygiene.HeaterOn>Heater running</CK.Hygiene.HeaterOn>
 	<CK.Hygiene.HeaterOff>Heater not running</CK.Hygiene.HeaterOff>
 	<CK.Hygiene.ConnectBed>Connect to bed</CK.Hygiene.ConnectBed>

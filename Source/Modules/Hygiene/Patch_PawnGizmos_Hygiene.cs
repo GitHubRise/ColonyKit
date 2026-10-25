@@ -20,6 +20,7 @@ namespace ColonyKit.Modules.Hygiene
 
 			if (!__instance.IsColonistPlayerControlled
 				|| !ModuleRegistry.IsEnabled("hygiene")
+				|| ModsConfig.IsActive("dubwise.dubsbadhygiene")
 				|| __instance.Map == null)
 			{
 				yield break;

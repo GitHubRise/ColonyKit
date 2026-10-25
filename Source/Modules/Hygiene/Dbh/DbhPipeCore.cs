@@ -44,9 +44,20 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		{
 			get
 			{
-				if (pipeNetRef == null && MapComp != null)
+				// 开关关闭的洁具/管件不应继续读取旧水网；否则拆管或关阀后，
+				// 旧的 pipeNetRef 仍可能指向已废弃的网络。
+				if (closed)
 				{
-					MapComp.PipeComp.RegenPipeGrids();
+					return null;
+				}
+				HygienePipeMapComp mapComp = MapComp?.PipeComp;
+				if (mapComp == null)
+				{
+					return pipeNetRef;
+				}
+				if (pipeNetRef == null || !mapComp.PipeNets.Contains(pipeNetRef))
+				{
+					mapComp.RegenPipeGrids();
 				}
 				return pipeNetRef;
 			}
@@ -222,7 +233,7 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		public float GroundWaterCapacitySum;
 		public bool HasFilter => false;
 
-		public float WaterStorage => WaterTowers.Sum(t => t.WaterStorage);
+		public float WaterStorage => WaterTowers.Where(t => t.WorkingNow).Sum(t => t.WaterStorage);
 
 		public bool HasHotWater => Heaters.Any(h => h.WorkingNow);
 
@@ -290,12 +301,12 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 			{
 				return false;
 			}
-			if (WaterTowers.Sum(t => t.WaterStorage) < amount)
+			if (WaterStorage < amount)
 			{
 				return false;
 			}
 			float remaining = amount;
-			foreach (CompWaterStorage tank in WaterTowers)
+			foreach (CompWaterStorage tank in WaterTowers.Where(t => t.WorkingNow))
 			{
 				if (tank.WaterQuality > contam)
 				{
@@ -315,7 +326,7 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		public float PushWater(float amount)
 		{
 			float remaining = amount;
-			foreach (CompWaterStorage tank in WaterTowers.Where(t => t.space > 0f))
+			foreach (CompWaterStorage tank in WaterTowers.Where(t => t.WorkingNow && t.space > 0f))
 			{
 				float put = Mathf.Min(tank.space, remaining);
 				tank.WaterStorage += put;
@@ -333,7 +344,10 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 			WaterCap = 0f;
 			foreach (CompWaterStorage tank in WaterTowers)
 			{
-				WaterCap += tank.Props.WaterStorageCap;
+				if (tank.WorkingNow)
+				{
+					WaterCap += tank.Props.WaterStorageCap;
+				}
 			}
 			PumpingCapacitySum = WaterPumps.Sum(p => p.Capacity);
 			// A pump needs a well: ground water is the hard limit, and no well means no water.

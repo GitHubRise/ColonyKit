@@ -28,7 +28,7 @@ namespace ColonyKit.Modules.Hygiene
 				return existing;
 			}
 			NeedDef def = DefDatabase<NeedDef>.GetNamedSilentFail(defName);
-			if (def == null || def.needClass == null)
+			if (def == null || def.needClass == null || !ShouldInject(pawn, def))
 			{
 				return null;
 			}
@@ -37,6 +37,21 @@ namespace ColonyKit.Modules.Hygiene
 			pawn.needs.AllNeeds.Add(need);
 			need.SetInitialLevel();
 			return need as T;
+		}
+
+		/// <summary>
+		/// 手动补需求时也必须走和 ShouldHaveNeed 补丁一致的开关判断，
+		/// 否则读档时会把 DBH 已软停用的需求重新加回去。
+		/// </summary>
+		internal static bool ShouldInject(Pawn pawn, NeedDef def)
+		{
+			return pawn?.needs != null
+				&& def != null
+				&& ModuleRegistry.IsEnabled("hygiene")
+				&& !ModsConfig.IsActive("dubwise.dubsbadhygiene")
+				&& pawn.RaceProps.Humanlike
+				&& !pawn.RaceProps.IsMechanoid
+				&& (int)pawn.RaceProps.intelligence >= (int)def.minIntelligence;
 		}
 	}
 }

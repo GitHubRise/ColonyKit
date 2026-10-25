@@ -9,6 +9,7 @@ namespace ColonyKit.Modules.Hygiene
 	{
 		private float[] pollution;
 		private bool initialized;
+		private bool waterPolluted;
 
 		public MapComponent_SewagePollution(Map map) : base(map)
 		{
@@ -29,23 +30,16 @@ namespace ColonyKit.Modules.Hygiene
 			}
 			int index = map.cellIndices.CellToIndex(cell);
 			pollution[index] = Mathf.Min(20f, pollution[index] + amount);
-		}
-
-		public bool WaterPolluted
-		{
-			get
+			if (pollution[index] > 1f && cell.GetTerrain(map).IsWater)
 			{
-				for (int i = 0; i < pollution.Length; i++)
-				{
-					if (pollution[i] > 1f
-						&& map.cellIndices.IndexToCell(i).GetTerrain(map).IsWater)
-					{
-						return true;
-					}
-				}
-				return false;
+				waterPolluted = true;
 			}
 		}
+
+		/// <summary>
+		/// 缓存结果。水塔每个 tick 都会读这个值，不能在这里扫描全图。
+		/// </summary>
+		public bool WaterPolluted => waterPolluted;
 
 		private int tickCounter;
 
@@ -95,6 +89,21 @@ namespace ColonyKit.Modules.Hygiene
 				}
 			}
 			pollution = next;
+			RefreshWaterPolluted();
+		}
+
+		private void RefreshWaterPolluted()
+		{
+			waterPolluted = false;
+			for (int i = 0; i < pollution.Length; i++)
+			{
+				if (pollution[i] > 1f
+					&& map.cellIndices.IndexToCell(i).GetTerrain(map).IsWater)
+				{
+					waterPolluted = true;
+					return;
+				}
+			}
 		}
 	}
 }

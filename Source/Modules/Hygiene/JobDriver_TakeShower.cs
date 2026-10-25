@@ -9,6 +9,7 @@ namespace ColonyKit.Modules.Hygiene
 	public class JobDriver_TakeShower : JobDriver
 	{
 		private bool cold;
+		private bool completed;
 		private ContaminationLevel waterQuality = ContaminationLevel.Treated;
 
 		public override void ExposeData()
@@ -62,11 +63,18 @@ namespace ColonyKit.Modules.Hygiene
 				pawn.GainComfortFromCellIfPossible(1);
 				if (need != null && need.CurLevel >= 1f)
 				{
+					completed = true;
 					ReadyForNextToil();
 				}
 			};
 			wash.AddFinishAction(() =>
 			{
+				// finish action 在中断（断水/断电/征兆/精神崩溃）时也会执行；
+				// 没洗完就不该清污渍、给心情或清污染标记。
+				if (!completed)
+				{
+					return;
+				}
 				pawn.filth?.CarriedFilthListForReading?.Clear();
 				Building_Shower shower = job.targetA.Thing as Building_Shower;
 				if (shower != null)

@@ -25,13 +25,13 @@ namespace ColonyKit.Modules.Hygiene
 
 		public bool IsFull => WaterInTub >= waterUsed;
 
+		public bool HasWaterSupply => pipe != null && !pipe.closed && pipe.pipeNet != null;
+
 		public bool TryFillBath()
 		{
-			if (pipe?.pipeNet == null)
+			if (!HasWaterSupply || !Working(waterUsedPerTick).Accepted)
 			{
-				cold = false;
-				WaterInTub += waterUsedPerTick;
-				return true;
+				return false;
 			}
 			if (!pipe.pipeNet.PullWater(waterUsedPerTick, out ContaminationLevel contam))
 			{
@@ -63,7 +63,10 @@ namespace ColonyKit.Modules.Hygiene
 				&& PawnAllowed(pawn)
 				&& !Occupied(pawn)
 				&& pawn.CanReserve(this)
-				&& pawn.CanReach(this, PathEndMode.Touch, Danger.Deadly);
+				&& pawn.CanReach(this, PathEndMode.Touch, Danger.Deadly)
+				&& HasWaterSupply
+				// 一缸需要 waterUsed（190 L）；不够就别开始放水。
+				&& Working().Accepted;
 		}
 	}
 }

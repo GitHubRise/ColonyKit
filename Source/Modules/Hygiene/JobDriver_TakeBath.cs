@@ -69,6 +69,7 @@ namespace ColonyKit.Modules.Hygiene
 				{
 					SanitationUtil.ApplyBathroomThought(pawn, bath);
 					SanitationUtil.WaterTempCheck(pawn, bath.IsCold, true);
+					pawn.needs?.TryGetNeed<Need_Hygiene>()?.CleanContamination();
 					SanitationUtil.ContaminationCheckWater(pawn, waterQuality);
 					SanitationUtil.CheckForBlockage(bath);
 					bath.TryPullPlug();

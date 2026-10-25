@@ -9,6 +9,13 @@ namespace ColonyKit.Modules.Hygiene
 	{
 		public override float GetPriority(Pawn pawn)
 		{
+			// 模块关闭或检测到 DBH 时，即使旧存档里还留着 CK_Hygiene，
+			// 也不应该继续自动派洗澡工作。
+			if (!ModuleRegistry.IsEnabled("hygiene")
+				|| ModsConfig.IsActive("dubwise.dubsbadhygiene"))
+			{
+				return 0f;
+			}
 			Need_Hygiene need = pawn.needs?.TryGetNeed<Need_Hygiene>();
 			if (need == null || FoodUtility.ShouldBeFedBySomeone(pawn))
 			{

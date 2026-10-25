@@ -8,6 +8,11 @@ namespace ColonyKit.Modules.Hygiene
 	{
 		public override float GetPriority(Pawn pawn)
 		{
+			if (!ModuleRegistry.IsEnabled("hygiene")
+				|| ModsConfig.IsActive("dubwise.dubsbadhygiene"))
+			{
+				return 0f;
+			}
 			Need_Bladder need = pawn.needs?.TryGetNeed<Need_Bladder>();
 			if (need == null || FoodUtility.ShouldBeFedBySomeone(pawn))
 			{
