@@ -265,6 +265,71 @@
     <entry key="unpolluterect" menu="map" zh="清除污染（矩形）" />
     <entry key="usegenstep" menu="map" zh="使用生成步骤" />
     <entry key="usescatterer" menu="map" zh="使用散布器" />
+    <!-- 地形：石质土壤与 1.6 生成的 63 种地毯颜色（开发者菜单「设置地形」子菜单） -->
+    <entry key="gravel" menu="map" zh="沙砾" />
+    <entry key="carpetred" menu="map" zh="地毯（红）" />
+    <entry key="carpetredsubtle" menu="map" zh="地毯（浅红）" />
+    <entry key="carpetauburn" menu="map" zh="地毯（赤褐）" />
+    <entry key="carpetscarlet" menu="map" zh="地毯（血红）" />
+    <entry key="carpetburgundy" menu="map" zh="地毯（酒红）" />
+    <entry key="carpetplum" menu="map" zh="地毯（梅粉）" />
+    <entry key="carpetdarkmauve" menu="map" zh="地毯（紫红）" />
+    <entry key="carpetmagenta" menu="map" zh="地毯（品红）" />
+    <entry key="carpetmagentasubtle" menu="map" zh="地毯（浅品红）" />
+    <entry key="carpetpurple" menu="map" zh="地毯（紫）" />
+    <entry key="carpetpurplesubtle" menu="map" zh="地毯（浅紫）" />
+    <entry key="carpetpurplemuted" menu="map" zh="地毯（默紫）" />
+    <entry key="carpetpurpledeep" menu="map" zh="地毯（深紫）" />
+    <entry key="carpetgrape" menu="map" zh="地毯（葡紫）" />
+    <entry key="carpetindigo" menu="map" zh="地毯（青）" />
+    <entry key="carpetindigolight" menu="map" zh="地毯（亮青）" />
+    <entry key="carpetblue" menu="map" zh="地毯（蓝）" />
+    <entry key="carpetbluesubtle" menu="map" zh="地毯（淡蓝）" />
+    <entry key="carpetblueice" menu="map" zh="地毯（冰蓝）" />
+    <entry key="carpetmarine" menu="map" zh="地毯（海洋）" />
+    <entry key="carpetbluesky" menu="map" zh="地毯（天蓝）" />
+    <entry key="carpetdusk" menu="map" zh="地毯（黄昏）" />
+    <entry key="carpetmoss" menu="map" zh="地毯（苔绿）" />
+    <entry key="carpetmossbright" menu="map" zh="地毯（亮苔绿）" />
+    <entry key="carpetteal" menu="map" zh="地毯（水蓝）" />
+    <entry key="carpetgreen" menu="map" zh="地毯（绿）" />
+    <entry key="carpetsage" menu="map" zh="地毯（鼠尾草）" />
+    <entry key="carpetgreenfaded" menu="map" zh="地毯（褪绿）" />
+    <entry key="carpetgreenforest" menu="map" zh="地毯（森林绿）" />
+    <entry key="carpetgreenpine" menu="map" zh="地毯（松绿）" />
+    <entry key="carpetgreenswamp" menu="map" zh="地毯（沼绿）" />
+    <entry key="carpetgreenmuddy" menu="map" zh="地毯（泥绿）" />
+    <entry key="carpetgreenmarsh" menu="map" zh="地毯（湿绿）" />
+    <entry key="carpetviridian" menu="map" zh="地毯（铬绿）" />
+    <entry key="carpetviridiansubtle" menu="map" zh="地毯（浅铬绿）" />
+    <entry key="carpetolive" menu="map" zh="地毯（橄榄绿）" />
+    <entry key="carpetolivedark" menu="map" zh="地毯（深橄榄绿）" />
+    <entry key="carpetmustard" menu="map" zh="地毯（芥绿）" />
+    <entry key="carpetlimepale" menu="map" zh="地毯（浅黄绿）" />
+    <entry key="carpetbrownfaded" menu="map" zh="地毯（褪褐）" />
+    <entry key="carpetbrownsubtle" menu="map" zh="地毯（淡褐）" />
+    <entry key="carpetbrownlight" menu="map" zh="地毯（亮褐）" />
+    <entry key="carpetbrowndark" menu="map" zh="地毯（深褐）" />
+    <entry key="carpetbrowndirt" menu="map" zh="地毯（土褐）" />
+    <entry key="carpetumberburnt" menu="map" zh="地毯（焦糖）" />
+    <entry key="carpetbrownwood" menu="map" zh="地毯（木褐）" />
+    <entry key="carpetorange" menu="map" zh="地毯（橙）" />
+    <entry key="carpetredpastel" menu="map" zh="地毯（淡红）" />
+    <entry key="carpetpink" menu="map" zh="地毯（淡粉）" />
+    <entry key="carpetbluepastel" menu="map" zh="地毯（浅蓝）" />
+    <entry key="carpetgreenpastel" menu="map" zh="地毯（浅绿）" />
+    <entry key="carpetyellowpastel" menu="map" zh="地毯（淡黄）" />
+    <entry key="carpetorangepastel" menu="map" zh="地毯（淡橙）" />
+    <entry key="carpetwhite" menu="map" zh="地毯（白）" />
+    <entry key="carpetcream" menu="map" zh="地毯（奶白）" />
+    <entry key="carpetgraylight" menu="map" zh="地毯（亮灰）" />
+    <entry key="carpetlimestone" menu="map" zh="地毯（石灰岩）" />
+    <entry key="carpetmarble" menu="map" zh="地毯（大理石）" />
+    <entry key="carpetsandstone" menu="map" zh="地毯（砂岩）" />
+    <entry key="carpetgranite" menu="map" zh="地毯（花岗岩）" />
+    <entry key="carpetgreydark" menu="map" zh="地毯（深灰）" />
+    <entry key="carpetslate" menu="map" zh="地毯（板岩）" />
+    <entry key="carpetblack" menu="map" zh="地毯（黑）" />
     <entry key="disablemechs" menu="mechanoid" minimal="true" zh="禁用机械族" />
     <entry key="loadedfilesformod" menu="mods" zh="已加载的 Mod 文件" />
     <entry key="addtestplanetlayer" menu="other" zh="添加测试行星层" />
