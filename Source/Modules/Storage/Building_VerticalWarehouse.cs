@@ -429,7 +429,7 @@ namespace ColonyKit.Modules.Storage
 
 		public bool CanStore(Thing thing)
 		{
-			if (!HasAnyConveyorConnection || !Accepts(thing))
+			if (!Accepts(thing))
 			{
 				return false;
 			}

@@ -103,6 +103,7 @@ namespace ColonyKit.Modules.Storage
 
 		private bool TryStoreAdjacent(Thing item)
 		{
+			// 先按占用区找相邻仓库，再用格子 edifice 兜底，避免 lister 注册时序问题。
 			foreach (Building_VerticalWarehouse warehouse in Map.listerBuildings
 				.AllBuildingsColonistOfClass<Building_VerticalWarehouse>())
 			{
@@ -113,54 +114,73 @@ namespace ColonyKit.Modules.Storage
 					return true;
 				}
 			}
-			return false;
-		}
 
-		/// <summary>向最近的立体库走一格；只走相邻履带，不判断建筑 Rotation。</summary>
-		private bool TryFindNextCell(IntVec3 from, out IntVec3 next)
-		{
-			next = from;
-			Building_VerticalWarehouse target = FindNearestWarehouse(from);
-			if (target == null)
-			{
-				return false;
-			}
-
-			int currentDistance = Distance(from, target.Position);
-			int bestDistance = currentDistance;
 			foreach (Rot4 side in AllDirections())
 			{
-				IntVec3 candidate = from + side.FacingCell;
-				if (!candidate.InBounds(Map) || !(candidate.GetEdifice(Map) is Building_ConveyorBase))
+				IntVec3 cell = Position + side.FacingCell;
+				if (!cell.InBounds(Map))
 				{
 					continue;
 				}
 
-				int distance = Distance(candidate, target.Position);
-				if (distance < bestDistance)
+				if (cell.GetEdifice(Map) is Building_VerticalWarehouse warehouse
+					&& warehouse.TryStoreInNetwork(item))
 				{
-					bestDistance = distance;
-					next = candidate;
+					return true;
 				}
 			}
-			return next != from;
+			return false;
 		}
 
-		private Building_VerticalWarehouse FindNearestWarehouse(IntVec3 from)
+		/// <summary>在相邻履带网络里做 BFS，找到最近的、可贴靠的立体库，返回第一步。</summary>
+		private bool TryFindNextCell(IntVec3 from, out IntVec3 next)
 		{
-			Building_VerticalWarehouse best = null;
-			int bestDistance = int.MaxValue;
+			next = from;
+			var queue = new Queue<IntVec3>();
+			var visited = new HashSet<IntVec3> { from };
+			var firstStep = new Dictionary<IntVec3, IntVec3>();
+			queue.Enqueue(from);
+
+			int guard = 0;
+			while (queue.Count > 0 && guard++ < 1024)
+			{
+				IntVec3 current = queue.Dequeue();
+				foreach (Rot4 side in AllDirections())
+				{
+					IntVec3 candidate = current + side.FacingCell;
+					if (!candidate.InBounds(Map)
+						|| visited.Contains(candidate)
+						|| !(candidate.GetEdifice(Map) is Building_ConveyorBase))
+					{
+						continue;
+					}
+
+					visited.Add(candidate);
+					IntVec3 step = current == from ? candidate : firstStep[current];
+					firstStep[candidate] = step;
+
+					if (HasAdjacentWarehouse(candidate))
+					{
+						next = step;
+						return true;
+					}
+					queue.Enqueue(candidate);
+				}
+			}
+			return false;
+		}
+
+		private bool HasAdjacentWarehouse(IntVec3 cell)
+		{
 			foreach (Building_VerticalWarehouse warehouse in Map.listerBuildings
 				.AllBuildingsColonistOfClass<Building_VerticalWarehouse>())
 			{
-				int distance = Distance(from, warehouse.Position);
-				if (distance < bestDistance)
+				if (GenAdj.OccupiedRect(warehouse).ExpandedBy(1).Contains(cell))
 				{
-					bestDistance = distance;
-					best = warehouse;
+					return true;
 				}
 			}
-			return best;
+			return false;
 		}
 
 		private Rot4 RouteDirection()
@@ -227,11 +247,6 @@ namespace ColonyKit.Modules.Storage
 			yield return Rot4.West;
 		}
 
-		private static int Distance(IntVec3 a, IntVec3 b)
-		{
-			return Mathf.Abs(a.x - b.x) + Mathf.Abs(a.z - b.z);
-		}
-
 		public override string GetInspectString()
 		{
 			string text = base.GetInspectString();
@@ -240,10 +255,9 @@ namespace ColonyKit.Modules.Storage
 				text += "\n";
 			}
 
-			Building_VerticalWarehouse target = FindNearestWarehouse(Position);
-			if (target != null)
+			if (TryFindNextCell(Position, out IntVec3 next))
 			{
-				text += "CK.ConveyorHub.Target".Translate(target.Position.x, target.Position.z);
+				text += "CK.ConveyorHub.Target".Translate(next.x, next.z);
 			}
 			else
 			{
