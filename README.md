@@ -669,6 +669,36 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 
   **参考**：[`docs/decisions/air-power.md`](docs/decisions/air-power.md)；SRTS/ELIF 直升机（运输）、Aerocraft/Aerial Framework（地图内飞行）、Anti-Air Weapon/CIWS（防空）、Vehicle Framework（载具底座）。
 
+- [ ] **G3 高铁（9000 候选）**：在世界地图上修铁路，把「出远门」从数天压到数小时；首版用原版道路层 + 车站/端点 + 商队列车化，不先做独立列车实体。
+
+  **MVP 范围**
+
+  - 研究「铁路运输 / 高速铁路」；`CK_RailStation`（3×3，500W）+ 世界地图端点 `CK_Railhead`。
+  - 车站 Gizmo「铺设铁路」→ 世界地图选点 → 显示路径/造价/工期 → 从殖民地库存扣钢/零部件 → 分段施工。
+  - 铁路 = `RoadDef`（`movementCostMultiplier ≈ 0.15`）+ `WorldGrid.OverlayRoad`；寻路/移动/渲染/存档复用原版。
+  - 商队在铁路上加速；`Caravan.Material` 换列车图标；`Caravan.NightResting` 允许夜车；R2 加 +500kg 载重。
+  - 设置页「铁路」：速度倍率、造价/工期倍率、夜车、列车贴图、单线上限。
+
+  **非目标（MVP 不做）**
+
+  - 独立 `WorldObject_Train` / 车厢编组 / 时刻表 / 自动货运 / Vehicle Framework 依赖。
+  - 铁路拆除/维护/破坏事件/外交接口（R3）。
+  - 3D 轨道、桥梁、隧道、信号系统。
+
+  **验收**
+
+  - [ ] 铺 10 格铁路后，商队实际移动 ≥ 5× 越野；寻路主动选铁路；线路在世界地图可见。
+  - [ ] 存读档后线路/进度/站点保留；删除 Mod 后读档不崩。
+  - [ ] 3× 速度 10 分钟无 tick 尖峰；`Player.log` 无 error。
+  - [ ] 与 Roads of the Rim / CaravanOptions 同开可加载；优先级冲突有提示。
+
+  **前置**
+
+  - 先做 [`docs/decisions/high-speed-rail.md`](docs/decisions/high-speed-rail.md) 的 1–2 天铺轨/渲染 spike；Go 条件不满足就停在构想池。
+  - 建议排在 M8 后评估；不混进 1.0。
+
+  **参考**：[`docs/decisions/high-speed-rail.md`](docs/decisions/high-speed-rail.md)；Roads of the Rim（世界地图修路先例）、Trains of the Rim（列车体验）、CaravanOptions（速度/夜间参数）、Vehicle Framework（载具底座，首版不用）。
+
 ---
 
 ## 6. 交付节奏
@@ -738,6 +768,7 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 14. **机器人损坏**：受伤后靠充电自修、需要维修 Job，还是直接留残骸可拆？是否要 Biotech 机械师联动（本机未装 DLC，默认不做）？
 15. **地下室（G1 构想）**：已登记硬需求——地面水电接入、不受天气、近乎恒温；**未排期**。走口袋地图 + 水电桥（需先 spike）还是同图方案，待 spike 后定。见 [`docs/decisions/basement.md`](docs/decisions/basement.md)。
 16. **空中力量（G2 构想）**：六类单位（无人机/直升机/歼击机/战斗机/轰炸机/地面防空）**未排期**，建议 1.0 后评估。先做「无人机 + 防空」spike；操控方式（亲自驾驶 vs 呼叫支援）、是否空对空、燃料/弹药是否新增物品，待确认。见 [`docs/decisions/air-power.md`](docs/decisions/air-power.md)。
+17. **高铁（G3 构想）**：世界地图铁路网 + 车站/端点 + 商队列车化，**未排期**，建议 M8 后评估。待确认：铁路是否只给玩家用、从殖民地库存扣料还是车站料仓、是否接 AI 定居点、R2 是否上独立列车实体。见 [`docs/decisions/high-speed-rail.md`](docs/decisions/high-speed-rail.md)。
 
 ---
 
@@ -779,3 +810,4 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 | 2026-10-25 | 扩展点自动发现：`ModuleRegistry.DiscoverFromAssembly` 替代 `Bootstrap` 硬编码；`SettingsController` 自动发现 `SettingsPage`；模块设置走 `IColonyKitModuleSettings` + `moduleSettings` 列表，不再改 `ColonyKitSettings` 字段。quicktest：`modules=10 (discovered=10)`、页面 6 个、设置 XML 正确写入 `Class=...LocalizationSettings`。 |
 | 2026-10-25 | 同步 mod-template 0.0.2：build.ps1 改为 Rebuild/警告失败/`-MIR`，补 Notification/Dropdown/MainButton 守卫；版本升 0.0.2；模板 demo 抽屉/示例研究不引入，详见 `docs/框架升级-0.0.2.md`。 |
 | 2026-10-25 | 登记 **G2 空中力量**构想（无人机/直升机/歼击机/战斗机/轰炸机/地面防空，8000 候选，未排期）；新增 `docs/decisions/air-power.md`（13 个现有 Mod 调研、原版 1.6 航空 API、六类单位/克制三角、三条主路线 + 世界地图备选与 spike）；README §5/§9/§10、0000 索引、decisions 索引同步。 |
+| 2026-10-25 | 登记 **G3 高铁**构想（9000 候选，未排期）：世界地图铁路网 + 车站/端点 + 商队列车化；新增 `docs/decisions/high-speed-rail.md`（修路/列车/商队 Mod 调研、原版 1.6 `RoadDef`/`OverlayRoad`/`WorldPathing` 事实、四种方案对比、R0–R3 分阶段与数值草案）；README §5/§9、0000 索引、decisions 索引同步。 |

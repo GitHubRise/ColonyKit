@@ -22,7 +22,7 @@
 | 本地化 | [本地化.md](本地化.md) | ✅ 0.0.2 开发者菜单 | Keyed / DefInjected、术语、`check-l10n`；全 Mod 文本仍规划 |
 | 构建与发布 | [构建与发布.md](构建与发布.md) | 🧩 模板已实现 | 编译、静态校验、打包、部署 |
 | 调查 | [调查指南.md](调查指南.md) | — | 5 分钟定位：日志 tag、稳定标识、症状检查 |
-| 决策记录 | [decisions/Index.md](decisions/Index.md) | — | ADR 模板与六个待定选型 |
+| 决策记录 | [decisions/Index.md](decisions/Index.md) | — | ADR 模板与待定选型 |
 
 ## 推荐阅读顺序
 
