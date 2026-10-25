@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- Additional hot-water storage. Boilers/water heaters heat it through the water network. -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_HotWaterTank</defName>
+		<label>hot water tank</label>
+		<description>Stores hot water for showers and baths. Connect it to a water heater; more tanks lower the network's target temperature, so pair them with enough heating capacity.</description>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<tickerType>Normal</tickerType>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_WaterTank</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,2)</drawSize>
+		</graphicData>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.3</fillPercent>
+		<costList>
+			<Steel>75</Steel>
+		</costList>
+		<statBases>
+			<MaxHitPoints>350</MaxHitPoints>
+			<Mass>50</Mass>
+			<WorkToBuild>1200</WorkToBuild>
+			<Beauty>-10</Beauty>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_HeatStore">
+				<StoreCapacity>100</StoreCapacity>
+				<RiseRate>0.0024</RiseRate>
+				<FallRate>0.00001</FallRate>
+				<ForRunningWater>true</ForRunningWater>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_HygieneResearch</li>
+		</researchPrerequisites>
+		<uiOrder>65</uiOrder>
+	</ThingDef>
+</Defs>

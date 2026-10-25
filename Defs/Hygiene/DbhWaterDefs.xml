@@ -223,7 +223,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_DbhWaterHeater</defName>
 		<label>water heater</label>
-		<description>Heats water for connected showers. Requires power; without it showers are cold.</description>
+		<description>Heats water for connected showers and has a small built-in hot water tank. Add hot water tanks for more hot water; requires power.</description>
 		<thingClass>Building</thingClass>
 		<size>(1,1)</size>
 		<graphicData>
@@ -234,6 +234,7 @@
 		<designationCategory>CK_Hygiene</designationCategory>
 		<passability>PassThroughOnly</passability>
 		<fillPercent>0.25</fillPercent>
+		<tickerType>Normal</tickerType>
 		<costList>
 			<Steel>75</Steel>
 			<ComponentIndustrial>2</ComponentIndustrial>
@@ -253,7 +254,13 @@
 			</li>
 			<li Class="CompProperties_Flickable" />
 			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterHeater">
-				<Capacity>2000</Capacity>
+				<Capacity>250</Capacity>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_HeatStore">
+				<StoreCapacity>100</StoreCapacity>
+				<RiseRate>0.0024</RiseRate>
+				<FallRate>0.00001</FallRate>
+				<ForRunningWater>true</ForRunningWater>
 			</li>
 		</comps>
 		<researchPrerequisites>

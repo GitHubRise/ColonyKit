@@ -225,21 +225,38 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		public List<CompWaterPumpingStation> WaterPumps = new List<CompWaterPumpingStation>();
 		public List<CompWaterInlet> WaterWells = new List<CompWaterInlet>();
 		public List<CompWaterHeater> Heaters = new List<CompWaterHeater>();
+		public List<CompHeatStore> HeatStores = new List<CompHeatStore>();
+		public List<CompHeatStore> HotWaterTanks = new List<CompHeatStore>();
 		public List<CompSewageHandler> Sewers = new List<CompSewageHandler>();
 		public List<CompPipe> Pipes = new List<CompPipe>();
 		public float WaterCap;
 		public float WaterPumpedPerTick;
 		public float PumpingCapacitySum;
 		public float GroundWaterCapacitySum;
+		public float BoilerCapacitySum;
+		public float HeatStoreCapacitySum;
+		public float HeatingCap;
 		public bool HasFilter => false;
 
 		public float WaterStorage => WaterTowers.Where(t => t.WorkingNow).Sum(t => t.WaterStorage);
 
-		public bool HasHotWater => Heaters.Any(h => h.WorkingNow);
+		public bool HasHotWater => HotWaterTanks.Any(t => t.HeaterTemp > 0f);
 
+		/// <summary>按 DBH 原版把热量平均分摊到所有还有热水的罐。</summary>
 		public bool PullHotWater(float heatPerTick)
 		{
-			return HasHotWater;
+			float draw = heatPerTick * ColonyKit.Modules.Hygiene.HygieneSettings.Current.hotWaterUseMultiplier;
+			List<CompHeatStore> tanks = HotWaterTanks.Where(t => t.HeaterTemp > 0f).ToList();
+			if (tanks.Count == 0)
+			{
+				return false;
+			}
+			float each = draw / tanks.Count;
+			for (int i = 0; i < tanks.Count; i++)
+			{
+				tanks[i].HeaterTemp = Mathf.Max(0f, tanks[i].HeaterTemp - each);
+			}
+			return true;
 		}
 
 		public bool PushSewage(float amount)
@@ -262,6 +279,8 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 			WaterPumps.Clear();
 			WaterWells.Clear();
 			Heaters.Clear();
+			HeatStores.Clear();
+			HotWaterTanks.Clear();
 			Sewers.Clear();
 			foreach (ThingWithComps thing in PipedThings)
 			{
@@ -285,6 +304,15 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 				if (heater != null)
 				{
 					Heaters.Add(heater);
+				}
+				CompHeatStore heatStore = thing.TryGetComp<CompHeatStore>();
+				if (heatStore != null)
+				{
+					HeatStores.Add(heatStore);
+					if (heatStore.ForRunningWater)
+					{
+						HotWaterTanks.Add(heatStore);
+					}
 				}
 				CompSewageHandler sewer = thing.TryGetComp<CompSewageHandler>();
 				if (sewer != null)
@@ -349,6 +377,11 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 					WaterCap += tank.Props.WaterStorageCap;
 				}
 			}
+			BoilerCapacitySum = Heaters.Sum(h => h.Capacity);
+			HeatStoreCapacitySum = HeatStores.Sum(h => h.GetStoreCapacity);
+			HeatingCap = HeatStoreCapacitySum > 0f
+				? Mathf.Clamp01(BoilerCapacitySum / HeatStoreCapacitySum)
+				: 0f;
 			PumpingCapacitySum = WaterPumps.Sum(p => p.Capacity);
 			// A pump needs a well: ground water is the hard limit, and no well means no water.
 			GroundWaterCapacitySum = WaterWells.Sum(w => w.GroundWaterCapacity);

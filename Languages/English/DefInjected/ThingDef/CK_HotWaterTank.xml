@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_HotWaterTank.label>hot water tank</CK_HotWaterTank.label>
+	<CK_HotWaterTank.description>Stores hot water for showers and baths. Connect it to a water heater; more tanks lower the network's target temperature, so pair them with enough heating capacity.</CK_HotWaterTank.description>
+</LanguageData>

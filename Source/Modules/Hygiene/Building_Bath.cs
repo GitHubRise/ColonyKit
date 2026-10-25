@@ -43,10 +43,7 @@ namespace ColonyKit.Modules.Hygiene
 				contamination = contam;
 			}
 			WaterInTub += amount;
-			if (pipe.pipeNet.PullHotWater(heatUsedPerTick))
-			{
-				cold = false;
-			}
+			cold = !pipe.pipeNet.PullHotWater(heatUsedPerTick);
 			return true;
 		}
 

@@ -29,6 +29,8 @@ namespace ColonyKit.Modules.Hygiene
 		public const float MaxRate = 5f;
 		public const float MinWaterUse = 0.25f;
 		public const float MaxWaterUse = 4f;
+		public const float MinHotWaterUse = 0.1f;
+		public const float MaxHotWaterUse = 2f;
 		public const float MinContamination = 0f;
 		public const float MaxContamination = 3f;
 
@@ -45,6 +47,9 @@ namespace ColonyKit.Modules.Hygiene
 
 		/// <summary>淋浴/浴缸/洗手池/马桶的耗水倍率。</summary>
 		public float waterUseMultiplier = 1f;
+
+		/// <summary>热水消耗倍率，对应 DBH 的 WaterHeatingRate。</summary>
+		public float hotWaterUseMultiplier = 1f;
 
 		/// <summary>脏水造成污染的概率倍率；0 为关闭，1 为原版默认。</summary>
 		public float contaminationChanceMultiplier = 1f;
@@ -215,6 +220,7 @@ namespace ColonyKit.Modules.Hygiene
 			Scribe_Values.Look(ref hygieneRateMultiplier, "hygieneRateMultiplier", 1f);
 			Scribe_Values.Look(ref bladderRateMultiplier, "bladderRateMultiplier", 1f);
 			Scribe_Values.Look(ref waterUseMultiplier, "waterUseMultiplier", 1f);
+			Scribe_Values.Look(ref hotWaterUseMultiplier, "hotWaterUseMultiplier", 1f);
 			Scribe_Values.Look(ref contaminationChanceMultiplier, "contaminationChanceMultiplier", 1f);
 			Scribe_Values.Look(ref dbhPolicy, "dbhPolicy", HygieneDbhPolicy.SoftOff);
 			Scribe_Values.Look(ref prisonersGetHygiene, "prisonersGetHygiene", true);
@@ -231,6 +237,7 @@ namespace ColonyKit.Modules.Hygiene
 			changed |= Clamp(ref hygieneRateMultiplier, MinRate, MaxRate, 1f);
 			changed |= Clamp(ref bladderRateMultiplier, MinRate, MaxRate, 1f);
 			changed |= Clamp(ref waterUseMultiplier, MinWaterUse, MaxWaterUse, 1f);
+			changed |= Clamp(ref hotWaterUseMultiplier, MinHotWaterUse, MaxHotWaterUse, 1f);
 			changed |= Clamp(ref contaminationChanceMultiplier, MinContamination, MaxContamination, 1f);
 
 			if (dbhPolicy != HygieneDbhPolicy.SoftOff
@@ -277,6 +284,7 @@ namespace ColonyKit.Modules.Hygiene
 			hygieneRateMultiplier = 1f;
 			bladderRateMultiplier = 1f;
 			waterUseMultiplier = 1f;
+			hotWaterUseMultiplier = 1f;
 			contaminationChanceMultiplier = 1f;
 			dbhPolicy = HygieneDbhPolicy.SoftOff;
 			prisonersGetHygiene = true;

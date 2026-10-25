@@ -150,6 +150,7 @@
 	<CK.Hygiene.ShowerWater>供水: {0} 升</CK.Hygiene.ShowerWater>
 	<CK.Hygiene.PumpNoPower>水泵未通电。</CK.Hygiene.PumpNoPower>
 	<CK.Hygiene.HotWater>热水澡</CK.Hygiene.HotWater>
+	<CK.Hygiene.HotWaterTemp>热水温度: {0}%</CK.Hygiene.HotWaterTemp>
 	<CK.Hygiene.ColdWater>冷水澡（未通电）</CK.Hygiene.ColdWater>
 	<ColonyKit.Module.Hygiene.Name>淋浴</ColonyKit.Module.Hygiene.Name>
 	<ColonyKit.Module.Hygiene.Desc>卫生需求、淋浴与热水；参考 DBH 的淋浴实现。</ColonyKit.Module.Hygiene.Desc>
@@ -261,6 +262,8 @@
 	<ColonyKit.Settings.Hygiene.Section.Water>水与污染</ColonyKit.Settings.Hygiene.Section.Water>
 	<ColonyKit.Settings.Hygiene.WaterUse>洁具耗水倍率</ColonyKit.Settings.Hygiene.WaterUse>
 	<ColonyKit.Settings.Hygiene.WaterUse.Desc>作用于淋浴、浴缸、洗手池和马桶；1.00 为默认。</ColonyKit.Settings.Hygiene.WaterUse.Desc>
+	<ColonyKit.Settings.Hygiene.HotWaterUse>热水消耗倍率</ColonyKit.Settings.Hygiene.HotWaterUse>
+	<ColonyKit.Settings.Hygiene.HotWaterUse.Desc>对应 DBH 的热水用量；1.00 为默认，越高热水罐掉温越快。</ColonyKit.Settings.Hygiene.HotWaterUse.Desc>
 	<ColonyKit.Settings.Hygiene.Contamination>污染概率</ColonyKit.Settings.Hygiene.Contamination>
 	<ColonyKit.Settings.Hygiene.Contamination.Desc>脏水造成污染的概率倍率；100% 为默认，0 为关闭。</ColonyKit.Settings.Hygiene.Contamination.Desc>
 	<ColonyKit.Settings.Hygiene.Section.Dbh>DBH 兼容</ColonyKit.Settings.Hygiene.Section.Dbh>

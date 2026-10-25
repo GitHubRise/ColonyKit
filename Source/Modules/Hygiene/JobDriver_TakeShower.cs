@@ -47,10 +47,9 @@ namespace ColonyKit.Modules.Hygiene
 					EndJobWith(JobCondition.Incompletable);
 					return;
 				}
-				if (isCold)
-				{
-					cold = true;
-				}
+				// 热水罐可能在洗澡中途耗尽；每 tick 跟随最新水温，
+				// 不能只在开始冷的时候把 cold 置 true。
+				cold = isCold;
 				if (contam > waterQuality)
 				{
 					waterQuality = contam;

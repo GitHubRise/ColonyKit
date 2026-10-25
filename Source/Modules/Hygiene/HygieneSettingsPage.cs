@@ -59,6 +59,16 @@ namespace ColonyKit.Modules.Hygiene
 				value => "×" + value.ToString("0.00"));
 			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.WaterUse.Desc".Loc());
 
+			data.hotWaterUseMultiplier = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.HotWaterUse".Loc(),
+				data.hotWaterUseMultiplier,
+				HygieneSettings.MinHotWaterUse,
+				HygieneSettings.MaxHotWaterUse,
+				0.05f,
+				value => "×" + value.ToString("0.00"));
+			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.HotWaterUse.Desc".Loc());
+
 			data.contaminationChanceMultiplier = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Hygiene.Contamination".Loc(),

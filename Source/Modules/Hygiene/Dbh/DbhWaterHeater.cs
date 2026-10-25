@@ -6,7 +6,8 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 {
 	public class CompProperties_WaterHeater : CompProperties
 	{
-		public float Capacity = 2000f;
+		/// <summary>Boiler heating capacity, matching DBH's default 250.</summary>
+		public float Capacity = 250f;
 
 		public CompProperties_WaterHeater()
 		{

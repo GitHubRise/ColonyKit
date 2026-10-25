@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_HotWaterTank.label>热水罐</CK_HotWaterTank.label>
+	<CK_HotWaterTank.description>储存洗浴用热水，需要接到热水器/锅炉。热水罐越多，管网目标水温越低，需要相应增加供热能力。</CK_HotWaterTank.description>
+</LanguageData>

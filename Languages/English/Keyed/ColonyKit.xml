@@ -150,6 +150,7 @@
 	<CK.Hygiene.ShowerWater>Supply: {0} L</CK.Hygiene.ShowerWater>
 	<CK.Hygiene.PumpNoPower>Pump has no power.</CK.Hygiene.PumpNoPower>
 	<CK.Hygiene.HotWater>Hot shower</CK.Hygiene.HotWater>
+	<CK.Hygiene.HotWaterTemp>Hot water temperature: {0}%</CK.Hygiene.HotWaterTemp>
 	<CK.Hygiene.ColdWater>Cold shower (no power)</CK.Hygiene.ColdWater>
 	<ColonyKit.Module.Hygiene.Name>Shower</ColonyKit.Module.Hygiene.Name>
 	<ColonyKit.Module.Hygiene.Desc>Hygiene need, shower and hot water; based on DBH.</ColonyKit.Module.Hygiene.Desc>
@@ -261,6 +262,8 @@
 	<ColonyKit.Settings.Hygiene.Section.Water>Water and contamination</ColonyKit.Settings.Hygiene.Section.Water>
 	<ColonyKit.Settings.Hygiene.WaterUse>Fixture water use</ColonyKit.Settings.Hygiene.WaterUse>
 	<ColonyKit.Settings.Hygiene.WaterUse.Desc>Applies to showers, baths, basins and toilets; 1.00 is default.</ColonyKit.Settings.Hygiene.WaterUse.Desc>
+	<ColonyKit.Settings.Hygiene.HotWaterUse>Hot water use</ColonyKit.Settings.Hygiene.HotWaterUse>
+	<ColonyKit.Settings.Hygiene.HotWaterUse.Desc>Matches DBH's hot water usage setting; 1.00 is default, higher drains hot water tanks faster.</ColonyKit.Settings.Hygiene.HotWaterUse.Desc>
 	<ColonyKit.Settings.Hygiene.Contamination>Contamination chance</ColonyKit.Settings.Hygiene.Contamination>
 	<ColonyKit.Settings.Hygiene.Contamination.Desc>Multiplier for dirty-water contamination; 100% is default, 0 disables it.</ColonyKit.Settings.Hygiene.Contamination.Desc>
 	<ColonyKit.Settings.Hygiene.Section.Dbh>DBH compatibility</ColonyKit.Settings.Hygiene.Section.Dbh>
