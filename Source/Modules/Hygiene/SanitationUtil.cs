@@ -44,15 +44,53 @@ namespace ColonyKit.Modules.Hygiene
 
 		public static void CheckForBlockage(Building building)
 		{
-			// 堵塞系统后续迁移。
+			building?.GetComp<CompBlockage>()?.CheckForBlockage();
 		}
 	}
 
 	internal static class PrivacyUtil
 	{
-		public static void BathingPrivacyLOS(Pawn pawn)
+		public static bool BathingPrivacyLOS(Pawn source, float radius = 6f)
 		{
-			// 隐私系统后续迁移。
+			if (source == null || !source.Spawned || source.Map == null)
+			{
+				return false;
+			}
+			foreach (Thing thing in GenRadial.RadialDistinctThingsAround(
+				source.Position, source.Map, radius, true))
+			{
+				if (thing is Pawn other && other != source && source.CaresIfSeenBathingBy(other))
+				{
+					ThoughtDef privacy = DefDatabase<ThoughtDef>.GetNamedSilentFail("CK_WashPrivacy");
+					if (privacy != null)
+					{
+						source.needs?.mood?.thoughts?.memories?.TryGainMemory(privacy);
+					}
+					return true;
+				}
+			}
+			return false;
+		}
+
+		public static bool CaresIfSeenBathingBy(this Pawn source, Pawn target)
+		{
+			if (target == null || target.RaceProps.Animal || target.RaceProps.IsMechanoid)
+			{
+				return false;
+			}
+			if (LovePartnerRelationUtility.LovePartnerRelationExists(source, target))
+			{
+				return false;
+			}
+			if (source.Map == null || !source.Map.IsPlayerHome)
+			{
+				return false;
+			}
+			if (!GenSight.LineOfSight(source.Position, target.Position, source.Map))
+			{
+				return false;
+			}
+			return source.gender != target.gender;
 		}
 	}
 

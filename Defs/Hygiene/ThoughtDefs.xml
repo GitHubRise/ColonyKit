@@ -42,4 +42,16 @@
 			</li>
 		</stages>
 	</ThoughtDef>
+	<ThoughtDef>
+		<defName>CK_WashPrivacy</defName>
+		<durationDays>1</durationDays>
+		<stackLimit>1</stackLimit>
+		<stages>
+			<li>
+				<label>no bathing privacy</label>
+				<description>Someone saw me bathing.</description>
+				<baseMoodEffect>-4</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
 </Defs>

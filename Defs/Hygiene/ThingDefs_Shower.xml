@@ -30,6 +30,7 @@
 			<Flammability>0</Flammability>
 		</statBases>
 		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.CompProperties_Blockage" />
 			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
 				<mode>Water</mode>
 			</li>
@@ -70,6 +71,7 @@
 			<Flammability>0</Flammability>
 		</statBases>
 		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.CompProperties_Blockage" />
 			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
 				<mode>Water</mode>
 			</li>

@@ -28,6 +28,7 @@ namespace ColonyKit.Modules.Hygiene
 	{
 		public CompPipe pipe;
 		public CompPowerTrader powerComp;
+		public CompBlockage blockageComp;
 		public Gender gender = Gender.None;
 		public bool AllowColonists = true;
 		public bool AllowSlaves = true;
@@ -103,6 +104,7 @@ namespace ColonyKit.Modules.Hygiene
 			base.SpawnSetup(map, respawningAfterLoad);
 			pipe = GetComp<CompPipe>();
 			powerComp = GetComp<CompPowerTrader>();
+			blockageComp = GetComp<CompBlockage>();
 		}
 
 		public override IEnumerable<Gizmo> GetGizmos()
@@ -137,6 +139,10 @@ namespace ColonyKit.Modules.Hygiene
 			if (WaterUsed == 0f)
 			{
 				WaterUsed = waterUsed;
+			}
+			if (blockageComp != null && blockageComp.blocked)
+			{
+				return "CK.Hygiene.Blocked".Translate();
 			}
 			if (powerComp != null && !powerComp.PowerOn)
 			{
