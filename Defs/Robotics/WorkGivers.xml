@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<WorkGiverDef>
+		<defName>CK_RepairNannyBot</defName>
+		<label>repair nanny robot</label>
+		<giverClass>ColonyKit.Modules.Robotics.WorkGiver_RepairNannyBot</giverClass>
+		<workType>Construction</workType>
+		<priorityInType>45</priorityInType>
+		<verb>repair</verb>
+		<gerund>repairing</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+</Defs>

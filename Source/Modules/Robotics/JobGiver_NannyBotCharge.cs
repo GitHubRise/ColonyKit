@@ -4,11 +4,9 @@ using Verse.AI;
 
 namespace ColonyKit.Modules.Robotics
 {
-	/// <summary>电量低于 25% 时优先回充电桩。</summary>
+	/// <summary>电量低于设置阈值时优先回充电桩。</summary>
 	public class JobGiver_NannyBotCharge : ThinkNode_JobGiver
 	{
-		private const float ChargeThreshold = 0.25f;
-
 		protected override Job TryGiveJob(Pawn pawn)
 		{
 			if (!NannyBotUtility.IsNannyBot(pawn) || pawn.Downed
@@ -18,7 +16,11 @@ namespace ColonyKit.Modules.Robotics
 			}
 
 			Need_RobotEnergy energy = NannyBotUtility.Energy(pawn);
-			if (energy == null || energy.CurLevel > ChargeThreshold || energy.IsCharging)
+			if (energy == null || energy.IsCharging)
+			{
+				return null;
+			}
+			if (energy.CurLevelPercentage > NannyBotUtility.Settings.chargeThreshold)
 			{
 				return null;
 			}

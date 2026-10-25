@@ -50,7 +50,7 @@ namespace ColonyKit.Modules.Robotics
 				}
 
 				station.TryGetComp<CompNannyBotStation>()?.SetCharging(true);
-				energy.Charge(delta * ChargePerTick);
+				energy.Charge(delta * energy.MaxLevel * ChargePerTick);
 				if (energy.IsFull)
 				{
 					ReadyForNextToil();

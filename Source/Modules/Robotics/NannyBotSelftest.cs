@@ -151,6 +151,45 @@ namespace ColonyKit.Modules.Robotics
 						builder.Append(" haulJob=")
 							.Append(haulResult.Job?.def?.defName ?? "none");
 					}
+
+					IntVec3 fireCell = cell + new IntVec3(1, 0, 0);
+					if (fireCell.InBounds(map))
+					{
+						Fire fire = ThingMaker.MakeThing(ThingDefOf.Fire) as Fire;
+						if (fire != null)
+						{
+							GenSpawn.Spawn(fire, fireCell, map);
+							ThinkResult fireResult = new JobGiver_NannyBotFirefight()
+								.TryIssueJobPackage(robot, new JobIssueParams());
+							builder.Append(" fireJob=")
+								.Append(fireResult.Job?.def?.defName ?? "none");
+							if (!fire.Destroyed)
+							{
+								fire.Destroy();
+							}
+						}
+					}
+
+					RoboticsSettings settings = NannyBotUtility.Settings;
+					builder.Append(" batteryCap=").Append(settings.batteryCapacity)
+						.Append(" chargeThreshold=").Append(settings.chargeThreshold.ToString("0.00"))
+						.Append(" workRadius=").Append(settings.workRadius.ToString("0"));
+
+					if (botComp != null)
+					{
+						botComp.durability = 500f;
+						Pawn colonist = null;
+						foreach (Pawn candidate in map.mapPawns.FreeColonistsSpawned)
+						{
+							colonist = candidate;
+							break;
+						}
+						WorkGiver_RepairNannyBot repair = new WorkGiver_RepairNannyBot();
+						bool canRepair = colonist != null && repair.HasJobOnThing(colonist, robot);
+						Job repairJob = canRepair ? repair.JobOnThing(colonist, robot) : null;
+						builder.Append(" durability=").Append(botComp.Durability.ToString("0"))
+							.Append(" repairJob=").Append(repairJob?.def?.defName ?? "none");
+					}
 				}
 				ModLog.Force("Robotics", builder.ToString());
 			}

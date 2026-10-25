@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<SoundDef>
+		<defName>CK_NannyBotBeep</defName>
+		<context>MapOnly</context>
+		<maxVoices>1</maxVoices>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>NannyBot/Beep</clipPath>
+					</li>
+				</grains>
+				<volumeRange>5~5</volumeRange>
+				<pitchRange>0.96~1.04</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<SoundDef>
+		<defName>CK_NannyBotLowBattery</defName>
+		<context>MapOnly</context>
+		<maxVoices>1</maxVoices>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>NannyBot/LowBattery</clipPath>
+					</li>
+				</grains>
+				<volumeRange>8~8</volumeRange>
+				<pitchRange>0.92~1.0</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+</Defs>

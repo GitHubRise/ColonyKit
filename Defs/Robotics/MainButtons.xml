@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<MainButtonDef>
+		<defName>CK_RobotManagement</defName>
+		<label>Robots</label>
+		<description>Manage nanny robots on this map.</description>
+		<tabWindowClass>ColonyKit.Modules.Robotics.MainTabWindow_NannyBots</tabWindowClass>
+		<order>82</order>
+		<buttonVisible>true</buttonVisible>
+		<validWithoutMap>false</validWithoutMap>
+	</MainButtonDef>
+</Defs>

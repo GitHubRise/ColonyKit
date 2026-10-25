@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 	<CK_RobotEnergy.label>机器人电量</CK_RobotEnergy.label>
-	<CK_RobotEnergy.description>内置电池电量。满电约可工作 12 小时，充电桩约 4 小时充满；电量 0% 时停止工作，但不会死亡。</CK_RobotEnergy.description>
+	<CK_RobotEnergy.description>内置电池电量。默认容量 4000W，可在机器人设置页调整。满电约可工作 12 小时，充电桩约 4 小时充满；电量 0% 时停止工作，但不会死亡。</CK_RobotEnergy.description>
 </LanguageData>

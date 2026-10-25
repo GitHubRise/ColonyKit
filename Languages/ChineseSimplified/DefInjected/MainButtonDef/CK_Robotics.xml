@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_RobotManagement.label>机器人</CK_RobotManagement.label>
+	<CK_RobotManagement.description>管理本图的保姆机器人：电量、耐久、任务与充电桩。</CK_RobotManagement.description>
+</LanguageData>

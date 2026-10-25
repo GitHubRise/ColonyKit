@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using RimWorld;
+using RimWorld.Planet;
 using UnityEngine;
 using Verse;
+using Verse.AI;
 
 namespace ColonyKit.Modules.Robotics
 {
@@ -34,6 +36,7 @@ namespace ColonyKit.Modules.Robotics
 		private bool spawnPending;
 		private bool charging;
 		private CompPowerTrader power;
+		private CompGlower glower;
 
 		private CompProperties_NannyBotStation Props =>
 			(CompProperties_NannyBotStation)props;
@@ -44,6 +47,7 @@ namespace ColonyKit.Modules.Robotics
 		{
 			base.PostSpawnSetup(respawningAfterLoad);
 			power = parent.TryGetComp<CompPowerTrader>();
+			glower = parent.TryGetComp<CompGlower>();
 			if (!respawningAfterLoad)
 			{
 				spawnPending = true;
@@ -87,6 +91,7 @@ namespace ColonyKit.Modules.Robotics
 			{
 				ApplyPower();
 			}
+			glower?.UpdateLit(parent.Map);
 		}
 
 		private void NotifyRobotLost()
@@ -100,15 +105,19 @@ namespace ColonyKit.Modules.Robotics
 			}
 		}
 
+		public bool IsCharging => charging;
+
 		public void SetCharging(bool value)
 		{
 			if (charging == value)
 			{
 				ApplyPower();
+				glower?.UpdateLit(parent.Map);
 				return;
 			}
 			charging = value;
 			ApplyPower();
+			glower?.UpdateLit(parent.Map);
 		}
 
 		private bool IsRobotChargingHere()
@@ -252,6 +261,32 @@ namespace ColonyKit.Modules.Robotics
 				}
 			}
 			yield return assemble;
+
+			if (HasRobot)
+			{
+				yield return new Command_Action
+				{
+					defaultLabel = "CK.Robotics.Station.Locate".Translate(),
+					defaultDesc = "CK.Robotics.Station.Locate.Desc".Translate(),
+					icon = ContentFinder<Texture2D>.Get("UI/Commands/CK_Goto", false)
+						?? TexCommand.SelectCarriedPawn,
+					action = () => CameraJumper.TryJumpAndSelect(new GlobalTargetInfo(robot))
+				};
+
+				yield return new Command_Action
+				{
+					defaultLabel = "CK.Robotics.Station.Recall".Translate(),
+					defaultDesc = "CK.Robotics.Station.Recall.Desc".Translate(),
+					icon = ContentFinder<Texture2D>.Get("UI/Commands/CK_Recall", false)
+						?? TexCommand.SelectCarriedPawn,
+					action = () =>
+					{
+						Job job = JobMaker.MakeJob(JobDefOf.Goto, parent.InteractionCell);
+						job.locomotionUrgency = LocomotionUrgency.Jog;
+						robot.jobs.TryTakeOrderedJob(job);
+					}
+				};
+			}
 		}
 
 		public override string CompInspectStringExtra()

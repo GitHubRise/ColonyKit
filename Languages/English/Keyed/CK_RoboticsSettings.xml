@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<ColonyKit.Settings.Tab.Robotics>Robots</ColonyKit.Settings.Tab.Robotics>
+	<ColonyKit.Settings.Robotics.Hint>These switches and thresholds apply to every nanny robot immediately. Pause, recall, goto, rename and paint are available on each selected robot.</ColonyKit.Settings.Robotics.Hint>
+
+	<ColonyKit.Settings.Robotics.Section.Chores>Chores</ColonyKit.Settings.Robotics.Section.Chores>
+	<ColonyKit.Settings.Robotics.Sweep>Sweep (inside base)</ColonyKit.Settings.Robotics.Sweep>
+	<ColonyKit.Settings.Robotics.Sweep.Desc>Clean filth inside the home area.</ColonyKit.Settings.Robotics.Sweep.Desc>
+	<ColonyKit.Settings.Robotics.Scrub>Scrub (outside base)</ColonyKit.Settings.Robotics.Scrub>
+	<ColonyKit.Settings.Robotics.Scrub.Desc>Clean filth outside the home area, such as after a raid.</ColonyKit.Settings.Robotics.Scrub.Desc>
+	<ColonyKit.Settings.Robotics.Haul>Haul</ColonyKit.Settings.Robotics.Haul>
+	<ColonyKit.Settings.Robotics.Haul.Desc>Carry loose items into vertical warehouses or stockpiles. Corpses are skipped.</ColonyKit.Settings.Robotics.Haul.Desc>
+	<ColonyKit.Settings.Robotics.Firefight>Firefight</ColonyKit.Settings.Robotics.Firefight>
+	<ColonyKit.Settings.Robotics.Firefight.Desc>Beat out fires inside the work area.</ColonyKit.Settings.Robotics.Firefight.Desc>
+	<ColonyKit.Settings.Robotics.Butcher>Butcher corpses</ColonyKit.Settings.Robotics.Butcher>
+	<ColonyKit.Settings.Robotics.Butcher.Desc>Use butcher-table bills to process corpses.</ColonyKit.Settings.Robotics.Butcher.Desc>
+	<ColonyKit.Settings.Robotics.Refuel>Refuel generators</ColonyKit.Settings.Robotics.Refuel>
+	<ColonyKit.Settings.Robotics.Refuel.Desc>Refuel wood-fired and chemfuel generators below the threshold.</ColonyKit.Settings.Robotics.Refuel.Desc>
+	<ColonyKit.Settings.Robotics.FeedPrisoners>Feed prisoners</ColonyKit.Settings.Robotics.FeedPrisoners>
+	<ColonyKit.Settings.Robotics.FeedPrisoners.Desc>Feed or deliver meals to hungry colony prisoners.</ColonyKit.Settings.Robotics.FeedPrisoners.Desc>
+	<ColonyKit.Settings.Robotics.Hygiene>Sanitation</ColonyKit.Settings.Robotics.Hygiene>
+	<ColonyKit.Settings.Robotics.Hygiene.Desc>Empty septic tanks and unblock fixtures. Bathroom floor filth is covered by sweeping.</ColonyKit.Settings.Robotics.Hygiene.Desc>
+	<ColonyKit.Settings.Robotics.Storage>Warehouse delivery</ColonyKit.Settings.Robotics.Storage>
+	<ColonyKit.Settings.Robotics.Storage.Desc>Prefer delivering hauled items directly into vertical warehouses.</ColonyKit.Settings.Robotics.Storage.Desc>
+	<ColonyKit.Settings.Robotics.Rescue>Priority rescue</ColonyKit.Settings.Robotics.Rescue>
+	<ColonyKit.Settings.Robotics.Rescue.Desc>Carry downed colony members to a bed first.</ColonyKit.Settings.Robotics.Rescue.Desc>
+	<ColonyKit.Settings.Robotics.DangerAvoidance>Avoid danger</ColonyKit.Settings.Robotics.DangerAvoidance>
+	<ColonyKit.Settings.Robotics.DangerAvoidance.Desc>Stop chores and return to the station while enemies are near or the map is at high danger.</ColonyKit.Settings.Robotics.DangerAvoidance.Desc>
+
+	<ColonyKit.Settings.Robotics.Section.Parameters>Parameters</ColonyKit.Settings.Robotics.Section.Parameters>
+	<ColonyKit.Settings.Robotics.ChargeThreshold>Charge threshold</ColonyKit.Settings.Robotics.ChargeThreshold>
+	<ColonyKit.Settings.Robotics.BatteryCapacity>Battery capacity</ColonyKit.Settings.Robotics.BatteryCapacity>
+	<ColonyKit.Settings.Robotics.RefuelThreshold>Refuel threshold</ColonyKit.Settings.Robotics.RefuelThreshold>
+	<ColonyKit.Settings.Robotics.WorkRadius>Work radius</ColonyKit.Settings.Robotics.WorkRadius>
+	<ColonyKit.Settings.Robotics.Unlimited>Unlimited</ColonyKit.Settings.Robotics.Unlimited>
+
+	<ColonyKit.Settings.Robotics.Section.Area>Work area</ColonyKit.Settings.Robotics.Section.Area>
+	<ColonyKit.Settings.Robotics.AreaMode>Area mode</ColonyKit.Settings.Robotics.AreaMode>
+	<ColonyKit.Settings.Robotics.Area.Unrestricted>Unrestricted</ColonyKit.Settings.Robotics.Area.Unrestricted>
+	<ColonyKit.Settings.Robotics.Area.Home>Home area only</ColonyKit.Settings.Robotics.Area.Home>
+	<ColonyKit.Settings.Robotics.Area.Custom>Custom area</ColonyKit.Settings.Robotics.Area.Custom>
+	<ColonyKit.Settings.Robotics.AreaLabel>Area name</ColonyKit.Settings.Robotics.AreaLabel>
+	<ColonyKit.Settings.Robotics.AreaLabel.Desc>Name of an area on the map. If it is missing, work is unrestricted.</ColonyKit.Settings.Robotics.AreaLabel.Desc>
+
+	<ColonyKit.Settings.Robotics.Section.Maintenance>Maintenance</ColonyKit.Settings.Robotics.Section.Maintenance>
+	<ColonyKit.Settings.Robotics.DurabilityHint>Durability caps at 1000. It wears down while working and scraps into steel and components at 0. Colonists repair it with the Construction work type.</ColonyKit.Settings.Robotics.DurabilityHint>
+	<ColonyKit.Settings.Robotics.Sounds>Beeps</ColonyKit.Settings.Robotics.Sounds>
+	<ColonyKit.Settings.Robotics.Sounds.Desc>Occasional beeps while working; one low-battery warning.</ColonyKit.Settings.Robotics.Sounds.Desc>
+	<ColonyKit.Settings.Robotics.ChargingGlow>Charging glow</ColonyKit.Settings.Robotics.ChargingGlow>
+	<ColonyKit.Settings.Robotics.ChargingGlow.Desc>Light the station while a robot is docked and charging.</ColonyKit.Settings.Robotics.ChargingGlow.Desc>
+
+	<CK.Robotics.Watts>{0} W</CK.Robotics.Watts>
+	<CK.Robotics.Cells>{0} cells</CK.Robotics.Cells>
+	<CK.Robotics.EnergyTip>Energy: {0} / {1} W</CK.Robotics.EnergyTip>
+	<CK.Robotics.Inspect.Battery>Energy: {0} / {1} W</CK.Robotics.Inspect.Battery>
+	<CK.Robotics.Inspect.Durability>Durability: {0} / {1}</CK.Robotics.Inspect.Durability>
+	<CK.Robotics.Inspect.Paused>Chores paused.</CK.Robotics.Inspect.Paused>
+	<CK.Robotics.DisabledInSettings>Disabled in the robot settings page.</CK.Robotics.DisabledInSettings>
+	<CK.Robotics.Scrapped>{0} was scrapped into steel and components.</CK.Robotics.Scrapped>
+	<CK.Robotics.Name.Invalid>The name cannot be empty.</CK.Robotics.Name.Invalid>
+
+	<CK.Robotics.Command.Pause>Pause chores</CK.Robotics.Command.Pause>
+	<CK.Robotics.Command.Resume>Resume chores</CK.Robotics.Command.Resume>
+	<CK.Robotics.Command.Pause.Desc>Pause automatic work. Danger avoidance still applies.</CK.Robotics.Command.Pause.Desc>
+	<CK.Robotics.Command.Recall>Recall to station</CK.Robotics.Command.Recall>
+	<CK.Robotics.Command.Recall.Desc>Return to the nearest station and wait there.</CK.Robotics.Command.Recall.Desc>
+	<CK.Robotics.Command.Goto>Go to...</CK.Robotics.Command.Goto>
+	<CK.Robotics.Command.Goto.Desc>Pick a cell for the robot to walk to.</CK.Robotics.Command.Goto.Desc>
+	<CK.Robotics.Command.PrioritizeFilth>Prioritize filth...</CK.Robotics.Command.PrioritizeFilth>
+	<CK.Robotics.Command.PrioritizeFilth.Desc>Pick a filth thing for the robot to clean immediately.</CK.Robotics.Command.PrioritizeFilth.Desc>
+	<CK.Robotics.Command.Rename>Rename</CK.Robotics.Command.Rename>
+	<CK.Robotics.Command.Rename.Desc>Change this robot's name.</CK.Robotics.Command.Rename.Desc>
+	<CK.Robotics.Command.Paint>Paint</CK.Robotics.Command.Paint>
+	<CK.Robotics.Command.Paint.Desc>Choose a shell color.</CK.Robotics.Command.Paint.Desc>
+
+	<CK.Robotics.Paint.0>Original</CK.Robotics.Paint.0>
+	<CK.Robotics.Paint.1>Blue</CK.Robotics.Paint.1>
+	<CK.Robotics.Paint.2>Green</CK.Robotics.Paint.2>
+	<CK.Robotics.Paint.3>Red</CK.Robotics.Paint.3>
+	<CK.Robotics.Paint.4>Yellow</CK.Robotics.Paint.4>
+	<CK.Robotics.Paint.5>Purple</CK.Robotics.Paint.5>
+	<CK.Robotics.Paint.6>Pink</CK.Robotics.Paint.6>
+	<CK.Robotics.Paint.7>Dark grey</CK.Robotics.Paint.7>
+
+	<CK.Robotics.Station.Locate>Locate robot</CK.Robotics.Station.Locate>
+	<CK.Robotics.Station.Locate.Desc>Jump the camera to the bound robot's current position.</CK.Robotics.Station.Locate.Desc>
+	<CK.Robotics.Station.Recall>Recall robot</CK.Robotics.Station.Recall>
+	<CK.Robotics.Station.Recall.Desc>Order the bound robot back to this station.</CK.Robotics.Station.Recall.Desc>
+
+	<CK.RobotManagement.Title>Robots</CK.RobotManagement.Title>
+	<CK.RobotManagement.Hint>All nanny robots on this map. Select jumps to a robot; Station jumps to its charging station.</CK.RobotManagement.Hint>
+	<CK.RobotManagement.None>No nanny robots on this map.</CK.RobotManagement.None>
+	<CK.RobotManagement.Row>{0} | Energy {1}/{2} W | Durability {3}/{4}\nJob: {5} | Station: {6} | {7}</CK.RobotManagement.Row>
+	<CK.RobotManagement.Select>Select</CK.RobotManagement.Select>
+	<CK.RobotManagement.Station>Station</CK.RobotManagement.Station>
+	<CK.RobotManagement.IdleJob>Idle</CK.RobotManagement.IdleJob>
+	<CK.RobotManagement.NoStation>Unbound</CK.RobotManagement.NoStation>
+	<CK.RobotManagement.Status.Downed>Shut down</CK.RobotManagement.Status.Downed>
+	<CK.RobotManagement.Status.Paused>Paused</CK.RobotManagement.Status.Paused>
+	<CK.RobotManagement.Status.Charging>Charging</CK.RobotManagement.Status.Charging>
+	<CK.RobotManagement.Status.Empty>Battery empty</CK.RobotManagement.Status.Empty>
+	<CK.RobotManagement.Status.Working>Working</CK.RobotManagement.Status.Working>
+</LanguageData>

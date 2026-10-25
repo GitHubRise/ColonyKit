@@ -21,17 +21,20 @@ namespace ColonyKit.Modules.Robotics
 			}
 
 			CompNannyBot comp = NannyBotUtility.BotComp(pawn);
-			if (comp == null || (!comp.sweep && !comp.scrub))
+			RoboticsSettings settings = NannyBotUtility.Settings;
+			bool sweep = comp != null && comp.sweep && settings.sweep;
+			bool scrub = comp != null && comp.scrub && settings.scrub;
+			if (!sweep && !scrub)
 			{
 				return null;
 			}
 
 			Filth filth = null;
-			if (comp.sweep)
+			if (sweep)
 			{
 				filth = FindFilth(pawn, insideHome: true);
 			}
-			if (filth == null && comp.scrub)
+			if (filth == null && scrub)
 			{
 				filth = FindFilth(pawn, insideHome: false);
 			}
@@ -87,6 +90,10 @@ namespace ColonyKit.Modules.Robotics
 
 			bool inHome = pawn.Map.areaManager.Home[filth.Position];
 			if (inHome != insideHome)
+			{
+				return false;
+			}
+			if (!NannyBotUtility.IsWithinWorkArea(pawn, filth.Position))
 			{
 				return false;
 			}

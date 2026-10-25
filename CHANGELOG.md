@@ -23,6 +23,9 @@
 
 ### Added
 
+- **保姆机器人扩展（M6 二阶段）**：耐久 1000，工作时缓慢磨损，0 时报废为 40 钢 + 3 零部件；新增殖民者「维修保姆机器人」工作（建造，400 tick 恢复 250 耐久）。电量改为容量制（默认 4000W，可在设置页调整），充电阈值、加燃料阈值、工作半径/家区域/自定义区域全部可调。
+- **机器人新家务**：优先救援倒地殖民者、灭火、使用屠宰台账单屠宰尸体、给木柴/化合燃料发电机加燃料、给殖民地囚犯喂食/送餐、清空化粪池、疏通堵塞洁具；搬运优先直送立体库。
+- **机器人设置与管理**：新增「机器人」设置页签与底部「机器人」管理页；可查看电量/耐久/任务/工作站并跳转。手动指令：暂停/继续、召回充电桩、前往指定位置、点选污渍优先清理、改名、8 种涂装；工作站可定位/召回绑定机器人。危险规避（敌人附近/高危险回桩）与工作滴滴声、低电提示音、充电光效。
 - **立体库实时温度浮字**：`Building_VerticalWarehouse.DrawGUIOverlay` 在贴图中央圆环下方（约 0.27 格）显示当前房间/室外温度，随温度实时刷新；≤0°C 偏蓝、≥25°C 偏橙；常规/近景视角常驻，拉远后只在选中时显示，避免小图上文字互相压住。
 - **厚墙加厚屋顶**：新增 `Patch_ThickRoof`。薄屋顶漏热（`ThinRoofEqualizationTempChangePerInterval`）在房间最薄外墙达到 `roofMinWallLayers`（默认 3，即“墙体大于 2”）时，按同一 `f(d)` 缩放；`d` 取所有墙边里最薄的一侧。无顶项与厚岩顶项不变；设置页新增「墙体够厚时加厚屋顶」开关与阈值滑条（2–8）。
 - **多墙体保温模块**：新增 `Insulation` 模块与「保温」设置页。原版 `RoomTempTracker.WallEqualizationTempChangePerInterval` 只取房间外第 2 格，双层墙与空地同值；模块在 Harmony Postfix 里按房间四周的连续墙层数 d 乘保温系数 `f(d) = (1 + r) / (1 + r × d)`（f(1)=1，与原版一致）。默认 r=3：2 层约 57%、3 层 40%、4 层 31%；可调 r（0.5–10）、最大层数（1–10）与「自然岩层算不算墙」。屋顶、门、通风口仍按原版；复用 `RoomTempTracker.EqualizeCellsForReading` 的缓存外圈格采样（上限 256 格），逐方向只统计朝向房间外的边。
@@ -104,7 +107,7 @@
 ### Validated
 
 - 隔离 quicktest（Core + ColonyKit，临时 `-colonykit-storage-test` 探针）：完成 T1/T2/T3 后木头全局 `stackLimit=750`、库内上限 `4500`；5×1000 木头入库合并为 `[4500, 500]`；取出第一堆后剩 `[3750, 500]`、地图出现 750 的一堆；日志显示 `stack rules applied: 176 defs x10; warehouse internal x6`。探针验证后已移除。
-- 隔离 quicktest（Core + Harmony + ColonyKit，`-colonykit-nannybot-test`）：工作站与机器人生成成功；`needs=1`、`Moving/Manipulation/Consciousness=1`、`cleanJob=CK_NannyCleanFilth`、`haulJob=HaulToCell`；无 XML、贴图或运行时异常。未覆盖：长期存读档、4000W 充电电网、手动 UI 点击。
+- 隔离 quicktest（Core + Harmony + ColonyKit，`-colonykit-nannybot-test`）：工作站与机器人生成成功；`needs=1`、`Moving/Manipulation/Consciousness=1`、`energy=4000`、`batteryCap=4000`、`cleanJob=CK_NannyCleanFilth`、`haulJob=HaulToCell`、`fireJob=BeatFire`、`repairJob=CK_RepairNannyBot`；无 XML、贴图或运行时异常。未覆盖：设置页/管理页人工点击、屠宰/囚犯/化粪池/加燃料的真实场景、4000W 充电电网与长期存读档。
 - quicktest（只开 Core + Harmony + ColonyKit）：`modules=10`；Blueprint 模块加载、库初始化正常。
 - 临时实机探针：在地图空地生成 5×5 墙圈 + 中心 1×2 床，捕获 17 条 → 平放/旋转 90° 各生成 17 个原版 `Blueprint_Build`；旋转后床蓝图朝向为 East；模板保存/读取/删除通过。
 - 未覆盖：10×10 基地、存读档、缺 Mod 场景、真实鼠标 UI 点击/拖框。

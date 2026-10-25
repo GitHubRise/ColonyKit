@@ -13,4 +13,16 @@
 		<reportString>charging.</reportString>
 		<casualInterruptible>false</casualInterruptible>
 	</JobDef>
+
+	<JobDef>
+		<defName>CK_RepairNannyBot</defName>
+		<driverClass>ColonyKit.Modules.Robotics.JobDriver_RepairNannyBot</driverClass>
+		<reportString>repairing a robot.</reportString>
+	</JobDef>
+
+	<JobDef>
+		<defName>CK_NannyUnblock</defName>
+		<driverClass>ColonyKit.Modules.Robotics.JobDriver_NannyUnblock</driverClass>
+		<reportString>unblocking a fixture.</reportString>
+	</JobDef>
 </Defs>

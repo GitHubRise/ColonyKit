@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<ColonyKit.Settings.Tab.Robotics>机器人</ColonyKit.Settings.Tab.Robotics>
+	<ColonyKit.Settings.Robotics.Hint>这里的开关和阈值会立即应用到所有保姆机器人；单台机器人的暂停、召回、前往、改名和涂装在选中机器人后操作。</ColonyKit.Settings.Robotics.Hint>
+
+	<ColonyKit.Settings.Robotics.Section.Chores>家务</ColonyKit.Settings.Robotics.Section.Chores>
+	<ColonyKit.Settings.Robotics.Sweep>扫地（基地内）</ColonyKit.Settings.Robotics.Sweep>
+	<ColonyKit.Settings.Robotics.Sweep.Desc>清理家区域内的污渍。</ColonyKit.Settings.Robotics.Sweep.Desc>
+	<ColonyKit.Settings.Robotics.Scrub>清洁（基地外）</ColonyKit.Settings.Robotics.Scrub>
+	<ColonyKit.Settings.Robotics.Scrub.Desc>清理家区域外的污渍，适合战后打扫。</ColonyKit.Settings.Robotics.Scrub.Desc>
+	<ColonyKit.Settings.Robotics.Haul>搬运</ColonyKit.Settings.Robotics.Haul>
+	<ColonyKit.Settings.Robotics.Haul.Desc>把散落物品送进立体库或普通库存区；不搬尸体。</ColonyKit.Settings.Robotics.Haul.Desc>
+	<ColonyKit.Settings.Robotics.Firefight>灭火</ColonyKit.Settings.Robotics.Firefight>
+	<ColonyKit.Settings.Robotics.Firefight.Desc>扑灭工作范围内的火。</ColonyKit.Settings.Robotics.Firefight.Desc>
+	<ColonyKit.Settings.Robotics.Butcher>屠宰尸体</ColonyKit.Settings.Robotics.Butcher>
+	<ColonyKit.Settings.Robotics.Butcher.Desc>使用屠宰台上的屠宰账单处理尸体。</ColonyKit.Settings.Robotics.Butcher.Desc>
+	<ColonyKit.Settings.Robotics.Refuel>给发电机加燃料</ColonyKit.Settings.Robotics.Refuel>
+	<ColonyKit.Settings.Robotics.Refuel.Desc>给木柴发电机、化合燃料发电机补充燃料。</ColonyKit.Settings.Robotics.Refuel.Desc>
+	<ColonyKit.Settings.Robotics.FeedPrisoners>给囚犯送餐</ColonyKit.Settings.Robotics.FeedPrisoners>
+	<ColonyKit.Settings.Robotics.FeedPrisoners.Desc>给饥饿的殖民地囚犯喂食或送餐。</ColonyKit.Settings.Robotics.FeedPrisoners.Desc>
+	<ColonyKit.Settings.Robotics.Hygiene>卫生维护</ColonyKit.Settings.Robotics.Hygiene>
+	<ColonyKit.Settings.Robotics.Hygiene.Desc>清空化粪池、疏通堵塞洁具；卫生间地面污渍由扫地覆盖。</ColonyKit.Settings.Robotics.Hygiene.Desc>
+	<ColonyKit.Settings.Robotics.Storage>直送立体库</ColonyKit.Settings.Robotics.Storage>
+	<ColonyKit.Settings.Robotics.Storage.Desc>搬运时优先把物品直接送进立体库。</ColonyKit.Settings.Robotics.Storage.Desc>
+	<ColonyKit.Settings.Robotics.Rescue>优先救援</ColonyKit.Settings.Robotics.Rescue>
+	<ColonyKit.Settings.Robotics.Rescue.Desc>发现殖民地人员倒地时，优先抱回床上。</ColonyKit.Settings.Robotics.Rescue.Desc>
+	<ColonyKit.Settings.Robotics.DangerAvoidance>危险规避</ColonyKit.Settings.Robotics.DangerAvoidance>
+	<ColonyKit.Settings.Robotics.DangerAvoidance.Desc>附近有敌人或全图高危险时，停止家务并回充电桩待命。</ColonyKit.Settings.Robotics.DangerAvoidance.Desc>
+
+	<ColonyKit.Settings.Robotics.Section.Parameters>参数</ColonyKit.Settings.Robotics.Section.Parameters>
+	<ColonyKit.Settings.Robotics.ChargeThreshold>充电阈值</ColonyKit.Settings.Robotics.ChargeThreshold>
+	<ColonyKit.Settings.Robotics.BatteryCapacity>电池容量</ColonyKit.Settings.Robotics.BatteryCapacity>
+	<ColonyKit.Settings.Robotics.RefuelThreshold>加燃料阈值</ColonyKit.Settings.Robotics.RefuelThreshold>
+	<ColonyKit.Settings.Robotics.WorkRadius>工作半径</ColonyKit.Settings.Robotics.WorkRadius>
+	<ColonyKit.Settings.Robotics.Unlimited>不限</ColonyKit.Settings.Robotics.Unlimited>
+
+	<ColonyKit.Settings.Robotics.Section.Area>工作区域</ColonyKit.Settings.Robotics.Section.Area>
+	<ColonyKit.Settings.Robotics.AreaMode>区域模式</ColonyKit.Settings.Robotics.AreaMode>
+	<ColonyKit.Settings.Robotics.Area.Unrestricted>不限</ColonyKit.Settings.Robotics.Area.Unrestricted>
+	<ColonyKit.Settings.Robotics.Area.Home>仅家区域</ColonyKit.Settings.Robotics.Area.Home>
+	<ColonyKit.Settings.Robotics.Area.Custom>自定义区域</ColonyKit.Settings.Robotics.Area.Custom>
+	<ColonyKit.Settings.Robotics.AreaLabel>区域名称</ColonyKit.Settings.Robotics.AreaLabel>
+	<ColonyKit.Settings.Robotics.AreaLabel.Desc>填写地图上区域的名字；找不到时按「不限」处理。</ColonyKit.Settings.Robotics.AreaLabel.Desc>
+
+	<ColonyKit.Settings.Robotics.Section.Maintenance>维护与表现</ColonyKit.Settings.Robotics.Section.Maintenance>
+	<ColonyKit.Settings.Robotics.DurabilityHint>耐久上限 1000。工作时缓慢损耗，耐久为 0 时会报废成钢和零部件；殖民者可在「建造」工作中维修。</ColonyKit.Settings.Robotics.DurabilityHint>
+	<ColonyKit.Settings.Robotics.Sounds>滴滴声</ColonyKit.Settings.Robotics.Sounds>
+	<ColonyKit.Settings.Robotics.Sounds.Desc>机器人工作时偶尔发出提示音；低电时只提醒一次。</ColonyKit.Settings.Robotics.Sounds.Desc>
+	<ColonyKit.Settings.Robotics.ChargingGlow>充电光效</ColonyKit.Settings.Robotics.ChargingGlow>
+	<ColonyKit.Settings.Robotics.ChargingGlow.Desc>机器人对接充电时，充电桩发出淡蓝色光。</ColonyKit.Settings.Robotics.ChargingGlow.Desc>
+
+	<CK.Robotics.Watts>{0} W</CK.Robotics.Watts>
+	<CK.Robotics.Cells>{0} 格</CK.Robotics.Cells>
+	<CK.Robotics.EnergyTip>电量：{0} / {1} W</CK.Robotics.EnergyTip>
+	<CK.Robotics.Inspect.Battery>电量：{0} / {1} W</CK.Robotics.Inspect.Battery>
+	<CK.Robotics.Inspect.Durability>耐久：{0} / {1}</CK.Robotics.Inspect.Durability>
+	<CK.Robotics.Inspect.Paused>已暂停自动家务。</CK.Robotics.Inspect.Paused>
+	<CK.Robotics.DisabledInSettings>已在机器人设置页关闭。</CK.Robotics.DisabledInSettings>
+	<CK.Robotics.Scrapped>{0} 已报废，拆成了钢和零部件。</CK.Robotics.Scrapped>
+	<CK.Robotics.Name.Invalid>名字不能为空。</CK.Robotics.Name.Invalid>
+
+	<CK.Robotics.Command.Pause>暂停家务</CK.Robotics.Command.Pause>
+	<CK.Robotics.Command.Resume>继续家务</CK.Robotics.Command.Resume>
+	<CK.Robotics.Command.Pause.Desc>暂停自动找活；危险规避仍会生效。</CK.Robotics.Command.Pause.Desc>
+	<CK.Robotics.Command.Recall>召回充电桩</CK.Robotics.Command.Recall>
+	<CK.Robotics.Command.Recall.Desc>回到最近的充电桩旁边待命。</CK.Robotics.Command.Recall.Desc>
+	<CK.Robotics.Command.Goto>前往指定位置</CK.Robotics.Command.Goto>
+	<CK.Robotics.Command.Goto.Desc>点选一个格子，让机器人走过去。</CK.Robotics.Command.Goto.Desc>
+	<CK.Robotics.Command.PrioritizeFilth>优先清理…</CK.Robotics.Command.PrioritizeFilth>
+	<CK.Robotics.Command.PrioritizeFilth.Desc>点选一块污渍，让机器人立刻去清理。</CK.Robotics.Command.PrioritizeFilth.Desc>
+	<CK.Robotics.Command.Rename>改名</CK.Robotics.Command.Rename>
+	<CK.Robotics.Command.Rename.Desc>修改这台机器人的名字。</CK.Robotics.Command.Rename.Desc>
+	<CK.Robotics.Command.Paint>涂装</CK.Robotics.Command.Paint>
+	<CK.Robotics.Command.Paint.Desc>选择机器人外壳颜色。</CK.Robotics.Command.Paint.Desc>
+
+	<CK.Robotics.Paint.0>原色</CK.Robotics.Paint.0>
+	<CK.Robotics.Paint.1>蓝色</CK.Robotics.Paint.1>
+	<CK.Robotics.Paint.2>绿色</CK.Robotics.Paint.2>
+	<CK.Robotics.Paint.3>红色</CK.Robotics.Paint.3>
+	<CK.Robotics.Paint.4>黄色</CK.Robotics.Paint.4>
+	<CK.Robotics.Paint.5>紫色</CK.Robotics.Paint.5>
+	<CK.Robotics.Paint.6>粉色</CK.Robotics.Paint.6>
+	<CK.Robotics.Paint.7>深灰</CK.Robotics.Paint.7>
+
+	<CK.Robotics.Station.Locate>定位机器人</CK.Robotics.Station.Locate>
+	<CK.Robotics.Station.Locate.Desc>镜头跳到这台机器人当前所在的位置。</CK.Robotics.Station.Locate.Desc>
+	<CK.Robotics.Station.Recall>召回机器人</CK.Robotics.Station.Recall>
+	<CK.Robotics.Station.Recall.Desc>让绑定的机器人回到工作站旁边。</CK.Robotics.Station.Recall.Desc>
+
+	<CK.RobotManagement.Title>机器人</CK.RobotManagement.Title>
+	<CK.RobotManagement.Hint>本图所有保姆机器人；点「选中」跳转，点「工作站」定位其充电桩。</CK.RobotManagement.Hint>
+	<CK.RobotManagement.None>本图还没有保姆机器人。</CK.RobotManagement.None>
+	<CK.RobotManagement.Row>{0}｜电量 {1}/{2} W｜耐久 {3}/{4}\n任务：{5}｜工作站：{6}｜{7}</CK.RobotManagement.Row>
+	<CK.RobotManagement.Select>选中</CK.RobotManagement.Select>
+	<CK.RobotManagement.Station>工作站</CK.RobotManagement.Station>
+	<CK.RobotManagement.IdleJob>待命</CK.RobotManagement.IdleJob>
+	<CK.RobotManagement.NoStation>未绑定</CK.RobotManagement.NoStation>
+	<CK.RobotManagement.Status.Downed>停机</CK.RobotManagement.Status.Downed>
+	<CK.RobotManagement.Status.Paused>已暂停</CK.RobotManagement.Status.Paused>
+	<CK.RobotManagement.Status.Charging>充电中</CK.RobotManagement.Status.Charging>
+	<CK.RobotManagement.Status.Empty>电量耗尽</CK.RobotManagement.Status.Empty>
+	<CK.RobotManagement.Status.Working>工作中</CK.RobotManagement.Status.Working>
+</LanguageData>

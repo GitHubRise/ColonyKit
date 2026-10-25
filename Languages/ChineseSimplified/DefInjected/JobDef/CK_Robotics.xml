@@ -2,4 +2,6 @@
 <LanguageData>
 	<CK_NannyCleanFilth.reportString>清理污渍。</CK_NannyCleanFilth.reportString>
 	<CK_NannyCharge.reportString>充电。</CK_NannyCharge.reportString>
+	<CK_RepairNannyBot.reportString>维修机器人。</CK_RepairNannyBot.reportString>
+	<CK_NannyUnblock.reportString>疏通洁具。</CK_NannyUnblock.reportString>
 </LanguageData>
