@@ -3,7 +3,7 @@ using Verse;
 
 namespace ColonyKit.Modules.Hygiene
 {
-	/// <summary>卫生值低于阈值时激活肮脏念头。</summary>
+	/// <summary>DBH ThoughtWorker_Hygiene：按卫生等级切换四个阶段。</summary>
 	public class ThoughtWorker_Hygiene : ThoughtWorker
 	{
 		protected override ThoughtState CurrentStateInternal(Pawn p)
@@ -11,17 +11,21 @@ namespace ColonyKit.Modules.Hygiene
 			Need_Hygiene need = p.needs?.TryGetNeed<Need_Hygiene>();
 			if (need == null)
 			{
-				return false;
+				return ThoughtState.Inactive;
 			}
-			if (need.CurLevel < 0.1f)
+			switch (need.CurCategory)
 			{
-				return ThoughtState.ActiveAtStage(0);
+				case HygieneCategory.Filthy:
+					return ThoughtState.ActiveAtStage(0);
+				case HygieneCategory.Grimy:
+					return ThoughtState.ActiveAtStage(1);
+				case HygieneCategory.Clean:
+					return ThoughtState.ActiveAtStage(2);
+				case HygieneCategory.Squeaky:
+					return ThoughtState.ActiveAtStage(3);
+				default:
+					return ThoughtState.Inactive;
 			}
-			if (need.CurLevel < 0.4f)
-			{
-				return ThoughtState.ActiveAtStage(1);
-			}
-			return false;
 		}
 	}
 }

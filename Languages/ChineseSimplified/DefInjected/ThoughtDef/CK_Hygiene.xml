@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 	<CK_HygieneDirty.stages.0.label>肮脏</CK_HygieneDirty.stages.0.label>
-	<CK_HygieneDirty.stages.0.description>我觉得很脏，需要洗澡。</CK_HygieneDirty.stages.0.description>
+	<CK_HygieneDirty.stages.0.description>我闻起来像在污水里游过泳。</CK_HygieneDirty.stages.0.description>
 	<CK_HygieneDirty.stages.1.label>有点脏</CK_HygieneDirty.stages.1.label>
-	<CK_HygieneDirty.stages.1.description>我该洗个澡了。</CK_HygieneDirty.stages.1.description>
+	<CK_HygieneDirty.stages.1.description>我觉得有点脏。</CK_HygieneDirty.stages.1.description>
+	<CK_HygieneDirty.stages.2.label>干净</CK_HygieneDirty.stages.2.label>
+	<CK_HygieneDirty.stages.2.description>我觉得清爽干净。</CK_HygieneDirty.stages.2.description>
+	<CK_HygieneDirty.stages.3.label>一尘不染</CK_HygieneDirty.stages.3.label>
+	<CK_HygieneDirty.stages.3.description>我干干净净！</CK_HygieneDirty.stages.3.description>
 	<CK_ShowerHot.stages.0.label>热水澡</CK_ShowerHot.stages.0.label>
 	<CK_ShowerHot.stages.0.description>我洗了个舒服的热水澡。</CK_ShowerHot.stages.0.description>
 	<CK_ShowerCold.stages.0.label>没有热水</CK_ShowerCold.stages.0.label>

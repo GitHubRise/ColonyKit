@@ -6,13 +6,23 @@
 		<stages>
 			<li>
 				<label>filthy</label>
-				<description>I feel filthy. I need a shower.</description>
-				<baseMoodEffect>-8</baseMoodEffect>
+				<description>I smell like I have been swimming in sewage.</description>
+				<baseMoodEffect>-6</baseMoodEffect>
 			</li>
 			<li>
 				<label>grimy</label>
-				<description>I could use a shower.</description>
-				<baseMoodEffect>-4</baseMoodEffect>
+				<description>I feel a little grimy.</description>
+				<baseMoodEffect>-3</baseMoodEffect>
+			</li>
+			<li>
+				<label>clean</label>
+				<description>I feel fresh and clean.</description>
+				<baseMoodEffect>3</baseMoodEffect>
+			</li>
+			<li>
+				<label>squeaky clean</label>
+				<description>I'm squeaky clean!</description>
+				<baseMoodEffect>6</baseMoodEffect>
 			</li>
 		</stages>
 	</ThoughtDef>

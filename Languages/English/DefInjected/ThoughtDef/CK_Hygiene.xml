@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 	<CK_HygieneDirty.stages.0.label>filthy</CK_HygieneDirty.stages.0.label>
-	<CK_HygieneDirty.stages.0.description>I feel filthy. I need a shower.</CK_HygieneDirty.stages.0.description>
+	<CK_HygieneDirty.stages.0.description>I smell like I have been swimming in sewage.</CK_HygieneDirty.stages.0.description>
 	<CK_HygieneDirty.stages.1.label>grimy</CK_HygieneDirty.stages.1.label>
-	<CK_HygieneDirty.stages.1.description>I could use a shower.</CK_HygieneDirty.stages.1.description>
+	<CK_HygieneDirty.stages.1.description>I feel a little grimy.</CK_HygieneDirty.stages.1.description>
+	<CK_HygieneDirty.stages.2.label>clean</CK_HygieneDirty.stages.2.label>
+	<CK_HygieneDirty.stages.2.description>I feel fresh and clean.</CK_HygieneDirty.stages.2.description>
+	<CK_HygieneDirty.stages.3.label>squeaky clean</CK_HygieneDirty.stages.3.label>
+	<CK_HygieneDirty.stages.3.description>I'm squeaky clean!</CK_HygieneDirty.stages.3.description>
 	<CK_ShowerHot.stages.0.label>hot shower</CK_ShowerHot.stages.0.label>
 	<CK_ShowerHot.stages.0.description>I had a nice hot shower.</CK_ShowerHot.stages.0.description>
 	<CK_ShowerCold.stages.0.label>cold water</CK_ShowerCold.stages.0.label>
