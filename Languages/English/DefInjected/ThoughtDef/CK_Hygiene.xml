@@ -12,6 +12,8 @@
 	<CK_ShowerHot.stages.0.description>I had a nice hot shower.</CK_ShowerHot.stages.0.description>
 	<CK_ShowerCold.stages.0.label>cold water</CK_ShowerCold.stages.0.label>
 	<CK_ShowerCold.stages.0.description>There was no hot water!</CK_ShowerCold.stages.0.description>
+	<CK_ShoweredToday.stages.0.label>showered today</CK_ShoweredToday.stages.0.label>
+	<CK_ShoweredToday.stages.0.description>I had a shower today and feel refreshed.</CK_ShoweredToday.stages.0.description>
 	<CK_ToiletPrivacy.stages.0.label>no toilet privacy</CK_ToiletPrivacy.stages.0.label>
 	<CK_ToiletPrivacy.stages.0.description>Someone saw me using the toilet and it made me uncomfortable.</CK_ToiletPrivacy.stages.0.description>
 </LanguageData>

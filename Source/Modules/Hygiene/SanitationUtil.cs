@@ -32,6 +32,14 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				pawn.needs.mood.thoughts.memories.TryGainMemory(thought);
 			}
+			if (!bath)
+			{
+				ThoughtDef showeredToday = DefDatabase<ThoughtDef>.GetNamedSilentFail("CK_ShoweredToday");
+				if (showeredToday != null)
+				{
+					pawn.needs.mood.thoughts.memories.TryGainMemory(showeredToday);
+				}
+			}
 		}
 
 		public static void ContaminationCheckWater(Pawn pawn, ContaminationLevel level)

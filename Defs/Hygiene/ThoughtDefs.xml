@@ -53,6 +53,18 @@
 		</stages>
 	</ThoughtDef>
 	<ThoughtDef>
+		<defName>CK_ShoweredToday</defName>
+		<durationDays>1</durationDays>
+		<stackLimit>1</stackLimit>
+		<stages>
+			<li>
+				<label>showered today</label>
+				<description>I had a shower today and feel refreshed.</description>
+				<baseMoodEffect>2</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+	<ThoughtDef>
 		<defName>CK_WashPrivacy</defName>
 		<durationDays>0.1</durationDays>
 		<stackLimit>6</stackLimit>

@@ -55,18 +55,15 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return;
 			}
-			foreach (Map map in Find.Maps)
+			foreach (Pawn pawn in PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive)
 			{
-				foreach (Pawn pawn in map.mapPawns.AllPawnsSpawned)
+				if (pawn?.needs == null
+					|| !pawn.RaceProps.Humanlike
+					|| pawn.RaceProps.IsMechanoid)
 				{
-					if (pawn?.needs == null
-						|| !pawn.RaceProps.Humanlike
-						|| pawn.RaceProps.IsMechanoid)
-					{
-						continue;
-					}
-					pawn.needs.AddOrRemoveNeedsAsAppropriate();
+					continue;
 				}
+				pawn.needs.AddOrRemoveNeedsAsAppropriate();
 			}
 		}
 	}
