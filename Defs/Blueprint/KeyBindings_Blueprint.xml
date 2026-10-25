@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 蓝图放置：B 键左右镜像（旋转沿用原版 Q/E）。 -->
+	<KeyBindingDef ParentName="ArchitectBase">
+		<defName>CK_BlueprintMirror</defName>
+		<label>mirror blueprint</label>
+		<defaultKeyCodeA>B</defaultKeyCodeA>
+	</KeyBindingDef>
+</Defs>

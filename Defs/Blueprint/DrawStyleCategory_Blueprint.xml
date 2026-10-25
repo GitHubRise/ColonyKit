@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 捕获蓝图时的拖框样式：复用原版的实心矩形（带尺寸/面积读数）。 -->
+	<DrawStyleCategoryDef>
+		<defName>CK_BlueprintCapture</defName>
+		<label>blueprint capture</label>
+		<styles>
+			<li>FilledRectangle</li>
+		</styles>
+	</DrawStyleCategoryDef>
+</Defs>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_Blueprints.label>Blueprints</CK_Blueprints.label>
+	<CK_Blueprints.description>Save a finished layout, rebuild it with the original or currently available materials, and keep reusable templates across saves.</CK_Blueprints.description>
+</LanguageData>

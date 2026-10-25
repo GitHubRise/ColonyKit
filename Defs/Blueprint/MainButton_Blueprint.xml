@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<MainButtonDef>
+		<defName>CK_Blueprints</defName>
+		<label>Blueprints</label>
+		<description>Capture built layouts, rebuild them with the original or currently available materials, and keep reusable templates.</description>
+		<workerClass>ColonyKit.Modules.Blueprint.MainButtonWorker_Blueprint</workerClass>
+		<tabWindowClass>ColonyKit.Modules.Blueprint.MainTabWindow_Blueprints</tabWindowClass>
+		<order>85</order>
+		<buttonVisible>true</buttonVisible>
+		<validWithoutMap>false</validWithoutMap>
+	</MainButtonDef>
+</Defs>

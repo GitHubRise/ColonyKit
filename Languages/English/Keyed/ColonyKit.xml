@@ -214,4 +214,19 @@
 	<ColonyKit.Settings.Localization.Reload>Reload table</ColonyKit.Settings.Localization.Reload>
 	<ColonyKit.Settings.Localization.Reloaded>Table reloaded: {0} entries / {1} menus.</ColonyKit.Settings.Localization.Reloaded>
 	<ColonyKit.Settings.Localization.Hint>Dev menus are only visible in developer mode. Reopen the Debug menu after changing schemes; restart after editing the XML table.</ColonyKit.Settings.Localization.Hint>
+
+	<ColonyKit.Module.Blueprint.Name>Blueprints</ColonyKit.Module.Blueprint.Name>
+	<ColonyKit.Module.Blueprint.Desc>Capture a finished building layout, rebuild it with the original or currently available materials, and keep reusable templates across saves.</ColonyKit.Module.Blueprint.Desc>
+	<ColonyKit.Settings.Tab.Blueprint>Blueprints</ColonyKit.Settings.Tab.Blueprint>
+	<ColonyKit.Settings.Blueprint.Hint>The blueprint library is saved with each colony. Templates are written to Config/ColonyKit/Blueprints and can be reused across saves.</ColonyKit.Settings.Blueprint.Hint>
+	<ColonyKit.Settings.Blueprint.MaterialMode>Material policy</ColonyKit.Settings.Blueprint.MaterialMode>
+	<ColonyKit.Settings.Blueprint.MaterialMode.Desc>Original material: reproduce the captured blueprint. Use what is on hand: keep the source material if stocked, otherwise pick the cheapest stocked material. Cheapest: always pick the cheapest usable material.</ColonyKit.Settings.Blueprint.MaterialMode.Desc>
+	<ColonyKit.Settings.Blueprint.MaxSide>Max blueprint side</ColonyKit.Settings.Blueprint.MaxSide>
+	<ColonyKit.Settings.Blueprint.MaxSide.Desc>Reject captures wider or taller than this many cells.</ColonyKit.Settings.Blueprint.MaxSide.Desc>
+	<ColonyKit.Settings.Blueprint.MaxEntries>Max structures per blueprint</ColonyKit.Settings.Blueprint.MaxEntries>
+	<ColonyKit.Settings.Blueprint.MaxEntries.Desc>Reject captures above this count to keep ghost previews responsive.</ColonyKit.Settings.Blueprint.MaxEntries.Desc>
+	<ColonyKit.Settings.Blueprint.MaxRecords>Blueprints per save</ColonyKit.Settings.Blueprint.MaxRecords>
+	<ColonyKit.Settings.Blueprint.MaxRecords.Desc>Delete old blueprints after reaching this limit.</ColonyKit.Settings.Blueprint.MaxRecords.Desc>
+	<ColonyKit.Settings.Blueprint.Verbose>Log blueprint details</ColonyKit.Settings.Blueprint.Verbose>
+	<ColonyKit.Settings.Blueprint.Verbose.Desc>Write one log line per capture/placement for troubleshooting.</ColonyKit.Settings.Blueprint.Verbose.Desc>
 </LanguageData>

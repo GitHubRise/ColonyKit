@@ -214,4 +214,19 @@
 	<ColonyKit.Settings.Localization.Reload>重新加载翻译表</ColonyKit.Settings.Localization.Reload>
 	<ColonyKit.Settings.Localization.Reloaded>翻译表已重新加载：{0} 词条 / {1} 菜单。</ColonyKit.Settings.Localization.Reloaded>
 	<ColonyKit.Settings.Localization.Hint>开发者菜单只在开启开发者模式后可见；改方案后重开 Debug 菜单即可生效，翻译表改动建议重启游戏。</ColonyKit.Settings.Localization.Hint>
+
+	<ColonyKit.Module.Blueprint.Name>蓝图</ColonyKit.Module.Blueprint.Name>
+	<ColonyKit.Module.Blueprint.Desc>捕获已建好的房子格局，按原图或现有材料复刻，并可另存为跨存档模板。</ColonyKit.Module.Blueprint.Desc>
+	<ColonyKit.Settings.Tab.Blueprint>蓝图</ColonyKit.Settings.Tab.Blueprint>
+	<ColonyKit.Settings.Blueprint.Hint>蓝图库随存档保存；模板写到 Config/ColonyKit/Blueprints，可跨存档复用。</ColonyKit.Settings.Blueprint.Hint>
+	<ColonyKit.Settings.Blueprint.MaterialMode>材料策略</ColonyKit.Settings.Blueprint.MaterialMode>
+	<ColonyKit.Settings.Blueprint.MaterialMode.Desc>原材质优先：尽量复刻原图；就地取材：优先用库存里的原材质，没有就换库存中最便宜的；最便宜：总是选最便宜的可替代材料。</ColonyKit.Settings.Blueprint.MaterialMode.Desc>
+	<ColonyKit.Settings.Blueprint.MaxSide>单张蓝图最大边长</ColonyKit.Settings.Blueprint.MaxSide>
+	<ColonyKit.Settings.Blueprint.MaxSide.Desc>捕获范围的宽或高超过这个格数就拒绝。</ColonyKit.Settings.Blueprint.MaxSide.Desc>
+	<ColonyKit.Settings.Blueprint.MaxEntries>单张蓝图最大建筑数</ColonyKit.Settings.Blueprint.MaxEntries>
+	<ColonyKit.Settings.Blueprint.MaxEntries.Desc>超过后拒绝捕获，避免一张蓝图拖慢预览。</ColonyKit.Settings.Blueprint.MaxEntries.Desc>
+	<ColonyKit.Settings.Blueprint.MaxRecords>每存档蓝图上限</ColonyKit.Settings.Blueprint.MaxRecords>
+	<ColonyKit.Settings.Blueprint.MaxRecords.Desc>达到上限后需要先删除旧蓝图。</ColonyKit.Settings.Blueprint.MaxRecords.Desc>
+	<ColonyKit.Settings.Blueprint.Verbose>记录蓝图明细</ColonyKit.Settings.Blueprint.Verbose>
+	<ColonyKit.Settings.Blueprint.Verbose.Desc>每次捕获/放置写一行日志，排查用。</ColonyKit.Settings.Blueprint.Verbose.Desc>
 </LanguageData>

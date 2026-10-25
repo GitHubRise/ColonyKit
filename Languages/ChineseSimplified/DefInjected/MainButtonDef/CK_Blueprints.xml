@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_Blueprints.label>蓝图</CK_Blueprints.label>
+	<CK_Blueprints.description>把建好的房子存成蓝图，按原材质或当前可用材料复刻；支持另存为跨存档模板。</CK_Blueprints.description>
+</LanguageData>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 蓝图模块：捕获、放置、库与模板。键名对应 Source/Modules/Blueprint 下的 Translate 调用。 -->
+<LanguageData>
+	<CK.Blueprint.DefaultName>Blueprint {0}</CK.Blueprint.DefaultName>
+	<CK.Blueprint.NoLibrary>Blueprint library is not ready yet.</CK.Blueprint.NoLibrary>
+	<CK.Blueprint.NoRecord>No blueprint selected.</CK.Blueprint.NoRecord>
+
+	<CK.Blueprint.Mode.PreferSource>Original material</CK.Blueprint.Mode.PreferSource>
+	<CK.Blueprint.Mode.Available>Use what is on hand</CK.Blueprint.Mode.Available>
+	<CK.Blueprint.Mode.Cheapest>Cheapest</CK.Blueprint.Mode.Cheapest>
+
+	<CK.Blueprint.Capture.Label>Capture blueprint</CK.Blueprint.Capture.Label>
+	<CK.Blueprint.Capture.Desc>Drag a rectangle over finished player-built structures to save their layout as a reusable blueprint.</CK.Blueprint.Capture.Desc>
+	<CK.Blueprint.Capture.Success>Captured "{0}" ({1}×{2}, {3} structures).</CK.Blueprint.Capture.Success>
+	<CK.Blueprint.Capture.Empty>The selected area is empty.</CK.Blueprint.Capture.Empty>
+	<CK.Blueprint.Capture.TooBig>The area is {0}×{1}, larger than the {2}-cell limit for one blueprint.</CK.Blueprint.Capture.TooBig>
+	<CK.Blueprint.Capture.NoBuildings>No finished player-built structures in the area.</CK.Blueprint.Capture.NoBuildings>
+	<CK.Blueprint.Capture.TooMany>Too many structures ({0}); one blueprint can hold at most {1}.</CK.Blueprint.Capture.TooMany>
+	<CK.Blueprint.Capture.LibraryFull>The blueprint library is full ({0}/{1}); delete some blueprints first.</CK.Blueprint.Capture.LibraryFull>
+
+	<CK.Blueprint.Place.Label>Place blueprint</CK.Blueprint.Place.Label>
+	<CK.Blueprint.Place.Desc>Left-click to place. Q/E rotate, B mirrors. Red means at least one structure cannot be placed.</CK.Blueprint.Place.Desc>
+	<CK.Blueprint.Place.Success>Placed {1} construction blueprints for "{0}".</CK.Blueprint.Place.Success>
+	<CK.Blueprint.Place.Skipped>{0} structures have no matching Def (missing mod?) and were skipped.</CK.Blueprint.Place.Skipped>
+	<CK.Blueprint.Place.Substituted>{0} structures use currently available materials instead.</CK.Blueprint.Place.Substituted>
+	<CK.Blueprint.Place.Blocked>Cannot place here.</CK.Blueprint.Place.Blocked>
+	<CK.Blueprint.Place.MissingDef>Missing structure Def "{0}" (missing mod?).</CK.Blueprint.Place.MissingDef>
+	<CK.Blueprint.Place.NoStuff>No usable material for "{0}".</CK.Blueprint.Place.NoStuff>
+	<CK.Blueprint.Place.NeedsResearch>"{0}" is not researched yet.</CK.Blueprint.Place.NeedsResearch>
+	<CK.Blueprint.Place.OutOfBounds>Outside the map.</CK.Blueprint.Place.OutOfBounds>
+	<CK.Blueprint.Place.EntryFailed>"{0}" cannot be placed: {1}</CK.Blueprint.Place.EntryFailed>
+
+	<CK.Blueprint.Panel.Header>{0} ({1}×{2})</CK.Blueprint.Panel.Header>
+	<CK.Blueprint.Panel.Rotation>Rotation {0}° {1}</CK.Blueprint.Panel.Rotation>
+	<CK.Blueprint.Panel.Mirrored>(mirrored)</CK.Blueprint.Panel.Mirrored>
+	<CK.Blueprint.Panel.Mode>Material: {0}</CK.Blueprint.Panel.Mode>
+	<CK.Blueprint.Panel.Missing>{0} structures will be skipped.</CK.Blueprint.Panel.Missing>
+	<CK.Blueprint.Panel.Material>{0} ×{1} (stored {2})</CK.Blueprint.Panel.Material>
+	<CK.Blueprint.Panel.Substituted>{0} structures use substitute materials.</CK.Blueprint.Panel.Substituted>
+
+	<CK.Blueprint.Tab.Title>Blueprints</CK.Blueprint.Tab.Title>
+	<CK.Blueprint.Tab.Count>{0}/{1} saved</CK.Blueprint.Tab.Count>
+	<CK.Blueprint.Tab.Capture>Capture blueprint</CK.Blueprint.Tab.Capture>
+	<CK.Blueprint.Tab.Library>This save</CK.Blueprint.Tab.Library>
+	<CK.Blueprint.Tab.Empty>No blueprints yet. Click "Capture blueprint" at the top right.</CK.Blueprint.Tab.Empty>
+	<CK.Blueprint.Tab.RowMeta>{0}×{1}, {2} structures</CK.Blueprint.Tab.RowMeta>
+	<CK.Blueprint.Tab.NoneSelected>Select a blueprint on the left.</CK.Blueprint.Tab.NoneSelected>
+	<CK.Blueprint.Tab.Details>{0}×{1} · {2} structures · captured at tick {3}</CK.Blueprint.Tab.Details>
+	<CK.Blueprint.Tab.Materials>Materials</CK.Blueprint.Tab.Materials>
+	<CK.Blueprint.Tab.NoMaterials>This blueprint needs no materials.</CK.Blueprint.Tab.NoMaterials>
+	<CK.Blueprint.Tab.MaterialLine>{0} ×{1} (stored {2})</CK.Blueprint.Tab.MaterialLine>
+	<CK.Blueprint.Tab.Substitution>{0} → {1}</CK.Blueprint.Tab.Substitution>
+	<CK.Blueprint.Tab.Place>Place</CK.Blueprint.Tab.Place>
+	<CK.Blueprint.Tab.Rename>Rename</CK.Blueprint.Tab.Rename>
+	<CK.Blueprint.Tab.Delete>Delete</CK.Blueprint.Tab.Delete>
+	<CK.Blueprint.Tab.SaveTemplate>Save as template</CK.Blueprint.Tab.SaveTemplate>
+	<CK.Blueprint.Tab.LoadTemplate>Load</CK.Blueprint.Tab.LoadTemplate>
+	<CK.Blueprint.Tab.Refresh>Refresh</CK.Blueprint.Tab.Refresh>
+	<CK.Blueprint.Tab.Templates>Templates (shared across saves)</CK.Blueprint.Tab.Templates>
+	<CK.Blueprint.Tab.NoTemplates>No templates yet. Select a blueprint and click "Save as template".</CK.Blueprint.Tab.NoTemplates>
+	<CK.Blueprint.Delete.Confirm>Delete blueprint "{0}"? This cannot be undone.</CK.Blueprint.Delete.Confirm>
+
+	<CK.Blueprint.Template.Saved>Template saved: {0}</CK.Blueprint.Template.Saved>
+	<CK.Blueprint.Template.Loaded>Template "{0}" loaded into this save.</CK.Blueprint.Template.Loaded>
+	<CK.Blueprint.Template.DeleteConfirm>Delete template "{0}" from disk?</CK.Blueprint.Template.DeleteConfirm>
+	<CK.Blueprint.Template.Nothing>No blueprint selected.</CK.Blueprint.Template.Nothing>
+	<CK.Blueprint.Template.SaveFailed>Failed to save template: {0}</CK.Blueprint.Template.SaveFailed>
+	<CK.Blueprint.Template.BadRoot>The template file has an unknown format.</CK.Blueprint.Template.BadRoot>
+	<CK.Blueprint.Template.Empty>The template contains no structures.</CK.Blueprint.Template.Empty>
+	<CK.Blueprint.Template.LoadFailed>Failed to read template: {0}</CK.Blueprint.Template.LoadFailed>
+	<CK.Blueprint.Template.DeleteFailed>Failed to delete template: {0}</CK.Blueprint.Template.DeleteFailed>
+</LanguageData>
