@@ -2,7 +2,7 @@
 
 > 一个**模块化**的殖民地生活设施框架 + 六套子系统：淋浴、立体库、农业、蓝图、智能机器人、汉化集合。
 >
-> 本文件是**规划稿 + 任务清单**，不是完工说明。0.0.2 框架已从 `mod-template` 0.0.2 同步；`localization`（开发者菜单汉化）已移植，其余三个参考模块仍是占位。
+> 本文件是**规划稿 + 任务清单**。0.0.2 框架已从 `mod-template` 0.0.2 同步；`hygiene`（卫生/淋浴/热水/Alert）、`storage`、`blueprint`、`localization`、机器人首版均已落地，其余按 §1 状态表为准。
 
 | 项目 | 值 |
 |---|---|
@@ -13,7 +13,7 @@
 | 目标框架 | `net472` + `Krafs.Rimworld.Ref` |
 | 硬依赖 | Harmony（`brrainz.harmony`） |
 | 可选兼容 | DBH、Stack XXL（RJW 1.6 已内置，不再作为可选依赖） |
-| 工程状态 | 0.0.2 框架已生成（M0 完成）；汉化、立体库、蓝图首版已落地；淋浴占位；RJW 1.6 本体已迁入并随包构建 |
+| 工程状态 | 0.0.2 框架已生成（M0 完成）；汉化、立体库、蓝图、淋浴/热水、机器人首版均已落地；RJW 1.6 本体已迁入并随包构建 |
 
 > 本文件 2026-10-25 曾按 `CustomEnhance`（自定义强化）立项，同日先调整为 `ColonyKit` 五系统，随后追加智能机器人模块；旧的强化设计未实施。
 
@@ -265,7 +265,7 @@ sources/ColonyKit/
 │  └─ Debug/{DebugActions_ColonyKit.cs}
 ├─ docs/
 │  ├─ 0000-索引.md                    ← 文档总入口（模块索引 + 功能页）
-│  ├─ 1000-淋浴索引.md / 1001–1004-淋浴-*.md
+│  ├─ 1000-淋浴索引.md / 1001–1009-淋浴-*.md
 │  ├─ 2000-立体库索引.md / 2001–2005-立体库-*.md
 │  ├─ 3000-农业索引.md / 3001–3004-农业-*.md
 │  ├─ 4000-蓝图索引.md / 4001–4004-蓝图-*.md
@@ -305,21 +305,23 @@ cd E:\RimWorld-WorkSpace\sources\ColonyKit
 
 ### 4.1 淋浴（Hygiene）
 
-**MVP**
+**已实现**
 
-- `Need_Hygiene`（0–1）：缓慢下降，低于阈值触发「肮脏」念头；洗澡恢复，洗净后清空小人携带污渍（`pawn.filth.carriedFilth.Clear()`，DBH 的 `JobDriver_takeShower` 已有先例）。
-- 需求注入：`Pawn_NeedsTracker.ShouldHaveNeed` Postfix（参考 DBH `HarmonyPatches.cs`），只给能洗澡的人形加。
-- `CK_Shower`（1×1，可独立放置）：需要水网供水 + 用电加热；`JobDriver_TakeShower` 预约、脱战、洗澡、消耗水、恢复需求。
-- 热水：`CK_WaterHeater` 给管网加热水；没有热水/加热器关闭时洗冷水澡，给心情 debuff。
-- 念头：洁净、肮脏、冷水澡、今天洗过澡。
-- 研究「卫生设施」+ 建造材料 + 占位贴图。
-- Alert：断水、断电、淋浴被占用。
+- `Need_Hygiene`（0–1）与 `Need_Bladder`（0–1）：缓慢下降；洗澡/上厕所恢复；洗后清携带污渍。
+- 需求注入：`Pawn_NeedsTracker.ShouldHaveNeed` Postfix；DBH 策略、囚犯/访客/非人形、种族/体型/Hediff 豁免统一由 `HygieneSettings.ShouldInject` 判断。
+- `CK_Shower`（1×1，可独立放）/ `CK_ShowerPower`（2×2，必须通电）；`JobDriver_TakeShower` 预约、到场、扣水/扣热、恢复需求。
+- 水网：水井 → 水泵 → 管道 → 水箱 → 洁具；泵需同网水井，产水按每网一次。
+- 热水：`CK_DbhWaterHeater`（250 供热 + 内置 100 热水罐）+ `CK_HotWaterTank`；DBH 式 `HeatingCap`/`HeaterTemp`，热水用完中途转冷。
+- 念头：洁净/肮脏、热水澡、冷水澡、今天洗过澡、浴室、洗澡/如厕隐私、失禁。
+- 卫生设置页：需求速率、耗水、热水用量、污染概率、DBH 三策略、需求豁免。
+- Alert：设施断水/堵塞/断电；淋浴长期占用/排队。
+- 附加：淋浴后清 RJW 污渍 + 排房间清洁；脏水/污染导致 `CK_GutBug`。
 
-**后续**：洗手台、浴缸、病人擦洗、公共浴室、水质/污水。
+**后续**：真正的淋浴排队 Job、DBH 三种肠道疾病、锅炉功率档位/恒温循环、衣物清洁。
 
-**不做**：厕所/排泄系统（与 DBH 重叠且工作量更大）。
+**不做**：衣物耐久/穿衣洗澡；首版不做患者擦洗专用 Job。
 
-**关键难点**：需求注入只加一次、不重复加；洗澡 Job 的中断/预约/多人排队；与 DBH 的 hygiene 需求共存策略（M2-7）。
+**关键难点**：需求注入只加一次、不重复加；洗澡 Job 的中断/预约；与 DBH 的 hygiene 需求共存策略（M2-7）。
 
 ### 4.2 立体库（Storage）
 
@@ -481,15 +483,15 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 
 ### M2 淋浴（Hygiene）
 
-- [ ] **M2-0** API 验证：`Pawn_NeedsTracker.ShouldHaveNeed` 注入、`pawn.filth.carriedFilth` 清理、洗澡 Job 的预约/中断；结论写进 `docs/decisions/hygiene.md`。
-- [ ] **M2-1** `Need_Hygiene` + `NeedDef` + 衰减/恢复 + 存档；只给人形加，不重复加。
-- [ ] **M2-2** `CK_Shower` + `JobDef` / `JobDriver_TakeShower`：预约、到场、洗澡、消耗水、恢复需求、清污渍。
-- [ ] **M2-3** 热水：`CK_WaterHeater` + 管网温度/加热逻辑；冷水澡心情 debuff；断电降级。
-- [ ] **M2-4** 念头/记忆：洁净、肮脏、冷水澡、今天洗过澡；阈值与持续时间进 `docs/balance.md`。
-- [ ] **M2-5** Defs：建筑、研究、配方、材料、占位贴图；建造菜单归类。
-- [ ] **M2-6** UI：需求条、Gizmo「去洗澡」、断水/断电/占用 Alert、拒绝原因。
-- [ ] **M2-7** DBH 共存策略：检测 `dubwise.dubsbadhygiene`；三选一（共存/软停用本模块需求/声明不兼容），写进设置与文档。
-- [ ] **M2-8** 测试：一天不洗澡→变脏→洗澡恢复；断水/断电/多人排队；存读档；与 DBH 同开冒烟。
+- [x] **M2-0** API 验证：`Pawn_NeedsTracker.ShouldHaveNeed` 注入、`pawn.filth.carriedFilth` 清理、洗澡 Job 的预约/中断。
+- [x] **M2-1** `Need_Hygiene` + `NeedDef` + 衰减/恢复 + 存档；只给人形加，不重复加。
+- [x] **M2-2** `CK_Shower` + `JobDef` / `JobDriver_TakeShower`：预约、到场、洗澡、消耗水、恢复需求、清污渍。
+- [x] **M2-3** 热水：`CK_DbhWaterHeater` + `CK_HotWaterTank` + `HeatingCap`/`HeaterTemp`；冷水澡心情 debuff；断电降级。
+- [x] **M2-4** 念头/记忆：洁净、肮脏、热水澡、冷水澡、今天洗过澡、浴室/如厕隐私。
+- [x] **M2-5** Defs：建筑、研究、配方、材料、贴图；建造菜单归类。
+- [x] **M2-6** UI：需求条、Gizmo「去洗澡」、断水/堵塞/断电 Alert、长期占用/排队 Alert。
+- [x] **M2-7** DBH 共存策略：检测 `dubwise.dubsbadhygiene`；软停用/始终并存/完全禁用，写进设置与文档。
+- [ ] **M2-8** 测试：变脏→洗澡→恢复、断水/断电、存读档已覆盖；**多人真实排队 Job 未实现**（仅 Alert），DBH 长时间同开实机未做。
 
 **M2 完成标准**：正常玩家能在游戏内完成「变脏 → 去洗澡 → 恢复 → 心情变化」闭环。
 
