@@ -86,11 +86,11 @@ namespace ColonyKit.Modules.Blueprint
 			switch (mode)
 			{
 				case BlueprintMaterialMode.Available:
-					return "CK.Blueprint.Mode.Available".Translate();
+					return "CK.Blueprint.Mode.Available".Loc();
 				case BlueprintMaterialMode.Cheapest:
-					return "CK.Blueprint.Mode.Cheapest".Translate();
+					return "CK.Blueprint.Mode.Cheapest".Loc();
 				default:
-					return "CK.Blueprint.Mode.PreferSource".Translate();
+					return "CK.Blueprint.Mode.PreferSource".Loc();
 			}
 		}
 	}

@@ -72,7 +72,7 @@
 
 ### Fixed
 
-- **设置页分页翻译回退英文**：`ModLoc` 之前只加载 `Languages/<Lang>/Keyed/ColonyKit.xml`，而「保温」「蓝图」「机器人」等分页的键在各自的 Keyed 文件里；当 Mod 语言=简中、游戏语言=英文时，这些页会回退成英文（例如 Insulation 页整页英文）。现在按 `Keyed` 目录加载全部 XML，设置页各分页统一使用所选语言。
+- **设置页分页翻译回退英文**：`ModLoc` 之前只加载 `Languages/<Lang>/Keyed/ColonyKit.xml`，而「保温」「蓝图」「机器人」等分页的键在各自的 Keyed 文件里；当 Mod 语言=简中、游戏语言=英文时，这些页会回退成英文（例如 Insulation 页整页英文）。现在按 `Keyed` 目录加载全部 XML，设置页各分页统一使用所选语言；蓝图材料策略（原材质/就手/最便宜）与卫生 DBH 策略下拉框也从 `.Translate()` 改为 `.Loc()`，不再漏成英文。
 - **立体库面板重复数量**：`ITab_VerticalWarehouse` 之前用 `thing.LabelCap + " x" + stackCount`，而 `LabelCap` 对可堆叠物已包含 `x75`，显示成「Wood x75 x75」；现在只显示 `LabelCap`。
 - **木头/钢铁等材料不参与堆叠**：`StorageStackRules.CanMultiply` 把 `IsWeapon`/`isTechHediff` 直接当排除条件，而 1.6 的原版木头（以及钢铁等 IsStuff 材料）两者都为 true，导致 176 个 Def 里漏掉木头；现在只在「非 IsStuff 的真正武器/科技义体」时排除。
 - **库内超限堆取回**：`TryWithdraw` 现在按全局 `stackLimit` 分块取出，避免把 4500 的库内堆整堆丢到地图上被 `GenPlace` 截成 750；`WithdrawAll` 循环取到空，失败时用强制回滚保留物品。

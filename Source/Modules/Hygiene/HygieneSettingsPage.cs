@@ -171,11 +171,11 @@ namespace ColonyKit.Modules.Hygiene
 			switch (policy)
 			{
 				case HygieneDbhPolicy.AlwaysOn:
-					return "ColonyKit.Settings.Hygiene.Dbh.AlwaysOn".Translate();
+					return "ColonyKit.Settings.Hygiene.Dbh.AlwaysOn".Loc();
 				case HygieneDbhPolicy.Disabled:
-					return "ColonyKit.Settings.Hygiene.Dbh.Disabled".Translate();
+					return "ColonyKit.Settings.Hygiene.Dbh.Disabled".Loc();
 				default:
-					return "ColonyKit.Settings.Hygiene.Dbh.SoftOff".Translate();
+					return "ColonyKit.Settings.Hygiene.Dbh.SoftOff".Loc();
 			}
 		}
 	}
