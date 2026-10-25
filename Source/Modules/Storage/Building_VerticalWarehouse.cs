@@ -22,6 +22,7 @@ namespace ColonyKit.Modules.Storage
 		private CompPowerTrader compPowerTrader;
 		private int networkCacheTick = -1;
 		private bool networkCache;
+		private int settingsVersion;
 		private static Graphic conveyorWarning;
 
 		private static Graphic ConveyorWarning
@@ -287,12 +288,14 @@ namespace ColonyKit.Modules.Storage
 		public Building_VerticalWarehouse()
 		{
 			innerContainer = new ThingOwner<Thing>(this);
+			settingsVersion = 1;
 			EnsureStoreSettings();
 		}
 
 		public override void ExposeData()
 		{
 			base.ExposeData();
+			Scribe_Values.Look(ref settingsVersion, "settingsVersion", 0);
 			Scribe_Deep.Look(ref innerContainer, "innerContainer", this);
 			Scribe_Deep.Look(ref storeSettings, "storeSettings", this);
 			if (innerContainer == null)
@@ -300,6 +303,27 @@ namespace ColonyKit.Modules.Storage
 				innerContainer = new ThingOwner<Thing>(this);
 			}
 			EnsureStoreSettings();
+
+			if (Scribe.mode == LoadSaveMode.PostLoadInit && settingsVersion < 1)
+			{
+				MigrateLegacyDefaults();
+			}
+		}
+
+		private void MigrateLegacyDefaults()
+		{
+			// 0.0.2 早期默认是 Low/21°C；旧存档首次加载时迁移到 Normal/4°C。
+			if (storeSettings != null && storeSettings.Priority == StoragePriority.Low)
+			{
+				storeSettings.Priority = StoragePriority.Normal;
+			}
+
+			compTempControl ??= GetComp<CompTempControl>();
+			if (compTempControl != null && Mathf.Approximately(compTempControl.TargetTemperature, 21f))
+			{
+				compTempControl.TargetTemperature = 4f;
+			}
+			settingsVersion = 1;
 		}
 
 		private void EnsureStoreSettings()
