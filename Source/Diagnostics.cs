@@ -64,8 +64,7 @@ namespace ColonyKit
 			{
 				builder.AppendLine(
 					"general: trackSpawns=" + settings.general.trackSpawns
-					+ " enablePawnMenu=" + settings.general.enablePawnMenu
-					+ " showTechTreeButton=" + settings.general.showTechTreeButton);
+					+ " enablePawnMenu=" + settings.general.enablePawnMenu);
 				builder.AppendLine(
 					"logging: detail=" + settings.logging.detail
 					+ " logLevel=" + settings.logging.logLevel
@@ -89,11 +88,6 @@ namespace ColonyKit
 			builder.AppendLine(
 				"  logOnceKeys=" + ModLog.OnceKeyCount
 				+ " logThrottleKeys=" + ModLog.ThrottleKeyCount);
-
-			MainButtonDef techButton = DefDatabase<MainButtonDef>
-				.GetNamedSilentFail(MainButtonService.TechTreeButtonDefName);
-			builder.AppendLine(
-				"  techTreeButton=" + (techButton != null && MainButtonService.IsVisible(techButton)));
 
 			ResearchTabDef tab = Current.Game != null
 				? Find.ResearchManager?.GetProject()?.tab ?? ResearchTabDefOf.Main

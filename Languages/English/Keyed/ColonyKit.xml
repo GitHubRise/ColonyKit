@@ -77,28 +77,11 @@
 	<ColonyKit.Settings.About.Note>Patch note: {0}</ColonyKit.Settings.About.Note>
 	<ColonyKit.Settings.About.Hint>Read-only. It also proves the XML to DefOf to UI chain works.</ColonyKit.Settings.About.Hint>
 
-	<ColonyKit.Settings.Section.TechTree>Tech tree</ColonyKit.Settings.Section.TechTree>
-	<ColonyKit.Settings.TechTree.Hint>Opens a custom tech tree window: prerequisite-based layout, scroll, click to select research.</ColonyKit.Settings.TechTree.Hint>
-	<ColonyKit.Settings.TechTree.Open>Open tech tree</ColonyKit.Settings.TechTree.Open>
-	<ColonyKit.TechTree.Mode.Tiers>Layout: prerequisites</ColonyKit.TechTree.Mode.Tiers>
-	<ColonyKit.TechTree.Mode.Vanilla>Layout: vanilla coords</ColonyKit.TechTree.Mode.Vanilla>
-	<ColonyKit.TechTree.Summary>{0} nodes in {1}</ColonyKit.TechTree.Summary>
-	<ColonyKit.TechTree.BuildFailed>Tech tree build failed; see Player.log.</ColonyKit.TechTree.BuildFailed>
-	<ColonyKit.TechTree.Tooltip.Cost>Cost: {0}</ColonyKit.TechTree.Tooltip.Cost>
-	<ColonyKit.TechTree.Tooltip.Prerequisites>Prerequisites: {0}</ColonyKit.TechTree.Tooltip.Prerequisites>
-	<ColonyKit.TechTree.Tooltip.None>none</ColonyKit.TechTree.Tooltip.None>
-	<ColonyKit.TechTree.Tooltip.Click>Click to set as current research</ColonyKit.TechTree.Tooltip.Click>
-	<ColonyKit.TechTree.Tooltip.Finished>Finished</ColonyKit.TechTree.Tooltip.Finished>
-	<ColonyKit.TechTree.Tooltip.Available>Available</ColonyKit.TechTree.Tooltip.Available>
-	<ColonyKit.TechTree.Tooltip.Locked>Locked</ColonyKit.TechTree.Tooltip.Locked>
-
 	<ColonyKit.Settings.Section.Interface>Interface</ColonyKit.Settings.Section.Interface>
 	<ColonyKit.Settings.Section.Throttle>Throttling</ColonyKit.Settings.Section.Throttle>
 	<ColonyKit.Settings.Section.Test>Test</ColonyKit.Settings.Section.Test>
 	<ColonyKit.EnablePawnMenu>Enable pawn context menu</ColonyKit.EnablePawnMenu>
 	<ColonyKit.EnablePawnMenu.Desc>Show the extra options this mod adds when right-clicking a colonist.</ColonyKit.EnablePawnMenu.Desc>
-	<ColonyKit.ShowTechTreeButton>Show tech tree button</ColonyKit.ShowTechTreeButton>
-	<ColonyKit.ShowTechTreeButton.Desc>Show a "Tech tree" button in the bottom main bar.</ColonyKit.ShowTechTreeButton.Desc>
 
 	<ColonyKit.Settings.Tab.Notifications>Notifications</ColonyKit.Settings.Tab.Notifications>
 	<ColonyKit.Settings.Notifications.Enabled>Enable notifications</ColonyKit.Settings.Notifications.Enabled>
@@ -138,8 +121,6 @@
 	<ColonyKit.Module.Notifications.Desc>Messages, letters and throttled notifications.</ColonyKit.Module.Notifications.Desc>
 	<ColonyKit.Module.Build.Name>Building control</ColonyKit.Module.Build.Name>
 	<ColonyKit.Module.Build.Desc>Placement rules and programmatic blueprints.</ColonyKit.Module.Build.Desc>
-	<ColonyKit.Module.TechTree.Name>Tech tree</ColonyKit.Module.TechTree.Name>
-	<ColonyKit.Module.TechTree.Desc>Tech tree window and bottom-bar button.</ColonyKit.Module.TechTree.Desc>
 	<ColonyKit.Module.Diagnostics.Name>Diagnostics</ColonyKit.Module.Diagnostics.Name>
 	<ColonyKit.Module.Diagnostics.Desc>Log buffer and diagnostics report.</ColonyKit.Module.Diagnostics.Desc>
 

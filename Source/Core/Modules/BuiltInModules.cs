@@ -57,18 +57,6 @@ namespace ColonyKit
 		public override int InitOrder => 30;
 	}
 
-	/// <summary>科技树模块。</summary>
-	public sealed class TechTreeModule : ColonyKitModule
-	{
-		public override string Id => "tech-tree";
-
-		public override string DisplayNameKey => "ColonyKit.Module.TechTree.Name";
-
-		public override string DescriptionKey => "ColonyKit.Module.TechTree.Desc";
-
-		public override int InitOrder => 40;
-	}
-
 	/// <summary>诊断模块：游戏加载时清空日志去重/节流/最近日志；始终启用，保证支持信息可用。</summary>
 	public sealed class DiagnosticsModule : ColonyKitModule
 	{

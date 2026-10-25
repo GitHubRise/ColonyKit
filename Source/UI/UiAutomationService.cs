@@ -72,15 +72,6 @@ namespace ColonyKit
 				"03-pawn-menu",
 				OpenPawnMenu,
 				ClickFirstPawnMenuOption));
-
-			Register(new UiScenario(
-				"04-tech-tree",
-				() => new TechTreeWindow()));
-
-			Register(new UiScenario(
-				"05-bottom-button",
-				null,
-				ClickTechTreeButton));
 		}
 
 		public static void Register(UiScenario scenario)
@@ -277,20 +268,6 @@ namespace ColonyKit
 
 			action();
 			ModLog.Message("ui-test: first pawn menu option executed");
-		}
-
-		private static void ClickTechTreeButton()
-		{
-			MainButtonDef def = DefDatabase<MainButtonDef>
-				.GetNamedSilentFail(MainButtonService.TechTreeButtonDefName);
-			if (def == null)
-			{
-				ModLog.Warning("ui-test: tech tree button def missing");
-				return;
-			}
-
-			def.Worker.InterfaceTryActivate();
-			ModLog.Message("ui-test: tech tree button activated");
 		}
 	}
 }

@@ -7,28 +7,27 @@
 ## 1. 来源与约束
 
 - 本工程由 [`sources/mod-template`](../../mod-template/) **0.0.1 复制**生成，后同步 **0.0.2** 的框架修复；**没有修改模板本身**。
-- 复制时保留：`Source/Core/Modules`、`Source/Settings`、`Source/UI`、`Source/TechTree`、`Source/Build`、`Source/Notifications`、`Source/Localization`、`build/verify/package.ps1`。
-- 复制后删除：`DemoConfig`、`ColonyKitDefOf`、`Patch_Pawn_SpawnSetup`、`Patches/OptionalCompatibility.xml`；`DemoGameComponent` 改为 `ColonyKitGameComponent`。
+- 复制时保留：`Source/Core/Modules`、`Source/Settings`、`Source/UI`、`Source/Build`、`Source/Notifications`、`Source/Localization`、`build/verify/package.ps1`。
+- 复制后删除：`DemoConfig`、`ColonyKitDefOf`、`Patch_Pawn_SpawnSetup`、`Patches/OptionalCompatibility.xml`；`DemoGameComponent` 改为 `ColonyKitGameComponent`；底部科技树按钮与 `Source/TechTree` 于 0.0.2 后续移除。
 - 新增：四个参考模块占位 `Source/Modules/ReferenceModules.cs`、`docs/参考源码映射.md`、本文件。
 
 ## 2. 实际分层
 
 ```
 About/            Mod 元数据（name=殖民地套件, packageId=local.colonykit, modVersion=0.0.2）
-Defs/             目前只有 Core/MainButton_TechTree.xml（模板科技树按钮）
+Defs/             Core（底部标签页按钮）、Research、Storage
 Languages/        English / ChineseSimplified：Keyed + DefInjected
 Source/
 ├─ ColonyKitMod.cs             Mod 入口 + 设置窗口
 ├─ Bootstrap.cs                [StaticConstructorOnStartup] + PatchAll + 注册模块
 ├─ ColonyKitGameComponent.cs   新游戏/读档 → ModuleRegistry.NotifyGameLoaded
-├─ Core/Modules/               IColonyKitModule / ModuleRegistry / 模板 6 模块
+├─ Core/Modules/               IColonyKitModule / ModuleRegistry / 模板 5 模块
 ├─ Modules/ReferenceModules.cs hygiene / storage / localization / rjw 四个占位
 ├─ Settings/                   多页签设置、迁移、控件库
 ├─ Localization/ModLoc.cs      设置窗口语言覆盖
 ├─ UI/                         右键菜单、底部按钮、UI 自动化（模板能力）
 ├─ Build/                      建造控制（模板能力）
-├─ Notifications/              通知节流（模板能力）
-└─ TechTree/                   科技树窗口（模板能力）
+└─ Notifications/              通知节流（模板能力）
 ```
 
 > 目标形态（`Source/Core/Water`、`Modules/Hygiene` 等）见 [README §3.6](../README.md#36-目标目录)；当前是模板骨架，功能落地时再迁移。
@@ -42,7 +41,7 @@ Def XML 合并 + Patch
 Def 反序列化 / DefOf 绑定
   └─ Bootstrap 静态构造
         ├─ Harmony.PatchAll("local.colonykit")
-        ├─ ModuleRegistry.DiscoverFromAssembly(...)：自动发现 10 个模块
+        ├─ ModuleRegistry.DiscoverFromAssembly(...)：自动发现 9 个模块
         └─ ModuleRegistry.InitAll()
               └─ each enabled module.OnDefsLoaded()（try/catch 隔离）
 
@@ -66,7 +65,7 @@ Def 反序列化 / DefOf 绑定
 - 软停用：模块关闭后不调用 `OnDefsLoaded` / `OnGameLoaded`，但仍调用 `ResetRuntimeState`；**Def 仍会加载**，不会从存档/地图消失。详见 README §3.4。
 - 设置：多页签现为 **模块 / 立体库 / 汉化 / 常规设置 / 关于** 5 页；「常规设置」含 Mod 设置语言（默认简中）与日志/诊断；旧模板「常规 / 日志 / 通知」测试页已移除；模块细分设置放 `IColonyKitModuleSettings`，不再往设置根加字段。
 
-## 5. 0.0.2 的 10 个模块
+## 5. 0.0.2 的 9 个模块
 
 | Id | 来源 | 0.0.2 行为 |
 |---|---|---|
@@ -74,7 +73,6 @@ Def 反序列化 / DefOf 绑定
 | `pawn-menu` | 模板 | 右键菜单服务（模板能力） |
 | `notifications` | 模板 | 通知/信件/节流（模板能力） |
 | `build-control` | 模板 | 建造规则/程序化蓝图（模板能力） |
-| `tech-tree` | 模板 | 科技树窗口 + 底部按钮（模板能力） |
 | `diagnostics` | 模板 | 日志缓冲/诊断报告；锁定 |
 | `hygiene` | 参考 DBH | 占位：`OnDefsLoaded` 日志 + DBH 检测 |
 | `storage` | 参考 StackXXL | 占位：`OnDefsLoaded` 日志 + StackXXL 检测 |
@@ -97,7 +95,7 @@ cd sources\ColonyKit
 .\package.ps1        # dist\ColonyKit-0.0.2.zip
 ```
 
-当前结果：构建 0/0、verify 0/0、zip 9 文件（含 `Translations`）；`-Deploy` + `-quicktest` 通过（`modules=10`，翻译表 882/882，自检 tooltip/品质返回中文）；未人工点 Debug 菜单/设置页。
+当前结果：构建 0/0、verify 0/0；`-Deploy` + `-quicktest` 通过（`modules=9`，翻译表 882/882，自检 tooltip/品质返回中文）；未人工点 Debug 菜单/设置页。
 
 ## 8. 相关文档
 

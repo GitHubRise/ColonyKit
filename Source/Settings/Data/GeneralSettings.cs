@@ -31,9 +31,6 @@ namespace ColonyKit
 		/// <summary>是否启用右键小人菜单里的扩展项。</summary>
 		public bool enablePawnMenu = true;
 
-		/// <summary>是否显示底部菜单里的「科技树」按钮。</summary>
-		public bool showTechTreeButton = true;
-
 		/// <summary>选项控件展示方式：下拉框或 ◀ / ▶ 循环。</summary>
 		public SettingsControlMode controlMode = SettingsControlMode.Dropdown;
 
@@ -45,7 +42,6 @@ namespace ColonyKit
 			// key 是配置文件契约，发布后不要改名。
 			Scribe_Values.Look(ref trackSpawns, "trackSpawns", true);
 			Scribe_Values.Look(ref enablePawnMenu, "enablePawnMenu", true);
-			Scribe_Values.Look(ref showTechTreeButton, "showTechTreeButton", true);
 			Scribe_Values.Look(ref controlMode, "controlMode", SettingsControlMode.Dropdown);
 			Scribe_Values.Look(ref language, "language", ModLanguage.ChineseSimplified);
 		}
@@ -55,7 +51,6 @@ namespace ColonyKit
 		{
 			trackSpawns = true;
 			enablePawnMenu = true;
-			showTechTreeButton = true;
 			controlMode = SettingsControlMode.Dropdown;
 			language = ModLanguage.ChineseSimplified;
 		}

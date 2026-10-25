@@ -77,28 +77,11 @@
 	<ColonyKit.Settings.About.Note>补丁备注：{0}</ColonyKit.Settings.About.Note>
 	<ColonyKit.Settings.About.Hint>只读页；同时用来验证 XML → DefOf → UI 这条链路。</ColonyKit.Settings.About.Hint>
 
-	<ColonyKit.Settings.Section.TechTree>科技树</ColonyKit.Settings.Section.TechTree>
-	<ColonyKit.Settings.TechTree.Hint>打开独立的科技树窗口：按前置分层、可滚动、点击节点设为当前研究。</ColonyKit.Settings.TechTree.Hint>
-	<ColonyKit.Settings.TechTree.Open>打开科技树</ColonyKit.Settings.TechTree.Open>
-	<ColonyKit.TechTree.Mode.Tiers>布局：按前置</ColonyKit.TechTree.Mode.Tiers>
-	<ColonyKit.TechTree.Mode.Vanilla>布局：原版坐标</ColonyKit.TechTree.Mode.Vanilla>
-	<ColonyKit.TechTree.Summary>{0} 个节点 · {1}</ColonyKit.TechTree.Summary>
-	<ColonyKit.TechTree.BuildFailed>科技树构建失败，详见 Player.log。</ColonyKit.TechTree.BuildFailed>
-	<ColonyKit.TechTree.Tooltip.Cost>花费：{0}</ColonyKit.TechTree.Tooltip.Cost>
-	<ColonyKit.TechTree.Tooltip.Prerequisites>前置：{0}</ColonyKit.TechTree.Tooltip.Prerequisites>
-	<ColonyKit.TechTree.Tooltip.None>无</ColonyKit.TechTree.Tooltip.None>
-	<ColonyKit.TechTree.Tooltip.Click>点击设为当前研究</ColonyKit.TechTree.Tooltip.Click>
-	<ColonyKit.TechTree.Tooltip.Finished>已完成</ColonyKit.TechTree.Tooltip.Finished>
-	<ColonyKit.TechTree.Tooltip.Available>可研究</ColonyKit.TechTree.Tooltip.Available>
-	<ColonyKit.TechTree.Tooltip.Locked>未解锁</ColonyKit.TechTree.Tooltip.Locked>
-
 	<ColonyKit.Settings.Section.Interface>界面</ColonyKit.Settings.Section.Interface>
 	<ColonyKit.Settings.Section.Throttle>节流</ColonyKit.Settings.Section.Throttle>
 	<ColonyKit.Settings.Section.Test>测试</ColonyKit.Settings.Section.Test>
 	<ColonyKit.EnablePawnMenu>启用右键小人菜单</ColonyKit.EnablePawnMenu>
 	<ColonyKit.EnablePawnMenu.Desc>右键殖民者时显示本 Mod 追加的菜单项。</ColonyKit.EnablePawnMenu.Desc>
-	<ColonyKit.ShowTechTreeButton>显示科技树按钮</ColonyKit.ShowTechTreeButton>
-	<ColonyKit.ShowTechTreeButton.Desc>在底部主菜单显示「科技树」按钮。</ColonyKit.ShowTechTreeButton.Desc>
 
 	<ColonyKit.Settings.Tab.Notifications>通知</ColonyKit.Settings.Tab.Notifications>
 	<ColonyKit.Settings.Notifications.Enabled>启用通知</ColonyKit.Settings.Notifications.Enabled>
@@ -138,8 +121,6 @@
 	<ColonyKit.Module.Notifications.Desc>消息、信件与节流通知。</ColonyKit.Module.Notifications.Desc>
 	<ColonyKit.Module.Build.Name>建筑建造</ColonyKit.Module.Build.Name>
 	<ColonyKit.Module.Build.Desc>放置规则与程序化蓝图。</ColonyKit.Module.Build.Desc>
-	<ColonyKit.Module.TechTree.Name>科技树</ColonyKit.Module.TechTree.Name>
-	<ColonyKit.Module.TechTree.Desc>科技树窗口与底部按钮。</ColonyKit.Module.TechTree.Desc>
 	<ColonyKit.Module.Diagnostics.Name>诊断</ColonyKit.Module.Diagnostics.Name>
 	<ColonyKit.Module.Diagnostics.Desc>日志缓冲与诊断报告。</ColonyKit.Module.Diagnostics.Desc>
 

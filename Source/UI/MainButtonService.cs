@@ -16,9 +16,6 @@ namespace ColonyKit
 	/// </remarks>
 	public static class MainButtonService
 	{
-		/// <summary>模板自带的科技树按钮 defName。</summary>
-		public const string TechTreeButtonDefName = "ColonyKit_TechTree";
-
 		private static readonly Dictionary<string, bool> visibleOverrides =
 			new Dictionary<string, bool>();
 
@@ -68,17 +65,10 @@ namespace ColonyKit
 			}
 		}
 
-		/// <summary>综合 Def 的 buttonVisible、显式覆盖和模板设置，决定按钮是否可见。</summary>
+		/// <summary>综合 Def 的 buttonVisible 和显式覆盖，决定按钮是否可见。</summary>
 		public static bool IsVisible(MainButtonDef def)
 		{
 			if (def == null || !def.buttonVisible)
-			{
-				return false;
-			}
-
-			if (def.defName == TechTreeButtonDefName
-				&& (!ModuleRegistry.IsEnabled("tech-tree")
-					|| !(ColonyKitMod.Settings?.general?.showTechTreeButton ?? true)))
 			{
 				return false;
 			}

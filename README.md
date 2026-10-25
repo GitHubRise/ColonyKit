@@ -276,7 +276,7 @@ sources/ColonyKit/
 └─ dist/                              ← 打包产物，不提交
 ```
 
-> **0.0.2 实际骨架**：上面的目录是目标形态；当前 `Source/` 仍是 mod-template 的 `Core/Modules`、`Settings/`、`UI/`、`TechTree/` 等，新增了 `Source/Modules/ReferenceModules.cs` 与 `Source/Modules/Localization/`。功能模块落地时再按目标目录迁移。
+> **0.0.2 实际骨架**：上面的目录是目标形态；当前 `Source/` 仍是 mod-template 的 `Core/Modules`、`Settings/`、`UI/` 等，新增了 `Source/Modules/ReferenceModules.cs` 与 `Source/Modules/Localization/`。功能模块落地时再按目标目录迁移。
 
 ### 3.7 常用命令
 
