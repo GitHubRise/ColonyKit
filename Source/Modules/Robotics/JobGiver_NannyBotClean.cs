@@ -24,7 +24,8 @@ namespace ColonyKit.Modules.Robotics
 			RoboticsSettings settings = NannyBotUtility.Settings;
 			bool sweep = comp != null && comp.sweep && settings.sweep;
 			bool scrub = comp != null && comp.scrub && settings.scrub;
-			if (!sweep && !scrub)
+			bool hygiene = settings.hygiene;
+			if (!sweep && !scrub && !hygiene)
 			{
 				return null;
 			}
@@ -38,6 +39,10 @@ namespace ColonyKit.Modules.Robotics
 			{
 				filth = FindFilth(pawn, insideHome: false);
 			}
+			if (filth == null && hygiene)
+			{
+				filth = FindFilth(pawn, insideHome: true, bathroomOnly: true);
+			}
 			if (filth == null)
 			{
 				return null;
@@ -49,7 +54,7 @@ namespace ColonyKit.Modules.Robotics
 			return job;
 		}
 
-		private static Filth FindFilth(Pawn pawn, bool insideHome)
+		private static Filth FindFilth(Pawn pawn, bool insideHome, bool bathroomOnly = false)
 		{
 			Map map = pawn.Map;
 			if (map == null)
@@ -64,12 +69,19 @@ namespace ColonyKit.Modules.Robotics
 				PathEndMode.Touch,
 				TraverseParms.For(pawn, Danger.Deadly),
 				9999f,
-				(Thing thing) => ValidFilth(pawn, thing, insideHome));
+				(Thing thing) => ValidFilth(pawn, thing, insideHome, bathroomOnly));
 
 			return found as Filth;
 		}
 
-		private static bool ValidFilth(Pawn pawn, Thing thing, bool insideHome)
+		private static bool IsBathroom(Filth filth)
+		{
+			Room room = filth.GetRoom();
+			string role = room?.Role?.defName;
+			return role == "CK_PrivateBathroom" || role == "CK_PublicBathroom";
+		}
+
+		private static bool ValidFilth(Pawn pawn, Thing thing, bool insideHome, bool bathroomOnly)
 		{
 			if (!(thing is Filth filth) || !filth.Spawned || filth.Destroyed)
 			{
@@ -84,6 +96,10 @@ namespace ColonyKit.Modules.Robotics
 				return false;
 			}
 			if (filth.Position.Fogged(pawn.Map))
+			{
+				return false;
+			}
+			if (bathroomOnly && !IsBathroom(filth))
 			{
 				return false;
 			}
