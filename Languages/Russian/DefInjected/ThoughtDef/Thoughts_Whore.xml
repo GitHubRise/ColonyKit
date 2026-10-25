@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 用于记录顾客，避免妓女反复招揽同一位客人 -->
+
+  <!--<RJWFailedSolicitation.stages.0.label>меня пытаются совратить</RJWFailedSolicitation.stages.0.label>-->
+
+
+  <!-- 同上，但针对殖民者 -->
+
+  <!--<RJWTurnedDownWhore.stages.0.label>докучает меня</RJWTurnedDownWhore.stages.0.label>-->
+
+
+</LanguageData>

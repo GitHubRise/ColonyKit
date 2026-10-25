@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <RJW_SexGizmo_Orgasm>高潮</RJW_SexGizmo_Orgasm>
+
+  <RJW_SexGizmo_RestNeed>耐力</RJW_SexGizmo_RestNeed>
+
+  <RJW_SexGizmo_SexNeed>满足</RJW_SexGizmo_SexNeed>
+
+  <RJW_SexGizmo_SexOverdriveTooltip>性爱不会结束，直到小人崩溃或以其他方式中断。</RJW_SexGizmo_SexOverdriveTooltip>
+
+  <RJW_SexGizmo_HitPawn>打一次。</RJW_SexGizmo_HitPawn>
+
+  <RJW_SexGizmo_Cocoon>将小人裹成茧。</RJW_SexGizmo_Cocoon>
+
+  <RJW_SexGizmo_Egg>塞入虫蛋。</RJW_SexGizmo_Egg>
+
+  <RJW_InviteJoin>邀请加入</RJW_InviteJoin>
+
+  <RJW_InviteJoin_Desc>把附近的小人拉进当前这一场性行为。</RJW_InviteJoin_Desc>
+
+  <RJW_InviteJoin_None>附近没有可以加入的小人。</RJW_InviteJoin_None>
+
+  <RJW_InviteJoin_NoReceiver>当前没有正在进行的性行为。</RJW_InviteJoin_NoReceiver>
+
+  <RJW_InviteJoin_NoneDetail>暂时没有可加入的小人（共检查 {0} 人：无空位 {1}，不感兴趣 {2}，其他原因 {3}）。</RJW_InviteJoin_NoneDetail>
+
+  <RJW_InviteSuccess>{0} 已加入这一场。</RJW_InviteSuccess>
+
+  <RJW_InviteFailed>邀请加入失败：{0}</RJW_InviteFailed>
+
+  <RJW_InviteFailedReach>——无法到达床边（门或隔墙）。</RJW_InviteFailedReach>
+
+  <RJW_InviteFailedMoving>——对方还在赶来，未能在限时内加入。</RJW_InviteFailedMoving>
+
+  <RJW_InviteFailedOther>——对方没有接手任务或被打断。</RJW_InviteFailedOther>
+</LanguageData>

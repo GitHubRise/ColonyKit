@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Penis.label>penis</Penis.label>
+  <Penis.labelNoun>penis</Penis.labelNoun>
+  <Penis.description>Penis.</Penis.description>
+
+  <Vagina.label>pochwa</Vagina.label>
+  <Vagina.labelNoun>pochwa</Vagina.labelNoun>
+  <Vagina.description>Pochwa.</Vagina.description>
+
+  <Anus.label>odbyt</Anus.label>
+  <Anus.labelNoun>odbyt</Anus.labelNoun>
+  <Anus.description>Odbyt.</Anus.description>
+
+  <Breasts.label>piersi</Breasts.label>
+  <Breasts.labelNoun>para piersi</Breasts.labelNoun>
+  <Breasts.description>Para piersi.</Breasts.description>
+
+  <FeaturelessChest.label>płaska klatka piersiowa</FeaturelessChest.label>
+  <FeaturelessChest.labelNoun>płaska klatka piersiowa</FeaturelessChest.labelNoun>
+  <FeaturelessChest.description>Plaska klatka piersiowa bez brodawek, gdzie powinny być.</FeaturelessChest.description>
+</LanguageData>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <RandomRape.label>肆意强奸</RandomRape.label>
+
+  <RandomRape.baseInspectLine>精神状态：肆意强奸</RandomRape.baseInspectLine>
+
+  <RandomRape.beginLetter>{0}欲火难耐，打算随便找个目标发泄。</RandomRape.beginLetter>
+
+  <RandomRape.beginLetterLabel>肆意强奸</RandomRape.beginLetterLabel>
+
+  <RandomRape.recoveryMessage>{0}的性欲得到了满足，不再肆意强奸他人。</RandomRape.recoveryMessage>
+
+</LanguageData>

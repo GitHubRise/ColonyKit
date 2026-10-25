@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: contraception pill -->
+  <RJW_Contraceptive.label>pilule contraceptive</RJW_Contraceptive.label>
+  <!-- EN: Delivers a severe hit to fertility for one quadrum. -->
+  <RJW_Contraceptive.description>Inflige un coup sévère à la fertilité pendant un trimestre.</RJW_Contraceptive.description>
+  <!-- EN: Take {0} -->
+  <RJW_Contraceptive.ingestible.ingestCommandString>Prendre {0}</RJW_Contraceptive.ingestible.ingestCommandString>
+  <!-- EN: Taking {0}. -->
+  <RJW_Contraceptive.ingestible.ingestReportString>Prend {0}</RJW_Contraceptive.ingestible.ingestReportString>
+  
+</LanguageData>

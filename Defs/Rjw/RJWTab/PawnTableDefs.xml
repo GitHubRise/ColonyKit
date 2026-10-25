@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<PawnTableDef>
+		<defName>RJW_PawnTable_Colonists</defName>
+		<workerClass>rjw.MainTab.RJW_PawnTable_Humanlikes</workerClass>
+		<columns>
+			<li>LabelWithIcon</li>
+			<li Name="RJW_TableSection_BasicInfo">RJW_VerticalLine</li>
+			<li>RJW_Gender</li>
+			<li>GapTiny</li>
+			<li>RJW_Sexuality</li>
+			<li>GapTiny</li>
+			<li>LifeStage</li>
+			<li Name="RJW_TableSection_RJWStats">RJW_VerticalLine</li>
+			<li>RJW_SexDrive</li>
+			<li>GapTiny</li>
+			<li>RJW_Vulnerability</li>
+			<li>GapTiny</li>
+			<li>RJW_SexSatisfaction</li>
+			<li>GapTiny</li>
+			<li>RJW_WildnessAversion</li>
+			<li>GapTiny</li>
+			<li MayRequire="Ludeon.RimWorld.Biotech">RJW_Fertility</li>
+			<li Name="RJW_TableSection_RJWDesignations">RJW_VerticalLine</li>
+			<li>RJW_Hero</li>
+			<li>RJW_Comfort</li>
+			<li>RJW_BreedHumanlike</li>
+			<li Name="RJW_TableSection_Misc">RJW_VerticalLine</li>
+			<li>Pregnant</li>
+			<li>RemainingSpace</li>
+		</columns>
+		<modExtensions>
+			<li Class="rjw.MainTab.DefModExtensions.RJW_PawnTable">
+				<label>Colonists</label>
+				<pawnFilter>RJW_PawnTableFilter_Colonists</pawnFilter>
+			</li>
+		</modExtensions>
+	</PawnTableDef>
+
+	<PawnTableDef>
+		<defName>RJW_PawnTable_Animals</defName>
+		<workerClass>rjw.MainTab.RJW_PawnTable_Animals</workerClass>
+		<columns>
+			<li>LabelWithIcon</li>
+			<li Name="RJW_TableSection_BasicInfo">RJW_VerticalLine</li>
+			<li>RJW_Gender</li>
+			<li>GapTiny</li>
+			<li>RJW_Sexuality</li>
+			<li>GapTiny</li>
+			<li>LifeStage</li>
+			<li Name="RJW_TableSection_RJWDesignations">RJW_VerticalLine</li>
+			<li>RJW_BreederAnimal</li>
+			<li>RJW_BreedAnimal</li>
+			<li Name="RJW_TableSection_Misc">RJW_VerticalLine</li>
+			<li>Pregnant</li>
+			<li>RemainingSpace</li>
+		</columns>
+		<modExtensions>
+			<li Class="rjw.MainTab.DefModExtensions.RJW_PawnTable">
+				<label>Animals</label>
+				<pawnFilter>RJW_PawnTableFilter_Animals</pawnFilter>
+			</li>
+		</modExtensions>
+	</PawnTableDef>
+
+	<PawnTableDef>
+		<defName>RJW_PawnTable_Property</defName>
+		<workerClass>rjw.MainTab.RJW_PawnTable_Humanlikes</workerClass>
+		<columns>
+			<li>LabelWithIcon</li>
+			<li Name="RJW_TableSection_BasicInfo">RJW_VerticalLine</li>
+			<li>RJW_Gender</li>
+			<li>GapTiny</li>
+			<li>RJW_Sexuality</li>
+			<li>GapTiny</li>
+			<li>LifeStage</li>
+			<li Name="RJW_TableSection_RJWStats">RJW_VerticalLine</li>
+			<li>RJW_SexDrive</li>
+			<li>GapTiny</li>
+			<li>RJW_Vulnerability</li>
+			<li>GapTiny</li>
+			<li>RJW_SexSatisfaction</li>
+			<li>GapTiny</li>
+			<li>RJW_WildnessAversion</li>
+			<li>GapTiny</li>
+			<li MayRequire="Ludeon.RimWorld.Biotech">RJW_Fertility</li>
+			<li Name="RJW_TableSection_PawnAffiliation">RJW_VerticalLine</li>
+			<li>RJW_IsPrisoner</li>
+			<li>RJW_IsSlave</li>
+			<li>Faction</li>
+			<li Name="RJW_TableSection_RJWDesignations">RJW_VerticalLine</li>
+			<li>RJW_Comfort</li>
+			<li>RJW_BreedHumanlike</li>
+			<li Name="RJW_TableSection_Misc">RJW_VerticalLine</li>
+			<li>Pregnant</li>
+			<li>RemainingSpace</li>
+		</columns>
+		<modExtensions>
+			<li Class="rjw.MainTab.DefModExtensions.RJW_PawnTable">
+				<label>Property</label>
+				<pawnFilter>RJW_PawnTableFilter_Property</pawnFilter>
+			</li>
+		</modExtensions>
+	</PawnTableDef>
+
+</Defs>

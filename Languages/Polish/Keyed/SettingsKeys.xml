@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<!-- 设置-->
+	<RJWSettingsMain>RimJobWorld - Ustawienia podstawowe</RJWSettingsMain>
+		<RJWSettingsMainTitle_General>Ogolne</RJWSettingsMainTitle_General>
+		<RJWSettingsMainTitle_Audio>Audio</RJWSettingsMainTitle_Audio>
+		<RJWSettingsMainTitle_SexNeed>Potrzeba seksu</RJWSettingsMainTitle_SexNeed>
+		<RJWSettingsMainTitle_Nymphomaniacs>Nimfomanki</RJWSettingsMainTitle_Nymphomaniacs>
+		<RJWSettingsMainTitle_PawnControl>Kontrola pionków</RJWSettingsMainTitle_PawnControl>
+
+		<NymphTamed>Dolaczenie nimfomanki</NymphTamed>
+		<NymphTamed_desc>Tworzy pionka z cechą 'Hiperseksualny' dołączajacego do kolonii.</NymphTamed_desc>
+		<NymphWild>Dzika nimfomanka</NymphWild>
+		<NymphWild_desc>Tworzy dzikiego pionka z cechą 'Hiperseksualny' atakujacego kolonię.</NymphWild_desc>
+		<NymphRaidEasy>Najazd nimfomanek (latwy)</NymphRaidEasy>
+		<NymphRaidEasy_desc>Nimfomanki zdecydowaly się odwiedzic twoja kolonię.\nSzansa podstawowa to 0.1.</NymphRaidEasy_desc>
+		<NymphRaidHard>Najazd nimfomanek (trudny)</NymphRaidHard>
+		<NymphRaidHard_desc>Nimfomanki zdecydowaly, ze to teraz ich kolonia. (Koniec gry).\nSzansa podstawowa to 0.01.</NymphRaidHard_desc>
+		<NymphRaidRP>Lime najazdy nimf</NymphRaidRP>
+		<NymphRaidRP_desc>Zamienia najazdy nimf na uzywanie punktow najazdu dla tych, ktorzy sa zbyt slabi na przewidziana trudnosc.</NymphRaidRP_desc>
+		<NymphPermanentManhunter>Stale scigajace nimfy</NymphPermanentManhunter>
+		<NymphPermanentManhunter_desc>Staly stan umyslu scigania.</NymphPermanentManhunter_desc>
+		<NymphSappers>Nimfomanki-Saperzy</NymphSappers>
+		<NymphSappers_desc>Puk-puk! Czuja cie za tymi drzwiami! Mozesz uciekac, ale nie możesz się ukryc.</NymphSappers_desc>
+		<NymphFrustratedRape>Nimfy gwalcza gdy sa sfrustrowane</NymphFrustratedRape>
+		<NymphFrustratedRape_desc>Gdy nimfomanki sa sfrustrowane i nie ma partnerow, będą losowo gwalcic kogos lub cos.</NymphFrustratedRape_desc>
+
+		<FemaleFuta>Włącz futy</FemaleFuta>
+		<FemaleFuta_desc>Tworz kobiety jako futy (+ penis)</FemaleFuta_desc>
+		<MaleTrap>Włącz trapy</MaleTrap>
+		<MaleTrap_desc>Tworz mężczyzn jako trapy (+ piersi)</MaleTrap_desc>
+		<male_nymph_chance>Szansa na stworzenie mężczyzny-nimfy</male_nymph_chance>
+		<male_nymph_chance_desc>Szansa na stworzenie mężczyzny-nimfy \n\nZakres: 0 - 100\nDomyślnie: 0</male_nymph_chance_desc>
+		<futa_nymph_chance>Szansa na stworzenie futy/trapu-nimfy</futa_nymph_chance>
+		<futa_nymph_chance_desc>Szansa na stworzenie futy/trapu-nimfy \n\nZakres: 0 - 100\nDomyślnie: 0</futa_nymph_chance_desc>
+		<futa_natives_chance>Szansa na stworzenie futy/trapu u tubylcow</futa_natives_chance>
+		<futa_natives_chance_desc>Szansa na stworzenie futy/trapu u tubylcow (poziom technologiczny przemyslowy i nizszy) \n\nZakres: 0 - 100\nDomyślnie: 0</futa_natives_chance_desc>
+		<futa_spacers_chance>Szansa na stworzenie futy/trapu u kosmitow</futa_spacers_chance>
+		<futa_spacers_chance_desc>Szansa na stworzenie futy/trapu u kosmitow \n\nZakres: 0 - 100\nDomyślnie: 5</futa_spacers_chance_desc>
+		<love_enhancer_override>Pozwol wzmacniaczom milosnym nadpisac preferencje pionków.</love_enhancer_override>
+		<love_enhancer_override_desc>Jeśli włączone, wzmacniacze miłosne sprawia, ze pionki czerpią przyjemnosc z aktów seksualnych tak, jakby byly masochistąmi i zoofilami.</love_enhancer_override_desc>
+
+		<sexneed_decay_rate_name>Wskaznik spadku potrzeby seksu (%)</sexneed_decay_rate_name>
+		<sexneed_decay_rate_desc>0% - brak spadku.\n1000000% - Planeta Gwaltu. Zalecany zakres: 50% do 200%.</sexneed_decay_rate_desc>
+		<sexneed_fix_name>Naprawa potrzeby seksu</sexneed_fix_name>
+		<sexneed_fix_desc>Naprawia nieprawidlowe progi potrzeby seksu, prawdopodobnie znacznie zmniejsza wyzwalacze seksu i gwaltu.</sexneed_fix_desc>
+		<Animal_mating_cooldown>Czas oczekiwania na rozrod zwierząt</Animal_mating_cooldown>
+		<Animal_mating_cooldown_desc>Ile godzin zwierzę czeka przed rozmnżaniem.\n0 - na podstawie popedu seksualnego</Animal_mating_cooldown_desc>
+		<AllowYouthSex>Zezwól na seks mlodziezy</AllowYouthSex>
+		<AllowYouthSex_desc>Zezwól na seks między humanoidalnymi istotami, które sa w reprodukcyjnym etapie zycia, ale ich wzrost nie osiagnal 100%.</AllowYouthSex_desc>
+		<!-- 已废弃 -->
+		<sex_age_legacymode>Przestarzale ograniczenia wieku seksualnego</sex_age_legacymode>
+		<sex_age_legacymode_desc>Przestarzale ograniczenia wieku dla pionków humanoidalnych, raczej zepsute dla ras o nie-ludzkiej dlugosci zycia, ale ludzie tego chca. Gdy wyłączone, uzywa reprodukcyjnego etapu zycia rasy jako nastoletniego, a wzrostu pionka (100%) jako doroslego.</sex_age_legacymode_desc>
+		<SexMinimumAge>Minimalny wiek seksu</SexMinimumAge>
+		<SexMinimumAge_desc>Pionki humanoidalne mlodsze niz ten wiek w ogole nie będą mieć seksu.</SexMinimumAge_desc>
+		<SexFreeForAllAge>Wiek zgody</SexFreeForAllAge>
+		<SexFreeForAllAge_desc>Pionki humanoidalne mlodsze niz ten wiek będą mieć seks tylko z pionkami o roznicy wieku do 2 lat.</SexFreeForAllAge_desc>
+
+		<bestiality_enabled>Włącz bestialstwo</bestiality_enabled>
+		<bestiality_enabled_desc>Włącz akty bestialstwa. Pozadane i nie bardzo.</bestiality_enabled_desc>
+		<animal_on_animal_enabled>Włącz zwierzę-na-zwierzę</animal_on_animal_enabled>
+		<animal_on_animal_enabled_desc>Włącz rozmnżanie dzikich zwierząt. Oswojone zwierzęta będą się rozmnóżać w obrebie swojego gatunku niezaleznie od tego ustawienia (zachowanie vanilla).\nWłącz seks międzygatunkowy między (oznaczonymi) zwierzętami, co może prowadzić do ciazy.</animal_on_animal_enabled_desc>
+		<wild_mating_enabled>Włącz rozmnżanie dzikich zwierząt</wild_mating_enabled>
+		<wild_mating_enabled_desc>Pozwala dzikim (nie-kolonijnym) zwierzętom rozmnóżać się między soba, jeśli rozmnżanie zwierzę-na-zwierzę jest włączone.\nNie wpływa na oznaczony seks międzygatunkowy między zwierzętami.</wild_mating_enabled_desc>
+		<necrophilia_enabled>Włącz nekrofilię</necrophilia_enabled>
+		<necrophilia_enabled_desc>Włącz seks ze zwłokami. Zazwyczaj ograniczone do pionków z cechą Nekrofil, ale inni mogą to robic, jeśli sa seksualnie sfrustrowani.</necrophilia_enabled_desc>
+		<mechanophilia_enabled>Włącz mechnofilię</mechanophilia_enabled>
+		<mechanophilia_enabled_desc>Włącza interakcje seksualne związane z mechami.</mechanophilia_enabled_desc>
+		<sounds_enabled>Włącz dźwięki RJW</sounds_enabled>
+		<sounds_enabled_desc>Włącza dźwięki specyficzne dla RJW. Zauważ, ze to nie wpływa na ustawienia podstawowe: jeśli masz dzwiek wyłączony, to nic nie robi.</sounds_enabled_desc>
+		<sounds_sex_volume>Glosnosc seksu</sounds_sex_volume>
+		<sounds_sex_volume_desc>Zmien glosnosc seksu</sounds_sex_volume_desc>
+		<sounds_cum_volume>Glosnosc wytrysku</sounds_cum_volume>
+		<sounds_cum_volume_desc>Zmien glosnosc wytrysku</sounds_cum_volume_desc>
+		<sounds_voice_volume>Glosnosc glosu</sounds_voice_volume>
+		<sounds_voice_volume_desc>Zmien glosnosc glosu</sounds_voice_volume_desc>
+		<sounds_orgasm_volume>Glosnosc orgazmu</sounds_orgasm_volume>
+		<sounds_orgasm_volume_desc>Zmien glosnosc orgazmu</sounds_orgasm_volume_desc>
+		<sounds_animal_on_animal_volume>Modyfikator glosnosci zwierzę na zwierzę</sounds_animal_on_animal_volume>
+		<sounds_animal_on_animal_volume_desc>Dodatkowy modyfikator glosnosci dla seksu zwierzę-na-zwierzę</sounds_animal_on_animal_volume_desc>
+
+		<cum_filth>Ilosc nasięnia</cum_filth>
+		<cum_filth_desc>Zmienia ilosc brudu po seksię. Zauważ, ze wyłączenie tego ulatwi gre z powodu braku brudu i potrzeby sprzatania.</cum_filth_desc>
+
+		<RPG_hero_control_name>Tryb bohatera</RPG_hero_control_name>
+		<RPG_hero_control_desc>Gracz może ustawić 1 pionka jako postac gracza i mieć bezpośrednia bezwarunkowa kontrole. Gracz może zmienić bohatera, gdy obecny zginie.</RPG_hero_control_desc>
+		<RPG_hero_control_HC_name>Tryb bohatera (HC)</RPG_hero_control_HC_name>
+		<RPG_hero_control_HC_desc>HARDCORE: Gracz może kontrolowac tylko bohatera, przygotuj lubrykant, będziesz go potrzebowal.\n(przeznaczone do trybu multiplayer)</RPG_hero_control_HC_desc>
+		<RPG_hero_control_Ironman_name>Tryb bohatera (Ironman)</RPG_hero_control_Ironman_name>
+		<RPG_hero_control_Ironman_desc>HARDCORE: Gracz może ustawić bohatera tylko raz na gre.</RPG_hero_control_Ironman_desc>
+		<RPG_hero_control_AI_sex_name>AI Bohatera</RPG_hero_control_AI_sex_name>
+		<RPG_hero_control_AI_sex_desc>Pozwol AI bohatera inicjowac seks (jak wszystkie inne pionki).</RPG_hero_control_AI_sex_desc>
+
+		<UseAdvancedAgeScaling>Zaawansowane skalowanie wieku</UseAdvancedAgeScaling>
+		<UseAdvancedAgeScaling_desc>Uzyj innego skalowania wieku dla nieludzkich ras (dlugie lub krotkie zycie)</UseAdvancedAgeScaling_desc>
+
+		<!-- 强奸相关-->
+		<designated_freewill>Wolna wola oznaczonego pionka</designated_freewill>
+		<designated_freewill_desc>Pionek oznaczony dla rozrywki lub rozrodu może inicjowac seks.</designated_freewill_desc>
+		<rape_enabled>Włącz gwalt</rape_enabled>
+		<rape_enabled_desc>Podobalo ci się? Wez to na sile, możesz zrobić z tego kapelusz pozniej.</rape_enabled_desc>
+		<PrisonersBeating>Administruj pobicia</PrisonersBeating>
+		<PrisonersBeating_desc>Zbij na piesc ofiary podczas gwaltu.</PrisonersBeating_desc>
+		<GentlePrisonersBeating>Zmniejsz obrazenia od pobicia</GentlePrisonersBeating>
+		<GentlePrisonersBeating_desc>Zmniejsz obrazenia od pobicia do ~0-1.</GentlePrisonersBeating_desc>
+		<rape_stripping>Rozbierz ofiary</rape_stripping>
+		<rape_stripping_desc>Rozbierz ofiary gwaltu (Gwalt nie-rozrywkowy - bestialstwo, wrogowie itp. rozbierza ofiary)</rape_stripping_desc>
+		<ColonistCanCP>Włącz gwalt rozrywkowy przez osadnikow</ColonistCanCP>
+		<ColonistCanCP_desc>Osadnicy mogą gwalcic pionki rozrywkowe.</ColonistCanCP_desc>
+		<VisitorsCanCP>Włącz gwalt rozrywkowy przez gosci</VisitorsCanCP>
+		<VisitorsCanCP_desc>Goscie mogą gwalcic pionki rozrywkowe.</VisitorsCanCP_desc>
+		<AnimalsCanCP>Włącz gwalt rozrywkowy przez zwierzęta</AnimalsCanCP>
+		<AnimalsCanCP_desc>Zwierzęta mogą gwalcic pionki rozrywkowe. Wymaga włączenia zoofilii.</AnimalsCanCP_desc>
+		<NonFutaWomenRaping_MaxVulnerability>Prog gwaltu kobiet (%)</NonFutaWomenRaping_MaxVulnerability>
+		<NonFutaWomenRaping_MaxVulnerability_desc>Tylko kobiety z podatnośćia nizsza niz ta kiedykolwiek zgwalca innych. \nPodatnosc zwierząt to zawsze 100%. \nAby sprawdzic status 'podatnośći', przejdz do 'wyświetl informacje o tym obiekcie' > statystyki.\n\nZakres: 0 - 300%</NonFutaWomenRaping_MaxVulnerability_desc>
+		<Rapee_MinVulnerability_human>Podatnosc 'do zgwalcenia' (%)</Rapee_MinVulnerability_human>
+		<Rapee_MinVulnerability_human_desc>Pionki humanoidalne z podatnośćia wyzsza niz ta będą celami gwaltu. \nAby sprawdzic status 'podatnośći', przejdz do 'wyświetl informacje o tym obiekcie' > statystyki.\n\nZakres: 0 - 300%</Rapee_MinVulnerability_human_desc>
+		<Rapee_MinVulnerability_animals>Podatnosc zwierząt 'do zgwalcenia' (%)</Rapee_MinVulnerability_animals>
+		<Rapee_MinVulnerability_animals_desc>Zwierzęta z podatnośćia wyzsza niz ta będą celami gwaltu dla zoofilow. \nAby sprawdzic status 'podatnośći', przejdz do 'wyświetl informacje o tym obiekcie' > statystyki.\n\nZakres: 0 - 300%</Rapee_MinVulnerability_animals_desc>
+
+		<RJW_ShowParts>Wyświetlanie częśći RJW</RJW_ShowParts>
+		<RJW_ShowParts_Extended>Rozszerzone</RJW_ShowParts_Extended>
+		<RJW_ShowParts_Extended_desc>Wyświetl dodatkowe informacje o częśćiach (np. ilosc płynów)</RJW_ShowParts_Extended_desc>
+		<RJW_ShowParts_Show>Wyświetl</RJW_ShowParts_Show>
+		<RJW_ShowParts_Show_desc>Wyświetl cechy seksualne dodane przez RJW</RJW_ShowParts_Show_desc>
+		<RJW_ShowParts_Known>Znane</RJW_ShowParts_Known>
+		<RJW_ShowParts_Known_desc>?</RJW_ShowParts_Known_desc>
+		<RJW_ShowParts_Hide>Ukryj</RJW_ShowParts_Hide>
+		<RJW_ShowParts_Hide_desc>Nie wyświetlaj cech seksualnych dodanych przez RJW</RJW_ShowParts_Hide_desc>
+
+
+	<RJWSettingsHookup>RimJobWorld - Ustawienia Seksu Przypadkowego</RJWSettingsHookup>
+		<SettingHookupsEnabled>Włącz randki (ogólnie)</SettingHookupsEnabled>
+		<SettingHookupsEnabled_desc>Określa, czy single mogą mieć przypadkowy seks z innymi singlami</SettingHookupsEnabled_desc>
+		<SettingQuickHookupsEnabled>Włącz szybkie numery.</SettingQuickHookupsEnabled>
+		<SettingQuickHookupsEnabled_desc>Określa, czy single mogą mieć szybki przypadkowy seks z innymi singlami\nOstrzezenie: To może przerywać pracacycym pionkom.</SettingQuickHookupsEnabled_desc>
+		<SettingFreeLovinMeansPoly>Milosc: Wolna oznacza Poliamoryczna</SettingFreeLovinMeansPoly>
+		<SettingFreeLovinMeansPoly_desc>Określa, czy ideologia Milosc: Wolna oznacza, ze jestes Poliamoryczny. Wymaga restartu gry.\nOstrzezenie: Brak ideologii lub tryb Klasyczny ma domyslna ideologie Milosc: Wolna.</SettingFreeLovinMeansPoly_desc>
+		<SettingSharedBedMeansPoly>Mozliwosc dzielenia lozka oznacza Poliamorycznosc</SettingSharedBedMeansPoly>
+		<SettingSharedBedMeansPoly_desc>Określa, czy ideologia pozwalajaca dzielic łóżko z kim innym niz małżonek oznacza, ze jestes Poliamoryczny\nOstrzezenie: Brak ideologii lub tryb Klasyczny pozwala na to domyślnie dla wszystkich pionków.</SettingSharedBedMeansPoly_desc>
+		<SettingCheatIfSafe>Zmieniaj jeśli nie zostanie odkryte</SettingCheatIfSafe>
+		<SettingCheatIfSafe_desc>Określa, czy pionki z kochankami będą swobodnie zdradzać, jeśli wiedzą, ze nie zostaną odkryte.</SettingCheatIfSafe_desc>
+		<SettingNoHookupsDuringWorkHours>Wyłącz randki w godzinach pracy</SettingNoHookupsDuringWorkHours>
+		<SettingNoHookupsDuringWorkHours_desc>Określa, czy pionki mogą szukać przypadkowego seksu w godzinach pracy.\nNimfomanki ignoruja to.</SettingNoHookupsDuringWorkHours_desc>
+		<SettingColonistsCanHookup>Osadnicy mogą mieć randki</SettingColonistsCanHookup>
+		<SettingColonistsCanHookup_desc>Określa, czy osadnicy mogą szukać przypadkowego seksu.</SettingColonistsCanHookup_desc>
+		<SettingColonistsCanHookupWithVisitor>Osadnicy mogą mieć randki z gośćmi</SettingColonistsCanHookupWithVisitor>
+		<SettingColonistsCanHookupWithVisitor_desc>Określa, czy pionki mogą mieć przypadkowy seks z gośćmi kolonii.</SettingColonistsCanHookupWithVisitor_desc>
+		<SettingCanHookupWithPrisoner>Nie-więźniówie mogą mieć randki z więźniami</SettingCanHookupWithPrisoner>
+		<SettingCanHookupWithPrisoner_desc>Określa, czy nie-więźniówie mogą szukać zgodnego seksu z więźniami.\nTo nie jest wpływane przez oznaczenie Wiezien Rozrywkowy i jest uznawane za zgodne przez obie strony.</SettingCanHookupWithPrisoner_desc>
+		<SettingVisitorsCanHookupWithColonists>Goscie mogą mieć randki z osadnikami</SettingVisitorsCanHookupWithColonists>
+		<SettingVisitorsCanHookupWithColonists_desc>Określa, czy goście uwzględniają osadnikow jako potencjalnych partnerow do przypadkowego seksu.</SettingVisitorsCanHookupWithColonists_desc>
+		<SettingVisitorsCanHookupWithVisitors>Goscie mogą mieć randki z innymi gośćmi</SettingVisitorsCanHookupWithVisitors>
+		<SettingVisitorsCanHookupWithVisitors_desc>Określa, czy goście uwzględniają innych gosci jako potencjalnych partnerow do przypadkowego seksu.</SettingVisitorsCanHookupWithVisitors_desc>
+		<SettingPrisonersCanHookupWithNonPrisoner>Więźniowie mogą mieć randki z osadnikami</SettingPrisonersCanHookupWithNonPrisoner>
+		<SettingPrisonersCanHookupWithNonPrisoner_desc>Określa, czy więźniówie uwzględniają nie-więźniów jako potencjalnych partnerow do przypadkowego seksu.\nPionki, w tym więźniówie, mogą mieć seks tylko z kimś, do kogo mogą dotrzeć, wiec jeśli wiezien nie może opuścić celi, to bez znaczenia.</SettingPrisonersCanHookupWithNonPrisoner_desc>
+		<SettingPrisonersCanHookupWithPrisoner>Więźniowie mogą mieć randki z więźniami</SettingPrisonersCanHookupWithPrisoner>
+		<SettingPrisonersCanHookupWithPrisoner_desc>Określa, czy więźniówie uwzględniają innych więźniów jako potencjalnych partnerow do przypadkowego seksu.\nPionki, w tym więźniówie, mogą mieć seks tylko z kimś, do kogo mogą dotrzeć, wiec jeśli wiezien nie może opuścić celi, to bez znaczenia.</SettingPrisonersCanHookupWithPrisoner_desc>
+		<SettingNymphosCanPickAnyone>Nimfomanki mogą wybrac kogokolwiek</SettingNymphosCanPickAnyone>
+		<SettingNymphosCanPickAnyone_desc>Określa, czy pionki nimfomanki (cechą 'Hiperseksualny') wybiora kogokolwiek dostępnego.\nNadal przestrzegaja ustawien zdrad i rozbijania rodzin ponizej.</SettingNymphosCanPickAnyone_desc>
+		<SettingNymphosCanCheat>Nimfomanki mogą zdradzać</SettingNymphosCanCheat>
+		<SettingNymphosCanCheat_desc>Określa, czy pionki nimfomanki (cechą 'Hiperseksualny') mogą zdradzać, jeśli sa seksualnie sfrustrowane.</SettingNymphosCanCheat_desc>
+		<SettingNymphosCanHomewreck>Nimfomanki mogą rozbijać rodziny</SettingNymphosCanHomewreck>
+		<SettingNymphosCanHomewreck_desc>Określa, czy pionki nimfomanki (cechą 'Hiperseksualny') będą uprawiac seks z ludzmi, ktorzy maja juz partnerow.</SettingNymphosCanHomewreck_desc>
+		<SettingNymphosCanHomewreckReverse>Nimfomanki mogą rozbijać rodziny (Odwrócone)</SettingNymphosCanHomewreckReverse>
+		<SettingNymphosCanHomewreckReverse_desc>Określa, czy pionki nimfomanki (cechą 'Hiperseksualny') zaakceptują seks, nawet jeśli maja partnera.</SettingNymphosCanHomewreckReverse_desc>
+		<SettingHookupChanceForNonNymphos>Szansa randki na godzine (%)</SettingHookupChanceForNonNymphos>
+		<SettingHookupChanceForNonNymphos_desc>Szansa, ze podniecony pionek będzie szukal przypadkowego seksu.\nSprawdzane tylko raz na godzine i tylko gdy pionek zakonczy obecne zadanie. Domyślnie 30%</SettingHookupChanceForNonNymphos_desc>
+		<SettingMinimumFuckabilityToHookup>Minimalna atrakcyjnosc randki</SettingMinimumFuckabilityToHookup>
+		<SettingMinimumFuckabilityToHookup_desc>Określa, jak atrakcyjni (RJW) oba pionki musza być względem siębie, aby rozważyć randkę.\nDomyślnie 10%.</SettingMinimumFuckabilityToHookup_desc>
+		<SettingMinimumAttractivenessToHookup>Minimalna atrakcyjnosc randki</SettingMinimumAttractivenessToHookup>
+		<SettingMinimumAttractivenessToHookup_desc>Określa, jak atrakcyjni (Rimworld) pionki względem siębie, aby rozważyć randkę.\nDomyślnie 50%.\nNimfomanka > 0.</SettingMinimumAttractivenessToHookup_desc>
+		<SettingMinimumRelationshipToHookup>Minimalna opinia randki</SettingMinimumRelationshipToHookup>
+		<SettingMinimumRelationshipToHookup_desc>Określa minimalna opinie pionków o sobie, aby rozważyć randkę.\nDomyślnie 20.\nNimfomanka > 0.</SettingMinimumRelationshipToHookup_desc>
+
+
+	<RJWSettingsDebug>RimJobWorld - Debug</RJWSettingsDebug>
+		<RJWSettingsDebugTitle_OnlyForDevelopers>Tylko dla deweloperow ;)</RJWSettingsDebugTitle_OnlyForDevelopers>
+
+		<!-- 调试内容-->
+		<RMB_enabled>Włącz PPM</RMB_enabled>
+		<RMB_enabled_desc>Zezwól na użycie prawego przycisku myszy do wydawania komend związanych z seksem.\nTo może powodować problemy z niektórymi modami.</RMB_enabled_desc>
+		<RMB_ability>Włącz zdolność PPM</RMB_ability>
+		<RMB_ability_desc>Dodaje ukierunkowana zdolność do pionków, ktora duplikuje funkcjonalnosc PPM, przeznaczona na sytuacje, gdy PPM nie może być używany z jakiejkolwiek przyczyny.</RMB_ability_desc>
+
+		<submit_button_enabled>Włącz przycisk "Poddaj się" na powolanych pionkach</submit_button_enabled>
+		<submit_button_enabled_desc>Przycisk poddania pozwala ci pominac bardziej śmiertelna część i przejsc do bardziej upokarzającej.\nWyłącz to, jeśli honor jest ważniejszy niz zycie.\nPamietaj, jeśli zmienisz zdanie, zawsze będzie tu na ciebie czekać.</submit_button_enabled_desc>
+		<RJW_designation_box>Wyświetl oznaczenia RJW</RJW_designation_box>
+		<RJW_designation_box_desc>Przełącza wyświetlanie grupy przyciskow RJW w GUI kontroli pionka.</RJW_designation_box_desc>
+		<StackRjwParts_name>Skupianie częśći RJW</StackRjwParts_name>
+		<StackRjwParts_desc>Skup częśći RJW w zakładce zdrowia pionka\n(Etykieta x ilosc)</StackRjwParts_desc>
+		<maxDistanceCellsCasual_name>Dystans seksu (Komorki)</maxDistanceCellsCasual_name>
+		<maxDistanceCellsCasual_desc>Maks. dystans w komorkach, na jaki AI chce przejsc do celu.\nSzybkie sprawdzenie - ignoruje przeszkody (np. sciany, gory).\nDomyślnie 100 komorek.</maxDistanceCellsCasual_desc>
+		<maxDistanceCellsRape_name>Dystans gwaltu (Komorki)</maxDistanceCellsRape_name>
+		<maxDistanceCellsRape_desc>Maks. dystans w komorkach, na jaki AI chce przejsc do celu.\nSzybkie sprawdzenie - ignoruje przeszkody (np. sciany, gory).\nDomyślnie 100 komorek.</maxDistanceCellsRape_desc>
+		<maxDistancePathCost_name>Dystans seksu (PawnPath)</maxDistancePathCost_name>
+		<maxDistancePathCost_desc>Maks. dystans, jaki pathfinder AI uwzglednia, aby dotrzeć do celu seksu. Wolne, złożone obliczenia wpływane przez przeszkody, prędkość pionka i modyfikatory podłoża.\nDomyślnie 1000.\n0 - wyłącz sprawdzenie.</maxDistancePathCost_desc>
+
+		<!-- 作弊内容-->
+		<override_RJW_designation_checks_name>Nadpisz sprawdzenia oznaczen</override_RJW_designation_checks_name>
+		<override_RJW_designation_checks_desc>Pozwala ustawić oznaczenia na wszystkich osadnikach ignorujac warunki.</override_RJW_designation_checks_desc>
+		<override_control>Bezpośrednia kontrola</override_control>
+		<override_control_desc>Gracz może recznie powiedzieć pionkom, aby robily rzeczy związane z seksem.</override_control_desc>
+		<AddTrait_Rapist>Zyskaj ceche Gwalticiel</AddTrait_Rapist>
+		<AddTrait_Rapist_desc>Szansa na zyskanie cechy gwalticiela po 10 aktach seksu, z których >12% to gwalty.</AddTrait_Rapist_desc>
+		<AddTrait_Masocist>Zyskaj ceche Masochista</AddTrait_Masocist>
+		<AddTrait_Masocist_desc>Szansa na zyskanie cechy masochisty po byćiu zgwalconym, 5% po etapie poczucia rozbicia.</AddTrait_Masocist_desc>
+		<AddTrait_Nymphomaniac>Zyskaj ceche Hiperseksualny</AddTrait_Nymphomaniac>
+		<AddTrait_Nymphomaniac_desc>Szansa na zyskanie cechy hiperseksualnej po 10 aktach seksu, podczas uzaleznienia od HumpShroom.</AddTrait_Nymphomaniac_desc>
+		<AddTrait_Necrophiliac>Zyskaj ceche Nekrofil</AddTrait_Necrophiliac>
+		<AddTrait_Necrophiliac_desc>Szansa na zyskanie cechy nekrofila po 10 aktach seksu, z których >50% to seks ze zwłokami.</AddTrait_Necrophiliac_desc>
+		<AddTrait_Nerves>Zyskaj ceche Nerwy</AddTrait_Nerves>
+		<AddTrait_Nerves_desc>Zyskaj ceche nerwow po byćiu zgwalconym.</AddTrait_Nerves_desc>
+		<AddTrait_Zoophiliac>Zyskaj ceche Zoofil</AddTrait_Zoophiliac>
+		<AddTrait_Zoophiliac_desc>Szansa na zyskanie cechy zoofila po 10 aktach seksu, z których >50% to seks ze zwierzętami.</AddTrait_Zoophiliac_desc>
+		<Allow_RMB_DeepTalk>PPM Gleboka rozmowa</Allow_RMB_DeepTalk>
+		<Allow_RMB_DeepTalk_desc>Pozwala na interakcje PPM-Spoleczna-Gleboka rozmowa (+12 relacji).</Allow_RMB_DeepTalk_desc>
+		<Disable_bestiality_pregnancy_relations>Wyłącz relacje z ciazy bestialskiej</Disable_bestiality_pregnancy_relations>
+		<Disable_bestiality_pregnancy_relations_desc>Wyłącz relacje (matka/ojciec/rodzenstwo) z ciazy bestialskiej.</Disable_bestiality_pregnancy_relations_desc>
+		<Disable_egg_pregnancy_relations>Wyłącz relacje z ciazy jajowej</Disable_egg_pregnancy_relations>
+		<Disable_egg_pregnancy_relations_desc>Wyłącz relacje (matka/ojciec/rodzenstwo) z ciazy jajowej.</Disable_egg_pregnancy_relations_desc>
+		<Disable_MeditationFocusDrain>Wyłącz spadek skupienia medytacji</Disable_MeditationFocusDrain>
+		<Disable_MeditationFocusDrain_desc>Gdy pionki sa sfrustrowane, nie tracza skupienia.</Disable_MeditationFocusDrain_desc>
+		<Disable_RecreationDrain>Wyłącz spadek rekreacji</Disable_RecreationDrain>
+		<Disable_RecreationDrain_desc>Gdy pionki maja nudny/zly seks z powodu cech/fetyszy, nie tracą potrzeby rekreacji.</Disable_RecreationDrain_desc>
+
+		<!-- 调试内容-->
+		<ForbidKidnap>Zakaz porwania</ForbidKidnap>
+		<ForbidKidnap_desc>Brak porwania.</ForbidKidnap_desc>
+		<legacy_PartsAdder>Przestarzaly dodawacz częśći</legacy_PartsAdder>
+		<legacy_PartsAdder_desc>Wbudowany dystrybutor częśći, prosi zgadnac jakie częśći rasy Vanilla i HAR otrzymuja na podstawie ich nazwy, może być nadal przydatny, jeśli nie masz latke wsparcia dla ras.</legacy_PartsAdder_desc>
+		<override_lovin>Nadpisz vanilla kochanie</override_lovin>
+		<override_lovin_desc>Uzyj przypadkowego seksu zamiast vanilla kochania.</override_lovin_desc>
+		<override_matin>Nadpisz vanilla rozmnżanie</override_matin>
+		<override_matin_desc>Uzyj rozrodu zamiast vanilla rozmnazania.</override_matin_desc>
+		<matin_crossbreed>Rozmnazanie krzyzowe</matin_crossbreed>
+		<matin_crossbreed_desc>Zwierzęta tego samego typu zwierzęcego (Vanilla: Psy, Dryady) będą uznawane za ten sam gatunek i mogą się rozmnóżać między soba.</matin_crossbreed_desc>
+		<WildMode_name>Dziki tryb</WildMode_name>
+		<WildMode_desc>EKSPERYMENTALNE - NIE ZGLASZAJ BUGOW, JESLI TO JEST WLACZONE.\n\nBrak zasad seksu. Wiekszosc ograniczen jest wyłączona. Ciesz się najdziksza strona Rimworld.</WildMode_desc>
+		<HippieMode_name>Tryb hipisowski</HippieMode_name>
+		<HippieMode_desc>EKSPERYMENTALNE - NIE ZGLASZAJ BUGOW, JESLI TO JEST WLACZONE.\n\nIgnoruj relacje dla przypadkowych randek.</HippieMode_desc>
+		<GenderlessAsFuta_name>Bezpłciowi jako Futy</GenderlessAsFuta_name>
+		<GenderlessAsFuta_desc>UZYWAJ NA WŁASNE RYZYKO.\n\nPionki bezpłciowe będą ustawione jako Kobiety i będą mieć oba zbiory genitaliów.</GenderlessAsFuta_desc>
+		<DevMode_name>Tryb deweloperski RJW</DevMode_name>
+		<DevMode_desc>Włącza logowanie i inne rzeczy RimJobWorld. Zazwyczaj nie chcesz tego włączac.</DevMode_desc>
+		<DebugLogJoinInBed>Loguj informacje o szukaniu randek</DebugLogJoinInBed>
+		<DebugLogJoinInBed_desc>Włącza bardzo spamujace logi debugowe, aby pomoc znalezc błędy w operacjach JoinInBed.\nTylko deweloperzy (lub ktos pomagajacy im znalezc blad) powinni to włączyć.</DebugLogJoinInBed_desc>
+		<DebugRape>Loguj informacje o gwalcie</DebugRape>
+		<DebugRape_desc>Włącza bardzo spamujace logi debugowe, aby pomoc znalezc błędy w operacjach gwaltu.\nTylko deweloperzy (lub ktos pomagajacy im znalezc blad) powinni to włączyć.</DebugRape_desc>
+		<DebugInteraction>Loguj informacje o interakcjach</DebugInteraction>
+		<DebugInteraction_desc>Tryb szczegolowy modulu interakcji.</DebugInteraction_desc>
+		<DebugAttraction>PPM Wyjasnij Atrakcyjnosc</DebugAttraction>
+		<DebugAttraction_desc>Włącza menu "Wyjasnij atrakcyjnosc" przy PPM.</DebugAttraction_desc>
+		<DebugNymph>Loguj informacje o nimfach</DebugNymph>
+		<DebugNymph_desc>Tryb szczegolowy modulu nimf.</DebugNymph_desc>
+
+		<Hint_RMB_Meaning>Wskazowka: PPM oznacza "Prawy Przycisk Myszy"</Hint_RMB_Meaning>
+
+		<!-- 支持的模组 -->
+		<DebugSupportedMods_title>Obslugiwane mody</DebugSupportedMods_title>
+		<DebugSupportedMods_desc>Inne mody, dla których RJW zawiera specjalna kompatybilność</DebugSupportedMods_desc>
+		<DebugSupportedModsDetected_name>Wykryte</DebugSupportedModsDetected_name>
+		<DebugSupportedModsNotDetected_name>Nie znaleziono</DebugSupportedModsNotDetected_name>
+
+
+	<!-- 怀孕相关-->
+	<RJWSettingsPregnancy>RimJobWorld - Ustawienia Ciazy</RJWSettingsPregnancy>
+		<RJWSettingsPregnancyTitle_General>Ogolne</RJWSettingsPregnancyTitle_General>
+		<RJWSettingsPregnancyTitle_Eggs>Jaja</RJWSettingsPregnancyTitle_Eggs>
+		<RJWSettingsPregnancyTitle_Inheritance>Dziedziczenie</RJWSettingsPregnancyTitle_Inheritance>
+		<RJWSettingsPregnancyTitle_Fertility>Plodnosc</RJWSettingsPregnancyTitle_Fertility>
+		<RJWSettingsPregnancyTitle_Duration>Czas trwania</RJWSettingsPregnancyTitle_Duration>
+
+		<UseVanillaPregnancy>Ciaz DLC Biotech</UseVanillaPregnancy>
+		<UseVanillaPregnancy_desc>Uzyj ciazay DLC Biotech dla ciazy z udzialem ludzkiej kobiety.</UseVanillaPregnancy_desc>
+		<RJWH_pregnancy>Włącz ciaze humanoidalne</RJWH_pregnancy>
+		<RJWH_pregnancy_desc>Włącz ciaze dla seksu czlowiek-na-czlowieka. Jeśli DLC Biotech nie jest zainstalowane, RJW użyje własnego systemu ciazy.</RJWH_pregnancy_desc>
+		<PregnantCoeffecientForHuman>Szansa ciazy u ludzi (%)</PregnantCoeffecientForHuman>
+		<PregnantCoeffecientForHuman_desc>Szansa ciazy u ludzi w procentach.\n\nZakres: 0 - 100%</PregnantCoeffecientForHuman_desc>
+		<RJW_B_Pregnancy_Setting>Ustawienia ciazy bestialskiej</RJW_B_Pregnancy_Setting>
+		<BestialPregnancy_None>Brak</BestialPregnancy_None>
+		<BestialPregnancy_Limited>Ograniczona</BestialPregnancy_Limited>
+		<BestialPregnancy_Unlimited>Nieograniczona</BestialPregnancy_Unlimited>
+		<BestialPregnancy_None_desc>Ciaze humanoidalno-zwierzęce niemozliwe.</BestialPregnancy_None_desc>
+		<BestialPregnancy_Limited_desc>Ciaze humanoidalno-zwierzęce mozliwe tylko z zewnetrzna pomocą, taka jak wzmocnienie plodnosci z archotech genitaliów.</BestialPregnancy_Limited_desc>
+		<BestialPregnancy_Unlimited_desc>Ciaze humanoidalno-zwierzęce mozliwe między dowolnymi plodnymi partnerami.</BestialPregnancy_Unlimited_desc>
+		<PregnantCoeffecientForAnimals>Szansa ciazy u zwierząt (%)</PregnantCoeffecientForAnimals>
+		<PregnantCoeffecientForAnimals_desc>Szansa ciazy u zwierząt w procentach.\n\nZakres: 0 - 100%</PregnantCoeffecientForAnimals_desc>
+		<InterspeciesImpregnantionModifier>Modyfikator zapłodnienia międzygatunkowego (%)</InterspeciesImpregnantionModifier>
+		<InterspeciesImpregnantionModifier_desc>Modyfikator zapłodnienia międzygatunkowego w procentach. Przy 20% zmniejsza normalna szanse do piatej częśći tego samego gatunku.\n\nZakres: 0 - 100%</InterspeciesImpregnantionModifier_desc>
+		<UseParentMethod>Dziedziczenie DNA</UseParentMethod>
+		<UseParentMethod_desc>WLACZONE:Dzieci maja losowe DNA rodzica.\nWYŁĄCZONE:Dzieci sa jak matki.</UseParentMethod_desc>
+		<OffspringLookLikeTheirMother>Dziedziczenie DNA humanoidalnego</OffspringLookLikeTheirMother>
+		<OffspringLookLikeTheirMother_desc>Dotyczy ciazy humanoidalnych.\n100% oznacza, ze urodzone dzieci będą rasy matki.\nPrzy 0% oznacza, ze urodzone dzieci będą rasy ojca.\n\nZakres: 0 - 100%</OffspringLookLikeTheirMother_desc>
+		<OffspringIsHuman>Dziedziczenie DNA zwierzęcego</OffspringIsHuman>
+		<OffspringIsHuman_desc>Dotyczy ciazy Zwierze-Zwierze.\n100% oznacza, ze urodzone dzieci będą rasy "matki".\nPrzy 0% oznacza, ze urodzone dzieci będą rasy "ojca".\n\nZakres: 0 - 100%</OffspringIsHuman_desc>
+		<OffspringIsHuman2>Dziedziczenie DNA bestialstwa (Czlowiek/Zwierze)</OffspringIsHuman2>
+		<OffspringIsHuman2_desc>Dotyczy ciazy Humanoidalno-Zwierzecej.\n\n lewo - urodzone dzieci będą rasy zwierzęcej.\n\n prawo - urodzone dzieci będą rasy humanoidalnej.\n\nZakres: 0 - 100%</OffspringIsHuman2_desc>
+		<RJWA_pregnancy>Włącz ciaze zwierzęce</RJWA_pregnancy>
+		<RJWA_pregnancy_desc>Uzyj ciazy RJW dla ciazy zwierzę-na-zwierzę.</RJWA_pregnancy_desc>
+		<RJWA_pregnancy_notifications>Włącz powiadomienia o ciazy zwierząt</RJWA_pregnancy_notifications>
+		<RJWA_pregnancy_notifications_desc>Powiadomienia będą wysylane, gdy zwierzę zodzie w ciaze, rozpoczna się skurcze i nastapi zdrowy porod.\nTo może być glosne dla kolonii z duzo hodowla, gdzie zaleca się wyłączenie tego ustawienia.\n\nKrytyczne powiadomienia będą wysylane niezaleznie od tego ustawienia</RJWA_pregnancy_notifications_desc>
+		<RJWI_pregnancy>Włącz ciaze jajowe</RJWI_pregnancy>
+		<RJWI_pregnancy_desc>Uzyj ciazy RJW dla ciazy jajowej owiposytora.</RJWI_pregnancy_desc>
+		<egg_pregnancy_implant_anyone>Filtr implantacji jaj</egg_pregnancy_implant_anyone>
+		<egg_pregnancy_implant_anyone_desc>WLACZONE:Ktos z zenskim owiposytorem może implantowac jaja.\nWYŁĄCZONE:Tylko predefiniowany typ rodzica może implantowac jaja.</egg_pregnancy_implant_anyone_desc>
+		<egg_pregnancy_fertilize_anyone>Filtr zapłodnienia jaj</egg_pregnancy_fertilize_anyone>
+		<egg_pregnancy_fertilize_anyone_desc>WLACZONE:Ktos z meskim owiposytorem może zapłodnic jaja.\nWYŁĄCZONE:Tylko predefiniowany typ rodzica lub taki sam jak implantujacy może zapłodnic jaja.</egg_pregnancy_fertilize_anyone_desc>
+		<egg_pregnancy_genes>Ciaze jajowe przenosza geny</egg_pregnancy_genes>
+		<egg_pregnancy_genes_desc>Pozwala na użycie normalnego dziedziczenia genow dla jaj czlowiek-czlowiek-owiposytor.</egg_pregnancy_genes_desc>
+
+		<RJWI_analPregnancy>Włącz analne ciaze jajowe</RJWI_analPregnancy>
+		<RJWI_analPregnancy_desc>Pozwol owadom zapłodnic pionki analnie.</RJWI_analPregnancy_desc>
+		<RJWI_oralPregnancy>Włącz oralne ciaze jajowe</RJWI_oralPregnancy>
+		<RJWI_oralPregnancy_desc>Pozwol owadom zapłodnic pionki oralnie.</RJWI_oralPregnancy_desc>
+		<RJWI_FertilizationCheck>Filtr zapłodnienia jaj otworow</RJWI_FertilizationCheck>
+		<RJWI_FertilizationCheck_desc>Zaplodnij jaja tylko w "seksowym" otworze.</RJWI_FertilizationCheck_desc>
+
+		<egg_pregnancy_eggs_size>Modyfikator rozmiaru jaj</egg_pregnancy_eggs_size>
+		<egg_pregnancy_eggs_size_desc>0%: wszystkie jaja maja rozmiar 0.01.\n100%: jaja maja normalny rozmiar skalowany przez rozmiar ciała matki.</egg_pregnancy_eggs_size_desc>
+		<egg_pregnancy_ovipositor_capacity_factor>Wspolczynnik pojemnosci owiposytora</egg_pregnancy_ovipositor_capacity_factor>
+		<egg_pregnancy_ovipositor_capacity_factor_desc>Mnozy normalna pojemnosc zenskich owiposytorow.\n100%: 2 * 20% rozmiaru ciała pionka.\n500%: 2 * 100% rozmiaru ciała pionka.</egg_pregnancy_ovipositor_capacity_factor_desc>
+		<egg_pregnancy_unlimited_capacity>Otwory maja prawie nieograniczona pojemnosc jaj</egg_pregnancy_unlimited_capacity>
+		<egg_pregnancy_unlimited_capacity_desc>Pionki mogą być implantowane prawie nieograniczona iloscia jaj</egg_pregnancy_unlimited_capacity_desc>
+
+		<MechanoidImplanting>Włącz implanta mechanoidow</MechanoidImplanting>
+		<MechanoidImplanting_desc>Pozwol na probowanie i implantowanie przez mechanoidy.</MechanoidImplanting_desc>
+		<SaferMechanoidImplanting>Bezpieczniejsze implanta mechanoidow*</SaferMechanoidImplanting>
+		<SaferMechanoidImplanting_desc>Implanta mechanoidow nie zabija pionków (* jeśli ciaza byla sprawdzona), zamiast tego zada 5 obrazen na część ciała zawarta w tulowiu. Mechnoidy nadal będą wrogie</SaferMechanoidImplanting_desc>
+
+		<genetic_trait_filter>Filtruj dziedziczone cechy</genetic_trait_filter>
+		<genetic_trait_filter_desc>Jeśli włączone, użyje rjw/Defs/NonInheritedTraits.xml do odfiltrowania cech, które nie powinny być przekazane nastepnemu pokoleniu. Jelsi wyłączone, wszystko jest dozwolone.</genetic_trait_filter_desc>
+		<max_num_momtraits_inherited>Maks. dziedziczonych cech od matki</max_num_momtraits_inherited>
+		<max_num_poptraits_inherited>Maks. dziedziczonych cech od ojca</max_num_poptraits_inherited>
+
+		<RJW_fertility_endAge_male>Wiek nieplodnosci mężczyzn </RJW_fertility_endAge_male>
+		<RJW_fertility_endAge_male_desc>Dostosowany przez dlugosc zycia dla obcych ras. Ta sama skala jest uzywana dla zwierząt i humanoidów.</RJW_fertility_endAge_male_desc>
+		<RJW_fertility_endAge_female_humanlike>Wiek nieplodnosci kobiet (humanoidalne)</RJW_fertility_endAge_female_humanlike>
+		<RJW_fertility_endAge_female_humanlike_desc>W przeciwienstwie do wiekszosci zwierząt, ludzkie kobiety staja się nieplodne w mlodszym wieku. Ten sam wspolczynnik jest używany dla wszystkich obcych ras, dla balansu.</RJW_fertility_endAge_female_humanlike_desc>
+		<RJW_fertility_endAge_female_animal>Wiek nieplodnosci samic (zwierzęta)</RJW_fertility_endAge_female_animal>
+		<RJW_fertility_endAge_female_animal_desc>W przeciwienstwie do ludzi, wiekszosc samic zwierząt pozostaje plodnych do smierci.</RJW_fertility_endAge_female_animal_desc>
+		<In_human_years> w ludzkich latach</In_human_years>
+		<XofLifeExpectancy>% dlugosci zycia</XofLifeExpectancy>
+
+		<InterspeciesDisabled>Międzygatunkowe wyłączone.</InterspeciesDisabled>
+		<InterspeciesMaximum>Rowne z tym samym gatunkiem.</InterspeciesMaximum>
+		<AlwaysAlwaysMother>Zawsze gatunek matki.</AlwaysAlwaysMother>
+		<AlwaysFather>Zawsze gatunek ojca.</AlwaysFather>
+		<AlwaysBeast>Gatunek bestii.</AlwaysBeast>
+		<AlwaysHumanlike>Gatunek humanoidalny.</AlwaysHumanlike>
+		<UsesOffspringIsHuman>Uzyj Matka/Ojciec</UsesOffspringIsHuman>
+		<ComplexImpregnation>Włącz złożone obliczenia zapłodnienia międzygatunkowego</ComplexImpregnation>
+		<ComplexImpregnation_desc><![CDATA[Gdy włączone, szansa zapłodnienia między gatunkami zalezy od roznicy w budowie ciała i rozmiarze.
+Przyklady:
+  Czlowiek/Skrzydlata humanoidalna : ~95%
+  Czlowiek/Harpi : ~75%
+  Czlowiek/Pies : ~30%
+  Czlowiek/Kura : ~5%
+  Wilk/Pies : ~95%
+  Wilk/Kura : ~5%
+  Kogut/Harpi : ~30%
+
+Zauważ, ze szansa jest dalej obnizana przez podstawowe suwaki ciazy zwierzęcej i ludzkiej.
+]]></ComplexImpregnation_desc>
+		<phantasy_pregnancy>Ciaza fantazyjna</phantasy_pregnancy>
+		<phantasy_pregnancy_desc>Swiat jest pelen wrednych nanomaszyn, które przyspieszaja wzrost dzieci, az osiagna reprodukcyjny etap zycia.\n\nNie ma wpływu na nieludzi i niereprodukcyjne rasy.\n\nPrawdopodobnie nie dziala z innymi modami ciazy.</phantasy_pregnancy_desc>
+		<normal_pregnancy_duration>Modyfikator czasu trwania ciazy.</normal_pregnancy_duration>
+		<normal_pregnancy_duration_desc>Wiekszy -> Dluzszy</normal_pregnancy_duration_desc>
+		<egg_pregnancy_duration>Modyfikator czasu trwania ciazy jajowej.</egg_pregnancy_duration>
+		<egg_pregnancy_duration_desc>Wiekszy -> Dluzszy.</egg_pregnancy_duration_desc>
+
+	<!-- 性行为类型 -->
+	<RJWSettingsPreference>RimJobWorld - Ustawienia Seksu</RJWSettingsPreference>
+		<SexTypeFrequency>Częstotliwość typow seksu\n</SexTypeFrequency>
+		<vaginal>Penetracja pochwowowa</vaginal>
+		<vaginal_desc>Częstotliwość seksu pochwowowego. Zauważ, ze ta częstotliwość jest dalej modyfikowana przez czynniki takie jak dostępne otwory itp.\n\nZakres: 1 - 300\nDomyślnie: 120</vaginal_desc>
+		<cunnilingus>Cunnilingus</cunnilingus>
+		<cunnilingus_desc>Częstotliwość stymulacji oralnej pochwy. Zauważ, ze ta częstotliwość jest dalej modyfikowana przez czynniki takie jak dostępne otwory, gwalt itp.\n\nZakres: 1 - 300\nDomyślnie: 80</cunnilingus_desc>
+		<anal>Penetracja analna</anal>
+		<anal_desc>Częstotliwość penetracji analnej (penisowej). Zauważ, ze ta częstotliwość jest dalej modyfikowana przez czynniki takie jak dostępne otwory, gwalt itp.\n\nZakres: 1 - 300\nDomyślnie: 80</anal_desc>
+		<rimming>Rimming</rimming>
+		<rimming_desc>Częstotliwość stymulacji oralnej odbytu. Zauważ, ze ta częstotliwość jest dalej modyfikowana przez czynniki takie jak dostępne otwory itp.\n\nZakres: 1 - 300\nDomyślnie: 40</rimming_desc>
+		<fellatio>Fellatio</fellatio>
+		<fellatio_desc>Częstotliwość fellatio, znanego tez jako loda. Zauważ, ze ta częstotliwość jest dalej modyfikowana przez czynniki takie jak dostępne otwory itp.\n\nZakres: 1 - 300\nDomyślnie: 80</fellatio_desc>
+		<handjob>Handjob</handjob>
+		<handjob_desc>Częstotliwość handjobow. Wymaga dzialajacych rak. Zauważ, ze ta częstotliwość jest dalej modyfikowana przez czynniki takie jak prostytucja itp.\n\nZakres: 1 - 300\nDomyślnie: 80</handjob_desc>
+		<mutual_masturbation>Wzajemna masturbacja</mutual_masturbation>
+		<mutual_masturbation_desc>Częstotliwość wzajemnej masturbacji (dwoch osadnikow masturbujacych się nawzajem). Zauważ, ze ta częstotliwość jest dalej modyfikowana przez czynniki takie jak gwalt itp.\n\nZakres: 1 - 300\nDomyślnie: 70</mutual_masturbation_desc>
+		<double_penetration>Podwojna penetracja</double_penetration>
+		<double_penetration_desc>Częstotliwość podwojnej penetracji, jednoczesnej analnej i pochwowowej. Wymaga wielo-penisa, takiego jak hemipenis. Zauważ, ze ta częstotliwość jest dalej modyfikowana przez czynniki takie jak dostępne otwory itp.\n\nZakres: 1 - 300\nDomyślnie:60</double_penetration_desc>
+		<breastjob>Breastjob</breastjob>
+		<breastjob_desc>Częstotliwość breastjobow. Wymaga, aby jeden pionek mial piersi, a drugi penisa. Zauważ, ze ta częstotliwość jest dalej modyfikowana przez czynniki takie jak prostytucja, gwalt itp.\n\nZakres: 1 - 300\nDomyślnie: 50</breastjob_desc>
+		<fingering>Pochwowa stymulacja palcami</fingering>
+		<fingering_desc>Częstotliwość stymulacji palcami pochwy. Wymaga, aby jeden pionek mial pochwe, a drugi dzialajaca reke. Zauważ, ze ta częstotliwość jest dalej modyfikowana przez czynniki takie jak prostytucja, gwalt itp.\n\nZakres: 1 - 300\nDomyślnie: 50</fingering_desc>
+		<scissoring>Scissoring</scissoring>
+		<scissoring_desc>Częstotliwość scissoringu (typ tribadyzmu, gdzie partnerzy splataja nogi i pocieraja o siębie sromami). Wymaga, aby oba pionki mialy pochwy.\n\nZakres: 1 - 300\nDomyślnie: 50</scissoring_desc>
+		<footjob>Footjob</footjob>
+		<footjob_desc>Częstotliwość footjobow (stymulacja penisa stopa). Zauważ, ze ta częstotliwość jest dalej modyfikowana przez czynniki takie jak prostytucja, gwalt itp.\n\nZakres: 1 - 300\nDomyślnie: 30</footjob_desc>
+		<fisting>Analne fistingowanie</fisting>
+		<fisting_desc>Częstotliwość analnego fistingowania (pochwowowe jeszcze nie zaimplementowane). Wymaga, aby jeden partner mial dzialajaca reke. Zauważ, ze ta częstotliwość jest dalej modyfikowana przez czynniki takie jak prostytucja, gwalt itp.\n\nZakres: 1 - 300\nDomyślnie: 30</fisting_desc>
+		<sixtynine>69</sixtynine>
+		<sixtynine_desc>Częstotliwość 69 (wzajemny oral). Wymaga, aby oba pionki mialy genitalia. Zauważ, ze ta częstotliwość jest dalej modyfikowana przez czynniki takie jak prostytucja, gwalt itp.\n\nZakres: 1 - 300\nDomyślnie: 69</sixtynine_desc>
+		<FapEverywhere>Masturbacja wszedzie</FapEverywhere>
+		<FapEverywhere_desc>Pionek będzie masturbowac się, gdzie chce.</FapEverywhere_desc>
+		<FapInBed>Masturbacja w łóżku</FapInBed>
+		<FapInBed_desc>Pionek będzie masturbowac się w swoim łóżku.</FapInBed_desc>
+		<FapInBelts>Masturbacja z zablokowanymi genitaliami</FapInBelts>
+		<FapInBelts_desc>Pionek może masturbowac się, gdy ma zablokowane genitalia.</FapInBelts_desc>
+		<FapInArmbinders>Masturbacja z zablokowanymi rekami</FapInArmbinders>
+		<FapInArmbinders_desc>Pionek może masturbowac się, gdy ma zablokowane rece.</FapInArmbinders_desc>
+
+		<Malesex>Dozwolony seks meski: </Malesex>
+		<FeMalesex>Dozwolony seks zenski: </FeMalesex>
+		<AllowedSex.All>Wszystkie</AllowedSex.All>
+		<AllowedSex.Homo>Gejowskie</AllowedSex.Homo>
+		<AllowedSex.Nohomo>Hetero</AllowedSex.Nohomo>
+
+		<SexClothing>Preferowany ubior do seksu: </SexClothing>
+		<SexClothingNude>Nago</SexClothingNude>
+		<SexClothingHeadwear>Tylko nakrycie glowy</SexClothingHeadwear>
+		<SexClothingFull>W pelni ubrany</SexClothingFull>
+
+		<RapeAttemptAlert>Alert o probie gwaltu: </RapeAttemptAlert>
+		<RapeAttemptAlertAlways>Zawsze włączony</RapeAttemptAlertAlways>
+		<RapeAttemptAlertHumanlike>Tylko jeśli cel jest humanoidalny</RapeAttemptAlertHumanlike>
+		<RapeAttemptAlertColonist>Tylko jeśli cel jest osadnikiem</RapeAttemptAlertColonist>
+		<RapeAttemptAlertSilent>Tylko pokaz powiadomienie</RapeAttemptAlertSilent>
+		<RapeAttemptAlertDisabled>Wyłączony</RapeAttemptAlertDisabled>
+
+		<RapeAlert>Alert o gwalcie: </RapeAlert>
+		<RapeAlertAlways>Zawsze włączony</RapeAlertAlways>
+		<RapeAlertHumanlike>Tylko jeśli cel jest humanoidalny</RapeAlertHumanlike>
+		<RapeAlertColonist>Tylko jeśli cel jest osadnikiem</RapeAlertColonist>
+		<RapeAlertSilent>Tylko pokaz powiadomienie</RapeAlertSilent>
+		<RapeAlertDisabled>Wyłączony</RapeAlertDisabled>
+
+		<RapeAlertCP>Pokaz dla pionka rozrywkowego</RapeAlertCP>
+		<RapeAlertCP_desc>Pokaz alert, gdy pionek oznaczony do rozrywki jest gwalcony.</RapeAlertCP_desc>
+		<RapeAlertBreeding>Pokaz dla Rozrodu</RapeAlertBreeding>
+		<RapeAlertBreeding_desc>Pokaz alert, gdy pionek oznaczony do rozrodu jest gwalcony.</RapeAlertBreeding_desc>
+
+		<SexualitySpread1>Zrodlo rozkladu orientacji</SexualitySpread1>
+		<SexualitySpread2>Rozklad generowania orientacji dla RJW.\nTO JEST TYLKO DLA SEKSU\nNIE MA WPLYWU NA RELACJE</SexualitySpread2>
+		<SexualitySpreadVanilla>[Zaimportowano z Vanilla Rimworld]</SexualitySpreadVanilla>
+		<SexualitySpreadPsychology>[Zaimportowano z Psychology]</SexualitySpreadPsychology>
+		<SexualitySpreadIndividuality>[Zaimportowano z [SYR]Individuality]</SexualitySpreadIndividuality>
+		<SexualitySpreadRimpsyche>[Zaimportowano z Rimpsyche]</SexualitySpreadRimpsyche>
+
+		<SexualityAsexual>  Aseksualnosc: </SexualityAsexual>
+		<SexualityPansexual>  Panseksualnosc: </SexualityPansexual>
+		<SexualityHeterosexual>  Heteroseksualnosc: </SexualityHeterosexual>
+		<SexualityBisexual>  Biseksualnosc: </SexualityBisexual>
+		<SexualityGay>  Homoseksualnosc: </SexualityGay>
+
+		<SexualityAsexual_desc>Niski lub nieistniejacy poped seksualny, zazwyczaj nie zainteresowany seksem.</SexualityAsexual_desc>
+		<SexualityPansexual_desc>Panseksualni ignoruja płeć calkowicie.</SexualityPansexual_desc>
+		<SexualityHeterosexual_desc>Heteroseksualni sa przyciagani przez 'przeciwna' płeć.</SexualityHeterosexual_desc>
+		<SexualityBisexual_desc>Biseksualni sa przyciagani przez mężczyzn i kobiety.</SexualityBisexual_desc>
+		<SexualityGay_desc>Homoseksualni sa przyciagani przez te sama płeć.</SexualityGay_desc>
+
+		<SendTraitGainLetters>Powiadomienia o cechąch seksualnych</SendTraitGainLetters>
+		<SendTraitGainLetters_desc>Włącz, aby otrzymywac listy, gdy pionek zyskuje ceche z seksu. Nieistotni pionkówie tacy jak handlarze nigdy nie wyzwola powiadomien niezaleznie od tego ustawienia.</SendTraitGainLetters_desc>
+</LanguageData>

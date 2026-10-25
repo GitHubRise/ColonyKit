@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<PawnColumnDef>
+		<defName>RJW_Hero</defName>
+		<headerTip><![CDATA[Designate pawn as the <color=yellow>Hero</color>. A <color=yellow>Hero</color> can be directly ordered to do lovin' with other pawns.]]></headerTip>
+		<headerIcon>UI/Commands/Hero_off</headerIcon>
+		<workerClass>rjw.MainTab.Checkbox.PawnColumnWorker_Hero</workerClass>
+		<sortable>true</sortable>
+		<width>80</width>
+	</PawnColumnDef>
+	<PawnColumnDef>
+		<defName>RJW_Comfort</defName>
+		<headerTip>Designate pawn as a comfort pawn. This pawn will then be used by others to relieve their pent-up needs.</headerTip>
+		<headerIcon>UI/Commands/ComfortPrisoner_off</headerIcon>
+		<workerClass>rjw.MainTab.Checkbox.PawnColumnWorker_Comfort</workerClass>
+		<sortable>true</sortable>
+		<width>80</width>
+	</PawnColumnDef>
+	<PawnColumnDef>
+		<defName>RJW_BreedHumanlike</defName>
+		<headerTip>Designate pawn for breeding. The colony animals will try to breed this pawn.</headerTip>
+		<headerIcon>UI/Commands/Breeding_Pawn_off</headerIcon>
+		<workerClass>rjw.MainTab.Checkbox.PawnColumnWorker_BreedHumanlike</workerClass>
+		<sortable>true</sortable>
+		<width>80</width>
+	</PawnColumnDef>
+	
+ 	<PawnColumnDef>
+		<defName>RJW_BreederAnimal</defName>
+		<headerTip>Designate animal as a breeder. These animals will try to breed pawns designated for breeding.</headerTip>
+		<headerIcon>UI/Commands/Breeder_Animal_off</headerIcon>
+		<workerClass>rjw.MainTab.Checkbox.PawnColumnWorker_BreederAnimal</workerClass>
+		<sortable>true</sortable>
+		<width>80</width>
+	</PawnColumnDef>
+	<PawnColumnDef>
+		<defName>RJW_BreedAnimal</defName>
+		<headerTip>Designate animal for breeding. The colony animals will try to breed this animal.</headerTip>
+		<headerIcon>UI/Commands/Breeding_Animal_off</headerIcon>
+		<workerClass>rjw.MainTab.Checkbox.PawnColumnWorker_BreedAnimal</workerClass>
+		<sortable>true</sortable>
+		<width>80</width>
+	</PawnColumnDef>
+	
+	<PawnColumnDef>
+		<defName>RJW_Whore</defName>
+		<headerTip>Designate pawn as a prostitute. Prostitutes provide service to guests for silver.</headerTip>
+		<workerClass>rjw.MainTab.Checkbox.PawnColumnWorker_Whore</workerClass>
+		<sortable>true</sortable>
+		<width>80</width>
+		<headerIcon>UI/Commands/Service_off</headerIcon>
+	</PawnColumnDef>
+</Defs>

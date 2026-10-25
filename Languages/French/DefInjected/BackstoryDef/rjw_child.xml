@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: [PAWN_nameDef] was born in civil settlement. -->
+  <rjw_childC.description>[PAWN_nameDef] est né{PAWN_gender ? : e : (e)} au sein de la colonie.</rjw_childC.description>
+  <!-- EN: Child -->
+  <rjw_childC.title>Enfant</rjw_childC.title>
+  <!-- EN: Child -->
+  <rjw_childC.titleShort>Enfant</rjw_childC.titleShort>
+  
+  <!-- EN: [PAWN_nameDef] was born in a tribe. -->
+  <rjw_childT.description>[PAWN_nameDef] est né{PAWN_gender ? : e : (e)} au sein d'une tribu.</rjw_childT.description>
+  <!-- EN: Child -->
+  <rjw_childT.title>Enfant</rjw_childT.title>
+  <!-- EN: Child -->
+  <rjw_childT.titleShort>Enfant</rjw_childT.titleShort>
+  
+</LanguageData>

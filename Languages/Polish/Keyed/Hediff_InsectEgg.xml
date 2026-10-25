@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<!-- LabelBase -->
+	<Hediff_InsectEgg_egg> jajo</Hediff_InsectEgg_egg> <!-- return implanter.kindDef.race.label + " egg"; -->
+	<!-- 未识别的卵尺寸 -->
+	<Hediff_InsectEgg_small>Male jajo</Hediff_InsectEgg_small> <!-- eggssize <= 0.10f -->
+	<Hediff_InsectEgg_medium>Srednie jajo</Hediff_InsectEgg_medium> <!-- eggssize <= 0.3f -->
+	<Hediff_InsectEgg_big>Duze jajo</Hediff_InsectEgg_big> <!-- eggssize <= 0.5f -->
+	<Hediff_InsectEgg_huge>Ogromne jajo</Hediff_InsectEgg_huge> <!-- eggssize > 0.5f -->
+
+	<!-- LabelInBrackets -->
+	<Hediff_InsectEgg_fertilized>Zaplodnione</Hediff_InsectEgg_fertilized>
+	<Hediff_InsectEgg_unfertilized>Niezapłodnione</Hediff_InsectEgg_unfertilized>
+
+</LanguageData>

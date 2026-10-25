@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<rjw.HediffDef_SexPart ParentName="ArtificialPrivatePartPenisHitech">
+		<defName>MechImplanter</defName>
+		<label>mechanoid implanter</label>
+		<labelNoun>a mechanoid implanter</labelNoun>
+		<description>A mechanoid implanting apparatus. Designed for efficient deployment of nanite payloads into organic hosts.</description>
+		<descriptionHyperlinks>
+			<ThingDef>PegDick</ThingDef>
+		</descriptionHyperlinks>
+		<defaultBodyPart>MechGenitals</defaultBodyPart>
+		<countsAsAddedPartOrImplant>false</countsAsAddedPartOrImplant>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<stages>
+			<li>
+				<label>Micro</label>
+				<minSeverity>0.01</minSeverity>
+			</li>
+			<li>
+				<label>Small</label>
+				<minSeverity>0.20</minSeverity>
+			</li>
+			<li>
+				<label>Average</label>
+				<minSeverity>0.40</minSeverity>
+			</li>
+			<li>
+				<label>Large</label>
+				<minSeverity>0.60</minSeverity>
+			</li>
+			<li>
+				<label>Huge</label>
+				<minSeverity>0.80</minSeverity>
+			</li>
+			<li>
+				<label>Towering</label>
+				<minSeverity>1.01</minSeverity>
+			</li>
+		</stages>
+		<genitalFamily>Penis</genitalFamily>
+		<genitalTags>
+			<li>CanPenetrate</li>
+		</genitalTags>
+		<partTags>
+			<li>Artificial</li>
+			<li>Solid</li>
+		</partTags>
+	</rjw.HediffDef_SexPart>
+	
+	<rjw.HediffDef_SexPart ParentName="ArtificialPrivatePartVaginaLotech">
+		<defName>MechVagina</defName>
+		<label>mechanoid vagina</label>
+		<labelNoun>a mechanoid vagina</labelNoun>
+		<description>A cold, mechanical orifice designed to receive mechanoid implants.</description>
+		<descriptionHyperlinks>
+			<ThingDef>HydraulicVagina</ThingDef>
+		</descriptionHyperlinks>
+		<fluid>Cum</fluid>
+		<defaultBodyPart>MechGenitals</defaultBodyPart>
+		<stages>
+			<li>
+				<label>Micro</label>
+				<minSeverity>0.01</minSeverity>
+			</li>
+			<li>
+				<label>Tight</label>
+				<minSeverity>0.20</minSeverity>
+			</li>
+			<li>
+				<label>Average</label>
+				<minSeverity>0.40</minSeverity>
+			</li>
+			<li>
+				<label>Accommodating</label>
+				<minSeverity>0.60</minSeverity>
+			</li>
+			<li>
+				<label>Cavernous</label>
+				<minSeverity>0.80</minSeverity>
+			</li>
+			<li>
+				<label>Abyssal</label>
+				<minSeverity>1.01</minSeverity>
+			</li>
+		</stages>
+		<partTags>
+			<li>Artificial</li>
+			<li>Solid</li>
+		</partTags>
+	</rjw.HediffDef_SexPart>
+
+	<rjw.HediffDef_SexPart ParentName="ArtificialPrivatePartBreastLotech">
+		<defName>MechBreasts</defName>
+		<label>mechanoid breasts</label>
+		<labelNoun>a pair of mechanoid breasts</labelNoun>
+		<description>A pair of articulated mechanoid chest plates. Form over function, emphasis on the form.</description>
+		<descriptionHyperlinks>
+			<ThingDef>HydraulicBreasts</ThingDef>
+		</descriptionHyperlinks>
+		<defaultBodyPart>MechChest</defaultBodyPart>
+		<stages>
+			<li>
+				<label>Nipples</label>
+				<minSeverity>0.01</minSeverity>
+			</li>
+			<li>
+				<label>Tiny</label>
+				<minSeverity>0.02</minSeverity>
+			</li>
+			<li>
+				<label>Small</label>
+				<minSeverity>0.20</minSeverity>
+			</li>
+			<li>
+				<label>Average</label>
+				<minSeverity>0.40</minSeverity>
+			</li>
+			<li>
+				<label>Large</label>
+				<minSeverity>0.60</minSeverity>
+			</li>
+			<li>
+				<label>Huge</label>
+				<minSeverity>0.80</minSeverity>
+			</li>
+			<li>
+				<label>Enormous</label>
+				<minSeverity>1.0</minSeverity>
+			</li>
+			<li>
+				<label>Massive</label>
+				<minSeverity>1.2</minSeverity>
+			</li>
+			<li>
+				<label>Gargantuan</label>
+				<minSeverity>1.4</minSeverity>
+			</li>
+			<li>
+				<label>Colossal</label>
+				<minSeverity>1.6</minSeverity>
+			</li>
+			<li>
+				<label>Titanic</label>
+				<minSeverity>1.8</minSeverity>
+			</li>
+			<li>
+				<label>Astronomical</label>
+				<minSeverity>2.0</minSeverity>
+			</li>
+		</stages>
+		<partTags>
+			<li>Artificial</li>
+			<li>Solid</li>
+		</partTags>
+	</rjw.HediffDef_SexPart>
+
+	<rjw.HediffDef_SexPart ParentName="ArtificialPrivatePartAnusLotech">
+		<defName>MechAnus</defName>
+		<label>mechanoid anus</label>
+		<labelNoun>a mechanoid anus</labelNoun>
+		<description>A cold, mechanical orifice with precision aperture control.</description>
+		<descriptionHyperlinks>
+			<ThingDef>HydraulicAnus</ThingDef>
+		</descriptionHyperlinks>
+		<defaultBodyPart>MechAnus</defaultBodyPart>
+		<stages>
+			<li>
+				<label>Micro</label>
+				<minSeverity>0.01</minSeverity>
+			</li>
+			<li>
+				<label>Tight</label>
+				<minSeverity>0.20</minSeverity>
+			</li>
+			<li>
+				<label>Average</label>
+				<minSeverity>0.40</minSeverity>
+			</li>
+			<li>
+				<label>Accommodating</label>
+				<minSeverity>0.60</minSeverity>
+			</li>
+			<li>
+				<label>Cavernous</label>
+				<minSeverity>0.80</minSeverity>
+			</li>
+			<li>
+				<label>Abyssal</label>
+				<minSeverity>1.01</minSeverity>
+			</li>
+		</stages>
+		<partTags>
+			<li>Artificial</li>
+			<li>Solid</li>
+		</partTags>
+	</rjw.HediffDef_SexPart>
+</Defs>

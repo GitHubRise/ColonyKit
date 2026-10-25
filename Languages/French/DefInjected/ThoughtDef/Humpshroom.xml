@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Humpshroom aftertaste -->
+  <HumpShroomEffect.stages.Humpshroom_aftertaste.label>arrière-goût de baisignon</HumpShroomEffect.stages.Humpshroom_aftertaste.label>
+  <!-- EN: Tastes funny. -->
+  <HumpShroomEffect.stages.Humpshroom_aftertaste.description>Le goût est sympa.</HumpShroomEffect.stages.Humpshroom_aftertaste.description>
+  
+  <!-- EN: humpshroom withdrawal -->
+  <HumpShroomWithdrawal.stages.humpshroom_withdrawal.label>sevrage de baisignon</HumpShroomWithdrawal.stages.humpshroom_withdrawal.label>
+  <!-- EN: I just feel nothing down there. -->
+  <HumpShroomWithdrawal.stages.humpshroom_withdrawal.description>Je ne sens plus rien en bas.</HumpShroomWithdrawal.stages.humpshroom_withdrawal.description>
+  
+</LanguageData>

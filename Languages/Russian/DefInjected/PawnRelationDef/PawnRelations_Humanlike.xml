@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 近亲 -->
+
+  <Parent.label>отец</Parent.label>
+  <Parent.labelFemale>мать</Parent.labelFemale>
+
+  <Child.label>сын</Child.label>
+  <Child.labelFemale>дочь</Child.labelFemale>
+
+  <Sibling.label>брат</Sibling.label>
+  <Sibling.labelFemale>сестра</Sibling.labelFemale>
+
+  <HalfSibling.label>брат</HalfSibling.label>
+  <HalfSibling.labelFemale>сестра</HalfSibling.labelFemale>
+
+  <Grandparent.label>дедушка</Grandparent.label>
+  <Grandparent.labelFemale>бабушка</Grandparent.labelFemale>
+
+  <Grandchild.label>внук</Grandchild.label>
+  <Grandchild.labelFemale>внучка</Grandchild.labelFemale>
+
+  <NephewOrNiece.label>племянник</NephewOrNiece.label>
+  <NephewOrNiece.labelFemale>племянница</NephewOrNiece.labelFemale>
+
+  <UncleOrAunt.label>дядя</UncleOrAunt.label>
+  <UncleOrAunt.labelFemale>тётя</UncleOrAunt.labelFemale>
+
+  <Cousin.label>двоюродный брат</Cousin.label>
+  <Cousin.labelFemale>двоюродная сестра</Cousin.labelFemale>
+
+
+  <!-- 远亲 -->
+
+  <GreatGrandparent.label>прадедушка</GreatGrandparent.label>
+  <GreatGrandparent.labelFemale>прабабушка</GreatGrandparent.labelFemale>
+
+  <GreatGrandchild.label>правнук</GreatGrandchild.label>
+  <GreatGrandchild.labelFemale>правнучка</GreatGrandchild.labelFemale>
+
+  <GranduncleOrGrandaunt.label>дроюродный дедушка</GranduncleOrGrandaunt.label>
+  <GranduncleOrGrandaunt.labelFemale>двоюродная бабушка</GranduncleOrGrandaunt.labelFemale>
+
+  <GrandnephewOrGrandniece.label>внучатый племянник</GrandnephewOrGrandniece.label>
+  <GrandnephewOrGrandniece.labelFemale>внучатая племянница</GrandnephewOrGrandniece.labelFemale>
+
+  <CousinOnceRemoved.label>двоюродный племянник</CousinOnceRemoved.label>
+  <CousinOnceRemoved.labelFemale>двоюродная племянница</CousinOnceRemoved.labelFemale>
+
+  <SecondCousin.label>троюродный брат</SecondCousin.label>
+  <SecondCousin.labelFemale>троюродная сестра</SecondCousin.labelFemale>
+
+
+  <!-- 亲属 -->
+
+  <Kin.label>родственник</Kin.label>
+  <Kin.labelFemale>родственница</Kin.labelFemale>
+
+
+</LanguageData>

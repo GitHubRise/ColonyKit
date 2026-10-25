@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<PawnColumnWorker_RJWGender_IsHerm>Футанари</PawnColumnWorker_RJWGender_IsHerm>
+
+	<!-- 待办？ -->
+	<!-- 还是说不用做？ -->
+	<PawnColumnWorker_IsSlave>Поселенец-раб</PawnColumnWorker_IsSlave>
+	<PawnColumnWorker_IsPrisoner>Поселенец-пленник</PawnColumnWorker_IsPrisoner>
+	<PawnColumnWorker_IsComfort>Могут ли поселенца использовать для развлечения другие поселенцы</PawnColumnWorker_IsComfort>
+	<PawnColumnWorker_IsBreeder>Могут ли с поселенцем спариваться животные</PawnColumnWorker_IsBreeder>
+
+	<MainTabWindow_Designators>Назначения</MainTabWindow_Designators>
+
+</LanguageData>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <RJW_PubicHair.label>阴毛</RJW_PubicHair.label>
+
+  <RJW_PubicHair.labelNoun>阴毛</RJW_PubicHair.labelNoun>
+
+  <RJW_PubicHair.description>生殖器周围毛发的浓密程度。纯外观属性，不影响任何数值。</RJW_PubicHair.description>
+
+  <RJW_PubicHair.stages.Shaved.label>无毛</RJW_PubicHair.stages.Shaved.label>
+
+  <RJW_PubicHair.stages.Sparse.label>稀疏</RJW_PubicHair.stages.Sparse.label>
+
+  <RJW_PubicHair.stages.Trimmed.label>修剪</RJW_PubicHair.stages.Trimmed.label>
+
+  <RJW_PubicHair.stages.Bushy.label>浓密</RJW_PubicHair.stages.Bushy.label>
+
+  <RJW_PubicHair.stages.Wild.label>茂密</RJW_PubicHair.stages.Wild.label>
+
+</LanguageData>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: anal -->
+  <Necro_Anal.label>anal</Necro_Anal.label>
+  <!-- EN:
+    <li>r_logentry->Raped anally [RECIPIENT_nameDef].</li>
+  -->
+  <Necro_Anal.logRulesInitiator.rulesStrings>
+    <li>r_logentry->A enculé de force [RECIPIENT_nameDef].</li>
+  </Necro_Anal.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Was anally raped by [INITIATOR_nameDef].</li>
+  -->
+  <Necro_Anal.logRulesRecipient.rulesStrings>
+    <li>r_logentry(RECIPIENT_gender!=Female)->A été enculé de force par [INITIATOR_nameDef].</li>
+    <li>r_logentry(RECIPIENT_gender==Female)->A été enculée de force par [INITIATOR_nameDef].</li>
+  </Necro_Anal.logRulesRecipient.rulesStrings>
+  <!-- EN: Fuck anally -->
+  <Necro_Anal.modExtensions.0.RMBLabel>Encule</Necro_Anal.modExtensions.0.RMBLabel>
+  
+</LanguageData>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RJW_IsPrisoner.headerTip>Заключённые</RJW_IsPrisoner.headerTip>
+  <RJW_IsSlave.headerTip>Рабы</RJW_IsSlave.headerTip>
+  <RJW_Gender.headerTip>Пол</RJW_Gender.headerTip>
+
+
+</LanguageData>

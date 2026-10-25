@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: footjob -->
+  <Rape_Reverse_Footjob.label>masturbation avec pieds</Rape_Reverse_Footjob.label>
+  <!-- EN:
+    <li>r_logentry->Forcefully gave a footjob to [RECIPIENT_nameDef].</li>
+  -->
+  <Rape_Reverse_Footjob.logRulesInitiator.rulesStrings>
+    <li>r_logentry->A fait une masturbation de force avec ses pieds à [RECIPIENT_nameDef].</li>
+  </Rape_Reverse_Footjob.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Was forcibly given a footjob by [INITIATOR_nameDef].</li>
+  -->
+  <Rape_Reverse_Footjob.logRulesRecipient.rulesStrings>
+    <li>r_logentry(RECIPIENT_gender!=Female)->A forcé [INITIATOR_nameDef] à le masturber avec ses pieds.</li>
+    <li>r_logentry(RECIPIENT_gender==Female)->A forcé [INITIATOR_nameDef] à la masturber avec ses pieds.</li>
+  </Rape_Reverse_Footjob.logRulesRecipient.rulesStrings>
+  <!-- EN: Do a footjob -->
+  <Rape_Reverse_Footjob.modExtensions.0.RMBLabel>Fait une masturbation avec pieds</Rape_Reverse_Footjob.modExtensions.0.RMBLabel>
+  
+</LanguageData>

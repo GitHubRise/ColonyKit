@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <rjw_childC.baseDesc>[PAWN_nameDef]出生於文明定居點。</rjw_childC.baseDesc>
+
+  <rjw_childC.description>[PAWN_nameDef]出生於文明定居點。</rjw_childC.description>
+
+  <rjw_childC.title>孩子</rjw_childC.title>
+
+  <rjw_childC.titleShort>孩子</rjw_childC.titleShort>
+
+  <rjw_childT.baseDesc>[PAWN_nameDef]出生於部落。</rjw_childT.baseDesc>
+
+  <rjw_childT.description>[PAWN_nameDef]出生於部落。</rjw_childT.description>
+
+  <rjw_childT.title>孩子</rjw_childT.title>
+
+  <rjw_childT.titleShort>孩子</rjw_childT.titleShort>
+
+  <rjw_homekeeper.baseDesc>[PAWN_nameDef]受過管家的訓練。您想先用晚餐？先沐浴？還是……先享用[PAWN_pronoun]？</rjw_homekeeper.baseDesc>
+
+  <rjw_homekeeper.description>[PAWN_nameDef]受過管家的訓練。您想先用晚餐？先沐浴？還是……先享用[PAWN_pronoun]？</rjw_homekeeper.description>
+
+  <rjw_homekeeper.title>管家流鶯</rjw_homekeeper.title>
+
+  <rjw_homekeeper.titleShort>流鶯</rjw_homekeeper.titleShort>
+</LanguageData>

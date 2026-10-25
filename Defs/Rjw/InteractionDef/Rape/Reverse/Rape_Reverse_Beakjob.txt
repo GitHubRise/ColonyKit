@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<InteractionDef ParentName="RJW_InteractionDefBaseRape">
+		<defName>Rape_Reverse_Beakjob</defName>
+		<label>beakjob</label>
+		<logRulesInitiator>
+			<rulesStrings>
+				<li>r_logentry->Forcefully gave a beakjob to [RECIPIENT_nameDef].</li>
+			</rulesStrings>
+		</logRulesInitiator>
+		<logRulesRecipient>
+			<rulesStrings>
+				<li>r_logentry->Was forced to receive a beakjob from [INITIATOR_nameDef].</li>
+			</rulesStrings>
+		</logRulesRecipient>
+		<modExtensions>
+			<li Class="rjw.SexInteractionExtension">
+				<RMBLabel>Do beakjob</RMBLabel>
+				<rjwSextype>Fellatio</rjwSextype>
+				<extraSentencePacks>
+					<li>BeakjobReverseRapeRP</li>
+				</extraSentencePacks>
+			</li>
+			<li Class="rjw.Modules.Interactions.DefModExtensions.InteractionSelectorExtension">
+				<genitalTags>
+					<li>EggLaying</li>
+					<li>Reverse</li>
+					<li>Rape</li>
+				</genitalTags>
+				<dominantRequirement>
+					<partFamilies>
+						<li>Beak</li>
+					</partFamilies>
+				</dominantRequirement>
+				<submissiveRequirement>
+					<genitalTags>
+						<li>CanPenetrate</li>
+					</genitalTags>
+					<pawnStates>
+						<li>Healthy</li>
+						<li>Downed</li>
+					</pawnStates>
+				</submissiveRequirement>
+			</li>
+		</modExtensions>
+	</InteractionDef>
+</Defs>

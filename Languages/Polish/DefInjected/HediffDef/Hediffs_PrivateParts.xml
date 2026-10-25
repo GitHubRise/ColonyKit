@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 用于不支持小人的占位 hediff -->
+
+  <GenericPenis.label>penis</GenericPenis.label>
+  <GenericPenis.labelNoun>penis</GenericPenis.labelNoun>
+  <GenericPenis.description>Zastępczy penis dla nieobsługiwanych ras i istot.</GenericPenis.description>
+  <GenericPenis.stages.0.label>mikro</GenericPenis.stages.0.label>
+  <GenericPenis.stages.1.label>mały</GenericPenis.stages.1.label>
+  <GenericPenis.stages.2.label>średni</GenericPenis.stages.2.label>
+  <GenericPenis.stages.3.label>duży</GenericPenis.stages.3.label>
+  <GenericPenis.stages.4.label>ogromny</GenericPenis.stages.4.label>
+  <GenericPenis.stages.5.label>gigantyczny</GenericPenis.stages.5.label>
+
+  <GenericVagina.label>pochwa</GenericVagina.label>
+  <GenericVagina.labelNoun>pochwa</GenericVagina.labelNoun>
+  <GenericVagina.description>Zastępcza pochwa dla nieobsługiwanych ras i istot.</GenericVagina.description>
+  <GenericVagina.stages.0.label>mikro</GenericVagina.stages.0.label>
+  <GenericVagina.stages.1.label>ciasna</GenericVagina.stages.1.label>
+  <GenericVagina.stages.2.label>średnia</GenericVagina.stages.2.label>
+  <GenericVagina.stages.3.label>pojemna</GenericVagina.stages.3.label>
+  <GenericVagina.stages.4.label>jaskiniowata</GenericVagina.stages.4.label>
+  <GenericVagina.stages.5.label>otchłań</GenericVagina.stages.5.label>
+
+  <GenericAnus.label>odbyt</GenericAnus.label>
+  <GenericAnus.labelNoun>odbyt</GenericAnus.labelNoun>
+  <GenericAnus.description>Zastępczy odbyt dla nieobsługiwanych ras i istot.</GenericAnus.description>
+  <GenericAnus.stages.0.label>mikro</GenericAnus.stages.0.label>
+  <GenericAnus.stages.1.label>ciasny</GenericAnus.stages.1.label>
+  <GenericAnus.stages.2.label>średni</GenericAnus.stages.2.label>
+  <GenericAnus.stages.3.label>pojemny</GenericAnus.stages.3.label>
+  <GenericAnus.stages.4.label>jaskiniowaty</GenericAnus.stages.4.label>
+  <GenericAnus.stages.5.label>otchłań</GenericAnus.stages.5.label>
+
+  <GenericBreasts.label>piersi</GenericBreasts.label>
+  <GenericBreasts.labelNoun>piersi</GenericBreasts.labelNoun>
+  <GenericBreasts.description>Zastępcze piersi dla nieobsługiwanych ras i istot.</GenericBreasts.description>
+  <GenericBreasts.stages.0.label>brodawki</GenericBreasts.stages.0.label>
+  <GenericBreasts.stages.1.label>płaskie</GenericBreasts.stages.1.label>
+  <GenericBreasts.stages.2.label>małe</GenericBreasts.stages.2.label>
+  <GenericBreasts.stages.3.label>średnie</GenericBreasts.stages.3.label>
+  <GenericBreasts.stages.4.label>średnio-duże</GenericBreasts.stages.4.label>
+  <GenericBreasts.stages.5.label>duże</GenericBreasts.stages.5.label>
+  <GenericBreasts.stages.6.label>ogromne</GenericBreasts.stages.6.label>
+  <GenericBreasts.stages.7.label>masywne</GenericBreasts.stages.7.label>
+  <GenericBreasts.stages.8.label>gigantyczne</GenericBreasts.stages.8.label>
+  <GenericBreasts.stages.9.label>kolosalne</GenericBreasts.stages.9.label>
+
+</LanguageData>

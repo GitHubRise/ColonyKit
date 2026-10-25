@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 默认表，反正没坏处？ -->
+
+  <RJW_PawnTable_Animals.modExtensions.0.label>Животные</RJW_PawnTable_Animals.modExtensions.0.label>
+  <RJW_PawnTable_Colonists.modExtensions.0.label>Поселенцы</RJW_PawnTable_Colonists.modExtensions.0.label>
+  <RJW_PawnTable_Property.modExtensions.0.label>Пленники</RJW_PawnTable_Property.modExtensions.0.label>
+
+
+</LanguageData>

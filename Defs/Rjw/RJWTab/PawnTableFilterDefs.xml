@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <rjw.MainTab.PawnTableFilterDef>
+    <defName>RJW_PawnTableFilter_Colonists</defName>
+    <workerClass>rjw.MainTab.PawnTableFilterWorker_Colonists</workerClass>
+  </rjw.MainTab.PawnTableFilterDef>
+
+  <rjw.MainTab.PawnTableFilterDef>
+    <defName>RJW_PawnTableFilter_Animals</defName>
+    <workerClass>rjw.MainTab.PawnTableFilterWorker_Animals</workerClass>
+  </rjw.MainTab.PawnTableFilterDef>
+
+  <rjw.MainTab.PawnTableFilterDef>
+    <defName>RJW_PawnTableFilter_Property</defName>
+    <workerClass>rjw.MainTab.PawnTableFilterWorker_Property</workerClass>
+  </rjw.MainTab.PawnTableFilterDef>
+
+</Defs>

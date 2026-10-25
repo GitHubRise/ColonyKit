@@ -16,4 +16,13 @@
 		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4871" />
 		<PackageReference Include="Lib.Harmony" Version="2.4.3" ExcludeAssets="runtime" />
 	</ItemGroup>
+	<ItemGroup>
+		<!-- 内置 RJW：由独立工程编译，不并入 ColonyKit.dll。 -->
+		<Compile Remove="Rjw\**\*.cs" />
+		<None Include="Rjw\**\*.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<!-- 内置 RJW：一起构建到 Assemblies，但 ColonyKit 不引用其类型。 -->
+		<ProjectReference Include="Rjw\RimJobWorld.Main.csproj" ReferenceOutputAssembly="false" Private="false" />
+	</ItemGroup>
 </Project>

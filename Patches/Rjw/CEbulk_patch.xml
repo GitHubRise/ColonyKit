@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Combat Extended</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="Condom"]/statBases</xpath>
+					<value>
+						<Bulk>0.01</Bulk>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="HumpShroom"]/statBases</xpath>
+					<value>
+						<Bulk>0.25</Bulk>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="Aphrodisiac"]/statBases</xpath>
+					<value>
+						<Bulk>0.05</Bulk>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="RJW_Contraceptive"]/statBases</xpath>
+					<value>
+						<Bulk>0.01</Bulk>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="RJW_FertPill"]/statBases</xpath>
+					<value>
+						<Bulk>0.01</Bulk>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="Holokey"]/statBases</xpath>
+					<value>
+						<Bulk>0.05</Bulk>
+					</value>
+				</li>
+				<!-- 人体补丁 -->
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/BodyDef[defName="Human"]/corePart/parts/li[def="Pelvis"]/coverage</xpath>
+					<value>
+						<coverage>0.045</coverage>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/BodyDef[defName="Human"]/corePart/parts/li[def="Shoulder"]/coverage</xpath>
+					<value>
+						<coverage>0.08</coverage>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/BodyDef[defName="Human"]/corePart/parts/li[def="Lung"]/coverage</xpath>
+					<value>
+						<coverage>0.05</coverage>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/BodyDef[defName="Human"]/corePart/parts/li[def="Stomach"]/coverage</xpath>
+					<value>
+						<coverage>0.049</coverage>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+</Patch>

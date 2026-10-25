@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<!--一如既往偷自 CnP-->
+	<ThingDef ParentName="MakeableDrugPillBase">
+		<defName>RJW_Contraceptive</defName>
+		<label>contraception pill</label>
+		<description>Suppresses fertility to near-zero levels for one quadrum. Convenient and discreet.</description>
+		<graphicData>
+			<texPath>Things/Item/Contraceptive</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<statBases>
+			<WorkToMake>120</WorkToMake>
+			<MarketValue>15</MarketValue>
+			<Mass>0.05</Mass>
+		</statBases>
+		<techLevel>Industrial</techLevel>
+		<ingestible>
+			<drugCategory>Medical</drugCategory>
+			<outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>RJW_Contraceptive</hediffDef>
+					<severity>1.0</severity>
+				</li>
+			</outcomeDoers>
+		</ingestible>
+		<recipeMaker>
+			<researchPrerequisite>DrugProduction</researchPrerequisite>
+			<recipeUsers>
+				<li>DrugLab</li>
+			</recipeUsers>
+		</recipeMaker>
+		<costList>
+			<MedicineHerbal>1</MedicineHerbal>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Drug">
+			<addictiveness>0</addictiveness>
+			<listOrder>1000</listOrder>
+				<overdoseSeverityOffset>
+					<min>0.08</min>
+					<max>0.14</max>
+				</overdoseSeverityOffset>
+			</li>
+		</comps>
+	</ThingDef>
+	
+	<HediffDef>
+		<defName>RJW_Contraceptive</defName>
+		<hediffClass>HediffWithComps</hediffClass>
+		<label>contraceptive</label>
+		<description>Contraception suppresses fertility to near-zero levels for one quadrum. Pregnancy is virtually impossible while this lasts.</description>
+		<defaultLabelColor>(0.75, 0.75, 1.0)</defaultLabelColor>
+		<isBad>false</isBad>
+		<comps>
+			<!-- 一个季度后消失 -->
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>
+					<min>900000</min>
+					<max>900000</max>
+				</disappearsAfterTicks>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<label>Under contraceptive effect</label>
+				<capMods>
+					<li>
+						<capacity>RJW_Fertility</capacity>
+						<setMax>0.1</setMax>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+	</HediffDef>
+</Defs>

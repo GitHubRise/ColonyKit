@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: son -->
+  <Child_Beast.label>fils</Child_Beast.label>
+  <!-- EN: daughter -->
+  <Child_Beast.labelFemale>fille</Child_Beast.labelFemale>
+  
+  <!-- EN: cousin -->
+  <Cousin_Beast.label>cousin(e)</Cousin_Beast.label>
+  
+  <!-- EN: cousin once removed -->
+  <CousinOnceRemoved_Beast.label>cousin(e) germain(e)</CousinOnceRemoved_Beast.label>
+  
+  <!-- EN: grandson -->
+  <Grandchild_Beast.label>petit-fils</Grandchild_Beast.label>
+  <!-- EN: granddaughter -->
+  <Grandchild_Beast.labelFemale>petite-fille</Grandchild_Beast.labelFemale>
+  
+  <!-- EN: grandnephew -->
+  <GrandnephewOrGrandniece_Beast.label>petit-neveu</GrandnephewOrGrandniece_Beast.label>
+  <!-- EN: grandniece -->
+  <GrandnephewOrGrandniece_Beast.labelFemale>petite-nièce</GrandnephewOrGrandniece_Beast.labelFemale>
+  
+  <!-- EN: grandfather -->
+  <Grandparent_Beast.label>grand-père</Grandparent_Beast.label>
+  <!-- EN: grandmother -->
+  <Grandparent_Beast.labelFemale>grand-mère</Grandparent_Beast.labelFemale>
+  
+  <!-- EN: granduncle -->
+  <GranduncleOrGrandaunt_Beast.label>grand-oncle</GranduncleOrGrandaunt_Beast.label>
+  <!-- EN: grandaunt -->
+  <GranduncleOrGrandaunt_Beast.labelFemale>grande-tante</GranduncleOrGrandaunt_Beast.labelFemale>
+  
+  <!-- EN: great grandson -->
+  <GreatGrandchild_Beast.label>arrière petit-fils</GreatGrandchild_Beast.label>
+  <!-- EN: great granddaughter -->
+  <GreatGrandchild_Beast.labelFemale>arrière petite-fille</GreatGrandchild_Beast.labelFemale>
+  
+  <!-- EN: great grandfather -->
+  <GreatGrandparent_Beast.label>arrière grand-père</GreatGrandparent_Beast.label>
+  <!-- EN: great grandmother -->
+  <GreatGrandparent_Beast.labelFemale>arrière grand-mère</GreatGrandparent_Beast.labelFemale>
+  
+  <!-- EN: brother -->
+  <HalfSibling_Beast.label>frère</HalfSibling_Beast.label>
+  <!-- EN: sister -->
+  <HalfSibling_Beast.labelFemale>sœur</HalfSibling_Beast.labelFemale>
+  
+  <!-- EN: nephew -->
+  <NephewOrNiece_Beast.label>neveu</NephewOrNiece_Beast.label>
+  <!-- EN: niece -->
+  <NephewOrNiece_Beast.labelFemale>nièce</NephewOrNiece_Beast.labelFemale>
+  
+  <!-- EN: son -->
+  <RJW_Pup.label>fils</RJW_Pup.label>
+  <!-- EN: daughter -->
+  <RJW_Pup.labelFemale>fille</RJW_Pup.labelFemale>
+  
+  <!-- EN: father -->
+  <RJW_Sire.label>père</RJW_Sire.label>
+  <!-- EN: mother -->
+  <RJW_Sire.labelFemale>mère</RJW_Sire.labelFemale>
+  
+  <!-- EN: second cousin -->
+  <SecondCousin_Beast.label>cousin(e) germain(e)</SecondCousin_Beast.label>
+  
+  <!-- EN: brother -->
+  <Sibling_Beast.label>frère</Sibling_Beast.label>
+  <!-- EN: sister -->
+  <Sibling_Beast.labelFemale>sœur</Sibling_Beast.labelFemale>
+  
+  <!-- EN: uncle -->
+  <UncleOrAunt_Beast.label>oncle</UncleOrAunt_Beast.label>
+  <!-- EN: aunt -->
+  <UncleOrAunt_Beast.labelFemale>tante</UncleOrAunt_Beast.labelFemale>
+  
+</LanguageData>

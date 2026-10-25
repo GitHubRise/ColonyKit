@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<!-- 标签 -->
+	<RJW_SexGizmo_Orgasm>Оргазм</RJW_SexGizmo_Orgasm>
+	<RJW_SexGizmo_RestNeed>Отдых</RJW_SexGizmo_RestNeed>
+	<RJW_SexGizmo_SexNeed>Удовлетворённость</RJW_SexGizmo_SexNeed><!-- ? -->
+
+	<!-- 按钮 -->
+	<RJW_SexGizmo_SexOverdriveTooltip>Секс без остановки: не завершится, пока поселенец не упадёт или его не прервут.</RJW_SexGizmo_SexOverdriveTooltip>
+	<RJW_SexGizmo_HitPawn>Ударить один раз.</RJW_SexGizmo_HitPawn>
+	<RJW_SexGizmo_Cocoon>Завернуть поселенца в кокон.</RJW_SexGizmo_Cocoon><!-- ? -->
+	<RJW_SexGizmo_Egg>Наполнить яйцами.</RJW_SexGizmo_Egg><!-- ? -->
+</LanguageData>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 一如既往偷自 CnP -->
+  <RJW_FertPill.label>排卵藥物</RJW_FertPill.label>
+
+  <RJW_FertPill.stages.Hyperfertility.label>高生育率</RJW_FertPill.stages.Hyperfertility.label>
+
+  <RJW_FertPill.description>提高生育率。溫和的催情藥。</RJW_FertPill.description>
+</LanguageData>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!--性向卡片-->
+  <SexcardTooltip>Показать сексуальность</SexcardTooltip>
+  <!--需要性向键-->
+  <WhorePrice>Диапазон цен на проституцию: </WhorePrice>
+  <SexPartWants>Хочет быть: </SexPartWants>
+	<PartsEditLabel>Редактировать {0}</PartsEditLabel>
+	<PartsEditFluidMultiplierLabel>Множитель жидкости</PartsEditFluidMultiplierLabel>
+	<PartsEditDevEntry>RJW: Редактировать части</PartsEditDevEntry>
+
+	<SC_Fertility_Enable>Включить функции размножения</SC_Fertility_Enable>
+	<SC_Fertility_Enhance>Повысить плодовитость</SC_Fertility_Enhance>
+	<SC_Fertility_Disable>Отключить функции размножения</SC_Fertility_Disable>
+
+	<SC_FluidType>Тип жидкости</SC_FluidType>
+	<SC_FluidTypeDefault> (по умолчанию)</SC_FluidTypeDefault>
+	<SC_Reroll>Перегенерировать</SC_Reroll>
+
+	<SC_Sexuality>Сексуальность: {0}</SC_Sexuality>
+	<SC_Sexuality_Asexual>-</SC_Sexuality_Asexual>
+	<SC_Sexuality_Bisexual>Би</SC_Sexuality_Bisexual>
+	<SC_Sexuality_Heterosexual>Гетеро</SC_Sexuality_Heterosexual>
+	<SC_Sexuality_Homosexual>Гомо</SC_Sexuality_Homosexual>
+	<SC_Sexuality_LeaningHeterosexual>Би, склонность к гетеро</SC_Sexuality_LeaningHeterosexual>
+	<SC_Sexuality_LeaningHomosexual>Би, склонность к гомо</SC_Sexuality_LeaningHomosexual>
+	<SC_Sexuality_MostlyHeterosexual>В основном гетеро</SC_Sexuality_MostlyHeterosexual>
+	<SC_Sexuality_MostlyHomosexual>В основном гомо</SC_Sexuality_MostlyHomosexual>
+	<SC_Sexuality_Pansexual>Пан</SC_Sexuality_Pansexual>
+
+</LanguageData>

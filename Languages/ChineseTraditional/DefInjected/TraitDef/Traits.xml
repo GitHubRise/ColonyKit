@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rapist.degreeDatas.rapist.label>強姦犯</Rapist.degreeDatas.rapist.label>
+
+  <Rapist.degreeDatas.rapist.description>[PAWN_nameDef]不接受他人的拒絕……</Rapist.degreeDatas.rapist.description>
+
+  <Necrophiliac.degreeDatas.necrophile.label>戀屍癖</Necrophiliac.degreeDatas.necrophile.label>
+
+  <Necrophiliac.degreeDatas.necrophile.description>死人永遠不會拒絕，不是嗎？</Necrophiliac.degreeDatas.necrophile.description>
+
+  <Zoophile.degreeDatas.zoophile.label>戀獸癖</Zoophile.degreeDatas.zoophile.label>
+
+  <Zoophile.degreeDatas.zoophile.description>[PAWN_nameDef]喜歡走在狂野的那一邊。</Zoophile.degreeDatas.zoophile.description>
+</LanguageData>

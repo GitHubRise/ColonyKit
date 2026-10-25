@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <Aphrodisiac.label>催情药</Aphrodisiac.label>
+
+  <Aphrodisiac.description>一种由驼峰菇提炼而成的吸食性药物。能引发强烈的性兴奋并降低抑制。请负责任地使用，或者……随意。</Aphrodisiac.description>
+
+  <Aphrodisiac.ingestible.ingestCommandString>吸食{0}</Aphrodisiac.ingestible.ingestCommandString>
+
+  <Aphrodisiac.ingestible.ingestReportString>吸食{0}中。</Aphrodisiac.ingestible.ingestReportString>
+
+  <Aphrodisiac.ingestible.ingestReportStringEat>服用{0}中。</Aphrodisiac.ingestible.ingestReportStringEat>
+
+</LanguageData>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: anal -->
+  <Necro_Reverse_Anal.label>anal</Necro_Reverse_Anal.label>
+  <!-- EN:
+    <li>r_logentry->Raped anally [RECIPIENT_nameDef].</li>
+  -->
+  <Necro_Reverse_Anal.logRulesInitiator.rulesStrings>
+    <li>r_logentry->A violé analement [RECIPIENT_nameDef].</li>
+  </Necro_Reverse_Anal.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Was anally raped by [INITIATOR_nameDef].</li>
+  -->
+  <Necro_Reverse_Anal.logRulesRecipient.rulesStrings>
+    <li>r_logentry(RECIPIENT_gender!=Female)->A été violé analement par [INITIATOR_nameDef].</li>
+    <li>r_logentry(RECIPIENT_gender==Female)->A été violée analement par [INITIATOR_nameDef].</li>
+  </Necro_Reverse_Anal.logRulesRecipient.rulesStrings>
+  <!-- EN: Ride anally -->
+  <Necro_Reverse_Anal.modExtensions.0.RMBLabel>Chevauche analement</Necro_Reverse_Anal.modExtensions.0.RMBLabel>
+  
+</LanguageData>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<InteractionDef ParentName="RJW_InteractionDefBaseRape">
+		<defName>Rape_Fisting</defName>
+		<label>fisting</label>
+		<logRulesInitiator>
+			<rulesStrings>
+				<li>r_logentry->Forcefully fisted [RECIPIENT_nameDef].</li>
+			</rulesStrings>
+		</logRulesInitiator>
+		<logRulesRecipient>
+			<rulesStrings>
+				<li>r_logentry->Was forcibly fisted by [INITIATOR_nameDef].</li>
+			</rulesStrings>
+		</logRulesRecipient>
+		<modExtensions>
+			<li Class="rjw.SexInteractionExtension">
+				<RMBLabel>Do anal fisting</RMBLabel>
+				<rjwSextype>Fisting</rjwSextype>
+				<extraSentencePacks>
+					<li>FistingRapeRP</li>
+				</extraSentencePacks>
+				<tags>
+					<li>Rape</li>
+				</tags>
+				<initiatorRequirement>
+					<partFamilies>
+						<li>Hand</li>
+					</partFamilies>
+				</initiatorRequirement>
+				<recipientRequirement>
+					<minimumSeverity>0.3</minimumSeverity>
+					<genitalFamilies>
+						<li>Anus</li>
+					</genitalFamilies>
+					<pawnStates>
+						<li>Healthy</li>
+						<li>Downed</li>
+						<li>Unconscious</li>
+					</pawnStates>
+				</recipientRequirement>
+			</li>
+		</modExtensions>
+	</InteractionDef>
+</Defs>

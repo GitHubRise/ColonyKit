@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: add anus -->
+  <AddMultiAnus.label>ajouter un anus</AddMultiAnus.label>
+  <!-- EN: Adds additional anus. -->
+  <AddMultiAnus.description>Ajoute un anus supplémentaire.</AddMultiAnus.description>
+  <!-- EN: Adding anus. -->
+  <AddMultiAnus.jobString>Ajoute un anus.</AddMultiAnus.jobString>
+  
+  <!-- EN: add breasts -->
+  <AddMultiBreasts.label>ajouter des seins</AddMultiBreasts.label>
+  <!-- EN: Adds additional breast row. -->
+  <AddMultiBreasts.description>Ajoute une rangée de seins supplémentaire.</AddMultiBreasts.description>
+  <!-- EN: Adding breasts. -->
+  <AddMultiBreasts.jobString>Ajoute un vagin.</AddMultiBreasts.jobString>
+  
+  <!-- EN: add feline penis -->
+  <AddMultiCatPenis.label>ajouter un pénis félin</AddMultiCatPenis.label>
+  <!-- EN: Adds additional penis. -->
+  <AddMultiCatPenis.description>Ajoute un pénis supplémentaire.</AddMultiCatPenis.description>
+  <!-- EN: Adding penis. -->
+  <AddMultiCatPenis.jobString>Ajoute un pénis.</AddMultiCatPenis.jobString>
+  
+  <!-- EN: add feline vagina -->
+  <AddMultiCatVagina.label>ajouter un vagin félin</AddMultiCatVagina.label>
+  <!-- EN: Adds additional vagina. -->
+  <AddMultiCatVagina.description>Ajoute un vagin supplémentaire.</AddMultiCatVagina.description>
+  <!-- EN: Adding vagina. -->
+  <AddMultiCatVagina.jobString>Ajoute un vagin.</AddMultiCatVagina.jobString>
+  
+  <!-- EN: add crocodilian penis -->
+  <AddMultiCrocodilianPenis.label>ajouter un pénis crocodilien</AddMultiCrocodilianPenis.label>
+  <!-- EN: Adds additional penis. -->
+  <AddMultiCrocodilianPenis.description>Ajoute un pénis supplémentaire.</AddMultiCrocodilianPenis.description>
+  <!-- EN: Adding penis. -->
+  <AddMultiCrocodilianPenis.jobString>Ajoute un pénis.</AddMultiCrocodilianPenis.jobString>
+  
+  <!-- EN: add canine penis -->
+  <AddMultiDogPenis.label>ajouter un pénis canin</AddMultiDogPenis.label>
+  <!-- EN: Adds additional penis. -->
+  <AddMultiDogPenis.description>Ajoute un pénis supplémentaire.</AddMultiDogPenis.description>
+  <!-- EN: Adding penis. -->
+  <AddMultiDogPenis.jobString>Ajoute un pénis.</AddMultiDogPenis.jobString>
+  
+  <!-- EN: add canine vagina -->
+  <AddMultiDogVagina.label>ajouter un vagin canin</AddMultiDogVagina.label>
+  <!-- EN: Adds additional vagina. -->
+  <AddMultiDogVagina.description>Ajoute un vagin supplémentaire.</AddMultiDogVagina.description>
+  <!-- EN: Adding vagina. -->
+  <AddMultiDogVagina.jobString>Ajoute un vagin.</AddMultiDogVagina.jobString>
+  
+  <!-- EN: add dragon penis -->
+  <AddMultiDragonPenis.label>ajouter un pénis draconique</AddMultiDragonPenis.label>
+  <!-- EN: Adds additional penis. -->
+  <AddMultiDragonPenis.description>Ajoute un pénis supplémentaire.</AddMultiDragonPenis.description>
+  <!-- EN: Adding penis. -->
+  <AddMultiDragonPenis.jobString>Ajoute un pénis.</AddMultiDragonPenis.jobString>
+  
+  <!-- EN: add dragon vagina -->
+  <AddMultiDragonVagina.label>ajouter un vagin draconique</AddMultiDragonVagina.label>
+  <!-- EN: Adds additional vagina. -->
+  <AddMultiDragonVagina.description>Ajoute un vagin supplémentaire.</AddMultiDragonVagina.description>
+  <!-- EN: Adding vagina. -->
+  <AddMultiDragonVagina.jobString>Ajoute un vagin.</AddMultiDragonVagina.jobString>
+  
+  <!-- EN: add hemipenis -->
+  <AddMultiHemiPenis.label>ajouter un pénis hémipénis</AddMultiHemiPenis.label>
+  <!-- EN: Adds additional penis. -->
+  <AddMultiHemiPenis.description>Ajoute un pénis supplémentaire.</AddMultiHemiPenis.description>
+  <!-- EN: Adding penis. -->
+  <AddMultiHemiPenis.jobString>Ajoute un pénis.</AddMultiHemiPenis.jobString>
+  
+  <!-- EN: add equine penis -->
+  <AddMultiHorsePenis.label>ajouter un pénis équin</AddMultiHorsePenis.label>
+  <!-- EN: Adds additional penis. -->
+  <AddMultiHorsePenis.description>Ajoute un pénis supplémentaire.</AddMultiHorsePenis.description>
+  <!-- EN: Adding penis. -->
+  <AddMultiHorsePenis.jobString>Ajoute un pénis.</AddMultiHorsePenis.jobString>
+  
+  <!-- EN: add equine vagina -->
+  <AddMultiHorseVagina.label>ajouter un vagin équin</AddMultiHorseVagina.label>
+  <!-- EN: Adds additional vagina. -->
+  <AddMultiHorseVagina.description>Ajoute un vagin supplémentaire.</AddMultiHorseVagina.description>
+  <!-- EN: Adding vagina. -->
+  <AddMultiHorseVagina.jobString>Ajoute un vagin.</AddMultiHorseVagina.jobString>
+  
+  <!-- EN: add insect anus -->
+  <AddMultiInsectAnus.label>ajouter un anus d'insecte</AddMultiInsectAnus.label>
+  <!-- EN: Adds additional anus. -->
+  <AddMultiInsectAnus.description>Ajoute un anus supplémentaire.</AddMultiInsectAnus.description>
+  <!-- EN: Adding anus. -->
+  <AddMultiInsectAnus.jobString>Ajoute un anus.</AddMultiInsectAnus.jobString>
+  
+  <!-- EN: add female ovipositor -->
+  <AddMultiOvipositorF.label>ajouter un ovipositeur femelle</AddMultiOvipositorF.label>
+  <!-- EN: Adds additional female ovipositor. -->
+  <AddMultiOvipositorF.description>Ajoute un ovipositeur femelle supplémentaire.</AddMultiOvipositorF.description>
+  <!-- EN: Adding female ovipositor. -->
+  <AddMultiOvipositorF.jobString>Ajoute un ovipositeur femelle.</AddMultiOvipositorF.jobString>
+  
+  <!-- EN: add male ovipositor -->
+  <AddMultiOvipositorM.label>ajouter un ovipositeur mâle</AddMultiOvipositorM.label>
+  <!-- EN: Adds additional male ovipositor. -->
+  <AddMultiOvipositorM.description>Ajoute un ovipositeur mâle supplémentaire.</AddMultiOvipositorM.description>
+  <!-- EN: Adding male ovipositor. -->
+  <AddMultiOvipositorM.jobString>Ajoute un ovipositeur mâle.</AddMultiOvipositorM.jobString>
+  
+  <!-- EN: add penis -->
+  <AddMultiPenis.label>ajouter un pénis</AddMultiPenis.label>
+  <!-- EN: Adds additional penis. -->
+  <AddMultiPenis.description>Ajoute un pénis supplémentaire.</AddMultiPenis.description>
+  <!-- EN: Adding penis. -->
+  <AddMultiPenis.jobString>Ajoute un pénis.</AddMultiPenis.jobString>
+  
+  <!-- EN: add procyonine penis -->
+  <AddMultiRaccoonPenis.label>ajouter un pénis de procyonidé</AddMultiRaccoonPenis.label>
+  <!-- EN: Adds additional penis. -->
+  <AddMultiRaccoonPenis.description>Ajoute un pénis supplémentaire.</AddMultiRaccoonPenis.description>
+  <!-- EN: Adding penis. -->
+  <AddMultiRaccoonPenis.jobString>Ajoute un pénis.</AddMultiRaccoonPenis.jobString>
+  
+  <!-- EN: add vagina -->
+  <AddMultiVagina.label>ajouter un vagin</AddMultiVagina.label>
+  <!-- EN: Adds additional vagina. -->
+  <AddMultiVagina.description>Ajoute un vagin supplémentaire.</AddMultiVagina.description>
+  <!-- EN: Adding vagina. -->
+  <AddMultiVagina.jobString>Ajoute un vagin.</AddMultiVagina.jobString>
+  
+</LanguageData>

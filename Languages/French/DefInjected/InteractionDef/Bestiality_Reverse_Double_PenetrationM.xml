@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: double penetration -->
+  <Bestiality_Reverse_Double_Penetration_M.label>double pénétration</Bestiality_Reverse_Double_Penetration_M.label>
+  <!-- EN:
+    <li>r_logentry->Presented to [RECIPIENT_nameDef].</li>
+  -->
+  <Bestiality_Reverse_Double_Penetration_M.logRulesInitiator.rulesStrings>
+    <li>r_logentry(INITIATOR_gender!=Female)->S'est proposé à [RECIPIENT_nameDef].</li>
+    <li>r_logentry(INITIATOR_gender==Female)->S'est proposée à [RECIPIENT_nameDef].</li>
+  </Bestiality_Reverse_Double_Penetration_M.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Double-penetrated [INITIATOR_nameDef].</li>
+  -->
+  <Bestiality_Reverse_Double_Penetration_M.logRulesRecipient.rulesStrings>
+    <li>r_logentry->A double-pénétré [INITIATOR_nameDef].</li>
+  </Bestiality_Reverse_Double_Penetration_M.logRulesRecipient.rulesStrings>
+  <!-- EN: Get double-penetrated -->
+  <Bestiality_Reverse_Double_Penetration_M.modExtensions.0.RMBLabel>est double-pénétré(e)</Bestiality_Reverse_Double_Penetration_M.modExtensions.0.RMBLabel>
+  
+</LanguageData>

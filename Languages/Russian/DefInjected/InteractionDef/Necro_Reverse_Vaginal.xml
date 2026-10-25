@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Necro_Reverse_Vaginal.label>вагинальный секс</Necro_Reverse_Vaginal.label>
+  <Necro_Reverse_Vaginal.logRulesInitiator.rulesStrings.0>r_logentry->Вагинально насилует [RECIPIENT_nameDef].</Necro_Reverse_Vaginal.logRulesInitiator.rulesStrings.0>
+  <Necro_Reverse_Vaginal.logRulesRecipient.rulesStrings.0>r_logentry->Подвергается вагинальному изнасилованию от [INITIATOR_nameDef].</Necro_Reverse_Vaginal.logRulesRecipient.rulesStrings.0>
+  <Necro_Reverse_Vaginal.modExtensions.0.RMBLabel>Вагинальный секс</Necro_Reverse_Vaginal.modExtensions.0.RMBLabel>
+
+
+</LanguageData>

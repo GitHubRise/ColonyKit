@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: masturbation_breastjob -->
+  <Masturbation_Breastjob.label>branlette espagnole</Masturbation_Breastjob.label>
+  <!-- EN:
+    <li>r_logentry->Masturbated.</li>
+  -->
+  <Masturbation_Breastjob.logRulesInitiator.rulesStrings>
+    <li>r_logentry(INITIATOR_gender!=Female)->S'est branlé avec ses seins.</li>
+    <li>r_logentry(INITIATOR_gender==Female)->S'est branlée avec ses seins.</li>
+  </Masturbation_Breastjob.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Masturbated.</li>
+  -->
+  <Masturbation_Breastjob.logRulesRecipient.rulesStrings>
+    <li>r_logentry(RECIPIENT_gender!=Female)->S'est branlé avec ses seins.</li>
+    <li>r_logentry(RECIPIENT_gender==Female)->S'est branlée avec ses seins.</li>
+  </Masturbation_Breastjob.logRulesRecipient.rulesStrings>
+  <!-- EN: Use breasts -->
+  <Masturbation_Breastjob.modExtensions.0.RMBLabel>Se sert de ses seins</Masturbation_Breastjob.modExtensions.0.RMBLabel>
+  
+</LanguageData>

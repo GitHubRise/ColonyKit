@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: generic anus -->
+  <GenericAnus.label>anus générique</GenericAnus.label>
+  <!-- EN: An anus. Generic placeholder part for an unsupported race. -->
+  <GenericAnus.description>Un anus. Élément générique de remplacement pour une race non prise en charge.</GenericAnus.description>
+  <!-- EN: an anus -->
+  <GenericAnus.labelNoun>un anus</GenericAnus.labelNoun>
+  <!-- EN: Micro -->
+  <GenericAnus.stages.Micro.label>Micro - XS</GenericAnus.stages.Micro.label>
+  <!-- EN: Tight -->
+  <GenericAnus.stages.Tight.label>Serré - S</GenericAnus.stages.Tight.label>
+  <!-- EN: Average -->
+  <GenericAnus.stages.Average.label>Moyen - M</GenericAnus.stages.Average.label>
+  <!-- EN: Accommodating -->
+  <GenericAnus.stages.Accommodating.label>Accommodant - L</GenericAnus.stages.Accommodating.label>
+  <!-- EN: Cavernous -->
+  <GenericAnus.stages.Cavernous.label>Caverneux - XL</GenericAnus.stages.Cavernous.label>
+  <!-- EN: Abyssal -->
+  <GenericAnus.stages.Abyssal.label>Abyssal - XXL</GenericAnus.stages.Abyssal.label>
+  
+  <!-- EN: generic breasts -->
+  <GenericBreasts.label>seins génériques</GenericBreasts.label>
+  <!-- EN: A pair of breasts. Generic placeholder part for an unsupported race. -->
+  <GenericBreasts.description>Une paire de seins. Élément générique de remplacement pour une race non prise en charge.</GenericBreasts.description>
+  <!-- EN: breasts -->
+  <GenericBreasts.labelNoun>seins</GenericBreasts.labelNoun>
+  <!-- EN: Nipples -->
+  <GenericBreasts.stages.Nipples.label>Mamelons</GenericBreasts.stages.Nipples.label>
+  <!-- EN: Tiny -->
+  <GenericBreasts.stages.Tiny.label>Minuscules - 0</GenericBreasts.stages.Tiny.label>
+  <!-- EN: Small -->
+  <GenericBreasts.stages.Small.label>Petits - 1</GenericBreasts.stages.Small.label>
+  <!-- EN: Average -->
+  <GenericBreasts.stages.Average.label>Moyens - 2</GenericBreasts.stages.Average.label>
+  <!-- EN: Large -->
+  <GenericBreasts.stages.Large.label>Grands - 3</GenericBreasts.stages.Large.label>
+  <!-- EN: Huge -->
+  <GenericBreasts.stages.Huge.label>Énormes - 4</GenericBreasts.stages.Huge.label>
+  <!-- EN: Enormous -->
+  <GenericBreasts.stages.Enormous.label>Immenses - 5</GenericBreasts.stages.Enormous.label>
+  <!-- EN: Massive -->
+  <GenericBreasts.stages.Massive.label>Massifs - 6</GenericBreasts.stages.Massive.label>
+  <!-- EN: Gargantuan -->
+  <GenericBreasts.stages.Gargantuan.label>Gargantuesques - 7</GenericBreasts.stages.Gargantuan.label>
+  <!-- EN: Colossal -->
+  <GenericBreasts.stages.Colossal.label>Colossaux - 8</GenericBreasts.stages.Colossal.label>
+  <!-- EN: Titanic -->
+  <GenericBreasts.stages.Titanic.label>Titanesques - 9</GenericBreasts.stages.Titanic.label>
+  <!-- EN: Astronomical -->
+  <GenericBreasts.stages.Astronomical.label>Astronomiques - 10</GenericBreasts.stages.Astronomical.label>
+  
+  <!-- EN: generic penis -->
+  <GenericPenis.label>pénis générique</GenericPenis.label>
+  <!-- EN: A penis. Generic placeholder part for an unsupported race. -->
+  <GenericPenis.description>Un pénis. Élément générique de remplacement pour une race non prise en charge.</GenericPenis.description>
+  <!-- EN: a penis -->
+  <GenericPenis.labelNoun>un pénis</GenericPenis.labelNoun>
+  <!-- EN: Micro -->
+  <GenericPenis.stages.Micro.label>Micro - XS</GenericPenis.stages.Micro.label>
+  <!-- EN: Small -->
+  <GenericPenis.stages.Small.label>Petit - S</GenericPenis.stages.Small.label>
+  <!-- EN: Average -->
+  <GenericPenis.stages.Average.label>Moyen - M</GenericPenis.stages.Average.label>
+  <!-- EN: Large -->
+  <GenericPenis.stages.Large.label>Grand - L</GenericPenis.stages.Large.label>
+  <!-- EN: Huge -->
+  <GenericPenis.stages.Huge.label>Énorme - XL</GenericPenis.stages.Huge.label>
+  <!-- EN: Towering -->
+  <GenericPenis.stages.Towering.label>Géant - XXL</GenericPenis.stages.Towering.label>
+  
+  <!-- EN: generic vagina -->
+  <GenericVagina.label>vagin générique</GenericVagina.label>
+  <!-- EN: A vagina. Generic placeholder part for an unsupported race. -->
+  <GenericVagina.description>Un vagin. Élément générique de remplacement pour une race non prise en charge.</GenericVagina.description>
+  <!-- EN: a vagina -->
+  <GenericVagina.labelNoun>un vagin</GenericVagina.labelNoun>
+  <!-- EN: Micro -->
+  <GenericVagina.stages.Micro.label>Micro - XS</GenericVagina.stages.Micro.label>
+  <!-- EN: Tight -->
+  <GenericVagina.stages.Tight.label>Serré - S</GenericVagina.stages.Tight.label>
+  <!-- EN: Average -->
+  <GenericVagina.stages.Average.label>Moyen - M</GenericVagina.stages.Average.label>
+  <!-- EN: Accommodating -->
+  <GenericVagina.stages.Accommodating.label>Accommodant - L</GenericVagina.stages.Accommodating.label>
+  <!-- EN: Cavernous -->
+  <GenericVagina.stages.Cavernous.label>Caverneux - XL</GenericVagina.stages.Cavernous.label>
+  <!-- EN: Abyssal -->
+  <GenericVagina.stages.Abyssal.label>Abyssal - XXL</GenericVagina.stages.Abyssal.label>
+  
+</LanguageData>

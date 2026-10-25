@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 原版机械族。机械体会植入东西。 -->
+  <RJW_MechanoidImplant.description>放入宿主肉穴裡的小型計算機。可以分析生命體徵和位置數據，並將這些資訊反饋給機械族的AI偽人格核心。</RJW_MechanoidImplant.description>
+
+  <!-- 原版机械族。机械体会植入东西。 -->
+  <RJW_MechanoidImplant.label>植入式機械體</RJW_MechanoidImplant.label>
+</LanguageData>

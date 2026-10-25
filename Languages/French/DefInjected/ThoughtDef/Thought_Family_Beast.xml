@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: killed my brother -->
+  <KilledMyBrother_Beast.stages.killed_my_brother.label>j'ai tué mon frère</KilledMyBrother_Beast.stages.killed_my_brother.label>
+  
+  <!-- EN: killed my daughter -->
+  <KilledMyDaughter_Beast.stages.killed_my_daughter.label>j'ai tué ma sœur</KilledMyDaughter_Beast.stages.killed_my_daughter.label>
+  
+  <!-- EN: killed my father -->
+  <KilledMyFather_Beast.stages.killed_my_father.label>j'ai tué mon père</KilledMyFather_Beast.stages.killed_my_father.label>
+  
+  <!-- EN: killed my kin -->
+  <KilledMyKin_Beast.stages.killed_my_kin.label>j'ai tué un parent</KilledMyKin_Beast.stages.killed_my_kin.label>
+  
+  <!-- EN: killed my mother -->
+  <KilledMyMother_Beast.stages.killed_my_mother.label>j'ai tué ma mère</KilledMyMother_Beast.stages.killed_my_mother.label>
+  
+  <!-- EN: killed my sister -->
+  <KilledMySister_Beast.stages.killed_my_sister.label>j'ai tué ma sœur</KilledMySister_Beast.stages.killed_my_sister.label>
+  
+  <!-- EN: killed my son -->
+  <KilledMySon_Beast.stages.killed_my_son.label>j'ai tué mon fils</KilledMySon_Beast.stages.killed_my_son.label>
+  
+  <!-- EN: my aunt {0} died -->
+  <MyAuntDied_Beast.stages.my_aunt_died.label>ma tante {0} est décédée</MyAuntDied_Beast.stages.my_aunt_died.label>
+  <!-- EN: My aunt died. -->
+  <MyAuntDied_Beast.stages.my_aunt_died.description>Ma tante est décédée.</MyAuntDied_Beast.stages.my_aunt_died.description>
+  
+  <!-- EN: my aunt {0} lost -->
+  <MyAuntLost_Beast.stages.my_aunt_lost.label>ma tante {0} a disparu</MyAuntLost_Beast.stages.my_aunt_lost.label>
+  <!-- EN: My aunt has gone missing. I hope she will get back to us someday. -->
+  <MyAuntLost_Beast.stages.my_aunt_lost.description>Ma tante a disparu. J'espère qu'elle reviendra un jour parmi nous.</MyAuntLost_Beast.stages.my_aunt_lost.description>
+  
+  <!-- EN: my brother {0} died -->
+  <MyBrotherDied_Beast.stages.my_brother_died.label>mon frère {0} est décédé</MyBrotherDied_Beast.stages.my_brother_died.label>
+  <!-- EN: My brother died. My own flesh and blood... -->
+  <MyBrotherDied_Beast.stages.my_brother_died.description>Mon frère est mort. Mon propre sang...</MyBrotherDied_Beast.stages.my_brother_died.description>
+  
+  <!-- EN: my brother {0} lost -->
+  <MyBrotherLost_Beast.stages.my_brother_lost.label>mon frère {0} a disparu</MyBrotherLost_Beast.stages.my_brother_lost.label>
+  <!-- EN: My brother has gone missing. I hope he will get back to us someday. -->
+  <MyBrotherLost_Beast.stages.my_brother_lost.description>Mon frère a disparu. J'espère qu'il reviendra un jour parmi nous.</MyBrotherLost_Beast.stages.my_brother_lost.description>
+  
+  <!-- EN: my cousin {0} died -->
+  <MyCousinDied_Beast.stages.my_cousin_died.label>{1_gender ? mon : ma : mon/ma} cousin{1_gender ? : e : (e)} {0} est décédé{1_gender ? : e : (e)}</MyCousinDied_Beast.stages.my_cousin_died.label>
+  <!-- EN: My cousin died. My own flesh and blood... -->
+  <MyCousinDied_Beast.stages.my_cousin_died.description>{OTHERPAWN_gender ? Mon : Ma : Mon/ma} cousin{OTHERPAWN_gender ? : e : (e)} est mort{OTHERPAWN_gender ? : e : (e)}. Mon propre sang...</MyCousinDied_Beast.stages.my_cousin_died.description>
+  
+  <!-- EN: my cousin {0} lost -->
+  <MyCousinLost_Beast.stages.my_cousin_lost.label>{1_gender ? mon : ma : mon/ma} cousin{1_gender ? : e : (e)} {0} a disparu</MyCousinLost_Beast.stages.my_cousin_lost.label>
+  <!-- EN: My cousin has gone missing. -->
+  <MyCousinLost_Beast.stages.my_cousin_lost.description>{OTHERPAWN_gender ? Mon : Ma : Mon/ma} cousin{OTHERPAWN_gender ? : e : (e)} a disparu. J'espère qu'{OTHERPAWN_gender ? il : elle : il/elle} reviendra un jour parmi nous.</MyCousinLost_Beast.stages.my_cousin_lost.description>
+  
+  <!-- EN: my daughter {0} died -->
+  <MyDaughterDied_Beast.stages.my_daughter_died.label>ma fille {0} est décédée</MyDaughterDied_Beast.stages.my_daughter_died.label>
+  <!-- EN: My daughter is dead. My own flesh and blood... -->
+  <MyDaughterDied_Beast.stages.my_daughter_died.description>Ma fille est morte. Mon propre sang...</MyDaughterDied_Beast.stages.my_daughter_died.description>
+  
+  <!-- EN: my daughter {0} lost -->
+  <MyDaughterLost_Beast.stages.my_daughter_lost.label>ma fille {0} a disparu</MyDaughterLost_Beast.stages.my_daughter_lost.label>
+  <!-- EN: My daughter has gone missing. I hope she will get back to us someday. -->
+  <MyDaughterLost_Beast.stages.my_daughter_lost.description>Ma fille a disparu. J'espère qu'elle reviendra un jour parmi nous.</MyDaughterLost_Beast.stages.my_daughter_lost.description>
+  
+  <!-- EN: my grandchild {0} died -->
+  <MyGrandchildDied_Beast.stages.my_grandchild_died.label>{1_gender ? mon : ma : mon/ma} grand{1_gender ? : e : (e)} {1_gender ? : fils : fille} {0} est décédé{1_gender ? : e : (e)}</MyGrandchildDied_Beast.stages.my_grandchild_died.label>
+  <!-- EN: My grandchild died. My own flesh and blood... -->
+  <MyGrandchildDied_Beast.stages.my_grandchild_died.description>{OTHERPAWN_gender ? Mon : Ma : Mon/ma} grand{OTHERPAWN_gender ? : e : (e)} {OTHERPAWN_gender ? fils : fille} {0} est mort{OTHERPAWN_gender ? : e : (e)}. Mon propre sang...</MyGrandchildDied_Beast.stages.my_grandchild_died.description>
+  
+  <!-- EN: my grandchild {0} lost -->
+  <MyGrandchildLost_Beast.stages.my_grandchild_lost.label>{1_gender ? mon : ma : mon/ma} grand{1_gender ? : e : (e)} {1_gender ? : fils : fille} {0} a disparu</MyGrandchildLost_Beast.stages.my_grandchild_lost.label>
+  <!-- EN: My grandchild has gone missing. I hope they will get back to us someday. -->
+  <MyGrandchildLost_Beast.stages.my_grandchild_lost.description>{OTHERPAWN_gender ? Mon : Ma : Mon/ma} grand{OTHERPAWN_gender ? : e : (e)} {OTHERPAWN_gender ? fils : fille} {0} a disparu. J'espère qu'{OTHERPAWN_gender ? il : elle : il/elle} reviendra un jour parmi nous.</MyGrandchildLost_Beast.stages.my_grandchild_lost.description>
+  
+  <!-- EN: my grandparent {0} died -->
+  <MyGrandparentDied_Beast.stages.my_grandparent_died.label>{1_gender ? mon : ma : mon/ma} grand-{1_gender ? père : mère} {0} est décédé{1_gender ? : e : (e)}</MyGrandparentDied_Beast.stages.my_grandparent_died.label>
+  <!-- EN: My grandparent died. -->
+  <MyGrandparentDied_Beast.stages.my_grandparent_died.description>{OTHERPAWN_gender ? Mon : Ma : Mon/ma} grand-{OTHERPAWN_gender ? père : mère} {0} est mort{OTHERPAWN_gender ? : e : (e)}.</MyGrandparentDied_Beast.stages.my_grandparent_died.description>
+  
+  <!-- EN: my grandparent {0} lost -->
+  <MyGrandparentLost_Beast.stages.my_grandparent_lost.label>{1_gender ? mon : ma : mon/ma} grand-{1_gender ? père : mère}{1_gender ? mon : ma : mon/ma} grand-{1_gender ? père : mère} {0} a disparu</MyGrandparentLost_Beast.stages.my_grandparent_lost.label>
+  <!-- EN: My grandparent has gone missing. -->
+  <MyGrandparentLost_Beast.stages.my_grandparent_lost.description>{OTHERPAWN_gender ? Mon : Ma : Mon/ma} grand-{OTHERPAWN_gender ? père : mère} {0} a disparu.</MyGrandparentLost_Beast.stages.my_grandparent_lost.description>
+  
+  <!-- EN: my half-sibling {0} died -->
+  <MyHalfSiblingDied_Beast.stages.my_halfsibling_died.label>{1_gender ? mon : ma : mon/ma} demi-{1_gender ? frère : sœur} {0} est décédé{1_gender ? : e : (e)}</MyHalfSiblingDied_Beast.stages.my_halfsibling_died.label>
+  <!-- EN: My half-sibling died. My own flesh and blood... -->
+  <MyHalfSiblingDied_Beast.stages.my_halfsibling_died.description>{OTHERPAWN_gender ? Mon : Ma : Mon/ma} demi-{OTHERPAWN_gender ? frère : sœur} {0} est mort{OTHERPAWN_gender ? : e : (e)}. Mon propre sang...</MyHalfSiblingDied_Beast.stages.my_halfsibling_died.description>
+  
+  <!-- EN: my half-sibling {0} lost -->
+  <MyHalfSiblingLost_Beast.stages.my_halfsibling_lost.label>{1_gender ? mon : ma : mon/ma} demi-{1_gender ? frère : sœur} {0} a disparu</MyHalfSiblingLost_Beast.stages.my_halfsibling_lost.label>
+  <!-- EN: My half-sibling has gone missing. -->
+  <MyHalfSiblingLost_Beast.stages.my_halfsibling_lost.description>{OTHERPAWN_gender ? Mon : Ma : Mon/ma} demi-{OTHERPAWN_gender ? frère : sœur} {0} a disparu.</MyHalfSiblingLost_Beast.stages.my_halfsibling_lost.description>
+  
+  <!-- EN: my kin {0} died -->
+  <MyKinDied_Beast.stages.my_kin_died.label>{1_gender ? mon : ma : mon/ma} parent{1_gender ? : e : (e)} {0} est décédé{1_gender ? : e : (e)}</MyKinDied_Beast.stages.my_kin_died.label>
+  <!-- EN: My kin died. -->
+  <MyKinDied_Beast.stages.my_kin_died.description>{OTHERPAWN_gender ? Mon : Ma : Mon/ma} parent{OTHERPAWN_gender ? : e : (e)} est mort{OTHERPAWN_gender ? : e : (e)}.</MyKinDied_Beast.stages.my_kin_died.description>
+  
+  <!-- EN: my kin {0} lost -->
+  <MyKinLost_Beast.stages.my_kin_lost.label>{1_gender ? mon : ma : mon/ma} parent{1_gender ? : e : (e)} {0} a disparu</MyKinLost_Beast.stages.my_kin_lost.label>
+  <!-- EN: My kin has gone missing. -->
+  <MyKinLost_Beast.stages.my_kin_lost.description>{OTHERPAWN_gender ? Mon : Ma : Mon/ma} parent{OTHERPAWN_gender ? : e : (e)} a disparu.</MyKinLost_Beast.stages.my_kin_lost.description>
+  
+  <!-- EN: my nephew {0} died -->
+  <MyNephewDied_Beast.stages.my_nephew_died.label>mon neveu {0} est décédé</MyNephewDied_Beast.stages.my_nephew_died.label>
+  <!-- EN: My nephew died. Such a wonderful child. -->
+  <MyNephewDied_Beast.stages.my_nephew_died.description>Mon neveu est mort. C'était un si merveilleux enfant.</MyNephewDied_Beast.stages.my_nephew_died.description>
+  
+  <!-- EN: my nephew {0} lost -->
+  <MyNephewLost_Beast.stages.my_nephew_lost.label>mon neveu {0} a disparu</MyNephewLost_Beast.stages.my_nephew_lost.label>
+  <!-- EN: My nephew has gone missing. I hope he will get back to us someday. -->
+  <MyNephewLost_Beast.stages.my_nephew_lost.description>Mon neveu a disparu. J'espère qu'il reviendra un jour parmi nous.</MyNephewLost_Beast.stages.my_nephew_lost.description>
+  
+  <!-- EN: my niece {0} died -->
+  <MyNieceDied_Beast.stages.my_niece_died.label>ma nièce {0} est décédée</MyNieceDied_Beast.stages.my_niece_died.label>
+  <!-- EN: My niece died. Such a wonderful child. -->
+  <MyNieceDied_Beast.stages.my_niece_died.description>Ma nièce est morte. C'était une si merveilleuse enfant...</MyNieceDied_Beast.stages.my_niece_died.description>
+  
+  <!-- EN: my niece {0} lost -->
+  <MyNieceLost_Beast.stages.my_niece_lost.label>ma nièce {0} a disparu</MyNieceLost_Beast.stages.my_niece_lost.label>
+  <!-- EN: My niece has gone missing. I hope she will get back to us someday. -->
+  <MyNieceLost_Beast.stages.my_niece_lost.description>Ma nièce a disparu. J'espère qu'elle reviendra un jour parmi nous.</MyNieceLost_Beast.stages.my_niece_lost.description>
+  
+  <!-- EN: my sister {0} died -->
+  <MySisterDied_Beast.stages.my_sister_died.label>ma sœur {0} est décédée</MySisterDied_Beast.stages.my_sister_died.label>
+  <!-- EN: My sister died. My own flesh and blood... -->
+  <MySisterDied_Beast.stages.my_sister_died.description>Ma sœur est morte. Mon propre sang...</MySisterDied_Beast.stages.my_sister_died.description>
+  
+  <!-- EN: my sister {0} lost -->
+  <MySisterLost_Beast.stages.my_sister_lost.label>ma sœur {0} a disparu</MySisterLost_Beast.stages.my_sister_lost.label>
+  <!-- EN: My sister has gone missing. I hope she will get back to us someday. -->
+  <MySisterLost_Beast.stages.my_sister_lost.description>Ma sœur a disparu. J'espère qu'elle reviendra un jour parmi nous.</MySisterLost_Beast.stages.my_sister_lost.description>
+  
+  <!-- EN: my son {0} died -->
+  <MySonDied_Beast.stages.my_son_died.label>mon fils {0} est décédé</MySonDied_Beast.stages.my_son_died.label>
+  <!-- EN: My son is dead. My own flesh and blood... -->
+  <MySonDied_Beast.stages.my_son_died.description>Mon fils est mort. Mon propre sang...</MySonDied_Beast.stages.my_son_died.description>
+  
+  <!-- EN: my son {0} lost -->
+  <MySonLost_Beast.stages.my_son_lost.label>mon fils {0} a disparu</MySonLost_Beast.stages.my_son_lost.label>
+  <!-- EN: My son has gone missing. I hope he will get back to us someday. -->
+  <MySonLost_Beast.stages.my_son_lost.description>Mon fils a disparu. J'espère qu'il reviendra un jour parmi nous.</MySonLost_Beast.stages.my_son_lost.description>
+  
+  <!-- EN: my uncle {0} died -->
+  <MyUncleDied_Beast.stages.my_uncle_died.label>mon oncle {0} est décédé</MyUncleDied_Beast.stages.my_uncle_died.label>
+  <!-- EN: My uncle died. -->
+  <MyUncleDied_Beast.stages.my_uncle_died.description>Mon oncle est mort.</MyUncleDied_Beast.stages.my_uncle_died.description>
+  
+  <!-- EN: my uncle {0} lost -->
+  <MyUncleLost_Beast.stages.my_uncle_lost.label>mon oncle {0} a disparu</MyUncleLost_Beast.stages.my_uncle_lost.label>
+  <!-- EN: My uncle has gone missing. I hope he will get back to us someday. -->
+  <MyUncleLost_Beast.stages.my_uncle_lost.description>Mon oncle a disparu. J'espère qu'il reviendra un jour parmi nous.</MyUncleLost_Beast.stages.my_uncle_lost.description>
+  
+  <!-- EN: sold my kin -->
+  <SoldMyLovedOne_Beast.stages.sold_my_kin.label>j'ai vendu {1_gender ? un : une : un/une} parent{1_gender ? : e : (e)}</SoldMyLovedOne_Beast.stages.sold_my_kin.label>
+  
+</LanguageData>

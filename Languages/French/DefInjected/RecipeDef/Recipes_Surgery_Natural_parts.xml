@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: attach breasts -->
+  <AttachBreasts.label>attacher des seins</AttachBreasts.label>
+  <!-- EN: Attaches a pair of breasts, replaces other bodyparts if present. -->
+  <AttachBreasts.description>Attache une paire de seins, remplace les autres parties du corps si elles sont présentes.</AttachBreasts.description>
+  <!-- EN: Attaching a pair of breasts. -->
+  <AttachBreasts.jobString>Attache une paire de seins.</AttachBreasts.jobString>
+  
+  <!-- EN: attach feline penis -->
+  <AttachCatPenis.label>attacher un pénis félin</AttachCatPenis.label>
+  <!-- EN: Attaches a penis, replaces other bodyparts if present. -->
+  <AttachCatPenis.description>Attache un pénis, remplace d'autres parties du corps si elles sont présentes.</AttachCatPenis.description>
+  <!-- EN: Attaching penis. -->
+  <AttachCatPenis.jobString>Attache un pénis.</AttachCatPenis.jobString>
+  
+  <!-- EN: attach cloacal penis -->
+  <AttachCloacalPenis.label>attacher un pénis cloacal</AttachCloacalPenis.label>
+  <!-- EN: Attaches a penis, replaces other bodyparts if present. -->
+  <AttachCloacalPenis.description>Attache un pénis, remplace d'autres parties du corps si elles sont présentes.</AttachCloacalPenis.description>
+  <!-- EN: Attaching penis. -->
+  <AttachCloacalPenis.jobString>Attache un pénis.</AttachCloacalPenis.jobString>
+  
+  <!-- EN: attach crocodilian penis -->
+  <AttachCrocodilianPenis.label>attacher un pénis crocodilien</AttachCrocodilianPenis.label>
+  <!-- EN: Attaches a penis, replaces other bodyparts if present. -->
+  <AttachCrocodilianPenis.description>Attache un pénis, remplace d'autres parties du corps si elles sont présentes.</AttachCrocodilianPenis.description>
+  <!-- EN: Attaching penis. -->
+  <AttachCrocodilianPenis.jobString>Attache un pénis.</AttachCrocodilianPenis.jobString>
+  
+  <!-- EN: attach canine penis -->
+  <AttachDogPenis.label>attacher un pénis canin</AttachDogPenis.label>
+  <!-- EN: Attaches a penis, replaces other bodyparts if present. -->
+  <AttachDogPenis.description>Attache un pénis, remplace d'autres parties du corps si elles sont présentes.</AttachDogPenis.description>
+  <!-- EN: Attaching penis. -->
+  <AttachDogPenis.jobString>Attache un pénis.</AttachDogPenis.jobString>
+  
+  <!-- EN: attach dragon penis -->
+  <AttachDragonPenis.label>attacher un pénis draconique</AttachDragonPenis.label>
+  <!-- EN: Attaches a penis, replaces other bodyparts if present. -->
+  <AttachDragonPenis.description>Attache un pénis, remplace d'autres parties du corps si elles sont présentes.</AttachDragonPenis.description>
+  <!-- EN: Attaching penis. -->
+  <AttachDragonPenis.jobString>Attache un pénis.</AttachDragonPenis.jobString>
+  
+  <!-- EN: attach featureless chest -->
+  <AttachFeaturelesschest.label>attacher une poitrine sans rien</AttachFeaturelesschest.label>
+  <!-- EN: Attaches a smooth, non-mammalian chest, replaces other bodyparts if present. -->
+  <AttachFeaturelesschest.description>Ajoute une poitrine lisse, non mammifère, remplace les autres parties du corps si elles sont présentes.</AttachFeaturelesschest.description>
+  <!-- EN: Attaching featureless chest. -->
+  <AttachFeaturelesschest.jobString>Attache une poitrine sans rien.</AttachFeaturelesschest.jobString>
+  
+  <!-- EN: attach hemipenis -->
+  <AttachHemiPenis.label>attacher un hémipénis</AttachHemiPenis.label>
+  <!-- EN: Attaches a dual-shafted hemipenis. -->
+  <AttachHemiPenis.description>Attache un hémipénis à double tige.</AttachHemiPenis.description>
+  <!-- EN: Attaching hemipenes. -->
+  <AttachHemiPenis.jobString>Attache un hémipénis.</AttachHemiPenis.jobString>
+  
+  <!-- EN: attach equine penis -->
+  <AttachHorsePenis.label>attacher un pénis équin</AttachHorsePenis.label>
+  <!-- EN: Attaches a penis, replaces other bodyparts if present. -->
+  <AttachHorsePenis.description>Attache un pénis, remplace d'autres parties du corps si elles sont présentes.</AttachHorsePenis.description>
+  <!-- EN: Attaching penis. -->
+  <AttachHorsePenis.jobString>Attache un pénis.</AttachHorsePenis.jobString>
+  
+  <!-- EN: attach needle penis -->
+  <AttachNeedlePenis.label>attacher un pénis aiguille</AttachNeedlePenis.label>
+  <!-- EN: Attaches a penis, replaces other bodyparts if present. -->
+  <AttachNeedlePenis.description>Attache un pénis, remplace d'autres parties du corps si elles sont présentes.</AttachNeedlePenis.description>
+  <!-- EN: Attaching penis. -->
+  <AttachNeedlePenis.jobString>Attache un pénis.</AttachNeedlePenis.jobString>
+  
+  <!-- EN: attach male ovipositor -->
+  <AttachOvipositorM.label>attacher un ovipositeur mâle</AttachOvipositorM.label>
+  <!-- EN: Attaches a male Ovipositor, replaces other bodyparts if present. -->
+  <AttachOvipositorM.description>Attache un ovipositeur mâle, remplace les autres parties du corps si elles sont présentes.</AttachOvipositorM.description>
+  <!-- EN: Attaching male Ovipositor. -->
+  <AttachOvipositorM.jobString>Attache un ovipositeur mâle.</AttachOvipositorM.jobString>
+  
+  <!-- EN: attach penis -->
+  <AttachPenis.label>attacher un pénis</AttachPenis.label>
+  <!-- EN: Attaches a penis, replaces other bodyparts if present. -->
+  <AttachPenis.description>Attache un pénis, remplace d'autres parties du corps si elles sont présentes.</AttachPenis.description>
+  <!-- EN: Attaching penis. -->
+  <AttachPenis.jobString>Attache un pénis.</AttachPenis.jobString>
+  
+  <!-- EN: attach procyonine penis -->
+  <AttachRaccoonPenis.label>attacher un pénis de procyonidé</AttachRaccoonPenis.label>
+  <!-- EN: Attaches a penis, replaces other bodyparts if present. -->
+  <AttachRaccoonPenis.description>Attache un pénis, remplace d'autres parties du corps si elles sont présentes.</AttachRaccoonPenis.description>
+  <!-- EN: Attaching penis. -->
+  <AttachRaccoonPenis.jobString>Attache un pénis.</AttachRaccoonPenis.jobString>
+  
+  <!-- EN: attach rodent penis -->
+  <AttachRodentPenis.label>attacher un pénis de rongeur</AttachRodentPenis.label>
+  <!-- EN: Attaches a penis, replaces other bodyparts if present. -->
+  <AttachRodentPenis.description>Attache un pénis, remplace d'autres parties du corps si elles sont présentes.</AttachRodentPenis.description>
+  <!-- EN: Attaching penis. -->
+  <AttachRodentPenis.jobString>Attache un pénis.</AttachRodentPenis.jobString>
+  
+  <!-- EN: install average anus -->
+  <InstallAnus.label>installer un anus moyen</InstallAnus.label>
+  <!-- EN: Installs an anus, replaces other bodyparts if present. -->
+  <InstallAnus.description>Installe un anus, remplace d'autres parties du corps si elles sont présentes.</InstallAnus.description>
+  <!-- EN: Installing an anus. -->
+  <InstallAnus.jobString>Installe un anus.</InstallAnus.jobString>
+  
+  <!-- EN: install feline vagina -->
+  <InstallCatVagina.label>installer un vagin félin</InstallCatVagina.label>
+  <!-- EN: Installs a vagina, replaces other bodyparts if present. -->
+  <InstallCatVagina.description>Installe un vagin, remplace d'autres parties du corps si elles sont présentes.</InstallCatVagina.description>
+  <!-- EN: Installing vagina. -->
+  <InstallCatVagina.jobString>Installe un vagin.</InstallCatVagina.jobString>
+  
+  <!-- EN: install cloacal anus -->
+  <InstallCloacalAnus.label>installer un anus moyen</InstallCloacalAnus.label>
+  <!-- EN: Installs an anus, replaces other bodyparts if present. -->
+  <InstallCloacalAnus.description>Installe un anus, remplace d'autres parties du corps si elles sont présentes.</InstallCloacalAnus.description>
+  <!-- EN: Installing an anus. -->
+  <InstallCloacalAnus.jobString>Installe un anus.</InstallCloacalAnus.jobString>
+  
+  <!-- EN: install cloacal vagina -->
+  <InstallCloacalVagina.label>installer un vagin cloacal</InstallCloacalVagina.label>
+  <!-- EN: Installs a vagina, replaces other bodyparts if present. -->
+  <InstallCloacalVagina.description>Installe un vagin, remplace d'autres parties du corps si elles sont présentes.</InstallCloacalVagina.description>
+  <!-- EN: Installing vagina. -->
+  <InstallCloacalVagina.jobString>Installe un vagin.</InstallCloacalVagina.jobString>
+  
+  <!-- EN: install canine vagina -->
+  <InstallDogVagina.label>installer un vagin canin</InstallDogVagina.label>
+  <!-- EN: Installs a vagina, replaces other bodyparts if present. -->
+  <InstallDogVagina.description>Installe un vagin, remplace d'autres parties du corps si elles sont présentes.</InstallDogVagina.description>
+  <!-- EN: Installing vagina. -->
+  <InstallDogVagina.jobString>Installe un vagin.</InstallDogVagina.jobString>
+  
+  <!-- EN: install dragon vagina -->
+  <InstallDragonVagina.label>installer un vagin draconique</InstallDragonVagina.label>
+  <!-- EN: Installs a vagina, replaces other bodyparts if present. -->
+  <InstallDragonVagina.description>Installe un vagin, remplace d'autres parties du corps si elles sont présentes.</InstallDragonVagina.description>
+  <!-- EN: Installing vagina. -->
+  <InstallDragonVagina.jobString>Installe un vagin.</InstallDragonVagina.jobString>
+  
+  <!-- EN: install equine vagina -->
+  <InstallHorseVagina.label>installer un vagin équin</InstallHorseVagina.label>
+  <!-- EN: Installs a vagina, replaces other bodyparts if present. -->
+  <InstallHorseVagina.description>Installe un vagin, remplace d'autres parties du corps si elles sont présentes.</InstallHorseVagina.description>
+  <!-- EN: Installing vagina. -->
+  <InstallHorseVagina.jobString>Installe un vagin.</InstallHorseVagina.jobString>
+  
+  <!-- EN: install insect anus -->
+  <InstallInsectAnus.label>installer un anus d'insecte</InstallInsectAnus.label>
+  <!-- EN: Installs a Insect anus, replaces other bodyparts if present. -->
+  <InstallInsectAnus.description>Installe un anus d'insecte, remplace d'autres parties du corps si elles sont présentes.</InstallInsectAnus.description>
+  <!-- EN: Installing Insect anus. -->
+  <InstallInsectAnus.jobString>Installe un anus d'insecte.</InstallInsectAnus.jobString>
+  
+  <!-- EN: install narrow vagina -->
+  <InstallNarrowVagina.label>installer un vagin étroit</InstallNarrowVagina.label>
+  <!-- EN: Installs a vagina, replaces other bodyparts if present. -->
+  <InstallNarrowVagina.description>Installe un vagin, remplace d'autres parties du corps si elles sont présentes.</InstallNarrowVagina.description>
+  <!-- EN: Installing vagina. -->
+  <InstallNarrowVagina.jobString>Installe un vagin.</InstallNarrowVagina.jobString>
+  
+  <!-- EN: install female ovipositor -->
+  <InstallOvipositorF.label>installer un ovipositeur femelle</InstallOvipositorF.label>
+  <!-- EN: Installs a female Ovipositor. -->
+  <InstallOvipositorF.description>Installe un ovipositeur femelle.</InstallOvipositorF.description>
+  <!-- EN: Installing female Ovipositor. -->
+  <InstallOvipositorF.jobString>Installe un ovipositeur femelle.</InstallOvipositorF.jobString>
+  
+  <!-- EN: install rodent vagina -->
+  <InstallRodentVagina.label>installer un vagin de rongeur</InstallRodentVagina.label>
+  <!-- EN: Installs a vagina, replaces other bodyparts if present. -->
+  <InstallRodentVagina.description>Installe un vagin, remplace d'autres parties du corps si elles sont présentes.</InstallRodentVagina.description>
+  <!-- EN: Installing vagina. -->
+  <InstallRodentVagina.jobString>Installe un vagin.</InstallRodentVagina.jobString>
+  
+  <!-- EN: install vagina -->
+  <InstallVagina.label>installer un vagin</InstallVagina.label>
+  <!-- EN: Installs a vagina, replaces other bodyparts if present. -->
+  <InstallVagina.description>Installe un vagin, remplace d'autres parties du corps si elles sont présentes.</InstallVagina.description>
+  <!-- EN: Installing vagina. -->
+  <InstallVagina.jobString>Installe un vagin.</InstallVagina.jobString>
+  
+</LanguageData>

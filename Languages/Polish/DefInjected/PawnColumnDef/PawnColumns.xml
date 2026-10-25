@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RJW_Gender.label>płeć RJW</RJW_Gender.label>
+  <RJW_Gender.headerTip>Plec RJW</RJW_Gender.headerTip>
+  <IsSlaveRJW.label>niewolnik</IsSlaveRJW.label>
+  <IsSlaveRJW.headerTip>Czy pionek jest niewolnikiem?</IsSlaveRJW.headerTip>
+  <IsPrisonerRJW.label>wiezien</IsPrisonerRJW.label>
+  <IsPrisonerRJW.headerTip>Czy pionek jest wiezniem?</IsPrisonerRJW.headerTip>
+</LanguageData>

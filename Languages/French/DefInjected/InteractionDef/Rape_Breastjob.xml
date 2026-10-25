@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: breastjob -->
+  <Rape_Breastjob.label>branlette espagnole</Rape_Breastjob.label>
+  <!-- EN:
+    <li>r_logentry->Forced [RECIPIENT_nameDef] to give a breastjob.</li>
+  -->
+  <Rape_Breastjob.logRulesInitiator.rulesStrings>
+    <li>r_logentry->A forcé [RECIPIENT_nameDef] à lui faire une branlette espagnole.</li>
+  </Rape_Breastjob.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Was forced to give a breastjob to [INITIATOR_nameDef].</li>
+  -->
+  <Rape_Breastjob.logRulesRecipient.rulesStrings>
+    <li>r_logentry(RECIPIENT_gender!=Female)->A été forcé de faire une branlette espagnole à [INITIATOR_nameDef].</li>
+    <li>r_logentry(RECIPIENT_gender==Female)->A été forcée de faire une branlette espagnole à [INITIATOR_nameDef].</li>
+  </Rape_Breastjob.logRulesRecipient.rulesStrings>
+  <!-- EN: Get breastjob -->
+  <Rape_Breastjob.modExtensions.0.RMBLabel>Reçoit une branlette espagnole</Rape_Breastjob.modExtensions.0.RMBLabel>
+  
+</LanguageData>

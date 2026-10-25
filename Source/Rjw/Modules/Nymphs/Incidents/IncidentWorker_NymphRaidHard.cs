@@ -1,0 +1,50 @@
+#nullable disable
+
+﻿using Multiplayer.API;
+using RimWorld;
+using rjw.Modules.Shared.Logs;
+using UnityEngine;
+using Verse;
+
+namespace rjw.Modules.Nymphs.Incidents
+{
+	public class IncidentWorker_NymphRaidHard : IncidentWorker_BaseNymphRaid
+	{
+		private static ILog _log = LogManager.GetLogger<IncidentWorker_NymphRaidHard, NymphLogProvider>();
+
+		protected override float ThreatPointMultiplier => 1.5f;
+
+		[SyncMethod]
+		protected override bool CanFireNowSub(IncidentParms parms)
+		{
+			//该事件已被禁用，不要触发！
+			if (RJWSettings.NymphRaidHard == false)
+			{
+				_log.Debug("The incident can't fire as it is disabled in RJW settings");
+				return false;
+			}
+
+			return base.CanFireNowSub(parms);
+		}
+		protected override int GetNymphCount(IncidentParms parms, Map map)
+		{
+			int count;
+
+			//计算花痴的数量
+			if (RJWSettings.NymphRaidRP)
+			{
+				count = base.GetNymphCount(parms, map);
+			}
+			else
+			{
+				count = map.mapPawns.AllPawnsSpawnedCount;
+				//限制上限
+				count = Mathf.Min(count, 1000);
+				//限制下限
+				count = Mathf.Max(count, 1);
+			}
+
+			return count;
+		}
+	}
+}

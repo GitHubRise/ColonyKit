@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Infertile -->
+  <DecreasedFertility.label>Infertile</DecreasedFertility.label>
+  <!-- EN: Low fertility, not for baby making. -->
+  <DecreasedFertility.description>Faible fertilité, pas pour faire des bébés.</DecreasedFertility.description>
+  
+  <!-- EN: Archotech fertility enhancer -->
+  <FertilityEnhancer.label>Stimulateur de fertilité archotech</FertilityEnhancer.label>
+  <!-- EN: A complex device that increases the likelihood of pregnancy. -->
+  <FertilityEnhancer.description>Un dispositif complexe qui augmente les chances de grossesse.</FertilityEnhancer.description>
+  
+  <!-- EN: Archotech pregnancy blocker -->
+  <ImpregnationBlocker.label>Bloqueur de grossesse archotech</ImpregnationBlocker.label>
+  <!-- EN: A complex device that prevents fertilization and pregnancy. -->
+  <ImpregnationBlocker.description>Un dispositif complexe qui empêche la fécondation et la grossesse.</ImpregnationBlocker.description>
+  
+  <!-- EN: Fertile -->
+  <IncreasedFertility.label>Fertile</IncreasedFertility.label>
+  <!-- EN: Increased fertility, for baby making. -->
+  <IncreasedFertility.description>Augmentation de la fertilité, pour faire un bébé.</IncreasedFertility.description>
+  
+  <!-- EN: IUD -->
+  <RJW_IUD.label>Stérilet</RJW_IUD.label>
+  <!-- EN: A small silver device inserted into the womb that greatly reduces the chance of pregnancy. -->
+  <RJW_IUD.description>Un petit dispositif intra-utérin en argent, inséré dans l'utérus, qui réduit considérablement le risque de grossesse.</RJW_IUD.description>
+  
+</LanguageData>

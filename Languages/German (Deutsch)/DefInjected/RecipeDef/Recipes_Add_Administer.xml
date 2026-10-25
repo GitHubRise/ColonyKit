@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 特殊：来自药品（含 <ingestible> 和 <drugCategory> 的物品）的这些配方，由 RimTrans 生成 -->
+
+  <Administer_Aphrodisiac.label>Aphrodisia verabreichen</Administer_Aphrodisiac.label>
+  <Administer_Aphrodisiac.jobString>Verabreicht Aphrodisia.</Administer_Aphrodisiac.jobString>
+
+  <Administer_RJW_Contraceptive.label>Verhütungspille verabreichen</Administer_RJW_Contraceptive.label>
+  <Administer_RJW_Contraceptive.jobString>Verabreicht Verhütungspille.</Administer_RJW_Contraceptive.jobString>
+
+  <Administer_RJW_FertPill.label>Fruchtbarkeitsmittel verabreichen</Administer_RJW_FertPill.label>
+  <Administer_RJW_FertPill.jobString>Verabreicht Fruchtbarkeitsmittel.</Administer_RJW_FertPill.jobString>
+
+  <Administer_HumpShroom.label>Bumspilz verabreichen</Administer_HumpShroom.label>
+  <Administer_HumpShroom.jobString>Verabreicht Bumspilz.</Administer_HumpShroom.jobString>
+
+
+</LanguageData>

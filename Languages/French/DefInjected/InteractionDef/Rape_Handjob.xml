@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: handjob -->
+  <Rape_Handjob.label>masturbation</Rape_Handjob.label>
+  <!-- EN:
+    <li>r_logentry->Forced [RECIPIENT_nameDef] to give a handjob.</li>
+  -->
+  <Rape_Handjob.logRulesInitiator.rulesStrings>
+    <li>r_logentry->A forcé [RECIPIENT_nameDef] à lui faire une masturbation.</li>
+  </Rape_Handjob.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Was forced by [INITIATOR_nameDef] to give a handjob.</li>
+  -->
+  <Rape_Handjob.logRulesRecipient.rulesStrings>
+    <li>r_logentry(RECIPIENT_gender!=Female)->A été forcé par [INITIATOR_nameDef] à lui faire une masturbation.</li>
+    <li>r_logentry(RECIPIENT_gender==Female)->A été forcée par [INITIATOR_nameDef] à lui faire une masturbation.</li>
+  </Rape_Handjob.logRulesRecipient.rulesStrings>
+  <!-- EN: Get handjob -->
+  <Rape_Handjob.modExtensions.0.RMBLabel>Se fait masturber</Rape_Handjob.modExtensions.0.RMBLabel>
+  
+</LanguageData>

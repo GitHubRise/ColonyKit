@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: <color=#FF9900>Hypersexual</color> -->
+  <Nymphomaniac.degreeDatas.hypersexual.label>Hypersexuel</Nymphomaniac.degreeDatas.hypersexual.label>
+  <!-- EN: [PAWN_nameDef] loves sex and always wants more. Can regain psyfocus only through sex. -->
+  <Nymphomaniac.degreeDatas.hypersexual.description>[PAWN_nameDef] adore le sexe et en veut toujours plus. {PAWN_pronoun} ne peut regagner de la concentration psychique que par le sexe.</Nymphomaniac.degreeDatas.hypersexual.description>
+  
+</LanguageData>

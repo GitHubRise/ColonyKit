@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 带有 ovi 植物卵的小人。 -->
+
+  <RJW_InsectEgg.label>Яйцо</RJW_InsectEgg.label>
+  <RJW_InsectEgg.description>Яйцо-паразит, которое питается при помощи хозяина вплоть до вылупления. 
+Просто скажите спасибо, что оно не прогрызёт вам грудь.</RJW_InsectEgg.description>
+
+
+  <!-- 占位卵／不支持的／任意种族 -->
+
+  <RJW_UnknownEgg.label>Яйцо</RJW_UnknownEgg.label>
+  <RJW_UnknownEgg.description>Яйцо-паразит, которое питается при помощи хозяина вплоть до вылупления. 
+Просто скажите спасибо, что оно не прогрызёт вам грудь.</RJW_UnknownEgg.description>
+
+
+  <!-- 原版昆虫，可互相授精 -->
+
+  <RJW_InsectHiveEgg.label>Яйцо</RJW_InsectHiveEgg.label>
+  <RJW_InsectHiveEgg.description>Яйцо-паразит, которое питается при помощи хозяина вплоть до вылупления.
+Просто скажите спасибо, что оно не прогрызёт вам грудь.</RJW_InsectHiveEgg.description>
+
+
+</LanguageData>

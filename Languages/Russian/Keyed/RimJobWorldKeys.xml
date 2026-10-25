@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<!-- 模组文本 -->
+
+	<!-- 右键点击 CP 时的通知 -->
+	<PawnCantRapeCP>Цель недостаточно здорова или данная позиция запрещена.</PawnCantRapeCP>
+	<PawnCantRapeCP0>Поселенец не хочет секса, ему нездоровится, или не может насиловать.</PawnCantRapeCP0>
+	<PawnCantRapeCP1>Поселенец состоит в отношениях или партнёр находится неподалёку.</PawnCantRapeCP1>
+	<PawnCantRapeCP2>Поселенец не имеет черту «Зоофилия» и не может насиловать животных.</PawnCantRapeCP2>
+
+	<!--提交按钮-->
+	<CommandSubmit>Сдаться</CommandSubmit>
+	<CommandSubmitDesc>Лечь и надеяться на милость врагов.</CommandSubmitDesc>
+
+	<!--怀孕消息-->
+	<RJW_PregnantTitle>{0} беременна</RJW_PregnantTitle>
+	<RJW_PregnantText>{0} беременна и скоро станет матерью. Имейте в виду, что голодание и травмы могут привести к выкидышу.</RJW_PregnantText>
+	<RJW_Contractions>У {0} схватки! Она скоро родит!</RJW_Contractions>
+	<RJW_GaveBirthTitle>Схватки завершились</RJW_GaveBirthTitle>
+	<RJW_GaveBirthText>{0} успешно родила </RJW_GaveBirthText>
+	<RJW_ABaby>ребёнка.</RJW_ABaby>
+	<RJW_NBabies>детей: {0}.</RJW_NBabies>
+	<RJW_PregnantNormal>У неё здоровый малыш...</RJW_PregnantNormal>
+	<RJW_PregnantStrange>С ребёнком что-то не так...</RJW_PregnantStrange>
+	<RJW_PregnantMechStrange>С ребёнком что-то СИЛЬНО не так...</RJW_PregnantMechStrange>
+	<RJW_GaveBirthEggTitle>Отложила яйцо</RJW_GaveBirthEggTitle>
+	<RJW_GaveBirthEggText>{0} отложила яйца.</RJW_GaveBirthEggText>
+	<RJW_EggContractions>У {0} схватки! Яйца уже выходят!</RJW_EggContractions>
+	<RJW_Message_NotPregnant>{0} {0_gender ? определил : определила} что {1} не {1_gender ? вынашивает плод : беременна}.</RJW_Message_NotPregnant>
+	<RJW_Message_Pregnant>{0} {0_gender ? определил : определила} что {1} {1_gender ? вынашивает плод : беременна} от {2}.</RJW_Message_Pregnant>
+
+	<!--强奸警报-->
+	<RJW_AlertRape>{RAPIST} пытается изнасиловать {TARGET}.</RJW_AlertRape>
+	<RJW_AlertAssault>{RAPIST} пытается напасть на {TARGET}.</RJW_AlertAssault>
+	<RJW_AlertBreed>{RAPIST} пытается спариться с {TARGET}.</RJW_AlertBreed>
+	<RJW_AlertRapeRelated>{RAPIST} пытается изнасиловать {TARGET}, {RAPIST_possessive} {RELATION}.</RJW_AlertRapeRelated>
+	<RJW_AlertAssaultRelated>{RAPIST} пытается напасть на {TARGET}, {RAPIST_possessive} {RELATION}.</RJW_AlertAssaultRelated>
+	<RJW_AlertBreedRelated>{RAPIST} пытается спариться с {TARGET}, {RAPIST_possessive} {RELATION}.</RJW_AlertBreedRelated>
+	<RJW_AlertBeeingRaped>{TARGET} подвергается изнасилованию.</RJW_AlertBeeingRaped>
+
+	<GoToModSettings>Это место зарезервировано для дополнительных функций RJW, которые либо отключены, либо недоступны для выбранного поселенца/животного.\nПроверьте опции мода и перестаньте спрашивать, нормально ли ЭТО.</GoToModSettings>    
+
+	<!--舒适标记-->
+	<ForComfort>Разрешить для поселенцев</ForComfort>
+	<ForComfortDesc>Разрешить для развлечения другими поселенцами</ForComfortDesc>
+	<ForComfortRefuseDesc>Не согласится со своей участью\nНужна черта «Мазохизм»</ForComfortRefuseDesc>
+
+	<!--妓女-->
+	<ForService>Назначить на проституцию</ForService>	<!-- 此字段不可见 -->
+	<ForServiceDesc><![CDATA[Заставить работать проституткой
+- Будет пытаться затащить гостей в постель.
+- Будет развлекать поселенцев, когда нет работы.
+- Будет воздерживатья от мастурбации на работе, что может понизить настроение.
+]]></ForServiceDesc>
+	<ForServiceRefuseDesc>Не согласится заниматься проституцией</ForServiceRefuseDesc>
+
+	<!--繁育标记-->
+	<ForBreeding>Разрешить для животных</ForBreeding>
+	<ForBreedingDesc>Отметить для спаривания с животными</ForBreedingDesc>
+	<ForBreedingRefuseDesc>Не согласится со своей участью\nНужна черта «Зоофилия»</ForBreedingRefuseDesc>
+
+	<ForBreedingAnimalDesc>Разрешить животному спариваться с отмеченными поселенцами</ForBreedingAnimalDesc>
+	
+	<BreedMessage> пытается спариться с </BreedMessage>
+
+	<!--挤奶-->
+	<ForMilking>Разрешить доить</ForMilking>
+	<ForMilkingDesc>Получить биоматериал от этого существа</ForMilkingDesc>
+
+	<!--英雄-->
+	<ForHero>Выбрать Героем</ForHero>
+	<ForHeroDesc><![CDATA[Выбрать поселенца на роль игрового персонажа
+- Может быть выбран только один раз.
+- Нельзя отключить.
+]]></ForHeroDesc>
+	<ForHeroRefuse1Desc>Это Герой другого игрока</ForHeroRefuse1Desc>
+	<ForHeroRefuse2Desc>Вы не можете поменять выбор</ForHeroRefuse2Desc>
+	<ForHeroRefuseHCDesc>Поселенец, не являющийся героем, в режиме HC</ForHeroRefuseHCDesc>
+	<RJW_Message_BecameHero>{0} теперь герой {1}</RJW_Message_BecameHero>
+
+	<!-- Hediff 提示框 -->
+	<RJW_PartInfo_braCup>Размер груди: {0}</RJW_PartInfo_braCup>
+	<RJW_PartInfo_braSizeNone>Размер груди: -</RJW_PartInfo_braSizeNone>
+	<RJW_PartInfo_eggs>Яйца: {0}</RJW_PartInfo_eggs>
+	<RJW_PartInfo_fluidTypeFluidAmount>{0}: {1}</RJW_PartInfo_fluidTypeFluidAmount>
+	<RJW_PartInfo_braSize>Размер груди: {0}:{1}</RJW_PartInfo_braSize>
+	<RJW_PartInfo_overbust>Надгрудный обхват: {0}</RJW_PartInfo_overbust>
+	<RJW_PartInfo_underbust>Подгрудный обхват: {0}</RJW_PartInfo_underbust>
+	<RJW_PartInfo_weight>Вес: {0}</RJW_PartInfo_weight>
+	<RJW_PartInfo_properties>Свойства: {0}</RJW_PartInfo_properties>
+
+	<RJW_PartInfo_severity>Тяжесть: {0}</RJW_PartInfo_severity>
+	<RJW_PartInfo_fluidMultiplier>Множитель жидкости: {0}</RJW_PartInfo_fluidMultiplier>
+
+    <!-- 可安装部件的 hediff 提示与详情面板共用-->
+	<RJW_PartInfo_girth>Обхват: {0}</RJW_PartInfo_girth>
+	<RJW_PartInfo_length>Длина: {0}</RJW_PartInfo_length>
+	<RJW_PartInfo_depth>Глубина: {0}</RJW_PartInfo_depth>
+	<RJW_PartInfo_maxGirth>Макс. обхват: {0}</RJW_PartInfo_maxGirth>
+	<RJW_PartInfo_maxLength>Макс. длина: {0}</RJW_PartInfo_maxLength>
+	
+	<!-- 部件详情面板-->
+	<RJW_PartInfo_fluidTypeFluidAmountHeading>Жидкость: {0} ({1}мл}</RJW_PartInfo_fluidTypeFluidAmountHeading>
+	
+	<!-- 部件属性与描述 -->
+	<RJW_PartInfo_unknownSpecies>Неизвестный вид</RJW_PartInfo_unknownSpecies>
+	<RJW_PartInfo_unknownOwner>Неизвестно</RJW_PartInfo_unknownOwner>
+	<RJW_StatEntry_PreviousOwner>предыдущий владелец</RJW_StatEntry_PreviousOwner>
+	<RJW_StatEntry_OriginalOwnerRace>первоначальная раса</RJW_StatEntry_OriginalOwnerRace>
+	<RJW_StatEntry_OriginalOwnerSize>первоначальный размер</RJW_StatEntry_OriginalOwnerSize>
+	<RJW_StatEntry_PartSize>размер</RJW_StatEntry_PartSize>
+	<RJW_StatEntry_PartCupSize>размер груди</RJW_StatEntry_PartCupSize>
+	<RJW_StatEntry_PartLength>длина</RJW_StatEntry_PartLength>
+	<RJW_StatEntry_PartGirth>обхват</RJW_StatEntry_PartGirth>
+	<RJW_StatEntry_PartMaxGirth>макс. обхват</RJW_StatEntry_PartMaxGirth>
+	<RJW_StatEntry_PartDepth>глубина</RJW_StatEntry_PartDepth>
+	<RJW_StatEntry_PartWeight>вес</RJW_StatEntry_PartWeight>
+	<RJW_StatEntry_PartTags>свойства</RJW_StatEntry_PartTags>
+	<RJW_StatEntry_Fluid>жидкость</RJW_StatEntry_Fluid>
+	<RJW_StatEntry_FluidAmount>кол-во жидкости</RJW_StatEntry_FluidAmount>
+	<RJW_StatEntry_FluidAmount_ejaculation>кол-во эякуляций</RJW_StatEntry_FluidAmount_ejaculation>
+	<RJW_StatEntry_FluidAmount_wetness>влажность</RJW_StatEntry_FluidAmount_wetness>
+	
+	<!-- RJW 生育力提示 -->
+	<AgeImpactor>Возраст: </AgeImpactor>
+	<VanillaFertilityImpactor>Статистика фертильности: {VALUE}%</VanillaFertilityImpactor>
+	
+	<RJW_hediff_breast_production_type>Выработка: {0}</RJW_hediff_breast_production_type>
+	<RJW_hediff_breast_production_amount>Кол-во: {0}</RJW_hediff_breast_production_amount>
+
+	<RJW_hediff_original_size_owner>Первоначальный размер расы владельца: {0}</RJW_hediff_original_size_owner>
+	<RJW_hediff_original_race_owner>Первоначальная раса владельца: {0}</RJW_hediff_original_race_owner>
+	<RJW_hediff_original_owner>Предыдущий владелец: {0}</RJW_hediff_original_owner>
+
+
+	<!-- 宁芙！！！ -->
+	<RJW_nymph_incident_raid_title>Нимфы</RJW_nymph_incident_raid_title>
+	<RJW_nymph_incident_raid_description>Группа нимф забрела в ваше поселение.</RJW_nymph_incident_raid_description>
+	<RJW_nymph_incident_wander_title>Нимфа</RJW_nymph_incident_wander_title>
+	<RJW_nymph_incident_wander_description>Блуждающая нимфа решила посетить ваше поселение.</RJW_nymph_incident_wander_description>
+	<RJW_nymph_incident_join_title>Нимфа присоединяется</RJW_nymph_incident_join_title>
+	<RJW_nymph_incident_join_description>Блуждающая нимфа решила присоединиться к вашему поселению.</RJW_nymph_incident_join_description>
+
+	<!-- Biotech 整合 -->
+	<PawnLacksFunctionalGenitals>{PAWN} не имеет функционирующих гениталий.</PawnLacksFunctionalGenitals>
+	<PawnLacksVagina>{PAWN} не имеет вагины.</PawnLacksVagina>
+	<PawnLacksFunctionalPenis>{PAWN} не имеет функционирующего пениса.</PawnLacksFunctionalPenis>
+	<VaginalWeight>вероятность вагинального секса</VaginalWeight>
+
+	<!-- 获得特性 -->
+	<!-- 提示：只需追加特性的 defname（可选再追加其 degree），即可轻松为这两项添加针对特定特性的版本 -->
+	<LetterLabelGainedTraitFromSex>Новая черта: {PAWN}</LetterLabelGainedTraitFromSex>
+	<GainedTraitFromSex>{PAWN} во время секса приобретает новую черту характера: {TRAIT}.</GainedTraitFromSex>
+	
+	<GainedTraitFromSexNymphomaniac>Чрезмерная стимуляция с помощью афродизиака навсегда перестроила мозг {PAWN}. {PAWN_pronoun} приобретает черту характера: {TRAIT}.</GainedTraitFromSexNymphomaniac>
+	<GainedTraitFromSexFootSlut>Опыт наслаждения от мастурбации ступнями вызвал у {PAWN} появление новой черты характера: {TRAIT}.</GainedTraitFromSexFootSlut>
+	<LetterLabelGainedMultipleTraitsFromSex>Новые черты: {PAWN}</LetterLabelGainedMultipleTraitsFromSex>
+	<GainedMultipleTraitsFromSex>В результате яркого сексуального опыта {PAWN} приобретает следующие черты характера:</GainedMultipleTraitsFromSex>
+	<GainedMultipleTraitsFromSexListItem>  - {0}</GainedMultipleTraitsFromSexListItem>
+	
+	<!-- 束缚装备 -->
+	<!-- {1} - 束缚装备标签 -->
+	<RJW_BG_Message_FailedRemove>{0} пытается снять с себя {1}. Это не приносит результата!</RJW_BG_Message_FailedRemove>
+	<!-- {2} - 束缚装备标签 -->
+	<RJW_BG_Message_NoWear_BlockedBy>{0} не может надеть {1} (заблокировано {2})</RJW_BG_Message_NoWear_BlockedBy>
+	<!-- {0} - 束缚装备标签 -->
+	<RJW_BG_Message_Unlock>{0} разблокирован : разблокирована</RJW_BG_Message_Unlock>
+	<!-- {0} - 束缚装备标签 -->
+	<RJW_BG_Message_CouldntDrop>Не может сбросить {0}</RJW_BG_Message_CouldntDrop>
+	<RJW_BG_Message_WrongKey>Ключ не подходит!</RJW_BG_Message_WrongKey>
+
+	<RJW_BG_Comp_Inspect_Engraving>Гравировка с именем «{0}»</RJW_BG_Comp_Inspect_Engraving>
+	<RJW_BG_Comp_Inspect_Key>Криптоштамп: {0}</RJW_BG_Comp_Inspect_Key>
+</LanguageData>

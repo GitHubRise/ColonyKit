@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <Bound.stages.bound.label>束缚</Bound.stages.bound.label>
+
+  <Bound.stages.bound.description>这东西真烦人，我希望我能把它弄下来。</Bound.stages.bound.description>
+
+  <Bound.stages.gagged.label>带着口球</Bound.stages.gagged.label>
+
+  <Bound.stages.gagged.description>呜呜呜，啊啊呜呜……</Bound.stages.gagged.description>
+
+  <Bound.stages.bound_and_gagged.label>束缚并带着口球</Bound.stages.bound_and_gagged.label>
+
+  <Bound.stages.bound_and_gagged.description>呜呜呜……啊啊啊，唔啊啊啊，哇哇哇哇哇……</Bound.stages.bound_and_gagged.description>
+
+  <MasochistBound.stages.masochist_bound.label>受虐狂被束缚</MasochistBound.stages.masochist_bound.label>
+
+  <MasochistBound.stages.masochist_bound.description>嘿嘿嘿……</MasochistBound.stages.masochist_bound.description>
+
+  <MasochistBound.stages.masochist_gagged.label>受虐狂带口球</MasochistBound.stages.masochist_gagged.label>
+
+  <MasochistBound.stages.masochist_gagged.description>唔，嗯~o(*￣▽￣*)o</MasochistBound.stages.masochist_gagged.description>
+
+  <MasochistBound.stages.masochist_bound_and_gagged.label>受虐狂被束缚并带口球</MasochistBound.stages.masochist_bound_and_gagged.label>
+
+  <MasochistBound.stages.masochist_bound_and_gagged.description>嗯~嗯~嗯~</MasochistBound.stages.masochist_bound_and_gagged.description>
+
+</LanguageData>

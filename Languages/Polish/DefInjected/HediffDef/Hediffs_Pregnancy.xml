@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RJW_pregnancy.label>Ciąża</RJW_pregnancy.label>
+  <RJW_pregnancy.description>Dziecko w drodze.</RJW_pregnancy.description>
+  <RJW_pregnancy.stages.0.label>wczesny etap</RJW_pregnancy.stages.0.label>
+  <RJW_pregnancy.stages.1.label>średni etap</RJW_pregnancy.stages.1.label>
+  <RJW_pregnancy.stages.2.label>późny etap</RJW_pregnancy.stages.2.label>
+  <RJW_pregnancy.stages.3.label>ma skurcze</RJW_pregnancy.stages.3.label>
+
+  <RJW_pregnancy_beast.label>Ciąża</RJW_pregnancy_beast.label>
+  <RJW_pregnancy_beast.description>Dziecko w drodze.</RJW_pregnancy_beast.description>
+
+  <RJW_pregnancy_mech.label>Ciąża</RJW_pregnancy_mech.label>
+  <RJW_pregnancy_mech.description>Dziecko w drodze.</RJW_pregnancy_mech.description>
+</LanguageData>

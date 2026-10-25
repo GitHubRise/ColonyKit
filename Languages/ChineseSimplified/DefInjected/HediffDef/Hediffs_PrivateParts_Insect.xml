@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <InsectAnus.label>虫肛门</InsectAnus.label>
+
+  <InsectAnus.description>虫肛门。</InsectAnus.description>
+
+  <InsectAnus.labelNoun>虫肛门</InsectAnus.labelNoun>
+
+  <InsectAnus.stages.Micro.label>微型</InsectAnus.stages.Micro.label>
+
+  <InsectAnus.stages.Tight.label>紧致</InsectAnus.stages.Tight.label>
+
+  <InsectAnus.stages.Average.label>平均</InsectAnus.stages.Average.label>
+
+  <InsectAnus.stages.Accommodating.label>松弛</InsectAnus.stages.Accommodating.label>
+
+  <InsectAnus.stages.Cavernous.label>敞口</InsectAnus.stages.Cavernous.label>
+
+  <InsectAnus.stages.Abyssal.label>深渊</InsectAnus.stages.Abyssal.label>
+
+  <OvipositorF.label>注卵器（雌性）</OvipositorF.label>
+
+  <OvipositorF.description>虫族的产卵器，可将卵注入宿主体内。</OvipositorF.description>
+
+  <OvipositorF.labelNoun>注卵器（雌性）</OvipositorF.labelNoun>
+
+  <OvipositorF.stages.Micro.label>微型</OvipositorF.stages.Micro.label>
+
+  <OvipositorF.stages.Tight.label>很小</OvipositorF.stages.Tight.label>
+
+  <OvipositorF.stages.Average.label>平均</OvipositorF.stages.Average.label>
+
+  <OvipositorF.stages.Accommodating.label>大</OvipositorF.stages.Accommodating.label>
+
+  <OvipositorF.stages.Cavernous.label>巨大</OvipositorF.stages.Cavernous.label>
+
+  <OvipositorF.stages.Abyssal.label>超大</OvipositorF.stages.Abyssal.label>
+
+  <OvipositorM.label>注卵器（雄性）</OvipositorM.label>
+
+  <OvipositorM.description>使虫卵受精的产卵器。</OvipositorM.description>
+
+  <OvipositorM.labelNoun>注卵器（雄性）</OvipositorM.labelNoun>
+
+  <OvipositorM.stages.Micro.label>微型</OvipositorM.stages.Micro.label>
+
+  <OvipositorM.stages.Small.label>很小</OvipositorM.stages.Small.label>
+
+  <OvipositorM.stages.Average.label>平均</OvipositorM.stages.Average.label>
+
+  <OvipositorM.stages.Large.label>大</OvipositorM.stages.Large.label>
+
+  <OvipositorM.stages.Huge.label>巨大</OvipositorM.stages.Huge.label>
+
+  <OvipositorM.stages.Towering.label>超大</OvipositorM.stages.Towering.label>
+
+</LanguageData>

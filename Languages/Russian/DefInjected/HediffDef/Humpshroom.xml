@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 可消耗物品 -->
+
+  <HumpShroomEffect.label>Повышенное либидо</HumpShroomEffect.label>
+  <HumpShroomEffect.description>Эффект афродизиака от того странного гриба.</HumpShroomEffect.description>
+  <HumpShroomEffect.stages.small.label>лёгкое</HumpShroomEffect.stages.small.label>
+  <HumpShroomEffect.stages.large.label>среднее</HumpShroomEffect.stages.large.label>
+  <HumpShroomEffect.stages.massive.label>сильное</HumpShroomEffect.stages.massive.label>
+  <HumpShroomEffect.stages.lingering.label>затяжное</HumpShroomEffect.stages.lingering.label>
+  <HumpShroomEffect.stages.1.label>лёгкое</HumpShroomEffect.stages.1.label>
+  <HumpShroomEffect.stages.2.label>среднее</HumpShroomEffect.stages.2.label>
+  <HumpShroomEffect.stages.3.label>сильное</HumpShroomEffect.stages.3.label>
+  <HumpShroomEffect.stages.4.label>затяжное</HumpShroomEffect.stages.4.label>
+
+  <!-- 仙馔成瘾 -->
+
+  <HumpShroomTolerance.label>Привыкание к горбовнику</HumpShroomTolerance.label>
+  <HumpShroomTolerance.description>Эффект слабеет с каждым приёмом. Мне нужно больше!</HumpShroomTolerance.description>
+  <HumpShroomTolerance.stages.small.label>лёгкое</HumpShroomTolerance.stages.small.label>
+  <HumpShroomTolerance.stages.large.label>среднее</HumpShroomTolerance.stages.large.label>
+  <HumpShroomTolerance.stages.massive.label>сильное</HumpShroomTolerance.stages.massive.label>
+
+  <HumpShroomAddiction.label>Зависимость от горбовника</HumpShroomAddiction.label>
+  <HumpShroomAddiction.description>Невозможно остановиться.</HumpShroomAddiction.description>
+  <HumpShroomAddiction.stages.withdrawal.label>ломка</HumpShroomAddiction.stages.withdrawal.label>
+
+
+</LanguageData>

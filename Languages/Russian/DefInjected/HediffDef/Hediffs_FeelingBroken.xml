@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <FeelingBroken.label>Сломленность</FeelingBroken.label>
+  <FeelingBroken.description>Разум подавлен и не способен даже на простейшие эмоции.</FeelingBroken.description>
+  <FeelingBroken.stages.0.label>ранняя</FeelingBroken.stages.0.label>
+  <FeelingBroken.stages.1.label>в трансе</FeelingBroken.stages.1.label>
+  <FeelingBroken.stages.2.label>умеренная</FeelingBroken.stages.2.label>
+  <FeelingBroken.stages.3.label>критическая</FeelingBroken.stages.3.label>
+
+
+</LanguageData>

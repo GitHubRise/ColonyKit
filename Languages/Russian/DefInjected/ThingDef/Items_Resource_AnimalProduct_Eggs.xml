@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 为存档兼容而保留（暂时），请使用发光版本 -->
+
+  <RJW_EggUnfertilized.label>яйцо (неоплод.)</RJW_EggUnfertilized.label>
+  <RJW_EggUnfertilized.description>Неоплодотворённое яйцо.</RJW_EggUnfertilized.description>
+
+  <RJW_EggFertilized.label>яйцо (оплод.)</RJW_EggFertilized.label>
+  <RJW_EggFertilized.description>Оплодотворённое яйцо.</RJW_EggFertilized.description>
+
+
+  <!-- 虫卵／敌方植入 -->
+
+  <RJW_EggInsectUnfertilized.label>яйцо (неоплод.)</RJW_EggInsectUnfertilized.label>
+  <RJW_EggInsectUnfertilized.description>Неоплодотворённое яйцо насекомого.</RJW_EggInsectUnfertilized.description>
+
+  <RJW_EggInsectFertilized.label>яйцо (оплод.)</RJW_EggInsectFertilized.label>
+  <RJW_EggInsectFertilized.description>Оплодотворённое яйцо насекомого.</RJW_EggInsectFertilized.description>
+
+
+</LanguageData>

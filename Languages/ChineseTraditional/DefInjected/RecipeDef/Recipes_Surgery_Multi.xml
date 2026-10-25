@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 天然阴道 -->
+  <AddMultiVagina.label>新增人類陰道</AddMultiVagina.label>
+
+  <AddMultiVagina.description>增加額外的陰道。</AddMultiVagina.description>
+
+  <AddMultiVagina.jobString>新增人類陰道。</AddMultiVagina.jobString>
+
+  <AddMultiHorseVagina.label>新增馬陰道</AddMultiHorseVagina.label>
+
+  <AddMultiHorseVagina.description>增加額外的陰道。</AddMultiHorseVagina.description>
+
+  <AddMultiHorseVagina.jobString>新增馬陰道。</AddMultiHorseVagina.jobString>
+
+  <AddMultiCatVagina.label>新增貓陰道</AddMultiCatVagina.label>
+
+  <AddMultiCatVagina.description>增加額外的陰道。</AddMultiCatVagina.description>
+
+  <AddMultiCatVagina.jobString>新增貓陰道。</AddMultiCatVagina.jobString>
+
+  <AddMultiDogVagina.label>新增犬陰道</AddMultiDogVagina.label>
+
+  <AddMultiDogVagina.description>增加額外的陰道。</AddMultiDogVagina.description>
+
+  <AddMultiDogVagina.jobString>新增犬陰道。</AddMultiDogVagina.jobString>
+
+  <AddMultiDragonVagina.label>新增龍陰道</AddMultiDragonVagina.label>
+
+  <AddMultiDragonVagina.description>增加額外的陰道。</AddMultiDragonVagina.description>
+
+  <AddMultiDragonVagina.jobString>新增龍陰道。</AddMultiDragonVagina.jobString>
+
+  <!--天然阴茎-->
+  <AddMultiPenis.label>新增人類陰莖</AddMultiPenis.label>
+
+  <AddMultiPenis.description>增加額外的陰莖。</AddMultiPenis.description>
+
+  <AddMultiPenis.jobString>新增人類陰莖。</AddMultiPenis.jobString>
+
+  <AddMultiHorsePenis.label>新增馬陰莖</AddMultiHorsePenis.label>
+
+  <AddMultiHorsePenis.description>增加額外的陰莖。</AddMultiHorsePenis.description>
+
+  <AddMultiHorsePenis.jobString>新增馬陰莖。</AddMultiHorsePenis.jobString>
+
+  <AddMultiCatPenis.label>新增貓陰莖</AddMultiCatPenis.label>
+
+  <AddMultiCatPenis.description>增加額外的陰莖。</AddMultiCatPenis.description>
+
+  <AddMultiCatPenis.jobString>新增貓陰莖。</AddMultiCatPenis.jobString>
+
+  <AddMultiDogPenis.label>新增狗陰莖</AddMultiDogPenis.label>
+
+  <AddMultiDogPenis.description>增加額外的陰莖。</AddMultiDogPenis.description>
+
+  <AddMultiDogPenis.jobString>新增狗陰莖。</AddMultiDogPenis.jobString>
+
+  <AddMultiDragonPenis.label>新增龍陰莖</AddMultiDragonPenis.label>
+
+  <AddMultiDragonPenis.description>增加額外的陰莖。</AddMultiDragonPenis.description>
+
+  <AddMultiDragonPenis.jobString>新增龍陰莖。</AddMultiDragonPenis.jobString>
+
+  <AddMultiRaccoonPenis.label>新增浣熊陰莖</AddMultiRaccoonPenis.label>
+
+  <AddMultiRaccoonPenis.description>增加額外的陰莖。</AddMultiRaccoonPenis.description>
+
+  <AddMultiRaccoonPenis.jobString>新增浣熊陰莖。</AddMultiRaccoonPenis.jobString>
+
+  <AddMultiHemiPenis.label>新增半陰莖</AddMultiHemiPenis.label>
+
+  <AddMultiHemiPenis.description>增加額外的陰莖。</AddMultiHemiPenis.description>
+
+  <AddMultiHemiPenis.jobString>新增半陰莖。</AddMultiHemiPenis.jobString>
+
+  <AddMultiCrocodilianPenis.label>新增鱷魚陰莖</AddMultiCrocodilianPenis.label>
+
+  <AddMultiCrocodilianPenis.description>增加額外的陰莖。</AddMultiCrocodilianPenis.description>
+
+  <AddMultiCrocodilianPenis.jobString>新增鱷魚陰莖。</AddMultiCrocodilianPenis.jobString>
+
+  <!-- 乳房 -->
+  <AddMultiBreasts.label>新增人類乳房</AddMultiBreasts.label>
+
+  <AddMultiBreasts.description>新增額外一行乳房。</AddMultiBreasts.description>
+
+  <AddMultiBreasts.jobString>新增人類乳房。</AddMultiBreasts.jobString>
+
+  <AddMultiAnus.label>新增人類肛門</AddMultiAnus.label>
+
+  <AddMultiAnus.description>增加額外肛門。</AddMultiAnus.description>
+
+  <AddMultiAnus.jobString>新增人類肛門。</AddMultiAnus.jobString>
+
+  <!-- 人造多部件 -->
+  <AddMultiArchotechVagina.label>新增超凡陰道</AddMultiArchotechVagina.label>
+
+  <AddMultiArchotechVagina.description>增加額外的陰道。</AddMultiArchotechVagina.description>
+
+  <AddMultiArchotechVagina.jobString>正在新增陰道。</AddMultiArchotechVagina.jobString>
+
+  <AddMultiArchotechPenis.label>新增超凡陰莖</AddMultiArchotechPenis.label>
+
+  <AddMultiArchotechPenis.description>增加額外的陰莖。</AddMultiArchotechPenis.description>
+
+  <AddMultiArchotechPenis.jobString>正在新增陰莖。</AddMultiArchotechPenis.jobString>
+
+  <AddMultiArchotechAnus.label>新增超凡肛門</AddMultiArchotechAnus.label>
+
+  <AddMultiArchotechAnus.description>增加額外的肛門。</AddMultiArchotechAnus.description>
+
+  <AddMultiArchotechAnus.jobString>正在新增肛門。</AddMultiArchotechAnus.jobString>
+
+  <AddMultiArchotechBreasts.label>新增超凡乳房</AddMultiArchotechBreasts.label>
+
+  <AddMultiArchotechBreasts.description>增加額外的一排乳房。</AddMultiArchotechBreasts.description>
+
+  <AddMultiArchotechBreasts.jobString>正在新增乳房。</AddMultiArchotechBreasts.jobString>
+
+  <AddMultiHydraulicVagina.label>新增液壓陰道</AddMultiHydraulicVagina.label>
+
+  <AddMultiHydraulicVagina.description>增加額外的陰道。</AddMultiHydraulicVagina.description>
+
+  <AddMultiHydraulicVagina.jobString>正在新增陰道。</AddMultiHydraulicVagina.jobString>
+
+  <AddMultiHydraulicAnus.label>新增液壓肛門</AddMultiHydraulicAnus.label>
+
+  <AddMultiHydraulicAnus.description>增加額外的肛門。</AddMultiHydraulicAnus.description>
+
+  <AddMultiHydraulicAnus.jobString>正在新增肛門。</AddMultiHydraulicAnus.jobString>
+
+  <AddMultiHydraulicBreasts.label>新增液壓乳房</AddMultiHydraulicBreasts.label>
+
+  <AddMultiHydraulicBreasts.description>增加額外的一排乳房。</AddMultiHydraulicBreasts.description>
+
+  <AddMultiHydraulicBreasts.jobString>正在新增乳房。</AddMultiHydraulicBreasts.jobString>
+
+  <AddMultiBionicVagina.label>新增仿生陰道</AddMultiBionicVagina.label>
+
+  <AddMultiBionicVagina.description>增加額外的陰道。</AddMultiBionicVagina.description>
+
+  <AddMultiBionicVagina.jobString>正在新增陰道。</AddMultiBionicVagina.jobString>
+
+  <AddMultiBionicPenis.label>新增仿生陰莖</AddMultiBionicPenis.label>
+
+  <AddMultiBionicPenis.description>增加額外的陰莖。</AddMultiBionicPenis.description>
+
+  <AddMultiBionicPenis.jobString>正在新增陰莖。</AddMultiBionicPenis.jobString>
+
+  <AddMultiBionicAnus.label>新增仿生肛門</AddMultiBionicAnus.label>
+
+  <AddMultiBionicAnus.description>增加額外的肛門。</AddMultiBionicAnus.description>
+
+  <AddMultiBionicAnus.jobString>正在新增肛門。</AddMultiBionicAnus.jobString>
+
+  <AddMultiBionicBreasts.label>新增仿生乳房</AddMultiBionicBreasts.label>
+
+  <AddMultiBionicBreasts.description>增加額外的一排乳房。</AddMultiBionicBreasts.description>
+
+  <AddMultiBionicBreasts.jobString>正在新增乳房。</AddMultiBionicBreasts.jobString>
+
+    <AddMultiOvipositorF.label>移植雌性產卵器</AddMultiOvipositorF.label>
+
+    <AddMultiOvipositorF.description>往身上移植額外的雌性產卵器。</AddMultiOvipositorF.description>
+
+    <AddMultiOvipositorF.jobString>正在植入雌性產卵器。</AddMultiOvipositorF.jobString>
+
+    <AddMultiOvipositorM.label>移植雄性產卵器</AddMultiOvipositorM.label>
+
+    <AddMultiOvipositorM.description>往身上移植額外的雄性產卵器。</AddMultiOvipositorM.description>
+
+    <AddMultiOvipositorM.jobString>正在植入雄性產卵器。</AddMultiOvipositorM.jobString>
+
+    <AddMultiInsectAnus.label>移植蟲類肛門</AddMultiInsectAnus.label>
+
+    <AddMultiInsectAnus.description>增加額外的肛門。</AddMultiInsectAnus.description>
+
+    <AddMultiInsectAnus.jobString>正在新增肛門。</AddMultiInsectAnus.jobString>
+</LanguageData>

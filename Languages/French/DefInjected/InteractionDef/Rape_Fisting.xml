@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: fisting -->
+  <Rape_Fisting.label>fistage</Rape_Fisting.label>
+  <!-- EN:
+    <li>r_logentry->Forcefully fisted [RECIPIENT_nameDef].</li>
+  -->
+  <Rape_Fisting.logRulesInitiator.rulesStrings>
+    <li>r_logentry->A fisté de force [RECIPIENT_nameDef].</li>
+  </Rape_Fisting.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Was forcibly fisted by [INITIATOR_nameDef].</li>
+  -->
+  <Rape_Fisting.logRulesRecipient.rulesStrings>
+    <li>r_logentry(RECIPIENT_gender!=Female)->A été fisté de force par [INITIATOR_nameDef].</li>
+    <li>r_logentry(RECIPIENT_gender==Female)->A été fistée de force par [INITIATOR_nameDef].</li>
+  </Rape_Fisting.logRulesRecipient.rulesStrings>
+  <!-- EN: Do anal fisting -->
+  <Rape_Fisting.modExtensions.0.RMBLabel>Fait un fist anal</Rape_Fisting.modExtensions.0.RMBLabel>
+  
+</LanguageData>

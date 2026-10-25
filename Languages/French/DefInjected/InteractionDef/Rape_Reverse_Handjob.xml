@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: handjob -->
+  <Rape_Reverse_Handjob.label>masturbation</Rape_Reverse_Handjob.label>
+  <!-- EN:
+    <li>r_logentry->Forcefully jerked off [RECIPIENT_nameDef].</li>
+  -->
+  <Rape_Reverse_Handjob.logRulesInitiator.rulesStrings>
+    <li>r_logentry->A masturbé de force [RECIPIENT_nameDef].</li>
+  </Rape_Reverse_Handjob.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Was forcibly jerked off by [INITIATOR_nameDef].</li>
+  -->
+  <Rape_Reverse_Handjob.logRulesRecipient.rulesStrings>
+    <li>r_logentry->A forcé [INITIATOR_nameDef] à lui faire une masturbation.</li>
+  </Rape_Reverse_Handjob.logRulesRecipient.rulesStrings>
+  <!-- EN: Do a handjob -->
+  <Rape_Reverse_Handjob.modExtensions.0.RMBLabel>Masturbe</Rape_Reverse_Handjob.modExtensions.0.RMBLabel>
+  
+</LanguageData>

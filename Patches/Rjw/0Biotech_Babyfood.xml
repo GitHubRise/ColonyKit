@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<!-- 未安装任何 DLC 时： -->
+	<!-- 允许婴儿食用“糊状”食物 -->
+  	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="BabyFood"]</xpath>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/ThingDef[defName="MealNutrientPaste" or defName="Pemmican" or defName="Kibble"]</xpath>
+			<value>
+				<ingestible>
+					<babiesCanIngest>true</babiesCanIngest>
+				</ingestible>
+			</value>
+		</nomatch>
+	</Operation>
+	
+	<!-- 允许婴儿食用乳汁 -->
+  	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="BabyFood"]</xpath>
+		<nomatch Class="PatchOperationReplace">
+			<xpath>Defs/ThingDef[defName="Milk"]/ingestible/preferability</xpath>
+			<value>
+				<preferability>MealSimple</preferability>
+			</value>
+		</nomatch>
+	</Operation>
+</Patch>

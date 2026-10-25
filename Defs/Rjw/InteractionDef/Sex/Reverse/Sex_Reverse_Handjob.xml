@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<InteractionDef ParentName="RJW_InteractionDefBaseSex">
+		<defName>Sex_Reverse_Handjob</defName>
+		<label>handjob</label>
+		<logRulesInitiator>
+			<rulesStrings>
+				<li>r_logentry->Gave a handjob to [RECIPIENT_nameDef].</li>
+			</rulesStrings>
+		</logRulesInitiator>
+		<logRulesRecipient>
+			<rulesStrings>
+				<li>r_logentry->Received a handjob from [INITIATOR_nameDef].</li>
+			</rulesStrings>
+		</logRulesRecipient>
+		<modExtensions>
+			<li Class="rjw.SexInteractionExtension">
+				<RMBLabel>Give handjob</RMBLabel>
+				<rjwSextype>Handjob</rjwSextype>
+				<extraSentencePacks>
+					<li>HandjobReverseRP</li>
+				</extraSentencePacks>
+				<tags>
+					<li>Reverse</li>
+					<li>Whoring</li>
+					<li>Consensual</li>
+				</tags>
+				<initiatorRequirement>
+					<partFamilies>
+						<li>Hand</li>
+					</partFamilies>
+				</initiatorRequirement>
+				<recipientRequirement>
+					<genitalTags>
+						<li>CanPenetrate</li>
+					</genitalTags>
+				</recipientRequirement>
+			</li>
+		</modExtensions>
+	</InteractionDef>
+</Defs>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: child is growing -->
+  <RJW_BabyState.label>l'enfant grandit</RJW_BabyState.label>
+  <!-- EN: A growing child. -->
+  <RJW_BabyState.description>Un enfant en pleine croissance.</RJW_BabyState.description>
+  <!-- EN: baby -->
+  <RJW_BabyState.stages.baby.label>bébé</RJW_BabyState.stages.baby.label>
+  <!-- EN: toddler -->
+  <RJW_BabyState.stages.toddler.label>bambin</RJW_BabyState.stages.toddler.label>
+  <!-- EN: child -->
+  <RJW_BabyState.stages.child.label>enfant</RJW_BabyState.stages.child.label>
+  
+  <!-- EN: Too young to work -->
+  <RJW_NoManipulationFlag.label>trop jeune pour travailler</RJW_NoManipulationFlag.label>
+  <!-- EN: Too young to work. -->
+  <RJW_NoManipulationFlag.description>Trop jeune pour travailler.</RJW_NoManipulationFlag.description>
+  
+</LanguageData>

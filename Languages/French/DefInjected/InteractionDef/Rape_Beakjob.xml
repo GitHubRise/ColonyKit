@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: beakjob -->
+  <Rape_Beakjob.label>suce avec bec</Rape_Beakjob.label>
+  <!-- EN:
+    <li>r_logentry->Forced [RECIPIENT_nameDef] to give a beakjob.</li>
+  -->
+  <Rape_Beakjob.logRulesInitiator.rulesStrings>
+    <li>r_logentry->A forcé [RECIPIENT_nameDef] à lui faire une suce avec son bec.</li>
+  </Rape_Beakjob.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Was forced to give a beakjob to [INITIATOR_nameDef].</li>
+  -->
+  <Rape_Beakjob.logRulesRecipient.rulesStrings>
+    <li>r_logentry(RECIPIENT_gender!=Female)->A été forcé de sucer [INITIATOR_nameDef] avec son bec.</li>
+    <li>r_logentry(RECIPIENT_gender==Female)->A été forcée de sucer [INITIATOR_nameDef] avec son bec.</li>
+  </Rape_Beakjob.logRulesRecipient.rulesStrings>
+  <!-- EN: Get beakjob -->
+  <Rape_Beakjob.modExtensions.0.RMBLabel>Reçoit une suce de bec</Rape_Beakjob.modExtensions.0.RMBLabel>
+  
+</LanguageData>

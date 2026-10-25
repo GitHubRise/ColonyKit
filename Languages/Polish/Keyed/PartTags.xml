@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<PartsTag_Barbed>Poskręcany</PartsTag_Barbed>
+	<PartsTag_Long>Dlugi</PartsTag_Long>
+	<PartsTag_Girthy>Gruby</PartsTag_Girthy>
+	<PartsTag_Solid>Lity</PartsTag_Solid>
+	<PartsTag_Small>Maly</PartsTag_Small>
+	<PartsTag_Rigid>Sztywny</PartsTag_Rigid>
+	<PartsTag_Thin>Cienki</PartsTag_Thin>
+	<PartsTag_Sheathed>W pochwie</PartsTag_Sheathed>
+	<PartsTag_Internal>Wewnetrzny</PartsTag_Internal>
+	<PartsTag_Flared>Rozszerzony</PartsTag_Flared>
+	<PartsTag_Multiple>Wielokrotny</PartsTag_Multiple>
+	<PartsTag_Ridged>Zebrowany</PartsTag_Ridged>
+	<PartsTag_Knotted>Uzelkowany</PartsTag_Knotted>
+	<PartsTag_Tapered>Zwęglony</PartsTag_Tapered>
+	<PartsTag_Glowing>Swiecący</PartsTag_Glowing>
+	<PartsTag_Prehensile>Chwytny</PartsTag_Prehensile>
+	<PartsTag_Humanlike>Humanoidalny</PartsTag_Humanlike>
+
+	<PartsTag_Deep>Gleboki</PartsTag_Deep>
+	<PartsTag_Tight>Ciasny</PartsTag_Tight>
+	<PartsTag_Loose>Luźny</PartsTag_Loose>
+
+	<PartsTag_Artificial>Sztuczny</PartsTag_Artificial>
+	<PartsTag_STDImmune>Odpornosc na choroby weneryczne</PartsTag_STDImmune>
+	<PartsTag_Resizable>Zmienny rozmiar</PartsTag_Resizable>
+	<PartsTag_FertilityToggle>Przełącznik płodności</PartsTag_FertilityToggle>
+</LanguageData>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: hump shroom -->
+  <HumpShroom.label>baisignon</HumpShroom.label>
+  <!-- EN: A shroom with tough flesh, thick juice and smooth soft skin. Exhibits aphrodisiac effects when consumed, refills psyfocus. -->
+  <HumpShroom.description>Un champignon à la chair ferme, au jus épais et à la peau lisse et douce. Il a des effets aphrodisiaques lorsqu'il est consommé et recharge la concentration psychique.</HumpShroom.description>
+  
+  <!-- EN: humpshroom shroom -->
+  <PlantHumpShroom.label>baisignon</PlantHumpShroom.label>
+  <!-- EN: Thick shroom with tough flesh, thick juice and smooth soft skin. Exhibits aphrodisiac effects when consumed, refills psyfocus. -->
+  <PlantHumpShroom.description>Un champignon à la chair ferme, au jus épais et à la peau lisse et douce. Il a des effets aphrodisiaques lorsqu'il est consommé et recharge la concentration psychique.</PlantHumpShroom.description>
+  
+</LanguageData>

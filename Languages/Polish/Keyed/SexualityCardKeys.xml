@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<!--性向卡片-->
+	<SC_title>Orientacja</SC_title>
+
+	<SexcardTooltip>Pokaz orientacje</SexcardTooltip>
+	<SexPartWants>Chce być: </SexPartWants>
+	<PartsEditLabel>Edytuj {0}</PartsEditLabel>
+	<PartsEditFluidMultiplierLabel>Mnoznik płynów</PartsEditFluidMultiplierLabel>
+	<PartsEditDevEntry>RJW: Edytuj częśći</PartsEditDevEntry>
+
+	<SC_Fertility_Enable>Włącz reprodukcje</SC_Fertility_Enable>
+	<SC_Fertility_Enhance>Wzmocnij plodnosc</SC_Fertility_Enhance>
+	<SC_Fertility_Disable>Wyłącz reprodukcje</SC_Fertility_Disable>
+
+	<SC_FluidType>Typ plynu</SC_FluidType>
+	<SC_FluidTypeDefault> (Domyslny)</SC_FluidTypeDefault>
+	<SC_Reroll>Przelosuj</SC_Reroll>
+
+	<SC_Gender>Plec</SC_Gender>
+	<SC_Sexuality>Orientacja</SC_Sexuality>
+	<SC_Sexuality_Asexual>Aseksualny</SC_Sexuality_Asexual>
+	<SC_Sexuality_Bisexual>Biseksualny</SC_Sexuality_Bisexual>
+	<SC_Sexuality_Heterosexual>Heteroseksualny</SC_Sexuality_Heterosexual>
+	<SC_Sexuality_Homosexual>Homoseksualny</SC_Sexuality_Homosexual>
+	<SC_Sexuality_LeaningHeterosexual>Nachylony heteroseksualnie</SC_Sexuality_LeaningHeterosexual>
+	<SC_Sexuality_LeaningHomosexual>Nachylony homoseksualnie</SC_Sexuality_LeaningHomosexual>
+	<SC_Sexuality_MostlyHeterosexual>Przewaznie heteroseksualny</SC_Sexuality_MostlyHeterosexual>
+	<SC_Sexuality_MostlyHomosexual>Przewaznie homoseksualny</SC_Sexuality_MostlyHomosexual>
+	<SC_Sexuality_Pansexual>Panseksualny</SC_Sexuality_Pansexual>
+
+	<SC_Kinsey>Skala Kinseya</SC_Kinsey>
+	<SC_Kinsey_desc>To jest model wizualny opracowany przez Alfreda Kinseya w 1948 roku, który uzywa zakresu od 0 do 6 do opisania orientacji seksualnej osoby.\n\n0 - wyłącznie heteroseksualny\n3 - biseksualny\n6 - wyłącznie homoseksualny\n\nLiczby od 1 do 5 oznaczaja rosnacy poziom homoseksualnosci.</SC_Kinsey_desc>
+	<SC_Kinsey_Asexual>Aseksualny</SC_Kinsey_Asexual>
+	<SC_Kinsey_Bisexual>Rowno heteroseksualny i homoseksualny (biseksualny)</SC_Kinsey_Bisexual>
+	<SC_Kinsey_Heterosexual>Wyłącznie heteroseksualny</SC_Kinsey_Heterosexual>
+	<SC_Kinsey_Homosexual>Wyłącznie homoseksualny</SC_Kinsey_Homosexual>
+	<SC_Kinsey_LeaningHeterosexual>Przewaznie heteroseksualny, ale wiecej niz przypadkowo homoseksualny</SC_Kinsey_LeaningHeterosexual>
+	<SC_Kinsey_LeaningHomosexual>Przewaznie homoseksualny, ale wiecej niz przypadkowo heteroseksualny</SC_Kinsey_LeaningHomosexual>
+	<SC_Kinsey_MostlyHeterosexual>Przewaznie heteroseksualny, tylko przypadkowo homoseksualny</SC_Kinsey_MostlyHeterosexual>
+	<SC_Kinsey_MostlyHomosexual>Przewaznie homoseksualny, tylko przypadkowo heteroseksualny</SC_Kinsey_MostlyHomosexual>
+	<SC_Kinsey_Pansexual>Panseksualny</SC_Kinsey_Pansexual>
+</LanguageData>

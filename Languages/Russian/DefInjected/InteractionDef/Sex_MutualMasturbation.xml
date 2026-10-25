@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Sex_MutualMasturbation.label>взаимная мастурбация</Sex_MutualMasturbation.label>
+  <Sex_MutualMasturbation.logRulesInitiator.rulesStrings.0>r_logentry->Занимается взаимной мастурбацией с [RECIPIENT_nameDef].</Sex_MutualMasturbation.logRulesInitiator.rulesStrings.0>
+  <Sex_MutualMasturbation.logRulesRecipient.rulesStrings.0>r_logentry->Занимается взаимной мастурбацией с [INITIATOR_nameDef].</Sex_MutualMasturbation.logRulesRecipient.rulesStrings.0>
+  <Sex_MutualMasturbation.modExtensions.0.RMBLabel>Взаимная мастурбация</Sex_MutualMasturbation.modExtensions.0.RMBLabel>
+
+
+</LanguageData>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: install IUD -->
+  <RJW_InstallIUD.label>installer un stérilet</RJW_InstallIUD.label>
+  <!-- EN: Greatly reduces the chance of pregnancy. Reversible anytime. -->
+  <RJW_InstallIUD.description>Réduit considérablement le risque de grossesse. Réversible à tout moment.</RJW_InstallIUD.description>
+  <!-- EN: installing IUD. -->
+  <RJW_InstallIUD.jobString>Installe un stérilet.</RJW_InstallIUD.jobString>
+  
+  <!-- EN: remove IUD -->
+  <RJW_RemovelIUD.label>retirer un stérilet</RJW_RemovelIUD.label>
+  <!-- EN: Remove an installed IUD, restoring fertility. -->
+  <RJW_RemovelIUD.description>Retirer un stérilet installé, rétablissant ainsi la fertilité.</RJW_RemovelIUD.description>
+  <!-- EN: removing IUD. -->
+  <RJW_RemovelIUD.jobString>Retire un stérilet.</RJW_RemovelIUD.jobString>
+  
+  <!-- EN: sterilize -->
+  <Sterilization.label>stériliser</Sterilization.label>
+  <!-- EN: Prevents reproduction without removing genitals. -->
+  <Sterilization.description>Empêche la reproduction sans retirer les organes génitaux.</Sterilization.description>
+  <!-- EN: sterilizing. -->
+  <Sterilization.jobString>Stérilise.</Sterilization.jobString>
+  
+</LanguageData>

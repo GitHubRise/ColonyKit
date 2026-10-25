@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <RemoveUnknownEgg.label>移除未知的蛋</RemoveUnknownEgg.label>
+
+  <RemoveUnknownEgg.description>移除未知的蛋。</RemoveUnknownEgg.description>
+
+  <RemoveUnknownEgg.jobString>移除未知的蛋。</RemoveUnknownEgg.jobString>
+
+  <RJW_RemoveCocoon.label>移除结茧</RJW_RemoveCocoon.label>
+
+  <RJW_RemoveCocoon.description>移除结茧。</RJW_RemoveCocoon.description>
+
+  <RJW_RemoveCocoon.jobString>移除结茧。</RJW_RemoveCocoon.jobString>
+
+  <RJW_RemoveRestraints.label>移除束缚</RJW_RemoveRestraints.label>
+
+  <RJW_RemoveRestraints.description>移除束缚。</RJW_RemoveRestraints.description>
+
+  <RJW_RemoveRestraints.jobString>移除束缚。</RJW_RemoveRestraints.jobString>
+
+</LanguageData>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 阴毛密度：用 severity 0~1 表示，分五档。纯外观属性，不参与任何计算。 -->
+	<HediffDef>
+		<defName>RJW_PubicHair</defName>
+		<hediffClass>rjw.Hediff_PubicHair</hediffClass>
+		<label>pubic hair</label>
+		<labelNoun>pubic hair</labelNoun>
+		<description>How much hair grows around the genitals. Purely cosmetic.</description>
+		<isBad>false</isBad>
+		<everCurableByItem>false</everCurableByItem>
+		<countsAsAddedPartOrImplant>false</countsAsAddedPartOrImplant>
+		<priceImpact>false</priceImpact>
+		<maxSeverity>1</maxSeverity>
+		<stages>
+			<li>
+				<label>Shaved</label>
+				<minSeverity>0</minSeverity>
+			</li>
+			<li>
+				<label>Sparse</label>
+				<minSeverity>0.2</minSeverity>
+			</li>
+			<li>
+				<label>Trimmed</label>
+				<minSeverity>0.4</minSeverity>
+			</li>
+			<li>
+				<label>Bushy</label>
+				<minSeverity>0.6</minSeverity>
+			</li>
+			<li>
+				<label>Wild</label>
+				<minSeverity>0.8</minSeverity>
+			</li>
+		</stages>
+	</HediffDef>
+</Defs>

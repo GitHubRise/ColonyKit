@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 死亡思绪 -->
+  <MyPupDied.stages.my_son_died.label>我的兒子{0}死了</MyPupDied.stages.my_son_died.label>
+
+  <MyPupDied.stages.my_son_died.description>我的兒子死了，我的血肉啊……</MyPupDied.stages.my_son_died.description>
+
+  <MyPupDiedFemale.stages.my_daughter_died.label>我的女兒{0}死了</MyPupDiedFemale.stages.my_daughter_died.label>
+
+  <MyPupDiedFemale.stages.my_daughter_died.description>我的女兒死了，我的血肉啊……</MyPupDiedFemale.stages.my_daughter_died.description>
+
+  <!-- 击杀他人好感思绪 -->
+  <KilledMyPup.stages.killed_my_son.label>殺死我的兒子</KilledMyPup.stages.killed_my_son.label>
+
+  <KilledMyPupFemale.stages.killed_my_daughter.label>殺死我的女兒</KilledMyPupFemale.stages.killed_my_daughter.label>
+
+  <!-- 出售思绪 -->
+  <SoldMyPup.stages.loved_one_sold.label>出售我的愛人</SoldMyPup.stages.loved_one_sold.label>
+
+  <SoldMyPup.stages.loved_one_sold.description>我的孩子被賣了！</SoldMyPup.stages.loved_one_sold.description>
+</LanguageData>

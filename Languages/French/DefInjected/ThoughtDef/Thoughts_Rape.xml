@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: allowed me to get raped -->
+  <AllowedMeToGetRaped.stages.allowed_me_to_get_raped.label>m'a permis d'être violé(e)</AllowedMeToGetRaped.stages.allowed_me_to_get_raped.label>
+  <!-- EN: I got raped while that piece of shit {0} just looked the other way... -->
+  <AllowedMeToGetRaped.stages.allowed_me_to_get_raped.description>J'ai été violé{PAWN_gender ? : e : (e)} pendant que cette ordure {0} détournait le regard...</AllowedMeToGetRaped.stages.allowed_me_to_get_raped.description>
+  
+  <!-- EN: stole some lovin’ -->
+  <BloodlustStoleSomeLovin.stages.stole_some_lovin.label>a volé un peu d'amour</BloodlustStoleSomeLovin.stages.stole_some_lovin.label>
+  <!-- EN: I raped some cunt who deserved it. The way they screamed and cried was so fucking good. -->
+  <BloodlustStoleSomeLovin.stages.stole_some_lovin.description>J'ai violé une salope qui le méritait. La façon dont elle criait et pleurait était tellement excitante.</BloodlustStoleSomeLovin.stages.stole_some_lovin.description>
+  
+  <!-- EN: dizzy -->
+  <FeelingBroken.stages.dizzy.label>étourdi</FeelingBroken.stages.dizzy.label>
+  <!-- EN: Huh...wha...how many times was I...? -->
+  <FeelingBroken.stages.dizzy.description>Hein... quoi... combien de fois j'ai été... ?</FeelingBroken.stages.dizzy.description>
+  <!-- EN: my body feels broken -->
+  <FeelingBroken.stages.my_body_feels_broken.label>mon corps se sent brisé</FeelingBroken.stages.my_body_feels_broken.label>
+  <!-- EN: No...I don't want...aah...ahhh...my body feels...broken...please...no more... -->
+  <FeelingBroken.stages.my_body_feels_broken.description>Non... Je ne veux pas... aah... ahhh... mon corps est... brisé... s'il vous plaît... arrêtez...</FeelingBroken.stages.my_body_feels_broken.description>
+  <!-- EN: begging for more -->
+  <FeelingBroken.stages.begging_for_more.label>en redemande</FeelingBroken.stages.begging_for_more.label>
+  <!-- EN: Masters, please violate me more, I only exist to be used by you. Please fuck me and fill me with your cum again, and again, and again... -->
+  <FeelingBroken.stages.begging_for_more.description>Maîtres, violez-moi davantage, je n'existe que pour être utilisé{PAWN_gender ? : e : (e)} par vous. Baisez-moi et remplissez-moi de votre sperme encore, encore, encore...</FeelingBroken.stages.begging_for_more.description>
+  
+  <!-- EN: anally raped -->
+  <GotAnalRaped.stages.anally_raped.label>violé(e) analement</GotAnalRaped.stages.anally_raped.label>
+  <!-- EN: I was raped anally...I feel so violated and filthy. -->
+  <GotAnalRaped.stages.anally_raped.description>J'ai été violé{PAWN_gender ? : e : (e)} analement... Je me sens tellement violé{PAWN_gender ? : e : (e)} et sale.</GotAnalRaped.stages.anally_raped.description>
+  
+  <!-- EN: anally raped by a girl -->
+  <GotAnalRapedByFemale.stages.anally_raped_by_a_girl.label>violé(e) analement par une fille</GotAnalRapedByFemale.stages.anally_raped_by_a_girl.label>
+  <!-- EN: I was raped anally by a girl...It's so humiliating. I probably deserved it for being so weak... -->
+  <GotAnalRapedByFemale.stages.anally_raped_by_a_girl.description>J'ai été violé{PAWN_gender ? : e : (e)} analement par une fille... C'est tellement humiliant. Je l'ai probablement mérité pour avoir été si faible...</GotAnalRapedByFemale.stages.anally_raped_by_a_girl.description>
+  
+  <!-- EN: raped -->
+  <GotRaped.stages.raped.label>violé(e)</GotRaped.stages.raped.label>
+  <!-- EN: I was raped...I feel so helpless and used. -->
+  <GotRaped.stages.raped.description>J'ai été violé{PAWN_gender ? : e : (e)}... Je me sens tellement impuissant{PAWN_gender ? : e : (e)} et souillé{PAWN_gender ? : e : (e)}.</GotRaped.stages.raped.description>
+  
+  <!-- EN: raped (Unconscious) -->
+  <GotRapedUnconscious.stages.raped_Unconscious.label>violé(e) (Inconscient(e))</GotRapedUnconscious.stages.raped_Unconscious.label>
+  <!-- EN: Oh God, someone or something raped me while I was unconscious. I feel so violated and dirty. -->
+  <GotRapedUnconscious.stages.raped_Unconscious.description>Oh mon Dieu, quelqu'un ou quelque chose m'a violé{PAWN_gender ? : e : (e)} pendant que j'étais inconscient{PAWN_gender ? : e : (e)}. Je me sens tellement violé{PAWN_gender ? : e : (e)} et sale.</GotRapedUnconscious.stages.raped_Unconscious.description>
+  
+  <!-- EN: raped me -->
+  <HateMyRapist.stages.raped_me.label>m'a violé(e)</HateMyRapist.stages.raped_me.label>
+  <!-- EN: I was raped by {0}. I'll never forgive them. -->
+  <HateMyRapist.stages.raped_me.description>J'ai été violé{PAWN_gender ? : e : (e)} par {0}. Je ne lui pardonnerai jamais.</HateMyRapist.stages.raped_me.description>
+  
+  <!-- EN: raped me -->
+  <KindaLikeMyRapist.stages.raped_me.label>m'a violé(e)</KindaLikeMyRapist.stages.raped_me.label>
+  <!-- EN: {0} forced themselves on me roughly. Wish they'd do it more often... -->
+  <KindaLikeMyRapist.stages.raped_me.description>{0} m'a forcé{PAWN_gender ? : e : (e)} à le faire brutalement. J'aimerais que ça arrive plus souvent...</KindaLikeMyRapist.stages.raped_me.description>
+  
+  <!-- EN: made some lovin’ -->
+  <MadeSomeLovin.stages.made_some_lovin.label>a fait l'amour</MadeSomeLovin.stages.made_some_lovin.label>
+  <!-- EN: Spent some good time rolling in the hay. -->
+  <MadeSomeLovin.stages.made_some_lovin.description>J'ai eu une bonne partie de jambes en l'air.</MadeSomeLovin.stages.made_some_lovin.description>
+  
+  <!-- EN: anally raped -->
+  <MasochistGotAnalRaped.stages.anally_raped.label>violé(e) analement</MasochistGotAnalRaped.stages.anally_raped.label>
+  <!-- EN: I was raped anally...it was so intense. They held me down and pounded like a piledriver...mmm... -->
+  <MasochistGotAnalRaped.stages.anally_raped.description>J'ai été violé{PAWN_gender ? : e : (e)} analement... c'était tellement intense. On m'a maintenu{PAWN_gender ? : e : (e)} au sol et on m'a pénétré{PAWN_gender ? : e : (e)} violemment... mmmh...</MasochistGotAnalRaped.stages.anally_raped.description>
+  
+  <!-- EN: anally raped by a girl -->
+  <MasochistGotAnalRapedByFemale.stages.anally_raped_by_a_girl.label>violé(e) analement par une fille</MasochistGotAnalRapedByFemale.stages.anally_raped_by_a_girl.label>
+  <!-- EN: I was raped anally by a girl...God it was hot. There's just something about a woman having so much power over you as she makes you her bitch... -->
+  <MasochistGotAnalRapedByFemale.stages.anally_raped_by_a_girl.description>J'ai été violé{PAWN_gender ? : e : (e)} analement par une fille... Putain, c'était excitant. Les femmes ont ce petit quelque chose dans le pouvoir qui me font me sentir leur salope...</MasochistGotAnalRapedByFemale.stages.anally_raped_by_a_girl.description>
+  
+  <!-- EN: raped -->
+  <MasochistGotRaped.stages.raped.label>violé(e)</MasochistGotRaped.stages.raped.label>
+  <!-- EN: I was used and thrown around like a piece of meat. God, I love it when they rape me. -->
+  <MasochistGotRaped.stages.raped.description>J'ai été utilisé{PAWN_gender ? : e : (e)} et malmené{PAWN_gender ? : e : (e)} comme un morceau de viande. Putain, j'adore quand on me viole.</MasochistGotRaped.stages.raped.description>
+  
+  <!-- EN: raped (Unconscious) -->
+  <MasochistGotRapedUnconscious.stages.raped_Unconscious.label>violé(e) (Inconscient(e))</MasochistGotRapedUnconscious.stages.raped_Unconscious.label>
+  <!-- EN: Some one used my body while I was unconscious and the worst part was that I missed out and didn't feel anything! -->
+  <MasochistGotRapedUnconscious.stages.raped_Unconscious.description>Quelqu'un a utilisé mon corps pendant que j'étais inconscient{PAWN_gender ? : e : (e)}, et le pire, c'est que je n'ai rien senti et que j'ai tout raté !</MasochistGotRapedUnconscious.stages.raped_Unconscious.description>
+  
+  <!-- EN: stole some lovin’ -->
+  <StoleSomeLovin.stages.stole_some_lovin.label>a volé un peu d'amour</StoleSomeLovin.stages.stole_some_lovin.label>
+  <!-- EN: I forced myself on some bitch. The sex was pretty shit, but it's better than nothing. -->
+  <StoleSomeLovin.stages.stole_some_lovin.description>J'ai forcé une salope à coucher avec moi. Le sexe était plutôt nul, mais c'est mieux que rien.</StoleSomeLovin.stages.stole_some_lovin.description>
+  
+</LanguageData>

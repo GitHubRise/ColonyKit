@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 昆虫私处 -->
+
+  <OvipositorF.label>Женский яйцеклад</OvipositorF.label>
+  <OvipositorF.labelNoun>яйцеклад</OvipositorF.labelNoun>
+  <OvipositorF.description>Часть тела, с помощью которой насекомое откладывает яйца в жертву.</OvipositorF.description>
+  <OvipositorF.stages.0.label>микро</OvipositorF.stages.0.label>
+  <OvipositorF.stages.1.label>узкий</OvipositorF.stages.1.label>
+  <OvipositorF.stages.2.label>обычный</OvipositorF.stages.2.label>
+  <OvipositorF.stages.3.label>вместительный</OvipositorF.stages.3.label>
+  <OvipositorF.stages.4.label>пещера</OvipositorF.stages.4.label>
+  <OvipositorF.stages.5.label>бездна</OvipositorF.stages.5.label>
+
+  <OvipositorM.label>Мужской яйцеклад</OvipositorM.label>
+  <OvipositorM.labelNoun>яйцеклад.labelNoun>
+  <OvipositorM.description>Часть тела, с помощью которой насекомое оплодотворяет яйца внутри жертвы.</OvipositorM.description>
+  <OvipositorM.stages.0.label>микро</OvipositorM.stages.0.label>
+  <OvipositorM.stages.1.label>маленький</OvipositorM.stages.1.label>
+  <OvipositorM.stages.2.label>обычный</OvipositorM.stages.2.label>
+  <OvipositorM.stages.3.label>большой</OvipositorM.stages.3.label>
+  <OvipositorM.stages.4.label>огромный</OvipositorM.stages.4.label>
+  <OvipositorM.stages.5.label>гигантский</OvipositorM.stages.5.label>
+
+  <InsectAnus.label>Жучиный анус</InsectAnus.label>
+  <InsectAnus.labelNoun>жучиный анус</InsectAnus.labelNoun>
+  <InsectAnus.description>Анус жука.</InsectAnus.description>
+  <InsectAnus.stages.0.label>микро</InsectAnus.stages.0.label>
+  <InsectAnus.stages.1.label>узкий</InsectAnus.stages.1.label>
+  <InsectAnus.stages.2.label>обычный</InsectAnus.stages.2.label>
+  <InsectAnus.stages.3.label>вместительный</InsectAnus.stages.3.label>
+  <InsectAnus.stages.4.label>пещера</InsectAnus.stages.4.label>
+  <InsectAnus.stages.5.label>бездна</InsectAnus.stages.5.label>
+
+
+</LanguageData>

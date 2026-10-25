@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<RJW_FemalePrisonTransport_Label>Female prisoner transport</RJW_FemalePrisonTransport_Label>
+	<RJW_FemalePrisonTransport_Text>{0} female prisoners were delivered to the colony and are waiting at the edge of the map. They are already marked as prisoners.</RJW_FemalePrisonTransport_Text>
+</LanguageData>

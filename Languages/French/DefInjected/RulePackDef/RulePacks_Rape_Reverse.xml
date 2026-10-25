@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] forcefully rode [RECIPIENT_nameDef] anally.</li>
+  -->
+  <AnalReverseRapeRP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] a chevauché de force [RECIPIENT_nameDef] analement.</li>
+  </AnalReverseRapeRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] forcibly gave [RECIPIENT_nameDef] a beakjob.</li>
+  -->
+  <BeakjobReverseRapeRP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] a sucé de force [RECIPIENT_nameDef] avec son bec.</li>
+  </BeakjobReverseRapeRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] forcibly performed a breastjob on [RECIPIENT_nameDef].</li>
+    <li>sent-> [INITIATOR_nameDef] tackled [RECIPIENT_nameDef] down and squeezed [RECIPIENT_objective] between [INITIATOR_possessive] breasts.</li>
+  -->
+  <BreastjobReverseRapeRP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] a imposé une branlette espagnole à [RECIPIENT_nameDef].</li>
+    <li>sent(RECIPIENT_gender==Male)->[INITIATOR_nameDef] a cloué au sol [RECIPIENT_nameDef] et l'a pressé contre ses seins.</li>
+    <li>sent(RECIPIENT_gender==Female)->[INITIATOR_nameDef] a cloué au sol [RECIPIENT_nameDef] et l'a pressée contre ses seins.</li>
+    <li>sent(RECIPIENT_gender==None)->[INITIATOR_nameDef] a cloué au sol [RECIPIENT_nameDef] et l'a pressé(e) contre ses seins.</li>
+  </BreastjobReverseRapeRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] forcibly licked [RECIPIENT_nameDef].</li>
+  -->
+  <CunnilingusReverseRapeRP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] a léché de force le vagin de [RECIPIENT_nameDef].</li>
+  </CunnilingusReverseRapeRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] went down on [RECIPIENT_nameDef] and forcibly deepthroated [RECIPIENT_objective].</li>
+  -->
+  <DeepthroatReverseRapeRP.rulePack.rulesStrings>
+    <li>sent(RECIPIENT_gender==Male)->[INITIATOR_nameDef] a cloué au sol [RECIPIENT_nameDef] et l'a forcé à lui faire une gorge profonde.</li>
+    <li>sent(RECIPIENT_gender==Female)->[INITIATOR_nameDef] a cloué au sol [RECIPIENT_nameDef] et l'a forcée à lui faire une gorge profonde.</li>
+    <li>sent(RECIPIENT_gender==None)->[INITIATOR_nameDef] a cloué au sol [RECIPIENT_nameDef] et l'a forcé(e) à lui faire une gorge profonde.</li>
+  </DeepthroatReverseRapeRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [RECIPIENT_nameDef] was forced into using both [INITIATOR_nameDef]'s holes.</li>
+  -->
+  <DoubleReverseRapeRP.rulePack.rulesStrings>
+    <li>sent(RECIPIENT_gender==Male)->[RECIPIENT_nameDef] a été forcé à se servir des deux trous de [INITIATOR_nameDef].</li>
+    <li>sent(RECIPIENT_gender==Female)->[RECIPIENT_nameDef] a été forcée à se servir des deux trous de [INITIATOR_nameDef].</li>
+    <li>sent(RECIPIENT_gender==None)->[RECIPIENT_nameDef] a été forcé(e) à se servir des deux trous de [INITIATOR_nameDef].</li>
+  </DoubleReverseRapeRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] forcibly fellated [RECIPIENT_nameDef].</li>
+  -->
+  <FellatioReverseRapeRP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] a sucé de force [RECIPIENT_nameDef].</li>
+  </FellatioReverseRapeRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [RECIPIENT_nameDef] was forcefully fingered by [INITIATOR_nameDef].</li>
+  -->
+  <FingeringReverseRapeRP.rulePack.rulesStrings>
+    <li>sent(RECIPIENT_gender==Male)->[RECIPIENT_nameDef] a été doigté de force par [INITIATOR_nameDef].</li>
+    <li>sent(RECIPIENT_gender==Female)->[RECIPIENT_nameDef] a été doigtée de force par [INITIATOR_nameDef].</li>
+    <li>sent(RECIPIENT_gender==None)->[RECIPIENT_nameDef] a été doigté(e) de force par [INITIATOR_nameDef].</li>
+  </FingeringReverseRapeRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [RECIPIENT_nameDef] was forced to fist [INITIATOR_nameDef].</li>
+  -->
+  <FistingReverseRapeRP.rulePack.rulesStrings>
+    <li>sent(RECIPIENT_gender==Male)->[RECIPIENT_nameDef] a été forcé de fister [INITIATOR_nameDef].</li>
+    <li>sent(RECIPIENT_gender==Female)->[RECIPIENT_nameDef] a été forcée de fister [INITIATOR_nameDef].</li>
+    <li>sent(RECIPIENT_gender==None)->[RECIPIENT_nameDef] a été forcé(e) de fister [INITIATOR_nameDef].</li>
+  </FistingReverseRapeRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] forcefully gave a footjob to [RECIPIENT_nameDef].</li>
+  -->
+  <FootjobReverseRapeRP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] a branlé de force [RECIPIENT_nameDef] avec ses pieds.</li>
+  </FootjobReverseRapeRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] pinned [RECIPIENT_nameDef] down and forcefully jacked [RECIPIENT_objective] off.</li>
+    <li>sent-> [INITIATOR_nameDef] humiliated [RECIPIENT_nameDef] by forcibly jerking [RECIPIENT_objective] off.</li>
+  -->
+  <HandjobReverseRapeRP.rulePack.rulesStrings>
+    <li>sent(RECIPIENT_gender==Male)->[INITIATOR_nameDef] a cloué au sol [RECIPIENT_nameDef] et l'a masturbé de force.</li>
+    <li>sent(RECIPIENT_gender==Female)->[INITIATOR_nameDef] a cloué au sol [RECIPIENT_nameDef] et l'a masturbée de force.</li>
+    <li>sent(RECIPIENT_gender==None)->[INITIATOR_nameDef] a cloué au sol [RECIPIENT_nameDef] et l'a masturbé(e) de force.</li>
+    <li>sent(RECIPIENT_gender==Male)->[INITIATOR_nameDef] a humilié [RECIPIENT_nameDef] en le masturbant de force.</li>
+    <li>sent(RECIPIENT_gender==Female)->[INITIATOR_nameDef] a humilié [RECIPIENT_nameDef] en la masturbant de force.</li>
+    <li>sent(RECIPIENT_gender==None)->[INITIATOR_nameDef] a humilié [RECIPIENT_nameDef] en le(la) masturbant de force.</li>
+  </HandjobReverseRapeRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] forcibly rimmed [RECIPIENT_nameDef].</li>
+  -->
+  <RimmingReverseRapeRP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] a léché de force l'anus de [RECIPIENT_nameDef].</li>
+  </RimmingReverseRapeRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] forcibly scissored with [RECIPIENT_nameDef].</li>
+  -->
+  <ScissoringReverseRapeRP.rulePack.rulesStrings>
+    <li>sent(INITIATOR_gender==Male)->[INITIATOR_nameDef] a contraint [RECIPIENT_nameDef] de faire les ciseaux avec lui.</li>
+    <li>sent(INITIATOR_gender==Female)->[INITIATOR_nameDef] a contraint [RECIPIENT_nameDef] de faire les ciseaux avec elle.</li>
+    <li>sent(INITIATOR_gender==None)->[INITIATOR_nameDef] a contraint [RECIPIENT_nameDef] de faire les ciseaux avec iel.</li>
+  </ScissoringReverseRapeRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] forcibly sixtynined [RECIPIENT_nameDef].</li>
+  -->
+  <SixtynineReverseRapeRP.rulePack.rulesStrings>
+    <li>sent(INITIATOR_gender==Male)->[INITIATOR_nameDef] a contraint [RECIPIENT_nameDef] de faire un 69 avec lui.</li>
+    <li>sent(INITIATOR_gender==Female)->[INITIATOR_nameDef] a contraint [RECIPIENT_nameDef] de faire un 69 avec elle.</li>
+    <li>sent(INITIATOR_gender==None)->[INITIATOR_nameDef] a contraint [RECIPIENT_nameDef] de faire un 69 avec iel.</li>
+  </SixtynineReverseRapeRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] forcefully rode [RECIPIENT_nameDef] vaginally.</li>
+  -->
+  <VaginalReverseRapeRP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] a chevauché de force [RECIPIENT_nameDef] vaginalement.</li></VaginalReverseRapeRP.rulePack.rulesStrings>
+  
+</LanguageData>

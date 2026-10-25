@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: <color=#FF0000>Necrophile</color> -->
+  <Necrophiliac.degreeDatas.necrophile.label>Nécrophile</Necrophiliac.degreeDatas.necrophile.label>
+  <!-- EN: Dead people can't say no, can they? -->
+  <Necrophiliac.degreeDatas.necrophile.description>Les morts ne peuvent pas dire non, pas vrai ?</Necrophiliac.degreeDatas.necrophile.description>
+  
+  <!-- EN: <color=#FF0000>Rapist</color> -->
+  <Rapist.degreeDatas.rapist.label>Violeur</Rapist.degreeDatas.rapist.label>
+  <!-- EN: [PAWN_nameDef] doesn't take "No" as an answer. -->
+  <Rapist.degreeDatas.rapist.description>[PAWN_nameDef] n'accepte pas "Non", comme réponse.</Rapist.degreeDatas.rapist.description>
+  
+  <!-- EN: <color=#FF0000>Zoophile</color> -->
+  <Zoophile.degreeDatas.zoophile.label>Zoophile</Zoophile.degreeDatas.zoophile.label>
+  <!-- EN: [PAWN_nameDef] likes to walk on the wild side. -->
+  <Zoophile.degreeDatas.zoophile.description>Quand [PAWN_nameDef] a les crocs, son côté sauvage revient au galop.</Zoophile.degreeDatas.zoophile.description>
+  
+</LanguageData>

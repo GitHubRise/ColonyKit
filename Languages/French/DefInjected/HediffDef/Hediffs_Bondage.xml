@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: bound hands -->
+  <BoundHands.label>mains ligotées</BoundHands.label>
+  <!-- EN: Bound hands. -->
+  <BoundHands.description>Mains ligotées.</BoundHands.description>
+  <!-- EN: bound hands -->
+  <BoundHands.labelNoun>mains ligotées</BoundHands.labelNoun>
+  
+  <!-- EN: bound legs -->
+  <BoundLegs.label>jambes ligotées</BoundLegs.label>
+  <!-- EN: Bound legs. -->
+  <BoundLegs.description>Jambes ligotées.</BoundLegs.description>
+  <!-- EN: bound legs -->
+  <BoundLegs.labelNoun>jambes ligotées</BoundLegs.labelNoun>
+  
+  <!-- EN: chains -->
+  <Chains.label>Chaînes</Chains.label>
+  <!-- EN: A series of chains that restrict its wearer. -->
+  <Chains.description>Une série de chaînes qui entravent les mouvements de celui qui les porte.</Chains.description>
+  <!-- EN: chains -->
+  <Chains.labelNoun>chaînes</Chains.labelNoun>
+  
+  <!-- EN: Cocoon -->
+  <RJW_Cocoon.label>Cocon</RJW_Cocoon.label>
+  <!-- EN: A cocoon that tends to its host until ready to procreate. -->
+  <RJW_Cocoon.description>Un cocon qui prend soin de son hôte jusqu'à ce qu'il soit prêt à se reproduire.</RJW_Cocoon.description>
+  <!-- EN: A cocoon -->
+  <RJW_Cocoon.labelNoun>Un cocon</RJW_Cocoon.labelNoun>
+  
+  <!-- EN: Restraints -->
+  <RJW_Restraints.label>Moyens de contention</RJW_Restraints.label>
+  <!-- EN: A set of restraints. -->
+  <RJW_Restraints.description>Un ensemble de moyens de contention.</RJW_Restraints.description>
+  <!-- EN: restraints -->
+  <RJW_Restraints.labelNoun>moyens de contention</RJW_Restraints.labelNoun>
+  
+</LanguageData>

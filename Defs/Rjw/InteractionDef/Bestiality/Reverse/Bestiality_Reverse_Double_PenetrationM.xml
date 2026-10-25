@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<!-- 繁殖邀约 -->
+	<InteractionDef ParentName="RJW_InteractionDefBaseRape">
+		<defName>Bestiality_Reverse_Double_Penetration_M</defName>
+		<label>double penetration</label>
+		<logRulesInitiator>
+			<rulesStrings>
+				<li>r_logentry->Presented to [RECIPIENT_nameDef].</li>
+			</rulesStrings>
+		</logRulesInitiator>
+		<logRulesRecipient>
+			<rulesStrings>
+				<li>r_logentry->Double-penetrated [INITIATOR_nameDef].</li>
+			</rulesStrings>
+		</logRulesRecipient>
+		<modExtensions>
+			<li Class="rjw.SexInteractionExtension">
+				<RMBLabel>Get double-penetrated</RMBLabel>
+				<rjwSextype>DoublePenetration</rjwSextype>
+				<extraSentencePacks>
+					<li>Bestiality_Reverse_Double_Penetration</li>
+				</extraSentencePacks>
+				<tags>
+					<li>Reverse</li>
+					<li>Fertilization</li>
+					<li>EggFertilization</li>
+					<li>EggLaying</li>
+					<li>Bestiality</li>
+					<li>Animal</li>
+				</tags>
+				<initiatorRequirement>
+					<minimumCount>2</minimumCount>
+					<genitalTags>
+						<li>CanBePenetrated</li>
+					</genitalTags>
+				</initiatorRequirement>
+				<recipientRequirement>
+					<partTags>
+						<li>Multiple</li>	
+					</partTags>
+					<genitalTags>
+						<li>CanPenetrate</li>
+					</genitalTags>
+				</recipientRequirement>
+			</li>
+		</modExtensions>
+	</InteractionDef>
+</Defs>

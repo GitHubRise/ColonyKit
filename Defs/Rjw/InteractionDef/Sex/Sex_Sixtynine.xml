@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<InteractionDef ParentName="RJW_InteractionDefBaseSex">
+		<defName>Sex_Sixtynine</defName>
+		<label>69ing</label>
+		<logRulesInitiator>
+			<rulesStrings>
+				<li>r_logentry->69'd with [RECIPIENT_nameDef].</li>
+			</rulesStrings>
+		</logRulesInitiator>
+		<logRulesRecipient>
+			<rulesStrings>
+				<li>r_logentry->69'd with [INITIATOR_nameDef].</li>
+			</rulesStrings>
+		</logRulesRecipient>
+		<modExtensions>
+			<li Class="rjw.SexInteractionExtension">
+				<RMBLabel>Do sixtynine</RMBLabel>
+				<rjwSextype>Sixtynine</rjwSextype>
+				<extraSentencePacks>
+					<li>SixtynineRP</li>
+				</extraSentencePacks>
+				<tags>
+					<li>Whoring</li>
+					<li>Consensual</li>
+				</tags>
+				<initiatorRequirement>
+					<genitalTags>
+						<li>CanPenetrate</li>
+						<li>CanBePenetrated</li>
+					</genitalTags>
+				</initiatorRequirement>
+				<recipientRequirement>
+					<genitalTags>
+						<li>CanPenetrate</li>
+						<li>CanBePenetrated</li>
+					</genitalTags>
+				</recipientRequirement>
+			</li>
+		</modExtensions>
+	</InteractionDef>
+</Defs>

@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<!-- 设置-->
+	<RJWSettingsMain>RimJobWorld - Paramètres de base</RJWSettingsMain>
+		<NymphTamed>Nymphomane se joint</NymphTamed>
+		<NymphTamed_desc>Génère un pion avec le trait « Hypersexuel » pour rejoindre la colonie.</NymphTamed_desc>
+		<NymphWild>Nymphomane sauvage</NymphWild>
+		<NymphWild_desc>Génère un pion sauvage doté du trait « Hypersexuel » pour attaquer la colonie.</NymphWild_desc>
+		<NymphRaidEasy>Raid de nymphomanes (facile)</NymphRaidEasy>
+		<NymphRaidEasy_desc>Les nymphomanes ont décidé de visiter votre colonie. La probabilité est de 0,1.</NymphRaidEasy_desc>
+		<NymphRaidHard>Raid de nymphomanes (difficile)</NymphRaidHard>
+		<NymphRaidHard_desc>Les nymphomanes ont décidé que c'était désormais leur colonie.\n(Fin de partie).\nbaseLa probabilité est de 0,01.</NymphRaidHard_desc>
+		<NymphRaidRP>Raids de nymphos mollassons</NymphRaidRP>
+		<NymphRaidRP_desc>Permet aux joueurs trop faibles pour recevoir les raids de nymphos prévus d'utiliser des points de raid à la place.</NymphRaidRP_desc>
+		<NymphPermanentManhunter>Nymphos en chasse à l'homme permanente</NymphPermanentManhunter>
+		<NymphPermanentManhunter_desc>État mental permanent de chasse à l'homme.</NymphPermanentManhunter_desc>
+		<NymphSappers>Nymphos sapeurs</NymphSappers>
+		<NymphSappers_desc>Toc toc ! L'excité(e) peut te sentir derrière cette porte ! Tu peux courir, mais tu ne peux pas te cacher.</NymphSappers_desc>
+		<NymphFrustratedRape>Les nymphos violent lorsque frustrées</NymphFrustratedRape>
+		<NymphFrustratedRape_desc>Lorsque les nymphes sont frustrées et qu'aucun partenaire n'est disponible, elles violent quelqu'un/quelque chose au hasard.</NymphFrustratedRape_desc>
+
+		<FemaleFuta>Activer les futas</FemaleFuta>
+		<FemaleFuta_desc>Générer des femmes en tant que futas (+ pénis)</FemaleFuta_desc>
+		<MaleTrap>Activer les pièges</MaleTrap>
+		<MaleTrap_desc>Générer des hommes comme pièges (+ seins)</MaleTrap_desc>
+		<male_nymph_chance>Proba. d'apparition des nymphos masculins</male_nymph_chance>
+		<male_nymph_chance_desc>Probabilité d'apparition d'un nymphomane masculin \n\nPlage valide : 0 - 100\nValeur par défaut : 0</male_nymph_chance_desc>
+		<futa_nymph_chance>Proba. d'apparition Futa/Piège nympho</futa_nymph_chance>
+		<futa_nymph_chance_desc>Probabilité d'apparition de nympho Futa/Piège \n\nPlage valide : 0 - 100\nValeur par défaut : 0</futa_nymph_chance_desc>
+		<futa_natives_chance>Proba. d'apparition Futa/Piège natif</futa_natives_chance>
+		<futa_natives_chance_desc>Probabilité d'apparition de Futa/Piège natif \n(niveau de tech. industriel ou moins) \n\nPlage valide : 0 - 100\nValeur par défaut : 0</futa_natives_chance_desc>
+		<futa_spacers_chance>Proba. d'apparition de Futa/Piège spatial</futa_spacers_chance>
+		<futa_spacers_chance_desc>Probabilité d'apparition de Futa/Piège de niveau technologique Spatial \n\nPlage valide : 0 - 100\nValeur par défaut : 5</futa_spacers_chance_desc>
+
+		<sexneed_decay_rate_name>Taux de décroissance des besoins sexuels (%)</sexneed_decay_rate_name>
+		<sexneed_decay_rate_desc>0 % pour aucune dégradation.\n1000000 % pour la planète Rapeturnus. Plage recommandée : 50 % à 200 %.</sexneed_decay_rate_desc>
+		<sexneed_fix_name>Corrections des besoins sexuels</sexneed_fix_name>
+		<sexneed_fix_desc>Corrige les seuils incorrects liés aux besoins sexuels, ce qui devrait réduire considérablement les déclencheurs de relations sexuelles et de viols.</sexneed_fix_desc>
+		<Animal_mating_cooldown>Temps de recharge de l'accouplement des animaux</Animal_mating_cooldown>
+		<Animal_mating_cooldown_desc>Combien d'heures l'animal attend avant de s'accoupler/se reproduire.\n0 - en fonction de la libido</Animal_mating_cooldown_desc>
+		<AllowYouthSex>Activer le sexe chez les jeunes</AllowYouthSex>
+		<AllowYouthSex_desc>Autoriser les relations sexuelles entre les humanoïdes qui sont en âge de procréer mais dont la croissance n'a pas encore atteint 100 %.</AllowYouthSex_desc>
+		<!-- 已废弃 -->
+		<sex_age_legacymode>Limites d'âge sexuelles héritées</sex_age_legacymode>
+		<sex_age_legacymode_desc>Les limiteurs d'âge hérités pour les pions humanoïdes, qui ne fonctionnent pratiquement plus pour les races dont l'espérance de vie n'est pas humaine, mais comme certaines personnes veulent cette fonctionnalité, voilà. Lorsque cette option est désactivée, le stade de reproduction de la race est utilisé pour l'adolescence, et la croissance du pion (100 %) pour l'âge adulte.</sex_age_legacymode_desc>
+		<SexMinimumAge>Âge minimal pour le sexe</SexMinimumAge>
+		<SexMinimumAge_desc>Les pions humanoïdes plus jeunes que cela n'auront pas de relations sexuelles du tout.</SexMinimumAge_desc>
+		<SexFreeForAllAge>Âge du consentement</SexFreeForAllAge>
+		<SexFreeForAllAge_desc>Les pions humanoïdes plus jeunes que cela n'auront des relations sexuelles qu'avec des pions ayant deux ans d'écart d'âge.</SexFreeForAllAge_desc>
+
+		<bestiality_enabled>Activer la bestialité</bestiality_enabled>
+		<bestiality_enabled_desc>Autoriser les actes de bestialité. Souhaités ou non.</bestiality_enabled_desc>
+		<animal_on_animal_enabled>Activer animal sur animal</animal_on_animal_enabled>
+		<animal_on_animal_enabled_desc>Activer l'accouplement des animaux sauvages. Les animaux apprivoisés s'accoupleront avec des individus de leur propre espèce, quel que soit ce paramètre (comportement par défaut).\nActiver les relations sexuelles interespèces entre les animaux (désignés), pouvant entraîner une grossesse.</animal_on_animal_enabled_desc>		
+		<wild_mating_enabled>Activer l'accouplement des animaux sauvages</wild_mating_enabled>
+		<wild_mating_enabled_desc>Permet aux animaux sauvages (qui n'appartiennent pas à la colonie) de s'accoupler entre eux si l'accouplement entre animaux est activé.\nN'affecte pas les relations sexuelles interespèces désignées entre animaux.</wild_mating_enabled_desc>	
+		<necrophilia_enabled>Activer la nécrophilie</necrophilia_enabled>
+		<necrophilia_enabled_desc>Permettre les relations sexuelles avec des cadavres. Généralement limité aux pions dotés du trait Nécrophile, mais d'autres peuvent parfois le faire s'ils sont sexuellement frustrés.</necrophilia_enabled_desc>
+		<sounds_enabled>Activer les sons RJW</sounds_enabled>
+		<sounds_enabled_desc>Active les sons spécifiques à RJW. Notez que cela n'a aucun effet sur les paramètres de base : si vous avez complètement désactivé le son, cela ne change rien.</sounds_enabled_desc>
+		<sounds_sex_volume>Volume du sexe</sounds_sex_volume>
+		<sounds_sex_volume_desc>Changer le volume du sexe</sounds_sex_volume_desc>
+		<sounds_cum_volume>Volume du sperme</sounds_cum_volume>
+		<sounds_cum_volume_desc>Changer le volume du sperme</sounds_cum_volume_desc>
+		<sounds_voice_volume>Volume des voix</sounds_voice_volume>
+		<sounds_voice_volume_desc>Changer le volume des voix</sounds_voice_volume_desc>
+		<sounds_orgasm_volume>Volume de l'orgasme</sounds_orgasm_volume>
+		<sounds_orgasm_volume_desc>Changer le volume de l'orgasme</sounds_orgasm_volume_desc>
+		<sounds_animal_on_animal_volume>Changer le volume d'animal sur animal</sounds_animal_on_animal_volume>
+		<sounds_animal_on_animal_volume_desc>Option de volume supplémentaire pour le sexe entre animaux</sounds_animal_on_animal_volume_desc>
+
+		<cum_filth>Quantité de sperme</cum_filth>
+		<cum_filth_desc>Modifie la quantité de sperme produit lors des rapports sexuels. Notez que désactiver cette option rendra le jeu plus facile, car il n'y aura plus de sperme à nettoyer.</cum_filth_desc>
+
+		<RPG_hero_control_name>Mode héros</RPG_hero_control_name>
+		<RPG_hero_control_desc>Le joueur peut désigner 1 pion comme personnage joueur et en avoir le contrôle direct et inconditionnel.</RPG_hero_control_desc>
+		<RPG_hero_control_HC_name>Mode héros (HC)</RPG_hero_control_HC_name>
+		<RPG_hero_control_HC_desc>HARDCORE : Le joueur ne peut contrôler que le héros, procurez-vous du lubrifiant, vous en aurez besoin de beaucoup.\n(destiné au mode multijoueur)</RPG_hero_control_HC_desc>
+		<RPG_hero_control_Ironman_name>Mode Héros (Ironman)</RPG_hero_control_Ironman_name>
+		<RPG_hero_control_Ironman_desc>HARDCORE : Le joueur ne peut choisir son héros qu'une seule fois.</RPG_hero_control_Ironman_desc>
+
+		<UseAdvancedAgeScaling>Échelle d'âge avancée</UseAdvancedAgeScaling>
+		<UseAdvancedAgeScaling_desc>Utilisez une échelle d'âge différente pour les races non humaines (durée de vie longue ou courte).</UseAdvancedAgeScaling_desc>
+
+		<!-- 强奸相关-->
+		<designated_freewill>Libre arbitre de pion désigné</designated_freewill>
+		<designated_freewill_desc>Un pion désigné pour le confort ou l'accouplement peut initier un rapport sexuel.</designated_freewill_desc>
+		<rape_enabled>Activer le viol</rape_enabled>
+		<rape_enabled_desc>Vous voyez ce qui vous plaît ? Prenez-le de force, vous pourrez en faire un chapeau plus tard.</rape_enabled_desc>
+		<PrisonersBeating>Fesse-moi, daddy !</PrisonersBeating>
+		<PrisonersBeating_desc>Battre violemment les victimes tout en les violant.</PrisonersBeating_desc>
+		<GentlePrisonersBeating>Senpai !~ S'il te plaît, sois doux !~</GentlePrisonersBeating>
+		<GentlePrisonersBeating_desc>Réduire les dégâts infligés par les coups à environ 0-1.</GentlePrisonersBeating_desc>
+		<rape_stripping>Victimes déshabillées</rape_stripping>
+		<rape_stripping_desc>Violez les victimes (les viols non consensuels - bestialité, ennemis, etc. déshabilleront les victimes)</rape_stripping_desc>
+		<ColonistCanCP>Activer le viol de confort par les colons</ColonistCanCP>
+		<ColonistCanCP_desc>Les colons sont autorisés à violer les pions de confort.</ColonistCanCP_desc>
+		<VisitorsCanCP>Activer le viol de confort par les visiteurs</VisitorsCanCP>
+		<VisitorsCanCP_desc>Les visiteurs sont autorisés à violer les pions de confort.</VisitorsCanCP_desc>
+		<AnimalsCanCP>Activer le viol de confort par les animaux</AnimalsCanCP>
+		<AnimalsCanCP_desc>Les animaux sont autorisés à violer les pions de confort. Nécessite que la zoophilie soit activée.</AnimalsCanCP_desc>
+		<NonFutaWomenRaping_MaxVulnerability>Les femmes violent (%)</NonFutaWomenRaping_MaxVulnerability>
+		<NonFutaWomenRaping_MaxVulnerability_desc>Seules les femmes dont la vulnérabilité est inférieure à cette valeur commettront un viol. \nLa vulnérabilité des animaux est toujours de 100 %. \nPour vérifier le statut de « vulnérabilité », allez dans « Afficher les informations sur cet objet » > Statistiques.\n\nPlage valide : 0 à 300 %</NonFutaWomenRaping_MaxVulnerability_desc>
+		<Rapee_MinVulnerability_human>Vulnérabilité humains « risque d'être violés » (%)</Rapee_MinVulnerability_human>
+		<Rapee_MinVulnerability_human_desc>Les pions humains dont la vulnérabilité est supérieure à cette valeur seront des cibles faciles. \nPour vérifier le statut de « vulnérabilité », allez dans « afficher les informations sur cet objet » > Statistiques.\n\nPlage valide : 0 - 300 %</Rapee_MinVulnerability_human_desc>
+		<Rapee_MinVulnerability_animals>Vulnérabilité animaux « risque d'être violés » (%)</Rapee_MinVulnerability_animals>
+		<Rapee_MinVulnerability_animals_desc>Les animaux dont le niveau de vulnérabilité est supérieur à cette valeur seront des cibles faciles pour les zoophiles. \nPour vérifier le statut de « vulnérabilité », allez dans « Afficher les informations sur cet objet » > Statistiques.\n\nPlage valide : 0 à 300 %</Rapee_MinVulnerability_animals_desc>
+
+
+	<RJWSettingsHookup>RimJobWorld - Paramètres du sexe habituel</RJWSettingsHookup>
+		<SettingHookupsEnabled>Activer les coups d'un soir (en général)</SettingHookupsEnabled>
+		<SettingHookupsEnabled_desc>Détermine si les pions célibataires peuvent avoir des relations sexuelles occasionnelles avec d'autres pions célibataires (coup d'un soir = baise).</SettingHookupsEnabled_desc>
+		<SettingQuickHookupsEnabled>Activez les rapports sexuels rapides.</SettingQuickHookupsEnabled>
+		<SettingQuickHookupsEnabled_desc>Contrôle si les pions célibataires peuvent avoir des relations sexuelles occasionnelles avec d'autres pions célibataires\nAvertissement : cela peut perturber le travail des pions.</SettingQuickHookupsEnabled_desc>
+		<SettingNoHookupsDuringWorkHours>Désactiver la baise pendant les heures de travail</SettingNoHookupsDuringWorkHours>
+		<SettingNoHookupsDuringWorkHours_desc>Détermine si les pions peuvent rechercher des relations sexuelles occasionnelles pendant les heures de travail.\nLes nymphomanes ignorent cette règle.</SettingNoHookupsDuringWorkHours_desc>
+		<SettingColonistsCanHookup>Les colons peuvent baiser ensemble.</SettingColonistsCanHookup>
+		<SettingColonistsCanHookup_desc>Détermine si les colons sont autorisés à rechercher des relations sexuelles occasionnelles.</SettingColonistsCanHookup_desc>
+		<SettingColonistsCanHookupWithVisitor>Les colons peuvent baiser avec les visiteurs.</SettingColonistsCanHookupWithVisitor>
+		<SettingColonistsCanHookupWithVisitor_desc>Détermine si les pions peuvent avoir des relations sexuelles occasionnelles avec les visiteurs de la colonie.</SettingColonistsCanHookupWithVisitor_desc>
+		<SettingCanHookupWithPrisoner>Les non-détenus peuvent baiser avec des détenus.</SettingCanHookupWithPrisoner>
+		<SettingCanHookupWithPrisoner_desc>Détermine si les pions non prisonniers peuvent rechercher des relations sexuelles consenties avec des prisonniers. Cela n'est pas affecté par la désignation « Prisonnier confortable » et est considéré comme consensuel par les deux parties.</SettingCanHookupWithPrisoner_desc>
+		<SettingVisitorsCanHookupWithColonists>Les visiteurs peuvent baiser avec les colons.</SettingVisitorsCanHookupWithColonists>
+		<SettingVisitorsCanHookupWithColonists_desc>Détermine si les pions visiteurs incluent les colons comme partenaires potentiels pour des relations sexuelles occasionnelles.</SettingVisitorsCanHookupWithColonists_desc>
+		<SettingVisitorsCanHookupWithVisitors>Les visiteurs peuvent baiser avec d'autres visiteurs.</SettingVisitorsCanHookupWithVisitors>
+		<SettingVisitorsCanHookupWithVisitors_desc>Détermine si les pions visiteurs incluent d'autres visiteurs comme partenaires potentiels pour des relations sexuelles occasionnelles.</SettingVisitorsCanHookupWithVisitors_desc>
+		<SettingPrisonersCanHookupWithNonPrisoner>Les prisonniers peuvent baiser avec les colons.</SettingPrisonersCanHookupWithNonPrisoner>
+		<SettingPrisonersCanHookupWithNonPrisoner_desc>Détermine si les prisonniers peuvent inclure des non-prisonniers parmi leurs partenaires sexuels occasionnels potentiels.\nLes pions, y compris les prisonniers, ne peuvent avoir de relations sexuelles qu'avec des personnes à leur portée. Si le prisonnier ne peut pas quitter sa cellule, cette option n'a donc aucun intérêt.</SettingPrisonersCanHookupWithNonPrisoner_desc>
+		<SettingPrisonersCanHookupWithPrisoner>Les prisonniers peuvent baiser avec d'autres prisonniers.</SettingPrisonersCanHookupWithPrisoner>
+		<SettingPrisonersCanHookupWithPrisoner_desc>Détermine si les prisonniers peuvent considérer d'autres prisonniers comme des partenaires potentiels pour des relations sexuelles occasionnelles.\nLes pions, y compris les prisonniers, ne peuvent avoir de relations sexuelles qu'avec des personnes à leur portée. Si le prisonnier ne peut pas quitter sa cellule, cette option n'a donc aucun intérêt.</SettingPrisonersCanHookupWithPrisoner_desc>
+		<SettingNymphosCanPickAnyone>Les nymphos peuvent choisir n'importe qui</SettingNymphosCanPickAnyone>
+		<SettingNymphosCanPickAnyone_desc>Détermine si les pions nymphomanes (trait « Hypersexuel ») choisiront n'importe quelle personne disponible.\nIls continuent d'obéir aux paramètres d'infidélité et de destruction du foyer ci-dessous.</SettingNymphosCanPickAnyone_desc>
+		<SettingNymphosCanCheat>Les nymphos peuvent tromper</SettingNymphosCanCheat>
+		<SettingNymphosCanCheat_desc>Détermine si les pions nymphomanes (trait « hypersexuel ») peuvent tromper leur partenaire s'ils sont frustrés sexuellement.</SettingNymphosCanCheat_desc>
+		<SettingNymphosCanHomewreck>Les nymphos peuvent détruire des foyers</SettingNymphosCanHomewreck>
+		<SettingNymphosCanHomewreck_desc>Détermine si les pions nymphomanes (trait « hypersexuel ») coucheront avec des personnes qui ont déjà un partenaire.</SettingNymphosCanHomewreck_desc>
+		<SettingNymphosCanHomewreckReverse>Les nymphos peuvent détruire leur foyer</SettingNymphosCanHomewreckReverse>
+		<SettingNymphosCanHomewreckReverse_desc>Détermine si les pions nymphomanes (trait « hypersexuel ») accepteront d'avoir des relations sexuelles même s'ils ont un partenaire.</SettingNymphosCanHomewreckReverse_desc>
+		<SettingHookupChanceForNonNymphos>Probabilité de baise par heure (%)</SettingHookupChanceForNonNymphos>
+		<SettingHookupChanceForNonNymphos_desc>La probabilité qu'un pion excité recherche des relations sexuelles occasionnelles. \nVérifié une seule fois par heure et uniquement lorsque le pion a terminé sa tâche en cours. La valeur par défaut est de 30 %.</SettingHookupChanceForNonNymphos_desc>
+		<SettingMinimumFuckabilityToHookup>Minimum d'attirance sexuelle pour baiser</SettingMinimumFuckabilityToHookup>
+		<SettingMinimumFuckabilityToHookup_desc>Contrôle le degré d'attirance (RJW) que les deux pions doivent avoir l'un pour l'autre pour envisager une relation. La valeur par défaut est de 10 %.</SettingMinimumFuckabilityToHookup_desc>
+		<SettingMinimumAttractivenessToHookup>Attrait minimum pour baiser</SettingMinimumAttractivenessToHookup>
+		<SettingMinimumAttractivenessToHookup_desc>Contrôle l'attirance (Rimworld) des pions les uns pour les autres afin d'envisager une relation sexuelle.\n La valeur par défaut est 50 %.\n Nymphomane > 0.</SettingMinimumAttractivenessToHookup_desc>
+		<SettingMinimumRelationshipToHookup>Opinion minimum pour baiser</SettingMinimumRelationshipToHookup>
+		<SettingMinimumRelationshipToHookup_desc>Contrôle l'opinion minimale des pions les uns envers les autres pour envisager une rencontre. La valeur par défaut est 20. Nymphomane > 0.</SettingMinimumRelationshipToHookup_desc>
+
+
+	<RJWSettingsDebug>RimJobWorld - Débogage</RJWSettingsDebug>
+		<!-- 调试相关-->
+		<submit_button_enabled>Activer le bouton « Soumettre » sur les pions enrôlés</submit_button_enabled>
+		<submit_button_enabled_desc>Le bouton « Soumettre » vous permet d'éviter la partie la plus mortelle et de passer directement à celle qui est la plus humiliante. \nDésactivez cette option si l'honneur passe avant la vie pour vous. \nN'oubliez pas que si vous changez d'avis, cette option sera toujours là, à votre disposition.</submit_button_enabled_desc>
+		<RJW_designation_box>Afficher les indicateurs RJW</RJW_designation_box>
+		<RJW_designation_box_desc>Boutons permettant d'afficher le groupe de boutons RJW dans l'interface graphique de contrôle des pions.</RJW_designation_box_desc>
+		<StackRjwParts_name>Empilement de pièces Rjw</StackRjwParts_name>
+		<StackRjwParts_desc>Empiler les pièces rjw dans l'onglet Santé du pion \n(Étiquette x nombre)</StackRjwParts_desc>
+		<maxDistanceCellsCasual_name>Distance sexuelle (cellules)</maxDistanceCellsCasual_name>
+		<maxDistanceCellsCasual_desc>Distance maximale en cellules que l'IA est prête à parcourir pour atteindre sa destination/cible.\n\nVérification rapide de la distance - ignore les obstacles (par exemple, les murs, les montagnes).\nValeur par défaut : 100 cellules.</maxDistanceCellsCasual_desc>
+		<maxDistanceCellsRape_name>Distance de viol (cellules)</maxDistanceCellsRape_name>
+		<maxDistanceCellsRape_desc>Distance maximale en cellules que l'IA est prête à parcourir pour atteindre sa destination/cible.\n\nVérification rapide de la distance - ignore les obstacles (par exemple, les murs, les montagnes).\nValeur par défaut : 100 cellules.</maxDistanceCellsRape_desc>
+		<maxDistancePathCost_name>Distance sexuelle (ChemindePion)</maxDistancePathCost_name>
+		<maxDistancePathCost_desc>Distance maximale prise en compte par l'IA pour atteindre la destination/cible sexuelle. Calcul complexe et lent influencé par les obstacles, la vitesse des pions et les modificateurs au sol.\nValeur par défaut : 1000.\n0 - désactiver la vérification.</maxDistancePathCost_desc>
+
+		<!-- 作弊相关-->
+		<override_RJW_designation_checks_name>Contrôles de désignation de remplacement</override_RJW_designation_checks_name>
+		<override_RJW_designation_checks_desc>Permet de définir des désignations pour tous les colons sans tenir compte des conditions.\n TRICHE</override_RJW_designation_checks_desc>
+		<override_control>Contrôle direct</override_control>
+		<override_control_desc>Le joueur peut demander manuellement aux pions d'effectuer des activités sexuelles. TRICHE</override_control_desc>
+		<AddTrait_Rapist>Obtenir le trait « violeur »</AddTrait_Rapist>
+		<AddTrait_Rapist_desc>Possibilité d'acquérir le trait « violeur » après 10 rapports sexuels, dont plus de 12 % sont des viols\n TRICHE</AddTrait_Rapist_desc>
+		<AddTrait_Masocist>Obtenir le trait « Masochiste »</AddTrait_Masocist>
+		<AddTrait_Masocist_desc>Possibilité d'acquérir le trait « masochiste » après avoir été violé, 5 % après avoir atteint le stade « brisé »\n TRICHE</AddTrait_Masocist_desc>
+		<AddTrait_Nymphomaniac>Obtenir le trait « Hypersexuel »</AddTrait_Nymphomaniac>
+		<AddTrait_Nymphomaniac_desc>Possibilité d'acquérir un trait « hypersexuel » après 10 rapports sexuels, tout en étant dépendant au baisignon\n TRICHE</AddTrait_Nymphomaniac_desc>
+		<AddTrait_Necrophiliac>Obtenir le trait « Nécrophile »</AddTrait_Necrophiliac>
+		<AddTrait_Necrophiliac_desc>Possibilité d'acquérir le trait « nécrophile » après 10 actes sexuels, dont plus de 50 % avec des cadavres\n TRICHE</AddTrait_Necrophiliac_desc>
+		<AddTrait_Nerves>Obtenir le trait « Nerveux »</AddTrait_Nerves>
+		<AddTrait_Nerves_desc>Possibilité d'acquérir le trait « nerveux » après avoir été violé(e)\n TRICHE</AddTrait_Nerves_desc>
+		<AddTrait_Zoophiliac>Obtenir le trait « Zoophile »</AddTrait_Zoophiliac>
+		<AddTrait_Zoophiliac_desc>Possibilité d'acquérir le trait « zoophile » après 10 actes sexuels, dont plus de 50 % avec des animaux\n TRICHE</AddTrait_Zoophiliac_desc>
+		<Allow_RMB_DeepTalk>RMB ConversationProfonde</Allow_RMB_DeepTalk>
+		<Allow_RMB_DeepTalk_desc>Permet l'interaction RMB-Social-ConversationProfonde (+12 relations)\n TRICHE</Allow_RMB_DeepTalk_desc>
+		<Disable_bestiality_pregnancy_relations>Désactiver les relations de grossesse animales</Disable_bestiality_pregnancy_relations>
+		<Disable_bestiality_pregnancy_relations_desc>Désactivez les relations (mère/père/frères et sœurs) dans le cadre d'une grossesse animale. TRICHE</Disable_bestiality_pregnancy_relations_desc>
+		<Disable_egg_pregnancy_relations>Désactiver les relations de grossesse d'œufs</Disable_egg_pregnancy_relations>
+		<Disable_egg_pregnancy_relations_desc>Désactivez les relations (mère/père/frères et sœurs) issues d'une grossesse par œuf. TRICHE</Disable_egg_pregnancy_relations_desc>
+		<Disable_MeditationFocusDrain>Dés. la perte de conc. due à la frustration</Disable_MeditationFocusDrain>
+		<Disable_MeditationFocusDrain_desc>Lorsque les pions sont frustrés, ils ne perdent pas leur concentration.\n TRICHE</Disable_MeditationFocusDrain_desc>
+		<Disable_RecreationDrain>Désactiver la perte de divertissement</Disable_RecreationDrain>
+		<Disable_RecreationDrain_desc>Lorsque les pions ont des relations sexuelles ennuyeuses/médiocres en raison de leurs traits/goûts sexuels, ils ne perdent pas leur besoin de divertissement.\n TRICHE</Disable_RecreationDrain_desc>
+
+		<!-- 调试相关-->
+		<ForbidKidnap>Interdire l'enlèvement</ForbidKidnap>
+		<ForbidKidnap_desc>Pas d'enlèvement.</ForbidKidnap_desc>
+		<legacy_PartsAdder>Additionneur de pièces héritées</legacy_PartsAdder>
+		<legacy_PartsAdder_desc>Distributeur de pièces (organes sexuels/sexués) intégré, il tente de deviner quelles pièces les races Vanilla et HAR obtiennent en fonction de leur nom, ce qui peut s'avérer utile si vous ne disposez pas des correctifs racesupport.</legacy_PartsAdder_desc>
+		<override_lovin>Remplacer faire l'amour vanilla</override_lovin>
+		<override_lovin_desc>Utiliser les relations sexuelles occasionnelles (coups d'un soir, sexe rapide) à l'amour pudique de base.</override_lovin_desc>
+		<override_matin>Remplacer l'accouplement vanilla</override_matin>
+		<override_matin_desc>Utilisez la reproduction au lieu de l'accouplement de base.</override_matin_desc>
+		<matin_crossbreed>Accouplement interespèces</matin_crossbreed>
+		<matin_crossbreed_desc>Les animaux ayant le même type d'animal (Vanilla : Canins, Dryades) seront considérés comme appartenant à la même espèce et pourront s'accoupler entre eux.</matin_crossbreed_desc>
+		<WildMode_name>Mode sauvage</WildMode_name>
+		<WildMode_desc>EXPÉRIMENTAL - NE SIGNALEZ PAS DE BOGUES SI CETTE OPTION EST ACTIVÉE. \n\nAucune règle concernant le sexe. La plupart des restrictions sont désactivées. Profitez du côté le plus sauvage de Rimworld.</WildMode_desc>
+		<HippieMode_name>Mode hippie</HippieMode_name>
+		<HippieMode_desc>EXPÉRIMENTAL - NE SIGNALEZ PAS DE BOGUES SI CETTE OPTION EST ACTIVÉE. \n\nIgnorer les relations pour les rencontres occasionnelles.</HippieMode_desc>
+		<GenderlessAsFuta_name>SansGenreEnFuta</GenderlessAsFuta_name>
+		<GenderlessAsFuta_desc>UTILISEZ À VOS RISQUES ET PÉRILS. \n\nLes pions sans genre seront définis comme féminins et auront les deux types d'organes génitaux.</GenderlessAsFuta_desc>
+		<DevMode_name>Mode développement</DevMode_name>
+		<DevMode_desc>Active la journalisation RimJobWorld et autres fonctionnalités. Vous ne voulez généralement pas activer cette option.</DevMode_desc>
+		<DebugLogJoinInBed>Infos sur la recherche de connexion au journal de débogage</DebugLogJoinInBed>
+		<DebugLogJoinInBed_desc>Active certains journaux de débogage très volumineux afin d'aider à trouver des bogues dans les opérations JoinInBed. \nSeuls les développeurs (ou les personnes qui les aident à trouver un bogue) devraient activer cette option.</DebugLogJoinInBed_desc>
+		<DebugRape>Journal de débogage infos de viol</DebugRape>
+		<DebugRape_desc>Active certains journaux de débogage très volumineux afin d'aider à trouver des bogues dans les opérations de viol.\nSeuls les développeurs (ou les personnes qui les aident à trouver un bogue) devraient activer cette option.</DebugRape_desc>
+		<DebugInteraction>Infos sur l'interaction du journal de débogage</DebugInteraction>
+		<DebugInteraction_desc>Mode détaillé pour le module d'interaction.</DebugInteraction_desc>
+		<DebugNymph>Infos sur le journal de débogage nympho</DebugNymph>
+		<DebugNymph_desc>Mode détaillé pour le module nympho.</DebugNymph_desc>
+
+
+	<!-- 怀孕相关-->
+	<RJWSettingsPregnancy>RimJobWorld - Paramètres de grossesse</RJWSettingsPregnancy>
+		<UseVanillaPregnancy>Grossesse du DLC Biotech</UseVanillaPregnancy>
+		<UseVanillaPregnancy_desc>Utilisez le DLC Biotech pour les grossesses impliquant une femme humaine.</UseVanillaPregnancy_desc>
+		<RJWH_pregnancy>Permettre des grossesses humanoïdes</RJWH_pregnancy>
+		<RJWH_pregnancy_desc>Activez la grossesse pour les relations sexuelles entre humains. Si le DLC Biotech n'est pas installé, RJW utilisera son propre système de grossesse.</RJWH_pregnancy_desc>
+		<PregnantCoeffecientForHuman>Chances de grossesse humaine (%)</PregnantCoeffecientForHuman>
+		<PregnantCoeffecientForHuman_desc>Probabilité de grossesse humaine en pourcentage.\n\nPlage valide : 0 à 100 %</PregnantCoeffecientForHuman_desc>
+		<RJWB_pregnancy>Autoriser les grossesses humains-animaux</RJWB_pregnancy>
+		<RJWB_pregnancy_desc>Utilisez RJW pregnancy pour les grossesses humain-animal.</RJWB_pregnancy_desc>
+		<PregnantCoeffecientForAnimals>Chances de grossesse chez les animaux (%)</PregnantCoeffecientForAnimals>
+		<PregnantCoeffecientForAnimals_desc>Probabilité de grossesse chez les animaux en pourcentage.\n\nPlage valide : 0 à 100 %</PregnantCoeffecientForAnimals_desc>
+		<InterspeciesImpregnantionModifier>Modificateur d'imprégnation interespèces (%)</InterspeciesImpregnantionModifier>
+		<InterspeciesImpregnantionModifier_desc>Modificateur d'imprégnation interespèces en pourcentage. À 20 %, cela réduit les chances normales à un cinquième de celles de la même espèce, et ainsi de suite.\n\nPlage valide : 0 à 100 %</InterspeciesImpregnantionModifier_desc>
+		<UseParentMethod>Hérédité d'ADN</UseParentMethod>
+		<UseParentMethod_desc>OUI : Les bébés ont l'ADN aléatoire de leurs parents.\nNON : Les bébés ressemblent à leur mère.</UseParentMethod_desc>
+		<OffspringLookLikeTheirMother>Hérédité de l'ADN humanoïde</OffspringLookLikeTheirMother>
+		<OffspringLookLikeTheirMother_desc>Régit les grossesses humaines. \n100 % signifie que les bébés nés seront de la race de la mère. \nÀ 0 %, cela signifie que les bébés nés seront de la race du père.\n\nPlage valide : 0 à 100 %</OffspringLookLikeTheirMother_desc>
+		<OffspringIsHuman>Hérédité de l'ADN animal</OffspringIsHuman>
+		<OffspringIsHuman_desc>Régit les grossesses entre animaux.\n100 % signifie que les bébés nés seront de la race de la « mère ». \n0 % signifie que les bébés nés seront de la race du « père ».\n\nPlage valide : 0 à 100 %</OffspringIsHuman_desc>
+		<OffspringIsHuman2>Hérédité de l'ADN animal (humain/animal)</OffspringIsHuman2>
+		<OffspringIsHuman2_desc>Détermine les grossesses entre humains et animaux.\n\n gauche - les bébés nés seront de race animale. \n\n droite - les bébés nés seront de race humaine. \n\nPlage valide : 0 - 100 %</OffspringIsHuman2_desc>
+		<RJWA_pregnancy>Permettre les grossesses animales</RJWA_pregnancy>
+		<RJWA_pregnancy_desc>Utilisez RJW pregnancy pour les grossesses animales.</RJWA_pregnancy_desc>
+		<RJWA_pregnancy_notifications>Activer les notifications pour les grossesses animales</RJWA_pregnancy_notifications>
+		<RJWA_pregnancy_notifications_desc>Des notifications seront envoyées lorsque les animaux tombent enceintes, lorsque les contractions commencent et lorsque la naissance se déroule sans complication. \n\nCela peut être bruyant pour les colonies où l'élevage est intense, il est donc recommandé de désactiver ce paramètre. \n\nLes notifications critiques seront envoyées quel que soit ce paramètre. </RJWA_pregnancy_notifications_desc>
+		<RJWI_pregnancy>Permettre les grossesses d'œufs</RJWI_pregnancy>
+		<RJWI_pregnancy_desc>Utilisez RJW pregnancy pour les grossesses par ovipositeur.</RJWI_pregnancy_desc>
+		<egg_pregnancy_implant_anyone>Filtre pour l'implantation d'œufs</egg_pregnancy_implant_anyone>
+		<egg_pregnancy_implant_anyone_desc>OUI : Toute personne dotée d'un ovipositeur féminin peut implanter des œufs.\nNON : Seul le type de parent prédéfini peut implanter des œufs.</egg_pregnancy_implant_anyone_desc>
+		<egg_pregnancy_fertilize_anyone>Filtre pour la fertilisation des œufs</egg_pregnancy_fertilize_anyone>
+		<egg_pregnancy_fertilize_anyone_desc>OUI : Toute personne dotée d'un ovipositeur masculin peut féconder des œufs.\nNON : Seul le type de parent prédéfini ou identique à l'implanteur peut féconder des œufs.</egg_pregnancy_fertilize_anyone_desc>
+		<egg_pregnancy_genes>Les grossesses d'œufs sont porteuses de gènes</egg_pregnancy_genes>
+		<egg_pregnancy_genes_desc>Permet aux œufs humains-humains-ovipositeurs d'utiliser l'hérédité génétique normale.</egg_pregnancy_genes_desc>
+		
+		<RJWI_analPregnancy>Permettre les grossesses anales</RJWI_analPregnancy>
+		<RJWI_analPregnancy_desc>Permettre aux insectes d'inséminer les pions par voie anale.</RJWI_analPregnancy_desc>
+		<RJWI_oralPregnancy>Permettre les grossesses par voie orale</RJWI_oralPregnancy>
+		<RJWI_oralPregnancy_desc>Permettre aux insectes d'imprégner les pions par voie orale.</RJWI_oralPregnancy_desc>
+		<RJWI_FertilizationCheck>Filtre de fertilisation pour orifice d'œuf</RJWI_FertilizationCheck>
+		<RJWI_FertilizationCheck_desc>Fertilisez les œufs uniquement dans l'orifice « sexé ».</RJWI_FertilizationCheck_desc>
+
+		<egg_pregnancy_eggs_size>Modificateur de taille des œufs</egg_pregnancy_eggs_size>
+		<egg_pregnancy_eggs_size_desc>0 - peut être implanté avec un nombre illimité d'ovules.</egg_pregnancy_eggs_size_desc>
+		<egg_pregnancy_ovipositor_capacity_factor>Facteur de capacité de l'ovipositeur</egg_pregnancy_ovipositor_capacity_factor>
+		<egg_pregnancy_ovipositor_capacity_factor_desc>multiplie la capacité normale des ovipositeurs femelles</egg_pregnancy_ovipositor_capacity_factor_desc>
+
+		<MechanoidImplanting>Activer les implants mécanoïdes</MechanoidImplanting>
+		<MechanoidImplanting_desc>Autoriser le sondage et l'implantation par des mécanoïdes.</MechanoidImplanting_desc>
+		<SaferMechanoidImplanting>Implants mécanoïdes plus sûrs</SaferMechanoidImplanting>
+		<SaferMechanoidImplanting_desc>Les implants mécanoïdes ne tueront pas les pions (si la grossesse a été vérifiée), mais infligeront 5 points de dégâts à chaque partie du corps contenue dans le torse. Les mécanoïdes resteront hostiles.</SaferMechanoidImplanting_desc>
+
+		<genetic_trait_filter>Filtrer les traits héréditaires</genetic_trait_filter>
+		<genetic_trait_filter_desc>Si cette option est activée, le fichier rjw/Defs/NonInheritedTraits.xml sera utilisé pour filtrer les traits qui ne doivent pas être transmis à la génération suivante. Si cette option est désactivée, tout est permis.</genetic_trait_filter_desc>
+		<max_num_momtraits_inherited>Traits héréditaires max. hérités de la mère</max_num_momtraits_inherited>
+		<max_num_poptraits_inherited>Traits héréditaires max. hérités du père</max_num_poptraits_inherited>
+
+		<RJW_fertility_endAge_male>Âge de l'infertilité masculine </RJW_fertility_endAge_male>
+		<RJW_fertility_endAge_male_desc>Ajusté en fonction de la durée de vie des races extraterrestres. La même échelle est utilisée pour les animaux et les humanoïdes.</RJW_fertility_endAge_male_desc>
+		<RJW_fertility_endAge_female_humanlike>Âge de l'infertilité féminine (humains)</RJW_fertility_endAge_female_humanlike>
+		<RJW_fertility_endAge_female_humanlike_desc>Contrairement à la plupart des animaux, les femelles humaines deviennent stériles à un âge précoce. Le même ratio est utilisé pour toutes les races extraterrestres, afin de maintenir l'équilibre.</RJW_fertility_endAge_female_humanlike_desc>
+		<RJW_fertility_endAge_female_animal>Âge de l'infertilité féminine (animaux)</RJW_fertility_endAge_female_animal>
+		<RJW_fertility_endAge_female_animal_desc>Contrairement aux humains, la plupart des femelles animales restent fertiles jusqu'à leur mort.</RJW_fertility_endAge_female_animal_desc>
+		<In_human_years> en années humaines</In_human_years>
+		<XofLifeExpectancy>% de l'espérance de vie</XofLifeExpectancy>
+
+		<InterspeciesDisabled>Désactiver les interespèces.</InterspeciesDisabled>
+		<InterspeciesMaximum>Égal à la même espèce.</InterspeciesMaximum>
+		<AlwaysMother>Toujours l'espèce de la mère.</AlwaysMother>
+		<AlwaysFather>Toujours l'espèce du père.</AlwaysFather>
+		<AlwaysBeast>Espèces animales.</AlwaysBeast>
+		<AlwaysHumanlike>Espèces humanoïdes.</AlwaysHumanlike>
+		<UsesOffspringIsHuman>Utiliser Mère/Père</UsesOffspringIsHuman>
+		<ComplexImpregnation>Activer le calcul complexe de l'imprégnation interespèces</ComplexImpregnation>
+		<ComplexImpregnation_desc><![CDATA[Lorsque cette option est activée, les chances d'impregnation entre les espèces dépendent de la différence de structure corporelle et de taille.
+Exemples :
+  Humain/Humanoïde ailé : ~95 %
+  Humain/Harpie : ~75 %
+  Humain/Chien : ~30 %
+  Humain/Poulet : ~5 %
+  Loup/Chien : ~95 %
+  Loup/Poulet : ~5 %
+  Coq/Harpie : ~30 %
+
+Notez que les chances sont encore réduites par les curseurs de base de grossesse animale et humaine.
+]]></ComplexImpregnation_desc>
+		<phantasy_pregnancy>Grossesse fantastique</phantasy_pregnancy>
+		<phantasy_pregnancy_desc>Le monde est rempli de nanomachines maléfiques qui accélèrent la croissance des enfants jusqu'à ce qu'ils atteignent l'âge de procréer.\n\nN'a aucun effet sur les non-humains et les races non reproductrices.\n\nNe fonctionne probablement pas avec d'autres mods liés à la grossesse.</phantasy_pregnancy_desc>
+		<normal_pregnancy_duration>Modificateur de durée de grossesse.</normal_pregnancy_duration>
+		<normal_pregnancy_duration_desc>Plus grand -> Plus long</normal_pregnancy_duration_desc>
+		<egg_pregnancy_duration>Modificateur de la durée de la grossesse ovulaire.</egg_pregnancy_duration>
+		<egg_pregnancy_duration_desc>Plus grand -> Plus long.</egg_pregnancy_duration_desc>
+
+	<!-- 性行为类型 -->
+	<RJWSettingsPreference>RimJobWorld - Paramètres du sexe</RJWSettingsPreference>
+		<SexTypeFrequency>Fréquence par type de sexe :\n[Plus élevé = plus courant]</SexTypeFrequency>
+		<vaginal>Fréquence des pénétrations vaginales</vaginal>
+		<vaginal_desc>Fréquence des rapports sexuels vaginaux. Notez que cette fréquence est ajustée en fonction de facteurs tels que les orifices disponibles, etc.\n\nPlage valide : 1 - 200\nValeur par défaut : 120</vaginal_desc>
+		<cunnilingus>Fréquence des cunnilingus</cunnilingus>
+		<cunnilingus_desc>Fréquence de stimulation orale du vagin. Notez que cette fréquence est ajustée en fonction de facteurs tels que les orifices disponibles, le viol, etc.\n\nPlage valide : 1 - 200\nValeur par défaut : 80</cunnilingus_desc>
+		<anal>Fréquence des pénétrations anales</anal>
+		<anal_desc>Fréquence de pénétration anale (pénienne). Notez que cette fréquence est ajustée en fonction de facteurs tels que les orifices disponibles, le viol, etc.\n\nPlage valide : 1 - 200\nValeur par défaut : 80</anal_desc>
+		<rimming>Fréquence des anulingus</rimming>
+		<rimming_desc>Fréquence de stimulation orale de l'anus. Notez que cette fréquence est ajustée en fonction de facteurs tels que les orifices disponibles, etc.\n\nPlage valide : 1 - 200\nValeur par défaut : 40</rimming_desc>
+		<fellatio>Fréquence des fellations</fellatio>
+		<fellatio_desc>Fréquence des fellations, également appelées « pipes ». Notez que cette fréquence est ajustée en fonction de facteurs tels que les orifices disponibles, etc.\n\nPlage valide : 1 à 200\nValeur par défaut : 80</fellatio_desc>
+		<handjob>Fréquence des masturbations</handjob>
+		<handjob_desc>Fréquence des branlettes. Nécessite des mains fonctionnelles. Notez que cette fréquence est ajustée en fonction de facteurs tels que la prostitution, etc.\n\nPlage valide : 1 - 200\nValeur par défaut : 80</handjob_desc>
+		<mutual_masturbation>Fréquence des masturbations mutuelles</mutual_masturbation>
+		<mutual_masturbation_desc>Fréquence de la masturbation mutuelle (deux colons se masturbant mutuellement). Notez que cette fréquence est ajustée en fonction de facteurs tels que le viol, etc.\n\nPlage valide : 1 - 200\nValeur par défaut : 70</mutual_masturbation_desc>
+		<double_penetration>Fréquence de double pénétration</double_penetration>
+		<double_penetration_desc>Fréquence de double pénétration, anale et vaginale simultanées. Nécessite un multi-pénis, tel qu'un hémipénis. Notez que cette fréquence est ajustée en fonction de facteurs tels que les orifices disponibles, etc.\n\nPlage valide : 1 - 200\nValeur par défaut : 60</double_penetration_desc>
+		<breastjob>Fréquence des branlettes espagnoles</breastjob>
+		<breastjob_desc>Fréquence des masturbations avec les seins. Nécessite qu'un pion ait des seins et l'autre un pénis. Notez que cette fréquence est ajustée en fonction de facteurs tels que la prostitution, le viol, etc.\n\nPlage valide : 1 - 200\nValeur par défaut : 50</breastjob_desc>
+		<fingering>Fréquence des doigtages vaginaux</fingering>
+		<fingering_desc>Fréquence des doigtages vaginaux. Nécessite qu'un pion ait un vagin et l'autre une main fonctionnelle. Notez que cette fréquence est ajustée en fonction de facteurs tels que la prostitution, le viol, etc.\n\nPlage valide : 1 - 200\nValeur par défaut : 50</fingering_desc>
+		<scissoring>Fréquence des ciseaux</scissoring>
+		<scissoring_desc>Fréquence du ciseau (type de tribadisme où les partenaires entrecroisent leurs jambes et frottent leurs vulves l'une contre l'autre). Nécessite que les deux pions aient un vagin.\n\nPlage valide : 1 - 200\nValeur par défaut : 50</scissoring_desc>
+		<footjob>Fréquence des masturbations avec pieds</footjob>
+		<footjob_desc>Fréquence des masturbations avec pieds (stimulation du pénis avec le ou les pieds). Notez que cette fréquence est ajustée en fonction de facteurs tels que la prostitution, le viol, etc.\n\nPlage valide : 1 - 200\nValeur par défaut : 30</footjob_desc>
+		<fisting>Fréquence du fisting anal</fisting>
+		<fisting_desc>Fréquence du fist anal (le fist vaginal n'est pas encore implémenté). Nécessite qu'un des partenaires ait une main valide. Notez que cette fréquence est ajustée en fonction de facteurs tels que la prostitution, le viol, etc.\n\nPlage valide : 1 - 200\nValeur par défaut : 30</fisting_desc>
+		<sixtynine>fréquence des 69</sixtynine>
+		<sixtynine_desc>Fréquence des 69 (sexe oral mutuel). Nécessite que les deux partenaires aient des organes génitaux. Notez que cette fréquence est ajustée en fonction de facteurs tels que la prostitution, le viol, etc.\n\nPlage valide : 1 - 200\nValeur par défaut : 69</sixtynine_desc>
+		<FapEverywhere>Masturbation partout</FapEverywhere>
+		<FapEverywhere_desc>Le pion se masturbera où il veut.</FapEverywhere_desc>
+		<FapInBed>Masturbation au lit</FapInBed>
+		<FapInBed_desc>Le pion se masturbera dans son lit.</FapInBed_desc>
+		<FapInBelts>Masturbation avec les parties génitales bloquées</FapInBelts>
+		<FapInBelts_desc>Les pions peuvent se masturber même si leurs parties génitales sont bloquées.</FapInBelts_desc>
+		<FapInArmbinders>Masturbation avec les mains bloquées</FapInArmbinders>
+		<FapInArmbinders_desc>Les pions peuvent se masturber même si leurs mains sont entravées.</FapInArmbinders_desc>
+
+		<Malesex>Sexe masculin autorisé : </Malesex>
+		<FeMalesex>Sexe féminin autorisé : </FeMalesex>
+		<AllowedSex.All>Tout</AllowedSex.All>
+		<AllowedSex.Homo>Homo</AllowedSex.Homo>
+		<AllowedSex.Nohomo>Hétéro</AllowedSex.Nohomo>
+
+		<SexClothing>Tenue préférée pour le sexe : </SexClothing>
+		<SexClothingNude>Nu</SexClothingNude>
+		<SexClothingHeadwear>Couvre-chef seulement</SexClothingHeadwear>
+		<SexClothingFull>Entièrement vêtu</SexClothingFull>
+
+		<RapeAttemptAlert>Alerte tentative de viol : </RapeAttemptAlert>
+		<RapeAttemptAlertAlways>Toujours activée</RapeAttemptAlertAlways>
+		<RapeAttemptAlertHumanlike>Uniquement si la cible est humaine</RapeAttemptAlertHumanlike>
+		<RapeAttemptAlertColonist>Uniquement si la cible est un(e) colon</RapeAttemptAlertColonist>
+		<RapeAttemptAlertSilent>Ne montrer que la notification</RapeAttemptAlertSilent>
+		<RapeAttemptAlertDisabled>Désactivée</RapeAttemptAlertDisabled>
+
+		<RapeAlert>Alerte de viol : </RapeAlert>
+		<RapeAlertAlways>Toujours activée</RapeAlertAlways>
+		<RapeAlertHumanlike>Uniquement si la cible est humaine</RapeAlertHumanlike>
+		<RapeAlertColonist>Uniquement si la cible est un(e) colon</RapeAlertColonist>
+		<RapeAlertSilent>Ne montrer que la notification</RapeAlertSilent>
+		<RapeAlertDisabled>Désactivée</RapeAlertDisabled>
+
+		<RapeAlertCP>Afficher pour PC</RapeAlertCP>
+		<RapeAlertCP_desc>Afficher une alerte lorsque le pion désigné pour le confort est violé.</RapeAlertCP_desc>
+		<RapeAlertBreeding>Montrer pour la reproduction</RapeAlertBreeding>
+		<RapeAlertBreeding_desc>Afficher une alerte lorsque le pion désigné pour la reproduction est violé.</RapeAlertBreeding_desc>
+
+		<SexualitySpread1>Source de propagation de la sexualité : </SexualitySpread1>
+		<SexualitySpread2>Diffusion de la génération sexuelle pour RJW.\nCECI EST UNIQUEMENT POUR LE SEXE\nN'A AUCUN EFFET SUR LA RELATION</SexualitySpread2>
+		<SexualitySpreadVanilla>[Importée depuis Rimworld de base]</SexualitySpreadVanilla>
+		<SexualitySpreadPsychology>[Importée depuis Psychology]</SexualitySpreadPsychology>
+		<SexualitySpreadIndividuality>[importée depuis [SYR]Individuality]</SexualitySpreadIndividuality>
+
+		<SexualityAsexual>  Asexuel(le) : </SexualityAsexual>
+		<SexualityPansexual>  Pansexuel(le) : </SexualityPansexual>
+		<SexualityHeterosexual>  Hétérosexuel(le) : </SexualityHeterosexual>
+		<SexualityBisexual>  Bisexuel(le) : </SexualityBisexual>
+		<SexualityGay>  Homosexuel(le) : </SexualityGay>
+
+		<SexualityAsexual_desc>Faible ou absence de libido, généralement peu intéressé(e) par le sexe.</SexualityAsexual_desc>
+		<SexualityPansexual_desc>Les pansexuel(le)s ne tiennent absolument pas compte du genre.</SexualityPansexual_desc>
+		<SexualityHeterosexual_desc>Les hétérosexuel(le)s sont attiré(e)s par le sexe « opposé ».</SexualityHeterosexual_desc>
+		<SexualityBisexual_desc>Les bisexuel(le)s sont attiré(e)s à la fois par les hommes et par les femmes.</SexualityBisexual_desc>
+		<SexualityGay_desc>Les homosexuel(le)s sont attiré(e)s par les personnes du même sexe.</SexualityGay_desc>
+
+		<SendTraitGainLetters>Notifications relatives aux traits sexuels</SendTraitGainLetters>
+		<SendTraitGainLetters_desc>Activez cette option pour recevoir des lettres lorsqu'un pion acquiert un trait lié au sexe. Les pions sans importance, tels que les commerçants, ne déclencheront jamais de notifications, quel que soit ce paramètre.</SendTraitGainLetters_desc>
+</LanguageData>

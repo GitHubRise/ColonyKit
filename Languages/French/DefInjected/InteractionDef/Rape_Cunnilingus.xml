@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: cunnilingus -->
+  <Rape_Cunnilingus.label>cunnilingus</Rape_Cunnilingus.label>
+  <!-- EN:
+    <li>r_logentry->Forced [RECIPIENT_nameDef] to give cunnilingus.</li>
+  -->
+  <Rape_Cunnilingus.logRulesInitiator.rulesStrings><li>r_logentry->A forcé [RECIPIENT_nameDef] à lui faire un cunnilingus.</li></Rape_Cunnilingus.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Was forced into giving cunnilingus to [INITIATOR_nameDef].</li>
+  -->
+  <Rape_Cunnilingus.logRulesRecipient.rulesStrings>
+    <li>r_logentry(RECIPIENT_gender!=Female)->A été forcé à faire un cunnilingus à [INITIATOR_nameDef].</li>
+    <li>r_logentry(RECIPIENT_gender==Female)->A été forcée à faire un cunnilingus à [INITIATOR_nameDef].</li>
+  </Rape_Cunnilingus.logRulesRecipient.rulesStrings>
+  <!-- EN: Get cunnilingus -->
+  <Rape_Cunnilingus.modExtensions.0.RMBLabel>Reçoit un cunnilingus</Rape_Cunnilingus.modExtensions.0.RMBLabel>
+  
+</LanguageData>

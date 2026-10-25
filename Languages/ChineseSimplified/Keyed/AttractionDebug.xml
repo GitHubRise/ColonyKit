@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<!-- 吸引力调试（"解释吸引力"）界面。AttractionPref_* 为逐项偏好名称，
+	     没有对应条目时会回退为英文类名。 -->
+	<AttractionDebug_Explain>解释吸引力：{0} → {1}</AttractionDebug_Explain>
+	<AttractionDebug_Observer>观察者</AttractionDebug_Observer>
+	<AttractionDebug_Target>目标</AttractionDebug_Target>
+	<AttractionDebug_Purpose>目的</AttractionDebug_Purpose>
+	<AttractionDebug_Combined>合计</AttractionDebug_Combined>
+	<AttractionDebug_Finalized>最终值</AttractionDebug_Finalized>
+	<AttractionDebug_NoPawns>地图上没有小人。</AttractionDebug_NoPawns>
+	<AttractionDebug_NoOtherPawns>地图上没有其他小人。</AttractionDebug_NoOtherPawns>
+
+	<AttractionMode_Age>年龄</AttractionMode_Age>
+	<AttractionMode_Physical>外貌</AttractionMode_Physical>
+	<AttractionMode_Romantic>情感</AttractionMode_Romantic>
+	<AttractionMode_Social>社交</AttractionMode_Social>
+
+	<AttractionPurpose_General>总体</AttractionPurpose_General>
+	<AttractionPurpose_ForFucking>性交</AttractionPurpose_ForFucking>
+	<AttractionPurpose_ForRape>强暴</AttractionPurpose_ForRape>
+
+	<AttractionDebug_PawnType_Colonist>殖民者</AttractionDebug_PawnType_Colonist>
+	<AttractionDebug_PawnType_Prisoner>囚犯</AttractionDebug_PawnType_Prisoner>
+	<AttractionDebug_PawnType_Slave>奴隶</AttractionDebug_PawnType_Slave>
+	<AttractionDebug_PawnType_Visitor>访客</AttractionDebug_PawnType_Visitor>
+	<AttractionDebug_PawnType_ColonyAnimal>殖民地动物</AttractionDebug_PawnType_ColonyAnimal>
+	<AttractionDebug_PawnType_TamedAnimal>驯化动物</AttractionDebug_PawnType_TamedAnimal>
+	<AttractionDebug_PawnType_Wild>野生</AttractionDebug_PawnType_Wild>
+
+	<SexLabel_Male>男</SexLabel_Male>
+	<SexLabel_Female>女</SexLabel_Female>
+	<SexLabel_Trap>伪娘</SexLabel_Trap>
+	<SexLabel_Futa>扶她</SexLabel_Futa>
+	<SexLabel_None>无</SexLabel_None>
+	<SexLabel_HasPenis>有阴茎</SexLabel_HasPenis>
+	<SexLabel_HasVagina>有阴道</SexLabel_HasVagina>
+	<SexLabel_HasBreasts>有乳房</SexLabel_HasBreasts>
+
+	<!-- 逐项偏好名称，对应 StandardPreferences 下的类名（去掉 A_/P_/R_/S_ 前缀）。 -->
+	<AttractionPref_AgeForAnimal>年龄（动物）</AttractionPref_AgeForAnimal>
+	<AttractionPref_AgeForHuman>年龄（类人）</AttractionPref_AgeForHuman>
+	<AttractionPref_AnimalToCompatibleSpecies>可繁殖物种</AttractionPref_AnimalToCompatibleSpecies>
+	<AttractionPref_AnimalToHuman>人类</AttractionPref_AnimalToHuman>
+	<AttractionPref_AnimalToSameSpecies>同种动物</AttractionPref_AnimalToSameSpecies>
+	<AttractionPref_AnimalToPredator>捕食者</AttractionPref_AnimalToPredator>
+	<AttractionPref_BodySize>体型大小</AttractionPref_BodySize>
+	<AttractionPref_DeadOrAlive>死活</AttractionPref_DeadOrAlive>
+	<AttractionPref_Disfigurement>伤残</AttractionPref_Disfigurement>
+	<AttractionPref_HumanToBeauty>外貌</AttractionPref_HumanToBeauty>
+	<AttractionPref_HumanToBodyType>体型</AttractionPref_HumanToBodyType>
+	<AttractionPref_HumanToGenes>基因</AttractionPref_HumanToGenes>
+	<AttractionPref_Manhunter>猎杀状态</AttractionPref_Manhunter>
+	<AttractionPref_Nudity>裸体</AttractionPref_Nudity>
+	<AttractionPref_Vulnerability>性弱气度</AttractionPref_Vulnerability>
+	<AttractionPref_BeerGoggles>醉酒</AttractionPref_BeerGoggles>
+	<AttractionPref_BondedAnimal>羁绊动物</AttractionPref_BondedAnimal>
+	<AttractionPref_Homewrecking>破坏家庭</AttractionPref_Homewrecking>
+	<AttractionPref_IncestAversion>乱伦厌恶</AttractionPref_IncestAversion>
+	<AttractionPref_Orientation>性取向</AttractionPref_Orientation>
+	<AttractionPref_PsychicLove>心灵恋爱</AttractionPref_PsychicLove>
+	<AttractionPref_Relationship>关系</AttractionPref_Relationship>
+	<AttractionPref_RevengeRape>报复性强暴</AttractionPref_RevengeRape>
+	<AttractionPref_AnimalToBreedee>配种对象</AttractionPref_AnimalToBreedee>
+	<AttractionPref_AnimalToWildness>野性（动物）</AttractionPref_AnimalToWildness>
+	<AttractionPref_Faction>派系</AttractionPref_Faction>
+	<AttractionPref_Hostility>敌对</AttractionPref_Hostility>
+	<AttractionPref_HumanToComfortPrisoner>泄欲囚犯</AttractionPref_HumanToComfortPrisoner>
+	<AttractionPref_HumanToServicer>服务者</AttractionPref_HumanToServicer>
+	<AttractionPref_HumanToWildness>野性（人类）</AttractionPref_HumanToWildness>
+	<AttractionPref_Ideology>意识形态</AttractionPref_Ideology>
+	<AttractionPref_Opinion>好感度</AttractionPref_Opinion>
+	<AttractionPref_ServicerBias>服务者偏好</AttractionPref_ServicerBias>
+</LanguageData>

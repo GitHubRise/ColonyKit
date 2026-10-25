@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<PawnColumnDef>
+		<defName>RJW_VerticalLine</defName>
+		<workerClass>rjw.MainTab.PawnColumnWorker_VerticalLine</workerClass>
+		<gap>2</gap>
+	</PawnColumnDef>
+</Defs>

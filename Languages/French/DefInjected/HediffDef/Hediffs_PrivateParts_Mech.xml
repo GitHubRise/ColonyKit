@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: mechanoid anus -->
+  <MechAnus.label>anus mécanoïde</MechAnus.label>
+  <!-- EN: Mechanoid anus. -->
+  <MechAnus.description>Anus mécanoïde.</MechAnus.description>
+  <!-- EN: a mechanoid anus -->
+  <MechAnus.labelNoun>un anus mécanoïde</MechAnus.labelNoun>
+  <!-- EN: Micro -->
+  <MechAnus.stages.Micro.label>Micro - XS</MechAnus.stages.Micro.label>
+  <!-- EN: Tight -->
+  <MechAnus.stages.Tight.label>Serré - S</MechAnus.stages.Tight.label>
+  <!-- EN: Average -->
+  <MechAnus.stages.Average.label>Moyen - M</MechAnus.stages.Average.label>
+  <!-- EN: Accommodating -->
+  <MechAnus.stages.Accommodating.label>Accommodant - L</MechAnus.stages.Accommodating.label>
+  <!-- EN: Cavernous -->
+  <MechAnus.stages.Cavernous.label>Caverneux - XL</MechAnus.stages.Cavernous.label>
+  <!-- EN: Abyssal -->
+  <MechAnus.stages.Abyssal.label>Abyssal - XXL</MechAnus.stages.Abyssal.label>
+  
+  <!-- EN: mechanoid breasts -->
+  <MechBreasts.label>seins mécanoïdes</MechBreasts.label>
+  <!-- EN: A pair of mechanoid breasts. -->
+  <MechBreasts.description>Une paire de seins mécanoïdes.</MechBreasts.description>
+  <!-- EN: a pair of mechanoid breasts -->
+  <MechBreasts.labelNoun>une paire de seins mécanoïdes</MechBreasts.labelNoun>
+  <!-- EN: Nipples -->
+  <MechBreasts.stages.Nipples.label>Mamelons</MechBreasts.stages.Nipples.label>
+  <!-- EN: Tiny -->
+  <MechBreasts.stages.Tiny.label>Minuscules - 0</MechBreasts.stages.Tiny.label>
+  <!-- EN: Small -->
+  <MechBreasts.stages.Small.label>Petits - 1</MechBreasts.stages.Small.label>
+  <!-- EN: Average -->
+  <MechBreasts.stages.Average.label>Moyens - 2</MechBreasts.stages.Average.label>
+  <!-- EN: Large -->
+  <MechBreasts.stages.Large.label>Grands - 3</MechBreasts.stages.Large.label>
+  <!-- EN: Huge -->
+  <MechBreasts.stages.Huge.label>Énormes - 4</MechBreasts.stages.Huge.label>
+  <!-- EN: Enormous -->
+  <MechBreasts.stages.Enormous.label>Immenses - 5</MechBreasts.stages.Enormous.label>
+  <!-- EN: Massive -->
+  <MechBreasts.stages.Massive.label>Massifs - 6</MechBreasts.stages.Massive.label>
+  <!-- EN: Gargantuan -->
+  <MechBreasts.stages.Gargantuan.label>Gargantuesques - 7</MechBreasts.stages.Gargantuan.label>
+  <!-- EN: Colossal -->
+  <MechBreasts.stages.Colossal.label>Colossaux - 8</MechBreasts.stages.Colossal.label>
+  <!-- EN: Titanic -->
+  <MechBreasts.stages.Titanic.label>Titanesques - 9</MechBreasts.stages.Titanic.label>
+  <!-- EN: Astronomical -->
+  <MechBreasts.stages.Astronomical.label>Astronomiques - 10</MechBreasts.stages.Astronomical.label>
+  
+  <!-- EN: mechanoid implanter -->
+  <MechImplanter.label>implanteur mécanoïde</MechImplanter.label>
+  <!-- EN: Mechanoid Implanter. -->
+  <MechImplanter.description>Implanteur mécanoïde.</MechImplanter.description>
+  <!-- EN: a mechanoid implanter -->
+  <MechImplanter.labelNoun>un implanteur mécanoïde</MechImplanter.labelNoun>
+  <!-- EN: Micro -->
+  <MechImplanter.stages.Micro.label>Micro - XS</MechImplanter.stages.Micro.label>
+  <!-- EN: Small -->
+  <MechImplanter.stages.Small.label>Petit - S</MechImplanter.stages.Small.label>
+  <!-- EN: Average -->
+  <MechImplanter.stages.Average.label>Moyen - M</MechImplanter.stages.Average.label>
+  <!-- EN: Large -->
+  <MechImplanter.stages.Large.label>Grand - L</MechImplanter.stages.Large.label>
+  <!-- EN: Huge -->
+  <MechImplanter.stages.Huge.label>Énorme - XL</MechImplanter.stages.Huge.label>
+  <!-- EN: Towering -->
+  <MechImplanter.stages.Towering.label>Géant - XXL</MechImplanter.stages.Towering.label>
+  
+  <!-- EN: mechanoid vagina -->
+  <MechVagina.label>vagin mécanoïde</MechVagina.label>
+  <!-- EN: Mechanoid vagina. -->
+  <MechVagina.description>Vagin mécanoïde.</MechVagina.description>
+  <!-- EN: a mechanoid vagina -->
+  <MechVagina.labelNoun>un vagin mécanoïde</MechVagina.labelNoun>
+  <!-- EN: Micro -->
+  <MechVagina.stages.Micro.label>Micro - XS</MechVagina.stages.Micro.label>
+  <!-- EN: Tight -->
+  <MechVagina.stages.Tight.label>Serré - S</MechVagina.stages.Tight.label>
+  <!-- EN: Average -->
+  <MechVagina.stages.Average.label>Moyen - M</MechVagina.stages.Average.label>
+  <!-- EN: Accommodating -->
+  <MechVagina.stages.Accommodating.label>Accommodant - L</MechVagina.stages.Accommodating.label>
+  <!-- EN: Cavernous -->
+  <MechVagina.stages.Cavernous.label>Caverneux - XL</MechVagina.stages.Cavernous.label>
+  <!-- EN: Abyssal -->
+  <MechVagina.stages.Abyssal.label>Abyssal - XXL</MechVagina.stages.Abyssal.label>
+  
+</LanguageData>

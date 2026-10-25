@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 可消耗物品 -->
+  <HumpShroomEffect.stages.Humpshroom_aftertaste.label>駝峰菇回味</HumpShroomEffect.stages.Humpshroom_aftertaste.label>
+
+  <HumpShroomEffect.stages.Humpshroom_aftertaste.description>這味道太有意思了。</HumpShroomEffect.stages.Humpshroom_aftertaste.description>
+
+  <!-- 仙馔成瘾 -->
+  <HumpShroomWithdrawal.stages.humpshroom_withdrawal.label>駝峰菇渴求</HumpShroomWithdrawal.stages.humpshroom_withdrawal.label>
+
+  <HumpShroomWithdrawal.stages.humpshroom_withdrawal.description>我下面什麼都感覺不到。</HumpShroomWithdrawal.stages.humpshroom_withdrawal.description>
+</LanguageData>

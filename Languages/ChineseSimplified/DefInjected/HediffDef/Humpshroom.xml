@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <HumpShroomAddiction.label>驼峰菇成瘾</HumpShroomAddiction.label>
+
+  <HumpShroomAddiction.description>对驼峰菇成瘾。若不定期摄入，成瘾者的满足感将急剧下降。</HumpShroomAddiction.description>
+
+  <HumpShroomAddiction.stages.withdrawal.label>戒断反应</HumpShroomAddiction.stages.withdrawal.label>
+
+  <HumpShroomEffect.label>催情</HumpShroomEffect.label>
+
+  <HumpShroomEffect.description>因食用驼峰菇而引发的亢奋状态。一切都变得更加……有趣了。</HumpShroomEffect.description>
+
+  <HumpShroomTolerance.label>驼峰菇耐受</HumpShroomTolerance.label>
+
+  <HumpShroomTolerance.description>对驼峰菇产生了耐受性。需要更高的剂量才能达到相同的效果。</HumpShroomTolerance.description>
+
+  <HumpShroomTolerance.stages.small.label>弱</HumpShroomTolerance.stages.small.label>
+
+  <HumpShroomTolerance.stages.large.label>强</HumpShroomTolerance.stages.large.label>
+
+  <HumpShroomTolerance.stages.massive.label>极强</HumpShroomTolerance.stages.massive.label>
+</LanguageData>

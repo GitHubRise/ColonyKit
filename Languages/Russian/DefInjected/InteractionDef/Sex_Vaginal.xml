@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Sex_Vaginal.label>вагинальный</Sex_Vaginal.label>
+  <Sex_Vaginal.logRulesInitiator.rulesStrings.0>r_logentry->Занимается вагинальным сексом с [RECIPIENT_nameDef].</Sex_Vaginal.logRulesInitiator.rulesStrings.0>
+  <Sex_Vaginal.logRulesRecipient.rulesStrings.0>r_logentry->Занимается вагинальным сексом с [INITIATOR_nameDef].</Sex_Vaginal.logRulesRecipient.rulesStrings.0>
+  <Sex_Vaginal.modExtensions.0.RMBLabel>Вагинальный</Sex_Vaginal.modExtensions.0.RMBLabel>
+
+</LanguageData>

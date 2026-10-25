@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<InteractionDef ParentName="RJW_InteractionDefBaseSex">
+		<defName>Sex_DoublePenetrationM</defName>
+		<label>double-penetration</label>
+		<logRulesInitiator>
+			<rulesStrings>
+				<li>r_logentry->Double-penetrated [RECIPIENT_nameDef].</li>
+			</rulesStrings>
+		</logRulesInitiator>
+		<logRulesRecipient>
+			<rulesStrings>
+				<li>r_logentry->Was double-penetrated by [INITIATOR_nameDef].</li>
+			</rulesStrings>
+		</logRulesRecipient>
+		<modExtensions>
+			<li Class="rjw.SexInteractionExtension">
+				<RMBLabel>Double-penetrate</RMBLabel>
+				<rjwSextype>DoublePenetration</rjwSextype>
+				<extraSentencePacks>
+					<li>DoublePenetrationRP</li>
+				</extraSentencePacks>
+				<tags>
+					<li>Fertilization</li>
+					<li>EggFertilization</li>
+					<li>EggLaying</li>
+					<li>Whoring</li>
+					<li>Consensual</li>
+				</tags>
+				<initiatorRequirement>
+					<partTags>
+						<li>Multiple</li>	
+					</partTags>
+					<genitalTags>
+						<li>CanPenetrate</li>
+					</genitalTags>
+				</initiatorRequirement>
+				<recipientRequirement>
+					<minimumCount>2</minimumCount>
+					<genitalTags>
+						<li>CanBePenetrated</li>
+					</genitalTags>
+				</recipientRequirement>
+			</li>
+		</modExtensions>
+	</InteractionDef>
+</Defs>

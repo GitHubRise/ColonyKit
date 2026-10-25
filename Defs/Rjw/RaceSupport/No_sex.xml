@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<rjw.RaceGroupDef>
+		<defName>NoSex_Group</defName>
+		<!-- 我认为按 pawnKind 搜索不是好主意，但目前先让行为保持完全一致。 -->
+		<!-- 机器人每个种族只有一个 pawnKind，所以对它们来说并不太重要。 -->
+		<!-- TM_Undead 不是种族，所以无法通过种族找到它，不过它也不是获得亡灵的唯一途径。 -->
+		<!-- TM_UndeadAnimalHD 是 hediff 而非 pawnKind，所以不确定这怎么可能生效。 -->
+		<pawnKindNames>
+			<li>ChjDroidColonist</li>
+			<li>ChjBattleDroidColonist</li>
+			<li>TM_Undead</li>
+			<li>TM_UndeadHD</li><!--hediff-->
+			<li>TM_UndeadAnimalHD</li><!--hediff-->
+		</pawnKindNames>
+		
+		<hasSexNeed>false</hasSexNeed>
+		<hasFertility>false</hasFertility>
+		<hasPregnancy>false</hasPregnancy>
+	</rjw.RaceGroupDef>
+</Defs>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rape_Reverse_Scissoring.label>насильные ножницы</Rape_Reverse_Scissoring.label>
+  <Rape_Reverse_Scissoring.logRulesInitiator.rulesStrings.0>r_logentry->Принуждает [RECIPIENT_nameDef] лечь в позу ножниц.</Rape_Reverse_Scissoring.logRulesInitiator.rulesStrings.0>
+  <Rape_Reverse_Scissoring.logRulesRecipient.rulesStrings.0>r_logentry->Вынужденно ложится с [INITIATOR_nameDef] в позу ножниц.</Rape_Reverse_Scissoring.logRulesRecipient.rulesStrings.0>
+  <Rape_Reverse_Scissoring.modExtensions.0.RMBLabel>Насильные ножницы</Rape_Reverse_Scissoring.modExtensions.0.RMBLabel>
+
+
+</LanguageData>

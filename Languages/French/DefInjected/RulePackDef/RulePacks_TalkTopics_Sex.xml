@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN:
+    <li>TalkTopicAny->[TalkTopicSex]</li>
+    <li>TalkTopicSex(p=0.08)->[talktopicsexfile]</li>
+    <li>TalkTopicHeavy(p=0.08)->the link between [talktopicsexfile] and [talktopicsexfile]</li>
+    <li>TalkTopicHeavy(p=0.08)->the connection between [talktopicsexfile] and [talktopicsexfile]</li>
+    <li>TalkTopicHeavy(p=0.08)->the relationship between [talktopicsexfile] and [talktopicsexfile]</li>
+    <li>TalkTopicHeavy(p=0.16)->the link between [talktopicheavyfile] and [talktopicsexfile]</li>
+    <li>TalkTopicHeavy(p=0.16)->the connection between [talktopicheavyfile] and [talktopicsexfile]</li>
+    <li>TalkTopicHeavy(p=0.16)->the relationship between [talktopicheavyfile] and [talktopicsexfile]</li>
+  -->
+  <TalkTopicsSex.rulePack.rulesStrings>
+    <li>TalkTopicAny->[TalkTopicSex]</li>
+    <li>TalkTopicSex(p=0.08)->[talktopicsexfile]</li>
+    <li>TalkTopicHeavy(p=0.08)->le lien entre [talktopicsexfile] et [talktopicsexfile]</li>
+    <li>TalkTopicHeavy(p=0.08)->la connexion entre [talktopicsexfile] et [talktopicsexfile]</li>
+    <li>TalkTopicHeavy(p=0.08)->la relation entre [talktopicsexfile] et [talktopicsexfile]</li>
+    <li>TalkTopicHeavy(p=0.16)->le lien entre [talktopicheavyfile] et [talktopicsexfile]</li>
+    <li>TalkTopicHeavy(p=0.16)->la connexion entre [talktopicheavyfile] et [talktopicsexfile]</li>
+    <li>TalkTopicHeavy(p=0.16)->la relation entre [talktopicheavyfile] et [talktopicsexfile]</li></TalkTopicsSex.rulePack.rulesStrings>
+  
+</LanguageData>

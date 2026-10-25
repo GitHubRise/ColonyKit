@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <BoundHands.label>绑手</BoundHands.label>
+
+  <BoundHands.description>绑手。</BoundHands.description>
+
+  <BoundHands.labelNoun>绑手</BoundHands.labelNoun>
+
+  <BoundLegs.label>绑腿</BoundLegs.label>
+
+  <BoundLegs.description>绑腿。</BoundLegs.description>
+
+  <BoundLegs.labelNoun>绑腿</BoundLegs.labelNoun>
+
+  <Chains.label>链条</Chains.label>
+
+  <Chains.description>限制佩戴者行动的一系列链条。</Chains.description>
+
+  <Chains.labelNoun>链条</Chains.labelNoun>
+
+  <RJW_Cocoon.label>结茧</RJW_Cocoon.label>
+
+  <RJW_Cocoon.description>虫在准备繁殖时束缚寄主的茧。</RJW_Cocoon.description>
+
+  <RJW_Cocoon.labelNoun>结茧</RJW_Cocoon.labelNoun>
+
+  <RJW_Restraints.label>束缚</RJW_Restraints.label>
+
+  <RJW_Restraints.description>束缚。</RJW_Restraints.description>
+
+  <RJW_Restraints.labelNoun>束缚</RJW_Restraints.labelNoun>
+
+</LanguageData>

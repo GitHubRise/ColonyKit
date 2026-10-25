@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: masturbation_autofellatio -->
+  <Masturbation_AutoFellatio.label>Autosuce</Masturbation_AutoFellatio.label>
+  <!-- EN:
+    <li>r_logentry->Masturbated.</li>
+  -->
+  <Masturbation_AutoFellatio.logRulesInitiator.rulesStrings>
+    <li>r_logentry(INITIATOR_gender!=Female)->S'est autosucé.</li>
+    <li>r_logentry(INITIATOR_gender==Female)->S'est autosucée.</li>
+</Masturbation_AutoFellatio.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Masturbated.</li>
+  -->
+  <Masturbation_AutoFellatio.logRulesRecipient.rulesStrings>
+    <li>r_logentry(RECIPIENT_gender!=Female)->S'est autosucé.</li>
+    <li>r_logentry(RECIPIENT_gender==Female)->S'est autosucée.</li>
+  </Masturbation_AutoFellatio.logRulesRecipient.rulesStrings>
+  
+</LanguageData>

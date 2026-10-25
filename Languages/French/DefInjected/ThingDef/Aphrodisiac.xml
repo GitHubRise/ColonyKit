@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: aphrodisiac drug -->
+  <Aphrodisiac.label>drogue aphrodisiaque</Aphrodisiac.label>
+  <!-- EN: A smokable drug made from humpshroom. -->
+  <Aphrodisiac.description>Une drogue fumable faite à partir de baisignon.</Aphrodisiac.description>
+  <!-- EN: Smoke {0} -->
+  <Aphrodisiac.ingestible.ingestCommandString>Fumer {0}</Aphrodisiac.ingestible.ingestCommandString>
+  <!-- EN: Smoking {0}. -->
+  <Aphrodisiac.ingestible.ingestReportString>Fume {0}</Aphrodisiac.ingestible.ingestReportString>
+  <!-- EN: Consuming {0}. -->
+  <Aphrodisiac.ingestible.ingestReportStringEat>Consomme {0}</Aphrodisiac.ingestible.ingestReportStringEat>
+  
+</LanguageData>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- A 型塞（肛塞） -->
+
+  <AnalInsertableBondage.label>вставляється</AnalInsertableBondage.label>
+
+
+  <!-- V 型塞（阴道塞） -->
+
+  <VaginalInsertableBondage.label>вставляється</VaginalInsertableBondage.label>
+
+
+  <!-- C 带（贞操带） -->
+
+  <BeltsOnSkinBondage.label>По шкірі</BeltsOnSkinBondage.label>
+
+
+  <!-- <ApparelLayerDef>
+		<defName>OnSkinBondage1</defName>
+		<label>Over skin</label>
+		<drawOrder>3</drawOrder>
+	</ApparelLayerDef> -->
+
+  <GagOuterBondage.label>головний убір</GagOuterBondage.label>
+
+
+  <!-- 锁链、臂缚等 -->
+
+  <ArmsOuterBondage.label>зовнішні</ArmsOuterBondage.label>
+  <LegsOuterBondage.label>зовнішні</LegsOuterBondage.label>
+
+
+</LanguageData>

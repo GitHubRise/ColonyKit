@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: insertable -->
+  <AnalInsertableBondage.label>insérable</AnalInsertableBondage.label>
+  
+  <!-- EN: outer -->
+  <ArmsOuterBondage.label>extérieur</ArmsOuterBondage.label>
+  
+  <!-- EN: Over skin -->
+  <BeltsOnSkinBondage.label>sur la peau</BeltsOnSkinBondage.label>
+  
+  <!-- EN: headgear -->
+  <GagOuterBondage.label>couvre-chef</GagOuterBondage.label>
+  
+  <!-- EN: outer -->
+  <LegsOuterBondage.label>extérieur</LegsOuterBondage.label>
+  
+  <!-- EN: insertable -->
+  <VaginalInsertableBondage.label>insérable</VaginalInsertableBondage.label>
+  
+</LanguageData>

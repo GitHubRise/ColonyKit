@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<InteractionDef ParentName="RJW_InteractionDefBaseSex">
+		<defName>Sex_Reverse_Cunnilingus</defName>
+		<label>cunnilingus</label>
+		<logRulesInitiator>
+			<rulesStrings>
+				<li>r_logentry->Gave cunnilingus to [RECIPIENT_nameDef].</li>
+			</rulesStrings>
+		</logRulesInitiator>
+		<logRulesRecipient>
+			<rulesStrings>
+				<li>r_logentry->Received cunnilingus from [INITIATOR_nameDef].</li>
+			</rulesStrings>
+		</logRulesRecipient>
+		<modExtensions>
+			<li Class="rjw.SexInteractionExtension">
+				<RMBLabel>Give cunnilingus</RMBLabel>
+				<rjwSextype>Cunnilingus</rjwSextype>
+				<extraSentencePacks>
+					<li>CunnilingusReverseRP</li>
+				</extraSentencePacks>
+				<tags>
+					<li>Reverse</li>
+					<li>Whoring</li>
+					<li>Consensual</li>
+				</tags>
+				<initiatorRequirement>
+					<partFamilies>
+						<li>Tongue</li>
+					</partFamilies>
+				</initiatorRequirement>
+				<recipientRequirement>
+					<genitalFamilies>
+						<li>Vagina</li>
+					</genitalFamilies>
+				</recipientRequirement>
+			</li>
+		</modExtensions>
+	</InteractionDef>
+</Defs>

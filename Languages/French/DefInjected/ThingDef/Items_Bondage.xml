@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: holokey -->
+  <Holokey.label>holoclé</Holokey.label>
+  <!-- EN: A high-tech key. Releases the lock on an item with a matching cryptographic stamp. -->
+  <Holokey.description>Une clé high-tech. Permet de déverrouiller un élément doté d'un cachet cryptographique correspondant.</Holokey.description>
+  <!-- EN: Unlock apparel -->
+  <Holokey.comps.CompStampedApparelKey.useLabel>TODO</Holokey.comps.CompStampedApparelKey.useLabel>
+  
+  <!-- EN: hololock -->
+  <Hololock.label>holoverrou</Hololock.label>
+  <!-- EN: A high-tech locking mechanism. Features include:\n- Extremely hardy, plasteel-reinforced build\n- Key and lock paired using a cryptographic UID holographically embedded in a jade substrate, ensuring counterfeit keys are impossible to produce\n- Self-destruct failsafe triggers when the lock is tampered with, ensuring that the protected item is destroyed rather than captured by the enemy\n\nOriginally designed for military use, the hololock has since become popular in the BDSM community, where it is customary to engrave a key and lock pair with matching names so they are easier to identify. -->
+  <Hololock.description>Un mécanisme de verrouillage de haute technologie. Caractéristiques :\n- Construction extrêmement robuste, renforcée par du plastacier\n- Clé et serrure appariées à l'aide d'un identifiant cryptographique holographique intégré dans un substrat de jade, garantissant l'impossibilité de produire des clés contrefaites\n - Un dispositif d'autodestruction se déclenche en cas de manipulation du verrou, garantissant ainsi que l'objet protégé est détruit plutôt que capturé par l'ennemi\n\nConçu à l'origine pour un usage militaire, le hololock est depuis devenu populaire dans la communauté BDSM, où il est d'usage de graver une paire de clé et de serrure avec des noms correspondants afin de faciliter leur identification.</Hololock.description>
+  
+  <!-- EN: chains -->
+  <PrisonerChains.label>chaînes</PrisonerChains.label>
+  <!-- EN: Chains with cuffs. Useful for restricting someone's movement and manipulation freedom. Prevents* hand-to-hand fighting attempts.\n*gag is advised for complete neutralization -->
+  <PrisonerChains.description>Chaînes avec menottes. Utiles pour restreindre les mouvements et la liberté d'action d'une personne. Empêchent* les tentatives de combat au corps à corps.\n*un bâillon est recommandé pour une neutralisation complète.</PrisonerChains.description>
+  <!-- EN: Equip -->
+  <PrisonerChains.comps.CompBondageGear.useLabel>Équiper</PrisonerChains.comps.CompBondageGear.useLabel>
+  
+</LanguageData>

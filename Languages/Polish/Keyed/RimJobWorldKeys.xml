@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<!-- 模组文本 -->
+
+	<!-- 右键点击 CP 时的通知 -->
+	<PawnCantRapeCP>Cel nie jest wystarczajaco zdrowy lub znajduje się w zabronionym miejscu.</PawnCantRapeCP>
+	<PawnCantRapeCP0>Pionek nie potrzebuje seksu, jest chory lub nie może gwalcic.</PawnCantRapeCP0>
+	<PawnCantRapeCP1>Pionek nie jest singlem lub jego partner jest poblizu.</PawnCantRapeCP1>
+	<PawnCantRapeCP2>Pionek nie ma cech zoofila, wiec nie może gwalcic zwierząt.</PawnCantRapeCP2>
+
+	<!--提交按钮-->
+	<CommandSubmit>Poddac się</CommandSubmit>
+	<CommandSubmitDesc>Polec i zaakceptowac wszystko, co nadejdzie.</CommandSubmitDesc>
+
+	<!--怀孕消息-->
+	<RJW_PregnantTitle>{0} jest w ciazy.</RJW_PregnantTitle>
+	<RJW_PregnantText>{0} jest w ciazy i wkrotce zostanie matka. Pamietaj, ze glod i urazy mogą doprowadzić do utraty dziecka.</RJW_PregnantText>
+	<RJW_Contractions>{0} ma skurcze! Dziecko(dzieci) jest na drodze!</RJW_Contractions>
+	<RJW_GaveBirthTitle>Porod zakonczony.</RJW_GaveBirthTitle>
+	<RJW_GaveBirthText>{0} pomyslnie urodzila </RJW_GaveBirthText>
+	<RJW_ABaby>{0} dziecko.</RJW_ABaby>
+	<RJW_NBabies>{1} {0} dzieci.</RJW_NBabies>
+	<RJW_PregnantNormal>Mialo zdrowe dziecko...</RJW_PregnantNormal>
+	<RJW_PregnantStrange>Cos jest nietypowe w tym dziecku...</RJW_PregnantStrange>
+	<RJW_PregnantMechStrange>Cos BARDZO dziwnego jest z tym dzieckiem...</RJW_PregnantMechStrange>
+	<RJW_GaveBirthEggTitle>Zlozyla jajo.</RJW_GaveBirthEggTitle>
+	<RJW_GaveBirthEggText>{0} zlozyla jaja</RJW_GaveBirthEggText>
+	<RJW_EggContractions>{0} ma skurcze! Jaja sa na drodze!</RJW_EggContractions>
+	<RJW_Message_NotPregnant>{0} ustalil, ze {1} nie jest w ciazy.</RJW_Message_NotPregnant>
+	<RJW_Message_Pregnant>{0} ustalil, ze {1} jest w ciazy, a {2} jest ojcem.</RJW_Message_Pregnant>
+
+	<!--强奸警报-->
+	<RJW_AlertRape>{RAPIST} probuje zgwalcic {TARGET}.</RJW_AlertRape>
+	<RJW_AlertAssault>{RAPIST} probuje zaatakowac {TARGET}.</RJW_AlertAssault>
+	<RJW_AlertBreed>{RAPIST} probuje się rozmnóżać z {TARGET}.</RJW_AlertBreed>
+	<RJW_AlertRapeRelated>{RAPIST} probuje zgwalcic {TARGET}, {RAPIST_possessive} {RELATION}.</RJW_AlertRapeRelated>
+	<RJW_AlertAssaultRelated>{RAPIST} probuje zaatakowac {TARGET}, {RAPIST_possessive} {RELATION}.</RJW_AlertAssaultRelated>
+	<RJW_AlertBreedRelated>{RAPIST} probuje się rozmnóżać z {TARGET}, {RAPIST_possessive} {RELATION}.</RJW_AlertBreedRelated>
+	<RJW_AlertBeeingRaped>{TARGET} jest gwalcona.</RJW_AlertBeeingRaped>
+
+	<GoToModSettings>To miejsce jest zarezerwowane dla opcjonalnych funkcji RJW, które sa wyłączone lub niedostępne dla wybranego pionka/zwierzęcia.\nSprawdz opcje moda i przestan pytac, czy TO jest normalne.</GoToModSettings>
+
+	<!--舒适标记-->
+	<ForComfort>Uzyj dla rozrywki</ForComfort>
+	<ForComfortDesc>Oznacz dla seksu rozrywkowego</ForComfortDesc>
+	<ForComfortRefuseDesc>Nie zgodzi się być uzyta dla rozrywki\nWymagana cechą: masochizm</ForComfortRefuseDesc>
+
+	<!--妓女-->
+	<ForService>Przypisz do prostytucji</ForService> <!-- 此字段不可见 -->
+	<ForServiceDesc><![CDATA[Oznacz do prostytucji
+- Bedzie probowac zaprosic gosci.
+- Bawia innych osadnikow, jeśli nie będzie zajeta.
+- Bedzie powstrzymywac się od masturbacji w pracy, co może powodować frustracje.
+]]></ForServiceDesc>
+	<ForServiceRefuseDesc>Nie zgodzi się być prostytutka</ForServiceRefuseDesc>
+
+	<!--繁育标记-->
+	<ForBreeding>Dla zwierząt</ForBreeding>
+	<ForBreedingDesc>Oznacz do rozrodu ze zwierzętami</ForBreedingDesc>
+	<ForBreedingRefuseDesc>Nie zgodzi się być pokryta przez zwierzęta\nWymagana cechą: zoofilia</ForBreedingRefuseDesc>
+
+	<ForBreedingAnimalDesc>Zezwól temu zwierzęciu na pokrywanie oznaczonych do rozrodu</ForBreedingAnimalDesc>
+
+	<BreedMessage> probuje się rozmnóżać z </BreedMessage>
+
+	<!--挤奶-->
+	<ForMilking>Oznacz do doju</ForMilking>
+	<ForMilkingDesc>Pozyskaj materialy biologiczne od tej istoty</ForMilkingDesc>
+
+	<!--英雄-->
+	<ForHero>Wybierz Bohatera</ForHero>
+	<ForHeroDesc><![CDATA[Ustaw pionka jako postac gracza
+-Moze być ustawiony tylko raz.
+-Nie mozna wyłączyć.
+]]></ForHeroDesc>
+	<ForHeroRefuse1Desc>To jest bohater innego gracza</ForHeroRefuse1Desc>
+	<ForHeroRefuse2Desc>Nie masz uprawnien do zmiany oznaczenia</ForHeroRefuse2Desc>
+	<ForHeroRefuseHCDesc>Pionek nie-będący-bohaterem w trybie HC</ForHeroRefuseHCDesc>
+	<RJW_Message_BecameHero>{0} jest teraz bohaterem {1}</RJW_Message_BecameHero>
+
+	<!-- Hediff 提示框 -->
+	<RJW_PartInfo_braCup>Rozmiar miseczki: {0}</RJW_PartInfo_braCup>
+	<RJW_PartInfo_braSizeNone>Rozmiar biustonosza: -</RJW_PartInfo_braSizeNone>
+	<RJW_PartInfo_eggs>Jaja: {0}</RJW_PartInfo_eggs>
+	<RJW_PartInfo_fluidTypeFluidAmount>{0}: {1}</RJW_PartInfo_fluidTypeFluidAmount>
+	<RJW_PartInfo_braSize>Rozmiar biustonosza: {0}:{1}</RJW_PartInfo_braSize>
+	<RJW_PartInfo_overbust>Obwod nad piersiami: {0}</RJW_PartInfo_overbust>
+	<RJW_PartInfo_underbust>Obwod pod piersiami: {0}</RJW_PartInfo_underbust>
+	<RJW_PartInfo_weight>Waga: {0}</RJW_PartInfo_weight>
+	<RJW_PartInfo_properties>Wlasciwosci: {0}</RJW_PartInfo_properties>
+
+	<RJW_PartInfo_severity>Stopien: {0}</RJW_PartInfo_severity>
+	<RJW_PartInfo_fluidMultiplier>Mnoznik płynów: {0}</RJW_PartInfo_fluidMultiplier>
+
+	<!-- 可安装部件的 hediff 提示与详情面板共用-->
+	<RJW_PartInfo_girth>Obwod: {0}</RJW_PartInfo_girth>
+	<RJW_PartInfo_length>Dlugosc: {0}</RJW_PartInfo_length>
+	<RJW_PartInfo_depth>Glebokosc: {0}</RJW_PartInfo_depth>
+	<RJW_PartInfo_maxGirth>Maks. obwod: {0}</RJW_PartInfo_maxGirth>
+	<RJW_PartInfo_maxLength>Maks. dlugosc: {0}</RJW_PartInfo_maxLength>
+
+	<!-- 部件详情面板-->
+	<RJW_PartInfo_fluidTypeFluidAmountHeading>Plyn: {0} ({1}ml)</RJW_PartInfo_fluidTypeFluidAmountHeading>
+
+	<!-- 部件属性与描述 -->
+	<RJW_PartInfo_unknownSpecies>Nieznany gatunek</RJW_PartInfo_unknownSpecies>
+	<RJW_PartInfo_unknownOwner>Nieznany</RJW_PartInfo_unknownOwner>
+	<RJW_StatEntry_PreviousOwner>poprzedni wlasciciel</RJW_StatEntry_PreviousOwner>
+	<RJW_StatEntry_OriginalOwnerRace>pierwotna rasa</RJW_StatEntry_OriginalOwnerRace>
+	<RJW_StatEntry_OriginalOwnerSize>pierwotny rozmiar</RJW_StatEntry_OriginalOwnerSize>
+	<RJW_StatEntry_PartSize>rozmiar</RJW_StatEntry_PartSize>
+	<RJW_StatEntry_PartCupSize>rozmiar miseczki</RJW_StatEntry_PartCupSize>
+	<RJW_StatEntry_PartLength>dlugosc</RJW_StatEntry_PartLength>
+	<RJW_StatEntry_PartGirth>obwod</RJW_StatEntry_PartGirth>
+	<RJW_StatEntry_PartMaxGirth>maks. obwod</RJW_StatEntry_PartMaxGirth>
+	<RJW_StatEntry_PartDepth>glebokosc</RJW_StatEntry_PartDepth>
+	<RJW_StatEntry_PartWeight>waga</RJW_StatEntry_PartWeight>
+	<RJW_StatEntry_PartTags>wlasciwosci</RJW_StatEntry_PartTags>
+	<RJW_StatEntry_Fluid>plyn</RJW_StatEntry_Fluid>
+	<RJW_StatEntry_FluidAmount>ilosc plynu</RJW_StatEntry_FluidAmount>
+	<RJW_StatEntry_FluidAmount_ejaculation>ilosc wytrysku</RJW_StatEntry_FluidAmount_ejaculation>
+	<RJW_StatEntry_FluidAmount_wetness>wilgotnosc</RJW_StatEntry_FluidAmount_wetness>
+
+	<!-- RJW SexPart Hediff 的属性字段-->
+	<RJW_PartInfo_T_Title>typ częśći</RJW_PartInfo_T_Title>
+	<RJW_PartInfo_T_Breast>Piersi</RJW_PartInfo_T_Breast>
+	<RJW_PartInfo_T_Penis>Penis</RJW_PartInfo_T_Penis>
+	<RJW_PartInfo_T_Vagina>Pochwa</RJW_PartInfo_T_Vagina>
+	<RJW_PartInfo_T_Anus>Odbyt</RJW_PartInfo_T_Anus>
+	<RJW_PartInfo_T_Ovipositor>Owiposytor</RJW_PartInfo_T_Ovipositor>
+	<RJW_PartInfo_EggTypes>Typy jaj</RJW_PartInfo_EggTypes>
+
+	<!-- RJW 生育力提示 -->
+	<AgeImpactor>Wiek: </AgeImpactor>
+	<VanillaFertilityImpactor>Statystyka plodnosci: {VALUE}%</VanillaFertilityImpactor>
+
+	<!-- 宁芙！！！ -->
+	<RJW_nymph_incident_raid_title>Nimfy!!!</RJW_nymph_incident_raid_title>
+	<RJW_nymph_incident_raid_description>Grupa nimf zabladzila do twojej osady.</RJW_nymph_incident_raid_description>
+	<RJW_nymph_incident_wander_title>Nimfa!</RJW_nymph_incident_wander_title>
+	<RJW_nymph_incident_wander_description>Wędrująca nimfa zdecydowala się odwiedzic twoja osadę.</RJW_nymph_incident_wander_description>
+	<RJW_nymph_incident_join_title>Nimfa dołącza</RJW_nymph_incident_join_title>
+	<RJW_nymph_incident_join_description>Wędrująca nimfa zdecydowala się dołączyć do twojej osady.</RJW_nymph_incident_join_description>
+
+	<!-- Biotech 整合 -->
+	<PawnLacksFunctionalGenitals>{PAWN} nie ma funkcjonujacych genitaliów.</PawnLacksFunctionalGenitals>
+	<PawnLacksVagina>{PAWN} nie ma pochwy.</PawnLacksVagina>
+	<PawnLacksFunctionalPenis>{PAWN} nie ma funkcjonujacego penisa.</PawnLacksFunctionalPenis>
+	<VaginalWeight>szansa na seks pochwowowy</VaginalWeight>
+
+	<!-- 获得特性 -->
+	<!-- 提示：只需追加特性的 defname（可选再追加其 degree），即可轻松为这两项添加针对特定特性的版本 -->
+	<LetterLabelGainedTraitFromSex>Zyskana cechą: {PAWN}</LetterLabelGainedTraitFromSex>
+	<GainedTraitFromSex>Doswiadczenie seksualne sprawilo, ze {PAWN} zyskal ceche {TRAIT}.</GainedTraitFromSex>
+
+	<GainedTraitFromSexNymphomaniac>Przestymulowanie wspomagane afrodyzjakami na stale przebudowalo mozg {PAWN}. {PAWN_pronoun} zyskal ceche {TRAIT}.</GainedTraitFromSexNymphomaniac>
+	<GainedTraitFromSexFootSlut>Osiagniecie rozkoszy ze stymulacji stopami zrodzilo nowy fetysz u {PAWN}. {PAWN} ma teraz ceche {TRAIT}.</GainedTraitFromSexFootSlut>
+	<LetterLabelGainedMultipleTraitsFromSex>Zyskane cechy: {PAWN}</LetterLabelGainedMultipleTraitsFromSex>
+	<GainedMultipleTraitsFromSex>Potezne doswiadczenie seksualne sprawilo, ze {PAWN} zyskal nastepujace cechy:</GainedMultipleTraitsFromSex>
+	<GainedMultipleTraitsFromSexListItem>  - {0}</GainedMultipleTraitsFromSexListItem>
+
+	<!-- 束缚装备 -->
+	<RJW_BG_Message_FailedRemove>{0} proboje zdjac {0_possessive} {1}. To nic nie daje!</RJW_BG_Message_FailedRemove>
+	<RJW_BG_Message_NoWear_BlockedBy>{0} nie może zalozyc {1} (zablokowane przez {2})</RJW_BG_Message_NoWear_BlockedBy>
+	<RJW_BG_Message_Unlock>Odblokowano {0}</RJW_BG_Message_Unlock>
+	<RJW_BG_Message_CouldntDrop>Nie mozna odrzucic {0}</RJW_BG_Message_CouldntDrop>
+	<RJW_BG_Message_WrongKey>Klucz nie pasuje!</RJW_BG_Message_WrongKey>
+
+	<RJW_BG_Comp_Inspect_Engraving>Wyryto imie "{0}"</RJW_BG_Comp_Inspect_Engraving>
+	<RJW_BG_Comp_Inspect_Key>Kryptostempel: {0}</RJW_BG_Comp_Inspect_Key>
+</LanguageData>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rape_Reverse_Rimming.label>насильный анилингус</Rape_Reverse_Rimming.label>
+  <Rape_Reverse_Rimming.logRulesInitiator.rulesStrings.0>r_logentry->Насильно делает анилингус [RECIPIENT_nameDef].</Rape_Reverse_Rimming.logRulesInitiator.rulesStrings.0>
+  <Rape_Reverse_Rimming.logRulesRecipient.rulesStrings.0>r_logentry->Подвергается анилингусу от [INITIATOR_nameDef].</Rape_Reverse_Rimming.logRulesRecipient.rulesStrings.0>
+  <Rape_Reverse_Rimming.modExtensions.0.RMBLabel>Насильный анилингус</Rape_Reverse_Rimming.modExtensions.0.RMBLabel>
+
+
+</LanguageData>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: random rape -->
+  <RandomRape.label>viol aléatoire</RandomRape.label>
+  <!-- EN: Mental state: Random Rape -->
+  <RandomRape.baseInspectLine>État mental : Viol aléatoire</RandomRape.baseInspectLine>
+  <!-- EN: {0} is sexually frustrated and is looking to a rape someone. -->
+  <RandomRape.beginLetter>{0} est frustré{PAWN_gender ? : e : (e)} sexuellement et cherche à violer quelqu'un.</RandomRape.beginLetter>
+  <!-- EN: random rape -->
+  <RandomRape.beginLetterLabel>viol aléatoire</RandomRape.beginLetterLabel>
+  <!-- EN: {0} is no longer raping randomly. -->
+  <RandomRape.recoveryMessage>{0} ne commet plus de viol aléatoire.</RandomRape.recoveryMessage>
+  
+</LanguageData>

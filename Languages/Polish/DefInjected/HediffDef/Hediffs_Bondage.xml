@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Chains.label>lańcuchy</Chains.label>
+  <Chains.labelNoun>lańcuchy</Chains.labelNoun>
+  <Chains.description>Ser lańcuchow ograniczajaca noszacego.</Chains.description>
+
+  <BoundHands.label>związane rece</BoundHands.label>
+  <BoundHands.labelNoun>związane rece</BoundHands.labelNoun>
+  <BoundHands.description>Zwiazane rece.</BoundHands.description>
+
+  <BoundLegs.label>związane nogi</BoundLegs.label>
+  <BoundLegs.labelNoun>związane nogi</BoundLegs.labelNoun>
+  <BoundLegs.description>Zwiazane nogi.</BoundLegs.description>
+
+  <RJW_Restraints.label>Kajdany</RJW_Restraints.label>
+  <RJW_Restraints.labelNoun>kajdany</RJW_Restraints.labelNoun>
+  <RJW_Restraints.description>Zestaw kajdanow.</RJW_Restraints.description>
+
+  <RJW_Cocoon.label>Kokon</RJW_Cocoon.label>
+  <RJW_Cocoon.labelNoun>Kokon</RJW_Cocoon.labelNoun>
+  <RJW_Cocoon.description>Kokon, który opiekuje się swoim gospodarzem, az będzie gotowa do rozrodu.</RJW_Cocoon.description>
+</LanguageData>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<IncidentDef>
+		<defName>RJW_FemalePrisonerTransport</defName>
+		<label>female prisoner transport</label>
+		<category>Misc</category>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>rjw.IncidentWorker_FemalePrisonerTransport</workerClass>
+		<baseChance>0.25</baseChance>
+		<minRefireDays>12</minRefireDays>
+	</IncidentDef>
+</Defs>

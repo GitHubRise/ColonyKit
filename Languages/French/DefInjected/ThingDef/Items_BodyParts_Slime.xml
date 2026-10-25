@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: slime glob -->
+  <SlimeGlob.label>masse visqueuse</SlimeGlob.label>
+  <!-- EN: An oozy slime glob. Useless for humans. -->
+  <SlimeGlob.description>Une masse visqueuse et gluante. Inutile pour les humains.</SlimeGlob.description>
+  
+</LanguageData>

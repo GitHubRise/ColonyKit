@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: contraceptive -->
+  <RJW_Contraceptive.label>contraceptif</RJW_Contraceptive.label>
+  <!-- EN: Contraception pills deliver a severe hit to fertility for one quadrum. -->
+  <RJW_Contraceptive.description>Les pilules contraceptives ont un impact considérable sur la fertilité pendant un trimestre.</RJW_Contraceptive.description>
+  <!-- EN: Contracepted -->
+  <RJW_Contraceptive.stages.Contracepted.label>Contraceptif</RJW_Contraceptive.stages.Contracepted.label>
+  
+</LanguageData>

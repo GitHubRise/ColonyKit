@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <RJW_SexDrive.headerTip>&lt;color=yellow>性欲强度&lt;/color>衡量该小人的性活跃程度。</RJW_SexDrive.headerTip>
+
+  <RJW_Vulnerability.headerTip>&lt;color=yellow>性弱气度&lt;/color>衡量该小人被他人趁机占性便宜的可能性。</RJW_Vulnerability.headerTip>
+
+  <RJW_SexSatisfaction.headerTip>&lt;color=yellow>性满足度&lt;/color>决定该小人从性行为中获得的满足程度。</RJW_SexSatisfaction.headerTip>
+
+  <RJW_WildnessAversion.headerTip>&lt;color=yellow>野性排斥度&lt;/color>决定该小人在评估潜在伴侣时，对动物与野人的野性的排斥程度。</RJW_WildnessAversion.headerTip>
+
+  <RJW_Fertility.headerTip>&lt;color=yellow>生育力&lt;/color>决定该小人生育后代的概率。</RJW_Fertility.headerTip>
+
+</LanguageData>

@@ -1,0 +1,106 @@
+<Patch>
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/PawnRelationDef[defName="Child"]/workerClass</xpath>
+		<value>
+			<workerClass>rjw.PawnRelationWorker_Child_Humanlike</workerClass>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/PawnRelationDef[defName="Sibling"]/workerClass</xpath>
+		<value>
+			<workerClass>rjw.PawnRelationWorker_Sibling_Humanlike</workerClass>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/PawnRelationDef[defName="HalfSibling"]/workerClass</xpath>
+		<value>
+			<workerClass>rjw.PawnRelationWorker_HalfSibling_Humanlike</workerClass>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/PawnRelationDef[defName="Grandparent"]/workerClass</xpath>
+		<value>
+			<workerClass>rjw.PawnRelationWorker_Grandparent_Humanlike</workerClass>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/PawnRelationDef[defName="Grandchild"]/workerClass</xpath>
+		<value>
+			<workerClass>rjw.PawnRelationWorker_Grandchild_Humanlike</workerClass>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/PawnRelationDef[defName="NephewOrNiece"]/workerClass</xpath>
+		<value>
+			<workerClass>rjw.PawnRelationWorker_NephewOrNiece_Humanlike</workerClass>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/PawnRelationDef[defName="UncleOrAunt"]/workerClass</xpath>
+		<value>
+			<workerClass>rjw.PawnRelationWorker_UncleOrAunt_Humanlike</workerClass>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/PawnRelationDef[defName="Cousin"]/workerClass</xpath>
+		<value>
+			<workerClass>rjw.PawnRelationWorker_Cousin_Humanlike</workerClass>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/PawnRelationDef[defName="GreatGrandparent"]/workerClass</xpath>
+		<value>
+			<workerClass>rjw.PawnRelationWorker_GreatGrandparent_Humanlike</workerClass>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/PawnRelationDef[defName="GreatGrandchild"]/workerClass</xpath>
+		<value>
+			<workerClass>rjw.PawnRelationWorker_GreatGrandchild_Humanlike</workerClass>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/PawnRelationDef[defName="GranduncleOrGrandaunt"]/workerClass</xpath>
+		<value>
+			<workerClass>rjw.PawnRelationWorker_GranduncleOrGrandaunt_Humanlike</workerClass>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/PawnRelationDef[defName="GrandnephewOrGrandniece"]/workerClass</xpath>
+		<value>
+			<workerClass>rjw.PawnRelationWorker_GrandnephewOrGrandniece_Humanlike</workerClass>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/PawnRelationDef[defName="CousinOnceRemoved"]/workerClass</xpath>
+		<value>
+			<workerClass>rjw.PawnRelationWorker_CousinOnceRemoved_Humanlike</workerClass>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/PawnRelationDef[defName="SecondCousin"]/workerClass</xpath>
+		<value>
+			<workerClass>rjw.PawnRelationWorker_SecondCousin_Humanlike</workerClass>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/PawnRelationDef[defName="Kin"]/workerClass</xpath>
+		<value>
+			<workerClass>rjw.PawnRelationWorker_Kin_Humanlike</workerClass>
+		</value>
+	</Operation>
+</Patch>

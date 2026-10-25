@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rape_Reverse_DoublePenetrationM.label>насильное двойное проникновение</Rape_Reverse_DoublePenetrationM.label>
+  <Rape_Reverse_DoublePenetrationM.logRulesInitiator.rulesStrings.0>r_logentry->Принуждает [RECIPIENT_nameDef] к двойному проникновению.</Rape_Reverse_DoublePenetrationM.logRulesInitiator.rulesStrings.0>
+  <Rape_Reverse_DoublePenetrationM.logRulesRecipient.rulesStrings.0>r_logentry->Вынужденно совершает двойное проникновение в [INITIATOR_nameDef].</Rape_Reverse_DoublePenetrationM.logRulesRecipient.rulesStrings.0>
+  <Rape_Reverse_DoublePenetrationM.modExtensions.0.RMBLabel>Насильное двойное проникновение</Rape_Reverse_DoublePenetrationM.modExtensions.0.RMBLabel>
+
+
+</LanguageData>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: MouthFuck -->
+  <Bestiality_Reverse_Oral_Service.label>Baise de bouche</Bestiality_Reverse_Oral_Service.label>
+  <!-- EN:
+    <li>r_logentry->Orally serviced [RECIPIENT_nameDef].</li>
+  -->
+  <Bestiality_Reverse_Oral_Service.logRulesInitiator.rulesStrings>
+    <li>r_logentry->A servi oralement [RECIPIENT_nameDef].</li>
+  </Bestiality_Reverse_Oral_Service.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Was orally serviced by [INITIATOR_nameDef].</li>
+  -->
+  <Bestiality_Reverse_Oral_Service.logRulesRecipient.rulesStrings>
+    <li>r_logentry(RECIPIENT_gender!=Female)->A été servi oralement par [INITIATOR_nameDef].</li>
+    <li>r_logentry(RECIPIENT_gender==Female)->A été servie oralement par [INITIATOR_nameDef].</li>
+  </Bestiality_Reverse_Oral_Service.logRulesRecipient.rulesStrings>
+  <!-- EN: Service orally -->
+  <Bestiality_Reverse_Oral_Service.modExtensions.0.RMBLabel>Sert oralement</Bestiality_Reverse_Oral_Service.modExtensions.0.RMBLabel>
+  
+</LanguageData>

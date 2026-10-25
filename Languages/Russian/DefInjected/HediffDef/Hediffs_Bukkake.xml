@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 汇总较小精斑的主 hediff -->
+
+  <Hediff_Bukkake.label>Буккаке</Hediff_Bukkake.label>
+  <Hediff_Bukkake.description>На вас кончили.</Hediff_Bukkake.description>
+  <Hediff_Bukkake.stages.0.label>слабое</Hediff_Bukkake.stages.0.label>
+  <Hediff_Bukkake.stages.1.label>небольшие пятна</Hediff_Bukkake.stages.1.label>
+  <Hediff_Bukkake.stages.2.label>заметные пятна</Hediff_Bukkake.stages.2.label>
+  <Hediff_Bukkake.stages.3.label>полное покрытие</Hediff_Bukkake.stages.3.label>
+
+  <Hediff_Semen.label>Сперма</Hediff_Semen.label>
+  <Hediff_Semen.description>Объяснять, наверное, не надо.</Hediff_Semen.description>
+  <Hediff_Semen.stages.0.label>очень мало</Hediff_Semen.stages.0.label>
+  <Hediff_Semen.stages.1.label>немного</Hediff_Semen.stages.1.label>
+  <Hediff_Semen.stages.2.label>капает</Hediff_Semen.stages.2.label>
+  <Hediff_Semen.stages.3.label>стекает</Hediff_Semen.stages.3.label>
+  <Hediff_Semen.labelNoun>Сперма</Hediff_Semen.labelNoun>
+
+  <Hediff_InsectSpunk.label>Жучиная сперма</Hediff_InsectSpunk.label>
+  <Hediff_InsectSpunk.description>Жучиная сперма.</Hediff_InsectSpunk.description>
+  <Hediff_InsectSpunk.stages.0.label>очень мало</Hediff_InsectSpunk.stages.0.label>
+  <Hediff_InsectSpunk.stages.1.label>немного</Hediff_InsectSpunk.stages.1.label>
+  <Hediff_InsectSpunk.stages.2.label>капает</Hediff_InsectSpunk.stages.2.label>
+  <Hediff_InsectSpunk.stages.3.label>стекает</Hediff_InsectSpunk.stages.3.label>
+  <Hediff_InsectSpunk.labelNoun>Жучиная сперма</Hediff_InsectSpunk.labelNoun>
+
+  <Hediff_MechaFluids.label>Жидкости механоида</Hediff_MechaFluids.label>
+  <Hediff_MechaFluids.description>Жидкости механоида.</Hediff_MechaFluids.description>
+  <Hediff_MechaFluids.stages.0.label>очень мало</Hediff_MechaFluids.stages.0.label>
+  <Hediff_MechaFluids.stages.1.label>немного</Hediff_MechaFluids.stages.1.label>
+  <Hediff_MechaFluids.stages.2.label>капает</Hediff_MechaFluids.stages.2.label>
+  <Hediff_MechaFluids.stages.3.label>стекает</Hediff_MechaFluids.stages.3.label>
+  <Hediff_MechaFluids.labelNoun>Жидкости механоида</Hediff_MechaFluids.labelNoun>
+
+
+</LanguageData>

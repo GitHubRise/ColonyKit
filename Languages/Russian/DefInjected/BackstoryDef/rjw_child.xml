@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <rjw_childC.baseDesc>[PAWN_nameDef] {pawn_gender ? родился : родилась} в поселении.</rjw_childC.baseDesc>
+  <rjw_childC.description>[PAWN_nameDef] {pawn_gender ? родился : родилась} в поселении.</rjw_childC.description>
+  <rjw_childC.title>Ребёнок</rjw_childC.title>
+  <rjw_childC.titleShort>Ребёнок</rjw_childC.titleShort>
+
+  <rjw_childT.baseDesc>[PAWN_nameDef] {pawn_gender ? родился : родилась} в племени.</rjw_childT.baseDesc>
+  <rjw_childT.description>[PAWN_nameDef] {pawn_gender ? родился : родилась} в племени.</rjw_childT.description>
+  <rjw_childT.title>Ребёнок</rjw_childT.title>
+  <rjw_childT.titleShort>Ребёнок</rjw_childT.titleShort>
+
+
+</LanguageData>

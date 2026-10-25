@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: fingering -->
+  <Rape_Reverse_Fingering.label>doigtage</Rape_Reverse_Fingering.label>
+  <!-- EN:
+    <li>r_logentry->Forcefully fingered [RECIPIENT_nameDef].</li>
+  -->
+  <Rape_Reverse_Fingering.logRulesInitiator.rulesStrings><li>r_logentry->A doigté de force [RECIPIENT_nameDef].</li></Rape_Reverse_Fingering.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Was forcibly fingered by [INITIATOR_nameDef].</li>
+  -->
+  <Rape_Reverse_Fingering.logRulesRecipient.rulesStrings>
+    <li>r_logentry(RECIPIENT_gender!=Female)->A forcé [INITIATOR_nameDef] à le doigter.</li>
+    <li>r_logentry(RECIPIENT_gender==Female)->A forcé [INITIATOR_nameDef] à la doigter.</li>
+  </Rape_Reverse_Fingering.logRulesRecipient.rulesStrings>
+  <!-- EN: Do fingering -->
+  <Rape_Reverse_Fingering.modExtensions.0.RMBLabel>Doigte</Rape_Reverse_Fingering.modExtensions.0.RMBLabel>
+  
+</LanguageData>

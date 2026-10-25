@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 移除私处 -->
+  <RemoveGenitals.label>閹割</RemoveGenitals.label>
+
+  <RemoveGenitals.description>切除性器官。</RemoveGenitals.description>
+
+  <RemoveGenitals.jobString>閹割。</RemoveGenitals.jobString>
+
+  <RemoveBreasts.label>切除乳房</RemoveBreasts.label>
+
+  <RemoveBreasts.description>切除乳房。</RemoveBreasts.description>
+
+  <RemoveBreasts.jobString>切除乳房。</RemoveBreasts.jobString>
+
+  <RemoveAnus.label>切除肛門</RemoveAnus.label>
+
+  <RemoveAnus.description>切除肛門。</RemoveAnus.description>
+
+  <RemoveAnus.jobString>切除肛門。</RemoveAnus.jobString>
+</LanguageData>

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <PawnCantRapeCP>目标不够健康或位于禁止区域。</PawnCantRapeCP>
+
+  <PawnCantRapeCP0>该角色不需要性交，健康状况不佳，或无法强奸。</PawnCantRapeCP0>
+
+  <PawnCantRapeCP1>这个人不是单身或者伴侣在身边。</PawnCantRapeCP1>
+
+  <PawnCantRapeCP2>这个人不是恋兽癖，所以不能强奸动物。</PawnCantRapeCP2>
+
+  <CommandSubmit>屈服</CommandSubmit>
+
+  <CommandSubmitDesc>躺下并接受即将到来的一切。</CommandSubmitDesc>
+
+  <RJW_PregnantTitle>{0}怀孕了。</RJW_PregnantTitle>
+
+  <RJW_PregnantText>{0}怀孕了，很快她就要做母亲了。请注意，饥饿和创伤可能会导致她失去孩子。</RJW_PregnantText>
+
+  <RJW_Contractions>{0}出现了宫缩，孩子就要出生了！</RJW_Contractions>
+
+  <RJW_GaveBirthTitle>孩子出生了。</RJW_GaveBirthTitle>
+
+  <RJW_GaveBirthText>{0}成功生下了</RJW_GaveBirthText>
+
+  <RJW_ABaby>{0}个宝宝。</RJW_ABaby>
+
+  <RJW_NBabies>{1}个{0}宝宝。</RJW_NBabies>
+
+  <RJW_PregnantNormal>怀上了健康的孩子……</RJW_PregnantNormal>
+
+  <RJW_PregnantStrange>这孩子有点不寻常……</RJW_PregnantStrange>
+
+  <RJW_PregnantMechStrange>这孩子相当诡异……</RJW_PregnantMechStrange>
+
+  <RJW_GaveBirthEggTitle>产卵</RJW_GaveBirthEggTitle>
+
+  <RJW_GaveBirthEggText>{0}产下了卵</RJW_GaveBirthEggText>
+
+  <RJW_EggContractions>{0}正在宫缩！卵就要产出来了！</RJW_EggContractions>
+
+  <RJW_Message_NotPregnant>{0}判断{1}没有怀孕。</RJW_Message_NotPregnant>
+
+  <RJW_Message_Pregnant>{0}判断{1}已怀孕，父亲是{2}。</RJW_Message_Pregnant>
+
+  <RJW_AlertRape>{RAPIST}正在试图强奸{TARGET}。</RJW_AlertRape>
+
+  <RJW_AlertAssault>{RAPIST}正在试图侵犯{TARGET}。</RJW_AlertAssault>
+
+  <RJW_AlertBreed>{RAPIST}正在试图与{TARGET}交配。</RJW_AlertBreed>
+
+  <RJW_AlertRapeRelated>{RAPIST}正在试图强奸{TARGET}，{RAPIST_possessive}{RELATION}。</RJW_AlertRapeRelated>
+
+  <RJW_AlertAssaultRelated>{RAPIST}正在试图侵犯{TARGET}，{RAPIST_possessive}{RELATION}。</RJW_AlertAssaultRelated>
+
+  <RJW_AlertBreedRelated>{RAPIST}正在试图与{TARGET}交配，{RAPIST_possessive}{RELATION}。</RJW_AlertBreedRelated>
+
+  <RJW_AlertBeeingRaped>{TARGET}正在被强奸。</RJW_AlertBeeingRaped>
+
+  <GoToModSettings>这里是RJW的一些可选功能，当前角色/动物不可用或已禁用。\n去看看那该死的模组设置，别再问“这正常吗”了！</GoToModSettings>
+
+  <ForComfort>用于泄欲</ForComfort>
+
+  <ForComfortDesc>设为泄欲对象。</ForComfortDesc>
+
+  <ForComfortRefuseDesc>拒绝被用于泄欲\n（需要受虐狂特性）</ForComfortRefuseDesc>
+
+  <ForService>设为娼妓</ForService>
+
+  <ForServiceDesc>设为娼妓\n- 会尝试勾搭访客。\n- 如果不忙，会招待其他殖民者。\n- 工作中会尽量不自慰，可能导致自身欲求不满。</ForServiceDesc>
+
+  <ForServiceRefuseDesc>不愿成为娼妓</ForServiceRefuseDesc>
+
+  <ForBreeding>允许动物</ForBreeding>
+
+  <ForBreedingDesc>设为动物配种目标。</ForBreedingDesc>
+
+  <ForBreedingRefuseDesc>拒绝被动物骑\n（需要恋兽癖特性）</ForBreedingRefuseDesc>
+
+  <ForBreedingAnimalDesc>允许这只动物骑上指定的配种目标。</ForBreedingAnimalDesc>
+
+  <BreedMessage>正试图配种</BreedMessage>
+
+  <ForMilking>指定产乳</ForMilking>
+
+  <ForMilkingDesc>从此生物身上收集生物质。</ForMilkingDesc>
+
+  <ForHero>设为主角</ForHero>
+
+  <ForHeroDesc>将角色设为玩家主角\n-只能设置一次。\n-无法取消。</ForHeroDesc>
+
+  <ForHeroRefuse1Desc>这是其他玩家的主角。</ForHeroRefuse1Desc>
+
+  <ForHeroRefuse2Desc>您无权更改设定。</ForHeroRefuse2Desc>
+
+  <ForHeroRefuseHCDesc>硬核模式下的非主角殖民者</ForHeroRefuseHCDesc>
+
+  <RJW_Message_BecameHero>{0}现在成为了{1}的主角</RJW_Message_BecameHero>
+
+  <RJW_PartInfo_braCup>罩杯：{0}</RJW_PartInfo_braCup>
+
+  <RJW_PartInfo_braSizeNone>胸围尺寸：-</RJW_PartInfo_braSizeNone>
+
+  <RJW_PartInfo_eggs>卵：{0}</RJW_PartInfo_eggs>
+
+  <RJW_PartInfo_fluidTypeFluidAmount>{0}：{1}</RJW_PartInfo_fluidTypeFluidAmount>
+
+  <RJW_PartInfo_braSize>胸围尺寸：{0}:{1}</RJW_PartInfo_braSize>
+
+  <RJW_PartInfo_overbust>上胸围：{0}</RJW_PartInfo_overbust>
+
+  <RJW_PartInfo_underbust>下胸围：{0}</RJW_PartInfo_underbust>
+
+  <RJW_PartInfo_weight>重量：{0}</RJW_PartInfo_weight>
+
+  <RJW_PartInfo_properties>属性：{0}</RJW_PartInfo_properties>
+
+  <RJW_PartInfo_severity>等级：{0}</RJW_PartInfo_severity>
+
+  <RJW_PartInfo_fluidMultiplier>体液倍率：{0}</RJW_PartInfo_fluidMultiplier>
+
+  <RJW_PartInfo_girth>粗度：{0}</RJW_PartInfo_girth>
+
+  <RJW_PartInfo_length>长度：{0}</RJW_PartInfo_length>
+
+  <RJW_PartInfo_depth>深度：{0}</RJW_PartInfo_depth>
+
+  <RJW_PartInfo_maxGirth>最大粗度：{0}</RJW_PartInfo_maxGirth>
+
+  <RJW_PartInfo_maxLength>最大长度：{0}</RJW_PartInfo_maxLength>
+
+  <RJW_PartInfo_fluidTypeFluidAmountHeading>体液：{0}（{1} 毫升）</RJW_PartInfo_fluidTypeFluidAmountHeading>
+
+  <RJW_PartInfo_unknownSpecies>未知种族</RJW_PartInfo_unknownSpecies>
+
+  <RJW_PartInfo_unknownOwner>未知</RJW_PartInfo_unknownOwner>
+
+  <RJW_StatEntry_PreviousOwner>前任拥有者</RJW_StatEntry_PreviousOwner>
+
+  <RJW_StatEntry_OriginalOwnerRace>原始种族</RJW_StatEntry_OriginalOwnerRace>
+
+  <RJW_StatEntry_OriginalOwnerSize>原始尺寸</RJW_StatEntry_OriginalOwnerSize>
+
+  <RJW_StatEntry_PartSize>部位尺寸</RJW_StatEntry_PartSize>
+
+  <RJW_StatEntry_PartCupSize>罩杯大小</RJW_StatEntry_PartCupSize>
+
+  <RJW_StatEntry_PartLength>部位长度</RJW_StatEntry_PartLength>
+
+  <RJW_StatEntry_PartGirth>部位粗度</RJW_StatEntry_PartGirth>
+
+  <RJW_StatEntry_PartMaxGirth>最大粗度</RJW_StatEntry_PartMaxGirth>
+
+  <RJW_StatEntry_PartDepth>部位深度</RJW_StatEntry_PartDepth>
+
+  <RJW_StatEntry_PartWeight>部位重量</RJW_StatEntry_PartWeight>
+
+  <RJW_StatEntry_PartTags>部位属性</RJW_StatEntry_PartTags>
+
+  <RJW_StatEntry_Fluid>体液</RJW_StatEntry_Fluid>
+
+  <RJW_StatEntry_FluidAmount>体液量</RJW_StatEntry_FluidAmount>
+
+  <RJW_StatEntry_FluidAmount_ejaculation>射出量</RJW_StatEntry_FluidAmount_ejaculation>
+
+  <RJW_StatEntry_FluidAmount_wetness>湿润度</RJW_StatEntry_FluidAmount_wetness>
+
+  <RJW_PartInfo_T_Title>部位类型</RJW_PartInfo_T_Title>
+
+  <RJW_PartInfo_T_Breast>乳房</RJW_PartInfo_T_Breast>
+
+  <RJW_PartInfo_T_Penis>阴茎</RJW_PartInfo_T_Penis>
+
+  <RJW_PartInfo_T_Vagina>阴道</RJW_PartInfo_T_Vagina>
+
+  <RJW_PartInfo_T_Anus>肛门</RJW_PartInfo_T_Anus>
+
+  <RJW_PartInfo_T_Ovipositor>注卵器</RJW_PartInfo_T_Ovipositor>
+
+  <RJW_PartInfo_EggTypes>卵种类</RJW_PartInfo_EggTypes>
+
+  <AgeImpactor>年龄：</AgeImpactor>
+
+  <VanillaFertilityImpactor>生育力：{VALUE}%</VanillaFertilityImpactor>
+
+  <RJW_nymph_incident_raid_title>流莺袭击！！！</RJW_nymph_incident_raid_title>
+
+  <RJW_nymph_incident_raid_description>一群流莺闯入了你的定居点。</RJW_nymph_incident_raid_description>
+
+  <RJW_nymph_incident_wander_title>流莺来访</RJW_nymph_incident_wander_title>
+
+  <RJW_nymph_incident_wander_description>一位游荡的流莺决定来你的定居点“做客”。</RJW_nymph_incident_wander_description>
+
+  <RJW_nymph_incident_join_title>流莺加入</RJW_nymph_incident_join_title>
+
+  <RJW_nymph_incident_join_description>一位流浪的流莺决定加入你的定居点。</RJW_nymph_incident_join_description>
+
+  <PawnLacksFunctionalGenitals>{PAWN}没有可用的性器官。</PawnLacksFunctionalGenitals>
+
+  <PawnLacksVagina>{PAWN}没有阴道。</PawnLacksVagina>
+
+  <PawnLacksFunctionalPenis>{PAWN}没有可用的阴茎。</PawnLacksFunctionalPenis>
+
+  <VaginalWeight>阴道性交权重</VaginalWeight>
+
+  <LetterLabelGainedTraitFromSex>获得特性：{PAWN}</LetterLabelGainedTraitFromSex>
+
+  <GainedTraitFromSex>一次性体验使得{PAWN}获得了{TRAIT}特性。</GainedTraitFromSex>
+
+  <GainedTraitFromSexNymphomaniac>在催情药的过度刺激下，{PAWN}的大脑被永久重塑。{PAWN_pronoun}获得了{TRAIT}特性。</GainedTraitFromSexNymphomaniac>
+
+  <GainedTraitFromSexFootSlut>享受脚部快感的行为让{PAWN}内心滋生了一种邪恶的新癖好。{PAWN}现在成为了{TRAIT}。</GainedTraitFromSexFootSlut>
+
+  <LetterLabelGainedMultipleTraitsFromSex>获得特性：{PAWN}</LetterLabelGainedMultipleTraitsFromSex>
+
+  <GainedMultipleTraitsFromSex>一次强烈的性体验使得{PAWN}获得了以下特性：</GainedMultipleTraitsFromSex>
+
+  <GainedMultipleTraitsFromSexListItem>  - {0}</GainedMultipleTraitsFromSexListItem>
+
+  <RJW_BG_Message_FailedRemove>{0}试图脱下{0_possessive}的{1}，但徒劳无功！</RJW_BG_Message_FailedRemove>
+
+  <RJW_BG_Message_NoWear_BlockedBy>{0}无法穿上{1}（被{2}阻挡）</RJW_BG_Message_NoWear_BlockedBy>
+
+  <RJW_BG_Message_Unlock>已解锁{0}</RJW_BG_Message_Unlock>
+
+  <RJW_BG_Message_CouldntDrop>无法丢弃{0}</RJW_BG_Message_CouldntDrop>
+
+  <RJW_BG_Message_WrongKey>钥匙不匹配！</RJW_BG_Message_WrongKey>
+
+  <RJW_BG_Comp_Inspect_Engraving>刻有名字：“{0}”</RJW_BG_Comp_Inspect_Engraving>
+
+  <RJW_BG_Comp_Inspect_Key>加密印记：{0}</RJW_BG_Comp_Inspect_Key>
+
+  <RJW_Hero_DisabledTip>需要先在设置中启用主角模式。</RJW_Hero_DisabledTip>
+
+  <RJW_Hero_Ironman_AlreadyHeroTip>{PAWN_labelShort}已经是指定的主角。由于启用了铁人模式，无法再指定新的主角。</RJW_Hero_Ironman_AlreadyHeroTip>
+
+  <RJW_Hero_AlreadyExistsTip>已经有其他角色被指定为主角了。</RJW_Hero_AlreadyExistsTip>
+
+  <RJW_Hero_AlreadyHeroTip>{PAWN_labelShort}已经是指定的主角。待{PAWN_pronoun}死亡后才能指定新的主角。</RJW_Hero_AlreadyHeroTip>
+
+  <RJW_Hero_DesignateTip>将{PAWN_labelShort}指定为主角。</RJW_Hero_DesignateTip>
+
+  <RJW_Hero_DesignateDialog_Title>指定为&lt;color=yellow>主角&lt;/color></RJW_Hero_DesignateDialog_Title>
+
+  <RJW_Hero_DesignateDialog_Desc>将角色指定为&lt;color=yellow>主角&lt;/color>后，即可直接控制其性行为的选择。</RJW_Hero_DesignateDialog_Desc>
+
+  <RJW_Hero_DesignateDialog_Text_Normal>只有在当前&lt;color=yellow>主角&lt;/color>死亡后，才能指定新的&lt;color=yellow>主角&lt;/color>。</RJW_Hero_DesignateDialog_Text_Normal>
+
+  <RJW_Hero_DesignateDialog_Text_Ironman>由于启用了&lt;color=yellow>主角&lt;/color>铁人模式，每局游戏只能指定一次&lt;color=yellow>主角&lt;/color>。</RJW_Hero_DesignateDialog_Text_Ironman>
+
+  <RJW_Comfort_DisabledTip>{PAWN_labelShort}不是受虐狂，因此绝不会同意成为泄欲对象。</RJW_Comfort_DisabledTip>
+
+  <RJW_Comfort_OnTip>{PAWN_labelShort}已被指定为泄欲对象。\n\n点击此处取消指定。</RJW_Comfort_OnTip>
+
+  <RJW_Comfort_OffTip>{PAWN_labelShort}不是泄欲对象。\n\n点击此处指定。</RJW_Comfort_OffTip>
+
+  <RJW_Comfort_SettingDisabledTip>模组设置中禁用了泄欲对象。\n请启用“强奸”以指定泄欲对象。</RJW_Comfort_SettingDisabledTip>
+
+  <RJW_BreedHumanlike_DisabledTip>{PAWN_labelShort}不是恋兽癖，因此绝不会同意充当配种对象。</RJW_BreedHumanlike_DisabledTip>
+
+  <RJW_BreedHumanlike_OnTip>{PAWN_labelShort}已被指定为配种对象。\n\n点击此处取消指定。</RJW_BreedHumanlike_OnTip>
+
+  <RJW_BreedHumanlike_OffTip>{PAWN_labelShort}不是配种对象。\n\n点击此处指定。</RJW_BreedHumanlike_OffTip>
+
+  <RJW_BreedHumanlike_SettingDisabledTip>模组设置中禁用了人兽性行为。\n请启用“人兽性行为”以指定配种角色。</RJW_BreedHumanlike_SettingDisabledTip>
+
+  <RJW_BreedAnimal_DisabledTip>{PAWN_labelShort}无法被指定为配种对象。</RJW_BreedAnimal_DisabledTip>
+
+  <RJW_BreedAnimal_OnTip>{PAWN_labelShort}已被指定为配种对象。\n\n点击此处取消指定。</RJW_BreedAnimal_OnTip>
+
+  <RJW_BreedAnimal_OffTip>{PAWN_labelShort}不是配种对象。\n\n点击此处指定。</RJW_BreedAnimal_OffTip>
+
+  <RJW_BreedAnimal_SettingDisabledTip>模组设置中禁用了配种。\n请启用“动物之间性行为”以指定配种动物。</RJW_BreedAnimal_SettingDisabledTip>
+
+  <RJW_BreederAnimal_DisabledTip>{PAWN_labelShort}无法被指定为配种者。</RJW_BreederAnimal_DisabledTip>
+
+  <RJW_BreederAnimal_OnTip>{PAWN_labelShort}已被指定为配种者。\n\n点击此处取消指定。</RJW_BreederAnimal_OnTip>
+
+  <RJW_BreederAnimal_OffTip>{PAWN_labelShort}不是配种者。\n\n点击此处指定。</RJW_BreederAnimal_OffTip>
+
+  <RJW_BreederAnimal_SettingDisabledTip>模组设置中禁用了配种。\n请启用“动物之间性行为”以指定配种动物。</RJW_BreederAnimal_SettingDisabledTip>
+
+  <ForHeroIsHero>已指定为主角</ForHeroIsHero>
+</LanguageData>

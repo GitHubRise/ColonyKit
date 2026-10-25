@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: bred by animal -->
+  <AllowedAnimalToBreed.stages.bred_by_animal.label>fécondé(e) par un animal</AllowedAnimalToBreed.stages.bred_by_animal.label>
+  <!-- EN: I was so horny that I let an animal mount me. I feel ashamed for enjoying it... -->
+  <AllowedAnimalToBreed.stages.bred_by_animal.description>J'étais tellement excité{PAWN_gender ? : e : (e)} que j'ai laissé un animal me monter. J'ai honte d'avoir pris du plaisir...</AllowedAnimalToBreed.stages.bred_by_animal.description>
+  
+  <!-- EN: groped by animal -->
+  <AllowedAnimalToGrope.stages.groped_by_animal.label>palpé(e) par un animal</AllowedAnimalToGrope.stages.groped_by_animal.label>
+  <!-- EN: I was so horny that I let an animal grope me. I feel ashamed... -->
+  <AllowedAnimalToGrope.stages.groped_by_animal.description>J'étais tellement excité{PAWN_gender ? : e : (e)} que j'ai laissé un animal me peloter. J'ai honte...</AllowedAnimalToGrope.stages.groped_by_animal.description>
+  
+  <!-- EN: licked by animal -->
+  <AllowedAnimalToLick.stages.licked_by_animal.label>léché(e) par un animal</AllowedAnimalToLick.stages.licked_by_animal.label>
+  <!-- EN: I let an animal lick me. I feel ashamed, but kinda liked it... -->
+  <AllowedAnimalToLick.stages.licked_by_animal.description>J'ai laissé un animal me lécher. J'ai honte, mais j'ai plutôt aimé ça...</AllowedAnimalToLick.stages.licked_by_animal.description>
+  
+  <!-- EN: bred anally by animal -->
+  <GotAnalBredByAnimal.stages.bred_anally_by_animal.label>fécondé(e) analement par un animal</GotAnalBredByAnimal.stages.bred_anally_by_animal.label>
+  <!-- EN: I was raped...anally... by an animal. I can't get any lower than this; I just want to crawl in a hole and die. Please, nobody look at me... -->
+  <GotAnalBredByAnimal.stages.bred_anally_by_animal.description>J'ai été violé{PAWN_gender ? : e : (e)}... analement... par un animal. Je ne peux pas tomber plus bas ; je veux juste me terrer dans un trou et mourir. S'il vous plaît, que personne ne me regarde...</GotAnalBredByAnimal.stages.bred_anally_by_animal.description>
+  
+  <!-- EN: raped by animal -->
+  <GotBredByAnimal.stages.raped_by_animal.label>violé(e) par un animal</GotBredByAnimal.stages.raped_by_animal.label>
+  <!-- EN: Oh God... I was raped by an animal. The sheer humiliation of it...How can I look anybody in the eye now? I think I can still smell it on me... -->
+  <GotBredByAnimal.stages.raped_by_animal.description>Oh mon Dieu... J'ai été violé{PAWN_gender ? : e : (e)} par un animal. Quelle humiliation... Comment vais-je pouvoir regarder quelqu'un dans les yeux maintenant ? Je crois que je sens encore son odeur sur moi...</GotBredByAnimal.stages.raped_by_animal.description>
+  
+  <!-- EN: molested by animal -->
+  <GotGropedByAnimal.stages.molested_by_animal.label>agressé(e) sexuellement par un animal</GotGropedByAnimal.stages.molested_by_animal.label>
+  <!-- EN: An animal molested me. I feel dirty. -->
+  <GotGropedByAnimal.stages.molested_by_animal.description>Un animal m'a agressé{PAWN_gender ? : e : (e)} sexuellement. Je me sens sale.</GotGropedByAnimal.stages.molested_by_animal.description>
+  
+  <!-- EN: raped by animal -->
+  <GotLickedByAnimal.stages.raped_by_animal.label>violé(e) par un animal</GotLickedByAnimal.stages.raped_by_animal.label>
+  <!-- EN: An animal forced their tongue inside me. -->
+  <GotLickedByAnimal.stages.raped_by_animal.description>Un animal a enfoncé sa langue en moi.</GotLickedByAnimal.stages.raped_by_animal.description>
+  
+  <!-- EN: bred anally by animal -->
+  <MasochistGotAnalBredByAnimal.stages.bred_anally_by_animal.label>fécondé(e) analement par un animal</MasochistGotAnalBredByAnimal.stages.bred_anally_by_animal.label>
+  <!-- EN: I was raped...anally... by an animal. The way it utterly humiliated me by rutting on me mindlessly like I was just some pig who deserved nothing better...I could get used to this. -->
+  <MasochistGotAnalBredByAnimal.stages.bred_anally_by_animal.description>J'ai été violé{PAWN_gender ? : e : (e)}... analement... par un animal. La façon dont il m'a complètement humilié{PAWN_gender ? : e : (e)} en me chevauchant sans réfléchir, comme si j'étais juste une truie qui ne méritait rien de mieux... Je pourrais m'y habituer.</MasochistGotAnalBredByAnimal.stages.bred_anally_by_animal.description>
+  
+  <!-- EN: raped by animal -->
+  <MasochistGotBredByAnimal.stages.raped_by_animal.label>violé(e) par un animal</MasochistGotBredByAnimal.stages.raped_by_animal.label>
+  <!-- EN: An animal raped me. It makes me feel so dirty and deviant, like a filthy sow being bred...not bad. -->
+  <MasochistGotBredByAnimal.stages.raped_by_animal.description>Un animal m'a violé{PAWN_gender ? : e : (e)}. Ça me fait me sentir tellement sale et déviant{PAWN_gender ? : e : (e)}, comme une truie répugnante qui se fait saillir... pas mal.</MasochistGotBredByAnimal.stages.raped_by_animal.description>
+  
+  <!-- EN: molested by animal (Masochist) -->
+  <MasochistGotGropedByAnimal.stages.molested_by_animal_Masochist.label>agressé(e) sexuellement par un animal (Masochiste)</MasochistGotGropedByAnimal.stages.molested_by_animal_Masochist.label>
+  <!-- EN: An animal molested me. I kinda liked it... -->
+  <MasochistGotGropedByAnimal.stages.molested_by_animal_Masochist.description>Un animal m'a agressé{PAWN_gender ? : e : (e)} sexuellement. J'ai plutôt aimé ça...</MasochistGotGropedByAnimal.stages.molested_by_animal_Masochist.description>
+  
+  <!-- EN: raped by animal -->
+  <MasochistGotLickedByAnimal.stages.raped_by_animal.label>violé(e) par un animal</MasochistGotLickedByAnimal.stages.raped_by_animal.label>
+  <!-- EN: An animal forced their tongue inside me. I kinda liked it... -->
+  <MasochistGotLickedByAnimal.stages.raped_by_animal.description>Un animal a enfoncé sa langue en moi. J'ai plutôt aimé ça...</MasochistGotLickedByAnimal.stages.raped_by_animal.description>
+  
+  <!-- EN: bred anally by animal -->
+  <ZoophileGotAnalBredByAnimal.stages.bred_anally_by_animal.label>fécondé(e) analement par un animal</ZoophileGotAnalBredByAnimal.stages.bred_anally_by_animal.label>
+  <!-- EN: That animal just took me anally and made me its bitch...The way it mounted me...it just makes me want to touch myself all over again just thinking about it. -->
+  <ZoophileGotAnalBredByAnimal.stages.bred_anally_by_animal.description>Cet animal m'a pris{PAWN_gender ? : e : (e)} par derrière et m'a transformé{PAWN_gender ? : e : (e)} en sa chienne... La façon dont il m'a monté{PAWN_gender ? : e : (e)}... Ça me donne envie de me caresser à nouveau rien qu'en y repensant.</ZoophileGotAnalBredByAnimal.stages.bred_anally_by_animal.description>
+  
+  <!-- EN: bred by animal -->
+  <ZoophileGotBredByAnimal.stages.bred_by_animal.label>violé(e) par un animal</ZoophileGotBredByAnimal.stages.bred_by_animal.label>
+  <!-- EN: An animal made love to me, just like I was one too...It's so much more better than with a human.. -->
+  <ZoophileGotBredByAnimal.stages.bred_by_animal.description>Un animal m'a fait l'amour, comme si j'étais moi aussi un animal... C'est tellement mieux qu'avec un humain.</ZoophileGotBredByAnimal.stages.bred_by_animal.description>
+  
+  <!-- EN: molested by animal (Zoophile) -->
+  <ZoophileGotGropedByAnimal.stages.molested_by_animal_Zoophile.label>agressé(e) sexuellement par un animal (Zoophile)</ZoophileGotGropedByAnimal.stages.molested_by_animal_Zoophile.label>
+  <!-- EN: An animal ravished me. -->
+  <ZoophileGotGropedByAnimal.stages.molested_by_animal_Zoophile.description>Un animal m'a agressé{PAWN_gender ? : e : (e)} sexuellement.</ZoophileGotGropedByAnimal.stages.molested_by_animal_Zoophile.description>
+  
+  <!-- EN: ravished by animal -->
+  <ZoophileGotLickedByAnimal.stages.ravished_by_animal.label>agressé(e) sexuellement par un animal</ZoophileGotLickedByAnimal.stages.ravished_by_animal.label>
+  <!-- EN: An animal ravished me. -->
+  <ZoophileGotLickedByAnimal.stages.ravished_by_animal.description>Un animal m'a agressé{PAWN_gender ? : e : (e)} sexuellement.</ZoophileGotLickedByAnimal.stages.ravished_by_animal.description>
+  
+</LanguageData>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Sex_Breastjob.label>мастурбация грудью</Sex_Breastjob.label>
+  <Sex_Breastjob.logRulesInitiator.rulesStrings.0>r_logentry->Получает мастурбацию грудью от [RECIPIENT_nameDef].</Sex_Breastjob.logRulesInitiator.rulesStrings.0>
+  <Sex_Breastjob.logRulesRecipient.rulesStrings.0>r_logentry->Мастурбирует [INITIATOR_nameDef] своей грудью.</Sex_Breastjob.logRulesRecipient.rulesStrings.0>
+  <Sex_Breastjob.modExtensions.0.RMBLabel>Мастурбация грудью</Sex_Breastjob.modExtensions.0.RMBLabel>
+
+
+</LanguageData>

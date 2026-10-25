@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: remove egg -->
+  <RemoveInsectHiveEgg.label>retirer un œuf</RemoveInsectHiveEgg.label>
+  <!-- EN: Removes egg. -->
+  <RemoveInsectHiveEgg.description>Retire un œuf.</RemoveInsectHiveEgg.description>
+  <!-- EN: Removing egg. -->
+  <RemoveInsectHiveEgg.jobString>Retire un œuf.</RemoveInsectHiveEgg.jobString>
+  
+  <!-- EN: remove egg -->
+  <RemoveUnknownEgg.label>retirer un œuf</RemoveUnknownEgg.label>
+  <!-- EN: Removes egg. -->
+  <RemoveUnknownEgg.description>Retire un œuf.</RemoveUnknownEgg.description>
+  <!-- EN: Removing egg. -->
+  <RemoveUnknownEgg.jobString>Retire un œuf.</RemoveUnknownEgg.jobString>
+  
+  <!-- EN: remove cocoon -->
+  <RJW_RemoveCocoon.label>retirer un cocon</RJW_RemoveCocoon.label>
+  <!-- EN: Removes cocoon. -->
+  <RJW_RemoveCocoon.description>Retire un cocon.</RJW_RemoveCocoon.description>
+  <!-- EN: Removing cocoon. -->
+  <RJW_RemoveCocoon.jobString>Retire un cocon.</RJW_RemoveCocoon.jobString>
+  
+  <!-- EN: remove restraints -->
+  <RJW_RemoveRestraints.label>retirer les moyens de contention</RJW_RemoveRestraints.label>
+  <!-- EN: Removes restraints. -->
+  <RJW_RemoveRestraints.description>Retire les moyens de contention.</RJW_RemoveRestraints.description>
+  <!-- EN: Removing restraints. -->
+  <RJW_RemoveRestraints.jobString>Retire les moyens de contention.</RJW_RemoveRestraints.jobString>
+  
+</LanguageData>

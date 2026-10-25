@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Gave virginity -->
+  <FortunateGaveVirginity.stages.Gave_virginity.label>a été dépucelé(e)</FortunateGaveVirginity.stages.Gave_virginity.label>
+  <!-- EN: I gave my virginity. -->
+  <FortunateGaveVirginity.stages.Gave_virginity.description>J'ai donné ma virginité.</FortunateGaveVirginity.stages.Gave_virginity.description>
+  
+  <!-- EN: Took virginity -->
+  <TookVirginity.stages.Took_virginity.label>a dépucelé</TookVirginity.stages.Took_virginity.label>
+  <!-- EN: I've taken someone's virginity. -->
+  <TookVirginity.stages.Took_virginity.description>J'ai pris la virginité de quelqu'un d'autre.</TookVirginity.stages.Took_virginity.description>
+  
+  <!-- EN: Lost virginity -->
+  <UnfortunateLostVirginity.stages.Lost_virginity.label>a perdu sa virginité</UnfortunateLostVirginity.stages.Lost_virginity.label>
+  <!-- EN: I lost my virginity and I'll never get it back. -->
+  <UnfortunateLostVirginity.stages.Lost_virginity.description>J'ai perdu ma virginité et je ne la retrouverai plus jamais.</UnfortunateLostVirginity.stages.Lost_virginity.description>
+  
+</LanguageData>

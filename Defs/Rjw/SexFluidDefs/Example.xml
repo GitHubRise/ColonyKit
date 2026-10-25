@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Defs>
+	<rjw.SexFluidDef Abstract="True">
+		<defName>Example</defName>
+		<!-- 释放时产生的污渍。省略则不产生污渍。 -->
+		<filth></filth>
+		<!-- 可选：摄入时消耗的 ThingDef。 -->
+		<consumable></consumable>
+		<!-- 每单位液体摄入的可消耗物数量。 -->
+		<consumableFluidRatio>1</consumableFluidRatio>
+		<!-- 若设置，也可通过阴道或肛门性交摄入。 -->
+		<ingestThroughAnyOrifice>false</ingestThroughAnyOrifice>
+		<!-- 若为 false，则只有液体至少有一个单位时才产生污渍。 -->
+		<alwaysProduceFilth>false</alwaysProduceFilth>
+		<!-- 液体被摄入时的营养值。与 <consumable> 不兼容。 -->
+		<baseNutrition>0</baseNutrition>
+		<!-- 小人产出单位液体需消耗多少营养。 
+				 出于热力学考虑，最好保持在 <baseNutrition> 或可消耗物总营养以下。 -->
+		<baseNutritionCost>1</baseNutritionCost>
+		<!-- Dubs' Bad Hygiene 集成。 -->
+		<quenchesThirst>true</quenchesThirst>
+		<!-- 可选标签（任意字符串） -->
+		<tags>
+			<li>TastesLikeChicken</li>
+		</tags>
+		<!-- 可选：摄入时的回调。 -->
+		<ingestionDoers>
+			<li Class="SexFluidIngestionDoer_SubClass" />
+		</ingestionDoers>
+	</rjw.SexFluidDef>
+</Defs>

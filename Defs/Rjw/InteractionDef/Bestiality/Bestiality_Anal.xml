@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<InteractionDef ParentName="RJW_InteractionDefBaseBestiaity">
+		<defName>Bestiality_Anal</defName>
+		<label>anal breeding</label>
+		<logRulesInitiator>
+			<rulesStrings>
+				<li>r_logentry->Mounted [RECIPIENT_nameDef].</li>
+			</rulesStrings>
+		</logRulesInitiator>
+		<logRulesRecipient>
+			<rulesStrings>
+				<li>r_logentry->Was anally mounted by [INITIATOR_nameDef].</li>
+			</rulesStrings>
+		</logRulesRecipient>
+		<modExtensions>
+			<li Class="rjw.SexInteractionExtension">
+				<RMBLabel>Breed anally</RMBLabel>
+				<rjwSextype>Anal</rjwSextype>
+				<extraSentencePacks>
+					<li>Bestiality_AnalRP</li>
+				</extraSentencePacks>
+				<tags>
+					<li>EggLaying</li>
+					<li>Bestiality</li>
+					<li>Animal</li>
+					<li>EggFertilization</li>
+				</tags>
+				<initiatorRequirement>
+					<genitalTags>
+						<li>CanPenetrate</li>
+					</genitalTags>
+				</initiatorRequirement>
+				<recipientRequirement>
+					<genitalFamilies>
+						<li>Anus</li>
+					</genitalFamilies>
+					<pawnStates>
+						<li>Healthy</li>
+						<li>Downed</li>
+						<li>Unconscious</li>
+					</pawnStates>
+				</recipientRequirement>
+			</li>
+		</modExtensions>
+	</InteractionDef>
+</Defs>

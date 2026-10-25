@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<ThinkTreeDef>
+		<defName>CasualSexTree</defName>
+		<insertTag>Humanlike_PostMentalState</insertTag>
+		<insertPriority>12</insertPriority>
+		<thinkRoot Class="ThinkNode_Priority"> 
+			<subNodes> 
+				<li Class="rjw.ThinkNode_ConditionalSexChecks"> 
+					<subNodes> 
+						<li Class="rjw.ThinkNode_ConditionalHornyOrFrustrated"> 
+							<subNodes> 
+								<li Class="ThinkNode_SubtreesByTag">
+									<insertTag>RJW_CasualSex_Top</insertTag>
+								</li>					
+								<li Class="ThinkNode_SubtreesByTag">
+									<insertTag>RJW_CasualSex_Normal</insertTag>
+								</li>
+								<li Class="JobGiver_DoLovin"/>
+								<li Class="rjw.JobGiver_JoininBed"/> 
+								<li Class="rjw.JobGiver_DoQuickie"/> 
+								<li Class="ThinkNode_SubtreesByTag">
+									<insertTag>RJW_CasualSex_CP</insertTag>
+								</li>								
+								<li Class="ThinkNode_SubtreesByTag">
+									<insertTag>RJW_CasualSex_Masturbate</insertTag>
+								</li>								
+								<li Class="ThinkNode_SubtreesByTag">
+									<insertTag>RJW_CasualSex_Bottom</insertTag>
+								</li>
+								<li Class="rjw.ThinkNode_ConditionalThrottle"/>
+							</subNodes> 
+						</li>
+					</subNodes> 
+				</li>		
+			</subNodes> 
+		</thinkRoot>
+	</ThinkTreeDef>
+</Defs>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<!--移除 CnP 的避孕效果，因为 RJW 有自己的，且对两个模组都有效--> 
+	<!--该死的 Tynan。什么都不删，否则 CnP 里的空 xml 会让游戏报错-->
+	<!--改为删除 RJW_contraceptive，并把效果并入 CnP 的 hediff-->
+	<!--算了，我不管了-->
+	<!--<Operation Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationTest">
+				<xpath>Defs/ThingDef[defName="Contraceptive"]</xpath>
+			</li>
+			<li Class="PatchOperationAdd">
+			<xpath>Defs/HediffDef[defName="Contraceptive"]</xpath>
+			<value>
+				<stages>
+					<li>
+						<label>Contracepted</label>
+						<capMods>
+							<li>
+								<capacity>RJW_Fertility</capacity>
+								<setMax>0.1</setMax>
+							</li>
+						</capMods>
+					</li>
+				</stages>
+			</value>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/ThingDef[defName="RJW_Contraceptive"]</xpath>
+			</li>
+		</operations>
+	</Operation>-->
+</Patch>

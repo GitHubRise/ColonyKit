@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<HistoryEventDef>
+		<defName>GoodwillChangedReason_RemovedBodyPart</defName>
+		<label>Removed BodyPart</label>
+	</HistoryEventDef>
+
+	<HistoryEventDef>
+		<defName>RJW_MemberRaped</defName>
+		<label>member raped</label>
+	</HistoryEventDef>
+</Defs>

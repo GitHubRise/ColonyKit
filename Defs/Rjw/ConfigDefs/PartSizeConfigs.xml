@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Defs>
+	<rjw.PartSizeConfigDef Name="BaseOrificeSizes" Abstract="True">
+		<bodysizescale>true</bodysizescale> <!-- 根据初始所属种族的身形大小重新缩放部件尺寸 -->
+		<!-- 与阴茎尺寸相匹配。 -->
+		<girths>
+			<li>0</li>
+			<li>4.5</li>
+			<li>9.0</li>
+			<!-- 12.0 为平均值 -->
+			<li>13.0</li>
+			<li>17.0</li>
+			<li>21.0</li>
+		</girths>
+	</rjw.PartSizeConfigDef>
+
+	<rjw.PartSizeConfigDef Name="BaseGenitalSizes" ParentName="BaseOrificeSizes" Abstract="True">
+		<lengths>
+			<li>0</li>
+			<li>5.0</li>
+			<li>10.0</li>
+			<!-- 14.0 为平均值 -->
+			<li>18.0</li>
+			<li>25.0</li>
+			<li>35.0</li>
+			<!-- 世界纪录（Cabrera 不算）。 -->
+		</lengths>
+	</rjw.PartSizeConfigDef>
+
+	<rjw.PartSizeConfigDef ParentName="BaseGenitalSizes">
+		<defName>DefaultPenisSizes</defName>
+		<label>standard penis size config</label>
+	</rjw.PartSizeConfigDef>
+
+	<rjw.PartSizeConfigDef ParentName="BaseGenitalSizes">
+		<defName>DefaultVaginaSizes</defName>
+		<label>standard vagina size config</label>
+	</rjw.PartSizeConfigDef>
+
+	<rjw.PartSizeConfigDef ParentName="BaseOrificeSizes">
+		<defName>DefaultAnusSizes</defName>
+		<label>standard anus size config</label>
+	</rjw.PartSizeConfigDef>
+	
+	<rjw.PartSizeConfigDef>
+		<defName>DefaultBreastSizes</defName>
+		<label>standard breast size config</label>
+		<bodysizescale>true</bodysizescale>
+		<!-- 人类标准值为 1.0。留空则不显示重量。 -->
+		<density>1.0</density>
+		<!-- 对应 CupSizes.xml 中尺寸列表的索引 -->
+		<cupSizes>
+			<li>-2</li>
+			<li>-2</li>
+			<li>1</li>
+			<li>3</li>
+			<li>6</li>
+			<li>9</li>
+			<li>15</li>
+			<li>23</li>
+			<li>31</li>
+			<li>41</li>
+			<li>51</li>
+			<li>61</li>
+		</cupSizes>
+	</rjw.PartSizeConfigDef>
+
+</Defs>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: condom -->
+  <Condom.label>capote</Condom.label>
+  <!-- EN: Prevents a single case of pregnancy. Hint: Auto used from pawn inventory or stack next to bed. -->
+  <Condom.description>Empêche une seule grossesse. Astuce : utilisez-la automatiquement depuis l'inventaire du pion ou de la pile à côté du lit.</Condom.description>
+  
+  <!-- EN: used condom -->
+  <UsedCondom.label>capote usée</UsedCondom.label>
+  <!-- EN: A condom filled with sperm. MMMM So good and tasty! -->
+  <UsedCondom.description>Un préservatif rempli de sperme. Mmmmmh !</UsedCondom.description>
+  
+</LanguageData>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<!-- 繁殖邀约 -->
+	<InteractionDef ParentName="RJW_InteractionDefBaseRape">
+		<defName>Bestiality_Reverse_Anal</defName>
+		<label>anal breeding</label>
+		<logRulesInitiator>
+			<rulesStrings>
+				<li>r_logentry->Presented to [RECIPIENT_nameDef].</li>
+			</rulesStrings>
+		</logRulesInitiator>
+		<logRulesRecipient>
+			<rulesStrings>
+				<li>r_logentry->Mounted anally [INITIATOR_nameDef].</li>
+			</rulesStrings>
+		</logRulesRecipient>
+		<modExtensions>
+			<li Class="rjw.SexInteractionExtension">
+				<RMBLabel>Get bred anally</RMBLabel>
+				<rjwSextype>Anal</rjwSextype>
+				<extraSentencePacks>
+					<li>Bestiality_Reverse_AnalRP</li>
+				</extraSentencePacks>
+				<tags>
+					<li>Reverse</li>
+					<li>EggLaying</li>
+					<li>Bestiality</li>
+					<li>Animal</li>
+					<li>EggFertilization</li>
+				</tags>
+				<initiatorRequirement>
+					<genitalFamilies>
+						<li>Anus</li>
+					</genitalFamilies>
+				</initiatorRequirement>
+				<recipientRequirement>
+					<genitalTags>
+						<li>CanPenetrate</li>
+					</genitalTags>
+					<pawnStates>
+						<li>Healthy</li>
+					</pawnStates>
+				</recipientRequirement>
+			</li>
+		</modExtensions>
+	</InteractionDef>
+</Defs>

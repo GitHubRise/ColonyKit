@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Sex_Reverse_Fellatio.label>минет</Sex_Reverse_Fellatio.label>
+  <Sex_Reverse_Fellatio.logRulesInitiator.rulesStrings.0>r_logentry->Делает минет [RECIPIENT_nameDef].</Sex_Reverse_Fellatio.logRulesInitiator.rulesStrings.0>
+  <Sex_Reverse_Fellatio.logRulesRecipient.rulesStrings.0>r_logentry->Получает минет от [INITIATOR_nameDef].</Sex_Reverse_Fellatio.logRulesRecipient.rulesStrings.0>
+  <Sex_Reverse_Fellatio.modExtensions.0.RMBLabel>Минет</Sex_Reverse_Fellatio.modExtensions.0.RMBLabel>
+
+
+</LanguageData>

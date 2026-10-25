@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <SexSatisfaction.label>性滿足</SexSatisfaction.label>
+
+  <SexSatisfaction.description>衡量角色對性的滿足程度。</SexSatisfaction.description>
+
+  <Vulnerability.label>脆弱度</Vulnerability.label>
+
+  <Vulnerability.description>衡量一個角色有多好欺負（越高越容易被強姦）</Vulnerability.description>
+
+  <SexFrequency.label>性慾</SexFrequency.label>
+
+  <SexFrequency.description>衡量一個角色性行為活躍度。</SexFrequency.description>
+
+  <SexMinSizePreference.label>體型性偏好下限</SexMinSizePreference.label>
+
+  <SexMinSizePreference.description>決定選擇性對象時可接受的最小相對體型值。</SexMinSizePreference.description>
+
+  <SexMaxSizePreference.label>體型性偏好上限</SexMaxSizePreference.label>
+
+  <SexMaxSizePreference.description>決定選擇性對象時可接受的最大相對體型值。</SexMaxSizePreference.description>
+
+  <SexWildnessAversion.label>野性排斥度</SexWildnessAversion.label>
+
+  <SexWildnessAversion.description>決定角色在選擇性對象時，對野生動物或野人所具備的野性的排斥程度。</SexWildnessAversion.description>
+</LanguageData>

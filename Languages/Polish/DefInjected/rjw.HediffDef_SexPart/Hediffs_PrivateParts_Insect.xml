@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <OvipositorF.label>owiposytor (Zenski)</OvipositorF.label>
+  <OvipositorF.labelNoun>owiposytor</OvipositorF.labelNoun>
+  <OvipositorF.description>Owiposytor. Sklada jaja wewnatrz gospodarza.</OvipositorF.description>
+
+  <OvipositorM.label>owiposytor (Meski)</OvipositorM.label>
+  <OvipositorM.labelNoun>owiposytor</OvipositorM.labelNoun>
+  <OvipositorM.description>Owiposytor. Zaplania jaja wewnatrz gospodarza.</OvipositorM.description>
+
+  <InsectAnus.label>owadzi odbyt</InsectAnus.label>
+  <InsectAnus.labelNoun>owadzi odbyt</InsectAnus.labelNoun>
+  <InsectAnus.description>Owadzi odbyt.</InsectAnus.description>
+</LanguageData>

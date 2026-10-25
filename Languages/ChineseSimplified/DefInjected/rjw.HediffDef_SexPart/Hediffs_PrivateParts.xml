@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <GenericAnus.label>动物肛门</GenericAnus.label>
+
+  <GenericAnus.description>一个肛门。作为不支持特定种族时的通用占位部件。</GenericAnus.description>
+
+  <GenericAnus.labelNoun>动物肛门</GenericAnus.labelNoun>
+
+  <GenericAnus.stages.Micro.label>微型</GenericAnus.stages.Micro.label>
+
+  <GenericAnus.stages.Tight.label>紧致</GenericAnus.stages.Tight.label>
+
+  <GenericAnus.stages.Average.label>平均</GenericAnus.stages.Average.label>
+
+  <GenericAnus.stages.Accommodating.label>松弛</GenericAnus.stages.Accommodating.label>
+
+  <GenericAnus.stages.Cavernous.label>敞口</GenericAnus.stages.Cavernous.label>
+
+  <GenericAnus.stages.Abyssal.label>深渊</GenericAnus.stages.Abyssal.label>
+
+  <GenericBreasts.label>动物乳房</GenericBreasts.label>
+
+  <GenericBreasts.description>一对乳房。作为不支持特定种族时的通用占位部件。</GenericBreasts.description>
+
+  <GenericBreasts.labelNoun>动物乳房</GenericBreasts.labelNoun>
+
+  <GenericBreasts.stages.Nipples.label>飞机场</GenericBreasts.stages.Nipples.label>
+
+  <GenericBreasts.stages.Tiny.label>很小</GenericBreasts.stages.Tiny.label>
+
+  <GenericBreasts.stages.Small.label>小</GenericBreasts.stages.Small.label>
+
+  <GenericBreasts.stages.Average.label>平均</GenericBreasts.stages.Average.label>
+
+  <GenericBreasts.stages.Large.label>大</GenericBreasts.stages.Large.label>
+
+  <GenericBreasts.stages.Huge.label>巨大</GenericBreasts.stages.Huge.label>
+
+  <GenericBreasts.stages.Enormous.label>超大</GenericBreasts.stages.Enormous.label>
+
+  <GenericBreasts.stages.Massive.label>超巨大</GenericBreasts.stages.Massive.label>
+
+  <GenericBreasts.stages.Gargantuan.label>庞大无比</GenericBreasts.stages.Gargantuan.label>
+
+  <GenericBreasts.stages.Colossal.label>巨硕如山</GenericBreasts.stages.Colossal.label>
+
+  <GenericBreasts.stages.Titanic.label>泰坦巨乳</GenericBreasts.stages.Titanic.label>
+
+  <GenericBreasts.stages.Astronomical.label>天文级别</GenericBreasts.stages.Astronomical.label>
+
+  <GenericPenis.label>动物阴茎</GenericPenis.label>
+
+  <GenericPenis.description>一个阴茎。作为不支持特定种族时的通用占位部件。</GenericPenis.description>
+
+  <GenericPenis.labelNoun>动物阴茎</GenericPenis.labelNoun>
+
+  <GenericPenis.stages.Micro.label>微型</GenericPenis.stages.Micro.label>
+
+  <GenericPenis.stages.Small.label>很小</GenericPenis.stages.Small.label>
+
+  <GenericPenis.stages.Average.label>平均</GenericPenis.stages.Average.label>
+
+  <GenericPenis.stages.Large.label>大</GenericPenis.stages.Large.label>
+
+  <GenericPenis.stages.Huge.label>巨大</GenericPenis.stages.Huge.label>
+
+  <GenericPenis.stages.Towering.label>超大</GenericPenis.stages.Towering.label>
+
+  <GenericVagina.label>动物阴道</GenericVagina.label>
+
+  <GenericVagina.description>一个阴道。作为不支持特定种族时的通用占位部件。</GenericVagina.description>
+
+  <GenericVagina.labelNoun>动物阴道</GenericVagina.labelNoun>
+
+  <GenericVagina.stages.Micro.label>微型</GenericVagina.stages.Micro.label>
+
+  <GenericVagina.stages.Tight.label>紧致</GenericVagina.stages.Tight.label>
+
+  <GenericVagina.stages.Average.label>平均</GenericVagina.stages.Average.label>
+
+  <GenericVagina.stages.Accommodating.label>松弛</GenericVagina.stages.Accommodating.label>
+
+  <GenericVagina.stages.Cavernous.label>敞口</GenericVagina.stages.Cavernous.label>
+
+  <GenericVagina.stages.Abyssal.label>深渊</GenericVagina.stages.Abyssal.label>
+</LanguageData>

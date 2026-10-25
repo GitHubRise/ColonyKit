@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: fellatio -->
+  <Sex_Reverse_Fellatio.label>fellation</Sex_Reverse_Fellatio.label>
+  <!-- EN:
+    <li>r_logentry->Fellated [RECIPIENT_nameDef].</li>
+  -->
+  <Sex_Reverse_Fellatio.logRulesInitiator.rulesStrings>
+    <li>r_logentry->A sucé [RECIPIENT_nameDef].</li>
+  </Sex_Reverse_Fellatio.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Was fellated by [INITIATOR_nameDef].</li>
+  -->
+  <Sex_Reverse_Fellatio.logRulesRecipient.rulesStrings>
+    <li>r_logentry(RECIPIENT_gender!=Female)->A été sucé par [INITIATOR_nameDef].</li>
+    <li>r_logentry(RECIPIENT_gender==Female)->A été sucée par [INITIATOR_nameDef].</li>
+  </Sex_Reverse_Fellatio.logRulesRecipient.rulesStrings>
+  <!-- EN: Give fellatio -->
+  <Sex_Reverse_Fellatio.modExtensions.0.RMBLabel>Fait une fellation</Sex_Reverse_Fellatio.modExtensions.0.RMBLabel>
+  
+</LanguageData>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rape_Reverse_Cunnilingus.label>насильный куннилингус</Rape_Reverse_Cunnilingus.label>
+  <Rape_Reverse_Cunnilingus.logRulesInitiator.rulesStrings.0>r_logentry->Насильно делает [RECIPIENT_nameDef] куннилингус.</Rape_Reverse_Cunnilingus.logRulesInitiator.rulesStrings.0>
+  <Rape_Reverse_Cunnilingus.logRulesRecipient.rulesStrings.0>r_logentry->Получает принудительный куннилингус от [INITIATOR_nameDef].</Rape_Reverse_Cunnilingus.logRulesRecipient.rulesStrings.0>
+  <Rape_Reverse_Cunnilingus.modExtensions.0.RMBLabel>Насильный куннилингус</Rape_Reverse_Cunnilingus.modExtensions.0.RMBLabel>
+
+
+</LanguageData>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Necro_Reverse_DoublePenetration.label>двойное проникновение</Necro_Reverse_DoublePenetration.label>
+  <Necro_Reverse_DoublePenetration.logRulesInitiator.rulesStrings.0>r_logentry->Получает двойное проникновение от [RECIPIENT_nameDef].</Necro_Reverse_DoublePenetration.logRulesInitiator.rulesStrings.0>
+  <Necro_Reverse_DoublePenetration.logRulesRecipient.rulesStrings.0>r_logentry->Вынужденно совершает двойное проникновение в [INITIATOR_nameDef].</Necro_Reverse_DoublePenetration.logRulesRecipient.rulesStrings.0>
+  <Necro_Reverse_DoublePenetration.modExtensions.0.RMBLabel>Двойное проникновение</Necro_Reverse_DoublePenetration.modExtensions.0.RMBLabel>
+
+
+</LanguageData>

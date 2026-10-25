@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<rjw.RaceGroupDef Name="RJW_CustomRaceBase" Abstract="True">
+		
+		<!-- 只是一个字符串列表，不应因已安装的模组而失败，需完全匹配。 -->
+		<raceNames>
+			<li>UnsupportedRace</li>
+		</raceNames>
+		
+		<!-- 尽量优先使用 raceNames 而非 pawnKindNames，部分匹配。 -->
+		<pawnKindNames>
+		</pawnKindNames>
+		
+		<!-- TODO？重写旧列表-->
+		<!-- 空列表表示将执行默认的部件添加流程。 -->
+		<!-- 在这里搞点怪东西……比如阴茎尾。 -->
+		<!-- 添加几率 -->
+		<!-- 要添加的 hediff，你可能需要一个不会把自己从 <defaultBodyPartList> 中挪走的自定义 hediff -->
+		<!-- 要添加到的 BodypartDef（可多个） -->
+		<!--
+		<partAdders>
+			<li Class="rjw.PartAdder">
+				<chance>1.0</chance>
+				<rjwPart>HydraulicPenis</rjwPart>
+				<bodyParts>
+					<li>Anus</li>
+					<li>Chest</li>
+					<li>Genitals</li>
+				</bodyParts>
+			</li>
+		</partAdders>
+		-->
+
+		<!-- 列表缺失表示对该性部件类型使用常规的部件选取代码。 -->
+		<!-- 空列表表示不会添加任何部件。 -->
+		<anuses>
+			<li>GenericAnus</li>
+			
+			<!-- humanlikes
+			<li>Anus</li>
+			-->
+			
+			<!-- implants
+			<li>HydraulicAnus</li>
+			<li>BionicAnus</li>
+			<li>ArchotechAnus</li>
+			-->
+			
+			<!-- special
+			<li>InsectAnus</li>
+			<li>DemonAnus</li>
+			<li>SlimeAnus</li>
+			-->
+		</anuses>
+		
+		<!--若没有几率或只有一个，将从列表中随机选择部件-->
+		<!--<li>1.0</li> is 100% to choose this part-->
+		<chanceanuses>
+			<li>1.0</li>
+			
+			<!-- humanlikes
+			<li>0.05</li>
+			<li>0.20</li>
+			<li>0.70</li>
+			<li>0.80</li>
+			<li>1.0</li>
+			-->
+		</chanceanuses>
+		
+		<femaleBreasts>
+			<li>GenericBreasts</li>
+			
+			<!-- humanlikes
+			<li>Breasts</li>
+			-->
+			
+			<!-- implants
+			<li>HydraulicBreasts</li>
+			<li>BionicBreasts</li>
+			<li>ArchotechBreasts</li>
+			-->
+			
+			<!-- special
+			<li>FeaturelessChest</li>
+			<li>SlimeBreasts</li>
+			-->
+		</femaleBreasts>
+		
+		<chancefemaleBreasts>
+			<li>1.0</li>
+		</chancefemaleBreasts>
+		
+		<femaleGenitals>
+			<li>GenericVagina</li>
+			
+			<!-- humanlikes
+			<li>Vagina</li>
+			-->
+			
+			<!-- animals?
+			<li>CatVagina</li>
+			<li>DogVagina</li>
+			<li>HorseVagina</li>
+			<li>DragonVagina</li>
+			-->
+			
+			<!-- implants
+			<li>HydraulicVagina</li>
+			<li>BionicVagina</li>
+			<li>ArchotechVagina</li>
+			-->
+			
+			<!-- ovi implant eggs
+			<li>OvipositorF</li>
+			-->
+			
+			<!-- special
+			<li>DemonVagina</li>
+			<li>SlimeVagina</li>
+			-->
+		</femaleGenitals>
+		
+		<chancefemaleGenitals>
+			<li>1.0</li>
+		</chancefemaleGenitals>
+		
+		<!-- 若 hasSingleGender 为 true 则不使用。 -->
+		<maleBreasts>
+			<li>GenericBreasts</li>
+			
+			<!-- humanlikes
+			<li>Breasts</li>
+			-->
+			
+			<!-- implants
+			<li>HydraulicBreasts</li>
+			<li>BionicBreasts</li>
+			<li>ArchotechBreasts</li>
+			-->
+			
+			<!-- special
+			<li>FeaturelessChest</li>
+			<li>SlimeBreasts</li>
+			-->
+		</maleBreasts>
+		
+		<chancemaleBreasts>
+			<li>1.0</li>
+		</chancemaleBreasts>
+		
+		<maleGenitals>
+			<li>GenericPenis</li>
+			
+			<!-- humanlikes
+			<li>Penis</li>
+			-->
+			
+			<!-- animals?
+			<li>CatPenis</li>
+			<li>DogPenis</li>
+			<li>HorsePenis</li>
+			<li>DragonPenis</li>
+			<li>RaccoonPenis</li>
+			<li>HemiPenis</li>
+			<li>CrocodilianPenis</li>
+			-->
+			
+			<!-- implants
+			<li>PegDick</li>
+			<li>HydraulicPenis</li>
+			<li>BionicPenis</li>
+			<li>ArchotechPenis</li>
+			-->
+			
+			<!-- ovi fertilize eggs
+			<li>OvipositorM</li>
+			-->
+			
+			<!-- special
+			<li>DemonTentaclePenis</li>
+			<li>DemonPenis</li>
+			<li>SlimeTentacles</li>
+			-->
+		</maleGenitals>
+		
+		<chancemaleGenitals>
+			<li>1.0</li>
+		</chancemaleGenitals>
+
+		
+		<!-- 主要用于怪癖 -->
+		<tags>
+			<!--
+			<li>Chitin</li>
+			<li>Demon</li>
+			<li>Feathers</li>
+			<li>Fur</li>
+			<li>Plant</li>
+			<li>Robot</li>
+			<li>Scales</li>
+			<li>Skin</li>
+			<li>Slime</li>
+			-->
+		</tags>
+		
+		<!-- 史莱姆怀孕总是生出史莱姆 -->
+		
+		<!-- 混种怀孕 -->
+		<!-- 从跨种族性行为中生出预定义的混种 -->
+		<!-- 人类/动物/恋兽 -->
+		<!-- 例：human+orassan=neko -->
+		<!-- defName 区分大小写-->
+		<hybridRaceParents><!-- 混种怀孕会检查双亲的种族（两者种族不同） -->
+			<!--
+			<li>Mother.PawnKindDef.Race</li>
+			<li>Father.PawnKindDef.Race</li>
+			<li>Any</li> - Any race ("Any" + mother/father race)
+			-->
+		</hybridRaceParents>
+		
+		<hybridChildKindDef><!-- 混种怀孕子代的 KindDef 输出 -->
+			<!--
+			<li>Slime.PawnKindDef.defname</li> - some slime PawnKindDef
+			<li>MotherKindDef</li> - use mother PawnKindDef
+			<li>FatherKindDef</li> - use father PawnKindDef
+			<li>your.PawnKindDef.defname</li> - birth something shouldnt exist
+			-->
+		</hybridChildKindDef>
+		
+		<backstoryChildTribal><!-- 部落：从一开始就能使用自然冥想焦点 -->
+			<!--
+			<li>rjw_childT</li>
+			-->
+		</backstoryChildTribal>
+		
+		<backstoryChildCivil>
+			<!--
+			<li>rjw_childC</li>
+			-->
+		</backstoryChildCivil>
+		
+		<!-- 以下所有值都是默认值，可以省略。 -->
+		<raceSexDrive>1.0</raceSexDrive>			<!--种族性需求下降的速度（对动物无效，不在性统计中显示，直接进入性需求计算）-->
+		<hasSingleGender>false</hasSingleGender>	<!--若是无性别种族，则设为扶他但不把性别改为女性。 -->
+		<hasSexNeed>true</hasSexNeed>				<!--无性恋小人、机械族、机器人等-->
+		<!--<teenAge>13</teenAge>-->				<!--（通常是第一个生殖生命阶段）；类人生物默认为 13 -->
+													<!--可以写成 9999 之类的值来禁用性行为-->
+		<!--<adultAge>18</adultAge>-->				<!--（通常是小人成长 100%——第二个生殖生命阶段）；强制小人在此年龄被视为成年，对寿命奇特的异星种族可能有用-->
+
+		<!--普通怀孕-->
+		<hasFertility>true</hasFertility>			<!--可怀孕或授精，不包括机械族（总能致孕/植入）、机器人等-->
+		<hasPregnancy>true</hasPregnancy>			<!--可怀孕，不包括机械族、机器人等-->
+		
+		<!--产卵-->
+		<oviPregnancy>false</oviPregnancy>			<!--产卵器怀孕，以产卵并孵出代替普通怀孕，卵为母方种族，或 eggDef 中定义的其他种族-->
+		<!--覆盖 CompProperties_EggLayer 的属性，需要 oviPregnancy=true -->
+		<eggFertilizedDef>RJW_EggFertilized</eggFertilizedDef>		<!--产出你在蛋中定义的任何东西。默认兜底结果：鸡-->
+		<eggUnfertilizedDef>RJW_EggUnfertilized</eggUnfertilizedDef>
+		<eggProgressUnfertilizedMax>1.0</eggProgressUnfertilizedMax>
+		<eggLayIntervalDays>3.5</eggLayIntervalDays>
+		
+		<!--卵植入-->
+		<ImplantEggs>false</ImplantEggs>			<!--种族可用普通阴茎或产卵器植入卵，你可能想往 Hediffs_EnemyImplants 中添加该种族专属的卵-->
+	</rjw.RaceGroupDef>
+	
+	<rjw.RaceGroupDef ParentName="RJW_CustomRaceBase">
+		<!-- 此 RaceGroupDef 的名称。 -->
+		<defName>Generic_Group</defName>
+		<raceNames>
+			<li>UnsupportedRace</li>
+		</raceNames>
+	</rjw.RaceGroupDef>
+</Defs>

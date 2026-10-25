@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <OvipositorM.label>owiposytor (Meski)</OvipositorM.label>
+  <OvipositorM.description>Owiposytor do zapladniania jaj.</OvipositorM.description>
+
+  <OvipositorF.label>owiposytor (Zenski)</OvipositorF.label>
+  <OvipositorF.description>Owiposytor do skladowania jaj.</OvipositorF.description>
+
+  <InsectAnus.label>owadzi odbyt</InsectAnus.label>
+  <InsectAnus.description>Owadzi odbyt.</InsectAnus.description>
+</LanguageData>

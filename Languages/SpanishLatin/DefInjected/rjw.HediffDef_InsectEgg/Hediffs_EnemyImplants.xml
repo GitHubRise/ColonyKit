@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 带有 ovi 植物卵的小人。 -->
+
+  <RJW_InsectEgg.label>Huevo</RJW_InsectEgg.label>
+  <RJW_InsectEgg.description>Huevo(s) parasito(s) que se depositan en un huésped y se alimentan de sus nutrientes hasta que están listos para eclosionar. Al menos no eclosionan si se salen del pecho. .</RJW_InsectEgg.description>
+
+
+  <!-- 占位卵／不支持的／任意种族 -->
+
+  <RJW_UnknownEgg.label>Huevo</RJW_UnknownEgg.label>
+  <RJW_UnknownEgg.description>Huevo(s) parasito(s) que se depositan en un huésped y se alimentan de sus nutrientes hasta que están listos para eclosionar. Al menos no eclosionan si se salen del pecho. .</RJW_UnknownEgg.description>
+
+
+  <!-- 原版昆虫，可互相授精 -->
+
+  <RJW_InsectHiveEgg.label>Huevo</RJW_InsectHiveEgg.label>
+  <RJW_InsectHiveEgg.description>Huevo(s) parasito(s) que se depositan en un huésped y se alimentan de sus nutrientes hasta que están listos para eclosionar. Al menos no eclosionan si se salen del pecho. .</RJW_InsectHiveEgg.description>
+
+
+</LanguageData>

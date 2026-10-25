@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 占位卵/不受支持/任意种族 -->
+  <RJW_UnknownEgg.label>未知的蛋</RJW_UnknownEgg.label>
+
+  <RJW_UnknownEgg.description>寄生卵，進入宿主體內並以其營養為食直至孵化，很慶幸它們不會從你的胸膛鑽出個洞來。</RJW_UnknownEgg.description>
+
+  <!-- 原版昆虫，可互相授精 -->
+  <RJW_InsectHiveEgg.label>昆蟲蜂巢卵</RJW_InsectHiveEgg.label>
+
+  <RJW_InsectHiveEgg.description>寄生卵，進入宿主體內並以其營養為食直至孵化，很慶幸它們不會從你的胸膛鑽出個洞來。</RJW_InsectHiveEgg.description>
+</LanguageData>

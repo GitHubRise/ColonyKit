@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 植物 -->
+
+  <PlantHumpShroom.label>Горбовник</PlantHumpShroom.label>
+  <PlantHumpShroom.description>Плотный твёрдый гриб с густым соком. Вызывает эффект афродизиака при употреблении.</PlantHumpShroom.description>
+  
+
+
+  <!-- 可消耗物品 -->
+
+  <HumpShroom.label>горбовник</HumpShroom.label>
+  <HumpShroom.description>Плотный твёрдый гриб с густым соком. Вызывает эффект афродизиака при употреблении.</HumpShroom.description>
+  <HumpShroom.ingestible.ingestCommandString>Съесть {0}</HumpShroom.ingestible.ingestCommandString>
+  <HumpShroom.ingestible.ingestReportString>Ест {0}</HumpShroom.ingestible.ingestReportString>
+
+
+
+</LanguageData>

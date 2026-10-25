@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <MultiVagina.description>Dodaje dodatkowa pochwe.</MultiVagina.description>
+  <MultiVagina.jobString>Dodawanie pochwy.</MultiVagina.jobString>
+
+  <MultiPenis.description>Dodaje dodatkowy penis.</MultiPenis.description>
+  <MultiPenis.jobString>Dodawanie penisa.</MultiPenis.jobString>
+
+  <MultiBreast.description>Dodaje dodatkowy rzad piersi.</MultiBreast.description>
+  <MultiBreast.jobString>Dodawanie piersi.</MultiBreast.jobString>
+
+  <MultiAnus.description>Dodaje dodatkowy odbyt.</MultiAnus.description>
+  <MultiAnus.jobString>Dodawanie odbytu.</MultiAnus.jobString>
+
+  <AddMultiVagina.label>dodaj pochwe</AddMultiVagina.label>
+  <AddMultiHorseVagina.label>dodaj konia pochwe</AddMultiHorseVagina.label>
+  <AddMultiCatVagina.label>dodaj kocia pochwe</AddMultiCatVagina.label>
+  <AddMultiDogVagina.label>dodaj psia pochwe</AddMultiDogVagina.label>
+  <AddMultiDragonVagina.label>dodaj smocza pochwe</AddMultiDragonVagina.label>
+  <AddMultiOvipositorF.label>dodaj zenski owiposytor</AddMultiOvipositorF.label>
+  <AddMultiOvipositorF.description>Dodaje dodatkowy zenski owiposytor.</AddMultiOvipositorF.description>
+  <AddMultiOvipositorF.jobString>Dodawanie zenskiego owiposytora.</AddMultiOvipositorF.jobString>
+
+  <AddMultiPenis.label>dodaj penis</AddMultiPenis.label>
+  <AddMultiHorsePenis.label>dodaj konski penis</AddMultiHorsePenis.label>
+  <AddMultiCatPenis.label>dodaj koci penis</AddMultiCatPenis.label>
+  <AddMultiDogPenis.label>dodaj psi penis</AddMultiDogPenis.label>
+  <AddMultiDragonPenis.label>dodaj smoczy penis</AddMultiDragonPenis.label>
+  <AddMultiRaccoonPenis.label>dodaj szopowski penis</AddMultiRaccoonPenis.label>
+  <AddMultiHemiPenis.label>dodaj hemipenis</AddMultiHemiPenis.label>
+  <AddMultiCrocodilianPenis.label>dodaj krokodyli penis</AddMultiCrocodilianPenis.label>
+  <AddMultiOvipositorM.label>dodaj meski owiposytor</AddMultiOvipositorM.label>
+  <AddMultiOvipositorM.description>Dodaje dodatkowy meski owiposytor.</AddMultiOvipositorM.description>
+  <AddMultiOvipositorM.jobString>Dodawanie meskiego owiposytora.</AddMultiOvipositorM.jobString>
+
+  <AddMultiBreasts.label>dodaj piersi</AddMultiBreasts.label>
+  <AddMultiAnus.label>dodaj odbyt</AddMultiAnus.label>
+  <AddMultiInsectAnus.label>dodaj owadzi odbyt</AddMultiInsectAnus.label>
+</LanguageData>

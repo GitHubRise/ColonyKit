@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RJW_UnknownEgg.label>ogolne owadzie jajo</RJW_UnknownEgg.label>
+  <RJW_UnknownEgg.description>Parazytnicze jajo(a), które wchodza do ciała gospodarza i zywie się jego skladnikami odzywczymi, az będą gotowe do wyklucia. Ciesz się, ze nie wykluwaja się przez wybuch z twojej klatki piersiowej.</RJW_UnknownEgg.description>
+
+  <RJW_MechanoidImplant.label>wszczepiony mechanoid</RJW_MechanoidImplant.label>
+  <RJW_MechanoidImplant.description>Maly komputer, który wchodzi do gospodarza przez jeden z jego otworow. Moze analizowac oznaki zyciowe i dane lokalizacyjne i przekazywac te informacje z powrotem do AI mechanoidow.</RJW_MechanoidImplant.description>
+</LanguageData>

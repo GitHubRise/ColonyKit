@@ -57,7 +57,7 @@ $env:DOTNET_NOLOGO = '1'
 Push-Location (Join-Path $root 'Source')
 try {
 	if ($Clean) {
-		foreach ($dir in 'obj', 'bin') {
+		foreach ($dir in 'obj', 'bin', 'Rjw\obj', 'Rjw\bin') {
 			$path = Join-Path (Join-Path $root 'Source') $dir
 			if (Test-Path $path) { Remove-Item $path -Recurse -Force }
 		}
@@ -68,7 +68,8 @@ try {
 	# 用工作区的离线包目录；--packages 必须和首次 restore 的路径一致，
 	# 否则 obj\project.assets.json 里记录的路径对不上，build 会重新找包。
 	$assets = Join-Path (Join-Path $root 'Source') 'obj\project.assets.json'
-	if (-not (Test-Path $assets)) {
+	$rjwAssets = Join-Path (Join-Path $root 'Source\Rjw') 'obj\project.assets.json'
+	if (-not (Test-Path $assets) -or -not (Test-Path $rjwAssets)) {
 		Write-Host '[restore] dotnet restore' -ForegroundColor Cyan
 		if (Test-Path (Join-Path $workspace '.tools')) {
 			& $dotnet restore $project --packages $nuget 2>&1 | Out-String | Write-Verbose

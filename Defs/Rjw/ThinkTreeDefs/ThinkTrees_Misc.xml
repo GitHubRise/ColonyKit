@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<ThinkTreeDef>
+		<defName>LayEggsHumanLike</defName>
+		<insertTag>Humanlike_PostMentalState</insertTag>
+		<insertPriority>13</insertPriority>
+		<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+				<li Class="rjw.JobGiver_LayEgg" />
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+</Defs>

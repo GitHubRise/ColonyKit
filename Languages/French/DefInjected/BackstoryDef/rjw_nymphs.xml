@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: [PAWN_nameDef] suffered some terrible things, [PAWN_pronoun] looks rather emaciated. -->
+  <rjw_broken.description>[PAWN_nameDef] a enduré de terribles choses, [PAWN_pronoun] a l'air plutôt émaci{PAWN_gender ? é : ée : é(e) }.</rjw_broken.description>
+  <!-- EN: Broken Nymph -->
+  <rjw_broken.title>Nymphomane brisé(e)</rjw_broken.title>
+  <!-- EN: Nymph -->
+  <rjw_broken.titleShort>Nymphomane</rjw_broken.titleShort>
+  
+  <!-- EN: No one can be more loquacious than [PAWN_nameDef]. [PAWN_pronoun] has a flexible tongue, a sharp mind, and hot lips. -->
+  <rjw_chatty.description>Personne n'est plus loquace que [PAWN_nameDef]. [PAWN_pronoun] a la langue bien pendue, l'esprit vif et les lèvres brûlantes.</rjw_chatty.description>
+  <!-- EN: Chatty Nymph -->
+  <rjw_chatty.title>Nymphomane bavard(e)</rjw_chatty.title>
+  <!-- EN: Nymph -->
+  <rjw_chatty.titleShort>Nymphomane</rjw_chatty.titleShort>
+  
+  <!-- EN: [PAWN_nameDef] loves crafting various things, especially things that provide new experiences. -->
+  <rjw_curious.description>[PAWN_nameDef] adore fabriquer toutes sortes d'objets, en particulier ceux qui lui permettent de vivre de nouvelles expériences.</rjw_curious.description>
+  <!-- EN: Curious Nymph -->
+  <rjw_curious.title>Nymphomane curieux(se)</rjw_curious.title>
+  <!-- EN: Nymph -->
+  <rjw_curious.titleShort>Nymphomane</rjw_curious.titleShort>
+  
+  <!-- EN: [PAWN_nameDef] is a conqueror by nature and will punch you in a face if you try to say "No" to [PAWN_possessive] advances. -->
+  <rjw_feisty.description>[PAWN_nameDef] est {PAWN_gender ? un : une : un(e) } conquéran{PAWN_gender ? t : te : t(e) } dans l'âme et vous mettra son poing dans la figure si vous essayez de dire « non » à ses avances.</rjw_feisty.description>
+  <!-- EN: Feisty Nymph -->
+  <rjw_feisty.title>Nymphomane fougueux(se)</rjw_feisty.title>
+  <!-- EN: Nymph -->
+  <rjw_feisty.titleShort>Nymphomane</rjw_feisty.titleShort>
+  
+  <!-- EN: [PAWN_nameDef] was trained to be a housekeeper. Would you like dinner? A bath? Or perhaps...[PAWN_possessive]?. -->
+  <rjw_homekeeper.description>[PAWN_nameDef] a été form{PAWN_gender ? e : ée : é(e) } pour être {PAWN_gender ? homme : femme : individu } de ménage. Souhaitez-vous dîner ? Prendre un bain ? Ou peut-être... {PAWN_gender ? lui : elle : iel } ?</rjw_homekeeper.description>
+  <!-- EN: Homekeeper Nymph -->
+  <rjw_homekeeper.title>Nymphomane domestique</rjw_homekeeper.title>
+  <!-- EN: Nymph -->
+  <rjw_homekeeper.titleShort>Nymphomane</rjw_homekeeper.titleShort>
+  
+  <!-- EN: [PAWN_nameDef] has a pair of charming eyes, and [PAWN_possessive] voice is soft and sweet. Due to [PAWN_possessive] previous nurse job, [PAWN_pronoun] tends people quite well. -->
+  <rjw_tender.description>[PAWN_nameDef] a un regard charmant et sa voix est douce et agréable. Grâce à son ancien métier d'infirmi{PAWN_gender ? er : ère : er(ère) }, [PAWN_pronoun] sait très bien s'occuper des gens.</rjw_tender.description>
+  <!-- EN: Tender Nymph -->
+  <rjw_tender.title>Nymphomane tendre</rjw_tender.title>
+  <!-- EN: Nymph -->
+  <rjw_tender.titleShort>Nymphomane</rjw_tender.titleShort>
+  
+  <!-- EN: [PAWN_nameDef] was made to be a sex toy, rather than a human. During [PAWN_possessive] growing period, [PAWN_pronoun] was taught plenty of social and sex related skills to satisfy any demands of its owners. -->
+  <rjw_vatgrown_sex_slave.description>[PAWN_nameDef] a été conç{PAWN_gender ? u : ue : u(e) } pour être un jouet sexuel plutôt qu'un être humain. Pendant sa période de croissance, [PAWN_pronoun] a appris de nombreuses compétences sociales et sexuelles afin de satisfaire toutes les exigences de ses propriétaires.</rjw_vatgrown_sex_slave.description>
+  <!-- EN: Vat-Grown Sex Slave -->
+  <rjw_vatgrown_sex_slave.title>Esclave sexuel(le) élevé(e) en cuve</rjw_vatgrown_sex_slave.title>
+  <!-- EN: Sex Slave -->
+  <rjw_vatgrown_sex_slave.titleShort>Esclave sexuel(le)</rjw_vatgrown_sex_slave.titleShort>
+  
+</LanguageData>

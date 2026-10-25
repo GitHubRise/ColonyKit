@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: insect anus -->
+  <InsectAnus.label>anus d'insecte</InsectAnus.label>
+  <!-- EN: Insect anus. -->
+  <InsectAnus.description>Un anus d'insecte.</InsectAnus.description>
+  
+  <!-- EN: ovipositor (female) -->
+  <OvipositorF.label>ovipositeur (femelle)</OvipositorF.label>
+  <!-- EN: Ovipositor used to lay eggs. -->
+  <OvipositorF.description>Ovipositeur utilisé pour pondre des œufs.</OvipositorF.description>
+  
+  <!-- EN: ovipositor (male) -->
+  <OvipositorM.label>ovipositeur (mâle)</OvipositorM.label>
+  <!-- EN: Ovipositor used to fertilize eggs. -->
+  <OvipositorM.description>Ovipositeur utilisé pour fertiliser des œufs.</OvipositorM.description>
+  
+</LanguageData>

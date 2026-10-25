@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Sex_Change_Thoughts_Syndrome.description>Twoj opis moglby być tutaj.</Sex_Change_Thoughts_Syndrome.description>
+  <Sex_Change_Thoughts_Syndrome.stages.0.label>nieznajomosc</Sex_Change_Thoughts_Syndrome.stages.0.label>
+  <Sex_Change_Thoughts_Syndrome.stages.1.label>akceptacja</Sex_Change_Thoughts_Syndrome.stages.1.label>
+  <Sex_Change_Thoughts_Syndrome.stages.2.label>smutek</Sex_Change_Thoughts_Syndrome.stages.2.label>
+  <Sex_Change_Thoughts_Syndrome.stages.3.label>gniew</Sex_Change_Thoughts_Syndrome.stages.3.label>
+  <Sex_Change_Thoughts_Syndrome.stages.4.label>odrzucenie</Sex_Change_Thoughts_Syndrome.stages.4.label>
+
+  <hediff_male2trap.label>mężczyzna-do-trapu</hediff_male2trap.label>
+  <hediff_male2female.label>mężczyzna-do-kobiety</hediff_male2female.label>
+  <hediff_male2futa.label>mężczyzna-do-futy</hediff_male2futa.label>
+  <hediff_female2trap.label>kobieta-do-trapu</hediff_female2trap.label>
+  <hediff_female2male.label>kobieta-do-mężczyzny</hediff_female2male.label>
+  <hediff_female2futa.label>kobieta-do-futy</hediff_female2futa.label>
+  <hediff_futa2trap.label>futa-do-trapu</hediff_futa2trap.label>
+  <hediff_futa2male.label>futa-do-mężczyzny</hediff_futa2male.label>
+  <hediff_futa2female.label>futa-do-kobiety</hediff_futa2female.label>
+  <hediff_trap2futa.label>trap-do-futy</hediff_trap2futa.label>
+  <hediff_trap2male.label>trap-do-mężczyzny</hediff_trap2male.label>
+  <hediff_trap2female.label>trap-do-kobiety</hediff_trap2female.label>
+
+  <Sex_Change_Original_Sex.description>Zmieniono płeć</Sex_Change_Original_Sex.description>
+  <hediff_was_boy.label>byl_chlopcem</hediff_was_boy.label>
+  <hediff_was_girl.label>byla_dziewczynka</hediff_was_girl.label>
+  <hediff_was_futa.label>byla_futa</hediff_was_futa.label>
+  <hediff_was_trap.label>byl_trapem</hediff_was_trap.label>
+</LanguageData>

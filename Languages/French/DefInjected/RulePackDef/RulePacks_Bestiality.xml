@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN:
+    <li>sent-> [RECIPIENT_nameDef] was anally bred by [INITIATOR_nameDef].</li>
+  -->
+  <Bestiality_AnalRP.rulePack.rulesStrings>
+    <li>sent(RECIPIENT_gender==Male)->[RECIPIENT_nameDef] a été fécondé analement par [INITIATOR_nameDef].</li>
+    <li>sent(RECIPIENT_gender==Female)->[RECIPIENT_nameDef] a été fécondée analement par [INITIATOR_nameDef].</li>
+    <li>sent(RECIPIENT_gender==None)->[RECIPIENT_nameDef] a été fécondé(e) analement par [INITIATOR_nameDef].</li>
+  </Bestiality_AnalRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [RECIPIENT_nameDef] was double penetrated by [INITIATOR_nameDef].</li>
+  -->
+  <Bestiality_DoublePenRP.rulePack.rulesStrings>
+    <li>sent(RECIPIENT_gender==Male)->[RECIPIENT_nameDef] a été doublement pénétré par [INITIATOR_nameDef].</li>
+    <li>sent(RECIPIENT_gender==Female)->[RECIPIENT_nameDef] a été doublement pénétrée par [INITIATOR_nameDef].</li>
+    <li>sent(RECIPIENT_gender==None)->[RECIPIENT_nameDef] a été doublement pénétré(e) par [INITIATOR_nameDef].</li>
+  </Bestiality_DoublePenRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [RECIPIENT_nameDef] was orally bred by [INITIATOR_nameDef].</li>
+  -->
+  <Bestiality_OralRP.rulePack.rulesStrings>
+    <li>sent(RECIPIENT_gender==Male)->[RECIPIENT_nameDef] a été fécondé oralement par [INITIATOR_nameDef].</li>
+    <li>sent(RECIPIENT_gender==Female)->[RECIPIENT_nameDef] a été fécondée oralement par [INITIATOR_nameDef].</li>
+    <li>sent(RECIPIENT_gender==None)->[RECIPIENT_nameDef] a été fécondé(e) oralement par [INITIATOR_nameDef].</li>
+  </Bestiality_OralRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [RECIPIENT_nameDef] was vaginally bred by [INITIATOR_nameDef].</li>
+  -->
+  <Bestiality_VaginalRP.rulePack.rulesStrings>
+    <li>sent(RECIPIENT_gender==Male)->[RECIPIENT_nameDef] a été fécondé vaginalement par [INITIATOR_nameDef].</li>
+    <li>sent(RECIPIENT_gender==Female)->[RECIPIENT_nameDef] a été fécondée vaginalement par [INITIATOR_nameDef].</li>
+    <li>sent(RECIPIENT_gender==None)->[RECIPIENT_nameDef] a été fécondé(e) vaginalement par [INITIATOR_nameDef].</li>
+  </Bestiality_VaginalRP.rulePack.rulesStrings>
+
+</LanguageData>

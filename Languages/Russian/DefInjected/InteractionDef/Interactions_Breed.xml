@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 繁育/强奸 -->
+
+  <AnalBreeding.label>Анальное спаривание</AnalBreeding.label>
+  <AnalBreeding.logRulesInitiator.rulesStrings.0>r_logentry->Анально спаривается с [RECIPIENT_nameDef].</AnalBreeding.logRulesInitiator.rulesStrings.0>
+  <AnalBreeding.logRulesRecipient.rulesStrings.0>r_logentry->Анально спаривается с [INITIATOR_nameDef].</AnalBreeding.logRulesRecipient.rulesStrings.0>
+
+  <VaginalBreeding.label>Вагинальное спаривание</VaginalBreeding.label>
+  <VaginalBreeding.logRulesInitiator.rulesStrings.0>r_logentry->Спаривается с [RECIPIENT_nameDef].</VaginalBreeding.logRulesInitiator.rulesStrings.0>
+  <VaginalBreeding.logRulesRecipient.rulesStrings.0>r_logentry->Ложится под [INITIATOR_nameDef].</VaginalBreeding.logRulesRecipient.rulesStrings.0>
+
+  <OralBreeding.label>Оральный секс</OralBreeding.label>
+  <OralBreeding.logRulesInitiator.rulesStrings.0>r_logentry->Заставляет [RECIPIENT_nameDef] отлизать.</OralBreeding.logRulesInitiator.rulesStrings.0>
+  <OralBreeding.logRulesRecipient.rulesStrings.0>r_logentry->Отлизывает у [INITIATOR_nameDef].</OralBreeding.logRulesRecipient.rulesStrings.0>
+
+
+  <!-- 又一个罕见情况，但要让图标正常显示就必须有它。 -->
+
+  <FingeringBreeding.label>Фингеринг</FingeringBreeding.label>
+  <FingeringBreeding.logRulesInitiator.rulesStrings.0>r_logentry->Вставляет свои пальцы в [RECIPIENT_nameDef].</FingeringBreeding.logRulesInitiator.rulesStrings.0>
+  <FingeringBreeding.logRulesRecipient.rulesStrings.0>r_logentry->Наслаждается пальцами [INITIATOR_nameDef].</FingeringBreeding.logRulesRecipient.rulesStrings.0>
+
+  <ForcedOralBreeding.label>Оральный секс</ForcedOralBreeding.label>
+  <ForcedOralBreeding.logRulesInitiator.rulesStrings.0>r_logentry->Заставляет [RECIPIENT_nameDef] взять в рот.</ForcedOralBreeding.logRulesInitiator.rulesStrings.0>
+  <ForcedOralBreeding.logRulesRecipient.rulesStrings.0>r_logentry->Заставили взять в рот.</ForcedOralBreeding.logRulesRecipient.rulesStrings.0>
+
+
+  <!-- “雌性”繁育邀请 -->
+
+  <RequestVaginalBreeding.label>Вагинальное спаривание</RequestVaginalBreeding.label>
+  <RequestVaginalBreeding.logRulesInitiator.rulesStrings.0>r_logentry->[RECIPIENT_nameDef] показывает свою вагину [INITIATOR_nameDef].</RequestVaginalBreeding.logRulesInitiator.rulesStrings.0>
+  <RequestVaginalBreeding.logRulesRecipient.rulesStrings.0>r_logentry->[INITIATOR_nameDef] видит вагину.</RequestVaginalBreeding.logRulesRecipient.rulesStrings.0>
+
+  <RequestAnalBreeding.label>Анальное спаривание</RequestAnalBreeding.label>
+  <RequestAnalBreeding.logRulesInitiator.rulesStrings.0>r_logentry->[RECIPIENT_nameDef] показывает свой анус [INITIATOR_nameDef].</RequestAnalBreeding.logRulesInitiator.rulesStrings.0>
+  <RequestAnalBreeding.logRulesRecipient.rulesStrings.0>r_logentry->[INITIATOR_nameDef] видит анус.</RequestAnalBreeding.logRulesRecipient.rulesStrings.0>
+
+
+</LanguageData>

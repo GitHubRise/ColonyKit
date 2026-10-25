@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <AttachPenis.label>przyczep penis</AttachPenis.label>
+  <InstallVagina.label>zainstaluj pochwe</InstallVagina.label>
+  <InstallCatVagina.label>zainstaluj kocia pochwe</InstallCatVagina.label>
+  <InstallDogVagina.label>zainstaluj psia pochwe</InstallDogVagina.label>
+  <InstallHorseVagina.label>zainstaluj konia pochwe</InstallHorseVagina.label>
+  <InstallDragonVagina.label>zainstaluj smocza pochwe</InstallDragonVagina.label>
+  <InstallNarrowVagina.label>zainstaluj waska pochwe</InstallNarrowVagina.label>
+  <InstallCloacalVagina.label>zainstaluj kloakalna pochwe</InstallCloacalVagina.label>
+  <InstallRodentVagina.label>zainstaluj gryzonia pochwe</InstallRodentVagina.label>
+  <InstallOvipositorF.label>zainstaluj zenski owiposytor</InstallOvipositorF.label>
+  <InstallOvipositorF.description>Instaluje zenski owiposytor.</InstallOvipositorF.description>
+  <InstallOvipositorF.jobString>Instalowanie zenskiego owiposytora.</InstallOvipositorF.jobString>
+
+  <AttachHorsePenis.label>przyczep konski penis</AttachHorsePenis.label>
+  <AttachRaccoonPenis.label>przyczep szopowski penis</AttachRaccoonPenis.label>
+  <AttachCatPenis.label>przyczep koci penis</AttachCatPenis.label>
+  <AttachDogPenis.label>przyczep psi penis</AttachDogPenis.label>
+  <AttachDragonPenis.label>przyczep smoczy penis</AttachDragonPenis.label>
+  <AttachHemiPenis.label>przyczep hemipenis</AttachHemiPenis.label>
+  <AttachHemiPenis.description>Przyczepia dwuczlankowy hemipenis.</AttachHemiPenis.description>
+  <AttachHemiPenis.jobString>Przyczepianie hemipenisow.</AttachHemiPenis.jobString>
+  <AttachCrocodilianPenis.label>przyczep krokodyli penis</AttachCrocodilianPenis.label>
+  <AttachNeedlePenis.label>przyczep igielkowy penis</AttachNeedlePenis.label>
+  <AttachCloacalPenis.label>przyczep kloakalny penis</AttachCloacalPenis.label>
+  <AttachRodentPenis.label>przyczep gryzoni penis</AttachRodentPenis.label>
+  <AttachOvipositorM.label>przyczep meski owiposytor</AttachOvipositorM.label>
+  <AttachOvipositorM.description>Przyczepia meski owiposytor, zastępując inne części jeśli występują.</AttachOvipositorM.description>
+  <AttachOvipositorM.jobString>Przyczepianie meskiego owiposytora.</AttachOvipositorM.jobString>
+
+  <AttachBreasts.label>przyczep piersi</AttachBreasts.label>
+  <AttachFeaturelesschest.label>przyczep plaska klatke piersiowa</AttachFeaturelesschest.label>
+  <AttachFeaturelesschest.description>Przyczepia plaska, niemlekujaca klatke piersiowa, zastępując inne części jeśli występują.</AttachFeaturelesschest.description>
+  <AttachFeaturelesschest.jobString>Przyczepianie plaskiej klatki piersiowej.</AttachFeaturelesschest.jobString>
+
+  <InstallAnus.label>zainstaluj sredni odbyt</InstallAnus.label>
+  <InstallCloacalAnus.label>zainstaluj kloakalny odbyt</InstallCloacalAnus.label>
+  <InstallInsectAnus.label>zainstaluj owadzi odbyt</InstallInsectAnus.label>
+  <InstallInsectAnus.description>Instaluje owadzi odbyt, zastępując inne części jeśli występują.</InstallInsectAnus.description>
+  <InstallInsectAnus.jobString>Instalowanie owadziego odbytu.</InstallInsectAnus.jobString>
+</LanguageData>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <RJW_RMB>互動</RJW_RMB>
+    <RJW_RMB_NoSex>拒絕與他人發生性關係</RJW_RMB_NoSex>
+	
+    <RJW_RMB_Social>社交</RJW_RMB_Social>
+    <RJW_RMB_Masturbate>自慰</RJW_RMB_Masturbate>
+	
+    <RJW_RMB_Sex>與某人發生性關係{0_labelShort}</RJW_RMB_Sex>
+    <RJW_RMB_Bestiality>獸交{0_labelShort}</RJW_RMB_Bestiality>
+	
+    	<RJW_RMB_Sex_Reverse>（逆向）性交{0_labelShort}</RJW_RMB_Sex_Reverse>
+    	<RJW_RMB_Bestiality_Reverse>（逆向）獸交{0_labelShort}</RJW_RMB_Bestiality_Reverse>
+	
+    <!--社交-->
+    <RJW_RMB_Insult>侮辱</RJW_RMB_Insult>
+    <RJW_RMB_SocialFight>動手打架</RJW_RMB_SocialFight>
+    <RJW_RMB_Chat>閒聊</RJW_RMB_Chat>
+    <RJW_RMB_DeepTalk>深談</RJW_RMB_DeepTalk>
+    <RJW_RMB_RomanceAttempt>談情說愛</RJW_RMB_RomanceAttempt>
+    <RJW_RMB_MarriageProposal>求婚</RJW_RMB_MarriageProposal>
+	
+    <!--自慰-->
+    <RJW_RMB_Masturbate_Bed>在椅子或床上自慰</RJW_RMB_Masturbate_Bed>
+    <RJW_RMB_Masturbate_At>自慰</RJW_RMB_Masturbate_At>
+    <RJW_RMB_Masturbate_Here>在這裡自慰</RJW_RMB_Masturbate_Here>
+    <RJW_RMB_Masturbate_With>用道具自慰</RJW_RMB_Masturbate_With> <!-- 假阳具之类的东西 -->
+	
+    <!--做爱-->
+	
+    <!--强奸-->
+    <RJW_RMB_Rape>強姦{0_labelShort}</RJW_RMB_Rape>
+    	<RJW_RMB_Rape_Reverse>（逆向）強姦{0_labelShort}</RJW_RMB_Rape_Reverse>
+	
+    <RJW_RMB_RapeCorpse>褻瀆{0_labelShort}</RJW_RMB_RapeCorpse>
+    	<RJW_RMB_RapeCorpse_Reverse>（逆向）褻瀆{0_labelShort}</RJW_RMB_RapeCorpse_Reverse>
+	
+    <RJW_RMB_RapeAnimal>配種{0_labelShort}</RJW_RMB_RapeAnimal>
+    <RJW_RMB_RapeAnimal_Reverse>被配種{0_labelShort}</RJW_RMB_RapeAnimal_Reverse>
+    <!--姿势/部件？-->
+	
+    <!--东西-->
+	<RJW_RMB_HackMechPregnancy>駭入植入的機械（mech）</RJW_RMB_HackMechPregnancy>
+
+	<!--右键选项不可用的原因-->
+	<RJW_RMB_ReasonLowOpinionOfTarget>對目標評價過低</RJW_RMB_ReasonLowOpinionOfTarget>
+	<RJW_RMB_ReasonUnappealingTarget>對目標沒有性吸引力</RJW_RMB_ReasonUnappealingTarget>
+	<RJW_RMB_ReasonLowOpinionOfPawn>目標對我評價過低</RJW_RMB_ReasonLowOpinionOfPawn>
+	<RJW_RMB_ReasonUnappealingPawn>目標對我沒有性吸引力</RJW_RMB_ReasonUnappealingPawn>
+
+	<RJW_RMB_ReasonNeedBed>需要指定床位</RJW_RMB_ReasonNeedBed>
+	<RJW_RMB_ReasonCantReachBed>無法抵達指定床位</RJW_RMB_ReasonCantReachBed>
+
+	<RJW_RMB_NoValidInteractions>找不到適用於{0}的互動選項</RJW_RMB_NoValidInteractions>
+
+	<!-- 束缚装备 -->
+	<RJW_RMB_BG_Put_On>將{0}穿在{1}身上</RJW_RMB_BG_Put_On>
+	<RJW_RMB_BG_NotWearingBondage>未穿戴鎖定的服裝</RJW_RMB_BG_NotWearingBondage>
+</LanguageData>

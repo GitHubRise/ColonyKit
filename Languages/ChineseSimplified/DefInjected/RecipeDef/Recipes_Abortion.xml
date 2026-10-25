@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <RJW_AbortionBeast.label>终止妊娠</RJW_AbortionBeast.label>
+
+  <RJW_AbortionBeast.description>移除不想要的妊娠。</RJW_AbortionBeast.description>
+
+  <RJW_AbortionBeast.jobString>执行堕胎手术。</RJW_AbortionBeast.jobString>
+
+  <RJW_AbortionHuman.label>终止妊娠</RJW_AbortionHuman.label>
+
+  <RJW_AbortionHuman.description>移除不想要的妊娠。</RJW_AbortionHuman.description>
+
+  <RJW_AbortionHuman.jobString>执行堕胎手术。</RJW_AbortionHuman.jobString>
+
+  <RJW_AbortionMech.label>中和机械胚胎</RJW_AbortionMech.label>
+
+  <RJW_AbortionMech.description>安全中和纳米机械。</RJW_AbortionMech.description>
+
+  <RJW_AbortionMech.jobString>中和机械胚胎。</RJW_AbortionMech.jobString>
+
+  <RJW_AbortionMechHidden.label>终止妊娠</RJW_AbortionMechHidden.label>
+
+  <RJW_AbortionMechHidden.description>移除不想要的妊娠。</RJW_AbortionMechHidden.description>
+
+  <RJW_AbortionMechHidden.jobString>执行堕胎手术。</RJW_AbortionMechHidden.jobString>
+
+  <RJW_HackMech.label>破解机械</RJW_HackMech.label>
+
+  <RJW_HackMech.description>破解机械AI，将其从敌对AI核心的控制中分离出来，使机械AI变得温顺（除非受到挑衅）。</RJW_HackMech.description>
+
+  <RJW_HackMech.jobString>破解机械。</RJW_HackMech.jobString>
+
+</LanguageData>

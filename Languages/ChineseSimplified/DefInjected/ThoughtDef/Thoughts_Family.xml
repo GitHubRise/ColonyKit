@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <KilledMyPup.stages.killed_my_son.label>杀死我的儿子</KilledMyPup.stages.killed_my_son.label>
+
+  <KilledMyPupFemale.stages.killed_my_daughter.label>杀死我的女儿</KilledMyPupFemale.stages.killed_my_daughter.label>
+
+  <MyPupDied.stages.my_son_died.label>我的儿子{0}死了</MyPupDied.stages.my_son_died.label>
+
+  <MyPupDied.stages.my_son_died.description>我的儿子死了，我的血肉至亲啊……</MyPupDied.stages.my_son_died.description>
+
+  <MyPupDiedFemale.stages.my_daughter_died.label>我的女儿{0}死了</MyPupDiedFemale.stages.my_daughter_died.label>
+
+  <MyPupDiedFemale.stages.my_daughter_died.description>我的女儿死了，我的血肉至亲啊……</MyPupDiedFemale.stages.my_daughter_died.description>
+
+  <SoldMyPup.stages.loved_one_sold.label>出售我的所爱</SoldMyPup.stages.loved_one_sold.label>
+
+  <SoldMyPup.stages.loved_one_sold.description>我的孩子被卖了！</SoldMyPup.stages.loved_one_sold.description>
+
+</LanguageData>

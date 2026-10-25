@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Designate pawn for breeding, colony animals will try to breed this pawn -->
+  <RJW_BreedAnimal.headerTip>Désignez un pion pour la reproduction, les animaux de la colonie tenteront de reproduire ce pion.</RJW_BreedAnimal.headerTip>
+  
+  <!-- EN: Designate pawn as breeder, these animals will try to breed pawns desiganted for breeding -->
+  <RJW_BreederAnimal.headerTip>Désignez un pion comme reproducteur, ces animaux tenteront de reproduire les pions désignés pour la reproduction.</RJW_BreederAnimal.headerTip>
+  
+  <!-- EN: Designate pawn for breeding, colony animals will try to breed this pawn -->
+  <RJW_BreedHumanlike.headerTip>Désignez un pion pour la reproduction, les animaux de la colonie tenteront de reproduire ce pion.</RJW_BreedHumanlike.headerTip>
+  
+  <!-- EN: Designate pawn as Comfort pawn, pawn will be used to relief pent up sex need -->
+  <RJW_Comfort.headerTip>Désigner le pion comme pion confort, le pion sera utilisé pour soulager les besoins sexuels refoulés.</RJW_Comfort.headerTip>
+  
+  <!-- EN: Designate pawn as Hero, hero can be directly ordered to do loving with other pawns -->
+  <RJW_Hero.headerTip>Désignez un pion comme héros. Le héros peut recevoir directement l'ordre de faire l'amour avec d'autres pions.</RJW_Hero.headerTip>
+  
+  <!-- EN: Designate pawn as Whore, whores provide service to guests for silver -->
+  <RJW_Whore.headerTip>Désigner un pion comme prostitué(e), les prostitué(e)s fournissent des services aux clients en échange d'argent.</RJW_Whore.headerTip>
+  
+</LanguageData>

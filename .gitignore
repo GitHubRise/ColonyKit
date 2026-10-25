@@ -2,6 +2,8 @@
 Assemblies/
 Source/obj/
 Source/bin/
+Source/Rjw/obj/
+Source/Rjw/bin/
 dist/
 *.user
 build-error.log

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <FortunateGaveVirginity.stages.0.label>Oddala dziewictwo</FortunateGaveVirginity.stages.0.label>
+  <FortunateGaveVirginity.stages.0.description>Oddalam moje dziewictwo.</FortunateGaveVirginity.stages.0.description>
+
+  <UnfortunateLostVirginity.stages.0.label>Stracila dziewictwo</UnfortunateLostVirginity.stages.0.label>
+  <UnfortunateLostVirginity.stages.0.description>Stracilam moje dziewictwo i juz go nie odzyskam.</UnfortunateLostVirginity.stages.0.description>
+
+  <TookVirginity.stages.0.label>Odebrala dziewictwo</TookVirginity.stages.0.label>
+  <TookVirginity.stages.0.description>Odebralam czyjes dziewictwo.</TookVirginity.stages.0.description>
+</LanguageData>

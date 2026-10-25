@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: footjob -->
+  <Sex_Footjob.label>masturbation avec pieds</Sex_Footjob.label>
+  <!-- EN:
+    <li>r_logentry->Received a footjob from [RECIPIENT_nameDef].</li>
+  -->
+  <Sex_Footjob.logRulesInitiator.rulesStrings>
+    <li>r_logentry->A reçu une masturbation avec les pieds de [RECIPIENT_nameDef].</li>
+  </Sex_Footjob.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Gave a footjob to [INITIATOR_nameDef].</li>
+  -->
+  <Sex_Footjob.logRulesRecipient.rulesStrings>
+    <li>r_logentry->A fait une masturbation avec ses pieds à [INITIATOR_nameDef].</li>
+  </Sex_Footjob.logRulesRecipient.rulesStrings>
+  <!-- EN: Receive footjob -->
+  <Sex_Footjob.modExtensions.0.RMBLabel>Reçoit une masturbation avec les pieds</Sex_Footjob.modExtensions.0.RMBLabel>
+  
+</LanguageData>

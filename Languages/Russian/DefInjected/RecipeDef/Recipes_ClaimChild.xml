@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 来自核心游戏 -->
+
+  <claimChild.label>Приютить ребёнка</claimChild.label>
+  <claimChild.description>Добавить ребёнка к поселению.</claimChild.description>
+  <claimChild.jobString>Принимает ребёнка в поселение.</claimChild.jobString>
+
+
+</LanguageData>

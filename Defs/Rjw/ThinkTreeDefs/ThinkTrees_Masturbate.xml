@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- 若欲求不满，强奸者会找人强奸 -->
+	<ThinkTreeDef>
+		<defName>MasturbateTree</defName>
+		<insertTag>RJW_CasualSex_Masturbate</insertTag>
+		<insertPriority>1</insertPriority>
+		<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+				<li Class="rjw.ThinkNode_ChancePerHour_Fappin"> 
+					<subNodes> 
+						<li Class="rjw.JobGiver_Masturbate"/>
+					</subNodes> 
+				</li>
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+</Defs>

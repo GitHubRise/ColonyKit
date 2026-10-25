@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Aphrodisiac.label>壯陽藥</Aphrodisiac.label>
+
+  <Aphrodisiac.description>一種由駝峰菇製成的吸食藥物。</Aphrodisiac.description>
+
+  <Aphrodisiac.ingestible.ingestCommandString>吸{0}</Aphrodisiac.ingestible.ingestCommandString>
+
+  <Aphrodisiac.ingestible.ingestReportString>吸{0}。</Aphrodisiac.ingestible.ingestReportString>
+
+    <Aphrodisiac.ingestible.ingestReportStringEat>正在服用{0}。</Aphrodisiac.ingestible.ingestReportStringEat>
+</LanguageData>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Necro_Reverse_Anal.label>анальный секс</Necro_Reverse_Anal.label>
+  <Necro_Reverse_Anal.logRulesInitiator.rulesStrings.0>r_logentry->Анально насилует [RECIPIENT_nameDef].</Necro_Reverse_Anal.logRulesInitiator.rulesStrings.0>
+  <Necro_Reverse_Anal.logRulesRecipient.rulesStrings.0>r_logentry->Подвергается анальному изнасиловванию от [INITIATOR_nameDef].</Necro_Reverse_Anal.logRulesRecipient.rulesStrings.0>
+  <Necro_Reverse_Anal.modExtensions.0.RMBLabel>Анальный секс</Necro_Reverse_Anal.modExtensions.0.RMBLabel>
+
+
+</LanguageData>

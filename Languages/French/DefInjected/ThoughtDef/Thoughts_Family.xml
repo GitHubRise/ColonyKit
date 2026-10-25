@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: killed my son -->
+  <KilledMyPup.stages.killed_my_son.label>j'ai tué mon fils</KilledMyPup.stages.killed_my_son.label>
+  
+  <!-- EN: killed my daughter -->
+  <KilledMyPupFemale.stages.killed_my_daughter.label>j'ai tué ma fille</KilledMyPupFemale.stages.killed_my_daughter.label>
+  
+  <!-- EN: my son {0} died -->
+  <MyPupDied.stages.my_son_died.label>mon fils {0} est décédé</MyPupDied.stages.my_son_died.label>
+  <!-- EN: My son is dead. My own flesh and blood... -->
+  <MyPupDied.stages.my_son_died.description>Mon fils est mort. Mon propre sang...</MyPupDied.stages.my_son_died.description>
+  
+  <!-- EN: my daughter {0} died -->
+  <MyPupDiedFemale.stages.my_daughter_died.label>ma fille {0} est décédée</MyPupDiedFemale.stages.my_daughter_died.label>
+  <!-- EN: My daughter is dead. My own flesh and blood... -->
+  <MyPupDiedFemale.stages.my_daughter_died.description>Ma fille est morte. Mon propre sang...</MyPupDiedFemale.stages.my_daughter_died.description>
+  
+  <!-- EN: loved one sold -->
+  <SoldMyPup.stages.loved_one_sold.label>Mon enfant a été vendu{1_gender ? : e : (e)}</SoldMyPup.stages.loved_one_sold.label>
+  <!-- EN: My child was sold! -->
+  <SoldMyPup.stages.loved_one_sold.description>Mon propre enfant a été vendu{1_gender ? : e : (e)} !</SoldMyPup.stages.loved_one_sold.description>
+  
+</LanguageData>

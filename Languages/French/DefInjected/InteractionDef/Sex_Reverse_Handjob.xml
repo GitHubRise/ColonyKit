@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: handjob -->
+  <Sex_Reverse_Handjob.label>masturbation</Sex_Reverse_Handjob.label>
+  <!-- EN:
+    <li>r_logentry->Gave a handjob to [RECIPIENT_nameDef].</li>
+  -->
+  <Sex_Reverse_Handjob.logRulesInitiator.rulesStrings>
+    <li>r_logentry->A masturbé [RECIPIENT_nameDef].</li>
+  </Sex_Reverse_Handjob.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Received a handjob from [INITIATOR_nameDef].</li>
+  -->
+  <Sex_Reverse_Handjob.logRulesRecipient.rulesStrings>
+    <li>r_logentry(RECIPIENT_gender!=Female)->A été masturbé par [INITIATOR_nameDef].</li>
+    <li>r_logentry(RECIPIENT_gender==Female)->A été masturbée par [INITIATOR_nameDef].</li>
+  </Sex_Reverse_Handjob.logRulesRecipient.rulesStrings>
+  <!-- EN: Give handjob -->
+  <Sex_Reverse_Handjob.modExtensions.0.RMBLabel>Masturbe</Sex_Reverse_Handjob.modExtensions.0.RMBLabel>
+  
+</LanguageData>

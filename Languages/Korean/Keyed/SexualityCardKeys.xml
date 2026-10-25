@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<!--性向卡片-->
+	<SexcardTooltip>성적 관심사 보기</SexcardTooltip>
+	<WhorePrice>창부 가격 범위:</WhorePrice>
+	<SexPartWants>성적 관심사:</SexPartWants>
+	<PartsEditLabel>Edit {0}</PartsEditLabel>
+	<PartsEditFluidMultiplierLabel>Fluid Multiplier</PartsEditFluidMultiplierLabel>
+	<PartsEditDevEntry>RJW: Edit parts</PartsEditDevEntry>
+
+	<SC_Fertility_Enable>Enable reproduction</SC_Fertility_Enable>
+	<SC_Fertility_Enhance>Enhance fertility</SC_Fertility_Enhance>
+	<SC_Fertility_Disable>Disable reproduction</SC_Fertility_Disable>
+
+	<SC_FluidType>Fluid Type</SC_FluidType>
+	<SC_FluidTypeDefault> (Default)</SC_FluidTypeDefault>
+	<SC_Reroll>Reroll</SC_Reroll>
+
+	<SC_Sexuality>Sexuality: {0}</SC_Sexuality>
+	<SC_Sexuality_Asexual>Asexual</SC_Sexuality_Asexual>
+	<SC_Sexuality_Bisexual>Bisexual</SC_Sexuality_Bisexual>
+	<SC_Sexuality_Heterosexual>Hetero</SC_Sexuality_Heterosexual>
+	<SC_Sexuality_Homosexual>Gay</SC_Sexuality_Homosexual>
+	<SC_Sexuality_LeaningHeterosexual>Bisexual, leaning hetero</SC_Sexuality_LeaningHeterosexual>
+	<SC_Sexuality_LeaningHomosexual>Bisexual, leaning gay</SC_Sexuality_LeaningHomosexual>
+	<SC_Sexuality_MostlyHeterosexual>Mostly hetero</SC_Sexuality_MostlyHeterosexual>
+	<SC_Sexuality_MostlyHomosexual>Mostly gay</SC_Sexuality_MostlyHomosexual>
+	<SC_Sexuality_Pansexual>Pansexual</SC_Sexuality_Pansexual>
+</LanguageData>

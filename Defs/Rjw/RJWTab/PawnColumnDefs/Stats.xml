@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<PawnColumnDef>
+		<defName>RJW_SexDrive</defName>
+		<headerTip><![CDATA[<color=yellow>Libido</color> measures how sexually active the pawn is.]]></headerTip>
+		<headerIcon>UI/Icons/Libido</headerIcon>
+		<workerClass>rjw.MainTab.Stats.PawnColumnWorker_Stat</workerClass>
+		<sortable>true</sortable>
+		<width>50</width>
+		<modExtensions>
+			<li Class="rjw.MainTab.DefModExtensions.RJW_StatColumnExtension">
+				<stat>SexFrequency</stat>
+				<barMax>1.5</barMax>
+			</li>
+		</modExtensions>
+	</PawnColumnDef>
+	<PawnColumnDef>
+		<defName>RJW_Vulnerability</defName>
+		<headerTip><![CDATA[<color=yellow>Vulnerability</color> measures how likely a pawn is to be taken advantage of sexually.]]></headerTip>
+		<headerIcon>UI/Icons/Vulnerability</headerIcon>
+		<workerClass>rjw.MainTab.Stats.PawnColumnWorker_Stat</workerClass>
+		<sortable>true</sortable>
+		<width>50</width>
+		<modExtensions>
+			<li Class="rjw.MainTab.DefModExtensions.RJW_StatColumnExtension">
+				<stat>Vulnerability</stat>
+				<barMax>3.0</barMax>
+			</li>
+		</modExtensions>
+	</PawnColumnDef>
+	<PawnColumnDef>
+		<defName>RJW_SexSatisfaction</defName>
+		<headerTip><![CDATA[<color=yellow>Sex Satisfaction</color> determines how much satisfaction a pawn receives from sex.]]></headerTip>
+		<headerIcon>UI/Icons/SexSatisfaction</headerIcon>
+		<workerClass>rjw.MainTab.Stats.PawnColumnWorker_Stat</workerClass>
+		<sortable>true</sortable>
+		<width>50</width>
+		<modExtensions>
+			<li Class="rjw.MainTab.DefModExtensions.RJW_StatColumnExtension">
+				<stat>SexSatisfaction</stat>
+				<barMax>1.0</barMax>
+			</li>
+		</modExtensions>
+	</PawnColumnDef>
+	<PawnColumnDef>
+		<defName>RJW_WildnessAversion</defName>
+		<headerTip><![CDATA[<color=yellow>Wildness Aversion</color> determines how much the pawn is put off by the wildness of animals and wildmen when assessing potential mates.]]></headerTip>
+		<headerIcon>UI/Icons/WildnessAversion</headerIcon>
+		<workerClass>rjw.MainTab.Stats.PawnColumnWorker_Stat</workerClass>
+		<sortable>true</sortable>
+		<width>50</width>
+		<modExtensions>
+			<li Class="rjw.MainTab.DefModExtensions.RJW_StatColumnExtension">
+				<stat>SexWildnessAversion</stat>
+				<barMax>1.0</barMax>
+			</li>
+		</modExtensions>
+	</PawnColumnDef>
+	<PawnColumnDef MayRequire="Ludeon.RimWorld.Biotech">
+		<defName>RJW_Fertility</defName>
+		<headerTip><![CDATA[<color=yellow>Fertility</color> determines how likely a pawn is to produce offspring.]]></headerTip>
+		<headerIcon>UI/Icons/Fertility</headerIcon>
+		<workerClass>rjw.MainTab.Stats.PawnColumnWorker_Stat</workerClass>
+		<sortable>true</sortable>
+		<width>50</width>
+		<modExtensions>
+			<li Class="rjw.MainTab.DefModExtensions.RJW_StatColumnExtension">
+				<stat>Fertility</stat>
+				<barMax>1.0</barMax>
+			</li>
+		</modExtensions>
+	</PawnColumnDef>
+</Defs>

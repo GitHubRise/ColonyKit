@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RemoveGenitals.label>usun narzady plciowe</RemoveGenitals.label>
+  <RemoveGenitals.description>Usuwa narzady plciowe.</RemoveGenitals.description>
+  <RemoveGenitals.jobString>Usuwanie narzadow plciowych.</RemoveGenitals.jobString>
+
+  <RemoveBreasts.label>usun piersi</RemoveBreasts.label>
+  <RemoveBreasts.description>Usuwa piersi.</RemoveBreasts.description>
+  <RemoveBreasts.jobString>Usuwanie piersi.</RemoveBreasts.jobString>
+
+  <RemoveAnus.label>usun odbyt</RemoveAnus.label>
+  <RemoveAnus.description>Usuwa odbyt.</RemoveAnus.description>
+  <RemoveAnus.jobString>Usuwanie odbytu.</RemoveAnus.jobString>
+</LanguageData>

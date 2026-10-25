@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RJW_IUD.label>Wkladka domaciczna</RJW_IUD.label>
+  <RJW_IUD.description>Male srebrne urzadzenie wstawione do macicy, które znacznie zmniejsza szanse ciazy.</RJW_IUD.description>
+
+  <IncreasedFertility.label>Plodna</IncreasedFertility.label>
+  <IncreasedFertility.description>Zwiekszona plodnosc, do robienia dzieci.</IncreasedFertility.description>
+
+  <DecreasedFertility.label>Nieplodna</DecreasedFertility.label>
+  <DecreasedFertility.description>Niska plodnosc, nie do robienia dzieci.</DecreasedFertility.description>
+
+  <ImpregnationBlocker.label>Archotech bloker ciazy</ImpregnationBlocker.label>
+  <ImpregnationBlocker.description>Zlozone urzadzenie zapobiegajace zapłodnieniu i ciazy.</ImpregnationBlocker.description>
+
+  <FertilityEnhancer.label>Archotech wzmacniacz plodnosci</FertilityEnhancer.label>
+  <FertilityEnhancer.description>Zlozone urzadzenie zwiekszajace prawdopodobienstwo ciazy.</FertilityEnhancer.description>
+</LanguageData>

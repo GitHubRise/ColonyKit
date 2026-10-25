@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: raped by animals -->
+  <CountOfBeenRapedByAnimals.label>animaux ont violé</CountOfBeenRapedByAnimals.label>
+  <!-- EN: The number of times I was raped by animals. -->
+  <CountOfBeenRapedByAnimals.description>Le nombre de fois où j'ai été violé(e) par des animaux.</CountOfBeenRapedByAnimals.description>
+  
+  <!-- EN: raped by humanlikes -->
+  <CountOfBeenRapedByHumanlikes.label>humanoïdes ont violé</CountOfBeenRapedByHumanlikes.label>
+  <!-- EN: The number of times I was raped by humanlikes. -->
+  <CountOfBeenRapedByHumanlikes.description>Le nombre de fois où j'ai été violé(e) par des humanoïdes.</CountOfBeenRapedByHumanlikes.description>
+  
+  <!-- EN: raped by insects -->
+  <CountOfBeenRapedByInsects.label>insectes ont violé</CountOfBeenRapedByInsects.label>
+  <!-- EN: The number of times I was raped by insects. -->
+  <CountOfBeenRapedByInsects.description>Le nombre de fois où j'ai été violé(e) par des insectes.</CountOfBeenRapedByInsects.description>
+  
+  <!-- EN: raped by other -->
+  <CountOfBeenRapedByOthers.label>autres ont violé</CountOfBeenRapedByOthers.label>
+  <!-- EN: The number of times I was raped by weird stuff. -->
+  <CountOfBeenRapedByOthers.description>Le nombre de fois où j'ai été violé(e) par des trucs bizarres.</CountOfBeenRapedByOthers.description>
+  
+  <!-- EN: birthed animals -->
+  <CountOfBirthAnimal.label>animaux mis bas</CountOfBirthAnimal.label>
+  <!-- EN: How many animals I have birthed. -->
+  <CountOfBirthAnimal.description>Le nombre d'animaux que j'ai mis bas.</CountOfBirthAnimal.description>
+  
+  <!-- EN: birthed eggs -->
+  <CountOfBirthEgg.label>œufs pondus</CountOfBirthEgg.label>
+  <!-- EN: How many eggs I have birthed. -->
+  <CountOfBirthEgg.description>Le nombre d'œufs que j'ai pondu.</CountOfBirthEgg.description>
+  
+  <!-- EN: birthed humanlikes -->
+  <CountOfBirthHuman.label>humanoïdes enfantés</CountOfBirthHuman.label>
+  <!-- EN: How many humanlikes I have birthed. -->
+  <CountOfBirthHuman.description>Le nombre d'humanoïdes à qui j'ai donné naissance.</CountOfBirthHuman.description>
+  
+  <!-- EN: condoms used -->
+  <CountOfCondomsUsed.label>capotes utilisées</CountOfCondomsUsed.label>
+  <!-- EN: The number of condoms I've used. -->
+  <CountOfCondomsUsed.description>Le nombre de capotes que j'ai utilisées.</CountOfCondomsUsed.description>
+  
+  <!-- EN: masturbating done -->
+  <CountOfFappin.label>masturbations faites</CountOfFappin.label>
+  <!-- EN: The number of times I masturbated. -->
+  <CountOfFappin.description>Le nombre de fois où je me suis masturbé(e).</CountOfFappin.description>
+  
+  <!-- EN: raped animals -->
+  <CountOfRapedAnimals.label>animaux violés</CountOfRapedAnimals.label>
+  <!-- EN: The number of times I raped animals. -->
+  <CountOfRapedAnimals.description>Le nombre de fois où j'ai violé des animaux.</CountOfRapedAnimals.description>
+  
+  <!-- EN: raped humanlikes -->
+  <CountOfRapedHumanlikes.label>humanoïdes violés</CountOfRapedHumanlikes.label>
+  <!-- EN: The number of times I raped humanlikes. -->
+  <CountOfRapedHumanlikes.description>Le nombre de fois où j'ai violé des humanoïdes.</CountOfRapedHumanlikes.description>
+  
+  <!-- EN: raped insects -->
+  <CountOfRapedInsects.label>insectes violés</CountOfRapedInsects.label>
+  <!-- EN: The number of times I raped insects. -->
+  <CountOfRapedInsects.description>Le nombre de fois où j'ai violé des insectes.</CountOfRapedInsects.description>
+  
+  <!-- EN: raped other -->
+  <CountOfRapedOthers.label>autres violés</CountOfRapedOthers.label>
+  <!-- EN: The number of times I raped weird stuff. -->
+  <CountOfRapedOthers.description>Le nombre de fois où j'ai violé des trucs bizarres.</CountOfRapedOthers.description>
+  
+  <!-- EN: total sex had -->
+  <CountOfSex.label>sexe total eu</CountOfSex.label>
+  <!-- EN: The number of times I had sex. -->
+  <CountOfSex.description>Le nombre de fois où j'ai eu du sexe.</CountOfSex.description>
+  
+  <!-- EN: sex with animals -->
+  <CountOfSexWithAnimals.label>sexe avec animaux</CountOfSexWithAnimals.label>
+  <!-- EN: The number of times I had sex with animals. -->
+  <CountOfSexWithAnimals.description>Le nombre de fois où j'ai eu du sexe avec des animaux.</CountOfSexWithAnimals.description>
+  
+  <!-- EN: raped corpses -->
+  <CountOfSexWithCorpse.label>morts violés</CountOfSexWithCorpse.label>
+  <!-- EN: The number of times I raped corpses. -->
+  <CountOfSexWithCorpse.description>Le nombre de fois où j'ai violé des morts.</CountOfSexWithCorpse.description>
+  
+  <!-- EN: sex with humanlikes -->
+  <CountOfSexWithHumanlikes.label>sexe avec humanoïdes</CountOfSexWithHumanlikes.label>
+  <!-- EN: The number of times I had sex with humanlikes. -->
+  <CountOfSexWithHumanlikes.description>Le nombre de fois où j'ai eu du sexe avec des humanoïdes.</CountOfSexWithHumanlikes.description>
+  
+  <!-- EN: sex with insects -->
+  <CountOfSexWithInsects.label>sexe avec insectes</CountOfSexWithInsects.label>
+  <!-- EN: The number of times I had sex with insects. -->
+  <CountOfSexWithInsects.description>Le nombre de fois où j'ai eu du sexe avec des insectes.</CountOfSexWithInsects.description>
+  
+  <!-- EN: sex with other -->
+  <CountOfSexWithOthers.label>sexe avec autres</CountOfSexWithOthers.label>
+  <!-- EN: The number of times I had sex with weird stuff. -->
+  <CountOfSexWithOthers.description>Le nombre de fois où j'ai eu du sexe avec des trucs bizarres.</CountOfSexWithOthers.description>
+  
+  <!-- EN: raped as a comfort -->
+  <GetRapedAsComfortPrisoner.label>viols de confort</GetRapedAsComfortPrisoner.label>
+  <!-- EN: The number of times I was used to comfort someone. -->
+  <GetRapedAsComfortPrisoner.description>Le nombre de fois où j'ai été utilisé(e) pour le confort d'un(e) autre.</GetRapedAsComfortPrisoner.description>
+  
+</LanguageData>

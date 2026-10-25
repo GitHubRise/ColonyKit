@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <PrisonerChains.label>鏈條</PrisonerChains.label>
+
+  <PrisonerChains.description>帶袖口的鏈條，用於限制某人的行動能力和操作能力。*限制格鬥能力。*建議配合口球使用。</PrisonerChains.description>
+
+  <PrisonerChains.comps.CompBondageGear.useLabel>裝備</PrisonerChains.comps.CompBondageGear.useLabel>
+</LanguageData>

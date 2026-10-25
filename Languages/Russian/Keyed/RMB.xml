@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RJW_RMB>Взаимодействия</RJW_RMB>
+  
+  <RJW_RMB_Social>Социализация с {0_labelShort}</RJW_RMB_Social>
+  <RJW_RMB_Masturbate>Мастурбировать</RJW_RMB_Masturbate>
+
+  <RJW_RMB_Sex>Заняться сексом с {0_labelShort}</RJW_RMB_Sex>
+  <RJW_RMB_Sex_Reverse>(Ответное) Заняться сексом с {0_labelShort}</RJW_RMB_Sex_Reverse>
+
+  <RJW_RMB_Rape>Изнасиловать {0_labelShort}</RJW_RMB_Rape>
+  <RJW_RMB_Rape_Reverse>(Ответное) Изнасиловать {0_labelShort}</RJW_RMB_Rape_Reverse>
+
+  <RJW_RMB_Bestiality>Спариться с {0_labelShort}</RJW_RMB_Bestiality>
+  <RJW_RMB_Bestiality_Reverse>(Ответное) Спариться с {0_labelShort}</RJW_RMB_Bestiality_Reverse>
+
+  <!-- 社交 -->
+  <RJW_RMB_SocialFight>Драка</RJW_RMB_SocialFight>
+  <RJW_RMB_Insult>Оскорбление</RJW_RMB_Insult>
+  <RJW_RMB_Chat>Беседа</RJW_RMB_Chat>
+  <RJW_RMB_DeepTalk>Серьёзный разговор</RJW_RMB_DeepTalk>
+  <RJW_RMB_RomanceAttempt>Флирт</RJW_RMB_RomanceAttempt>
+  <RJW_RMB_MarriageProposal>Предложить пожениться</RJW_RMB_MarriageProposal>
+
+  <!--自慰-->
+  <RJW_RMB_Masturbate_Bed>Мастурбировать на стуле или кровати</RJW_RMB_Masturbate_Bed>
+  <RJW_RMB_Masturbate_At>Мастурбировать на (выбрать место)</RJW_RMB_Masturbate_At>
+  <RJW_RMB_Masturbate_Here>Мастурбировать здесь</RJW_RMB_Masturbate_Here>
+  <RJW_RMB_Masturbate_With>Мастурбировать с помощью (выбрать часть тела)</RJW_RMB_Masturbate_With>  <!-- 假阳具之类的 -->
+
+  <!--风味文本，直到它某天真的被实现（如果有那天）-->
+  <RJW_RMB_Masturbate_Fap>Мастурбация пениса</RJW_RMB_Masturbate_Fap>
+  <RJW_RMB_Masturbate_Schlic>Мастурбация вагины</RJW_RMB_Masturbate_Schlic>
+  <RJW_RMB_Masturbate_Breasts>Играть с грудью</RJW_RMB_Masturbate_Breasts>
+  <RJW_RMB_Masturbate_Anal>Играть с анусом</RJW_RMB_Masturbate_Anal>
+  <RJW_RMB_Masturbate_AF>Самоотсос</RJW_RMB_Masturbate_AF>
+  <RJW_RMB_Masturbate_BJ>Мастурбация грудью</RJW_RMB_Masturbate_BJ>
+  <RJW_RMB_Masturbate_TJV>Вагинальная мастурбация хвостом</RJW_RMB_Masturbate_TJV>
+  <RJW_RMB_Masturbate_TJA>Анальная мастурбация хвостом</RJW_RMB_Masturbate_TJA>
+
+  <!--发生性行为-->
+
+  <!--强奸-->
+  <RJW_RMB_RapeCP>Использовать для развлечения {0_labelShort}</RJW_RMB_RapeCP>
+  <RJW_RMB_RapeCP_Reverse>(Ответное) Использовать для развлечения {0_labelShort}</RJW_RMB_RapeCP_Reverse>
+  <RJW_RMB_RapeEnemy>Изнасиловать {0_labelShort}</RJW_RMB_RapeEnemy>
+  <RJW_RMB_RapeEnemy_Reverse>(Ответное) Изнасиловать {0_labelShort}</RJW_RMB_RapeEnemy_Reverse>
+  <RJW_RMB_RapeCorpse>Надругаться над трупом {0_labelShort}</RJW_RMB_RapeCorpse>
+  <RJW_RMB_RapeCorpse_Reverse>(Ответное) Надругаться над {0_gender ? живым : живой} {0_labelShort}</RJW_RMB_RapeCorpse_Reverse>
+  <RJW_RMB_RapeAnimal>Насильно спариться с {0_labelShort}</RJW_RMB_RapeAnimal>
+  <RJW_RMB_RapeAnimal_Reverse>(Ответное) Насильно спариться с {0_labelShort}</RJW_RMB_RapeAnimal_Reverse>
+
+  <!--姿势／部件？-->
+
+	<!--杂项-->
+	<RJW_RMB_HackMechPregnancy>Взломать имплантированного механоида</RJW_RMB_HackMechPregnancy>
+
+	<!--RMB 选项不可用的原因-->
+	<RJW_RMB_ReasonLowOpinionOfTarget>Плохое мнение о цели</RJW_RMB_ReasonLowOpinionOfTarget>
+	<RJW_RMB_ReasonUnappealingTarget>Не испытывает сексуального влечения к цели</RJW_RMB_ReasonUnappealingTarget>
+	<RJW_RMB_ReasonLowOpinionOfPawn>Плохое мнение об инициаторе</RJW_RMB_ReasonLowOpinionOfPawn>
+	<RJW_RMB_ReasonUnappealingPawn>е испытывает сексуального влечения к цели</RJW_RMB_ReasonUnappealingPawn>
+
+	<RJW_RMB_ReasonNeedBed>Нужна назначенная кровать</RJW_RMB_ReasonNeedBed>
+	<RJW_RMB_ReasonCantReachBed>Невозможно добраться до назначенной кровати</RJW_RMB_ReasonCantReachBed>
+
+	<RJW_RMB_NoValidInteractions>Для {0} не найдено ни одного подходящего взаимодействия.</RJW_RMB_NoValidInteractions>
+
+	<!-- 束缚装备 -->
+	<RJW_RMB_BG_Put_On>{0} на {1}</RJW_RMB_BG_Put_On>
+	<RJW_RMB_BG_NotWearingBondage>Не носит запертую одежду</RJW_RMB_BG_NotWearingBondage>
+</LanguageData>

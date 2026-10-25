@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<!-- Attraction debug ("Explain attraction") UI. Preference names fall back to
+	     their class name when no AttractionPref_* entry exists, so only the
+	     entries below are required for English. -->
+	<AttractionDebug_Explain>Explain attraction {0} -&gt; {1}</AttractionDebug_Explain>
+	<AttractionDebug_Observer>Observer</AttractionDebug_Observer>
+	<AttractionDebug_Target>Target</AttractionDebug_Target>
+	<AttractionDebug_Purpose>Purpose</AttractionDebug_Purpose>
+	<AttractionDebug_Combined>Combined</AttractionDebug_Combined>
+	<AttractionDebug_Finalized>Finalized</AttractionDebug_Finalized>
+	<AttractionDebug_NoPawns>No pawns on map.</AttractionDebug_NoPawns>
+	<AttractionDebug_NoOtherPawns>No other pawns on map.</AttractionDebug_NoOtherPawns>
+
+	<AttractionMode_Age>Age</AttractionMode_Age>
+	<AttractionMode_Physical>Physical</AttractionMode_Physical>
+	<AttractionMode_Romantic>Romantic</AttractionMode_Romantic>
+	<AttractionMode_Social>Social</AttractionMode_Social>
+
+	<AttractionPurpose_General>General</AttractionPurpose_General>
+	<AttractionPurpose_ForFucking>For Fucking</AttractionPurpose_ForFucking>
+	<AttractionPurpose_ForRape>For Rape</AttractionPurpose_ForRape>
+
+	<AttractionDebug_PawnType_Colonist>Colonist</AttractionDebug_PawnType_Colonist>
+	<AttractionDebug_PawnType_Prisoner>Prisoner</AttractionDebug_PawnType_Prisoner>
+	<AttractionDebug_PawnType_Slave>Slave</AttractionDebug_PawnType_Slave>
+	<AttractionDebug_PawnType_Visitor>Visitor</AttractionDebug_PawnType_Visitor>
+	<AttractionDebug_PawnType_ColonyAnimal>Colony Animal</AttractionDebug_PawnType_ColonyAnimal>
+	<AttractionDebug_PawnType_TamedAnimal>Tamed Animal</AttractionDebug_PawnType_TamedAnimal>
+	<AttractionDebug_PawnType_Wild>Wild</AttractionDebug_PawnType_Wild>
+
+	<SexLabel_Male>Male</SexLabel_Male>
+	<SexLabel_Female>Female</SexLabel_Female>
+	<SexLabel_Trap>Trap</SexLabel_Trap>
+	<SexLabel_Futa>Futa</SexLabel_Futa>
+	<SexLabel_None>None</SexLabel_None>
+	<SexLabel_HasPenis>Has Penis</SexLabel_HasPenis>
+	<SexLabel_HasVagina>Has Vagina</SexLabel_HasVagina>
+	<SexLabel_HasBreasts>Has Breasts</SexLabel_HasBreasts>
+</LanguageData>

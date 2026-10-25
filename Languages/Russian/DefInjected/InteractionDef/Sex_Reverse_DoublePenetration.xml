@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Sex_Reverse_DoublePenetration.label>двойное проникновение</Sex_Reverse_DoublePenetration.label>
+  <Sex_Reverse_DoublePenetration.logRulesInitiator.rulesStrings.0>r_logentry->Получает двойное проникновение от [RECIPIENT_nameDef].</Sex_Reverse_DoublePenetration.logRulesInitiator.rulesStrings.0>
+  <Sex_Reverse_DoublePenetration.logRulesRecipient.rulesStrings.0>r_logentry->Совершает двойное проникновение в [INITIATOR_nameDef].</Sex_Reverse_DoublePenetration.logRulesRecipient.rulesStrings.0>
+  <Sex_Reverse_DoublePenetration.modExtensions.0.RMBLabel>Двойное проникновение</Sex_Reverse_DoublePenetration.modExtensions.0.RMBLabel>
+
+
+</LanguageData>

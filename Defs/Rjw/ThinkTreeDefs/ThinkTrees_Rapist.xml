@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- 若欲求不满，强奸者会找人强奸 -->
+	<ThinkTreeDef>
+		<defName>RapistSexualEmergencyTree</defName>
+		<insertTag>RJW_CasualSex_Top</insertTag>
+		<insertPriority>2</insertPriority>
+		<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+				<li Class="rjw.ThinkNode_ConditionalRapist"> 
+					<subNodes> 
+						<li Class="rjw.JobGiver_RandomRape"/>
+					</subNodes> 
+				</li>	
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+	<ThinkTreeDef>
+		<defName>RapeCPTree</defName>
+		<insertTag>RJW_CasualSex_CP</insertTag>
+		<insertPriority>1</insertPriority>
+		<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+				<li Class="rjw.ThinkNode_ConditionalCanRapeCP"> 
+					<subNodes> 
+						<li Class="rjw.ThinkNode_ChancePerHour_RapeCP"> 
+							<subNodes> 
+								<li Class="rjw.JobGiver_ComfortPrisonerRape"/> 
+							</subNodes> 
+						</li> 
+					</subNodes> 
+				</li>
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+</Defs>

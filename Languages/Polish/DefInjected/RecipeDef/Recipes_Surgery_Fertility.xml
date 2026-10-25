@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Sterilization.label>sterydyzuj</Sterilization.label>
+  <Sterilization.description>Zapobiega rozmnazaniu bez usuwania narzadow plciowych.</Sterilization.description>
+  <Sterilization.jobString>Sterydyzowanie.</Sterilization.jobString>
+
+  <RJW_InstallIUD.label>zainstaluj wkladke domaciczna</RJW_InstallIUD.label>
+  <RJW_InstallIUD.description>Bardzo zmniejsza szanse na ciaze. Odwracalna w każdym momencie.</RJW_InstallIUD.description>
+  <RJW_InstallIUD.jobString>Instalowanie wkladki domacicznej.</RJW_InstallIUD.jobString>
+
+  <RJW_RemovelIUD.label>usun wkladke domaczna</RJW_RemovelIUD.label>
+  <RJW_RemovelIUD.description>Usuwa zainstalowana wkladke domaczna, przywracajac plodnosc.</RJW_RemovelIUD.description>
+  <RJW_RemovelIUD.jobString>Usuwanie wkladki domaczej.</RJW_RemovelIUD.jobString>
+</LanguageData>

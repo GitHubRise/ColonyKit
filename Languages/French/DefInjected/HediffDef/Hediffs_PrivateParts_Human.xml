@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: anus -->
+  <Anus.label>anus</Anus.label>
+  <!-- EN: An anus. -->
+  <Anus.description>Un anus.</Anus.description>
+  <!-- EN: an anus -->
+  <Anus.labelNoun>un anus</Anus.labelNoun>
+  <!-- EN: Micro -->
+  <Anus.stages.Micro.label>Micro - XS</Anus.stages.Micro.label>
+  <!-- EN: Tight -->
+  <Anus.stages.Tight.label>Serré - S</Anus.stages.Tight.label>
+  <!-- EN: Average -->
+  <Anus.stages.Average.label>Moyen - M</Anus.stages.Average.label>
+  <!-- EN: Accommodating -->
+  <Anus.stages.Accommodating.label>Accommodant - L</Anus.stages.Accommodating.label>
+  <!-- EN: Cavernous -->
+  <Anus.stages.Cavernous.label>Caverneux - XL</Anus.stages.Cavernous.label>
+  <!-- EN: Abyssal -->
+  <Anus.stages.Abyssal.label>Abyssal - XXL</Anus.stages.Abyssal.label>
+  
+  <!-- EN: breasts -->
+  <Breasts.label>seins</Breasts.label>
+  <!-- EN: A pair of breasts. -->
+  <Breasts.description>Une paire de seins.</Breasts.description>
+  <!-- EN: a pair of breasts -->
+  <Breasts.labelNoun>une paire de seins</Breasts.labelNoun>
+  <!-- EN: Nipples -->
+  <Breasts.stages.Nipples.label>Mamelons</Breasts.stages.Nipples.label>
+  <!-- EN: Tiny -->
+  <Breasts.stages.Tiny.label>Minuscules - 0</Breasts.stages.Tiny.label>
+  <!-- EN: Small -->
+  <Breasts.stages.Small.label>Petits - 1</Breasts.stages.Small.label>
+  <!-- EN: Average -->
+  <Breasts.stages.Average.label>Moyens - 2</Breasts.stages.Average.label>
+  <!-- EN: Large -->
+  <Breasts.stages.Large.label>Grands - 3</Breasts.stages.Large.label>
+  <!-- EN: Huge -->
+  <Breasts.stages.Huge.label>Énormes - 4</Breasts.stages.Huge.label>
+  <!-- EN: Enormous -->
+  <Breasts.stages.Enormous.label>Immenses - 5</Breasts.stages.Enormous.label>
+  <!-- EN: Massive -->
+  <Breasts.stages.Massive.label>Massifs - 6</Breasts.stages.Massive.label>
+  <!-- EN: Gargantuan -->
+  <Breasts.stages.Gargantuan.label>Gargantuesques - 7</Breasts.stages.Gargantuan.label>
+  <!-- EN: Colossal -->
+  <Breasts.stages.Colossal.label>Colossaux - 8</Breasts.stages.Colossal.label>
+  <!-- EN: Titanic -->
+  <Breasts.stages.Titanic.label>Titanesques - 9</Breasts.stages.Titanic.label>
+  <!-- EN: Astronomical -->
+  <Breasts.stages.Astronomical.label>Astronomiques - 10</Breasts.stages.Astronomical.label>
+  
+  <!-- EN: featureless chest -->
+  <FeaturelessChest.label>poitrine sans rien</FeaturelessChest.label>
+  <!-- EN: a flat chest without any nipples where there should be. -->
+  <FeaturelessChest.description>une poitrine plate sans aucun mamelons là où il devrait y en avoir.</FeaturelessChest.description>
+  <!-- EN: a featureless chest -->
+  <FeaturelessChest.labelNoun>poitrine sans rien</FeaturelessChest.labelNoun>
+  
+  <!-- EN: penis -->
+  <Penis.label>pénis</Penis.label>
+  <!-- EN: A penis. -->
+  <Penis.description>Un pénis.</Penis.description>
+  <!-- EN: a penis -->
+  <Penis.labelNoun>un pénis</Penis.labelNoun>
+  <!-- EN: Micro -->
+  <Penis.stages.Micro.label>Micro - XS</Penis.stages.Micro.label>
+  <!-- EN: Small -->
+  <Penis.stages.Small.label>Petit - S</Penis.stages.Small.label>
+  <!-- EN: Average -->
+  <Penis.stages.Average.label>Moyen - M</Penis.stages.Average.label>
+  <!-- EN: Large -->
+  <Penis.stages.Large.label>Grand - L</Penis.stages.Large.label>
+  <!-- EN: Huge -->
+  <Penis.stages.Huge.label>Énorme - XL</Penis.stages.Huge.label>
+  <!-- EN: Towering -->
+  <Penis.stages.Towering.label>Géant - XXL</Penis.stages.Towering.label>
+  
+  <!-- EN: vagina -->
+  <Vagina.label>vagin</Vagina.label>
+  <!-- EN: A vagina. -->
+  <Vagina.description>Un vagin.</Vagina.description>
+  <!-- EN: a vagina -->
+  <Vagina.labelNoun>un vagin</Vagina.labelNoun>
+  <!-- EN: Micro -->
+  <Vagina.stages.Micro.label>Micro - XS</Vagina.stages.Micro.label>
+  <!-- EN: Tight -->
+  <Vagina.stages.Tight.label>Serré - S</Vagina.stages.Tight.label>
+  <!-- EN: Average -->
+  <Vagina.stages.Average.label>Moyen - M</Vagina.stages.Average.label>
+  <!-- EN: Accommodating -->
+  <Vagina.stages.Accommodating.label>Accommodant - L</Vagina.stages.Accommodating.label>
+  <!-- EN: Cavernous -->
+  <Vagina.stages.Cavernous.label>Caverneux - XL</Vagina.stages.Cavernous.label>
+  <!-- EN: Abyssal -->
+  <Vagina.stages.Abyssal.label>Abyssal - XXL</Vagina.stages.Abyssal.label>
+  
+</LanguageData>

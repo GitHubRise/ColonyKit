@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: humanlike paraphilia -->
+  <Humanlike_Paraphilia.label>paraphilie humanoïde</Humanlike_Paraphilia.label>
+  <!-- EN: Animal experiencing sexual attraction to Humanlikes. At some point, an animal might even refuse to mate with other animals -->
+  <Humanlike_Paraphilia.description>Un animal qui éprouve une attirance sexuelle pour les humains. À un certain moment, un animal pourrait même refuser de s'accoupler avec d'autres animaux.</Humanlike_Paraphilia.description>
+  <!-- EN: humanlike paraphilia -->
+  <Humanlike_Paraphilia.labelNoun>paraphilie humanoïde</Humanlike_Paraphilia.labelNoun>
+  <!-- EN: Initial curiosity -->
+  <Humanlike_Paraphilia.stages.Initial_curiosity.label>Curiosité initiale</Humanlike_Paraphilia.stages.Initial_curiosity.label>
+  <!-- EN: Attracted -->
+  <Humanlike_Paraphilia.stages.Attracted.label>Attirance</Humanlike_Paraphilia.stages.Attracted.label>
+  <!-- EN: Focused -->
+  <Humanlike_Paraphilia.stages.Focused.label>Concentration</Humanlike_Paraphilia.stages.Focused.label>
+  <!-- EN: Fixated -->
+  <Humanlike_Paraphilia.stages.Fixated.label>Fixette</Humanlike_Paraphilia.stages.Fixated.label>
+  <!-- EN: Obsessed -->
+  <Humanlike_Paraphilia.stages.Obsessed.label>Obsession</Humanlike_Paraphilia.stages.Obsessed.label>
+  
+</LanguageData>

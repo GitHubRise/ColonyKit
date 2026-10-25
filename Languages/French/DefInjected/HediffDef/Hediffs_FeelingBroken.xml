@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Feeling broken -->
+  <FeelingBroken.label>Esprit brisé</FeelingBroken.label>
+  <!-- EN: Mind broken. No longer capable of emotion. -->
+  <FeelingBroken.description>Esprit brisé. Incapable désormais d'éprouver des émotions.</FeelingBroken.description>
+  <!-- EN: early-stage -->
+  <FeelingBroken.stages.earlystage.label>stade initial</FeelingBroken.stages.earlystage.label>
+  <!-- EN: in a trance -->
+  <FeelingBroken.stages.in_a_trance.label>dans une transe</FeelingBroken.stages.in_a_trance.label>
+  <!-- EN: broken -->
+  <FeelingBroken.stages.broken.label>brisé</FeelingBroken.stages.broken.label>
+  <!-- EN: Extremely broken -->
+  <FeelingBroken.stages.Extremely_broken.label>extrêmement brisé</FeelingBroken.stages.Extremely_broken.label>
+  
+</LanguageData>

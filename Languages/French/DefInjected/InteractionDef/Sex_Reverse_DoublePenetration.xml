@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: double-penetration -->
+  <Sex_Reverse_DoublePenetration.label>double-pénétration</Sex_Reverse_DoublePenetration.label>
+  <!-- EN:
+    <li>r_logentry->Was double-penetrated by [RECIPIENT_nameDef].</li>
+  -->
+  <Sex_Reverse_DoublePenetration.logRulesInitiator.rulesStrings>
+    <li>r_logentry(INITIATOR_gender!=Female)->A été double-pénétré par [RECIPIENT_nameDef].</li>
+    <li>r_logentry(INITIATOR_gender==Female)->A été double-pénétrée par [RECIPIENT_nameDef].</li>
+</Sex_Reverse_DoublePenetration.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Double-penetrated [INITIATOR_nameDef].</li>
+  -->
+  <Sex_Reverse_DoublePenetration.logRulesRecipient.rulesStrings>
+    <li>r_logentry->A double-pénétré [INITIATOR_nameDef].</li>
+</Sex_Reverse_DoublePenetration.logRulesRecipient.rulesStrings>
+  <!-- EN: Get double-penetrated -->
+  <Sex_Reverse_DoublePenetration.modExtensions.0.RMBLabel>Est double-pénétrée</Sex_Reverse_DoublePenetration.modExtensions.0.RMBLabel>
+  
+</LanguageData>

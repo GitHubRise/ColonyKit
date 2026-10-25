@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN:
+    <li>sent-> [RECIPIENT_nameDef] fellated [INITIATOR_nameDef] with [RECIPIENT_possessive] beak.</li>
+  -->
+  <BeakjobRP.rulePack.rulesStrings>
+    <li>sent-> [RECIPIENT_nameDef] a sucé [INITIATOR_nameDef] avec son bec.</li>
+  </BeakjobRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [RECIPIENT_nameDef] went down on [INITIATOR_nameDef].</li>
+  -->
+  <CunnilingusRP.rulePack.rulesStrings>
+    <li>sent-> [RECIPIENT_nameDef] a fait un cunnilingus à [INITIATOR_nameDef].</li>
+  </CunnilingusRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [RECIPIENT_nameDef] deepthroated [INITIATOR_nameDef].</li>
+  -->
+  <DeepthroatRP.rulePack.rulesStrings>
+    <li>sent-> [RECIPIENT_nameDef] a fait une gorge profonde à [INITIATOR_nameDef].</li>
+  </DeepthroatRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [RECIPIENT_nameDef] sucked off [INITIATOR_nameDef].</li>
+  -->
+  <FellatioRP.rulePack.rulesStrings>
+    <li>sent-> [RECIPIENT_nameDef] a sucé [INITIATOR_nameDef].</li>
+  </FellatioRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [RECIPIENT_nameDef] made out with [INITIATOR_nameDef].</li>
+  -->
+  <MutualMakeoutRP.rulePack.rulesStrings>
+    <li>sent-> [RECIPIENT_nameDef] a fait l'amour avec [INITIATOR_nameDef].</li>
+  </MutualMakeoutRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [RECIPIENT_nameDef] rimmed [INITIATOR_nameDef].</li>
+  -->
+  <RimmingRP.rulePack.rulesStrings>
+    <li>sent-> [RECIPIENT_nameDef] a fait un anulingus à [INITIATOR_nameDef].</li>
+  </RimmingRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [RECIPIENT_nameDef] 69'd with [INITIATOR_nameDef].</li>
+  -->
+  <SixtynineRP.rulePack.rulesStrings>
+    <li>sent-> [RECIPIENT_nameDef] a fait un 69 avec [INITIATOR_nameDef].</li>
+  </SixtynineRP.rulePack.rulesStrings>
+  
+</LanguageData>

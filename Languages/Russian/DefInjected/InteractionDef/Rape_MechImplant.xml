@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rape_MechImplant.label>имплантация механоида</Rape_MechImplant.label>
+  <Rape_MechImplant.logRulesInitiator.rulesStrings.0>r_logentry->Нападает на [RECIPIENT_nameDef].</Rape_MechImplant.logRulesInitiator.rulesStrings.0>
+  <Rape_MechImplant.logRulesRecipient.rulesStrings.0>r_logentry->Подвергается осквернению от [INITIATOR_nameDef].</Rape_MechImplant.logRulesRecipient.rulesStrings.0>
+  <Rape_MechImplant.modExtensions.0.RMBLabel>Имплантация механоида</Rape_MechImplant.modExtensions.0.RMBLabel>
+
+
+</LanguageData>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: gettin' raped. -->
+  <GettinRaped.reportString>se fait violer.</GettinRaped.reportString>
+  
+  <!-- EN: raping. -->
+  <RandomRape.reportString>viole.</RandomRape.reportString>
+  
+  <!-- EN: rapin' CP -->
+  <RapeComfortPawn.reportString>viole le pion de confort.</RapeComfortPawn.reportString>
+  
+  <!-- EN: rapin' enemy -->
+  <RapeEnemy.reportString>viole l'ennemi.</RapeEnemy.reportString>
+  
+  <!-- EN: rapin' enemy -->
+  <RapeEnemyByAnimal.reportString>viole l'ennemi.</RapeEnemyByAnimal.reportString>
+  
+  <!-- EN: rapin' enemy -->
+  <RapeEnemyByInsect.reportString>viole l'ennemi.</RapeEnemyByInsect.reportString>
+  
+  <!-- EN: rapin' enemy -->
+  <RapeEnemyByMech.reportString>viole l'ennemi.</RapeEnemyByMech.reportString>
+  
+  <!-- EN: rapin' enemy -->
+  <RapeEnemyToParasite.reportString>viole l'ennemi.</RapeEnemyToParasite.reportString>
+  
+</LanguageData>

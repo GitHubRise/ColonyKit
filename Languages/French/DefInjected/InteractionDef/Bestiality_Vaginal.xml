@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: vaginal breeding -->
+  <Bestiality_Vaginal.label>fécondage vaginal</Bestiality_Vaginal.label>
+  <!-- EN:
+    <li>r_logentry->Mounted [RECIPIENT_nameDef].</li>
+  -->
+  <Bestiality_Vaginal.logRulesInitiator.rulesStrings>
+    <li>r_logentry->A monté [RECIPIENT_nameDef].</li>
+  </Bestiality_Vaginal.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Was mounted by [INITIATOR_nameDef].</li>
+  -->
+  <Bestiality_Vaginal.logRulesRecipient.rulesStrings>
+    <li>r_logentry(RECIPIENT_gender!=Female)->A été baisé par [INITIATOR_nameDef].</li>
+    <li>r_logentry(RECIPIENT_gender==Female)->A été baisée par [INITIATOR_nameDef].</li>
+  </Bestiality_Vaginal.logRulesRecipient.rulesStrings>
+  <!-- EN: Breed vaginally -->
+  <Bestiality_Vaginal.modExtensions.0.RMBLabel>Féconde vaginalement</Bestiality_Vaginal.modExtensions.0.RMBLabel>
+  
+</LanguageData>

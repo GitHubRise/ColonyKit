@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<JobDef>
+		<defName>GettinRaped</defName>
+		<driverClass>rjw.JobDriver_SexBaseRecieverRaped</driverClass>
+		<reportString>gettin' raped.</reportString>
+		<checkOverrideOnDamage>Never</checkOverrideOnDamage>
+		<casualInterruptible>false</casualInterruptible>
+		<isCrawlingIfDowned>false</isCrawlingIfDowned>
+	</JobDef>
+	
+	<JobDef>
+		<defName>RapeComfortPawn</defName>
+		<driverClass>rjw.JobDriver_RapeComfortPawn</driverClass>
+		<reportString>rapin' CP</reportString>
+		<casualInterruptible>false</casualInterruptible>
+	</JobDef>
+	
+	<JobDef>
+		<defName>RandomRape</defName>
+		<driverClass>rjw.JobDriver_RandomRape</driverClass>
+		<reportString>raping.</reportString>
+		<casualInterruptible>false</casualInterruptible>
+	</JobDef>
+
+	<JobDef Class="rjw.JobDef_RapeEnemy">
+		<defName>RapeEnemy</defName>
+		<driverClass>rjw.JobDriver_RapeEnemy</driverClass>
+		<reportString>rapin' enemy</reportString>
+		<casualInterruptible>false</casualInterruptible>
+		<priority>100</priority>
+		<!-- 数值越高优先级越高。 -->
+		<!-- 添加 defName 以执行此类强奸-->
+		<TargetDefNames>
+		</TargetDefNames>
+	</JobDef>
+
+	<JobDef Class="rjw.JobDef_RapeEnemy">
+		<defName>RapeEnemyByInsect</defName>
+		<!-- 强奸以植入卵。详见 Hediffs_EnemyImplants.xml-->
+		<driverClass>rjw.JobDriver_RapeEnemyByInsect</driverClass>
+		<reportString>rapin' enemy</reportString>
+		<casualInterruptible>false</casualInterruptible>
+		<priority>1000</priority>
+		<TargetDefNames>
+		</TargetDefNames>
+	</JobDef>
+
+	<JobDef Class="rjw.JobDef_RapeEnemy">
+		<defName>RapeEnemyByAnimal</defName>
+		<!-- 基本什么都不做。 -->
+		<driverClass>rjw.JobDriver_RapeEnemyByAnimal</driverClass>
+		<reportString>rapin' enemy</reportString>
+		<casualInterruptible>false</casualInterruptible>
+		<priority>1000</priority>
+		<TargetDefNames>
+		</TargetDefNames>
+	</JobDef>
+
+	<JobDef Class="rjw.JobDef_RapeEnemy">
+		<defName>RapeEnemyByMech</defName>
+		<!-- 强奸以植入某物。详见 Hediffs_EnemyImplants.xml-->
+		<driverClass>rjw.JobDriver_RapeEnemyByMech</driverClass>
+		<reportString>rapin' enemy</reportString>
+		<casualInterruptible>false</casualInterruptible>
+		<priority>1000</priority>
+		<TargetDefNames>
+		</TargetDefNames>
+	</JobDef>
+
+	<JobDef Class="rjw.JobDef_RapeEnemy">
+		<defName>RapeEnemyToParasite</defName>
+		<!-- 强奸同种族的雄性使其怀孕。-->
+		<driverClass>rjw.JobDriver_RapeEnemyToParasite</driverClass>
+		<reportString>rapin' enemy</reportString>
+		<casualInterruptible>false</casualInterruptible>
+		<priority>2000</priority>
+		<TargetDefNames>
+		</TargetDefNames>
+	</JobDef>
+</Defs>

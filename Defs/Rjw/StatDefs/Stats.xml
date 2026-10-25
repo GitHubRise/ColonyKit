@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<StatDef>
+		<defName>SexSatisfaction</defName>
+		<label>sex satisfaction</label>
+		<description>Determines how much satisfaction a pawn receives from sex.</description>
+		<category>PawnSocial</category>
+		<defaultBaseValue>1.0</defaultBaseValue>
+		<minValue>0.1</minValue>
+		<toStringStyle>PercentTwo</toStringStyle>
+		<capacityFactors>
+			<li>
+				<capacity>Consciousness</capacity>
+				<weight>1.0</weight>
+				<max>1.0</max>
+			</li>
+		</capacityFactors>
+		<parts>
+			<li Class="StatPart_Rest">
+				<factorTired>0.6</factorTired>
+				<factorVeryTired>0.4</factorVeryTired>
+				<factorExhausted>0.2</factorExhausted>
+			</li>
+		</parts>
+	</StatDef>
+
+	<StatDef>
+		<defName>Vulnerability</defName>
+		<label>vulnerability</label>
+		<description>Measures how likely a pawn is to be taken advantage of sexually</description>
+		<category>PawnSocial</category>
+		<defaultBaseValue>1.0</defaultBaseValue>
+		<minValue>0.0</minValue>
+		<maxValue>3.0</maxValue>
+		<noSkillFactor>0.9</noSkillFactor>
+		<toStringStyle>PercentTwo</toStringStyle>
+		<neverDisabled>true</neverDisabled>
+		<skillNeedFactors>
+			<li Class="rjw.SkillNeed_CapableOfResisting">
+				<skill>Melee</skill>
+				<baseValue>1.00</baseValue>
+				<bonusPerLevel>-0.035</bonusPerLevel>
+			</li>
+		</skillNeedFactors>
+		<capacityFactors>
+			<li>
+				<capacity>Sight</capacity>
+				<useReciprocal>true</useReciprocal>
+				<weight>0.2</weight>
+				<max>1.5</max>
+			</li>
+			<li>
+				<capacity>Moving</capacity>
+				<useReciprocal>true</useReciprocal>
+				<weight>0.2</weight>
+				<max>2</max>
+			</li>
+			<li>
+				<capacity>Manipulation</capacity>
+				<useReciprocal>true</useReciprocal>
+				<weight>0.75</weight>
+				<max>4</max>
+			</li>
+			<li>
+				<capacity>Consciousness</capacity>
+				<useReciprocal>true</useReciprocal>
+				<weight>0.4</weight>
+				<max>3</max>
+			</li>
+		</capacityFactors>
+		<parts>
+			<li Class="StatPart_Food">
+				<factorUrgentlyHungry>1.1</factorUrgentlyHungry>
+				<factorStarving>1.4</factorStarving>
+			</li>
+			<li Class="StatPart_Rest">
+				<factorTired>1.1</factorTired>
+				<factorVeryTired>1.4</factorVeryTired>
+				<factorExhausted>1.8</factorExhausted>
+			</li>
+			<li Class="StatPart_Resting">
+				<factor>1.2</factor>
+			</li>
+			<li Class="rjw.StatPart_BodyType">
+				<mode>Offset</mode>
+				<bodyToValue>
+					<li><key>Hulk</key><value>-0.2</value></li>
+					<li><key>Thin</key><value>0.2</value></li>
+				</bodyToValue>
+			</li>
+		</parts>
+	</StatDef>
+
+	<StatDef>
+		<defName>SexFrequency</defName>
+		<label>sex drive</label>
+		<description>Measures how sexually active the pawn is.</description>
+		<category>PawnSocial</category>
+		<defaultBaseValue>1.0</defaultBaseValue>
+		<minValue>0.0</minValue>
+		<toStringStyle>PercentTwo</toStringStyle>
+		<showOnMechanoids>false</showOnMechanoids>
+		<capacityFactors>
+			<li>
+				<capacity>Consciousness</capacity>
+				<weight>1.0</weight>
+				<max>1.0</max>
+			</li>
+			<li>
+				<capacity>RJW_Fertility</capacity>
+				<weight>0.4</weight>
+				<max>2.0</max>
+			</li>
+		</capacityFactors>
+		<parts>
+			<li Class="StatPart_Food">
+				<factorUrgentlyHungry>0.4</factorUrgentlyHungry>
+				<factorStarving>0.1</factorStarving>
+			</li>
+			<li Class="StatPart_Rest">
+				<factorTired>0.6</factorTired>
+				<factorVeryTired>0.3</factorVeryTired>
+				<factorExhausted>0.1</factorExhausted>
+			</li>
+			<li Class="StatPart_Resting">
+				<factor>0.6</factor>
+			</li>
+		</parts>
+	</StatDef>
+
+	<StatDef>
+		<defName>SexMinSizePreference</defName>
+		<label>mate size preference (minimum)</label>
+		<description>Determines the minimum comfortable size of a potential mate, relative to their own.</description>
+		<category>PawnSocial</category>
+		<!-- 此属性的最终数值会取倒数：`1 / statValue` -->
+		<!-- 因此，若该属性为 `2`，结果就是 1/2 或 50%。换言之， -->
+		<!-- 提高该属性会让他们偏好更小的伴侣。 -->
+		<workerClass>rjw.StatWorker_Inverse</workerClass>
+		<defaultBaseValue>1.5</defaultBaseValue>
+		<minValue>1.1</minValue>
+		<maxValue>4.0</maxValue>
+		<toStringStyle>PercentZero</toStringStyle>
+		<showOnAnimals>true</showOnAnimals>
+		<showOnMechanoids>false</showOnMechanoids>
+		<capacityOffsets>
+			<li>
+				<capacity>Manipulation</capacity>
+				<scale>0.5</scale>
+				<max>2</max>
+			</li>
+		</capacityOffsets>
+		<parts>
+			<li Class="rjw.StatPart_WhenOnlyPenetrable">
+				<mode>Offset</mode>
+				<value>-0.1</value>
+			</li>
+			<li Class="rjw.StatPart_BodyType">
+				<mode>Factor</mode>
+				<bodyToValue>
+					<li><key>Hulk</key><value>0.909</value></li>
+					<li><key>Thin</key><value>1.1</value></li>
+				</bodyToValue>
+			</li>
+		</parts>
+	</StatDef>
+
+	<StatDef>
+		<defName>SexMaxSizePreference</defName>
+		<label>mate size preference (maximum)</label>
+		<description>Determines the maximum comfortable size of a potential mate, relative to their own.</description>
+		<category>PawnSocial</category>
+		<defaultBaseValue>1.5</defaultBaseValue>
+		<minValue>1.1</minValue>
+		<maxValue>4.0</maxValue>
+		<toStringStyle>PercentZero</toStringStyle>
+		<showOnAnimals>true</showOnAnimals>
+		<showOnMechanoids>false</showOnMechanoids>
+		<capacityOffsets>
+			<li>
+				<capacity>Moving</capacity>
+				<scale>0.5</scale>
+				<max>2</max>
+			</li>
+		</capacityOffsets>
+		<parts>
+			<li Class="rjw.StatPart_WhenOnlyPenetrable">
+				<mode>Offset</mode>
+				<value>0.2</value>
+			</li>
+			<li Class="rjw.StatPart_BodyType">
+				<mode>Factor</mode>
+				<bodyToValue>
+					<li><key>Hulk</key><value>1.1</value></li>
+					<li><key>Thin</key><value>0.909</value></li>
+				</bodyToValue>
+			</li>
+		</parts>
+	</StatDef>
+
+	<StatDef>
+		<defName>SexWildnessAversion</defName>
+		<label>wildness aversion</label>
+		<description>Determines how much the pawn is put off by the wildness of animals and wildmen when assessing potential mates.</description>
+		<category>PawnSocial</category>
+		<defaultBaseValue>1</defaultBaseValue>
+		<minValue>0</minValue>
+		<maxValue>1</maxValue>
+		<toStringStyle>PercentZero</toStringStyle>
+		<showOnAnimals>true</showOnAnimals>
+		<showOnMechanoids>false</showOnMechanoids>
+	</StatDef>
+</Defs>

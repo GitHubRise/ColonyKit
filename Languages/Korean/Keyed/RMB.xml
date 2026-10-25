@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<RJW_RMB>상호 작용</RJW_RMB>
+	<RJW_RMB_NoSex> 섹스 거부 : </RJW_RMB_NoSex>
+
+	<RJW_RMB_Social>사교</RJW_RMB_Social>
+	<RJW_RMB_Masturbate>자위</RJW_RMB_Masturbate>
+	
+	<RJW_RMB_Sex>섹스 : {0_labelShort}</RJW_RMB_Sex>
+	<RJW_RMB_Rape>강간 : {0_labelShort}</RJW_RMB_Rape>
+	<RJW_RMB_Bestiality>교미 : {0_labelShort}</RJW_RMB_Bestiality>
+	<RJW_RMB_RapeAnimal>수간 : {0_labelShort}</RJW_RMB_RapeAnimal>
+	
+	<RJW_RMB_Sex_Reverse>(역) 섹스 {0_labelShort}</RJW_RMB_Sex_Reverse>
+	<RJW_RMB_Rape_Reverse>(역) 강간 {0_labelShort}</RJW_RMB_Rape_Reverse>
+	<RJW_RMB_Bestiality_Reverse>(역) 교미 {0_labelShort}</RJW_RMB_Bestiality_Reverse>
+	<RJW_RMB_RapeAnimal_Reverse>(역) 수간 {0_labelShort}</RJW_RMB_RapeAnimal_Reverse>
+
+	<!--社交-->
+	<RJW_RMB_Insult>모욕</RJW_RMB_Insult>
+	<RJW_RMB_SocialFight>결투</RJW_RMB_SocialFight>
+	<RJW_RMB_Chat>잡담</RJW_RMB_Chat>
+	<RJW_RMB_DeepTalk>진지한 대화</RJW_RMB_DeepTalk>
+	<RJW_RMB_RomanceAttempt>연애 시도</RJW_RMB_RomanceAttempt>
+	<RJW_RMB_MarriageProposal>결혼 제안</RJW_RMB_MarriageProposal>
+	
+	<!--自慰-->
+	<RJW_RMB_Masturbate_Bed>의자 및 침대에서</RJW_RMB_Masturbate_Bed>
+	<RJW_RMB_Masturbate_At>위치를 바꿔서</RJW_RMB_Masturbate_At>
+	<RJW_RMB_Masturbate_Here>여기서</RJW_RMB_Masturbate_Here>
+	<RJW_RMB_Masturbate_With>도구 사용</RJW_RMB_Masturbate_With>
+
+	<!--做爱-->
+	
+	<!--强奸-->
+	<RJW_RMB_RapeCP_Reverse>(역) 성노예 강간 : {0_labelShort}</RJW_RMB_RapeCP_Reverse>
+	<RJW_RMB_RapeEnemy_Reverse>(역) 강간 : {0_labelShort}</RJW_RMB_RapeEnemy_Reverse>
+	<RJW_RMB_RapeCorpse_Reverse>(역) 시간 : {0_labelShort}</RJW_RMB_RapeCorpse_Reverse>
+
+	<!--姿势/部件？-->
+	
+	
+	<!--东西-->
+	<RJW_RMB_HackMechPregnancy>Hack implanted mech</RJW_RMB_HackMechPregnancy>
+
+	<!--右键选项不可用的原因-->
+	<RJW_RMB_ReasonLowOpinionOfTarget>Low opinion of target</RJW_RMB_ReasonLowOpinionOfTarget>
+	<RJW_RMB_ReasonUnappealingTarget>Not sexually attracted to target</RJW_RMB_ReasonUnappealingTarget>
+	<RJW_RMB_ReasonLowOpinionOfPawn>Low opinion of me</RJW_RMB_ReasonLowOpinionOfPawn>
+	<RJW_RMB_ReasonUnappealingPawn>Not sexually attracted to me</RJW_RMB_ReasonUnappealingPawn>
+
+	<RJW_RMB_ReasonNeedBed>Need assigned bed</RJW_RMB_ReasonNeedBed>
+	<RJW_RMB_ReasonCantReachBed>Can't reach assigned bed</RJW_RMB_ReasonCantReachBed>
+
+	<RJW_RMB_NoValidInteractions>No valid interactions found for {0}</RJW_RMB_NoValidInteractions>
+
+	<!-- 束缚装备 -->
+	<RJW_RMB_BG_Put_On>{0} on {1}</RJW_RMB_BG_Put_On>
+	<RJW_RMB_BG_NotWearingBondage>Not wearing locked apparel</RJW_RMB_BG_NotWearingBondage>
+</LanguageData>

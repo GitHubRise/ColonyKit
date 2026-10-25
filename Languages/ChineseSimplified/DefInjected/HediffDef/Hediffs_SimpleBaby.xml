@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <RJW_BabyState.label>儿童成长状态</RJW_BabyState.label>
+
+  <RJW_BabyState.description>成长中的孩子。</RJW_BabyState.description>
+
+  <RJW_BabyState.stages.baby.label>婴儿</RJW_BabyState.stages.baby.label>
+
+  <RJW_BabyState.stages.toddler.label>幼儿</RJW_BabyState.stages.toddler.label>
+
+  <RJW_BabyState.stages.child.label>儿童</RJW_BabyState.stages.child.label>
+
+  <RJW_NoManipulationFlag.label>太年轻无法胜任工作</RJW_NoManipulationFlag.label>
+
+  <RJW_NoManipulationFlag.description>太年轻无法胜任工作。</RJW_NoManipulationFlag.description>
+
+</LanguageData>

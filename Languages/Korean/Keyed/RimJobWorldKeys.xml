@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<!-- 模组字符串 -->
+	<!-- std -->
+	<RJW_Opportunistic_Infection_Message>{0}의 면역력이 약화되어 감염이 발생했습니다.</RJW_Opportunistic_Infection_Message>
+	<RJW_Syphilis_Damage_Message>{0} (은)는 {3}의 감염이 진행되어 {1} {2}가 영구적으로 손상되었습니다.</RJW_Syphilis_Damage_Message>
+
+	<!--妓女活动-->
+	<RJW_VisitorAcceptWhore>{0}가 {1}의 유혹에 넘어갔습니다.</RJW_VisitorAcceptWhore>
+	<RJW_VisitorSolicitWhore>{0}은 {1}에게 봉사받길 원합니다.</RJW_VisitorSolicitWhore>
+	<RJW_VisitorRejectWhore>{0}가 {1}의 유혹을 거절했습니다.</RJW_VisitorRejectWhore>
+	<RJW_VisitorSickWhore>{1}의 몸 상태가 좋지 못하여 {0}가 유혹을 거절했습니다.</RJW_VisitorSickWhore>
+
+	<!-- 右键点击 CP 时的通知 -->
+	<PawnCantRapeCP>해당 정착민은 건강하지 않거나 이동할 수 없는 곳에 있습니다.</PawnCantRapeCP>
+	<PawnCantRapeCP0>해당 정착민은 성관계가 필요없거나 건강하지 않거나 불가능합니다.</PawnCantRapeCP0>
+	<PawnCantRapeCP1>주변에 해당 정착민의 애인이 있습니다.</PawnCantRapeCP1>
+	<PawnCantRapeCP2>해당 정착민은 수간에 흥미가 없기에 강간하지 않습니다.</PawnCantRapeCP2>
+
+	<!--提交按钮-->
+	<CommandSubmit>항복</CommandSubmit>
+	<CommandSubmitDesc>바닥에 엎드려, 어떤 짓을 당하더라도 순응하도록 합니다.</CommandSubmitDesc>
+
+	<!--怀孕消息-->
+	<RJW_PregnantTitle>{0}가 임신하였습니다.</RJW_PregnantTitle>
+	<RJW_PregnantText>{0}가 임신하였습니다. 산모가 건강한 상태를 유지하지 못한다면 태아를 유산할 수 있으니 주의하십시오.</RJW_PregnantText>
+	<RJW_Contractions>{0}의 산통이 시작됐습니다. 곧 출산이 시작됩니다!</RJW_Contractions>
+	<RJW_GaveBirthTitle>출산했습니다.</RJW_GaveBirthTitle>
+	<RJW_GaveBirthText>{0}는 성공적으로 출산하여 </RJW_GaveBirthText>
+	<RJW_ABaby>아이를 얻었습니다.</RJW_ABaby>
+	<RJW_NBabies>아이를 {0} 명 얻었습니다.</RJW_NBabies>
+	<RJW_PregnantNormal>건강한 아이를 얻었습니다...</RJW_PregnantNormal>
+	<RJW_PregnantStrange>아이에게 어떤 문제가 있는 것 같습니다...</RJW_PregnantStrange>
+	<RJW_PregnantMechStrange>아이에게 심각한 문제가 있는 것 같습니다...</RJW_PregnantMechStrange>
+	<RJW_GaveBirthEggTitle>알을 산란했습니다.</RJW_GaveBirthEggTitle>
+	<RJW_GaveBirthEggText>{0} 가 알을 낳았습니다.</RJW_GaveBirthEggText>
+	<RJW_EggContractions>{0} 의 산통이 시작됐습니다. 곧 산란이 시작됩니다..</RJW_EggContractions>
+	<RJW_Message_NotPregnant>{0} has determined {1} is not pregnant.</RJW_Message_NotPregnant>
+	<RJW_Message_Pregnant>{0} has determined {1} is pregnant and {2} is the father.</RJW_Message_Pregnant>
+
+	<!--强奸警报-->
+	<RJW_AlertRape>{RAPIST} is trying to rape {TARGET}.</RJW_AlertRape>
+	<RJW_AlertAssault>{RAPIST} is trying to assault {TARGET}.</RJW_AlertAssault>
+	<RJW_AlertBreed>{RAPIST} is trying to breed {TARGET}.</RJW_AlertBreed>
+	<RJW_AlertRapeRelated>{RAPIST} is trying to rape {TARGET}, {RAPIST_possessive} {RELATION}.</RJW_AlertRapeRelated>
+	<RJW_AlertAssaultRelated>{RAPIST} is trying to assault {TARGET}, {RAPIST_possessive} {RELATION}.</RJW_AlertAssaultRelated>
+	<RJW_AlertBreedRelated>{RAPIST} is trying to breed {TARGET}, {RAPIST_possessive} {RELATION}.</RJW_AlertBreedRelated>
+	<RJW_AlertBeeingRaped>{TARGET} is getting raped.</RJW_AlertBeeingRaped>
+
+	<!--乳房尺寸变化-->
+	<!--本应是 "{PAWN_possessive} breasts..."，但我没能让它正常工作。-->
+	<RJW_BreastsHaveGrownFromBoobitis>유방염 메카나이트 때문에 가슴이 커졌습니다.</RJW_BreastsHaveGrownFromBoobitis>
+	
+	<GoToModSettings>이 공간은 선택한 림 혹은 동물이 사용 불가능하거나 꺼진 선택적 림잡 기능을 위해 예약되었습니다.\n이 부분이 정상적이면 림잡 옵션을 확인하고 더 이상 질문을 하지 마시오.</GoToModSettings>
+
+	<!--舒适指派-->
+	<ForComfort>성노예 지정</ForComfort>
+	<ForComfortDesc>해당 정착민의 성적 의사결정권을 박탈합니다.</ForComfortDesc>
+	<ForComfortRefuseDesc>성노예가 되는 것을 원하지 않습니다.\n마조히스트 특성 필요</ForComfortRefuseDesc>
+
+	<!--妓女-->
+	<ForService>창부 지정</ForService><!-- 此字段不可见 -->
+	<ForServiceDesc><![CDATA[창부 지정시
+- 방문객을 성적으로 유혹합니다.
+- 바쁘지 않은 정착민들과 관계를 맺습니다.
+- 창부는 자위를 최대한 억제하는데, 이는 욕구 불만의 원인이 될 수 있습니다.
+]]></ForServiceDesc>
+	<ForServiceRefuseDesc>창부가 되기를 원하지 않습니다.</ForServiceRefuseDesc>
+
+	<!--床-->
+	<CommandBedSetAsWhoreBedLabel>모든 창부 허용</CommandBedSetAsWhoreBedLabel>
+	<CommandBedSetAsWhoreBedDesc>모든 창부에게 이 침대를 고객 서비스 제공용으로 사용하도록 허용합니다.</CommandBedSetAsWhoreBedDesc>
+	<CommandBedAllowWhoringLabel>소유자만 허용</CommandBedAllowWhoringLabel>
+	<CommandBedAllowWhoringDesc>지정된 림에게만 이 침대를 접대용으로 허용합니다.</CommandBedAllowWhoringDesc>
+	<WhorePriceCalcDesc>창부 가격 요소 (편안함, 방 인상, 방에 놓인 침대 수 기반) : {0}</WhorePriceCalcDesc>
+
+	<!--繁殖指派-->
+	<ForBreeding>교미대상 지정</ForBreeding>
+	<ForBreedingDesc>동물의 교미대상으로 지정합니다.</ForBreedingDesc>
+	<ForBreedingRefuseDesc>동물과의 교미를 원하지 않습니다.\n수간 선호 특성 필요</ForBreedingRefuseDesc>
+	
+	<ForBreedingAnimalDesc>해당 동물이 교미대상과 번식할 수 있도록 지정</ForBreedingAnimalDesc>
+	
+	<BreedMessage>교미를 하려고 합니다</BreedMessage>
+
+	<!--挤奶-->
+	<ForMilking>착유대상 지정</ForMilking>
+	<ForMilkingDesc>선택한 대상으로부터 우유를 채취합니다.</ForMilkingDesc>
+
+	<!--英雄-->
+	<ForHero>주인공으로 지정</ForHero>
+	<ForHeroDesc><![CDATA[해당 림을 플레이어의 주인공으로 지정
+-단 한번만 지정할 수 있습니다.
+-해제할 수 없습니다.
+]]></ForHeroDesc>
+	<ForHeroRefuse1Desc>이 주인공은 다른 플레이어의 것입니다.</ForHeroRefuse1Desc>
+	<ForHeroRefuse2Desc>지정을 변경할 권한이 없습니다.</ForHeroRefuse2Desc>
+	<ForHeroRefuseHCDesc>하드코어모드에서 주인공이 아닌 정착민</ForHeroRefuseHCDesc>
+	<RJW_Message_BecameHero>{0} is now hero of {1}</RJW_Message_BecameHero>
+
+	<!-- Hediff 提示 -->
+	<RJW_PartInfo_braCup>Bra cup: {0}</RJW_PartInfo_braCup>
+	<RJW_PartInfo_braSizeNone>가슴 크기: -</RJW_PartInfo_braSizeNone>
+	<RJW_PartInfo_eggs>알: {0}</RJW_PartInfo_eggs>
+	<RJW_PartInfo_fluidTypeFluidAmount>{0}: {1}</RJW_PartInfo_fluidTypeFluidAmount>
+	<RJW_PartInfo_braSize>가슴 크기: {0}:{1}</RJW_PartInfo_braSize>
+	<RJW_PartInfo_overbust>윗가슴: {0}</RJW_PartInfo_overbust>
+	<RJW_PartInfo_underbust>밑가슴: {0}</RJW_PartInfo_underbust>
+	<RJW_PartInfo_weight>무게: {0}</RJW_PartInfo_weight>
+	<RJW_PartInfo_properties>Properties: {0}</RJW_PartInfo_properties>
+
+	<RJW_PartInfo_severity>Severity: {0}</RJW_PartInfo_severity>
+	<RJW_PartInfo_fluidMultiplier>Fluid Multiplier: {0}</RJW_PartInfo_fluidMultiplier>
+
+	<!-- 可安装部件的 hediff 提示与检视面板共用-->
+	<RJW_PartInfo_girth>직경: {0}</RJW_PartInfo_girth>
+	<RJW_PartInfo_length>길이: {0}</RJW_PartInfo_length>
+	<RJW_PartInfo_depth>Depth: {0}</RJW_PartInfo_depth>
+	<RJW_PartInfo_maxGirth>최대 직경: {0}</RJW_PartInfo_maxGirth>
+	<RJW_PartInfo_maxLength>최대 길이: {0}</RJW_PartInfo_maxLength>
+
+	<!-- 部件检视面板-->
+	<RJW_PartInfo_fluidTypeFluidAmountHeading>Fluid: {0} ({1}ml)</RJW_PartInfo_fluidTypeFluidAmountHeading>
+
+	<!-- 部件属性与描述 -->
+	<RJW_PartInfo_unknownSpecies>알 수 없음</RJW_PartInfo_unknownSpecies>
+	<RJW_PartInfo_unknownOwner>Unknown</RJW_PartInfo_unknownOwner>
+	<RJW_StatEntry_PreviousOwner>previous owner</RJW_StatEntry_PreviousOwner>
+	<RJW_StatEntry_OriginalOwnerRace>original race</RJW_StatEntry_OriginalOwnerRace>
+	<RJW_StatEntry_OriginalOwnerSize>original size</RJW_StatEntry_OriginalOwnerSize>
+	<RJW_StatEntry_PartSize>size</RJW_StatEntry_PartSize>
+	<RJW_StatEntry_PartCupSize>cup size</RJW_StatEntry_PartCupSize>
+	<RJW_StatEntry_PartLength>length</RJW_StatEntry_PartLength>
+	<RJW_StatEntry_PartGirth>girth</RJW_StatEntry_PartGirth>
+	<RJW_StatEntry_PartMaxGirth>max girth</RJW_StatEntry_PartMaxGirth>
+	<RJW_StatEntry_PartDepth>depth</RJW_StatEntry_PartDepth>
+	<RJW_StatEntry_PartWeight>weight</RJW_StatEntry_PartWeight>
+	<RJW_StatEntry_PartTags>properties</RJW_StatEntry_PartTags>
+	<RJW_StatEntry_Fluid>fluid</RJW_StatEntry_Fluid>
+	<RJW_StatEntry_FluidAmount>fluid amount</RJW_StatEntry_FluidAmount>
+	<RJW_StatEntry_FluidAmount_ejaculation>ejaculation amount</RJW_StatEntry_FluidAmount_ejaculation>
+	<RJW_StatEntry_FluidAmount_wetness>wetness</RJW_StatEntry_FluidAmount_wetness>
+
+	<!-- RJW 生育力提示 -->
+	<AgeImpactor>Age: </AgeImpactor>
+	<VanillaFertilityImpactor>Fertility stat: {VALUE}%</VanillaFertilityImpactor>
+
+	<!-- 宁芙!!! -->
+	<RJW_nymph_incident_raid_title>색정광 출현!!!</RJW_nymph_incident_raid_title>
+	<RJW_nymph_incident_raid_description>색정광 무리가 정착지로 향해 다가옵니다.</RJW_nymph_incident_raid_description>
+	<RJW_nymph_incident_wander_title>색정광 출현!</RJW_nymph_incident_wander_title>
+	<RJW_nymph_incident_wander_description>방황하는 색정광이 정착지에 방문합니다.</RJW_nymph_incident_wander_description>
+	<RJW_nymph_incident_join_title>색정광 합류</RJW_nymph_incident_join_title>
+	<RJW_nymph_incident_join_description>방황하는 색정광이 정착지에 합류합니다.</RJW_nymph_incident_join_description>
+
+	<!-- Biotech 集成 -->
+	<PawnLacksFunctionalGenitals>{PAWN} has no working genitals.</PawnLacksFunctionalGenitals>
+	<PawnLacksVagina>{PAWN} does not have a vagina.</PawnLacksVagina>
+	<PawnLacksFunctionalPenis>{PAWN} does not have a functional penis.</PawnLacksFunctionalPenis>
+	<VaginalWeight>vaginal sex chance</VaginalWeight>
+
+	<!-- 特质获取 -->
+	<!-- 提示：只要在后面加上该特质的 defName（以及可选的等级），就能方便地为这两个添加特质专属版本 -->
+	<LetterLabelGainedTraitFromSex>Trait gained : {PAWN}</LetterLabelGainedTraitFromSex>
+	<GainedTraitFromSex>A sexual experience has caused {PAWN} to gain the {TRAIT} trait.</GainedTraitFromSex>
+
+	<GainedTraitFromSexNymphomaniac>Aphrodisiac-assisted overstimulation has permanently rewired {PAWN}'s brain. {PAWN_pronoun} has gained the {TRAIT} trait.</GainedTraitFromSexNymphomaniac>
+	<GainedTraitFromSexFootSlut>The feat of feasting on the feel of feet is feeding a fiendish new fetish in {PAWN}. {PAWN} is now a {TRAIT}</GainedTraitFromSexFootSlut>
+	<LetterLabelGainedMultipleTraitsFromSex>Traits gained: {PAWN}</LetterLabelGainedMultipleTraitsFromSex>
+	<GainedMultipleTraitsFromSex>A powerful sexual experience has caused {PAWN} to gain the following traits:</GainedMultipleTraitsFromSex>
+	<GainedMultipleTraitsFromSexListItem>  - {0}</GainedMultipleTraitsFromSexListItem>
+
+	<!-- 束缚装备 -->
+	<RJW_BG_Message_FailedRemove>{0} struggles to remove {0_possessive} {1}. It's no use!</RJW_BG_Message_FailedRemove>
+	<RJW_BG_Message_NoWear_BlockedBy>{0} can't wear {1} (blocked by {2})</RJW_BG_Message_NoWear_BlockedBy>
+	<RJW_BG_Message_Unlock>Unlocked {0}</RJW_BG_Message_Unlock>
+	<RJW_BG_Message_CouldntDrop>Couldn't drop {0}</RJW_BG_Message_CouldntDrop>
+	<RJW_BG_Message_WrongKey>The key doesn't fit!</RJW_BG_Message_WrongKey>
+
+	<RJW_BG_Comp_Inspect_Engraving>Engraved with the name "{0}"</RJW_BG_Comp_Inspect_Engraving>
+	<RJW_BG_Comp_Inspect_Key>Cryptostamp: {0}</RJW_BG_Comp_Inspect_Key>
+</LanguageData>

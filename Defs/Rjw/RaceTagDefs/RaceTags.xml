@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<rjw.RaceTagDef>
+		<defName>Chitin</defName>
+	</rjw.RaceTagDef>
+
+	<rjw.RaceTagDef>
+		<defName>Demon</defName>
+	</rjw.RaceTagDef>
+
+	<rjw.RaceTagDef>
+		<defName>Feathers</defName>
+	</rjw.RaceTagDef>
+
+	<rjw.RaceTagDef>
+		<defName>Fur</defName>
+	</rjw.RaceTagDef>
+
+	<rjw.RaceTagDef>
+		<defName>Plant</defName>
+	</rjw.RaceTagDef>
+
+	<rjw.RaceTagDef>
+		<defName>Robot</defName>
+	</rjw.RaceTagDef>
+
+	<rjw.RaceTagDef>
+		<defName>Scales</defName>
+	</rjw.RaceTagDef>
+
+	<rjw.RaceTagDef>
+		<defName>Skin</defName>
+	</rjw.RaceTagDef>
+
+	<rjw.RaceTagDef>
+		<defName>Slime</defName>
+	</rjw.RaceTagDef>
+</Defs>

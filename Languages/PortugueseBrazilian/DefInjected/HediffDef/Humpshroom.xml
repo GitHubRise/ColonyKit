@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 可消耗物品 -->
+
+  <HumpShroomEffect.label>libido induzido</HumpShroomEffect.label>
+  <HumpShroomEffect.description>Efeitos afrodisíacos do champintón.</HumpShroomEffect.description>
+
+
+  <!-- 仙馔成瘾 -->
+
+  <HumpShroomTolerance.label>tolerância ao champintón</HumpShroomTolerance.label>
+  <HumpShroomTolerance.description>Telerância aos efeitos do champintón.</HumpShroomTolerance.description>
+
+  <HumpShroomAddiction.label>vício em champintón</HumpShroomAddiction.label>
+  <HumpShroomAddiction.description>víciado nos efeitos do champintón.</HumpShroomAddiction.description>
+  <HumpShroomAddiction.stages.1.label>abstinência</HumpShroomAddiction.stages.1.label>
+
+
+</LanguageData>

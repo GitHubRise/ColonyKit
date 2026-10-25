@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- 一些示例种族部件。 -->
+<Defs>
+	<rjw.RacePartDef>
+		<defName>RJW_CowBreasts</defName>
+		<!-- 只是字符串，所以只要不在缺少 hediff 所属模组的情况下加载种族模组，就可以安全地引用其他模组中的 def。 -->
+		<hediffName>UdderBreasts</hediffName>
+		<!-- 覆盖液体类型。若缺失或找不到，则默认使用所选 hediff 的液体类型。 -->
+		<fluidType>Milk</fluidType>
+		<!-- 覆盖液体修正系数。默认使用所选 hediff 的液体修正系数。 -->
+		<fluidModifier>2.0</fluidModifier>
+		<!-- 覆盖严重度（有效尺寸）。默认使用所选 hediff 的随机尺寸逻辑。实际尺寸会按小人体型缩放。 -->
+		<severityCurve>
+			<points>
+				<!-- 0.0 到 1.0 是“普通人类”范围。当然也可以比这更大。 -->
+				<li>(0.2, 0.5)</li>
+				<li>(0.9, 1.0)</li>
+				<li>(1.0, 1.1)</li>
+			</points>
+		</severityCurve>
+	</rjw.RacePartDef>
+
+	<rjw.RacePartDef>
+		<defName>RJW_SmallHoneyBreasts</defName>
+		<hediffName>Breasts</hediffName>
+		<fluidType>Honey</fluidType>
+		<severityCurve>
+			<points>
+				<li>(0.1, 0.1)</li>
+				<li>(0.6, 0.3)</li>
+				<li>(1.0, 0.5)</li>
+			</points>
+		</severityCurve>
+	</rjw.RacePartDef>
+
+	<!-- 若加载了 Alpha Bees，则让蜂蜜乳房产出蜂蜜。 -->
+	<rjw.SexFluidDef MayRequire="sarg.rimbees">
+		<defName>Honey</defName>
+		<label>honey</label>
+		<consumable>RB_BaseHoney</consumable>
+		<baseNutritionCost>0.5</baseNutritionCost>
+	</rjw.SexFluidDef>
+</Defs>

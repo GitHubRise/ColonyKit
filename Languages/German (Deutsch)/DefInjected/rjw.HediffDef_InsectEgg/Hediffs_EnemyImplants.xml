@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 带有产卵器植入卵的小人。 -->
+
+  <RJW_InsectEgg.label>Ei</RJW_InsectEgg.label>
+  <RJW_InsectEgg.description>Parasitische(s) Ei(er) welches in seinen Wirt ausbrütet und sich von dessen Nährstoffen nährt. Sei nur froh das es nicht deinen Oberkörper zerstört wenn es schlüpft.</RJW_InsectEgg.description>
+
+
+  <!-- 占位卵/不受支持/任意种族 -->
+
+  <RJW_UnknownEgg.label>Ei</RJW_UnknownEgg.label>
+  <RJW_UnknownEgg.description>Parasitische(s) Ei(er) welches in seinen Wirt ausbrütet und sich von dessen Nährstoffen nährt. Sei nur froh das es nicht deinen Oberkörper zerstört wenn es schlüpft.</RJW_UnknownEgg.description>
+
+
+  <!-- 原版昆虫，可互相授精 -->
+
+  <RJW_InsectHiveEgg.label>Ei</RJW_InsectHiveEgg.label>
+  <RJW_InsectHiveEgg.description>Parasitische(s) Ei(er) welches in seinen Wirt ausbrütet und sich von dessen Nährstoffen nährt. Sei nur froh das es nicht deinen Oberkörper zerstört wenn es schlüpft.</RJW_InsectHiveEgg.description>
+
+
+</LanguageData>

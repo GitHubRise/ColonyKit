@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Sex_Beakjob.label>мастурбация клювом</Sex_Beakjob.label>
+  <Sex_Beakjob.logRulesInitiator.rulesStrings.0>r_logentry->Получает мастурбацию клювом от [RECIPIENT_nameDef].</Sex_Beakjob.logRulesInitiator.rulesStrings.0>
+  <Sex_Beakjob.logRulesRecipient.rulesStrings.0>r_logentry->Мастурбирует [INITIATOR_nameDef] клювом.</Sex_Beakjob.logRulesRecipient.rulesStrings.0>
+  <Sex_Beakjob.modExtensions.0.RMBLabel>Мастурбация клювом</Sex_Beakjob.modExtensions.0.RMBLabel>
+
+
+</LanguageData>

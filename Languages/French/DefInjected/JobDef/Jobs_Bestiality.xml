@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: lovin' animal -->
+  <Bestiality.reportString>baise avec un animal.</Bestiality.reportString>
+  
+  <!-- EN: lovin' animal -->
+  <BestialityForFemale.reportString>baise avec un animal.</BestialityForFemale.reportString>
+  
+  <!-- EN: breeding -->
+  <Breed.reportString>féconde.</Breed.reportString>
+  
+  <!-- EN: gettin' bred. -->
+  <GettinBred.reportString>se fait féconder.</GettinBred.reportString>
+  
+  <!-- EN: mating -->
+  <RJW_Mate.reportString>s'accouple.</RJW_Mate.reportString>
+  
+</LanguageData>

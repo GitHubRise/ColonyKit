@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+<!-- 原版机械族。机械族会植入东西。 -->
+
+  <RJW_MechanoidImplant.description>Маленький компьютер, который входит в хост через одно из своих отверстий.
+Может анализировать жизненно важные показатели и данные о местоположении и передавать эту информацию обратно механоидному ИИ.</RJW_MechanoidImplant.description>
+
+  <!-- 用于 JobDriver_RapeEnemyByMech。机械族在强奸成功时会植入东西。 -->
+
+  <RJW_MicroComputer.label>Микрокомпьютер</RJW_MicroComputer.label>
+  <RJW_MicroComputer.description>Маленький компьютер, установленый в тело через одно из отверстий. 
+Может анализировать жизненные показатели и местоположение, после чего передать их своему установщику.</RJW_MicroComputer.description>
+
+
+</LanguageData>

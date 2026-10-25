@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <FeelingBroken.stages.0.label>Головокружение</FeelingBroken.stages.0.label>
+  <FeelingBroken.stages.0.description>Фух... Ско... Сколько раз они?..</FeelingBroken.stages.0.description>
+  <FeelingBroken.stages.1.label>На грани</FeelingBroken.stages.1.label>
+  <FeelingBroken.stages.1.description>Н-нет... Я не хочу... Ах... Моё тело больше не... Пожалуйста... Прекратите...</FeelingBroken.stages.1.description>
+  <FeelingBroken.stages.2.label>Раб</FeelingBroken.stages.2.label>
+  <FeelingBroken.stages.2.description>Хозяин, умоляю, накажите меня снова, я существую только для этого. Изнасилуйте меня и заполните все мои дырочки своей тёплой спермой ещё раз!</FeelingBroken.stages.2.description>
+
+  <GotRaped.stages.0.label>Изнасиловали</GotRaped.stages.0.label>
+  <GotRaped.stages.0.description>Меня изнасиловали... Никогда не приходилось чувствовать себя так паршиво.</GotRaped.stages.0.description>
+
+  <GotAnalRaped.stages.0.label>Анально изнасиловали</GotAnalRaped.stages.0.label>
+  <GotAnalRaped.stages.0.description>Меня изнасиловали в зад... Как же отвратительно я себя чувствую.</GotAnalRaped.stages.0.description>
+
+  <GotAnalRapedByFemale.stages.0.label>Анальное изнасилование девушкой</GotAnalRapedByFemale.stages.0.label>
+  <GotAnalRapedByFemale.stages.0.description>Девушка изнасиловала меня в задницу... Как же унизительно. Наверное, я этого заслуживаю...</GotAnalRapedByFemale.stages.0.description>
+
+  <GotRapedUnconscious.stages.0.label>Изнасиловали без сознания</GotRapedUnconscious.stages.0.label>
+  <GotRapedUnconscious.stages.0.description>Боже, кто-то или что-то изнасиловало моё полуживое тело. Как же отвратительно я себя чувствую.</GotRapedUnconscious.stages.0.description>
+
+  <MasochistGotRapedUnconscious.stages.0.label>Изнасиловали без сознания</MasochistGotRapedUnconscious.stages.0.label>
+  <MasochistGotRapedUnconscious.stages.0.description>Кто-то воспользовался моим бессознательным состоянием. И хуже всего было то, что я ничего не почувствовала!</MasochistGotRapedUnconscious.stages.0.description>
+
+  <MasochistGotRaped.stages.0.label>Изнасиловали</MasochistGotRaped.stages.0.label>
+  <MasochistGotRaped.stages.0.description>Мной воспользовались как каким-то куском мяса. Как же мне это нравится.</MasochistGotRaped.stages.0.description>
+
+  <MasochistGotAnalRaped.stages.0.label>Анально изнасиловали</MasochistGotAnalRaped.stages.0.label>
+  <MasochistGotAnalRaped.stages.0.description>Меня изнасиловали в зад... Так грубо. Меня прижали к земле и растянули мою дырочку... Ммм...</MasochistGotAnalRaped.stages.0.description>
+
+  <MasochistGotAnalRapedByFemale.stages.0.label>Анальное изнасилование девушкой</MasochistGotAnalRapedByFemale.stages.0.label>
+  <MasochistGotAnalRapedByFemale.stages.0.description>Девушка изнасиловала меня в задницу... Боже, как же это было горячо. Мысль о том, как девушка пользуется своей властью и делает тебя своей сучкой просто сводит с ума...</MasochistGotAnalRapedByFemale.stages.0.description>
+
+  <HateMyRapist.stages.0.label>{0} изнасиловал меня</HateMyRapist.stages.0.label>
+  <HateMyRapist.stages.0.description>Меня изнасиловал {0}. Пусть даже не надеется на прощение.</HateMyRapist.stages.0.description>
+
+  <KindaLikeMyRapist.stages.0.label>{0} изнасиловал меня</KindaLikeMyRapist.stages.0.label>
+  <KindaLikeMyRapist.stages.0.description>{0} так грубо прижал меня в последний раз. Хотелось бы такого почаще...</KindaLikeMyRapist.stages.0.description>
+
+  <AllowedMeToGetRaped.stages.0.label>Позволила изнасиловать</AllowedMeToGetRaped.stages.0.label>
+  <AllowedMeToGetRaped.stages.0.description>Меня изнасиловали, пока эта мразь {0} просто смотрела в другую сторону...</AllowedMeToGetRaped.stages.0.description>
+
+  <StoleSomeLovin.stages.0.label>Сексуальная разрядка</StoleSomeLovin.stages.0.label>
+  <StoleSomeLovin.stages.0.description>Я {PAWN_gender ? нашёл : нашла} себе {PAWN_gender ? сучку : кобеля} на вечер. Секс был паршивый, но это лучше, чем ничего.</StoleSomeLovin.stages.0.description>
+
+  <MadeSomeLovin.stages.0.label>Сексуальная разрядка</MadeSomeLovin.stages.0.label>
+  <MadeSomeLovin.stages.0.description>А этот кусок мяса неплохо себя показал.</MadeSomeLovin.stages.0.description>
+
+  <BloodlustStoleSomeLovin.stages.0.label>Сексуальная разрядка</BloodlustStoleSomeLovin.stages.0.label>
+  <BloodlustStoleSomeLovin.stages.0.description>Я {PAWN_gender ? показал : показала} этой мрази, какого отношения {PAWN_gender ? она : он} заслуживает. У меня до сих пор {PAWN_gender ? в штанах жмёт : внутри всё играет} от той заплаканной рожи.</BloodlustStoleSomeLovin.stages.0.description>
+
+
+</LanguageData>

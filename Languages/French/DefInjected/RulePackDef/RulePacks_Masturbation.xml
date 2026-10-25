@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] stroked [INITIATOR_possessive] penis with [INITIATOR_possessive] breasts.</li>
+  -->
+  <Masturbation_AutoBreastjobRP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] a caressé son pénis avec ses seins.</li>
+  </Masturbation_AutoBreastjobRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] autofellated [INITIATOR_possessive] penis.</li>
+  -->
+  <Masturbation_AutoFellatioRP.rulePack.rulesStrings>
+    <li>sent(INITIATOR_gender==Male)->[INITIATOR_nameDef] s'est autosucé.</li>
+    <li>sent(INITIATOR_gender==Female)->[INITIATOR_nameDef] s'est autosucée.</li>
+    <li>sent(INITIATOR_gender==None)->[INITIATOR_nameDef] s'est autosucé(e).</li>
+  </Masturbation_AutoFellatioRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] released some tension using [INITIATOR_possessive] anus.</li>
+  -->
+  <Masturbation_HandjobARP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] a relâché un peu de tension en utilisant son anus.</li>
+  </Masturbation_HandjobARP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] released some tension using [INITIATOR_possessive] breasts.</li>
+  -->
+  <Masturbation_HandjobBRP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] a relâché un peu de tension en utilisant ses seins.</li>
+  </Masturbation_HandjobBRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] released some tension using [INITIATOR_possessive] penis.</li>
+  -->
+  <Masturbation_HandjobPRP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] a relâché un peu de tension en utilisant son pénis.</li>
+  </Masturbation_HandjobPRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] released some tension using [INITIATOR_possessive] vagina.</li>
+  -->
+  <Masturbation_HandjobVRP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] a relâché un peu de tension en utilisant son vagin.</li>
+  </Masturbation_HandjobVRP.rulePack.rulesStrings>
+  
+</LanguageData>

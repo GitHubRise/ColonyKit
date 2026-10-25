@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <FeelingBroken.label>精神崩坏</FeelingBroken.label>
+
+  <FeelingBroken.description>精神崩坏，不再有感情了。</FeelingBroken.description>
+
+  <FeelingBroken.stages.earlystage.label>早期阶段</FeelingBroken.stages.earlystage.label>
+
+  <FeelingBroken.stages.in_a_trance.label>精神恍惚</FeelingBroken.stages.in_a_trance.label>
+
+  <FeelingBroken.stages.broken.label>崩坏边缘</FeelingBroken.stages.broken.label>
+
+  <FeelingBroken.stages.Extremely_broken.label>严重崩坏</FeelingBroken.stages.Extremely_broken.label>
+
+</LanguageData>

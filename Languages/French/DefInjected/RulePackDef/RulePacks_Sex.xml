@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] had anal sex with [RECIPIENT_nameDef].</li>
+  -->
+  <AnalSexRP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] a eu du sexe anal avec [RECIPIENT_nameDef].</li>
+  </AnalSexRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [RECIPIENT_nameDef] gave [INITIATOR_nameDef] a breastjob.</li>
+  -->
+  <BreastjobRP.rulePack.rulesStrings>
+    <li>sent-> [RECIPIENT_nameDef] a fait une branlette espagnole à [INITIATOR_nameDef].</li>
+  </BreastjobRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [RECIPIENT_nameDef] was double-penetrated by [INITIATOR_nameDef].</li>
+  -->
+  <DoublePenetrationRP.rulePack.rulesStrings>
+    <li>sent(RECIPIENT_gender==Male)->[RECIPIENT_nameDef] a été double-pénétré par [INITIATOR_nameDef].</li>
+    <li>sent(RECIPIENT_gender==Female)->[RECIPIENT_nameDef] a été double-pénétrée par [INITIATOR_nameDef].</li>
+    <li>sent(RECIPIENT_gender==None)->[RECIPIENT_nameDef] a été double-pénétré(e) par [INITIATOR_nameDef].</li>
+  </DoublePenetrationRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [RECIPIENT_nameDef] fingered [INITIATOR_nameDef].</li>
+  -->
+  <FingeringRP.rulePack.rulesStrings>
+    <li>sent-> [RECIPIENT_nameDef] a doigté [INITIATOR_nameDef].</li></FingeringRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [RECIPIENT_nameDef] anally fisted [INITIATOR_nameDef].</li>
+  -->
+  <FistingRP.rulePack.rulesStrings>
+    <li>sent-> [RECIPIENT_nameDef] a fisté analement [INITIATOR_nameDef].</li></FistingRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] received a footjob from [RECIPIENT_nameDef].</li>
+  -->
+  <FootjobRP.rulePack.rulesStrings>
+    <li>sent(INITIATOR_gender==Male)->[INITIATOR_nameDef] a été branlé avec les pieds de [RECIPIENT_nameDef].</li>
+    <li>sent(INITIATOR_gender==Female)->[INITIATOR_nameDef] a été branlée avec les pieds de [RECIPIENT_nameDef].</li>
+    <li>sent(INITIATOR_gender==None)->[INITIATOR_nameDef] a été branlé(e) avec les pieds de [RECIPIENT_nameDef].</li>
+  </FootjobRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] received a handjob from [RECIPIENT_nameDef].</li>
+    <li>sent-> [INITIATOR_nameDef] was jerked off by [RECIPIENT_nameDef].</li>
+  -->
+  <HandjobRP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] a reçu une branlette de [RECIPIENT_nameDef].</li>
+    <li>sent(INITIATOR_gender==Male)->[INITIATOR_nameDef] a été masturbé par [RECIPIENT_nameDef].</li>
+    <li>sent(INITIATOR_gender==Female)->[INITIATOR_nameDef] a été masturbée par [RECIPIENT_nameDef].</li>
+    <li>sent(INITIATOR_gender==None)->[INITIATOR_nameDef] a été masturbé(e) par [RECIPIENT_nameDef].</li>
+  </HandjobRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] and [RECIPIENT_nameDef] held each other's hands.</li>
+  -->
+  <MutualHandholdingRP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] et [RECIPIENT_nameDef] se sont tenu la main.</li></MutualHandholdingRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] and [RECIPIENT_nameDef] masturbated each other.</li>
+  -->
+  <MutualMasturbationRP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] et [RECIPIENT_nameDef] se sont masturbés mutuellement.</li></MutualMasturbationRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] and [RECIPIENT_nameDef] intertwined tails.</li>
+  -->
+  <MutualTailholdingRP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] et [RECIPIENT_nameDef] ont entremêlé leurs queues.</li></MutualTailholdingRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] had sex with [RECIPIENT_nameDef].</li>
+  -->
+  <OtherSexRP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] a eu du sexe avec [RECIPIENT_nameDef].</li></OtherSexRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [RECIPIENT_nameDef] scissored with [INITIATOR_nameDef].</li>
+  -->
+  <ScissoringRP.rulePack.rulesStrings>
+    <li>sent-> [RECIPIENT_nameDef] a fait les ciseaux avec [INITIATOR_nameDef].</li></ScissoringRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] had vaginal sex with [RECIPIENT_nameDef].</li>
+  -->
+  <VaginalSexRP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] a eu du sexe vaginal avec [RECIPIENT_nameDef].</li></VaginalSexRP.rulePack.rulesStrings>
+  
+</LanguageData>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: rimming -->
+  <Rape_Rimming.label>anulingus</Rape_Rimming.label>
+  <!-- EN:
+    <li>r_logentry->Forced [RECIPIENT_nameDef] to give anal rimming.</li>
+  -->
+  <Rape_Rimming.logRulesInitiator.rulesStrings>
+    <li>r_logentry->A forcé [RECIPIENT_nameDef] à lui faire un anulingus.</li>
+  </Rape_Rimming.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Was forced to rim anus of [INITIATOR_nameDef].</li>
+  -->
+  <Rape_Rimming.logRulesRecipient.rulesStrings>
+    <li>r_logentry(RECIPIENT_gender!=Female)->A été forcé à faire un anulingus à [INITIATOR_nameDef].</li>
+    <li>r_logentry(RECIPIENT_gender==Female)->A été forcée à faire un anulingus à [INITIATOR_nameDef].</li>
+  </Rape_Rimming.logRulesRecipient.rulesStrings>
+  <!-- EN: Get anal rimming -->
+  <Rape_Rimming.modExtensions.0.RMBLabel>Reçoit un anulingus</Rape_Rimming.modExtensions.0.RMBLabel>
+  
+</LanguageData>

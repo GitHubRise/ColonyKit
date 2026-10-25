@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<PawnColumnWorker_RJWGender_IsHerm>Interseks</PawnColumnWorker_RJWGender_IsHerm>
+
+	<!-- 待办？ -->
+	<!-- 还是说不用做？ -->
+	<PawnColumnWorker_IsSlave>Czy pionek jest niewolnikiem?</PawnColumnWorker_IsSlave>
+	<PawnColumnWorker_IsPrisoner>Czy pionek jest wiezniem?</PawnColumnWorker_IsPrisoner>
+	<PawnColumnWorker_IsComfort>Czy pionek jest pionkiem rozrywkowym?</PawnColumnWorker_IsComfort>
+	<PawnColumnWorker_IsBreeder>Czy pionek jest rozplodowy?</PawnColumnWorker_IsBreeder>
+
+	<MainTabWindow_Designators>Oznaczenia: {0}</MainTabWindow_Designators>
+
+</LanguageData>

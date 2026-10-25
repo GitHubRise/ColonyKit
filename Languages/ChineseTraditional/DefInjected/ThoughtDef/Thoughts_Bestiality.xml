@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <GotBredByAnimal.stages.raped_by_animal.label>被動物強姦</GotBredByAnimal.stages.raped_by_animal.label>
+
+  <GotBredByAnimal.stages.raped_by_animal.description>一隻動物試圖對我配種！</GotBredByAnimal.stages.raped_by_animal.description>
+
+  <GotAnalBredByAnimal.stages.bred_anally_by_animal.label>被動物強姦屁股</GotAnalBredByAnimal.stages.bred_anally_by_animal.label>
+
+  <GotAnalBredByAnimal.stages.bred_anally_by_animal.description>我被一隻動物強姦了屁股……沒有比這更丟臉的了，我只想爬進洞裡死。拜託，不要有人看著我……</GotAnalBredByAnimal.stages.bred_anally_by_animal.description>
+
+  <MasochistGotBredByAnimal.stages.raped_by_animal.label>被動物強姦（受虐狂）</MasochistGotBredByAnimal.stages.raped_by_animal.label>
+
+  <MasochistGotBredByAnimal.stages.raped_by_animal.description>一隻動物試圖對我配種。我有點喜歡那樣……</MasochistGotBredByAnimal.stages.raped_by_animal.description>
+
+  <MasochistGotAnalBredByAnimal.stages.bred_anally_by_animal.label>被動物強姦屁股（受虐狂）</MasochistGotAnalBredByAnimal.stages.bred_anally_by_animal.label>
+
+  <MasochistGotAnalBredByAnimal.stages.bred_anally_by_animal.description>我被一隻動物強姦了……屁股。它完全羞辱了我，在我身上發情，肆無忌憚地摧殘我的屁眼，我就像是一頭什麼都不值得的豬……我可以習慣的。</MasochistGotAnalBredByAnimal.stages.bred_anally_by_animal.description>
+
+  <ZoophileGotBredByAnimal.stages.bred_by_animal.label>被動物配種（戀獸癖）</ZoophileGotBredByAnimal.stages.bred_by_animal.label>
+
+  <ZoophileGotBredByAnimal.stages.bred_by_animal.description>一隻動物和我做愛~</ZoophileGotBredByAnimal.stages.bred_by_animal.description>
+
+  <ZoophileGotAnalBredByAnimal.stages.bred_anally_by_animal.label>被動物強姦屁股（戀獸癖）</ZoophileGotAnalBredByAnimal.stages.bred_anally_by_animal.label>
+
+  <ZoophileGotAnalBredByAnimal.stages.bred_anally_by_animal.description>那隻動物把我狠狠地揍了一頓，把我變成了它的婊子……它騎在我身上，刺進我的屁股，直到它把它的種子塞滿了我……讓我每次想起這些就想撫摸一次自己。</ZoophileGotAnalBredByAnimal.stages.bred_anally_by_animal.description>
+
+  <AllowedAnimalToBreed.stages.bred_by_animal.label>被動物配種</AllowedAnimalToBreed.stages.bred_by_animal.label>
+
+  <AllowedAnimalToBreed.stages.bred_by_animal.description>我居然慾求不滿到讓一隻動物騎上了我，我感到很羞愧。但那還挺爽的……</AllowedAnimalToBreed.stages.bred_by_animal.description>
+
+  <GotLickedByAnimal.stages.raped_by_animal.label>被動物強姦</GotLickedByAnimal.stages.raped_by_animal.label>
+
+  <GotLickedByAnimal.stages.raped_by_animal.description>一隻動物強行把舌頭伸進我的體內。</GotLickedByAnimal.stages.raped_by_animal.description>
+
+  <MasochistGotLickedByAnimal.stages.raped_by_animal.label>被動物強姦（受虐狂）</MasochistGotLickedByAnimal.stages.raped_by_animal.label>
+
+  <MasochistGotLickedByAnimal.stages.raped_by_animal.description>一隻動物強行把舌頭伸進我的體內。但是我還蠻喜歡那樣……</MasochistGotLickedByAnimal.stages.raped_by_animal.description>
+
+  <ZoophileGotLickedByAnimal.stages.ravished_by_animal.label>被動物迷住了（戀獸癖）</ZoophileGotLickedByAnimal.stages.ravished_by_animal.label>
+
+  <ZoophileGotLickedByAnimal.stages.ravished_by_animal.description>一隻動物為我口交，舔得我欣喜落狂！</ZoophileGotLickedByAnimal.stages.ravished_by_animal.description>
+
+  <AllowedAnimalToLick.stages.licked_by_animal.label>被動物舔了</AllowedAnimalToLick.stages.licked_by_animal.label>
+
+  <AllowedAnimalToLick.stages.licked_by_animal.description>我讓一隻動物舔了我，我為自己感到羞愧，但我有點喜歡那樣的……</AllowedAnimalToLick.stages.licked_by_animal.description>
+
+  <!-- 用于更怪异动物行为的通用类型，通常只在玩家过度改动默认设置时才会发生 -->
+  <GotGropedByAnimal.stages.molested_by_animal.label>被動物猥褻</GotGropedByAnimal.stages.molested_by_animal.label>
+
+  <GotGropedByAnimal.stages.molested_by_animal.description>一隻動物猥褻了我！髒死了！</GotGropedByAnimal.stages.molested_by_animal.description>
+
+  <MasochistGotGropedByAnimal.stages.molested_by_animal_Masochist.label>被動物猥褻（受虐狂）</MasochistGotGropedByAnimal.stages.molested_by_animal_Masochist.label>
+
+  <MasochistGotGropedByAnimal.stages.molested_by_animal_Masochist.description>一隻動物猥褻了我，但我有點喜歡那樣的……</MasochistGotGropedByAnimal.stages.molested_by_animal_Masochist.description>
+
+  <ZoophileGotGropedByAnimal.stages.molested_by_animal_Zoophile.label>被動物猥褻（戀獸癖）</ZoophileGotGropedByAnimal.stages.molested_by_animal_Zoophile.label>
+
+  <ZoophileGotGropedByAnimal.stages.molested_by_animal_Zoophile.description>一隻動物迷住了我❤</ZoophileGotGropedByAnimal.stages.molested_by_animal_Zoophile.description>
+
+  <AllowedAnimalToGrope.stages.groped_by_animal.label>被動物摸過</AllowedAnimalToGrope.stages.groped_by_animal.label>
+
+  <AllowedAnimalToGrope.stages.groped_by_animal.description>我為自己感到羞愧，我居然慾求不滿到讓一隻動物仔細地摸了我的身體……</AllowedAnimalToGrope.stages.groped_by_animal.description>
+</LanguageData>

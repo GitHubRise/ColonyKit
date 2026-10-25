@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RJW_NymphRaid.label>Najazd nimf</RJW_NymphRaid.label>
+  <RJW_NymphRaid.description>Nimfomanki zdecydowaly się odwiedzic twoja kolonię.</RJW_NymphRaid.description>
+  <RJW_NymphWander.label>Nimfa</RJW_NymphWander.label>
+  <RJW_NymphWander.description>Wędrująca nimfa zdecydowala się odwiedzic twoja osadę.</RJW_NymphWander.description>
+  <RJW_NymphJoin.label>Nimfa dołącza</RJW_NymphJoin.label>
+  <RJW_NymphJoin.description>Wędrująca nimfa zdecydowala się dołączyć do twojej osady.</RJW_NymphJoin.description>
+</LanguageData>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <rjw_interaction_template.label>Шаблон взаимодействия RJW</rjw_interaction_template.label>
+  <rjw_interaction_template.logRulesInitiator.rulesStrings.0>r_logentry->занимается сексом с [RECIPIENT_nameDef].</rjw_interaction_template.logRulesInitiator.rulesStrings.0>
+  <rjw_interaction_template.logRulesRecipient.rulesStrings.0>r_logentry->занимается сексом с [INITIATOR_nameDef].</rjw_interaction_template.logRulesRecipient.rulesStrings.0>
+  <rjw_interaction_template.modExtensions.0.RMBLabel>Шаблон взаимодействия RJW</rjw_interaction_template.modExtensions.0.RMBLabel>
+
+
+</LanguageData>

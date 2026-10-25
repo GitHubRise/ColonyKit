@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RandomRape.label>przymusowy gwalt</RandomRape.label>
+  <RandomRape.description>Przymusowy stan umyslu gwaltu.</RandomRape.description>
+  <RandomRape.beginLetterLabel>Gwalt</RandomRape.beginLetterLabel>
+  <RandomRape.beginLetter>{0} wpadla w furie gwaltu.</RandomRape.beginLetter>
+  <RandomRape.recoveryMessage>{0} wyszla z furii gwaltu.</RandomRape.recoveryMessage>
+  <RandomRape.baseInspectLine>Stan umyslu: Przymusowy gwalt</RandomRape.baseInspectLine>
+</LanguageData>

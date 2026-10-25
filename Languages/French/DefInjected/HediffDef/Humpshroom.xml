@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: humpshroom addiction -->
+  <HumpShroomAddiction.label>addiction au baisignon</HumpShroomAddiction.label>
+  <!-- EN: Hump shroom effects addiction. -->
+  <HumpShroomAddiction.description>effets d'addiction au baisignon.</HumpShroomAddiction.description>
+  <!-- EN: withdrawal -->
+  <HumpShroomAddiction.stages.withdrawal.label>sevrage</HumpShroomAddiction.stages.withdrawal.label>
+  
+  <!-- EN: induced libido -->
+  <HumpShroomEffect.label>libido induite</HumpShroomEffect.label>
+  <!-- EN: Hump shroom aphrodisiac effects. -->
+  <HumpShroomEffect.description>Effets aphrodisiaques du baisignon.</HumpShroomEffect.description>
+  
+  <!-- EN: humpshroom tolerance -->
+  <HumpShroomTolerance.label>tolérance au baisignon</HumpShroomTolerance.label>
+  <!-- EN: Hump shroom effects tolerance. -->
+  <HumpShroomTolerance.description>Tolérance aux effets du baisignon.</HumpShroomTolerance.description>
+  <!-- EN: small -->
+  <HumpShroomTolerance.stages.small.label>petite</HumpShroomTolerance.stages.small.label>
+  <!-- EN: large -->
+  <HumpShroomTolerance.stages.large.label>grande</HumpShroomTolerance.stages.large.label>
+  <!-- EN: massive -->
+  <HumpShroomTolerance.stages.massive.label>massive</HumpShroomTolerance.stages.massive.label>
+  
+</LanguageData>

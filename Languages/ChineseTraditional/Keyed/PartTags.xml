@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<PartsTag_Barbed>倒鉤</PartsTag_Barbed>
+	<PartsTag_Long>修長</PartsTag_Long>
+	<PartsTag_Girthy>粗大</PartsTag_Girthy>
+	<PartsTag_Solid>堅實</PartsTag_Solid>
+	<PartsTag_Small>嬌小</PartsTag_Small>
+	<PartsTag_Rigid>堅挺</PartsTag_Rigid>
+	<PartsTag_Thin>纖細</PartsTag_Thin>
+	<PartsTag_Sheathed>包覆</PartsTag_Sheathed>
+	<PartsTag_Internal>內置</PartsTag_Internal>
+	<PartsTag_Flared>末端外擴</PartsTag_Flared>
+	<PartsTag_Multiple>多重結構</PartsTag_Multiple>
+	<PartsTag_Ridged>環狀突起</PartsTag_Ridged>
+	<PartsTag_Knotted>帶結</PartsTag_Knotted>
+	<PartsTag_Tapered>錐形</PartsTag_Tapered>
+	<PartsTag_Glowing>發光</PartsTag_Glowing>
+	<PartsTag_Prehensile>可抓握</PartsTag_Prehensile>
+	<PartsTag_Humanlike>類人形</PartsTag_Humanlike>
+
+	<PartsTag_Deep>深邃</PartsTag_Deep>
+	<PartsTag_Tight>緊緻</PartsTag_Tight>
+	<PartsTag_Loose>鬆弛</PartsTag_Loose>
+
+	<PartsTag_Artificial>人造</PartsTag_Artificial>
+	<PartsTag_STDImmune>免疫性病</PartsTag_STDImmune>
+	<PartsTag_Resizable>可調尺寸</PartsTag_Resizable>
+	<PartsTag_FertilityToggle>可控生育</PartsTag_FertilityToggle>
+</LanguageData>

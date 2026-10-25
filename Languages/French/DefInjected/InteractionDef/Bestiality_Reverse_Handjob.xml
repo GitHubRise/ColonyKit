@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Handjob -->
+  <Bestiality_Reverse_Handjob.label>Branlette</Bestiality_Reverse_Handjob.label>
+  <!-- EN:
+    <li>r_logentry->Serviced [RECIPIENT_nameDef] with a handjob.</li>
+  -->
+  <Bestiality_Reverse_Handjob.logRulesInitiator.rulesStrings>
+    <li>r_logentry->A servi [RECIPIENT_nameDef] avec une branlette.</li>
+  </Bestiality_Reverse_Handjob.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Received handjob from [INITIATOR_nameDef].</li>
+  -->
+  <Bestiality_Reverse_Handjob.logRulesRecipient.rulesStrings>
+    <li>r_logentry->A reçu une branlette de [INITIATOR_nameDef].</li>
+  </Bestiality_Reverse_Handjob.logRulesRecipient.rulesStrings>
+  <!-- EN: Give handjob -->
+  <Bestiality_Reverse_Handjob.modExtensions.0.RMBLabel>Fait une branlette</Bestiality_Reverse_Handjob.modExtensions.0.RMBLabel>
+  
+</LanguageData>

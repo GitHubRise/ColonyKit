@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: sterilized -->
+  <Sterilized.label>stérilisation</Sterilized.label>
+  <!-- EN: Unable to reproduce. -->
+  <Sterilized.description>Le système reproducteur de cette créature a été définitivement arrêté.</Sterilized.description>
+  
+</LanguageData>

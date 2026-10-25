@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <MyPupDied.stages.0.label>mój syn {0} umarł</MyPupDied.stages.0.label>
+  <MyPupDied.stages.0.description>Mój syn nie żyje. Moje własne mięso i krew...</MyPupDied.stages.0.description>
+
+  <MyPupDiedFemale.stages.0.label>moja córka {0} umarła</MyPupDiedFemale.stages.0.label>
+  <MyPupDiedFemale.stages.0.description>Moja córka nie żyje. Moje własne mięso i krew...</MyPupDiedFemale.stages.0.description>
+
+  <KilledMyPup.stages.0.label>zabił mi syna</KilledMyPup.stages.0.label>
+  <KilledMyPupFemale.stages.0.label>zabił mi córkę</KilledMyPupFemale.stages.0.label>
+
+  <SoldMyPup.stages.0.label>ukochana osoba sprzedana</SoldMyPup.stages.0.label>
+  <SoldMyPup.stages.0.description>Moje dziecko zostało sprzedane!</SoldMyPup.stages.0.description>
+
+  <IncubatorEmpty.stages.0.label>pusty inkubator</IncubatorEmpty.stages.0.label>
+  <IncubatorEmpty.stages.0.description>Mój brzuch jest pusty. Chcę być wypełniona.</IncubatorEmpty.stages.0.description>
+
+  <IncubatorFilled.stages.0.label>wypełniony inkubator</IncubatorFilled.stages.0.label>
+  <IncubatorFilled.stages.0.description>Mój brzuch jest pełen. Czuję się kompletna.</IncubatorFilled.stages.0.description>
+
+  <IncubatorFilledEggs.stages.0.label>pełna jaj</IncubatorFilledEggs.stages.0.label>
+  <IncubatorFilledEggs.stages.0.description>Mój brzuch jest pełen jaj. Czuję się tak płodna.</IncubatorFilledEggs.stages.0.description>
+</LanguageData>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<!-- 标签 -->
+	<RJW_SexGizmo_Orgasm>Orgasme</RJW_SexGizmo_Orgasm>
+	<RJW_SexGizmo_RestNeed>Endurance</RJW_SexGizmo_RestNeed>
+	<RJW_SexGizmo_SexNeed>Satisfaction</RJW_SexGizmo_SexNeed><!-- ? -->
+	
+	<!-- 按钮 -->
+	<RJW_SexGizmo_SexOverdriveTooltip>Trop d'excitation sexuelle - le sexe ne s'arrêtera pas tant que le pion ne s'effondrera pas ou ne sera pas interrompu d'une autre manière.</RJW_SexGizmo_SexOverdriveTooltip>
+	<RJW_SexGizmo_HitPawn>Frappez une fois.</RJW_SexGizmo_HitPawn>
+	<RJW_SexGizmo_Cocoon>Enveloppez le pion dans un cocon.</RJW_SexGizmo_Cocoon><!-- ? -->
+	<RJW_SexGizmo_Egg>Remplir avec des œufs.</RJW_SexGizmo_Egg><!-- ? -->
+</LanguageData>

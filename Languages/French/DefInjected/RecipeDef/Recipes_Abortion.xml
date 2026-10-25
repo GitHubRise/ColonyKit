@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: abort pregnancy -->
+  <RJW_AbortionBeast.label>interrompre une grossesse</RJW_AbortionBeast.label>
+  <!-- EN: Removes an unwanted pregnancy. -->
+  <RJW_AbortionBeast.description>Interrompt une grossesse non désirée.</RJW_AbortionBeast.description>
+  <!-- EN: Carrying out abortion. -->
+  <RJW_AbortionBeast.jobString>Pratique un avortement.</RJW_AbortionBeast.jobString>
+  
+  <!-- EN: abort pregnancy -->
+  <RJW_AbortionHuman.label>interrompre une grossesse</RJW_AbortionHuman.label>
+  <!-- EN: Removes an unwanted pregnancy. -->
+  <RJW_AbortionHuman.description>Interrompt une grossesse non désirée.</RJW_AbortionHuman.description>
+  <!-- EN: Carrying out abortion. -->
+  <RJW_AbortionHuman.jobString>Pratique un avortement.</RJW_AbortionHuman.jobString>
+  
+  <!-- EN: neutralize mechanoid -->
+  <RJW_AbortionMech.label>neutraliser un mécanoïde</RJW_AbortionMech.label>
+  <!-- EN: Safely neutralize mechanoid nanites. -->
+  <RJW_AbortionMech.description>Neutralise en toute sécurité les nanites mécanoïdes.</RJW_AbortionMech.description>
+  <!-- EN: Carrying out abortion. -->
+  <RJW_AbortionMech.jobString>Pratique une neutralisation.</RJW_AbortionMech.jobString>
+  
+  <!-- EN: abort pregnancy -->
+  <RJW_AbortionMechHidden.label>interrompre une grossesse</RJW_AbortionMechHidden.label>
+  <!-- EN: Removes an unwanted pregnancy. -->
+  <RJW_AbortionMechHidden.description>Interrompt une grossesse non désirée.</RJW_AbortionMechHidden.description>
+  <!-- EN: Carrying out abortion. -->
+  <RJW_AbortionMechHidden.jobString>Pratique un avortement.</RJW_AbortionMechHidden.jobString>
+  
+  <!-- EN: hack mechanoid -->
+  <RJW_HackMech.label>pirater un mécanoïde</RJW_HackMech.label>
+  <!-- EN: Hack mechanoid AI, cutting it off from the global mechanoid AI, resulting in a docile (unless provoked) mechanoid. -->
+  <RJW_HackMech.description>Pirater l'IA mécanoïde, la séparer de l'IA mécanoïde globale, donne un mécanoïde docile (à moins d'être provoqué).</RJW_HackMech.description>
+  <!-- EN: Hacking mechanoid. -->
+  <RJW_HackMech.jobString>Pirate un mécanoïde.</RJW_HackMech.jobString>
+  
+</LanguageData>

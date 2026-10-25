@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <RJW_Gender.headerTip>性别</RJW_Gender.headerTip>
+
+  <RJW_IsPrisoner.headerTip>囚犯</RJW_IsPrisoner.headerTip>
+
+  <RJW_IsSlave.headerTip>奴隶</RJW_IsSlave.headerTip>
+
+  <RJW_Sexuality.headerTip>性取向</RJW_Sexuality.headerTip>
+
+</LanguageData>

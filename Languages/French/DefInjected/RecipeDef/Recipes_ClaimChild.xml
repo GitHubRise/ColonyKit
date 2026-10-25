@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: claim child -->
+  <claimChild.label>Adopter l'enfant</claimChild.label>
+  <!-- EN: Makes the child belong to the colony. -->
+  <claimChild.description>Permet à l'enfant d'appartenir à la colonie.</claimChild.description>
+  <!-- EN: Adopting. -->
+  <claimChild.jobString>Adopte.</claimChild.jobString>
+  
+</LanguageData>

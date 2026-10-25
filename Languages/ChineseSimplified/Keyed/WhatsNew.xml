@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RJW_WhatsNew_Title>RimJobWorld {0} 更新内容</RJW_WhatsNew_Title>
+  <RJW_WhatsNew_Fallback>未找到更新日志。详情请查看 changelog.txt 或下载页面。</RJW_WhatsNew_Fallback>
+  <RJW_WhatsNew_NeverShow>不再显示此窗口</RJW_WhatsNew_NeverShow>
+</LanguageData>

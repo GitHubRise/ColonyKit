@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Sex_Reverse_Handjob.label>мастурбация руками</Sex_Reverse_Handjob.label>
+  <Sex_Reverse_Handjob.logRulesInitiator.rulesStrings.0>r_logentry->Мастурбирует [RECIPIENT_nameDef] руками.</Sex_Reverse_Handjob.logRulesInitiator.rulesStrings.0>
+  <Sex_Reverse_Handjob.logRulesRecipient.rulesStrings.0>r_logentry->Получает мастурбацию руками от [INITIATOR_nameDef].</Sex_Reverse_Handjob.logRulesRecipient.rulesStrings.0>
+  <Sex_Reverse_Handjob.modExtensions.0.RMBLabel>Мастурбация руками</Sex_Reverse_Handjob.modExtensions.0.RMBLabel>
+
+
+</LanguageData>

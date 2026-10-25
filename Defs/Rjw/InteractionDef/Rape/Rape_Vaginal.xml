@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<InteractionDef ParentName="RJW_InteractionDefBaseRape">
+		<defName>Rape_Vaginal</defName>
+		<label>vaginal</label>
+		<logRulesInitiator>
+			<rulesStrings>
+				<li>r_logentry->Raped vaginally [RECIPIENT_nameDef].</li>
+			</rulesStrings>
+		</logRulesInitiator>
+		<logRulesRecipient>
+			<rulesStrings>
+				<li>r_logentry->Was vaginally raped by [INITIATOR_nameDef].</li>
+			</rulesStrings>
+		</logRulesRecipient>
+		<modExtensions>
+			<li Class="rjw.SexInteractionExtension">
+				<RMBLabel>Fuck vaginally</RMBLabel>
+				<rjwSextype>Vaginal</rjwSextype>
+				<extraSentencePacks>
+					<li>VaginalRapeRP</li>
+				</extraSentencePacks>
+				<tags>
+					<li>Fertilization</li>
+					<li>EggFertilization</li>
+					<li>EggLaying</li>
+					<li>Rape</li>
+				</tags>
+				<initiatorRequirement>
+					<genitalTags>
+						<li>CanPenetrate</li>
+					</genitalTags>
+				</initiatorRequirement>
+				<recipientRequirement>
+					<genitalFamilies>
+						<li>Vagina</li>
+					</genitalFamilies>
+					<pawnStates>
+						<li>Healthy</li>
+						<li>Downed</li>
+						<li>Unconscious</li>
+					</pawnStates>				
+				</recipientRequirement>
+			</li>
+		</modExtensions>
+	</InteractionDef>
+</Defs>

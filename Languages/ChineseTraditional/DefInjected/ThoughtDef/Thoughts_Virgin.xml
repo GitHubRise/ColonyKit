@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 由 Hoge 添加。 -->
+  <FortunateGaveVirginity.stages.Gave_virginity.label>獻出初夜</FortunateGaveVirginity.stages.Gave_virginity.label>
+
+  <FortunateGaveVirginity.stages.Gave_virginity.description>我獻出了我的初夜。</FortunateGaveVirginity.stages.Gave_virginity.description>
+
+  <UnfortunateLostVirginity.stages.Lost_virginity.label>失去初夜</UnfortunateLostVirginity.stages.Lost_virginity.label>
+
+  <UnfortunateLostVirginity.stages.Lost_virginity.description>我失去了我的初夜，並且我再也找不回來了。</UnfortunateLostVirginity.stages.Lost_virginity.description>
+
+  <TookVirginity.stages.Took_virginity.label>奪走初夜</TookVirginity.stages.Took_virginity.label>
+
+  <TookVirginity.stages.Took_virginity.description>我奪走了某人的初夜。</TookVirginity.stages.Took_virginity.description>
+</LanguageData>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: humpshroom -->
+  <Chemical_HumpShroom.label>baisignon</Chemical_HumpShroom.label>
+  <!-- EN: Person is now hooked on shrooms. Without them, their bedroom performance may fall. -->
+  <Chemical_HumpShroom.description>Cette personne est désormais accro aux champignons aphrodisiaques. Sans eux, ses performances sexuelles pourraient diminuer.</Chemical_HumpShroom.description>
+  
+</LanguageData>

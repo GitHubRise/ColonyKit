@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Vulnerability.label>podatność</Vulnerability.label>
+  <Vulnerability.description>Jak bardzo ta istota jest podatna na gwalt.</Vulnerability.description>
+  <SexFrequency.label>częstotliwość seksu</SexFrequency.label>
+  <SexFrequency.description>Jak czesto ta istota chce mieć seks.</SexFrequency.description>
+  <SexAbility.label>zdolność seksualna</SexAbility.label>
+  <SexAbility.description>Zdolnosc tej istoty do uprawiania seksu.</SexAbility.description>
+</LanguageData>

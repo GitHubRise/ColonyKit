@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<RoomRoleDef>
+		<defName>RJW_FemalePrison</defName>
+		<label>women's prison</label>
+		<workerClass>rjw.RoomRoleWorker_FemalePrison</workerClass>
+		<avoidViewingArtIfUnowned>true</avoidViewingArtIfUnowned>
+		<relatedStats>
+			<li>Beauty</li>
+			<li>Cleanliness</li>
+			<li>Wealth</li>
+			<li>Space</li>
+			<li>Impressiveness</li>
+		</relatedStats>
+	</RoomRoleDef>
+</Defs>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Hediff_Submitting.label>rendendo-se</Hediff_Submitting.label>
+  <Hediff_Submitting.description>Rendido.</Hediff_Submitting.description>
+
+
+  <!-- 防止 10 个工作栈错误，同时因为不再执行所有强奸检查，性能也更好 -->
+
+  <Hediff_RapeEnemyCD.label>tempo de proximo estupro inimigo</Hediff_RapeEnemyCD.label>
+  <Hediff_RapeEnemyCD.description>"Quem é o próximo?"</Hediff_RapeEnemyCD.description>
+
+
+</LanguageData>

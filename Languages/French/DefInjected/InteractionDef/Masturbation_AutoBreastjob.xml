@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: masturbation_autobreastjob -->
+  <Masturbation_AutoBreastjob.label>autobranlette espagnole</Masturbation_AutoBreastjob.label>
+  <!-- EN:
+    <li>r_logentry->Masturbated.</li>
+  -->
+  <Masturbation_AutoBreastjob.logRulesInitiator.rulesStrings>
+    <li>r_logentry(INITIATOR_gender!=Female)->S'est masturbé avec ses seins.</li>
+    <li>r_logentry(INITIATOR_gender==Female)->S'est masturbée avec ses seins.</li>
+  </Masturbation_AutoBreastjob.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Masturbated.</li>
+  -->
+  <Masturbation_AutoBreastjob.logRulesRecipient.rulesStrings>
+    <li>r_logentry(RECIPIENT_gender!=Female)->S'est masturbé avec ses seins.</li>
+    <li>r_logentry(RECIPIENT_gender==Female)->S'est masturbée avec ses seins.</li>
+  </Masturbation_AutoBreastjob.logRulesRecipient.rulesStrings>
+  
+</LanguageData>

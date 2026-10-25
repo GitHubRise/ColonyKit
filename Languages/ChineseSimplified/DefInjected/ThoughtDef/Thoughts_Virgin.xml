@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <FortunateGaveVirginity.stages.Gave_virginity.label>献出初夜</FortunateGaveVirginity.stages.Gave_virginity.label>
+
+  <FortunateGaveVirginity.stages.Gave_virginity.description>我献出了我的初夜。</FortunateGaveVirginity.stages.Gave_virginity.description>
+
+  <TookVirginity.stages.Took_virginity.label>夺走初夜</TookVirginity.stages.Took_virginity.label>
+
+  <TookVirginity.stages.Took_virginity.description>我夺走了某人的初夜。</TookVirginity.stages.Took_virginity.description>
+
+  <UnfortunateLostVirginity.stages.Lost_virginity.label>失去初夜</UnfortunateLostVirginity.stages.Lost_virginity.label>
+
+  <UnfortunateLostVirginity.stages.Lost_virginity.description>我失去了我的初夜，并且我再也找不回来了。</UnfortunateLostVirginity.stages.Lost_virginity.description>
+
+</LanguageData>

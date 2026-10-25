@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<!-- 一个小补丁，为 RJW 添加对 Automatic Hydroponics 模组的支持。现在可以在自动水培中种植 humpshroom。 -->
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Automatic Hydroponics</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<PipeSystem.ProcessDef>
+							<defName>AutoHydroponic_RJWHumpshroom</defName>
+							<label>Growing humpshroom</label>
+							<description>Grow humpshroom.</description>
+							<spawnOnInteractionCell>true</spawnOnInteractionCell>
+							<labelOverride>Grow 50 humpshroom in 8.7 days</labelOverride>
+							<priorityInBillList>0</priorityInBillList>
+							<ticks>522000</ticks> <!-- 8.7 个游戏日 -->
+							<ingredients>
+								<li>
+									<thing>WoodLog</thing>
+									<countNeeded>0</countNeeded>
+								</li>
+							</ingredients>
+							<results>
+								<li>
+									<thing>HumpShroom</thing>
+									<count>50</count>
+								</li>
+							</results>
+							<autoExtract>true</autoExtract>
+						</PipeSystem.ProcessDef>
+						<PipeSystem.ProcessDef>
+							<defName>AutoHydroponic_RJWHumpshroomSm</defName>
+							<label>Growing humpshroom</label>
+							<description>Grow humpshroom.</description>
+							<spawnOnInteractionCell>true</spawnOnInteractionCell>
+							<labelOverride>Grow 25 humpshroom in 8.7 days</labelOverride>
+							<priorityInBillList>0</priorityInBillList>
+							<ticks>522000</ticks> <!-- 8.7 个游戏日 -->
+							<ingredients>
+								<li>
+									<thing>WoodLog</thing>
+									<countNeeded>0</countNeeded>
+								</li>
+							</ingredients>
+							<results>
+								<li>
+									<thing>HumpShroom</thing>
+									<count>25</count>
+								</li>
+							</results>
+							<autoExtract>true</autoExtract>
+						</PipeSystem.ProcessDef>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="AutoHydroponic"]/comps/li[@Class="PipeSystem.CompProperties_AdvancedResourceProcessor"]/processes</xpath>
+					<value>
+						<li>AutoHydroponic_RJWHumpshroom</li>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="SmallAutoHydroponic"]/comps/li[@Class="PipeSystem.CompProperties_AdvancedResourceProcessor"]/processes</xpath>
+					<value>
+						<li>AutoHydroponic_RJWHumpshroomSm</li>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+</Patch>

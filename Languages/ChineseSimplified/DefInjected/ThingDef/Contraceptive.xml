@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <RJW_Contraceptive.label>避孕药</RJW_Contraceptive.label>
+
+  <RJW_Contraceptive.description>将一个季度的生育能力抑制到近乎为零。方便且隐秘。</RJW_Contraceptive.description>
+
+  <RJW_Contraceptive.ingestible.ingestCommandString>服用{0}</RJW_Contraceptive.ingestible.ingestCommandString>
+
+  <RJW_Contraceptive.ingestible.ingestReportString>服用{0}中。</RJW_Contraceptive.ingestible.ingestReportString>
+
+</LanguageData>

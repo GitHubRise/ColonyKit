@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Aphrodisiac.label>афродизиак</Aphrodisiac.label>
+  <Aphrodisiac.description>Курительная смесь, сделанная из особенного гриба, вызывающая сексуальное желание. Наркотический препарат.</Aphrodisiac.description>
+  <Aphrodisiac.ingestible.ingestCommandString>Выкурить {0}</Aphrodisiac.ingestible.ingestCommandString>
+  <Aphrodisiac.ingestible.ingestReportString>Курит {0}</Aphrodisiac.ingestible.ingestReportString>
+
+
+</LanguageData>

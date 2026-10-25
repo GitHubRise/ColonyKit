@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Humanlike_Paraphilia.label>гумафилия</Humanlike_Paraphilia.label>
+  <Humanlike_Paraphilia.description>Сексуальное влечение к человекоподобным. В какой-то момент животное может даже отказаться спариваться с другими животными.</Humanlike_Paraphilia.description>
+  <Humanlike_Paraphilia.stages.0.label>первичное любопытство</Humanlike_Paraphilia.stages.0.label>
+  <Humanlike_Paraphilia.stages.1.label>влечение</Humanlike_Paraphilia.stages.1.label>
+  <Humanlike_Paraphilia.stages.2.label>сосредоточение</Humanlike_Paraphilia.stages.2.label>
+  <Humanlike_Paraphilia.stages.3.label>закрепление</Humanlike_Paraphilia.stages.3.label>
+  <Humanlike_Paraphilia.stages.4.label>одержимость</Humanlike_Paraphilia.stages.4.label>
+  <Humanlike_Paraphilia.labelNoun>гумафилия</Humanlike_Paraphilia.labelNoun>
+
+
+</LanguageData>

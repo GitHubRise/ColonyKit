@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: animal chat -->
+  <AnimalSexChat.label>dialogue animal</AnimalSexChat.label>
+  <!-- EN:
+    <li>r_logentry(p=20)->[INITIATOR_nameDef] [zooact] [RECIPIENT_nameDef].</li>
+    <li>r_logentry->[INITIATOR_nameDef] sat near [RECIPIENT_nameDef] and talked to [INITIATOR_objective]self about [TalkTopicSex].</li>
+    <li>r_logentry->[INITIATOR_nameDef] sat near [RECIPIENT_nameDef] and talked to [INITIATOR_objective]self about [TalkTopicAny].</li>
+    <li>r_logentry->[INITIATOR_nameDef] approached [RECIPIENT_nameDef] while whispering to [INITIATOR_objective]self about [TalkTopicSex].</li>
+    <li>r_logentry->[INITIATOR_nameDef] approached [RECIPIENT_nameDef] while whispering to [INITIATOR_objective]self about [TalkTopicAny].</li>
+    <li>r_logentry(p=2)->[INITIATOR_nameDef] came near [RECIPIENT_nameDef] while talking to [INITIATOR_objective]self about [TalkTopicSex].</li>
+    <li>r_logentry->[INITIATOR_nameDef] came near [RECIPIENT_nameDef] while talking to [INITIATOR_objective]self about [TalkTopicAny].</li>
+    <li>r_logentry->[INITIATOR_nameDef] tried to make [RECIPIENT_nameDef] sit still.</li>
+    <li>r_logentry->[INITIATOR_nameDef] attempted to hold [RECIPIENT_nameDef] still.</li>
+    <li>r_logentry->[INITIATOR_nameDef] slapped [RECIPIENT_nameDef] in a show of dominance.</li>
+    <li>r_logentry->[INITIATOR_nameDef] gently stroked [RECIPIENT_nameDef]'s genitals.</li>
+    <li>r_logentry->[INITIATOR_nameDef] grasped a vulnerable body part of [RECIPIENT_nameDef], demanding obedience.</li>
+    <li>zooact->demanded obedience from</li>
+    <li>zooact->made calming noises towards</li>
+    <li>zooact->offered slow, friendly gestures to</li>
+    <li>zooact->made shushing noises at</li>
+    <li>zooact->made happy clicking noises at</li>
+    <li>zooact->gestured gently and approached</li>
+    <li>zooact->slowly approached</li>
+    <li>zooact->gently touched</li>
+    <li>zooact->gently caressed</li>
+    <li>zooact->firmly stroked</li>
+    <li>zooact->calmed and encouraged</li>
+    <li>zooact->matched breathing with</li>
+    <li>zooact->took a low stance while approaching</li>
+    <li>zooact->showed no fear or anger to</li>
+    <li>zooact->firmly yet softly touched</li>
+    <li>zooact->showed a relaxed attitude towards</li>
+    <li>zooact->showed [INITIATOR_possessive] genitals to</li>
+    <li>zooact->presented [INITIATOR_possessive] genitals to</li>
+    <li>zooact->whispered a story about [TalkTopicAny] to</li>
+    <li>zooact->whispered a story about [TalkTopicSex] to</li>
+  -->
+  <AnimalSexChat.logRulesInitiator.rulesStrings>
+    <li>r_logentry(p=20)->[INITIATOR_nameDef] [zooact] [RECIPIENT_nameDef].</li>
+    <li>r_logentry(RECIPIENT_gender!=Female)->[INITIATOR_nameDef] s'est assis près de [RECIPIENT_nameDef] et a parlé de lui-même à propos [TalkTopicSex].</li>
+    <li>r_logentry(RECIPIENT_gender==Female)->[INITIATOR_nameDef] s'est assise près de [RECIPIENT_nameDef] et a parlé d'elle-même à propos [TalkTopicSex].</li>
+    <li>r_logentry(RECIPIENT_gender!=Female)->[INITIATOR_nameDef] s'est assis près de [RECIPIENT_nameDef] et a parlé de lui-même à propos [TalkTopicAny].</li>
+    <li>r_logentry(RECIPIENT_gender==Female)->[INITIATOR_nameDef] s'est assise près de [RECIPIENT_nameDef] et a parlé d'elle-même à propos [TalkTopicAny].</li>
+    <li>r_logentry->[INITIATOR_nameDef] a approché [RECIPIENT_nameDef] tout en chuchotant à [INITIATOR_objective]-même à propos [TalkTopicSex].</li>
+    <li>r_logentry->[INITIATOR_nameDef] a approché [RECIPIENT_nameDef] tout en chuchotant à [INITIATOR_objective]-même à propos [TalkTopicAny].</li>
+    <li>r_logentry(p=2)->[INITIATOR_nameDef] a fait un pas vers [RECIPIENT_nameDef] et a parlé de [INITIATOR_objective]-même à propos [TalkTopicSex].</li>
+    <li>r_logentry(RECIPIENT_gender!=Female)->[INITIATOR_nameDef] est venu à côté de [RECIPIENT_nameDef] tout en parlant de lui-même à propos [TalkTopicAny].</li>
+    <li>r_logentry(RECIPIENT_gender==Female)->[INITIATOR_nameDef] est venue à côté de [RECIPIENT_nameDef] tout en parlant d'elle-même à propos [TalkTopicAny].</li>
+    <li>r_logentry->[INITIATOR_nameDef] a essayé de faire rester [RECIPIENT_nameDef] assis immobile.</li>
+    <li>r_logentry->[INITIATOR_nameDef] a tenté de maintenir [RECIPIENT_nameDef] immobile.</li>
+    <li>r_logentry->[INITIATOR_nameDef] a giflé [RECIPIENT_nameDef] dans une démonstration de domination.</li>
+    <li>r_logentry->[INITIATOR_nameDef] a gentiment caressé les organes génitaux de [RECIPIENT_nameDef].</li>
+    <li>r_logentry->[INITIATOR_nameDef] a saisi une partie vulnérable du corps de [RECIPIENT_nameDef], exigeant l'obéissance.</li>
+    <li>zooact->a exigé l'obéissance de</li>
+    <li>zooact->a émis des sons apaisants envers</li>
+    <li>zooact->a fait des gestes lents et amicaux à</li>
+    <li>zooact->a fait des bruits pour faire taire</li>
+    <li>zooact->a émis des cliquetis joyeux à</li>
+    <li>zooact->a fait un geste doux et s'est approché de</li>
+    <li>zooact->s'est approché lentement de</li>
+    <li>zooact->a touché délicatement</li>
+    <li>zooact->a caressé doucement</li>
+    <li>zooact->a caressé fermement</li>
+    <li>zooact->a apaisé et encouragé</li>
+    <li>zooact->a respiré de manière synchronisée avec</li>
+    <li>zooact->a pris une position basse en s'approchant de</li>
+    <li>zooact->n'a montré ni peur ni colère envers</li>
+    <li>zooact->a touché fermement mais doucement</li>
+    <li>zooact->a montré une attitude détendue envers</li>
+    <li>zooact->a montré ses parties génitales à</li>
+    <li>zooact->a présenté ses parties génitales à</li>
+    <li>zooact->a chuchoté une histoire à propos de [TalkTopicAny] à</li>
+    <li>zooact->a chuchoté une histoire à propos de [TalkTopicSex] à</li></AnimalSexChat.logRulesInitiator.rulesStrings>
+  
+</LanguageData>

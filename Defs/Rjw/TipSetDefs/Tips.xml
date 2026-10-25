@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<TipSetDef>
+		<defName>RjwTips</defName>
+		<tips>
+			<!-- 趣味文本 -->
+			<li>RimJobWorld runs on porn logic.</li>
+			<li>RimJobWorld is a community project with more than 80 contributors. Thank you!</li>
+			<li>RimJobWorld is open source and accepts submissions from anyone.</li>
+			<li>The average bra size in RimJobWorld is 85DD. If you think that can't possibly be right because your wife has D cups and she is pretty big then she should probably be wearing a G cup.</li>
+			<li>Most women wear a bra with too small a cup size and too large a band size.</li>
+			<li>The average male erection contains about 190mL of blood. That's roughly the same volume as two espresso cups. Keep that in mind before you judge someone's "cup size".</li>
+			<li>Vaginal lubrication is essentially plasma that leaks through vaginal walls due to increased blood flow. So technically, it's just filtered blood. Romantic, eh?</li>
+			<li>Sexual fantasies are nearly universal, but content varies widely by gender and culture. Your peaceful vegan colonist might secretly dream about ravaging a raider - just sayin'.</li>
+			<li>The G-spot isn't a distinct anatomical structure but an area where internal parts of the clitoris become engorged. So really, it's all connected. Have fun exploring the map, settlers.</li>
+			<li>Testicles hang outside the body because sperm production requires slightly lower than body temperature. Evolution's solution: an external thermostat. Also makes sitting uncomfortable.</li>
+			<li>Kissing releases a cocktail of hormones that reduce stress and increase bonding. So when your colonists make out after a raid, they're self-medicating. Very efficient.</li>
+			<li>Early hormonal contraceptives used... yams. That's right: wild yam extract. Nothing says romance like a side dish of roasted vegetables.</li>
+			<li>On some planets, semen is considered an "elixir" with health benefits. Here on the Rim, it's just another nutrient source for the cannibals.</li>
+			<li>Sex dreams are common. Up to 80% of men and 60% of women report having them. Your sleeping colonists might be busier than they let on.</li>
+			<li>The clitoral glans can be as small as a pea or as large as a walnut. Nature's variety pack. Bring a measuring tape to the next party.</li>
+			<li>Sex burns roughly 3-5 calories per minute. So a 30-minute session burns about 90-150 calories! Less than a brisk walk, but definitely more fun.</li>
+
+			<!-- 设置 -->
+			<li>Many features in RimJobWorld are opt-in. Make sure to check out the mod settings.</li>
+			<li>Relative frequency of male and female pawns can be controlled in RimJobWorld mod settings.</li>
+			<li>Frequency of male pawns with breasts and females with penises can be controlled in RimJobWorld mod settings.</li>
+			<li>Necrophilia is disabled by default. It can be enabled in RimJobWorld mod settings.</li>
+			<li>Bestiality is disabled by default. It can be enabled in RimJobWorld mod settings.</li>
+			<li>Rape is disabled by default. It can be enabled in RimJobWorld mod settings.</li>
+			<li>Cannibalism is enabled by default. It can't be disabled in RimJobWorld mod settings because it is a feature of the base game.</li>
+			<li>Sex need has a great many configuration options in RimJobWorld mod settings.</li>
+
+			<!-- UI -->
+			<li>Sexual preference is visible in the "Show sexuality" menu under the Bio tab (the icon looks like a torso).</li>
+
+			<!-- 机制 -->
+			<li>Condoms can be automatically used if placed in a stockpile next to a bed - it might be a good idea to have some around if you want to avoid unwanted pregnancies.</li>
+			<li>Being sexually pent up lowers colonists' moods - be sure to let them blow off some steam!</li>
+			<li>Humpshrooms and Aphrodisiacs can improve a pawn's mood, but also cause extreme arousal and can lead to more permanent alterations if abused.</li>
+			<li>Rape will cause an extreme mood debuff, though after a while they might start to like the abuse.</li>
+			<li>Sometimes a threat might be able to be subdued through sex and submission if you lack the firepower to deal with it.</li>
+			<li>Some types of sex (such as sex with animals) have a chance of leaving a permanent mark on a pawn's psyche.</li>
+			<li>Are your colonists bored? Let them have a tussle under the sheets, that'll cheer them up.</li>
+			<li>The "Submit" button is one of the most powerful features added by any mod.</li>
+
+			<!-- 其他模组 -->
+			<li>RimJobWorld does not add any lewd graphics, you will need another mod for that. For example RimNude or Sized Apparel Zero for bodies.</li>
+			<li>RimJobWorld does not add any lewd graphics, you will need another mod for that. For example Rimworld Animations Framework for animations.</li>
+			<li>If you like twenty-breasted tittysnakes then try the Nephila submod.</li>
+			<li>RimJobWorld is not compatible with the "Lost Forest" mod. This is a deliberate choice on the part of the author of Lost Forest to break your save if you have this mod installed.</li>
+			<li>RimJobWorld has birth and pregnancy features, but no babies. Children will be born fully grown unless you have another mod that changes that.</li>
+			<li>If you use RJW with any alien race mods, make sure you also install "RJW Race Support". Otherwise your Ewok won't have a raccoon penis.</li>
+		</tips>
+	</TipSetDef>
+</Defs>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<!-- 为 VanillaPsycastsExpanded 添加 RJW 性爱冥想专注图标 -->
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Psycasts Expanded</li>
+		</mods>
+		<match Class="PatchOperationAddModExtension">
+			<xpath>/Defs/MeditationFocusDef[defName="Sex"]</xpath>
+			<value>
+				<li Class="VanillaPsycastsExpanded.MeditationFocusExtension">
+					<icon>UI/PsyfocusIcons/PsyfocusSex</icon>
+				</li>
+			</value>
+		</match>
+	</Operation>
+	<!-- 为傀儡添加性需求-->
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Psycasts Expanded - Puppeteer</li>
+		</mods>
+		<match Class="PatchOperationAdd">
+			<xpath>Defs/VPEPuppeteer.PuppetSettings[defName="VPEP_PuppetSettings"]/needsForPuppets</xpath>
+			<order>Prepend</order>
+			<value>
+				<li>Sex</li>
+			</value>
+		</match>
+    </Operation>
+</Patch>

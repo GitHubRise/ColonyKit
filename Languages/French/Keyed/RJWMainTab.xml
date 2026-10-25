@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<PawnColumnWorker_RJWGender_IsHerm>Herm</PawnColumnWorker_RJWGender_IsHerm>
+
+	<!-- 待办？ -->
+	<!-- 还是不做？ -->
+	<PawnColumnWorker_IsSlave>Le pion est-il un esclave ?</PawnColumnWorker_IsSlave>
+	<PawnColumnWorker_IsPrisoner>Le pion est-il un prisonnier ?</PawnColumnWorker_IsPrisoner>
+	<PawnColumnWorker_IsComfort>Le pion est-il un pion de confort ?</PawnColumnWorker_IsComfort>
+	<PawnColumnWorker_IsBreeder>Le pion est-il un reproducteur ?</PawnColumnWorker_IsBreeder>
+	
+	<MainTabWindow_Designators>Indicateurs</MainTabWindow_Designators>
+	
+</LanguageData>

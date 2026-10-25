@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: fingering -->
+  <Rape_Fingering.label>doigtage</Rape_Fingering.label>
+  <!-- EN:
+    <li>r_logentry->Forced [RECIPIENT_nameDef] to give fingering.</li>
+  -->
+  <Rape_Fingering.logRulesInitiator.rulesStrings>
+    <li>r_logentry->A forcé [RECIPIENT_nameDef] à doigter.</li>
+  </Rape_Fingering.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Was forced to finger [INITIATOR_nameDef].</li>
+  -->
+  <Rape_Fingering.logRulesRecipient.rulesStrings>
+    <li>r_logentry(RECIPIENT_gender!=Female)->A été forcé à doigter [INITIATOR_nameDef].</li>
+    <li>r_logentry(RECIPIENT_gender==Female)->A été forcée à doigter [INITIATOR_nameDef].</li>
+  </Rape_Fingering.logRulesRecipient.rulesStrings>
+  <!-- EN: Get fingered -->
+  <Rape_Fingering.modExtensions.0.RMBLabel>Est doigté(e)</Rape_Fingering.modExtensions.0.RMBLabel>
+  
+</LanguageData>

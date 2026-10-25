@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <SexReassignmentV.description>Instaluje pochwe, zastępując inne części jeśli występują.</SexReassignmentV.description>
+  <SexReassignmentV.jobString>Instalowanie pochwy.</SexReassignmentV.jobString>
+
+  <SexReassignmentP.description>Przyczepia penis, zastępując inne części jeśli występują.</SexReassignmentP.description>
+  <SexReassignmentP.jobString>Przyczepianie penisa.</SexReassignmentP.jobString>
+
+  <BreastSurgery.description>Przyczepia pare piersi, zastępując inne części jeśli występują.</BreastSurgery.description>
+  <BreastSurgery.jobString>Przyczepianie piersi.</BreastSurgery.jobString>
+
+  <AnalSurgery.description>Instaluje odbyt, zastępując inne części jeśli występują.</AnalSurgery.description>
+  <AnalSurgery.jobString>Instalowanie odbytu.</AnalSurgery.jobString>
+</LanguageData>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<RJW_RMB>Interagit</RJW_RMB>
+	<RJW_RMB_NoSex> refuse d'avoir des relations sexuelles avec </RJW_RMB_NoSex>
+
+	<RJW_RMB_Social>Socialise avec {0_labelShort}</RJW_RMB_Social>
+	<RJW_RMB_Masturbate>Se masturbe</RJW_RMB_Masturbate>
+	
+	<RJW_RMB_Sex>A des relations sexuelles avec {0_labelShort}</RJW_RMB_Sex>
+	<RJW_RMB_Bestiality>Bestialité avec {0_labelShort}</RJW_RMB_Bestiality>
+	
+	<RJW_RMB_Sex_Reverse>(Inversé)Sexe avec {0_labelShort}</RJW_RMB_Sex_Reverse>
+	<RJW_RMB_Bestiality_Reverse>(Inversé)Bestialité avec {0_labelShort}</RJW_RMB_Bestiality_Reverse>
+	
+	<!--社交-->
+	<RJW_RMB_Insult>Insulte</RJW_RMB_Insult>
+	<RJW_RMB_SocialFight>Commence une bagarre</RJW_RMB_SocialFight>
+	<RJW_RMB_Chat>Discute</RJW_RMB_Chat>
+	<RJW_RMB_DeepTalk>Conversation profonde</RJW_RMB_DeepTalk>
+	<RJW_RMB_RomanceAttempt>Tente une romance</RJW_RMB_RomanceAttempt>
+	<RJW_RMB_MarriageProposal>Fait une demande en mariage</RJW_RMB_MarriageProposal>
+	
+	<!--自慰-->
+	<RJW_RMB_Masturbate_Bed>Se masturbe sur une chaise ou un lit</RJW_RMB_Masturbate_Bed>
+	<RJW_RMB_Masturbate_At>Se masturbe sur/dans</RJW_RMB_Masturbate_At>
+	<RJW_RMB_Masturbate_Here>Se masturbe ici</RJW_RMB_Masturbate_Here>
+	<RJW_RMB_Masturbate_With>Se masturbe avec</RJW_RMB_Masturbate_With> <!-- 假阳具之类的东西，哪天再说？ -->
+
+	<!--做爱-->
+	
+	<!--强奸-->
+	<RJW_RMB_Rape>Viole {0_labelShort}</RJW_RMB_Rape>
+	<RJW_RMB_Rape_Reverse>(Inversé)Viole {0_labelShort}</RJW_RMB_Rape_Reverse>
+	
+	<RJW_RMB_RapeCorpse>Viole le corps de {0_labelShort}</RJW_RMB_RapeCorpse>
+	<RJW_RMB_RapeCorpse_Reverse>(Inversé)Viole le corps de {0_labelShort}</RJW_RMB_RapeCorpse_Reverse>
+
+	<RJW_RMB_RapeAnimal>Reproduit {0_labelShort}</RJW_RMB_RapeAnimal>
+	<RJW_RMB_RapeAnimal_Reverse>(Inversé)est reproduit(e) par {0_labelShort}</RJW_RMB_RapeAnimal_Reverse>
+	<!--姿势/部件？-->
+	
+	
+	<!--东西-->
+	<RJW_RMB_HackMechPregnancy>Pirate un mécanoïde implanté</RJW_RMB_HackMechPregnancy>
+
+	<!--右键选项不可用的原因-->
+	<RJW_RMB_ReasonLowOpinionOfTarget>Mauvaise opinion de la cible</RJW_RMB_ReasonLowOpinionOfTarget>
+	<RJW_RMB_ReasonUnappealingTarget>Pas attiré(e) sexuellement par la cible</RJW_RMB_ReasonUnappealingTarget>
+	<RJW_RMB_ReasonLowOpinionOfPawn>Mauvaise opinion de moi</RJW_RMB_ReasonLowOpinionOfPawn>
+	<RJW_RMB_ReasonUnappealingPawn>N'est pas attiré(e) sexuellement par moi.</RJW_RMB_ReasonUnappealingPawn>
+
+	<RJW_RMB_ReasonNeedBed>A besoin d'un lit attribué</RJW_RMB_ReasonNeedBed>
+	<RJW_RMB_ReasonCantReachBed>Ne peut pas atteindre le lit attribué</RJW_RMB_ReasonCantReachBed>
+
+	<RJW_RMB_NoValidInteractions>Aucune interaction valide trouvée pour {0}</RJW_RMB_NoValidInteractions>
+
+	<!-- 束缚装备 -->
+	<RJW_RMB_BG_Put_On>{0} sur {1}</RJW_RMB_BG_Put_On>
+	<RJW_RMB_BG_NotWearingBondage>Ne porte pas de vêtements verrouillés</RJW_RMB_BG_NotWearingBondage>
+</LanguageData>

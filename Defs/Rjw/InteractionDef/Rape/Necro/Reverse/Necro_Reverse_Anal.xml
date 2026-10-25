@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<InteractionDef ParentName="RJW_InteractionDefBaseRape">
+		<defName>Necro_Reverse_Anal</defName>
+		<label>anal</label>
+		<logRulesInitiator>
+			<rulesStrings>
+				<li>r_logentry->Raped anally [RECIPIENT_nameDef].</li>
+			</rulesStrings>
+		</logRulesInitiator>
+		<logRulesRecipient>
+			<rulesStrings>
+				<li>r_logentry->Was anally raped by [INITIATOR_nameDef].</li>
+			</rulesStrings>
+		</logRulesRecipient>
+		<modExtensions>
+			<li Class="rjw.SexInteractionExtension">
+				<RMBLabel>Ride anally</RMBLabel>
+				<rjwSextype>Anal</rjwSextype>
+				<extraSentencePacks>
+					<li>AnalReverseRapeRP</li>
+				</extraSentencePacks>
+				<tags>
+					<li>EggLaying</li>
+					<li>Reverse</li>
+					<li>Rape</li>
+					<li>Bestiality</li>
+					<li>Necrophilia</li>
+				</tags>
+				<initiatorRequirement>
+					<genitalFamilies>
+						<li>Anus</li>
+					</genitalFamilies>
+				</initiatorRequirement>
+				<recipientRequirement>
+					<genitalTags>
+						<li>CanPenetrate</li>
+					</genitalTags>
+					<pawnStates>
+						<li>Dead</li>
+					</pawnStates>
+				</recipientRequirement>
+			</li>
+		</modExtensions>
+	</InteractionDef>
+</Defs>

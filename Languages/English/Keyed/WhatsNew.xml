@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<RJW_WhatsNew_Title>What's new in RimJobWorld {0}</RJW_WhatsNew_Title>
+	<RJW_WhatsNew_Fallback>Changelog not found. See changelog.txt or the download page for details.</RJW_WhatsNew_Fallback>
+	<RJW_WhatsNew_NeverShow>Never show this again</RJW_WhatsNew_NeverShow>
+</LanguageData>

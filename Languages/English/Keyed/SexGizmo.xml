@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<!-- 标签 -->
+	<RJW_SexGizmo_Orgasm>Orgasm</RJW_SexGizmo_Orgasm>
+	<RJW_SexGizmo_RestNeed>Stamina</RJW_SexGizmo_RestNeed>
+	<RJW_SexGizmo_SexNeed>Satisfaction</RJW_SexGizmo_SexNeed><!-- ? -->
+	
+	<!-- 按钮 -->
+	<RJW_SexGizmo_SexOverdriveTooltip>SexOverdrive - sex won't end until pawn collapses or is otherwise interrupted.</RJW_SexGizmo_SexOverdriveTooltip>
+	<RJW_SexGizmo_HitPawn>Hit once.</RJW_SexGizmo_HitPawn>
+	<RJW_SexGizmo_Cocoon>Wrap pawn into cocoon.</RJW_SexGizmo_Cocoon><!-- ? -->
+	<RJW_SexGizmo_Egg>Stuff with eggs.</RJW_SexGizmo_Egg><!-- ? -->
+	<RJW_InviteJoin>Invite to join</RJW_InviteJoin>
+	<RJW_InviteJoin_Desc>Bring a nearby pawn into the current act.</RJW_InviteJoin_Desc>
+	<RJW_InviteJoin_None>No pawn nearby can join.</RJW_InviteJoin_None>
+	<RJW_InviteJoin_NoReceiver>No sex act is in progress.</RJW_InviteJoin_NoReceiver>
+	<RJW_InviteJoin_NoneDetail>No pawn can join right now (checked {0}: no free slot {1}, not interested {2}, other {3}).</RJW_InviteJoin_NoneDetail>
+	<RJW_InviteSuccess>{0} joined the act.</RJW_InviteSuccess>
+	<RJW_InviteFailed>Invite failed: {0}</RJW_InviteFailed>
+	<RJW_InviteFailedReach>- can't reach the bed (door or wall).</RJW_InviteFailedReach>
+	<RJW_InviteFailedMoving>- still on the way, didn't arrive in time.</RJW_InviteFailedMoving>
+	<RJW_InviteFailedOther>- didn't accept the job or was interrupted.</RJW_InviteFailedOther>
+</LanguageData>

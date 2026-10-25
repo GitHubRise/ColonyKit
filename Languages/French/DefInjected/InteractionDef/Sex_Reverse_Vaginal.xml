@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: vaginal -->
+  <Sex_Reverse_Vaginal.label>vaginal</Sex_Reverse_Vaginal.label>
+  <!-- EN:
+    <li>r_logentry->Was fucked vaginally by [RECIPIENT_nameDef].</li>
+  -->
+  <Sex_Reverse_Vaginal.logRulesInitiator.rulesStrings>
+    <li>r_logentry(INITIATOR_gender!=Female)->A été baisé vaginalement par [RECIPIENT_nameDef].</li>
+    <li>r_logentry(INITIATOR_gender==Female)->A été baisée vaginalement par [RECIPIENT_nameDef].</li>
+  </Sex_Reverse_Vaginal.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Fucked vaginally [INITIATOR_nameDef].</li>
+  -->
+  <Sex_Reverse_Vaginal.logRulesRecipient.rulesStrings>
+    <li>r_logentry->A baisé vaginalement [INITIATOR_nameDef].</li>
+  </Sex_Reverse_Vaginal.logRulesRecipient.rulesStrings>
+  <!-- EN: Get fucked vaginally -->
+  <Sex_Reverse_Vaginal.modExtensions.0.RMBLabel>Est baisé(e) vaginalement</Sex_Reverse_Vaginal.modExtensions.0.RMBLabel>
+  
+</LanguageData>

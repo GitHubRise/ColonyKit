@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 带有 ovi 植物卵的小人。 -->
+
+  <RJW_InsectEgg.label>ovo</RJW_InsectEgg.label>
+  <RJW_InsectEgg.description>Ovo(s) parasita(s) que são depositados em um hospedeiro e se alimenta de seus nutrientes até estarem prontos para chocar. Pelo menos eles não chocam se estourando pra fora do peito. .</RJW_InsectEgg.description>
+
+
+  <!-- 占位卵／不支持的／任意种族 -->
+
+  <RJW_UnknownEgg.label>ovo</RJW_UnknownEgg.label>
+  <RJW_UnknownEgg.description>Ovo(s) parasita(s) que são depositados em um hospedeiro e se alimenta de seus nutrientes até estarem prontos para chocar. Pelo menos eles não chocam se estourando pra fora do peito. .</RJW_UnknownEgg.description>
+
+
+  <!-- 原版昆虫，可互相授精 -->
+
+  <RJW_InsectHiveEgg.label>ovo</RJW_InsectHiveEgg.label>
+  <RJW_InsectHiveEgg.description>Ovo(s) parasita(s) que são depositados em um hospedeiro e se alimenta de seus nutrientes até estarem prontos para chocar. Pelo menos eles não chocam se estourando pra fora do peito. .</RJW_InsectHiveEgg.description>
+
+
+</LanguageData>

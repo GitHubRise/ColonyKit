@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<ThingDef ParentName="BaseFilth" Name="BaseCumFilth" Abstract="True">
+		<label>cum</label>
+		<statBases>
+			<!-- 呕吐物是 -40 / -15，精液不该那么糟 -->
+			<Beauty>-30</Beauty>
+			<Cleanliness>-12</Cleanliness>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Filth/Spatter</texPath>
+			<color>(180, 180, 180, 100)</color>
+		</graphicData>
+		<filth>
+			<rainWashes>true</rainWashes>
+			<!-- 动物污渍之类是 35，所以这个仍然相对较高 -->
+			<cleaningWorkToReduceThickness>40</cleaningWorkToReduceThickness>
+			<canFilthAttach>true</canFilthAttach>
+		</filth>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseCumFilth">
+		<defName>FilthCum</defName>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseCumFilth">
+		<defName>FilthGirlCum</defName>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseCumFilth">
+		<defName>FilthInsectCum</defName>
+		<label>bugspunk</label>
+		<graphicData>
+			<!-- 昆虫果冻颜色 + 10% -->
+			<color>(166, 189, 108, 100)</color>
+		</graphicData>
+	</ThingDef>
+	
+	<ThingDef ParentName="BaseCumFilth">
+		<defName>ResinCum</defName>
+		<label>resin</label>
+		<graphicData>
+			<!-- 昆虫果冻颜色 + 10% -->
+			<color>(166, 189, 108, 100)</color>
+		</graphicData>
+	</ThingDef>
+</Defs>

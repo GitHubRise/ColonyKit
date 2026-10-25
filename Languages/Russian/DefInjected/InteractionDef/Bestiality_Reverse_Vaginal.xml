@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 繁育邀请 -->
+
+  <Bestiality_Reverse_Vaginal.label>вагинальное спаривание</Bestiality_Reverse_Vaginal.label>
+  <Bestiality_Reverse_Vaginal.logRulesInitiator.rulesStrings.0>r_logentry->[INITIATOR_nameDef] отдаётся [RECIPIENT_nameDef] для спаривания.</Bestiality_Reverse_Vaginal.logRulesInitiator.rulesStrings.0>
+  <Bestiality_Reverse_Vaginal.logRulesRecipient.rulesStrings.0>r_logentry->[RECIPIENT_nameDef] делает садку в вагину [INITIATOR_nameDef].</Bestiality_Reverse_Vaginal.logRulesRecipient.rulesStrings.0>
+  <Bestiality_Reverse_Vaginal.RMBLabel>Вагинальное спаривание</Bestiality_Reverse_Vaginal.RMBLabel>
+
+
+</LanguageData>

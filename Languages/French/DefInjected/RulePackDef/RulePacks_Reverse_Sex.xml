@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] was fucked anally by [RECIPIENT_nameDef].</li>
+  -->
+  <AnalSexReverseRP.rulePack.rulesStrings>
+    <li>sent(INITIATOR_gender==Male)->[INITIATOR_nameDef] a été enculé par [RECIPIENT_nameDef].</li>
+    <li>sent(INITIATOR_gender==Female)->[INITIATOR_nameDef] a été enculée par [RECIPIENT_nameDef].</li>
+    <li>sent(INITIATOR_gender==None)->[INITIATOR_nameDef] a été enculé(e) par [RECIPIENT_nameDef].</li>
+  </AnalSexReverseRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] gave [RECIPIENT_nameDef] a breastjob.</li>
+    <li>sent-> [INITIATOR_nameDef] stroked [RECIPIENT_nameDef] with [INITIATOR_possessive] breasts.</li>
+  -->
+  <BreastjobReverseRP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] a fait une branlette espagnole à [RECIPIENT_nameDef].</li>
+    <li>sent-> [INITIATOR_nameDef] a étouffé [RECIPIENT_nameDef] avec ses seins.</li>
+  </BreastjobReverseRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [RECIPIENT_nameDef] had sex with [INITIATOR_nameDef].</li>
+  -->
+  <DefaultSexReverseRP.rulePack.rulesStrings>
+    <li>sent-> [RECIPIENT_nameDef] a eu du sexe avec [INITIATOR_nameDef].</li>
+  </DefaultSexReverseRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] teased [RECIPIENT_nameDef] into using both [RECIPIENT_possessive] poles on [INITIATOR_objective].</li>
+    <li>sent-> [INITIATOR_nameDef] teased [RECIPIENT_nameDef] into using both [RECIPIENT_possessive] poles on both [INITIATOR_possessive] holes.</li>
+  -->
+  <DoublePenetrationReverseRP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] a chauffé [RECIPIENT_nameDef] à utiliser ses deux mâts sur [INITIATOR_objective].</li>
+    <li>sent-> [INITIATOR_nameDef] a chauffé [RECIPIENT_nameDef] à fourrer ses deux mâts dans ses deux trous.</li>
+  </DoublePenetrationReverseRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] fingered [RECIPIENT_nameDef].</li>
+  -->
+  <FingeringReverseRP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] a doigté [RECIPIENT_nameDef].</li>
+  </FingeringReverseRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] anally fisted [RECIPIENT_nameDef].</li>
+  -->
+  <FistingReverseRP.rulePack.rulesStrings>
+    <li>sent-> [INITIATOR_nameDef] a fisté analement [RECIPIENT_nameDef].</li>
+  </FistingReverseRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [RECIPIENT_nameDef] received a footjob from [INITIATOR_nameDef].</li>
+    <li>sent-> [INITIATOR_nameDef] squeezed [RECIPIENT_nameDef] with [INITIATOR_possessive] feet.</li>
+  -->
+  <FootjobReverseRP.rulePack.rulesStrings>
+    <li>sent(RECIPIENT_gender==Male)->[RECIPIENT_nameDef] a été branlé avec les pieds de [INITIATOR_nameDef].</li>
+    <li>sent(RECIPIENT_gender==Female)->[RECIPIENT_nameDef] a été branlée avec les pieds de [INITIATOR_nameDef].</li>
+    <li>sent(RECIPIENT_gender==None)->[RECIPIENT_nameDef] a été branlé(e) avec les pieds de [INITIATOR_nameDef].</li>
+    <li>sent-> [INITIATOR_nameDef] a pressé [RECIPIENT_nameDef] avec ses pieds.</li>
+  </FootjobReverseRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [RECIPIENT_nameDef] received a handjob from [INITIATOR_nameDef].</li>
+    <li>sent-> [INITIATOR_nameDef] squeezed [RECIPIENT_nameDef].</li>
+    <li>sent-> [INITIATOR_nameDef] jerked off [RECIPIENT_nameDef].</li>
+  -->
+  <HandjobReverseRP.rulePack.rulesStrings>
+    <li>sent(RECIPIENT_gender==Male)->[RECIPIENT_nameDef] a été branlé par [INITIATOR_nameDef].</li>
+    <li>sent(RECIPIENT_gender==Female)->[RECIPIENT_nameDef] a été branlée par [INITIATOR_nameDef].</li>
+    <li>sent(RECIPIENT_gender==None)->[RECIPIENT_nameDef] a été branlé(e) par [INITIATOR_nameDef].</li>
+    <li>sent-> [INITIATOR_nameDef] a pressé [RECIPIENT_nameDef].</li>
+    <li>sent-> [INITIATOR_nameDef] a masturbé [RECIPIENT_nameDef].</li>
+  </HandjobReverseRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [RECIPIENT_nameDef] rode in [INITIATOR_nameDef]'s lap.</li>
+    <li>sent-> [RECIPIENT_nameDef] teased [INITIATOR_nameDef] until [INITIATOR_pronoun] couldn't take it anymore and ravished [RECIPIENT_objective].</li>
+    <li>sent-> [RECIPIENT_nameDef] tackled [INITIATOR_nameDef] down and pounded [RECIPIENT_objective] into the bed.</li>
+  -->
+  <MainReverseRP.rulePack.rulesStrings>
+    <li>sent(RECIPIENT_gender==Male)->[RECIPIENT_nameDef] s'est assis sur les genoux de [INITIATOR_nameDef].</li>
+    <li>sent(RECIPIENT_gender==Female)->[RECIPIENT_nameDef] s'est assise sur les genoux de [INITIATOR_nameDef].</li>
+    <li>sent(RECIPIENT_gender==None)->[RECIPIENT_nameDef] s'est assis(e) sur les genoux de [INITIATOR_nameDef].</li>
+    <li>sent(INITIATOR_gender==Male)->[RECIPIENT_nameDef] a chauffé [INITIATOR_nameDef] jusqu'à ce qu'il n'en puisse plus et l'a violé.</li>
+    <li>sent(INITIATOR_gender==Female)->[RECIPIENT_nameDef] a chauffé [INITIATOR_nameDef] jusqu'à ce qu'elle n'en puisse plus et l'a violée.</li>
+    <li>sent(INITIATOR_gender==None)->[RECIPIENT_nameDef] a chauffé [INITIATOR_nameDef] jusqu'à ce qu'iel n'en puisse plus et l'a violé(e).</li>
+    <li>sent(INITIATOR_gender==Male)->[RECIPIENT_nameDef] a plaqué [INITIATOR_nameDef] au sol et l'a démonté au lit.</li>
+    <li>sent(INITIATOR_gender==Female)->[RECIPIENT_nameDef] a plaqué [INITIATOR_nameDef] au sol et l'a démontée au lit.</li>
+    <li>sent(INITIATOR_gender==None)->[RECIPIENT_nameDef] a plaqué [INITIATOR_nameDef] au sol et l'a démonté(e) au lit.</li>
+  </MainReverseRP.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent-> [INITIATOR_nameDef] was fucked vaginally by [RECIPIENT_nameDef].</li>
+  -->
+  <VaginalSexReverseRP.rulePack.rulesStrings>
+    <li>sent(INITIATOR_gender==Male)->[INITIATOR_nameDef] a été baisé vaginalement par [RECIPIENT_nameDef].</li>
+    <li>sent(INITIATOR_gender==Female)->[INITIATOR_nameDef] a été baisée vaginalement par [RECIPIENT_nameDef].</li>
+    <li>sent(INITIATOR_gender==None)->[INITIATOR_nameDef] a été baisé(e) vaginalement par [RECIPIENT_nameDef].</li>
+  </VaginalSexReverseRP.rulePack.rulesStrings>
+  
+</LanguageData>

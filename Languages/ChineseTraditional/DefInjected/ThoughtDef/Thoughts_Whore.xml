@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 用于记录顾客，避免妓女反复招揽同一位访客 -->
+
+  <RJWFailedSolicitation.stages.0.label>徵求了我的意見</RJWFailedSolicitation.stages.0.label>
+
+
+  <!-- 同上，但针对殖民者 -->
+
+  <RJWTurnedDownWhore.stages.0.label>打擾了我</RJWTurnedDownWhore.stages.0.label>
+
+  <SleptInBrothel.stages.0.label>睡在妓院</SleptInBrothel.stages.0.label>
+  <SleptInBrothel.stages.0.description>哎呀，床單都是黏糊糊的</SleptInBrothel.stages.0.description>
+  <SleptInBrothel.stages.1.label>睡在妓院裡！</SleptInBrothel.stages.1.label>
+  <SleptInBrothel.stages.1.description>我只是喜歡這個地方、這個氣味、這個聲音……</SleptInBrothel.stages.1.description>
+
+
+</LanguageData>

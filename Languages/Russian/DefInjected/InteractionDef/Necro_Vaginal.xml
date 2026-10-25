@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Necro_Vaginal.label>вагинальный</Necro_Vaginal.label>
+  <Necro_Vaginal.logRulesInitiator.rulesStrings.0>r_logentry->Вагинально насилует [RECIPIENT_nameDef].</Necro_Vaginal.logRulesInitiator.rulesStrings.0>
+  <Necro_Vaginal.logRulesRecipient.rulesStrings.0>r_logentry->Подвергается вагинальному изнасилованию от [INITIATOR_nameDef].</Necro_Vaginal.logRulesRecipient.rulesStrings.0>
+  <Necro_Vaginal.modExtensions.0.RMBLabel>Вагинальный</Necro_Vaginal.modExtensions.0.RMBLabel>
+
+
+</LanguageData>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<MainButtonDef>
+		<defName>RJW_MainButton</defName>
+		<label>RJW</label>
+		<description>Designate your colonists, animals and property to and for various sexual tasks or roles.</description>
+		<tabWindowClass>rjw.MainTab.MainTabWindow</tabWindowClass>
+		<order>53</order>
+		<minimized>True</minimized>
+		<iconPath>RJW_Tab</iconPath>
+	</MainButtonDef>
+</Defs>

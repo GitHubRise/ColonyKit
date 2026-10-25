@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rape_Fellatio.label>насильный минет</Rape_Fellatio.label>
+  <Rape_Fellatio.logRulesInitiator.rulesStrings.0>r_logentry->Принуждает [RECIPIENT_nameDef] сделать минет.</Rape_Fellatio.logRulesInitiator.rulesStrings.0>
+  <Rape_Fellatio.logRulesRecipient.rulesStrings.0>r_logentry->Вынужденно делает минет [INITIATOR_nameDef].</Rape_Fellatio.logRulesRecipient.rulesStrings.0>
+  <Rape_Fellatio.modExtensions.0.RMBLabel>Насильный минет</Rape_Fellatio.modExtensions.0.RMBLabel>
+
+
+</LanguageData>

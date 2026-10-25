@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: feline penis -->
+  <CatPenis.label>pénis félin</CatPenis.label>
+  <!-- EN: A spine-covered feline penis. -->
+  <CatPenis.description>Un pénis félin recouvert d'épines.</CatPenis.description>
+  <!-- EN: a feline penis -->
+  <CatPenis.labelNoun>un pénis félin</CatPenis.labelNoun>
+  <!-- EN: Micro -->
+  <CatPenis.stages.Micro.label>Micro - XS</CatPenis.stages.Micro.label>
+  <!-- EN: Small -->
+  <CatPenis.stages.Small.label>Petit - S</CatPenis.stages.Small.label>
+  <!-- EN: Average -->
+  <CatPenis.stages.Average.label>Moyen - M</CatPenis.stages.Average.label>
+  <!-- EN: Large -->
+  <CatPenis.stages.Large.label>Grand - L</CatPenis.stages.Large.label>
+  <!-- EN: Huge -->
+  <CatPenis.stages.Huge.label>Énorme - XL</CatPenis.stages.Huge.label>
+  <!-- EN: Towering -->
+  <CatPenis.stages.Towering.label>Géant - XXL</CatPenis.stages.Towering.label>
+  
+  <!-- EN: feline vagina -->
+  <CatVagina.label>vagin félin</CatVagina.label>
+  <!-- EN: A feline vagina. -->
+  <CatVagina.description>Un vagin félin.</CatVagina.description>
+  <!-- EN: a feline vagina -->
+  <CatVagina.labelNoun>un vagin félin</CatVagina.labelNoun>
+  <!-- EN: Micro -->
+  <CatVagina.stages.Micro.label>Micro - XS</CatVagina.stages.Micro.label>
+  <!-- EN: Tight -->
+  <CatVagina.stages.Tight.label>Serré - S</CatVagina.stages.Tight.label>
+  <!-- EN: Average -->
+  <CatVagina.stages.Average.label>Moyen - M</CatVagina.stages.Average.label>
+  <!-- EN: Accommodating -->
+  <CatVagina.stages.Accommodating.label>Accommodant - L</CatVagina.stages.Accommodating.label>
+  <!-- EN: Cavernous -->
+  <CatVagina.stages.Cavernous.label>Caverneux - XL</CatVagina.stages.Cavernous.label>
+  <!-- EN: Abyssal -->
+  <CatVagina.stages.Abyssal.label>Abyssal - XXL</CatVagina.stages.Abyssal.label>
+  
+  <!-- EN: cloacal anus -->
+  <CloacalAnus.label>anus cloacal</CloacalAnus.label>
+  <!-- EN: A cloacal anus. -->
+  <CloacalAnus.description>Un anus cloacal.</CloacalAnus.description>
+  <!-- EN: cloacal anus -->
+  <CloacalAnus.labelNoun>un anus cloacal</CloacalAnus.labelNoun>
+  <!-- EN: Micro -->
+  <CloacalAnus.stages.Micro.label>Micro - XS</CloacalAnus.stages.Micro.label>
+  <!-- EN: Tight -->
+  <CloacalAnus.stages.Tight.label>Serré - S</CloacalAnus.stages.Tight.label>
+  <!-- EN: Average -->
+  <CloacalAnus.stages.Average.label>Moyen - M</CloacalAnus.stages.Average.label>
+  <!-- EN: Accommodating -->
+  <CloacalAnus.stages.Accommodating.label>Accommodant - L</CloacalAnus.stages.Accommodating.label>
+  <!-- EN: Cavernous -->
+  <CloacalAnus.stages.Cavernous.label>Caverneux - XL</CloacalAnus.stages.Cavernous.label>
+  <!-- EN: Abyssal -->
+  <CloacalAnus.stages.Abyssal.label>Abyssal - XXL</CloacalAnus.stages.Abyssal.label>
+  
+  <!-- EN: cloacal penis -->
+  <CloacalPenis.label>pénis cloacal</CloacalPenis.label>
+  <!-- EN: A cloacal penis. -->
+  <CloacalPenis.description>Un pénis cloacal</CloacalPenis.description>
+  <!-- EN: a cloacal penis -->
+  <CloacalPenis.labelNoun>un pénis cloacal</CloacalPenis.labelNoun>
+  <!-- EN: Micro -->
+  <CloacalPenis.stages.Micro.label>Micro - XS</CloacalPenis.stages.Micro.label>
+  <!-- EN: Small -->
+  <CloacalPenis.stages.Small.label>Petit - S</CloacalPenis.stages.Small.label>
+  <!-- EN: Average -->
+  <CloacalPenis.stages.Average.label>Moyen - M</CloacalPenis.stages.Average.label>
+  <!-- EN: Large -->
+  <CloacalPenis.stages.Large.label>Grand - L</CloacalPenis.stages.Large.label>
+  <!-- EN: Huge -->
+  <CloacalPenis.stages.Huge.label>Énorme - XL</CloacalPenis.stages.Huge.label>
+  <!-- EN: Towering -->
+  <CloacalPenis.stages.Towering.label>Géant - XXL</CloacalPenis.stages.Towering.label>
+  
+  <!-- EN: cloacal vagina -->
+  <CloacalVagina.label>vagin cloacal</CloacalVagina.label>
+  <!-- EN: A cloacal vagina. -->
+  <CloacalVagina.description>Un vagin cloacal</CloacalVagina.description>
+  <!-- EN: a cloacal vagina -->
+  <CloacalVagina.labelNoun>un vagin cloacal</CloacalVagina.labelNoun>
+  <!-- EN: Micro -->
+  <CloacalVagina.stages.Micro.label>Micro - XS</CloacalVagina.stages.Micro.label>
+  <!-- EN: Tight -->
+  <CloacalVagina.stages.Tight.label>Serré - S</CloacalVagina.stages.Tight.label>
+  <!-- EN: Average -->
+  <CloacalVagina.stages.Average.label>Moyen - M</CloacalVagina.stages.Average.label>
+  <!-- EN: Accommodating -->
+  <CloacalVagina.stages.Accommodating.label>Accommodant - L</CloacalVagina.stages.Accommodating.label>
+  <!-- EN: Cavernous -->
+  <CloacalVagina.stages.Cavernous.label>Caverneux - XL</CloacalVagina.stages.Cavernous.label>
+  <!-- EN: Abyssal -->
+  <CloacalVagina.stages.Abyssal.label>Abyssal - XXL</CloacalVagina.stages.Abyssal.label>
+  
+  <!-- EN: crocodilian penis -->
+  <CrocodilianPenis.label>pénis crocodilien</CrocodilianPenis.label>
+  <!-- EN: A crocodilian penis. Large and permanently erect. -->
+  <CrocodilianPenis.description>Un pénis de crocodile. Grand et en érection permanente.</CrocodilianPenis.description>
+  <!-- EN: a crocodilian penis -->
+  <CrocodilianPenis.labelNoun>un pénis crocodilien</CrocodilianPenis.labelNoun>
+  <!-- EN: Micro -->
+  <CrocodilianPenis.stages.Micro.label>Micro - XS</CrocodilianPenis.stages.Micro.label>
+  <!-- EN: Small -->
+  <CrocodilianPenis.stages.Small.label>Petit - S</CrocodilianPenis.stages.Small.label>
+  <!-- EN: Average -->
+  <CrocodilianPenis.stages.Average.label>Moyen - M</CrocodilianPenis.stages.Average.label>
+  <!-- EN: Large -->
+  <CrocodilianPenis.stages.Large.label>Grand - L</CrocodilianPenis.stages.Large.label>
+  <!-- EN: Huge -->
+  <CrocodilianPenis.stages.Huge.label>Énorme - XL</CrocodilianPenis.stages.Huge.label>
+  <!-- EN: Towering -->
+  <CrocodilianPenis.stages.Towering.label>Géant - XXL</CrocodilianPenis.stages.Towering.label>
+  
+  <!-- EN: canine penis -->
+  <DogPenis.label>pénis canin</DogPenis.label>
+  <!-- EN: A bright red dog penis. The knot will expand during sex, locking its lover to their partner for a long time. -->
+  <DogPenis.description>Un pénis de chien rouge vif. Le nœud se dilate pendant l'acte sexuel, immobilisant son partenaire pendant une longue période.</DogPenis.description>
+  <!-- EN: a dog penis -->
+  <DogPenis.labelNoun>un pénis de chien</DogPenis.labelNoun>
+  <!-- EN: Micro -->
+  <DogPenis.stages.Micro.label>Micro - XS</DogPenis.stages.Micro.label>
+  <!-- EN: Small -->
+  <DogPenis.stages.Small.label>Petit - S</DogPenis.stages.Small.label>
+  <!-- EN: Average -->
+  <DogPenis.stages.Average.label>Moyen - M</DogPenis.stages.Average.label>
+  <!-- EN: Large -->
+  <DogPenis.stages.Large.label>Grand - L</DogPenis.stages.Large.label>
+  <!-- EN: Huge -->
+  <DogPenis.stages.Huge.label>Énorme - XL</DogPenis.stages.Huge.label>
+  <!-- EN: Towering -->
+  <DogPenis.stages.Towering.label>Géant - XXL</DogPenis.stages.Towering.label>
+  
+  <!-- EN: canine vagina -->
+  <DogVagina.label>vagin canin</DogVagina.label>
+  <!-- EN: A dog vagina. -->
+  <DogVagina.description>Un vagin de chien.</DogVagina.description>
+  <!-- EN: a dog vagina -->
+  <DogVagina.labelNoun>un vagin de chien</DogVagina.labelNoun>
+  <!-- EN: Micro -->
+  <DogVagina.stages.Micro.label>Micro - XS</DogVagina.stages.Micro.label>
+  <!-- EN: Tight -->
+  <DogVagina.stages.Tight.label>Serré - S</DogVagina.stages.Tight.label>
+  <!-- EN: Average -->
+  <DogVagina.stages.Average.label>Moyen - M</DogVagina.stages.Average.label>
+  <!-- EN: Accommodating -->
+  <DogVagina.stages.Accommodating.label>Accommodant - L</DogVagina.stages.Accommodating.label>
+  <!-- EN: Cavernous -->
+  <DogVagina.stages.Cavernous.label>Caverneux - XL</DogVagina.stages.Cavernous.label>
+  <!-- EN: Abyssal -->
+  <DogVagina.stages.Abyssal.label>Abyssal - XXL</DogVagina.stages.Abyssal.label>
+  
+  <!-- EN: dragon penis -->
+  <DragonPenis.label>pénis draconique</DragonPenis.label>
+  <!-- EN: A dragon penis. Has a knot that expands similarly to a dog's penis, but the ribbing on both sides takes its lover to greater heights of pleasure. -->
+  <DragonPenis.description>Un pénis de dragon. Il possède un nœud qui se dilate de la même manière que le pénis d'un chien, mais les nervures situées de chaque côté procurent à son partenaire un plaisir encore plus intense.</DragonPenis.description>
+  <!-- EN: a dragon penis -->
+  <DragonPenis.labelNoun>un pénis draconique</DragonPenis.labelNoun>
+  <!-- EN: Micro -->
+  <DragonPenis.stages.Micro.label>Micro - XS</DragonPenis.stages.Micro.label>
+  <!-- EN: Small -->
+  <DragonPenis.stages.Small.label>Petit - S</DragonPenis.stages.Small.label>
+  <!-- EN: Average -->
+  <DragonPenis.stages.Average.label>Moyen - M</DragonPenis.stages.Average.label>
+  <!-- EN: Large -->
+  <DragonPenis.stages.Large.label>Grand - L</DragonPenis.stages.Large.label>
+  <!-- EN: Huge -->
+  <DragonPenis.stages.Huge.label>Énorme - XL</DragonPenis.stages.Huge.label>
+  <!-- EN: Towering -->
+  <DragonPenis.stages.Towering.label>Géant - XXL</DragonPenis.stages.Towering.label>
+  
+  <!-- EN: dragon vagina -->
+  <DragonVagina.label>vagin draconique</DragonVagina.label>
+  <!-- EN: A dragon vagina. Has a similar texture to their outer hide. -->
+  <DragonVagina.description>Un vagin de dragon. Sa texture est similaire à celle de leur peau externe.</DragonVagina.description>
+  <!-- EN: a dragon vagina -->
+  <DragonVagina.labelNoun>un vagin draconique</DragonVagina.labelNoun>
+  <!-- EN: Micro -->
+  <DragonVagina.stages.Micro.label>Micro - XS</DragonVagina.stages.Micro.label>
+  <!-- EN: Tight -->
+  <DragonVagina.stages.Tight.label>Serré - S</DragonVagina.stages.Tight.label>
+  <!-- EN: Average -->
+  <DragonVagina.stages.Average.label>Moyen - M</DragonVagina.stages.Average.label>
+  <!-- EN: Accommodating -->
+  <DragonVagina.stages.Accommodating.label>Accommodant - L</DragonVagina.stages.Accommodating.label>
+  <!-- EN: Cavernous -->
+  <DragonVagina.stages.Cavernous.label>Caverneux - XL</DragonVagina.stages.Cavernous.label>
+  <!-- EN: Abyssal -->
+  <DragonVagina.stages.Abyssal.label>Abyssal - XXL</DragonVagina.stages.Abyssal.label>
+  
+  <!-- EN: hemipenis -->
+  <HemiPenis.label>hémipénis</HemiPenis.label>
+  <!-- EN: Twice the members for double the fun. -->
+  <HemiPenis.description>Deux fois plus de membres pour deux fois plus de plaisir.</HemiPenis.description>
+  <!-- EN: a hemipenis -->
+  <HemiPenis.labelNoun>un hémipénis</HemiPenis.labelNoun>
+  <!-- EN: Micro -->
+  <HemiPenis.stages.Micro.label>Micro - XS</HemiPenis.stages.Micro.label>
+  <!-- EN: Small -->
+  <HemiPenis.stages.Small.label>Petit - S</HemiPenis.stages.Small.label>
+  <!-- EN: Average -->
+  <HemiPenis.stages.Average.label>Moyen - M</HemiPenis.stages.Average.label>
+  <!-- EN: Large -->
+  <HemiPenis.stages.Large.label>Grand - L</HemiPenis.stages.Large.label>
+  <!-- EN: Huge -->
+  <HemiPenis.stages.Huge.label>Énorme - XL</HemiPenis.stages.Huge.label>
+  <!-- EN: Towering -->
+  <HemiPenis.stages.Towering.label>Géant - XXL</HemiPenis.stages.Towering.label>
+  
+  <!-- EN: equine penis -->
+  <HorsePenis.label>pénis équin</HorsePenis.label>
+  <!-- EN: A large horse penis. Flares out during sex. -->
+  <HorsePenis.description>Un gros pénis de cheval. Il se dilate pendant les rapports sexuels.</HorsePenis.description>
+  <!-- EN: an equine penis -->
+  <HorsePenis.labelNoun>un pénis équin</HorsePenis.labelNoun>
+  <!-- EN: Micro -->
+  <HorsePenis.stages.Micro.label>Micro - XS</HorsePenis.stages.Micro.label>
+  <!-- EN: Small -->
+  <HorsePenis.stages.Small.label>Petit - S</HorsePenis.stages.Small.label>
+  <!-- EN: Average -->
+  <HorsePenis.stages.Average.label>Moyen - M</HorsePenis.stages.Average.label>
+  <!-- EN: Large -->
+  <HorsePenis.stages.Large.label>Grand - L</HorsePenis.stages.Large.label>
+  <!-- EN: Huge -->
+  <HorsePenis.stages.Huge.label>Énorme - XL</HorsePenis.stages.Huge.label>
+  <!-- EN: Towering -->
+  <HorsePenis.stages.Towering.label>Géant - XXL</HorsePenis.stages.Towering.label>
+  
+  <!-- EN: equine vagina -->
+  <HorseVagina.label>vagin équin</HorseVagina.label>
+  <!-- EN: A mare vagina. -->
+  <HorseVagina.description>Un vagin de jument.</HorseVagina.description>
+  <!-- EN: an equine vagina -->
+  <HorseVagina.labelNoun>un vagin équin</HorseVagina.labelNoun>
+  <!-- EN: Micro -->
+  <HorseVagina.stages.Micro.label>Micro - XS</HorseVagina.stages.Micro.label>
+  <!-- EN: Tight -->
+  <HorseVagina.stages.Tight.label>Serré - S</HorseVagina.stages.Tight.label>
+  <!-- EN: Average -->
+  <HorseVagina.stages.Average.label>Moyen - M</HorseVagina.stages.Average.label>
+  <!-- EN: Accommodating -->
+  <HorseVagina.stages.Accommodating.label>Accommodant - L</HorseVagina.stages.Accommodating.label>
+  <!-- EN: Cavernous -->
+  <HorseVagina.stages.Cavernous.label>Caverneux - XL</HorseVagina.stages.Cavernous.label>
+  <!-- EN: Abyssal -->
+  <HorseVagina.stages.Abyssal.label>Abyssal - XXL</HorseVagina.stages.Abyssal.label>
+  
+  <!-- EN: narrow vagina -->
+  <NarrowVagina.label>vagin étroit</NarrowVagina.label>
+  <!-- EN: A tight, narrow vagina. -->
+  <NarrowVagina.description>Un vagin serré et étroit.</NarrowVagina.description>
+  <!-- EN: a narrow vagina -->
+  <NarrowVagina.labelNoun>un vagin étroit</NarrowVagina.labelNoun>
+  <!-- EN: Micro -->
+  <NarrowVagina.stages.Micro.label>Micro - XS</NarrowVagina.stages.Micro.label>
+  <!-- EN: Tight -->
+  <NarrowVagina.stages.Tight.label>Serré - S</NarrowVagina.stages.Tight.label>
+  <!-- EN: Average -->
+  <NarrowVagina.stages.Average.label>Moyen - M</NarrowVagina.stages.Average.label>
+  <!-- EN: Accommodating -->
+  <NarrowVagina.stages.Accommodating.label>Accommodant - L</NarrowVagina.stages.Accommodating.label>
+  <!-- EN: Cavernous -->
+  <NarrowVagina.stages.Cavernous.label>Caverneux - XL</NarrowVagina.stages.Cavernous.label>
+  <!-- EN: Abyssal -->
+  <NarrowVagina.stages.Abyssal.label>Abyssal - XXL</NarrowVagina.stages.Abyssal.label>
+  
+  <!-- EN: needle penis -->
+  <NeedlePenis.label>pénis aiguille</NeedlePenis.label>
+  <!-- EN: A small and thin penis. -->
+  <NeedlePenis.description>Un pénis petit et fin.</NeedlePenis.description>
+  <!-- EN: a needle penis -->
+  <NeedlePenis.labelNoun>un pénis aguille</NeedlePenis.labelNoun>
+  <!-- EN: Micro -->
+  <NeedlePenis.stages.Micro.label>Micro - XS</NeedlePenis.stages.Micro.label>
+  <!-- EN: Small -->
+  <NeedlePenis.stages.Small.label>Petit - S</NeedlePenis.stages.Small.label>
+  <!-- EN: Average -->
+  <NeedlePenis.stages.Average.label>Moyen - M</NeedlePenis.stages.Average.label>
+  <!-- EN: Large -->
+  <NeedlePenis.stages.Large.label>Grand - L</NeedlePenis.stages.Large.label>
+  <!-- EN: Huge -->
+  <NeedlePenis.stages.Huge.label>Énorme - XL</NeedlePenis.stages.Huge.label>
+  <!-- EN: Towering -->
+  <NeedlePenis.stages.Towering.label>Géant - XXL</NeedlePenis.stages.Towering.label>
+  
+  <!-- EN: procyonine penis -->
+  <RaccoonPenis.label>pénis de procyonidé</RaccoonPenis.label>
+  <!-- EN: A raccoon penis. -->
+  <RaccoonPenis.description>Un pénis de raton-laveur.</RaccoonPenis.description>
+  <!-- EN: a procyonine penis -->
+  <RaccoonPenis.labelNoun>un pénis de procyonidé</RaccoonPenis.labelNoun>
+  <!-- EN: Micro -->
+  <RaccoonPenis.stages.Micro.label>Micro - XS</RaccoonPenis.stages.Micro.label>
+  <!-- EN: Small -->
+  <RaccoonPenis.stages.Small.label>Petit - S</RaccoonPenis.stages.Small.label>
+  <!-- EN: Average -->
+  <RaccoonPenis.stages.Average.label>Moyen - M</RaccoonPenis.stages.Average.label>
+  <!-- EN: Large -->
+  <RaccoonPenis.stages.Large.label>Grand - L</RaccoonPenis.stages.Large.label>
+  <!-- EN: Huge -->
+  <RaccoonPenis.stages.Huge.label>Énorme - XL</RaccoonPenis.stages.Huge.label>
+  <!-- EN: Towering -->
+  <RaccoonPenis.stages.Towering.label>Géant - XXL</RaccoonPenis.stages.Towering.label>
+  
+  <!-- EN: rodent penis -->
+  <RodentPenis.label>pénis de rongeur</RodentPenis.label>
+  <!-- EN: A rodent penis. -->
+  <RodentPenis.description>Un pénis de rongeur.</RodentPenis.description>
+  <!-- EN: a rodent penis -->
+  <RodentPenis.labelNoun>un pénis de rongeur</RodentPenis.labelNoun>
+  <!-- EN: Micro -->
+  <RodentPenis.stages.Micro.label>Micro - XS</RodentPenis.stages.Micro.label>
+  <!-- EN: Small -->
+  <RodentPenis.stages.Small.label>Petit - S</RodentPenis.stages.Small.label>
+  <!-- EN: Average -->
+  <RodentPenis.stages.Average.label>Moyen - M</RodentPenis.stages.Average.label>
+  <!-- EN: Large -->
+  <RodentPenis.stages.Large.label>Grand - L</RodentPenis.stages.Large.label>
+  <!-- EN: Huge -->
+  <RodentPenis.stages.Huge.label>Énorme - XL</RodentPenis.stages.Huge.label>
+  <!-- EN: Towering -->
+  <RodentPenis.stages.Towering.label>Géant - XXL</RodentPenis.stages.Towering.label>
+  
+  <!-- EN: rodent vagina -->
+  <RodentVagina.label>vagin de rongeur</RodentVagina.label>
+  <!-- EN: A rodent vagina. -->
+  <RodentVagina.description>Un vagin de rongeur.</RodentVagina.description>
+  <!-- EN: a rodent vagina -->
+  <RodentVagina.labelNoun>un vagin de rongeur</RodentVagina.labelNoun>
+  <!-- EN: Micro -->
+  <RodentVagina.stages.Micro.label>Micro - XS</RodentVagina.stages.Micro.label>
+  <!-- EN: Tight -->
+  <RodentVagina.stages.Tight.label>Serré - S</RodentVagina.stages.Tight.label>
+  <!-- EN: Average -->
+  <RodentVagina.stages.Average.label>Moyen - M</RodentVagina.stages.Average.label>
+  <!-- EN: Accommodating -->
+  <RodentVagina.stages.Accommodating.label>Accommodant - L</RodentVagina.stages.Accommodating.label>
+  <!-- EN: Cavernous -->
+  <RodentVagina.stages.Cavernous.label>Caverneux - XL</RodentVagina.stages.Cavernous.label>
+  <!-- EN: Abyssal -->
+  <RodentVagina.stages.Abyssal.label>Abyssal - XXL</RodentVagina.stages.Abyssal.label>
+  
+  <!-- EN: udders -->
+  <UdderBreasts.label>mamelles</UdderBreasts.label>
+  <!-- EN: An animalistic breast with four nipples. -->
+  <UdderBreasts.description>Une poitrine animale avec quatre mamelons.</UdderBreasts.description>
+  <!-- EN: a set of udders -->
+  <UdderBreasts.labelNoun>un ensemble de mamelles</UdderBreasts.labelNoun>
+  <!-- EN: Nipples -->
+  <UdderBreasts.stages.Nipples.label>Mamelles</UdderBreasts.stages.Nipples.label>
+  <!-- EN: Tiny -->
+  <UdderBreasts.stages.Tiny.label>Minuscules - 0</UdderBreasts.stages.Tiny.label>
+  <!-- EN: Small -->
+  <UdderBreasts.stages.Small.label>Petites - 1</UdderBreasts.stages.Small.label>
+  <!-- EN: Average -->
+  <UdderBreasts.stages.Average.label>Moyennes - 2</UdderBreasts.stages.Average.label>
+  <!-- EN: Large -->
+  <UdderBreasts.stages.Large.label>Grandes - 3</UdderBreasts.stages.Large.label>
+  <!-- EN: Huge -->
+  <UdderBreasts.stages.Huge.label>Énormes - 4</UdderBreasts.stages.Huge.label>
+  <!-- EN: Enormous -->
+  <UdderBreasts.stages.Enormous.label>Immenses - 5</UdderBreasts.stages.Enormous.label>
+  <!-- EN: Massive -->
+  <UdderBreasts.stages.Massive.label>Massives - 6</UdderBreasts.stages.Massive.label>
+  <!-- EN: Gargantuan -->
+  <UdderBreasts.stages.Gargantuan.label>Gargantuesques - 7</UdderBreasts.stages.Gargantuan.label>
+  <!-- EN: Colossal -->
+  <UdderBreasts.stages.Colossal.label>Colossales - 8</UdderBreasts.stages.Colossal.label>
+  <!-- EN: Titanic -->
+  <UdderBreasts.stages.Titanic.label>Titanesques - 9</UdderBreasts.stages.Titanic.label>
+  <!-- EN: Astronomical -->
+  <UdderBreasts.stages.Astronomical.label>Astronomiques - 10</UdderBreasts.stages.Astronomical.label>
+  
+</LanguageData>

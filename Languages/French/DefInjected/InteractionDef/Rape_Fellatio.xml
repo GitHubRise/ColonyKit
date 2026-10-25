@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: fellatio -->
+  <Rape_Fellatio.label>fellation</Rape_Fellatio.label>
+  <!-- EN:
+    <li>r_logentry->Forced [RECIPIENT_nameDef] to give fellatio.</li>
+  -->
+  <Rape_Fellatio.logRulesInitiator.rulesStrings>
+    <li>r_logentry->A forcé [RECIPIENT_nameDef] à sucer.</li>
+  </Rape_Fellatio.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Was forced to fellate [INITIATOR_nameDef].</li>
+  -->
+  <Rape_Fellatio.logRulesRecipient.rulesStrings>
+    <li>r_logentry(RECIPIENT_gender!=Female)->A été forcé de sucer [INITIATOR_nameDef].</li>
+    <li>r_logentry(RECIPIENT_gender==Female)->A été forcée de sucer [INITIATOR_nameDef].</li>
+  </Rape_Fellatio.logRulesRecipient.rulesStrings>
+  <!-- EN: Get fellated -->
+  <Rape_Fellatio.modExtensions.0.RMBLabel>Reçoit une fellation</Rape_Fellatio.modExtensions.0.RMBLabel>
+  
+</LanguageData>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Pregnant -->
+  <RJW_pregnancy.label>Enceinte</RJW_pregnancy.label>
+  <!-- EN: Baby in the oven. -->
+  <RJW_pregnancy.description>Un bébé se développe.</RJW_pregnancy.description>
+  <!-- EN: early-stage -->
+  <RJW_pregnancy.stages.earlystage.label>stade initial</RJW_pregnancy.stages.earlystage.label>
+  <!-- EN: middle-stage -->
+  <RJW_pregnancy.stages.middlestage.label>stade avancé</RJW_pregnancy.stages.middlestage.label>
+  <!-- EN: late-stage -->
+  <RJW_pregnancy.stages.latestage.label>stade final</RJW_pregnancy.stages.latestage.label>
+  <!-- EN: having contractions -->
+  <RJW_pregnancy.stages.having_contractions.label>a des contractions</RJW_pregnancy.stages.having_contractions.label>
+  
+  <!-- EN: Pregnant -->
+  <RJW_pregnancy_beast.label>Gestante</RJW_pregnancy_beast.label>
+  <!-- EN: Baby in the oven. -->
+  <RJW_pregnancy_beast.description>Un petit se développe.</RJW_pregnancy_beast.description>
+  <!-- EN: early-stage -->
+  <RJW_pregnancy_beast.stages.earlystage.label>stade initial</RJW_pregnancy_beast.stages.earlystage.label>
+  <!-- EN: middle-stage -->
+  <RJW_pregnancy_beast.stages.middlestage.label>stade avancé</RJW_pregnancy_beast.stages.middlestage.label>
+  <!-- EN: late-stage -->
+  <RJW_pregnancy_beast.stages.latestage.label>stade final</RJW_pregnancy_beast.stages.latestage.label>
+  <!-- EN: having contractions -->
+  <RJW_pregnancy_beast.stages.having_contractions.label>a des contractions</RJW_pregnancy_beast.stages.having_contractions.label>
+  
+  <!-- EN: Pregnant -->
+  <RJW_pregnancy_mech.label>Enceinte</RJW_pregnancy_mech.label>
+  <!-- EN: Baby in the oven. -->
+  <RJW_pregnancy_mech.description>Un bébé se développe.</RJW_pregnancy_mech.description>
+  <!-- EN: early-stage -->
+  <RJW_pregnancy_mech.stages.earlystage.label>stade initial</RJW_pregnancy_mech.stages.earlystage.label>
+  <!-- EN: middle-stage -->
+  <RJW_pregnancy_mech.stages.middlestage.label>stade avancé</RJW_pregnancy_mech.stages.middlestage.label>
+  <!-- EN: late-stage -->
+  <RJW_pregnancy_mech.stages.latestage.label>stade final</RJW_pregnancy_mech.stages.latestage.label>
+  <!-- EN: having contractions -->
+  <RJW_pregnancy_mech.stages.having_contractions.label>a des contractions</RJW_pregnancy_mech.stages.having_contractions.label>
+  
+</LanguageData>

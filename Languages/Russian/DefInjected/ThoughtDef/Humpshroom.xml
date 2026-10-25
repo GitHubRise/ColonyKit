@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 可消耗物品 -->
+
+  <HumpShroomEffect.stages.0.label>Послевкусие от горбовника</HumpShroomEffect.stages.0.label>
+  <HumpShroomEffect.stages.0.description>Хм-м... Интересный вкус.</HumpShroomEffect.stages.0.description>
+
+
+  <!-- 仙馔成瘾 -->
+
+  <HumpShroomWithdrawal.stages.1.label>Горбовниковая ломка</HumpShroomWithdrawal.stages.1.label>
+  <HumpShroomWithdrawal.stages.1.description>Я у себя снизу вообще ничего не чувствую.</HumpShroomWithdrawal.stages.1.description>
+
+
+</LanguageData>

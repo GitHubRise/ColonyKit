@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: nymph joins -->
+  <NymphJoins.label>Un(e) nympho se joint</NymphJoins.label>
+  
+  <!-- EN: nymph visitor -->
+  <NymphVisitor.label>nympho visiteur</NymphVisitor.label>
+  
+  <!-- EN: nymph raid(easy) -->
+  <NymphVisitorGroupEasy.label>raid de nympho (facile)</NymphVisitorGroupEasy.label>
+  
+  <!-- EN: nymph raid(hard) -->
+  <NymphVisitorGroupHard.label>raid de nympho (difficile)</NymphVisitorGroupHard.label>
+  
+</LanguageData>

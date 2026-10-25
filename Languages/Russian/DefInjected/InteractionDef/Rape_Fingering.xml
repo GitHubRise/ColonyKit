@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rape_Fingering.label>насильный фингеринг</Rape_Fingering.label>
+  <Rape_Fingering.logRulesInitiator.rulesStrings.0>r_logentry->Принуждает [RECIPIENT_nameDef] сделать фингеринг.</Rape_Fingering.logRulesInitiator.rulesStrings.0>
+  <Rape_Fingering.logRulesRecipient.rulesStrings.0>r_logentry->Вынужденно ублажает [INITIATOR_nameDef] пальцами.</Rape_Fingering.logRulesRecipient.rulesStrings.0>
+  <Rape_Fingering.modExtensions.0.RMBLabel>Насильный фингеринг</Rape_Fingering.modExtensions.0.RMBLabel>
+
+
+</LanguageData>

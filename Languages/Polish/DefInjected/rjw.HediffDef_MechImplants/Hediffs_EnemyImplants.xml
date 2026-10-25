@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RJW_MechanoidImplant.label>wszczepiony mechanoid</RJW_MechanoidImplant.label>
+  <RJW_MechanoidImplant.description>Maly komputer, który wchodzi do gospodarza przez jeden z jego otworow. Moze analizowac oznaki zyciowe i dane lokalizacyjne i przekazywac je z powrotem do AI mechanoidow.</RJW_MechanoidImplant.description>
+</LanguageData>

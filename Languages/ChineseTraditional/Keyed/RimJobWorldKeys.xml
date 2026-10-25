@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<!-- 模组字符串 -->
+
+	<!-- 右键点击 CP 时的通知 -->
+	<PawnCantRapeCP>目標對象身體虛弱或者身處不可抵達的位置。</PawnCantRapeCP>
+	<PawnCantRapeCP0>此人或無須性交、或身體虛弱、又或者不可被強姦。</PawnCantRapeCP0>
+	<PawnCantRapeCP1>此人已有伴侶或其伴侶正在身邊。</PawnCantRapeCP1>
+	<PawnCantRapeCP2>此人並非戀獸癖，故拒絕強姦動物。</PawnCantRapeCP2>
+	
+	<!--提交按钮-->
+	<CommandSubmit>屈服</CommandSubmit>
+	<CommandSubmitDesc>躺下並屈服於一切即將到來的噩運。</CommandSubmitDesc>
+	
+	<!--怀孕消息-->
+	<RJW_PregnantTitle>{0}懷孕了</RJW_PregnantTitle>
+	<RJW_PregnantText>{0}已經懷上了寶寶並成為了準媽媽。小心，讓她餓著或受傷可能會導致流產。</RJW_PregnantText>
+	<RJW_Contractions>{0}正在宮縮！寶寶即將降生！</RJW_Contractions>
+	<RJW_GaveBirthTitle>寶寶生出來了</RJW_GaveBirthTitle>
+	<RJW_GaveBirthText>{0}順利產下了</RJW_GaveBirthText>
+	<RJW_ABaby>{0}個寶寶。</RJW_ABaby>
+	<RJW_NBabies>{0}個{1}寶寶。</RJW_NBabies>
+	<RJW_PregnantNormal>寶寶很健康。</RJW_PregnantNormal>
+	<RJW_PregnantStrange>這個寶寶有點怪...</RJW_PregnantStrange>
+	<RJW_PregnantMechStrange>這個寶寶真的好奇怪...</RJW_PregnantMechStrange>
+	<RJW_GaveBirthEggTitle>產下了數枚卵。</RJW_GaveBirthEggTitle>
+	<RJW_GaveBirthEggText>{0}產下了數枚卵。</RJW_GaveBirthEggText>
+	<RJW_EggContractions>{0}正在宮縮！快要產卵了！</RJW_EggContractions>
+	<RJW_Message_NotPregnant>{0}已確認{1}沒有懷孕。</RJW_Message_NotPregnant>
+	<RJW_Message_Pregnant>{0}已確認{1}懷有身孕，父親是{2}。</RJW_Message_Pregnant>
+
+	<!--强奸警报-->
+	<RJW_AlertRape>{RAPIST}正試圖強姦{TARGET}。</RJW_AlertRape>
+	<RJW_AlertAssault>{RAPIST}正試圖侵犯{TARGET}。</RJW_AlertAssault>
+	<RJW_AlertBreed>{RAPIST}正試圖與{TARGET}配種。</RJW_AlertBreed>
+	<RJW_AlertRapeRelated>{RAPIST}正試圖強姦{TARGET}，{RAPIST_possessive}{RELATION}。</RJW_AlertRapeRelated>
+	<RJW_AlertAssaultRelated>{RAPIST}正試圖侵犯{TARGET}，{RAPIST_possessive}{RELATION}。</RJW_AlertAssaultRelated>
+	<RJW_AlertBreedRelated>{RAPIST}正試圖與{TARGET}配種，{RAPIST_possessive}{RELATION}。</RJW_AlertBreedRelated>
+	<RJW_AlertBeeingRaped>{TARGET}正遭到強姦。</RJW_AlertBeeingRaped>
+
+	<GoToModSettings>該空間為可選之RJW內容預留。空白可能由於該內容被關閉或對所選擇之生物不可用。\n請查看本模組的選項頁後再行發問。</GoToModSettings>
+
+	<!--舒适指派-->
+	<ForComfort>設為洩慾對象</ForComfort>
+	<ForComfortDesc>設為性交洩慾對象</ForComfortDesc>
+	<ForComfortRefuseDesc>拒絕成為洩慾對象。\n需要特性：受虐狂（masochist）</ForComfortRefuseDesc>
+	
+	<!--妓女-->
+	<ForService>設為娼妓</ForService> <!-- 此字段不可见 -->
+	<ForServiceDesc><![CDATA[設為娼妓後會：
+- 嘗試勾搭訪客。
+- 取悅殖民者。
+- 工作時不會自慰；如此可能引發沮喪情緒。
+]]></ForServiceDesc>
+	<ForServiceRefuseDesc>拒絕做娼妓</ForServiceRefuseDesc>
+	
+	<!--繁殖指派-->
+	<ForBreeding>設為動物繁育者</ForBreeding>
+	<ForBreedingDesc>設為動物配種對象</ForBreedingDesc>
+	<ForBreedingRefuseDesc>拒絕被動物配種。\n需要特性：戀獸癖</ForBreedingRefuseDesc>
+
+	<ForBreedingAnimalDesc>允許此動物對所有繁育者配種。</ForBreedingAnimalDesc>
+
+	<BreedMessage>正試圖配種</BreedMessage>
+	
+	<!--挤奶-->
+	<ForMilking>指定為乳汁提供者</ForMilking>
+	<ForMilkingDesc>自該生物收穫乳汁。</ForMilkingDesc>
+
+	<!--英雄-->
+	<ForHero>指定為「英雄」</ForHero>
+	<ForHeroDesc><![CDATA[指定此人為主角
+- 只能被指定一次
+- 無法關閉
+]]></ForHeroDesc>
+	<ForHeroRefuse1Desc>此為另一玩家之「英雄」This is hero of other player</ForHeroRefuse1Desc>
+	<ForHeroRefuse2Desc>你無法變更此決定。</ForHeroRefuse2Desc>
+	<ForHeroRefuseHCDesc>硬核模式下的非「英雄」殖民者</ForHeroRefuseHCDesc>
+	<RJW_Message_BecameHero>{0}現在成為了{1}的「英雄」。</RJW_Message_BecameHero>
+
+	<!--指派提示-->
+	<RJW_Hero_DisabledTip>須先在設定中啟用「英雄」模式。</RJW_Hero_DisabledTip>
+	<RJW_Hero_Ironman_AlreadyHeroTip>{PAWN_labelShort}已被指定為「英雄」。由於啟用了鐵人模式，無法再指定新的「英雄」。</RJW_Hero_Ironman_AlreadyHeroTip>
+	<RJW_Hero_AlreadyExistsTip>已有其他角色被指定為「英雄」。</RJW_Hero_AlreadyExistsTip>
+	<RJW_Hero_AlreadyHeroTip>{PAWN_labelShort}已被指定為「英雄」。需待{PAWN_pronoun}死去後，才能指定新的「英雄」。</RJW_Hero_AlreadyHeroTip>
+	<RJW_Hero_DesignateTip>指定{PAWN_labelShort}為「英雄」。</RJW_Hero_DesignateTip>
+	<RJW_Hero_DesignateDialog_Title>指定為&lt;color=yellow>「英雄」&lt;/color></RJW_Hero_DesignateDialog_Title>
+	<RJW_Hero_DesignateDialog_Desc>將角色指定為&lt;color=yellow>「英雄」&lt;/color>後，即可直接控制其性行為的選擇。</RJW_Hero_DesignateDialog_Desc>
+	<RJW_Hero_DesignateDialog_Text_Normal>必須等這位&lt;color=yellow>「英雄」&lt;/color>死去後，才能指定新的&lt;color=yellow>「英雄」&lt;/color>。</RJW_Hero_DesignateDialog_Text_Normal>
+	<RJW_Hero_DesignateDialog_Text_Ironman>由於啟用了&lt;color=yellow>「英雄」&lt;/color>鐵人模式，每局遊戲只能指定一次&lt;color=yellow>「英雄」&lt;/color>。</RJW_Hero_DesignateDialog_Text_Ironman>
+
+	<RJW_Comfort_DisabledTip>{PAWN_labelShort}並非受虐狂，絕不會同意成為洩慾對象。</RJW_Comfort_DisabledTip>
+	<RJW_Comfort_OnTip>{PAWN_labelShort}目前已被指定為洩慾對象。\n\n點選此處可取消指定。</RJW_Comfort_OnTip>
+	<RJW_Comfort_OffTip>{PAWN_labelShort}尚未被指定為洩慾對象。\n\n點選此處可指定。</RJW_Comfort_OffTip>
+	<RJW_Comfort_SettingDisabledTip>模組設定中已停用洩慾對象。\n請啟用「強姦」以指定洩慾對象。</RJW_Comfort_SettingDisabledTip>
+
+	<RJW_BreedHumanlike_DisabledTip>{PAWN_labelShort}並非戀獸癖，絕不會同意成為配種對象。</RJW_BreedHumanlike_DisabledTip>
+	<RJW_BreedHumanlike_OnTip>{PAWN_labelShort}目前已被指定為配種對象。\n\n點選此處可取消指定。</RJW_BreedHumanlike_OnTip>
+	<RJW_BreedHumanlike_OffTip>{PAWN_labelShort}尚未被指定為配種對象。\n\n點選此處可指定。</RJW_BreedHumanlike_OffTip>
+	<RJW_BreedHumanlike_SettingDisabledTip>模組設定中已停用獸交。\n請啟用「獸交」以指定配種對象。</RJW_BreedHumanlike_SettingDisabledTip>
+
+	<RJW_BreedAnimal_DisabledTip>{PAWN_labelShort}無法被指定為配種對象。</RJW_BreedAnimal_DisabledTip>
+	<RJW_BreedAnimal_OnTip>{PAWN_labelShort}目前已被指定為配種對象。\n\n點選此處可取消指定。</RJW_BreedAnimal_OnTip>
+	<RJW_BreedAnimal_OffTip>{PAWN_labelShort}尚未被指定為配種對象。\n\n點選此處可指定。</RJW_BreedAnimal_OffTip>
+	<RJW_BreedAnimal_SettingDisabledTip>模組設定中已停用配種。\n請啟用「動物間性行為」以指定配種動物。</RJW_BreedAnimal_SettingDisabledTip>
+
+	<RJW_BreederAnimal_DisabledTip>{PAWN_labelShort}無法被指定為配種者。</RJW_BreederAnimal_DisabledTip>
+	<RJW_BreederAnimal_OnTip>{PAWN_labelShort}目前已被指定為配種者。\n\n點選此處可取消指定。</RJW_BreederAnimal_OnTip>
+	<RJW_BreederAnimal_OffTip>{PAWN_labelShort}尚未被指定為配種者。\n\n點選此處可指定。</RJW_BreederAnimal_OffTip>
+	<RJW_BreederAnimal_SettingDisabledTip>模組設定中已停用配種。\n請啟用「動物間性行為」以指定配種動物。</RJW_BreederAnimal_SettingDisabledTip>
+
+	<!-- Hediff 提示 -->
+	<RJW_PartInfo_braCup>罩杯: {0}</RJW_PartInfo_braCup>
+	<RJW_PartInfo_braSizeNone>[braSizeNone]胸罩尺寸: -</RJW_PartInfo_braSizeNone>
+	<RJW_PartInfo_eggs>[蟲]卵: {0}</RJW_PartInfo_eggs>
+	<RJW_PartInfo_fluidTypeFluidAmount>{0}：{1}</RJW_PartInfo_fluidTypeFluidAmount>
+	<RJW_PartInfo_braSize>[braSize]胸罩尺寸: {0}:{1}</RJW_PartInfo_braSize>
+	<RJW_PartInfo_overbust>胸圍: {0}</RJW_PartInfo_overbust>
+	<RJW_PartInfo_underbust>胸下圍: {0}</RJW_PartInfo_underbust>
+	<RJW_PartInfo_weight>重量: {0}</RJW_PartInfo_weight>
+	<RJW_PartInfo_properties>屬性: {0}</RJW_PartInfo_properties>
+
+	<RJW_PartInfo_severity>嚴重程度: {0}</RJW_PartInfo_severity>
+	<RJW_PartInfo_fluidMultiplier>體液倍率: {0}</RJW_PartInfo_fluidMultiplier>
+
+	<!-- 可安装部件的 hediff 提示与检视面板共用-->
+	<RJW_PartInfo_girth>周長: {0}</RJW_PartInfo_girth>
+	<RJW_PartInfo_length>長度: {0}</RJW_PartInfo_length>
+	<RJW_PartInfo_depth>深度: {0}</RJW_PartInfo_depth>
+	<RJW_PartInfo_maxGirth>最大周長: {0}</RJW_PartInfo_maxGirth>
+	<RJW_PartInfo_maxLength>最大長度: {0}</RJW_PartInfo_maxLength>
+
+	<!-- 部件检视面板-->
+	<RJW_PartInfo_fluidTypeFluidAmountHeading>體液: {0} ({1}ml)</RJW_PartInfo_fluidTypeFluidAmountHeading>
+
+	<!-- 部件属性与描述 -->
+	<RJW_PartInfo_unknownSpecies>未知種族</RJW_PartInfo_unknownSpecies>
+	<RJW_PartInfo_unknownOwner>未知</RJW_PartInfo_unknownOwner>
+	<RJW_StatEntry_PreviousOwner>前任擁有者</RJW_StatEntry_PreviousOwner>
+	<RJW_StatEntry_OriginalOwnerRace>原始種族</RJW_StatEntry_OriginalOwnerRace>
+	<RJW_StatEntry_OriginalOwnerSize>原始尺寸</RJW_StatEntry_OriginalOwnerSize>
+	<RJW_StatEntry_PartSize>部位尺寸</RJW_StatEntry_PartSize>
+	<RJW_StatEntry_PartCupSize>罩杯大小</RJW_StatEntry_PartCupSize>
+	<RJW_StatEntry_PartLength>部位長度</RJW_StatEntry_PartLength>
+	<RJW_StatEntry_PartGirth>部位周長</RJW_StatEntry_PartGirth>
+	<RJW_StatEntry_PartMaxGirth>最大周長</RJW_StatEntry_PartMaxGirth>
+	<RJW_StatEntry_PartDepth>部位深度</RJW_StatEntry_PartDepth>
+	<RJW_StatEntry_PartWeight>部位重量</RJW_StatEntry_PartWeight>
+	<RJW_StatEntry_PartTags>部位屬性</RJW_StatEntry_PartTags>
+	<RJW_StatEntry_Fluid>體液</RJW_StatEntry_Fluid>
+	<RJW_StatEntry_FluidAmount>體液量</RJW_StatEntry_FluidAmount>
+	<RJW_StatEntry_FluidAmount_ejaculation>射出量</RJW_StatEntry_FluidAmount_ejaculation>
+	<RJW_StatEntry_FluidAmount_wetness>濕潤度</RJW_StatEntry_FluidAmount_wetness>
+
+	<!-- 部件类型 -->
+	<RJW_PartInfo_T_Title>部位類型</RJW_PartInfo_T_Title>
+	<RJW_PartInfo_T_Penis>陰莖</RJW_PartInfo_T_Penis>
+	<RJW_PartInfo_T_Vagina>陰道</RJW_PartInfo_T_Vagina>
+	<RJW_PartInfo_T_Anus>肛門</RJW_PartInfo_T_Anus>
+	<RJW_PartInfo_T_Breast>乳房</RJW_PartInfo_T_Breast>
+	<RJW_PartInfo_T_Ovipositor>產卵管</RJW_PartInfo_T_Ovipositor>
+	<RJW_PartInfo_EggTypes>卵的種類</RJW_PartInfo_EggTypes>
+	
+	<!-- RJW 生育力提示 -->
+	<AgeImpactor>年齡：</AgeImpactor>
+	<VanillaFertilityImpactor>生育力：{VALUE}%</VanillaFertilityImpactor>
+	
+	<!-- 宁芙!!! -->
+    <RJW_nymph_incident_raid_title>流鶯襲擊！！！</RJW_nymph_incident_raid_title>
+    <RJW_nymph_incident_raid_description>一群流鶯闖入了你的城邑！</RJW_nymph_incident_raid_description>
+    <RJW_nymph_incident_wander_title>流鶯訪客！</RJW_nymph_incident_wander_title>
+    <RJW_nymph_incident_wander_description>有流鶯決定拜訪你的城邑。</RJW_nymph_incident_wander_description>
+    <RJW_nymph_incident_join_title>流鶯加入</RJW_nymph_incident_join_title>
+    <RJW_nymph_incident_join_description>有流鶯決定加入你。</RJW_nymph_incident_join_description>
+
+	<!-- Biotech 集成 -->
+	<PawnLacksFunctionalGenitals>{PAWN}沒有功能正常的生殖器。</PawnLacksFunctionalGenitals>
+	<PawnLacksVagina>{PAWN}沒有陰道。</PawnLacksVagina>
+	<PawnLacksFunctionalPenis>{PAWN}沒有功能正常的陰莖。</PawnLacksFunctionalPenis>
+	<VaginalWeight>陰道性交的機率</VaginalWeight>
+	
+	<!-- 特质获取 -->
+	<!-- 提示：只要在后面加上该特质的 defName（以及可选的等级），就能方便地为这两个添加特质专属版本 -->
+	<LetterLabelGainedTraitFromSex>獲得特性：{PAWN}</LetterLabelGainedTraitFromSex>
+	<GainedTraitFromSex>某次性經驗令{PAWN}取得了{TRAIT}特性。</GainedTraitFromSex>
+	<GainedTraitFromSexNymphomaniac>春藥誘發的過度刺激令{PAWN}的精神狀況逐漸變化。{PAWN_pronoun}獲得了{TRAIT}特性。</GainedTraitFromSexNymphomaniac>
+	<GainedTraitFromSexFootSlut>連年的刺激終於餵飽了{PAWN}心中的小惡魔。{PAWN}成為了{TRAIT}。</GainedTraitFromSexFootSlut>
+	<LetterLabelGainedMultipleTraitsFromSex>獲得特性：{PAWN}</LetterLabelGainedMultipleTraitsFromSex>
+	<GainedMultipleTraitsFromSex>某次極其深刻的性經驗令{PAWN}取得了如下特性：</GainedMultipleTraitsFromSex>
+	<GainedMultipleTraitsFromSexListItem>  - {0}</GainedMultipleTraitsFromSexListItem>
+
+	<!-- 束缚装备 -->
+	<RJW_BG_Message_FailedRemove>{0}試圖脫下{0_possessive}的{1}，但徒勞無功！</RJW_BG_Message_FailedRemove>
+	<RJW_BG_Message_NoWear_BlockedBy>{0}無法穿上{1}（被{2}阻擋）</RJW_BG_Message_NoWear_BlockedBy>
+	<RJW_BG_Message_Unlock>已解鎖{0}</RJW_BG_Message_Unlock>
+	<RJW_BG_Message_CouldntDrop>無法丟棄{0}</RJW_BG_Message_CouldntDrop>
+	<RJW_BG_Message_WrongKey>鑰匙不合！</RJW_BG_Message_WrongKey>
+
+	<RJW_BG_Comp_Inspect_Engraving>刻有名字：「{0}」</RJW_BG_Comp_Inspect_Engraving>
+	<RJW_BG_Comp_Inspect_Key>加密印記：{0}</RJW_BG_Comp_Inspect_Key>
+</LanguageData>

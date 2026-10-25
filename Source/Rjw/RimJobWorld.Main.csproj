@@ -1,0 +1,69 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{22F82FFF-8BD4-4CEE-9F22-C7DA71281E72}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <NoStdLib>false</NoStdLib>
+    <AssemblyName>RJW</AssemblyName>
+    <TargetFramework>net472</TargetFramework>
+    <OutputPath>..\..\Assemblies\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>rjw</RootNamespace>
+    <Deterministic>false</Deterministic>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>true</Optimize>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+  <!-- Set the `BENCHMARK` environment variable to "1" to enable benchmarking. -->
+  <PropertyGroup Condition="'$(BENCHMARK)' == '1'">
+    <DefineConstants>$(DefineConstants);BENCHMARK</DefineConstants>
+  </PropertyGroup>
+  <!-- Prevents copying DLLs on build. -->
+  <!-- If you do still get copies, wipe out the `obj` folder and re-run the `restore` task. -->
+  <!-- You can do this on the command line with: `msbuild /t:restore` -->
+  <ItemDefinitionGroup>
+    <Reference><Private>False</Private></Reference>
+    <ProjectReference><Private>False</Private></ProjectReference>
+    <PackageReference><ExcludeAssets>runtime</ExcludeAssets></PackageReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <PackageReference Include="Krafs.Publicizer">
+      <Version>2.*</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.*" />
+    <PackageReference Include="Lib.Harmony" Version="2.*" />
+    <PackageReference Include="RimWorld.MultiplayerAPI">
+      <Version>*</Version>
+      <!-- Same as the Prepatcher -->
+      <ExcludeAssets>none</ExcludeAssets>
+    </PackageReference>
+    <PackageReference Include="Zetrith.Prepatcher">
+      <Version>*</Version>
+      <!-- Including the api is required to not break debug options when using it as optional -->
+      <ExcludeAssets>none</ExcludeAssets>
+    </PackageReference>
+    <PackageReference Include="IsExternalInit" Version="*" />
+  </ItemGroup>
+  <ItemGroup>
+    <Publicize Include="Assembly-CSharp:Verse.PawnRenderTree.nodesByTag" />
+    <Publicize Include="Assembly-CSharp:Verse.PawnRenderTree.AdjustParms" />
+    <Publicize Include="Assembly-CSharp:Verse.Widgets.InfoCardButtonWorker" />
+    <Publicize Include="Assembly-CSharp:RimWorld.HealthCardUtility.DoDebugOptions" />
+    <Publicize Include="Assembly-CSharp:RimWorld.JobDriver_Lovin.Partner" />
+    <Publicize Include="Assembly-CSharp:RimWorld.JobDriver_Lovin.Bed" />
+    <Publicize Include="Assembly-CSharp:RimWorld.JobDriver_Mate.Female" />
+    <Publicize Include="Assembly-CSharp:RimWorld.SkillNeed_BaseBonus.ValueAtLevel" />
+    <Publicize Include="Assembly-CSharp:RimWorld.TrainingCardUtility.TrainabilityLeft" />
+    <Publicize Include="Assembly-CSharp:RimWorld.TrainingCardUtility.TrainabilityTop" />
+  </ItemGroup>
+</Project>

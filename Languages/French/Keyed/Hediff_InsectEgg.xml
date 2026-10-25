@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<!-- LabelBase -->
+	<Hediff_InsectEgg_egg> œuf</Hediff_InsectEgg_egg> <!-- return implanter.kindDef.race.label + " egg"; -->
+	<!-- 未识别的卵尺寸 -->
+	<Hediff_InsectEgg_small>Petit œuf</Hediff_InsectEgg_small> <!-- eggssize <= 0.10f -->
+	<Hediff_InsectEgg_medium>Moyen œuf</Hediff_InsectEgg_medium> <!-- eggssize <= 0.3f -->
+	<Hediff_InsectEgg_big>Gros œuf</Hediff_InsectEgg_big> <!-- eggssize <= 0.5f -->
+	<Hediff_InsectEgg_huge>Énorme œuf</Hediff_InsectEgg_huge> <!-- eggssize > 0.5f -->
+	
+	<!-- LabelInBrackets -->
+	<Hediff_InsectEgg_fertilized>Fertilisé</Hediff_InsectEgg_fertilized>
+	<Hediff_InsectEgg_unfertilized>Non fertilisé</Hediff_InsectEgg_unfertilized>
+	
+</LanguageData>

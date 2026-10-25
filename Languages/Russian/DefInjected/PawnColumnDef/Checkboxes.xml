@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RJW_Hero.headerTip>Назначьте поселенца героем, которому можно напрямую приказывать заниматься любовью с другими.</RJW_Hero.headerTip>
+  <RJW_Comfort.headerTip>Назначить поселенца насилуемым. Он будет использоваться для удовлетворения сексуальной потребности другими.</RJW_Comfort.headerTip>
+  <RJW_BreedHumanlike.headerTip>Назначить поселенца для спаривания. Приручённые животные будут с ним размножаться по возможности.</RJW_BreedHumanlike.headerTip>
+  <RJW_BreederAnimal.headerTip>Назначить животное осеменителем. Оно будет пытаться спариваться с поселенцами, назначенными для этого.</RJW_BreederAnimal.headerTip>
+  <RJW_BreedAnimal.headerTip>Назначить животное для спаривания. Приручённые животные будут с ним размножаться по возможности.</RJW_BreedAnimal.headerTip>
+  <RJW_Whore.headerTip>Назначить поселенца на проституцию. Он будет обслуживать гостей за серебро или репутацию.</RJW_Whore.headerTip>
+
+
+</LanguageData>

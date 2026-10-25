@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: hyperfertility pill -->
+  <RJW_FertPill.label>pilule d'hyperfertilité</RJW_FertPill.label>
+  <!-- EN: Enhances fertility for 48 hours. Also works as a mild aphrodisiac. -->
+  <RJW_FertPill.description>Améliore la fertilité pendant 48 heures. Agit également comme un aphrodisiaque léger.</RJW_FertPill.description>
+  <!-- EN: Take {0} -->
+  <RJW_FertPill.ingestible.ingestCommandString>Prendre {0}</RJW_FertPill.ingestible.ingestCommandString>
+  <!-- EN: Taking {0}. -->
+  <RJW_FertPill.ingestible.ingestReportString>Prend {0}.</RJW_FertPill.ingestible.ingestReportString>
+  
+</LanguageData>

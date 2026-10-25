@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<TraitDef>
+		<defName>Nymphomaniac</defName>
+		<commonality>0.1</commonality>
+		<commonalityFemale>0.08</commonalityFemale>
+		<degreeDatas>
+			<li>
+				<label>hypersexual</label>
+				<description>[PAWN_nameDef] loves sex and always wants more. Can regain psyfocus only through sex.</description>
+				<statOffsets>
+					<Vulnerability>0.1</Vulnerability>
+					<SexFrequency>2.0</SexFrequency>
+				</statOffsets>
+				<statFactors>
+					<!-- 这会移除无冥想物冥想时的焦点获取 -->
+					<MeditationFocusGain MayRequire="Ludeon.Rimworld.Royalty">0</MeditationFocusGain>
+				</statFactors>
+				<allowedMeditationFocusTypes>
+					<li>Sex</li>
+				</allowedMeditationFocusTypes>
+				<!-- disallowedMeditationFocusTypes 由 C# 代码填入所有不在 allowedMeditationFocusTypes 中的类型 -->
+			</li>
+		</degreeDatas>
+		<conflictingTraits>
+			<li>DislikesMen</li>
+			<li>DislikesWomen</li>
+		</conflictingTraits>
+		<requiredWorkTags>
+			<li>Social</li>
+		</requiredWorkTags>
+	</TraitDef>
+</Defs>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: insectoid egg -->
+  <RJW_InsectHiveEgg.label>œuf d'insecte</RJW_InsectHiveEgg.label>
+  <!-- EN: Parasitic egg(s) that enter the host's body and feeds off their nutrients until ready to hatch. Just be glad they don't hatch by bursting out of your chest. -->
+  <RJW_InsectHiveEgg.description>Œuf(s) parasite(s) qui pénètrent dans le corps de l'hôte et se nourrissent de ses nutriments jusqu'à ce qu'ils soient prêts à éclore. Réjouissez-vous simplement qu'ils n'éclosent pas en jaillissant hors de votre poitrine.</RJW_InsectHiveEgg.description>
+  
+  <!-- EN: implanted mechanoid -->
+  <RJW_MechanoidImplant.label>mécanoïde implanté</RJW_MechanoidImplant.label>
+  <!-- EN: A small computer that enters a host through one of their orifices. Can analyze vital signs and location data, and relay that information back to mechanoid ai. -->
+  <RJW_MechanoidImplant.description>Un petit ordinateur qui pénètre dans un hôte par l'un de ses orifices. Il peut analyser les signes vitaux et les données de localisation, puis transmettre ces informations à l'IA mécanoïde.</RJW_MechanoidImplant.description>
+  
+  <!-- EN: generic insect egg -->
+  <RJW_UnknownEgg.label>œuf d'insecte générique</RJW_UnknownEgg.label>
+  <!-- EN: Parasitic egg(s) that enter the host's body and feeds off their nutrients until ready to hatch. Just be glad they don't hatch by bursting out of your chest. -->
+  <RJW_UnknownEgg.description>Œuf(s) parasite(s) qui pénètrent dans le corps de l'hôte et se nourrissent de ses nutriments jusqu'à ce qu'ils soient prêts à éclore. Réjouissez-vous simplement qu'ils n'éclosent pas en jaillissant hors de votre poitrine.</RJW_UnknownEgg.description>
+  
+</LanguageData>

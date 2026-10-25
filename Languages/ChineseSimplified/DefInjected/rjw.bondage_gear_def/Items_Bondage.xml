@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <PrisonerChains.label>链条</PrisonerChains.label>
+
+  <PrisonerChains.description>带袖口的链条，用于限制某人的行动能力和操作能力。</PrisonerChains.description>
+
+  <PrisonerChains.comps.CompBondageGear.useLabel>装备</PrisonerChains.comps.CompBondageGear.useLabel>
+</LanguageData>

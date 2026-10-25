@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: double-penetration -->
+  <Necro_Reverse_DoublePenetrationM.label>double-pénétration</Necro_Reverse_DoublePenetrationM.label>
+  <!-- EN:
+    <li>r_logentry->Double-penetrated by [RECIPIENT_nameDef].</li>
+  -->
+  <Necro_Reverse_DoublePenetrationM.logRulesInitiator.rulesStrings>
+    <li>r_logentry(INITIATOR_gender!=Female)->A été double-pénétré par [RECIPIENT_nameDef].</li>
+    <li>r_logentry(INITIATOR_gender==Female)->A été double-pénétrée par [RECIPIENT_nameDef].</li>
+  </Necro_Reverse_DoublePenetrationM.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Was forced to double-penetrate [INITIATOR_nameDef].</li>
+  -->
+  <Necro_Reverse_DoublePenetrationM.logRulesRecipient.rulesStrings>
+    <li>r_logentry(RECIPIENT_gender!=Female)->A été forcé à double-pénétrer [INITIATOR_nameDef].</li>
+    <li>r_logentry(RECIPIENT_gender==Female)->A été forcée à double-pénétrer [INITIATOR_nameDef].</li>
+  </Necro_Reverse_DoublePenetrationM.logRulesRecipient.rulesStrings>
+  <!-- EN: Get double-penetrated -->
+  <Necro_Reverse_DoublePenetrationM.modExtensions.0.RMBLabel>Est double-pénétré</Necro_Reverse_DoublePenetrationM.modExtensions.0.RMBLabel>
+  
+</LanguageData>

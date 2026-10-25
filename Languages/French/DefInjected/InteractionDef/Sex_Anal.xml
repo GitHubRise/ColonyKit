@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: anal -->
+  <Sex_Anal.label>anal</Sex_Anal.label>
+  <!-- EN:
+    <li>r_logentry->Had anal sex with [RECIPIENT_nameDef].</li>
+  -->
+  <Sex_Anal.logRulesInitiator.rulesStrings><li>r_logentry->A eu du sexe anal avec [RECIPIENT_nameDef].</li></Sex_Anal.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Had anal sex with [INITIATOR_nameDef].</li>
+  -->
+  <Sex_Anal.logRulesRecipient.rulesStrings><li>r_logentry->A eu du sexe anal avec [INITIATOR_nameDef].</li></Sex_Anal.logRulesRecipient.rulesStrings>
+  <!-- EN: Have anal sex -->
+  <Sex_Anal.modExtensions.0.RMBLabel>A du sexe anal</Sex_Anal.modExtensions.0.RMBLabel>
+  
+</LanguageData>

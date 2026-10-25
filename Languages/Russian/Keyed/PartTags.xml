@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<PartsTag_Barbed>Колючий</PartsTag_Barbed>
+	<PartsTag_Long>Длинный</PartsTag_Long>
+	<PartsTag_Girthy>Толстый</PartsTag_Girthy>
+	<PartsTag_Solid>Твёрдый</PartsTag_Solid>
+	<PartsTag_Small>Маленький</PartsTag_Small>
+	<PartsTag_Rigid>Жесткий</PartsTag_Rigid>
+	<PartsTag_Thin>Тонкий</PartsTag_Thin>
+	<PartsTag_Sheathed>В оболочке</PartsTag_Sheathed>
+	<PartsTag_Internal>Внутренний</PartsTag_Internal>
+	<PartsTag_Flared>Расширяющийся</PartsTag_Flared>
+	<PartsTag_Multiple>Множественный</PartsTag_Multiple>
+	<PartsTag_Ridged>Ребристый</PartsTag_Ridged>
+	<PartsTag_Knotted>Узловатый</PartsTag_Knotted>
+	<PartsTag_Tapered>Конический</PartsTag_Tapered>
+	<PartsTag_Glowing>Светящийся</PartsTag_Glowing>
+	<PartsTag_Prehensile>Хваткость</PartsTag_Prehensile>
+	<PartsTag_Humanlike>Человекоподобный</PartsTag_Humanlike>
+
+	<PartsTag_Deep>Глубокая</PartsTag_Deep>
+	<PartsTag_Tight>Тугая</PartsTag_Tight>
+	<PartsTag_Loose>Просторная</PartsTag_Loose>
+
+	<PartsTag_Artificial>Искусственный</PartsTag_Artificial>
+	<PartsTag_STDImmune>Иммунитет к ЗППП</PartsTag_STDImmune>
+	<PartsTag_Resizable>Регулируемый размер</PartsTag_Resizable>
+	<PartsTag_FertilityToggle>Переключаемая фертильность</PartsTag_FertilityToggle>
+</LanguageData>

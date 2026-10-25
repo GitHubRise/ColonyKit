@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: rjw_interaction_template -->
+  <rjw_interaction_template.label>rjw_interaction_template</rjw_interaction_template.label>
+  <!-- EN:
+    <li>r_logentry->had sex with [RECIPIENT_nameDef].</li>
+  -->
+  <rjw_interaction_template.logRulesInitiator.rulesStrings>
+    <li>r_logentry->a eu du sexe avec [RECIPIENT_nameDef].</li>
+  </rjw_interaction_template.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->had sex with [INITIATOR_nameDef].</li>
+  -->
+  <rjw_interaction_template.logRulesRecipient.rulesStrings>
+    <li>r_logentry->a eu du sexe avec [INITIATOR_nameDef].</li>
+  </rjw_interaction_template.logRulesRecipient.rulesStrings>
+  
+</LanguageData>

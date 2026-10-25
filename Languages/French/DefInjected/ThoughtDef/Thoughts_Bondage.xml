@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: bound -->
+  <Bound.stages.bound.label>attaché(e)</Bound.stages.bound.label>
+  <!-- EN: This thing is seriously annoying. I wish I could take it off. -->
+  <Bound.stages.bound.description>Ce truc est vraiment agaçant. J'aimerais pouvoir l'enlever.</Bound.stages.bound.description>
+  <!-- EN: gagged -->
+  <Bound.stages.gagged.label>bâillonné(e)</Bound.stages.gagged.label>
+  <!-- EN: Ish shnn ish shrrrrsh uhnnninnn -->
+  <Bound.stages.gagged.description>Pfff eshhh psheeeuff shpaaaaff pwaashwleeeer pfff...</Bound.stages.gagged.description>
+  <!-- EN: bound and gagged -->
+  <Bound.stages.bound_and_gagged.label>attaché(e) et bâillonné(e)</Bound.stages.bound_and_gagged.label>
+  <!-- EN: Ufff ish hhhh shrrrnnn shhhrrr! hhhek shi thfffff! -->
+  <Bound.stages.bound_and_gagged.description>Pfff pwushhhwuit... pfff tffaiiin ! Pfff mmmh pfff !</Bound.stages.bound_and_gagged.description>
+  
+  <!-- EN: masochist bound -->
+  <MasochistBound.stages.masochist_bound.label>masochiste attaché(e)</MasochistBound.stages.masochist_bound.label>
+  <!-- EN: Heh... heh heh... -->
+  <MasochistBound.stages.masochist_bound.description>Mmmh... hé hé hé...</MasochistBound.stages.masochist_bound.description>
+  <!-- EN: masochist gagged -->
+  <MasochistBound.stages.masochist_gagged.label>masochiste bâillonné(e)</MasochistBound.stages.masochist_gagged.label>
+  <!-- EN: Nnnn shsh hhhch uhnnn -->
+  <MasochistBound.stages.masochist_gagged.description>Mmmmnghh pfff pfff MMMmmngh</MasochistBound.stages.masochist_gagged.description>
+  <!-- EN: masochist bound and gagged -->
+  <MasochistBound.stages.masochist_bound_and_gagged.label>masochiste attaché(e) et bâillonné(e)</MasochistBound.stages.masochist_bound_and_gagged.label>
+  <!-- EN: Shnnn ihhh shrrr fff shnnn... shsh chhhnnn uhfsh~! -->
+  <MasochistBound.stages.masochist_bound_and_gagged.description>Mmmmngh huuummm pfff pfff... nghh mmmh MMngh HMMMNGHAAAaaah~ !</MasochistBound.stages.masochist_bound_and_gagged.description>
+  
+</LanguageData>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: remove anus -->
+  <RemoveAnus.label>retirer un anus</RemoveAnus.label>
+  <!-- EN: Removes anus. -->
+  <RemoveAnus.description>Retire un anus.</RemoveAnus.description>
+  <!-- EN: Removing anus. -->
+  <RemoveAnus.jobString>Retire un anus.</RemoveAnus.jobString>
+  
+  <!-- EN: remove breasts -->
+  <RemoveBreasts.label>retirer des seins</RemoveBreasts.label>
+  <!-- EN: Removes breasts. -->
+  <RemoveBreasts.description>Retire des seins.</RemoveBreasts.description>
+  <!-- EN: Removing breasts. -->
+  <RemoveBreasts.jobString>Retire des seins.</RemoveBreasts.jobString>
+  
+  <!-- EN: remove genitals -->
+  <RemoveGenitals.label>retirer un appareil génital</RemoveGenitals.label>
+  <!-- EN: Removes sex organs. -->
+  <RemoveGenitals.description>Retire un appareil génital.</RemoveGenitals.description>
+  <!-- EN: Removing genitals. -->
+  <RemoveGenitals.jobString>Retire un appareil génital.</RemoveGenitals.jobString>
+  
+</LanguageData>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <MySonDied_Beast.stages.my_son_died.label>我的兒子{0}死了</MySonDied_Beast.stages.my_son_died.label>
+
+    <MySonDied_Beast.stages.my_son_died.description>我的兒子去世了。他可是我的親骨肉啊...</MySonDied_Beast.stages.my_son_died.description>
+
+    <MyDaughterDied_Beast.stages.my_daughter_died.label>我的女兒{0}死了</MyDaughterDied_Beast.stages.my_daughter_died.label>
+
+    <MyDaughterDied_Beast.stages.my_daughter_died.description>我的女兒去世了。她可是我的親骨肉啊...</MyDaughterDied_Beast.stages.my_daughter_died.description>
+
+    <MyBrotherDied_Beast.stages.my_brother_died.label>我的兄弟{0}死了</MyBrotherDied_Beast.stages.my_brother_died.label>
+
+    <MyBrotherDied_Beast.stages.my_brother_died.description>我的兄弟去世了。他可是我的手足啊...</MyBrotherDied_Beast.stages.my_brother_died.description>
+
+    <MySisterDied_Beast.stages.my_sister_died.label>我的姊妹{0}死了</MySisterDied_Beast.stages.my_sister_died.label>
+
+    <MySisterDied_Beast.stages.my_sister_died.description>我的姊妹去世了。她可是我的手足啊...</MySisterDied_Beast.stages.my_sister_died.description>
+
+    <MyGrandchildDied_Beast.stages.my_grandchild_died.label>我的孫兒{0}死了</MyGrandchildDied_Beast.stages.my_grandchild_died.label>
+
+    <MyGrandchildDied_Beast.stages.my_grandchild_died.description>我的孫兒去世了。這讓我怎麼活啊...</MyGrandchildDied_Beast.stages.my_grandchild_died.description>
+
+    <MyNieceDied_Beast.stages.my_niece_died.label>我的姪女{0}死了</MyNieceDied_Beast.stages.my_niece_died.label>
+
+    <MyNieceDied_Beast.stages.my_niece_died.description>我的姪女去世了。可惜了這麼個好孩子...</MyNieceDied_Beast.stages.my_niece_died.description>
+
+    <MyNephewDied_Beast.stages.my_nephew_died.label>我的侄子{0}死了</MyNephewDied_Beast.stages.my_nephew_died.label>
+
+    <MyNephewDied_Beast.stages.my_nephew_died.description>我的侄子去世了。可惜了這麼個好孩子...</MyNephewDied_Beast.stages.my_nephew_died.description>
+
+    <MyHalfSiblingDied_Beast.stages.my_halfsibling_died.label>我的半血親兄弟姊妹{0}死了</MyHalfSiblingDied_Beast.stages.my_halfsibling_died.label>
+
+    <MyHalfSiblingDied_Beast.stages.my_halfsibling_died.description>我的半血親兄弟姊妹去世了。我的手足啊...</MyHalfSiblingDied_Beast.stages.my_halfsibling_died.description>
+
+    <MyAuntDied_Beast.stages.my_aunt_died.label>我的姑姨{0}死了</MyAuntDied_Beast.stages.my_aunt_died.label>
+
+    <MyAuntDied_Beast.stages.my_aunt_died.description>我的姑姨去世了。</MyAuntDied_Beast.stages.my_aunt_died.description>
+
+    <MyUncleDied_Beast.stages.my_uncle_died.label>我的叔舅{0}死了</MyUncleDied_Beast.stages.my_uncle_died.label>
+
+    <MyUncleDied_Beast.stages.my_uncle_died.description>我的叔舅去世了</MyUncleDied_Beast.stages.my_uncle_died.description>
+
+    <MyGrandparentDied_Beast.stages.my_grandparent_died.label>我的祖親{0}死了</MyGrandparentDied_Beast.stages.my_grandparent_died.label>
+
+    <MyGrandparentDied_Beast.stages.my_grandparent_died.description>我的祖親去世了。</MyGrandparentDied_Beast.stages.my_grandparent_died.description>
+
+    <MyCousinDied_Beast.stages.my_cousin_died.label>我的從兄弟姊妹{0}死了</MyCousinDied_Beast.stages.my_cousin_died.label>
+
+    <MyCousinDied_Beast.stages.my_cousin_died.description>我的從兄弟姊妹去世了。俗話說血濃於水啊...</MyCousinDied_Beast.stages.my_cousin_died.description>
+
+    <MyKinDied_Beast.stages.my_kin_died.label>我的族親{0}死了</MyKinDied_Beast.stages.my_kin_died.label>
+
+    <MyKinDied_Beast.stages.my_kin_died.description>我的族親去世了。</MyKinDied_Beast.stages.my_kin_died.description>
+
+    <MySonLost_Beast.stages.my_son_lost.label>我的兒子{0}走失了</MySonLost_Beast.stages.my_son_lost.label>
+
+    <MySonLost_Beast.stages.my_son_lost.description>我與我的兒子失散了。真希望有朝一日能夠團圓...</MySonLost_Beast.stages.my_son_lost.description>
+
+    <MyDaughterLost_Beast.stages.my_daughter_lost.label>我的女兒{0}走失了</MyDaughterLost_Beast.stages.my_daughter_lost.label>
+
+    <MyDaughterLost_Beast.stages.my_daughter_lost.description>我與我的女兒失散了。真希望有朝一日能夠團圓...</MyDaughterLost_Beast.stages.my_daughter_lost.description>
+
+    <MyBrotherLost_Beast.stages.my_brother_lost.label>我的兄弟{0}走失了</MyBrotherLost_Beast.stages.my_brother_lost.label>
+
+    <MyBrotherLost_Beast.stages.my_brother_lost.description>我與我的兄弟失散了。真希望有朝一日能夠團圓...</MyBrotherLost_Beast.stages.my_brother_lost.description>
+
+    <MySisterLost_Beast.stages.my_sister_lost.label>我的姊妹{0}走失了</MySisterLost_Beast.stages.my_sister_lost.label>
+
+    <MySisterLost_Beast.stages.my_sister_lost.description>我與我的姊妹失散了。真希望有朝一日能夠團圓...</MySisterLost_Beast.stages.my_sister_lost.description>
+
+    <MyGrandchildLost_Beast.stages.my_grandchild_lost.label>我的孫兒{0}走失了</MyGrandchildLost_Beast.stages.my_grandchild_lost.label>
+
+    <MyGrandchildLost_Beast.stages.my_grandchild_lost.description>我與我的孫兒失散了。真希望有朝一日能夠團圓...</MyGrandchildLost_Beast.stages.my_grandchild_lost.description>
+
+    <MyNieceLost_Beast.stages.my_niece_lost.label>我的姪女{0}走失了</MyNieceLost_Beast.stages.my_niece_lost.label>
+
+    <MyNieceLost_Beast.stages.my_niece_lost.description>我與我的姪女失散了。</MyNieceLost_Beast.stages.my_niece_lost.description>
+
+    <MyNephewLost_Beast.stages.my_nephew_lost.label>我的侄子{0}走失了</MyNephewLost_Beast.stages.my_nephew_lost.label>
+
+    <MyNephewLost_Beast.stages.my_nephew_lost.description>我與我的侄子失散了。</MyNephewLost_Beast.stages.my_nephew_lost.description>
+
+    <MyHalfSiblingLost_Beast.stages.my_halfsibling_lost.label>我的半血親兄弟姊妹{0}走失了</MyHalfSiblingLost_Beast.stages.my_halfsibling_lost.label>
+
+    <MyHalfSiblingLost_Beast.stages.my_halfsibling_lost.description>我與我的半血親兄弟姊妹失散了。</MyHalfSiblingLost_Beast.stages.my_halfsibling_lost.description>
+
+    <MyAuntLost_Beast.stages.my_aunt_lost.label>我的姑姨{0}走失了</MyAuntLost_Beast.stages.my_aunt_lost.label>
+
+    <MyAuntLost_Beast.stages.my_aunt_lost.description>我與我的姑姨失散了。</MyAuntLost_Beast.stages.my_aunt_lost.description>
+
+    <MyUncleLost_Beast.stages.my_uncle_lost.label>我的叔舅{0}走失了</MyUncleLost_Beast.stages.my_uncle_lost.label>
+
+    <MyUncleLost_Beast.stages.my_uncle_lost.description>我與我的叔舅失散了</MyUncleLost_Beast.stages.my_uncle_lost.description>
+
+    <MyGrandparentLost_Beast.stages.my_grandparent_lost.label>我的祖親{0}走失了</MyGrandparentLost_Beast.stages.my_grandparent_lost.label>
+
+    <MyGrandparentLost_Beast.stages.my_grandparent_lost.description>我與我的祖親失散了。真希望有朝一日能夠團圓...</MyGrandparentLost_Beast.stages.my_grandparent_lost.description>
+
+    <MyCousinLost_Beast.stages.my_cousin_lost.label>我的從兄弟姊妹{0}走失了</MyCousinLost_Beast.stages.my_cousin_lost.label>
+
+    <MyCousinLost_Beast.stages.my_cousin_lost.description>我與我的從兄弟姊妹失散了。真希望有朝一日能夠團圓...</MyCousinLost_Beast.stages.my_cousin_lost.description>
+
+    <MyKinLost_Beast.stages.my_kin_lost.label>我的族親{0}走失了</MyKinLost_Beast.stages.my_kin_lost.label>
+
+    <MyKinLost_Beast.stages.my_kin_lost.description>我與我的族親失散了。</MyKinLost_Beast.stages.my_kin_lost.description>
+
+    <KilledMyFather_Beast.stages.killed_my_father.label>謀害了我的父親</KilledMyFather_Beast.stages.killed_my_father.label>
+
+    <KilledMyMother_Beast.stages.killed_my_mother.label>謀害了我的母親</KilledMyMother_Beast.stages.killed_my_mother.label>
+
+    <KilledMySon_Beast.stages.killed_my_son.label>謀害了我的兒子</KilledMySon_Beast.stages.killed_my_son.label>
+
+    <KilledMyDaughter_Beast.stages.killed_my_daughter.label>謀害了我的女兒</KilledMyDaughter_Beast.stages.killed_my_daughter.label>
+
+    <KilledMyBrother_Beast.stages.killed_my_brother.label>謀害了我的兄弟</KilledMyBrother_Beast.stages.killed_my_brother.label>
+
+    <KilledMySister_Beast.stages.killed_my_sister.label>謀害了我的姊妹</KilledMySister_Beast.stages.killed_my_sister.label>
+
+    <KilledMyKin_Beast.stages.killed_my_kin.label>謀害了我的血親</KilledMyKin_Beast.stages.killed_my_kin.label>
+
+    <SoldMyLovedOne_Beast.stages.sold_my_kin.label>拐賣了我的血親</SoldMyLovedOne_Beast.stages.sold_my_kin.label>
+</LanguageData>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <RJW_IsSlave.headerTip>是否為奴</RJW_IsSlave.headerTip>
+
+    <RJW_Gender.headerTip>性別</RJW_Gender.headerTip>
+
+    <RJW_Sexuality.headerTip>性取向</RJW_Sexuality.headerTip>
+</LanguageData>

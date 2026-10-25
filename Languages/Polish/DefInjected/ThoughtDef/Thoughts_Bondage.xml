@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Bound.stages.0.label>zwiazana</Bound.stages.0.label>
+  <Bound.stages.0.description>To cos jest naprawde denerwujace. Chciałabym to zdjac.</Bound.stages.0.description>
+  <Bound.stages.1.label>zakneblowana</Bound.stages.1.label>
+  <Bound.stages.1.description>Mmm ffff mmmm ffffff mmmmm</Bound.stages.1.description>
+  <Bound.stages.2.label>zwiazana i zakneblowana</Bound.stages.2.label>
+  <Bound.stages.2.description>Mfff fff mmmm ffff! Fff mff ffff!</Bound.stages.2.description>
+
+  <MasochistBound.stages.0.label>masochistka zwiazana</MasochistBound.stages.0.label>
+  <MasochistBound.stages.0.description>Heh... heh heh...</MasochistBound.stages.0.description>
+  <MasochistBound.stages.1.label>masochistka zakneblowana</MasochistBound.stages.1.label>
+  <MasochistBound.stages.1.description>Mmmm fff mmmm mmmmm</MasochistBound.stages.1.description>
+  <MasochistBound.stages.2.label>masochistka zwiazana i zakneblowana</MasochistBound.stages.2.label>
+  <MasochistBound.stages.2.description>Mfff mmm ffff mmmm... fff mmmmm mff!</MasochistBound.stages.2.description>
+</LanguageData>

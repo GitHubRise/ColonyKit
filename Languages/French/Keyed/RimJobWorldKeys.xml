@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<!-- 模组字符串 -->
+
+	<!-- 右键点击 CP 时的通知 -->
+	<PawnCantRapeCP>La cible n'est pas suffisamment en bonne santé ou se trouve dans un endroit interdit.</PawnCantRapeCP>
+	<PawnCantRapeCP0>Le pion n'a pas besoin de sexe, n'est pas en bonne santé et ne peut pas violer.</PawnCantRapeCP0>
+	<PawnCantRapeCP1>Le pion n'est pas seul ou son partenaire est à proximité.</PawnCantRapeCP1>
+	<PawnCantRapeCP2>Le pion n'est pas zoophile, il ne peut donc pas violer les animaux.</PawnCantRapeCP2>
+
+	<!--提交按钮-->
+	<CommandSubmit>Se soumettre</CommandSubmit>
+	<CommandSubmitDesc>Allongez-vous et acceptez tout ce qui va arriver.</CommandSubmitDesc>
+
+	<!--怀孕消息-->
+	<RJW_PregnantTitle>{0} est enceinte.</RJW_PregnantTitle>
+	<RJW_PregnantText>{0} est enceinte et va bientôt devenir mère. Attention, la famine et les traumatismes peuvent entraîner la perte de l'enfant.</RJW_PregnantText>
+	<RJW_Contractions>{0} a des contractions ! Le ou les bébés sont en route !</RJW_Contractions>
+	<RJW_GaveBirthTitle>Accouchement terminé.</RJW_GaveBirthTitle>
+	<RJW_GaveBirthText>{0} a donné naissance avec succès à </RJW_GaveBirthText>
+	<RJW_ABaby>{0} bébé.</RJW_ABaby>
+	<RJW_NBabies>{1} {0} bébés.</RJW_NBabies>
+	<RJW_PregnantNormal>A un bébé en bonne santé...</RJW_PregnantNormal>
+	<RJW_PregnantStrange>Il y a quelque chose d'inhabituel chez ce bébé...</RJW_PregnantStrange>
+	<RJW_PregnantMechStrange>Il y a quelque chose de très étrange chez ce bébé...</RJW_PregnantMechStrange>
+	<RJW_GaveBirthEggTitle>Œuf pondu.</RJW_GaveBirthEggTitle>
+	<RJW_GaveBirthEggText>{0} œufs pondus.</RJW_GaveBirthEggText>
+	<RJW_EggContractions>{0} a des contractions ! Les œufs sont en route !</RJW_EggContractions>
+	<RJW_Message_NotPregnant>{0} a déterminé que {1} n'est pas enceinte.</RJW_Message_NotPregnant>
+	<RJW_Message_Pregnant>{0} a déterminé que {1} est enceinte et que {2} est le père..</RJW_Message_Pregnant>
+
+	<!--强奸警报-->
+	<RJW_AlertRape>{RAPIST} tente de violer {TARGET}.</RJW_AlertRape>
+	<RJW_AlertAssault>{RAPIST} tente d'agresser {TARGET}.</RJW_AlertAssault>
+	<RJW_AlertBreed>{RAPIST} essaie de se reproduire avec {TARGET}.</RJW_AlertBreed>
+	<RJW_AlertRapeRelated>{RAPIST} tente de violer {TARGET}, {RAPIST_possessive} {RELATION}.</RJW_AlertRapeRelated>
+	<RJW_AlertAssaultRelated>{RAPIST} tente d'agresser {TARGET}, {RAPIST_possessive} {RELATION}.</RJW_AlertAssaultRelated>
+	<RJW_AlertBreedRelated>{RAPIST} essaie de se reproduire avec {TARGET}, {RAPIST_possessive} {RELATION}.</RJW_AlertBreedRelated>
+	<RJW_AlertBeeingRaped>{TARGET} se fait violer.</RJW_AlertBeeingRaped>
+
+	<GoToModSettings>Cet espace est réservé aux fonctionnalités RJW optionnelles qui sont désactivées ou indisponibles pour le pion/animal sélectionné. Vérifiez les options du mod et arrêtez de demander si CELA est normal.</GoToModSettings>
+
+	<!--舒适指派-->
+	<ForComfort>Utilisation pour le confort</ForComfort>
+	<ForComfortDesc>Marquer pour du sexe de confort</ForComfortDesc>
+	<ForComfortRefuseDesc>Refuse d'être utilisé(e) pour le confort\nExigence : trait Masochiste</ForComfortRefuseDesc>
+
+	<!--妓女-->
+	<ForService>Assigner à la prostitution</ForService> <!-- 此字段不可见 -->
+	<ForServiceDesc><![CDATA[Marque pour prostitution
+- Tentera de séduire les visiteurs.
+- Divertit les autres colons lorsqu'il(elle) n'est pas occupé(e).
+- Essaie de s'abstenir de se masturber pendant le travail, ce qui peut causer de la frustration.
+]]></ForServiceDesc>
+	<ForServiceRefuseDesc>Ne voudra pas être un(e) prostitué(e).</ForServiceRefuseDesc>
+
+	<!--繁殖指派-->
+	<ForBreeding>Assigner aux animaux</ForBreeding>
+	<ForBreedingDesc>Marque pour la reproduction animalière</ForBreedingDesc>
+	<ForBreedingRefuseDesc>Refuse d'être monté(e) par des animaux\nReq : trait Zoophile</ForBreedingRefuseDesc>
+
+	<ForBreedingAnimalDesc>Autoriser cet animal à monter les reproducteurs(rices) désigné(e)s</ForBreedingAnimalDesc>
+
+	<BreedMessage> essaie de se reproduire avec </BreedMessage>
+
+	<!--挤奶-->
+	<ForMilking>Assigner à la traite</ForMilking>
+	<ForMilkingDesc>Récolter les ressources biologiques provenant de cet être</ForMilkingDesc>
+
+	<!--英雄-->
+	<ForHero>Désigner le héros</ForHero>
+	<ForHeroDesc><![CDATA[Définir le pion comme personnage joueur
+- Ne peut être défini qu'une seule fois.
+- Ne peut pas être désactivé.
+]]></ForHeroDesc>
+	<ForHeroRefuse1Desc>C'est le héros d'un autre joueur.</ForHeroRefuse1Desc>
+	<ForHeroRefuse2Desc>Vous n'avez pas le droit de modifier la désignation.</ForHeroRefuse2Desc>
+	<ForHeroRefuseHCDesc>Coloniste non héros en mode HC</ForHeroRefuseHCDesc>
+	<RJW_Message_BecameHero>{0} est désormais le héros de {1}</RJW_Message_BecameHero>
+
+	<!-- Hediff 提示 -->
+	<RJW_PartInfo_braCup>Bonnet : {0}</RJW_PartInfo_braCup>
+	<RJW_PartInfo_braSizeNone>Taille de bonnet : -</RJW_PartInfo_braSizeNone>
+	<RJW_PartInfo_eggs>Œufs : {0}</RJW_PartInfo_eggs>
+	<RJW_PartInfo_fluidTypeFluidAmount>{0} : {1}</RJW_PartInfo_fluidTypeFluidAmount>
+	<RJW_PartInfo_braSize>Taille de bonnet : {0} : {1}</RJW_PartInfo_braSize>
+	<RJW_PartInfo_overbust>Haut de poitrine : {0}</RJW_PartInfo_overbust>
+	<RJW_PartInfo_underbust>Bas de poitrine : {0}</RJW_PartInfo_underbust>
+	<RJW_PartInfo_weight>Poids : {0}</RJW_PartInfo_weight>
+	<RJW_PartInfo_properties>Propriétés : {0}</RJW_PartInfo_properties>
+
+	<RJW_PartInfo_severity>Gravité : {0}</RJW_PartInfo_severity>
+	<RJW_PartInfo_fluidMultiplier>Multiplicateur de fluide : {0}</RJW_PartInfo_fluidMultiplier>
+
+	<!-- 可安装部件的 hediff 提示与检视面板共用-->
+	<RJW_PartInfo_girth>Circonférence : {0}</RJW_PartInfo_girth>
+	<RJW_PartInfo_length>Longueur : {0}</RJW_PartInfo_length>
+	<RJW_PartInfo_depth>Profondeur : {0}</RJW_PartInfo_depth>
+	<RJW_PartInfo_maxGirth>Circonférence max. : {0}</RJW_PartInfo_maxGirth>
+	<RJW_PartInfo_maxLength>Longueur max. : {0}</RJW_PartInfo_maxLength>
+
+	<!-- 部件检视面板-->
+	<RJW_PartInfo_fluidTypeFluidAmountHeading>Fluide : {0} ({1} ml)</RJW_PartInfo_fluidTypeFluidAmountHeading>
+
+	<!-- 部件属性与描述 -->
+	<RJW_PartInfo_unknownSpecies>Espèce inconnue</RJW_PartInfo_unknownSpecies>
+	<RJW_PartInfo_unknownOwner>Inconnu</RJW_PartInfo_unknownOwner>
+	<RJW_StatEntry_PreviousOwner>ancien propriétaire</RJW_StatEntry_PreviousOwner>
+	<RJW_StatEntry_OriginalOwnerRace>race originale</RJW_StatEntry_OriginalOwnerRace>
+	<RJW_StatEntry_OriginalOwnerSize>taille originale</RJW_StatEntry_OriginalOwnerSize>
+	<RJW_StatEntry_PartSize>taille</RJW_StatEntry_PartSize>
+	<RJW_StatEntry_PartCupSize>taille de bonnet</RJW_StatEntry_PartCupSize>
+	<RJW_StatEntry_PartLength>longueur</RJW_StatEntry_PartLength>
+	<RJW_StatEntry_PartGirth>circonférence</RJW_StatEntry_PartGirth>
+	<RJW_StatEntry_PartMaxGirth>circonférence max.</RJW_StatEntry_PartMaxGirth>
+	<RJW_StatEntry_PartDepth>profondeur</RJW_StatEntry_PartDepth>
+	<RJW_StatEntry_PartWeight>poids</RJW_StatEntry_PartWeight>
+	<RJW_StatEntry_PartTags>propriétés</RJW_StatEntry_PartTags>
+	<RJW_StatEntry_Fluid>fluide</RJW_StatEntry_Fluid>
+	<RJW_StatEntry_FluidAmount>quantité de fluide</RJW_StatEntry_FluidAmount>
+	<RJW_StatEntry_FluidAmount_ejaculation>volume d'éjaculation</RJW_StatEntry_FluidAmount_ejaculation>
+	<RJW_StatEntry_FluidAmount_wetness>humidité</RJW_StatEntry_FluidAmount_wetness>
+
+	<!-- RJW 生育力提示 -->
+	<AgeImpactor>Âge : </AgeImpactor>
+	<VanillaFertilityImpactor>Statistique sur la fertilité : {VALUE} %</VanillaFertilityImpactor>
+
+	<!-- 宁芙!!! -->
+	<RJW_nymph_incident_raid_title>Nymphos !!!</RJW_nymph_incident_raid_title>
+	<RJW_nymph_incident_raid_description>Un groupe de nymphomanes s'est égaré dans votre colonie.</RJW_nymph_incident_raid_description>
+	<RJW_nymph_incident_wander_title>Nympho !</RJW_nymph_incident_wander_title>
+	<RJW_nymph_incident_wander_description>Un(e) nymphomane errant(e) a décidé de visiter votre colonie.</RJW_nymph_incident_wander_description>
+	<RJW_nymph_incident_join_title>Nympho se joint</RJW_nymph_incident_join_title>
+	<RJW_nymph_incident_join_description>Un(e) nymphomane errant(e) a décidé de rejoindre votre colonie.</RJW_nymph_incident_join_description>
+
+	<!-- Biotech 集成 -->
+	<PawnLacksFunctionalGenitals>{PAWN} n'a pas d'organes génitaux fonctionnels.</PawnLacksFunctionalGenitals>
+	<PawnLacksVagina>{PAWN} n'a pas de vagin.</PawnLacksVagina>
+	<PawnLacksFunctionalPenis>{PAWN} n'a pas de pénis fonctionnel.</PawnLacksFunctionalPenis>
+	<VaginalWeight>chance de rapports sexuels vaginaux</VaginalWeight>
+
+	<!-- 特质获取 -->
+	<!-- 提示：只要在后面加上该特质的 defName（以及可选的等级），就能方便地为这两个添加特质专属版本 -->
+	<LetterLabelGainedTraitFromSex>Trait acquis : {PAWN}</LetterLabelGainedTraitFromSex>
+	<GainedTraitFromSex>Une expérience sexuelle a permis à {PAWN} d'acquérir le trait {TRAIT}.</GainedTraitFromSex>
+
+	<GainedTraitFromSexNymphomaniac>La surstimulation provoquée par un aphrodisiaque a définitivement modifié le cerveau de {PAWN}. {PAWN_pronoun} a acquis le trait {TRAIT}.</GainedTraitFromSexNymphomaniac>
+	<GainedTraitFromSexFootSlut>Le fait de se délecter de la sensation des pieds alimente un nouveau fétichisme diabolique pour {PAWN}. {PAWN} est désormais un(e) {TRAIT}.</GainedTraitFromSexFootSlut>
+	<LetterLabelGainedMultipleTraitsFromSex>Traits acquis : {PAWN}</LetterLabelGainedMultipleTraitsFromSex>
+	<GainedMultipleTraitsFromSex>Une expérience sexuelle intense a permis à {PAWN} d'acquérir les traits suivants :</GainedMultipleTraitsFromSex>
+	<GainedMultipleTraitsFromSexListItem>  - {0}</GainedMultipleTraitsFromSexListItem>
+
+	<!-- 束缚装备 -->
+	<RJW_BG_Message_FailedRemove>{0} lutte pour retirer son appareil ({1}). C'est inutile !</RJW_BG_Message_FailedRemove>
+	<RJW_BG_Message_NoWear_BlockedBy>{0} ne peut pas porter {1} (bloqué par {2})</RJW_BG_Message_NoWear_BlockedBy>
+	<RJW_BG_Message_Unlock>A déverrouillé {0}</RJW_BG_Message_Unlock>
+	<RJW_BG_Message_CouldntDrop>N'a pas pu déposer {0}</RJW_BG_Message_CouldntDrop>
+	<RJW_BG_Message_WrongKey>La clé ne correspond pas !</RJW_BG_Message_WrongKey>
+
+	<RJW_BG_Comp_Inspect_Engraving>Gravé avec le nom "{0}"</RJW_BG_Comp_Inspect_Engraving>
+	<RJW_BG_Comp_Inspect_Key>Cryptotampon : {0}</RJW_BG_Comp_Inspect_Key>
+</LanguageData>

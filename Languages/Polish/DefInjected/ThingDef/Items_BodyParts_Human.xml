@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Penis.label>penis</Penis.label>
+  <Penis.description>Penis.</Penis.description>
+
+  <Vagina.label>pochwa</Vagina.label>
+  <Vagina.description>Pochwa.</Vagina.description>
+
+  <Breasts.label>piersi</Breasts.label>
+  <Breasts.description>Para piersi.</Breasts.description>
+
+  <Anus.label>odbyt</Anus.label>
+  <Anus.description>Odbyt.</Anus.description>
+
+  <FeaturelessChest.label>płaska klatka piersiowa</FeaturelessChest.label>
+  <FeaturelessChest.description>Plaska klatka piersiowa bez brodawek. Glownie u istot niemlekujacych.</FeaturelessChest.description>
+</LanguageData>

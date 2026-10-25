@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Sex_Fellatio.label>минет</Sex_Fellatio.label>
+  <Sex_Fellatio.logRulesInitiator.rulesStrings.0>r_logentry->Получает минет от [RECIPIENT_nameDef].</Sex_Fellatio.logRulesInitiator.rulesStrings.0>
+  <Sex_Fellatio.logRulesRecipient.rulesStrings.0>r_logentry->Делает минет [INITIATOR_nameDef].</Sex_Fellatio.logRulesRecipient.rulesStrings.0>
+  <Sex_Fellatio.modExtensions.0.RMBLabel>Минет</Sex_Fellatio.modExtensions.0.RMBLabel>
+
+
+</LanguageData>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<StatCategoryDef>
+		<defName>RJW_OriginalPartOwner</defName>
+		<label>ownership</label>
+		<displayOrder>37</displayOrder> <!-- 随意选定，可能需要更改 -->
+	</StatCategoryDef>
+	<StatCategoryDef>
+		<defName>RJW_GenitalStats</defName>
+		<label>genital stats</label>
+		<displayOrder>36</displayOrder> <!-- 随意选定，可能需要更改 -->
+	</StatCategoryDef>	
+</Defs>

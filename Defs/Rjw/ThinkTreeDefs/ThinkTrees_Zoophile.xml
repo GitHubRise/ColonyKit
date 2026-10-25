@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<ThinkTreeDef>
+		<defName>BestialityTree</defName>
+		<insertTag>RJW_CasualSex_Top</insertTag>
+		<insertPriority>1</insertPriority>
+		<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+				<li Class="rjw.ThinkNode_ConditionalBestiality"> 
+					<subNodes> 
+						<li Class="rjw.ThinkNode_ChancePerHour_Bestiality"> 
+							<subNodes> 
+								<li Class="rjw.JobGiver_Bestiality"/> 
+							</subNodes> 
+						</li> 
+					</subNodes> 
+				</li>
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+</Defs>

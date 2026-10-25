@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Sex_Fingering.label>фингеринг</Sex_Fingering.label>
+  <Sex_Fingering.logRulesInitiator.rulesStrings.0>r_logentry->Получает фингеринг от [RECIPIENT_nameDef].</Sex_Fingering.logRulesInitiator.rulesStrings.0>
+  <Sex_Fingering.logRulesRecipient.rulesStrings.0>r_logentry->Ублажает пальцами [INITIATOR_nameDef].</Sex_Fingering.logRulesRecipient.rulesStrings.0>
+  <Sex_Fingering.modExtensions.0.RMBLabel>Фингеринг</Sex_Fingering.modExtensions.0.RMBLabel>
+
+
+</LanguageData>

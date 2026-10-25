@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: fertpill -->
+  <RJW_FertPill.label>pilule de fertilité</RJW_FertPill.label>
+  <!-- EN: Enhanced fertility. A mild aphrodisiac. -->
+  <RJW_FertPill.description>Améliore la fertilité. Un aphrodisiaque léger.</RJW_FertPill.description>
+  <!-- EN: Hyperfertility -->
+  <RJW_FertPill.stages.Hyperfertility.label>Hyperfertilité</RJW_FertPill.stages.Hyperfertility.label>
+  
+</LanguageData>

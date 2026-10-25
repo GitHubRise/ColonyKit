@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: anal -->
+  <Sex_Reverse_Anal.label>anal</Sex_Reverse_Anal.label>
+  <!-- EN:
+    <li>r_logentry->Was fucked anally by [RECIPIENT_nameDef].</li>
+  -->
+  <Sex_Reverse_Anal.logRulesInitiator.rulesStrings>
+    <li>r_logentry(INITIATOR_gender!=Female)->A été enculé par [RECIPIENT_nameDef].</li>
+    <li>r_logentry(INITIATOR_gender==Female)->A été enculée par [RECIPIENT_nameDef].</li>
+  </Sex_Reverse_Anal.logRulesInitiator.rulesStrings>
+  <!-- EN:
+    <li>r_logentry->Fucked anally [INITIATOR_nameDef].</li>
+  -->
+  <Sex_Reverse_Anal.logRulesRecipient.rulesStrings>
+    <li>r_logentry->A enculé [INITIATOR_nameDef].</li>
+  </Sex_Reverse_Anal.logRulesRecipient.rulesStrings>
+  <!-- EN: Get fucked anally -->
+  <Sex_Reverse_Anal.modExtensions.0.RMBLabel>Est enculé(e)</Sex_Reverse_Anal.modExtensions.0.RMBLabel>
+  
+</LanguageData>

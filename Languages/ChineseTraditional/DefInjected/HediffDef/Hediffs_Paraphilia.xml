@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Humanlike_Paraphilia.label>戀人癖</Humanlike_Paraphilia.label>
+  <Humanlike_Paraphilia.description>這隻動物對類人生物產生了異常的性慾。</Humanlike_Paraphilia.description>
+  <Humanlike_Paraphilia.labelNoun>戀人癖</Humanlike_Paraphilia.labelNoun>
+  <Humanlike_Paraphilia.stages.Initial_curiosity.label>萌生好奇</Humanlike_Paraphilia.stages.Initial_curiosity.label>
+  <Humanlike_Paraphilia.stages.Attracted.label>受到吸引</Humanlike_Paraphilia.stages.Attracted.label>
+  <Humanlike_Paraphilia.stages.Focused.label>專注</Humanlike_Paraphilia.stages.Focused.label>
+  <Humanlike_Paraphilia.stages.Fixated.label>執著</Humanlike_Paraphilia.stages.Fixated.label>
+  <Humanlike_Paraphilia.stages.Obsessed.label>癡迷</Humanlike_Paraphilia.stages.Obsessed.label>
+</LanguageData>

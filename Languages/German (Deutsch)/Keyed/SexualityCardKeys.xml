@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<!--性取向卡片-->
+	<SexcardTooltip>Zeige Sexualität</SexcardTooltip>
+	<Quirks>Eigenheiten: </Quirks>
+	<NoQuirks>Keine.</NoQuirks>
+	<SexPartWants>Möchte werden: </SexPartWants>
+	<PartsEditLabel>Bearbeiten {0}</PartsEditLabel>
+	<PartsEditFluidMultiplierLabel>Flüssigkeit Multiplikator</PartsEditFluidMultiplierLabel>
+	<PartsEditDevEntry>RJW: Edit parts</PartsEditDevEntry>
+
+	<SC_Fertility_Enable>Reproduktion aktivieren</SC_Fertility_Enable>
+	<SC_Fertility_Enhance>Die Fruchtbarkeit verbessern</SC_Fertility_Enhance>
+	<SC_Fertility_Disable>Reproduktion deaktivieren</SC_Fertility_Disable>
+
+	<SC_FluidType>Fluid Type</SC_FluidType>
+	<SC_FluidTypeDefault> (standardmäßig)</SC_FluidTypeDefault>
+	<SC_Reroll>Reroll</SC_Reroll>
+
+	<SC_Sexuality>Sexualität: {0}</SC_Sexuality>
+	<SC_Sexuality_Asexual>Asexuell</SC_Sexuality_Asexual>
+	<SC_Sexuality_Bisexual>Bisexuell</SC_Sexuality_Bisexual>
+	<SC_Sexuality_Heterosexual>Hetero</SC_Sexuality_Heterosexual>
+	<SC_Sexuality_Homosexual>Schwul</SC_Sexuality_Homosexual>
+	<SC_Sexuality_LeaningHeterosexual>Bisexuell, tendenziell heterosexuell</SC_Sexuality_LeaningHeterosexual>
+	<SC_Sexuality_LeaningHomosexual>Bisexuell, tendenziell schwul</SC_Sexuality_LeaningHomosexual>
+	<SC_Sexuality_MostlyHeterosexual>Meistens hetero</SC_Sexuality_MostlyHeterosexual>
+	<SC_Sexuality_MostlyHomosexual>Meistens schwul</SC_Sexuality_MostlyHomosexual>
+	<SC_Sexuality_Pansexual>Pansexuell</SC_Sexuality_Pansexual>
+
+</LanguageData>

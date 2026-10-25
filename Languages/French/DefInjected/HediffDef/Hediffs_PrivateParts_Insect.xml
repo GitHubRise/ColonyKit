@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: insect anus -->
+  <InsectAnus.label>anus d'insecte</InsectAnus.label>
+  <!-- EN: An insect anus. -->
+  <InsectAnus.description>Un anus d'insecte.</InsectAnus.description>
+  <!-- EN: an insect anus -->
+  <InsectAnus.labelNoun>un anus d'insecte</InsectAnus.labelNoun>
+  <!-- EN: Micro -->
+  <InsectAnus.stages.Micro.label>Micro - XS</InsectAnus.stages.Micro.label>
+  <!-- EN: Tight -->
+  <InsectAnus.stages.Tight.label>Serré - S</InsectAnus.stages.Tight.label>
+  <!-- EN: Average -->
+  <InsectAnus.stages.Average.label>Moyen - M</InsectAnus.stages.Average.label>
+  <!-- EN: Accommodating -->
+  <InsectAnus.stages.Accommodating.label>Accommodant - L</InsectAnus.stages.Accommodating.label>
+  <!-- EN: Cavernous -->
+  <InsectAnus.stages.Cavernous.label>Caverneux - XL</InsectAnus.stages.Cavernous.label>
+  <!-- EN: Abyssal -->
+  <InsectAnus.stages.Abyssal.label>Abyssal - XXL</InsectAnus.stages.Abyssal.label>
+  
+  <!-- EN: ovipositor (Female) -->
+  <OvipositorF.label>ovipositeur (femelle)</OvipositorF.label>
+  <!-- EN: An ovipositor. Lays eggs inside host. -->
+  <OvipositorF.description>Un ovipositeur. Pond ses œufs à l'intérieur de l'hôte.</OvipositorF.description>
+  <!-- EN: an ovipositor -->
+  <OvipositorF.labelNoun>un ovipositeur</OvipositorF.labelNoun>
+  <!-- EN: Micro -->
+  <OvipositorF.stages.Micro.label>Micro - XS</OvipositorF.stages.Micro.label>
+  <!-- EN: Tight -->
+  <OvipositorF.stages.Tight.label>Serré - S</OvipositorF.stages.Tight.label>
+  <!-- EN: Average -->
+  <OvipositorF.stages.Average.label>Moyen - M</OvipositorF.stages.Average.label>
+  <!-- EN: Accommodating -->
+  <OvipositorF.stages.Accommodating.label>Accommodant - L</OvipositorF.stages.Accommodating.label>
+  <!-- EN: Cavernous -->
+  <OvipositorF.stages.Cavernous.label>Caverneux - XL</OvipositorF.stages.Cavernous.label>
+  <!-- EN: Abyssal -->
+  <OvipositorF.stages.Abyssal.label>Abyssal - XXL</OvipositorF.stages.Abyssal.label>
+  
+  <!-- EN: ovipositor (Male) -->
+  <OvipositorM.label>ovipositeur (mâle)</OvipositorM.label>
+  <!-- EN: An ovipositor. Fertilizes eggs inside host. -->
+  <OvipositorM.description>Un ovipositeur. Fécondation des œufs à l'intérieur de l'hôte.</OvipositorM.description>
+  <!-- EN: an ovipositor -->
+  <OvipositorM.labelNoun>un ovipositeur</OvipositorM.labelNoun>
+  <!-- EN: Micro -->
+  <OvipositorM.stages.Micro.label>Micro - XS</OvipositorM.stages.Micro.label>
+  <!-- EN: Small -->
+  <OvipositorM.stages.Small.label>Petit - S</OvipositorM.stages.Small.label>
+  <!-- EN: Average -->
+  <OvipositorM.stages.Average.label>Moyen - M</OvipositorM.stages.Average.label>
+  <!-- EN: Large -->
+  <OvipositorM.stages.Large.label>Grand - L</OvipositorM.stages.Large.label>
+  <!-- EN: Huge -->
+  <OvipositorM.stages.Huge.label>Énorme - XL</OvipositorM.stages.Huge.label>
+  <!-- EN: Towering -->
+  <OvipositorM.stages.Towering.label>Géant - XXL</OvipositorM.stages.Towering.label>
+  
+</LanguageData>
