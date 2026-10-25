@@ -1,4 +1,5 @@
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace ColonyKit.Modules.Hygiene
@@ -50,10 +51,18 @@ namespace ColonyKit.Modules.Hygiene
 				return;
 			}
 			ThoughtDef thought = DefDatabase<ThoughtDef>.GetNamedSilentFail("CK_PrivateBathroom");
-			if (thought != null)
+			if (thought == null)
 			{
-				pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(thought);
+				return;
 			}
+			int stage = 0;
+			if (room != null)
+			{
+				stage = RoomStatDefOf.Impressiveness.GetScoreStageIndex(
+					room.GetStat(RoomStatDefOf.Impressiveness));
+			}
+			stage = Mathf.Clamp(stage, 0, thought.stages.Count - 1);
+			pawn.needs?.mood?.thoughts?.memories?.TryGainMemoryFast(thought, stage);
 		}
 
 		public static void CheckForBlockage(Building building)

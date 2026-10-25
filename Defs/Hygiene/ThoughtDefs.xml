@@ -70,9 +70,45 @@
 		<stackLimit>1</stackLimit>
 		<stages>
 			<li>
-				<label>my own bathroom</label>
-				<description>I had a private bathroom all to myself.</description>
+				<label>awful bathroom</label>
+				<description>My bathroom is an awful place.</description>
+				<baseMoodEffect>-4</baseMoodEffect>
+			</li>
+			<li IsNull="True" />
+			<li>
+				<label>decent bathroom</label>
+				<description>My bathroom is decent. I like it.</description>
+				<baseMoodEffect>2</baseMoodEffect>
+			</li>
+			<li>
+				<label>slightly impressive bathroom</label>
+				<description>My bathroom is slightly impressive. I like it.</description>
 				<baseMoodEffect>3</baseMoodEffect>
+			</li>
+			<li>
+				<label>impressive bathroom</label>
+				<description>My bathroom is impressive. I love it!</description>
+				<baseMoodEffect>4</baseMoodEffect>
+			</li>
+			<li>
+				<label>very impressive bathroom</label>
+				<description>My bathroom is very impressive. This is the best place ever!</description>
+				<baseMoodEffect>5</baseMoodEffect>
+			</li>
+			<li>
+				<label>extremely impressive bathroom</label>
+				<description>My bathroom is extremely impressive. This is the best place ever!</description>
+				<baseMoodEffect>6</baseMoodEffect>
+			</li>
+			<li>
+				<label>unbelievably impressive bathroom</label>
+				<description>My bathroom is unbelievably impressive. This is the best place ever!</description>
+				<baseMoodEffect>7</baseMoodEffect>
+			</li>
+			<li>
+				<label>wondrously impressive bathroom</label>
+				<description>My bathroom is the best place one can ever imagine. It's wonderful.</description>
+				<baseMoodEffect>8</baseMoodEffect>
 			</li>
 		</stages>
 	</ThoughtDef>
