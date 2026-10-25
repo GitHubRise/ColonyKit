@@ -176,7 +176,10 @@ namespace ColonyKit.Modules.Blueprint
 			if (selected == null)
 			{
 				Widgets.Label(new Rect(inner.x, inner.y, inner.width, 30f), "CK.Blueprint.Tab.NoneSelected".Translate());
-				DrawTemplateSection(inner, library);
+				// 空选择提示占一行，模板区必须从提示下方开始，否则两个标题会叠在一起。
+				DrawTemplateSection(
+					new Rect(inner.x, inner.y + 30f, inner.width, inner.height - 30f),
+					library);
 				return;
 			}
 
