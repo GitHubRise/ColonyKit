@@ -4,6 +4,12 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- **开发者菜单「半英半中」乱码**：翻译表中 204 条由逐词替换生成的条目（`绘制河流Debug`、`Material报告`、`名称FromRulepack`、`小人生成Histogram` 等）全部改写为通顺中文；`DevLabelTranslations` 删掉 `HumanizeDefName` 逐词硬拼逻辑，Def/SoundDef 没有译名时直接显示英文原名，不再拼接「中文·英文」的杂交结果。
+- **开发者菜单物品名仍是英文**：新增 59 项物品词条（`menu="spawning"`），覆盖尤兰（YR_* 服装/建筑/护符/樱花花瓣）、龙族（DR_* 服装/武器/头盔/奶/宝珠）、萌螈飞花、古迹搜寻器、`FirefoamPopper`、`CloacalAnus/Penis/Vagina`。词条同时按英文 label 与 defName 建立 key，列表显示 label 或 defName 都能命中。
+- **Def 名称回退**：`Translate` 在 defName 回退到本地化 label 后，会再按该英文 label 查一次表，避免「列表显示 defName、表里只有中文词条」时整列英文。
+
 ### Changed
 
 - **立体库堆叠分层**：一级研究只提供全局物品堆叠（固定 ×10，不再乘设置页倍率）；二级/三级的 ×3/×2 改为只放大立体库内部每堆，不再修改全局 `ThingDef.stackLimit`，普通架子/储存区/地面堆不受影响。库内每堆上限 = 当前全局上限 × 3（二级）/ × 6（三级）。

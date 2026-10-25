@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   开发者菜单汉化表（DevMenuChinese）
 
@@ -133,7 +133,7 @@
     <entry key="glowatposition" menu="general" zh="该格子的光照值" />
     <entry key="growplant1day" menu="general" minimal="true" zh="植物生长1天" />
     <entry key="growplanttomaturity" menu="general" minimal="true" zh="植物催熟" />
-    <entry key="hotreloaddefs" menu="general" zh="热重载 Defs" />
+    <entry key="hotreloaddefs" menu="general" zh="热重载定义" />
     <entry key="hsvatposition" menu="general" zh="该格子的 HSV 值" />
     <entry key="incrementtime" menu="general" zh="时间前进" />
     <entry key="kill" menu="general" minimal="true" zh="杀死" />
@@ -165,10 +165,10 @@
     <entry key="remove4honor" menu="general" zh="移除4点荣誉" />
     <entry key="removetraitfromuniqueweapon" menu="general" minimal="true" zh="从独特武器移除特质" />
     <entry key="replacealltradeships" menu="general" zh="替换所有贸易船" />
-    <entry key="resetbossgroupcooldown" menu="general" minimal="true" zh="重置Boss群冷却" />
-    <entry key="resetbossgroupkilledpawns" menu="general" minimal="true" zh="重置Boss群击杀小人" />
+    <entry key="resetbossgroupcooldown" menu="general" minimal="true" zh="重置首领群冷却" />
+    <entry key="resetbossgroupkilledpawns" menu="general" minimal="true" zh="重置首领群击杀小人" />
     <entry key="retroactivelyaddlandmarkstoworld" menu="general" zh="为世界追溯添加地标" />
-    <entry key="revealhiddendefs" menu="general" zh="显示隐藏 Defs" />
+    <entry key="revealhiddendefs" menu="general" zh="显示隐藏定义" />
     <entry key="rot1day" menu="general" minimal="true" zh="腐烂1天" />
     <entry key="rotate" menu="general" minimal="true" zh="旋转" />
     <entry key="setbiome" menu="general" minimal="true" zh="设置生态…" />
@@ -331,7 +331,7 @@
     <entry key="carpetslate" menu="map" zh="地毯（板岩）" />
     <entry key="carpetblack" menu="map" zh="地毯（黑）" />
     <entry key="disablemechs" menu="mechanoid" minimal="true" zh="禁用机械族" />
-    <entry key="loadedfilesformod" menu="mods" zh="已加载的 Mod 文件" />
+    <entry key="loadedfilesformod" menu="mods" zh="已加载的模组文件" />
     <entry key="addtestplanetlayer" menu="other" zh="添加测试行星层" />
     <entry key="clearcachedmaterials" menu="other" zh="清除缓存材质" />
     <entry key="garbagecollectworldpawn" menu="other" zh="回收世界小人" />
@@ -479,7 +479,7 @@
     <entry key="removeworldpawn" menu="spawning" minimal="true" zh="移除世界小人…" />
     <entry key="spawnanimalgroup" menu="spawning" minimal="true" zh="生成动物群" />
     <entry key="spawnapparel" menu="spawning" minimal="true" zh="生成服装" />
-    <entry key="spawnbossgroup" menu="spawning" minimal="true" zh="生成Boss群" />
+    <entry key="spawnbossgroup" menu="spawning" minimal="true" zh="生成首领群" />
     <entry key="spawnchild" menu="spawning" minimal="true" zh="生成儿童" />
     <entry key="spawnfactionleader" menu="spawning" minimal="true" zh="生成派系领袖" />
     <entry key="spawnfillarearect" menu="spawning" minimal="true" zh="填充生成区域（矩形）" />
@@ -575,7 +575,7 @@
     <entry key="drawthingsprinted" menu="settings" zh="绘制物品打印" />
     <entry key="drawshadows" menu="settings" zh="绘制阴影" />
     <entry key="drawlightingoverlay" menu="settings" zh="绘制光照叠加层" />
-    <entry key="drawworldoverlays" menu="settings" zh="绘制世界Overlays" />
+    <entry key="drawworldoverlays" menu="settings" zh="绘制世界覆盖层" />
     <entry key="drawgas" menu="settings" zh="绘制气体" />
     <entry key="singlethreadeddrawing" menu="settings" zh="单线程绘制" />
     <entry key="drawworldobjects" menu="settings" zh="绘制世界物体" />
@@ -585,15 +585,15 @@
     <entry key="drawdestsearch" menu="settings" zh="绘制目的地搜索" />
     <entry key="drawstylesearch" menu="settings" zh="绘制风格搜索" />
     <entry key="drawsectionedges" menu="settings" zh="绘制区块边缘" />
-    <entry key="drawriverdebug" menu="settings" zh="绘制河流Debug" />
-    <entry key="drawriverflowdebug" menu="settings" zh="绘制河流流动Debug" />
-    <entry key="drawpawndebug" menu="settings" zh="绘制小人Debug" />
+    <entry key="drawriverdebug" menu="settings" zh="绘制河流调试" />
+    <entry key="drawriverflowdebug" menu="settings" zh="绘制河流流动调试" />
+    <entry key="drawpawndebug" menu="settings" zh="绘制小人调试" />
     <entry key="drawpawnrotatortarget" menu="settings" zh="绘制小人朝向目标" />
     <entry key="drawregions" menu="settings" zh="绘制区域" />
-    <entry key="drawregionlinks" menu="settings" zh="绘制Region连接" />
-    <entry key="drawregiondirties" menu="settings" zh="绘制Region脏区" />
-    <entry key="drawregiontraversal" menu="settings" zh="绘制Region遍历" />
-    <entry key="drawregionthings" menu="settings" zh="绘制Region物品" />
+    <entry key="drawregionlinks" menu="settings" zh="绘制区域连接" />
+    <entry key="drawregiondirties" menu="settings" zh="绘制区域脏标记" />
+    <entry key="drawregiontraversal" menu="settings" zh="绘制区域遍历" />
+    <entry key="drawregionthings" menu="settings" zh="绘制区域物品" />
     <entry key="drawdistricts" menu="settings" zh="绘制分区" />
     <entry key="drawrooms" menu="settings" zh="绘制房间" />
     <entry key="drawpower" menu="settings" zh="绘制电力" />
@@ -601,7 +601,7 @@
     <entry key="drawopportunisticjobs" menu="settings" zh="绘制机会性工作" />
     <entry key="drawtooltipedges" menu="settings" zh="绘制提示边缘" />
     <entry key="drawrecordednoise" menu="settings" zh="绘制记录噪声" />
-    <entry key="drawfoodsearchfrommouse" menu="settings" zh="绘制食物搜索From鼠标" />
+    <entry key="drawfoodsearchfrommouse" menu="settings" zh="绘制食物搜索（自鼠标）" />
     <entry key="drawpreyinfo" menu="settings" zh="绘制猎物信息" />
     <entry key="drawglow" menu="settings" zh="绘制光晕" />
     <entry key="drawavoidgrid" menu="settings" zh="绘制规避网格" />
@@ -612,13 +612,13 @@
     <entry key="drawshooting" menu="settings" zh="绘制射击线" />
     <entry key="drawinfestationchance" menu="settings" zh="绘制感染概率" />
     <entry key="drawfleshmassheartchance" menu="settings" zh="绘制血肉心脏概率" />
-    <entry key="drawstealdebug" menu="settings" zh="绘制偷窃Debug" />
+    <entry key="drawstealdebug" menu="settings" zh="绘制偷窃调试" />
     <entry key="drawdeepresources" menu="settings" zh="绘制深层资源" />
     <entry key="drawattacktargetscores" menu="settings" zh="绘制攻击目标评分" />
     <entry key="drawfovsymmetry" menu="settings" zh="绘制视野对称" />
-    <entry key="drawnoncombatanttimer" menu="settings" zh="绘制Non战斗员计时器" />
+    <entry key="drawnoncombatanttimer" menu="settings" zh="绘制非战斗员计时器" />
     <entry key="drawinteractioncells" menu="settings" zh="绘制互动格子" />
-    <entry key="drawdoorsdebug" menu="settings" zh="绘制门Debug" />
+    <entry key="drawdoorsdebug" menu="settings" zh="绘制门调试" />
     <entry key="drawdestreservations" menu="settings" zh="绘制目的地预留" />
     <entry key="drawdamagerects" menu="settings" zh="绘制伤害矩形" />
     <entry key="drawdissolutioncells" menu="settings" zh="绘制溶解格子" />
@@ -638,7 +638,7 @@
     <entry key="drawgravshipmask" menu="settings" zh="绘制重力船遮罩" />
     <entry key="drawterraincurtain" menu="settings" zh="绘制地形帷幕" />
     <entry key="writegame" menu="settings" zh="输出游戏数据" />
-    <entry key="writesteamitems" menu="settings" zh="输出 Steam 物品" />
+    <entry key="writesteamitems" menu="settings" zh="导出 Steam 物品" />
     <entry key="writeconcepts" menu="settings" zh="输出概念" />
     <entry key="writereservations" menu="settings" zh="输出预留" />
     <entry key="writepathcosts" menu="settings" zh="输出路径成本" />
@@ -696,259 +696,259 @@
     <entry key="showfloatmenuworkgivers" menu="settings" zh="显示浮动菜单工作分配" />
     <entry key="neverforcenormalspeed" menu="settings" zh="从不强制正常速度" />
     <entry key="showarchitectmenuorder" menu="settings" zh="显示建筑菜单顺序" />
-    <entry key="showtpscounter" menu="settings" zh="显示TPS计数器" />
-    <entry key="showfpscounter" menu="settings" zh="显示FPS计数器" />
+    <entry key="showtpscounter" menu="settings" zh="显示 TPS 计数器" />
+    <entry key="showfpscounter" menu="settings" zh="显示 FPS 计数器" />
     <entry key="showmemoryinfo" menu="settings" zh="显示内存信息" />
-    <entry key="testmathperf" menu="output" zh="测试MathPerf" />
-    <entry key="randtests" menu="output" zh="RandTests" />
-    <entry key="stunchances" menu="output" zh="StunChances" />
-    <entry key="pawngenerationhistogram" menu="output" zh="小人生成Histogram" />
-    <entry key="materialreport" menu="output" zh="Material报告" />
-    <entry key="materialsnapshot" menu="output" zh="MaterialSnapshot" />
-    <entry key="materialdelta" menu="output" zh="MaterialDelta" />
-    <entry key="meshpoolstats" menu="output" zh="MeshPool统计" />
-    <entry key="allgraphicsloaded" menu="output" zh="全部图形Loaded" />
+    <entry key="testmathperf" menu="output" zh="测试数学性能" />
+    <entry key="randtests" menu="output" zh="随机数测试" />
+    <entry key="stunchances" menu="output" zh="眩晕概率" />
+    <entry key="pawngenerationhistogram" menu="output" zh="小人生成直方图" />
+    <entry key="materialreport" menu="output" zh="材质报告" />
+    <entry key="materialsnapshot" menu="output" zh="材质快照" />
+    <entry key="materialdelta" menu="output" zh="材质增量" />
+    <entry key="meshpoolstats" menu="output" zh="网格池统计" />
+    <entry key="allgraphicsloaded" menu="output" zh="已加载的全部贴图" />
     <entry key="questrewardssampled" menu="output" zh="任务奖励采样" />
     <entry key="questdefs" menu="output" zh="任务定义" />
-    <entry key="questselectionweightsnow" menu="output" zh="任务选择WeightsNow" />
-    <entry key="decreeselectionweightsnow" menu="output" zh="Decree选择WeightsNow" />
+    <entry key="questselectionweightsnow" menu="output" zh="任务选择权重（当前）" />
+    <entry key="decreeselectionweightsnow" menu="output" zh="法令选择权重（当前）" />
     <entry key="royaltitles" menu="output" zh="皇家头衔" />
-    <entry key="royalfavoravailability" menu="output" zh="皇家恩惠Availability" />
-    <entry key="bossgroups" menu="output" zh="Bossgroups" />
+    <entry key="royalfavoravailability" menu="output" zh="皇家恩惠可用性" />
+    <entry key="bossgroups" menu="output" zh="首领群" />
     <entry key="plants" menu="output" zh="植物" />
-    <entry key="plantcurrentproportions" menu="output" zh="PlantCurrentProportions" />
-    <entry key="biomes" menu="output" zh="Biomes" />
+    <entry key="plantcurrentproportions" menu="output" zh="植物当前比例" />
+    <entry key="biomes" menu="output" zh="生物群系" />
     <entry key="biomeanimalsspawnchances" menu="output" zh="生物群系动物生成概率" />
-    <entry key="biomeanimalstypicalcounts" menu="output" zh="Biome动物TypicalCounts" />
-    <entry key="biomeplantsexpectedcount" menu="output" zh="Biome植物ExpectedCount" />
-    <entry key="animalwildcountsonmap" menu="output" zh="动物野生CountsOn地图" />
-    <entry key="plantcountsonmap" menu="output" zh="PlantCountsOn地图" />
-    <entry key="apparelbystuff" menu="output" zh="服装By材料" />
-    <entry key="apparelarmor" menu="output" zh="服装Armor" />
-    <entry key="apparelinsulation" menu="output" zh="服装Insulation" />
-    <entry key="apparelcountsfornudity" menu="output" zh="服装CountsForNudity" />
+    <entry key="biomeanimalstypicalcounts" menu="output" zh="生物群系动物典型数量" />
+    <entry key="biomeplantsexpectedcount" menu="output" zh="生物群系植物预期数量" />
+    <entry key="animalwildcountsonmap" menu="output" zh="地图野生动物数量" />
+    <entry key="plantcountsonmap" menu="output" zh="地图植物数量" />
+    <entry key="apparelbystuff" menu="output" zh="按材料的服装" />
+    <entry key="apparelarmor" menu="output" zh="服装护甲值" />
+    <entry key="apparelinsulation" menu="output" zh="服装保温" />
+    <entry key="apparelcountsfornudity" menu="output" zh="遮体服装统计" />
     <entry key="recipeskills" menu="output" zh="配方技能" />
-    <entry key="drugs" menu="output" zh="Drugs" />
-    <entry key="wool" menu="output" zh="Wool" />
-    <entry key="animaleconomy" menu="output" zh="动物Economy" />
-    <entry key="animalbreeding" menu="output" zh="动物Breeding" />
-    <entry key="buildings" menu="output" zh="Buildings" />
-    <entry key="crops" menu="output" zh="Crops" />
-    <entry key="itemandbuildingacquisition" menu="output" zh="ItemAnd建筑Acquisition" />
-    <entry key="itemaccessibility" menu="output" zh="ItemAccessibility" />
-    <entry key="thingsetmakertags" menu="output" zh="物品SetMakerTags" />
-    <entry key="thingsmeltproducts" menu="output" zh="物品SmeltProducts" />
-    <entry key="recipes" menu="output" zh="Recipes" />
-    <entry key="floors" menu="output" zh="Floors" />
-    <entry key="hediffspriceimpact" menu="output" zh="疾病PriceImpact" />
-    <entry key="roamingvseconomy" menu="output" zh="RoamingVsEconomy" />
-    <entry key="archonexusalloweditems" menu="output" zh="ArchonexusAllowed物品" />
-    <entry key="rewardtags" menu="output" zh="奖励Tags" />
+    <entry key="drugs" menu="output" zh="药物" />
+    <entry key="wool" menu="output" zh="毛料" />
+    <entry key="animaleconomy" menu="output" zh="动物经济" />
+    <entry key="animalbreeding" menu="output" zh="动物繁殖" />
+    <entry key="buildings" menu="output" zh="建筑" />
+    <entry key="crops" menu="output" zh="作物" />
+    <entry key="itemandbuildingacquisition" menu="output" zh="物品与建筑获取" />
+    <entry key="itemaccessibility" menu="output" zh="物品可获取性" />
+    <entry key="thingsetmakertags" menu="output" zh="物品集生成标签" />
+    <entry key="thingsmeltproducts" menu="output" zh="物品熔炼产物" />
+    <entry key="recipes" menu="output" zh="配方" />
+    <entry key="floors" menu="output" zh="地板" />
+    <entry key="hediffspriceimpact" menu="output" zh="疾病价格影响" />
+    <entry key="roamingvseconomy" menu="output" zh="游荡与经济" />
+    <entry key="archonexusalloweditems" menu="output" zh="大角星允许物品" />
+    <entry key="rewardtags" menu="output" zh="奖励标签" />
     <entry key="allfactions" menu="output" zh="全部派系" />
-    <entry key="allfactionstoremove" menu="output" zh="全部派系ToRemove" />
-    <entry key="allfactionsfrompawns" menu="output" zh="全部派系From小人" />
-    <entry key="weaponclasses" menu="output" zh="WeaponClasses" />
-    <entry key="weaponsranged" menu="output" zh="武器Ranged" />
-    <entry key="turrets" menu="output" zh="Turrets" />
+    <entry key="allfactionstoremove" menu="output" zh="待移除的全部派系" />
+    <entry key="allfactionsfrompawns" menu="output" zh="来自小人的全部派系" />
+    <entry key="weaponclasses" menu="output" zh="武器类别" />
+    <entry key="weaponsranged" menu="output" zh="远程武器" />
+    <entry key="turrets" menu="output" zh="炮塔" />
     <entry key="weaponsmelee" menu="output" zh="近战武器" />
-    <entry key="tools" menu="output" zh="Tools" />
-    <entry key="researchprojects" menu="output" zh="研究Projects" />
-    <entry key="thingsexistinglist" menu="output" zh="物品Existing列表" />
-    <entry key="tickrates" menu="output" zh="TickRates" />
-    <entry key="thingfillageandpassability" menu="output" zh="物品FillageAndPassability" />
-    <entry key="thingpathcosts" menu="output" zh="物品Path成本" />
+    <entry key="tools" menu="output" zh="工具" />
+    <entry key="researchprojects" menu="output" zh="研究项目" />
+    <entry key="thingsexistinglist" menu="output" zh="现有物品列表" />
+    <entry key="tickrates" menu="output" zh="游戏刻频率" />
+    <entry key="thingfillageandpassability" menu="output" zh="物品填充率与通行性" />
+    <entry key="thingpathcosts" menu="output" zh="物品路径成本" />
     <entry key="thingdamagedata" menu="output" zh="物品伤害数据" />
-    <entry key="unfinishedthings" menu="output" zh="Unfinished物品" />
-    <entry key="thingmasses" menu="output" zh="物品Masses" />
-    <entry key="thingfillpercents" menu="output" zh="物品填充Percents" />
-    <entry key="thingnutritions" menu="output" zh="物品Nutritions" />
+    <entry key="unfinishedthings" menu="output" zh="未完成物品" />
+    <entry key="thingmasses" menu="output" zh="物品质量" />
+    <entry key="thingfillpercents" menu="output" zh="物品填充百分比" />
+    <entry key="thingnutritions" menu="output" zh="物品营养值" />
     <entry key="bodies" menu="output" zh="水体" />
-    <entry key="installablebodyparts" menu="output" zh="Installable身体Parts" />
-    <entry key="bodyparts" menu="output" zh="身体Parts" />
-    <entry key="surgeries" menu="output" zh="Surgeries" />
+    <entry key="installablebodyparts" menu="output" zh="可安装身体部位" />
+    <entry key="bodyparts" menu="output" zh="身体部位" />
+    <entry key="surgeries" menu="output" zh="手术" />
     <entry key="hitstokill" menu="output" zh="击杀所需命中数" />
-    <entry key="prosthetics" menu="output" zh="Prosthetics" />
-    <entry key="transhumanistbodyparts" menu="output" zh="Transhumanist身体Parts" />
-    <entry key="incidentchances" menu="output" zh="事件Chances" />
-    <entry key="incidentchancessampled" menu="output" zh="事件Chances采样" />
-    <entry key="futureincidents" menu="output" zh="Future事件" />
-    <entry key="futureincidentscurrentmap" menu="output" zh="Future事件Current地图" />
+    <entry key="prosthetics" menu="output" zh="假体" />
+    <entry key="transhumanistbodyparts" menu="output" zh="超人类主义身体部位" />
+    <entry key="incidentchances" menu="output" zh="事件概率" />
+    <entry key="incidentchancessampled" menu="output" zh="事件概率（采样）" />
+    <entry key="futureincidents" menu="output" zh="未来事件" />
+    <entry key="futureincidentscurrentmap" menu="output" zh="当前地图的未来事件" />
     <entry key="incidenttargetslist" menu="output" zh="事件目标列表" />
-    <entry key="minthreatpoints" menu="output" zh="Min威胁点数" />
-    <entry key="currentthreatpoints" menu="output" zh="Current威胁点数" />
-    <entry key="pawnarrivalcandidates" menu="output" zh="小人抵达Candidates" />
-    <entry key="traderkinds" menu="output" zh="Trader种类" />
-    <entry key="traderkindthings" menu="output" zh="Trader种类物品" />
-    <entry key="traderstockmarketvalues" menu="output" zh="Trader库存市场价值" />
-    <entry key="traderstockgeneration" menu="output" zh="Trader库存生成" />
-    <entry key="traderstockgeneratorsdefs" menu="output" zh="Trader库存Generators定义" />
-    <entry key="traderanimaltags" menu="output" zh="Trader动物Tags" />
+    <entry key="minthreatpoints" menu="output" zh="最低威胁点数" />
+    <entry key="currentthreatpoints" menu="output" zh="当前威胁点数" />
+    <entry key="pawnarrivalcandidates" menu="output" zh="小人抵达候选" />
+    <entry key="traderkinds" menu="output" zh="商人种类" />
+    <entry key="traderkindthings" menu="output" zh="商人种类物品" />
+    <entry key="traderstockmarketvalues" menu="output" zh="商人库存市场价值" />
+    <entry key="traderstockgeneration" menu="output" zh="商人库存生成" />
+    <entry key="traderstockgeneratorsdefs" menu="output" zh="商人库存生成器定义" />
+    <entry key="traderanimaltags" menu="output" zh="商人动物标签" />
     <entry key="pawngroupgensampled" menu="output" zh="小人组生成采样" />
     <entry key="raidfactionsampled" menu="output" zh="袭击派系采样" />
     <entry key="raidstrategysampled" menu="output" zh="袭击策略采样" />
     <entry key="raidarrivemodesampled" menu="output" zh="袭击抵达方式采样" />
-    <entry key="threatsgenerator" menu="output" zh="ThreatsGenerator" />
+    <entry key="threatsgenerator" menu="output" zh="威胁生成器" />
     <entry key="raidsinfosampled" menu="output" zh="袭击信息采样" />
-    <entry key="infections" menu="output" zh="Infections" />
-    <entry key="infectionsimulator" menu="output" zh="感染Simulator" />
-    <entry key="joygivers" menu="output" zh="娱乐Givers" />
+    <entry key="infections" menu="output" zh="感染" />
+    <entry key="infectionsimulator" menu="output" zh="感染模拟器" />
+    <entry key="joygivers" menu="output" zh="娱乐来源" />
     <entry key="joykinds" menu="output" zh="娱乐种类" />
     <entry key="joyjobs" menu="output" zh="娱乐工作" />
-    <entry key="drawertypes" menu="output" zh="DrawerTypes" />
-    <entry key="dynamicdrawnthingsnow" menu="output" zh="动态Drawn物品Now" />
-    <entry key="dynamicdrawnthingsbycategorynow" menu="output" zh="动态Drawn物品ByCategoryNow" />
-    <entry key="miningresourcegeneration" menu="output" zh="MiningResource生成" />
-    <entry key="naturalrocks" menu="output" zh="NaturalRocks" />
-    <entry key="ancientjunk" menu="output" zh="AncientJunk" />
-    <entry key="meditationfoci" menu="output" zh="MeditationFoci" />
-    <entry key="defaultstuffs" menu="output" zh="Default材料" />
-    <entry key="beauties" menu="output" zh="Beauties" />
+    <entry key="drawertypes" menu="output" zh="绘制类型" />
+    <entry key="dynamicdrawnthingsnow" menu="output" zh="当前动态绘制物品" />
+    <entry key="dynamicdrawnthingsbycategorynow" menu="output" zh="当前按类别动态绘制物品" />
+    <entry key="miningresourcegeneration" menu="output" zh="采矿资源生成" />
+    <entry key="naturalrocks" menu="output" zh="天然岩石" />
+    <entry key="ancientjunk" menu="output" zh="远古垃圾" />
+    <entry key="meditationfoci" menu="output" zh="冥想焦点" />
+    <entry key="defaultstuffs" menu="output" zh="默认材料" />
+    <entry key="beauties" menu="output" zh="美观度" />
     <entry key="stuffbeauty" menu="output" zh="材料美观" />
-    <entry key="thingspowerandheat" menu="output" zh="物品电力AndHeat" />
-    <entry key="foodpoisonchances" menu="output" zh="食物PoisonChances" />
-    <entry key="techlevels" menu="output" zh="科技Levels" />
+    <entry key="thingspowerandheat" menu="output" zh="物品电力与热量" />
+    <entry key="foodpoisonchances" menu="output" zh="食物中毒概率" />
+    <entry key="techlevels" menu="output" zh="科技等级" />
     <entry key="stuffs" menu="output" zh="材料" />
-    <entry key="burningandsmeltingthings" menu="output" zh="BurningAndSmelting物品" />
-    <entry key="medicines" menu="output" zh="Medicines" />
+    <entry key="burningandsmeltingthings" menu="output" zh="可燃与可熔炼物品" />
+    <entry key="medicines" menu="output" zh="药品" />
     <entry key="shootingaccuracy" menu="output" zh="射击命中率" />
-    <entry key="temperaturedata" menu="output" zh="Temperature数据" />
-    <entry key="temperatureoverlaycolors" menu="output" zh="Temperature叠加层Colors" />
-    <entry key="weatherchances" menu="output" zh="天气Chances" />
-    <entry key="weathercommonalities" menu="output" zh="天气Commonalities" />
+    <entry key="temperaturedata" menu="output" zh="温度数据" />
+    <entry key="temperatureoverlaycolors" menu="output" zh="温度覆盖层颜色" />
+    <entry key="weatherchances" menu="output" zh="天气概率" />
+    <entry key="weathercommonalities" menu="output" zh="天气常见度" />
     <entry key="celestialglow" menu="output" zh="天体光晕" />
-    <entry key="sunangle" menu="output" zh="SunAngle" />
-    <entry key="fallcolor" menu="output" zh="FallColor" />
-    <entry key="pawnslistallonmap" menu="output" zh="小人列表全部On地图" />
-    <entry key="windspeeds" menu="output" zh="风Speeds" />
+    <entry key="sunangle" menu="output" zh="太阳角度" />
+    <entry key="fallcolor" menu="output" zh="秋季颜色" />
+    <entry key="pawnslistallonmap" menu="output" zh="地图上的全部小人列表" />
+    <entry key="windspeeds" menu="output" zh="风速" />
     <entry key="mappawnslist" menu="output" zh="地图小人列表" />
     <entry key="lords" menu="output" zh="领主" />
-    <entry key="logenroute" menu="output" zh="记录Enroute" />
-    <entry key="bodyparttaggroups" menu="output" zh="身体部位TagGroups" />
-    <entry key="minifiabletags" menu="output" zh="MinifiableTags" />
-    <entry key="thingsetmakertest" menu="output" zh="物品SetMaker测试" />
-    <entry key="thingsetmakerpossibledefs" menu="output" zh="物品SetMakerPossible定义" />
-    <entry key="thingsetmakersampled" menu="output" zh="物品SetMaker采样" />
+    <entry key="logenroute" menu="output" zh="记录在途" />
+    <entry key="bodyparttaggroups" menu="output" zh="身体部位标签组" />
+    <entry key="minifiabletags" menu="output" zh="可打包标签" />
+    <entry key="thingsetmakertest" menu="output" zh="物品集生成测试" />
+    <entry key="thingsetmakerpossibledefs" menu="output" zh="物品集生成可能定义" />
+    <entry key="thingsetmakersampled" menu="output" zh="物品集生成（采样）" />
     <entry key="rewardsgeneration" menu="output" zh="奖励生成" />
     <entry key="rewardsgenerationsampled" menu="output" zh="奖励生成采样" />
     <entry key="workdisables" menu="output" zh="工作禁用" />
-    <entry key="foodpreferability" menu="output" zh="食物Preferability" />
-    <entry key="ingestiblemaxsatisfiedtitle" menu="output" zh="IngestibleMaxSatisfied头衔" />
+    <entry key="foodpreferability" menu="output" zh="食物偏好" />
+    <entry key="ingestiblemaxsatisfiedtitle" menu="output" zh="摄入物最大满足度" />
     <entry key="abilitycosts" menu="output" zh="能力成本" />
-    <entry key="sitepartdefs" menu="output" zh="Site部位定义" />
-    <entry key="mapdanger" menu="output" zh="地图Danger" />
-    <entry key="gensteps" menu="output" zh="生成Steps" />
-    <entry key="worldgensteps" menu="output" zh="世界生成Steps" />
-    <entry key="shuttledefstoavoid" menu="output" zh="穿梭机定义To规避" />
-    <entry key="ritualduration" menu="output" zh="仪式Duration" />
-    <entry key="playerwealth" menu="output" zh="玩家Wealth" />
-    <entry key="memesandprecepts" menu="output" zh="MemesAndPrecepts" />
-    <entry key="generategenesetsx10" menu="output" zh="Generate基因SetsX10" />
-    <entry key="genes" menu="output" zh="Genes" />
-    <entry key="xenotypes" menu="output" zh="Xenotypes" />
+    <entry key="sitepartdefs" menu="output" zh="地点部件定义" />
+    <entry key="mapdanger" menu="output" zh="地图危险度" />
+    <entry key="gensteps" menu="output" zh="生成步骤" />
+    <entry key="worldgensteps" menu="output" zh="世界生成步骤" />
+    <entry key="shuttledefstoavoid" menu="output" zh="需规避的穿梭机定义" />
+    <entry key="ritualduration" menu="output" zh="仪式时长" />
+    <entry key="playerwealth" menu="output" zh="玩家财富" />
+    <entry key="memesandprecepts" menu="output" zh="理念与戒律" />
+    <entry key="generategenesetsx10" menu="output" zh="生成基因集 ×10" />
+    <entry key="genes" menu="output" zh="基因" />
+    <entry key="xenotypes" menu="output" zh="异种人" />
     <entry key="preceptdefs" menu="output" zh="教义定义" />
-    <entry key="thingtradetags" menu="output" zh="物品贸易Tags" />
-    <entry key="structurecolordefs" menu="output" zh="StructureColor定义" />
-    <entry key="psychicrituals" menu="output" zh="灵能Rituals" />
-    <entry key="analysisdetails" menu="output" zh="Analysis细节" />
+    <entry key="thingtradetags" menu="output" zh="物品贸易标签" />
+    <entry key="structurecolordefs" menu="output" zh="结构颜色定义" />
+    <entry key="psychicrituals" menu="output" zh="灵能仪式" />
+    <entry key="analysisdetails" menu="output" zh="分析细节" />
     <entry key="relicthings" menu="output" zh="圣物物品" />
     <entry key="relicmarketvalues" menu="output" zh="圣物市场价值" />
     <entry key="relicstuffs" menu="output" zh="圣物材料" />
-    <entry key="collectionsmemoryusage" menu="output" zh="Collections内存使用" />
+    <entry key="collectionsmemoryusage" menu="output" zh="集合内存占用" />
     <entry key="landmarks" menu="output" zh="地标" />
-    <entry key="adjacentdistancebetweenlayertiles" menu="output" zh="AdjacentDistance工作间行星层Tiles" />
-    <entry key="loganyplayerhomemap" menu="output" zh="记录Any玩家家园地图" />
-    <entry key="gravshipbuildingchecklist" menu="output" zh="重力船建筑Checklist" />
+    <entry key="adjacentdistancebetweenlayertiles" menu="output" zh="相邻层地块间距" />
+    <entry key="loganyplayerhomemap" menu="output" zh="记录任意玩家家园地图" />
+    <entry key="gravshipbuildingchecklist" menu="output" zh="重力船建造清单" />
     <entry key="pawnkindsbasics" menu="output" zh="小人种类基础" />
-    <entry key="pawnkindsweaponusage" menu="output" zh="小人种类Weapon使用" />
+    <entry key="pawnkindsweaponusage" menu="output" zh="小人种类武器使用" />
     <entry key="pawnkindsapparelusage" menu="output" zh="小人种类服装使用" />
     <entry key="pawnkindstechhediffusage" menu="output" zh="小人种类科技疾病使用" />
     <entry key="pawnkindgearsampled" menu="output" zh="小人种类装备采样" />
     <entry key="pawnworkdisablessampled" menu="output" zh="小人工作禁用采样" />
-    <entry key="livepawnsinspirationchances" menu="output" zh="Live小人灵感Chances" />
+    <entry key="livepawnsinspirationchances" menu="output" zh="在世小人灵感概率" />
     <entry key="racesfoodconsumption" menu="output" zh="种族食物消耗" />
-    <entry key="racesbutchery" menu="output" zh="种族Butchery" />
+    <entry key="racesbutchery" menu="output" zh="种族屠宰" />
     <entry key="animalsbasics" menu="output" zh="动物基础" />
-    <entry key="animalpointstohuntorslaughter" menu="output" zh="动物点数To狩猎OrSlaughter" />
+    <entry key="animalpointstohuntorslaughter" menu="output" zh="狩猎或屠宰动物点数" />
     <entry key="animalcombatbalance" menu="output" zh="动物战斗平衡" />
-    <entry key="mechanoids" menu="output" zh="Mechanoids" />
-    <entry key="animaltradetags" menu="output" zh="动物贸易Tags" />
-    <entry key="animalbehavior" menu="output" zh="动物Behavior" />
+    <entry key="mechanoids" menu="output" zh="机械族" />
+    <entry key="animaltradetags" menu="output" zh="动物贸易标签" />
+    <entry key="animalbehavior" menu="output" zh="动物行为" />
     <entry key="animalsecosystem" menu="output" zh="动物生态" />
-    <entry key="mentalbreaks" menu="output" zh="精神Breaks" />
+    <entry key="mentalbreaks" menu="output" zh="精神崩溃" />
     <entry key="thoughts" menu="output" zh="想法" />
     <entry key="ideothoughts" menu="output" zh="意识形态想法" />
     <entry key="traitssampled" menu="output" zh="特质采样" />
-    <entry key="backstorycountspertag" menu="output" zh="背景故事CountsPerTag" />
-    <entry key="listsolidbackstories" menu="output" zh="列表SolidBackstories" />
-    <entry key="showbeardfrequency" menu="output" zh="显示BeardFrequency" />
-    <entry key="entities" menu="output" zh="Entities" />
+    <entry key="backstorycountspertag" menu="output" zh="各标签背景故事数量" />
+    <entry key="listsolidbackstories" menu="output" zh="列出完整背景故事" />
+    <entry key="showbeardfrequency" menu="output" zh="显示胡须频率" />
+    <entry key="entities" menu="output" zh="实体" />
     <entry key="worldpawnrelations" menu="output" zh="世界小人关系" />
-    <entry key="virtualrecords" menu="output" zh="VirtualRecords" />
-    <entry key="animalspecialtrainables" menu="output" zh="动物SpecialTrainables" />
-    <entry key="loadedassets" menu="output" zh="LoadedAssets" />
+    <entry key="virtualrecords" menu="output" zh="虚拟记录" />
+    <entry key="animalspecialtrainables" menu="output" zh="动物特殊训练" />
+    <entry key="loadedassets" menu="output" zh="已加载资源" />
     <entry key="dynamicdrawthingslist" menu="output" zh="动态绘制物品列表" />
-    <entry key="randbycurvetests" menu="output" zh="RandByCurveTests" />
-    <entry key="keystrings" menu="output" zh="KeyStrings" />
+    <entry key="randbycurvetests" menu="output" zh="曲线随机测试" />
+    <entry key="keystrings" menu="output" zh="键字符串" />
     <entry key="defnames" menu="output" zh="定义名称" />
     <entry key="defnamesall" menu="output" zh="定义名称全部" />
     <entry key="deflabels" menu="output" zh="定义标签" />
     <entry key="bestthingrequestgroup" menu="output" zh="最佳物品请求组" />
     <entry key="damagetest" menu="output" zh="伤害测试" />
-    <entry key="playerhasgravenginetest" menu="output" zh="玩家HasGravEngine测试" />
+    <entry key="playerhasgravenginetest" menu="output" zh="玩家是否有重力引擎测试" />
     <entry key="terrains" menu="output" zh="地形" />
     <entry key="terrainaffordances" menu="output" zh="地形支撑" />
-    <entry key="flavorfulcombattest" menu="output" zh="Flavorful战斗测试" />
-    <entry key="cubedescriptions" menu="output" zh="CubeDescriptions" />
-    <entry key="voidsculpturedescriptions" menu="output" zh="VoidSculptureDescriptions" />
-    <entry key="books" menu="output" zh="Books" />
-    <entry key="artdescsspecifictale" menu="output" zh="ArtDescsSpecific故事" />
-    <entry key="namesfromrulepack" menu="output" zh="名称FromRulepack" />
+    <entry key="flavorfulcombattest" menu="output" zh="Flavorful 战斗测试" />
+    <entry key="cubedescriptions" menu="output" zh="方块描述" />
+    <entry key="voidsculpturedescriptions" menu="output" zh="虚空雕塑描述" />
+    <entry key="books" menu="output" zh="书籍" />
+    <entry key="artdescsspecifictale" menu="output" zh="艺术描述（特定故事）" />
+    <entry key="namesfromrulepack" menu="output" zh="规则包名称" />
     <entry key="landmarknames" menu="output" zh="地标名称" />
-    <entry key="databasetaleslist" menu="output" zh="DatabaseTales列表" />
-    <entry key="databasetalesinterest" menu="output" zh="DatabaseTalesInterest" />
-    <entry key="artdescsdatabasetales" menu="output" zh="ArtDescsDatabaseTales" />
-    <entry key="artdescsrandomtales" menu="output" zh="ArtDescs随机Tales" />
-    <entry key="artdescstaleless" menu="output" zh="ArtDescsTaleless" />
-    <entry key="interactionlogs" menu="output" zh="互动Logs" />
-    <entry key="wordcount" menu="output" zh="WordCount" />
-    <entry key="colonistrelativechance" menu="output" zh="殖民者Relative概率" />
-    <entry key="kidnappedpawns" menu="output" zh="Kidnapped小人" />
+    <entry key="databasetaleslist" menu="output" zh="数据库故事列表" />
+    <entry key="databasetalesinterest" menu="output" zh="数据库故事关注度" />
+    <entry key="artdescsdatabasetales" menu="output" zh="艺术描述（数据库故事）" />
+    <entry key="artdescsrandomtales" menu="output" zh="艺术描述（随机故事）" />
+    <entry key="artdescstaleless" menu="output" zh="艺术描述（无故事）" />
+    <entry key="interactionlogs" menu="output" zh="互动日志" />
+    <entry key="wordcount" menu="output" zh="词数统计" />
+    <entry key="colonistrelativechance" menu="output" zh="殖民者相对概率" />
+    <entry key="kidnappedpawns" menu="output" zh="被绑架小人" />
     <entry key="worldpawnlist" menu="output" zh="世界小人列表" />
-    <entry key="worldpawnmothballinfo" menu="output" zh="世界小人Mothball信息" />
-    <entry key="worldpawngcbreakdown" menu="output" zh="世界小人回收Breakdown" />
-    <entry key="worldpawndotgraph" menu="output" zh="世界小人Dotgraph" />
-    <entry key="runworldpawngc" menu="output" zh="Run世界小人回收" />
-    <entry key="runworldpawnmothball" menu="output" zh="Run世界小人Mothball" />
-    <entry key="pawncolumntest" menu="output" zh="小人Column测试" />
+    <entry key="worldpawnmothballinfo" menu="output" zh="世界小人封存信息" />
+    <entry key="worldpawngcbreakdown" menu="output" zh="世界小人回收明细" />
+    <entry key="worldpawndotgraph" menu="output" zh="世界小人点图" />
+    <entry key="runworldpawngc" menu="output" zh="运行世界小人回收" />
+    <entry key="runworldpawnmothball" menu="output" zh="运行世界小人封存" />
+    <entry key="pawncolumntest" menu="output" zh="小人列测试" />
     <entry key="wildmissresults" menu="output" zh="野生未命中结果" />
-    <entry key="steamworkshopstatus" menu="output" zh="蒸汽WorkshopStatus" />
-    <entry key="thingpathcostsignorerepeaters" menu="output" zh="物品Path成本忽略Repeaters" />
+    <entry key="steamworkshopstatus" menu="output" zh="Steam 创意工坊状态" />
+    <entry key="thingpathcostsignorerepeaters" menu="output" zh="物品路径成本（忽略重复格）" />
     <entry key="difficultydetails" menu="output" zh="难度细节" />
     <entry key="manhunterresults" menu="output" zh="猎杀结果" />
     <entry key="populationintents" menu="output" zh="人口意图" />
     <entry key="mechclusterbuildingselection" menu="output" zh="机械族集群建筑选择" />
     <entry key="permanentinjurycalculations" menu="output" zh="永久伤势计算" />
     <entry key="apparelpairs" menu="output" zh="服装配对" />
-    <entry key="apparelpairsbything" menu="output" zh="服装配对By物品" />
-    <entry key="weaponpairs" menu="output" zh="Weapon配对" />
-    <entry key="weaponpairsbything" menu="output" zh="Weapon配对By物品" />
-    <entry key="pawngroupsmade" menu="output" zh="小人GroupsMade" />
-    <entry key="visitorgiftchance" menu="output" zh="VisitorGift概率" />
+    <entry key="apparelpairsbything" menu="output" zh="按物品的服装配对" />
+    <entry key="weaponpairs" menu="output" zh="武器配对" />
+    <entry key="weaponpairsbything" menu="output" zh="按物品的武器配对" />
+    <entry key="pawngroupsmade" menu="output" zh="已生成小人组" />
+    <entry key="visitorgiftchance" menu="output" zh="访客赠礼概率" />
     <entry key="songselectiondata" menu="output" zh="歌曲选择数据" />
     <entry key="apparelvalidlifestages" menu="output" zh="服装有效生命阶段" />
-    <entry key="podcontentspossibledefs" menu="output" zh="舱内容Possible定义" />
+    <entry key="podcontentspossibledefs" menu="output" zh="空投舱内容可能定义" />
     <entry key="podcontentstest" menu="output" zh="舱内容测试" />
     <entry key="qualitygenerationdata" menu="output" zh="品质生成数据" />
     <entry key="stockgenerationanimals" menu="output" zh="库存生成动物" />
-    <entry key="techprintsfromfactions" menu="output" zh="科技图纸From派系" />
-    <entry key="techprintsfromfactionschances" menu="output" zh="科技图纸From派系Chances" />
-    <entry key="growthmomentflavor" menu="output" zh="GrowthMomentFlavor" />
+    <entry key="techprintsfromfactions" menu="output" zh="各派系科技图纸" />
+    <entry key="techprintsfromfactionschances" menu="output" zh="各派系科技图纸概率" />
+    <entry key="growthmomentflavor" menu="output" zh="成长时刻风味文本" />
     <entry key="wallstuffs" menu="output" zh="墙材料" />
     <entry key="beggarquestitems" menu="output" zh="乞丐任务物品" />
-    <entry key="missionancientcomplex" menu="output" zh="MissionAncient复杂" />
-    <entry key="peacetalkschances" menu="output" zh="Peace话题Chances" />
+    <entry key="missionancientcomplex" menu="output" zh="远古复合体任务" />
+    <entry key="peacetalkschances" menu="output" zh="和谈话题概率" />
     <entry key="runfindpartner" menu="mods" zh="运行寻找伴侣" />
-    <entry key="givepawnmoelotlqiskills" menu="mods" zh="给予小人 MoeLotl 气技能" />
+    <entry key="givepawnmoelotlqiskills" menu="mods" zh="给予小人萌螈气技能" />
     <entry key="testmapfusionresearchsite" menu="mods" zh="测试地图：融合研究点" />
     <entry key="explainattraction" menu="mods" zh="解释吸引力" />
     <entry key="triggerearlycorporaterepresentative" menu="mods" zh="提前触发：企业代表" />
@@ -965,7 +965,7 @@
     <entry key="stopallanimations" menu="mods" zh="停止所有动画" />
     <entry key="resetallsexcooldowns" menu="mods" zh="重置所有性行为冷却" />
     <entry key="backweaponlayout背负武器微调" menu="mods" zh="背负武器布局微调" />
-    <entry key="updatetargetmoelotlabilityclass" menu="mods" zh="更新目标 MoeLotl 能力类别" />
+    <entry key="updatetargetmoelotlabilityclass" menu="mods" zh="更新目标萌螈能力类别" />
     <entry key="impactyurangodslash" menu="mods" zh="尤兰神斩冲击" />
     <entry key="impactyuranflower" menu="mods" zh="尤兰花朵冲击" />
     <entry key="impactyuranflowerwithsil" menu="mods" zh="尤兰花朵冲击（带音效）" />
@@ -994,5 +994,117 @@
     <entry key="toxgasreleasing" menu="mods" zh="毒气释放" />
     <entry key="skipentrynodelay" menu="mods" zh="跳跃进入（无延迟）" />
     <entry key="skipexitnodelay" menu="mods" zh="跳跃离开（无延迟）" />
+    <entry key="yuranartpot" menu="spawning" zh="尤兰陶罐" />
+    <entry key="yrartpot" menu="spawning" zh="尤兰陶罐" />
+    <entry key="yuranheugilbox" menu="spawning" zh="尤兰黑日衣箱" />
+    <entry key="yrclothbox" menu="spawning" zh="尤兰黑日衣箱" />
+    <entry key="yuranblackdressbox" menu="spawning" zh="尤兰黑裙衣箱" />
+    <entry key="yrclothboxaddonblack" menu="spawning" zh="尤兰黑裙衣箱" />
+    <entry key="yuranflowerdecoration" menu="spawning" zh="尤兰花饰" />
+    <entry key="yrapflower" menu="spawning" zh="尤兰花饰" />
+    <entry key="yurancorolla" menu="spawning" zh="尤兰花冠" />
+    <entry key="yrapfloweraddona" menu="spawning" zh="尤兰花冠" />
+    <entry key="yuranthorncorolla" menu="spawning" zh="尤兰荆棘花冠" />
+    <entry key="yrapfloweraddonb" menu="spawning" zh="尤兰荆棘花冠" />
+    <entry key="yuranblackribbon" menu="spawning" zh="尤兰黑丝带" />
+    <entry key="yrapfloweraddonc" menu="spawning" zh="尤兰黑丝带" />
+    <entry key="yuransacredcorolla" menu="spawning" zh="尤兰圣冠" />
+    <entry key="yrapfloweraddond" menu="spawning" zh="尤兰圣冠" />
+    <entry key="yurantalismanofwater" menu="spawning" zh="尤兰水之护符" />
+    <entry key="yrapheat" menu="spawning" zh="尤兰水之护符" />
+    <entry key="yuranjeogmyeong" menu="spawning" zh="尤兰赤明" />
+    <entry key="yrapjeogmyeong" menu="spawning" zh="尤兰赤明" />
+    <entry key="yuranyeonwi" menu="spawning" zh="尤兰莲衣" />
+    <entry key="yrapmaida" menu="spawning" zh="尤兰莲衣" />
+    <entry key="yuranheugwi" menu="spawning" zh="尤兰黑衣" />
+    <entry key="yrapmaidb" menu="spawning" zh="尤兰黑衣" />
+    <entry key="yuranwikatyusha" menu="spawning" zh="尤兰喀秋莎外衣" />
+    <entry key="yrapmaidhat" menu="spawning" zh="尤兰喀秋莎外衣" />
+    <entry key="yuranjeogmu" menu="spawning" zh="尤兰赤舞" />
+    <entry key="yrapmiko" menu="spawning" zh="尤兰赤舞" />
+    <entry key="yuranjeogwol" menu="spawning" zh="尤兰赤月" />
+    <entry key="yrapmikob" menu="spawning" zh="尤兰赤月" />
+    <entry key="yuranaenghwa" menu="spawning" zh="尤兰樱花" />
+    <entry key="yrapred" menu="spawning" zh="尤兰樱花" />
+    <entry key="yuranjagyag" menu="spawning" zh="尤兰芍药" />
+    <entry key="yrapredwhite" menu="spawning" zh="尤兰芍药" />
+    <entry key="yuranbigribbon" menu="spawning" zh="尤兰大丝带" />
+    <entry key="yrapribbonbig" menu="spawning" zh="尤兰大丝带" />
+    <entry key="yuransmallribbon" menu="spawning" zh="尤兰小丝带" />
+    <entry key="yrapribbonsmall" menu="spawning" zh="尤兰小丝带" />
+    <entry key="yuranroyalslavecloth" menu="spawning" zh="尤兰王室奴婢服" />
+    <entry key="yraproyalslave" menu="spawning" zh="尤兰王室奴婢服" />
+    <entry key="yuranbaegyeong" menu="spawning" zh="尤兰白影" />
+    <entry key="yrapsecretyukataa" menu="spawning" zh="尤兰白影" />
+    <entry key="yurantalismanoftheearth" menu="spawning" zh="尤兰大地护符" />
+    <entry key="yrapsharp" menu="spawning" zh="尤兰大地护符" />
+    <entry key="yuranbaeglo" menu="spawning" zh="尤兰白鹭" />
+    <entry key="yrapwhite" menu="spawning" zh="尤兰白鹭" />
+    <entry key="yuranbaeglohat" menu="spawning" zh="尤兰白鹭帽" />
+    <entry key="yrapwhitehood" menu="spawning" zh="尤兰白鹭帽" />
+    <entry key="yuranbaegwol" menu="spawning" zh="尤兰白月" />
+    <entry key="yrapwhitemoon" menu="spawning" zh="尤兰白月" />
+    <entry key="yuranbaegun" menu="spawning" zh="尤兰白云" />
+    <entry key="yrapwhiteoutcloth" menu="spawning" zh="尤兰白云" />
+    <entry key="cherryblossompetals" menu="spawning" zh="樱花花瓣" />
+    <entry key="filthyrhana" menu="spawning" zh="樱花花瓣" />
+    <entry key="dragonianbasicdress" menu="spawning" zh="龙族基础连衣裙" />
+    <entry key="drbasicdress" menu="spawning" zh="龙族基础连衣裙" />
+    <entry key="dragonianbasicwear" menu="spawning" zh="龙族基础衣物" />
+    <entry key="drbasicwear" menu="spawning" zh="龙族基础衣物" />
+    <entry key="dragonianbasicdressmale" menu="spawning" zh="龙族基础连衣裙（男）" />
+    <entry key="drbasicwearmale" menu="spawning" zh="龙族基础连衣裙（男）" />
+    <entry key="dragonianbattledress" menu="spawning" zh="龙族战斗连衣裙" />
+    <entry key="drbattledress" menu="spawning" zh="龙族战斗连衣裙" />
+    <entry key="dragonianbattledressmale" menu="spawning" zh="龙族战斗连衣裙（男）" />
+    <entry key="drbattledressmale" menu="spawning" zh="龙族战斗连衣裙（男）" />
+    <entry key="dragonianbattlehelmaboth" menu="spawning" zh="龙族战斗头盔A（通用）" />
+    <entry key="drbattlehelma" menu="spawning" zh="龙族战斗头盔A（通用）" />
+    <entry key="dragonianmace" menu="spawning" zh="龙族钉锤" />
+    <entry key="drbattlemace" menu="spawning" zh="龙族钉锤" />
+    <entry key="dragonianeltexstaff" menu="spawning" zh="龙族灵铁法杖" />
+    <entry key="drbattlestaff" menu="spawning" zh="龙族灵铁法杖" />
+    <entry key="dragoniangraeatsword" menu="spawning" zh="龙族巨剑" />
+    <entry key="drbattlesword" menu="spawning" zh="龙族巨剑" />
+    <entry key="dragonianjavelinthrower" menu="spawning" zh="龙族投矛器" />
+    <entry key="drgreatbow" menu="spawning" zh="龙族投矛器" />
+    <entry key="dragonianmidoffdress" menu="spawning" zh="龙族露肩裙" />
+    <entry key="drmidoff" menu="spawning" zh="龙族露肩裙" />
+    <entry key="dragonianoffshoulderdress" menu="spawning" zh="龙族一字肩裙" />
+    <entry key="droffshoulderdress" menu="spawning" zh="龙族一字肩裙" />
+    <entry key="dragonianribbonwear" menu="spawning" zh="龙族丝带装" />
+    <entry key="dropendress" menu="spawning" zh="龙族丝带装" />
+    <entry key="dragonianprotectionorb" menu="spawning" zh="龙族守护宝珠" />
+    <entry key="drprotectionorb" menu="spawning" zh="龙族守护宝珠" />
+    <entry key="dragonianeltexdress" menu="spawning" zh="龙族灵铁裙" />
+    <entry key="drpsychicdress" menu="spawning" zh="龙族灵铁裙" />
+    <entry key="dragonianeltexdressmale" menu="spawning" zh="龙族灵铁裙（男）" />
+    <entry key="drpsychicdressmale" menu="spawning" zh="龙族灵铁裙（男）" />
+    <entry key="dragonianeltexhelmboth" menu="spawning" zh="龙族灵铁头盔（通用）" />
+    <entry key="drpsychichelm" menu="spawning" zh="龙族灵铁头盔（通用）" />
+    <entry key="dragonianseethroughdress" menu="spawning" zh="龙族薄纱裙" />
+    <entry key="drseethrough" menu="spawning" zh="龙族薄纱裙" />
+    <entry key="dragoniansideopendress" menu="spawning" zh="龙族侧开裙" />
+    <entry key="drsidedress" menu="spawning" zh="龙族侧开裙" />
+    <entry key="dragonianslaveblindfold" menu="spawning" zh="龙族奴隶眼罩" />
+    <entry key="drslaveblindfold" menu="spawning" zh="龙族奴隶眼罩" />
+    <entry key="dragonianslavecloth" menu="spawning" zh="龙族奴隶布衣" />
+    <entry key="drslavecloth" menu="spawning" zh="龙族奴隶布衣" />
+    <entry key="dragoniansummerdress" menu="spawning" zh="龙族夏装" />
+    <entry key="drsummerdress" menu="spawning" zh="龙族夏装" />
+    <entry key="dragonianwidehat" menu="spawning" zh="龙族宽檐帽" />
+    <entry key="drwidehat" menu="spawning" zh="龙族宽檐帽" />
+    <entry key="dragonianmilk" menu="spawning" zh="龙族奶" />
+    <entry key="dragonianorb" menu="spawning" zh="龙族宝珠" />
+    <entry key="moelotlflowerflyer" menu="spawning" zh="萌螈飞花" />
+    <entry key="axolotlflowerflyer" menu="spawning" zh="萌螈飞花" />
+    <entry key="axolotlflyermode" menu="spawning" zh="萌螈飞花" />
+    <entry key="gujifinder" menu="spawning" zh="古迹搜寻器" />
+    <entry key="findguji" menu="spawning" zh="古迹搜寻器" />
+    <entry key="cloacalanus" menu="spawning" zh="泄殖腔肛门" />
+    <entry key="cloacalpenis" menu="spawning" zh="泄殖腔阴茎" />
+    <entry key="cloacalvagina" menu="spawning" zh="泄殖腔阴道" />
+    <entry key="firefoampopperminified" menu="spawning" zh="灭火器（已打包）" />
+    <entry key="firefoampopper" menu="spawning" zh="灭火器" />
   </entries>
 </DevMenuTranslations>

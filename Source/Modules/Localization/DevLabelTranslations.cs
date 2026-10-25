@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using Verse;
 
@@ -61,39 +60,6 @@ namespace ColonyKit.Modules.Localization
 				{ "Open the inspector.\n\nThis lets you inspect what's happening in the game, down to individual variables.", "打开检查器。\n\n可以查看游戏内发生了什么，细到单个变量。" },
 				{ "Toggle the dev palette.\n\nAllows you to setup a palette of debug actions for ease of use.", "切换开发者调色板。\n\n可以设置常用调试动作的快捷面板。" },
 				{ "Toggle god mode.\n\nWhen god mode is on, you can build stuff instantly, for free, and sell things that aren't yours.", "切换上帝模式。\n\n开启后可以瞬间免费建造，还能出售不属于你的东西。" }
-			};
-
-		private static readonly Dictionary<string, string> nameWords =
-			new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
-			{
-				{ "pawn", "小人" }, { "melee", "近战" }, { "ranged", "远程" }, { "mechanoid", "机械族" },
-				{ "slash", "斩击" }, { "stab", "刺击" }, { "blunt", "钝击" }, { "bite", "咬" },
-				{ "building", "建筑" }, { "destroyed", "摧毁" }, { "wood", "木材" }, { "metal", "金属" },
-				{ "stone", "石头" }, { "small", "小" }, { "big", "大" }, { "huge", "巨大" },
-				{ "explosion", "爆炸" }, { "fire", "火焰" }, { "foam", "泡沫" }, { "interact", "互动" },
-				{ "charge", "充能" }, { "rifle", "步枪" }, { "shotgun", "霰弹枪" }, { "pistol", "手枪" },
-				{ "autopistol", "自动手枪" }, { "bow", "弓" }, { "arrow", "箭" }, { "sword", "剑" },
-				{ "staff", "法杖" }, { "blade", "刀刃" }, { "cut", "切割" }, { "burn", "燃烧" },
-				{ "flame", "火焰" }, { "frost", "霜冻" }, { "energy", "能量" }, { "bullet", "子弹" },
-				{ "shell", "炮弹" }, { "grenade", "手雷" }, { "launcher", "发射器" }, { "turret", "炮塔" },
-				{ "door", "门" }, { "open", "打开" }, { "close", "关闭" }, { "switch", "开关" },
-				{ "ambient", "环境" }, { "weather", "天气" }, { "rain", "雨" }, { "wind", "风" },
-				{ "snow", "雪" }, { "thunder", "雷" }, { "ritual", "仪式" }, { "psychic", "灵能" },
-				{ "mental", "精神" }, { "break", "崩溃" }, { "death", "死亡" }, { "call", "叫声" },
-				{ "angry", "愤怒" }, { "wounded", "受伤" }, { "corpse", "尸体" }, { "drop", "掉落" },
-				{ "pickup", "拾取" }, { "equip", "装备" }, { "attack", "攻击" }, { "hit", "命中" },
-				{ "miss", "未命中" }, { "dodge", "闪避" }, { "crit", "暴击" }, { "heal", "治疗" },
-				{ "surgery", "手术" }, { "implant", "植入" }, { "install", "安装" }, { "mine", "采矿" },
-				{ "harvest", "收获" }, { "plant", "植物" }, { "tree", "树" }, { "sow", "播种" },
-				{ "clean", "清洁" }, { "paint", "粉刷" }, { "research", "研究" }, { "craft", "制作" },
-				{ "smith", "锻造" }, { "cook", "烹饪" }, { "butcher", "屠宰" }, { "milk", "挤奶" },
-				{ "egg", "蛋" }, { "hatch", "孵化" }, { "birth", "出生" }, { "vomit", "呕吐" },
-				{ "sleep", "睡眠" }, { "laugh", "笑" }, { "cry", "哭" }, { "scream", "尖叫" },
-				{ "moan", "呻吟" }, { "grunt", "咕哝" }, { "voice", "声音" }, { "music", "音乐" },
-				{ "song", "歌曲" }, { "click", "点击" }, { "toast", "提示" }, { "damage", "伤害" },
-				{ "impact", "冲击" }, { "sound", "音效" }, { "effect", "特效" }, { "start", "开始" },
-				{ "end", "结束" }, { "loop", "循环" }, { "light", "光" }, { "heavy", "重型" },
-				{ "super", "超级" }, { "special", "特殊" }, { "idle", "待机" }, { "work", "工作" }
 			};
 
 		public static string SourcePath { get; private set; }
@@ -283,10 +249,16 @@ namespace ColonyKit.Modules.Localization
 				return constant;
 			}
 
-			// 子菜单里很多条目直接显示 defName，回落到 Def 的本地化名称。
+			// 子菜单里很多条目直接显示 defName，回落到 Def 的本地化名称；
+			// 若名称本身仍是英文，再按英文标签查一次表，避免整列英文。
 			string defLabel = TryDefLabel(label);
-			if (!string.IsNullOrEmpty(defLabel))
+			if (!string.IsNullOrEmpty(defLabel) && !string.Equals(defLabel, label, StringComparison.Ordinal))
 			{
+				string defKey = NormKey(defLabel);
+				if (defKey.Length > 0 && entries.TryGetValue(defKey, out entry) && IsEnabled(entry))
+				{
+					return entry.Zh;
+				}
 				return defLabel;
 			}
 
@@ -356,9 +328,9 @@ namespace ColonyKit.Modules.Localization
 					Def def;
 					if (allDefs.TryGetValue(name, out def))
 					{
-						result = (def is SoundDef || def is EffecterDef) && string.IsNullOrEmpty(def.label)
-							? HumanizeDefName(name)
-							: def.LabelCap;
+						// 没有译名就原样显示（英文 defName / 英文 label），
+						// 不再逐词硬拼中文，避免出现「绘制河流Debug」这类半英半中的乱码。
+						result = def.LabelCap;
 					}
 				}
 			}
@@ -369,35 +341,6 @@ namespace ColonyKit.Modules.Localization
 
 			thingLabels[name] = result;
 			return result;
-		}
-
-		private static string HumanizeDefName(string name)
-		{
-			string[] parts = name.Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
-			StringBuilder builder = new StringBuilder();
-			foreach (string part in parts)
-			{
-				string spaced = Regex.Replace(part, "([a-z0-9])([A-Z])", "$1 $2");
-				foreach (string token in spaced.Split(' '))
-				{
-					if (string.IsNullOrEmpty(token))
-					{
-						continue;
-					}
-
-					string zh;
-					if (!nameWords.TryGetValue(token, out zh))
-					{
-						zh = token;
-					}
-					if (builder.Length > 0)
-					{
-						builder.Append('·');
-					}
-					builder.Append(zh);
-				}
-			}
-			return builder.Length > 0 ? builder.ToString() : name;
 		}
 
 		private static string NormKey(string text)
