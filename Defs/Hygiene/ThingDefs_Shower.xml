@@ -3,7 +3,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_Shower</defName>
 		<label>shower</label>
-		<description>A 2x2 shower. Colonists use it when hygiene is low; powered showers are hot, unpowered showers are cold.</description>
+		<description>A 2x2 shower. Needs water and a working water heater for hot showers; without hot water it is a cold shower.</description>
 		<thingClass>ColonyKit.Modules.Hygiene.Building_Shower</thingClass>
 		<size>(2,2)</size>
 		<graphicData>
@@ -33,11 +33,6 @@
 			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
 				<mode>Water</mode>
 			</li>
-			<li Class="CompProperties_Power">
-				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>75</basePowerConsumption>
-			</li>
-			<li Class="CompProperties_Flickable"/>
 		</comps>
 		<researchPrerequisites>
 			<li>CK_HygieneResearch</li>
