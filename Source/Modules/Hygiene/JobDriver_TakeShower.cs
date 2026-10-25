@@ -9,6 +9,13 @@ namespace ColonyKit.Modules.Hygiene
 	public class JobDriver_TakeShower : JobDriver
 	{
 		private bool cold;
+		private ContaminationLevel waterQuality = ContaminationLevel.Treated;
+
+		public override void ExposeData()
+		{
+			base.ExposeData();
+			Scribe_Values.Look(ref waterQuality, "waterQuality", ContaminationLevel.Treated);
+		}
 
 		public override bool TryMakePreToilReservations(bool errorOnFailed)
 		{
@@ -34,7 +41,7 @@ namespace ColonyKit.Modules.Hygiene
 			wash.tickAction = () =>
 			{
 				Building_Shower shower = job.targetA.Thing as Building_Shower;
-				if (shower == null || !shower.TryUseWater(out bool isCold, out ContaminationLevel _))
+				if (shower == null || !shower.TryUseWater(out bool isCold, out ContaminationLevel contam))
 				{
 					EndJobWith(JobCondition.Incompletable);
 					return;
@@ -42,6 +49,10 @@ namespace ColonyKit.Modules.Hygiene
 				if (isCold)
 				{
 					cold = true;
+				}
+				if (contam > waterQuality)
+				{
+					waterQuality = contam;
 				}
 				Need_Hygiene need = pawn.needs?.TryGetNeed<Need_Hygiene>();
 				if (need != null)
@@ -57,10 +68,14 @@ namespace ColonyKit.Modules.Hygiene
 			wash.AddFinishAction(() =>
 			{
 				pawn.filth?.CarriedFilthListForReading?.Clear();
-				ThoughtDef thought = ThoughtDef.Named(cold ? "CK_ShowerCold" : "CK_ShowerHot");
-				if (thought != null)
+				Building_Shower shower = job.targetA.Thing as Building_Shower;
+				if (shower != null)
 				{
-					pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(thought);
+					PrivacyUtil.BathingPrivacyLOS(pawn);
+					SanitationUtil.ApplyBathroomThought(pawn, shower);
+					SanitationUtil.WaterTempCheck(pawn, cold, false);
+					SanitationUtil.ContaminationCheckWater(pawn, waterQuality);
+					SanitationUtil.CheckForBlockage(shower);
 				}
 			});
 			yield return wash;
