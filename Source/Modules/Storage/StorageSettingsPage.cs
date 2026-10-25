@@ -45,21 +45,28 @@ namespace ColonyKit.Modules.Storage
 			}
 
 			int beforeMultiplier = data.stackMultiplier;
-			int multiplier = Mathf.RoundToInt(SettingsWidgets.Slider(
-				listing,
-				"ColonyKit.Settings.Storage.Multiplier".Loc(),
-				data.stackMultiplier,
-				StorageSettings.MinMultiplier,
-				StorageSettings.MaxMultiplier,
-				1f,
-				value => "×" + value.ToString("0")));
-
-			if (multiplier != beforeMultiplier)
+			if (StorageResearch.Tier1Finished)
 			{
-				data.stackMultiplier = Mathf.Clamp(multiplier, StorageSettings.MinMultiplier, StorageSettings.MaxMultiplier);
-				if (data.enabled)
+				SettingsWidgets.Label(listing, "ColonyKit.Settings.Storage.Tier1Fixed".Loc());
+			}
+			else
+			{
+				int multiplier = Mathf.RoundToInt(SettingsWidgets.Slider(
+					listing,
+					"ColonyKit.Settings.Storage.Multiplier".Loc(),
+					data.stackMultiplier,
+					StorageSettings.MinMultiplier,
+					StorageSettings.MaxMultiplier,
+					1f,
+					value => "×" + value.ToString("0")));
+
+				if (multiplier != beforeMultiplier)
 				{
-					StorageStackLimitManager.Apply(data);
+					data.stackMultiplier = Mathf.Clamp(multiplier, StorageSettings.MinMultiplier, StorageSettings.MaxMultiplier);
+					if (data.enabled)
+					{
+						StorageStackLimitManager.Apply(data);
+					}
 				}
 			}
 

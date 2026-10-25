@@ -22,7 +22,11 @@ namespace ColonyKit.Modules.Storage
 				return false;
 			}
 
-			if (def.IsApparel || def.IsWeapon || def.isTechHediff)
+			// IsWeapon/IsTechHediff 对「可当武器或假肢用的材料」也为 true
+			// （木头、钢铁等 IsStuff），这类仍然按普通材料放大；只排除真正的武器/假肢。
+			if (def.IsApparel
+				|| (def.IsWeapon && !def.IsStuff)
+				|| (def.isTechHediff && !def.IsStuff))
 			{
 				return false;
 			}

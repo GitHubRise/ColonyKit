@@ -50,7 +50,9 @@ namespace ColonyKit.Modules.Storage
 					return;
 				}
 
-				Thing taken = warehouse.Container.Take(item);
+				// 库内堆可能超过全局上限；按全局上限切一块，剩余继续留在库里。
+				int count = UnityEngine.Mathf.Max(1, UnityEngine.Mathf.Min(item.stackCount, item.def.stackLimit));
+				Thing taken = warehouse.Container.Take(item, count);
 				if (taken == null)
 				{
 					pawn.jobs.EndCurrentJob(JobCondition.Incompletable);
@@ -61,7 +63,14 @@ namespace ColonyKit.Modules.Storage
 				// 避免未生成 Thing 的 Position/TargetInfo 为空。
 				if (!GenPlace.TryPlaceThing(taken, pawn.Position, pawn.Map, ThingPlaceMode.Near, out Thing placed))
 				{
-					warehouse.Container.TryAdd(taken, false);
+					if (warehouse.Container is WarehouseThingOwner owner)
+					{
+						owner.TryAddForced(taken);
+					}
+					else
+					{
+						warehouse.Container.TryAdd(taken, false);
+					}
 					pawn.jobs.EndCurrentJob(JobCondition.Incompletable);
 					return;
 				}

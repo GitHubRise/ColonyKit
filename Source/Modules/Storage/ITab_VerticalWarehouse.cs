@@ -41,6 +41,15 @@ namespace ColonyKit.Modules.Storage
 				building.UsedItems));
 			y += 28f;
 
+			int internalMultiplier = WarehouseThingOwner.EffectiveMultiplier;
+			if (internalMultiplier > 1)
+			{
+				Widgets.Label(new Rect(0f, y, rect.width, 22f), string.Format(
+					"CK.VerticalWarehouse.InternalStacking".Translate(),
+					internalMultiplier));
+				y += 26f;
+			}
+
 			if (!building.HasPower)
 			{
 				Widgets.Label(new Rect(0f, y, rect.width, 24f), "CK.VerticalWarehouse.NoPower".Translate());
@@ -76,7 +85,7 @@ namespace ColonyKit.Modules.Storage
 				foreach (Thing thing in items)
 				{
 					Rect row = new Rect(0f, rowY, viewRect.width, 50f);
-					Widgets.Label(row.LeftPart(0.66f), $"{thing.LabelCap} x{thing.stackCount}");
+					Widgets.Label(row.LeftPart(0.66f), thing.LabelCap);
 					if (Widgets.ButtonText(row.RightPart(0.30f), "CK.VerticalWarehouse.Withdraw".Translate()))
 					{
 						building.TryWithdraw(thing);

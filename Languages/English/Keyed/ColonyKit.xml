@@ -182,10 +182,11 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<ColonyKit.Module.Rjw.Desc>RJW 1.6 is bundled; do not enable an external RimJobWorld at the same time.</ColonyKit.Module.Rjw.Desc>
 
 	<ColonyKit.Settings.Tab.Storage>Storage</ColonyKit.Settings.Tab.Storage>
-	<ColonyKit.Settings.Storage.Hint>Global stack rules and warehouse capacity: capacity is counted in stacks and can be changed here; the stack multiplier only affects items per stack.</ColonyKit.Settings.Storage.Hint>
+	<ColonyKit.Settings.Storage.Hint>Global stack rules and warehouse capacity: before Tier 1 the slider below applies; after Tier 1 the global limit is fixed at ×10. Tier 2/3 only enlarge stacks inside the vertical warehouse. Capacity is counted in stacks.</ColonyKit.Settings.Storage.Hint>
 	<ColonyKit.Settings.Storage.Enabled>Enable stack enhancement</ColonyKit.Settings.Storage.Enabled>
 	<ColonyKit.Settings.Storage.Enabled.Desc>Multiplies stackLimit for stackable items; disabling restores vanilla limits.</ColonyKit.Settings.Storage.Enabled.Desc>
 	<ColonyKit.Settings.Storage.Multiplier>Stack multiplier</ColonyKit.Settings.Storage.Multiplier>
+	<ColonyKit.Settings.Storage.Tier1Fixed>Tier 1 is complete: the global limit is fixed at ×10 and this slider no longer applies. Tier 2/3 only affect stacks inside the vertical warehouse.</ColonyKit.Settings.Storage.Tier1Fixed>
 	<ColonyKit.Settings.Storage.WarehouseStacks>Warehouse capacity</ColonyKit.Settings.Storage.WarehouseStacks>
 	<ColonyKit.Settings.Storage.WarehouseStacksValue>{0} stacks</ColonyKit.Settings.Storage.WarehouseStacksValue>
 	<ColonyKit.Settings.Storage.WarehouseStacks.Desc>Stacks each warehouse can hold (default 24, range 1-200). Applies to existing and new warehouses immediately; lowering it never destroys stored items.</ColonyKit.Settings.Storage.WarehouseStacks.Desc>
@@ -197,6 +198,7 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 
 	<CK.VerticalWarehouse.Tab>Vertical warehouse</CK.VerticalWarehouse.Tab>
 	<CK.VerticalWarehouse.Inspect>Stored {0}/{1} stacks, {2} items</CK.VerticalWarehouse.Inspect>
+	<CK.VerticalWarehouse.InternalStacking>Internal stacking: stack limit ×{0} (this building only)</CK.VerticalWarehouse.InternalStacking>
 	<CK.VerticalWarehouse.CurrentTemperature>Current temperature: {0}</CK.VerticalWarehouse.CurrentTemperature>
 	<CK.VerticalWarehouse.NoPower>No power; temperature control is off, but storage still works.</CK.VerticalWarehouse.NoPower>
 	<CK.VerticalWarehouse.NoConveyor>No conveyor connected; automatic input/output is disabled. Connect a conveyor to one of the four sides.</CK.VerticalWarehouse.NoConveyor>

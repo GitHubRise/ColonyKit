@@ -34,10 +34,7 @@ namespace ColonyKit.Modules.Storage
 		{
 			get
 			{
-				if (innerContainer == null)
-				{
-					innerContainer = new ThingOwner<Thing>(this);
-				}
+				EnsureWarehouseOwner();
 				return innerContainer;
 			}
 		}
@@ -45,6 +42,29 @@ namespace ColonyKit.Modules.Storage
 		public int UsedStacks => Container.Count;
 
 		public int UsedItems => Container.TotalStackCount;
+
+		/// <summary>
+		/// 旧存档里的 innerContainer 是普通 ThingOwner；读档后原地升级成
+		/// <see cref="WarehouseThingOwner"/>，保留所有堆（包括超过全局上限的堆）。
+		/// </summary>
+		private void EnsureWarehouseOwner()
+		{
+			if (innerContainer is WarehouseThingOwner)
+			{
+				return;
+			}
+
+			WarehouseThingOwner upgraded = new WarehouseThingOwner(this);
+			if (innerContainer != null)
+			{
+				foreach (Thing thing in innerContainer.ToList())
+				{
+					innerContainer.Remove(thing);
+					upgraded.AddRestored(thing);
+				}
+			}
+			innerContainer = upgraded;
+		}
 
 		public new IThingHolder ParentHolder => base.ParentHolder;
 
@@ -74,7 +94,7 @@ namespace ColonyKit.Modules.Storage
 
 		public Building_VerticalWarehouse()
 		{
-			innerContainer = new ThingOwner<Thing>(this);
+			innerContainer = new WarehouseThingOwner(this);
 			settingsVersion = 5;
 			EnsureStoreSettings();
 		}
@@ -85,10 +105,7 @@ namespace ColonyKit.Modules.Storage
 			Scribe_Values.Look(ref settingsVersion, "settingsVersion", 0);
 			Scribe_Deep.Look(ref innerContainer, "innerContainer", this);
 			Scribe_Deep.Look(ref storeSettings, "storeSettings", this);
-			if (innerContainer == null)
-			{
-				innerContainer = new ThingOwner<Thing>(this);
-			}
+			EnsureWarehouseOwner();
 			EnsureStoreSettings();
 
 			if (Scribe.mode == LoadSaveMode.PostLoadInit)
@@ -229,19 +246,9 @@ namespace ColonyKit.Modules.Storage
 			{
 				return false;
 			}
-			if (UsedStacks < MaxStacks)
-			{
-				return true;
-			}
 
-			foreach (Thing stored in Container)
-			{
-				if (stored.CanStackWith(thing) && stored.stackCount < stored.def.stackLimit)
-				{
-					return true;
-				}
-			}
-			return false;
+			// CanAcceptAnyOf 会按库内倍率计算：能并进现有大堆，或还有空堆位。
+			return Container.CanAcceptAnyOf(thing);
 		}
 
 		public bool TryStore(Thing thing)
@@ -287,7 +294,10 @@ namespace ColonyKit.Modules.Storage
 				return false;
 			}
 
-			Thing taken = Container.Take(thing);
+			// 库内堆可能超过全局上限；取出时按全局上限切成原版大小的堆，
+			// 避免把超限堆直接丢到地图上导致截断/丢失。
+			int count = Mathf.Max(1, Mathf.Min(thing.stackCount, thing.def.stackLimit));
+			Thing taken = Container.Take(thing, count);
 			if (taken == null)
 			{
 				return false;
@@ -296,7 +306,14 @@ namespace ColonyKit.Modules.Storage
 			if (!GenPlace.TryPlaceThing(taken, drop, Map, ThingPlaceMode.Direct, out _)
 				&& !GenPlace.TryPlaceThing(taken, drop, Map, ThingPlaceMode.Near, out _))
 			{
-				Container.TryAdd(taken, false);
+				if (Container is WarehouseThingOwner warehouseOwner)
+				{
+					warehouseOwner.TryAddForced(taken);
+				}
+				else
+				{
+					Container.TryAdd(taken, false);
+				}
 				return false;
 			}
 			Map?.resourceCounter?.UpdateResourceCounts();
@@ -305,9 +322,14 @@ namespace ColonyKit.Modules.Storage
 
 		public void WithdrawAll()
 		{
-			foreach (Thing thing in Container.ToList())
+			int guard = Mathf.Max(1000, Container.TotalStackCount + Container.Count);
+			while (Container.Count > 0 && guard-- > 0)
 			{
-				TryWithdraw(thing);
+				Thing first = Container[0];
+				if (first == null || !TryWithdraw(first))
+				{
+					break;
+				}
 			}
 		}
 
@@ -432,6 +454,64 @@ namespace ColonyKit.Modules.Storage
 				: Map.mapTemperature.OutdoorTemp;
 		}
 
+		/// <summary>
+		/// 在建筑贴图中央圆环的正下方显示实时温度。
+		/// 贴图里圆环底缘约在中心下方 0.293 格；这里从 0.27 格处开始画，
+		/// 留出一小段间隔，同时让文字落在下方深色面板内、不压圆环和底边。
+		/// </summary>
+		public override void DrawGUIOverlay()
+		{
+			if (!Spawned || Map == null || Find.CameraDriver == null)
+			{
+				return;
+			}
+
+			// 常规/近景视角常驻；拉远后只在选中时显示，避免小图上的文字互相压住。
+			if (Find.CameraDriver.CurrentZoom > CameraZoomRange.Middle && !Find.Selector.IsSelected(this))
+			{
+				return;
+			}
+
+			float temperature = CurrentRoomTemperature();
+			string label = temperature.ToStringTemperature("F1");
+
+			GameFont oldFont = Text.Font;
+			TextAnchor oldAnchor = Text.Anchor;
+			bool oldWrap = Text.WordWrap;
+			Color oldColor = GUI.color;
+
+			Text.Font = GameFont.Tiny;
+			Text.Anchor = TextAnchor.UpperCenter;
+			Text.WordWrap = false;
+			float width = Text.CalcSize(label).x;
+			Vector2 pos = GenMapUI.LabelDrawPosFor(this, -0.27f);
+			Rect rect = new Rect(pos.x - width / 2f, pos.y, width, 20f);
+
+			// 深色描边保证在深色面板和浅色地面上都能看清。
+			GUI.color = new Color(0f, 0f, 0f, 0.7f);
+			Widgets.Label(new Rect(rect.x + 1f, rect.y + 1f, rect.width, rect.height), label);
+			GUI.color = TemperatureLabelColor(temperature);
+			Widgets.Label(rect, label);
+
+			GUI.color = oldColor;
+			Text.WordWrap = oldWrap;
+			Text.Anchor = oldAnchor;
+			Text.Font = oldFont;
+		}
+
+		private static Color TemperatureLabelColor(float temperature)
+		{
+			if (temperature <= 0f)
+			{
+				return new Color(0.58f, 0.82f, 1f);
+			}
+			if (temperature >= 25f)
+			{
+				return new Color(1f, 0.66f, 0.38f);
+			}
+			return new Color(0.82f, 0.96f, 1f);
+		}
+
 		public int CollectNearby(int radius = 8)
 		{
 			if (Map == null)
@@ -488,6 +568,14 @@ namespace ColonyKit.Modules.Storage
 				UsedStacks,
 				MaxStacks,
 				UsedItems);
+
+			int internalMultiplier = WarehouseThingOwner.EffectiveMultiplier;
+			if (internalMultiplier > 1)
+			{
+				text += "\n" + string.Format(
+					"CK.VerticalWarehouse.InternalStacking".Translate(),
+					internalMultiplier);
+			}
 
 			text += "\n" + string.Format(
 				"CK.VerticalWarehouse.CurrentTemperature".Translate(),

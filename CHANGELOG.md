@@ -6,6 +6,8 @@
 
 ### Changed
 
+- **立体库堆叠分层**：一级研究只提供全局物品堆叠（固定 ×10，不再乘设置页倍率）；二级/三级的 ×3/×2 改为只放大立体库内部每堆，不再修改全局 `ThingDef.stackLimit`，普通架子/储存区/地面堆不受影响。库内每堆上限 = 当前全局上限 × 3（二级）/ × 6（三级）。
+- **立体库设置页**：完成一级后隐藏堆叠倍率滑条并显示固定 ×10 提示；库面板/检视字符串显示当前库内堆叠倍率（模块关闭或 Stack XXL 共存时不显示）。
 - **更新说明规范**：`About/About.xml` 描述新增「最近更新（YYYY-MM-DD）：」小节，每次玩家可见更新写 3–6 条；旧内容留在 CHANGELOG，下一次替换该小节。规范同步到 `AGENTS.md` 与 README §2.4。
 - 设置页签为 **模块 / 卫生 / 立体库 / 蓝图 / 常规设置 / 关于** 6 个；移除模板「常规 / 日志 / 通知」三个测试页和「汉化」页。
 - 翻译方案并入常规设置；方案编辑窗口新增「翻译表配置」：显示翻译表路径/词条统计，并提供重新加载按钮。
@@ -69,6 +71,10 @@
 
 ### Fixed
 
+- **立体库面板重复数量**：`ITab_VerticalWarehouse` 之前用 `thing.LabelCap + " x" + stackCount`，而 `LabelCap` 对可堆叠物已包含 `x75`，显示成「Wood x75 x75」；现在只显示 `LabelCap`。
+- **木头/钢铁等材料不参与堆叠**：`StorageStackRules.CanMultiply` 把 `IsWeapon`/`isTechHediff` 直接当排除条件，而 1.6 的原版木头（以及钢铁等 IsStuff 材料）两者都为 true，导致 176 个 Def 里漏掉木头；现在只在「非 IsStuff 的真正武器/科技义体」时排除。
+- **库内超限堆取回**：`TryWithdraw` 现在按全局 `stackLimit` 分块取出，避免把 4500 的库内堆整堆丢到地图上被 `GenPlace` 截成 750；`WithdrawAll` 循环取到空，失败时用强制回滚保留物品。
+- **立体库堆叠影响库外**：二级/三级不再改全局 `ThingDef.stackLimit`，普通架子/储存区只受一级的全局 ×10 影响。
 - **清理死字段/死接口**：删除 `CompWaterStorage` 的 `AutoGenRate`/`Tickrate`/`Auto`/`AutoOnRain`、`Need_Bladder.GivingUpAndShittingOnTheFloorFunction()`、无参 `Building_Shower.TryUseWater()`；`OccupancyCheck` 通过洁具 Gizmo 真正可切换。
 - **淋浴/厕所自动工作重新生效**：`Patches/Hygiene/ThinkTree.xml` 的 xpath 缺少 `thinkRoot[@Class="ThinkNode_Tagger"]`，实际从未命中，殖民者不会自动去洗澡/上厕所；现在补上并改回 `success=Normal`。
 - **堵塞可修复**：堵塞现在真正阻止洁具使用；玩家的洁具新增「疏通堵塞」Gizmo，避免永久锁死。
@@ -87,6 +93,7 @@
 
 ### Validated
 
+- 隔离 quicktest（Core + ColonyKit，临时 `-colonykit-storage-test` 探针）：完成 T1/T2/T3 后木头全局 `stackLimit=750`、库内上限 `4500`；5×1000 木头入库合并为 `[4500, 500]`；取出第一堆后剩 `[3750, 500]`、地图出现 750 的一堆；日志显示 `stack rules applied: 176 defs x10; warehouse internal x6`。探针验证后已移除。
 - 隔离 quicktest（Core + Harmony + ColonyKit，`-colonykit-nannybot-test`）：工作站与机器人生成成功；`needs=1`、`Moving/Manipulation/Consciousness=1`、`cleanJob=CK_NannyCleanFilth`、`haulJob=HaulToCell`；无 XML、贴图或运行时异常。未覆盖：长期存读档、4000W 充电电网、手动 UI 点击。
 - quicktest（只开 Core + Harmony + ColonyKit）：`modules=10`；Blueprint 模块加载、库初始化正常。
 - 临时实机探针：在地图空地生成 5×5 墙圈 + 中心 1×2 床，捕获 17 条 → 平放/旋转 90° 各生成 17 个原版 `Blueprint_Build`；旋转后床蓝图朝向为 East；模板保存/读取/删除通过。

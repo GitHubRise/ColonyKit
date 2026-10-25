@@ -17,6 +17,7 @@
 		<staticSunShadowHeight>0.5</staticSunShadowHeight>
 		<castEdgeShadows>true</castEdgeShadows>
 		<uiIconScale>0.75</uiIconScale>
+		<drawGUIOverlay>true</drawGUIOverlay>
 		<costList>
 			<Steel>150</Steel>
 			<ComponentIndustrial>8</ComponentIndustrial>

@@ -6,8 +6,8 @@ using Verse;
 namespace ColonyKit.Modules.Storage
 {
 	/// <summary>
-	/// 堆叠上限的运行时管理器：缓存每个 ThingDef 的原始 stackLimit，
-	/// 按设置倍率重算；关闭模块或检测到 Stack XXL 时恢复原值。
+	/// 全局堆叠上限管理器：缓存每个 ThingDef 的原始 stackLimit，按设置/一级研究重算。
+	/// 只改全局上限；二级/三级的额外堆叠由立体库内部的 <see cref="WarehouseThingOwner"/> 负责。
 	/// </summary>
 	internal static class StorageStackLimitManager
 	{
@@ -40,7 +40,7 @@ namespace ColonyKit.Modules.Storage
 			}
 
 			CaptureBaseLimits();
-			int researchMultiplier = StorageResearch.StackMultiplier;
+			int researchMultiplier = StorageResearch.GlobalStackMultiplier;
 			int multiplier = researchMultiplier > 0
 				? researchMultiplier
 				: Math.Max(StorageSettings.MinMultiplier, Math.Min(StorageSettings.MaxMultiplier, settings.stackMultiplier));
@@ -60,7 +60,8 @@ namespace ColonyKit.Modules.Storage
 
 			ModLog.Info(
 				"Storage",
-				$"stack rules applied: {BaseLimits.Count} defs x{multiplier}; StackXXL active=False");
+				$"stack rules applied: {BaseLimits.Count} defs x{multiplier}; " +
+				$"warehouse internal x{StorageResearch.WarehouseStackMultiplier}; StackXXL active=False");
 		}
 
 		public static void Restore()
