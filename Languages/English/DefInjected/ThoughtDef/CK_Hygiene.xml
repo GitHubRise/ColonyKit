@@ -4,8 +4,8 @@
 	<CK_HygieneDirty.stages.0.description>I feel filthy. I need a shower.</CK_HygieneDirty.stages.0.description>
 	<CK_HygieneDirty.stages.1.label>grimy</CK_HygieneDirty.stages.1.label>
 	<CK_HygieneDirty.stages.1.description>I could use a shower.</CK_HygieneDirty.stages.1.description>
-	<CK_ShowerHot.stages.0.label>refreshing shower</CK_ShowerHot.stages.0.label>
-	<CK_ShowerHot.stages.0.description>I just had a hot shower.</CK_ShowerHot.stages.0.description>
-	<CK_ShowerCold.stages.0.label>cold shower</CK_ShowerCold.stages.0.label>
-	<CK_ShowerCold.stages.0.description>That shower was freezing.</CK_ShowerCold.stages.0.description>
+	<CK_ShowerHot.stages.0.label>hot shower</CK_ShowerHot.stages.0.label>
+	<CK_ShowerHot.stages.0.description>I had a nice hot shower.</CK_ShowerHot.stages.0.description>
+	<CK_ShowerCold.stages.0.label>cold water</CK_ShowerCold.stages.0.label>
+	<CK_ShowerCold.stages.0.description>There was no hot water!</CK_ShowerCold.stages.0.description>
 </LanguageData>

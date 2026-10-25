@@ -12,12 +12,11 @@ namespace ColonyKit.Modules.Hygiene
 
 		public static void WaterTempCheck(Pawn pawn, bool cold, bool bath)
 		{
-			if (pawn?.needs?.mood?.thoughts?.memories == null)
+			if (!cold || pawn?.needs?.mood?.thoughts?.memories == null)
 			{
 				return;
 			}
-			ThoughtDef thought = DefDatabase<ThoughtDef>.GetNamedSilentFail(
-				cold ? "CK_ShowerCold" : "CK_ShowerHot");
+			ThoughtDef thought = DefDatabase<ThoughtDef>.GetNamedSilentFail("CK_ShowerCold");
 			if (thought != null)
 			{
 				pawn.needs.mood.thoughts.memories.TryGainMemory(thought);

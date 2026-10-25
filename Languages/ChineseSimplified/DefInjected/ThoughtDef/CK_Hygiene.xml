@@ -4,8 +4,8 @@
 	<CK_HygieneDirty.stages.0.description>我觉得很脏，需要洗澡。</CK_HygieneDirty.stages.0.description>
 	<CK_HygieneDirty.stages.1.label>有点脏</CK_HygieneDirty.stages.1.label>
 	<CK_HygieneDirty.stages.1.description>我该洗个澡了。</CK_HygieneDirty.stages.1.description>
-	<CK_ShowerHot.stages.0.label>清爽的热水澡</CK_ShowerHot.stages.0.label>
-	<CK_ShowerHot.stages.0.description>我刚洗了个热水澡。</CK_ShowerHot.stages.0.description>
-	<CK_ShowerCold.stages.0.label>冷水澡</CK_ShowerCold.stages.0.label>
-	<CK_ShowerCold.stages.0.description>那个澡冷得要命。</CK_ShowerCold.stages.0.description>
+	<CK_ShowerHot.stages.0.label>热水澡</CK_ShowerHot.stages.0.label>
+	<CK_ShowerHot.stages.0.description>我洗了个舒服的热水澡。</CK_ShowerHot.stages.0.description>
+	<CK_ShowerCold.stages.0.label>没有热水</CK_ShowerCold.stages.0.label>
+	<CK_ShowerCold.stages.0.description>居然没有热水！</CK_ShowerCold.stages.0.description>
 </LanguageData>
