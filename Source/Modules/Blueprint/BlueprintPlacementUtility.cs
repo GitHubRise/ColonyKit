@@ -344,6 +344,19 @@ namespace ColonyKit.Modules.Blueprint
 					map,
 					DestroyMode.Deconstruct);
 
+				// God mode skips the build job entirely: spawn the finished building.
+				if (DebugSettings.godMode)
+				{
+					Thing thing = ThingMaker.MakeThing(placement.def, placement.stuff);
+					if (thing.def.CanHaveFaction)
+					{
+						thing.SetFactionDirect(Faction.OfPlayer);
+					}
+					GenSpawn.Spawn(thing, placement.position, map, placement.rotation);
+					placed++;
+					continue;
+				}
+
 				GenConstruct.PlaceBlueprintForBuild(
 					placement.def,
 					placement.position,

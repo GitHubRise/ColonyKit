@@ -21,6 +21,7 @@
 	<CK.Blueprint.Place.Label>Place blueprint</CK.Blueprint.Place.Label>
 	<CK.Blueprint.Place.Desc>Left-click to place. Q/E rotate, B mirrors. Red means at least one structure cannot be placed.</CK.Blueprint.Place.Desc>
 	<CK.Blueprint.Place.Success>Placed {1} construction blueprints for "{0}".</CK.Blueprint.Place.Success>
+	<CK.Blueprint.Place.Built>God mode: built {1} structures for "{0}" instantly.</CK.Blueprint.Place.Built>
 	<CK.Blueprint.Place.Skipped>{0} structures have no matching Def (missing mod?) and were skipped.</CK.Blueprint.Place.Skipped>
 	<CK.Blueprint.Place.Substituted>{0} structures use currently available materials instead.</CK.Blueprint.Place.Substituted>
 	<CK.Blueprint.Place.Blocked>Cannot place here.</CK.Blueprint.Place.Blocked>

@@ -21,6 +21,7 @@
 	<CK.Blueprint.Place.Label>放置蓝图</CK.Blueprint.Place.Label>
 	<CK.Blueprint.Place.Desc>左键放置；Q/E 旋转；B 镜像。红色表示至少有一个建筑不能放。</CK.Blueprint.Place.Desc>
 	<CK.Blueprint.Place.Success>已放置「{0}」的 {1} 个施工蓝图。</CK.Blueprint.Place.Success>
+	<CK.Blueprint.Place.Built>上帝模式：已直接建成「{0}」的 {1} 个建筑。</CK.Blueprint.Place.Built>
 	<CK.Blueprint.Place.Skipped>有 {0} 个建筑缺少 Def（可能缺 Mod），已跳过。</CK.Blueprint.Place.Skipped>
 	<CK.Blueprint.Place.Substituted>有 {0} 个建筑改用了当前可用材料。</CK.Blueprint.Place.Substituted>
 	<CK.Blueprint.Place.Blocked>这里不能放置。</CK.Blueprint.Place.Blocked>

@@ -96,8 +96,11 @@ namespace ColonyKit.Modules.Blueprint
 				IntVec2 size = BlueprintPlacementUtility.RotatedSize(record, rotation);
 				FleckMaker.ThrowMetaPuffs(new CellRect(anchor.x, anchor.z, size.x, size.z), Map);
 
+				string successKey = DebugSettings.godMode
+					? "CK.Blueprint.Place.Built"
+					: "CK.Blueprint.Place.Success";
 				Messages.Message(
-					"CK.Blueprint.Place.Success".Translate(record.name, placed),
+					successKey.Translate(record.name, placed),
 					MessageTypeDefOf.PositiveEvent,
 					false);
 			}
