@@ -19,7 +19,7 @@
 	<ColonyKit.Settings.Robotics.FeedPrisoners>Feed prisoners</ColonyKit.Settings.Robotics.FeedPrisoners>
 	<ColonyKit.Settings.Robotics.FeedPrisoners.Desc>Feed or deliver meals to hungry colony prisoners.</ColonyKit.Settings.Robotics.FeedPrisoners.Desc>
 	<ColonyKit.Settings.Robotics.Hygiene>Sanitation</ColonyKit.Settings.Robotics.Hygiene>
-	<ColonyKit.Settings.Robotics.Hygiene.Desc>Empty septic tanks and unblock fixtures. Bathroom floor filth is covered by sweeping.</ColonyKit.Settings.Robotics.Hygiene.Desc>
+	<ColonyKit.Settings.Robotics.Hygiene.Desc>Empty septic tanks and unblock fixtures. Bathroom floor filth is still handled even when sweeping is off.</ColonyKit.Settings.Robotics.Hygiene.Desc>
 	<ColonyKit.Settings.Robotics.Storage>Warehouse delivery</ColonyKit.Settings.Robotics.Storage>
 	<ColonyKit.Settings.Robotics.Storage.Desc>Prefer delivering hauled items directly into vertical warehouses.</ColonyKit.Settings.Robotics.Storage.Desc>
 	<ColonyKit.Settings.Robotics.Rescue>Priority rescue</ColonyKit.Settings.Robotics.Rescue>

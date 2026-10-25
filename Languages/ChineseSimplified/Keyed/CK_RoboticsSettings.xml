@@ -19,7 +19,7 @@
 	<ColonyKit.Settings.Robotics.FeedPrisoners>给囚犯送餐</ColonyKit.Settings.Robotics.FeedPrisoners>
 	<ColonyKit.Settings.Robotics.FeedPrisoners.Desc>给饥饿的殖民地囚犯喂食或送餐。</ColonyKit.Settings.Robotics.FeedPrisoners.Desc>
 	<ColonyKit.Settings.Robotics.Hygiene>卫生维护</ColonyKit.Settings.Robotics.Hygiene>
-	<ColonyKit.Settings.Robotics.Hygiene.Desc>清空化粪池、疏通堵塞洁具；卫生间地面污渍由扫地覆盖。</ColonyKit.Settings.Robotics.Hygiene.Desc>
+	<ColonyKit.Settings.Robotics.Hygiene.Desc>清空化粪池、疏通堵塞洁具；即使扫地关闭，也会优先处理卫生间地面污渍。</ColonyKit.Settings.Robotics.Hygiene.Desc>
 	<ColonyKit.Settings.Robotics.Storage>直送立体库</ColonyKit.Settings.Robotics.Storage>
 	<ColonyKit.Settings.Robotics.Storage.Desc>搬运时优先把物品直接送进立体库。</ColonyKit.Settings.Robotics.Storage.Desc>
 	<ColonyKit.Settings.Robotics.Rescue>优先救援</ColonyKit.Settings.Robotics.Rescue>
