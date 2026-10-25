@@ -154,6 +154,10 @@
 	<CK.VerticalWarehouse.PortInput>input (toward warehouse)</CK.VerticalWarehouse.PortInput>
 	<CK.VerticalWarehouse.PortOutput>output (away from warehouse)</CK.VerticalWarehouse.PortOutput>
 	<CK.VerticalWarehouse.PortMisaligned>direction not aligned</CK.VerticalWarehouse.PortMisaligned>
+	<CK.VerticalWarehouse.ToggleConveyor>Toggle conveyor input/output</CK.VerticalWarehouse.ToggleConveyor>
+	<CK.VerticalWarehouse.ToggleConveyorDesc>Reverse the first centered port conveyor: input or output.</CK.VerticalWarehouse.ToggleConveyorDesc>
+	<CK.VerticalWarehouse.Toggled>{0} port: {1}</CK.VerticalWarehouse.Toggled>
+	<CK.VerticalWarehouse.NoConveyorPort>No centered port conveyor to toggle.</CK.VerticalWarehouse.NoConveyorPort>
 	<CK.VerticalWarehouse.Empty>The warehouse is empty.</CK.VerticalWarehouse.Empty>
 	<CK.StorageManagement.Title>Storage management</CK.StorageManagement.Title>
 	<CK.StorageManagement.Search>Search warehouses or items</CK.StorageManagement.Search>

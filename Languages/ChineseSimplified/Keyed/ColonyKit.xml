@@ -154,6 +154,10 @@
 	<CK.VerticalWarehouse.PortInput>输入（朝仓库）</CK.VerticalWarehouse.PortInput>
 	<CK.VerticalWarehouse.PortOutput>输出（朝外）</CK.VerticalWarehouse.PortOutput>
 	<CK.VerticalWarehouse.PortMisaligned>方向未对准</CK.VerticalWarehouse.PortMisaligned>
+	<CK.VerticalWarehouse.ToggleConveyor>切换履带输入/输出</CK.VerticalWarehouse.ToggleConveyor>
+	<CK.VerticalWarehouse.ToggleConveyorDesc>反转第一个正中端口履带的方向：入库或出库。</CK.VerticalWarehouse.ToggleConveyorDesc>
+	<CK.VerticalWarehouse.Toggled>{0} 端口：{1}</CK.VerticalWarehouse.Toggled>
+	<CK.VerticalWarehouse.NoConveyorPort>没有可切换的正中端口履带。</CK.VerticalWarehouse.NoConveyorPort>
 	<CK.VerticalWarehouse.Empty>仓库为空。</CK.VerticalWarehouse.Empty>
 	<CK.StorageManagement.Title>立体库管理</CK.StorageManagement.Title>
 	<CK.StorageManagement.Search>检索立体库或物品</CK.StorageManagement.Search>

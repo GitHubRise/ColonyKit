@@ -37,6 +37,13 @@ namespace ColonyKit.Modules.Storage
 
 		public Rot4 OutputDirection => reversed ? Rotation.Opposite : Rotation;
 
+		public bool Reversed => reversed;
+
+		public void ToggleReversed()
+		{
+			reversed = !reversed;
+		}
+
 		public abstract IntVec3 OutputCell { get; }
 
 		protected override void DrawAt(Vector3 drawLoc, bool flip = false)
@@ -205,7 +212,7 @@ namespace ColonyKit.Modules.Storage
 				defaultDesc = "CK.ConveyorHub.ReverseDesc".Translate(),
 				action = () =>
 				{
-					reversed = !reversed;
+					ToggleReversed();
 					Messages.Message("CK.ConveyorHub.Reversed".Translate(), MessageTypeDefOf.NeutralEvent, false);
 				}
 			};

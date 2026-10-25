@@ -195,6 +195,36 @@ namespace ColonyKit.Modules.Storage
 			return false;
 		}
 
+		/// <summary>手动切换第一个已连接端口的履带输入/输出方向。</summary>
+		public bool TryToggleConveyorDirection(out Rot4 side, out bool output)
+		{
+			Rot4[] sides = { Rot4.North, Rot4.East, Rot4.South, Rot4.West };
+			for (int i = 0; i < sides.Length; i++)
+			{
+				if (!TryFindSideConveyor(sides[i], out IntVec3 port))
+				{
+					continue;
+				}
+
+				Building edifice = port.GetEdifice(Map);
+				if (edifice is Building_ConveyorBase belt)
+				{
+					belt.ToggleReversed();
+					side = sides[i];
+					output = belt.OutputDirection == side;
+					if (output)
+					{
+						autoOutputToConveyor = true;
+					}
+					return true;
+				}
+			}
+
+			side = Rot4.Invalid;
+			output = false;
+			return false;
+		}
+
 		/// <summary>找朝向建筑外侧的端口履带，用于仓库自动输出。</summary>
 		private bool TryFindOutputPort(out IntVec3 cell)
 		{
@@ -544,7 +574,8 @@ namespace ColonyKit.Modules.Storage
 
 		public bool TryWithdraw(Thing thing)
 		{
-			IntVec3 drop = TryFindConnectedPort(out IntVec3 port) ? port : InteractionCell;
+			// 手动取出优先放到输出履带；没有输出线就放到建筑旁，避免又滑回输入口。
+			IntVec3 drop = TryFindOutputPort(out IntVec3 port) ? port : InteractionCell;
 			return TryWithdrawAt(thing, drop);
 		}
 
@@ -807,6 +838,32 @@ namespace ColonyKit.Modules.Storage
 			{
 				yield return gizmo;
 			}
+
+			yield return new Command_Action
+			{
+				defaultLabel = "CK.VerticalWarehouse.ToggleConveyor".Translate(),
+				defaultDesc = "CK.VerticalWarehouse.ToggleConveyorDesc".Translate(),
+				action = () =>
+				{
+					if (TryToggleConveyorDirection(out Rot4 side, out bool output))
+					{
+						string state = output
+							? "CK.VerticalWarehouse.PortOutput".Translate()
+							: "CK.VerticalWarehouse.PortInput".Translate();
+						Messages.Message(
+							"CK.VerticalWarehouse.Toggled".Translate(side.ToString(), state),
+							MessageTypeDefOf.NeutralEvent,
+							false);
+					}
+					else
+					{
+						Messages.Message(
+							"CK.VerticalWarehouse.NoConveyorPort".Translate(),
+							MessageTypeDefOf.RejectInput,
+							false);
+					}
+				}
+			};
 
 			yield return new Command_Toggle
 			{
