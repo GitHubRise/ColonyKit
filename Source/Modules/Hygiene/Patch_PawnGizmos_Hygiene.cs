@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using HarmonyLib;
 using RimWorld;
@@ -19,10 +20,22 @@ namespace ColonyKit.Modules.Hygiene
 
 			if (!__instance.IsColonistPlayerControlled
 				|| !ModuleRegistry.IsEnabled("hygiene")
-				|| __instance.needs?.TryGetNeed<Need_Hygiene>() == null
 				|| __instance.Map == null)
 			{
 				yield break;
+			}
+
+			NeedDef needDef = DefDatabase<NeedDef>.GetNamedSilentFail("CK_Hygiene");
+			if (needDef == null)
+			{
+				yield break;
+			}
+			if (__instance.needs?.TryGetNeed<Need_Hygiene>() == null)
+			{
+				Need need = (Need)Activator.CreateInstance(needDef.needClass, __instance);
+				need.def = needDef;
+				__instance.needs.AllNeeds.Add(need);
+				need.SetInitialLevel();
 			}
 
 			yield return new Command_Action

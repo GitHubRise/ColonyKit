@@ -22,6 +22,32 @@ namespace ColonyKit.Modules.Hygiene
 				"module loaded (DBH shower migration); " +
 				$"DBH active={ModsConfig.IsActive("dubwise.dubsbadhygiene")}");
 		}
+
+		public override void OnGameLoaded(Game game)
+		{
+			if (game == null)
+			{
+				return;
+			}
+			int humanlikes = 0;
+			int withNeed = 0;
+			foreach (Map map in game.Maps)
+			{
+				foreach (Pawn pawn in map.mapPawns.AllPawnsSpawned)
+				{
+					if (!pawn.RaceProps.Humanlike || pawn.RaceProps.IsMechanoid)
+					{
+						continue;
+					}
+					humanlikes++;
+					if (pawn.needs?.TryGetNeed<Need_Hygiene>() != null)
+					{
+						withNeed++;
+					}
+				}
+			}
+			ModLog.Info("Hygiene", $"need injection check: humanlikes={humanlikes}, withHygiene={withNeed}");
+		}
 	}
 
 	[HarmonyPatch(typeof(Pawn_NeedsTracker), "ShouldHaveNeed")]

@@ -20,14 +20,18 @@ namespace ColonyKit.Modules.Hygiene
 		public bool CanUse(Pawn pawn)
 		{
 			return Spawned
-				&& WaterAvailable >= 1f
 				&& pawn.CanReserve(this)
 				&& pawn.CanReach(this, PathEndMode.Touch, Danger.Deadly);
 		}
 
 		public bool TryUseWater()
 		{
-			return WaterNetwork.TryConsume(this, 0.05f);
+			// 水网暂时是可选增强：有水就消耗，没有水也不会阻止洗澡。
+			if (WaterNetwork.HasInfrastructure(this))
+			{
+				WaterNetwork.TryConsume(this, 0.05f);
+			}
+			return true;
 		}
 
 		public float WaterAvailable => WaterNetwork.TotalWater(this);

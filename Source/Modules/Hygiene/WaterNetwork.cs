@@ -8,6 +8,11 @@ namespace ColonyKit.Modules.Hygiene
 	/// <summary>水网首版：管道/水箱/水泵按相邻连通，淋浴从连通储量取水。</summary>
 	public static class WaterNetwork
 	{
+		public static bool HasInfrastructure(Thing root)
+		{
+			return CollectStores(root).Count > 0;
+		}
+
 		public static bool TryConsume(Thing root, float liters)
 		{
 			List<IWaterStore> stores = CollectStores(root);
