@@ -240,13 +240,15 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 
 		public float WaterStorage => WaterTowers.Where(t => t.WorkingNow).Sum(t => t.WaterStorage);
 
-		public bool HasHotWater => HotWaterTanks.Any(t => t.HeaterTemp > 0f);
+		public bool HasHotWater => HotWaterTanks.Any(t => t.GetStoreCapacity > 0f && t.HeaterTemp > 0f);
 
-		/// <summary>按 DBH 原版把热量平均分摊到所有还有热水的罐。</summary>
+		/// <summary>按 DBH 原版把热量平均分摊到所有还有热水的罐；阀门关闭的罐不参与。</summary>
 		public bool PullHotWater(float heatPerTick)
 		{
 			float draw = heatPerTick * ColonyKit.Modules.Hygiene.HygieneSettings.Current.hotWaterUseMultiplier;
-			List<CompHeatStore> tanks = HotWaterTanks.Where(t => t.HeaterTemp > 0f).ToList();
+			List<CompHeatStore> tanks = HotWaterTanks
+				.Where(t => t.GetStoreCapacity > 0f && t.HeaterTemp > 0f)
+				.ToList();
 			if (tanks.Count == 0)
 			{
 				return false;
