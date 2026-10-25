@@ -236,9 +236,16 @@ namespace ColonyKit.Modules.Hygiene
 		public override string GetInspectString()
 		{
 			string text = base.GetInspectString();
-			if (!Working().Accepted)
+			// base 可能为空（马桶等 comp 不产出文案），此时再拼 "\n" 会产生空行，
+			// 检查面板会报 "Inspect string for ... contains empty lines"。
+			AcceptanceReport report = Working();
+			if (!report.Accepted)
 			{
-				text += "\n" + Working().Reason;
+				if (!text.NullOrEmpty())
+				{
+					text += "\n";
+				}
+				text += report.Reason;
 			}
 			return text;
 		}
