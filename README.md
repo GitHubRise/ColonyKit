@@ -244,6 +244,7 @@ sources/ColonyKit/
 │  ├─ ChineseSimplified/{Keyed,DefInjected}
 │  └─ ChineseTraditional/{Keyed,DefInjected}   ← M7-4 可选
 ├─ Translations/DevMenuLabels.xml       ← 开发者菜单翻译表（0.0.2 已用）
+├─ Blueprints/                          ← 内置默认蓝图模板（只读，随包发布）
 ├─ Source/
 │  ├─ ColonyKit.csproj
 │  ├─ Core/

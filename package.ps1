@@ -48,7 +48,7 @@ New-Item -ItemType Directory -Path $stage | Out-Null
 
 try {
 	# 只复制运行期目录（见 docs/开发Mod须知 §2.4）；Source/obj/bin 一律不进包。
-	foreach ($name in 'About', 'Assemblies', 'Defs', 'Patches', 'Languages', 'Translations', 'Textures', 'Sounds') {
+	foreach ($name in 'About', 'Assemblies', 'Defs', 'Patches', 'Languages', 'Translations', 'Textures', 'Sounds', 'Blueprints') {
 		$src = Join-Path $root $name
 		if (Test-Path $src) {
 			Copy-Item $src (Join-Path $stage $name) -Recurse -Force

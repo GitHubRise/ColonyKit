@@ -14,6 +14,9 @@ namespace ColonyKit.Modules.Blueprint
 		public string path;
 		public BlueprintRecord record;
 		public string error;
+
+		/// <summary>内置默认模板：随 Mod 发布，只读；同名玩家模板优先。</summary>
+		public bool isBuiltIn;
 	}
 
 	/// <summary>
@@ -29,6 +32,17 @@ namespace ColonyKit.Modules.Blueprint
 		private const int SchemaVersion = 1;
 		private const int MaxNameLength = 64;
 
+		/// <summary>随 Mod 发布的默认模板目录（只读，不写玩家数据）。</summary>
+		public static string DefaultFolderPath
+		{
+			get
+			{
+				string root = ColonyKitMod.Instance?.Content?.RootDir;
+				return root.NullOrEmpty() ? null : Path.Combine(root, "Blueprints");
+			}
+		}
+
+		/// <summary>玩家模板目录：跨存档、可编辑、可删除。</summary>
 		public static string FolderPath =>
 			Path.Combine(GenFilePaths.ConfigFolderPath, "ColonyKit", "Blueprints");
 
@@ -100,39 +114,85 @@ namespace ColonyKit.Modules.Blueprint
 			}
 		}
 
-		/// <summary>读取模板目录里的全部模板；坏文件会带 <see cref="BlueprintTemplate.error"/> 返回，不抛出。</summary>
+		/// <summary>
+		/// 读取玩家模板 + 内置默认模板；坏文件会带 <see cref="BlueprintTemplate.error"/> 返回，不抛出。
+		/// </summary>
+		/// <remarks>
+		/// 玩家目录优先：同名时保留玩家文件，内置默认只做兜底。这样玩家删掉自己保存的
+		/// 默认模板后，仍能从 Mod 内置版本重新载入；同名也不会在列表里出现两次。
+		/// 合并后按显示名排序（不走拼音，保持与旧版一致的稳定顺序）。
+		/// </remarks>
 		public static List<BlueprintTemplate> LoadAll()
+		{
+			List<BlueprintTemplate> templates = LoadFolder(FolderPath, false);
+			HashSet<string> names = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+			foreach (BlueprintTemplate template in templates)
+			{
+				if (template.record != null && !template.record.name.NullOrEmpty())
+				{
+					names.Add(template.record.name);
+				}
+			}
+
+			foreach (BlueprintTemplate template in LoadFolder(DefaultFolderPath, true))
+			{
+				string name = TemplateName(template);
+				if (template.record != null && names.Contains(name))
+				{
+					continue;
+				}
+
+				if (!names.Add(name))
+				{
+					continue;
+				}
+
+				templates.Add(template);
+			}
+
+			templates.Sort((left, right) =>
+				string.Compare(TemplateName(left), TemplateName(right), StringComparison.OrdinalIgnoreCase));
+			return templates;
+		}
+
+		private static List<BlueprintTemplate> LoadFolder(string folderPath, bool builtIn)
 		{
 			List<BlueprintTemplate> templates = new List<BlueprintTemplate>();
 			try
 			{
-				if (!Directory.Exists(FolderPath))
+				if (folderPath.NullOrEmpty() || !Directory.Exists(folderPath))
 				{
 					return templates;
 				}
 
-				foreach (string path in Directory.GetFiles(FolderPath, "*.xml"))
+				string[] files = Directory.GetFiles(folderPath, "*.xml");
+				Array.Sort(files, StringComparer.OrdinalIgnoreCase);
+				foreach (string path in files)
 				{
-					templates.Add(Load(path));
+					templates.Add(Load(path, builtIn));
 				}
 			}
 			catch (Exception exception)
 			{
-				ModLog.Error("Blueprint", "failed to scan template folder", exception);
+				ModLog.Error("Blueprint", $"failed to scan template folder '{folderPath}'", exception);
 			}
 
-			templates.Sort((left, right) =>
-			{
-				string leftName = left.record?.name ?? Path.GetFileName(left.path);
-				string rightName = right.record?.name ?? Path.GetFileName(right.path);
-				return string.Compare(leftName, rightName, StringComparison.OrdinalIgnoreCase);
-			});
 			return templates;
 		}
 
-		public static BlueprintTemplate Load(string path)
+		private static string TemplateName(BlueprintTemplate template)
 		{
-			BlueprintTemplate template = new BlueprintTemplate { path = path };
+			string name = template.record?.name;
+			if (name.NullOrEmpty())
+			{
+				name = Path.GetFileNameWithoutExtension(template.path);
+			}
+			return name ?? "";
+		}
+
+		public static BlueprintTemplate Load(string path, bool builtIn = false)
+		{
+			BlueprintTemplate template = new BlueprintTemplate { path = path, isBuiltIn = builtIn };
 			try
 			{
 				XmlDocument document = new XmlDocument();
@@ -201,7 +261,18 @@ namespace ColonyKit.Modules.Blueprint
 		public static bool Delete(BlueprintTemplate template, out string error)
 		{
 			error = null;
-			if (template == null || template.path.NullOrEmpty())
+			if (template == null)
+			{
+				return false;
+			}
+
+			if (template.isBuiltIn)
+			{
+				error = "CK.Blueprint.Template.BuiltInReadOnly".Translate();
+				return false;
+			}
+
+			if (template.path.NullOrEmpty())
 			{
 				return false;
 			}

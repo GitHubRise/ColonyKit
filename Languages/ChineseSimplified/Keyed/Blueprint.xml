@@ -70,4 +70,7 @@
 	<CK.Blueprint.Template.Empty>模板里没有建筑。</CK.Blueprint.Template.Empty>
 	<CK.Blueprint.Template.LoadFailed>读取模板失败：{0}</CK.Blueprint.Template.LoadFailed>
 	<CK.Blueprint.Template.DeleteFailed>删除模板失败：{0}</CK.Blueprint.Template.DeleteFailed>
+	<CK.Blueprint.Template.BuiltIn>内置</CK.Blueprint.Template.BuiltIn>
+	<CK.Blueprint.Template.BuiltInTip>随 Mod 提供的默认模板，只能载入，不能删除。</CK.Blueprint.Template.BuiltInTip>
+	<CK.Blueprint.Template.BuiltInReadOnly>内置模板随 Mod 提供，不能删除；可以直接载入当前存档。</CK.Blueprint.Template.BuiltInReadOnly>
 </LanguageData>

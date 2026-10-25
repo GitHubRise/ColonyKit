@@ -70,4 +70,7 @@
 	<CK.Blueprint.Template.Empty>The template contains no structures.</CK.Blueprint.Template.Empty>
 	<CK.Blueprint.Template.LoadFailed>Failed to read template: {0}</CK.Blueprint.Template.LoadFailed>
 	<CK.Blueprint.Template.DeleteFailed>Failed to delete template: {0}</CK.Blueprint.Template.DeleteFailed>
+	<CK.Blueprint.Template.BuiltIn>Built-in</CK.Blueprint.Template.BuiltIn>
+	<CK.Blueprint.Template.BuiltInTip>Default template shipped with the mod. It can be loaded but not deleted.</CK.Blueprint.Template.BuiltInTip>
+	<CK.Blueprint.Template.BuiltInReadOnly>Built-in templates ship with the mod and cannot be deleted. Load it into the current save instead.</CK.Blueprint.Template.BuiltInReadOnly>
 </LanguageData>

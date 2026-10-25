@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ColonyKitBlueprint schema="1">
+  <name>普通双人小卧室</name>
+  <sizeX>6</sizeX>
+  <sizeZ>8</sizeZ>
+  <createdTick>53207</createdTick>
+  <entries>
+    <entry def="Wall" stuff="Plasteel" rot="0" x="0" z="0" />
+    <entry def="PowerConduit" rot="0" x="0" z="0" />
+    <entry def="Wall" stuff="Plasteel" rot="0" x="1" z="0" />
+    <entry def="PowerConduit" rot="0" x="1" z="0" />
+    <entry def="Wall" stuff="Plasteel" rot="0" x="2" z="0" />
+    <entry def="PowerConduit" rot="0" x="2" z="0" />
+    <entry def="Wall" stuff="Plasteel" rot="0" x="3" z="0" />
+    <entry def="PowerConduit" rot="0" x="3" z="0" />
+    <entry def="Wall" stuff="Plasteel" rot="0" x="4" z="0" />
+    <entry def="PowerConduit" rot="0" x="4" z="0" />
+    <entry def="Wall" stuff="Plasteel" rot="0" x="5" z="0" />
+    <entry def="PowerConduit" rot="0" x="5" z="0" />
+    <entry def="PowerConduit" rot="0" x="0" z="1" />
+    <entry def="Wall" stuff="Plasteel" rot="0" x="0" z="1" />
+    <entry def="Dresser" stuff="Plasteel" rot="2" x="2" z="1" />
+    <entry def="EndTable" stuff="Plasteel" rot="2" x="3" z="1" />
+    <entry def="StandingLamp" rot="0" x="4" z="1" />
+    <entry def="Wall" stuff="Plasteel" rot="0" x="5" z="1" />
+    <entry def="PowerConduit" rot="0" x="5" z="1" />
+    <entry def="Wall" stuff="Plasteel" rot="0" x="0" z="2" />
+    <entry def="PowerConduit" rot="0" x="0" z="2" />
+    <entry def="PlantPot" stuff="Plasteel" rot="0" x="4" z="2" />
+    <entry def="Wall" stuff="Plasteel" rot="0" x="5" z="2" />
+    <entry def="PowerConduit" rot="0" x="5" z="2" />
+    <entry def="Wall" stuff="Plasteel" rot="0" x="0" z="3" />
+    <entry def="PowerConduit" rot="0" x="0" z="3" />
+    <entry def="DoubleBed" stuff="Plasteel" rot="2" x="2" z="3" />
+    <entry def="PowerConduit" rot="0" x="5" z="3" />
+    <entry def="Wall" stuff="Plasteel" rot="0" x="5" z="3" />
+    <entry def="Wall" stuff="Plasteel" rot="0" x="0" z="4" />
+    <entry def="PowerConduit" rot="0" x="0" z="4" />
+    <entry def="Autodoor" stuff="Plasteel" rot="1" x="5" z="4" />
+    <entry def="PowerConduit" rot="0" x="5" z="4" />
+    <entry def="Wall" stuff="Plasteel" rot="0" x="0" z="5" />
+    <entry def="PowerConduit" rot="0" x="0" z="5" />
+    <entry def="DiningChair" stuff="Plasteel" rot="0" x="1" z="5" />
+    <entry def="DiningChair" stuff="Plasteel" rot="0" x="2" z="5" />
+    <entry def="Wall" stuff="Plasteel" rot="0" x="5" z="5" />
+    <entry def="PowerConduit" rot="0" x="5" z="5" />
+    <entry def="Wall" stuff="Plasteel" rot="0" x="0" z="6" />
+    <entry def="PowerConduit" rot="0" x="0" z="6" />
+    <entry def="Table1x2c" stuff="Plasteel" rot="3" x="2" z="6" />
+    <entry def="ChessTable" stuff="Plasteel" rot="0" x="3" z="6" />
+    <entry def="DiningChair" stuff="Plasteel" rot="3" x="4" z="6" />
+    <entry def="Wall" stuff="Plasteel" rot="0" x="5" z="6" />
+    <entry def="PowerConduit" rot="0" x="5" z="6" />
+    <entry def="Wall" stuff="Plasteel" rot="0" x="0" z="7" />
+    <entry def="PowerConduit" rot="0" x="0" z="7" />
+    <entry def="Wall" stuff="Plasteel" rot="0" x="1" z="7" />
+    <entry def="PowerConduit" rot="0" x="1" z="7" />
+    <entry def="Wall" stuff="Plasteel" rot="0" x="2" z="7" />
+    <entry def="PowerConduit" rot="0" x="2" z="7" />
+    <entry def="Wall" stuff="Plasteel" rot="0" x="3" z="7" />
+    <entry def="PowerConduit" rot="0" x="3" z="7" />
+    <entry def="Wall" stuff="Plasteel" rot="0" x="4" z="7" />
+    <entry def="PowerConduit" rot="0" x="4" z="7" />
+    <entry def="Wall" stuff="Plasteel" rot="0" x="5" z="7" />
+    <entry def="PowerConduit" rot="0" x="5" z="7" />
+  </entries>
+</ColonyKitBlueprint>

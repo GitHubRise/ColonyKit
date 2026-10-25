@@ -372,7 +372,15 @@ namespace ColonyKit.Modules.Blueprint
 						}
 					}
 
-					if (Widgets.ButtonText(new Rect(row.xMax - 72f, row.y + 3f, 72f, 24f), "CK.Blueprint.Tab.Delete".Translate()))
+					if (template.isBuiltIn)
+					{
+						Rect tag = new Rect(row.xMax - 72f, row.y + 5f, 72f, 22f);
+						GUI.color = new Color(0.65f, 0.65f, 0.65f);
+						Widgets.Label(tag, "CK.Blueprint.Template.BuiltIn".Translate());
+						GUI.color = Color.white;
+						TooltipHandler.TipRegion(tag, "CK.Blueprint.Template.BuiltInTip".Translate());
+					}
+					else if (Widgets.ButtonText(new Rect(row.xMax - 72f, row.y + 3f, 72f, 24f), "CK.Blueprint.Tab.Delete".Translate()))
 					{
 						BlueprintTemplate toDelete = template;
 						Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation(

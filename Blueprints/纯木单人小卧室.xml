@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ColonyKitBlueprint schema="1">
+  <name>纯木单人小卧室</name>
+  <sizeX>5</sizeX>
+  <sizeZ>7</sizeZ>
+  <createdTick>28014</createdTick>
+  <entries>
+    <entry def="Wall" stuff="WoodLog" rot="0" x="0" z="0" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="1" z="0" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="2" z="0" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="3" z="0" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="4" z="0" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="0" z="1" />
+    <entry def="Table1x2c" stuff="WoodLog" rot="0" x="1" z="1" />
+    <entry def="Shelf" stuff="WoodLog" rot="0" x="2" z="1" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="4" z="1" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="0" z="2" />
+    <entry def="DiningChair" stuff="WoodLog" rot="3" x="2" z="2" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="4" z="2" />
+    <entry def="Door" stuff="WoodLog" rot="1" x="0" z="3" />
+    <entry def="Door" stuff="WoodLog" rot="1" x="4" z="3" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="0" z="4" />
+    <entry def="Bed" stuff="WoodLog" rot="0" x="1" z="4" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="4" z="4" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="0" z="5" />
+    <entry def="TorchLamp" rot="0" x="3" z="5" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="4" z="5" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="0" z="6" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="1" z="6" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="2" z="6" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="3" z="6" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="4" z="6" />
+  </entries>
+</ColonyKitBlueprint>
