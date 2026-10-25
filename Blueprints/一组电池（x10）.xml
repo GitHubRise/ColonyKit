@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ColonyKitBlueprint schema="1">
+  <name>一组电池（x10）</name>
+  <sizeX>10</sizeX>
+  <sizeZ>3</sizeZ>
+  <createdTick>529411</createdTick>
+  <entries>
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="0" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="1" z="0" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="2" z="0" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="3" z="0" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="4" z="0" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="5" z="0" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="6" z="0" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="7" z="0" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="8" z="0" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="9" z="0" />
+    <entry def="Battery" rot="0" x="0" z="1" />
+    <entry def="Battery" rot="0" x="1" z="1" />
+    <entry def="Battery" rot="0" x="2" z="1" />
+    <entry def="Battery" rot="0" x="3" z="1" />
+    <entry def="Battery" rot="0" x="4" z="1" />
+    <entry def="Battery" rot="0" x="5" z="1" />
+    <entry def="Battery" rot="0" x="6" z="1" />
+    <entry def="Battery" rot="0" x="7" z="1" />
+    <entry def="Battery" rot="0" x="8" z="1" />
+    <entry def="Battery" rot="0" x="9" z="1" />
+  </entries>
+</ColonyKitBlueprint>
