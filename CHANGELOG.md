@@ -14,6 +14,8 @@
 
 ### Added
 
+- **内置蓝图「永恒温室」**：`Blueprints/永恒温室.xml`，37×38 占地、35×33 单室冷库；北墙 18 台空调（冷侧朝库内、热侧朝北侧露天排气带）、南侧双门气闸、6 组十字形屋顶支撑柱；花岗岩墙体，适合在厚岩顶下按「先深冷、再断电」的方式做长时间保冷测试。
+- **调试动作「蓝图工具 → 全场空调设为 -273」**：`DebugActions_Blueprint`，一键把当前地图所有玩家空调的 `CompTempControl.TargetTemperature` 设为 -273°C，避免逐台点温度 Gizmo。
 - **肠道感染**：新增 `CK_GutBug` Hediff（呕吐、膀胱消耗加速、约 1 天恢复、可治疗）；`GiveNastyGutBug` 不再空实现，卫生污染累计后会真正致病并发送负面消息。
 - **淋浴后清理**：移植 `ShowerCleanup`，淋浴成功结束后清掉淋浴器周围 2.5 格的 RJW 精液污渍，并把小人自己房间最多 12 格污渍排成一条原版 `JobDefOf.Clean` 工作（`playerForced`）。
 - **热水澡与如厕隐私**：`CK_ShowerHot` 现在会在热水淋浴完成后实际施加；新增 `CK_ToiletPrivacy` 念头，`ToiletPrivacyLOS` 按视线/情人/动物/机械体/囚犯规则判断，不再恒返回 false。
