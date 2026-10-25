@@ -135,41 +135,45 @@ namespace ColonyKit.Modules.Storage
 				return false;
 			}
 
-			int width = def.size.x;
-			int height = def.size.z;
-			for (int i = 0; i < width; i++)
+			// 只接受 1×1 履带，而且必须放在该边正中的端口格。
+			IntVec3 port = PortCell(side);
+			if (!port.InBounds(Map))
 			{
-				IntVec3 candidate;
-				switch (side.AsInt)
+				return false;
+			}
+
+			Building edifice = port.GetEdifice(Map);
+			if (!(edifice is Building_ConveyorBase conveyor)
+				|| conveyor.def.size.x != 1
+				|| conveyor.def.size.z != 1)
+			{
+				return false;
+			}
+
+			cell = port;
+			return true;
+		}
+
+		/// <summary>找朝向建筑外侧的端口履带，用于仓库自动输出。</summary>
+		private bool TryFindOutputPort(out IntVec3 cell)
+		{
+			Rot4[] sides = { Rot4.North, Rot4.East, Rot4.South, Rot4.West };
+			for (int i = 0; i < sides.Length; i++)
+			{
+				Rot4 side = sides[i];
+				if (!TryFindSideConveyor(side, out IntVec3 port))
 				{
-					case 0:
-						candidate = Position + new IntVec3(i, 0, height);
-						break;
-					case 1:
-						if (i >= height)
-						{
-							continue;
-						}
-						candidate = Position + new IntVec3(width, 0, i);
-						break;
-					case 2:
-						candidate = Position + new IntVec3(i, 0, -1);
-						break;
-					default:
-						if (i >= height)
-						{
-							continue;
-						}
-						candidate = Position + new IntVec3(-1, 0, i);
-						break;
+					continue;
 				}
 
-				if (candidate.InBounds(Map) && candidate.GetEdifice(Map) is Building_ConveyorBase)
+				Building conveyor = port.GetEdifice(Map);
+				if (conveyor is Building_ConveyorBase belt && belt.OutputDirection == side)
 				{
-					cell = candidate;
+					cell = port;
 					return true;
 				}
 			}
+			cell = IntVec3.Invalid;
 			return false;
 		}
 
@@ -463,6 +467,12 @@ namespace ColonyKit.Modules.Storage
 
 		public bool TryWithdraw(Thing thing)
 		{
+			IntVec3 drop = TryFindConnectedPort(out IntVec3 port) ? port : InteractionCell;
+			return TryWithdrawAt(thing, drop);
+		}
+
+		public bool TryWithdrawAt(Thing thing, IntVec3 drop)
+		{
 			if (thing == null || !Container.Contains(thing))
 			{
 				return false;
@@ -474,7 +484,6 @@ namespace ColonyKit.Modules.Storage
 				return false;
 			}
 
-			IntVec3 drop = TryFindConnectedPort(out IntVec3 port) ? port : InteractionCell;
 			if (!GenPlace.TryPlaceThing(taken, drop, Map, ThingPlaceMode.Direct, out _)
 				&& !GenPlace.TryPlaceThing(taken, drop, Map, ThingPlaceMode.Near, out _))
 			{
@@ -576,10 +585,15 @@ namespace ColonyKit.Modules.Storage
 				return;
 			}
 
+			if (!TryFindOutputPort(out IntVec3 port))
+			{
+				return;
+			}
+
 			Thing item = Container[0];
 			if (item != null)
 			{
-				TryWithdraw(item);
+				TryWithdrawAt(item, port);
 			}
 		}
 
@@ -679,6 +693,33 @@ namespace ColonyKit.Modules.Storage
 			if (!HasAnyConveyorConnection)
 			{
 				text += "\n" + "CK.VerticalWarehouse.NoConveyor".Translate();
+			}
+			else
+			{
+				Rot4[] sides = { Rot4.North, Rot4.East, Rot4.South, Rot4.West };
+				for (int i = 0; i < sides.Length; i++)
+				{
+					Rot4 side = sides[i];
+					if (!TryFindSideConveyor(side, out IntVec3 port))
+					{
+						continue;
+					}
+
+					Building conveyor = port.GetEdifice(Map);
+					string role = "CK.VerticalWarehouse.PortMisaligned".Translate();
+					if (conveyor is Building_ConveyorBase belt)
+					{
+						if (belt.OutputDirection == side)
+						{
+							role = "CK.VerticalWarehouse.PortOutput".Translate();
+						}
+						else if (belt.OutputDirection == side.Opposite)
+						{
+							role = "CK.VerticalWarehouse.PortInput".Translate();
+						}
+					}
+					text += "\n" + "CK.VerticalWarehouse.PortStatus".Translate(side.ToString(), role);
+				}
 			}
 			return text;
 		}

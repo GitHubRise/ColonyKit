@@ -2,14 +2,14 @@
 <Defs>
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_ConveyorHub</defName>
-		<label>omnidirectional conveyor</label>
-		<description>A 2x2 omnidirectional conveyor. Items can enter and leave from any of the four sides; the central turntable handles turns. The texture is symmetric, so rotating the building does not change the footprint.</description>
-		<size>(2,2)</size>
-		<thingClass>ColonyKit.Modules.Storage.Building_OmnidirectionalConveyor</thingClass>
+		<label>conveyor turntable</label>
+		<description>A 1x1 conveyor turntable. Items can enter from any of the four sides and leave through the side set by the building's rotation, allowing right-angle turns.</description>
+		<size>(1,1)</size>
+		<thingClass>ColonyKit.Modules.Storage.Building_ConveyorTurntable</thingClass>
 		<graphicData>
-			<texPath>Things/Building/Storage/CK_ConveyorHub</texPath>
+			<texPath>Things/Building/Storage/CK_ConveyorTurntable</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(2,2)</drawSize>
+			<drawSize>(1,1)</drawSize>
 		</graphicData>
 		<rotatable>true</rotatable>
 		<tickerType>Normal</tickerType>
@@ -19,19 +19,19 @@
 		<building>
 			<maxItemsInCell>1</maxItemsInCell>
 		</building>
-		<fillPercent>0.15</fillPercent>
-		<staticSunShadowHeight>0.15</staticSunShadowHeight>
+		<fillPercent>0.1</fillPercent>
+		<staticSunShadowHeight>0.1</staticSunShadowHeight>
 		<castEdgeShadows>true</castEdgeShadows>
-		<uiIconScale>0.75</uiIconScale>
+		<uiIconScale>0.9</uiIconScale>
 		<costList>
-			<Steel>60</Steel>
-			<ComponentIndustrial>2</ComponentIndustrial>
+			<Steel>30</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
 		</costList>
 		<statBases>
-			<MaxHitPoints>200</MaxHitPoints>
-			<Mass>20</Mass>
-			<WorkToBuild>800</WorkToBuild>
-			<Beauty>-2</Beauty>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Mass>8</Mass>
+			<WorkToBuild>500</WorkToBuild>
+			<Beauty>-1</Beauty>
 			<Flammability>0</Flammability>
 		</statBases>
 		<researchPrerequisites>

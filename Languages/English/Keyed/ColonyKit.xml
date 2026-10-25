@@ -169,6 +169,10 @@
 	<CK.VerticalWarehouse.NoConveyor>No conveyor connected; automatic input/output is disabled. Connect a conveyor to one of the four sides.</CK.VerticalWarehouse.NoConveyor>
 	<CK.VerticalWarehouse.AutoConveyor>Auto output to conveyor</CK.VerticalWarehouse.AutoConveyor>
 	<CK.VerticalWarehouse.AutoConveyorDesc>When enabled, every 250 ticks the first stored stack is placed onto a connected conveyor port.</CK.VerticalWarehouse.AutoConveyorDesc>
+	<CK.VerticalWarehouse.PortStatus>{0} port: {1}</CK.VerticalWarehouse.PortStatus>
+	<CK.VerticalWarehouse.PortInput>input (toward warehouse)</CK.VerticalWarehouse.PortInput>
+	<CK.VerticalWarehouse.PortOutput>output (away from warehouse)</CK.VerticalWarehouse.PortOutput>
+	<CK.VerticalWarehouse.PortMisaligned>direction not aligned</CK.VerticalWarehouse.PortMisaligned>
 	<CK.VerticalWarehouse.Empty>The warehouse is empty.</CK.VerticalWarehouse.Empty>
 	<CK.StorageManagement.Title>Storage management</CK.StorageManagement.Title>
 	<CK.StorageManagement.Search>Search warehouses or items</CK.StorageManagement.Search>

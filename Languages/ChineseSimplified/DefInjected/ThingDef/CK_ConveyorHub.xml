@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-	<CK_ConveyorHub.label>全向履带</CK_ConveyorHub.label>
-	<CK_ConveyorHub.description>2×2 全向履带。物品可以从四边任意进出，中央转盘负责转向；贴图是对称的，旋转建筑不会改变占地或图案。</CK_ConveyorHub.description>
+	<CK_ConveyorHub.label>转向盘</CK_ConveyorHub.label>
+	<CK_ConveyorHub.description>1×1 转向盘。物品可以从四边任意方向进入，按建筑朝向/反向从指定边送出，用来做直角拐弯。</CK_ConveyorHub.description>
 </LanguageData>

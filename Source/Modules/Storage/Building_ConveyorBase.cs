@@ -8,7 +8,7 @@ namespace ColonyKit.Modules.Storage
 {
 	/// <summary>
 	/// 履带基类：处理方向、反向、30 tick 移动、相邻履带互通。
-	/// 1×1 双向履带与 2×2 全向履带只实现自己的 <see cref="OutputCell"/> 和 <see cref="TryNextCell"/>。
+	/// 1×1 双向履带与 1×1 转向盘只实现自己的 <see cref="OutputCell"/> 和 <see cref="TryNextCell"/>。
 	/// </summary>
 	[StaticConstructorOnStartup]
 	public abstract class Building_ConveyorBase : Building
@@ -43,7 +43,14 @@ namespace ColonyKit.Modules.Storage
 		{
 			base.DrawAt(drawLoc, flip);
 
-			if (Find.TickManager == null || !HasCargo())
+			if (Find.TickManager == null)
+			{
+				return;
+			}
+
+			// 空闲时不显示方向；选中/有货物时才显示，便于查看当前出口。
+			bool selected = Find.Selector != null && Find.Selector.IsSelected(this);
+			if (!selected && !HasCargo())
 			{
 				return;
 			}

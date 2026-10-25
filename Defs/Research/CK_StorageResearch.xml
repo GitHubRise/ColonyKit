@@ -31,8 +31,8 @@
 			<li>CK_StorageTier1</li>
 		</prerequisites>
 		<tab>CK_StorageTab</tab>
-		<researchViewX>0</researchViewX>
-		<researchViewY>1</researchViewY>
+		<researchViewX>1</researchViewX>
+		<researchViewY>0</researchViewY>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
@@ -45,7 +45,7 @@
 			<li>CK_StorageTier2</li>
 		</prerequisites>
 		<tab>CK_StorageTab</tab>
-		<researchViewX>0</researchViewX>
-		<researchViewY>2</researchViewY>
+		<researchViewX>2</researchViewX>
+		<researchViewY>0</researchViewY>
 	</ResearchProjectDef>
 </Defs>
