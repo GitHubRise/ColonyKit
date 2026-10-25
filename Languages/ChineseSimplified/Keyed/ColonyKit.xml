@@ -127,6 +127,8 @@
 	<CK.Hygiene.TakeShower>去洗澡</CK.Hygiene.TakeShower>
 	<CK.Hygiene.TakeShowerDesc>让该殖民者前往最近的淋浴器。</CK.Hygiene.TakeShowerDesc>
 	<CK.Hygiene.NoShower>没有可用的淋浴器。</CK.Hygiene.NoShower>
+	<CK.Hygiene.HeaterOn>热水器运行中</CK.Hygiene.HeaterOn>
+	<CK.Hygiene.HeaterOff>热水器未运行</CK.Hygiene.HeaterOff>
 	<CK.Hygiene.Gender>性别: {0}</CK.Hygiene.Gender>
 	<CK.Hygiene.GenderDesc>切换共用/男/女。</CK.Hygiene.GenderDesc>
 	<CK.Hygiene.AllowColonists>允许殖民者</CK.Hygiene.AllowColonists>

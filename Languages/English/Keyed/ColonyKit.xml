@@ -127,6 +127,8 @@
 	<CK.Hygiene.TakeShower>Take a shower</CK.Hygiene.TakeShower>
 	<CK.Hygiene.TakeShowerDesc>Send this colonist to the nearest shower.</CK.Hygiene.TakeShowerDesc>
 	<CK.Hygiene.NoShower>No usable shower available.</CK.Hygiene.NoShower>
+	<CK.Hygiene.HeaterOn>Heater running</CK.Hygiene.HeaterOn>
+	<CK.Hygiene.HeaterOff>Heater not running</CK.Hygiene.HeaterOff>
 	<CK.Hygiene.Gender>Gender: {0}</CK.Hygiene.Gender>
 	<CK.Hygiene.GenderDesc>Toggle unisex/male/female.</CK.Hygiene.GenderDesc>
 	<CK.Hygiene.AllowColonists>Allow colonists</CK.Hygiene.AllowColonists>

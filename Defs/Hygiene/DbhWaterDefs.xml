@@ -107,4 +107,44 @@
 			<li>CK_HygieneResearch</li>
 		</researchPrerequisites>
 	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_DbhWaterHeater</defName>
+		<label>DBH-style water heater</label>
+		<description>Heats water for connected showers. Requires power.</description>
+		<thingClass>Building</thingClass>
+		<size>(1,2)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_WaterHeater</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,2)</drawSize>
+		</graphicData>
+		<designationCategory>Furniture</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.25</fillPercent>
+		<costList>
+			<Steel>75</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Mass>20</Mass>
+			<WorkToBuild>800</WorkToBuild>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>500</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterHeater">
+				<Capacity>2000</Capacity>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_HygieneResearch</li>
+		</researchPrerequisites>
+	</ThingDef>
 </Defs>

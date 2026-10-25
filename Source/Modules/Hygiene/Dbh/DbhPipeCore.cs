@@ -213,6 +213,7 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		public List<CompWaterStorage> WaterTowers = new List<CompWaterStorage>();
 		public List<CompWaterPumpingStation> WaterPumps = new List<CompWaterPumpingStation>();
 		public List<CompWaterInlet> WaterWells = new List<CompWaterInlet>();
+		public List<CompWaterHeater> Heaters = new List<CompWaterHeater>();
 		public List<CompPipe> Pipes = new List<CompPipe>();
 		public float WaterCap;
 		public float WaterPumpedPerTick;
@@ -222,12 +223,20 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 
 		public float WaterStorage => WaterTowers.Sum(t => t.WaterStorage);
 
+		public bool HasHotWater => Heaters.Any(h => h.WorkingNow);
+
+		public bool PullHotWater(float heatPerTick)
+		{
+			return HasHotWater;
+		}
+
 		public void InitNet()
 		{
 			Pipes.Clear();
 			WaterTowers.Clear();
 			WaterPumps.Clear();
 			WaterWells.Clear();
+			Heaters.Clear();
 			foreach (ThingWithComps thing in PipedThings)
 			{
 				Pipes.AddRange(thing.GetComps<CompPipe>());
@@ -245,6 +254,11 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 				if (inlet != null)
 				{
 					WaterWells.Add(inlet);
+				}
+				CompWaterHeater heater = thing.TryGetComp<CompWaterHeater>();
+				if (heater != null)
+				{
+					Heaters.Add(heater);
 				}
 			}
 		}

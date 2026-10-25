@@ -40,6 +40,10 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				cold = false;
 			}
+			else if (pipe?.pipeNet != null && pipe.pipeNet.PullHotWater(HeatUsedPerTick))
+			{
+				cold = false;
+			}
 			if (pipe == null)
 			{
 				cold = false;

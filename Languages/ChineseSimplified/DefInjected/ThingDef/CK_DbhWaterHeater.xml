@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_DbhWaterHeater.label>DBH 式热水器</CK_DbhWaterHeater.label>
+	<CK_DbhWaterHeater.description>为连通淋浴器提供热水，需要电力。</CK_DbhWaterHeater.description>
+</LanguageData>
