@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ResearchTabDef>
+		<defName>CK_StorageTab</defName>
+		<label>Storage</label>
+		<generalTitle>Storage research</generalTitle>
+		<generalDescription>Research high-density storage and conveyor logistics.</generalDescription>
+	</ResearchTabDef>
+
+	<ResearchProjectDef>
+		<defName>CK_StorageResearch</defName>
+		<label>high-density storage</label>
+		<description>Unlock the theoretical framework for high-density vertical storage. The first-generation vertical warehouse is available without this project; this research is the basis for future capacity tiers and conveyor logistics.</description>
+		<baseCost>1200</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>Electricity</li>
+		</prerequisites>
+		<tab>CK_StorageTab</tab>
+		<researchViewX>0</researchViewX>
+		<researchViewY>0</researchViewY>
+	</ResearchProjectDef>
+</Defs>

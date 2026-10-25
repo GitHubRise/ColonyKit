@@ -23,6 +23,7 @@ namespace ColonyKit.Modules.Storage
 		private int networkCacheTick = -1;
 		private bool networkCache;
 		private int settingsVersion;
+		private bool autoOutputToConveyor = true;
 		private static Graphic conveyorWarning;
 
 		private static Graphic ConveyorWarning
@@ -296,6 +297,7 @@ namespace ColonyKit.Modules.Storage
 		{
 			base.ExposeData();
 			Scribe_Values.Look(ref settingsVersion, "settingsVersion", 0);
+			Scribe_Values.Look(ref autoOutputToConveyor, "autoOutputToConveyor", true);
 			Scribe_Deep.Look(ref innerContainer, "innerContainer", this);
 			Scribe_Deep.Look(ref storeSettings, "storeSettings", this);
 			if (innerContainer == null)
@@ -505,6 +507,8 @@ namespace ColonyKit.Modules.Storage
 				return;
 			}
 
+			TryAutoOutputToConveyor();
+
 			Room room = FindRoom();
 			if (room == null || room.UsesOutdoorTemperature)
 			{
@@ -542,6 +546,20 @@ namespace ColonyKit.Modules.Storage
 			compPowerTrader.PowerOutput = active
 				? -power
 				: -power * compTempControl.Props.lowPowerConsumptionFactor;
+		}
+
+		private void TryAutoOutputToConveyor()
+		{
+			if (!autoOutputToConveyor || Container.Count == 0 || !HasAnyConveyorConnection)
+			{
+				return;
+			}
+
+			Thing item = Container[0];
+			if (item != null)
+			{
+				TryWithdraw(item);
+			}
 		}
 
 		private void SetIdlePower()
@@ -650,6 +668,17 @@ namespace ColonyKit.Modules.Storage
 			{
 				yield return gizmo;
 			}
+
+			yield return new Command_Toggle
+			{
+				defaultLabel = "CK.VerticalWarehouse.AutoConveyor".Translate(),
+				defaultDesc = "CK.VerticalWarehouse.AutoConveyorDesc".Translate(),
+				isActive = () => autoOutputToConveyor,
+				toggleAction = () =>
+				{
+					autoOutputToConveyor = !autoOutputToConveyor;
+				}
+			};
 
 			yield return new Command_Action
 			{
