@@ -492,7 +492,7 @@ namespace ColonyKit.Modules.Storage
 
 		public bool CanStore(Thing thing)
 		{
-			if (!HasPower || !HasAnyConveyorConnection || !Accepts(thing))
+			if (!HasAnyConveyorConnection || !Accepts(thing))
 			{
 				return false;
 			}
@@ -622,6 +622,9 @@ namespace ColonyKit.Modules.Storage
 				return;
 			}
 
+			// 存储与自动输出不依赖电力；断电只停止温控。
+			TryAutoOutputToConveyor();
+
 			compTempControl ??= GetComp<CompTempControl>();
 			compPowerTrader ??= GetComp<CompPowerTrader>();
 
@@ -635,8 +638,6 @@ namespace ColonyKit.Modules.Storage
 				compTempControl.operatingAtHighPower = false;
 				return;
 			}
-
-			TryAutoOutputToConveyor();
 
 			Room room = FindRoom();
 			if (room == null || room.UsesOutdoorTemperature)
@@ -739,7 +740,7 @@ namespace ColonyKit.Modules.Storage
 
 		public int CollectNearby(int radius = 8)
 		{
-			if (!HasPower || !HasAnyConveyorConnection || Map == null)
+			if (!HasAnyConveyorConnection || Map == null)
 			{
 				return 0;
 			}

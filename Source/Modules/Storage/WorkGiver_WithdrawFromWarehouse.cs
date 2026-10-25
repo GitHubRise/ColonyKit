@@ -25,7 +25,6 @@ namespace ColonyKit.Modules.Storage
 		public override bool HasJobOnThing(Pawn pawn, Thing thing, bool forced = false)
 		{
 			if (!(thing is Building_VerticalWarehouse warehouse)
-				|| !warehouse.HasPower
 				|| !warehouse.HasAnyConveyorConnection
 				|| !warehouse.Spawned
 				|| warehouse.Container.Count == 0)

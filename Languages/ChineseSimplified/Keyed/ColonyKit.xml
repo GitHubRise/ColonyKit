@@ -146,7 +146,7 @@
 
 	<CK.VerticalWarehouse.Tab>立体库</CK.VerticalWarehouse.Tab>
 	<CK.VerticalWarehouse.Inspect>库存 {0}/{1} 堆，共 {2} 件</CK.VerticalWarehouse.Inspect>
-	<CK.VerticalWarehouse.NoPower>未通电，无法存取。</CK.VerticalWarehouse.NoPower>
+	<CK.VerticalWarehouse.NoPower>未通电，温控停止；库存存取仍可用。</CK.VerticalWarehouse.NoPower>
 	<CK.VerticalWarehouse.NoConveyor>未连接履带；自动入/出库停止，请在本建筑四边接上履带。</CK.VerticalWarehouse.NoConveyor>
 	<CK.VerticalWarehouse.AutoConveyor>自动输出到履带</CK.VerticalWarehouse.AutoConveyor>
 	<CK.VerticalWarehouse.AutoConveyorDesc>开启时每 250 tick 把库内第一堆物品放到已连接的履带端口。</CK.VerticalWarehouse.AutoConveyorDesc>
