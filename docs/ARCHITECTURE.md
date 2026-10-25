@@ -77,14 +77,14 @@ Def 反序列化 / DefOf 绑定
 | `hygiene` | 参考 DBH | 占位：`OnDefsLoaded` 日志 + DBH 检测 |
 | `storage` | 参考 StackXXL | 占位：`OnDefsLoaded` 日志 + StackXXL 检测 |
 | `localization` | 参考 DevMenuChinese | **已移植**：加载 `Translations/DevMenuLabels.xml`，Postfix `DebugActionNode.LabelNow`，Debug 窗口 tooltip，翻译方案设置；检测原 Mod 冲突 |
-| `rjw` | 参考 RJW | 占位：`OnDefsLoaded` 日志 + RJW 检测；只做兼容层 |
+| `rjw` | 参考 RJW | **已迁移**：`Source/Rjw` 独立工程构建 `RJW.dll`，全量 Defs/Patches/Languages/Textures/Sounds 随包加载 |
 
 ## 6. 模块落地时的目录约定
 
 - 功能代码放 `Source/Modules/<Module>/`；Defs 放 `Defs/<Module>/`；补丁放 `Patches/<Module>/` 或 `Source/Compat/`。
 - 命名空间统一 `ColonyKit.Modules.<Module>`；`defName` 统一 `CK_` 前缀。
 - 来源 Mod 作为可选依赖时用 `ModsConfig.IsActive` 守卫；作为复制时不要写硬依赖。
-- 移植顺序：`localization` → `storage` → `hygiene` → `rjw`（见 [`参考源码映射.md`](参考源码映射.md)）。
+- 移植顺序：`localization` → `storage` → `hygiene`；`rjw` 已作为完整程序集迁入（见 [`参考源码映射.md`](参考源码映射.md)）。
 
 ## 7. 构建与校验
 

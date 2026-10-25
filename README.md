@@ -12,8 +12,8 @@
 | 目标游戏版本 | RimWorld 1.6.4871（`supportedVersions` 只写 `1.6`） |
 | 目标框架 | `net472` + `Krafs.Rimworld.Ref` |
 | 硬依赖 | Harmony（`brrainz.harmony`） |
-| 可选兼容 | DBH、Stack XXL、RJW（只检测/适配，不做硬依赖） |
-| 工程状态 | 0.0.2 框架已生成（M0 完成）；汉化已移植，立体库堆叠/内部库存/双向自动 Job/；淋浴/RJW 仍占位 |
+| 可选兼容 | DBH、Stack XXL（RJW 1.6 已内置，不再作为可选依赖） |
+| 工程状态 | 0.0.2 框架已生成（M0 完成）；汉化已移植，立体库/淋浴开发中；RJW 1.6 本体已迁入并随包构建 |
 
 > 本文件 2026-10-25 曾按 `CustomEnhance`（自定义强化）立项，同日先调整为 `ColonyKit` 五系统，随后追加智能机器人模块；旧的强化设计未实施。
 
@@ -28,11 +28,12 @@
 | 静态校验 | ✅ | `verify.ps1` 0 问题 / 0 警告 |
 | 汉化模块 | ✅ 已移植 | 开发者菜单 Debug 标签 + tooltip + 翻译方案设置；quicktest 自检通过，UI 未人工点击 |
 | 立体库 | ✅ 0.0.2 | 堆叠规则、2×2 内部库存、默认 12 堆、默认只收食物/草药/干草、过滤/优先级、可调温控、原版资源列表、底部管理标签页、立体仓库研究页签；账单/T2-T3 未做 |
-| 淋浴 / RJW | 📄 占位 | `hygiene` / `rjw`，`OnDefsLoaded` 只写日志 + 检测来源 Mod |
+| 淋浴 | 📄 占位 | `hygiene`，`OnDefsLoaded` 只写日志 + 检测来源 Mod |
+| RJW | ✅ 已内置 | `Source/Rjw` 独立工程 → `RJW.dll`；Defs/Patches/Languages/Textures/Sounds 全量迁入，外部 `rim.job.world` 不兼容 |
 | 实机 | ✅ quicktest | `-Deploy` + `-quicktest` 通过；未人工点 Debug 菜单/设置页 |
 | 来源映射 | ✅ | [docs/参考源码映射.md](docs/参考源码映射.md) |
 
-> 0.0.2 不改变游戏平衡；它验证「框架复制 → 改名 → 模块注册 → 构建/校验」链路，并同步 0.0.2 的 P0 修复；为后续移植 DBH / StackXXL / DevMenuChinese / RJW 的代码做准备。
+> 0.0.2 不改变游戏平衡；它验证「框架复制 → 改名 → 模块注册 → 构建/校验」链路，并同步 0.0.2 的 P0 修复；RJW 1.6 本体已作为独立程序集内置。
 
 ---
 
