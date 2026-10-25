@@ -48,6 +48,14 @@ namespace ColonyKit.Modules.Hygiene
 			bool assigned = !fixture.AssignedPawns.NullOrEmpty() && fixture.AssignedPawns.Contains(pawn);
 			if (!privateRoom && !assigned)
 			{
+				if (room?.Role?.defName == "CK_PublicBathroom")
+				{
+					ThoughtDef publicThought = DefDatabase<ThoughtDef>.GetNamedSilentFail("CK_PublicBathroom");
+					if (publicThought != null)
+					{
+						pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(publicThought);
+					}
+				}
 				return;
 			}
 			ThoughtDef thought = DefDatabase<ThoughtDef>.GetNamedSilentFail("CK_PrivateBathroom");
@@ -63,6 +71,27 @@ namespace ColonyKit.Modules.Hygiene
 			}
 			stage = Mathf.Clamp(stage, 0, thought.stages.Count - 1);
 			pawn.needs?.mood?.thoughts?.memories?.TryGainMemoryFast(thought, stage);
+		}
+
+		public static void ContaminationFromCellForPawn(Pawn pawn, IntVec3 cell)
+		{
+			if (pawn?.Map == null || !cell.InBounds(pawn.Map))
+			{
+				return;
+			}
+			bool dirty = false;
+			foreach (Thing thing in cell.GetThingList(pawn.Map))
+			{
+				if (thing is Filth)
+				{
+					dirty = true;
+					break;
+				}
+			}
+			if (dirty)
+			{
+				pawn.needs?.TryGetNeed<Need_Hygiene>()?.Contaminated();
+			}
 		}
 
 		public static void CheckForBlockage(Building building)

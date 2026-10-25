@@ -47,6 +47,7 @@ namespace ColonyKit.Modules.Hygiene
 				}
 				PrivacyUtil.ToiletPrivacyLOS(pawn);
 				SanitationUtil.CheckForBlockage(job.targetA.Thing as Building);
+				SanitationUtil.ContaminationFromCellForPawn(pawn, pawn.Position);
 				Building_Basin basin = FindBasin(pawn);
 				if (basin != null)
 				{
