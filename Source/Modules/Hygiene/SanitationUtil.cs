@@ -30,6 +30,9 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return;
 			}
+			// 脏水洗完后要把污染标记重新打上；否则 CleanContamination 会把
+			// “这次用脏水洗过”也一起洗掉。
+			pawn.needs?.TryGetNeed<Need_Hygiene>()?.Contaminated();
 			HediffDef badHygiene = HygieneDefOf.CK_BadHygiene;
 			if (badHygiene != null)
 			{

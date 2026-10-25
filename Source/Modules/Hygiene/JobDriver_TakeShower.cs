@@ -74,6 +74,9 @@ namespace ColonyKit.Modules.Hygiene
 					PrivacyUtil.BathingPrivacyLOS(pawn);
 					SanitationUtil.ApplyBathroomThought(pawn, shower);
 					SanitationUtil.WaterTempCheck(pawn, cold, false);
+					// 洗掉上一次留下的污染标记；如果这次用的水本身不干净，
+					// 紧接着的 ContaminationCheckWater 会重新标记。
+					pawn.needs?.TryGetNeed<Need_Hygiene>()?.CleanContamination();
 					SanitationUtil.ContaminationCheckWater(pawn, waterQuality);
 					SanitationUtil.CheckForBlockage(shower);
 				}
