@@ -3,7 +3,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_Shower</defName>
 		<label>simple shower</label>
-		<description>A 1x1 wall-mounted shower. Needs water and a working water heater for hot showers; without hot water it is a cold shower.</description>
+		<description>A 1x1 wall-mounted shower. Needs water. Powered showers are hot; without power, a working water heater on the same network can still provide hot water. Otherwise it is a cold shower.</description>
 		<thingClass>ColonyKit.Modules.Hygiene.Building_Shower</thingClass>
 		<size>(1,1)</size>
 		<tickerType>Rare</tickerType>
@@ -43,6 +43,11 @@
 			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
 				<mode>Water</mode>
 			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>75</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable" />
 		</comps>
 		<researchPrerequisites>
 			<li>CK_HygieneResearch</li>

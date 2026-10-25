@@ -41,6 +41,9 @@ namespace ColonyKit.Modules.Hygiene
 
 		public virtual float waterUsed => 0f;
 
+		/// <summary>Does this fixture refuse to work at all without power? Simple showers can still run cold.</summary>
+		public virtual bool PowerRequiredToUse => true;
+
 		public virtual FixtureType fixture => FixtureType.Undefined;
 
 		public virtual FixtureQuality Quality => FixtureQuality.normal;
@@ -211,7 +214,7 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return "CK.Hygiene.Blocked".Translate();
 			}
-			if (powerComp != null && !powerComp.PowerOn)
+			if (PowerRequiredToUse && powerComp != null && !powerComp.PowerOn)
 			{
 				return "NoPower".Translate();
 			}

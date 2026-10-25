@@ -18,7 +18,12 @@ namespace ColonyKit.Modules.Hygiene
 
 		public override FixtureType fixture => FixtureType.Bath;
 
-		public bool IsHot => powerComp != null && powerComp.PowerOn;
+		/// <summary>Simple showers may run cold without power; the power shower overrides this.</summary>
+		public override bool PowerRequiredToUse => false;
+
+		public bool IsHot =>
+			(powerComp != null && powerComp.PowerOn)
+			|| (pipe?.pipeNet?.HasHotWater == true);
 
 		public bool CanUse(Pawn pawn)
 		{

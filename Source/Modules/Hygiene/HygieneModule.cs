@@ -23,9 +23,21 @@ namespace ColonyKit.Modules.Hygiene
 				$"DBH active={ModsConfig.IsActive("dubwise.dubsbadhygiene")}");
 
 			ThingDef shower = DefDatabase<ThingDef>.GetNamedSilentFail("CK_Shower");
+			bool showerPower = false;
+			if (shower?.comps != null)
+			{
+				foreach (CompProperties comp in shower.comps)
+				{
+					if (comp is CompProperties_Power)
+					{
+						showerPower = true;
+						break;
+					}
+				}
+			}
 			ModLog.Info(
 				"Hygiene",
-				$"shower size={(shower == null ? "missing" : shower.size.ToString())}; " +
+				$"shower size={(shower == null ? "missing" : shower.size.ToString())}, power={showerPower}; " +
 				$"water defs: pipe={DefExists("CK_DbhWaterPipe")}, tank={DefExists("CK_DbhWaterTank")}, " +
 				$"giant={DefExists("CK_DbhWaterTankGiant")}, pump={DefExists("CK_DbhWaterPump")}, " +
 				$"well={DefExists("CK_DbhWaterWell")}, heater={DefExists("CK_DbhWaterHeater")}; " +
