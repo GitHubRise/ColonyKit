@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ColonyKitBlueprint schema="1">
+  <name>纯木恒温库房</name>
+  <sizeX>11</sizeX>
+  <sizeZ>14</sizeZ>
+  <createdTick>0</createdTick>
+  <entries>
+    <entry def="Wall" stuff="WoodLog" rot="0" x="4" z="0" />
+    <entry def="Door" stuff="WoodLog" rot="0" x="5" z="0" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="6" z="0" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="4" z="1" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="6" z="1" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="0" z="2" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="1" z="2" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="2" z="2" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="3" z="2" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="4" z="2" />
+    <entry def="Door" stuff="WoodLog" rot="0" x="5" z="2" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="6" z="2" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="7" z="2" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="8" z="2" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="9" z="2" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="10" z="2" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="0" z="3" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="10" z="3" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="0" z="4" />
+    <entry def="StandingLamp" rot="0" x="5" z="4" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="10" z="4" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="0" z="5" />
+    <entry def="Shelf" stuff="WoodLog" rot="0" x="1" z="5" />
+    <entry def="Shelf" stuff="WoodLog" rot="0" x="8" z="5" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="10" z="5" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="0" z="6" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="10" z="6" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="0" z="7" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="10" z="7" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="0" z="8" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="10" z="8" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="0" z="9" />
+    <entry def="Shelf" stuff="WoodLog" rot="0" x="1" z="9" />
+    <entry def="Shelf" stuff="WoodLog" rot="0" x="8" z="9" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="10" z="9" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="0" z="10" />
+    <entry def="StandingLamp" rot="0" x="5" z="10" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="10" z="10" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="0" z="11" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="10" z="11" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="0" z="12" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="1" z="12" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="2" z="12" />
+    <entry def="Cooler" rot="0" x="3" z="12" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="4" z="12" />
+    <entry def="Cooler" rot="0" x="5" z="12" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="6" z="12" />
+    <entry def="Cooler" rot="0" x="7" z="12" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="8" z="12" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="9" z="12" />
+    <entry def="Wall" stuff="WoodLog" rot="0" x="10" z="12" />
+    <entry def="PowerConduit" rot="0" x="0" z="13" />
+    <entry def="PowerConduit" rot="0" x="1" z="13" />
+    <entry def="PowerConduit" rot="0" x="2" z="13" />
+    <entry def="PowerConduit" rot="0" x="3" z="13" />
+    <entry def="PowerConduit" rot="0" x="4" z="13" />
+    <entry def="PowerConduit" rot="0" x="5" z="13" />
+    <entry def="PowerConduit" rot="0" x="6" z="13" />
+    <entry def="PowerConduit" rot="0" x="7" z="13" />
+    <entry def="PowerConduit" rot="0" x="8" z="13" />
+    <entry def="PowerConduit" rot="0" x="9" z="13" />
+    <entry def="PowerConduit" rot="0" x="10" z="13" />
+  </entries>
+</ColonyKitBlueprint>
