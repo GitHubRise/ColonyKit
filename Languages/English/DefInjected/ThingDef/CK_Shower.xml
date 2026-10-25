@@ -2,4 +2,6 @@
 <LanguageData>
 	<CK_Shower.label>shower</CK_Shower.label>
 	<CK_Shower.description>A 2x2 shower. Colonists use it when hygiene is low; powered showers are hot, unpowered showers are cold.</CK_Shower.description>
+	<CK_ShowerPower.label>power shower</CK_ShowerPower.label>
+	<CK_ShowerPower.description>DBH power shower: heats water on demand, cleans twice as fast, uses more water.</CK_ShowerPower.description>
 </LanguageData>

@@ -43,4 +43,49 @@
 			<li>CK_HygieneResearch</li>
 		</researchPrerequisites>
 	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_ShowerPower</defName>
+		<label>power shower</label>
+		<description>DBH power shower: heats water on demand, cleans twice as fast, uses more water.</description>
+		<thingClass>ColonyKit.Modules.Hygiene.Building_PowerShower</thingClass>
+		<size>(2,2)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_ShowerPower</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<shaderType>CutoutComplex</shaderType>
+		</graphicData>
+		<rotatable>true</rotatable>
+		<designationCategory>Furniture</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.2</fillPercent>
+		<staticSunShadowHeight>0.2</staticSunShadowHeight>
+		<castEdgeShadows>true</castEdgeShadows>
+		<uiIconScale>0.8</uiIconScale>
+		<costList>
+			<Steel>10</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<Mass>12</Mass>
+			<WorkToBuild>3000</WorkToBuild>
+			<Beauty>8</Beauty>
+			<Comfort>1.2</Comfort>
+			<Flammability>0</Flammability>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>75</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_HygieneResearch</li>
+		</researchPrerequisites>
+	</ThingDef>
 </Defs>
