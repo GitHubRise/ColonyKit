@@ -189,7 +189,7 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<ColonyKit.Settings.Storage.Tier1Fixed>Tier 1 is complete: the global limit is fixed at ×10 and this slider no longer applies. Tier 2/3 only affect stacks inside the vertical warehouse.</ColonyKit.Settings.Storage.Tier1Fixed>
 	<ColonyKit.Settings.Storage.WarehouseStacks>Warehouse capacity</ColonyKit.Settings.Storage.WarehouseStacks>
 	<ColonyKit.Settings.Storage.WarehouseStacksValue>{0} stacks</ColonyKit.Settings.Storage.WarehouseStacksValue>
-	<ColonyKit.Settings.Storage.WarehouseStacks.Desc>Stacks each warehouse can hold (default 24, range 1-200). Applies to existing and new warehouses immediately; lowering it never destroys stored items.</ColonyKit.Settings.Storage.WarehouseStacks.Desc>
+	<ColonyKit.Settings.Storage.WarehouseStacks.Desc>Stacks each warehouse can hold (default 12, range 1-200). Applies to existing and new warehouses immediately; lowering it never destroys stored items.</ColonyKit.Settings.Storage.WarehouseStacks.Desc>
 	<ColonyKit.Settings.Storage.LogChanges>Log each changed item</ColonyKit.Settings.Storage.LogChanges>
 	<ColonyKit.Settings.Storage.LogChanges.Desc>Only for compatibility debugging; writes one line per changed Def.</ColonyKit.Settings.Storage.LogChanges.Desc>
 	<ColonyKit.Settings.Storage.Apply>Apply again</ColonyKit.Settings.Storage.Apply>

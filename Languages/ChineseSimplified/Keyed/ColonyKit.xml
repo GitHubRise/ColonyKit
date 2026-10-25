@@ -189,7 +189,7 @@
 	<ColonyKit.Settings.Storage.Tier1Fixed>已完成一级立体仓库技术：全局堆叠固定 ×10，堆叠倍率滑条不再生效；二级/三级只影响立体库内部每堆。</ColonyKit.Settings.Storage.Tier1Fixed>
 	<ColonyKit.Settings.Storage.WarehouseStacks>立体库容量</ColonyKit.Settings.Storage.WarehouseStacks>
 	<ColonyKit.Settings.Storage.WarehouseStacksValue>{0} 堆</ColonyKit.Settings.Storage.WarehouseStacksValue>
-	<ColonyKit.Settings.Storage.WarehouseStacks.Desc>每座立体库可存的堆数（默认 24，范围 1–200）；对已建和新建仓库立即生效，调低不会丢失已存物品。</ColonyKit.Settings.Storage.WarehouseStacks.Desc>
+	<ColonyKit.Settings.Storage.WarehouseStacks.Desc>每座立体库可存的堆数（默认 12，范围 1–200）；对已建和新建仓库立即生效，调低不会丢失已存物品。</ColonyKit.Settings.Storage.WarehouseStacks.Desc>
 	<ColonyKit.Settings.Storage.LogChanges>记录每个物品的堆叠变化</ColonyKit.Settings.Storage.LogChanges>
 	<ColonyKit.Settings.Storage.LogChanges.Desc>只在排查兼容问题时开启，会为每个改动的 Def 写一行日志。</ColonyKit.Settings.Storage.LogChanges.Desc>
 	<ColonyKit.Settings.Storage.Apply>重新应用</ColonyKit.Settings.Storage.Apply>
