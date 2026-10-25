@@ -152,12 +152,44 @@ namespace ColonyKit.Modules.Robotics
 
 			if (data.areaMode == RobotAreaMode.Custom)
 			{
-				data.allowedAreaLabel = SettingsWidgets.TextField(
-					listing,
-					"ColonyKit.Settings.Robotics.AreaLabel".Loc(),
-					data.allowedAreaLabel,
-					48,
-					"ColonyKit.Settings.Robotics.AreaLabel.Desc".Loc());
+				if (Find.CurrentMap == null)
+				{
+					data.allowedAreaLabel = SettingsWidgets.TextField(
+						listing,
+						"ColonyKit.Settings.Robotics.AreaLabel".Loc(),
+						data.allowedAreaLabel,
+						48,
+						"ColonyKit.Settings.Robotics.AreaLabel.Desc".Loc());
+				}
+				else
+				{
+					List<string> areaLabels = new List<string> { "" };
+					foreach (Area area in Find.CurrentMap.areaManager.AllAreas)
+					{
+						if (area == null || area.Label.NullOrEmpty() || areaLabels.Contains(area.Label))
+						{
+							continue;
+						}
+						areaLabels.Add(area.Label);
+					}
+					if (!data.allowedAreaLabel.NullOrEmpty()
+						&& !areaLabels.Contains(data.allowedAreaLabel))
+					{
+						areaLabels.Add(data.allowedAreaLabel);
+					}
+					SettingsWidgets.Dropdown(
+						listing,
+						"ColonyKit.Settings.Robotics.AreaLabel".Loc(),
+						data.allowedAreaLabel,
+						areaLabels,
+						label => label.NullOrEmpty()
+							? "ColonyKit.Settings.Robotics.Unlimited".Loc()
+							: label,
+						label => data.allowedAreaLabel = label);
+					SettingsWidgets.Label(
+						listing,
+						"ColonyKit.Settings.Robotics.AreaLabel.Desc".Loc());
+				}
 			}
 
 			listing.Gap();
