@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_GutBug.label>肠道感染</CK_GutBug.label>
+	<CK_GutBug.description>因饮用脏水或卫生条件差而感染的肠道疾病。会呕吐、频繁上厕所，通常一天左右自行恢复。</CK_GutBug.description>
+	<CK_GutBug.stages.0.label>反胃</CK_GutBug.stages.0.label>
+	<CK_GutBug.stages.1.label>腹泻</CK_GutBug.stages.1.label>
+</LanguageData>

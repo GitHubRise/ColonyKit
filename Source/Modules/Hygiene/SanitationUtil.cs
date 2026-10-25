@@ -10,7 +10,22 @@ namespace ColonyKit.Modules.Hygiene
 	{
 		public static void GiveNastyGutBug(Pawn pawn, ContaminationLevel level)
 		{
-			// 肠道疾病/污水系统后续迁移；保留 DBH 调用点。
+			if (pawn?.health == null
+				|| level == ContaminationLevel.Treated
+				|| HygieneSettings.Current.contaminationChanceMultiplier <= 0f
+				|| HygieneDefOf.CK_GutBug == null
+				|| pawn.health.hediffSet.HasHediff(HygieneDefOf.CK_GutBug))
+			{
+				return;
+			}
+			pawn.health.AddHediff(HediffMaker.MakeHediff(HygieneDefOf.CK_GutBug, pawn));
+			if (PawnUtility.ShouldSendNotificationAbout(pawn))
+			{
+				Messages.Message(
+					"CK.Hygiene.GutBugMessage".Translate(pawn.LabelShort),
+					pawn,
+					MessageTypeDefOf.NegativeEvent);
+			}
 		}
 
 		public static void WaterTempCheck(Pawn pawn, bool cold, bool bath)

@@ -28,6 +28,42 @@
 		<showOnMechanoids>false</showOnMechanoids>
 	</StatDef>
 
+	<HediffDef ParentName="DiseaseBase">
+		<defName>CK_GutBug</defName>
+		<label>gut infection</label>
+		<description>A gut infection picked up from contaminated water or poor hygiene. Causes vomiting and frequent bathroom trips, then clears on its own.</description>
+		<initialSeverity>1</initialSeverity>
+		<isBad>true</isBad>
+		<makesSickThought>true</makesSickThought>
+		<tendable>true</tendable>
+		<comps>
+			<li Class="HediffCompProperties_TendDuration">
+				<baseTendDurationHours>24</baseTendDurationHours>
+				<severityPerDayTended>-0.5</severityPerDayTended>
+			</li>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-1</severityPerDay>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<label>queasy</label>
+				<vomitMtbDays>1.5</vomitMtbDays>
+				<statOffsets>
+					<CK_BladderRateMultiplier>0.25</CK_BladderRateMultiplier>
+				</statOffsets>
+			</li>
+			<li>
+				<minSeverity>0.5</minSeverity>
+				<label>sick</label>
+				<vomitMtbDays>0.75</vomitMtbDays>
+				<statOffsets>
+					<CK_BladderRateMultiplier>0.75</CK_BladderRateMultiplier>
+				</statOffsets>
+			</li>
+		</stages>
+	</HediffDef>
+
 	<HediffDef>
 		<defName>CK_BadHygiene</defName>
 		<label>bad hygiene</label>

@@ -151,6 +151,7 @@
 	<CK.Hygiene.PumpNoPower>Pump has no power.</CK.Hygiene.PumpNoPower>
 	<CK.Hygiene.HotWater>Hot shower</CK.Hygiene.HotWater>
 	<CK.Hygiene.HotWaterTemp>Hot water temperature: {0}%</CK.Hygiene.HotWaterTemp>
+	<CK.Hygiene.GutBugMessage>{0} caught a gut infection from dirty water or poor hygiene.</CK.Hygiene.GutBugMessage>
 	<CK.Hygiene.Alert.ShowerBlocked>Showers unavailable</CK.Hygiene.Alert.ShowerBlocked>
 	<CK.Hygiene.Alert.ShowerBlockedDesc>These showers have no water, a blocked drain, or no power:
 {0}</CK.Hygiene.Alert.ShowerBlockedDesc>

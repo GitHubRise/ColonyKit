@@ -151,6 +151,7 @@
 	<CK.Hygiene.PumpNoPower>水泵未通电。</CK.Hygiene.PumpNoPower>
 	<CK.Hygiene.HotWater>热水澡</CK.Hygiene.HotWater>
 	<CK.Hygiene.HotWaterTemp>热水温度: {0}%</CK.Hygiene.HotWaterTemp>
+	<CK.Hygiene.GutBugMessage>{0} 因脏水/卫生问题患上了肠道感染。</CK.Hygiene.GutBugMessage>
 	<CK.Hygiene.Alert.ShowerBlocked>淋浴器无法使用</CK.Hygiene.Alert.ShowerBlocked>
 	<CK.Hygiene.Alert.ShowerBlockedDesc>以下淋浴器断水、堵塞或断电：
 {0}</CK.Hygiene.Alert.ShowerBlockedDesc>

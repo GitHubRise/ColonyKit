@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_GutBug.label>gut infection</CK_GutBug.label>
+	<CK_GutBug.description>A gut infection picked up from contaminated water or poor hygiene. Causes vomiting and frequent bathroom trips, then clears on its own.</CK_GutBug.description>
+	<CK_GutBug.stages.0.label>queasy</CK_GutBug.stages.0.label>
+	<CK_GutBug.stages.1.label>sick</CK_GutBug.stages.1.label>
+</LanguageData>
