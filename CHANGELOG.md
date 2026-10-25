@@ -9,6 +9,7 @@
 - **开发者菜单「半英半中」乱码**：翻译表中 204 条由逐词替换生成的条目（`绘制河流Debug`、`Material报告`、`名称FromRulepack`、`小人生成Histogram` 等）全部改写为通顺中文；`DevLabelTranslations` 删掉 `HumanizeDefName` 逐词硬拼逻辑，Def/SoundDef 没有译名时直接显示英文原名，不再拼接「中文·英文」的杂交结果。
 - **开发者菜单物品名仍是英文**：尤兰（174 个）与龙族（27 个）两个没有中文包的种族 Mod 全量补齐中文词条（`menu="spawning"`），含服装、武器、建筑、食物、树、光效（Mote）、式神、包材等；另补萌螈飞花、古迹搜寻器、`FirefoamPopper`、`CloacalAnus/Penis/Vagina` 等杂项。词条同时按英文 label 与 defName 建立 key（共 342 个 key），列表显示 label 或 defName 都能命中。
 - **Def 名称回退**：`Translate` 在 defName 回退到本地化 label 后，会再按该英文 label 查一次表，避免「列表显示 defName、表里只有中文词条」时整列英文。
+- **音效/特效 Def 不再显示英文原名**：删除逐词硬拼后会暴露 30 个没有 `label` 的 `SoundDef`/`EffecterDef`（如 `Impact_YuranFlower_With_Slash`、`DRBowSound`），现补上中文（尤兰花斩命中特效、龙族弓弦声、萌螈剑气·超级等）。
 
 ### Changed
 

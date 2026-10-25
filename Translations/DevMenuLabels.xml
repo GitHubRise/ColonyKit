@@ -1348,5 +1348,35 @@
     <entry key="yurangrilledcorn" menu="spawning" zh="尤兰烤玉米" />
     <entry key="yryedoensisberriesriceball" menu="spawning" zh="尤兰饭团" />
     <entry key="yuranriceball" menu="spawning" zh="尤兰饭团" />
+    <entry key="yrwpblade" menu="spawning" minimal="true" zh="尤兰刀剑挥砍声" />
+    <entry key="makeyrmanekiusagi" menu="spawning" minimal="true" zh="招财兔像祈愿声" />
+    <entry key="makeyrmanekiusagieffecter" menu="spawning" minimal="true" zh="招财兔像祈愿特效" />
+    <entry key="impactyuranflowerwithslash" menu="spawning" minimal="true" zh="尤兰花斩命中特效" />
+    <entry key="impactyuranflowerwithstaff" menu="spawning" minimal="true" zh="尤兰花杖命中特效" />
+    <entry key="yrlinging" menu="spawning" minimal="true" zh="尤兰铃音" />
+    <entry key="yuranshellflowerstreamtree" menu="spawning" minimal="true" zh="尤兰花流护盾（树）" />
+    <entry key="yuranshellflowerstreamtreeyellow" menu="spawning" minimal="true" zh="尤兰花流护盾（树·金）" />
+    <entry key="makeyrbunkerstuneffecter" menu="spawning" minimal="true" zh="巫女术式眩晕特效" />
+    <entry key="yuranshellflowerlaunched" menu="spawning" minimal="true" zh="尤兰花流发射" />
+    <entry key="yuranshellspelllaunched" menu="spawning" minimal="true" zh="尤兰术式发射" />
+    <entry key="yrcursewordscast" menu="spawning" minimal="true" zh="尤兰咒语吟唱声" />
+    <entry key="yrshikigamiturtledeath" menu="spawning" minimal="true" zh="龟式神消散特效" />
+    <entry key="impactyuranflowerwithstaffyellow" menu="spawning" minimal="true" zh="尤兰金花杖命中特效" />
+    <entry key="yrblacksnakespelleffecter" menu="spawning" minimal="true" zh="黑蛇术式特效" />
+    <entry key="makeyrbunkerstuneffecteryellow" menu="spawning" minimal="true" zh="金色术式眩晕特效" />
+    <entry key="sealingspelleffecter" menu="spawning" minimal="true" zh="封印术式特效" />
+    <entry key="drhammersound" menu="spawning" minimal="true" zh="龙族钉锤声" />
+    <entry key="drbowsound" menu="spawning" minimal="true" zh="龙族弓弦声" />
+    <entry key="drshellairstream" menu="spawning" minimal="true" zh="龙族气流护盾" />
+    <entry key="dragoniandragonbornbreathfrostbitespew" menu="spawning" minimal="true" zh="龙族龙息（霜冻）" />
+    <entry key="dragoniandragonbornbreathflamespew" menu="spawning" minimal="true" zh="龙族龙息（火焰）" />
+    <entry key="drspewresolve" menu="spawning" minimal="true" zh="龙息消散声" />
+    <entry key="drspewresolveend" menu="spawning" minimal="true" zh="龙息消散声（结尾）" />
+    <entry key="drsoulmace" menu="spawning" minimal="true" zh="龙魂钉锤特效" />
+    <entry key="axolotlswordaurasuperwarmup" menu="spawning" minimal="true" zh="萌螈剑气·超级蓄力" />
+    <entry key="axolotlsoundswordaurasuper" menu="spawning" minimal="true" zh="萌螈剑气·超级" />
+    <entry key="axolotlsoundflowerslashfinal" menu="spawning" minimal="true" zh="萌螈花斩·终结" />
+    <entry key="axolotlsoundflamebreakerflash" menu="spawning" minimal="true" zh="萌螈破焰闪光" />
+    <entry key="axolotlsoundlaunchswordaura" menu="spawning" minimal="true" zh="萌螈挥出剑气" />
   </entries>
 </DevMenuTranslations>
