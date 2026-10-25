@@ -55,6 +55,9 @@
 			<WorkToBuild>500</WorkToBuild>
 		</statBases>
 		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
 			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterStorage">
 				<WaterStorageCap>2000</WaterStorageCap>
 			</li>
@@ -88,6 +91,9 @@
 			<WorkToBuild>1500</WorkToBuild>
 		</statBases>
 		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>250</basePowerConsumption>

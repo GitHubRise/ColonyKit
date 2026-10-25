@@ -1,3 +1,4 @@
+using ColonyKit.Modules.Hygiene.Dbh;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -26,7 +27,12 @@ namespace ColonyKit.Modules.Hygiene
 
 		public bool TryUseWater()
 		{
-			// 水网暂时是可选增强：有水就消耗，没有水也不会阻止洗澡。
+			CompPipe pipe = GetComp<CompPipe>();
+			if (pipe?.pipeNet != null && pipe.pipeNet.WaterTowers.Count > 0)
+			{
+				return pipe.pipeNet.PullWater(0.05f, out _);
+			}
+			// 还没接 DBH 管网时保留旧水网/无水兜底，避免淋浴器直接不可用。
 			if (WaterNetwork.HasInfrastructure(this))
 			{
 				WaterNetwork.TryConsume(this, 0.05f);
@@ -34,7 +40,18 @@ namespace ColonyKit.Modules.Hygiene
 			return true;
 		}
 
-		public float WaterAvailable => WaterNetwork.TotalWater(this);
+		public float WaterAvailable
+		{
+			get
+			{
+				CompPipe pipe = GetComp<CompPipe>();
+				if (pipe?.pipeNet != null && pipe.pipeNet.WaterTowers.Count > 0)
+				{
+					return pipe.pipeNet.WaterStorage;
+				}
+				return WaterNetwork.TotalWater(this);
+			}
+		}
 
 		public override string GetInspectString()
 		{

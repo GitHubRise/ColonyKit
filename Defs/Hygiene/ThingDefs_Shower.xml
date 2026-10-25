@@ -30,6 +30,9 @@
 			<Flammability>0</Flammability>
 		</statBases>
 		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>75</basePowerConsumption>
