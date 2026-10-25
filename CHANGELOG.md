@@ -18,6 +18,7 @@
 - **淋浴后清理**：移植 `ShowerCleanup`，淋浴成功结束后清掉淋浴器周围 2.5 格的 RJW 精液污渍，并把小人自己房间最多 12 格污渍排成一条原版 `JobDefOf.Clean` 工作（`playerForced`）。
 - **热水澡与如厕隐私**：`CK_ShowerHot` 现在会在热水淋浴完成后实际施加；新增 `CK_ToiletPrivacy` 念头，`ToiletPrivacyLOS` 按视线/情人/动物/机械体/囚犯规则判断，不再恒返回 false。
 - **卫生设施 Alert**：新增 `Alert_HygieneFixture`，玩家淋浴器、浴缸、洗手池或马桶断水/堵塞/断电时提示，点击可跳到问题建筑。
+- **淋浴占用/排队 Alert**：新增 `Alert_HygieneShowerBusy`，淋浴器被占用超过 1 小时，或卫生值低于 0.2 的殖民者既没有空淋浴器也没有空浴缸时提示；记录占用起始 tick 并随存档保存。
 - **DBH 式热水模型**：新增 `CompHeatStore` 热水罐（0–100% 归一化水温，`HeaterTemp` 随存档保存）；热水器/锅炉提供 `BoilerCapacity`，管网按 `HeatingCap = clamp01(BoilerCapacitySum / HeatStoreCapacitySum)` 决定目标水温；热水罐按 `RiseRate/FallRate` 升温/降温，洗澡时 `PullHotWater` 把 `heatPerTick × 热水用量倍率` 平均分摊到所有还有热水的罐。
 - **热水罐建筑 `CK_HotWaterTank`**：1×1、需要接到水网/热水器，可扩充热水容量；热水器 `CK_DbhWaterHeater` 改为 250 供热能力并自带一个小型热水罐，旧存档加载时会自动补齐新组件。
 - **热水用完会中途变冷**：淋浴每 tick 跟随 `PullHotWater` 结果更新 `cold`，浴缸同样；`CK.Hygiene.HotWaterTemp` 显示热水罐温度。

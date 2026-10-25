@@ -155,6 +155,11 @@
 	<CK.Hygiene.Alert.FixtureBlocked>Hygiene fixtures unavailable</CK.Hygiene.Alert.FixtureBlocked>
 	<CK.Hygiene.Alert.FixtureBlockedDesc>These hygiene fixtures have no water, a blocked drain, or no power:
 {0}</CK.Hygiene.Alert.FixtureBlockedDesc>
+	<CK.Hygiene.Alert.ShowerBusy>Shower queue / long occupation</CK.Hygiene.Alert.ShowerBusy>
+	<CK.Hygiene.Alert.ShowerBusyDesc>Some showers have been occupied for a long time, or someone needs a shower but none is free:
+{1}
+Waiting for a shower: {0}</CK.Hygiene.Alert.ShowerBusyDesc>
+	<CK.Hygiene.Alert.ShowerBusyLine>  - {0}: occupied for {1} h</CK.Hygiene.Alert.ShowerBusyLine>
 	<CK.Hygiene.ColdWater>Cold shower (no power)</CK.Hygiene.ColdWater>
 	<ColonyKit.Module.Hygiene.Name>Shower</ColonyKit.Module.Hygiene.Name>
 	<ColonyKit.Module.Hygiene.Desc>Hygiene need, shower and hot water; based on DBH.</ColonyKit.Module.Hygiene.Desc>

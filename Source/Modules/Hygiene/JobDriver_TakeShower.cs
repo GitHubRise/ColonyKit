@@ -38,6 +38,10 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				Building_Shower shower = job.targetA.Thing as Building_Shower;
 				cold = shower == null || !shower.IsHot;
+				if (shower != null)
+				{
+					shower.occupiedSinceTick = Find.TickManager.TicksGame;
+				}
 			};
 			wash.tickAction = () =>
 			{
@@ -68,6 +72,11 @@ namespace ColonyKit.Modules.Hygiene
 			};
 			wash.AddFinishAction(() =>
 			{
+				Building_Shower shower = job.targetA.Thing as Building_Shower;
+				if (shower != null)
+				{
+					shower.occupiedSinceTick = -1;
+				}
 				// finish action 在中断（断水/断电/征兆/精神崩溃）时也会执行；
 				// 没洗完就不该清污渍、给心情或清污染标记。
 				if (!completed)
@@ -75,7 +84,6 @@ namespace ColonyKit.Modules.Hygiene
 					return;
 				}
 				pawn.filth?.CarriedFilthListForReading?.Clear();
-				Building_Shower shower = job.targetA.Thing as Building_Shower;
 				if (shower != null)
 				{
 					PrivacyUtil.BathingPrivacyLOS(pawn);
