@@ -42,6 +42,12 @@ namespace ColonyKit.Modules.Storage
 				return;
 			}
 
+			// 直线入库：若沿某条直线能走到立体库，且端口履带朝仓库，则整条线朝仓库。
+			if (TryOrientInputLine())
+			{
+				return;
+			}
+
 			Rot4[] sides = { Rot4.North, Rot4.East, Rot4.South, Rot4.West };
 			for (int i = 0; i < sides.Length; i++)
 			{
@@ -80,13 +86,51 @@ namespace ColonyKit.Modules.Storage
 				IntVec3 warehouseCell = Position + side.Opposite.FacingCell;
 				if (warehouseCell.InBounds(Map)
 					&& warehouseCell.GetEdifice(Map) is Building_VerticalWarehouse warehouse
-					&& warehouse.PortCell(side) == Position)
+					&& warehouse.IsPortCell(side, Position))
 				{
 					away = side;
 					return true;
 				}
 			}
 			away = Rot4.Invalid;
+			return false;
+		}
+
+		/// <summary>沿直线找到立体库；若最后一段端口履带朝仓库，则本条履带也朝仓库。</summary>
+		private bool TryOrientInputLine()
+		{
+			Rot4[] sides = { Rot4.North, Rot4.East, Rot4.South, Rot4.West };
+			for (int i = 0; i < sides.Length; i++)
+			{
+				Rot4 dir = sides[i];
+				IntVec3 cell = Position;
+				Building_ConveyorBase lastConveyor = null;
+				for (int step = 0; step < 32; step++)
+				{
+					cell += dir.FacingCell;
+					if (!cell.InBounds(Map))
+					{
+						break;
+					}
+
+					Building edifice = cell.GetEdifice(Map);
+					if (edifice is Building_VerticalWarehouse)
+					{
+						if (lastConveyor != null && lastConveyor.OutputDirection == dir)
+						{
+							Rotation = dir;
+							return true;
+						}
+						break;
+					}
+					if (edifice is Building_ConveyorBase conveyor)
+					{
+						lastConveyor = conveyor;
+						continue;
+					}
+					break;
+				}
+			}
 			return false;
 		}
 

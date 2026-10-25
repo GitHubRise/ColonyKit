@@ -103,21 +103,61 @@ namespace ColonyKit.Modules.Storage
 			ConveyorWarning.Draw(position, Rot4.North, this);
 		}
 
-		/// <summary>每条边中央的接口格（建筑外侧）；按 Def 实际尺寸计算。</summary>
+		/// <summary>每条边中央的接口格（建筑外侧）；按实际 OccupiedRect 计算。</summary>
 		public IntVec3 PortCell(Rot4 side)
 		{
-			int width = def.size.x;
-			int height = def.size.z;
+			foreach (IntVec3 candidate in PortCandidates(side))
+			{
+				return candidate;
+			}
+			return IntVec3.Invalid;
+		}
+
+		public bool IsPortCell(Rot4 side, IntVec3 cell)
+		{
+			foreach (IntVec3 candidate in PortCandidates(side))
+			{
+				if (candidate == cell)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		private IEnumerable<IntVec3> PortCandidates(Rot4 side)
+		{
+			CellRect rect = GenAdj.OccupiedRect(this);
+			int width = rect.maxX - rect.minX + 1;
+			int height = rect.maxZ - rect.minZ + 1;
+			bool horizontal = side == Rot4.North || side == Rot4.South;
+			int span = horizontal ? width : height;
+			int start = horizontal ? rect.minX : rect.minZ;
+			int center = span / 2;
+
+			if (span % 2 == 0)
+			{
+				yield return MakePortCell(side, rect, start + center - 1);
+				yield return MakePortCell(side, rect, start + center);
+			}
+			else
+			{
+				yield return MakePortCell(side, rect, start + center);
+			}
+		}
+
+		private IntVec3 MakePortCell(Rot4 side, CellRect rect, int offset)
+		{
 			switch (side.AsInt)
 			{
 				case 0:
-					return Position + new IntVec3(width / 2, 0, height); // North
+					return new IntVec3(offset, 0, rect.maxZ + 1);
 				case 1:
-					return Position + new IntVec3(width, 0, height / 2); // East
+					return new IntVec3(rect.maxX + 1, 0, offset);
 				case 2:
-					return Position + new IntVec3(width / 2, 0, -1); // South
+					return new IntVec3(offset, 0, rect.minZ - 1);
 				default:
-					return Position + new IntVec3(-1, 0, height / 2); // West
+					return new IntVec3(rect.minX - 1, 0, offset);
 			}
 		}
 
@@ -135,23 +175,24 @@ namespace ColonyKit.Modules.Storage
 				return false;
 			}
 
-			// 只接受 1×1 履带，而且必须放在该边正中的端口格。
-			IntVec3 port = PortCell(side);
-			if (!port.InBounds(Map))
+			// 只接受 1×1 履带，而且必须在该边正中的端口格（偶数边有两个中央格）。
+			foreach (IntVec3 port in PortCandidates(side))
 			{
-				return false;
-			}
+				if (!port.InBounds(Map))
+				{
+					continue;
+				}
 
-			Building edifice = port.GetEdifice(Map);
-			if (!(edifice is Building_ConveyorBase conveyor)
-				|| conveyor.def.size.x != 1
-				|| conveyor.def.size.z != 1)
-			{
-				return false;
+				Building edifice = port.GetEdifice(Map);
+				if (edifice is Building_ConveyorBase conveyor
+					&& conveyor.def.size.x == 1
+					&& conveyor.def.size.z == 1)
+				{
+					cell = port;
+					return true;
+				}
 			}
-
-			cell = port;
-			return true;
+			return false;
 		}
 
 		/// <summary>找朝向建筑外侧的端口履带，用于仓库自动输出。</summary>
