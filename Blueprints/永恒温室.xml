@@ -93,19 +93,12 @@
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="36" z="7" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="8" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="9" z="8" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="18" z="8" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="27" z="8" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="36" z="8" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="9" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="8" z="9" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="9" z="9" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="10" z="9" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="26" z="9" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="27" z="9" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="28" z="9" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="36" z="9" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="10" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="9" z="10" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="27" z="10" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="36" z="10" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="11" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="36" z="11" />
@@ -120,26 +113,19 @@
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="16" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="36" z="16" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="17" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="9" z="17" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="18" z="17" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="27" z="17" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="36" z="17" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="18" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="36" z="18" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="19" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="36" z="19" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="20" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="9" z="20" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="27" z="20" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="36" z="20" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="8" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="9" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="10" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="26" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="27" z="21" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="28" z="21" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="36" z="21" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="22" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="9" z="22" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="27" z="22" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="36" z="22" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="23" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="36" z="23" />
@@ -148,6 +134,9 @@
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="25" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="36" z="25" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="26" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="9" z="26" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="18" z="26" />
+    <entry def="Wall" stuff="BlocksGranite" rot="0" x="27" z="26" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="36" z="26" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="27" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="36" z="27" />
@@ -160,20 +149,10 @@
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="31" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="36" z="31" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="32" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="9" z="32" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="27" z="32" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="36" z="32" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="33" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="8" z="33" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="9" z="33" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="10" z="33" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="26" z="33" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="27" z="33" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="28" z="33" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="36" z="33" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="34" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="9" z="34" />
-    <entry def="Wall" stuff="BlocksGranite" rot="0" x="27" z="34" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="36" z="34" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="0" z="35" />
     <entry def="Wall" stuff="BlocksGranite" rot="0" x="36" z="35" />
