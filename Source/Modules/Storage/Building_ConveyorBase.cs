@@ -111,9 +111,9 @@ namespace ColonyKit.Modules.Storage
 
 					// 履带出口对准立体库端口：直接送入内部库存，而不是把物品放在建筑格上。
 					if (next.GetEdifice(Map) is Building_VerticalWarehouse warehouse
-						&& warehouse.CanStore(item))
+						&& warehouse.HasAnyConveyorConnection)
 					{
-						if (warehouse.TryStore(item))
+						if (warehouse.TryStoreInNetwork(item))
 						{
 							break;
 						}

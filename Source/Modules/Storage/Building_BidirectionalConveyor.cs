@@ -23,7 +23,7 @@ namespace ColonyKit.Modules.Storage
 
 		/// <summary>
 		/// 自动方向优先级：
-		/// 1. 站在立体库正中端口：默认朝建筑外侧；
+		/// 1. 站在立体库正中端口：默认朝仓库（入库）；
 		/// 2. 上游履带正朝自己：沿用上游流向；
 		/// 3. 只有一条轴线有邻居：横向朝东、纵向朝北；
 		/// 4. 其他情况保留玩家旋转。
@@ -37,7 +37,8 @@ namespace ColonyKit.Modules.Storage
 
 			if (TryGetWarehousePort(out Rot4 away))
 			{
-				Rotation = away;
+				// 默认把端口履带朝向仓库，形成“入库”直线；反向 Gizmo 后变输出。
+				Rotation = away.Opposite;
 				return;
 			}
 

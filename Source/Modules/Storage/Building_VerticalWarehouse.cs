@@ -465,6 +465,42 @@ namespace ColonyKit.Modules.Storage
 			return true;
 		}
 
+		/// <summary>端口收到货时，若当前仓库满/过滤拒收，尝试同一互联网络里的其他仓库。</summary>
+		public bool TryStoreInNetwork(Thing thing)
+		{
+			if (thing == null)
+			{
+				return false;
+			}
+
+			var visited = new HashSet<Building_VerticalWarehouse>();
+			var stack = new Stack<Building_VerticalWarehouse>();
+			stack.Push(this);
+
+			while (stack.Count > 0)
+			{
+				Building_VerticalWarehouse current = stack.Pop();
+				if (current == null || !visited.Add(current))
+				{
+					continue;
+				}
+
+				if (current.CanStore(thing) && current.TryStore(thing))
+				{
+					return true;
+				}
+
+				foreach (Building_VerticalWarehouse neighbor in current.AdjacentWarehouses())
+				{
+					if (!visited.Contains(neighbor))
+					{
+						stack.Push(neighbor);
+					}
+				}
+			}
+			return false;
+		}
+
 		public bool TryWithdraw(Thing thing)
 		{
 			IntVec3 drop = TryFindConnectedPort(out IntVec3 port) ? port : InteractionCell;
