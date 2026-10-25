@@ -152,9 +152,9 @@
 	<CK.Hygiene.HotWater>Hot shower</CK.Hygiene.HotWater>
 	<CK.Hygiene.HotWaterTemp>Hot water temperature: {0}%</CK.Hygiene.HotWaterTemp>
 	<CK.Hygiene.GutBugMessage>{0} caught a gut infection from dirty water or poor hygiene.</CK.Hygiene.GutBugMessage>
-	<CK.Hygiene.Alert.ShowerBlocked>Showers unavailable</CK.Hygiene.Alert.ShowerBlocked>
-	<CK.Hygiene.Alert.ShowerBlockedDesc>These showers have no water, a blocked drain, or no power:
-{0}</CK.Hygiene.Alert.ShowerBlockedDesc>
+	<CK.Hygiene.Alert.FixtureBlocked>Hygiene fixtures unavailable</CK.Hygiene.Alert.FixtureBlocked>
+	<CK.Hygiene.Alert.FixtureBlockedDesc>These hygiene fixtures have no water, a blocked drain, or no power:
+{0}</CK.Hygiene.Alert.FixtureBlockedDesc>
 	<CK.Hygiene.ColdWater>Cold shower (no power)</CK.Hygiene.ColdWater>
 	<ColonyKit.Module.Hygiene.Name>Shower</ColonyKit.Module.Hygiene.Name>
 	<ColonyKit.Module.Hygiene.Desc>Hygiene need, shower and hot water; based on DBH.</ColonyKit.Module.Hygiene.Desc>

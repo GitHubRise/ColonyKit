@@ -25,9 +25,6 @@ namespace ColonyKit.Modules.Hygiene
 			(powerComp != null && powerComp.PowerOn)
 			|| (pipe?.pipeNet?.HasHotWater == true);
 
-		/// <summary>淋浴器必须接在同网有水的水管上；没有水网或自身开关关闭时不能使用。</summary>
-		public bool HasWaterSupply => pipe != null && !pipe.closed && pipe.pipeNet != null;
-
 		public bool CanUse(Pawn pawn)
 		{
 			return Spawned

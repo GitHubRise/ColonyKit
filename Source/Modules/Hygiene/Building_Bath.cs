@@ -25,8 +25,6 @@ namespace ColonyKit.Modules.Hygiene
 
 		public bool IsFull => WaterInTub >= waterUsed;
 
-		public bool HasWaterSupply => pipe != null && !pipe.closed && pipe.pipeNet != null;
-
 		public bool TryFillBath()
 		{
 			float amount = waterUsedPerTick * HygieneSettings.Current.waterUseMultiplier;

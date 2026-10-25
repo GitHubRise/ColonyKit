@@ -17,8 +17,6 @@ namespace ColonyKit.Modules.Hygiene
 
 		public override FixtureQuality Quality => FixtureQuality.normal;
 
-		public bool HasWaterSupply => pipe != null && !pipe.closed && pipe.pipeNet != null;
-
 		public bool TryUseWater(out ContaminationLevel contam)
 		{
 			contam = ContaminationLevel.Treated;

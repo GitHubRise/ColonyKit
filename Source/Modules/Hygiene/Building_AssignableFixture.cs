@@ -41,6 +41,9 @@ namespace ColonyKit.Modules.Hygiene
 
 		public virtual float waterUsed => 0f;
 
+		/// <summary>洁具必须接在同网有水的水管上；没有水网或自身阀门关闭时不可用。</summary>
+		public virtual bool HasWaterSupply => pipe != null && !pipe.closed && pipe.pipeNet != null;
+
 		/// <summary>Does this fixture refuse to work at all without power? Simple showers can still run cold.</summary>
 		public virtual bool PowerRequiredToUse => true;
 

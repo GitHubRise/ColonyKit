@@ -45,8 +45,6 @@ namespace ColonyKit.Modules.Hygiene
 			Scribe_Values.Look(ref seatUp, "seatUp", false);
 		}
 
-		public bool HasWaterSupply => pipe != null && !pipe.closed && pipe.pipeNet != null;
-
 		public bool TryUseFlush()
 		{
 			CompPipe waterPipe = pipe;
