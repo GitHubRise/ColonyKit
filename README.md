@@ -320,11 +320,11 @@ cd E:\RimWorld-WorkSpace\sources\ColonyKit
 
 **MVP**
 
-- `CK_VerticalWarehouse`（3×3，耗电）：内部 `ThingOwner` 容量默认 24 堆（研究后可升级），四边接履带，带过滤/优先级/可调温控。
+- `CK_VerticalWarehouse`（3×3，耗电）：内部 `ThingOwner` 容量默认 24 堆（设置页可调 1–200），四边接履带，带过滤/优先级/可调温控。
 - 入库：`WorkGiver_HaulToWarehouse` + `JobDriver_StoreInWarehouse`，小人把货送到「入库口」，物品被吸入库内（不占地图格）。
 - 出库：库面板选「取出」→ 生成 `JobDriver_WithdrawFromWarehouse` 把物品放到「出库口」或目标库存区；支持整堆/按数量。
 - UI：`ITab` 显示库存、过滤、优先级、填充度；Gizmo 提供「清空 / 禁止入库 / 升级」。
-- 容量分级：T1 24 堆 → T2 48 堆 → T3 96 堆（研究 + 材料升级）。
+- 容量：默认 24 堆，设置页可调；T1/T2/T3 研究提升堆叠倍率。
 - 存档：`ThingOwner` + 建筑状态，读档保持内容与过滤。
 
 **后续**：传送带/机械臂自动搬运、多库联动、温控/防虫、货架层数可视化。

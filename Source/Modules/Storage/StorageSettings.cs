@@ -10,6 +10,10 @@ namespace ColonyKit.Modules.Storage
 		public const int MinMultiplier = 1;
 		public const int MaxMultiplier = 20;
 
+		public const int MinWarehouseStacks = 1;
+		public const int MaxWarehouseStacks = 200;
+		public const int DefaultWarehouseStacks = 24;
+
 		public string SettingsKey => "storage";
 
 		/// <summary>是否启用堆叠增强。</summary>
@@ -18,6 +22,9 @@ namespace ColonyKit.Modules.Storage
 		/// <summary>所有可堆叠物品的堆叠上限倍率；1 等于原版。</summary>
 		public int stackMultiplier = 10;
 
+		/// <summary>每座立体库可存的堆数；对已建和新建仓库都生效。</summary>
+		public int warehouseStackCapacity = DefaultWarehouseStacks;
+
 		/// <summary>调试用：逐个 Def 打印堆叠上限变化。</summary>
 		public bool logChanges;
 
@@ -25,6 +32,7 @@ namespace ColonyKit.Modules.Storage
 		{
 			Scribe_Values.Look(ref enabled, "enabled", true);
 			Scribe_Values.Look(ref stackMultiplier, "stackMultiplier", 10);
+			Scribe_Values.Look(ref warehouseStackCapacity, "warehouseStackCapacity", DefaultWarehouseStacks);
 			Scribe_Values.Look(ref logChanges, "logChanges", false);
 		}
 
@@ -34,6 +42,12 @@ namespace ColonyKit.Modules.Storage
 			if (stackMultiplier < MinMultiplier || stackMultiplier > MaxMultiplier)
 			{
 				stackMultiplier = MinMultiplier;
+				changed = true;
+			}
+
+			if (warehouseStackCapacity < MinWarehouseStacks || warehouseStackCapacity > MaxWarehouseStacks)
+			{
+				warehouseStackCapacity = DefaultWarehouseStacks;
 				changed = true;
 			}
 
@@ -48,6 +62,7 @@ namespace ColonyKit.Modules.Storage
 		{
 			enabled = true;
 			stackMultiplier = 10;
+			warehouseStackCapacity = DefaultWarehouseStacks;
 			logChanges = false;
 		}
 	}

@@ -14,7 +14,17 @@ namespace ColonyKit.Modules.Storage
 	[StaticConstructorOnStartup]
 	public class Building_VerticalWarehouse : Building, IThingHolder, IStoreSettingsParent
 	{
-		public const int MaxStacks = 24;
+		/// <summary>每座立体库可存的堆数；从模块设置读取，默认 24，设置页可调。</summary>
+		public static int MaxStacks
+		{
+			get
+			{
+				ColonyKit.Modules.Storage.StorageSettings data =
+					ColonyKitMod.Settings?.GetModuleSettings<ColonyKit.Modules.Storage.StorageSettings>();
+				int value = data?.warehouseStackCapacity ?? StorageSettings.DefaultWarehouseStacks;
+				return Mathf.Clamp(value, StorageSettings.MinWarehouseStacks, StorageSettings.MaxWarehouseStacks);
+			}
+		}
 
 		private ThingOwner<Thing> innerContainer;
 		private RimWorld.StorageSettings storeSettings;

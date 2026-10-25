@@ -63,6 +63,22 @@ namespace ColonyKit.Modules.Storage
 				}
 			}
 
+			int beforeCapacity = data.warehouseStackCapacity;
+			int capacity = Mathf.RoundToInt(SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Storage.WarehouseStacks".Loc(),
+				data.warehouseStackCapacity,
+				StorageSettings.MinWarehouseStacks,
+				StorageSettings.MaxWarehouseStacks,
+				1f,
+				value => "ColonyKit.Settings.Storage.WarehouseStacksValue".Loc(value.ToString("0"))));
+
+			if (capacity != beforeCapacity)
+			{
+				data.warehouseStackCapacity = capacity;
+			}
+			SettingsWidgets.Label(listing, "ColonyKit.Settings.Storage.WarehouseStacks.Desc".Loc());
+
 			data.logChanges = SettingsWidgets.Checkbox(
 				listing,
 				"ColonyKit.Settings.Storage.LogChanges".Loc(),
