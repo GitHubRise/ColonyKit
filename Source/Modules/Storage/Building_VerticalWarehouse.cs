@@ -439,6 +439,7 @@ namespace ColonyKit.Modules.Storage
 				}
 				return false;
 			}
+			Map?.resourceCounter?.UpdateResourceCounts();
 			return true;
 		}
 
@@ -462,6 +463,7 @@ namespace ColonyKit.Modules.Storage
 				Container.TryAdd(taken, false);
 				return false;
 			}
+			Map?.resourceCounter?.UpdateResourceCounts();
 			return true;
 		}
 
