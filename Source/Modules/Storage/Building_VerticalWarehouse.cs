@@ -288,7 +288,7 @@ namespace ColonyKit.Modules.Storage
 		public Building_VerticalWarehouse()
 		{
 			innerContainer = new ThingOwner<Thing>(this);
-			settingsVersion = 2;
+			settingsVersion = 3;
 			EnsureStoreSettings();
 		}
 
@@ -304,7 +304,7 @@ namespace ColonyKit.Modules.Storage
 			}
 			EnsureStoreSettings();
 
-			if (Scribe.mode == LoadSaveMode.PostLoadInit && settingsVersion < 2)
+			if (Scribe.mode == LoadSaveMode.PostLoadInit && settingsVersion < 3)
 			{
 				MigrateLegacyDefaults();
 			}
@@ -312,7 +312,7 @@ namespace ColonyKit.Modules.Storage
 
 		private void MigrateLegacyDefaults()
 		{
-			// 0.0.2 早期默认是 Low/21°C，且允许腐烂/尸体；旧存档首次加载时迁移。
+			// 0.0.2 早期默认是 Low/21°C，且允许腐烂/尸体/堆块；旧存档首次加载时迁移。
 			if (storeSettings != null && storeSettings.Priority == StoragePriority.Low)
 			{
 				storeSettings.Priority = StoragePriority.Normal;
@@ -325,7 +325,7 @@ namespace ColonyKit.Modules.Storage
 			}
 
 			ApplyDefaultFilterRules();
-			settingsVersion = 2;
+			settingsVersion = 3;
 		}
 
 		private void EnsureStoreSettings()
@@ -357,6 +357,10 @@ namespace ColonyKit.Modules.Storage
 			if (ThingCategoryDefOf.Corpses != null)
 			{
 				storeSettings.filter.SetAllow(ThingCategoryDefOf.Corpses, false);
+			}
+			if (ThingCategoryDefOf.Chunks != null)
+			{
+				storeSettings.filter.SetAllow(ThingCategoryDefOf.Chunks, false);
 			}
 		}
 
