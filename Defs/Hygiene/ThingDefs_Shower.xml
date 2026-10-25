@@ -3,7 +3,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_Shower</defName>
 		<label>simple shower</label>
-		<description>A 1x1 wall-mounted shower. Needs water. Powered showers are hot; without power, a working water heater on the same network can still provide hot water. Otherwise it is a cold shower.</description>
+		<description>A 1x1 shower that can be placed anywhere. Needs water. Powered showers are hot; without power, a working water heater on the same network can still provide hot water. Otherwise it is a cold shower.</description>
 		<thingClass>ColonyKit.Modules.Hygiene.Building_Shower</thingClass>
 		<size>(1,1)</size>
 		<tickerType>Rare</tickerType>
@@ -19,15 +19,6 @@
 		<fillPercent>0.15</fillPercent>
 		<castEdgeShadows>false</castEdgeShadows>
 		<uiIconScale>0.8</uiIconScale>
-		<altitudeLayer>BuildingOnTop</altitudeLayer>
-		<terrainAffordanceNeeded IsNull="True" />
-		<building>
-			<isEdifice>false</isEdifice>
-			<isAttachment>true</isAttachment>
-		</building>
-		<placeWorkers>
-			<li>Placeworker_AttachedToWall</li>
-		</placeWorkers>
 		<costList>
 			<Steel>15</Steel>
 		</costList>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 	<CK_Shower.label>简易淋浴器</CK_Shower.label>
-	<CK_Shower.description>1×1 壁挂式淋浴器，必须贴在墙上。需要水。通电时为热水澡；断电时若同一水网有运行中的热水器也能洗热水澡，否则是冷水澡。</CK_Shower.description>
+	<CK_Shower.description>1×1 淋浴器，可独立放置，不再要求贴墙。需要水。通电时为热水澡；断电时若同一水网有运行中的热水器也能洗热水澡，否则是冷水澡。</CK_Shower.description>
 	<CK_ShowerPower.label>电热水淋浴器</CK_ShowerPower.label>
 	<CK_ShowerPower.description>DBH 电热水淋浴器：即热式，洗得更快，耗水更多。</CK_ShowerPower.description>
 </LanguageData>

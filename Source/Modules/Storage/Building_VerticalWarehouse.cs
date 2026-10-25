@@ -8,7 +8,7 @@ namespace ColonyKit.Modules.Storage
 {
 	/// <summary>
 	/// 2×2 立体库：内部 <see cref="ThingOwner{T}"/> 保管物品，面板直接存取。
-	/// 默认只收食物/草药/干草；温控默认 4°C。
+	/// 默认收食物/草药/干草/木头/植物类物资/麦芽（Wort）；温控默认 4°C。
 	/// </summary>
 	public class Building_VerticalWarehouse : Building, IThingHolder, IStoreSettingsParent
 	{
@@ -75,7 +75,7 @@ namespace ColonyKit.Modules.Storage
 		public Building_VerticalWarehouse()
 		{
 			innerContainer = new ThingOwner<Thing>(this);
-			settingsVersion = 4;
+			settingsVersion = 5;
 			EnsureStoreSettings();
 		}
 
@@ -91,9 +91,18 @@ namespace ColonyKit.Modules.Storage
 			}
 			EnsureStoreSettings();
 
-			if (Scribe.mode == LoadSaveMode.PostLoadInit && settingsVersion < 4)
+			if (Scribe.mode == LoadSaveMode.PostLoadInit)
 			{
-				MigrateLegacyDefaults();
+				if (settingsVersion < 4)
+				{
+					MigrateLegacyDefaults();
+				}
+				else if (settingsVersion < 5)
+				{
+					// v4 仓库保留玩家自定义过滤，只追加本次新增的默认物资。
+					AddExtendedDefaultItems();
+					settingsVersion = 5;
+				}
 			}
 		}
 
@@ -112,7 +121,7 @@ namespace ColonyKit.Modules.Storage
 			}
 
 			ApplyDefaultFilterRules();
-			settingsVersion = 4;
+			settingsVersion = 5;
 		}
 
 		private void EnsureStoreSettings()
@@ -148,10 +157,32 @@ namespace ColonyKit.Modules.Storage
 			{
 				storeSettings.filter.SetAllow(ThingDefOf.Hay, true);
 			}
+			AddExtendedDefaultItems();
 			SpecialThingFilterDef rotten = DefDatabase<SpecialThingFilterDef>.GetNamedSilentFail("AllowRotten");
 			if (rotten != null)
 			{
 				storeSettings.filter.SetAllow(rotten, false);
+			}
+		}
+
+		/// <summary>本次扩展的默认物资：木头、植物类、麦芽（Wort）。</summary>
+		private void AddExtendedDefaultItems()
+		{
+			if (storeSettings?.filter == null)
+			{
+				return;
+			}
+			if (ThingDefOf.WoodLog != null)
+			{
+				storeSettings.filter.SetAllow(ThingDefOf.WoodLog, true);
+			}
+			if (ThingCategoryDefOf.PlantMatter != null)
+			{
+				storeSettings.filter.SetAllow(ThingCategoryDefOf.PlantMatter, true);
+			}
+			if (ThingDefOf.Wort != null)
+			{
+				storeSettings.filter.SetAllow(ThingDefOf.Wort, true);
 			}
 		}
 

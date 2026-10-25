@@ -34,6 +34,10 @@ namespace ColonyKit.Modules.Storage
 				$"jobs: inbound={DefDatabase<WorkGiverDef>.GetNamedSilentFail("CK_HaulToWarehouse") != null}, " +
 				$"outbound={DefDatabase<WorkGiverDef>.GetNamedSilentFail("CK_WithdrawFromWarehouse") != null}, " +
 				$"jobDef={CKDefOf.CK_WithdrawFromWarehouse != null}");
+			ModLog.Info(
+				"Storage",
+				$"default filter extras: wood={ThingDefOf.WoodLog != null}, " +
+				$"plantMatter={ThingCategoryDefOf.PlantMatter != null}, wort={ThingDefOf.Wort != null}");
 		}
 
 		public override void ResetRuntimeState()

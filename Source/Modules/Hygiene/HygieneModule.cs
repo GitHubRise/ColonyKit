@@ -37,7 +37,8 @@ namespace ColonyKit.Modules.Hygiene
 			}
 			ModLog.Info(
 				"Hygiene",
-				$"shower size={(shower == null ? "missing" : shower.size.ToString())}, power={showerPower}; " +
+				$"shower size={(shower == null ? "missing" : shower.size.ToString())}, power={showerPower}, " +
+				$"wallAttached={(shower?.building?.isAttachment ?? false)}, placeWorkers={shower?.PlaceWorkers?.Count ?? 0}; " +
 				$"water defs: pipe={DefExists("CK_DbhWaterPipe")}, tank={DefExists("CK_DbhWaterTank")}, " +
 				$"giant={DefExists("CK_DbhWaterTankGiant")}, pump={DefExists("CK_DbhWaterPump")}, " +
 				$"well={DefExists("CK_DbhWaterWell")}, heater={DefExists("CK_DbhWaterHeater")}; " +

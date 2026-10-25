@@ -27,9 +27,9 @@
 | 构建 | ✅ | `build.ps1 -Clean` 0 error / 0 warning |
 | 静态校验 | ✅ | `verify.ps1` 0 问题 / 0 警告 |
 | 汉化模块 | ✅ 已移植 | 开发者菜单 Debug 标签 + tooltip + 翻译方案设置；quicktest 自检通过，UI 未人工点击 |
-| 立体库 | ✅ 0.0.2 | 堆叠规则、2×2 内部库存、默认 12 堆、默认只收食物/草药/干草、过滤/优先级、可调温控、原版资源列表、底部管理标签页、立体仓库研究页签；账单/T2-T3 未做 |
+| 立体库 | ✅ 0.0.2 | 堆叠规则、2×2 内部库存、默认 12 堆、默认收食物/草药/干草/木头/植物类/麦芽、过滤/优先级、可调温控、原版资源列表、底部管理标签页、立体仓库研究页签；账单/T2-T3 未做 |
 | 蓝图 | ✅ 0.0.2 首版 | 拉框捕获、幽灵预览/旋转/镜像、逐条校验、三档材料策略、每存档库、跨存档 XML 模板、设置页；上帝模式放置直接建成；地形/物品不含，实机待验 |
-| 淋浴/水网 | ✅ 0.0.3 | 1×1 壁挂淋浴器、`卫生` 建造菜单；DBH 风格 1×1 水管（可拖拽、可铺墙下）、1×1 水箱/2×2 巨型水箱、1×1 水泵、1×1 水井、1×1 热水器；泵需水井 |
+| 淋浴/水网 | ✅ 0.0.3 | 1×1 淋浴器（可独立放置）、`卫生` 建造菜单；DBH 风格 1×1 水管（可拖拽、可铺墙下）、1×1 水箱/2×2 巨型水箱、1×1 水泵、1×1 水井、1×1 热水器；泵需水井 |
 | RJW | ✅ 已内置 | `Source/Rjw` 独立工程 → `RJW.dll`；Defs/Patches/Languages/Textures/Sounds 全量迁入，外部 `rim.job.world` 不兼容 |
 | 实机 | ✅ quicktest | `-Deploy` + `-quicktest` 通过；未人工点 Debug 菜单/设置页 |
 | 来源映射 | ✅ | [docs/参考源码映射.md](docs/参考源码映射.md) |
@@ -307,7 +307,7 @@ cd E:\RimWorld-WorkSpace\sources\ColonyKit
 
 - `Need_Hygiene`（0–1）：缓慢下降，低于阈值触发「肮脏」念头；洗澡恢复，洗净后清空小人携带污渍（`pawn.filth.carriedFilth.Clear()`，DBH 的 `JobDriver_takeShower` 已有先例）。
 - 需求注入：`Pawn_NeedsTracker.ShouldHaveNeed` Postfix（参考 DBH `HarmonyPatches.cs`），只给能洗澡的人形加。
-- `CK_Shower`（1×1，贴墙或独立均可）：需要水网供水 + 用电加热；`JobDriver_TakeShower` 预约、脱战、洗澡、消耗水、恢复需求。
+- `CK_Shower`（1×1，可独立放置）：需要水网供水 + 用电加热；`JobDriver_TakeShower` 预约、脱战、洗澡、消耗水、恢复需求。
 - 热水：`CK_WaterHeater` 给管网加热水；没有热水/加热器关闭时洗冷水澡，给心情 debuff。
 - 念头：洁净、肮脏、冷水澡、今天洗过澡。
 - 研究「卫生设施」+ 建造材料 + 占位贴图。
@@ -323,7 +323,7 @@ cd E:\RimWorld-WorkSpace\sources\ColonyKit
 
 **MVP**
 
-- `CK_VerticalWarehouse`（2×2，耗电）：内部 `ThingOwner` 容量默认 12 堆（设置页可调），默认只收食物/草药/干草，带过滤/优先级/可调温控。
+- `CK_VerticalWarehouse`（2×2，耗电）：内部 `ThingOwner` 容量默认 12 堆（设置页可调），默认收食物/草药/干草/木头/植物类/麦芽，带过滤/优先级/可调温控。
 - 入库：`WorkGiver_HaulToWarehouse` + `JobDriver_StoreInWarehouse`，小人把货送到「入库口」，物品被吸入库内（不占地图格）。
 - 出库：库面板选「取出」→ 生成 `JobDriver_WithdrawFromWarehouse` 把物品放到「出库口」或目标库存区；支持整堆/按数量。
 - UI：`ITab` 显示库存、过滤、优先级、填充度；Gizmo 提供「清空 / 禁止入库 / 升级」。

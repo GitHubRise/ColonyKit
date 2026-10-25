@@ -3,7 +3,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_VerticalWarehouse</defName>
 		<label>vertical warehouse</label>
-		<description>A 2x2 internal warehouse. Colonists can drop items into it and take them out from the inspect pane; contents are stored inside the building and do not occupy map cells. By default it only accepts food, herbal medicine and hay; internal temperature is adjustable like a cooler.</description>
+		<description>A 2x2 internal warehouse. Colonists can drop items into it and take them out from the inspect pane; contents are stored inside the building and do not occupy map cells. By default it accepts food, herbal medicine, hay, wood, plant matter and wort; internal temperature is adjustable like a cooler.</description>
 		<thingClass>ColonyKit.Modules.Storage.Building_VerticalWarehouse</thingClass>
 		<size>(2,2)</size>
 		<graphicData>
