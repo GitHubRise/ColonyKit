@@ -64,4 +64,16 @@
 			</li>
 		</stages>
 	</ThoughtDef>
+	<ThoughtDef>
+		<defName>CK_PrivateBathroom</defName>
+		<durationDays>1</durationDays>
+		<stackLimit>1</stackLimit>
+		<stages>
+			<li>
+				<label>my own bathroom</label>
+				<description>I had a private bathroom all to myself.</description>
+				<baseMoodEffect>3</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
 </Defs>

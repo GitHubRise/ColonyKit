@@ -38,7 +38,16 @@ namespace ColonyKit.Modules.Hygiene
 
 		public static void ApplyBathroomThought(Pawn pawn, Building_AssignableFixture fixture)
 		{
-			// 浴室隐私/分配系统后续迁移。
+			if (pawn == null || fixture == null || fixture.AssignedPawns.NullOrEmpty()
+				|| !fixture.AssignedPawns.Contains(pawn))
+			{
+				return;
+			}
+			ThoughtDef thought = DefDatabase<ThoughtDef>.GetNamedSilentFail("CK_PrivateBathroom");
+			if (thought != null)
+			{
+				pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(thought);
+			}
 		}
 
 		public static void CheckForBlockage(Building building)
