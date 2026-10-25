@@ -65,6 +65,18 @@
 		</stages>
 	</ThoughtDef>
 	<ThoughtDef>
+		<defName>CK_ToiletPrivacy</defName>
+		<durationDays>0.1</durationDays>
+		<stackLimit>4</stackLimit>
+		<stages>
+			<li>
+				<label>no toilet privacy</label>
+				<description>Someone saw me using the toilet and it made me uncomfortable.</description>
+				<baseMoodEffect>-3</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+	<ThoughtDef>
 		<defName>CK_SoiledSelf</defName>
 		<durationDays>1</durationDays>
 		<stackLimit>3</stackLimit>

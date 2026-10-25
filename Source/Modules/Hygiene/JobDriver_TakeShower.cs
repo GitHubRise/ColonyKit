@@ -86,6 +86,8 @@ namespace ColonyKit.Modules.Hygiene
 					pawn.needs?.TryGetNeed<Need_Hygiene>()?.CleanContamination();
 					SanitationUtil.ContaminationCheckWater(pawn, waterQuality);
 					SanitationUtil.CheckForBlockage(shower);
+					ShowerCleanup.ClearCumAround(pawn, shower.Position);
+					ShowerCleanup.TryQueueRoomCleaning(pawn);
 				}
 			});
 			yield return wash;

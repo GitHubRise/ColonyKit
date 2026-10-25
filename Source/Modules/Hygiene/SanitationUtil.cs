@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using RimWorld;
 using UnityEngine;
 using Verse;
+using Verse.AI;
 
 namespace ColonyKit.Modules.Hygiene
 {
@@ -13,11 +15,19 @@ namespace ColonyKit.Modules.Hygiene
 
 		public static void WaterTempCheck(Pawn pawn, bool cold, bool bath)
 		{
-			if (!cold || pawn?.needs?.mood?.thoughts?.memories == null)
+			if (pawn?.needs?.mood?.thoughts?.memories == null)
 			{
 				return;
 			}
-			ThoughtDef thought = DefDatabase<ThoughtDef>.GetNamedSilentFail("CK_ShowerCold");
+			ThoughtDef thought = null;
+			if (cold)
+			{
+				thought = DefDatabase<ThoughtDef>.GetNamedSilentFail("CK_ShowerCold");
+			}
+			else if (!bath)
+			{
+				thought = DefDatabase<ThoughtDef>.GetNamedSilentFail("CK_ShowerHot");
+			}
 			if (thought != null)
 			{
 				pawn.needs.mood.thoughts.memories.TryGainMemory(thought);
@@ -158,7 +168,47 @@ namespace ColonyKit.Modules.Hygiene
 
 		public static bool ToiletPrivacyLOS(Pawn source, float radius = 7f)
 		{
+			if (source == null
+				|| !source.Spawned
+				|| source.Map == null
+				|| !source.Map.IsPlayerHome
+				|| source.IsPrisoner
+				|| source.RaceProps.Animal
+				|| source.IsWildMan())
+			{
+				return false;
+			}
+			foreach (Thing thing in GenRadial.RadialDistinctThingsAround(
+				source.Position, source.Map, radius, true))
+			{
+				if (thing is Pawn other && other != source && source.CaresIfSeenShittingBy(other))
+				{
+					ThoughtDef privacy = DefDatabase<ThoughtDef>.GetNamedSilentFail("CK_ToiletPrivacy");
+					if (privacy != null)
+					{
+						source.needs?.mood?.thoughts?.memories?.TryGainMemory(privacy);
+					}
+					return true;
+				}
+			}
 			return false;
+		}
+
+		private static bool CaresIfSeenShittingBy(this Pawn source, Pawn target)
+		{
+			if (target == null || target.RaceProps.Animal || target.RaceProps.IsMechanoid)
+			{
+				return false;
+			}
+			if (LovePartnerRelationUtility.LovePartnerRelationExists(source, target))
+			{
+				return false;
+			}
+			if (source.Map == null || target.Map != source.Map)
+			{
+				return false;
+			}
+			return GenSight.LineOfSight(source.Position, target.Position, source.Map);
 		}
 
 		public static bool CaresIfSeenBathingBy(this Pawn source, Pawn target)
@@ -185,13 +235,122 @@ namespace ColonyKit.Modules.Hygiene
 
 	internal static class ShowerCleanup
 	{
-		public static void ClearCumAround(Pawn pawn, IntVec3 cell)
+		private const float CumCleanRadius = 2.5f;
+		private const int MaxRoomFilth = 12;
+
+		private static readonly string[] CumFilthDefNames =
 		{
-			// RJW 污渍清理后续接。
+			"FilthCum",
+			"FilthGirlCum",
+			"FilthInsectCum",
+			"ResinCum"
+		};
+
+		private static HashSet<ThingDef> cumFilthDefs;
+
+		private static HashSet<ThingDef> CumFilthDefs
+		{
+			get
+			{
+				if (cumFilthDefs == null)
+				{
+					cumFilthDefs = new HashSet<ThingDef>();
+					for (int i = 0; i < CumFilthDefNames.Length; i++)
+					{
+						ThingDef def = DefDatabase<ThingDef>.GetNamedSilentFail(CumFilthDefNames[i]);
+						if (def != null)
+						{
+							cumFilthDefs.Add(def);
+						}
+					}
+				}
+				return cumFilthDefs;
+			}
 		}
 
+		/// <summary>清掉淋浴器周围 2.5 格内的 RJW 精液污渍；没装 RJW 时集合为空。</summary>
+		public static void ClearCumAround(Pawn pawn, IntVec3 center)
+		{
+			if (!CanRun(pawn) || CumFilthDefs.Count == 0)
+			{
+				return;
+			}
+			Map map = pawn.Map;
+			foreach (IntVec3 cell in GenRadial.RadialCellsAround(center, CumCleanRadius, true))
+			{
+				if (!cell.InBounds(map))
+				{
+					continue;
+				}
+				List<Thing> things = cell.GetThingList(map);
+				for (int i = things.Count - 1; i >= 0; i--)
+				{
+					if (things[i] is Filth filth && CumFilthDefs.Contains(filth.def))
+					{
+						filth.Destroy(DestroyMode.Vanish);
+					}
+				}
+			}
+		}
+
+		/// <summary>把小人自己房间里的污渍排成一条原版清洁工作。</summary>
 		public static void TryQueueRoomCleaning(Pawn pawn)
 		{
+			if (!CanRun(pawn)
+				|| pawn.Downed
+				|| pawn.Dead
+				|| pawn.InMentalState
+				|| pawn.WorkTypeIsDisabled(WorkTypeDefOf.Cleaning)
+				|| !pawn.health.capacities.CapableOf(PawnCapacityDefOf.Manipulation))
+			{
+				return;
+			}
+			Building_Bed bed = pawn.ownership?.OwnedBed;
+			Room room = bed?.GetRoom();
+			if (room == null)
+			{
+				return;
+			}
+			List<Filth> filths = new List<Filth>();
+			foreach (IntVec3 cell in room.Cells)
+			{
+				List<Thing> things = cell.GetThingList(pawn.Map);
+				for (int i = 0; i < things.Count; i++)
+				{
+					if (!(things[i] is Filth filth)
+						|| filth.Destroyed
+						|| !filth.Position.InAllowedArea(pawn)
+						|| !pawn.CanReach(filth, PathEndMode.Touch, Danger.Some))
+					{
+						continue;
+					}
+					filths.Add(filth);
+					if (filths.Count >= MaxRoomFilth)
+					{
+						break;
+					}
+				}
+				if (filths.Count >= MaxRoomFilth)
+				{
+					break;
+				}
+			}
+			if (filths.Count == 0)
+			{
+				return;
+			}
+			Job job = JobMaker.MakeJob(JobDefOf.Clean);
+			for (int i = 0; i < filths.Count; i++)
+			{
+				job.AddQueuedTarget(TargetIndex.A, filths[i]);
+			}
+			job.playerForced = true;
+			pawn.jobs.jobQueue.EnqueueFirst(job);
+		}
+
+		private static bool CanRun(Pawn pawn)
+		{
+			return pawn != null && pawn.Spawned && pawn.Map != null;
 		}
 	}
 }
