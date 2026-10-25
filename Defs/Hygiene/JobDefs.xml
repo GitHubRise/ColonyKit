@@ -26,4 +26,9 @@
 		<reportString>using the toilet.</reportString>
 		<casualInterruptible>true</casualInterruptible>
 	</JobDef>
+	<JobDef>
+		<defName>CK_EmptySepticTank</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_EmptySepticTank</driverClass>
+		<reportString>emptying septic tank.</reportString>
+	</JobDef>
 </Defs>

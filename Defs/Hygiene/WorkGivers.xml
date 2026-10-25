@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<WorkGiverDef>
+		<defName>CK_EmptySepticTank</defName>
+		<label>empty septic tank</label>
+		<giverClass>ColonyKit.Modules.Hygiene.WorkGiver_EmptySepticTank</giverClass>
+		<workType>Cleaning</workType>
+		<verb>empty</verb>
+		<gerund>emptying</gerund>
+		<priorityInType>4</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+</Defs>

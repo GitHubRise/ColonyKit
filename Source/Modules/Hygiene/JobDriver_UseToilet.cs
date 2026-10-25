@@ -25,6 +25,10 @@ namespace ColonyKit.Modules.Hygiene
 			use.socialMode = RandomSocialMode.Quiet;
 			use.initAction = () =>
 			{
+				if (job.targetA.Thing is Building_Toilet toilet)
+				{
+					toilet.seatUp = true;
+				}
 				PrivacyUtil.ToiletPrivacyLOS(pawn);
 				SanitationUtil.ApplyBathroomThought(pawn, job.targetA.Thing as Building_AssignableFixture);
 			};
@@ -37,6 +41,10 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				Building_Toilet toilet = job.targetA.Thing as Building_Toilet;
 				toilet?.TryUseFlush();
+				if (toilet != null && Rand.Chance(0.7f))
+				{
+					toilet.seatUp = false;
+				}
 				PrivacyUtil.ToiletPrivacyLOS(pawn);
 				SanitationUtil.CheckForBlockage(job.targetA.Thing as Building);
 				Building_Basin basin = FindBasin(pawn);

@@ -89,6 +89,7 @@
 		<designationCategory>Furniture</designationCategory>
 		<passability>PassThroughOnly</passability>
 		<fillPercent>0.3</fillPercent>
+		<tickerType>Rare</tickerType>
 		<costList>
 			<Steel>100</Steel>
 			<ComponentIndustrial>2</ComponentIndustrial>

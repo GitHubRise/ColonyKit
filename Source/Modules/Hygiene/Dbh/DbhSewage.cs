@@ -1,4 +1,5 @@
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace ColonyKit.Modules.Hygiene.Dbh
@@ -49,6 +50,45 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 			base.PostExposeData();
 			Scribe_Values.Look(ref Blocked, "Blocked", false);
 			Scribe_Values.Look(ref sewageBuffer, "sewageBuffer", 0f);
+		}
+
+		public float Empty(float amount)
+		{
+			float drained = Mathf.Min(sewageBuffer, amount);
+			sewageBuffer -= drained;
+			if (sewageBuffer < 0.01f)
+			{
+				sewageBuffer = 0f;
+				Blocked = false;
+			}
+			return drained;
+		}
+
+		public override void CompTickRare()
+		{
+			base.CompTickRare();
+			if (!Blocked && sewageBuffer >= Props.capacity)
+			{
+				Blocked = true;
+				SpillSewage();
+			}
+		}
+
+		private void SpillSewage()
+		{
+			if (parent?.Map == null)
+			{
+				return;
+			}
+			ThingDef filth = DefDatabase<ThingDef>.GetNamedSilentFail("FilthFaeces");
+			if (filth == null)
+			{
+				return;
+			}
+			foreach (IntVec3 cell in parent.OccupiedRect())
+			{
+				FilthMaker.TryMakeFilth(cell, parent.Map, filth);
+			}
 		}
 
 		public override string CompInspectStringExtra()
