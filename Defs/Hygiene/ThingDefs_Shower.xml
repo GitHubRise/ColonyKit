@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_Shower</defName>
+		<label>shower</label>
+		<description>A 2x2 shower. Colonists use it when hygiene is low; powered showers are hot, unpowered showers are cold.</description>
+		<thingClass>ColonyKit.Modules.Hygiene.Building_Shower</thingClass>
+		<size>(2,2)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_Shower</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<rotatable>true</rotatable>
+		<designationCategory>Furniture</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.2</fillPercent>
+		<staticSunShadowHeight>0.2</staticSunShadowHeight>
+		<castEdgeShadows>true</castEdgeShadows>
+		<uiIconScale>0.8</uiIconScale>
+		<costList>
+			<Steel>60</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<Mass>10</Mass>
+			<WorkToBuild>1200</WorkToBuild>
+			<Beauty>2</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>75</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_HygieneResearch</li>
+		</researchPrerequisites>
+	</ThingDef>
+</Defs>

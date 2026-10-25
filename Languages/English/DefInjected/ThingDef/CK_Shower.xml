@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_Shower.label>shower</CK_Shower.label>
+	<CK_Shower.description>A 2x2 shower. Colonists use it when hygiene is low; powered showers are hot, unpowered showers are cold.</CK_Shower.description>
+</LanguageData>

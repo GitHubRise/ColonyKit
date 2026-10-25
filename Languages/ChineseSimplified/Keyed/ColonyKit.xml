@@ -124,6 +124,8 @@
 	<ColonyKit.Module.Diagnostics.Name>诊断</ColonyKit.Module.Diagnostics.Name>
 	<ColonyKit.Module.Diagnostics.Desc>日志缓冲与诊断报告。</ColonyKit.Module.Diagnostics.Desc>
 
+	<CK.Hygiene.HotWater>热水澡</CK.Hygiene.HotWater>
+	<CK.Hygiene.ColdWater>冷水澡（未通电）</CK.Hygiene.ColdWater>
 	<ColonyKit.Module.Hygiene.Name>淋浴</ColonyKit.Module.Hygiene.Name>
 	<ColonyKit.Module.Hygiene.Desc>卫生需求、淋浴与热水；参考 DBH 的淋浴实现。</ColonyKit.Module.Hygiene.Desc>
 	<ColonyKit.Module.Storage.Name>立体库 / 物品堆叠</ColonyKit.Module.Storage.Name>

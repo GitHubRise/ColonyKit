@@ -124,6 +124,8 @@
 	<ColonyKit.Module.Diagnostics.Name>Diagnostics</ColonyKit.Module.Diagnostics.Name>
 	<ColonyKit.Module.Diagnostics.Desc>Log buffer and diagnostics report.</ColonyKit.Module.Diagnostics.Desc>
 
+	<CK.Hygiene.HotWater>Hot shower</CK.Hygiene.HotWater>
+	<CK.Hygiene.ColdWater>Cold shower (no power)</CK.Hygiene.ColdWater>
 	<ColonyKit.Module.Hygiene.Name>Shower</ColonyKit.Module.Hygiene.Name>
 	<ColonyKit.Module.Hygiene.Desc>Hygiene need, shower and hot water; based on DBH.</ColonyKit.Module.Hygiene.Desc>
 	<ColonyKit.Module.Storage.Name>Warehouse / stacking</ColonyKit.Module.Storage.Name>

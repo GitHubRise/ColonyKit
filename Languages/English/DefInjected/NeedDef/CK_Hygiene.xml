@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_Hygiene.label>hygiene</CK_Hygiene.label>
+	<CK_Hygiene.description>Personal cleanliness. Low hygiene causes a mood penalty; bathing restores it.</CK_Hygiene.description>
+</LanguageData>

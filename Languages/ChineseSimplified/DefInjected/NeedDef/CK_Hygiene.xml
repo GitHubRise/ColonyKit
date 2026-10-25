@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_Hygiene.label>卫生</CK_Hygiene.label>
+	<CK_Hygiene.description>个人清洁度。卫生过低会降低心情；洗澡可以恢复。</CK_Hygiene.description>
+</LanguageData>

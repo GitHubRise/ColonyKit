@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThoughtDef>
+		<defName>CK_HygieneDirty</defName>
+		<workerClass>ColonyKit.Modules.Hygiene.ThoughtWorker_Hygiene</workerClass>
+		<stages>
+			<li>
+				<label>filthy</label>
+				<description>I feel filthy. I need a shower.</description>
+				<baseMoodEffect>-8</baseMoodEffect>
+			</li>
+			<li>
+				<label>grimy</label>
+				<description>I could use a shower.</description>
+				<baseMoodEffect>-4</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+
+	<ThoughtDef>
+		<defName>CK_ShowerHot</defName>
+		<durationDays>1</durationDays>
+		<stackLimit>1</stackLimit>
+		<stages>
+			<li>
+				<label>refreshing shower</label>
+				<description>I just had a hot shower.</description>
+				<baseMoodEffect>2</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+
+	<ThoughtDef>
+		<defName>CK_ShowerCold</defName>
+		<durationDays>1</durationDays>
+		<stackLimit>1</stackLimit>
+		<stages>
+			<li>
+				<label>cold shower</label>
+				<description>That shower was freezing.</description>
+				<baseMoodEffect>-4</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+</Defs>

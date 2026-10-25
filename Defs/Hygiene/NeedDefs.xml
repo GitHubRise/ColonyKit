@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<NeedDef>
+		<defName>CK_Hygiene</defName>
+		<needClass>ColonyKit.Modules.Hygiene.Need_Hygiene</needClass>
+		<label>hygiene</label>
+		<description>Personal cleanliness. Low hygiene causes a mood penalty; bathing restores it.</description>
+		<baseLevel>0.8</baseLevel>
+		<minIntelligence>Humanlike</minIntelligence>
+		<listPriority>321</listPriority>
+		<showOnNeedList>true</showOnNeedList>
+	</NeedDef>
+</Defs>

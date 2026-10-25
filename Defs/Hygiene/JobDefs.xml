@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<JobDef>
+		<defName>CK_TakeShower</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_TakeShower</driverClass>
+		<reportString>showering.</reportString>
+		<casualInterruptible>true</casualInterruptible>
+		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+	</JobDef>
+</Defs>
