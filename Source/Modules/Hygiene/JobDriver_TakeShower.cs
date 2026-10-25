@@ -33,6 +33,12 @@ namespace ColonyKit.Modules.Hygiene
 			};
 			wash.tickAction = () =>
 			{
+				Building_Shower shower = job.targetA.Thing as Building_Shower;
+				if (shower == null || !shower.TryUseWater())
+				{
+					EndJobWith(JobCondition.Incompletable);
+					return;
+				}
 				Need_Hygiene need = pawn.needs?.TryGetNeed<Need_Hygiene>();
 				if (need != null)
 				{

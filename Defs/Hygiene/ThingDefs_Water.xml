@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_WaterPipe</defName>
+		<label>water pipe</label>
+		<description>Connects water pumps, tanks and showers.</description>
+		<thingClass>ColonyKit.Modules.Hygiene.Building_WaterPipe</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_WaterPipe</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<designationCategory>Furniture</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.05</fillPercent>
+		<staticSunShadowHeight>0.05</staticSunShadowHeight>
+		<uiIconScale>0.8</uiIconScale>
+		<costList>
+			<Steel>10</Steel>
+		</costList>
+		<statBases>
+			<MaxHitPoints>80</MaxHitPoints>
+			<Mass>3</Mass>
+			<WorkToBuild>200</WorkToBuild>
+			<Beauty>-1</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+		<researchPrerequisites>
+			<li>CK_HygieneResearch</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_WaterTank</defName>
+		<label>water tank</label>
+		<description>Stores up to 500 liters of water for showers.</description>
+		<thingClass>ColonyKit.Modules.Hygiene.Building_WaterTank</thingClass>
+		<size>(2,2)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_WaterTank</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<designationCategory>Furniture</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.3</fillPercent>
+		<staticSunShadowHeight>0.3</staticSunShadowHeight>
+		<castEdgeShadows>true</castEdgeShadows>
+		<uiIconScale>0.8</uiIconScale>
+		<costList>
+			<Steel>100</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Mass>30</Mass>
+			<WorkToBuild>1200</WorkToBuild>
+			<Beauty>-2</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+		<researchPrerequisites>
+			<li>CK_HygieneResearch</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_WaterPump</defName>
+		<label>water pump</label>
+		<description>Produces water for the connected tank and shower network.</description>
+		<thingClass>ColonyKit.Modules.Hygiene.Building_WaterPump</thingClass>
+		<size>(2,2)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_WaterPump</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<designationCategory>Furniture</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.25</fillPercent>
+		<staticSunShadowHeight>0.25</staticSunShadowHeight>
+		<castEdgeShadows>true</castEdgeShadows>
+		<uiIconScale>0.8</uiIconScale>
+		<tickerType>Rare</tickerType>
+		<costList>
+			<Steel>150</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<MaxHitPoints>350</MaxHitPoints>
+			<Mass>40</Mass>
+			<WorkToBuild>1800</WorkToBuild>
+			<Beauty>-3</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>250</basePowerConsumption>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_HygieneResearch</li>
+		</researchPrerequisites>
+	</ThingDef>
+</Defs>

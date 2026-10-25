@@ -127,6 +127,9 @@
 	<CK.Hygiene.TakeShower>去洗澡</CK.Hygiene.TakeShower>
 	<CK.Hygiene.TakeShowerDesc>让该殖民者前往最近的淋浴器。</CK.Hygiene.TakeShowerDesc>
 	<CK.Hygiene.NoShower>没有可用的淋浴器。</CK.Hygiene.NoShower>
+	<CK.Hygiene.WaterLevel>水量: {0}/{1} 升</CK.Hygiene.WaterLevel>
+	<CK.Hygiene.ShowerWater>供水: {0} 升</CK.Hygiene.ShowerWater>
+	<CK.Hygiene.PumpNoPower>水泵未通电。</CK.Hygiene.PumpNoPower>
 	<CK.Hygiene.HotWater>热水澡</CK.Hygiene.HotWater>
 	<CK.Hygiene.ColdWater>冷水澡（未通电）</CK.Hygiene.ColdWater>
 	<ColonyKit.Module.Hygiene.Name>淋浴</ColonyKit.Module.Hygiene.Name>

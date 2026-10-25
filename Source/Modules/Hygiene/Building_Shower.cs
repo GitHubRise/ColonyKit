@@ -20,9 +20,17 @@ namespace ColonyKit.Modules.Hygiene
 		public bool CanUse(Pawn pawn)
 		{
 			return Spawned
+				&& WaterAvailable >= 1f
 				&& pawn.CanReserve(this)
 				&& pawn.CanReach(this, PathEndMode.Touch, Danger.Deadly);
 		}
+
+		public bool TryUseWater()
+		{
+			return WaterNetwork.TryConsume(this, 0.05f);
+		}
+
+		public float WaterAvailable => WaterNetwork.TotalWater(this);
 
 		public override string GetInspectString()
 		{
@@ -34,6 +42,7 @@ namespace ColonyKit.Modules.Hygiene
 			text += IsHot
 				? "CK.Hygiene.HotWater".Translate()
 				: "CK.Hygiene.ColdWater".Translate();
+			text += "\n" + "CK.Hygiene.ShowerWater".Translate(WaterAvailable.ToString("F0"));
 			return text;
 		}
 	}

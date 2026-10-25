@@ -127,6 +127,9 @@
 	<CK.Hygiene.TakeShower>Take a shower</CK.Hygiene.TakeShower>
 	<CK.Hygiene.TakeShowerDesc>Send this colonist to the nearest shower.</CK.Hygiene.TakeShowerDesc>
 	<CK.Hygiene.NoShower>No usable shower available.</CK.Hygiene.NoShower>
+	<CK.Hygiene.WaterLevel>Water: {0}/{1} L</CK.Hygiene.WaterLevel>
+	<CK.Hygiene.ShowerWater>Supply: {0} L</CK.Hygiene.ShowerWater>
+	<CK.Hygiene.PumpNoPower>Pump has no power.</CK.Hygiene.PumpNoPower>
 	<CK.Hygiene.HotWater>Hot shower</CK.Hygiene.HotWater>
 	<CK.Hygiene.ColdWater>Cold shower (no power)</CK.Hygiene.ColdWater>
 	<ColonyKit.Module.Hygiene.Name>Shower</ColonyKit.Module.Hygiene.Name>

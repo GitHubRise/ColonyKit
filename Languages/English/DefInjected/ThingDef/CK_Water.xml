@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_WaterPipe.label>water pipe</CK_WaterPipe.label>
+	<CK_WaterPipe.description>Connects water pumps, tanks and showers.</CK_WaterPipe.description>
+	<CK_WaterTank.label>water tank</CK_WaterTank.label>
+	<CK_WaterTank.description>Stores up to 500 liters of water for showers.</CK_WaterTank.description>
+	<CK_WaterPump.label>water pump</CK_WaterPump.label>
+	<CK_WaterPump.description>Produces water for the connected tank and shower network. Requires power.</CK_WaterPump.description>
+</LanguageData>
