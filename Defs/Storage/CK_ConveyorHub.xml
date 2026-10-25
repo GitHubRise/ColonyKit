@@ -2,10 +2,10 @@
 <Defs>
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_ConveyorHub</defName>
-		<label>bidirectional conveyor hub</label>
-		<description>A 2x2 bidirectional conveyor hub. Items can enter and leave from any of the four sides; the central turntable handles turns. The texture is symmetric, so rotating the building does not change the footprint.</description>
+		<label>omnidirectional conveyor</label>
+		<description>A 2x2 omnidirectional conveyor. Items can enter and leave from any of the four sides; the central turntable handles turns. The texture is symmetric, so rotating the building does not change the footprint.</description>
 		<size>(2,2)</size>
-		<thingClass>ColonyKit.Modules.Storage.Building_ConveyorHub</thingClass>
+		<thingClass>ColonyKit.Modules.Storage.Building_OmnidirectionalConveyor</thingClass>
 		<graphicData>
 			<texPath>Things/Building/Storage/CK_ConveyorHub</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

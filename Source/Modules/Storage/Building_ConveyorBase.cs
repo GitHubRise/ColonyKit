@@ -8,7 +8,7 @@ namespace ColonyKit.Modules.Storage
 {
 	/// <summary>
 	/// 履带基类：处理方向、反向、30 tick 移动、相邻履带互通。
-	/// 1×1 直线履带与 2×2 转向履带只实现自己的 <see cref="OutputCell"/> 和 <see cref="TryNextCell"/>。
+	/// 1×1 双向履带与 2×2 全向履带只实现自己的 <see cref="OutputCell"/> 和 <see cref="TryNextCell"/>。
 	/// </summary>
 	[StaticConstructorOnStartup]
 	public abstract class Building_ConveyorBase : Building

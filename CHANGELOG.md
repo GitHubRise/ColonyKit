@@ -15,9 +15,9 @@
 - 立体库互联：8 向相邻的仓库组成网络，任一仓库接履带即可让全网络自动入/出库；无履带网络时建筑上方闪烁红色履带警告图标。
 - 立体库改为 **4×4**：北/东/南/西四个履带端口；自动入/出库必须至少连接一条履带；履带出口可直接把物品送入仓库。
 - 立体库加入 `CompTempControl` 温控：默认 4°C，像原版空调一样用温度 Gizmo 调节，按房间温度工作。
-- 1×1 `CK_ConveyorBelt` 直线履带：15 钢/1 零部件，支持正向/反向、30 tick/格移动，和 1×1/2×2 相邻履带互通。
+- 1×1 `CK_ConveyorBelt` 双向履带：15 钢/1 零部件，支持正向/反向、30 tick/格移动，和 1×1/2×2 相邻履带互通。
 - 履带跑马灯：`DrawAt` 叠加移动箭头，沿出口方向循环；2×2 与 1×1 共用基类。
-- `CK_ConveyorHub` 2×2 双向转向履带实体：256×256 四向/转盘贴图、可旋转、可通行、`maxItemsInCell=1`、30 tick/格实际移动、建筑朝向/反向 Gizmo 控制出口；`tools/generate_conveyor_texture.py` 可重新生成。
+- `CK_ConveyorHub` 2×2 全向履带实体：256×256 四向/转盘贴图、可旋转、可通行、`maxItemsInCell=1`、30 tick/格实际移动、建筑朝向/反向 Gizmo 控制出口；`tools/generate_conveyor_texture.py` 可重新生成。
 - 立体库双向自动 Job：`WorkGiver_HaulToWarehouse`（库存区满/无库存区或仓库优先级更高时复用原版 `HaulToContainer`）+ `WorkGiver_WithdrawFromWarehouse`/`JobDriver_WithdrawFromWarehouse`（送到更高优先级库存区）；仓库默认 Low 优先级做缓冲。
 - `CK_VerticalWarehouse` 接入原版 `IStoreSettingsParent`/`ITab_Storage`：过滤、优先级、搜索；`Accepts` 按过滤器拒收。
 - 「关于」页移除科技树分组、提示和打开按钮，只保留版本/包名/说明。

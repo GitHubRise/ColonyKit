@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-	<CK_ConveyorBelt.label>直线履带</CK_ConveyorBelt.label>
-	<CK_ConveyorBelt.description>1×1 直线履带，便宜、只支持正向/反向，不能转向。相邻的 1×1/2×2 履带会互相接货。</CK_ConveyorBelt.description>
+	<CK_ConveyorBelt.label>双向履带</CK_ConveyorBelt.label>
+	<CK_ConveyorBelt.description>1×1 双向履带，便宜、只支持正向/反向，不能转向。相邻的双向/全向履带会互相接货。</CK_ConveyorBelt.description>
 </LanguageData>

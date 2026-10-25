@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-	<CK_ConveyorHub.label>bidirectional conveyor hub</CK_ConveyorHub.label>
-	<CK_ConveyorHub.description>A 2x2 bidirectional conveyor hub. Items can enter and leave from any of the four sides; the central turntable handles turns. The texture is symmetric, so rotating the building does not change the footprint.</CK_ConveyorHub.description>
+	<CK_ConveyorHub.label>omnidirectional conveyor</CK_ConveyorHub.label>
+	<CK_ConveyorHub.description>A 2x2 omnidirectional conveyor. Items can enter and leave from any of the four sides; the central turntable handles turns. The texture is symmetric, so rotating the building does not change the footprint.</CK_ConveyorHub.description>
 </LanguageData>

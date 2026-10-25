@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-	<CK_ConveyorBelt.label>straight conveyor</CK_ConveyorBelt.label>
-	<CK_ConveyorBelt.description>A 1x1 straight conveyor. Cheap forward/backward belt; no turning. Adjacent 1x1/2x2 conveyors hand items over to each other.</CK_ConveyorBelt.description>
+	<CK_ConveyorBelt.label>bidirectional conveyor</CK_ConveyorBelt.label>
+	<CK_ConveyorBelt.description>A 1x1 bidirectional conveyor. Cheap forward/backward belt; no turning. Adjacent bidirectional/omnidirectional conveyors hand items over to each other.</CK_ConveyorBelt.description>
 </LanguageData>

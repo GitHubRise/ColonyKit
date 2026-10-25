@@ -3,10 +3,10 @@ using Verse;
 namespace ColonyKit.Modules.Storage
 {
 	/// <summary>
-	/// 2×2 双向转向履带：四边都能进，物品先对齐中央车道，再向建筑朝向的出口移动。
+	/// 2×2 全向履带：四边都能进，物品先对齐中央车道，再向建筑朝向的出口移动。
 	/// 反向 Gizmo 切换出口到对侧。
 	/// </summary>
-	public class Building_ConveyorHub : Building_ConveyorBase
+	public class Building_OmnidirectionalConveyor : Building_ConveyorBase
 	{
 		public override IntVec3 OutputCell
 		{
