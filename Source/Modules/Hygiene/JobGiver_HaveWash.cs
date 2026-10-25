@@ -10,11 +10,35 @@ namespace ColonyKit.Modules.Hygiene
 		public override float GetPriority(Pawn pawn)
 		{
 			Need_Hygiene need = pawn.needs?.TryGetNeed<Need_Hygiene>();
-			if (need == null || need.CurLevel >= 0.25f)
+			if (need == null || FoodUtility.ShouldBeFedBySomeone(pawn))
 			{
 				return 0f;
 			}
-			return 9.25f;
+
+			float threshold = 0.2f;
+			TraitDef hygienic = DefDatabase<TraitDef>.GetNamedSilentFail("Hygienic");
+			if (hygienic != null)
+			{
+				switch (pawn.story?.traits?.DegreeOfTrait(hygienic) ?? 0)
+				{
+					case 2: threshold = 0.4f; break;
+					case 1: threshold = 0.3f; break;
+					case 0: threshold = 0.2f; break;
+					case -1: threshold = 0.1f; break;
+					case -2: threshold = 0f; break;
+				}
+			}
+
+			if (pawn.mindState?.IsIdle == true)
+			{
+				threshold = 0.5f;
+			}
+			Need_Rest rest = pawn.needs?.TryGetNeed<Need_Rest>();
+			if (rest != null && rest.CurLevel > 0.95f)
+			{
+				threshold = 0.6f;
+			}
+			return need.CurLevel < threshold ? 9.25f : 0f;
 		}
 
 		protected override Job TryGiveJob(Pawn pawn)
