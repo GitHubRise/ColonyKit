@@ -1,0 +1,69 @@
+using ColonyKit.Modules.Hygiene.Dbh;
+using RimWorld;
+using Verse;
+using Verse.AI;
+
+namespace ColonyKit.Modules.Hygiene
+{
+	/// <summary>DBH Building_bath：1×2 浴缸，先注水再泡澡。</summary>
+	public class Building_Bath : Building_AssignableFixture
+	{
+		public float cleanedPerTick = 0.001f;
+		public float waterUsedPerTick = 1f;
+		public float heatUsedPerTick = 0.00025f;
+		public ContaminationLevel contamination = ContaminationLevel.Treated;
+		public float WaterInTub;
+		private bool cold = true;
+
+		public override float waterUsed => 190f;
+
+		public override FixtureType fixture => FixtureType.Bath;
+
+		public override FixtureQuality Quality => FixtureQuality.luxury;
+
+		public bool IsCold => cold;
+
+		public bool IsFull => WaterInTub >= waterUsed;
+
+		public bool TryFillBath()
+		{
+			if (pipe?.pipeNet == null)
+			{
+				cold = false;
+				WaterInTub += waterUsedPerTick;
+				return true;
+			}
+			if (!pipe.pipeNet.PullWater(waterUsedPerTick, out ContaminationLevel contam))
+			{
+				return false;
+			}
+			if (contam > contamination)
+			{
+				contamination = contam;
+			}
+			WaterInTub += waterUsedPerTick;
+			if (pipe.pipeNet.PullHotWater(heatUsedPerTick))
+			{
+				cold = false;
+			}
+			return true;
+		}
+
+		public bool TryPullPlug()
+		{
+			cold = true;
+			WaterInTub = 0f;
+			contamination = ContaminationLevel.Treated;
+			return true;
+		}
+
+		public bool CanUse(Pawn pawn)
+		{
+			return Spawned
+				&& PawnAllowed(pawn)
+				&& !Occupied(pawn)
+				&& pawn.CanReserve(this)
+				&& pawn.CanReach(this, PathEndMode.Touch, Danger.Deadly);
+		}
+	}
+}

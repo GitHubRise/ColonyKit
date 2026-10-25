@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_Basin</defName>
+		<label>basin</label>
+		<description>DBH-style bathroom basin for washing hands. Requires water.</description>
+		<thingClass>ColonyKit.Modules.Hygiene.Building_Basin</thingClass>
+		<size>(2,2)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_Basin</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<shaderType>CutoutComplex</shaderType>
+		</graphicData>
+		<rotatable>true</rotatable>
+		<designationCategory>Furniture</designationCategory>
+		<hasInteractionCell>true</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.15</fillPercent>
+		<costList>
+			<Steel>15</Steel>
+		</costList>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<Mass>5</Mass>
+			<WorkToBuild>550</WorkToBuild>
+			<Beauty>10</Beauty>
+			<Cleanliness>1</Cleanliness>
+			<Flammability>1</Flammability>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.CompProperties_Blockage" />
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_HygieneResearch</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_Bath</defName>
+		<label>bathtub</label>
+		<description>DBH-style bathtub. Needs 190 L and hot water for a hot bath.</description>
+		<thingClass>ColonyKit.Modules.Hygiene.Building_Bath</thingClass>
+		<size>(1,2)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_Bath</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1,2)</drawSize>
+			<shaderType>CutoutComplex</shaderType>
+		</graphicData>
+		<rotatable>true</rotatable>
+		<designationCategory>Furniture</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.15</fillPercent>
+		<costList>
+			<Steel>60</Steel>
+		</costList>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Mass>50</Mass>
+			<WorkToBuild>900</WorkToBuild>
+			<Beauty>10</Beauty>
+			<Comfort>0.9</Comfort>
+			<JoyGainFactor>0.7</JoyGainFactor>
+			<Flammability>1</Flammability>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.CompProperties_Blockage" />
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_HygieneResearch</li>
+		</researchPrerequisites>
+	</ThingDef>
+</Defs>

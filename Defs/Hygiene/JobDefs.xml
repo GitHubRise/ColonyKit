@@ -7,4 +7,17 @@
 		<casualInterruptible>true</casualInterruptible>
 		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
 	</JobDef>
+	<JobDef>
+		<defName>CK_WashHands</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_WashHands</driverClass>
+		<reportString>washing hands.</reportString>
+		<casualInterruptible>true</casualInterruptible>
+	</JobDef>
+
+	<JobDef>
+		<defName>CK_TakeBath</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_TakeBath</driverClass>
+		<reportString>bathing.</reportString>
+		<casualInterruptible>true</casualInterruptible>
+	</JobDef>
 </Defs>

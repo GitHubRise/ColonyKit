@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_Basin.label>洗手池</CK_Basin.label>
+	<CK_Basin.description>DBH 式洗手池，需要接水网。</CK_Basin.description>
+	<CK_Bath.label>浴缸</CK_Bath.label>
+	<CK_Bath.description>DBH 式 1×2 浴缸，需要 190 升水；有热水才能洗热水澡。</CK_Bath.description>
+</LanguageData>

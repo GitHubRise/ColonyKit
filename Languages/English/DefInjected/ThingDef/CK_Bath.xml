@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_Basin.label>basin</CK_Basin.label>
+	<CK_Basin.description>DBH-style bathroom basin for washing hands. Requires water.</CK_Basin.description>
+	<CK_Bath.label>bathtub</CK_Bath.label>
+	<CK_Bath.description>DBH-style bathtub. Needs 190 L and hot water for a hot bath.</CK_Bath.description>
+</LanguageData>

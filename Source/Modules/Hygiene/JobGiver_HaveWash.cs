@@ -67,6 +67,31 @@ namespace ColonyKit.Modules.Hygiene
 
 			if (best == null)
 			{
+				Building_Bath bestBath = null;
+				float bestBathDistance = float.MaxValue;
+				foreach (Building_Bath bath in pawn.Map.listerBuildings
+					.AllBuildingsColonistOfClass<Building_Bath>())
+				{
+					if (!bath.CanUse(pawn) || bath.IsForbidden(pawn))
+					{
+						continue;
+					}
+					float distance = pawn.Position.DistanceTo(bath.Position);
+					if (distance < bestBathDistance)
+					{
+						bestBathDistance = distance;
+						bestBath = bath;
+					}
+				}
+				if (bestBath != null)
+				{
+					JobDef bathJob = DefDatabase<JobDef>.GetNamedSilentFail("CK_TakeBath");
+					return bathJob == null ? null : JobMaker.MakeJob(bathJob, bestBath);
+				}
+			}
+
+			if (best == null)
+			{
 				return null;
 			}
 			JobDef jobDef = DefDatabase<JobDef>.GetNamedSilentFail("CK_TakeShower");
