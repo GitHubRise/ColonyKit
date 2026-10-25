@@ -13,7 +13,7 @@
 			<shaderType>CutoutComplex</shaderType>
 		</graphicData>
 		<rotatable>true</rotatable>
-		<designationCategory>Furniture</designationCategory>
+		<designationCategory>CK_Hygiene</designationCategory>
 		<hasInteractionCell>true</hasInteractionCell>
 		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
 		<passability>PassThroughOnly</passability>
@@ -54,9 +54,23 @@
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(1,1)</drawSize>
 		</graphicData>
-		<designationCategory>Furniture</designationCategory>
-		<passability>PassThroughOnly</passability>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<isInert>true</isInert>
+			<isEdifice>false</isEdifice>
+			<canLandGravshipOn>true</canLandGravshipOn>
+			<canConstructInCorner>true</canConstructInCorner>
+		</building>
+		<drawerType>MapMeshOnly</drawerType>
+		<altitudeLayer>Conduits</altitudeLayer>
+		<passability>Standable</passability>
+		<pathCost>0</pathCost>
 		<fillPercent>0.05</fillPercent>
+		<neverMultiSelect>true</neverMultiSelect>
+		<tickerType>Never</tickerType>
+		<drawStyleCategory>Default1D</drawStyleCategory>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>15</uiOrder>
 		<costList>
 			<Steel>10</Steel>
 		</costList>
@@ -86,7 +100,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(2,2)</drawSize>
 		</graphicData>
-		<designationCategory>Furniture</designationCategory>
+		<designationCategory>CK_Hygiene</designationCategory>
 		<passability>PassThroughOnly</passability>
 		<fillPercent>0.3</fillPercent>
 		<tickerType>Rare</tickerType>

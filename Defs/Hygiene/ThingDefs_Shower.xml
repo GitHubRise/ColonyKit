@@ -3,22 +3,31 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_Shower</defName>
 		<label>simple shower</label>
-		<description>A 2x2 shower. Needs water and a working water heater for hot showers; without hot water it is a cold shower.</description>
+		<description>A 1x1 wall-mounted shower. Needs water and a working water heater for hot showers; without hot water it is a cold shower.</description>
 		<thingClass>ColonyKit.Modules.Hygiene.Building_Shower</thingClass>
-		<size>(2,2)</size>
+		<size>(1,1)</size>
 		<tickerType>Rare</tickerType>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_Shower</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(2,2)</drawSize>
+			<drawSize>(1,1)</drawSize>
 		</graphicData>
 		<rotatable>true</rotatable>
-		<designationCategory>Furniture</designationCategory>
-		<passability>PassThroughOnly</passability>
-		<fillPercent>0.2</fillPercent>
-		<staticSunShadowHeight>0.2</staticSunShadowHeight>
-		<castEdgeShadows>true</castEdgeShadows>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<passability>Standable</passability>
+		<pathCost>0</pathCost>
+		<fillPercent>0.15</fillPercent>
+		<castEdgeShadows>false</castEdgeShadows>
 		<uiIconScale>0.8</uiIconScale>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<terrainAffordanceNeeded IsNull="True" />
+		<building>
+			<isEdifice>false</isEdifice>
+			<isAttachment>true</isAttachment>
+		</building>
+		<placeWorkers>
+			<li>Placeworker_AttachedToWall</li>
+		</placeWorkers>
 		<costList>
 			<Steel>15</Steel>
 		</costList>
@@ -53,7 +62,7 @@
 			<shaderType>CutoutComplex</shaderType>
 		</graphicData>
 		<rotatable>true</rotatable>
-		<designationCategory>Furniture</designationCategory>
+		<designationCategory>CK_Hygiene</designationCategory>
 		<passability>PassThroughOnly</passability>
 		<fillPercent>0.2</fillPercent>
 		<staticSunShadowHeight>0.2</staticSunShadowHeight>
