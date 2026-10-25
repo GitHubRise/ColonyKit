@@ -19,13 +19,12 @@
 		<castEdgeShadows>true</castEdgeShadows>
 		<uiIconScale>0.8</uiIconScale>
 		<costList>
-			<Steel>60</Steel>
-			<ComponentIndustrial>2</ComponentIndustrial>
+			<Steel>15</Steel>
 		</costList>
 		<statBases>
 			<MaxHitPoints>200</MaxHitPoints>
 			<Mass>10</Mass>
-			<WorkToBuild>1200</WorkToBuild>
+			<WorkToBuild>800</WorkToBuild>
 			<Beauty>2</Beauty>
 			<Flammability>0</Flammability>
 		</statBases>
