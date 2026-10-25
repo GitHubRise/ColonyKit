@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThinkTreeDef>
+		<defName>CK_NannyBot</defName>
+		<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+				<li Class="ThinkNode_Subtree">
+					<treeDef>Downed</treeDef>
+				</li>
+				<li Class="ThinkNode_QueuedJob" />
+				<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotCharge" />
+				<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotClean" />
+				<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotHaul" />
+				<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotIdle" />
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+</Defs>

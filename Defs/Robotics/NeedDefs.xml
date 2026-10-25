@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<NeedDef>
+		<defName>CK_RobotEnergy</defName>
+		<needClass>ColonyKit.Modules.Robotics.Need_RobotEnergy</needClass>
+		<label>robot energy</label>
+		<description>Stored power. A nanny robot works for about 12 hours on a full charge, then docks at a charging station. At 0% it stops working but does not die.</description>
+		<baseLevel>1</baseLevel>
+		<minIntelligence>Humanlike</minIntelligence>
+		<listPriority>300</listPriority>
+		<showOnNeedList>true</showOnNeedList>
+	</NeedDef>
+</Defs>

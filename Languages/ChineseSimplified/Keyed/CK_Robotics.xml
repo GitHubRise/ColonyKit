@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK.Robotics.RobotName>保姆机器人 {0}</CK.Robotics.RobotName>
+
+	<CK.Robotics.Toggle.Sweep.Label>扫地</CK.Robotics.Toggle.Sweep.Label>
+	<CK.Robotics.Toggle.Sweep.Desc>清理家区域内的地面污渍（泥土、血迹、呕吐物等）。</CK.Robotics.Toggle.Sweep.Desc>
+	<CK.Robotics.Toggle.Scrub.Label>清洁</CK.Robotics.Toggle.Scrub.Label>
+	<CK.Robotics.Toggle.Scrub.Desc>清理家区域外的污渍，适合战后打扫。关闭后机器人只在基地内扫地。</CK.Robotics.Toggle.Scrub.Desc>
+	<CK.Robotics.Toggle.Haul.Label>搬运</CK.Robotics.Toggle.Haul.Label>
+	<CK.Robotics.Toggle.Haul.Desc>把散落物品搬进库存区；不搬尸体。</CK.Robotics.Toggle.Haul.Desc>
+
+	<CK.Robotics.Command.Charge>去充电</CK.Robotics.Command.Charge>
+	<CK.Robotics.Command.Charge.Desc>前往最近的已通电充电桩，充到满电。</CK.Robotics.Command.Charge.Desc>
+	<CK.Robotics.NoStation>没有可用的已通电充电桩。</CK.Robotics.NoStation>
+
+	<CK.Robotics.Inspect.Energy>电量：{0}</CK.Robotics.Inspect.Energy>
+	<CK.Robotics.Inspect.Tasks>扫地：{0}　清洁：{1}　搬运：{2}</CK.Robotics.Inspect.Tasks>
+	<CK.Robotics.Inspect.Idle>三项家务都已关闭，机器人只会待命。</CK.Robotics.Inspect.Idle>
+	<CK.Robotics.Inspect.Downed>机器人已停机，等待维修或拆解。</CK.Robotics.Inspect.Downed>
+	<CK.Robotics.On>开</CK.Robotics.On>
+	<CK.Robotics.Off>关</CK.Robotics.Off>
+
+	<CK.Robotics.Station.Assemble>组装保姆机器人</CK.Robotics.Station.Assemble>
+	<CK.Robotics.Station.Assemble.Desc>在工作站组装一台保姆机器人。机器人损毁后需要等待冷却结束。</CK.Robotics.Station.Assemble.Desc>
+	<CK.Robotics.Station.HasRobot>工作站已有一台机器人。</CK.Robotics.Station.HasRobot>
+	<CK.Robotics.Station.Cooldown>重新组装冷却中：{0}</CK.Robotics.Station.Cooldown>
+	<CK.Robotics.Station.NoPower>未通电：无法充电。</CK.Robotics.Station.NoPower>
+	<CK.Robotics.Station.RobotOnline>机器人在线。</CK.Robotics.Station.RobotOnline>
+	<CK.Robotics.Station.RebuildIn>可重新组装：{0} 后</CK.Robotics.Station.RebuildIn>
+	<CK.Robotics.Station.Ready>可以组装保姆机器人。</CK.Robotics.Station.Ready>
+	<CK.Robotics.Station.Assembled>保姆机器人已组装完成：{0}</CK.Robotics.Station.Assembled>
+</LanguageData>

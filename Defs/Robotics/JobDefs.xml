@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<JobDef>
+		<defName>CK_NannyCleanFilth</defName>
+		<driverClass>ColonyKit.Modules.Robotics.JobDriver_NannyCleanFilth</driverClass>
+		<reportString>cleaning filth.</reportString>
+		<casualInterruptible>true</casualInterruptible>
+	</JobDef>
+
+	<JobDef>
+		<defName>CK_NannyCharge</defName>
+		<driverClass>ColonyKit.Modules.Robotics.JobDriver_NannyCharge</driverClass>
+		<reportString>charging.</reportString>
+		<casualInterruptible>false</casualInterruptible>
+	</JobDef>
+</Defs>

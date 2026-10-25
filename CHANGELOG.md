@@ -14,6 +14,8 @@
 
 ### Added
 
+- **智能机器人（M6 首版）**：新增「家政机器人」研究（前置机械加工）与「机器人」建造菜单；1×1 `CK_NannyBotStation` 建成后自动组装 `CK_RobotNanny`，损毁后 1 天冷却重装；机器人不吃饭不睡觉，自带 `CK_RobotEnergy`（满电约 12 小时、充电约 4 小时、25% 自动回桩、0% 停机但不死亡）；三项可开关家务：扫地（家区域内污渍）、清洁（家区域外污渍）、搬运（复用原版 `HaulToCell`，跳过尸体）；自研 ThinkTree/JobGiver/JobDriver，四向机器人贴图、充电桩与命令图标；中英 `Keyed`/`DefInjected`。
+- 开发探针 `-colonykit-nannybot-test`：在 quicktest 新图上放桩、组装机器人，并生成污渍/钢铁堆验证扫地与搬运 JobGiver。
 - **简易淋浴器接电**：`CK_Shower` 重新加入 `CompPowerTrader`（75 W）+ 开关；通电为热水，断电时回退同网热水器，两者都没有则洗冷水但仍可使用。电热水淋浴器 `CK_ShowerPower` 仍必须通电。
 - **简易淋浴器移除贴墙限制**：删除 `Placeworker_AttachedToWall`、`isAttachment`、`altitudeLayer=BuildingOnTop` 和 `terrainAffordanceNeeded=null`，1×1 可独立放在任何可用地面上。
 - **立体库默认物资**：默认过滤在食物/草药/干草基础上追加木头（`WoodLog`）、植物类（`PlantMatter`）和麦芽（`Wort`）；旧 v4 仓库首次加载只追加这三类，保留玩家自定义过滤。
@@ -52,7 +54,7 @@
 - **DBH 共存**：手动补需求、自动洗澡/上厕所 JobGiver 与 Gizmo 都遵守 DBH/模块开关，读档不会再把已停用的需求加回来。
 - **水网开关**：关闭的管件不再读取旧 `pipeNet`；关闭的水箱不再供水/进水；水污染判定改为缓存，避免水塔每 tick 扫描全图。
 - **浴缸/洗手池**：不再无管网取水；浴缸要 190 L 才能开始放水；浴后清污染标记。
-- **机器人研究 XML**：修正 `Defs/Robotics/Research.xml` 的 `ResearchProjectDef` 闭合标签，避免读 Def 时报错（该目录当前未跟踪）。
+- **机器人研究 XML**：修正 `Defs/Robotics/Research.xml` 的 `ResearchProjectDef` 闭合标签，避免读 Def 时报错。
 - **淋浴器必须真正接水**：`Building_Shower.TryUseWater` 之前在没有 `pipeNet` 时直接返回成功，没接水网也能无限洗澡，还会被当成热水；现在 `CanUse` 和每次取水都要求同网有水，没水网/水箱空不再可选。
 - **断水、堵塞、电热水淋浴断电会真正拦截**：淋浴可用性检查改走 `Working()`（堵塞、`PowerRequiredToUse`、水箱存量）；简易淋浴仍可在断电时洗冷水，`CK_ShowerPower` 断电则拒绝使用。
 - **洗后清除污染标记**：淋浴完成时调用 `Need_Hygiene.CleanContamination()`；如果本次用的是脏水，随后的 `ContaminationCheckWater` 会重新标记。
@@ -63,6 +65,7 @@
 
 ### Validated
 
+- 隔离 quicktest（Core + Harmony + ColonyKit，`-colonykit-nannybot-test`）：工作站与机器人生成成功；`needs=1`、`Moving/Manipulation/Consciousness=1`、`cleanJob=CK_NannyCleanFilth`、`haulJob=HaulToCell`；无 XML、贴图或运行时异常。未覆盖：长期存读档、4000W 充电电网、手动 UI 点击。
 - quicktest（只开 Core + Harmony + ColonyKit）：`modules=10`；Blueprint 模块加载、库初始化正常。
 - 临时实机探针：在地图空地生成 5×5 墙圈 + 中心 1×2 床，捕获 17 条 → 平放/旋转 90° 各生成 17 个原版 `Blueprint_Build`；旋转后床蓝图朝向为 East；模板保存/读取/删除通过。
 - 未覆盖：10×10 基地、存读档、缺 Mod 场景、真实鼠标 UI 点击/拖框。

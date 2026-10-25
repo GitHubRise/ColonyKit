@@ -155,6 +155,8 @@
 	<ColonyKit.Module.Hygiene.Desc>卫生需求、淋浴与热水；参考 DBH 的淋浴实现。</ColonyKit.Module.Hygiene.Desc>
 	<ColonyKit.Module.Storage.Name>立体库 / 物品堆叠</ColonyKit.Module.Storage.Name>
 	<ColonyKit.Module.Storage.Desc>立体库与堆叠作业；参考 StackXXL 的仓库实现。</ColonyKit.Module.Storage.Desc>
+	<ColonyKit.Module.Robotics.Name>智能机器人</ColonyKit.Module.Robotics.Name>
+	<ColonyKit.Module.Robotics.Desc>保姆机器人：自动扫地、清洁与搬运；电量低时回充电桩。</ColonyKit.Module.Robotics.Desc>
 	<ColonyKit.Module.Localization.Name>汉化</ColonyKit.Module.Localization.Name>
 	<ColonyKit.Module.Localization.Desc>文本替换与汉化管线；参考 DevMenuChinese。</ColonyKit.Module.Localization.Desc>
 	<ColonyKit.Module.Rjw.Name>RJW 本体</ColonyKit.Module.Rjw.Name>

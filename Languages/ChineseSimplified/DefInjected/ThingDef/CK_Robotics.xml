@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_RobotNanny.label>保姆机器人</CK_RobotNanny.label>
+	<CK_RobotNanny.description>一台温和的家政机械族：会扫地、清洁和搬运，不吃饭不睡觉，只靠内置电池工作。电量低时会自己回充电桩；0% 时停机等待充电，不会死亡。它不能战斗、社交或生育。</CK_RobotNanny.description>
+	<CK_NannyBotStation.label>保姆机器人工作站</CK_NannyBotStation.label>
+	<CK_NannyBotStation.description>1×1 的组装舱兼充电桩。建成后会自动组装一台保姆机器人；机器人损毁后可在冷却结束时重新组装。充电需要通电；断电时机器人仍能工作，但电量耗尽后会停机。</CK_NannyBotStation.description>
+</LanguageData>

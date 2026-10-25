@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ResearchTabDef>
+		<defName>CK_RoboticsTab</defName>
+		<label>Robotics</label>
+		<generalTitle>Domestic robotics</generalTitle>
+		<generalDescription>Build robot stations and assemble autonomous household robots.</generalDescription>
+	</ResearchTabDef>
+
+	<ResearchProjectDef>
+		<defName>CK_NannyBot</defName>
+		<label>domestic robotics</label>
+		<description>Build a nanny robot station. The station assembles a domestic robot that sweeps, scrubs and hauls without needing food or sleep, and recharges from the colony power grid.</description>
+		<baseCost>1200</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>Machining</li>
+		</prerequisites>
+		<tab>CK_RoboticsTab</tab>
+		<researchViewX>0</researchViewX>
+		<researchViewY>0</researchViewY>
+	</ResearchProjectDef>
+</Defs>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK.Robotics.RobotName>Nanny robot {0}</CK.Robotics.RobotName>
+
+	<CK.Robotics.Toggle.Sweep.Label>Sweep</CK.Robotics.Toggle.Sweep.Label>
+	<CK.Robotics.Toggle.Sweep.Desc>Clean filth inside the home area (dirt, blood, vomit and so on).</CK.Robotics.Toggle.Sweep.Desc>
+	<CK.Robotics.Toggle.Scrub.Label>Scrub</CK.Robotics.Toggle.Scrub.Label>
+	<CK.Robotics.Toggle.Scrub.Desc>Clean filth outside the home area, such as after a raid. Turn this off to keep the robot inside the base.</CK.Robotics.Toggle.Scrub.Desc>
+	<CK.Robotics.Toggle.Haul.Label>Haul</CK.Robotics.Toggle.Haul.Label>
+	<CK.Robotics.Toggle.Haul.Desc>Carry loose items to stockpiles. Corpses are ignored.</CK.Robotics.Toggle.Haul.Desc>
+
+	<CK.Robotics.Command.Charge>Go charge</CK.Robotics.Command.Charge>
+	<CK.Robotics.Command.Charge.Desc>Go to the nearest powered station and charge to full.</CK.Robotics.Command.Charge.Desc>
+	<CK.Robotics.NoStation>No powered charging station is available.</CK.Robotics.NoStation>
+
+	<CK.Robotics.Inspect.Energy>Energy: {0}</CK.Robotics.Inspect.Energy>
+	<CK.Robotics.Inspect.Tasks>Sweep: {0}  Scrub: {1}  Haul: {2}</CK.Robotics.Inspect.Tasks>
+	<CK.Robotics.Inspect.Idle>All chores are disabled; the robot will only stand by.</CK.Robotics.Inspect.Idle>
+	<CK.Robotics.Inspect.Downed>The robot is shut down, waiting to be repaired or dismantled.</CK.Robotics.Inspect.Downed>
+	<CK.Robotics.On>on</CK.Robotics.On>
+	<CK.Robotics.Off>off</CK.Robotics.Off>
+
+	<CK.Robotics.Station.Assemble>Assemble nanny robot</CK.Robotics.Station.Assemble>
+	<CK.Robotics.Station.Assemble.Desc>Assemble one nanny robot at this station. A destroyed robot must wait for the cooldown.</CK.Robotics.Station.Assemble.Desc>
+	<CK.Robotics.Station.HasRobot>The station already has a robot.</CK.Robotics.Station.HasRobot>
+	<CK.Robotics.Station.Cooldown>Reassembly cooldown: {0}</CK.Robotics.Station.Cooldown>
+	<CK.Robotics.Station.NoPower>No power: cannot charge.</CK.Robotics.Station.NoPower>
+	<CK.Robotics.Station.RobotOnline>Robot online.</CK.Robotics.Station.RobotOnline>
+	<CK.Robotics.Station.RebuildIn>Ready to reassemble in {0}</CK.Robotics.Station.RebuildIn>
+	<CK.Robotics.Station.Ready>Ready to assemble a nanny robot.</CK.Robotics.Station.Ready>
+	<CK.Robotics.Station.Assembled>Nanny robot assembled: {0}</CK.Robotics.Station.Assembled>
+</LanguageData>

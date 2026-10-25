@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_NannyBotStation</defName>
+		<label>nanny robot station</label>
+		<description>A compact assembly cradle and charging pad. It assembles one nanny robot when built, recharges it when docked, and can assemble a replacement after the robot is destroyed. Requires power to charge; the robot can still work while the station is unpowered, but will stop when its battery runs out.</description>
+		<size>(1,1)</size>
+		<tickerType>Normal</tickerType>
+		<graphicData>
+			<texPath>Things/Building/Robotics/CK_NannyBotStation</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Robotics</designationCategory>
+		<passability>Standable</passability>
+		<pathCost>0</pathCost>
+		<fillPercent>0.2</fillPercent>
+		<castEdgeShadows>false</castEdgeShadows>
+		<uiIconScale>0.85</uiIconScale>
+		<costList>
+			<Steel>150</Steel>
+			<ComponentIndustrial>8</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Mass>25</Mass>
+			<WorkToBuild>4000</WorkToBuild>
+			<Beauty>0</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>50</basePowerConsumption>
+			</li>
+			<li Class="ColonyKit.Modules.Robotics.CompProperties_NannyBotStation" />
+		</comps>
+		<researchPrerequisites>
+			<li>CK_NannyBot</li>
+		</researchPrerequisites>
+	</ThingDef>
+</Defs>

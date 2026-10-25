@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<DesignationCategoryDef>
+		<defName>CK_Robotics</defName>
+		<label>robotics</label>
+		<description>Domestic robots and the stations that assemble and charge them.</description>
+		<order>440</order>
+		<specialDesignatorClasses>
+			<li>Designator_Cancel</li>
+			<li>Designator_Deconstruct</li>
+		</specialDesignatorClasses>
+	</DesignationCategoryDef>
+</Defs>
