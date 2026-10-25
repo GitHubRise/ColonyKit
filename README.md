@@ -533,7 +533,7 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 - [x] **M5-6** 边界：多格建筑原点用 `GenAdj.OccupiedRect` 反推；缺 Def 跳过并计数；库 schema 版本 1。
 - [x] **M5-7** 模板持久化（替代 JSON 导入导出）：`Config/ColonyKit/Blueprints/*.xml`，带 schema 版本；载入时重新分配 id/重名后缀。
 - [ ] **M5-8** 测试：捕获 10×10 基地→存读档→放置重建；缺 Mod 场景；旋转/镜像；拆掉原建筑后重建。
-	- 当前：build 0/0、verify 0 问题；实机 quicktest 待游戏关闭后执行。
+	- 当前：build 0/0、verify 0 问题；quicktest 探针已通过「捕获 5×5 墙圈 + 1×2 床（17 条）→ 平放/旋转 90° 各 17 个原版蓝图 → 模板保存/读取/删除」；10×10 基地、存读档、缺 Mod、真实鼠标 UI 仍待测。
 
 **M5 完成标准**：能保存一套基地布局，在新地图/新存档按材料重建，缺料/缺 Mod 有可读反馈。
 
