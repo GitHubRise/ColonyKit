@@ -5,6 +5,7 @@
 		<label>conveyor turntable</label>
 		<description>A 1x1 conveyor turntable. Items can enter from any of the four sides and leave through the side set by the building's rotation, allowing right-angle turns.</description>
 		<size>(1,1)</size>
+		<minifiedDef>MinifiedThing</minifiedDef>
 		<thingClass>ColonyKit.Modules.Storage.Building_ConveyorTurntable</thingClass>
 		<graphicData>
 			<texPath>Things/Building/Storage/CK_ConveyorTurntable</texPath>

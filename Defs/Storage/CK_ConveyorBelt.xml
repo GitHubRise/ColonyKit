@@ -5,6 +5,7 @@
 		<label>bidirectional conveyor</label>
 		<description>A 1x1 bidirectional conveyor. Cheap forward/backward belt; no turning. Adjacent bidirectional/omnidirectional conveyors hand items over to each other.</description>
 		<size>(1,1)</size>
+		<minifiedDef>MinifiedThing</minifiedDef>
 		<thingClass>ColonyKit.Modules.Storage.Building_BidirectionalConveyor</thingClass>
 		<graphicData>
 			<texPath>Things/Building/Storage/CK_ConveyorBelt</texPath>
