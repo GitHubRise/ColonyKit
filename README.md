@@ -13,7 +13,7 @@
 | 目标框架 | `net472` + `Krafs.Rimworld.Ref` |
 | 硬依赖 | Harmony（`brrainz.harmony`） |
 | 可选兼容 | DBH、Stack XXL（RJW 1.6 已内置，不再作为可选依赖） |
-| 工程状态 | 0.0.2 框架已生成（M0 完成）；汉化已移植，立体库/淋浴开发中；RJW 1.6 本体已迁入并随包构建 |
+| 工程状态 | 0.0.2 框架已生成（M0 完成）；汉化、立体库、蓝图首版已落地；淋浴占位；RJW 1.6 本体已迁入并随包构建 |
 
 > 本文件 2026-10-25 曾按 `CustomEnhance`（自定义强化）立项，同日先调整为 `ColonyKit` 五系统，随后追加智能机器人模块；旧的强化设计未实施。
 
@@ -28,6 +28,7 @@
 | 静态校验 | ✅ | `verify.ps1` 0 问题 / 0 警告 |
 | 汉化模块 | ✅ 已移植 | 开发者菜单 Debug 标签 + tooltip + 翻译方案设置；quicktest 自检通过，UI 未人工点击 |
 | 立体库 | ✅ 0.0.2 | 堆叠规则、2×2 内部库存、默认 12 堆、默认只收食物/草药/干草、过滤/优先级、可调温控、原版资源列表、底部管理标签页、立体仓库研究页签；账单/T2-T3 未做 |
+| 蓝图 | ✅ 0.0.2 首版 | 拉框捕获、幽灵预览/旋转/镜像、逐条校验、三档材料策略、每存档库、跨存档 XML 模板、设置页；地形/物品不含，实机待验 |
 | 淋浴 | 📄 占位 | `hygiene`，`OnDefsLoaded` 只写日志 + 检测来源 Mod |
 | RJW | ✅ 已内置 | `Source/Rjw` 独立工程 → `RJW.dll`；Defs/Patches/Languages/Textures/Sounds 全量迁入，外部 `rim.job.world` 不兼容 |
 | 实机 | ✅ quicktest | `-Deploy` + `-quicktest` 通过；未人工点 Debug 菜单/设置页 |
@@ -361,21 +362,23 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 
 ### 4.4 蓝图（Blueprint）
 
-**MVP**
+**状态：0.0.2 首版已实现**（M5-1～M5-6 + 模板持久化；实机验收待做）。
 
-- `BlueprintRecord`：名称、尺寸、版本、条目列表（`defName` / `stuffDefName` / `rot` / 相对坐标 / 可选地形）。
-- 捕获：`Designator_BlueprintCapture` 拉框，只收**玩家建造的建筑**（跳过蓝图/框架/物品），可选「包含地形」。
-- 库：`BlueprintLibrary` 每存档一份（由 `ColonyKitGameComponent` 持有）；`Dialog_BlueprintLibrary` 列表、重命名、删除、材料统计、放置。
-- 放置：`Designator_BlueprintPlace` 带幽灵预览，Q/E 旋转、镜像、逐格红绿校验（地形/占用/水域/研究/材料）。
-- 施工：逐条 `GenConstruct.PlaceBlueprintForBuild`，保留材质与朝向；支持一次放置多个蓝图，取消可回滚。
-- 材料清单：放置前显示总需求 vs 地图现有，缺料高亮。
-- 存档：蓝图库随存档保存，schema 带版本号；缺 Mod/缺 Def 时跳过并给出警告清单。
+**已实现**
 
-**后续**：导入/导出 JSON、跨存档共享库、包含地形/物品、复制已有建筑、创意工坊分享。
+- `BlueprintRecord`：名称、尺寸、版本、条目列表（`defName` / `stuffDefName` / `rot` / 相对坐标）。
+- 捕获：`Designator_BlueprintCapture` 拉框，只收**玩家建造的完工建筑**（跳过蓝图/框架/矿物/物品）；不含地形。
+- 库：`BlueprintLibrary` 每存档一份，由模块自己的 `BlueprintGameComponent` 持有；`MainTabWindow_Blueprints` 列表、重命名、删除、材料统计、放置。
+- 放置：`Designator_BlueprintPlace` 带幽灵预览，Q/E 旋转、B 镜像、逐条红绿校验（地形/占用/水域/研究/材料）；放置后设计器保留，可连续复刻多份。
+- 施工：逐条 `GenConstruct.PlaceBlueprintForBuild`，保留材质与朝向；先全量校验再落地，失败时一个也不放。
+- 材料：三档策略（原材质优先 / 就地取材（默认）/ 最便宜）；放置前显示总需求 vs 地图现有，缺料高亮，替换材料有说明。
+- 存档与模板：库随存档保存，schema 带版本号；缺 Mod/缺 Def 跳过并计数；模板写到 `Config/ColonyKit/Blueprints/*.xml`，可跨存档复用。
+
+**后续**：包含地形/物品、创意工坊分享、搜索/分页、按研究门控。
 
 **不做**：跨地图远程施工、自动重建/修复。
 
-**关键难点**：多格建筑的原点/朝向；Modded Def 缺失；蓝图库的存档体积；与「计划」设计器（vanilla plan）的交互。
+**关键难点**：多格建筑的原点/朝向（已用占用矩形反推）；Modded Def 缺失；蓝图库的存档体积；与「计划」设计器（vanilla plan）的交互（不冲突）。
 
 ### 4.5 智能机器人（Robotics）
 
@@ -520,15 +523,17 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 
 ### M5 蓝图（Blueprint）
 
-- [ ] **M5-0** 数据 schema：`BlueprintRecord` / `BlueprintEntry`，版本号、坐标系、`defName`/`stuff`/`rot`、可选地形；存档体积上限；写 `docs/decisions/blueprint-format.md`。
-- [ ] **M5-1** 捕获：`Designator_BlueprintCapture` 拉框，只收玩家建造的建筑，跳过蓝图/框架/物品；可选包含地形。
-- [ ] **M5-2** 库：`ColonyKitGameComponent` 持有 `BlueprintLibrary`；`Dialog_BlueprintLibrary` 列表、重命名、删除、材料统计、放置。
-- [ ] **M5-3** 放置预览：`Designator_BlueprintPlace`，Q/E 旋转、镜像、逐格红绿校验（地形/占用/水域/研究/材料）。
-- [ ] **M5-4** 施工：逐条 `GenConstruct.PlaceBlueprintForBuild`，保留材质/朝向；多蓝图排队；取消回滚。
-- [ ] **M5-5** 材料清单：总需求 vs 地图现有，缺料高亮，可一键跳转到缺料提示。
-- [ ] **M5-6** 边界：多格建筑原点、旋转/镜像、缺 Def（跳过+警告清单）、地形、版本迁移。
-- [ ] **M5-7** 导入/导出（可选，排到 M5 之后）：`Config/ColonyKit/Blueprints/*.json`，带 schema 版本与校验。
+- [x] **M5-0** 数据 schema：`BlueprintRecord` / `BlueprintEntry`，版本号、坐标系、`defName`/`stuff`/`rot`；尺寸/条目/库上限进设置；决策写 `docs/decisions/blueprint-format.md`。
+	- 完成：2026-10-25；地形不进 schema（首版范围）。
+- [x] **M5-1** 捕获：`Designator_BlueprintCapture` 拉框，只收玩家建造的完工建筑，跳过蓝图/框架/矿物/物品；点击后自动入库并打开蓝图页。
+- [x] **M5-2** 库：`BlueprintLibrary` 由模块的 `BlueprintGameComponent` 持有；`MainTabWindow_Blueprints` 列表、重命名、删除、材料统计、放置。
+- [x] **M5-3** 放置预览：`Designator_BlueprintPlace`，Q/E 旋转、B 镜像、逐条红绿校验（地形/占用/水域/研究/材料）；放置后设计器保留可连续复刻。
+- [x] **M5-4** 施工：逐条 `GenConstruct.PlaceBlueprintForBuild`，保留材质/朝向；先全量校验再落地，失败时零生成。
+- [x] **M5-5** 材料清单：总需求 vs 地图现有，缺料高亮；三档材料策略（原材质优先/就地取材/最便宜）。
+- [x] **M5-6** 边界：多格建筑原点用 `GenAdj.OccupiedRect` 反推；缺 Def 跳过并计数；库 schema 版本 1。
+- [x] **M5-7** 模板持久化（替代 JSON 导入导出）：`Config/ColonyKit/Blueprints/*.xml`，带 schema 版本；载入时重新分配 id/重名后缀。
 - [ ] **M5-8** 测试：捕获 10×10 基地→存读档→放置重建；缺 Mod 场景；旋转/镜像；拆掉原建筑后重建。
+	- 当前：build 0/0、verify 0 问题；实机 quicktest 待游戏关闭后执行。
 
 **M5 完成标准**：能保存一套基地布局，在新地图/新存档按材料重建，缺料/缺 Mod 有可读反馈。
 

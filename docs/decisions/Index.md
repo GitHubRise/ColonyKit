@@ -40,7 +40,6 @@
 | 淋浴 API / DBH 共存 | `hygiene.md` | M2-0 | 待定 |
 | 存储内核 A/B/C | `storage-kernel.md` | M3-0 | 待定（最高风险） |
 | 肥力网格 API / 渲染 | `fertility-grid.md` | M4-0 | 待定 |
-| 蓝图 schema / 存档体积 | `blueprint-format.md` | M5-0 | 待定 |
 | 机器人 Pawn 架构 | `robot-pawn.md` | M6-0 | 待定（最高风险） |
 | 地下室：口袋地图 vs 同图逻辑楼层 vs 兼容现有分层 Mod | [`basement.md`](basement.md) | 7000（G1 构想，未排期） | 构想已登记；硬需求=地面水电/无天气/15±2°C；待 spike |
 | 空中力量：抽象空袭 vs 同图飞行单位 vs 载具框架集成 | [`air-power.md`](air-power.md) | 8000（G2 构想，未排期） | 构想已登记；六类单位/克制三角/防空闭环；待无人机+防空 spike |
@@ -51,7 +50,7 @@
 
 | 主题 | 文件 | 结论 | 日期 |
 |---|---|---|---|
-| — | — | — | — |
+| 蓝图 schema / 存档体积 / 模板持久化 | [`blueprint-format.md`](blueprint-format.md) | 每存档库 + `Config/ColonyKit/Blueprints/*.xml` 模板；字符串 Def、相对坐标、三档材料策略 | 2026-10-25 |
 
 ## 相关文档
 
