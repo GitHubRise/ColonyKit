@@ -123,7 +123,7 @@ namespace ColonyKit.Modules.Hygiene
 					crapPants();
 				}
 			}
-			if (CurCategory <= BowelCategory.needBathroom && pawn.CurrentBed() != null
+			if (CurCategory >= BowelCategory.needBathroom && pawn.CurrentBed() != null
 				&& pawn.health.capacities.CanBeAwake
 				&& (HealthAIUtility.ShouldSeekMedicalRest(pawn)
 					|| HealthAIUtility.ShouldSeekMedicalRestUrgent(pawn)
@@ -134,7 +134,7 @@ namespace ColonyKit.Modules.Hygiene
 				CurLevel = 1f;
 				return;
 			}
-			if (CurCategory <= BowelCategory.Busting)
+			if (CurCategory >= BowelCategory.Busting)
 			{
 				ticksAtZero += 150;
 			}
