@@ -7,11 +7,9 @@ using Verse;
 namespace ColonyKit.Modules.Storage
 {
 	/// <summary>
-	/// 4×4 立体库原型：内部 <see cref="ThingOwner{T}"/> 保管物品，面板/Gizmo 直接存取。
-	/// 四个方向各有一个履带接口；自动入/出库要求至少接一条履带。
-	/// 自带可调温控（CompTempControl），默认 4°C，像原版空调一样用 Gizmo 调温。
+	/// 2×2 立体库：内部 <see cref="ThingOwner{T}"/> 保管物品，面板直接存取。
+	/// 默认只收食物/草药/干草；温控默认 4°C。
 	/// </summary>
-	[StaticConstructorOnStartup]
 	public class Building_VerticalWarehouse : Building, IThingHolder, IStoreSettingsParent
 	{
 		/// <summary>每座立体库可存的堆数；从模块设置读取，默认 24，设置页可调。</summary>
@@ -30,26 +28,7 @@ namespace ColonyKit.Modules.Storage
 		private RimWorld.StorageSettings storeSettings;
 		private CompTempControl compTempControl;
 		private CompPowerTrader compPowerTrader;
-		private int networkCacheTick = -1;
-		private bool networkCache;
 		private int settingsVersion;
-		private static Graphic conveyorWarning;
-
-		private static Graphic ConveyorWarning
-		{
-			get
-			{
-				if (conveyorWarning == null)
-				{
-					conveyorWarning = GraphicDatabase.Get<Graphic_Single>(
-						"Things/Building/Storage/CK_ConveyorWarning",
-						ShaderDatabase.Cutout,
-						new Vector2(0.7f, 0.7f),
-						Color.white);
-				}
-				return conveyorWarning;
-			}
-		}
 
 		public ThingOwner<Thing> Container
 		{
@@ -93,228 +72,10 @@ namespace ColonyKit.Modules.Storage
 			}
 		}
 
-		protected override void DrawAt(Vector3 drawLoc, bool flip = false)
-		{
-			base.DrawAt(drawLoc, flip);
-
-			if (HasAnyConveyorConnection || Find.TickManager == null)
-			{
-				return;
-			}
-
-			// 没接履带时，像断电图标一样闪烁；网络里任意一台接了履带就不会闪。
-			if ((Find.TickManager.TicksGame / 30) % 2 != 0)
-			{
-				return;
-			}
-
-			Vector3 position = drawLoc + new Vector3(0f, 0.55f, 0f);
-			ConveyorWarning.Draw(position, Rot4.North, this);
-		}
-
-		/// <summary>每条边中央的接口格（建筑外侧）；按实际 OccupiedRect 计算。</summary>
-		public IntVec3 PortCell(Rot4 side)
-		{
-			foreach (IntVec3 candidate in PortCandidates(side))
-			{
-				return candidate;
-			}
-			return IntVec3.Invalid;
-		}
-
-		public bool IsPortCell(Rot4 side, IntVec3 cell)
-		{
-			foreach (IntVec3 candidate in PortCandidates(side))
-			{
-				if (candidate == cell)
-				{
-					return true;
-				}
-			}
-			return false;
-		}
-
-		private IEnumerable<IntVec3> PortCandidates(Rot4 side)
-		{
-			CellRect rect = GenAdj.OccupiedRect(this);
-			int width = rect.maxX - rect.minX + 1;
-			int height = rect.maxZ - rect.minZ + 1;
-			bool horizontal = side == Rot4.North || side == Rot4.South;
-			int span = horizontal ? width : height;
-			int start = horizontal ? rect.minX : rect.minZ;
-			int center = span / 2;
-
-			if (span % 2 == 0)
-			{
-				yield return MakePortCell(side, rect, start + center - 1);
-				yield return MakePortCell(side, rect, start + center);
-			}
-			else
-			{
-				yield return MakePortCell(side, rect, start + center);
-			}
-		}
-
-		private IntVec3 MakePortCell(Rot4 side, CellRect rect, int offset)
-		{
-			switch (side.AsInt)
-			{
-				case 0:
-					return new IntVec3(offset, 0, rect.maxZ + 1);
-				case 1:
-					return new IntVec3(rect.maxX + 1, 0, offset);
-				case 2:
-					return new IntVec3(offset, 0, rect.minZ - 1);
-				default:
-					return new IntVec3(rect.minX - 1, 0, offset);
-			}
-		}
-
-		/// <summary>任一相邻的 1×1 履带都算连接，不再要求正中端口/方向。</summary>
-		private bool TryFindAdjacentConveyor(out IntVec3 cell)
-		{
-			cell = IntVec3.Invalid;
-			if (!Spawned || Map == null)
-			{
-				return false;
-			}
-
-			foreach (IntVec3 candidate in GenAdj.CellsAdjacent8Way(this))
-			{
-				if (!candidate.InBounds(Map))
-				{
-					continue;
-				}
-
-				Building edifice = candidate.GetEdifice(Map);
-				if (edifice is Building_ConveyorBase conveyor
-					&& conveyor.def.size.x == 1
-					&& conveyor.def.size.z == 1)
-				{
-					cell = candidate;
-					return true;
-				}
-			}
-			return false;
-		}
-
-		public bool HasAnyConveyorConnection
-		{
-			get
-			{
-				if (!Spawned || Map == null)
-				{
-					return false;
-				}
-
-				int tick = Find.TickManager?.TicksGame ?? -1;
-				if (tick == networkCacheTick)
-				{
-					return networkCache;
-				}
-
-				networkCache = ComputeNetworkConnection();
-				networkCacheTick = tick;
-				return networkCache;
-			}
-		}
-
-		/// <summary>立体库互联：8 向相邻的仓库组成一张网络，任一仓库有履带即全网络可用。</summary>
-		private bool ComputeNetworkConnection()
-		{
-			var visited = new HashSet<Building_VerticalWarehouse>();
-			var stack = new Stack<Building_VerticalWarehouse>();
-			stack.Push(this);
-
-			while (stack.Count > 0)
-			{
-				Building_VerticalWarehouse current = stack.Pop();
-				if (current == null || !visited.Add(current))
-				{
-					continue;
-				}
-
-				if (current.HasDirectConveyorConnection())
-				{
-					return true;
-				}
-
-				foreach (Building_VerticalWarehouse neighbor in current.AdjacentWarehouses())
-				{
-					if (!visited.Contains(neighbor))
-					{
-						stack.Push(neighbor);
-					}
-				}
-			}
-
-			return false;
-		}
-
-		private IEnumerable<Building_VerticalWarehouse> AdjacentWarehouses()
-		{
-			foreach (IntVec3 cell in GenAdj.CellsAdjacent8Way(this))
-			{
-				if (!cell.InBounds(Map))
-				{
-					continue;
-				}
-				foreach (Thing thing in Map.thingGrid.ThingsListAt(cell))
-				{
-					if (thing is Building_VerticalWarehouse warehouse && warehouse != this)
-					{
-						yield return warehouse;
-					}
-				}
-			}
-		}
-
-		private bool HasDirectConveyorConnection()
-		{
-			return TryFindAdjacentConveyor(out _);
-		}
-
-		public bool TryFindConnectedPort(out IntVec3 port)
-		{
-			var visited = new HashSet<Building_VerticalWarehouse>();
-			var stack = new Stack<Building_VerticalWarehouse>();
-			stack.Push(this);
-
-			while (stack.Count > 0)
-			{
-				Building_VerticalWarehouse current = stack.Pop();
-				if (current == null || !visited.Add(current))
-				{
-					continue;
-				}
-
-				if (current.TryFindDirectPort(out port))
-				{
-					return true;
-				}
-
-				foreach (Building_VerticalWarehouse neighbor in current.AdjacentWarehouses())
-				{
-					if (!visited.Contains(neighbor))
-					{
-						stack.Push(neighbor);
-					}
-				}
-			}
-
-			port = IntVec3.Invalid;
-			return false;
-		}
-
-		private bool TryFindDirectPort(out IntVec3 port)
-		{
-			return TryFindAdjacentConveyor(out port);
-		}
-
 		public Building_VerticalWarehouse()
 		{
 			innerContainer = new ThingOwner<Thing>(this);
-			settingsVersion = 3;
+			settingsVersion = 4;
 			EnsureStoreSettings();
 		}
 
@@ -330,7 +91,7 @@ namespace ColonyKit.Modules.Storage
 			}
 			EnsureStoreSettings();
 
-			if (Scribe.mode == LoadSaveMode.PostLoadInit && settingsVersion < 3)
+			if (Scribe.mode == LoadSaveMode.PostLoadInit && settingsVersion < 4)
 			{
 				MigrateLegacyDefaults();
 			}
@@ -351,7 +112,7 @@ namespace ColonyKit.Modules.Storage
 			}
 
 			ApplyDefaultFilterRules();
-			settingsVersion = 3;
+			settingsVersion = 4;
 		}
 
 		private void EnsureStoreSettings()
@@ -362,7 +123,6 @@ namespace ColonyKit.Modules.Storage
 			}
 
 			storeSettings = new RimWorld.StorageSettings(this);
-			storeSettings.filter.SetAllowAll(null);
 			// 默认普通优先级，和原版库存区一致。
 			storeSettings.Priority = StoragePriority.Normal;
 			ApplyDefaultFilterRules();
@@ -375,18 +135,23 @@ namespace ColonyKit.Modules.Storage
 				return;
 			}
 
+			storeSettings.filter.SetDisallowAll();
+			if (ThingCategoryDefOf.Foods != null)
+			{
+				storeSettings.filter.SetAllow(ThingCategoryDefOf.Foods, true);
+			}
+			if (ThingDefOf.MedicineHerbal != null)
+			{
+				storeSettings.filter.SetAllow(ThingDefOf.MedicineHerbal, true);
+			}
+			if (ThingDefOf.Hay != null)
+			{
+				storeSettings.filter.SetAllow(ThingDefOf.Hay, true);
+			}
 			SpecialThingFilterDef rotten = DefDatabase<SpecialThingFilterDef>.GetNamedSilentFail("AllowRotten");
 			if (rotten != null)
 			{
 				storeSettings.filter.SetAllow(rotten, false);
-			}
-			if (ThingCategoryDefOf.Corpses != null)
-			{
-				storeSettings.filter.SetAllow(ThingCategoryDefOf.Corpses, false);
-			}
-			if (ThingCategoryDefOf.Chunks != null)
-			{
-				storeSettings.filter.SetAllow(ThingCategoryDefOf.Chunks, false);
 			}
 		}
 
@@ -464,8 +229,7 @@ namespace ColonyKit.Modules.Storage
 			{
 				if (!thing.Spawned && Map != null)
 				{
-					IntVec3 drop = TryFindConnectedPort(out IntVec3 port) ? port : InteractionCell;
-					GenPlace.TryPlaceThing(thing, drop, Map, ThingPlaceMode.Near, out _);
+					GenPlace.TryPlaceThing(thing, InteractionCell, Map, ThingPlaceMode.Near, out _);
 				}
 				return false;
 			}
@@ -473,40 +237,10 @@ namespace ColonyKit.Modules.Storage
 			return true;
 		}
 
-		/// <summary>端口收到货时，若当前仓库满/过滤拒收，尝试同一互联网络里的其他仓库。</summary>
+		/// <summary>兼容已暂停开发的履带代码：本地存入即可。</summary>
 		public bool TryStoreInNetwork(Thing thing)
 		{
-			if (thing == null)
-			{
-				return false;
-			}
-
-			var visited = new HashSet<Building_VerticalWarehouse>();
-			var stack = new Stack<Building_VerticalWarehouse>();
-			stack.Push(this);
-
-			while (stack.Count > 0)
-			{
-				Building_VerticalWarehouse current = stack.Pop();
-				if (current == null || !visited.Add(current))
-				{
-					continue;
-				}
-
-				if (current.CanStore(thing) && current.TryStore(thing))
-				{
-					return true;
-				}
-
-				foreach (Building_VerticalWarehouse neighbor in current.AdjacentWarehouses())
-				{
-					if (!visited.Contains(neighbor))
-					{
-						stack.Push(neighbor);
-					}
-				}
-			}
-			return false;
+			return TryStore(thing);
 		}
 
 		public bool TryWithdraw(Thing thing)
@@ -669,7 +403,7 @@ namespace ColonyKit.Modules.Storage
 
 		public int CollectNearby(int radius = 8)
 		{
-			if (!HasAnyConveyorConnection || Map == null)
+			if (Map == null)
 			{
 				return 0;
 			}
@@ -731,10 +465,6 @@ namespace ColonyKit.Modules.Storage
 			if (!HasPower)
 			{
 				text += "\n" + "CK.VerticalWarehouse.NoPower".Translate();
-			}
-			if (!HasAnyConveyorConnection)
-			{
-				text += "\n" + "CK.VerticalWarehouse.NoConveyor".Translate();
 			}
 			return text;
 		}

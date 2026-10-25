@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 	<CK_VerticalWarehouse.label>vertical warehouse</CK_VerticalWarehouse.label>
-	<CK_VerticalWarehouse.description>A 3x3 internal warehouse. Colonists can drop items into it and take them out from the inspect pane; contents are stored inside and do not occupy map cells. Connect a conveyor on a side for automatic input/output; internal temperature is adjustable and defaults to 4°C.</CK_VerticalWarehouse.description>
+	<CK_VerticalWarehouse.description>A 2x2 internal warehouse. Colonists can drop items into it and take them out from the inspect pane; contents are stored inside and do not occupy map cells. By default it only accepts food, herbal medicine and hay; internal temperature is adjustable and defaults to 4°C.</CK_VerticalWarehouse.description>
 </LanguageData>

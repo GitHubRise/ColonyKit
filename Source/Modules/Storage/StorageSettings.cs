@@ -12,7 +12,7 @@ namespace ColonyKit.Modules.Storage
 
 		public const int MinWarehouseStacks = 1;
 		public const int MaxWarehouseStacks = 200;
-		public const int DefaultWarehouseStacks = 24;
+		public const int DefaultWarehouseStacks = 12;
 
 		public string SettingsKey => "storage";
 
@@ -24,6 +24,7 @@ namespace ColonyKit.Modules.Storage
 
 		/// <summary>每座立体库可存的堆数；对已建和新建仓库都生效。</summary>
 		public int warehouseStackCapacity = DefaultWarehouseStacks;
+		private int capacityVersion = 1;
 
 		/// <summary>调试用：逐个 Def 打印堆叠上限变化。</summary>
 		public bool logChanges;
@@ -33,7 +34,16 @@ namespace ColonyKit.Modules.Storage
 			Scribe_Values.Look(ref enabled, "enabled", true);
 			Scribe_Values.Look(ref stackMultiplier, "stackMultiplier", 10);
 			Scribe_Values.Look(ref warehouseStackCapacity, "warehouseStackCapacity", DefaultWarehouseStacks);
+			Scribe_Values.Look(ref capacityVersion, "capacityVersion", 0);
 			Scribe_Values.Look(ref logChanges, "logChanges", false);
+			if (Scribe.mode == LoadSaveMode.PostLoadInit && capacityVersion < 1)
+			{
+				if (warehouseStackCapacity == 24)
+				{
+					warehouseStackCapacity = DefaultWarehouseStacks;
+				}
+				capacityVersion = 1;
+			}
 		}
 
 		public bool Validate()

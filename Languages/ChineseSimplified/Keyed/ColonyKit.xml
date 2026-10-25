@@ -167,7 +167,8 @@
 	<CK.StorageManagement.Search>检索立体库或物品</CK.StorageManagement.Search>
 	<CK.StorageManagement.None>本图没有匹配的立体库。</CK.StorageManagement.None>
 	<CK.StorageManagement.Select>选中</CK.StorageManagement.Select>
-	<CK.StorageManagement.Connected>已接履带</CK.StorageManagement.Connected>
+	<CK.StorageManagement.Powered>已通电</CK.StorageManagement.Powered>
+	<CK.StorageManagement.Unpowered>未通电（库存仍可用）</CK.StorageManagement.Unpowered>
 	<CK.StorageManagement.Disconnected>未接履带</CK.StorageManagement.Disconnected>
 	<CK.StorageManagement.Row>{0} ({1},{2})  {3}/{4} 堆  {5} 件  {6}</CK.StorageManagement.Row>
 	<CK.VerticalWarehouse.Search>检索物品</CK.VerticalWarehouse.Search>

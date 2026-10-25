@@ -15,7 +15,7 @@
 		<rotatable>true</rotatable>
 		<tickerType>Normal</tickerType>
 		<drawerType>RealtimeOnly</drawerType>
-		<designationCategory>Furniture</designationCategory>
+		
 		<thingCategories>
 			<li>Buildings</li>
 		</thingCategories>

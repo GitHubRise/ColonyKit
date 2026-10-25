@@ -38,7 +38,7 @@
 	<ResearchProjectDef>
 		<defName>CK_StorageTier3</defName>
 		<label>tier 3 vertical warehouse</label>
-		<description>Stackable items hold 60x their normal limit (another 2x). Unlocks conveyors; the warehouse core can be set from -20 to 30 degrees C.</description>
+		<description>Stackable items hold 60x their normal limit (another 2x). The warehouse core can be set from -20 to 30 degrees C.</description>
 		<baseCost>2400</baseCost>
 		<techLevel>Industrial</techLevel>
 		<prerequisites>

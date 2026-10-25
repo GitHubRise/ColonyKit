@@ -8,5 +8,5 @@
 	<CK_StorageTier2.label>二级立体仓库技术</CK_StorageTier2.label>
 	<CK_StorageTier2.description>再 ×3（合计 ×30）；解锁立体仓库核心，通电后把所在封闭房间压向 4°C。</CK_StorageTier2.description>
 	<CK_StorageTier3.label>三级立体仓库技术</CK_StorageTier3.label>
-	<CK_StorageTier3.description>再 ×2（合计 ×60）；解锁物品传送带，核心可设定 -20～30°C 目标温度。</CK_StorageTier3.description>
+	<CK_StorageTier3.description>再 ×2（合计 ×60）；核心可设定 -20～30°C 目标温度。</CK_StorageTier3.description>
 </LanguageData>

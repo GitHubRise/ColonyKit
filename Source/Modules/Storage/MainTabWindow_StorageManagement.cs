@@ -82,9 +82,9 @@ namespace ColonyKit.Modules.Storage
 		{
 			Widgets.DrawHighlightIfMouseover(row);
 			Rect text = row.LeftPart(0.78f);
-			string status = warehouse.HasAnyConveyorConnection
-				? "CK.StorageManagement.Connected".Translate()
-				: "CK.StorageManagement.Disconnected".Translate();
+			string status = warehouse.HasPower
+				? "CK.StorageManagement.Powered".Translate()
+				: "CK.StorageManagement.Unpowered".Translate();
 			Widgets.Label(text, "CK.StorageManagement.Row".Translate(
 				warehouse.LabelCap,
 				warehouse.Position.x,

@@ -167,7 +167,8 @@
 	<CK.StorageManagement.Search>Search warehouses or items</CK.StorageManagement.Search>
 	<CK.StorageManagement.None>No matching warehouses on this map.</CK.StorageManagement.None>
 	<CK.StorageManagement.Select>Select</CK.StorageManagement.Select>
-	<CK.StorageManagement.Connected>conveyor connected</CK.StorageManagement.Connected>
+	<CK.StorageManagement.Powered>powered</CK.StorageManagement.Powered>
+	<CK.StorageManagement.Unpowered>unpowered (storage still works)</CK.StorageManagement.Unpowered>
 	<CK.StorageManagement.Disconnected>no conveyor</CK.StorageManagement.Disconnected>
 	<CK.StorageManagement.Row>{0} ({1},{2})  {3}/{4} stacks  {5} items  {6}</CK.StorageManagement.Row>
 	<CK.VerticalWarehouse.Search>Search items</CK.VerticalWarehouse.Search>
