@@ -38,7 +38,7 @@
 				<basePowerConsumption>250</basePowerConsumption>
 			</li>
 			<li Class="CompProperties_TempControl">
-				<energyPerSecond>21</energyPerSecond>
+				<energyPerSecond>-21</energyPerSecond>
 				<defaultTargetTemperature>4</defaultTargetTemperature>
 				<minTargetTemperature>-50</minTargetTemperature>
 				<maxTargetTemperature>50</maxTargetTemperature>

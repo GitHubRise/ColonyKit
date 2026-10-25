@@ -72,6 +72,7 @@
 
 ### Fixed
 
+- **立体库温控只加热不制冷**：`CK_VerticalWarehouse` 的 `CompProperties_TempControl.energyPerSecond` 写成了正数 `21`（正=加热），房间高于目标温度时 `GenTemperature.ControlTemperatureTempChange` 返回 0，所以 28°C 的房间永远降不到 4°C，表现为「通电、有目标温度、但制冷不生效」。改为与原版空调一致的 `-21`，制冷恢复。
 - **设置页分页翻译回退英文**：`ModLoc` 之前只加载 `Languages/<Lang>/Keyed/ColonyKit.xml`，而「保温」「蓝图」「机器人」等分页的键在各自的 Keyed 文件里；当 Mod 语言=简中、游戏语言=英文时，这些页会回退成英文（例如 Insulation 页整页英文）。现在按 `Keyed` 目录加载全部 XML，设置页各分页统一使用所选语言；蓝图材料策略（原材质/就手/最便宜）与卫生 DBH 策略下拉框也从 `.Translate()` 改为 `.Loc()`，不再漏成英文。
 - **立体库面板重复数量**：`ITab_VerticalWarehouse` 之前用 `thing.LabelCap + " x" + stackCount`，而 `LabelCap` 对可堆叠物已包含 `x75`，显示成「Wood x75 x75」；现在只显示 `LabelCap`。
 - **木头/钢铁等材料不参与堆叠**：`StorageStackRules.CanMultiply` 把 `IsWeapon`/`isTechHediff` 直接当排除条件，而 1.6 的原版木头（以及钢铁等 IsStuff 材料）两者都为 true，导致 176 个 Def 里漏掉木头；现在只在「非 IsStuff 的真正武器/科技义体」时排除。
