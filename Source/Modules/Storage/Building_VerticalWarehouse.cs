@@ -76,6 +76,10 @@ namespace ColonyKit.Modules.Storage
 			base.SpawnSetup(map, respawningAfterLoad);
 			compTempControl = GetComp<CompTempControl>();
 			compPowerTrader = GetComp<CompPowerTrader>();
+			if (!respawningAfterLoad && compTempControl != null)
+			{
+				compTempControl.TargetTemperature = 4f;
+			}
 		}
 
 		protected override void DrawAt(Vector3 drawLoc, bool flip = false)
@@ -115,12 +119,44 @@ namespace ColonyKit.Modules.Storage
 
 		public bool HasConveyorConnection(Rot4 side)
 		{
+			return TryFindSideConveyor(side, out _);
+		}
+
+		/// <summary>检查 4×4 某一条边的所有外侧格（不只是中央端口）。</summary>
+		private bool TryFindSideConveyor(Rot4 side, out IntVec3 cell)
+		{
+			cell = IntVec3.Invalid;
 			if (!Spawned || Map == null)
 			{
 				return false;
 			}
-			IntVec3 port = PortCell(side);
-			return port.InBounds(Map) && port.GetEdifice(Map) is Building_ConveyorBase;
+
+			for (int i = 0; i < 4; i++)
+			{
+				IntVec3 candidate;
+				switch (side.AsInt)
+				{
+					case 0:
+						candidate = Position + new IntVec3(i, 0, 4);
+						break;
+					case 1:
+						candidate = Position + new IntVec3(4, 0, i);
+						break;
+					case 2:
+						candidate = Position + new IntVec3(i, 0, -1);
+						break;
+					default:
+						candidate = Position + new IntVec3(-1, 0, i);
+						break;
+				}
+
+				if (candidate.InBounds(Map) && candidate.GetEdifice(Map) is Building_ConveyorBase)
+				{
+					cell = candidate;
+					return true;
+				}
+			}
+			return false;
 		}
 
 		public bool HasAnyConveyorConnection
@@ -239,9 +275,8 @@ namespace ColonyKit.Modules.Storage
 			Rot4[] sides = { Rot4.North, Rot4.East, Rot4.South, Rot4.West };
 			for (int i = 0; i < sides.Length; i++)
 			{
-				if (HasConveyorConnection(sides[i]))
+				if (TryFindSideConveyor(sides[i], out port))
 				{
-					port = PortCell(sides[i]);
 					return true;
 				}
 			}
@@ -276,8 +311,8 @@ namespace ColonyKit.Modules.Storage
 
 			storeSettings = new RimWorld.StorageSettings(this);
 			storeSettings.filter.SetAllowAll(null);
-			// 默认低于普通库存区：普通库存区有位置时，物品会从仓库自动流出去。
-			storeSettings.Priority = StoragePriority.Low;
+			// 默认普通优先级，和原版库存区一致。
+			storeSettings.Priority = StoragePriority.Normal;
 		}
 
 		public bool StorageTabVisible => true;
