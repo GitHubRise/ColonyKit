@@ -127,6 +127,10 @@
 	<CK.Hygiene.TakeShower>去洗澡</CK.Hygiene.TakeShower>
 	<CK.Hygiene.TakeShowerDesc>让该殖民者前往最近的淋浴器。</CK.Hygiene.TakeShowerDesc>
 	<CK.Hygiene.NoShower>没有可用的淋浴器。</CK.Hygiene.NoShower>
+	<CK.Hygiene.Gender>性别: {0}</CK.Hygiene.Gender>
+	<CK.Hygiene.GenderDesc>切换共用/男/女。</CK.Hygiene.GenderDesc>
+	<CK.Hygiene.AllowColonists>允许殖民者</CK.Hygiene.AllowColonists>
+	<CK.Hygiene.AllowColonistsDesc>关闭后殖民者不会使用。</CK.Hygiene.AllowColonistsDesc>
 	<CK.Hygiene.PumpCapacity>泵送能力: {0} 升/天</CK.Hygiene.PumpCapacity>
 	<CK.Hygiene.GroundWater>地下水能力: {0}</CK.Hygiene.GroundWater>
 	<CK.Hygiene.FilthyRoom>肮脏房间系数: {0}</CK.Hygiene.FilthyRoom>
