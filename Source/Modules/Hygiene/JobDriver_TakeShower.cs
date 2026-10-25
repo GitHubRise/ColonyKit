@@ -22,7 +22,7 @@ namespace ColonyKit.Modules.Hygiene
 
 			Toil wash = new Toil
 			{
-				defaultDuration = 600,
+				defaultDuration = 1000,
 				defaultCompleteMode = ToilCompleteMode.Delay
 			};
 			wash.FailOnDestroyedNullOrForbidden(TargetIndex.A);
@@ -34,15 +34,19 @@ namespace ColonyKit.Modules.Hygiene
 			wash.tickAction = () =>
 			{
 				Building_Shower shower = job.targetA.Thing as Building_Shower;
-				if (shower == null || !shower.TryUseWater())
+				if (shower == null || !shower.TryUseWater(out bool isCold, out ContaminationLevel _))
 				{
 					EndJobWith(JobCondition.Incompletable);
 					return;
 				}
+				if (isCold)
+				{
+					cold = true;
+				}
 				Need_Hygiene need = pawn.needs?.TryGetNeed<Need_Hygiene>();
 				if (need != null)
 				{
-					need.clean(0.002f);
+					need.clean(shower.CleanedPerTick);
 				}
 				pawn.GainComfortFromCellIfPossible(1);
 				if (need != null && need.CurLevel >= 1f)

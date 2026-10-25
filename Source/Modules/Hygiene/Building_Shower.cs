@@ -5,18 +5,20 @@ using Verse.AI;
 
 namespace ColonyKit.Modules.Hygiene
 {
-	/// <summary>2×2 淋浴器；有电为热水澡，断电为冷水澡。首版不接水网。</summary>
-	public class Building_Shower : Building
+	/// <summary>DBH Building_shower 的淋浴常量和取水逻辑移植。</summary>
+	public class Building_Shower : Building_AssignableFixture
 	{
-		private CompPowerTrader power;
+		public virtual float CleanedPerTick => 0.002f;
 
-		public bool IsHot => power != null && power.PowerOn;
+		public virtual float WaterUsedPerTick => 0.13f;
 
-		public override void SpawnSetup(Map map, bool respawningAfterLoad)
-		{
-			base.SpawnSetup(map, respawningAfterLoad);
-			power = GetComp<CompPowerTrader>();
-		}
+		public override float waterUsed => 50f;
+
+		public virtual float HeatUsedPerTick => 0.00025f;
+
+		public override FixtureType fixture => FixtureType.Bath;
+
+		public bool IsHot => powerComp != null && powerComp.PowerOn;
 
 		public bool CanUse(Pawn pawn)
 		{
@@ -25,26 +27,34 @@ namespace ColonyKit.Modules.Hygiene
 				&& pawn.CanReach(this, PathEndMode.Touch, Danger.Deadly);
 		}
 
-		public bool TryUseWater()
+		public bool TryUseWater(out bool cold, out ContaminationLevel contam)
 		{
-			CompPipe pipe = GetComp<CompPipe>();
-			if (pipe?.pipeNet != null && pipe.pipeNet.WaterTowers.Count > 0)
+			cold = true;
+			contam = ContaminationLevel.Treated;
+			if (pipe?.pipeNet != null && !pipe.pipeNet.PullWater(WaterUsedPerTick, out contam))
 			{
-				return pipe.pipeNet.PullWater(0.05f, out _);
+				return false;
 			}
-			// 还没接 DBH 管网时保留旧水网/无水兜底，避免淋浴器直接不可用。
-			if (WaterNetwork.HasInfrastructure(this))
+			if (powerComp != null && powerComp.PowerOn)
 			{
-				WaterNetwork.TryConsume(this, 0.05f);
+				cold = false;
+			}
+			if (pipe == null)
+			{
+				cold = false;
 			}
 			return true;
+		}
+
+		public bool TryUseWater()
+		{
+			return TryUseWater(out _, out _);
 		}
 
 		public float WaterAvailable
 		{
 			get
 			{
-				CompPipe pipe = GetComp<CompPipe>();
 				if (pipe?.pipeNet != null && pipe.pipeNet.WaterTowers.Count > 0)
 				{
 					return pipe.pipeNet.WaterStorage;
