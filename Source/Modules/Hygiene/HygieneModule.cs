@@ -21,6 +21,20 @@ namespace ColonyKit.Modules.Hygiene
 				"Hygiene",
 				"module loaded (DBH shower migration); " +
 				$"DBH active={ModsConfig.IsActive("dubwise.dubsbadhygiene")}");
+
+			ThingDef shower = DefDatabase<ThingDef>.GetNamedSilentFail("CK_Shower");
+			ModLog.Info(
+				"Hygiene",
+				$"shower size={(shower == null ? "missing" : shower.size.ToString())}; " +
+				$"water defs: pipe={DefExists("CK_DbhWaterPipe")}, tank={DefExists("CK_DbhWaterTank")}, " +
+				$"giant={DefExists("CK_DbhWaterTankGiant")}, pump={DefExists("CK_DbhWaterPump")}, " +
+				$"well={DefExists("CK_DbhWaterWell")}, heater={DefExists("CK_DbhWaterHeater")}; " +
+				$"hygiene menu={DefDatabase<DesignationCategoryDef>.GetNamedSilentFail("CK_Hygiene") != null}");
+		}
+
+		private static bool DefExists(string defName)
+		{
+			return DefDatabase<ThingDef>.GetNamedSilentFail(defName) != null;
 		}
 
 		public override void OnGameLoaded(Game game)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-	<CK_DbhWaterHeater.label>DBH-style water heater</CK_DbhWaterHeater.label>
-	<CK_DbhWaterHeater.description>Heats water for connected showers. Requires power.</CK_DbhWaterHeater.description>
+	<CK_DbhWaterHeater.label>water heater</CK_DbhWaterHeater.label>
+	<CK_DbhWaterHeater.description>Heats water for connected showers. Requires power; without it showers are cold.</CK_DbhWaterHeater.description>
 </LanguageData>

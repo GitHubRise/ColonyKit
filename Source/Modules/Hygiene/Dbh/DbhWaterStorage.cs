@@ -24,7 +24,6 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		public float WaterStorage;
 		public ContaminationLevel WaterQuality = ContaminationLevel.Untreated;
 		private CompPowerTrader power;
-		private CompPipe pipe;
 
 		public CompProperties_WaterStorage Props => (CompProperties_WaterStorage)props;
 
@@ -33,10 +32,6 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		public override void CompTick()
 		{
 			base.CompTick();
-			if (pipe?.pipeNet != null)
-			{
-				WaterStorage = Mathf.Min(Props.WaterStorageCap, WaterStorage + pipe.pipeNet.WaterPumpedPerTick);
-			}
 			if (parent?.Map != null
 				&& parent.Map.GetComponent<MapComponent_SewagePollution>()?.WaterPolluted == true)
 			{
@@ -60,7 +55,6 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		{
 			base.PostSpawnSetup(respawningAfterLoad);
 			power = parent.GetComp<CompPowerTrader>();
-			pipe = parent.GetComp<CompPipe>();
 		}
 
 		public override void PostExposeData()

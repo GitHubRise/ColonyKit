@@ -336,10 +336,17 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 				WaterCap += tank.Props.WaterStorageCap;
 			}
 			PumpingCapacitySum = WaterPumps.Sum(p => p.Capacity);
-			GroundWaterCapacitySum = WaterWells.Count > 0
-				? WaterWells.Sum(w => w.GroundWaterCapacity)
-				: PumpingCapacitySum;
-			WaterPumpedPerTick = Mathf.Min(PumpingCapacitySum, GroundWaterCapacitySum) / 60000f;
+			// A pump needs a well: ground water is the hard limit, and no well means no water.
+			GroundWaterCapacitySum = WaterWells.Sum(w => w.GroundWaterCapacity);
+			WaterPumpedPerTick = GroundWaterCapacitySum > 0f
+				? Mathf.Min(PumpingCapacitySum, GroundWaterCapacitySum) / 60000f
+				: 0f;
+
+			// Push once per network, not once per tank; otherwise every extra tank multiplies output.
+			if (WaterPumpedPerTick > 0f && WaterTowers.Count > 0)
+			{
+				PushWater(WaterPumpedPerTick);
+			}
 		}
 	}
 }

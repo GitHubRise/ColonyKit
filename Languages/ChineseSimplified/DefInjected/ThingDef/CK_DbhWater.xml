@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-	<CK_DbhWaterPipe.label>DBH 式水管</CK_DbhWaterPipe.label>
-	<CK_DbhWaterPipe.description>连接水泵、水箱和洁具的 DBH 式水管。</CK_DbhWaterPipe.description>
-	<CK_DbhWaterTank.label>DBH 式水箱</CK_DbhWaterTank.label>
-	<CK_DbhWaterTank.description>DBH 式储水，容量 2000 升。</CK_DbhWaterTank.description>
-	<CK_DbhWaterPump.label>DBH 式水泵</CK_DbhWaterPump.label>
-	<CK_DbhWaterPump.description>把水送入连通水箱，容量 2000 升/天。</CK_DbhWaterPump.description>
+	<CK_DbhWaterPipe.label>水管</CK_DbhWaterPipe.label>
+	<CK_DbhWaterPipe.description>连接水井、水泵、水箱、热水器和洁具的管道。像电缆一样不阻挡移动，可以铺在墙下；按住左键拖动可快速布线。</CK_DbhWaterPipe.description>
+	<CK_DbhWaterTank.label>水箱</CK_DbhWaterTank.label>
+	<CK_DbhWaterTank.description>为洁具储水，容量 2000 升。</CK_DbhWaterTank.description>
+	<CK_DbhWaterTankGiant.label>巨型水箱</CK_DbhWaterTankGiant.label>
+	<CK_DbhWaterTankGiant.description>大型储水设施，容量 8000 升。</CK_DbhWaterTankGiant.description>
+	<CK_DbhWaterPump.label>水泵</CK_DbhWaterPump.label>
+	<CK_DbhWaterPump.description>把水井里的地下水抽进连通的水箱。需要电力和至少一口水井，容量 1500 升/天。</CK_DbhWaterPump.description>
 </LanguageData>

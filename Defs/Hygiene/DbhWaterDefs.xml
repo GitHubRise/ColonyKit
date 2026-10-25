@@ -1,26 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
+	<!-- Water pipe: laid like a power conduit, does not block movement, can run under walls/buildings. -->
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_DbhWaterPipe</defName>
-		<label>DBH-style water pipe</label>
-		<description>DBH-style water pipe. Connects pumps, tanks and fixtures.</description>
+		<label>water pipe</label>
+		<description>Plumbing for connecting water wells, pumps, tanks, heaters and fixtures. Can be placed under walls and other buildings, like a power conduit.</description>
 		<thingClass>Building</thingClass>
 		<size>(1,1)</size>
 		<graphicData>
-			<texPath>Things/Building/Hygiene/CK_DbhWaterPipe</texPath>
+			<texPath>Things/Building/Hygiene/CK_WaterPipe_Atlas</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
+			<linkType>Basic</linkType>
+			<linkFlags>
+				<li>Custom5</li>
+			</linkFlags>
+			<damageData>
+				<rect>(0,0.35,1,0.3)</rect>
+			</damageData>
 		</graphicData>
-		<designationCategory>Furniture</designationCategory>
-		<passability>PassThroughOnly</passability>
-		<fillPercent>0.05</fillPercent>
-		<costList>
-			<Steel>10</Steel>
-		</costList>
+		<uiIconPath>Things/Building/Hygiene/CK_WaterPipe_MenuIcon</uiIconPath>
+		<uiIconScale>0.7</uiIconScale>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<isInert>true</isInert>
+			<isEdifice>false</isEdifice>
+			<canLandGravshipOn>true</canLandGravshipOn>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Hygiene/CK_WaterPipe_Atlas_Blueprint</texPath>
+			</blueprintGraphicData>
+			<canConstructInCorner>true</canConstructInCorner>
+		</building>
+		<drawerType>MapMeshOnly</drawerType>
+		<altitudeLayer>Conduits</altitudeLayer>
+		<passability>Standable</passability>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 		<statBases>
 			<MaxHitPoints>80</MaxHitPoints>
-			<Mass>3</Mass>
-			<WorkToBuild>200</WorkToBuild>
+			<WorkToBuild>45</WorkToBuild>
+			<Flammability>0.5</Flammability>
+			<Beauty>-2</Beauty>
 		</statBases>
+		<drawStyleCategory>Default1D</drawStyleCategory>
+		<rotatable>false</rotatable>
+		<selectable>true</selectable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<clearBuildingArea>false</clearBuildingArea>
+		<tickerType>Never</tickerType>
+		<costList>
+			<Steel>1</Steel>
+		</costList>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>10</uiOrder>
 		<comps>
 			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
 				<mode>Water</mode>
@@ -31,18 +61,19 @@
 		</researchPrerequisites>
 	</ThingDef>
 
+	<!-- 1x1 water tank. Art is one cell wide and two cells tall, like DBH's hot water tank. -->
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_DbhWaterTank</defName>
-		<label>DBH-style water tank</label>
-		<description>DBH-style water storage. Capacity: 2000 L.</description>
+		<label>water tank</label>
+		<description>Stores water for plumbed fixtures. Capacity: 2000 L.</description>
 		<thingClass>Building</thingClass>
-		<size>(2,2)</size>
+		<size>(1,1)</size>
 		<graphicData>
-			<texPath>Things/Building/Hygiene/CK_DbhWaterTank</texPath>
+			<texPath>Things/Building/Hygiene/CK_WaterTank</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(2,2)</drawSize>
+			<drawSize>(1,2)</drawSize>
 		</graphicData>
-		<designationCategory>Furniture</designationCategory>
+		<designationCategory>CK_Hygiene</designationCategory>
 		<passability>PassThroughOnly</passability>
 		<fillPercent>0.3</fillPercent>
 		<tickerType>Normal</tickerType>
@@ -65,29 +96,70 @@
 		<researchPrerequisites>
 			<li>CK_HygieneResearch</li>
 		</researchPrerequisites>
+		<uiOrder>20</uiOrder>
 	</ThingDef>
 
+	<!-- 2x2 giant water tank. -->
 	<ThingDef ParentName="BuildingBase">
-		<defName>CK_DbhWaterPump</defName>
-		<label>DBH-style water pump</label>
-		<description>DBH-style pump. Moves water into connected tanks. Capacity: 2000 L/day.</description>
+		<defName>CK_DbhWaterTankGiant</defName>
+		<label>giant water tank</label>
+		<description>Stores a large amount of water for plumbed fixtures. Capacity: 8000 L.</description>
 		<thingClass>Building</thingClass>
 		<size>(2,2)</size>
 		<graphicData>
-			<texPath>Things/Building/Hygiene/CK_DbhWaterPump</texPath>
+			<texPath>Things/Building/Hygiene/CK_WaterTankGiant</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(2,2)</drawSize>
+			<drawSize>(2,3)</drawSize>
 		</graphicData>
-		<designationCategory>Furniture</designationCategory>
+		<designationCategory>CK_Hygiene</designationCategory>
 		<passability>PassThroughOnly</passability>
-		<fillPercent>0.25</fillPercent>
+		<fillPercent>0.3</fillPercent>
+		<tickerType>Normal</tickerType>
 		<costList>
-			<Steel>120</Steel>
-			<ComponentIndustrial>3</ComponentIndustrial>
+			<Steel>200</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
 		</costList>
 		<statBases>
 			<MaxHitPoints>150</MaxHitPoints>
-			<Mass>40</Mass>
+			<Mass>50</Mass>
+			<WorkToBuild>2000</WorkToBuild>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterStorage">
+				<WaterStorageCap>8000</WaterStorageCap>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_HygieneResearch</li>
+		</researchPrerequisites>
+		<uiOrder>30</uiOrder>
+	</ThingDef>
+
+	<!-- 1x1 electric pump. Needs a water well in the same network. -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_DbhWaterPump</defName>
+		<label>water pump</label>
+		<description>Pumps ground water from water wells into connected tanks. Requires power and at least one water well. Capacity: 1500 L/day.</description>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_WaterPump</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.25</fillPercent>
+		<costList>
+			<Steel>80</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Mass>25</Mass>
 			<WorkToBuild>1500</WorkToBuild>
 		</statBases>
 		<comps>
@@ -99,75 +171,39 @@
 				<basePowerConsumption>250</basePowerConsumption>
 			</li>
 			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Breakdownable" />
 			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterPumpingStation">
-				<Capacity>2000</Capacity>
+				<Capacity>1500</Capacity>
 			</li>
 		</comps>
 		<researchPrerequisites>
 			<li>CK_HygieneResearch</li>
 		</researchPrerequisites>
+		<uiOrder>40</uiOrder>
 	</ThingDef>
-	<ThingDef ParentName="BuildingBase">
-		<defName>CK_DbhWaterHeater</defName>
-		<label>DBH-style water heater</label>
-		<description>Heats water for connected showers. Requires power.</description>
-		<thingClass>Building</thingClass>
-		<size>(1,2)</size>
-		<graphicData>
-			<texPath>Things/Building/Hygiene/CK_WaterHeater</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(1,2)</drawSize>
-		</graphicData>
-		<designationCategory>Furniture</designationCategory>
-		<passability>PassThroughOnly</passability>
-		<fillPercent>0.25</fillPercent>
-		<costList>
-			<Steel>75</Steel>
-			<ComponentIndustrial>2</ComponentIndustrial>
-		</costList>
-		<statBases>
-			<MaxHitPoints>150</MaxHitPoints>
-			<Mass>20</Mass>
-			<WorkToBuild>800</WorkToBuild>
-		</statBases>
-		<comps>
-			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
-				<mode>Water</mode>
-			</li>
-			<li Class="CompProperties_Power">
-				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>500</basePowerConsumption>
-			</li>
-			<li Class="CompProperties_Flickable" />
-			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterHeater">
-				<Capacity>2000</Capacity>
-			</li>
-		</comps>
-		<researchPrerequisites>
-			<li>CK_HygieneResearch</li>
-		</researchPrerequisites>
-	</ThingDef>
+
+	<!-- 1x1 water well: ground-water source for pumps. -->
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_DbhWaterWell</defName>
-		<label>DBH-style water well</label>
-		<description>Provides ground water capacity to the connected pump network.</description>
+		<label>water well</label>
+		<description>Provides ground water to connected pumps. One well can feed any number of pumps on the same water network. Capacity: 2000 L/day.</description>
 		<thingClass>Building</thingClass>
 		<size>(1,1)</size>
 		<graphicData>
-			<texPath>Things/Building/Hygiene/CK_DbhWaterWell</texPath>
+			<texPath>Things/Building/Hygiene/CK_WaterWell</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
 		</graphicData>
-		<designationCategory>Furniture</designationCategory>
+		<designationCategory>CK_Hygiene</designationCategory>
 		<passability>PassThroughOnly</passability>
 		<fillPercent>0.25</fillPercent>
 		<costList>
-			<Steel>80</Steel>
-			<ComponentIndustrial>2</ComponentIndustrial>
+			<Steel>50</Steel>
 		</costList>
 		<statBases>
-			<MaxHitPoints>150</MaxHitPoints>
+			<MaxHitPoints>100</MaxHitPoints>
 			<Mass>20</Mass>
-			<WorkToBuild>1200</WorkToBuild>
+			<WorkToBuild>3000</WorkToBuild>
 		</statBases>
 		<comps>
 			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
@@ -180,5 +216,49 @@
 		<researchPrerequisites>
 			<li>CK_HygieneResearch</li>
 		</researchPrerequisites>
+		<uiOrder>50</uiOrder>
+	</ThingDef>
+
+	<!-- 1x1 electric water heater: gives hot showers while powered. -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_DbhWaterHeater</defName>
+		<label>water heater</label>
+		<description>Heats water for connected showers. Requires power; without it showers are cold.</description>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_WaterHeater</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,2)</drawSize>
+		</graphicData>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.25</fillPercent>
+		<costList>
+			<Steel>75</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Mass>20</Mass>
+			<WorkToBuild>1200</WorkToBuild>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>250</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterHeater">
+				<Capacity>2000</Capacity>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_HygieneResearch</li>
+		</researchPrerequisites>
+		<uiOrder>60</uiOrder>
 	</ThingDef>
 </Defs>

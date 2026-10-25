@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-	<CK_DbhWaterWell.label>DBH 式水井</CK_DbhWaterWell.label>
-	<CK_DbhWaterWell.description>为连通水泵提供地下水容量。</CK_DbhWaterWell.description>
+	<CK_DbhWaterWell.label>水井</CK_DbhWaterWell.label>
+	<CK_DbhWaterWell.description>为连通的水泵提供地下水。同一水网里的一口井可以供多台水泵使用，容量 2000 升/天。</CK_DbhWaterWell.description>
 </LanguageData>
