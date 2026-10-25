@@ -147,4 +147,38 @@
 			<li>CK_HygieneResearch</li>
 		</researchPrerequisites>
 	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_DbhWaterWell</defName>
+		<label>DBH-style water well</label>
+		<description>Provides ground water capacity to the connected pump network.</description>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_DbhWaterWell</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<designationCategory>Furniture</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.25</fillPercent>
+		<costList>
+			<Steel>80</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Mass>20</Mass>
+			<WorkToBuild>1200</WorkToBuild>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterInlet">
+				<Capacity>2000</Capacity>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_HygieneResearch</li>
+		</researchPrerequisites>
+	</ThingDef>
 </Defs>
