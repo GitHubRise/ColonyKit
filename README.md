@@ -132,6 +132,7 @@ Get-ChildItem -Recurse -File -Include *.cs, *.csproj, *.xml, *.ps1 |
 9. **`Assemblies/` 只放运行期 DLL**；`Source/`、`obj/`、`bin/`、`dist/` 不进包（模板 `.gitignore` 已覆盖）。
 10. **不引游戏安装目录里的 `Assembly-CSharp.dll`**：一律 `Krafs.Rimworld.Ref`。
 11. **0 错误 0 警告才提交**；提交前跑 `verify.ps1` 与 `package.ps1`。
+12. **每次更新写玩家可见说明**：完成可感知更新后，同步更新 `About/About.xml` 的 `<description>` 里「最近更新（YYYY-MM-DD）：」小节，写 3–6 条玩家能看懂的改动；旧内容留在 `CHANGELOG.md`，下一次替换该小节。更新说明与代码/Def 同次提交。
 
 ---
 
