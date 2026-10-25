@@ -18,6 +18,37 @@ namespace ColonyKit.Modules.Robotics
 
 		private static bool ran;
 
+		private static IntVec3 FindFreeRect(Map map, IntVec3 center, int radius, int width, int height)
+		{
+			for (int dx = -radius; dx <= radius; dx++)
+			{
+				for (int dz = -radius; dz <= radius; dz++)
+				{
+					IntVec3 root = center + new IntVec3(dx, 0, dz);
+					CellRect rect = new CellRect(root.x, root.z, width, height);
+					if (rect.Contains(center))
+					{
+						continue;
+					}
+					bool free = true;
+					foreach (IntVec3 cell in rect.Cells)
+					{
+						if (!cell.InBounds(map) || !cell.Standable(map)
+							|| cell.GetEdifice(map) != null)
+						{
+							free = false;
+							break;
+						}
+					}
+					if (free)
+					{
+						return root;
+					}
+				}
+			}
+			return IntVec3.Invalid;
+		}
+
 		public static void RunIfRequested(Game game)
 		{
 			if (ran || game == null || !GenCommandLine.CommandLineArgPassed(CommandLineKey))
@@ -168,6 +199,33 @@ namespace ColonyKit.Modules.Robotics
 								fire.Destroy();
 							}
 						}
+					}
+
+					IntVec3 generatorCell = FindFreeRect(map, cell, 12, 2, 2);
+					if (generatorCell.IsValid)
+					{
+						Thing generator = ThingMaker.MakeThing(ThingDefOf.WoodFiredGenerator);
+						GenSpawn.Spawn(generator, generatorCell, map, Rot4.North);
+						generator.SetFaction(Faction.OfPlayer);
+						CompRefuelable fuel = generator.TryGetComp<CompRefuelable>();
+						if (fuel != null && fuel.Fuel > 0f)
+						{
+							fuel.ConsumeFuel(fuel.Fuel);
+						}
+						IntVec3 woodCell = CellFinder.RandomClosewalkCellNear(
+							generatorCell,
+							map,
+							4,
+							c => c.Standable(map) && c.GetEdifice(map) == null);
+						Thing wood = ThingMaker.MakeThing(ThingDefOf.WoodLog);
+						wood.stackCount = 75;
+						GenSpawn.Spawn(wood, woodCell, map);
+						ThinkResult refuelResult = new JobGiver_NannyBotRefuel()
+							.TryIssueJobPackage(robot, new JobIssueParams());
+						builder.Append(" refuelJob=")
+							.Append(refuelResult.Job?.def?.defName ?? "none");
+						wood.Destroy();
+						generator.Destroy();
 					}
 
 					RoboticsSettings settings = NannyBotUtility.Settings;

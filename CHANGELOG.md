@@ -107,7 +107,7 @@
 ### Validated
 
 - 隔离 quicktest（Core + ColonyKit，临时 `-colonykit-storage-test` 探针）：完成 T1/T2/T3 后木头全局 `stackLimit=750`、库内上限 `4500`；5×1000 木头入库合并为 `[4500, 500]`；取出第一堆后剩 `[3750, 500]`、地图出现 750 的一堆；日志显示 `stack rules applied: 176 defs x10; warehouse internal x6`。探针验证后已移除。
-- 隔离 quicktest（Core + Harmony + ColonyKit，`-colonykit-nannybot-test`）：工作站与机器人生成成功；`needs=1`、`Moving/Manipulation/Consciousness=1`、`energy=4000`、`batteryCap=4000`、`cleanJob=CK_NannyCleanFilth`、`haulJob=HaulToCell`、`fireJob=BeatFire`、`repairJob=CK_RepairNannyBot`；无 XML、贴图或运行时异常。未覆盖：设置页/管理页人工点击、屠宰/囚犯/化粪池/加燃料的真实场景、4000W 充电电网与长期存读档。
+- 隔离 quicktest（Core + Harmony + ColonyKit，`-colonykit-nannybot-test`）：工作站与机器人生成成功；`needs=1`、`Moving/Manipulation/Consciousness=1`、`energy=4000`、`batteryCap=4000`、`cleanJob=CK_NannyCleanFilth`、`haulJob=HaulToCell`、`fireJob=BeatFire`、`refuelJob=Refuel`、`repairJob=CK_RepairNannyBot`；无 XML、贴图或运行时异常。未覆盖：设置页/管理页人工点击、屠宰/囚犯/化粪池的真实场景、4000W 充电电网与长期存读档。
 - quicktest（只开 Core + Harmony + ColonyKit）：`modules=10`；Blueprint 模块加载、库初始化正常。
 - 临时实机探针：在地图空地生成 5×5 墙圈 + 中心 1×2 床，捕获 17 条 → 平放/旋转 90° 各生成 17 个原版 `Blueprint_Build`；旋转后床蓝图朝向为 East；模板保存/读取/删除通过。
 - 未覆盖：10×10 基地、存读档、缺 Mod 场景、真实鼠标 UI 点击/拖框。
