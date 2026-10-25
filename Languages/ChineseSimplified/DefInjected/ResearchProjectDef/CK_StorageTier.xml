@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-	<CK_StorageTab.label>立体仓库</CK_StorageTab.label>
-	<CK_StorageTab.generalTitle>立体仓库研究</CK_StorageTab.generalTitle>
-	<CK_StorageTab.generalDescription>研究高密度仓储、立体仓库核心与履带物流。</CK_StorageTab.generalDescription>
 	<CK_StorageTier1.label>一级立体仓库技术</CK_StorageTier1.label>
 	<CK_StorageTier1.description>可堆叠物品在当前上限上 ×10；研究费用 800，前置 Electricity。</CK_StorageTier1.description>
 	<CK_StorageTier2.label>二级立体仓库技术</CK_StorageTier2.label>

@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-	<CK_StorageTab.label>Warehouse</CK_StorageTab.label>
-	<CK_StorageTab.generalTitle>Warehouse research</CK_StorageTab.generalTitle>
-	<CK_StorageTab.generalDescription>Research high-density storage, warehouse cores and conveyor logistics.</CK_StorageTab.generalDescription>
 	<CK_StorageTier1.label>tier 1 vertical warehouse</CK_StorageTier1.label>
 	<CK_StorageTier1.description>Stackable items hold 10x their normal limit. Research cost 800; requires Electricity.</CK_StorageTier1.description>
 	<CK_StorageTier2.label>tier 2 vertical warehouse</CK_StorageTier2.label>
