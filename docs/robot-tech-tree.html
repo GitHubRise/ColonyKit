@@ -58,6 +58,13 @@ th { color:var(--muted); font-weight:600; background:rgba(0,0,0,.16); white-spac
 tbody tr:hover { background:rgba(102,210,201,.045); }
 .delta { margin-top:14px; border:1px solid var(--line); border-radius:12px; padding:11px 13px; color:var(--muted); font-size:12px; line-height:1.7; }
 .delta strong { color:var(--text); }
+.combat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:14px 0 4px; }
+.combat-card { border:1px solid rgba(224,123,107,.35); background:linear-gradient(150deg,rgba(224,123,107,.10),rgba(0,0,0,.12)); border-radius:14px; padding:13px; }
+.combat-card h3 { margin:0 0 7px; color:var(--text); font-size:17px; }
+.combat-card p { margin:0; color:var(--muted); font-size:12px; line-height:1.65; }
+.combat-tag { display:inline-block; margin-top:9px; border:1px solid rgba(234,179,95,.35); color:var(--amber); border-radius:999px; padding:4px 8px; font-size:10px; }
+.combat-strip { margin-top:14px; border:1px solid rgba(224,123,107,.35); background:rgba(224,123,107,.06); border-radius:12px; padding:11px 13px; font-size:12px; line-height:1.65; color:var(--muted); }
+.combat-strip strong { color:var(--text); }
 .summary { margin-top:18px; }
 .summary h3 { margin-top:0; }
 .note { margin-top:14px; border:1px solid rgba(234,179,95,.35); border-radius:12px; background:rgba(234,179,95,.06); padding:12px 14px; color:var(--muted); font-size:12px; line-height:1.65; }
@@ -77,7 +84,7 @@ tbody tr:hover { background:rgba(102,210,201,.045); }
   <div class="tree"><button class="tree-node" data-tech="T1" type="button"><span class="tree-id">T1</span><span class="tree-name">机械化工坊</span><span class="tree-product">MkI</span><span class="tree-cost">1,200 点</span></button><span class="tree-arrow">→</span><button class="tree-node" data-tech="T2" type="button"><span class="tree-id">T2</span><span class="tree-name">模块化单元</span><span class="tree-product">MkII</span><span class="tree-cost">2,000 点</span></button><span class="tree-arrow">→</span><button class="tree-node" data-tech="T3" type="button"><span class="tree-id">T3</span><span class="tree-name">流水线生产</span><span class="tree-product">MkIII</span><span class="tree-cost">3,200 点</span></button><span class="tree-arrow">→</span><button class="tree-node" data-tech="T4" type="button"><span class="tree-id">T4</span><span class="tree-name">现场保障</span><span class="tree-product">MkIV</span><span class="tree-cost">2,600 点</span></button><span class="tree-arrow">→</span><button class="tree-node" data-tech="T5" type="button"><span class="tree-id">T5</span><span class="tree-name">全自动柔性制造</span><span class="tree-product">MkV</span><span class="tree-cost">5,000 点</span></button></div>
 
   <nav class="tabs" role="tablist" aria-label="科技阶段">
-    <button class="tab active" data-tab="T1" type="button"><span class="tab-id">T1</span><span>机械化工坊</span></button><button class="tab" data-tab="T2" type="button"><span class="tab-id">T2</span><span>模块化单元</span></button><button class="tab" data-tab="T3" type="button"><span class="tab-id">T3</span><span>流水线生产</span></button><button class="tab" data-tab="T4" type="button"><span class="tab-id">T4</span><span>现场保障</span></button><button class="tab" data-tab="T5" type="button"><span class="tab-id">T5</span><span>全自动柔性制造</span></button>
+    <button class="tab active" data-tab="T1" type="button"><span class="tab-id">T1</span><span>机械化工坊</span></button><button class="tab" data-tab="T2" type="button"><span class="tab-id">T2</span><span>模块化单元</span></button><button class="tab" data-tab="T3" type="button"><span class="tab-id">T3</span><span>流水线生产</span></button><button class="tab" data-tab="T4" type="button"><span class="tab-id">T4</span><span>现场保障</span></button><button class="tab" data-tab="T5" type="button"><span class="tab-id">T5</span><span>全自动柔性制造</span></button><button class="tab" data-tab="C" type="button"><span class="tab-id">⚔</span><span>反击能力</span></button>
   </nav>
 
   
@@ -114,9 +121,10 @@ tbody tr:hover { background:rgba(102,210,201,.045); }
             <tr><th>移动</th><td>2.0</td></tr>
             <tr><th>材料</th><td>70 / 6 / 1 / 2</td></tr>
           </table>
-          <p class="special">三色胸灯、扫帚；维修需殖民者操作维修机。</p>
+          <p class="special">三色胸灯、扫帚；无自卫模块，遇敌只撤离；维修需殖民者操作维修机。</p>
         </div>
       </div>
+      
 
       <h3>产物 / 材料 / 功率明细</h3>
       <div class="table-wrap">
@@ -163,9 +171,10 @@ tbody tr:hover { background:rgba(102,210,201,.045); }
             <tr><th>移动</th><td>2.1</td></tr>
             <tr><th>材料</th><td>64 / 7 / 1 / 4</td></tr>
           </table>
-          <p class="special">骨架/总装分离；自动维修；维护性最好。</p>
+          <p class="special">骨架/总装分离；自动维修；无自卫模块，遇敌只撤离。</p>
         </div>
       </div>
+      
 
       <h3>产物 / 材料 / 功率明细</h3>
       <div class="table-wrap">
@@ -196,7 +205,7 @@ tbody tr:hover { background:rgba(102,210,201,.045); }
       <div class="tier-columns">
         <div>
           <h3>本阶段新增产物</h3>
-          <ul class="new-list"><li>2×2 骨架厂</li><li>4×2 总装线</li><li>重载维修机</li><li>Mk-III 重载保姆机器人</li></ul>
+          <ul class="new-list"><li>2×2 骨架厂</li><li>4×2 总装线</li><li>重载维修机</li><li>Mk-III 重载保姆机器人</li><li>Mk-III 基础自卫模块（电弧焊枪）</li></ul>
           <h3>沿用上一阶段</h3>
           <ul class="reuse-list"><li>T1/T2 充电桩</li><li>T2 自动维修逻辑（换到重载维修机）</li></ul>
         </div>
@@ -207,25 +216,31 @@ tbody tr:hover { background:rgba(102,210,201,.045); }
           <table class="stats">
             <tr><th>耐久</th><td>1,600</td></tr>
             <tr><th>电池</th><td>6,400 W·h（6.4 kWh）</td></tr>
-            <tr><th>整机质量</th><td>146 kg</td></tr>
-            <tr><th>载重</th><td>35 kg</td></tr>
+            <tr><th>整机质量</th><td>150 kg（含自卫模块）</td></tr>
+            <tr><th>载重</th><td>33 kg</td></tr>
             <tr><th>移动</th><td>1.8</td></tr>
-            <tr><th>材料</th><td>95 / 8 / 2 / 8</td></tr>
+            <tr><th>材料</th><td>115 / 10 / 3 / 10</td></tr>
           </table>
-          <p class="special">重载履带；适合搬运/屠宰/加燃料；速度略低。</p>
+          <p class="special">重载履带；电弧焊枪基本反击；不主动索敌。</p>
         </div>
       </div>
+      
+      <div class="combat-strip">
+        <strong>反击能力：</strong>基础自卫 · 电弧焊枪 · 近战 · 7 伤害 · 1.2 格 · 1.2 s · 眩晕 30 tick · 护甲 无
+        <br><span>只在被攻击或敌人进入 2 格时反击；不追击超过 6 格。</span>
+      </div>
+        
 
       <h3>产物 / 材料 / 功率明细</h3>
       <div class="table-wrap">
         <table class="products">
           <thead><tr><th>产物</th><th>类型</th><th>所需材料</th><th>工作 / 功率</th><th>说明</th></tr></thead>
-          <tbody><tr><td>CK_RobotFrameFab</td><td>建筑 · 骨架厂</td><td>140 钢 + 4 零部件 + 1 高级零部件</td><td>6,000 work / 500 W</td><td>2×2，固定；批量骨架。</td></tr><tr><td>CK_RobotAssemblyLine</td><td>建筑 · 总装线</td><td>240 钢 + 8 零部件 + 2 高级零部件</td><td>12,000 work / 1,300 W</td><td>4×2，固定；总装 Mk-III。</td></tr><tr><td>CK_RobotRepairBay_Heavy</td><td>建筑 · 维修机</td><td>220 钢 + 7 零部件 + 2 高级零部件</td><td>600 tick / 250 耐久 / 1,000 W</td><td>2×2，固定；殖民者操作。</td></tr><tr><td>CK_NannyBot_MkIII</td><td>机器人 · Mk-III</td><td>95 钢 + 8 零部件 + 2 高级零部件 + 8 塑钢</td><td>6.4 kWh / 146 kg</td><td>重载型；35 kg 载重；1600 耐久。</td></tr></tbody>
+          <tbody><tr><td>CK_RobotFrameFab</td><td>建筑 · 骨架厂</td><td>140 钢 + 4 零部件 + 1 高级零部件</td><td>6,000 work / 500 W</td><td>2×2，固定；批量骨架。</td></tr><tr><td>CK_RobotAssemblyLine</td><td>建筑 · 总装线</td><td>240 钢 + 8 零部件 + 2 高级零部件</td><td>12,000 work / 1,300 W</td><td>4×2，固定；总装 Mk-III。</td></tr><tr><td>CK_RobotRepairBay_Heavy</td><td>建筑 · 维修机</td><td>220 钢 + 7 零部件 + 2 高级零部件</td><td>600 tick / 250 耐久 / 1,000 W</td><td>2×2，固定；殖民者操作。</td></tr><tr><td>CK_NannyBot_MkIII</td><td>机器人 · Mk-III</td><td>95 钢 + 8 零部件 + 2 高级零部件 + 8 塑钢（不含自卫模块）</td><td>6.4 kWh / 146 kg</td><td>重载型；35 kg 载重；1600 耐久。</td></tr><tr><td>CK_RobotDefense_ArcWelder</td><td>模块 · 自卫</td><td>20 钢 + 2 零部件 + 1 高级零部件 + 2 塑钢</td><td>1.2 s 冷却 / +4 kg</td><td>电弧焊枪；7 伤害；1.2 格；眩晕 30 tick。</td></tr></tbody>
         </table>
       </div>
 
-      <div class="delta"><strong>与上一级差异：</strong>比 T2：+350 耐久、+1,600 W 电池、+13 kg 载重；-0.3 移速；两栋工厂占地更大。<br>
-        <strong>首台总投入（不含研究）：</strong>735 钢 / 28 零部件 / 6 高级零部件</div>
+      <div class="delta"><strong>与上一级差异：</strong>比 T2：+350 耐久、+1,600 W 电池、+11 kg 载重；-0.3 移速；新增电弧焊枪自卫模块（+4 kg）。<br>
+        <strong>首台总投入（不含研究）：</strong>795 钢 / 31 零部件 / 8 高级零部件</div>
     </section>
     
     <section class="panel" data-panel="T4">
@@ -245,7 +260,7 @@ tbody tr:hover { background:rgba(102,210,201,.045); }
       <div class="tier-columns">
         <div>
           <h3>本阶段新增产物</h3>
-          <ul class="new-list"><li>3×3 预制工厂</li><li>轻量现场充电桩</li><li>现场维修机</li><li>Mk-IV 前哨保姆机器人</li></ul>
+          <ul class="new-list"><li>3×3 预制工厂</li><li>轻量现场充电桩</li><li>现场维修机</li><li>Mk-IV 前哨保姆机器人</li><li>Mk-IV 现场自卫模块（电击棒 + 轻甲）</li></ul>
           <h3>沿用上一阶段</h3>
           <ul class="reuse-list"><li>T2 自动维修逻辑（可选）</li><li>T3 骨架中间件（可作为预制模块）</li></ul>
         </div>
@@ -256,25 +271,31 @@ tbody tr:hover { background:rgba(102,210,201,.045); }
           <table class="stats">
             <tr><th>耐久</th><td>900</td></tr>
             <tr><th>电池</th><td>3,600 W·h（3.6 kWh）</td></tr>
-            <tr><th>整机质量</th><td>96 kg</td></tr>
-            <tr><th>载重</th><td>18 kg</td></tr>
+            <tr><th>整机质量</th><td>99 kg（含自卫模块）</td></tr>
+            <tr><th>载重</th><td>17 kg</td></tr>
             <tr><th>移动</th><td>2.4</td></tr>
-            <tr><th>材料</th><td>52 / 5 / 1 / 2</td></tr>
+            <tr><th>材料</th><td>70 / 8 / 2 / 5</td></tr>
           </table>
-          <p class="special">轻量、省电、移速最高；大修必须回主基地。</p>
+          <p class="special">轻量、省电、移速最高；电击棒 + 轻甲；大修必须回主基地。</p>
         </div>
       </div>
+      
+      <div class="combat-strip">
+        <strong>反击能力：</strong>现场自卫 · 电击棒 + 轻甲 · 近战 · 9 伤害 · 1.2 格 · 1.5 s · 眩晕 60 tick · 护甲 +0.08 锐器 / +0.04 钝器
+        <br><span>被攻击或 2 格内有敌人才反击；血量 &lt;30% 时优先撤离。</span>
+      </div>
+        
 
       <h3>产物 / 材料 / 功率明细</h3>
       <div class="table-wrap">
         <table class="products">
           <thead><tr><th>产物</th><th>类型</th><th>所需材料</th><th>工作 / 功率</th><th>说明</th></tr></thead>
-          <tbody><tr><td>CK_RobotFactory_T4</td><td>建筑 · 工厂</td><td>200 钢 + 7 零部件 + 2 高级零部件</td><td>10,000 work / 300–800 W</td><td>3×3，固定；预制总装。</td></tr><tr><td>CK_RobotCharger_Light</td><td>建筑 · 充电桩</td><td>60 钢 + 2 零部件</td><td>50–4,000 W / 35 kg</td><td>1×1，可携带；比 T1 更便宜。</td></tr><tr><td>CK_RobotRepairBay_Field</td><td>建筑 · 维修机</td><td>180 钢 + 6 零部件 + 1 高级零部件</td><td>600 tick / 250 耐久 / 900 W</td><td>2×2，固定；殖民者操作；不提供野外维修。</td></tr><tr><td>CK_NannyBot_MkIV</td><td>机器人 · Mk-IV</td><td>52 钢 + 5 零部件 + 1 高级零部件 + 2 塑钢</td><td>3.6 kWh / 96 kg</td><td>轻量型；18 kg 载重；900 耐久。</td></tr></tbody>
+          <tbody><tr><td>CK_RobotFactory_T4</td><td>建筑 · 工厂</td><td>200 钢 + 7 零部件 + 2 高级零部件</td><td>10,000 work / 300–800 W</td><td>3×3，固定；预制总装。</td></tr><tr><td>CK_RobotCharger_Light</td><td>建筑 · 充电桩</td><td>60 钢 + 2 零部件</td><td>50–4,000 W / 35 kg</td><td>1×1，可携带；比 T1 更便宜。</td></tr><tr><td>CK_RobotRepairBay_Field</td><td>建筑 · 维修机</td><td>180 钢 + 6 零部件 + 1 高级零部件</td><td>600 tick / 250 耐久 / 900 W</td><td>2×2，固定；殖民者操作；不提供野外维修。</td></tr><tr><td>CK_NannyBot_MkIV</td><td>机器人 · Mk-IV</td><td>52 钢 + 5 零部件 + 1 高级零部件 + 2 塑钢（不含自卫模块）</td><td>3.6 kWh / 96 kg</td><td>轻量型；18 kg 载重；900 耐久。</td></tr><tr><td>CK_RobotDefense_ShockBaton</td><td>模块 · 自卫</td><td>18 钢 + 3 零部件 + 1 高级零部件 + 3 塑钢</td><td>1.5 s 冷却 / +3 kg</td><td>电击棒；9 伤害；眩晕 60 tick；+0.08 锐器/+0.04 钝器护甲。</td></tr></tbody>
         </table>
       </div>
 
-      <div class="delta"><strong>与上一级差异：</strong>比 T3：-700 耐久、-2,800 W 电池、-17 kg 载重；+0.6 移速；充电桩更便宜。<br>
-        <strong>首台总投入（不含研究）：</strong>552 钢 / 22 零部件 / 4 高级零部件</div>
+      <div class="delta"><strong>与上一级差异：</strong>比 T3：-700 耐久、-2,800 W 电池、-16 kg 载重；+0.6 移速；新增现场自卫模块（+3 kg）。<br>
+        <strong>首台总投入（不含研究）：</strong>510 钢 / 23 零部件 / 5 高级零部件</div>
     </section>
     
     <section class="panel" data-panel="T5">
@@ -294,7 +315,7 @@ tbody tr:hover { background:rgba(102,210,201,.045); }
       <div class="tier-columns">
         <div>
           <h3>本阶段新增产物</h3>
-          <ul class="new-list"><li>4×4 自动工厂</li><li>高速自动维修机</li><li>Mk-V 高配保姆机器人</li></ul>
+          <ul class="new-list"><li>4×4 自动工厂</li><li>高速自动维修机</li><li>Mk-V 高配保姆机器人</li><li>Mk-V 自动防卫模块（电弧发射器）</li></ul>
           <h3>沿用上一阶段</h3>
           <ul class="reuse-list"><li>T1/T4 充电桩</li><li>T2 自动维修逻辑（升级版）</li></ul>
         </div>
@@ -305,25 +326,112 @@ tbody tr:hover { background:rgba(102,210,201,.045); }
           <table class="stats">
             <tr><th>耐久</th><td>1,800</td></tr>
             <tr><th>电池</th><td>6,000 W·h（6.0 kWh）</td></tr>
-            <tr><th>整机质量</th><td>130 kg</td></tr>
-            <tr><th>载重</th><td>30 kg</td></tr>
+            <tr><th>整机质量</th><td>135 kg（含自卫模块）</td></tr>
+            <tr><th>载重</th><td>28 kg</td></tr>
             <tr><th>移动</th><td>2.0</td></tr>
-            <tr><th>材料</th><td>80 / 8 / 2 / 12</td></tr>
+            <tr><th>材料</th><td>108 / 12 / 4 / 16</td></tr>
           </table>
-          <p class="special">高配复合外壳；自动维修；后期旗舰。</p>
+          <p class="special">高配复合外壳；电弧发射器 + 近战；自动维修；后期旗舰。</p>
         </div>
       </div>
+      
+      <div class="combat-strip">
+        <strong>反击能力：</strong>自动防卫 · 电弧发射器 · 远程 + 近战 · 8×3 / 近战 8 伤害 · 4.9 格 · 2.5 s · 眩晕 30 tick · 护甲 +0.10 锐器 / +0.06 钝器
+        <br><span>只打敌对目标；不穿透墙；被近身后切换近战；血量 &lt;30% 停火撤离。</span>
+      </div>
+        
 
       <h3>产物 / 材料 / 功率明细</h3>
       <div class="table-wrap">
         <table class="products">
           <thead><tr><th>产物</th><th>类型</th><th>所需材料</th><th>工作 / 功率</th><th>说明</th></tr></thead>
-          <tbody><tr><td>CK_RobotAutofactory</td><td>建筑 · 工厂</td><td>420 钢 + 14 零部件 + 4 高级零部件 + 1 AI 核心</td><td>30,000 tick / 600–1,500 W</td><td>4×4，固定；无人自动生产。</td></tr><tr><td>CK_RobotRepairBay_AutoMkII</td><td>建筑 · 维修机</td><td>220 钢 + 8 零部件 + 2 高级零部件</td><td>800 tick / 250 耐久 / 1,500 W</td><td>2×2，固定；自动停靠维修。</td></tr><tr><td>CK_NannyBot_MkV</td><td>机器人 · Mk-V</td><td>80 钢 + 8 零部件 + 2 高级零部件 + 12 塑钢</td><td>6.0 kWh / 130 kg</td><td>高配型；30 kg 载重；1800 耐久。</td></tr><tr><td>CK_RobotCharger</td><td>建筑 · 充电桩</td><td>沿用 T1（80 钢 + 2 零部件）</td><td>50–4,000 W</td><td>可携带；自动分配最近空闲桩。</td></tr></tbody>
+          <tbody><tr><td>CK_RobotAutofactory</td><td>建筑 · 工厂</td><td>420 钢 + 14 零部件 + 4 高级零部件 + 1 AI 核心</td><td>30,000 tick / 600–1,500 W</td><td>4×4，固定；无人自动生产。</td></tr><tr><td>CK_RobotRepairBay_AutoMkII</td><td>建筑 · 维修机</td><td>220 钢 + 8 零部件 + 2 高级零部件</td><td>800 tick / 250 耐久 / 1,500 W</td><td>2×2，固定；自动停靠维修。</td></tr><tr><td>CK_NannyBot_MkV</td><td>机器人 · Mk-V</td><td>80 钢 + 8 零部件 + 2 高级零部件 + 12 塑钢（不含自卫模块）</td><td>6.0 kWh / 130 kg</td><td>高配型；30 kg 载重；1800 耐久。</td></tr><tr><td>CK_RobotDefense_ArcEmitter</td><td>模块 · 自卫</td><td>28 钢 + 4 零部件 + 2 高级零部件 + 4 塑钢</td><td>2.5 s 冷却 / +5 kg</td><td>电弧发射器；8×3 伤害；4.9 格；眩晕 30 tick；+0.10 锐器/+0.06 钝器护甲。</td></tr><tr><td>CK_RobotCharger</td><td>建筑 · 充电桩</td><td>沿用 T1（80 钢 + 2 零部件）</td><td>50–4,000 W</td><td>可携带；自动分配最近空闲桩。</td></tr></tbody>
         </table>
       </div>
 
-      <div class="delta"><strong>与上一级差异：</strong>比 T4：+900 耐久、+2,400 W 电池、+12 kg 载重；-0.4 移速；工厂/维修全自动。<br>
-        <strong>首台总投入（不含研究）：</strong>760 钢 / 30 零部件 / 7 高级零部件 + AI 核心</div>
+      <div class="delta"><strong>与上一级差异：</strong>比 T4：+900 耐久、+2,400 W 电池、+11 kg 载重；-0.4 移速；新增自动防卫模块（+5 kg）。<br>
+        <strong>首台总投入（不含研究）：</strong>828 钢 / 36 零部件 / 10 高级零部件 + AI 核心</div>
+    </section>
+    
+    <section class="panel" data-panel="C">
+      <div class="tier-head">
+        <div>
+          <p class="eyebrow">T3–T5 · BASIC SELF-DEFENSE</p>
+          <h2>反击能力 · 三档自卫</h2>
+          <p class="lead">T1/T2 仍然以撤离为主；T3 起给机器人“被打能还手”的最低能力，T4 加轻甲，T5 才允许短程射击。目标是自卫，不是战斗机器人：不主动索敌、不长距离追击、不参与进攻。</p>
+        </div>
+        <div class="tier-meta">
+          <div><span>适用</span><strong>T3 / T4 / T5</strong></div>
+          <div><span>默认模式</span><strong>仅反击</strong></div>
+          <div><span>主动索敌</span><strong>否</strong></div>
+        </div>
+      </div>
+
+      <div class="combat-grid">
+        <div class="combat-card">
+          <p class="eyebrow">T3 · 基础自卫</p>
+          <h3>电弧焊枪</h3>
+          <p>把维修用的电弧焊枪当近战武器：7 伤害、1.2 格、1.2 秒冷却、眩晕 30 tick。只在被攻击或敌人贴到 2 格内时还手。</p>
+          <span class="combat-tag">+4 kg · 20 钢 + 2 零件 + 1 高级 + 2 塑钢</span>
+        </div>
+        <div class="combat-card">
+          <p class="eyebrow">T4 · 现场自卫</p>
+          <h3>电击棒 + 轻甲</h3>
+          <p>9 伤害、眩晕 60 tick，额外 +0.08 锐器 / +0.04 钝器护甲。血量低于 30% 时优先撤离，不追击。</p>
+          <span class="combat-tag">+3 kg · 18 钢 + 3 零件 + 1 高级 + 3 塑钢</span>
+        </div>
+        <div class="combat-card">
+          <p class="eyebrow">T5 · 自动防卫</p>
+          <h3>电弧发射器</h3>
+          <p>4.9 格、8×3 连发、眩晕 30 tick，近身自动切近战。只打敌对目标，不穿墙，不开火打友军/中立。</p>
+          <span class="combat-tag">+5 kg · 28 钢 + 4 零件 + 2 高级 + 4 塑钢</span>
+        </div>
+      </div>
+
+      <h3>三档对比</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>阶段</th><th>模块</th><th>类型</th><th>伤害</th><th>射程</th><th>冷却</th><th>眩晕</th><th>护甲</th><th>增重</th></tr></thead>
+          <tbody><tr><td><strong>T3</strong> 流水线生产</td><td>基础自卫 · 电弧焊枪</td><td>近战</td><td>7</td><td>1.2 格</td><td>1.2 s</td><td>30 tick</td><td>无</td><td>4 kg</td></tr><tr><td><strong>T4</strong> 现场保障</td><td>现场自卫 · 电击棒 + 轻甲</td><td>近战</td><td>9</td><td>1.2 格</td><td>1.5 s</td><td>60 tick</td><td>+0.08 锐器 / +0.04 钝器</td><td>3 kg</td></tr><tr><td><strong>T5</strong> 全自动柔性制造</td><td>自动防卫 · 电弧发射器</td><td>远程 + 近战</td><td>8×3 / 近战 8</td><td>4.9 格</td><td>2.5 s</td><td>30 tick</td><td>+0.10 锐器 / +0.06 钝器</td><td>5 kg</td></tr></tbody>
+        </table>
+      </div>
+
+      <div class="tier-columns">
+        <div>
+          <h3>交战规则</h3>
+          <ul class="new-list">
+            <li><strong>只反击：</strong>被攻击，或敌人进入 2 格，才启动；不主动巡逻、不主动索敌。</li>
+            <li><strong>不追击：</strong>目标离开 6 格或自身开始撤离，立即脱战。</li>
+            <li><strong>血量优先：</strong>耐久/生命低于 30%，或电量低于 10%，停火撤离。</li>
+            <li><strong>目标过滤：</strong>只打敌对 Pawn；不打友军、中立、建筑、动物（除非动物敌对）。</li>
+            <li><strong>T5 远程限制：</strong>需要视线，不穿墙；冷却 2.5 秒；不打断救援/灭火的紧急判断。</li>
+          </ul>
+          <h3>模块材料</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>模块</th><th>材料</th><th>增重</th><th>伤害 / 射程</th></tr></thead>
+              <tbody><tr><td>CK_RobotDefense_ArcWelder</td><td>20 钢 + 2 零部件 + 1 高级零部件 + 2 塑钢</td><td>4 kg</td><td>7 / 1.2 格</td></tr><tr><td>CK_RobotDefense_ShockBaton</td><td>18 钢 + 3 零部件 + 1 高级零部件 + 3 塑钢</td><td>3 kg</td><td>9 / 1.2 格</td></tr><tr><td>CK_RobotDefense_ArcEmitter</td><td>28 钢 + 4 零部件 + 2 高级零部件 + 4 塑钢</td><td>5 kg</td><td>8×3 / 近战 8 / 4.9 格</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>RimWorld 实现映射</h3>
+          <ul class="reuse-list">
+            <li><code>HediffDef</code> + <code>HediffCompProperties_VerbGiver</code>：给 Mk-III+ 加 <code>tools</code>（近战）和 T5 的 <code>verbs</code>（远程）。</li>
+            <li><code>PawnKindDef.startingHediffs</code>：Mk-III/IV/V 分别带 `CK_RobotDefense_ArcWelder` / `ShockBaton` / `ArcEmitter`。</li>
+            <li><code>JobGiver_NannyBotDefend</code>：放在 ThinkTree 的 Flee 之前；只在被攻击/近敌时生成 `AttackMelee` 或 `UseVerbOnThing`。</li>
+            <li><code>CompNannyBot</code> 记录 `lastAttackedTick`；<code>selfDefenseMode</code> 默认 Retaliate，可切 Off。</li>
+            <li>T5 弹丸 `CK_ArcBolt` 用 `Verb_Shoot`；射程 4.9，三连发，冷却 2.5 秒；只选敌对目标。</li>
+            <li>护甲用 Hediff 的 <code>statOffsets</code>，不改基础 ThingDef；T4/T5 才加。</li>
+          </ul>
+          <h3>平衡与风险</h3>
+          <ul class="reuse-list">
+            <li>T3 的 7 伤害只是“能还手”，打不过正规枪手；遇到强敌仍要撤。</li>
+            <li>T5 远程是后期能力，必须限制目标过滤与冷却，避免自动清图。</li>
+            <li>需要测试：友军误伤、墙后目标、救援中开火、断电/低电、维修期间自卫是否关闭。</li>
+          </ul>
+        </div>
+      </div>
     </section>
     
 
@@ -331,8 +439,8 @@ tbody tr:hover { background:rgba(102,210,201,.045); }
     <h3>五级横向总表</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>阶段</th><th>研究</th><th>研究点</th><th>机器人产物</th><th>耐久</th><th>电池</th><th>质量 / 载重</th><th>材料 钢/零件/高级/塑钢</th></tr></thead>
-        <tbody><tr><td><strong>T1</strong> 机械化工坊</td><td>CK_RobotBasics · 机器人基础</td><td>1,200</td><td>CK_NannyBot_MkI</td><td>1,000</td><td>4,000 W·h（4.8 kWh）</td><td>122 kg / 25 kg</td><td>70 / 6 / 1 / 2</td></tr><tr><td><strong>T2</strong> 模块化单元</td><td>CK_RobotModular · 模块化机器人</td><td>2,000</td><td>CK_NannyBot_MkII</td><td>1,250</td><td>4,800 W·h（4.8 kWh）</td><td>116 kg / 22 kg</td><td>64 / 7 / 1 / 4</td></tr><tr><td><strong>T3</strong> 流水线生产</td><td>CK_RobotAssemblyLine · 流水线</td><td>3,200</td><td>CK_NannyBot_MkIII</td><td>1,600</td><td>6,400 W·h（6.4 kWh）</td><td>146 kg / 35 kg</td><td>95 / 8 / 2 / 8</td></tr><tr><td><strong>T4</strong> 现场保障</td><td>CK_RobotFieldSupport · 现场保障</td><td>2,600</td><td>CK_NannyBot_MkIV</td><td>900</td><td>3,600 W·h（3.6 kWh）</td><td>96 kg / 18 kg</td><td>52 / 5 / 1 / 2</td></tr><tr><td><strong>T5</strong> 全自动柔性制造</td><td>CK_RobotAutomation · 机器人自动化</td><td>5,000</td><td>CK_NannyBot_MkV</td><td>1,800</td><td>6,000 W·h（6.0 kWh）</td><td>130 kg / 30 kg</td><td>80 / 8 / 2 / 12</td></tr></tbody>
+        <thead><tr><th>阶段</th><th>研究</th><th>研究点</th><th>机器人产物</th><th>耐久</th><th>电池</th><th>质量 / 载重</th><th>材料 钢/零件/高级/塑钢</th><th>反击能力</th></tr></thead>
+        <tbody><tr><td><strong>T1</strong> 机械化工坊</td><td>CK_RobotBasics · 机器人基础</td><td>1,200</td><td>CK_NannyBot_MkI</td><td>1,000</td><td>4,000 W·h（4.8 kWh）</td><td>122 kg / 25 kg</td><td>70 / 6 / 1 / 2</td><td>无（仅撤离）</td></tr><tr><td><strong>T2</strong> 模块化单元</td><td>CK_RobotModular · 模块化机器人</td><td>2,000</td><td>CK_NannyBot_MkII</td><td>1,250</td><td>4,800 W·h（4.8 kWh）</td><td>116 kg / 22 kg</td><td>64 / 7 / 1 / 4</td><td>无（仅撤离）</td></tr><tr><td><strong>T3</strong> 流水线生产</td><td>CK_RobotAssemblyLine · 流水线</td><td>3,200</td><td>CK_NannyBot_MkIII</td><td>1,600</td><td>6,400 W·h（6.4 kWh）</td><td>150 kg（含自卫模块） / 33 kg</td><td>115 / 10 / 3 / 10</td><td>基础自卫 · 电弧焊枪</td></tr><tr><td><strong>T4</strong> 现场保障</td><td>CK_RobotFieldSupport · 现场保障</td><td>2,600</td><td>CK_NannyBot_MkIV</td><td>900</td><td>3,600 W·h（3.6 kWh）</td><td>99 kg（含自卫模块） / 17 kg</td><td>70 / 8 / 2 / 5</td><td>现场自卫 · 电击棒 + 轻甲</td></tr><tr><td><strong>T5</strong> 全自动柔性制造</td><td>CK_RobotAutomation · 机器人自动化</td><td>5,000</td><td>CK_NannyBot_MkV</td><td>1,800</td><td>6,000 W·h（6.0 kWh）</td><td>135 kg（含自卫模块） / 28 kg</td><td>108 / 12 / 4 / 16</td><td>自动防卫 · 电弧发射器</td></tr></tbody>
       </table>
     </div>
     <div class="note"><strong>研究总量：</strong>T1–T5 合计 14,000 研究点（不含前置的机械加工/精密装配/微电子基础）。<br><strong>材料口径：</strong>表中机器人物料为“新增产物”的直接材料，不含工厂/充电桩/维修机的一次性投入；首台总投入见各阶段页。质量与配重沿用工程口径：电池低置、载重 ≤ 整机 25%、倾覆角 ≥ 35°、接地压力 ≤ 10 kPa。</div>

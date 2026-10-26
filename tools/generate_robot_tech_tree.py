@@ -43,7 +43,7 @@ TECHS = [
             "mass": "122 kg",
             "payload": "25 kg",
             "speed": "2.0",
-            "special": "三色胸灯、扫帚；维修需殖民者操作维修机。",
+            "special": "三色胸灯、扫帚；无自卫模块，遇敌只撤离；维修需殖民者操作维修机。",
         },
         "delta": "与现有版本相比：工厂、充电、维修三栋建筑分开；机器人耐久/电量沿用当前数值。",
         "materials": "70 / 6 / 1 / 2",
@@ -81,7 +81,7 @@ TECHS = [
             "mass": "116 kg",
             "payload": "22 kg",
             "speed": "2.1",
-            "special": "骨架/总装分离；自动维修；维护性最好。",
+            "special": "骨架/总装分离；自动维修；无自卫模块，遇敌只撤离。",
         },
         "delta": "比 T1：+250 耐久、+800 W 电池、+0.1 移速；维修从人工改为自动。",
         "materials": "64 / 7 / 1 / 4",
@@ -101,6 +101,7 @@ TECHS = [
             "4×2 总装线",
             "重载维修机",
             "Mk-III 重载保姆机器人",
+            "Mk-III 基础自卫模块（电弧焊枪）",
         ],
         "reuse": [
             "T1/T2 充电桩",
@@ -110,21 +111,35 @@ TECHS = [
             ("CK_RobotFrameFab", "建筑 · 骨架厂", "140 钢 + 4 零部件 + 1 高级零部件", "6,000 work / 500 W", "2×2，固定；批量骨架。"),
             ("CK_RobotAssemblyLine", "建筑 · 总装线", "240 钢 + 8 零部件 + 2 高级零部件", "12,000 work / 1,300 W", "4×2，固定；总装 Mk-III。"),
             ("CK_RobotRepairBay_Heavy", "建筑 · 维修机", "220 钢 + 7 零部件 + 2 高级零部件", "600 tick / 250 耐久 / 1,000 W", "2×2，固定；殖民者操作。"),
-            ("CK_NannyBot_MkIII", "机器人 · Mk-III", "95 钢 + 8 零部件 + 2 高级零部件 + 8 塑钢", "6.4 kWh / 146 kg", "重载型；35 kg 载重；1600 耐久。"),
+            ("CK_NannyBot_MkIII", "机器人 · Mk-III", "95 钢 + 8 零部件 + 2 高级零部件 + 8 塑钢（不含自卫模块）", "6.4 kWh / 146 kg", "重载型；35 kg 载重；1600 耐久。"),
+            ("CK_RobotDefense_ArcWelder", "模块 · 自卫", "20 钢 + 2 零部件 + 1 高级零部件 + 2 塑钢", "1.2 s 冷却 / +4 kg", "电弧焊枪；7 伤害；1.2 格；眩晕 30 tick。"),
         ],
         "robot": {
             "name": "CK_NannyBot_MkIII",
             "role": "重载保姆机",
             "durability": "1,600",
             "battery": "6,400 W·h（6.4 kWh）",
-            "mass": "146 kg",
-            "payload": "35 kg",
+            "mass": "150 kg（含自卫模块）",
+            "payload": "33 kg",
             "speed": "1.8",
-            "special": "重载履带；适合搬运/屠宰/加燃料；速度略低。",
+            "special": "重载履带；电弧焊枪基本反击；不主动索敌。",
         },
-        "delta": "比 T2：+350 耐久、+1,600 W 电池、+13 kg 载重；-0.3 移速；两栋工厂占地更大。",
-        "materials": "95 / 8 / 2 / 8",
-        "total": "735 钢 / 28 零部件 / 6 高级零部件",
+        "delta": "比 T2：+350 耐久、+1,600 W 电池、+11 kg 载重；-0.3 移速；新增电弧焊枪自卫模块（+4 kg）。",
+        "materials": "115 / 10 / 3 / 10",
+        "total": "795 钢 / 31 零部件 / 8 高级零部件",
+        "combat": {
+            "name": "基础自卫 · 电弧焊枪",
+            "type": "近战",
+            "damage": "7",
+            "range": "1.2 格",
+            "cooldown": "1.2 s",
+            "stun": "30 tick",
+            "armor": "无",
+            "module": "CK_RobotDefense_ArcWelder",
+            "module_cost": "20 钢 + 2 零部件 + 1 高级零部件 + 2 塑钢",
+            "module_mass": "4 kg",
+            "rule": "只在被攻击或敌人进入 2 格时反击；不追击超过 6 格。",
+        },
     },
     {
         "id": "T4",
@@ -140,6 +155,7 @@ TECHS = [
             "轻量现场充电桩",
             "现场维修机",
             "Mk-IV 前哨保姆机器人",
+            "Mk-IV 现场自卫模块（电击棒 + 轻甲）",
         ],
         "reuse": [
             "T2 自动维修逻辑（可选）",
@@ -149,21 +165,35 @@ TECHS = [
             ("CK_RobotFactory_T4", "建筑 · 工厂", "200 钢 + 7 零部件 + 2 高级零部件", "10,000 work / 300–800 W", "3×3，固定；预制总装。"),
             ("CK_RobotCharger_Light", "建筑 · 充电桩", "60 钢 + 2 零部件", "50–4,000 W / 35 kg", "1×1，可携带；比 T1 更便宜。"),
             ("CK_RobotRepairBay_Field", "建筑 · 维修机", "180 钢 + 6 零部件 + 1 高级零部件", "600 tick / 250 耐久 / 900 W", "2×2，固定；殖民者操作；不提供野外维修。"),
-            ("CK_NannyBot_MkIV", "机器人 · Mk-IV", "52 钢 + 5 零部件 + 1 高级零部件 + 2 塑钢", "3.6 kWh / 96 kg", "轻量型；18 kg 载重；900 耐久。"),
+            ("CK_NannyBot_MkIV", "机器人 · Mk-IV", "52 钢 + 5 零部件 + 1 高级零部件 + 2 塑钢（不含自卫模块）", "3.6 kWh / 96 kg", "轻量型；18 kg 载重；900 耐久。"),
+            ("CK_RobotDefense_ShockBaton", "模块 · 自卫", "18 钢 + 3 零部件 + 1 高级零部件 + 3 塑钢", "1.5 s 冷却 / +3 kg", "电击棒；9 伤害；眩晕 60 tick；+0.08 锐器/+0.04 钝器护甲。"),
         ],
         "robot": {
             "name": "CK_NannyBot_MkIV",
             "role": "前哨保姆机",
             "durability": "900",
             "battery": "3,600 W·h（3.6 kWh）",
-            "mass": "96 kg",
-            "payload": "18 kg",
+            "mass": "99 kg（含自卫模块）",
+            "payload": "17 kg",
             "speed": "2.4",
-            "special": "轻量、省电、移速最高；大修必须回主基地。",
+            "special": "轻量、省电、移速最高；电击棒 + 轻甲；大修必须回主基地。",
         },
-        "delta": "比 T3：-700 耐久、-2,800 W 电池、-17 kg 载重；+0.6 移速；充电桩更便宜。",
-        "materials": "52 / 5 / 1 / 2",
-        "total": "552 钢 / 22 零部件 / 4 高级零部件",
+        "delta": "比 T3：-700 耐久、-2,800 W 电池、-16 kg 载重；+0.6 移速；新增现场自卫模块（+3 kg）。",
+        "materials": "70 / 8 / 2 / 5",
+        "total": "510 钢 / 23 零部件 / 5 高级零部件",
+        "combat": {
+            "name": "现场自卫 · 电击棒 + 轻甲",
+            "type": "近战",
+            "damage": "9",
+            "range": "1.2 格",
+            "cooldown": "1.5 s",
+            "stun": "60 tick",
+            "armor": "+0.08 锐器 / +0.04 钝器",
+            "module": "CK_RobotDefense_ShockBaton",
+            "module_cost": "18 钢 + 3 零部件 + 1 高级零部件 + 3 塑钢",
+            "module_mass": "3 kg",
+            "rule": "被攻击或 2 格内有敌人才反击；血量 <30% 时优先撤离。",
+        },
     },
     {
         "id": "T5",
@@ -178,6 +208,7 @@ TECHS = [
             "4×4 自动工厂",
             "高速自动维修机",
             "Mk-V 高配保姆机器人",
+            "Mk-V 自动防卫模块（电弧发射器）",
         ],
         "reuse": [
             "T1/T4 充电桩",
@@ -186,7 +217,8 @@ TECHS = [
         "products": [
             ("CK_RobotAutofactory", "建筑 · 工厂", "420 钢 + 14 零部件 + 4 高级零部件 + 1 AI 核心", "30,000 tick / 600–1,500 W", "4×4，固定；无人自动生产。"),
             ("CK_RobotRepairBay_AutoMkII", "建筑 · 维修机", "220 钢 + 8 零部件 + 2 高级零部件", "800 tick / 250 耐久 / 1,500 W", "2×2，固定；自动停靠维修。"),
-            ("CK_NannyBot_MkV", "机器人 · Mk-V", "80 钢 + 8 零部件 + 2 高级零部件 + 12 塑钢", "6.0 kWh / 130 kg", "高配型；30 kg 载重；1800 耐久。"),
+            ("CK_NannyBot_MkV", "机器人 · Mk-V", "80 钢 + 8 零部件 + 2 高级零部件 + 12 塑钢（不含自卫模块）", "6.0 kWh / 130 kg", "高配型；30 kg 载重；1800 耐久。"),
+            ("CK_RobotDefense_ArcEmitter", "模块 · 自卫", "28 钢 + 4 零部件 + 2 高级零部件 + 4 塑钢", "2.5 s 冷却 / +5 kg", "电弧发射器；8×3 伤害；4.9 格；眩晕 30 tick；+0.10 锐器/+0.06 钝器护甲。"),
             ("CK_RobotCharger", "建筑 · 充电桩", "沿用 T1（80 钢 + 2 零部件）", "50–4,000 W", "可携带；自动分配最近空闲桩。"),
         ],
         "robot": {
@@ -194,14 +226,27 @@ TECHS = [
             "role": "自维护型",
             "durability": "1,800",
             "battery": "6,000 W·h（6.0 kWh）",
-            "mass": "130 kg",
-            "payload": "30 kg",
+            "mass": "135 kg（含自卫模块）",
+            "payload": "28 kg",
             "speed": "2.0",
-            "special": "高配复合外壳；自动维修；后期旗舰。",
+            "special": "高配复合外壳；电弧发射器 + 近战；自动维修；后期旗舰。",
         },
-        "delta": "比 T4：+900 耐久、+2,400 W 电池、+12 kg 载重；-0.4 移速；工厂/维修全自动。",
-        "materials": "80 / 8 / 2 / 12",
-        "total": "760 钢 / 30 零部件 / 7 高级零部件 + AI 核心",
+        "delta": "比 T4：+900 耐久、+2,400 W 电池、+11 kg 载重；-0.4 移速；新增自动防卫模块（+5 kg）。",
+        "materials": "108 / 12 / 4 / 16",
+        "total": "828 钢 / 36 零部件 / 10 高级零部件 + AI 核心",
+        "combat": {
+            "name": "自动防卫 · 电弧发射器",
+            "type": "远程 + 近战",
+            "damage": "8×3 / 近战 8",
+            "range": "4.9 格",
+            "cooldown": "2.5 s",
+            "stun": "30 tick",
+            "armor": "+0.10 锐器 / +0.06 钝器",
+            "module": "CK_RobotDefense_ArcEmitter",
+            "module_cost": "28 钢 + 4 零部件 + 2 高级零部件 + 4 塑钢",
+            "module_mass": "5 kg",
+            "rule": "只打敌对目标；不穿透墙；被近身后切换近战；血量 <30% 停火撤离。",
+        },
     },
 ]
 
@@ -232,6 +277,15 @@ def render_tech(tech: dict) -> str:
     new = "".join(f"<li>{esc(item)}</li>" for item in tech["new"])
     reuse = "".join(f"<li>{esc(item)}</li>" for item in tech["reuse"]) or "<li>无（本阶段首次引入）</li>"
     r = tech["robot"]
+    combat = tech.get("combat")
+    combat_html = ""
+    if combat:
+        combat_html = f"""
+      <div class="combat-strip">
+        <strong>反击能力：</strong>{esc(combat["name"])} · {esc(combat["type"])} · {esc(combat["damage"])} 伤害 · {esc(combat["range"])} · {esc(combat["cooldown"])} · 眩晕 {esc(combat["stun"])} · 护甲 {esc(combat["armor"])}
+        <br><span>{esc(combat["rule"])}</span>
+      </div>
+        """
     return f"""
     <section class="panel" data-panel="{tech["id"]}">
       <div class="tier-head">
@@ -269,6 +323,7 @@ def render_tech(tech: dict) -> str:
           <p class="special">{esc(r["special"])}</p>
         </div>
       </div>
+      {combat_html}
 
       <h3>产物 / 材料 / 功率明细</h3>
       <div class="table-wrap">
@@ -280,6 +335,104 @@ def render_tech(tech: dict) -> str:
 
       <div class="delta"><strong>与上一级差异：</strong>{esc(tech["delta"])}<br>
         <strong>首台总投入（不含研究）：</strong>{esc(tech["total"])}</div>
+    </section>
+    """
+
+
+def render_combat() -> str:
+    rows = "".join(
+        f"<tr><td><strong>{tech['id']}</strong> {esc(tech['name'])}</td>"
+        f"<td>{esc(tech['combat']['name'])}</td><td>{esc(tech['combat']['type'])}</td>"
+        f"<td>{esc(tech['combat']['damage'])}</td><td>{esc(tech['combat']['range'])}</td>"
+        f"<td>{esc(tech['combat']['cooldown'])}</td><td>{esc(tech['combat']['stun'])}</td>"
+        f"<td>{esc(tech['combat']['armor'])}</td><td>{esc(tech['combat']['module_mass'])}</td></tr>"
+        for tech in TECHS if tech.get("combat")
+    )
+    modules = "".join(
+        f"<tr><td>{esc(tech['combat']['module'])}</td><td>{esc(tech['combat']['module_cost'])}</td>"
+        f"<td>{esc(tech['combat']['module_mass'])}</td><td>{esc(tech['combat']['damage'])} / {esc(tech['combat']['range'])}</td></tr>"
+        for tech in TECHS if tech.get("combat")
+    )
+    return f"""
+    <section class="panel" data-panel="C">
+      <div class="tier-head">
+        <div>
+          <p class="eyebrow">T3–T5 · BASIC SELF-DEFENSE</p>
+          <h2>反击能力 · 三档自卫</h2>
+          <p class="lead">T1/T2 仍然以撤离为主；T3 起给机器人“被打能还手”的最低能力，T4 加轻甲，T5 才允许短程射击。目标是自卫，不是战斗机器人：不主动索敌、不长距离追击、不参与进攻。</p>
+        </div>
+        <div class="tier-meta">
+          <div><span>适用</span><strong>T3 / T4 / T5</strong></div>
+          <div><span>默认模式</span><strong>仅反击</strong></div>
+          <div><span>主动索敌</span><strong>否</strong></div>
+        </div>
+      </div>
+
+      <div class="combat-grid">
+        <div class="combat-card">
+          <p class="eyebrow">T3 · 基础自卫</p>
+          <h3>电弧焊枪</h3>
+          <p>把维修用的电弧焊枪当近战武器：7 伤害、1.2 格、1.2 秒冷却、眩晕 30 tick。只在被攻击或敌人贴到 2 格内时还手。</p>
+          <span class="combat-tag">+4 kg · 20 钢 + 2 零件 + 1 高级 + 2 塑钢</span>
+        </div>
+        <div class="combat-card">
+          <p class="eyebrow">T4 · 现场自卫</p>
+          <h3>电击棒 + 轻甲</h3>
+          <p>9 伤害、眩晕 60 tick，额外 +0.08 锐器 / +0.04 钝器护甲。血量低于 30% 时优先撤离，不追击。</p>
+          <span class="combat-tag">+3 kg · 18 钢 + 3 零件 + 1 高级 + 3 塑钢</span>
+        </div>
+        <div class="combat-card">
+          <p class="eyebrow">T5 · 自动防卫</p>
+          <h3>电弧发射器</h3>
+          <p>4.9 格、8×3 连发、眩晕 30 tick，近身自动切近战。只打敌对目标，不穿墙，不开火打友军/中立。</p>
+          <span class="combat-tag">+5 kg · 28 钢 + 4 零件 + 2 高级 + 4 塑钢</span>
+        </div>
+      </div>
+
+      <h3>三档对比</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>阶段</th><th>模块</th><th>类型</th><th>伤害</th><th>射程</th><th>冷却</th><th>眩晕</th><th>护甲</th><th>增重</th></tr></thead>
+          <tbody>{rows}</tbody>
+        </table>
+      </div>
+
+      <div class="tier-columns">
+        <div>
+          <h3>交战规则</h3>
+          <ul class="new-list">
+            <li><strong>只反击：</strong>被攻击，或敌人进入 2 格，才启动；不主动巡逻、不主动索敌。</li>
+            <li><strong>不追击：</strong>目标离开 6 格或自身开始撤离，立即脱战。</li>
+            <li><strong>血量优先：</strong>耐久/生命低于 30%，或电量低于 10%，停火撤离。</li>
+            <li><strong>目标过滤：</strong>只打敌对 Pawn；不打友军、中立、建筑、动物（除非动物敌对）。</li>
+            <li><strong>T5 远程限制：</strong>需要视线，不穿墙；冷却 2.5 秒；不打断救援/灭火的紧急判断。</li>
+          </ul>
+          <h3>模块材料</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>模块</th><th>材料</th><th>增重</th><th>伤害 / 射程</th></tr></thead>
+              <tbody>{modules}</tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>RimWorld 实现映射</h3>
+          <ul class="reuse-list">
+            <li><code>HediffDef</code> + <code>HediffCompProperties_VerbGiver</code>：给 Mk-III+ 加 <code>tools</code>（近战）和 T5 的 <code>verbs</code>（远程）。</li>
+            <li><code>PawnKindDef.startingHediffs</code>：Mk-III/IV/V 分别带 `CK_RobotDefense_ArcWelder` / `ShockBaton` / `ArcEmitter`。</li>
+            <li><code>JobGiver_NannyBotDefend</code>：放在 ThinkTree 的 Flee 之前；只在被攻击/近敌时生成 `AttackMelee` 或 `UseVerbOnThing`。</li>
+            <li><code>CompNannyBot</code> 记录 `lastAttackedTick`；<code>selfDefenseMode</code> 默认 Retaliate，可切 Off。</li>
+            <li>T5 弹丸 `CK_ArcBolt` 用 `Verb_Shoot`；射程 4.9，三连发，冷却 2.5 秒；只选敌对目标。</li>
+            <li>护甲用 Hediff 的 <code>statOffsets</code>，不改基础 ThingDef；T4/T5 才加。</li>
+          </ul>
+          <h3>平衡与风险</h3>
+          <ul class="reuse-list">
+            <li>T3 的 7 伤害只是“能还手”，打不过正规枪手；遇到强敌仍要撤。</li>
+            <li>T5 远程是后期能力，必须限制目标过滤与冷却，避免自动清图。</li>
+            <li>需要测试：友军误伤、墙后目标、救援中开火、断电/低电、维修期间自卫是否关闭。</li>
+          </ul>
+        </div>
+      </div>
     </section>
     """
 
@@ -297,10 +450,14 @@ def main():
         panel = render_tech(tech).replace('<section class="panel"', f'<section class="panel{active}"', 1)
         panels.append(panel)
 
+    tabs.append('<button class="tab" data-tab="C" type="button"><span class="tab-id">⚔</span><span>反击能力</span></button>')
+    panels.append(render_combat())
+
     summary_rows = "".join(
         f"<tr><td><strong>{tech['id']}</strong> {esc(tech['name'])}</td><td>{esc(tech['research'])}</td><td>{esc(tech['research_cost'])}</td>"
         f"<td>{esc(tech['robot']['name'])}</td><td>{esc(tech['robot']['durability'])}</td><td>{esc(tech['robot']['battery'])}</td>"
-        f"<td>{esc(tech['robot']['mass'])} / {esc(tech['robot']['payload'])}</td><td>{esc(tech['materials'])}</td></tr>"
+        f"<td>{esc(tech['robot']['mass'])} / {esc(tech['robot']['payload'])}</td><td>{esc(tech['materials'])}</td>"
+        f"<td>{esc(tech['combat']['name']) if tech.get('combat') else '无（仅撤离）'}</td></tr>"
         for tech in TECHS
     )
 
@@ -358,6 +515,13 @@ th { color:var(--muted); font-weight:600; background:rgba(0,0,0,.16); white-spac
 tbody tr:hover { background:rgba(102,210,201,.045); }
 .delta { margin-top:14px; border:1px solid var(--line); border-radius:12px; padding:11px 13px; color:var(--muted); font-size:12px; line-height:1.7; }
 .delta strong { color:var(--text); }
+.combat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:14px 0 4px; }
+.combat-card { border:1px solid rgba(224,123,107,.35); background:linear-gradient(150deg,rgba(224,123,107,.10),rgba(0,0,0,.12)); border-radius:14px; padding:13px; }
+.combat-card h3 { margin:0 0 7px; color:var(--text); font-size:17px; }
+.combat-card p { margin:0; color:var(--muted); font-size:12px; line-height:1.65; }
+.combat-tag { display:inline-block; margin-top:9px; border:1px solid rgba(234,179,95,.35); color:var(--amber); border-radius:999px; padding:4px 8px; font-size:10px; }
+.combat-strip { margin-top:14px; border:1px solid rgba(224,123,107,.35); background:rgba(224,123,107,.06); border-radius:12px; padding:11px 13px; font-size:12px; line-height:1.65; color:var(--muted); }
+.combat-strip strong { color:var(--text); }
 .summary { margin-top:18px; }
 .summary h3 { margin-top:0; }
 .note { margin-top:14px; border:1px solid rgba(234,179,95,.35); border-radius:12px; background:rgba(234,179,95,.06); padding:12px 14px; color:var(--muted); font-size:12px; line-height:1.65; }
@@ -385,7 +549,7 @@ tbody tr:hover { background:rgba(102,210,201,.045); }
     <h3>五级横向总表</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>阶段</th><th>研究</th><th>研究点</th><th>机器人产物</th><th>耐久</th><th>电池</th><th>质量 / 载重</th><th>材料 钢/零件/高级/塑钢</th></tr></thead>
+        <thead><tr><th>阶段</th><th>研究</th><th>研究点</th><th>机器人产物</th><th>耐久</th><th>电池</th><th>质量 / 载重</th><th>材料 钢/零件/高级/塑钢</th><th>反击能力</th></tr></thead>
         <tbody>{summary_rows}</tbody>
       </table>
     </div>
