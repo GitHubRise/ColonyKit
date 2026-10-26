@@ -93,19 +93,25 @@
 	<CK.RobotManagement.Title>Robots</CK.RobotManagement.Title>
 	<CK.RobotManagement.Hint>All nanny robots on this map. Select jumps to a robot; Station jumps to its charging station.</CK.RobotManagement.Hint>
 	<CK.RobotManagement.None>No nanny robots on this map.</CK.RobotManagement.None>
-	<CK.RobotManagement.Row>{0} | Energy {1}/{2} W | Durability {3}/{4}\nJob: {5} | Station: {6} | {7}</CK.RobotManagement.Row>
 	<CK.RobotManagement.Select>Select</CK.RobotManagement.Select>
 	<CK.RobotManagement.Station>Station</CK.RobotManagement.Station>
-	<CK.RobotManagement.IdleJob>Idle</CK.RobotManagement.IdleJob>
 	<CK.RobotManagement.NoStation>Unbound</CK.RobotManagement.NoStation>
 	<CK.RobotManagement.Status.Downed>Shut down</CK.RobotManagement.Status.Downed>
 	<CK.RobotManagement.Status.Paused>Paused</CK.RobotManagement.Status.Paused>
 	<CK.RobotManagement.Status.Charging>Charging</CK.RobotManagement.Status.Charging>
 	<CK.RobotManagement.Status.Empty>Battery empty</CK.RobotManagement.Status.Empty>
 	<CK.RobotManagement.Status.Working>Working</CK.RobotManagement.Status.Working>
+	<CK.RobotManagement.Status.Idle>Idle</CK.RobotManagement.Status.Idle>
 	<CK.RobotManagement.Tab.Work>Work</CK.RobotManagement.Tab.Work>
 	<CK.RobotManagement.Tab.Status>Status</CK.RobotManagement.Tab.Status>
 	<CK.RobotManagement.NameColumn>Robot</CK.RobotManagement.NameColumn>
+	<CK.RobotManagement.Column.Robot>Robot</CK.RobotManagement.Column.Robot>
+	<CK.RobotManagement.Column.Status>Status</CK.RobotManagement.Column.Status>
+	<CK.RobotManagement.Column.Task>Current task</CK.RobotManagement.Column.Task>
+	<CK.RobotManagement.Column.Battery>Battery</CK.RobotManagement.Column.Battery>
+	<CK.RobotManagement.Column.Durability>Durability</CK.RobotManagement.Column.Durability>
+	<CK.RobotManagement.Column.Station>Station</CK.RobotManagement.Column.Station>
+	<CK.RobotManagement.Column.Actions>Actions</CK.RobotManagement.Column.Actions>
 	<CK.RobotManagement.WorkHint>Priorities 1–8 (1 is highest): left-click lowers, right-click raises; 0 disables the chore. The settings tab master switch still has to be on.</CK.RobotManagement.WorkHint>
 	<CK.RobotManagement.DisabledBySettings>(disabled in the settings tab)</CK.RobotManagement.DisabledBySettings>
 	<CK.RobotManagement.Status.Repairing>Being repaired</CK.RobotManagement.Status.Repairing>

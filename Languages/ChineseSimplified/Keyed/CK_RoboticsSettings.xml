@@ -93,19 +93,25 @@
 	<CK.RobotManagement.Title>机器人</CK.RobotManagement.Title>
 	<CK.RobotManagement.Hint>本图所有保姆机器人；点「选中」跳转，点「工作站」定位其充电桩。</CK.RobotManagement.Hint>
 	<CK.RobotManagement.None>本图还没有保姆机器人。</CK.RobotManagement.None>
-	<CK.RobotManagement.Row>{0}｜电量 {1}/{2} W｜耐久 {3}/{4}\n任务：{5}｜工作站：{6}｜{7}</CK.RobotManagement.Row>
 	<CK.RobotManagement.Select>选中</CK.RobotManagement.Select>
 	<CK.RobotManagement.Station>工作站</CK.RobotManagement.Station>
-	<CK.RobotManagement.IdleJob>待命</CK.RobotManagement.IdleJob>
 	<CK.RobotManagement.NoStation>未绑定</CK.RobotManagement.NoStation>
 	<CK.RobotManagement.Status.Downed>停机</CK.RobotManagement.Status.Downed>
 	<CK.RobotManagement.Status.Paused>已暂停</CK.RobotManagement.Status.Paused>
 	<CK.RobotManagement.Status.Charging>充电中</CK.RobotManagement.Status.Charging>
 	<CK.RobotManagement.Status.Empty>电量耗尽</CK.RobotManagement.Status.Empty>
 	<CK.RobotManagement.Status.Working>工作中</CK.RobotManagement.Status.Working>
+	<CK.RobotManagement.Status.Idle>待命</CK.RobotManagement.Status.Idle>
 	<CK.RobotManagement.Tab.Work>工作管控</CK.RobotManagement.Tab.Work>
 	<CK.RobotManagement.Tab.Status>机器人状态</CK.RobotManagement.Tab.Status>
 	<CK.RobotManagement.NameColumn>机器人</CK.RobotManagement.NameColumn>
+	<CK.RobotManagement.Column.Robot>机器人</CK.RobotManagement.Column.Robot>
+	<CK.RobotManagement.Column.Status>状态</CK.RobotManagement.Column.Status>
+	<CK.RobotManagement.Column.Task>当前任务</CK.RobotManagement.Column.Task>
+	<CK.RobotManagement.Column.Battery>电量</CK.RobotManagement.Column.Battery>
+	<CK.RobotManagement.Column.Durability>耐久</CK.RobotManagement.Column.Durability>
+	<CK.RobotManagement.Column.Station>工作站</CK.RobotManagement.Column.Station>
+	<CK.RobotManagement.Column.Actions>操作</CK.RobotManagement.Column.Actions>
 	<CK.RobotManagement.WorkHint>优先级 1–8（1 最高）：左键降低、右键提高；0 为关闭。设置页总开关关闭时，对应家务不会执行。</CK.RobotManagement.WorkHint>
 	<CK.RobotManagement.DisabledBySettings>（设置页总开关已关闭，此项暂不生效）</CK.RobotManagement.DisabledBySettings>
 	<CK.RobotManagement.Status.Repairing>维修中</CK.RobotManagement.Status.Repairing>

@@ -17,6 +17,33 @@
 	<CK.Robotics.Inspect.Tasks>Sweep: {0}  Scrub: {1}  Haul: {2}</CK.Robotics.Inspect.Tasks>
 	<CK.Robotics.Inspect.Idle>All chores are disabled; the robot will only stand by.</CK.Robotics.Inspect.Idle>
 	<CK.Robotics.Inspect.Downed>The robot is shut down, waiting to be repaired or dismantled.</CK.Robotics.Inspect.Downed>
+	<CK.Robotics.Inspect.Task>Task: {0}</CK.Robotics.Inspect.Task>
+
+	<CK.Robotics.Task.Idle>Standing by</CK.Robotics.Task.Idle>
+	<CK.Robotics.Task.WithTarget>{0} ({1})</CK.Robotics.Task.WithTarget>
+	<CK.Robotics.Task.CleanFilth>Cleaning filth</CK.Robotics.Task.CleanFilth>
+	<CK.Robotics.Task.Charge>Returning to charge</CK.Robotics.Task.Charge>
+	<CK.Robotics.Task.Unblock>Unblocking a fixture</CK.Robotics.Task.Unblock>
+	<CK.Robotics.Task.EmptySepticTank>Emptying a septic tank</CK.Robotics.Task.EmptySepticTank>
+	<CK.Robotics.Task.Repair>Repairing a robot</CK.Robotics.Task.Repair>
+	<CK.Robotics.Task.HaulToCell>Hauling</CK.Robotics.Task.HaulToCell>
+	<CK.Robotics.Task.HaulToContainer>Hauling to storage</CK.Robotics.Task.HaulToContainer>
+	<CK.Robotics.Task.BeatFire>Fighting fire</CK.Robotics.Task.BeatFire>
+	<CK.Robotics.Task.ExtinguishSelf>Putting out fire on itself</CK.Robotics.Task.ExtinguishSelf>
+	<CK.Robotics.Task.Flee>Fleeing danger</CK.Robotics.Task.Flee>
+	<CK.Robotics.Task.DoBill>Working at a bench</CK.Robotics.Task.DoBill>
+	<CK.Robotics.Task.Refuel>Refueling</CK.Robotics.Task.Refuel>
+	<CK.Robotics.Task.FeedPatient>Feeding a prisoner</CK.Robotics.Task.FeedPatient>
+	<CK.Robotics.Task.Rescue>Rescuing</CK.Robotics.Task.Rescue>
+	<CK.Robotics.Task.RopeToPen>Roping to a pen</CK.Robotics.Task.RopeToPen>
+	<CK.Robotics.Task.RopeToHitchingPost>Hitching an animal</CK.Robotics.Task.RopeToHitchingPost>
+	<CK.Robotics.Task.Unrope>Unroping</CK.Robotics.Task.Unrope>
+	<CK.Robotics.Task.Goto>Moving</CK.Robotics.Task.Goto>
+	<CK.Robotics.Task.Wait>Waiting</CK.Robotics.Task.Wait>
+	<CK.Robotics.Task.Wander>Wandering</CK.Robotics.Task.Wander>
+	<CK.Robotics.Task.Ingest>Eating</CK.Robotics.Task.Ingest>
+	<CK.Robotics.Task.Clean>Cleaning</CK.Robotics.Task.Clean>
+	<CK.Robotics.Task.Other>Other task</CK.Robotics.Task.Other>
 	<CK.Robotics.On>on</CK.Robotics.On>
 	<CK.Robotics.Off>off</CK.Robotics.Off>
 

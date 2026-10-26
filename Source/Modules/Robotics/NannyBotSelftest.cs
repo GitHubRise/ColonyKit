@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using HarmonyLib;
 using RimWorld;
+using RimWorld.Planet;
 using Verse;
 using Verse.AI;
 
@@ -105,6 +106,16 @@ namespace ColonyKit.Modules.Robotics
 						.Append(" manipulation=").Append(robot.health.capacities.GetLevel(PawnCapacityDefOf.Manipulation).ToString("0.00"))
 						.Append(" consciousness=").Append(robot.health.capacities.GetLevel(PawnCapacityDefOf.Consciousness).ToString("0.00"))
 						.Append(" playerSettings=").Append(robot.playerSettings != null);
+
+					int humanlikesWithEnergy = 0;
+					foreach (Pawn pawn in map.mapPawns.AllPawnsSpawned)
+					{
+						if (pawn.RaceProps.Humanlike && NannyBotUtility.Energy(pawn) != null)
+						{
+							humanlikesWithEnergy++;
+						}
+					}
+					builder.Append(" humanlikesWithEnergy=").Append(humanlikesWithEnergy);
 
 					CompNannyBot botComp = NannyBotUtility.BotComp(robot);
 					builder.Append(" priorities=");
@@ -330,6 +341,16 @@ namespace ColonyKit.Modules.Robotics
 							window.SelectTab(1);
 							return window;
 						}));
+					if (robot != null)
+					{
+						UiAutomationService.Register(new UiScenario(
+							"92-robotics-inspect",
+							() =>
+							{
+								CameraJumper.TryJumpAndSelect(new GlobalTargetInfo(robot));
+								return null;
+							}));
+					}
 					UiAutomationService.RunAll();
 				}
 			}

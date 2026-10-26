@@ -402,6 +402,7 @@ namespace ColonyKit.Modules.Robotics
 					energy.CurLevel.ToString("0"),
 					energy.MaxLevel.ToString("0")));
 			}
+			lines.Add("CK.Robotics.Inspect.Task".Translate(NannyBotJobUtility.TaskText(pawn)));
 			lines.Add("CK.Robotics.Inspect.Durability".Translate(
 				durability.ToString("0"),
 				MaxDurability.ToString("0")));

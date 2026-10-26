@@ -20,6 +20,15 @@ namespace ColonyKit.Modules.Robotics
 		private const float ChoreWidth = 64f;
 		private const float RowHeight = 32f;
 
+		private const float StatusHeaderHeight = 30f;
+		private const float StatusRowHeight = 38f;
+		private const float StatusNameWidth = 150f;
+		private const float StatusStateWidth = 80f;
+		private const float StatusTaskWidth = 196f;
+		private const float StatusBarWidth = 112f;
+		private const float StatusStationWidth = 132f;
+		private const float StatusActionWidth = 120f;
+
 		private readonly List<Pawn> robots = new List<Pawn>();
 
 		private int tab;
@@ -315,95 +324,300 @@ namespace ColonyKit.Modules.Robotics
 			Widgets.Label(
 				new Rect(0f, rect.y, rect.width, HintHeight),
 				"CK.RobotManagement.Hint".Translate());
-			float top = rect.y + HintHeight + 2f;
-			Rect outRect = new Rect(0f, top, rect.width, rect.height - HintHeight - 2f);
-			float viewHeight = Mathf.Max(outRect.height, robots.Count * 64f + 8f);
+
+			float headerY = rect.y + HintHeight + 2f;
+			DrawStatusHeader(new Rect(0f, headerY, rect.width, StatusHeaderHeight));
+
+			Rect outRect = new Rect(
+				0f,
+				headerY + StatusHeaderHeight + 2f,
+				rect.width,
+				rect.height - HintHeight - StatusHeaderHeight - 4f);
+			float viewHeight = Mathf.Max(outRect.height, 6f + robots.Count * StatusRowHeight);
 			Rect viewRect = new Rect(0f, 0f, outRect.width - 20f, viewHeight);
 
 			Widgets.BeginScrollView(outRect, ref statusScroll, viewRect);
 			if (robots.Count == 0)
 			{
-				Widgets.Label(new Rect(0f, 0f, viewRect.width, 24f),
+				Widgets.Label(new Rect(0f, 4f, viewRect.width, 24f),
 					"CK.RobotManagement.None".Translate());
 			}
 			else
 			{
-				float y = 0f;
-				foreach (Pawn robot in robots)
+				float y = 2f;
+				for (int i = 0; i < robots.Count; i++)
 				{
-					DrawStatusRow(new Rect(0f, y, viewRect.width, 58f), robot);
-					y += 64f;
+					DrawStatusRow(new Rect(0f, y, viewRect.width, StatusRowHeight), robots[i], i);
+					y += StatusRowHeight;
 				}
 			}
 			Widgets.EndScrollView();
 		}
 
-		private void DrawStatusRow(Rect row, Pawn robot)
+		private void DrawStatusHeader(Rect rect)
 		{
-			Widgets.DrawHighlightIfMouseover(row);
-			CompNannyBot comp = robot.TryGetComp<CompNannyBot>();
-			Need_RobotEnergy energy = NannyBotUtility.Energy(robot);
+			Widgets.DrawBoxSolid(rect, new Color(0.16f, 0.16f, 0.16f, 0.9f));
 
-			string status = Status(robot, comp);
-			string job = robot.CurJobDef != null
-				? (robot.CurJobDef.label.NullOrEmpty()
-					? robot.CurJobDef.defName
-					: robot.CurJobDef.label)
-				: "CK.RobotManagement.IdleJob".Translate();
-			string station = comp?.homeStation != null
-				? comp.homeStation.LabelShort
-				: "CK.RobotManagement.NoStation".Translate();
+			float x = 0f;
+			DrawStatusHeaderCell(
+				new Rect(x, rect.y, StatusNameWidth, rect.height),
+				"CK.RobotManagement.Column.Robot",
+				TextAnchor.MiddleLeft);
+			x += StatusNameWidth;
+			DrawStatusColumnLine(x, rect);
 
-			string text = "CK.RobotManagement.Row".Translate(
-				robot.LabelShort,
-				energy == null ? "-" : energy.CurLevel.ToString("0"),
-				energy == null ? "-" : energy.MaxLevel.ToString("0"),
-				comp == null ? "-" : comp.Durability.ToString("0"),
-				CompNannyBot.MaxDurability.ToString("0"),
-				job,
-				station,
-				status);
-			Widgets.Label(row.LeftPart(0.72f), text);
+			DrawStatusHeaderCell(
+				new Rect(x, rect.y, StatusStateWidth, rect.height),
+				"CK.RobotManagement.Column.Status",
+				TextAnchor.MiddleCenter);
+			x += StatusStateWidth;
+			DrawStatusColumnLine(x, rect);
 
-			if (Widgets.ButtonText(
-				new Rect(row.x + row.width * 0.73f, row.y, 90f, 26f),
-				"CK.RobotManagement.Select".Translate()))
+			DrawStatusHeaderCell(
+				new Rect(x, rect.y, StatusTaskWidth, rect.height),
+				"CK.RobotManagement.Column.Task",
+				TextAnchor.MiddleLeft);
+			x += StatusTaskWidth;
+			DrawStatusColumnLine(x, rect);
+
+			DrawStatusHeaderCell(
+				new Rect(x, rect.y, StatusBarWidth, rect.height),
+				"CK.RobotManagement.Column.Battery",
+				TextAnchor.MiddleCenter);
+			x += StatusBarWidth;
+			DrawStatusColumnLine(x, rect);
+
+			DrawStatusHeaderCell(
+				new Rect(x, rect.y, StatusBarWidth, rect.height),
+				"CK.RobotManagement.Column.Durability",
+				TextAnchor.MiddleCenter);
+			x += StatusBarWidth;
+			DrawStatusColumnLine(x, rect);
+
+			DrawStatusHeaderCell(
+				new Rect(x, rect.y, StatusStationWidth, rect.height),
+				"CK.RobotManagement.Column.Station",
+				TextAnchor.MiddleLeft);
+			x += StatusStationWidth;
+			DrawStatusColumnLine(x, rect);
+
+			DrawStatusHeaderCell(
+				new Rect(x, rect.y, StatusActionWidth, rect.height),
+				"CK.RobotManagement.Column.Actions",
+				TextAnchor.MiddleCenter);
+		}
+
+		private static void DrawStatusHeaderCell(Rect rect, string key, TextAnchor anchor)
+		{
+			using (new TextBlock(anchor))
 			{
-				CameraJumper.TryJumpAndSelect(new GlobalTargetInfo(robot));
-			}
-			if (comp?.homeStation != null
-				&& Widgets.ButtonText(
-					new Rect(row.x + row.width * 0.73f, row.y + 28f, 90f, 26f),
-					"CK.RobotManagement.Station".Translate()))
-			{
-				CameraJumper.TryJumpAndSelect(new GlobalTargetInfo(comp.homeStation));
+				Widgets.Label(rect.ContractedBy(6f, 0f), key.Translate());
 			}
 		}
 
-		private static string Status(Pawn robot, CompNannyBot comp)
+		private static void DrawStatusColumnLine(float x, Rect rect)
+		{
+			Widgets.DrawBoxSolid(
+				new Rect(x, rect.y + 4f, 1f, rect.height - 8f),
+				new Color(1f, 1f, 1f, 0.08f));
+		}
+
+		private void DrawStatusRow(Rect row, Pawn robot, int rowIndex)
+		{
+			if (rowIndex % 2 == 1)
+			{
+				Widgets.DrawBoxSolid(row, new Color(1f, 1f, 1f, 0.03f));
+			}
+			Widgets.DrawHighlightIfMouseover(row);
+
+			CompNannyBot comp = NannyBotUtility.BotComp(robot);
+			Need_RobotEnergy energy = NannyBotUtility.Energy(robot);
+
+			float x = 0f;
+
+			Rect nameRect = new Rect(x, row.y, StatusNameWidth, row.height);
+			if (Widgets.ButtonInvisible(nameRect))
+			{
+				CameraJumper.TryJumpAndSelect(new GlobalTargetInfo(robot));
+			}
+			using (new TextBlock(TextAnchor.MiddleLeft))
+			{
+				Widgets.Label(
+					new Rect(nameRect.x + 6f, nameRect.y, nameRect.width - 10f, nameRect.height),
+					robot.LabelShort.Truncate(nameRect.width - 10f));
+			}
+			TooltipHandler.TipRegion(nameRect, "CK.RobotManagement.Select".Translate());
+			x += StatusNameWidth;
+			DrawStatusColumnLine(x, row);
+
+			Rect statusRect = new Rect(x, row.y, StatusStateWidth, row.height);
+			string status;
+			Color statusColor;
+			GetStatus(robot, comp, energy, out status, out statusColor);
+			using (new TextBlock(TextAnchor.MiddleCenter, statusColor))
+			{
+				Widgets.Label(statusRect, status);
+			}
+			x += StatusStateWidth;
+			DrawStatusColumnLine(x, row);
+
+			Rect taskRect = new Rect(x, row.y, StatusTaskWidth, row.height);
+			string task = NannyBotJobUtility.TaskText(robot);
+			using (new TextBlock(TextAnchor.MiddleLeft))
+			{
+				Widgets.Label(
+					new Rect(taskRect.x + 6f, taskRect.y, taskRect.width - 10f, taskRect.height),
+					task.Truncate(taskRect.width - 10f));
+			}
+			TooltipHandler.TipRegion(taskRect, task);
+			x += StatusTaskWidth;
+			DrawStatusColumnLine(x, row);
+
+			Rect energyRect = new Rect(x, row.y, StatusBarWidth, row.height);
+			string energyText = energy == null
+				? "-"
+				: energy.CurLevel.ToString("0") + " / " + energy.MaxLevel.ToString("0") + " W";
+			string energyTip = energy == null
+				? null
+				: "CK.Robotics.Inspect.Battery".Translate(
+					energy.CurLevel.ToString("0"),
+					energy.MaxLevel.ToString("0"));
+			DrawStatusBarCell(
+				energyRect,
+				energy == null ? 0f : energy.CurLevelPercentage,
+				energyText,
+				energyTip);
+			x += StatusBarWidth;
+			DrawStatusColumnLine(x, row);
+
+			Rect durabilityRect = new Rect(x, row.y, StatusBarWidth, row.height);
+			float durability = comp == null ? 0f : comp.Durability;
+			DrawStatusBarCell(
+				durabilityRect,
+				durability / CompNannyBot.MaxDurability,
+				durability.ToString("0") + " / " + CompNannyBot.MaxDurability.ToString("0"),
+				"CK.Robotics.Inspect.Durability".Translate(
+					durability.ToString("0"),
+					CompNannyBot.MaxDurability.ToString("0")));
+			x += StatusBarWidth;
+			DrawStatusColumnLine(x, row);
+
+			Rect stationRect = new Rect(x, row.y, StatusStationWidth, row.height);
+			Building station = comp?.homeStation;
+			string stationText = station != null
+				? station.LabelShort
+				: "CK.RobotManagement.NoStation".Translate();
+			using (new TextBlock(TextAnchor.MiddleLeft))
+			{
+				Widgets.Label(
+					new Rect(stationRect.x + 6f, stationRect.y, stationRect.width - 10f, stationRect.height),
+					stationText.Truncate(stationRect.width - 10f));
+			}
+			x += StatusStationWidth;
+			DrawStatusColumnLine(x, row);
+
+			Rect selectRect = new Rect(x, row.y + 5f, 56f, 28f);
+			if (Widgets.ButtonText(selectRect, "CK.RobotManagement.Select".Translate()))
+			{
+				CameraJumper.TryJumpAndSelect(new GlobalTargetInfo(robot));
+			}
+
+			bool previousEnabled = GUI.enabled;
+			GUI.enabled = previousEnabled && station != null;
+			if (Widgets.ButtonText(
+				new Rect(selectRect.x + 60f, selectRect.y, 56f, 28f),
+				"CK.RobotManagement.Station".Translate())
+				&& station != null)
+			{
+				CameraJumper.TryJumpAndSelect(new GlobalTargetInfo(station));
+			}
+			GUI.enabled = previousEnabled;
+		}
+
+		private static void DrawStatusBarCell(Rect rect, float value, string text, string tip)
+		{
+			float percent = Mathf.Clamp01(value);
+			Rect bar = new Rect(rect.x + 6f, rect.y + 21f, rect.width - 12f, 8f);
+			Widgets.DrawBoxSolid(bar, new Color(0.34f, 0.34f, 0.34f, 0.9f));
+			Rect inner = bar.ContractedBy(1f);
+			Widgets.DrawBoxSolid(inner, new Color(0.08f, 0.08f, 0.08f, 0.9f));
+			Rect fill = inner;
+			fill.width *= percent;
+			if (fill.width > 0f)
+			{
+				Widgets.DrawBoxSolid(fill, StatusBarColor(percent));
+			}
+
+			using (new TextBlock(TextAnchor.MiddleCenter))
+			{
+				Text.Font = GameFont.Tiny;
+				Widgets.Label(new Rect(rect.x, rect.y + 2f, rect.width, 16f), text);
+			}
+
+			if (!tip.NullOrEmpty())
+			{
+				TooltipHandler.TipRegion(rect, tip);
+			}
+		}
+
+		private static Color StatusBarColor(float percent)
+		{
+			if (percent <= 0.2f)
+			{
+				return new Color(0.88f, 0.32f, 0.28f);
+			}
+			if (percent <= 0.5f)
+			{
+				return new Color(0.95f, 0.78f, 0.30f);
+			}
+			return new Color(0.42f, 0.82f, 0.45f);
+		}
+
+		private static void GetStatus(
+			Pawn robot,
+			CompNannyBot comp,
+			Need_RobotEnergy energy,
+			out string text,
+			out Color color)
 		{
 			if (robot.Downed)
 			{
-				return "CK.RobotManagement.Status.Downed".Translate();
+				text = "CK.RobotManagement.Status.Downed".Translate();
+				color = new Color(0.88f, 0.45f, 0.40f);
+				return;
 			}
 			if (comp != null && comp.repairing)
 			{
-				return "CK.RobotManagement.Status.Repairing".Translate();
+				text = "CK.RobotManagement.Status.Repairing".Translate();
+				color = new Color(0.95f, 0.78f, 0.30f);
+				return;
 			}
 			if (comp != null && comp.paused)
 			{
-				return "CK.RobotManagement.Status.Paused".Translate();
+				text = "CK.RobotManagement.Status.Paused".Translate();
+				color = Color.grey;
+				return;
 			}
-			Need_RobotEnergy energy = NannyBotUtility.Energy(robot);
 			if (energy != null && energy.IsCharging)
 			{
-				return "CK.RobotManagement.Status.Charging".Translate();
+				text = "CK.RobotManagement.Status.Charging".Translate();
+				color = new Color(0.45f, 0.80f, 0.95f);
+				return;
 			}
 			if (energy != null && energy.CurLevelPercentage <= 0.001f)
 			{
-				return "CK.RobotManagement.Status.Empty".Translate();
+				text = "CK.RobotManagement.Status.Empty".Translate();
+				color = new Color(0.88f, 0.32f, 0.28f);
+				return;
 			}
-			return "CK.RobotManagement.Status.Working".Translate();
+			if (robot.CurJobDef == null)
+			{
+				text = "CK.RobotManagement.Status.Idle".Translate();
+				color = Color.grey;
+				return;
+			}
+			text = "CK.RobotManagement.Status.Working".Translate();
+			color = new Color(0.50f, 0.85f, 0.50f);
 		}
 	}
 }

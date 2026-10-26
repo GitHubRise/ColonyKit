@@ -16,6 +16,33 @@
 	<CK.Robotics.Inspect.Energy>电量：{0}</CK.Robotics.Inspect.Energy>
 	<CK.Robotics.Inspect.Tasks>扫地：{0}　清洁：{1}　搬运：{2}</CK.Robotics.Inspect.Tasks>
 	<CK.Robotics.Inspect.Idle>三项家务都已关闭，机器人只会待命。</CK.Robotics.Inspect.Idle>
+	<CK.Robotics.Inspect.Task>任务：{0}</CK.Robotics.Inspect.Task>
+
+	<CK.Robotics.Task.Idle>待命</CK.Robotics.Task.Idle>
+	<CK.Robotics.Task.WithTarget>{0}（{1}）</CK.Robotics.Task.WithTarget>
+	<CK.Robotics.Task.CleanFilth>清扫污渍</CK.Robotics.Task.CleanFilth>
+	<CK.Robotics.Task.Charge>回桩充电</CK.Robotics.Task.Charge>
+	<CK.Robotics.Task.Unblock>疏通洁具</CK.Robotics.Task.Unblock>
+	<CK.Robotics.Task.EmptySepticTank>清空化粪池</CK.Robotics.Task.EmptySepticTank>
+	<CK.Robotics.Task.Repair>维修机器人</CK.Robotics.Task.Repair>
+	<CK.Robotics.Task.HaulToCell>搬运物品</CK.Robotics.Task.HaulToCell>
+	<CK.Robotics.Task.HaulToContainer>搬运入库</CK.Robotics.Task.HaulToContainer>
+	<CK.Robotics.Task.BeatFire>灭火</CK.Robotics.Task.BeatFire>
+	<CK.Robotics.Task.ExtinguishSelf>扑灭身上的火</CK.Robotics.Task.ExtinguishSelf>
+	<CK.Robotics.Task.Flee>躲避危险</CK.Robotics.Task.Flee>
+	<CK.Robotics.Task.DoBill>制作</CK.Robotics.Task.DoBill>
+	<CK.Robotics.Task.Refuel>补充燃料</CK.Robotics.Task.Refuel>
+	<CK.Robotics.Task.FeedPatient>喂食</CK.Robotics.Task.FeedPatient>
+	<CK.Robotics.Task.Rescue>救援</CK.Robotics.Task.Rescue>
+	<CK.Robotics.Task.RopeToPen>牵回围栏</CK.Robotics.Task.RopeToPen>
+	<CK.Robotics.Task.RopeToHitchingPost>拴系动物</CK.Robotics.Task.RopeToHitchingPost>
+	<CK.Robotics.Task.Unrope>解开绳索</CK.Robotics.Task.Unrope>
+	<CK.Robotics.Task.Goto>前往</CK.Robotics.Task.Goto>
+	<CK.Robotics.Task.Wait>待命</CK.Robotics.Task.Wait>
+	<CK.Robotics.Task.Wander>闲逛</CK.Robotics.Task.Wander>
+	<CK.Robotics.Task.Ingest>进食</CK.Robotics.Task.Ingest>
+	<CK.Robotics.Task.Clean>清理</CK.Robotics.Task.Clean>
+	<CK.Robotics.Task.Other>其他任务</CK.Robotics.Task.Other>
 	<CK.Robotics.Inspect.Downed>机器人已停机，等待维修或拆解。</CK.Robotics.Inspect.Downed>
 	<CK.Robotics.On>开</CK.Robotics.On>
 	<CK.Robotics.Off>关</CK.Robotics.Off>
