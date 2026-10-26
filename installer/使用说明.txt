@@ -14,10 +14,11 @@
    不要直接在压缩包里双击 install.bat，否则解压临时目录可能被清理。
 
 2. 双击 install.bat。
+   - install.bat 只负责启动同目录的 install.ps1，两个文件都要保留。
    - 脚本会自动查找 RimWorld 安装目录（Steam 注册表 + 常见路径）。
    - 找不到时，把 RimWorld 文件夹（里面有 RimWorldWin64.exe）拖进黑窗口，回车。
    - 已有旧版会先改名备份为 Mods\ColonyKit.bak-1、bak-2……不会直接删。
-   - 安装完成后按任意键关闭窗口。
+   - 绿色 = 成功，红色 = 错误，黄色 = 警告；安装完成后按任意键关闭窗口。
 
 3. 启动游戏，进入「选项」→「Mod 设置」：
    - 先勾选 Harmony；
@@ -72,7 +73,9 @@
      %USERPROFILE%\AppData\LocalLow\Ludeon Studios\RimWorld by Ludeon Studios\Player.log
 
 4. install.bat 一闪而过
+   → 确认 install.ps1 和 install.bat 在同一个文件夹里（解压不完整会缺文件）。
    → 右键「以管理员身份运行」再试；或按上面「手动安装」复制文件夹。
+   → 如果杀毒软件拦截 PowerShell，先放行本文件夹再运行。
 
 ============================================================
 ColonyKit 0.0.2

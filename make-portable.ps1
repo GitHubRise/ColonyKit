@@ -6,9 +6,9 @@
 .DESCRIPTION
 	1. 调用 package.ps1（verify + build + dist\ColonyKit-<version>.zip）
 	2. 把 Mod 包解压到 staging\ColonyKit
-	3. 复制 installer\install.bat 与 installer\使用说明.txt 到 staging 根
+	3. 复制 installer\install.bat / install.ps1 与 installer\使用说明.txt 到 staging 根
 	4. 压缩为 dist\ColonyKit-<version>-portable.zip
-	5. 校验第一层是 ColonyKit / install.bat / 使用说明.txt，且 Mod 根有 About
+	5. 校验第一层是 ColonyKit / install.bat / install.ps1 / 使用说明.txt，且 Mod 根有 About
 
 .EXAMPLE
 	.\make-portable.ps1
@@ -40,8 +40,9 @@ $modZip = Join-Path $dist ("ColonyKit-{0}.zip" -f $version)
 if (-not (Test-Path $modZip)) { throw "缺少 Mod 包：$modZip" }
 
 $bat  = Join-Path $installer 'install.bat'
+$ps1  = Join-Path $installer 'install.ps1'
 $read = Join-Path $installer '使用说明.txt'
-foreach ($file in $bat, $read) {
+foreach ($file in $bat, $ps1, $read) {
 	if (-not (Test-Path $file)) { throw "缺少安装器文件：$file" }
 }
 
@@ -52,9 +53,10 @@ New-Item -ItemType Directory -Path $modDir -Force | Out-Null
 try {
 	Expand-Archive -Path $modZip -DestinationPath $modDir -Force
 	Copy-Item $bat  $stage -Force
+	Copy-Item $ps1  $stage -Force
 	Copy-Item $read $stage -Force
 
-	foreach ($required in 'ColonyKit\About\About.xml', 'ColonyKit\Assemblies\ColonyKit.dll', 'install.bat', '使用说明.txt') {
+	foreach ($required in 'ColonyKit\About\About.xml', 'ColonyKit\Assemblies\ColonyKit.dll', 'install.bat', 'install.ps1', '使用说明.txt') {
 		if (-not (Test-Path (Join-Path $stage $required))) {
 			throw "便携包缺少：$required"
 		}
