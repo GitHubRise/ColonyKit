@@ -138,7 +138,7 @@ TECHS = [
             "module": "CK_RobotDefense_ArcWelder",
             "module_cost": "20 钢 + 2 零部件 + 1 高级零部件 + 2 塑钢",
             "module_mass": "4 kg",
-            "rule": "只在被攻击或敌人进入 2 格时反击；不追击超过 9 格。",
+            "rule": "只在被攻击或敌人进入 2 格时反击；目标离开 9 格以上立即脱战。",
         },
     },
     {
