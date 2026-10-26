@@ -49,7 +49,9 @@
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_Bath</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(1,2)</drawSize>
+			<!-- 贴图是 128x192（2:3），drawSize 必须同样是 2:3 才不被拉伸；
+			     1x2 的占地用 (1.33,2)，高度占满两格，横向只溢出约 1/3 格。 -->
+			<drawSize>(1.33,2)</drawSize>
 			<shaderType>CutoutComplex</shaderType>
 		</graphicData>
 		<rotatable>true</rotatable>
