@@ -104,7 +104,7 @@
 	<CK.RobotManagement.Tab.Work>Work</CK.RobotManagement.Tab.Work>
 	<CK.RobotManagement.Tab.Status>Status</CK.RobotManagement.Tab.Status>
 	<CK.RobotManagement.NameColumn>Robot</CK.RobotManagement.NameColumn>
-	<CK.RobotManagement.WorkHint>Left-click lowers priority, right-click raises it; 0 disables the chore. The settings tab master switch still has to be on.</CK.RobotManagement.WorkHint>
+	<CK.RobotManagement.WorkHint>Priorities 1–8 (1 is highest): left-click lowers, right-click raises; 0 disables the chore. The settings tab master switch still has to be on.</CK.RobotManagement.WorkHint>
 	<CK.RobotManagement.DisabledBySettings>(disabled in the settings tab)</CK.RobotManagement.DisabledBySettings>
 	<CK.RobotManagement.Status.Repairing>Being repaired</CK.RobotManagement.Status.Repairing>
 	<CK.Robotics.Inspect.ActiveChores>{0} chores enabled.</CK.Robotics.Inspect.ActiveChores>

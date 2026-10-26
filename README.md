@@ -553,7 +553,7 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 > 贴图候选：第一批 [10 个方案 HTML](docs/nannybot-textures.html)；第二批 [10 个新方案 HTML](docs/nannybot-textures-2.html)；参考图软体风格 [雪团 · 3 个配色](docs/nannybot-textures-3.html)（都保留，选好编号后再替换正式贴图）。
 > 工厂/充电/维修拆分：[5 种方案 HTML](docs/robot-industry-design.html)。
 > 机器人科技树：[五级技术产物 HTML](docs/robot-tech-tree.html)。
-> 已完成：ToolUser 机械族 + 自定义 ThinkTree/JobGiver/JobDriver；`CK_RobotNanny` + `CK_NannyBotBody`；容量制 `CK_RobotEnergy`（默认 4000W、12h/4h/充电阈值可调、0% 停机）；耐久 1000 + 殖民者维修 + 0 报废；扫地/清洁/搬运/灭火/屠宰/发电机加燃料/囚犯送餐/卫生维护/优先救援；立体库直送；设置页、底部工作管控+状态双页签（每台逐项 1–4 优先级）、暂停/召回/前往/点选污渍/改名/涂装/音效/充电光效；危险规避、工作站定位/召回。
+> 已完成：ToolUser 机械族 + 自定义 ThinkTree/JobGiver/JobDriver；`CK_RobotNanny` + `CK_NannyBotBody`；容量制 `CK_RobotEnergy`（默认 4000W、12h/4h/充电阈值可调、0% 停机）；耐久 1000 + 殖民者维修 + 0 报废；扫地/清洁/搬运/灭火/屠宰/发电机加燃料/囚犯送餐/卫生维护/优先救援；立体库直送；设置页、底部工作管控+状态双页签（每台逐项 1–8 优先级）、暂停/召回/前往/点选污渍/改名/涂装/音效/充电光效；危险规避、工作站定位/召回。
 > 未完成：五种专用型号、休眠快充、draft/装备/EMP、停机救援/Alert、长期存读档与电网压力测试。
 
 - [ ] **M6-0** Pawn 架构验证（最高优先）：对比「humanlike 机器人」与「mech-like 机器人」两条路线，验证工作系统、需求注入、技能、生成（无背景故事/特质）、社交/生育关闭、存档；写 `docs/decisions/robot-pawn.md` 定稿。

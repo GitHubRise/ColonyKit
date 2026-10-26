@@ -5,7 +5,7 @@ namespace ColonyKit.Modules.Robotics
 {
 	/// <summary>
 	/// 所有可排优先级的家务 JobGiver 的共同父类。
-	/// 优先级数字 1–4（1 最高），0 为关闭；设置页总开关也会把有效优先级压成 0。
+	/// 优先级数字 1–8（1 最高），0 为关闭；设置页总开关也会把有效优先级压成 0。
 	/// </summary>
 	public abstract class JobGiver_NannyBotChore : ThinkNode_JobGiver
 	{
@@ -23,7 +23,7 @@ namespace ColonyKit.Modules.Robotics
 				return 0f;
 			}
 			int priority = comp.GetEffectivePriority(Chore);
-			return priority <= 0 ? 0f : 5f - priority;
+			return priority <= 0 ? 0f : 9f - priority;
 		}
 
 		protected bool HasChorePriority(Pawn pawn)

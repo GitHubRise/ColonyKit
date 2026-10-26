@@ -26,8 +26,8 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return 0f;
 			}
-			// 充电永远高于普通家务（最高优先级 1 对应 4）。
-			return 5f;
+			// 充电永远高于普通家务（最高优先级 1 对应 8；充电为 9）。
+			return 9f;
 		}
 
 		protected override Job TryGiveJob(Pawn pawn)

@@ -119,7 +119,7 @@ namespace ColonyKit.Modules.Robotics
 					if (botComp != null)
 					{
 						botComp.SetPriority(RobotChore.Sweep, 1);
-						botComp.SetPriority(RobotChore.Scrub, 4);
+						botComp.SetPriority(RobotChore.Scrub, 8);
 						builder.Append(" sweepSched=")
 							.Append(new JobGiver_NannyBotSweep().GetPriority(robot).ToString("0"))
 							.Append(" scrubSched=")

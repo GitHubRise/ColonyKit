@@ -72,7 +72,7 @@ namespace ColonyKit.Modules.Robotics
 		private int paintedIndex = -1;
 		private bool lowBatteryWarned;
 
-		/// <summary>每项家务的优先级 0（关闭）–4；索引对应 RobotChore。</summary>
+		/// <summary>每项家务的优先级 0（关闭）–8；1 最高，索引对应 RobotChore。</summary>
 		private List<int> chorePriorities;
 
 		private Pawn Pawn => parent as Pawn;
@@ -109,7 +109,7 @@ namespace ColonyKit.Modules.Robotics
 		public void SetPriority(RobotChore chore, int priority)
 		{
 			EnsurePriorities();
-			chorePriorities[(int)chore] = Mathf.Clamp(priority, 0, 4);
+			chorePriorities[(int)chore] = Mathf.Clamp(priority, 0, 8);
 		}
 
 		/// <summary>工作页签显示用：设置页总开关关闭时返回 0，但保留用户设定的数字。</summary>

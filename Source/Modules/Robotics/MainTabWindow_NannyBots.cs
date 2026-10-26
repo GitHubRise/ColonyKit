@@ -9,7 +9,7 @@ namespace ColonyKit.Modules.Robotics
 {
 	/// <summary>
 	/// 底部「机器人」页：工作管控 + 机器人状态两个页签。
-	/// 工作管控模仿原版 Work 页：每行一台机器人，每列一项家务，数字 1–4 为优先级，0 为关闭。
+	/// 工作管控模仿原版 Work 页：每行一台机器人，每列一项家务，数字 1–8 为优先级，0 为关闭。
 	/// </summary>
 	public class MainTabWindow_NannyBots : MainTabWindow
 	{
@@ -219,7 +219,7 @@ namespace ColonyKit.Modules.Robotics
 			if (priority > 0)
 			{
 				using (new TextBlock(TextAnchor.MiddleCenter, globallyEnabled
-					? WidgetsWork.ColorOfPriority(priority)
+					? PriorityColor(priority)
 					: Color.grey))
 				{
 					Text.Font = GameFont.Medium;
@@ -239,9 +239,9 @@ namespace ColonyKit.Modules.Robotics
 				int next = Event.current.button == 0 ? priority - 1 : priority + 1;
 				if (next < 0)
 				{
-					next = 4;
+					next = 8;
 				}
-				if (next > 4)
+				if (next > 8)
 				{
 					next = 0;
 				}
@@ -258,6 +258,31 @@ namespace ColonyKit.Modules.Robotics
 					+ ": "
 					+ priority
 					+ (globallyEnabled ? string.Empty : "\n" + "CK.RobotManagement.DisabledBySettings".Translate()));
+		}
+
+		private static Color PriorityColor(int priority)
+		{
+			switch (priority)
+			{
+				case 1:
+					return new Color(0.15f, 1f, 0.25f);
+				case 2:
+					return new Color(0.55f, 1f, 0.30f);
+				case 3:
+					return new Color(0.85f, 1f, 0.40f);
+				case 4:
+					return new Color(1f, 0.92f, 0.45f);
+				case 5:
+					return new Color(1f, 0.75f, 0.35f);
+				case 6:
+					return new Color(0.95f, 0.58f, 0.40f);
+				case 7:
+					return new Color(0.82f, 0.60f, 0.55f);
+				case 8:
+					return new Color(0.68f, 0.68f, 0.68f);
+				default:
+					return Color.grey;
+			}
 		}
 
 		private bool AllHavePriority(RobotChore chore)
