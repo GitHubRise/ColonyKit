@@ -11,7 +11,7 @@
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_WaterTank</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(1,2)</drawSize>
+			<drawSize>(0.65,1.3)</drawSize>
 		</graphicData>
 		<rotatable>false</rotatable>
 		<designationCategory>CK_Hygiene</designationCategory>
