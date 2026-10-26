@@ -138,7 +138,7 @@ TECHS = [
             "module": "CK_RobotDefense_ArcWelder",
             "module_cost": "20 钢 + 2 零部件 + 1 高级零部件 + 2 塑钢",
             "module_mass": "4 kg",
-            "rule": "只在被攻击或敌人进入 2 格时反击；不追击超过 6 格。",
+            "rule": "只在被攻击或敌人进入 2 格时反击；不追击超过 9 格。",
         },
     },
     {
@@ -402,7 +402,7 @@ def render_combat() -> str:
           <h3>交战规则</h3>
           <ul class="new-list">
             <li><strong>只反击：</strong>被攻击，或敌人进入 2 格，才启动；不主动巡逻、不主动索敌。</li>
-            <li><strong>不追击：</strong>目标离开 6 格或自身开始撤离，立即脱战。</li>
+            <li><strong>不追击：</strong>目标离开 9 格以上，或自身开始撤离，立即脱战。</li>
             <li><strong>血量优先：</strong>耐久/生命低于 30%，或电量低于 10%，停火撤离。</li>
             <li><strong>目标过滤：</strong>只打敌对 Pawn；不打友军、中立、建筑、动物（除非动物敌对）。</li>
             <li><strong>T5 远程限制：</strong>需要视线，不穿墙；冷却 2.5 秒；不打断救援/灭火的紧急判断。</li>
