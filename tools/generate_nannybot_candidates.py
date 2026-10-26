@@ -259,6 +259,204 @@ STYLES = [
         eyes="royal",
         tags=("皇家", "白金", "皇冠"),
     ),
+    Style(
+        slug="penguin",
+        number="11",
+        name="企鹅信使",
+        subtitle="蛋形搬运机",
+        description="黑白蛋形机身、橙色喙和脚蹼，像一只会走路的小企鹅。适合搬运和送餐，轮廓最圆润。",
+        shell=(39, 47, 60, 255),
+        shell_dark=(240, 245, 248, 255),
+        accent=(239, 145, 57, 255),
+        accent_light=(255, 205, 116, 255),
+        tread=(43, 51, 64, 255),
+        body="egg",
+        head="none",
+        base="biped",
+        antenna="tuft",
+        badge="lights",
+        eyes="penguin",
+        tags=("企鹅", "黑白", "蛋形"),
+    ),
+    Style(
+        slug="spider",
+        number="12",
+        name="蜘蛛检修",
+        subtitle="窄身多足",
+        description="紫黑窄身、六条检修足和红色传感眼，能钻进狭窄管道。拿扳手，适合维修与危险区域。",
+        shell=(79, 66, 105, 255),
+        shell_dark=(48, 42, 70, 255),
+        accent=(205, 80, 94, 255),
+        accent_light=(246, 158, 122, 255),
+        tread=(39, 35, 54, 255),
+        body="slim",
+        head="visor",
+        base="spider",
+        antenna="antennae",
+        badge="sixdots",
+        tool="wrench",
+        eyes="visor",
+        tags=("蜘蛛", "紫黑", "多足"),
+    ),
+    Style(
+        slug="monowheel",
+        number="13",
+        name="独轮信使",
+        subtitle="单轮快递",
+        description="青绿色瘦身机、单只大轮和橙色包裹架，转向灵活。专为送餐、送件和短途跑腿设计。",
+        shell=(62, 139, 149, 255),
+        shell_dark=(38, 91, 101, 255),
+        accent=(235, 145, 60, 255),
+        accent_light=(255, 205, 110, 255),
+        tread=(32, 39, 44, 255),
+        body="slim",
+        head="visor",
+        base="monowheel",
+        antenna="flag",
+        badge="package",
+        tool="package",
+        eyes="visor",
+        tags=("独轮", "青色", "包裹"),
+    ),
+    Style(
+        slug="butler",
+        number="14",
+        name="双足侍者",
+        subtitle="礼宾与送餐",
+        description="黑礼服、白手套、金色领结，双腿站立并端着托盘。适合餐厅、会客区和正式场合。",
+        shell=(50, 53, 63, 255),
+        shell_dark=(232, 236, 242, 255),
+        accent=(168, 126, 67, 255),
+        accent_light=(242, 216, 150, 255),
+        tread=(35, 36, 42, 255),
+        body="slim",
+        head="dome",
+        base="biped",
+        antenna="ball",
+        badge="bowtie",
+        tool="tray",
+        eyes="round",
+        tags=("侍者", "黑金", "托盘"),
+    ),
+    Style(
+        slug="hex",
+        number="15",
+        name="六臂清洁塔",
+        subtitle="高塔多臂",
+        description="白色高塔机身、六条清洁臂和薄荷色拖把，一次覆盖更大面积。适合大厅和走廊。",
+        shell=(228, 241, 238, 255),
+        shell_dark=(164, 198, 196, 255),
+        accent=(44, 148, 143, 255),
+        accent_light=(112, 220, 206, 255),
+        tread=(49, 72, 73, 255),
+        body="tower",
+        head="dome",
+        base="treads",
+        antenna="ring",
+        badge="sixdots",
+        tool="mop",
+        eyes="round",
+        tags=("六臂", "高塔", "拖把"),
+    ),
+    Style(
+        slug="owl",
+        number="16",
+        name="猫头鹰观测",
+        subtitle="夜视与巡视",
+        description="棕羽色圆壳、猫头鹰面盘、耳羽和大眼睛，悬浮巡视。适合夜间看护和发现异常。",
+        shell=(153, 113, 78, 255),
+        shell_dark=(218, 192, 154, 255),
+        accent=(235, 168, 63, 255),
+        accent_light=(252, 218, 136, 255),
+        tread=(68, 54, 45, 255),
+        body="round",
+        head="owl",
+        base="hover",
+        antenna="none",
+        badge="feather",
+        eyes="owl",
+        tags=("猫头鹰", "棕金", "夜视"),
+    ),
+    Style(
+        slug="beetle",
+        number="17",
+        name="甲虫搬运",
+        subtitle="重载六足",
+        description="墨绿甲壳、铜色六足和背部货箱，低重心。适合搬运重物、进矿洞和走崎岖地形。",
+        shell=(74, 104, 62, 255),
+        shell_dark=(43, 63, 44, 255),
+        accent=(188, 118, 53, 255),
+        accent_light=(232, 180, 92, 255),
+        tread=(38, 44, 34, 255),
+        body="beetle",
+        head="beetle",
+        base="beetle",
+        antenna="antennae",
+        badge="shell",
+        tool="crate",
+        eyes="beetle",
+        tags=("甲虫", "墨绿", "货箱"),
+    ),
+    Style(
+        slug="mushroom",
+        number="18",
+        name="蘑菇疗愈",
+        subtitle="柔和陪护",
+        description="奶油色圆身、红色蘑菇帽和白色斑点，提着小篮子。气质最柔和，适合病房和儿童房。",
+        shell=(232, 216, 187, 255),
+        shell_dark=(197, 172, 135, 255),
+        accent=(196, 75, 74, 255),
+        accent_light=(246, 235, 220, 255),
+        tread=(83, 64, 57, 255),
+        body="round",
+        head="mushroom",
+        base="wheels",
+        antenna="none",
+        badge="spots",
+        tool="basket",
+        eyes="soft",
+        tags=("蘑菇", "奶油", "篮子"),
+    ),
+    Style(
+        slug="frost",
+        number="19",
+        name="霜冻冷藏",
+        subtitle="冷库与保鲜",
+        description="冰白方形机身、蓝色冷光门缝和冰锥天线，像一台会走路的冷柜。适合冷库和食品区。",
+        shell=(222, 241, 248, 255),
+        shell_dark=(164, 199, 216, 255),
+        accent=(64, 143, 188, 255),
+        accent_light=(177, 235, 250, 255),
+        tread=(50, 66, 78, 255),
+        body="fridge",
+        head="fridge",
+        base="treads",
+        antenna="icicle",
+        badge="snow",
+        tool="ice",
+        eyes="visor",
+        tags=("霜冻", "冰白", "冷柜"),
+    ),
+    Style(
+        slug="solar",
+        number="20",
+        name="太阳花",
+        subtitle="太阳能园丁",
+        description="向日葵花瓣头、绿叶机身和背部太阳能板，明亮又省电。适合温室和户外基地。",
+        shell=(235, 213, 96, 255),
+        shell_dark=(163, 186, 87, 255),
+        accent=(62, 132, 82, 255),
+        accent_light=(255, 238, 146, 255),
+        tread=(63, 78, 45, 255),
+        body="round",
+        head="flower",
+        base="wheels",
+        antenna="none",
+        badge="sun",
+        tool="solar",
+        eyes="soft",
+        tags=("太阳花", "黄绿", "太阳能"),
+    ),
 ]
 
 
@@ -280,6 +478,44 @@ def draw_base(draw: ImageDraw.ImageDraw, style: Style, facing: str):
 
     tread = style.tread
     rollers = (min(tread[0] + 39, 255), min(tread[1] + 39, 255), min(tread[2] + 39, 255), 255)
+
+    if style.base in ("spider", "beetle"):
+        thick = 3 if style.base == "spider" else 5
+        for side in (-1, 1):
+            for index, y in enumerate((62, 76, 90)):
+                if facing in ("east", "west") and side > 0:
+                    continue
+                x1 = 42 if side < 0 else 86
+                knee_x = x1 + side * (12 + index * 2)
+                foot_x = x1 + side * (24 + index * 3)
+                foot_y = y + 4 + index * 2
+                draw.line((P(x1), P(y), P(knee_x), P(y - 3), P(foot_x), P(foot_y)),
+                          fill=OUTLINE, width=P(thick + 2), joint="curve")
+                draw.line((P(x1), P(y), P(knee_x), P(y - 3), P(foot_x), P(foot_y)),
+                          fill=tread, width=P(thick), joint="curve")
+                draw.ellipse((P(foot_x - 4), P(foot_y - 2), P(foot_x + 4), P(foot_y + 5)),
+                             fill=style.accent_light, outline=OUTLINE, width=P(1))
+        return
+
+    if style.base == "monowheel":
+        centre = 64 if facing in ("south", "north") else 58
+        draw.line((P(centre), P(82), P(centre), P(100)), fill=OUTLINE, width=P(5))
+        draw.line((P(centre), P(82), P(centre), P(100)), fill=style.accent, width=P(3))
+        draw.ellipse((P(centre - 22), P(80), P(centre + 22), P(124)), fill=tread, outline=OUTLINE, width=P(2))
+        draw.ellipse((P(centre - 15), P(87), P(centre + 15), P(117)), fill=style.accent_light, outline=OUTLINE, width=P(1))
+        draw.ellipse((P(centre - 5), P(97), P(centre + 5), P(107)), fill=style.accent, outline=OUTLINE, width=P(1))
+        return
+
+    if style.base == "biped":
+        if facing in ("south", "north"):
+            for x in (46, 77):
+                rr(draw, (P(x), P(91), P(x + 12), P(113)), P(5), tread, OUTLINE, P(1.5))
+                rr(draw, (P(x - 5), P(108), P(x + 18), P(118)), P(5), style.accent, OUTLINE, P(1))
+        else:
+            rr(draw, (P(52), P(91), P(64), P(113)), P(5), tread, OUTLINE, P(1.5))
+            rr(draw, (P(46), P(108), P(72), P(118)), P(5), style.accent, OUTLINE, P(1))
+        return
+
     if style.base == "wheels":
         if facing in ("south", "north"):
             for x in (34, 82):
@@ -309,12 +545,61 @@ def body_box(style: Style):
         return (25, 45, 103, 101), 9
     if style.body == "slim":
         return (34, 46, 94, 101), 20
+    if style.body == "egg":
+        return (31, 34, 97, 102), 32
+    if style.body == "tower":
+        return (42, 28, 86, 102), 14
+    if style.body == "beetle":
+        return (26, 44, 102, 100), 32
+    if style.body == "fridge":
+        return (26, 34, 100, 101), 10
     return (28, 44, 100, 102), 18
 
 
 def draw_body(draw: ImageDraw.ImageDraw, style: Style, facing: str):
     box, radius = body_box(style)
     x1, y1, x2, y2 = box
+
+    if style.body == "egg":
+        ellipse(draw, (P(x1), P(y1), P(x2), P(y2)), style.shell, OUTLINE, P(1.5))
+        ellipse(draw, (P(x1 + 8), P(y1 + 10), P(x2 - 8), P(y2 - 7)), style.shell_dark, OUTLINE, P(1))
+        if facing in ("south", "north"):
+            for side in (-1, 1):
+                bx = x1 - 4 if side < 0 else x2 - 12
+                ellipse(draw, (P(bx), P(66), P(bx + 16), P(88)), style.accent, OUTLINE, P(1))
+        else:
+            ellipse(draw, (P(18), P(66), P(34), P(88)), style.accent, OUTLINE, P(1))
+        return
+
+    if style.body == "beetle":
+        ellipse(draw, (P(x1), P(y1), P(x2), P(y2)), style.shell, OUTLINE, P(2))
+        ellipse(draw, (P(x1 + 8), P(y1 + 8), P(x2 - 8), P(y2 - 8)), style.shell_dark, OUTLINE, P(1))
+        draw.line((P(64), P(y1 + 4), P(64), P(y2 - 4)), fill=OUTLINE, width=P(2))
+        return
+
+    if style.body == "fridge":
+        rr(draw, (P(x1), P(y1), P(x2), P(y2)), P(radius), style.shell, OUTLINE, P(1.8))
+        rr(draw, (P(x1 + 5), P(y1 + 5), P(x2 - 5), P(y2 - 5)), P(6), None, style.shell_dark, P(1))
+        draw.rectangle((P(x1 + 7), P(y1 + 8), P(x2 - 7), P(y1 + 12)), fill=style.accent_light)
+        draw.line((P(x1 + 8), P(60), P(x2 - 8), P(60)), fill=style.accent, width=P(2))
+        draw.rectangle((P(x2 - 14), P(64), P(x2 - 11), P(76)), fill=style.accent, outline=OUTLINE, width=P(1))
+        return
+
+    if style.body == "tower":
+        rr(draw, (P(x1), P(y1), P(x2), P(y2)), P(radius), style.shell, OUTLINE, P(1.8))
+        rr(draw, (P(x1 + 5), P(y1 + 5), P(x2 - 5), P(y2 - 5)), P(10), None, style.shell_dark, P(1))
+        for y in (56, 72, 88):
+            draw.rectangle((P(x1 + 8), P(y), P(x2 - 8), P(y + 3)), fill=style.accent_light)
+        for side in (-1, 1):
+            for index, y in enumerate((58, 73, 88)):
+                ax = x1 - 12 if side < 0 else x2 - 4
+                ay = y - 3 - index * 2
+                rr(draw, (P(ax), P(ay), P(ax + 18), P(ay + 8)), P(4), style.shell_dark, OUTLINE, P(1))
+                draw.ellipse((P(ax + (16 if side > 0 else 0) - 2), P(ay + 1),
+                              P(ax + (16 if side > 0 else 0) + 4), P(ay + 7)),
+                             fill=style.accent_light, outline=OUTLINE, width=P(1))
+        return
+
     rr(draw, (P(x1), P(y1), P(x2), P(y2)), P(radius), style.shell, OUTLINE, P(1.5))
     if style.body == "box":
         rr(draw, (P(x1 + 5), P(y1 + 5), P(x2 - 5), P(y2 - 5)), P(6), None, style.shell_dark, P(1))
@@ -323,6 +608,9 @@ def draw_body(draw: ImageDraw.ImageDraw, style: Style, facing: str):
             draw.ellipse((P(bx), P(by), P(bx + 4), P(by + 4)), fill=style.accent_light, outline=OUTLINE, width=P(1))
     else:
         rr(draw, (P(x1 + 6), P(y1 + 6), P(x2 - 6), P(y2 - 7)), P(max(6, radius - 4)), None, style.shell_dark, P(1))
+
+    if style.base in ("spider", "beetle"):
+        return
 
     arms = style.shell_dark
     if facing in ("south", "north"):
@@ -413,9 +701,164 @@ def draw_chest(draw: ImageDraw.ImageDraw, style: Style, facing: str):
                      fill=style.accent_light, outline=OUTLINE)
         draw.line((P(cx), P(cy - 7), P(cx + 5), P(cy), P(cx), P(cy + 7), P(cx - 5), P(cy), P(cx), P(cy - 7)),
                   fill=style.accent, width=P(1))
+    elif badge == "package":
+        rr(draw, (P(cx - 10), P(cy - 9), P(cx + 10), P(cy + 9)), P(3), style.accent_light, OUTLINE, P(1))
+        draw.rectangle((P(cx - 2), P(cy - 9), P(cx + 2), P(cy + 9)), fill=style.accent)
+        draw.rectangle((P(cx - 10), P(cy - 2), P(cx + 10), P(cy + 2)), fill=style.accent)
+    elif badge == "bowtie":
+        polygon(draw, [(P(cx - 12), P(cy - 6)), (P(cx - 2), P(cy)), (P(cx - 12), P(cy + 6))],
+                style.accent_light, OUTLINE)
+        polygon(draw, [(P(cx + 12), P(cy - 6)), (P(cx + 2), P(cy)), (P(cx + 12), P(cy + 6))],
+                style.accent_light, OUTLINE)
+        draw.ellipse((P(cx - 3), P(cy - 3), P(cx + 3), P(cy + 3)), fill=style.accent, outline=OUTLINE, width=P(1))
+    elif badge == "sixdots":
+        for i in range(6):
+            x = cx - 9 + (i % 3) * 9
+            y = cy - 7 + (i // 3) * 12
+            draw.ellipse((P(x - 3), P(y - 3), P(x + 3), P(y + 3)), fill=style.accent_light, outline=OUTLINE, width=P(1))
+    elif badge == "feather":
+        for i in range(3):
+            y = cy - 7 + i * 7
+            draw.line((P(cx - 9), P(y + 4), P(cx), P(y), P(cx + 9), P(y + 4)),
+                      fill=style.accent_light, width=P(2), joint="curve")
+    elif badge == "shell":
+        draw.line((P(cx), P(cy - 10), P(cx), P(cy + 10)), fill=style.accent_light, width=P(2))
+        for side in (-1, 1):
+            draw.arc((P(cx + side * 12 - 14), P(cy - 10), P(cx + side * 12 + 14), P(cy + 10)),
+                     110 if side < 0 else 250, 250 if side < 0 else 390,
+                     fill=style.accent, width=P(2))
+    elif badge == "spots":
+        for x, y, r in ((cx - 8, cy - 6, 4), (cx + 7, cy - 2, 3), (cx - 2, cy + 7, 3)):
+            draw.ellipse((P(x - r), P(y - r), P(x + r), P(y + r)), fill=style.accent_light, outline=OUTLINE, width=P(1))
+    elif badge == "snow":
+        for angle in range(0, 180, 60):
+            a = math.radians(angle)
+            draw.line((P(cx - math.cos(a) * 10), P(cy - math.sin(a) * 10),
+                       P(cx + math.cos(a) * 10), P(cy + math.sin(a) * 10)),
+                      fill=style.accent_light, width=P(2))
+            for sign in (-1, 1):
+                draw.line((
+                    P(cx + math.cos(a) * 7), P(cy + math.sin(a) * 7),
+                    P(cx + math.cos(a) * 7 + math.cos(a + sign * 0.8) * 5),
+                    P(cy + math.sin(a) * 7 + math.sin(a + sign * 0.8) * 5),
+                ), fill=style.accent_light, width=P(1))
+    elif badge == "sun":
+        draw.ellipse((P(cx - 7), P(cy - 7), P(cx + 7), P(cy + 7)), fill=style.accent_light, outline=OUTLINE, width=P(1))
+        for angle in range(0, 360, 45):
+            a = math.radians(angle)
+            draw.line((P(cx + math.cos(a) * 10), P(cy + math.sin(a) * 10),
+                       P(cx + math.cos(a) * 14), P(cy + math.sin(a) * 14)),
+                      fill=style.accent_light, width=P(2))
 
 
 def draw_head(draw: ImageDraw.ImageDraw, style: Style, facing: str):
+    if style.head == "none":
+        # 企鹅：脸直接长在蛋形身体上
+        if facing == "north":
+            rr(draw, (P(48), P(42), P(80), P(54)), P(5), style.accent, OUTLINE, P(1))
+            return
+        if facing == "east":
+            ellipse(draw, (P(66), P(42), P(82), P(56)), (25, 31, 40, 255), OUTLINE, P(1))
+            ellipse(draw, (P(71), P(45), P(78), P(52)), style.accent_light)
+            polygon(draw, [(P(82), P(48)), (P(94), P(52)), (P(82), P(56))], style.accent, OUTLINE)
+            return
+        ellipse(draw, (P(47), P(41), P(59), P(53)), (25, 31, 40, 255), OUTLINE, P(1))
+        ellipse(draw, (P(69), P(41), P(81), P(53)), (25, 31, 40, 255), OUTLINE, P(1))
+        ellipse(draw, (P(51), P(44), P(56), P(49)), style.accent_light)
+        ellipse(draw, (P(73), P(44), P(78), P(49)), style.accent_light)
+        polygon(draw, [(P(58), P(54)), (P(70), P(54)), (P(64), P(62))], style.accent, OUTLINE)
+        return
+
+    if style.head == "beetle":
+        ellipse(draw, (P(44), P(32), P(84), P(60)), style.shell_dark, OUTLINE, P(1.5))
+        if facing == "north":
+            draw.rectangle((P(52), P(40), P(76), P(48)), fill=style.accent)
+            return
+        if facing == "east":
+            ellipse(draw, (P(67), P(39), P(81), P(53)), (24, 30, 39, 255), OUTLINE, P(1))
+            ellipse(draw, (P(72), P(42), P(79), P(49)), style.accent_light)
+            return
+        for x in (52, 63, 74):
+            ellipse(draw, (P(x), P(40), P(x + 8), P(48)), style.accent_light, OUTLINE, P(1))
+        return
+
+    if style.head == "fridge":
+        if facing == "north":
+            for x in (44, 54, 64, 74):
+                draw.rectangle((P(x), P(40), P(x + 5), P(54)), fill=style.accent)
+            return
+        if facing == "east":
+            rr(draw, (P(48), P(39), P(88), P(56)), P(5), style.shell_dark, OUTLINE, P(1))
+            draw.line((P(72), P(42), P(80), P(47), P(72), P(52)), fill=style.accent_light, width=P(2))
+            return
+        rr(draw, (P(34), P(38), P(94), P(56)), P(6), style.shell_dark, OUTLINE, P(1))
+        ellipse(draw, (P(44), P(44), P(54), P(54)), style.accent_light)
+        ellipse(draw, (P(74), P(44), P(84), P(54)), style.accent_light)
+        draw.line((P(64), P(42), P(64), P(54)), fill=style.accent, width=P(1))
+        return
+
+    if style.head == "owl":
+        # 耳羽
+        polygon(draw, [(P(30), P(22)), (P(38), P(2)), (P(48), P(20))], style.shell_dark, OUTLINE)
+        polygon(draw, [(P(98), P(22)), (P(90), P(2)), (P(80), P(20))], style.shell_dark, OUTLINE)
+        ellipse(draw, (P(28), P(10), P(100), P(64)), style.shell, OUTLINE, P(1.8))
+        if facing == "north":
+            ellipse(draw, (P(42), P(24), P(86), P(52)), style.shell_dark)
+            for x in (50, 64, 78):
+                draw.line((P(x), P(28), P(x), P(48)), fill=style.accent, width=P(1))
+            return
+        if facing == "east":
+            ellipse(draw, (P(42), P(22), P(70), P(50)), style.shell_dark, OUTLINE, P(1))
+            ellipse(draw, (P(48), P(28), P(64), P(44)), (25, 31, 40, 255), OUTLINE, P(1))
+            ellipse(draw, (P(54), P(32), P(62), P(40)), style.accent_light)
+            polygon(draw, [(P(68), P(39)), (P(82), P(42)), (P(68), P(45))], style.accent, OUTLINE)
+            return
+        for x in (38, 68):
+            ellipse(draw, (P(x), P(22), P(x + 28), P(50)), style.shell_dark, OUTLINE, P(1))
+            ellipse(draw, (P(x + 6), P(28), P(x + 22), P(44)), (25, 31, 40, 255), OUTLINE, P(1))
+            ellipse(draw, (P(x + 11), P(33), P(x + 17), P(39)), style.accent_light)
+        polygon(draw, [(P(59), P(45)), (P(69), P(45)), (P(64), P(54))], style.accent, OUTLINE)
+        return
+
+    if style.head == "mushroom":
+        # 蘑菇帽
+        ellipse(draw, (P(16), P(2), P(112), P(52)), style.accent, OUTLINE, P(1.8))
+        ellipse(draw, (P(24), P(10), P(104), P(44)), style.accent, None)
+        for x, y, r in ((38, 22, 6), (60, 14, 5), (84, 24, 7), (52, 36, 4), (76, 37, 4)):
+            ellipse(draw, (P(x - r), P(y - r), P(x + r), P(y + r)), style.accent_light)
+        if facing == "north":
+            return
+        ellipse(draw, (P(40), P(30), P(88), P(56)), style.shell_dark, OUTLINE, P(1))
+        if facing == "east":
+            ellipse(draw, (P(66), P(34), P(82), P(50)), (25, 31, 40, 255), OUTLINE, P(1))
+            ellipse(draw, (P(72), P(38), P(78), P(44)), style.accent_light)
+            return
+        ellipse(draw, (P(50), P(38), P(58), P(46)), (25, 31, 40, 255))
+        ellipse(draw, (P(70), P(38), P(78), P(46)), (25, 31, 40, 255))
+        ellipse(draw, (P(53), P(40), P(56), P(43)), WHITE)
+        ellipse(draw, (P(73), P(40), P(76), P(43)), WHITE)
+        return
+
+    if style.head == "flower":
+        # 花瓣
+        for i in range(12):
+            a = math.radians(i * 30)
+            x = 64 + math.cos(a) * 20
+            y = 33 + math.sin(a) * 20
+            ellipse(draw, (P(x - 10), P(y - 10), P(x + 10), P(y + 10)), style.accent_light, OUTLINE, P(1))
+        ellipse(draw, (P(44), P(13), P(84), P(53)), style.shell, OUTLINE, P(1.5))
+        if facing == "north":
+            draw.ellipse((P(54), P(25), P(74), P(45)), fill=style.shell_dark, outline=OUTLINE, width=P(1))
+            return
+        if facing == "east":
+            ellipse(draw, (P(58), P(26), P(78), P(46)), style.shell_dark, OUTLINE, P(1))
+            ellipse(draw, (P(65), P(31), P(75), P(41)), style.accent, OUTLINE, P(1))
+            return
+        ellipse(draw, (P(50), P(24), P(58), P(32)), (25, 31, 40, 255))
+        ellipse(draw, (P(70), P(24), P(78), P(32)), (25, 31, 40, 255))
+        draw.arc((P(56), P(32), P(72), P(44)), 20, 160, fill=style.accent, width=P(1))
+        return
+
     if style.head == "box":
         rr(draw, (P(27), P(13), P(101), P(60)), P(13), style.shell, OUTLINE, P(1.5))
         rr(draw, (P(33), P(19), P(95), P(53)), P(9), style.shell_dark, OUTLINE, P(1))
@@ -487,11 +930,36 @@ def draw_head(draw: ImageDraw.ImageDraw, style: Style, facing: str):
 
 
 def draw_antenna(draw: ImageDraw.ImageDraw, style: Style):
+    if style.antenna == "none":
+        return
     top = 14
     if style.head == "box":
         top = 13
     elif style.head == "bubble":
         top = 14
+    elif style.head in ("beetle", "fridge", "none"):
+        top = 34
+
+    if style.antenna == "antennae":
+        for side in (-1, 1):
+            draw.line((P(64 + side * 4), P(top), P(64 + side * 13), P(top - 12)),
+                      fill=OUTLINE, width=P(2))
+            draw.ellipse((P(64 + side * 16), P(top - 17), P(64 + side * 22), P(top - 11)),
+                         fill=style.accent_light, outline=OUTLINE, width=P(1))
+        return
+
+    if style.antenna == "tuft":
+        polygon(draw, [(P(58), P(34)), (P(64), P(25)), (P(70), P(34))],
+                style.accent, OUTLINE)
+        return
+
+    if style.antenna == "icicle":
+        draw.line((P(64), P(34), P(64), P(8)), fill=OUTLINE, width=P(2))
+        polygon(draw, [(P(58), P(34)), (P(64), P(8)), (P(70), P(34))],
+                style.accent_light, OUTLINE)
+        draw.line((P(64), P(12), P(64), P(30)), fill=style.accent, width=P(1))
+        return
+
     draw.line((P(64), P(top), P(64), P(5 if style.antenna != "crown" else 2)), fill=OUTLINE, width=P(2))
     if style.antenna == "ball":
         ellipse(draw, (P(59), P(2), P(69), P(12)), (244, 208, 92, 255), OUTLINE, P(1))
@@ -523,6 +991,19 @@ def draw_antenna(draw: ImageDraw.ImageDraw, style: Style):
                        (P(67), P(6)), (P(73), P(0)), (P(77), P(9))],
                 style.accent_light, OUTLINE)
         draw.rectangle((P(51), P(8), P(77), P(11)), fill=style.accent, outline=OUTLINE, width=P(1))
+    elif style.antenna == "tuft":
+        polygon(draw, [(P(58), P(34)), (P(64), P(25)), (P(70), P(34))],
+                style.accent, OUTLINE)
+    elif style.antenna == "flag":
+        polygon(draw, [(P(64), P(14)), (P(64), P(4)), (P(78), P(7)), (P(64), P(10))],
+                style.accent_light, OUTLINE)
+    elif style.antenna == "ring":
+        draw.ellipse((P(55), P(1), P(73), P(15)), None, style.accent_light, P(2))
+        draw.ellipse((P(61), P(5), P(67), P(11)), fill=style.accent, outline=OUTLINE, width=P(1))
+    elif style.antenna == "icicle":
+        polygon(draw, [(P(58), P(34)), (P(64), P(8)), (P(70), P(34))],
+                style.accent_light, OUTLINE)
+        draw.line((P(64), P(12), P(64), P(30)), fill=style.accent, width=P(1))
 
 
 def draw_tool(draw: ImageDraw.ImageDraw, style: Style, facing: str):
@@ -583,6 +1064,71 @@ def draw_tool(draw: ImageDraw.ImageDraw, style: Style, facing: str):
         elif facing == "east":
             rr(draw, (P(36), P(50), P(56), P(82)), P(9), style.accent, OUTLINE, P(1))
             draw.rectangle((P(40), P(55), P(52), P(58)), fill=style.accent_light)
+    elif style.tool == "package":
+        if facing in ("south", "north"):
+            rr(draw, (P(100), P(92), P(124), P(112)), P(4), (171, 120, 69, 255), OUTLINE, P(1))
+            draw.rectangle((P(110), P(92), P(114), P(112)), fill=style.accent_light)
+            draw.rectangle((P(100), P(100), P(124), P(104)), fill=style.accent_light)
+        else:
+            rr(draw, (P(90), P(92), P(114), P(112)), P(4), (171, 120, 69, 255), OUTLINE, P(1))
+            draw.rectangle((P(100), P(92), P(104), P(112)), fill=style.accent_light)
+    elif style.tool == "tray":
+        if facing in ("south", "north"):
+            rr(draw, (P(96), P(96), P(126), P(103)), P(4), (198, 156, 92, 255), OUTLINE, P(1))
+            rr(draw, (P(104), P(84), P(114), P(96)), P(3), WHITE, OUTLINE, P(1))
+            draw.ellipse((P(107), P(87), P(111), P(91)), fill=style.accent)
+        else:
+            rr(draw, (P(92), P(96), P(126), P(103)), P(4), (198, 156, 92, 255), OUTLINE, P(1))
+            rr(draw, (P(102), P(84), P(112), P(96)), P(3), WHITE, OUTLINE, P(1))
+    elif style.tool == "mop":
+        if facing in ("south", "north"):
+            draw.line((P(110), P(74), P(116), P(116)), fill=OUTLINE, width=P(3))
+            draw.line((P(110), P(74), P(116), P(116)), fill=(168, 184, 190, 255), width=P(2))
+            polygon(draw, [(P(106), P(112)), (P(126), P(116)), (P(122), P(126)), (P(102), P(122))],
+                    style.accent_light, OUTLINE)
+        else:
+            draw.line((P(90), P(74), P(100), P(116)), fill=OUTLINE, width=P(3))
+            draw.line((P(90), P(74), P(100), P(116)), fill=(168, 184, 190, 255), width=P(2))
+            polygon(draw, [(P(92), P(112)), (P(112), P(116)), (P(108), P(126)), (P(88), P(122))],
+                    style.accent_light, OUTLINE)
+    elif style.tool == "crate":
+        if facing == "north":
+            rr(draw, (P(38), P(44), P(90), P(80)), P(4), (171, 120, 69, 255), OUTLINE, P(1.5))
+            draw.rectangle((P(38), P(58), P(90), P(61)), fill=style.accent_light)
+            draw.line((P(50), P(44), P(50), P(80)), fill=style.accent_light, width=P(1))
+            draw.line((P(78), P(44), P(78), P(80)), fill=style.accent_light, width=P(1))
+        elif facing in ("south", "east"):
+            rr(draw, (P(98), P(80), P(120), P(104)), P(4), (171, 120, 69, 255), OUTLINE, P(1))
+            draw.rectangle((P(98), P(88), P(120), P(91)), fill=style.accent_light)
+    elif style.tool == "basket":
+        if facing in ("south", "north"):
+            draw.arc((P(100), P(84), P(122), P(104)), 180, 360, fill=OUTLINE, width=P(2))
+            rr(draw, (P(98), P(92), P(124), P(108)), P(5), (188, 142, 85, 255), OUTLINE, P(1))
+            draw.line((P(102), P(96), P(102), P(104)), fill=style.accent_light, width=P(1))
+            draw.line((P(110), P(96), P(110), P(104)), fill=style.accent_light, width=P(1))
+            draw.line((P(118), P(96), P(118), P(104)), fill=style.accent_light, width=P(1))
+        else:
+            rr(draw, (P(92), P(93), P(116), P(108)), P(5), (188, 142, 85, 255), OUTLINE, P(1))
+            draw.line((P(96), P(97), P(96), P(105)), fill=style.accent_light, width=P(1))
+    elif style.tool == "ice":
+        if facing in ("south", "north"):
+            polygon(draw, [(P(108), P(75)), (P(116), P(96)), (P(108), P(92)), (P(100), P(102))],
+                    style.accent_light, OUTLINE)
+            draw.line((P(108), P(80), P(108), P(98)), fill=WHITE, width=P(1))
+        else:
+            polygon(draw, [(P(96), P(76)), (P(108), P(96)), (P(96), P(92)), (P(88), P(104))],
+                    style.accent_light, OUTLINE)
+    elif style.tool == "solar":
+        if facing == "north":
+            rr(draw, (P(34), P(43), P(94), P(76)), P(4), (58, 96, 132, 255), OUTLINE, P(1.5))
+            for x in (44, 60, 76):
+                draw.line((P(x), P(46), P(x), P(73)), fill=style.accent_light, width=P(1))
+            for y in (52, 62):
+                draw.line((P(37), P(y), P(91), P(y)), fill=style.accent_light, width=P(1))
+        elif facing == "east":
+            rr(draw, (P(32), P(44), P(58), P(78)), P(4), (58, 96, 132, 255), OUTLINE, P(1))
+            for y in (52, 62):
+                draw.line((P(35), P(y), P(55), P(y)), fill=style.accent_light, width=P(1))
 
 
 def draw_robot(style: Style, facing: str) -> Image.Image:
@@ -605,10 +1151,15 @@ def image_data_uri(image: Image.Image) -> str:
     return "data:image/png;base64," + encoded
 
 
-def render_html(images: dict[str, dict[str, Image.Image]]) -> str:
+def render_html(
+    images: dict[str, dict[str, Image.Image]],
+    styles: list[Style],
+    title: str,
+    subtitle: str,
+) -> str:
     tabs = []
     panels = []
-    for index, style in enumerate(STYLES):
+    for index, style in enumerate(styles):
         active = " active" if index == 0 else ""
         tabs.append(
             f'<button class="tab{active}" data-tab="{index}" type="button">'
@@ -652,7 +1203,7 @@ def render_html(images: dict[str, dict[str, Image.Image]]) -> str:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>保姆机器人贴图候选 · 10 选 1</title>
+<title>{html.escape(title)} · {len(styles)} 选 1</title>
 <style>
 :root {{
   color-scheme: dark;
@@ -763,8 +1314,8 @@ figcaption {{ text-align: center; color: var(--muted); font-size: 12px; padding-
   <header>
     <div>
       <p class="eyebrow">ColonyKit · Nanny Robot Redraw</p>
-      <h1>保姆机器人贴图候选</h1>
-      <p class="sub">10 个风格方案，每个方案含南 / 北 / 东 / 西四向。点击页签切换；选好后告诉我方案编号即可。</p>
+      <h1>{html.escape(title)}</h1>
+      <p class="sub">{html.escape(subtitle)}</p>
     </div>
     <div class="toolbar">
       <button class="ghost" id="theme" type="button">浅色预览</button>
@@ -820,23 +1371,37 @@ document.querySelectorAll('.choose').forEach((button) => {{
 """
 
 
-def main():
-    os.makedirs(OUT_DIR, exist_ok=True)
+STYLES_BATCH1 = STYLES[:10]
+STYLES_BATCH2 = STYLES[10:]
+
+
+def generate(styles: list[Style], out_dir: str, html_path: str, title: str, subtitle: str):
+    os.makedirs(out_dir, exist_ok=True)
     images: dict[str, dict[str, Image.Image]] = {}
-    for style in STYLES:
+    for style in styles:
         images[style.slug] = {}
         for view in VIEWS:
             image = draw_robot(style, view)
             if view == "west":
                 image = ImageOps.mirror(images[style.slug]["east"])
             images[style.slug][view] = image
-            path = os.path.join(OUT_DIR, f"{style.number}_{style.slug}_{view}.png")
+            path = os.path.join(out_dir, f"{style.number}_{style.slug}_{view}.png")
             image.save(path)
         print("wrote", style.number, style.slug)
 
-    with open(HTML_PATH, "w", encoding="utf-8") as handle:
-        handle.write(render_html(images))
-    print("wrote", HTML_PATH)
+    with open(html_path, "w", encoding="utf-8") as handle:
+        handle.write(render_html(images, styles, title, subtitle))
+    print("wrote", html_path)
+
+
+def main():
+    generate(
+        STYLES_BATCH1,
+        OUT_DIR,
+        HTML_PATH,
+        "保姆机器人贴图候选",
+        "10 个风格方案，每个方案含南 / 北 / 东 / 西四向。点击页签切换；选好后告诉我方案编号即可。",
+    )
 
 
 if __name__ == "__main__":
