@@ -94,8 +94,7 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 			{
 				return;
 			}
-			Rot4 rotation = parent.Rotation;
-			rotation.Rotate(RotationDirection.Clockwise);
+			// 固定竖条（Rot4.East）：水箱本身不可旋转，旧存档里的建筑朝向不能再影响水位条方向。
 			GenDraw.DrawFillableBar(new GenDraw.FillableBarRequest
 			{
 				center = parent.DrawPos + Vector3.up * 0.1f,
@@ -104,7 +103,7 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 				filledMat = WaterBarFilledMat,
 				unfilledMat = BarUnfilledMat,
 				margin = 0.05f,
-				rotation = rotation
+				rotation = Rot4.East
 			});
 			DrawOverlay = false;
 		}
