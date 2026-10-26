@@ -11,12 +11,13 @@ namespace ColonyKit.Modules.Robotics
 		Butcher = 5,
 		Refuel = 6,
 		FeedPrisoners = 7,
-		Hygiene = 8
+		Hygiene = 8,
+		RopeAnimals = 9
 	}
 
 	public static class RobotChores
 	{
-		public const int Count = 9;
+		public const int Count = 10;
 
 		public static readonly RobotChore[] All =
 		{
@@ -28,7 +29,8 @@ namespace ColonyKit.Modules.Robotics
 			RobotChore.Butcher,
 			RobotChore.Refuel,
 			RobotChore.FeedPrisoners,
-			RobotChore.Hygiene
+			RobotChore.Hygiene,
+			RobotChore.RopeAnimals
 		};
 
 		public static string LabelKey(RobotChore chore)
@@ -77,6 +79,8 @@ namespace ColonyKit.Modules.Robotics
 					return settings.feedPrisoners;
 				case RobotChore.Hygiene:
 					return settings.hygiene;
+				case RobotChore.RopeAnimals:
+					return settings.ropeAnimals;
 				default:
 					return false;
 			}

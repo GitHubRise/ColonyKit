@@ -20,6 +20,8 @@
 	<ColonyKit.Settings.Robotics.FeedPrisoners.Desc>Feed or deliver meals to hungry colony prisoners.</ColonyKit.Settings.Robotics.FeedPrisoners.Desc>
 	<ColonyKit.Settings.Robotics.Hygiene>Sanitation</ColonyKit.Settings.Robotics.Hygiene>
 	<ColonyKit.Settings.Robotics.Hygiene.Desc>Empty septic tanks and unblock fixtures. Bathroom floor filth is still handled even when sweeping is off.</ColonyKit.Settings.Robotics.Hygiene.Desc>
+	<ColonyKit.Settings.Robotics.RopeAnimals>Rope animals</ColonyKit.Settings.Robotics.RopeAnimals>
+	<ColonyKit.Settings.Robotics.RopeAnimals.Desc>Rope colony animals back to pens or hitching posts, and unrope them when needed.</ColonyKit.Settings.Robotics.RopeAnimals.Desc>
 	<ColonyKit.Settings.Robotics.Storage>Warehouse delivery</ColonyKit.Settings.Robotics.Storage>
 	<ColonyKit.Settings.Robotics.Storage.Desc>Prefer delivering hauled items directly into vertical warehouses.</ColonyKit.Settings.Robotics.Storage.Desc>
 	<ColonyKit.Settings.Robotics.Rescue>Priority rescue</ColonyKit.Settings.Robotics.Rescue>
@@ -127,4 +129,6 @@
 	<CK.Robotics.Chore.FeedPrisoners.Desc>Feed or deliver meals to hungry colony prisoners.</CK.Robotics.Chore.FeedPrisoners.Desc>
 	<CK.Robotics.Chore.Hygiene.Label>Hygiene</CK.Robotics.Chore.Hygiene.Label>
 	<CK.Robotics.Chore.Hygiene.Desc>Empty septic tanks, unblock fixtures and clean bathroom filth.</CK.Robotics.Chore.Hygiene.Desc>
+	<CK.Robotics.Chore.RopeAnimals.Label>Rope</CK.Robotics.Chore.RopeAnimals.Label>
+	<CK.Robotics.Chore.RopeAnimals.Desc>Rope colony animals to pens or hitching posts, and unrope them when needed.</CK.Robotics.Chore.RopeAnimals.Desc>
 </LanguageData>

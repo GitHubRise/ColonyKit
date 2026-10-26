@@ -38,7 +38,11 @@ namespace ColonyKit.Modules.Robotics
 			"Refuel",
 			"RefuelAtomic",
 			"FeedPatient",
-			"Rescue"
+			"Rescue",
+			"RopeToPen",
+			"RopeRoamerToUnenclosedPen",
+			"RopeRoamerToHitchingPost",
+			"Unrope"
 		};
 
 		private static readonly Color[] PaintPalette =

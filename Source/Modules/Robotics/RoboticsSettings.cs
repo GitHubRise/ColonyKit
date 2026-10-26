@@ -39,6 +39,7 @@ namespace ColonyKit.Modules.Robotics
 		public bool refuel = true;
 		public bool feedPrisoners = true;
 		public bool hygiene = true;
+		public bool ropeAnimals = true;
 		public bool storage = true;
 		public bool rescue = true;
 		public bool dangerAvoidance = true;
@@ -65,6 +66,7 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref refuel, "refuel", true);
 			Scribe_Values.Look(ref feedPrisoners, "feedPrisoners", true);
 			Scribe_Values.Look(ref hygiene, "hygiene", true);
+			Scribe_Values.Look(ref ropeAnimals, "ropeAnimals", true);
 			Scribe_Values.Look(ref storage, "storage", true);
 			Scribe_Values.Look(ref rescue, "rescue", true);
 			Scribe_Values.Look(ref dangerAvoidance, "dangerAvoidance", true);
@@ -122,6 +124,7 @@ namespace ColonyKit.Modules.Robotics
 			refuel = true;
 			feedPrisoners = true;
 			hygiene = true;
+			ropeAnimals = true;
 			storage = true;
 			rescue = true;
 			dangerAvoidance = true;

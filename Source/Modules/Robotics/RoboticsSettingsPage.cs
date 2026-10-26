@@ -66,6 +66,11 @@ namespace ColonyKit.Modules.Robotics
 				"ColonyKit.Settings.Robotics.Hygiene".Loc(),
 				ref data.hygiene,
 				"ColonyKit.Settings.Robotics.Hygiene.Desc".Loc());
+			data.ropeAnimals = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.RopeAnimals".Loc(),
+				ref data.ropeAnimals,
+				"ColonyKit.Settings.Robotics.RopeAnimals.Desc".Loc());
 			data.storage = SettingsWidgets.Checkbox(
 				listing,
 				"ColonyKit.Settings.Robotics.Storage".Loc(),
