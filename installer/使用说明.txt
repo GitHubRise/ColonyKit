@@ -1,0 +1,78 @@
+殖民地套件（ColonyKit）0.0.2 —— 其它电脑安装说明
+============================================================
+
+一、运行条件
+------------------------------------------------------------
+1. Windows 10 / 11（64 位）
+2. RimWorld 1.6（Steam 或 GOG 都可以；1.5 及以下不兼容）
+3. Harmony（免费，Steam 创意工坊搜 Harmony，作者 brrainz）
+   链接：https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077
+
+二、安装步骤
+------------------------------------------------------------
+1. 把整个 zip 解压到一个普通文件夹。
+   不要直接在压缩包里双击 install.bat，否则解压临时目录可能被清理。
+
+2. 双击 install.bat。
+   - 脚本会自动查找 RimWorld 安装目录（Steam 注册表 + 常见路径）。
+   - 找不到时，把 RimWorld 文件夹（里面有 RimWorldWin64.exe）拖进黑窗口，回车。
+   - 已有旧版会先改名备份为 Mods\ColonyKit.bak-1、bak-2……不会直接删。
+   - 安装完成后按任意键关闭窗口。
+
+3. 启动游戏，进入「选项」→「Mod 设置」：
+   - 先勾选 Harmony；
+   - 再勾选「殖民地套件」；
+   - 点「自动排序」，按提示重启游戏。
+
+三、不想用 bat 的手动安装
+------------------------------------------------------------
+把压缩包里的 ColonyKit 文件夹整个复制到：
+
+    <RimWorld 安装目录>\Mods\ColonyKit
+
+确认 Mods\ColonyKit\About\About.xml 存在即可。
+（不要多套一层 ColonyKit\ColonyKit。）
+
+四、重要注意事项
+------------------------------------------------------------
+1. 不要同时启用外部 RimJobWorld。
+   本 Mod 已内置 RJW 1.6；同时启用外部 RimJobWorld 会重复加载 Def，
+   进游戏会红字报错。安装脚本检测到 Mods\RimJobWorld 时会提示。
+
+2. 存档建议先备份。
+   新增 Mod 一般可以直接读旧存档，但删除 Mod 会让存档缺 Def。
+   存档位置：
+   %USERPROFILE%\AppData\LocalLow\Ludeon Studios\RimWorld by Ludeon Studios\Saves
+
+3. 安装/更新 Mod 前必须先完全退出游戏，否则 DLL 被锁住会复制失败。
+
+4. 老版本备份可以手动删除：
+   Mods\ColonyKit.bak-1、Mods\ColonyKit.bak-2 ……
+
+5. 首次进游戏如果提示缺少 Harmony，说明 Harmony 没订阅或没勾选。
+   订阅后回到 Mod 设置，把 Harmony 排在「殖民地套件」上面。
+
+五、卸载
+------------------------------------------------------------
+关闭游戏，删除 Mods\ColonyKit 文件夹即可。
+如果还要清理设置，再删除：
+%USERPROFILE%\AppData\LocalLow\Ludeon Studios\RimWorld by Ludeon Studios\Config\Mod_ColonyKit_ColonyKitMod.xml
+
+六、装不上 / 红字排查
+------------------------------------------------------------
+1. 游戏 Mod 列表看不到「殖民地套件」
+   → 检查 Mods\ColonyKit\About\About.xml 是否存在，目录有没有多套一层。
+
+2. 提示版本不兼容
+   → 本包只支持 RimWorld 1.6；确认游戏版本是 1.6.x。
+
+3. 进游戏红字
+   → 先确认只启用了本 Mod 和 Harmony，没有同时启用外部 RimJobWorld。
+   → 日志在：
+     %USERPROFILE%\AppData\LocalLow\Ludeon Studios\RimWorld by Ludeon Studios\Player.log
+
+4. install.bat 一闪而过
+   → 右键「以管理员身份运行」再试；或按上面「手动安装」复制文件夹。
+
+============================================================
+ColonyKit 0.0.2
