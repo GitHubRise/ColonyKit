@@ -179,6 +179,14 @@ try {
 
 	# ---- Harmony：已装则跳过；没装则复制随包附带的 Harmony ----
 	$harmony = Test-HarmonyInstalled -ModsDir $mods -RimWorldDir $rw
+	if ($harmony) {
+		if (Test-Path -LiteralPath (Join-Path $mods 'Harmony\About\About.xml')) {
+			Write-Host '[Harmony] Mods\Harmony 已存在，跳过复制。' -ForegroundColor DarkGray
+		}
+		else {
+			Write-Host '[Harmony] 已检测到创意工坊或其它位置的 Harmony，跳过复制（不会生成 Mods\Harmony）。' -ForegroundColor DarkGray
+		}
+	}
 	if (-not $harmony) {
 		$bundled = Join-Path $PSScriptRoot 'Harmony'
 		$bundledDll = Join-Path $bundled '1.6\Assemblies\0Harmony.dll'
