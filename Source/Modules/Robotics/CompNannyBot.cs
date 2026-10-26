@@ -23,6 +23,9 @@ namespace ColonyKit.Modules.Robotics
 	{
 		public const float MaxDurability = 1000f;
 
+		/// <summary>每 1 点实际伤害损耗的耐久；约 250 点伤害报废。</summary>
+		public const float DurabilityLossPerDamage = 4f;
+
 		private static readonly HashSet<string> WorkJobs = new HashSet<string>
 		{
 			"CK_NannyCleanFilth",
@@ -77,9 +80,18 @@ namespace ColonyKit.Modules.Robotics
 		public override void PostSpawnSetup(bool respawningAfterLoad)
 		{
 			base.PostSpawnSetup(respawningAfterLoad);
-			if (durability <= 0f)
+			if (durability < 0f)
 			{
-				durability = MaxDurability;
+				durability = 0f;
+			}
+		}
+
+		public override void PostPostApplyDamage(DamageInfo dinfo, float totalDamageDealt)
+		{
+			base.PostPostApplyDamage(dinfo, totalDamageDealt);
+			if (totalDamageDealt > 0f)
+			{
+				Wear(totalDamageDealt * DurabilityLossPerDamage);
 			}
 		}
 
@@ -103,25 +115,15 @@ namespace ColonyKit.Modules.Robotics
 				return;
 			}
 
-			if (!parent.IsHashIntervalTick(250))
-			{
-				return;
-			}
-
 			if (durability <= 0f)
 			{
 				Scrap();
 				return;
 			}
 
-			if (!paused && !pawn.Downed && IsWorkJob(pawn.CurJobDef))
+			if (!parent.IsHashIntervalTick(250))
 			{
-				Wear(0.5f);
-				if (durability <= 0f)
-				{
-					Scrap();
-					return;
-				}
+				return;
 			}
 
 			Need_RobotEnergy energy = NannyBotUtility.Energy(pawn);

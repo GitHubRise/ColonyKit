@@ -235,6 +235,13 @@ namespace ColonyKit.Modules.Robotics
 
 					if (botComp != null)
 					{
+						float durabilityBeforeDamage = botComp.Durability;
+						robot.TakeDamage(new DamageInfo(DamageDefOf.Cut, 10f));
+						builder.Append(" damageDurability=")
+							.Append(durabilityBeforeDamage.ToString("0"))
+							.Append("->")
+							.Append(botComp.Durability.ToString("0"));
+
 						botComp.durability = 500f;
 						Pawn colonist = null;
 						foreach (Pawn candidate in map.mapPawns.FreeColonistsSpawned)
