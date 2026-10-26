@@ -235,7 +235,7 @@ def top_factory(d, cx, cy, kind):
     elif kind == "auto":
         # 2 wide x 6 deep, drawn with a 40 px cell so it fits the cell height
         w, h = 80, 240
-    elif kind == "frame":
+    elif kind in ("frame", "workshop"):
         w, h = 140, 140
     else:
         w, h = 210, 210
@@ -383,7 +383,7 @@ def main():
             (10, "高速自动维修机", "2×2 · AUTO", lambda d, x, y: top_repair(d, x, y, "auto")),
         ]),
         ("工厂 / FACTORIES", [
-            (11, "工坊工厂", "3×3 · WORKSHOP", lambda d, x, y: top_factory(d, x, y, "workshop")),
+            (11, "工坊工厂", "2×2 · WORKSHOP", lambda d, x, y: top_factory(d, x, y, "workshop")),
             (12, "两工位工厂", "4×3 · TWO-STATION", lambda d, x, y: top_factory(d, x, y, "two-station")),
             (13, "骨架厂", "2×2 · FRAME", lambda d, x, y: top_factory(d, x, y, "frame")),
             (14, "预制工厂", "3×3 · PREFAB", lambda d, x, y: top_factory(d, x, y, "prefab")),
