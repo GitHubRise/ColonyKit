@@ -6,6 +6,7 @@
 
 ### Fixed
 
+- **马桶西向贴图是东向的副本**：`CK_Toilet_west.png` 与 `CK_Toilet_east.png`、`CK_ToiletUp_west.png` 与 `CK_ToiletUp_east.png` 此前字节完全相同（直接复制），转到西向时水箱仍在右侧，与交互格 `(0,0,-1)` 旋转后的朝向相反。现按东向水平镜像重做两张 west 贴图（128×128 RGBA，像素为东向的精确镜像），水箱回到左侧；`Graphic_Multi` 按文件名取图，Def 与代码都不用改。
 - **浴缸贴图被压扁**：`CK_Bath` 用的贴图是 128×192（2:3），但 `drawSize` 写成 (1,2)，进游戏后被横向压掉约 25%，浴缸显得又窄又长。现改为 (1.33,2)：比例正好还原 2:3，高度仍占满 2 格，横向只溢出约 1/3 格；占地、交互与贴图文件都不动。
 - **开发者菜单「半英半中」乱码**：翻译表中 204 条由逐词替换生成的条目（`绘制河流Debug`、`Material报告`、`名称FromRulepack`、`小人生成Histogram` 等）全部改写为通顺中文；`DevLabelTranslations` 删掉 `HumanizeDefName` 逐词硬拼逻辑，Def/SoundDef 没有译名时直接显示英文原名，不再拼接「中文·英文」的杂交结果。
 - **开发者菜单物品名仍是英文**：尤兰（174 个）与龙族（27 个）两个没有中文包的种族 Mod 全量补齐中文词条（`menu="spawning"`），含服装、武器、建筑、食物、树、光效（Mote）、式神、包材等；另补萌螈飞花、古迹搜寻器、`FirefoamPopper`、`CloacalAnus/Penis/Vagina` 等杂项。词条同时按英文 label 与 defName 建立 key（共 342 个 key），列表显示 label 或 defName 都能命中。
