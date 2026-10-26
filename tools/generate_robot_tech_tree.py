@@ -269,6 +269,12 @@ def render_tree() -> str:
     return '<span class="tree-arrow">→</span>'.join(nodes)
 
 
+def mode_text(tech: dict) -> str:
+    if tech["id"] in ("T1", "T2"):
+        return "休闲 / 常规 / 高功耗（三档）"
+    return "休闲 / 常规 / 高功耗 / 极限（四档；极限默认关闭）"
+
+
 def render_tech(tech: dict) -> str:
     products = "".join(
         f"<tr><td>{esc(a)}</td><td>{esc(b)}</td><td>{esc(c)}</td><td>{esc(d)}</td><td>{esc(e)}</td></tr>"
@@ -319,6 +325,7 @@ def render_tech(tech: dict) -> str:
             <tr><th>载重</th><td>{esc(r["payload"])}</td></tr>
             <tr><th>移动</th><td>{esc(r["speed"])}</td></tr>
             <tr><th>材料</th><td>{esc(tech["materials"])}</td></tr>
+            <tr><th>运作模式</th><td>{esc(mode_text(tech))}</td></tr>
           </table>
           <p class="special">{esc(r["special"])}</p>
         </div>
@@ -437,6 +444,130 @@ def render_combat() -> str:
     """
 
 
+def render_modes() -> str:
+    return """
+    <section class="panel" data-panel="M">
+      <div class="tier-head">
+        <div>
+          <p class="eyebrow">T1–T5 · OPERATING MODES</p>
+          <h2>运作模式 · 休闲 / 常规 / 高功耗 / 极限</h2>
+          <p class="lead">休闲模式就是低功耗档：降低速度与耗电，把单次充电的运行时间从 12 小时拉长到约 34 小时。T1/T2 只开放前三档；T3+ 解锁极限模式，但极限默认关闭，必须在设置页手动允许。</p>
+        </div>
+        <div class="tier-meta">
+          <div><span>默认模式</span><strong>常规</strong></div>
+          <div><span>极限模式</span><strong>默认关闭</strong></div>
+          <div><span>解锁</span><strong>T3+ / 设置页</strong></div>
+        </div>
+      </div>
+
+      <div class="mode-grid">
+        <div class="mode-card casual">
+          <p class="eyebrow">LOW POWER</p>
+          <h3>休闲 / 低功耗</h3>
+          <p>慢速做家务、慢速移动，耗电降到 35%。单次充电约 34 小时，适合夜间、待命、低强度巡逻。</p>
+          <span class="mode-tag">45% 工作 · 70% 移速 · 35% 耗电 · 34 h</span>
+        </div>
+        <div class="mode-card normal">
+          <p class="eyebrow">NORMAL</p>
+          <h3>常规模式</h3>
+          <p>标准工作速度与耗电，12 小时续航。没有额外耐久损耗，是日常默认档。</p>
+          <span class="mode-tag">100% 工作 · 100% 移速 · 100% 耗电 · 12 h</span>
+        </div>
+        <div class="mode-card high">
+          <p class="eyebrow">HIGH POWER</p>
+          <h3>高功耗</h3>
+          <p>赶工/灭火/救援时使用；工作速度 +60%，耗电 220%，续航约 5.5 小时。不额外扣耐久。</p>
+          <span class="mode-tag">160% 工作 · 115% 移速 · 220% 耗电 · 5.5 h</span>
+        </div>
+        <div class="mode-card extreme">
+          <p class="eyebrow">OVERDRIVE · DEFAULT OFF</p>
+          <h3>极限模式</h3>
+          <p>超频电机与电池，工作速度 +140%，耗电 450%，续航约 2.7 小时；耐久快速衰减。默认关闭。</p>
+          <span class="mode-tag">240% 工作 · 130% 移速 · 450% 耗电 · 2.7 h · 耐久 6/250（T5 4/250）</span>
+        </div>
+      </div>
+
+      <h3>四档参数</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>模式</th><th>工作速度</th><th>移速</th><th>耗电</th><th>单次续航</th><th>等效常规工作量</th><th>耐久损耗</th><th>可用阶段</th></tr></thead>
+          <tbody>
+            <tr><td>休闲 / 低功耗</td><td>45%</td><td>70%</td><td>35%</td><td>约 34 h</td><td>约 15.4 h</td><td>0</td><td>T1+</td></tr>
+            <tr><td>常规</td><td>100%</td><td>100%</td><td>100%</td><td>12 h</td><td>12 h</td><td>0</td><td>T1+</td></tr>
+            <tr><td>高功耗</td><td>160%</td><td>115%</td><td>220%</td><td>约 5.5 h</td><td>约 8.8 h</td><td>0</td><td>T1+</td></tr>
+            <tr><td>极限</td><td>240%</td><td>130%</td><td>450%</td><td>约 2.7 h</td><td>约 6.5 h</td><td>T3/T4：6/250 tick<br>T5：4/250 tick</td><td>T3+，设置页允许</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tier-columns">
+        <div>
+          <h3>设置页开关</h3>
+          <div class="settings-mock">
+            <p class="eyebrow">设置 → 机器人 → 运作模式</p>
+            <label><input type="checkbox"> 允许极限模式（默认关闭）</label>
+            <p>只对 T3+ 生效。关闭时：极限按钮灰掉；正在极限的机器人立即切回高功耗。</p>
+            <label><input type="checkbox" checked> 低电量自动切休闲（默认开启，阈值 15%）</label>
+            <label><input type="checkbox" checked> 极限耐久保护（默认开启，耐久 20% 自动退出）</label>
+            <label><input type="checkbox" checked> 充电/维修期间暂停模式加成（默认开启）</label>
+          </div>
+          <h3>机器人 Gizmo（示意）</h3>
+          <div class="mode-row">
+            <span>当前模式</span>
+            <button type="button">休闲</button>
+            <button class="active" type="button">常规</button>
+            <button type="button">高功耗</button>
+            <button disabled type="button">极限 🔒</button>
+          </div>
+          <p class="mode-note">极限按钮在设置关闭或 T3 以下时灰掉；打开设置后，T3+ 机器人才能选择。</p>
+        </div>
+        <div>
+          <h3>自动规则</h3>
+          <ul class="new-list">
+            <li><strong>默认常规：</strong>新造/读档机器人没有记录时一律普通模式。</li>
+            <li><strong>低电降档：</strong>电量 ≤15% 自动切休闲；≤5% 停止工作去充电。</li>
+            <li><strong>极限保护：</strong>耐久 ≤20% 自动退出极限并报警；≤10% 强制休闲。</li>
+            <li><strong>设置关闭：</strong>全局关闭极限时，所有正在极限的机器人立即切回高功耗，不扣额外耐久。</li>
+            <li><strong>充电/维修：</strong>模式加成暂停；充电功率不受模式影响；维修期间不扣极限耐久。</li>
+            <li><strong>战斗：</strong>被攻击时允许用当前模式反击；血量 <30% 强制退出极限并撤离。</li>
+          </ul>
+          <h3>耐久账</h3>
+          <div class="formula">
+            <p>T3/T4：6 耐久 / 250 tick；连续极限约 41,700 tick ≈ 0.69 游戏日耗尽 1000 耐久。</p>
+            <p>T5：4 耐久 / 250 tick；连续极限约 62,500 tick ≈ 1.04 游戏日耗尽 1000 耐久。</p>
+            <p>按 2.7 小时续航计算：T3/T4 一个完整极限充电周期约损失 233 耐久；T5 约损失 155 耐久。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-columns">
+        <div>
+          <h3>平衡口径</h3>
+          <ul class="reuse-list">
+            <li>休闲不是停机：仍然接家务，只是慢；想完全待机可同时暂停家务。</li>
+            <li>低功耗的“延长时间”来自耗电 35%，不是免费电量；单次 34 小时，等效常规工作量约 15.4 小时。</li>
+            <li>高功耗是“更快但更费电”，不扣耐久；极限是“最快但伤机器”，默认关闭。</li>
+            <li>极限不改变充电功率；充满仍需约 4 小时，不能靠反复插拔免费续命。</li>
+          </ul>
+        </div>
+        <div>
+          <h3>RimWorld 实现映射</h3>
+          <ul class="impl">
+            <li><code>RoboticsSettings.extremeModeEnabled</code> 默认 false；设置页加“允许极限模式”复选框。</li>
+            <li><code>CompNannyBot.operatingMode</code> 枚举 + Scribe；默认 Normal；旧存档无字段按 Normal。</li>
+            <li><code>Need_RobotEnergy</code> 按模式乘耗电系数；<code>CompNannyBot.CompTick</code> 在极限时扣耐久。</li>
+            <li>工作/移速用 <code>HediffDef</code> 的 <code>statFactors</code>（WorkSpeedGlobal / MoveSpeed）；模式切换时增删 Hediff。</li>
+            <li>Gizmo 四按钮；极限按钮 <code>Disabled</code> 并给 disabledReason；设置关闭时强制切回 High。</li>
+            <li>验收：默认关闭、T1/T2 无极限、T3+ 打开后可用、关闭设置立即降档、低电/低耐久自动降档、充电/维修暂停。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="note"><strong>名称说明：</strong>你列了“低功耗、常规、高功耗、极限”四个名称；这里按四档实现，其中“休闲模式”=低功耗档。T1/T2 先开放前三档，T3+ 解锁极限；极限默认关闭。如果你确实只想保留三档，把“休闲”并入“低功耗”即可。</div>
+    </section>
+    """
+
+
 def main():
     tabs = []
     panels = []
@@ -452,12 +583,15 @@ def main():
 
     tabs.append('<button class="tab" data-tab="C" type="button"><span class="tab-id">⚔</span><span>反击能力</span></button>')
     panels.append(render_combat())
+    tabs.append('<button class="tab" data-tab="M" type="button"><span class="tab-id">◐</span><span>运作模式</span></button>')
+    panels.append(render_modes())
 
     summary_rows = "".join(
         f"<tr><td><strong>{tech['id']}</strong> {esc(tech['name'])}</td><td>{esc(tech['research'])}</td><td>{esc(tech['research_cost'])}</td>"
         f"<td>{esc(tech['robot']['name'])}</td><td>{esc(tech['robot']['durability'])}</td><td>{esc(tech['robot']['battery'])}</td>"
         f"<td>{esc(tech['robot']['mass'])} / {esc(tech['robot']['payload'])}</td><td>{esc(tech['materials'])}</td>"
-        f"<td>{esc(tech['combat']['name']) if tech.get('combat') else '无（仅撤离）'}</td></tr>"
+        f"<td>{esc(tech['combat']['name']) if tech.get('combat') else '无（仅撤离）'}</td>"
+        f"<td>{esc(mode_text(tech))}</td></tr>"
         for tech in TECHS
     )
 
@@ -522,10 +656,32 @@ tbody tr:hover { background:rgba(102,210,201,.045); }
 .combat-tag { display:inline-block; margin-top:9px; border:1px solid rgba(234,179,95,.35); color:var(--amber); border-radius:999px; padding:4px 8px; font-size:10px; }
 .combat-strip { margin-top:14px; border:1px solid rgba(224,123,107,.35); background:rgba(224,123,107,.06); border-radius:12px; padding:11px 13px; font-size:12px; line-height:1.65; color:var(--muted); }
 .combat-strip strong { color:var(--text); }
+.mode-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:14px 0 4px; }
+.mode-card { border:1px solid var(--line); background:var(--panel2); border-radius:14px; padding:13px; }
+.mode-card.casual { border-top:3px solid var(--teal); }
+.mode-card.normal { border-top:3px solid var(--green); }
+.mode-card.high { border-top:3px solid var(--amber); }
+.mode-card.extreme { border-top:3px solid var(--red); background:linear-gradient(150deg,rgba(224,123,107,.10),rgba(0,0,0,.12)); }
+.mode-card h3 { margin:0 0 7px; color:var(--text); font-size:16px; }
+.mode-card p { margin:0; color:var(--muted); font-size:12px; line-height:1.65; }
+.mode-tag { display:inline-block; margin-top:9px; border:1px solid var(--line); color:var(--muted); border-radius:999px; padding:4px 7px; font-size:10px; }
+.mode-card.extreme .mode-tag { border-color:rgba(224,123,107,.4); color:var(--red); }
+.settings-mock { border:1px solid var(--line); border-radius:12px; background:var(--panel2); padding:12px; }
+.settings-mock label { display:block; color:var(--muted); font-size:12px; padding:5px 0; }
+.settings-mock input { accent-color:var(--teal); margin-right:7px; }
+.settings-mock p { margin:5px 0 9px; color:var(--muted); font-size:11px; line-height:1.6; }
+.mode-row { display:flex; gap:6px; align-items:center; flex-wrap:wrap; padding:10px; border:1px solid var(--line); border-radius:12px; background:var(--panel2); }
+.mode-row span { color:var(--muted); font-size:11px; margin-right:3px; }
+.mode-row button { border:1px solid var(--line); background:#0d151a; color:var(--muted); border-radius:8px; padding:6px 9px; font:inherit; font-size:11px; cursor:pointer; }
+.mode-row button.active { border-color:var(--teal); color:var(--teal); background:rgba(102,210,201,.10); }
+.mode-row button:disabled { opacity:.4; cursor:not-allowed; }
+.mode-note { color:var(--muted); font-size:11px; line-height:1.6; margin:8px 0 0; }
+.formula { border:1px solid var(--line); border-radius:12px; padding:10px 12px; color:var(--muted); font-size:12px; line-height:1.7; margin-bottom:10px; }
+.formula p { margin:4px 0; }
 .summary { margin-top:18px; }
 .summary h3 { margin-top:0; }
 .note { margin-top:14px; border:1px solid rgba(234,179,95,.35); border-radius:12px; background:rgba(234,179,95,.06); padding:12px 14px; color:var(--muted); font-size:12px; line-height:1.65; }
-@media (max-width:900px) { .tier-head, .tier-columns { grid-template-columns:1fr; display:block; } .tier-meta { margin-top:12px; } }
+@media (max-width:900px) { .tier-head, .tier-columns, .mode-grid { grid-template-columns:1fr; display:block; } .mode-card { margin-bottom:8px; } .tier-meta { margin-top:12px; } }
 """
 
     body = f"""
@@ -534,7 +690,7 @@ tbody tr:hover { background:rgba(102,210,201,.045); }
     <p class="eyebrow">ColonyKit · Robotics Tech Tree</p>
     <h1>机器人科技树 · 五级技术产物</h1>
     <p class="sub">5 种工厂/充电/维修方案全部追加，不互斥；按 T1→T5 作为五个技术阶段。每个阶段有独立的机器人工厂、机器人等级、维修能力和材料表；旧阶段保留可建造，方便低科技基地和旧存档。</p>
-    <div class="banner"><strong>追加原则：</strong>不删除旧方案。T1 工坊式 → T2 单元式 → T3 流水线 → T4 现场保障 → T5 全自动；研究逐级前置，建筑和机器人按阶段解锁。可在设置里开启“只显示最高级建筑”减少建造菜单。<br><strong>旧存档兼容：</strong>现有 `CK_NannyBot` 研究映射为 T1；旧一体桩保留为 legacy，现有机器人按 Mk-I 处理，`homeStation` 迁移到 `homeCharger`。</div>
+    <div class="banner"><strong>追加原则：</strong>不删除旧方案。T1 工坊式 → T2 单元式 → T3 流水线 → T4 现场保障 → T5 全自动；研究逐级前置，建筑和机器人按阶段解锁。可在设置里开启“只显示最高级建筑”减少建造菜单。<br><strong>运作模式：</strong>休闲（低功耗）/ 常规 / 高功耗对所有阶段开放；极限模式只对 T3+ 开放且默认关闭，需在设置页手动允许。<br><strong>旧存档兼容：</strong>现有 `CK_NannyBot` 研究映射为 T1；旧一体桩保留为 legacy，现有机器人按 Mk-I 处理，`homeStation` 迁移到 `homeCharger`。</div>
   </header>
 
   <div class="tree">{render_tree()}</div>
@@ -549,7 +705,7 @@ tbody tr:hover { background:rgba(102,210,201,.045); }
     <h3>五级横向总表</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>阶段</th><th>研究</th><th>研究点</th><th>机器人产物</th><th>耐久</th><th>电池</th><th>质量 / 载重</th><th>材料 钢/零件/高级/塑钢</th><th>反击能力</th></tr></thead>
+        <thead><tr><th>阶段</th><th>研究</th><th>研究点</th><th>机器人产物</th><th>耐久</th><th>电池</th><th>质量 / 载重</th><th>材料 钢/零件/高级/塑钢</th><th>反击能力</th><th>运作模式</th></tr></thead>
         <tbody>{summary_rows}</tbody>
       </table>
     </div>
