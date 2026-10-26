@@ -107,9 +107,28 @@ namespace ColonyKit.Modules.Robotics
 						.Append(" playerSettings=").Append(robot.playerSettings != null);
 
 					CompNannyBot botComp = NannyBotUtility.BotComp(robot);
-					builder.Append(" sweep=").Append(botComp?.sweep)
-						.Append(" scrub=").Append(botComp?.scrub)
-						.Append(" haul=").Append(botComp?.haul);
+					builder.Append(" priorities=");
+					for (int i = 0; i < RobotChores.Count; i++)
+					{
+						if (i > 0)
+						{
+							builder.Append(',');
+						}
+						builder.Append(botComp?.GetPriority((RobotChore)i) ?? -1);
+					}
+					if (botComp != null)
+					{
+						botComp.SetPriority(RobotChore.Sweep, 1);
+						botComp.SetPriority(RobotChore.Scrub, 4);
+						builder.Append(" sweepSched=")
+							.Append(new JobGiver_NannyBotSweep().GetPriority(robot).ToString("0"))
+							.Append(" scrubSched=")
+							.Append(new JobGiver_NannyBotScrub().GetPriority(robot).ToString("0"))
+							.Append(" rescueSched=")
+							.Append(new JobGiver_NannyBotRescue().GetPriority(robot).ToString("0"));
+						botComp.SetPriority(RobotChore.Sweep, 3);
+						botComp.SetPriority(RobotChore.Scrub, 3);
+					}
 
 					IntVec3 filthCell = IntVec3.Invalid;
 					Filth filth = null;
@@ -151,7 +170,7 @@ namespace ColonyKit.Modules.Robotics
 						// 新污渍默认 600 tick 内不可清理；测试里直接把年龄拨老。
 						AccessTools.FieldRefAccess<Filth, int>("growTick")(filth) =
 							Find.TickManager.TicksGame - 1000;
-						ThinkResult cleanResult = new JobGiver_NannyBotClean()
+						ThinkResult cleanResult = new JobGiver_NannyBotScrub()
 							.TryIssueJobPackage(robot, new JobIssueParams());
 						builder.Append(" cleanJob=")
 							.Append(cleanResult.Job?.def?.defName ?? "none");
@@ -238,7 +257,7 @@ namespace ColonyKit.Modules.Robotics
 						float durabilityBeforeDamage = botComp.Durability;
 						float healthBeforeDamage = robot.health.summaryHealth.SummaryHealthPercent;
 						DamageWorker.DamageResult damageResult =
-							robot.TakeDamage(new DamageInfo(DamageDefOf.Cut, 100f));
+							robot.TakeDamage(new DamageInfo(DamageDefOf.Cut, 20f));
 						builder.Append(" damageDurability=")
 							.Append(durabilityBeforeDamage.ToString("0"))
 							.Append("->")
@@ -265,6 +284,16 @@ namespace ColonyKit.Modules.Robotics
 						builder.Append(" durability=").Append(botComp.Durability.ToString("0"))
 							.Append(" repairJob=").Append(repairJob?.def?.defName ?? "none");
 
+						Need_RobotEnergy preChargeEnergy = NannyBotUtility.Energy(robot);
+						if (preChargeEnergy != null)
+						{
+							float oldLevel = preChargeEnergy.CurLevel;
+							preChargeEnergy.CurLevel = 100f;
+							builder.Append(" chargePriority=")
+								.Append(new JobGiver_NannyBotCharge().GetPriority(robot).ToString("0"));
+							preChargeEnergy.CurLevel = oldLevel;
+						}
+
 						botComp.Notify_RepairStarted();
 						builder.Append(" canWorkWhileRepairing=")
 							.Append(NannyBotUtility.CanWork(robot));
@@ -281,6 +310,28 @@ namespace ColonyKit.Modules.Robotics
 					}
 				}
 				ModLog.Force("Robotics", builder.ToString());
+
+				if (GenCommandLine.CommandLineArgPassed("-colonykit-robotics-ui-test"))
+				{
+					UiAutomationService.Register(new UiScenario(
+						"90-robotics-work",
+						() => new MainTabWindow_NannyBots
+						{
+							def = DefDatabase<MainButtonDef>.GetNamed("CK_RobotManagement")
+						}));
+					UiAutomationService.Register(new UiScenario(
+						"91-robotics-status",
+						() =>
+						{
+							MainTabWindow_NannyBots window = new MainTabWindow_NannyBots
+							{
+								def = DefDatabase<MainButtonDef>.GetNamed("CK_RobotManagement")
+							};
+							window.SelectTab(1);
+							return window;
+						}));
+					UiAutomationService.RunAll();
+				}
 			}
 			catch (Exception exception)
 			{

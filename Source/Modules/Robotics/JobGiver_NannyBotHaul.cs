@@ -6,17 +6,13 @@ using Verse.AI;
 namespace ColonyKit.Modules.Robotics
 {
 	/// <summary>搬运：优先送进立体库，其次送普通库存区；不搬尸体。</summary>
-	public class JobGiver_NannyBotHaul : ThinkNode_JobGiver
+	public class JobGiver_NannyBotHaul : JobGiver_NannyBotChore
 	{
+		protected override RobotChore Chore => RobotChore.Haul;
+
 		protected override Job TryGiveJob(Pawn pawn)
 		{
-			if (!NannyBotUtility.CanWork(pawn))
-			{
-				return null;
-			}
-
-			CompNannyBot comp = NannyBotUtility.BotComp(pawn);
-			if (comp == null || !comp.haul || !NannyBotUtility.Settings.haul || pawn.Map == null)
+			if (!CanDoChore(pawn) || pawn.Map == null)
 			{
 				return null;
 			}

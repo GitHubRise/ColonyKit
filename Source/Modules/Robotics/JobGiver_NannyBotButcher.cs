@@ -5,11 +5,13 @@ using Verse.AI;
 namespace ColonyKit.Modules.Robotics
 {
 	/// <summary>使用屠宰台的屠宰账单处理尸体。</summary>
-	public class JobGiver_NannyBotButcher : ThinkNode_JobGiver
+	public class JobGiver_NannyBotButcher : JobGiver_NannyBotChore
 	{
+		protected override RobotChore Chore => RobotChore.Butcher;
+
 		protected override Job TryGiveJob(Pawn pawn)
 		{
-			if (!NannyBotUtility.CanWork(pawn) || !NannyBotUtility.Settings.butcher)
+			if (!CanDoChore(pawn))
 			{
 				return null;
 			}

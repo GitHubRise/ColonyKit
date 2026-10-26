@@ -12,15 +12,20 @@
 				</li>
 				<li Class="ThinkNode_QueuedJob" />
 				<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotFlee" />
-				<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotRescue" />
-				<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotFirefight" />
-				<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotCharge" />
-				<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotRefuel" />
-				<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotHygiene" />
-				<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotFeedPrisoner" />
-				<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotClean" />
-				<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotHaul" />
-				<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotButcher" />
+				<li Class="ThinkNode_PrioritySorter">
+					<subNodes>
+						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotCharge" />
+						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotRescue" />
+						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotFirefight" />
+						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotRefuel" />
+						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotHygiene" />
+						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotFeedPrisoner" />
+						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotSweep" />
+						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotScrub" />
+						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotHaul" />
+						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotButcher" />
+					</subNodes>
+				</li>
 				<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotIdle" />
 			</subNodes>
 		</thinkRoot>

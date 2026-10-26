@@ -5,12 +5,13 @@ using Verse.AI;
 namespace ColonyKit.Modules.Robotics
 {
 	/// <summary>给木柴/化合燃料发电机加燃料，低于设置阈值才动手。</summary>
-	public class JobGiver_NannyBotRefuel : ThinkNode_JobGiver
+	public class JobGiver_NannyBotRefuel : JobGiver_NannyBotChore
 	{
+		protected override RobotChore Chore => RobotChore.Refuel;
+
 		protected override Job TryGiveJob(Pawn pawn)
 		{
-			if (!NannyBotUtility.CanWork(pawn) || !NannyBotUtility.Settings.refuel
-				|| pawn.Map == null)
+			if (!CanDoChore(pawn) || pawn.Map == null)
 			{
 				return null;
 			}

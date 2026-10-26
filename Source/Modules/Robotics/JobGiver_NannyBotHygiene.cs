@@ -6,13 +6,14 @@ using Verse.AI;
 
 namespace ColonyKit.Modules.Robotics
 {
-	/// <summary>卫生维护：清空化粪池、疏通堵塞洁具；卫生间污渍由普通清洁覆盖。</summary>
-	public class JobGiver_NannyBotHygiene : ThinkNode_JobGiver
+	/// <summary>卫生维护：清空化粪池、疏通堵塞洁具、清理卫生间污渍。</summary>
+	public class JobGiver_NannyBotHygiene : JobGiver_NannyBotChore
 	{
+		protected override RobotChore Chore => RobotChore.Hygiene;
+
 		protected override Job TryGiveJob(Pawn pawn)
 		{
-			if (!NannyBotUtility.CanWork(pawn) || !NannyBotUtility.Settings.hygiene
-				|| pawn.Map == null)
+			if (!CanDoChore(pawn) || pawn.Map == null)
 			{
 				return null;
 			}
@@ -22,7 +23,12 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return job;
 			}
-			return TryEmptySepticTank(pawn);
+			job = TryEmptySepticTank(pawn);
+			if (job != null)
+			{
+				return job;
+			}
+			return NannyBotCleanUtility.TryGiveJob(pawn, insideHome: true, bathroomOnly: true);
 		}
 
 		private static Job TryUnblock(Pawn pawn)

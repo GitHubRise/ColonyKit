@@ -101,4 +101,30 @@
 	<CK.RobotManagement.Status.Charging>Charging</CK.RobotManagement.Status.Charging>
 	<CK.RobotManagement.Status.Empty>Battery empty</CK.RobotManagement.Status.Empty>
 	<CK.RobotManagement.Status.Working>Working</CK.RobotManagement.Status.Working>
+	<CK.RobotManagement.Tab.Work>Work</CK.RobotManagement.Tab.Work>
+	<CK.RobotManagement.Tab.Status>Status</CK.RobotManagement.Tab.Status>
+	<CK.RobotManagement.NameColumn>Robot</CK.RobotManagement.NameColumn>
+	<CK.RobotManagement.WorkHint>Left-click lowers priority, right-click raises it; 0 disables the chore. The settings tab master switch still has to be on.</CK.RobotManagement.WorkHint>
+	<CK.RobotManagement.DisabledBySettings>(disabled in the settings tab)</CK.RobotManagement.DisabledBySettings>
+	<CK.RobotManagement.Status.Repairing>Being repaired</CK.RobotManagement.Status.Repairing>
+	<CK.Robotics.Inspect.ActiveChores>{0} chores enabled.</CK.Robotics.Inspect.ActiveChores>
+
+	<CK.Robotics.Chore.Rescue.Label>Rescue</CK.Robotics.Chore.Rescue.Label>
+	<CK.Robotics.Chore.Rescue.Desc>Carry downed colony members to a bed first.</CK.Robotics.Chore.Rescue.Desc>
+	<CK.Robotics.Chore.Firefight.Label>Firefight</CK.Robotics.Chore.Firefight.Label>
+	<CK.Robotics.Chore.Firefight.Desc>Beat out fires within the work area.</CK.Robotics.Chore.Firefight.Desc>
+	<CK.Robotics.Chore.Sweep.Label>Sweep</CK.Robotics.Chore.Sweep.Label>
+	<CK.Robotics.Chore.Sweep.Desc>Clean filth inside the home area.</CK.Robotics.Chore.Sweep.Desc>
+	<CK.Robotics.Chore.Scrub.Label>Scrub</CK.Robotics.Chore.Scrub.Label>
+	<CK.Robotics.Chore.Scrub.Desc>Clean filth outside the home area.</CK.Robotics.Chore.Scrub.Desc>
+	<CK.Robotics.Chore.Haul.Label>Haul</CK.Robotics.Chore.Haul.Label>
+	<CK.Robotics.Chore.Haul.Desc>Haul loose items to a vertical warehouse or stockpile.</CK.Robotics.Chore.Haul.Desc>
+	<CK.Robotics.Chore.Butcher.Label>Butcher</CK.Robotics.Chore.Butcher.Label>
+	<CK.Robotics.Chore.Butcher.Desc>Use the butcher table's butcher bill to process corpses.</CK.Robotics.Chore.Butcher.Desc>
+	<CK.Robotics.Chore.Refuel.Label>Refuel</CK.Robotics.Chore.Refuel.Label>
+	<CK.Robotics.Chore.Refuel.Desc>Refuel wood/chemfuel generators below the threshold.</CK.Robotics.Chore.Refuel.Desc>
+	<CK.Robotics.Chore.FeedPrisoners.Label>Prisoners</CK.Robotics.Chore.FeedPrisoners.Label>
+	<CK.Robotics.Chore.FeedPrisoners.Desc>Feed or deliver meals to hungry colony prisoners.</CK.Robotics.Chore.FeedPrisoners.Desc>
+	<CK.Robotics.Chore.Hygiene.Label>Hygiene</CK.Robotics.Chore.Hygiene.Label>
+	<CK.Robotics.Chore.Hygiene.Desc>Empty septic tanks, unblock fixtures and clean bathroom filth.</CK.Robotics.Chore.Hygiene.Desc>
 </LanguageData>

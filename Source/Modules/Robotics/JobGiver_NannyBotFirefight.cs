@@ -5,11 +5,13 @@ using Verse.AI;
 namespace ColonyKit.Modules.Robotics
 {
 	/// <summary>灭火：扑灭工作范围内的火。</summary>
-	public class JobGiver_NannyBotFirefight : ThinkNode_JobGiver
+	public class JobGiver_NannyBotFirefight : JobGiver_NannyBotChore
 	{
+		protected override RobotChore Chore => RobotChore.Firefight;
+
 		protected override Job TryGiveJob(Pawn pawn)
 		{
-			if (!NannyBotUtility.CanWork(pawn) || !NannyBotUtility.Settings.firefight)
+			if (!CanDoChore(pawn))
 			{
 				return null;
 			}

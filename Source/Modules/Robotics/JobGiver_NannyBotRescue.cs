@@ -5,11 +5,13 @@ using Verse.AI;
 namespace ColonyKit.Modules.Robotics
 {
 	/// <summary>最高优先级：把殖民地倒地者抱回床上。</summary>
-	public class JobGiver_NannyBotRescue : ThinkNode_JobGiver
+	public class JobGiver_NannyBotRescue : JobGiver_NannyBotChore
 	{
+		protected override RobotChore Chore => RobotChore.Rescue;
+
 		protected override Job TryGiveJob(Pawn pawn)
 		{
-			if (!NannyBotUtility.CanWork(pawn) || !NannyBotUtility.Settings.rescue)
+			if (!CanDoChore(pawn))
 			{
 				return null;
 			}

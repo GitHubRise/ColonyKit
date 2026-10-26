@@ -72,6 +72,9 @@ namespace ColonyKit.Modules.Robotics
 		private int paintedIndex = -1;
 		private bool lowBatteryWarned;
 
+		/// <summary>每项家务的优先级 0（关闭）–4；索引对应 RobotChore。</summary>
+		private List<int> chorePriorities;
+
 		private Pawn Pawn => parent as Pawn;
 
 		public float Durability => durability;
@@ -80,9 +83,62 @@ namespace ColonyKit.Modules.Robotics
 
 		public Color PaintColor => PaintPalette[Mathf.Clamp(paintIndex, 0, PaintPalette.Length - 1)];
 
+		private void EnsurePriorities()
+		{
+			if (chorePriorities == null)
+			{
+				chorePriorities = new List<int>();
+			}
+			while (chorePriorities.Count < RobotChores.Count)
+			{
+				RobotChore chore = (RobotChore)chorePriorities.Count;
+				chorePriorities.Add(RobotChores.DefaultPriority(chore));
+			}
+			while (chorePriorities.Count > RobotChores.Count)
+			{
+				chorePriorities.RemoveAt(chorePriorities.Count - 1);
+			}
+		}
+
+		public int GetPriority(RobotChore chore)
+		{
+			EnsurePriorities();
+			return chorePriorities[(int)chore];
+		}
+
+		public void SetPriority(RobotChore chore, int priority)
+		{
+			EnsurePriorities();
+			chorePriorities[(int)chore] = Mathf.Clamp(priority, 0, 4);
+		}
+
+		/// <summary>工作页签显示用：设置页总开关关闭时返回 0，但保留用户设定的数字。</summary>
+		public int GetEffectivePriority(RobotChore chore)
+		{
+			int priority = GetPriority(chore);
+			return priority > 0 && RobotChores.IsEnabledBySettings(chore) ? priority : 0;
+		}
+
+		public int ActiveChoreCount
+		{
+			get
+			{
+				int count = 0;
+				for (int i = 0; i < RobotChores.Count; i++)
+				{
+					if (GetEffectivePriority((RobotChore)i) > 0)
+					{
+						count++;
+					}
+				}
+				return count;
+			}
+		}
+
 		public override void PostSpawnSetup(bool respawningAfterLoad)
 		{
 			base.PostSpawnSetup(respawningAfterLoad);
+			EnsurePriorities();
 			if (durability < 0f)
 			{
 				durability = 0f;
@@ -101,6 +157,7 @@ namespace ColonyKit.Modules.Robotics
 		public override void PostExposeData()
 		{
 			base.PostExposeData();
+			bool hadPriorities = chorePriorities != null && chorePriorities.Count > 0;
 			Scribe_Values.Look(ref sweep, "ck_robotics_sweep", true);
 			Scribe_Values.Look(ref scrub, "ck_robotics_scrub", true);
 			Scribe_Values.Look(ref haul, "ck_robotics_haul", true);
@@ -108,6 +165,23 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref durability, "ck_robotics_durability", MaxDurability);
 			Scribe_Values.Look(ref paintIndex, "ck_robotics_paintIndex", 0);
 			Scribe_References.Look(ref homeStation, "ck_robotics_homeStation");
+			Scribe_Collections.Look(
+				ref chorePriorities,
+				"ck_robotics_chorePriorities",
+				LookMode.Value);
+			if (Scribe.mode == LoadSaveMode.PostLoadInit)
+			{
+				bool migrateOldToggles = !hadPriorities
+					|| chorePriorities == null
+					|| chorePriorities.Count == 0;
+				EnsurePriorities();
+				if (migrateOldToggles)
+				{
+					SetPriority(RobotChore.Sweep, sweep ? 3 : 0);
+					SetPriority(RobotChore.Scrub, scrub ? 3 : 0);
+					SetPriority(RobotChore.Haul, haul ? 3 : 0);
+				}
+			}
 		}
 
 		public override void CompTick()
@@ -230,8 +304,6 @@ namespace ColonyKit.Modules.Robotics
 				yield break;
 			}
 
-			RoboticsSettings settings = NannyBotUtility.Settings;
-
 			Command_Toggle pause = new Command_Toggle
 			{
 				defaultLabel = paused
@@ -281,30 +353,6 @@ namespace ColonyKit.Modules.Robotics
 				"UI/Commands/CK_Paint",
 				() => OpenPaintMenu(pawn));
 
-			yield return Toggle(
-				"CK.Robotics.Toggle.Sweep.Label".Translate(),
-				"CK.Robotics.Toggle.Sweep.Desc".Translate(),
-				"UI/Commands/CK_Sweep",
-				() => sweep && settings.sweep,
-				() => sweep = !sweep,
-				settings.sweep);
-
-			yield return Toggle(
-				"CK.Robotics.Toggle.Scrub.Label".Translate(),
-				"CK.Robotics.Toggle.Scrub.Desc".Translate(),
-				"UI/Commands/CK_Scrub",
-				() => scrub && settings.scrub,
-				() => scrub = !scrub,
-				settings.scrub);
-
-			yield return Toggle(
-				"CK.Robotics.Toggle.Haul.Label".Translate(),
-				"CK.Robotics.Toggle.Haul.Desc".Translate(),
-				"UI/Commands/CK_Haul",
-				() => haul && settings.haul,
-				() => haul = !haul,
-				settings.haul);
-
 			Building station = NannyBotUtility.FindStation(pawn, true);
 			Command_Action charge = new Command_Action
 			{
@@ -353,10 +401,7 @@ namespace ColonyKit.Modules.Robotics
 			lines.Add("CK.Robotics.Inspect.Durability".Translate(
 				durability.ToString("0"),
 				MaxDurability.ToString("0")));
-			lines.Add("CK.Robotics.Inspect.Tasks".Translate(
-				State(sweep && NannyBotUtility.Settings.sweep),
-				State(scrub && NannyBotUtility.Settings.scrub),
-				State(haul && NannyBotUtility.Settings.haul)));
+			lines.Add("CK.Robotics.Inspect.ActiveChores".Translate(ActiveChoreCount));
 
 			if (repairing)
 			{
@@ -540,37 +585,6 @@ namespace ColonyKit.Modules.Robotics
 					() => comp.SetPaint(index)));
 			}
 			Find.WindowStack.Add(new FloatMenu(options));
-		}
-
-		private static string State(bool enabled)
-		{
-			return enabled
-				? "CK.Robotics.On".Translate()
-				: "CK.Robotics.Off".Translate();
-		}
-
-		private static Command_Toggle Toggle(
-			string label,
-			string description,
-			string iconPath,
-			System.Func<bool> active,
-			System.Action toggle,
-			bool enabled)
-		{
-			Command_Toggle command = new Command_Toggle
-			{
-				defaultLabel = label,
-				defaultDesc = description,
-				icon = Icon(iconPath),
-				isActive = active,
-				toggleAction = toggle
-			};
-			if (!enabled)
-			{
-				command.Disabled = true;
-				command.disabledReason = "CK.Robotics.DisabledInSettings".Translate();
-			}
-			return command;
 		}
 
 		private static Texture2D Icon(string path)

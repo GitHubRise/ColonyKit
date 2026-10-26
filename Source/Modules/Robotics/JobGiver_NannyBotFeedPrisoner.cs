@@ -5,12 +5,13 @@ using Verse.AI;
 namespace ColonyKit.Modules.Robotics
 {
 	/// <summary>给殖民地囚犯喂食/送餐；复用原版 Warden 喂食逻辑。</summary>
-	public class JobGiver_NannyBotFeedPrisoner : ThinkNode_JobGiver
+	public class JobGiver_NannyBotFeedPrisoner : JobGiver_NannyBotChore
 	{
+		protected override RobotChore Chore => RobotChore.FeedPrisoners;
+
 		protected override Job TryGiveJob(Pawn pawn)
 		{
-			if (!NannyBotUtility.CanWork(pawn) || !NannyBotUtility.Settings.feedPrisoners
-				|| pawn.Map == null)
+			if (!CanDoChore(pawn) || pawn.Map == null)
 			{
 				return null;
 			}

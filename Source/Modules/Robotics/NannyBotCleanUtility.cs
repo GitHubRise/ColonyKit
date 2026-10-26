@@ -1,60 +1,25 @@
-using System;
 using RimWorld;
 using Verse;
 using Verse.AI;
 
 namespace ColonyKit.Modules.Robotics
 {
-	/// <summary>
-	/// 扫地 / 清洁：先清理家区域内的污渍（扫地），再清理家区域外的污渍（清洁）。
-	/// 两项都关时不会扫描污渍。
-	/// </summary>
-	public class JobGiver_NannyBotClean : ThinkNode_JobGiver
+	/// <summary>扫地/清洁/卫生间污渍共用的找污渍逻辑。</summary>
+	internal static class NannyBotCleanUtility
 	{
-		private const int MinTicksSinceThickened = 600;
-
-		protected override Job TryGiveJob(Pawn pawn)
+		public static Job TryGiveJob(Pawn pawn, bool insideHome, bool bathroomOnly = false)
 		{
-			if (!NannyBotUtility.CanWork(pawn))
-			{
-				return null;
-			}
-
-			CompNannyBot comp = NannyBotUtility.BotComp(pawn);
-			RoboticsSettings settings = NannyBotUtility.Settings;
-			bool sweep = comp != null && comp.sweep && settings.sweep;
-			bool scrub = comp != null && comp.scrub && settings.scrub;
-			bool hygiene = settings.hygiene;
-			if (!sweep && !scrub && !hygiene)
-			{
-				return null;
-			}
-
-			Filth filth = null;
-			if (sweep)
-			{
-				filth = FindFilth(pawn, insideHome: true);
-			}
-			if (filth == null && scrub)
-			{
-				filth = FindFilth(pawn, insideHome: false);
-			}
-			if (filth == null && hygiene)
-			{
-				filth = FindFilth(pawn, insideHome: true, bathroomOnly: true);
-			}
+			Filth filth = FindFilth(pawn, insideHome, bathroomOnly);
 			if (filth == null)
 			{
 				return null;
 			}
-
 			Job job = JobMaker.MakeJob(NannyBotDefOf.CK_NannyCleanFilth, filth);
-			job.expiryInterval = 5000;
-			job.locomotionUrgency = LocomotionUrgency.Walk;
+			job.ignoreForbidden = true;
 			return job;
 		}
 
-		private static Filth FindFilth(Pawn pawn, bool insideHome, bool bathroomOnly = false)
+		public static Filth FindFilth(Pawn pawn, bool insideHome, bool bathroomOnly = false)
 		{
 			Map map = pawn.Map;
 			if (map == null)
@@ -87,14 +52,6 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return false;
 			}
-			if (filth.IsForbidden(pawn) || filth.Fogged())
-			{
-				return false;
-			}
-			if (filth.TicksSinceThickened < MinTicksSinceThickened)
-			{
-				return false;
-			}
 			if (filth.Position.Fogged(pawn.Map))
 			{
 				return false;
@@ -114,6 +71,10 @@ namespace ColonyKit.Modules.Robotics
 				return false;
 			}
 			if (!pawn.CanReserve(filth))
+			{
+				return false;
+			}
+			if (filth.IsForbidden(pawn))
 			{
 				return false;
 			}

@@ -101,4 +101,30 @@
 	<CK.RobotManagement.Status.Charging>充电中</CK.RobotManagement.Status.Charging>
 	<CK.RobotManagement.Status.Empty>电量耗尽</CK.RobotManagement.Status.Empty>
 	<CK.RobotManagement.Status.Working>工作中</CK.RobotManagement.Status.Working>
+	<CK.RobotManagement.Tab.Work>工作管控</CK.RobotManagement.Tab.Work>
+	<CK.RobotManagement.Tab.Status>机器人状态</CK.RobotManagement.Tab.Status>
+	<CK.RobotManagement.NameColumn>机器人</CK.RobotManagement.NameColumn>
+	<CK.RobotManagement.WorkHint>左键降低优先级，右键提高优先级；0 为关闭。设置页总开关关闭时，对应家务不会执行。</CK.RobotManagement.WorkHint>
+	<CK.RobotManagement.DisabledBySettings>（设置页总开关已关闭，此项暂不生效）</CK.RobotManagement.DisabledBySettings>
+	<CK.RobotManagement.Status.Repairing>维修中</CK.RobotManagement.Status.Repairing>
+	<CK.Robotics.Inspect.ActiveChores>已启用 {0} 项家务。</CK.Robotics.Inspect.ActiveChores>
+
+	<CK.Robotics.Chore.Rescue.Label>救援</CK.Robotics.Chore.Rescue.Label>
+	<CK.Robotics.Chore.Rescue.Desc>优先把倒地的殖民地成员抱回床上。</CK.Robotics.Chore.Rescue.Desc>
+	<CK.Robotics.Chore.Firefight.Label>灭火</CK.Robotics.Chore.Firefight.Label>
+	<CK.Robotics.Chore.Firefight.Desc>扑灭工作范围内的火。</CK.Robotics.Chore.Firefight.Desc>
+	<CK.Robotics.Chore.Sweep.Label>扫地</CK.Robotics.Chore.Sweep.Label>
+	<CK.Robotics.Chore.Sweep.Desc>清理家区域内的污渍。</CK.Robotics.Chore.Sweep.Desc>
+	<CK.Robotics.Chore.Scrub.Label>清洁</CK.Robotics.Chore.Scrub.Label>
+	<CK.Robotics.Chore.Scrub.Desc>清理家区域外的污渍。</CK.Robotics.Chore.Scrub.Desc>
+	<CK.Robotics.Chore.Haul.Label>搬运</CK.Robotics.Chore.Haul.Label>
+	<CK.Robotics.Chore.Haul.Desc>把散落物品搬进立体库或库存区。</CK.Robotics.Chore.Haul.Desc>
+	<CK.Robotics.Chore.Butcher.Label>屠宰</CK.Robotics.Chore.Butcher.Label>
+	<CK.Robotics.Chore.Butcher.Desc>使用屠宰台的屠宰账单处理尸体。</CK.Robotics.Chore.Butcher.Desc>
+	<CK.Robotics.Chore.Refuel.Label>加燃料</CK.Robotics.Chore.Refuel.Label>
+	<CK.Robotics.Chore.Refuel.Desc>给低于阈值的木柴/化合燃料发电机补燃料。</CK.Robotics.Chore.Refuel.Desc>
+	<CK.Robotics.Chore.FeedPrisoners.Label>囚犯送餐</CK.Robotics.Chore.FeedPrisoners.Label>
+	<CK.Robotics.Chore.FeedPrisoners.Desc>给饥饿的殖民地囚犯喂食/送餐。</CK.Robotics.Chore.FeedPrisoners.Desc>
+	<CK.Robotics.Chore.Hygiene.Label>卫生</CK.Robotics.Chore.Hygiene.Label>
+	<CK.Robotics.Chore.Hygiene.Desc>清空化粪池、疏通堵塞洁具、清理卫生间污渍。</CK.Robotics.Chore.Hygiene.Desc>
 </LanguageData>
