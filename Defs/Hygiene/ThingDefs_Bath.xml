@@ -82,4 +82,47 @@
 			<li>CK_HygieneResearch</li>
 		</researchPrerequisites>
 	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_DoubleBath</defName>
+		<label>double bathtub</label>
+		<description>A 2x2 double bathtub. Two colonists can bathe at the same time; a bather may invite an opposite-sex partner to join, depending on the chance set in the hygiene settings.</description>
+		<thingClass>ColonyKit.Modules.Hygiene.Building_DoubleBath</thingClass>
+		<size>(2,2)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_DoubleBath</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<!-- 两块 66x130 的缸体贴图拼成 132x130；沿用单缸 64 像素/格，正好落在 2x2 占地上。 -->
+			<drawSize>(2.06,2.03)</drawSize>
+			<shaderType>CutoutComplex</shaderType>
+		</graphicData>
+		<castEdgeShadows>true</castEdgeShadows>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiIconScale>0.8</uiIconScale>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.2</fillPercent>
+		<costList>
+			<Steel>120</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<MaxHitPoints>220</MaxHitPoints>
+			<Mass>90</Mass>
+			<WorkToBuild>2200</WorkToBuild>
+			<Beauty>20</Beauty>
+			<Comfort>1.1</Comfort>
+			<JoyGainFactor>0.9</JoyGainFactor>
+			<Flammability>1</Flammability>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.CompProperties_Blockage" />
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_HygieneResearch</li>
+		</researchPrerequisites>
+	</ThingDef>
 </Defs>

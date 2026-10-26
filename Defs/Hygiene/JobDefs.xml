@@ -27,6 +27,12 @@
 		<casualInterruptible>true</casualInterruptible>
 	</JobDef>
 	<JobDef>
+		<defName>CK_TakeBathTogether</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_TakeBathTogether</driverClass>
+		<reportString>bathing together.</reportString>
+		<casualInterruptible>true</casualInterruptible>
+	</JobDef>
+	<JobDef>
 		<defName>CK_UseToilet</defName>
 		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_UseToilet</driverClass>
 		<reportString>using the toilet.</reportString>

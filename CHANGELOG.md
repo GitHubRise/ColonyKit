@@ -9,6 +9,8 @@
 - **洁具检查面板乱码**：`Building_AssignableFixture.Working()` 沿用了 DBH 的 `"Nowater"` 键，而本模组和 Core 都没有这个键；开发者模式下 `Translate()` 会对缺失键做伪本地化，于是马桶、浴缸、简易淋浴器的左下角检查面板显示成 `Nòẅàṭèṟ` 这类乱码（告警正文同样受影响）。现改用本模组自己的 `CK.Hygiene.NoWaterSupply`（没有供水，水网上没有水箱/水网不可用）与 `CK.Hygiene.NotEnoughWater`（水量不足，有水塔但存量不够本次用量），中英文 Keyed 同步补齐。
 - **洁具性别按钮混英文**：`GenderText` 里的 `"Unisex"` 同样不是有效键，`gender.ToString()` 还会直接给出 `Male`/`Female`。现新增 `CK.Hygiene.Gender.Unisex/Male/Female`，中文显示「共用 / 男 / 女」，不再出现英文或伪本地化乱码。
 - **淋浴相关文本漏翻（简中下显示英文）**：逐条核对卫生模块所有玩家可见文本后补齐 5 处 DefInjected：`CK_WaitForShower.reportString`（等待淋浴的 Job 提示原本直接显示 `waiting for a shower.`）、`CK_PrivateBathroom` 第 2–8 阶段（浴室心情只有第 0 阶段有中文，其余显示 `decent bathroom` 等英文；第 0 阶段旧译文「私人浴室」与原意 `awful bathroom` 不符，一并改为「糟糕的浴室」）、`CK_BadHygiene` 的状态名/描述/阶段名、`CK_HygieneRateMultiplier`/`CK_BladderRateMultiplier` 两个属性的名称与说明、`CK_EmptySepticTank` 工作的 label/verb/gerund（工作页显示 `empty septic tank`）。
+- **浴缸不保存水量与水温**：`Building_Bath` 之前没有 `ExposeData`，泡澡途中存档再读档会变成空缸；现已 scribe `WaterInTub`/`contamination`/`cold`。
+- **浴缸没有检查面板信息**：`Building_Bath.GetInspectString` 现在显示「浴缸水量: x/y 升」与水温（`CK.Hygiene.BathWater/BathHot/BathCold`），双人浴缸再追加共浴人数，方便确认能不能泡。
 - **西向贴图全是东向的副本**：`CK_Toilet`、`CK_ToiletUp`、`CK_Basin`、`CK_Bath`、`CK_SewagePipe` 的 `_west.png` 此前与 `_east.png` 字节完全相同（直接复制），转到西向时水箱、洗手池龙头、浴缸龙头和排污管口都还朝东，与交互格旋转后的方向相反。现按东向水平镜像重做这五组 west 贴图（尺寸、RGBA 与原图一致，逐像素为精确镜像）；`Graphic_Multi` 按 `_west` 文件名取图，Def 与代码都不用改。
 - **浴缸贴图被压扁、比原版小一圈**：`CK_Bath` 用的贴图是 DBH 的 `bath_*`（128×192，2:3），但 `drawSize` 写成了 (1,2)，进游戏后被横向压掉约 25%，还比原版小一圈。现按 DBH 原版改回 (2,3)、补 `castEdgeShadows`：贴图字节与原版相同、`drawSize` 也一致，观感与原版对齐；占地仍是 1×2，溢出的贴图不挡路。
 - **开发者菜单「半英半中」乱码**：翻译表中 204 条由逐词替换生成的条目（`绘制河流Debug`、`Material报告`、`名称FromRulepack`、`小人生成Histogram` 等）全部改写为通顺中文；`DevLabelTranslations` 删掉 `HumanizeDefName` 逐词硬拼逻辑，Def/SoundDef 没有译名时直接显示英文原名，不再拼接「中文·英文」的杂交结果。
@@ -31,6 +33,8 @@
 
 ### Added
 
+- **双人浴缸 `CK_DoubleBath`**：2×2、320 升/缸，可两人同时泡澡。`Building_DoubleBath` 按当前 Job 统计占用（读档后依然准确），超过两人不可用，最后离开的人才放水；贴图由单缸贴图裁掉透明边后左右拼接（`tools/generate_double_bath_texture.py`）。
+- **自主邀请异性共浴**：`JobGiver_HaveWash` 优先选空的双人浴缸，按 `HygieneSettings.doubleBathInviteChance`（默认 0.08）掷骰；命中后 `Building_DoubleBath.FindPartner` 在异性、成年、可到达、未在洗澡的殖民者/奴隶里挑一人（恋人优先），`JobDriver_TakeBathTogether` 出发时把同缸 Job 派给对方，两人各算一份卫生恢复、共享一缸水。卫生设置页新增「双人浴缸」分区与 0–100% 概率滑条，0% 关闭。
 - **热水罐/热水器红色水温条**：`CompHeatStore` 补回 DBH 的水温进度条，用 `GenDraw.DrawFillableBar` 画红色条（深灰底），填充值就是 0–100% 的归一化水温（`HeaterTemp`），温度从 0 升到 100% 时条会填满；和蓝色水位条同一套触发条件：选中任意带 `CompPipe` 的水网物件或正在放水网建筑时，全图热水罐/热水器一起显示。
 - **水箱蓝色水位条**：迁移时丢了 DBH 的水箱进度条。`CompWaterStorage` 现在在 `PostDraw` 里用 `GenDraw.DrawFillableBar` 画青色水位条（深灰底），填充比例是当前水量/容量；选中任意带 `CompPipe` 的水网物件（水箱、水泵、水井、热水器、管道、洁具）或正在放水网建筑时，全图水箱一起显示，和 DBH 一致。
 - **铺管覆盖层**：新增 `Source/Modules/Hygiene/PipeOverlay.cs`（`SectionLayer_WaterPipeOverlay` / `SectionLayer_SewagePipeOverlay`）。选中水管或污水管的建造设计器时，已安装的同模式管件会按 4×4 连接图集画成半透明覆盖层：水管蓝色、污水管青绿色，补线与对齐时能直接看到现有走向；只在该设计器选中时显示，平时画面不变。

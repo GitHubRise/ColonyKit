@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_DoubleBath.label>双人浴缸</CK_DoubleBath.label>
+	<CK_DoubleBath.description>2×2 的双人浴缸，可以两人同时泡澡。小人决定泡澡时，有一定概率邀请一名异性一起泡（概率在卫生设置里调整）；泡澡顺序、水温与耗水和普通浴缸一致。</CK_DoubleBath.description>
+</LanguageData>

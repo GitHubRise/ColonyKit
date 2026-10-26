@@ -73,26 +73,10 @@ namespace ColonyKit.Modules.Hygiene
 
 			if (best == null)
 			{
-				Building_Bath bestBath = null;
-				float bestBathDistance = float.MaxValue;
-				foreach (Building_Bath bath in pawn.Map.listerBuildings
-					.AllBuildingsColonistOfClass<Building_Bath>())
+				Job bathJob = TryGiveBathJob(pawn);
+				if (bathJob != null)
 				{
-					if (!bath.CanUse(pawn) || bath.IsForbidden(pawn))
-					{
-						continue;
-					}
-					float distance = pawn.Position.DistanceTo(bath.Position);
-					if (distance < bestBathDistance)
-					{
-						bestBathDistance = distance;
-						bestBath = bath;
-					}
-				}
-				if (bestBath != null)
-				{
-					JobDef bathJob = DefDatabase<JobDef>.GetNamedSilentFail("CK_TakeBath");
-					return bathJob == null ? null : JobMaker.MakeJob(bathJob, bestBath);
+					return bathJob;
 				}
 			}
 
@@ -109,6 +93,65 @@ namespace ColonyKit.Modules.Hygiene
 			}
 			JobDef jobDef = DefDatabase<JobDef>.GetNamedSilentFail("CK_TakeShower");
 			return jobDef == null ? null : JobMaker.MakeJob(jobDef, best);
+		}
+
+		/// <summary>没有空闲淋浴时找浴缸：优先双人浴缸，并按设置概率邀请一名异性。</summary>
+		private static Job TryGiveBathJob(Pawn pawn)
+		{
+			Building_DoubleBath bestDouble = null;
+			float bestDoubleDistance = float.MaxValue;
+			Building_Bath bestSingle = null;
+			float bestSingleDistance = float.MaxValue;
+			foreach (Building_Bath bath in pawn.Map.listerBuildings
+				.AllBuildingsColonistOfClass<Building_Bath>())
+			{
+				if (!bath.CanUse(pawn) || bath.IsForbidden(pawn))
+				{
+					continue;
+				}
+				float distance = pawn.Position.DistanceTo(bath.Position);
+				if (bath is Building_DoubleBath doubleBath)
+				{
+					if (distance < bestDoubleDistance)
+					{
+						bestDoubleDistance = distance;
+						bestDouble = doubleBath;
+					}
+				}
+				else if (distance < bestSingleDistance)
+				{
+					bestSingleDistance = distance;
+					bestSingle = bath;
+				}
+			}
+
+			if (bestDouble != null && Building_DoubleBath.TogetherJobDef != null)
+			{
+				Job job = JobMaker.MakeJob(Building_DoubleBath.TogetherJobDef, bestDouble);
+				TryInvitePartner(pawn, bestDouble, job);
+				return job;
+			}
+			if (bestSingle != null)
+			{
+				JobDef def = DefDatabase<JobDef>.GetNamedSilentFail("CK_TakeBath");
+				return def == null ? null : JobMaker.MakeJob(def, bestSingle);
+			}
+			return null;
+		}
+
+		/// <summary>按设置里的概率决定要不要邀请；概率为 0 时完全不掷骰。</summary>
+		private static void TryInvitePartner(Pawn pawn, Building_DoubleBath bath, Job job)
+		{
+			float chance = HygieneSettings.Current.doubleBathInviteChance;
+			if (chance <= 0f || !Rand.Chance(chance))
+			{
+				return;
+			}
+			Pawn partner = Building_DoubleBath.FindPartner(pawn, bath);
+			if (partner != null)
+			{
+				job.targetB = partner;
+			}
 		}
 
 		private static Building_Shower FindBusyShower(Pawn pawn)

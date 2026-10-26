@@ -175,6 +175,10 @@
 Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<CK.Hygiene.Alert.FixtureBusyLine>  - {0}: occupied for {1} h</CK.Hygiene.Alert.FixtureBusyLine>
 	<CK.Hygiene.ColdWater>Cold shower (no power)</CK.Hygiene.ColdWater>
+	<CK.Hygiene.BathWater>Bath water: {0}/{1} L</CK.Hygiene.BathWater>
+	<CK.Hygiene.BathHot>Water: hot</CK.Hygiene.BathHot>
+	<CK.Hygiene.BathCold>Water: cold</CK.Hygiene.BathCold>
+	<CK.Hygiene.BathOccupants>Bathers: {0}/{1}</CK.Hygiene.BathOccupants>
 	<ColonyKit.Module.Hygiene.Name>Shower</ColonyKit.Module.Hygiene.Name>
 	<ColonyKit.Module.Hygiene.Desc>Hygiene need, shower and hot water; based on DBH.</ColonyKit.Module.Hygiene.Desc>
 	<ColonyKit.Module.Storage.Name>Warehouse / stacking</ColonyKit.Module.Storage.Name>
@@ -291,6 +295,9 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<ColonyKit.Settings.Hygiene.HotWaterUse.Desc>Matches DBH's hot water usage setting; 1.00 is default, higher drains hot water tanks faster.</ColonyKit.Settings.Hygiene.HotWaterUse.Desc>
 	<ColonyKit.Settings.Hygiene.Contamination>Contamination chance</ColonyKit.Settings.Hygiene.Contamination>
 	<ColonyKit.Settings.Hygiene.Contamination.Desc>Multiplier for dirty-water contamination; 100% is default, 0 disables it.</ColonyKit.Settings.Hygiene.Contamination.Desc>
+	<ColonyKit.Settings.Hygiene.Section.Bath>Double bathtub</ColonyKit.Settings.Hygiene.Section.Bath>
+	<ColonyKit.Settings.Hygiene.InviteChance>Chance to invite a partner</ColonyKit.Settings.Hygiene.InviteChance>
+	<ColonyKit.Settings.Hygiene.InviteChance.Desc>When a colonist decides to bathe and a free double bathtub is available, this is the chance they invite an opposite-sex colonist to join; 8% is default, 0% disables invitations.</ColonyKit.Settings.Hygiene.InviteChance.Desc>
 	<ColonyKit.Settings.Hygiene.Section.Dbh>DBH compatibility</ColonyKit.Settings.Hygiene.Section.Dbh>
 	<ColonyKit.Settings.Hygiene.Dbh.Policy>DBH policy</ColonyKit.Settings.Hygiene.Dbh.Policy>
 	<ColonyKit.Settings.Hygiene.Dbh.Policy.Desc>How this module's hygiene needs and automatic jobs behave when Dubs Bad Hygiene is detected.</ColonyKit.Settings.Hygiene.Dbh.Policy.Desc>

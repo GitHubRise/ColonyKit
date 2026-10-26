@@ -175,6 +175,10 @@
 等待使用：{0} 人</CK.Hygiene.Alert.FixtureBusyDesc>
 	<CK.Hygiene.Alert.FixtureBusyLine>  - {0}: 已占用 {1} 小时</CK.Hygiene.Alert.FixtureBusyLine>
 	<CK.Hygiene.ColdWater>冷水澡（未通电）</CK.Hygiene.ColdWater>
+	<CK.Hygiene.BathWater>浴缸水量: {0}/{1} 升</CK.Hygiene.BathWater>
+	<CK.Hygiene.BathHot>水温: 热水</CK.Hygiene.BathHot>
+	<CK.Hygiene.BathCold>水温: 冷水</CK.Hygiene.BathCold>
+	<CK.Hygiene.BathOccupants>共浴人数: {0}/{1}</CK.Hygiene.BathOccupants>
 	<ColonyKit.Module.Hygiene.Name>淋浴</ColonyKit.Module.Hygiene.Name>
 	<ColonyKit.Module.Hygiene.Desc>卫生需求、淋浴与热水；参考 DBH 的淋浴实现。</ColonyKit.Module.Hygiene.Desc>
 	<ColonyKit.Module.Storage.Name>立体库 / 物品堆叠</ColonyKit.Module.Storage.Name>
@@ -291,6 +295,9 @@
 	<ColonyKit.Settings.Hygiene.HotWaterUse.Desc>对应 DBH 的热水用量；1.00 为默认，越高热水罐掉温越快。</ColonyKit.Settings.Hygiene.HotWaterUse.Desc>
 	<ColonyKit.Settings.Hygiene.Contamination>污染概率</ColonyKit.Settings.Hygiene.Contamination>
 	<ColonyKit.Settings.Hygiene.Contamination.Desc>脏水造成污染的概率倍率；100% 为默认，0 为关闭。</ColonyKit.Settings.Hygiene.Contamination.Desc>
+	<ColonyKit.Settings.Hygiene.Section.Bath>双人浴缸</ColonyKit.Settings.Hygiene.Section.Bath>
+	<ColonyKit.Settings.Hygiene.InviteChance>邀请异性共浴概率</ColonyKit.Settings.Hygiene.InviteChance>
+	<ColonyKit.Settings.Hygiene.InviteChance.Desc>小人决定泡澡时，如果殖民地有空的双人浴缸，按这个概率邀请一名异性一起泡；8% 为默认，0% 关闭。</ColonyKit.Settings.Hygiene.InviteChance.Desc>
 	<ColonyKit.Settings.Hygiene.Section.Dbh>DBH 兼容</ColonyKit.Settings.Hygiene.Section.Dbh>
 	<ColonyKit.Settings.Hygiene.Dbh.Policy>DBH 策略</ColonyKit.Settings.Hygiene.Dbh.Policy>
 	<ColonyKit.Settings.Hygiene.Dbh.Policy.Desc>检测到 Dubs Bad Hygiene 时如何处理本模块的卫生需求与自动工作。</ColonyKit.Settings.Hygiene.Dbh.Policy.Desc>

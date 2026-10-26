@@ -25,6 +25,27 @@ namespace ColonyKit.Modules.Hygiene
 
 		public bool IsFull => WaterInTub >= waterUsed;
 
+		public override void ExposeData()
+		{
+			base.ExposeData();
+			// 之前没有存水/水温，泡澡途中读档会变成空缸。
+			Scribe_Values.Look(ref WaterInTub, "WaterInTub", 0f);
+			Scribe_Values.Look(ref contamination, "contamination", ContaminationLevel.Treated);
+			Scribe_Values.Look(ref cold, "cold", true);
+		}
+
+		public override string GetInspectString()
+		{
+			string text = base.GetInspectString();
+			if (!text.NullOrEmpty())
+			{
+				text += "\n";
+			}
+			text += "CK.Hygiene.BathWater".Translate(WaterInTub.ToString("F0"), waterUsed.ToString("F0"));
+			text += "\n" + (cold ? "CK.Hygiene.BathCold".Translate() : "CK.Hygiene.BathHot".Translate());
+			return text;
+		}
+
 		public bool TryFillBath()
 		{
 			float amount = waterUsedPerTick * HygieneSettings.Current.waterUseMultiplier;
@@ -53,7 +74,7 @@ namespace ColonyKit.Modules.Hygiene
 			return true;
 		}
 
-		public bool CanUse(Pawn pawn)
+		public virtual bool CanUse(Pawn pawn)
 		{
 			return Spawned
 				&& PawnAllowed(pawn)

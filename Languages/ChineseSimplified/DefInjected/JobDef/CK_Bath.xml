@@ -2,4 +2,5 @@
 <LanguageData>
 	<CK_WashHands.reportString>正在洗手。</CK_WashHands.reportString>
 	<CK_TakeBath.reportString>正在泡澡。</CK_TakeBath.reportString>
+	<CK_TakeBathTogether.reportString>正在和别人一起泡澡。</CK_TakeBathTogether.reportString>
 </LanguageData>

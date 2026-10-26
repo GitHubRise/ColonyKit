@@ -79,6 +79,17 @@ namespace ColonyKit.Modules.Hygiene
 				value => (value * 100f).ToString("0") + "%");
 			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.Contamination.Desc".Loc());
 
+			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Bath".Loc());
+			data.doubleBathInviteChance = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.InviteChance".Loc(),
+				data.doubleBathInviteChance,
+				HygieneSettings.MinInviteChance,
+				HygieneSettings.MaxInviteChance,
+				0.01f,
+				value => (value * 100f).ToString("0") + "%");
+			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.InviteChance.Desc".Loc());
+
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Dbh".Loc());
 			HygieneDbhPolicy policy = data.dbhPolicy;
 			SettingsWidgets.Dropdown(

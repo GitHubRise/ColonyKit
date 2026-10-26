@@ -33,6 +33,9 @@ namespace ColonyKit.Modules.Hygiene
 		public const float MaxHotWaterUse = 2f;
 		public const float MinContamination = 0f;
 		public const float MaxContamination = 3f;
+		public const float MinInviteChance = 0f;
+		public const float MaxInviteChance = 1f;
+		public const float DefaultInviteChance = 0.08f;
 
 		private const string DefaultExemptBodies = "HumanoidTerminator,AIRobot,AIPawn";
 		private static HygieneSettings fallback;
@@ -53,6 +56,9 @@ namespace ColonyKit.Modules.Hygiene
 
 		/// <summary>脏水造成污染的概率倍率；0 为关闭，1 为原版默认。</summary>
 		public float contaminationChanceMultiplier = 1f;
+
+		/// <summary>泡澡时邀请一名异性共用双人浴缸的概率；0 关闭。</summary>
+		public float doubleBathInviteChance = DefaultInviteChance;
 
 		/// <summary>检测到 DBH 时的处理策略。</summary>
 		public HygieneDbhPolicy dbhPolicy = HygieneDbhPolicy.SoftOff;
@@ -222,6 +228,7 @@ namespace ColonyKit.Modules.Hygiene
 			Scribe_Values.Look(ref waterUseMultiplier, "waterUseMultiplier", 1f);
 			Scribe_Values.Look(ref hotWaterUseMultiplier, "hotWaterUseMultiplier", 1f);
 			Scribe_Values.Look(ref contaminationChanceMultiplier, "contaminationChanceMultiplier", 1f);
+			Scribe_Values.Look(ref doubleBathInviteChance, "doubleBathInviteChance", DefaultInviteChance);
 			Scribe_Values.Look(ref dbhPolicy, "dbhPolicy", HygieneDbhPolicy.SoftOff);
 			Scribe_Values.Look(ref prisonersGetHygiene, "prisonersGetHygiene", true);
 			Scribe_Values.Look(ref guestsGetHygiene, "guestsGetHygiene", true);
@@ -239,6 +246,7 @@ namespace ColonyKit.Modules.Hygiene
 			changed |= Clamp(ref waterUseMultiplier, MinWaterUse, MaxWaterUse, 1f);
 			changed |= Clamp(ref hotWaterUseMultiplier, MinHotWaterUse, MaxHotWaterUse, 1f);
 			changed |= Clamp(ref contaminationChanceMultiplier, MinContamination, MaxContamination, 1f);
+			changed |= Clamp(ref doubleBathInviteChance, MinInviteChance, MaxInviteChance, DefaultInviteChance);
 
 			if (dbhPolicy != HygieneDbhPolicy.SoftOff
 				&& dbhPolicy != HygieneDbhPolicy.AlwaysOn
@@ -286,6 +294,7 @@ namespace ColonyKit.Modules.Hygiene
 			waterUseMultiplier = 1f;
 			hotWaterUseMultiplier = 1f;
 			contaminationChanceMultiplier = 1f;
+			doubleBathInviteChance = DefaultInviteChance;
 			dbhPolicy = HygieneDbhPolicy.SoftOff;
 			prisonersGetHygiene = true;
 			guestsGetHygiene = true;
