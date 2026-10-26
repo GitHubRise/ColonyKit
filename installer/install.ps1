@@ -51,6 +51,21 @@ function Resolve-RimWorldPath {
 	return $null
 }
 
+function Test-HarmonyInstalled {
+	param([string]$ModsDir, [string]$RimWorldDir)
+	if (Test-Path -LiteralPath (Join-Path $ModsDir 'Harmony\About\About.xml')) { return $true }
+	$workshop = Join-Path $RimWorldDir '..\..\workshop\content\294100\2009463077\About\About.xml'
+	if (Test-Path -LiteralPath $workshop) { return $true }
+	foreach ($dir in Get-ChildItem -LiteralPath $ModsDir -Directory -ErrorAction SilentlyContinue) {
+		$about = Join-Path $dir.FullName 'About\About.xml'
+		if (-not (Test-Path -LiteralPath $about)) { continue }
+		if (Select-String -LiteralPath $about -Pattern 'brrainz\.harmony' -Quiet -ErrorAction SilentlyContinue) {
+			return $true
+		}
+	}
+	return $false
+}
+
 function Find-RimWorld {
 	if ($script:RimWorldPath) {
 		$found = Resolve-RimWorldPath $script:RimWorldPath
@@ -162,26 +177,32 @@ try {
 		throw "无法创建 Mods 目录：$mods"
 	}
 
-	# ---- Harmony 检查 ----
-	$harmony = $false
-	if (Test-Path -LiteralPath (Join-Path $mods 'Harmony\About\About.xml')) { $harmony = $true }
+	# ---- Harmony：已装则跳过；没装则复制随包附带的 Harmony ----
+	$harmony = Test-HarmonyInstalled -ModsDir $mods -RimWorldDir $rw
 	if (-not $harmony) {
-		$workshop = Join-Path $rw '..\..\workshop\content\294100\2009463077\About\About.xml'
-		if (Test-Path -LiteralPath $workshop) { $harmony = $true }
-	}
-	if (-not $harmony) {
-		foreach ($dir in Get-ChildItem -LiteralPath $mods -Directory -ErrorAction SilentlyContinue) {
-			$about = Join-Path $dir.FullName 'About\About.xml'
-			if (-not (Test-Path -LiteralPath $about)) { continue }
-			if (Select-String -LiteralPath $about -Pattern 'brrainz\.harmony' -Quiet -ErrorAction SilentlyContinue) {
-				$harmony = $true
-				break
+		$bundled = Join-Path $PSScriptRoot 'Harmony'
+		$bundledDll = Join-Path $bundled '1.6\Assemblies\0Harmony.dll'
+		if ((Test-Path -LiteralPath (Join-Path $bundled 'About\About.xml')) -and (Test-Path -LiteralPath $bundledDll)) {
+			$harmonyTarget = Join-Path $mods 'Harmony'
+			if (Test-Path -LiteralPath $harmonyTarget) {
+				$hbak = $null
+				for ($n = 1; $n -le 99; $n++) {
+					$candidate = Join-Path $mods "Harmony.bak-$n"
+					if (-not (Test-Path -LiteralPath $candidate)) { $hbak = $candidate; break }
+				}
+				if (-not $hbak) { throw 'Harmony 备份目录太多（Harmony.bak-1..99），请先清理 Mods。' }
+				Write-Host "[备份] 旧 Harmony 目录 -> $hbak" -ForegroundColor Yellow
+				Move-Item -LiteralPath $harmonyTarget -Destination $hbak -ErrorAction Stop
 			}
+			Write-Host "[Harmony] 安装随包附带的 Harmony -> $harmonyTarget" -ForegroundColor Cyan
+			Copy-Item -LiteralPath $bundled -Destination $harmonyTarget -Recurse -Force
+			$harmony = Test-HarmonyInstalled -ModsDir $mods -RimWorldDir $rw
+			if (-not $harmony) { throw '随包 Harmony 复制失败，请检查 Mods 目录权限。' }
 		}
 	}
 	if (-not $harmony) {
 		Write-Host ''
-		Write-Warn '[警告] 没有检测到 Harmony。'
+		Write-Warn '[警告] 没有检测到 Harmony，且随包 Harmony 缺失。'
 		Write-Host '       ColonyKit 需要 Harmony 才能运行；请先在创意工坊订阅（免费）：'
 		Write-Host '       https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077'
 		if (-not $Auto) {

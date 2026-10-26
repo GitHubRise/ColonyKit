@@ -6,18 +6,21 @@
 .DESCRIPTION
 	1. 调用 package.ps1（verify + build + dist\ColonyKit-<version>.zip）
 	2. 把 Mod 包解压到 staging\ColonyKit
-	3. 复制 installer\install.bat / install.ps1 与 installer\使用说明.txt 到 staging 根
-	4. 压缩为 dist\ColonyKit-<version>-portable.zip
-	5. 校验第一层是 ColonyKit / install.bat / install.ps1 / 使用说明.txt，且 Mod 根有 About
+	3. 把本地 Harmony Mod（含 1.6 DLL 与 LICENSE）复制到 staging\Harmony
+	4. 复制 installer\install.bat / install.ps1 与 installer\使用说明.txt 到 staging 根
+	5. 压缩为 dist\ColonyKit-<version>-portable.zip
+	6. 校验第一层是 ColonyKit / Harmony / install.bat / install.ps1 / 使用说明.txt
 
 .EXAMPLE
 	.\make-portable.ps1
 	.\make-portable.ps1 -SkipBuild -SkipVerify
+	.\make-portable.ps1 -HarmonyPath 'D:\SteamLibrary\steamapps\workshop\content\294100\2009463077'
 #>
 [CmdletBinding()]
 param(
 	[switch]$SkipBuild,
-	[switch]$SkipVerify
+	[switch]$SkipVerify,
+	[string]$HarmonyPath = ''
 )
 
 $ErrorActionPreference = 'Stop'
@@ -36,6 +39,33 @@ if ($LASTEXITCODE -ne 0) { throw 'package.ps1 失败，已中止便携包生成�
 $version = $about.ModMetaData.modVersion
 if ([string]::IsNullOrWhiteSpace($version)) { $version = '0.0.0' }
 
+# 便携包内置 Harmony：优先用 -HarmonyPath，否则在常见 Steam 创意工坊目录里找。
+function Resolve-HarmonyPath {
+	param([string]$Path)
+	$candidates = New-Object System.Collections.Generic.List[string]
+	if (-not [string]::IsNullOrWhiteSpace($Path)) { $candidates.Add($Path) }
+	$candidates.Add('E:\SteamLibrary\steamapps\workshop\content\294100\2009463077')
+	$candidates.Add('D:\SteamLibrary\steamapps\workshop\content\294100\2009463077')
+	$candidates.Add('C:\SteamLibrary\steamapps\workshop\content\294100\2009463077')
+	$pf86 = [Environment]::GetFolderPath('ProgramFilesX86')
+	if ($pf86) {
+		$candidates.Add((Join-Path $pf86 'Steam\steamapps\workshop\content\294100\2009463077'))
+	}
+
+	foreach ($c in $candidates) {
+		if (-not (Test-Path -LiteralPath (Join-Path $c 'About\About.xml'))) { continue }
+		if (-not (Test-Path -LiteralPath (Join-Path $c '1.6\Assemblies\0Harmony.dll'))) { continue }
+		if (-not (Test-Path -LiteralPath (Join-Path $c 'LICENSE'))) { continue }
+		if (Select-String -LiteralPath (Join-Path $c 'About\About.xml') -Pattern 'brrainz\.harmony' -Quiet -ErrorAction SilentlyContinue) {
+			return $c
+		}
+	}
+	throw '找不到 Harmony 创意工坊目录（需含 About、1.6\Assemblies\0Harmony.dll、LICENSE）。请用 -HarmonyPath 指定。'
+}
+
+$harmony = Resolve-HarmonyPath $HarmonyPath
+Write-Host ("[harmony] {0}" -f $harmony) -ForegroundColor Cyan
+
 $modZip = Join-Path $dist ("ColonyKit-{0}.zip" -f $version)
 if (-not (Test-Path $modZip)) { throw "缺少 Mod 包：$modZip" }
 
@@ -52,11 +82,12 @@ New-Item -ItemType Directory -Path $modDir -Force | Out-Null
 
 try {
 	Expand-Archive -Path $modZip -DestinationPath $modDir -Force
+	Copy-Item -LiteralPath $harmony -Destination (Join-Path $stage 'Harmony') -Recurse -Force
 	Copy-Item $bat  $stage -Force
 	Copy-Item $ps1  $stage -Force
 	Copy-Item $read $stage -Force
 
-	foreach ($required in 'ColonyKit\About\About.xml', 'ColonyKit\Assemblies\ColonyKit.dll', 'install.bat', 'install.ps1', '使用说明.txt') {
+	foreach ($required in 'ColonyKit\About\About.xml', 'ColonyKit\Assemblies\ColonyKit.dll', 'Harmony\About\About.xml', 'Harmony\1.6\Assemblies\0Harmony.dll', 'Harmony\LICENSE', 'install.bat', 'install.ps1', '使用说明.txt') {
 		if (-not (Test-Path (Join-Path $stage $required))) {
 			throw "便携包缺少：$required"
 		}

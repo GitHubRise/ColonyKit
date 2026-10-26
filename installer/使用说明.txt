@@ -5,8 +5,8 @@
 ------------------------------------------------------------
 1. Windows 10 / 11（64 位）
 2. RimWorld 1.6（Steam 或 GOG 都可以；1.5 及以下不兼容）
-3. Harmony（免费，Steam 创意工坊搜 Harmony，作者 brrainz）
-   链接：https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077
+3. Harmony 已随 zip 附带（MIT，作者 Andreas Pardeike），无需单独订阅；
+   install.bat 会自动复制到 Mods\Harmony。已有 Harmony 时跳过，不覆盖。
 
 二、安装步骤
 ------------------------------------------------------------
@@ -17,6 +17,7 @@
    - install.bat 只负责启动同目录的 install.ps1，两个文件都要保留。
    - 脚本会自动查找 RimWorld 安装目录（Steam 注册表 + 常见路径）。
    - 找不到时，把 RimWorld 文件夹（里面有 RimWorldWin64.exe）拖进黑窗口，回车。
+   - Mods 里没有 Harmony 时，先把随包 Harmony 复制到 Mods\Harmony；已有则跳过。
    - 已有旧版会先改名备份为 Mods\ColonyKit.bak-1、bak-2……不会直接删。
    - 绿色 = 成功，红色 = 错误，黄色 = 警告；安装完成后按任意键关闭窗口。
 
@@ -27,12 +28,16 @@
 
 三、不想用 bat 的手动安装
 ------------------------------------------------------------
-把压缩包里的 ColonyKit 文件夹整个复制到：
+把压缩包里的 ColonyKit 和 Harmony 两个文件夹都复制到：
 
-    <RimWorld 安装目录>\Mods\ColonyKit
+    <RimWorld 安装目录>\Mods\
 
-确认 Mods\ColonyKit\About\About.xml 存在即可。
-（不要多套一层 ColonyKit\ColonyKit。）
+确认下面两个文件存在即可：
+
+    Mods\ColonyKit\About\About.xml
+    Mods\Harmony\About\About.xml
+
+（不要多套一层 ColonyKit\ColonyKit 或 Harmony\Harmony。）
 
 四、重要注意事项
 ------------------------------------------------------------
@@ -50,8 +55,10 @@
 4. 老版本备份可以手动删除：
    Mods\ColonyKit.bak-1、Mods\ColonyKit.bak-2 ……
 
-5. 首次进游戏如果提示缺少 Harmony，说明 Harmony 没订阅或没勾选。
-   订阅后回到 Mod 设置，把 Harmony 排在「殖民地套件」上面。
+5. 首次进游戏如果提示缺少 Harmony：
+   → 先看 Mods\Harmony\About\About.xml 是否存在；
+   → 没有就手动把 zip 里的 Harmony 文件夹复制到 Mods；
+   → 回到 Mod 设置，把 Harmony 排在「殖民地套件」上面。
 
 五、卸载
 ------------------------------------------------------------
