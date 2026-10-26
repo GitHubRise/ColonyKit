@@ -25,4 +25,12 @@
 
   <Vulnerability.description>衡量小人好欺负的程度。（越高越容易被强奸）</Vulnerability.description>
 
+  <CK_HygieneRateMultiplier.label>卫生变化倍率</CK_HygieneRateMultiplier.label>
+
+  <CK_HygieneRateMultiplier.description>卫生值下降速度的倍率。</CK_HygieneRateMultiplier.description>
+
+  <CK_BladderRateMultiplier.label>膀胱增长倍率</CK_BladderRateMultiplier.label>
+
+  <CK_BladderRateMultiplier.description>膀胱值增长速度的倍率。</CK_BladderRateMultiplier.description>
+
 </LanguageData>

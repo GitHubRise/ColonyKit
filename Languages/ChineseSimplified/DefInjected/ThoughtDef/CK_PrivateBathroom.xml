@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-	<CK_PrivateBathroom.stages.0.label>私人浴室</CK_PrivateBathroom.stages.0.label>
-	<CK_PrivateBathroom.stages.0.description>我有一间属于自己的浴室。</CK_PrivateBathroom.stages.0.description>
+	<CK_PrivateBathroom.stages.0.label>糟糕的浴室</CK_PrivateBathroom.stages.0.label>
+	<CK_PrivateBathroom.stages.0.description>我的浴室糟糕透顶。</CK_PrivateBathroom.stages.0.description>
+	<CK_PrivateBathroom.stages.2.label>还算像样的浴室</CK_PrivateBathroom.stages.2.label>
+	<CK_PrivateBathroom.stages.2.description>我的浴室还不错，我喜欢。</CK_PrivateBathroom.stages.2.description>
+	<CK_PrivateBathroom.stages.3.label>略有格调的浴室</CK_PrivateBathroom.stages.3.label>
+	<CK_PrivateBathroom.stages.3.description>我的浴室有点格调，我喜欢。</CK_PrivateBathroom.stages.3.description>
+	<CK_PrivateBathroom.stages.4.label>气派的浴室</CK_PrivateBathroom.stages.4.label>
+	<CK_PrivateBathroom.stages.4.description>我的浴室很气派，我很喜欢！</CK_PrivateBathroom.stages.4.description>
+	<CK_PrivateBathroom.stages.5.label>非常气派的浴室</CK_PrivateBathroom.stages.5.label>
+	<CK_PrivateBathroom.stages.5.description>我的浴室非常气派，这是世上最好的地方！</CK_PrivateBathroom.stages.5.description>
+	<CK_PrivateBathroom.stages.6.label>极其气派的浴室</CK_PrivateBathroom.stages.6.label>
+	<CK_PrivateBathroom.stages.6.description>我的浴室极其气派，这是世上最好的地方！</CK_PrivateBathroom.stages.6.description>
+	<CK_PrivateBathroom.stages.7.label>令人叹为观止的浴室</CK_PrivateBathroom.stages.7.label>
+	<CK_PrivateBathroom.stages.7.description>我的浴室令人叹为观止，这是世上最好的地方！</CK_PrivateBathroom.stages.7.description>
+	<CK_PrivateBathroom.stages.8.label>美轮美奂的浴室</CK_PrivateBathroom.stages.8.label>
+	<CK_PrivateBathroom.stages.8.description>我的浴室美轮美奂，是我能想象到的最好的地方，简直太棒了。</CK_PrivateBathroom.stages.8.description>
 </LanguageData>

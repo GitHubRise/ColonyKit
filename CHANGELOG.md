@@ -8,6 +8,7 @@
 
 - **洁具检查面板乱码**：`Building_AssignableFixture.Working()` 沿用了 DBH 的 `"Nowater"` 键，而本模组和 Core 都没有这个键；开发者模式下 `Translate()` 会对缺失键做伪本地化，于是马桶、浴缸、简易淋浴器的左下角检查面板显示成 `Nòẅàṭèṟ` 这类乱码（告警正文同样受影响）。现改用本模组自己的 `CK.Hygiene.NoWaterSupply`（没有供水，水网上没有水箱/水网不可用）与 `CK.Hygiene.NotEnoughWater`（水量不足，有水塔但存量不够本次用量），中英文 Keyed 同步补齐。
 - **洁具性别按钮混英文**：`GenderText` 里的 `"Unisex"` 同样不是有效键，`gender.ToString()` 还会直接给出 `Male`/`Female`。现新增 `CK.Hygiene.Gender.Unisex/Male/Female`，中文显示「共用 / 男 / 女」，不再出现英文或伪本地化乱码。
+- **淋浴相关文本漏翻（简中下显示英文）**：逐条核对卫生模块所有玩家可见文本后补齐 5 处 DefInjected：`CK_WaitForShower.reportString`（等待淋浴的 Job 提示原本直接显示 `waiting for a shower.`）、`CK_PrivateBathroom` 第 2–8 阶段（浴室心情只有第 0 阶段有中文，其余显示 `decent bathroom` 等英文；第 0 阶段旧译文「私人浴室」与原意 `awful bathroom` 不符，一并改为「糟糕的浴室」）、`CK_BadHygiene` 的状态名/描述/阶段名、`CK_HygieneRateMultiplier`/`CK_BladderRateMultiplier` 两个属性的名称与说明、`CK_EmptySepticTank` 工作的 label/verb/gerund（工作页显示 `empty septic tank`）。
 - **西向贴图全是东向的副本**：`CK_Toilet`、`CK_ToiletUp`、`CK_Basin`、`CK_Bath`、`CK_SewagePipe` 的 `_west.png` 此前与 `_east.png` 字节完全相同（直接复制），转到西向时水箱、洗手池龙头、浴缸龙头和排污管口都还朝东，与交互格旋转后的方向相反。现按东向水平镜像重做这五组 west 贴图（尺寸、RGBA 与原图一致，逐像素为精确镜像）；`Graphic_Multi` 按 `_west` 文件名取图，Def 与代码都不用改。
 - **浴缸贴图被压扁、比原版小一圈**：`CK_Bath` 用的贴图是 DBH 的 `bath_*`（128×192，2:3），但 `drawSize` 写成了 (1,2)，进游戏后被横向压掉约 25%，还比原版小一圈。现按 DBH 原版改回 (2,3)、补 `castEdgeShadows`：贴图字节与原版相同、`drawSize` 也一致，观感与原版对齐；占地仍是 1×2，溢出的贴图不挡路。
 - **开发者菜单「半英半中」乱码**：翻译表中 204 条由逐词替换生成的条目（`绘制河流Debug`、`Material报告`、`名称FromRulepack`、`小人生成Histogram` 等）全部改写为通顺中文；`DevLabelTranslations` 删掉 `HumanizeDefName` 逐词硬拼逻辑，Def/SoundDef 没有译名时直接显示英文原名，不再拼接「中文·英文」的杂交结果。

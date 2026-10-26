@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_BadHygiene.label>卫生恶劣</CK_BadHygiene.label>
+	<CK_BadHygiene.description>个人卫生很差，会增加患病风险并影响社交。</CK_BadHygiene.description>
+	<CK_BadHygiene.stages.0.label>有点脏</CK_BadHygiene.stages.0.label>
+	<CK_BadHygiene.stages.1.label>肮脏</CK_BadHygiene.stages.1.label>
+</LanguageData>

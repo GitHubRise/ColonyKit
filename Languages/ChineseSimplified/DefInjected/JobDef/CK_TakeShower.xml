@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 	<CK_TakeShower.reportString>正在洗澡。</CK_TakeShower.reportString>
+	<CK_WaitForShower.reportString>正在等待淋浴器。</CK_WaitForShower.reportString>
 </LanguageData>
