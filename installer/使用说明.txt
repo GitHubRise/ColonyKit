@@ -55,7 +55,10 @@
 4. 老版本备份可以手动删除：
    Mods\ColonyKit.bak-1、Mods\ColonyKit.bak-2 ……
 
-5. 首次进游戏如果提示缺少 Harmony：
+5. 如果目标电脑已经装了 Harmony（Mods 或创意工坊），脚本会**跳过复制**，
+   所以 Mods\Harmony 可能不存在；只要游戏 Mod 列表里有 Harmony 就是正常的。
+
+6. 首次进游戏如果提示缺少 Harmony：
    → 先看 Mods\Harmony\About\About.xml 是否存在；
    → 没有就手动把 zip 里的 Harmony 文件夹复制到 Mods；
    → 回到 Mod 设置，把 Harmony 排在「殖民地套件」上面。
