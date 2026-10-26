@@ -73,6 +73,8 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(1,2)</drawSize>
 		</graphicData>
+		<!-- 单张贴图没有朝向，旋转只会多出无效的 Q/E 按钮。 -->
+		<rotatable>false</rotatable>
 		<designationCategory>CK_Hygiene</designationCategory>
 		<passability>PassThroughOnly</passability>
 		<fillPercent>0.3</fillPercent>
@@ -111,6 +113,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(2,3)</drawSize>
 		</graphicData>
+		<rotatable>false</rotatable>
 		<designationCategory>CK_Hygiene</designationCategory>
 		<passability>PassThroughOnly</passability>
 		<fillPercent>0.3</fillPercent>
@@ -150,6 +153,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(1,1)</drawSize>
 		</graphicData>
+		<rotatable>false</rotatable>
 		<designationCategory>CK_Hygiene</designationCategory>
 		<passability>PassThroughOnly</passability>
 		<fillPercent>0.25</fillPercent>
@@ -194,6 +198,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(1,1)</drawSize>
 		</graphicData>
+		<rotatable>false</rotatable>
 		<designationCategory>CK_Hygiene</designationCategory>
 		<passability>PassThroughOnly</passability>
 		<fillPercent>0.25</fillPercent>
@@ -231,6 +236,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(1,2)</drawSize>
 		</graphicData>
+		<rotatable>false</rotatable>
 		<designationCategory>CK_Hygiene</designationCategory>
 		<passability>PassThroughOnly</passability>
 		<fillPercent>0.25</fillPercent>

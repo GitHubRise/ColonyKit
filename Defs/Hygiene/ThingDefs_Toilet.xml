@@ -69,6 +69,8 @@
 		<neverMultiSelect>true</neverMultiSelect>
 		<tickerType>Never</tickerType>
 		<drawStyleCategory>Default1D</drawStyleCategory>
+		<!-- 管道按四邻自动连管，不需要 Q/E 旋转；和 DBH 原版、CK 水管保持一致。 -->
+		<rotatable>false</rotatable>
 		<designationCategory>CK_Hygiene</designationCategory>
 		<uiOrder>15</uiOrder>
 		<costList>
@@ -100,6 +102,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(2,2)</drawSize>
 		</graphicData>
+		<rotatable>false</rotatable>
 		<designationCategory>CK_Hygiene</designationCategory>
 		<passability>PassThroughOnly</passability>
 		<fillPercent>0.3</fillPercent>
