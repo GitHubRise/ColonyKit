@@ -550,6 +550,7 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 ### M6 智能机器人（Robotics）
 
 > **当前进度（2026-10-26）**：二阶段「保姆机器人」已落地，见 [docs/6007-机器人-保姆机器人.md](docs/6007-机器人-保姆机器人.md)。
+> 贴图候选：[10 个方案 HTML](docs/nannybot-textures.html)（选好编号后再替换正式贴图）。
 > 已完成：ToolUser 机械族 + 自定义 ThinkTree/JobGiver/JobDriver；`CK_RobotNanny` + `CK_NannyBotBody`；容量制 `CK_RobotEnergy`（默认 4000W、12h/4h/充电阈值可调、0% 停机）；耐久 1000 + 殖民者维修 + 0 报废；扫地/清洁/搬运/灭火/屠宰/发电机加燃料/囚犯送餐/卫生维护/优先救援；立体库直送；设置页、底部工作管控+状态双页签（每台逐项 1–4 优先级）、暂停/召回/前往/点选污渍/改名/涂装/音效/充电光效；危险规避、工作站定位/召回。
 > 未完成：五种专用型号、休眠快充、draft/装备/EMP、停机救援/Alert、长期存读档与电网压力测试。
 
