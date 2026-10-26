@@ -205,6 +205,15 @@ if exist "!MODS!\RimJobWorld\About\About.xml" (
 	echo [提示] 检测到 Mods\RimJobWorld。ColonyKit 已内置 RJW 1.6，
 	echo        请不要同时启用外部 RimJobWorld，否则会重复加载 Def 报错。
 )
+set "CFG=%USERPROFILE%\AppData\LocalLow\Ludeon Studios\RimWorld by Ludeon Studios\Config\ModsConfig.xml"
+if exist "!CFG!" (
+	findstr /i /c:"rim.job.world" "!CFG!" >nul 2>&1
+	if not errorlevel 1 (
+		echo.
+		echo [提示] 当前 ModsConfig.xml 仍启用外部 RimJobWorld（rim.job.world）。
+		echo        进游戏后请在 Mod 设置里取消勾选它，只保留 ColonyKit。
+	)
+)
 
 echo.
 echo ============================================================
