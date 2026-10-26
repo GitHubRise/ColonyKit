@@ -34,7 +34,7 @@
 
 ### Added
 
-- **双人浴缸 `CK_DoubleBath`**：2×2、320 升/缸，可两人同时泡澡。`Building_DoubleBath` 按当前 Job 统计占用（读档后依然准确），超过两人不可用，最后离开的人才放水；贴图由单缸贴图裁掉透明边后左右拼接（`tools/generate_double_bath_texture.py`）。
+- **双人浴缸 `CK_DoubleBath`**：2×2、320 升/缸，可两人同时泡澡。`Building_DoubleBath` 按当前 Job 统计占用（读档后依然准确），超过两人不可用，最后离开的人才放水；贴图由单缸贴图取左半边拉伸镜像成一只宽缸（`tools/generate_double_bath_texture.py`）。
 - **自主邀请异性共浴**：`JobGiver_HaveWash` 优先选空的双人浴缸，按 `HygieneSettings.doubleBathInviteChance`（默认 0.08）掷骰；命中后 `Building_DoubleBath.FindPartner` 在异性、成年、可到达、未在洗澡的殖民者/奴隶里挑一人（恋人优先），`JobDriver_TakeBathTogether` 出发时把同缸 Job 派给对方，两人各算一份卫生恢复、共享一缸水。卫生设置页新增「双人浴缸」分区与 0–100% 概率滑条，0% 关闭。
 - **热水罐/热水器红色水温条**：`CompHeatStore` 补回 DBH 的水温进度条，用 `GenDraw.DrawFillableBar` 画红色条（深灰底），填充值就是 0–100% 的归一化水温（`HeaterTemp`），温度从 0 升到 100% 时条会填满；和蓝色水位条同一套触发条件：选中任意带 `CompPipe` 的水网物件或正在放水网建筑时，全图热水罐/热水器一起显示。
 - **水箱蓝色水位条**：迁移时丢了 DBH 的水箱进度条。`CompWaterStorage` 现在在 `PostDraw` 里用 `GenDraw.DrawFillableBar` 画青色水位条（深灰底），填充比例是当前水量/容量；选中任意带 `CompPipe` 的水网物件（水箱、水泵、水井、热水器、管道、洁具）或正在放水网建筑时，全图水箱一起显示，和 DBH 一致。

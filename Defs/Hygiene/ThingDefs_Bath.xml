@@ -92,8 +92,8 @@
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_DoubleBath</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<!-- 两块 66x130 的缸体贴图拼成 132x130；沿用单缸 64 像素/格，正好落在 2x2 占地上。 -->
-			<drawSize>(2.06,2.03)</drawSize>
+			<!-- 128x130：单缸左半边拉伸镜像成一只宽缸，64 像素/格，正好落在 2x2 占地上。 -->
+			<drawSize>(2,2.03)</drawSize>
 			<shaderType>CutoutComplex</shaderType>
 		</graphicData>
 		<castEdgeShadows>true</castEdgeShadows>
