@@ -43,7 +43,11 @@ namespace ColonyKit.Modules.Robotics
 				return false;
 			}
 			CompNannyBot comp = BotComp(pawn);
-			if (comp != null && comp.paused)
+			if (comp != null && (comp.paused || comp.repairing))
+			{
+				return false;
+			}
+			if (IsBeingRepaired(pawn))
 			{
 				return false;
 			}
@@ -108,6 +112,25 @@ namespace ColonyKit.Modules.Robotics
 					continue;
 				}
 				if (GenHostility.IsActiveThreatToPlayer(target))
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		/// <summary>是否有殖民者正把维修 Job 对准这台机器人（含正在赶来的路上）。</summary>
+		public static bool IsBeingRepaired(Pawn pawn)
+		{
+			if (pawn?.Map == null)
+			{
+				return false;
+			}
+			HashSet<Pawn> reservers = new HashSet<Pawn>();
+			pawn.Map.reservationManager.ReserversOf(pawn, reservers);
+			foreach (Pawn reserver in reservers)
+			{
+				if (reserver != null && reserver.CurJobDef == NannyBotDefOf.CK_RepairNannyBot)
 				{
 					return true;
 				}

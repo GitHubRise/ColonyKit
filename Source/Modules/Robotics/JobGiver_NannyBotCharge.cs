@@ -14,6 +14,11 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return null;
 			}
+			CompNannyBot comp = NannyBotUtility.BotComp(pawn);
+			if (comp != null && (comp.repairing || NannyBotUtility.IsBeingRepaired(pawn)))
+			{
+				return null;
+			}
 
 			Need_RobotEnergy energy = NannyBotUtility.Energy(pawn);
 			if (energy == null || energy.IsCharging)

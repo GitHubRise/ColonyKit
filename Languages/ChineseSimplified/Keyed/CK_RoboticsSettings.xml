@@ -43,7 +43,7 @@
 	<ColonyKit.Settings.Robotics.AreaLabel.Desc>填写地图上区域的名字；找不到时按「不限」处理。</ColonyKit.Settings.Robotics.AreaLabel.Desc>
 
 	<ColonyKit.Settings.Robotics.Section.Maintenance>维护与表现</ColonyKit.Settings.Robotics.Section.Maintenance>
-	<ColonyKit.Settings.Robotics.DurabilityHint>耐久上限 1000。只有受到伤害时才会损耗（约 250 点伤害报废），日常工作不损耗；耐久为 0 时报废成钢和零部件，殖民者可在「建造」工作中维修。</ColonyKit.Settings.Robotics.DurabilityHint>
+	<ColonyKit.Settings.Robotics.DurabilityHint>耐久上限 1000。只有受到伤害时才会损耗（约 250 点伤害报废），日常工作不损耗；耐久为 0 时报废成钢和零部件，殖民者可在「建造」工作中维修。维修期间机器人不会充电，修完才恢复充电。</ColonyKit.Settings.Robotics.DurabilityHint>
 	<ColonyKit.Settings.Robotics.Sounds>滴滴声</ColonyKit.Settings.Robotics.Sounds>
 	<ColonyKit.Settings.Robotics.Sounds.Desc>机器人工作时偶尔发出提示音；低电时只提醒一次。</ColonyKit.Settings.Robotics.Sounds.Desc>
 	<ColonyKit.Settings.Robotics.ChargingGlow>充电光效</ColonyKit.Settings.Robotics.ChargingGlow>
@@ -55,6 +55,7 @@
 	<CK.Robotics.Inspect.Battery>电量：{0} / {1} W</CK.Robotics.Inspect.Battery>
 	<CK.Robotics.Inspect.Durability>耐久：{0} / {1}</CK.Robotics.Inspect.Durability>
 	<CK.Robotics.Inspect.Paused>已暂停自动家务。</CK.Robotics.Inspect.Paused>
+	<CK.Robotics.Inspect.Repairing>维修中：维修完成前不会充电。</CK.Robotics.Inspect.Repairing>
 	<CK.Robotics.DisabledInSettings>已在机器人设置页关闭。</CK.Robotics.DisabledInSettings>
 	<CK.Robotics.Scrapped>{0} 已报废，拆成了钢和零部件。</CK.Robotics.Scrapped>
 	<CK.Robotics.Name.Invalid>名字不能为空。</CK.Robotics.Name.Invalid>

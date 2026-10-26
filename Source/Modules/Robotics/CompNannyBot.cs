@@ -61,6 +61,9 @@ namespace ColonyKit.Modules.Robotics
 		public float durability = MaxDurability;
 		public int paintIndex;
 
+		/// <summary>正在被殖民者维修；维修期间不充电、不接新家务。</summary>
+		public bool repairing;
+
 		/// <summary>组装它的充电桩；桩被拆掉后会自动改用最近的桩。</summary>
 		public Building homeStation;
 
@@ -121,6 +124,19 @@ namespace ColonyKit.Modules.Robotics
 				return;
 			}
 
+			if (parent.IsHashIntervalTick(60))
+			{
+				bool beingRepaired = NannyBotUtility.IsBeingRepaired(pawn);
+				if (beingRepaired != repairing)
+				{
+					repairing = beingRepaired;
+				}
+				if (beingRepaired && pawn.CurJobDef == NannyBotDefOf.CK_NannyCharge)
+				{
+					pawn.jobs.EndCurrentJob(JobCondition.InterruptForced);
+				}
+			}
+
 			if (!parent.IsHashIntervalTick(250))
 			{
 				return;
@@ -165,6 +181,16 @@ namespace ColonyKit.Modules.Robotics
 				return;
 			}
 			durability = Mathf.Min(MaxDurability, durability + amount);
+		}
+
+		public void Notify_RepairStarted()
+		{
+			repairing = true;
+		}
+
+		public void Notify_RepairFinished()
+		{
+			repairing = false;
 		}
 
 		public void SetPaint(int index)
@@ -332,6 +358,10 @@ namespace ColonyKit.Modules.Robotics
 				State(scrub && NannyBotUtility.Settings.scrub),
 				State(haul && NannyBotUtility.Settings.haul)));
 
+			if (repairing)
+			{
+				lines.Add("CK.Robotics.Inspect.Repairing".Translate());
+			}
 			if (paused)
 			{
 				lines.Add("CK.Robotics.Inspect.Paused".Translate());

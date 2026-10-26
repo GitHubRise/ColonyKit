@@ -236,11 +236,21 @@ namespace ColonyKit.Modules.Robotics
 					if (botComp != null)
 					{
 						float durabilityBeforeDamage = botComp.Durability;
-						robot.TakeDamage(new DamageInfo(DamageDefOf.Cut, 10f));
+						float healthBeforeDamage = robot.health.summaryHealth.SummaryHealthPercent;
+						DamageWorker.DamageResult damageResult =
+							robot.TakeDamage(new DamageInfo(DamageDefOf.Cut, 100f));
 						builder.Append(" damageDurability=")
 							.Append(durabilityBeforeDamage.ToString("0"))
 							.Append("->")
-							.Append(botComp.Durability.ToString("0"));
+							.Append(botComp.Durability.ToString("0"))
+							.Append(" health=")
+							.Append(healthBeforeDamage.ToString("0.00"))
+							.Append("->")
+							.Append(robot.health.summaryHealth.SummaryHealthPercent.ToString("0.00"))
+							.Append(" damageDealt=")
+							.Append(damageResult.totalDamageDealt.ToString("0.00"))
+							.Append(" godMode=")
+							.Append(DebugSettings.godMode);
 
 						botComp.durability = 500f;
 						Pawn colonist = null;
@@ -254,6 +264,20 @@ namespace ColonyKit.Modules.Robotics
 						Job repairJob = canRepair ? repair.JobOnThing(colonist, robot) : null;
 						builder.Append(" durability=").Append(botComp.Durability.ToString("0"))
 							.Append(" repairJob=").Append(repairJob?.def?.defName ?? "none");
+
+						botComp.Notify_RepairStarted();
+						builder.Append(" canWorkWhileRepairing=")
+							.Append(NannyBotUtility.CanWork(robot));
+						Need_RobotEnergy lowEnergy = NannyBotUtility.Energy(robot);
+						if (lowEnergy != null)
+						{
+							lowEnergy.CurLevel = 100f;
+							ThinkResult chargeWhileRepair = new JobGiver_NannyBotCharge()
+								.TryIssueJobPackage(robot, new JobIssueParams());
+							builder.Append(" chargeWhileRepairing=")
+								.Append(chargeWhileRepair.Job?.def?.defName ?? "none");
+						}
+						botComp.Notify_RepairFinished();
 					}
 				}
 				ModLog.Force("Robotics", builder.ToString());

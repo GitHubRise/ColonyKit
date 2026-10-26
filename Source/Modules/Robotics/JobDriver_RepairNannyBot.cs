@@ -22,6 +22,21 @@ namespace ColonyKit.Modules.Robotics
 			return pawn.Reserve(job.GetTarget(RobotInd), job, 1, -1, null, errorOnFailed);
 		}
 
+		public override void Notify_Starting()
+		{
+			base.Notify_Starting();
+			Pawn robot = Robot;
+			CompNannyBot comp = robot?.TryGetComp<CompNannyBot>();
+			comp?.Notify_RepairStarted();
+			AddFinishAction(condition => comp?.Notify_RepairFinished());
+
+			// 维修优先：把机器人正在进行的充电或家务立刻打断，修完再重新找活。
+			if (robot != null && robot.CurJob != null)
+			{
+				robot.jobs.EndCurrentJob(JobCondition.InterruptForced);
+			}
+		}
+
 		protected override IEnumerable<Toil> MakeNewToils()
 		{
 			this.FailOnDespawnedNullOrForbidden(RobotInd);
