@@ -456,24 +456,61 @@ def draw_module(d, cx, cy, kind):
         for x, y in ((cx - 40, cy - 30), (cx + 40, cy - 30), (cx - 30, cy + 28), (cx + 30, cy + 28)):
             bolt(d, x, y, 3)
     else:
-        # shoulder arc emitter
-        rr(d, (cx - 72, cy - 14, cx + 40, cy + 46), 10, DARK, OUTLINE, 2)
-        rr(d, (cx - 62, cy - 4, cx + 28, cy + 36), 7, PANEL, OUTLINE, 1)
-        # barrel
-        line(d, [(cx + 30, cy + 10), (cx + 82, cy + 10)], OUTLINE, 18)
-        line(d, [(cx + 30, cy + 10), (cx + 82, cy + 10)], STEEL_MID, 12)
-        rr(d, (cx + 68, cy - 2, cx + 88, cy + 22), 4, AMBER, OUTLINE, 1)
-        # coils
+        # shoulder-mounted arc rifle, drawn in side profile so it reads as a gun
+        ellipse(d, (cx - 168, cy + 58, cx + 162, cy + 74), (0, 0, 0, 48))
+        # butt stock
+        polygon(d, [
+            (cx - 168, cy - 4), (cx - 128, cy - 18), (cx - 108, cy + 18),
+            (cx - 150, cy + 34), (cx - 170, cy + 20),
+        ], DARK, OUTLINE)
+        # receiver
+        rr(d, (cx - 118, cy - 24, cx + 38, cy + 26), 7, STEEL, OUTLINE, 2)
+        rr(d, (cx - 108, cy - 16, cx + 28, cy + 17), 5, PANEL, OUTLINE, 1)
+        # top rail / sight
+        rr(d, (cx - 82, cy - 36, cx + 24, cy - 24), 3, DARK, OUTLINE, 1)
+        rr(d, (cx - 36, cy - 48, cx - 2, cy - 32), 3, PANEL, OUTLINE, 1)
+        ellipse(d, (cx + 12, cy - 43, cx + 22, cy - 33), CYAN, OUTLINE, 1)
+        # energy cell on top-left
+        rr(d, (cx - 96, cy - 14, cx - 62, cy + 12), 4, AMBER, OUTLINE, 1)
+        d.rectangle((cx - 90, cy - 8, cx - 68, cy - 4), fill=AMBER_LIGHT)
+        line(d, [(cx - 79, cy - 14), (cx - 79, cy + 12)], OUTLINE, 1)
+        # pistol grip
+        polygon(d, [(cx - 38, cy + 16), (cx - 16, cy + 14), (cx - 4, cy + 62), (cx - 30, cy + 64)],
+                DARK, OUTLINE)
         for i in range(4):
-            ellipse(d, (cx + 40 + i * 10, cy + 2, cx + 54 + i * 10, cy + 18), None, OUTLINE, 2)
-            ellipse(d, (cx + 42 + i * 10, cy + 4, cx + 52 + i * 10, cy + 16), None, CYAN, 1)
-        # muzzle glow
-        ellipse(d, (cx + 82, cy + 1, cx + 102, cy + 21), (*CYAN[:3], 80))
-        line(d, [(cx + 92, cy + 11), (cx + 106, cy + 4)], CYAN, 2)
-        line(d, [(cx + 92, cy + 11), (cx + 106, cy + 18)], CYAN, 2)
-        # shoulder mount
-        rr(d, (cx - 62, cy + 34, cx - 20, cy + 58), 5, STEEL, OUTLINE, 1)
-        d.rectangle((cx - 54, cy + 41, cx - 28, cy + 46), fill=AMBER)
+            line(d, [(cx - 28 + i * 4, cy + 28 + i * 7), (cx - 12 + i * 4, cy + 26 + i * 7)],
+                 STEEL_MID, 1)
+        # trigger guard
+        d.arc((cx - 34, cy + 18, cx + 4, cy + 54), 0, 180, fill=OUTLINE, width=3)
+        # magazine / capacitor
+        polygon(d, [(cx - 6, cy + 12), (cx + 22, cy + 10), (cx + 14, cy + 54), (cx - 8, cy + 56)],
+                DARK2, OUTLINE)
+        d.rectangle((cx, cy + 20, cx + 12, cy + 26), fill=CYAN)
+        # barrel shroud and core
+        rr(d, (cx + 28, cy - 16, cx + 128, cy + 12), 5, STEEL_MID, OUTLINE, 2)
+        rr(d, (cx + 40, cy - 10, cx + 118, cy + 6), 3, DARK, OUTLINE, 1)
+        line(d, [(cx + 118, cy - 2), (cx + 160, cy - 2)], OUTLINE, 10)
+        line(d, [(cx + 118, cy - 2), (cx + 160, cy - 2)], STEEL_LIGHT, 5)
+        # induction coils
+        for i in range(4):
+            x = cx + 44 + i * 19
+            ellipse(d, (x, cy - 20, x + 18, cy + 16), None, OUTLINE, 2)
+            ellipse(d, (x + 3, cy - 16, x + 15, cy + 12), None, CYAN, 1)
+        # muzzle brake
+        rr(d, (cx + 150, cy - 12, cx + 166, cy + 8), 3, AMBER, OUTLINE, 1)
+        d.rectangle((cx + 156, cy - 6, cx + 166, cy + 2), fill=DARK2)
+        # muzzle glow / electric arc
+        ellipse(d, (cx + 154, cy - 16, cx + 178, cy + 12), (*CYAN[:3], 80))
+        line(d, [(cx + 166, cy - 2), (cx + 182, cy - 12), (cx + 174, cy + 2), (cx + 190, cy - 4)],
+             CYAN, 2)
+        line(d, [(cx + 166, cy - 2), (cx + 184, cy + 8)], CYAN, 2)
+        # shoulder mount / clamp under receiver
+        rr(d, (cx - 82, cy + 42, cx - 12, cy + 70), 5, STEEL, OUTLINE, 1)
+        d.rectangle((cx - 72, cy + 49, cx - 22, cy + 54), fill=AMBER, outline=OUTLINE, width=1)
+        for x in (cx - 70, cx - 24):
+            bolt(d, x, cy + 62, 3)
+        # small sling loop
+        d.arc((cx - 132, cy + 18, cx - 108, cy + 42), 0, 180, fill=OUTLINE, width=3)
 
 
 def main():
