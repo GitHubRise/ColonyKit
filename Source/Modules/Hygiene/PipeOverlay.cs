@@ -66,25 +66,10 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 			FinalizeMesh(MeshParts.All);
 		}
 
+		/// <summary>当前选中的建造设计器是不是这种管道。</summary>
 		private bool ShouldDraw()
 		{
-			if (!(Find.DesignatorManager?.SelectedDesignator is Designator_Build designator))
-			{
-				return false;
-			}
-			if (!(designator.PlacingDef is ThingDef def) || def.comps == null)
-			{
-				return false;
-			}
-			// 不用 GetCompProperties<T>()：它会 Alloc，而这里每个可见 section 每帧都会问一次。
-			for (int i = 0; i < def.comps.Count; i++)
-			{
-				if (def.comps[i] is CompProperties_Pipe props && props.mode == mode)
-				{
-					return true;
-				}
-			}
-			return false;
+			return PipeDesignators.IsPlacing(mode);
 		}
 
 		/// <summary>与 <see cref="Graphic_Linked"/> 同样的位序：北 1、东 2、南 4、西 8。</summary>
@@ -137,6 +122,34 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		public SectionLayer_SewagePipeOverlay(Section section)
 			: base(section, PipeType.Sewage, new Color(0.35f, 0.85f, 0.55f, 0.85f))
 		{
+		}
+	}
+
+	/// <summary>
+	/// 「当前选中的建造设计器会不会放某种管道」：管道覆盖层和水箱水位条共用。
+	/// </summary>
+	internal static class PipeDesignators
+	{
+		/// <param name="mode">null 表示任意管道模式（水/污水/空气/供暖）。</param>
+		public static bool IsPlacing(PipeType? mode = null)
+		{
+			if (!(Find.DesignatorManager?.SelectedDesignator is Designator_Build designator))
+			{
+				return false;
+			}
+			if (!(designator.PlacingDef is ThingDef def) || def.comps == null)
+			{
+				return false;
+			}
+			// 不用 GetCompProperties<T>()：它会 Alloc，而这里每个可见 section 每帧都会问一次。
+			for (int i = 0; i < def.comps.Count; i++)
+			{
+				if (def.comps[i] is CompProperties_Pipe props && (mode == null || props.mode == mode.Value))
+				{
+					return true;
+				}
+			}
+			return false;
 		}
 	}
 }

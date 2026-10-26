@@ -65,6 +65,13 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 
 		public bool closed => flicker != null && !flicker.SwitchIsOn;
 
+		public override void PostDrawExtraSelectionOverlays()
+		{
+			base.PostDrawExtraSelectionOverlays();
+			// 选中任意水网物件（管、泵、井、热水器、洁具）时，把全图水箱的水位条一起亮出来。
+			MapComp?.PipeComp?.RequestTankBars();
+		}
+
 		public override void PostSpawnSetup(bool respawningAfterLoad)
 		{
 			base.PostSpawnSetup(respawningAfterLoad);
@@ -107,16 +114,48 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		public List<CompPipe> cachedPipes = new List<CompPipe>();
 		public List<PlumbingNet> PipeNets = new List<PlumbingNet>();
 		public int masterID = 1;
+
+		/// <summary>选中水网物件或正在放水网建筑时为 true，下一次 OnGUI 把水箱水位条标记出来。</summary>
+		public bool MarkTowersForDraw;
+
 		private bool dirty = true;
 
 		public HygienePipeMapComp(Map map) : base(map)
 		{
 		}
 
+		public void RequestTankBars()
+		{
+			MarkTowersForDraw = true;
+		}
+
 		public override void FinalizeInit()
 		{
 			base.FinalizeInit();
 			RegenPipeGrids();
+		}
+
+		public override void MapComponentOnGUI()
+		{
+			if (PipeDesignators.IsPlacing(PipeType.Water))
+			{
+				MarkTowersForDraw = true;
+			}
+			if (!MarkTowersForDraw)
+			{
+				return;
+			}
+			foreach (PlumbingNet net in PipeNets)
+			{
+				foreach (CompWaterStorage tower in net.WaterTowers)
+				{
+					if (tower != null)
+					{
+						tower.DrawOverlay = true;
+					}
+				}
+			}
+			MarkTowersForDraw = false;
 		}
 
 		public override void MapComponentTick()

@@ -30,6 +30,7 @@
 
 ### Added
 
+- **水箱蓝色水位条**：迁移时丢了 DBH 的水箱进度条。`CompWaterStorage` 现在在 `PostDraw` 里用 `GenDraw.DrawFillableBar` 画青色水位条（深灰底），填充比例是当前水量/容量；选中任意带 `CompPipe` 的水网物件（水箱、水泵、水井、热水器、管道、洁具）或正在放水网建筑时，全图水箱一起显示，和 DBH 一致。
 - **铺管覆盖层**：新增 `Source/Modules/Hygiene/PipeOverlay.cs`（`SectionLayer_WaterPipeOverlay` / `SectionLayer_SewagePipeOverlay`）。选中水管或污水管的建造设计器时，已安装的同模式管件会按 4×4 连接图集画成半透明覆盖层：水管蓝色、污水管青绿色，补线与对齐时能直接看到现有走向；只在该设计器选中时显示，平时画面不变。
 - **便携安装包**：新增 `make-portable.ps1`，生成 `dist/ColonyKit-<version>-portable.zip`（内含 `install.bat`、`install.ps1` 与 `使用说明.txt`）；`install.bat` 只做 ASCII 启动器，安装逻辑在 `install.ps1`：自动定位 RimWorld（注册表 + Steam 库 VDF + 常见 GOG 路径，找不到时可拖入目录）、游戏运行时拒绝覆盖、把旧版备份为 `Mods/ColonyKit.bak-N`、检查 Harmony、提示外部 RimJobWorld 冲突，最后复制到 `Mods/ColonyKit`；成功信息绿色、错误红色、警告黄色。
 - **保姆机器人扩展（M6 二阶段）**：耐久 1000，只有受到伤害时损耗（约 250 点伤害报废；日常工作不磨损），0 时报废为 40 钢 + 3 零部件；新增殖民者「维修保姆机器人」工作（建造，400 tick 恢复 250 耐久）；维修期间机器人会中断充电/家务并原地等待，维修完成后才恢复充电。电量改为容量制（默认 4000W，可在设置页调整），充电阈值、加燃料阈值、工作半径/家区域/自定义区域全部可调。
