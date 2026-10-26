@@ -13,6 +13,7 @@
 
 ### Changed
 
+- **便携包内置 Harmony**：`make-portable.ps1` 从本机 Harmony 创意工坊目录把完整 Harmony Mod（About / 1.6 DLL / LICENSE）打进 zip；`install.ps1` 在 Mods 里没有 Harmony 时自动复制到 `Mods\Harmony`，已有则跳过；`使用说明.txt` 不再要求单独订阅 Harmony。
 - **立体库堆叠分层**：一级研究只提供全局物品堆叠（固定 ×10，不再乘设置页倍率）；二级/三级的 ×3/×2 改为只放大立体库内部每堆，不再修改全局 `ThingDef.stackLimit`，普通架子/储存区/地面堆不受影响。库内每堆上限 = 当前全局上限 × 3（二级）/ × 6（三级）。
 - **立体库设置页**：完成一级后隐藏堆叠倍率滑条并显示固定 ×10 提示；库面板/检视字符串显示当前库内堆叠倍率（模块关闭或 Stack XXL 共存时不显示）。
 - **更新说明规范**：`About/About.xml` 描述新增「最近更新（YYYY-MM-DD）：」小节，每次玩家可见更新写 3–6 条；旧内容留在 CHANGELOG，下一次替换该小节。规范同步到 `AGENTS.md` 与 README §2.4。
