@@ -5,7 +5,7 @@
 		<label>basin</label>
 		<description>DBH-style bathroom basin for washing hands. Requires water.</description>
 		<thingClass>ColonyKit.Modules.Hygiene.Building_Basin</thingClass>
-		<size>(2,2)</size>
+		<size>(1,1)</size>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_Basin</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
