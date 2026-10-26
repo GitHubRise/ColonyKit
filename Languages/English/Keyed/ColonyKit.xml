@@ -145,6 +145,11 @@
 	<CK.Hygiene.ConnectBedDesc>Link this fixture to a bed for private bathroom ownership.</CK.Hygiene.ConnectBedDesc>
 	<CK.Hygiene.Gender>Gender: {0}</CK.Hygiene.Gender>
 	<CK.Hygiene.GenderDesc>Toggle unisex/male/female.</CK.Hygiene.GenderDesc>
+	<CK.Hygiene.Gender.Unisex>unisex</CK.Hygiene.Gender.Unisex>
+	<CK.Hygiene.Gender.Male>male</CK.Hygiene.Gender.Male>
+	<CK.Hygiene.Gender.Female>female</CK.Hygiene.Gender.Female>
+	<CK.Hygiene.NoWaterSupply>No water supply</CK.Hygiene.NoWaterSupply>
+	<CK.Hygiene.NotEnoughWater>Not enough water</CK.Hygiene.NotEnoughWater>
 	<CK.Hygiene.OccupancyRestriction>Room occupancy restriction</CK.Hygiene.OccupancyRestriction>
 	<CK.Hygiene.OccupancyRestrictionDesc>When enabled, this fixture counts as occupied while anyone else is in the room.</CK.Hygiene.OccupancyRestrictionDesc>
 	<CK.Hygiene.AllowColonists>Allow colonists</CK.Hygiene.AllowColonists>

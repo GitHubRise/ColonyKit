@@ -62,7 +62,21 @@ namespace ColonyKit.Modules.Hygiene
 
 		public bool ForPrisoners => Position.IsInPrisonCell(Map);
 
-		public string GenderText => gender == Gender.None ? "Unisex".Translate() : gender.ToString();
+		public string GenderText
+		{
+			get
+			{
+				switch (gender)
+				{
+					case Gender.Male:
+						return "CK.Hygiene.Gender.Male".Translate();
+					case Gender.Female:
+						return "CK.Hygiene.Gender.Female".Translate();
+					default:
+						return "CK.Hygiene.Gender.Unisex".Translate();
+				}
+			}
+		}
 
 		public bool Occupied(Pawn checker)
 		{
@@ -237,13 +251,16 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return true;
 			}
-			if (pipe.pipeNet == null)
+			PlumbingNet net = pipe.pipeNet;
+			// 不要用 DBH 的 "Nowater"：本模组和原版都没有这个键，
+			// 开发者模式下会被伪本地化成 “Nòẅàṭèṟ” 这类乱码。
+			if (net == null || net.WaterTowers.Count == 0)
 			{
-				return "Nowater".Translate();
+				return "CK.Hygiene.NoWaterSupply".Translate();
 			}
-			if (WaterUsed != 0f && pipe.pipeNet.WaterStorage <= WaterUsed)
+			if (WaterUsed != 0f && net.WaterStorage <= WaterUsed)
 			{
-				return "Nowater".Translate();
+				return "CK.Hygiene.NotEnoughWater".Translate();
 			}
 			return true;
 		}

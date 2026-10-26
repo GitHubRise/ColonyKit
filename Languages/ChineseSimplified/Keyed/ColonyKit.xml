@@ -145,6 +145,11 @@
 	<CK.Hygiene.ConnectBedDesc>把该洁具连接到床铺，用于私人浴室归属。</CK.Hygiene.ConnectBedDesc>
 	<CK.Hygiene.Gender>性别: {0}</CK.Hygiene.Gender>
 	<CK.Hygiene.GenderDesc>切换共用/男/女。</CK.Hygiene.GenderDesc>
+	<CK.Hygiene.Gender.Unisex>共用</CK.Hygiene.Gender.Unisex>
+	<CK.Hygiene.Gender.Male>男</CK.Hygiene.Gender.Male>
+	<CK.Hygiene.Gender.Female>女</CK.Hygiene.Gender.Female>
+	<CK.Hygiene.NoWaterSupply>没有供水</CK.Hygiene.NoWaterSupply>
+	<CK.Hygiene.NotEnoughWater>水量不足</CK.Hygiene.NotEnoughWater>
 	<CK.Hygiene.OccupancyRestriction>房间占用限制</CK.Hygiene.OccupancyRestriction>
 	<CK.Hygiene.OccupancyRestrictionDesc>开启后，只要房间里有其他人，这个洁具就被视为占用，避免多人同时使用同一房间。</CK.Hygiene.OccupancyRestrictionDesc>
 	<CK.Hygiene.AllowColonists>允许殖民者</CK.Hygiene.AllowColonists>

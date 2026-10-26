@@ -49,7 +49,7 @@ namespace ColonyKit.Modules.Hygiene
 				}
 				string reason = fixture.HasWaterSupply
 					? fixture.Working().Reason.ToString()
-					: "Nowater".Translate().ToString();
+					: "CK.Hygiene.NoWaterSupply".Translate().ToString();
 				builder.AppendLine("  - " + fixture.LabelShort + ": " + reason);
 			}
 			return "CK.Hygiene.Alert.FixtureBlockedDesc".Translate(
