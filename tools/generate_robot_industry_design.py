@@ -681,7 +681,7 @@ dd { margin:0; font-size:12px; }
   <header>
     <p class="eyebrow">ColonyKit · Robotics Industry Design</p>
     <h1>机器人工厂 / 充电桩 / 维修机</h1>
-    <p class="sub">按“制造、充电、维修”三权分立设计的 5 种落地方案。工厂与维修机固定不可携带；充电桩可拆卸携带。每种方案都给出建筑拆分、节拍、材料、配重、实现映射和风险。</p>
+    <p class="sub">按“制造、充电、维修”三权分立设计的 5 种落地方案。工厂与维修机固定不可携带；充电桩可拆卸携带。每种方案都给出建筑拆分、节拍、材料、配重、实现映射和风险。<br><a href="robot-tech-tree.html" style="color:var(--teal)">→ 查看五级科技树与每级产物/材料</a></p>
     <div class="badges">
       <span>5 种方案</span><span>工厂固定</span><span>维修机固定</span><span>充电桩可携带</span><span>含材料 / 重心 / 稳定性</span>
     </div>

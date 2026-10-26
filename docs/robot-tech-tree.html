@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>机器人科技树 · 五级技术产物</title>
+<style>
+:root { color-scheme:dark; --bg:#0d1317; --panel:#151d22; --panel2:#1b252b; --line:#2c3d46; --text:#e9f3f2; --muted:#9cafb2; --teal:#66d2c9; --amber:#eab35f; --red:#e17b6b; --green:#8dcc91; }
+* { box-sizing:border-box; }
+body { margin:0; background:radial-gradient(900px 500px at 8% -10%, rgba(48,135,134,.22), transparent 65%), radial-gradient(700px 420px at 95% 4%, rgba(196,139,67,.17), transparent 70%), var(--bg); color:var(--text); font-family:"Segoe UI","Microsoft YaHei","PingFang SC",system-ui,sans-serif; }
+.wrap { max-width:1360px; margin:0 auto; padding:28px 22px 54px; }
+.eyebrow { margin:0 0 7px; color:var(--teal); font-size:11px; letter-spacing:.16em; text-transform:uppercase; }
+h1 { margin:0; font-size:clamp(28px,3.4vw,46px); letter-spacing:-.03em; }
+.sub { color:var(--muted); line-height:1.7; max-width:980px; margin:10px 0 0; }
+.banner { margin-top:14px; border:1px solid rgba(234,179,95,.38); background:rgba(234,179,95,.06); border-radius:12px; padding:12px 14px; color:var(--muted); font-size:12px; line-height:1.65; }
+.tree { display:flex; align-items:stretch; gap:8px; overflow-x:auto; padding:14px 12px; margin:18px 0 6px; border:1px solid var(--line); border-radius:16px; background:rgba(0,0,0,.16); }
+.tree-node { flex:1 0 168px; border:1px solid var(--line); background:var(--panel2); border-radius:12px; padding:11px 10px; color:var(--text); text-align:left; cursor:pointer; font:inherit; display:flex; flex-direction:column; gap:3px; }
+.tree-node:hover { border-color:var(--teal); transform:translateY(-1px); }
+.tree-node.active { border-color:var(--teal); background:rgba(102,210,201,.12); box-shadow:inset 0 0 0 1px rgba(102,210,201,.18); }
+.tree-id { color:var(--amber); font-size:11px; font-weight:800; letter-spacing:.08em; }
+.tree-name { font-size:14px; font-weight:700; }
+.tree-product { color:var(--teal); font-size:11px; }
+.tree-cost { color:var(--muted); font-size:10px; }
+.tree-arrow { align-self:center; color:var(--amber); font-weight:800; }
+.tabs { display:flex; gap:6px; flex-wrap:wrap; padding:8px; background:var(--panel); border:1px solid var(--line); border-radius:16px; margin-top:14px; }
+.tab { border:1px solid transparent; background:transparent; color:var(--muted); border-radius:10px; padding:9px 11px; display:flex; align-items:center; gap:7px; cursor:pointer; font:inherit; }
+.tab:hover { background:var(--panel2); color:var(--text); }
+.tab.active { border-color:var(--teal); background:var(--panel2); color:var(--text); }
+.tab-id { color:var(--amber); font-size:11px; font-weight:800; }
+.panel { display:none; margin-top:14px; background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:22px; }
+.panel.active { display:block; animation:fade .18s ease; }
+@keyframes fade { from { opacity:0; transform:translateY(4px); } to { opacity:1; transform:none; } }
+.tier-head { display:flex; justify-content:space-between; align-items:flex-start; gap:20px; }
+h2 { margin:0; font-size:clamp(24px,3vw,34px); letter-spacing:-.02em; }
+.lead { margin:9px 0 0; color:var(--muted); line-height:1.7; max-width:860px; }
+.tier-meta { flex:0 0 280px; border:1px solid var(--line); border-radius:12px; background:var(--panel2); padding:11px 12px; }
+.tier-meta div { display:flex; justify-content:space-between; gap:12px; padding:4px 0; border-bottom:1px solid rgba(80,110,120,.18); font-size:12px; }
+.tier-meta div:last-child { border-bottom:0; }
+.tier-meta span { color:var(--muted); }
+.tier-meta strong { text-align:right; font-weight:600; }
+.tier-columns { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:18px 0 6px; }
+h3 { margin:18px 0 9px; font-size:15px; color:var(--teal); }
+.new-list, .reuse-list { margin:0; padding-left:18px; color:var(--muted); font-size:12px; line-height:1.7; }
+.new-list li::marker { color:var(--green); }
+.reuse-list li::marker { color:var(--teal); }
+.robot-card { border:1px solid rgba(102,210,201,.35); background:linear-gradient(150deg,rgba(102,210,201,.08),rgba(0,0,0,.12)); border-radius:14px; padding:14px; }
+.robot-card h3 { margin:0 0 2px; color:var(--text); font-size:18px; }
+.role { margin:0 0 10px; color:var(--amber); font-size:12px; }
+.stats { border-collapse:collapse; width:100%; font-size:12px; }
+.stats th, .stats td { text-align:left; padding:5px 0; border-bottom:1px solid rgba(80,110,120,.18); }
+.stats th { color:var(--muted); font-weight:500; width:36%; }
+.special { margin:10px 0 0; color:var(--muted); font-size:12px; line-height:1.6; }
+.table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:12px; }
+.table-wrap table { min-width:900px; }
+table { border-collapse:collapse; width:100%; font-size:12px; }
+th, td { text-align:left; padding:9px 10px; border-bottom:1px solid rgba(80,110,120,.22); vertical-align:top; }
+th { color:var(--muted); font-weight:600; background:rgba(0,0,0,.16); white-space:nowrap; }
+tbody tr:hover { background:rgba(102,210,201,.045); }
+.delta { margin-top:14px; border:1px solid var(--line); border-radius:12px; padding:11px 13px; color:var(--muted); font-size:12px; line-height:1.7; }
+.delta strong { color:var(--text); }
+.summary { margin-top:18px; }
+.summary h3 { margin-top:0; }
+.note { margin-top:14px; border:1px solid rgba(234,179,95,.35); border-radius:12px; background:rgba(234,179,95,.06); padding:12px 14px; color:var(--muted); font-size:12px; line-height:1.65; }
+@media (max-width:900px) { .tier-head, .tier-columns { grid-template-columns:1fr; display:block; } .tier-meta { margin-top:12px; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">ColonyKit · Robotics Tech Tree</p>
+    <h1>机器人科技树 · 五级技术产物</h1>
+    <p class="sub">5 种工厂/充电/维修方案全部追加，不互斥；按 T1→T5 作为五个技术阶段。每个阶段有独立的机器人工厂、机器人等级、维修能力和材料表；旧阶段保留可建造，方便低科技基地和旧存档。</p>
+    <div class="banner"><strong>追加原则：</strong>不删除旧方案。T1 工坊式 → T2 单元式 → T3 流水线 → T4 现场保障 → T5 全自动；研究逐级前置，建筑和机器人按阶段解锁。可在设置里开启“只显示最高级建筑”减少建造菜单。<br><strong>旧存档兼容：</strong>现有 `CK_NannyBot` 研究映射为 T1；旧一体桩保留为 legacy，现有机器人按 Mk-I 处理，`homeStation` 迁移到 `homeCharger`。</div>
+  </header>
+
+  <div class="tree"><button class="tree-node" data-tech="T1" type="button"><span class="tree-id">T1</span><span class="tree-name">机械化工坊</span><span class="tree-product">MkI</span><span class="tree-cost">1,200 点</span></button><span class="tree-arrow">→</span><button class="tree-node" data-tech="T2" type="button"><span class="tree-id">T2</span><span class="tree-name">模块化单元</span><span class="tree-product">MkII</span><span class="tree-cost">2,000 点</span></button><span class="tree-arrow">→</span><button class="tree-node" data-tech="T3" type="button"><span class="tree-id">T3</span><span class="tree-name">流水线生产</span><span class="tree-product">MkIII</span><span class="tree-cost">3,200 点</span></button><span class="tree-arrow">→</span><button class="tree-node" data-tech="T4" type="button"><span class="tree-id">T4</span><span class="tree-name">现场保障</span><span class="tree-product">MkIV</span><span class="tree-cost">2,600 点</span></button><span class="tree-arrow">→</span><button class="tree-node" data-tech="T5" type="button"><span class="tree-id">T5</span><span class="tree-name">全自动柔性制造</span><span class="tree-product">MkV</span><span class="tree-cost">5,000 点</span></button></div>
+
+  <nav class="tabs" role="tablist" aria-label="科技阶段">
+    <button class="tab active" data-tab="T1" type="button"><span class="tab-id">T1</span><span>机械化工坊</span></button><button class="tab" data-tab="T2" type="button"><span class="tab-id">T2</span><span>模块化单元</span></button><button class="tab" data-tab="T3" type="button"><span class="tab-id">T3</span><span>流水线生产</span></button><button class="tab" data-tab="T4" type="button"><span class="tab-id">T4</span><span>现场保障</span></button><button class="tab" data-tab="T5" type="button"><span class="tab-id">T5</span><span>全自动柔性制造</span></button>
+  </nav>
+
+  
+    <section class="panel active" data-panel="T1">
+      <div class="tier-head">
+        <div>
+          <p class="eyebrow">T1 · 基础工坊式 · CK_RobotBasics · 机器人基础</p>
+          <h2>机械化工坊</h2>
+          <p class="lead">用一台 3×3 工坊完成总装；充电桩和维修机首次分家。机器人是标准 Mk-I，维修仍需要殖民者操作维修机。</p>
+        </div>
+        <div class="tier-meta">
+          <div><span>研究</span><strong>1,200 点</strong></div>
+          <div><span>前置</span><strong>机械加工（Machining）</strong></div>
+          <div><span>适用</span><strong>第一台机器人</strong></div>
+        </div>
+      </div>
+
+      <div class="tier-columns">
+        <div>
+          <h3>本阶段新增产物</h3>
+          <ul class="new-list"><li>3×3 机器人工厂（单账单，12,000 work）</li><li>1×1 可拆卸充电桩</li><li>2×2 手动维修机</li><li>Mk-I 标准保姆机器人</li></ul>
+          <h3>沿用上一阶段</h3>
+          <ul class="reuse-list"><li>无（本阶段首次引入）</li></ul>
+        </div>
+        <div class="robot-card">
+          <p class="eyebrow">本阶段机器人产物</p>
+          <h3>CK_NannyBot_MkI</h3>
+          <p class="role">标准保姆机</p>
+          <table class="stats">
+            <tr><th>耐久</th><td>1,000</td></tr>
+            <tr><th>电池</th><td>4,000 W·h（4.8 kWh）</td></tr>
+            <tr><th>整机质量</th><td>122 kg</td></tr>
+            <tr><th>载重</th><td>25 kg</td></tr>
+            <tr><th>移动</th><td>2.0</td></tr>
+            <tr><th>材料</th><td>70 / 6 / 1 / 2</td></tr>
+          </table>
+          <p class="special">三色胸灯、扫帚；维修需殖民者操作维修机。</p>
+        </div>
+      </div>
+
+      <h3>产物 / 材料 / 功率明细</h3>
+      <div class="table-wrap">
+        <table class="products">
+          <thead><tr><th>产物</th><th>类型</th><th>所需材料</th><th>工作 / 功率</th><th>说明</th></tr></thead>
+          <tbody><tr><td>CK_RobotFactory_T1</td><td>建筑 · 工厂</td><td>220 钢 + 8 零部件 + 2 高级零部件</td><td>12,000 work / 350–900 W</td><td>3×3，固定；总装 Mk-I。</td></tr><tr><td>CK_RobotCharger</td><td>建筑 · 充电桩</td><td>80 钢 + 2 零部件</td><td>50–4,000 W</td><td>1×1，`minifiedDef` 可携带；不存电。</td></tr><tr><td>CK_RobotRepairBay</td><td>建筑 · 维修机</td><td>180 钢 + 6 零部件 + 1 高级零部件</td><td>600 tick / 250 耐久</td><td>2×2，固定；殖民者操作。</td></tr><tr><td>CK_NannyBot_MkI</td><td>机器人 · Mk-I</td><td>70 钢 + 6 零部件 + 1 高级零部件 + 2 塑钢</td><td>4.8 kWh / 122 kg</td><td>标准型；25 kg 载重；1000 耐久。</td></tr></tbody>
+        </table>
+      </div>
+
+      <div class="delta"><strong>与上一级差异：</strong>与现有版本相比：工厂、充电、维修三栋建筑分开；机器人耐久/电量沿用当前数值。<br>
+        <strong>首台总投入（不含研究）：</strong>550 钢 / 22 零部件 / 4 高级零部件</div>
+    </section>
+    
+    <section class="panel" data-panel="T2">
+      <div class="tier-head">
+        <div>
+          <p class="eyebrow">T2 · 单元式 · CK_RobotModular · 模块化机器人</p>
+          <h2>模块化单元</h2>
+          <p class="lead">工厂升级为 4×3 两工位：骨架与总装分开。维修机升级为自动停靠，不再占用殖民者。</p>
+        </div>
+        <div class="tier-meta">
+          <div><span>研究</span><strong>2,000 点</strong></div>
+          <div><span>前置</span><strong>T1 + 精密装配（Fabrication）</strong></div>
+          <div><span>适用</span><strong>3–8 台机器人</strong></div>
+        </div>
+      </div>
+
+      <div class="tier-columns">
+        <div>
+          <h3>本阶段新增产物</h3>
+          <ul class="new-list"><li>4×3 两工位工厂（骨架 + 总装）</li><li>机器人骨架中间件（可备货）</li><li>自动停靠维修机</li><li>Mk-II 模块化保姆机器人</li></ul>
+          <h3>沿用上一阶段</h3>
+          <ul class="reuse-list"><li>T1 充电桩（继续沿用，可携带）</li></ul>
+        </div>
+        <div class="robot-card">
+          <p class="eyebrow">本阶段机器人产物</p>
+          <h3>CK_NannyBot_MkII</h3>
+          <p class="role">模块化保姆机</p>
+          <table class="stats">
+            <tr><th>耐久</th><td>1,250</td></tr>
+            <tr><th>电池</th><td>4,800 W·h（4.8 kWh）</td></tr>
+            <tr><th>整机质量</th><td>116 kg</td></tr>
+            <tr><th>载重</th><td>22 kg</td></tr>
+            <tr><th>移动</th><td>2.1</td></tr>
+            <tr><th>材料</th><td>64 / 7 / 1 / 4</td></tr>
+          </table>
+          <p class="special">骨架/总装分离；自动维修；维护性最好。</p>
+        </div>
+      </div>
+
+      <h3>产物 / 材料 / 功率明细</h3>
+      <div class="table-wrap">
+        <table class="products">
+          <thead><tr><th>产物</th><th>类型</th><th>所需材料</th><th>工作 / 功率</th><th>说明</th></tr></thead>
+          <tbody><tr><td>CK_RobotFactory_T2</td><td>建筑 · 工厂</td><td>260 钢 + 9 零部件 + 2 高级零部件</td><td>6,000 + 9,000 work / 450–1,100 W</td><td>4×3，固定；两条账单。</td></tr><tr><td>CK_RobotFrame</td><td>中间件 · 骨架</td><td>40 钢 + 3 零部件</td><td>6,000 work / 25 kg</td><td>可堆叠 10；骨架可提前备货。</td></tr><tr><td>CK_RobotRepairBay_Auto</td><td>建筑 · 维修机</td><td>180 钢 + 6 零部件 + 1 高级零部件</td><td>1,200 tick / 250 耐久 / 600 W</td><td>2×2，固定；机器人停靠自动维修。</td></tr><tr><td>CK_NannyBot_MkII</td><td>机器人 · Mk-II</td><td>64 钢 + 7 零部件 + 1 高级零部件 + 4 塑钢</td><td>4.8 kWh / 116 kg</td><td>模块型；22 kg 载重；1250 耐久。</td></tr></tbody>
+        </table>
+      </div>
+
+      <div class="delta"><strong>与上一级差异：</strong>比 T1：+250 耐久、+800 W 电池、+0.1 移速；维修从人工改为自动。<br>
+        <strong>首台总投入（不含研究）：</strong>584 钢 / 24 零部件 / 4 高级零部件</div>
+    </section>
+    
+    <section class="panel" data-panel="T3">
+      <div class="tier-head">
+        <div>
+          <p class="eyebrow">T3 · 流水线 · CK_RobotAssemblyLine · 流水线</p>
+          <h2>流水线生产</h2>
+          <p class="lead">拆成 2×2 骨架厂 + 4×2 总装线，骨架与总装可并行/备货。机器人升级为重载 Mk-III。</p>
+        </div>
+        <div class="tier-meta">
+          <div><span>研究</span><strong>3,200 点</strong></div>
+          <div><span>前置</span><strong>T2 + 精密装配（Fabrication）</strong></div>
+          <div><span>适用</span><strong>8+ 台机器人</strong></div>
+        </div>
+      </div>
+
+      <div class="tier-columns">
+        <div>
+          <h3>本阶段新增产物</h3>
+          <ul class="new-list"><li>2×2 骨架厂</li><li>4×2 总装线</li><li>重载维修机</li><li>Mk-III 重载保姆机器人</li></ul>
+          <h3>沿用上一阶段</h3>
+          <ul class="reuse-list"><li>T1/T2 充电桩</li><li>T2 自动维修逻辑（换到重载维修机）</li></ul>
+        </div>
+        <div class="robot-card">
+          <p class="eyebrow">本阶段机器人产物</p>
+          <h3>CK_NannyBot_MkIII</h3>
+          <p class="role">重载保姆机</p>
+          <table class="stats">
+            <tr><th>耐久</th><td>1,600</td></tr>
+            <tr><th>电池</th><td>6,400 W·h（6.4 kWh）</td></tr>
+            <tr><th>整机质量</th><td>146 kg</td></tr>
+            <tr><th>载重</th><td>35 kg</td></tr>
+            <tr><th>移动</th><td>1.8</td></tr>
+            <tr><th>材料</th><td>95 / 8 / 2 / 8</td></tr>
+          </table>
+          <p class="special">重载履带；适合搬运/屠宰/加燃料；速度略低。</p>
+        </div>
+      </div>
+
+      <h3>产物 / 材料 / 功率明细</h3>
+      <div class="table-wrap">
+        <table class="products">
+          <thead><tr><th>产物</th><th>类型</th><th>所需材料</th><th>工作 / 功率</th><th>说明</th></tr></thead>
+          <tbody><tr><td>CK_RobotFrameFab</td><td>建筑 · 骨架厂</td><td>140 钢 + 4 零部件 + 1 高级零部件</td><td>6,000 work / 500 W</td><td>2×2，固定；批量骨架。</td></tr><tr><td>CK_RobotAssemblyLine</td><td>建筑 · 总装线</td><td>240 钢 + 8 零部件 + 2 高级零部件</td><td>12,000 work / 1,300 W</td><td>4×2，固定；总装 Mk-III。</td></tr><tr><td>CK_RobotRepairBay_Heavy</td><td>建筑 · 维修机</td><td>220 钢 + 7 零部件 + 2 高级零部件</td><td>600 tick / 250 耐久 / 1,000 W</td><td>2×2，固定；殖民者操作。</td></tr><tr><td>CK_NannyBot_MkIII</td><td>机器人 · Mk-III</td><td>95 钢 + 8 零部件 + 2 高级零部件 + 8 塑钢</td><td>6.4 kWh / 146 kg</td><td>重载型；35 kg 载重；1600 耐久。</td></tr></tbody>
+        </table>
+      </div>
+
+      <div class="delta"><strong>与上一级差异：</strong>比 T2：+350 耐久、+1,600 W 电池、+13 kg 载重；-0.3 移速；两栋工厂占地更大。<br>
+        <strong>首台总投入（不含研究）：</strong>735 钢 / 28 零部件 / 6 高级零部件</div>
+    </section>
+    
+    <section class="panel" data-panel="T4">
+      <div class="tier-head">
+        <div>
+          <p class="eyebrow">T4 · 预制/现场 · CK_RobotFieldSupport · 现场保障</p>
+          <h2>现场保障</h2>
+          <p class="lead">不是单纯数值升级，而是系统集成特化：工厂回到 3×3 预制模式，充电桩做成更轻的现场型号；机器人变轻、变快，适合随队。</p>
+        </div>
+        <div class="tier-meta">
+          <div><span>研究</span><strong>2,600 点</strong></div>
+          <div><span>前置</span><strong>T3 + 微电子基础（MicroelectronicsBasics）</strong></div>
+          <div><span>适用</span><strong>多前哨 / 远征基地</strong></div>
+        </div>
+      </div>
+
+      <div class="tier-columns">
+        <div>
+          <h3>本阶段新增产物</h3>
+          <ul class="new-list"><li>3×3 预制工厂</li><li>轻量现场充电桩</li><li>现场维修机</li><li>Mk-IV 前哨保姆机器人</li></ul>
+          <h3>沿用上一阶段</h3>
+          <ul class="reuse-list"><li>T2 自动维修逻辑（可选）</li><li>T3 骨架中间件（可作为预制模块）</li></ul>
+        </div>
+        <div class="robot-card">
+          <p class="eyebrow">本阶段机器人产物</p>
+          <h3>CK_NannyBot_MkIV</h3>
+          <p class="role">前哨保姆机</p>
+          <table class="stats">
+            <tr><th>耐久</th><td>900</td></tr>
+            <tr><th>电池</th><td>3,600 W·h（3.6 kWh）</td></tr>
+            <tr><th>整机质量</th><td>96 kg</td></tr>
+            <tr><th>载重</th><td>18 kg</td></tr>
+            <tr><th>移动</th><td>2.4</td></tr>
+            <tr><th>材料</th><td>52 / 5 / 1 / 2</td></tr>
+          </table>
+          <p class="special">轻量、省电、移速最高；大修必须回主基地。</p>
+        </div>
+      </div>
+
+      <h3>产物 / 材料 / 功率明细</h3>
+      <div class="table-wrap">
+        <table class="products">
+          <thead><tr><th>产物</th><th>类型</th><th>所需材料</th><th>工作 / 功率</th><th>说明</th></tr></thead>
+          <tbody><tr><td>CK_RobotFactory_T4</td><td>建筑 · 工厂</td><td>200 钢 + 7 零部件 + 2 高级零部件</td><td>10,000 work / 300–800 W</td><td>3×3，固定；预制总装。</td></tr><tr><td>CK_RobotCharger_Light</td><td>建筑 · 充电桩</td><td>60 钢 + 2 零部件</td><td>50–4,000 W / 35 kg</td><td>1×1，可携带；比 T1 更便宜。</td></tr><tr><td>CK_RobotRepairBay_Field</td><td>建筑 · 维修机</td><td>180 钢 + 6 零部件 + 1 高级零部件</td><td>600 tick / 250 耐久 / 900 W</td><td>2×2，固定；殖民者操作；不提供野外维修。</td></tr><tr><td>CK_NannyBot_MkIV</td><td>机器人 · Mk-IV</td><td>52 钢 + 5 零部件 + 1 高级零部件 + 2 塑钢</td><td>3.6 kWh / 96 kg</td><td>轻量型；18 kg 载重；900 耐久。</td></tr></tbody>
+        </table>
+      </div>
+
+      <div class="delta"><strong>与上一级差异：</strong>比 T3：-700 耐久、-2,800 W 电池、-17 kg 载重；+0.6 移速；充电桩更便宜。<br>
+        <strong>首台总投入（不含研究）：</strong>552 钢 / 22 零部件 / 4 高级零部件</div>
+    </section>
+    
+    <section class="panel" data-panel="T5">
+      <div class="tier-head">
+        <div>
+          <p class="eyebrow">T5 · FMS · CK_RobotAutomation · 机器人自动化</p>
+          <h2>全自动柔性制造</h2>
+          <p class="lead">4×4 自动工厂 + 自动维修机，不需要殖民者。代价是 AI 核心、4 个高级零部件和 1.5 kW 级功率。</p>
+        </div>
+        <div class="tier-meta">
+          <div><span>研究</span><strong>5,000 点</strong></div>
+          <div><span>前置</span><strong>T4 + 精密装配（Fabrication）</strong></div>
+          <div><span>适用</span><strong>10+ 台机器人 / 后期</strong></div>
+        </div>
+      </div>
+
+      <div class="tier-columns">
+        <div>
+          <h3>本阶段新增产物</h3>
+          <ul class="new-list"><li>4×4 自动工厂</li><li>高速自动维修机</li><li>Mk-V 高配保姆机器人</li></ul>
+          <h3>沿用上一阶段</h3>
+          <ul class="reuse-list"><li>T1/T4 充电桩</li><li>T2 自动维修逻辑（升级版）</li></ul>
+        </div>
+        <div class="robot-card">
+          <p class="eyebrow">本阶段机器人产物</p>
+          <h3>CK_NannyBot_MkV</h3>
+          <p class="role">自维护型</p>
+          <table class="stats">
+            <tr><th>耐久</th><td>1,800</td></tr>
+            <tr><th>电池</th><td>6,000 W·h（6.0 kWh）</td></tr>
+            <tr><th>整机质量</th><td>130 kg</td></tr>
+            <tr><th>载重</th><td>30 kg</td></tr>
+            <tr><th>移动</th><td>2.0</td></tr>
+            <tr><th>材料</th><td>80 / 8 / 2 / 12</td></tr>
+          </table>
+          <p class="special">高配复合外壳；自动维修；后期旗舰。</p>
+        </div>
+      </div>
+
+      <h3>产物 / 材料 / 功率明细</h3>
+      <div class="table-wrap">
+        <table class="products">
+          <thead><tr><th>产物</th><th>类型</th><th>所需材料</th><th>工作 / 功率</th><th>说明</th></tr></thead>
+          <tbody><tr><td>CK_RobotAutofactory</td><td>建筑 · 工厂</td><td>420 钢 + 14 零部件 + 4 高级零部件 + 1 AI 核心</td><td>30,000 tick / 600–1,500 W</td><td>4×4，固定；无人自动生产。</td></tr><tr><td>CK_RobotRepairBay_AutoMkII</td><td>建筑 · 维修机</td><td>220 钢 + 8 零部件 + 2 高级零部件</td><td>800 tick / 250 耐久 / 1,500 W</td><td>2×2，固定；自动停靠维修。</td></tr><tr><td>CK_NannyBot_MkV</td><td>机器人 · Mk-V</td><td>80 钢 + 8 零部件 + 2 高级零部件 + 12 塑钢</td><td>6.0 kWh / 130 kg</td><td>高配型；30 kg 载重；1800 耐久。</td></tr><tr><td>CK_RobotCharger</td><td>建筑 · 充电桩</td><td>沿用 T1（80 钢 + 2 零部件）</td><td>50–4,000 W</td><td>可携带；自动分配最近空闲桩。</td></tr></tbody>
+        </table>
+      </div>
+
+      <div class="delta"><strong>与上一级差异：</strong>比 T4：+900 耐久、+2,400 W 电池、+12 kg 载重；-0.4 移速；工厂/维修全自动。<br>
+        <strong>首台总投入（不含研究）：</strong>760 钢 / 30 零部件 / 7 高级零部件 + AI 核心</div>
+    </section>
+    
+
+  <div class="summary">
+    <h3>五级横向总表</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>阶段</th><th>研究</th><th>研究点</th><th>机器人产物</th><th>耐久</th><th>电池</th><th>质量 / 载重</th><th>材料 钢/零件/高级/塑钢</th></tr></thead>
+        <tbody><tr><td><strong>T1</strong> 机械化工坊</td><td>CK_RobotBasics · 机器人基础</td><td>1,200</td><td>CK_NannyBot_MkI</td><td>1,000</td><td>4,000 W·h（4.8 kWh）</td><td>122 kg / 25 kg</td><td>70 / 6 / 1 / 2</td></tr><tr><td><strong>T2</strong> 模块化单元</td><td>CK_RobotModular · 模块化机器人</td><td>2,000</td><td>CK_NannyBot_MkII</td><td>1,250</td><td>4,800 W·h（4.8 kWh）</td><td>116 kg / 22 kg</td><td>64 / 7 / 1 / 4</td></tr><tr><td><strong>T3</strong> 流水线生产</td><td>CK_RobotAssemblyLine · 流水线</td><td>3,200</td><td>CK_NannyBot_MkIII</td><td>1,600</td><td>6,400 W·h（6.4 kWh）</td><td>146 kg / 35 kg</td><td>95 / 8 / 2 / 8</td></tr><tr><td><strong>T4</strong> 现场保障</td><td>CK_RobotFieldSupport · 现场保障</td><td>2,600</td><td>CK_NannyBot_MkIV</td><td>900</td><td>3,600 W·h（3.6 kWh）</td><td>96 kg / 18 kg</td><td>52 / 5 / 1 / 2</td></tr><tr><td><strong>T5</strong> 全自动柔性制造</td><td>CK_RobotAutomation · 机器人自动化</td><td>5,000</td><td>CK_NannyBot_MkV</td><td>1,800</td><td>6,000 W·h（6.0 kWh）</td><td>130 kg / 30 kg</td><td>80 / 8 / 2 / 12</td></tr></tbody>
+      </table>
+    </div>
+    <div class="note"><strong>研究总量：</strong>T1–T5 合计 14,000 研究点（不含前置的机械加工/精密装配/微电子基础）。<br><strong>材料口径：</strong>表中机器人物料为“新增产物”的直接材料，不含工厂/充电桩/维修机的一次性投入；首台总投入见各阶段页。质量与配重沿用工程口径：电池低置、载重 ≤ 整机 25%、倾覆角 ≥ 35°、接地压力 ≤ 10 kPa。</div>
+  </div>
+</div>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+const treeNodes = Array.from(document.querySelectorAll('.tree-node'));
+function show(id) {
+  tabs.forEach((tab) => tab.classList.toggle('active', tab.dataset.tab === id));
+  panels.forEach((panel) => panel.classList.toggle('active', panel.dataset.panel === id));
+  treeNodes.forEach((node) => node.classList.toggle('active', node.dataset.tech === id));
+}
+tabs.forEach((tab) => tab.addEventListener('click', () => show(tab.dataset.tab)));
+treeNodes.forEach((node) => node.addEventListener('click', () => show(node.dataset.tech)));
+document.addEventListener('keydown', (event) => {
+  const active = tabs.find((tab) => tab.classList.contains('active'));
+  const index = tabs.indexOf(active);
+  if (event.key === 'ArrowRight') show(tabs[(index + 1) % tabs.length].dataset.tab);
+  if (event.key === 'ArrowLeft') show(tabs[(index - 1 + tabs.length) % tabs.length].dataset.tab);
+});
+</script>
+
+</body>
+</html>
