@@ -68,8 +68,9 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		public override void PostDrawExtraSelectionOverlays()
 		{
 			base.PostDrawExtraSelectionOverlays();
-			// 选中任意水网物件（管、泵、井、热水器、洁具）时，把全图水箱的水位条一起亮出来。
+			// 选中任意水网物件（管、泵、井、热水器、洁具）时，把全图水箱水位条和热水罐水温条一起亮出来。
 			MapComp?.PipeComp?.RequestTankBars();
+			MapComp?.PipeComp?.RequestHeaterBars();
 		}
 
 		public override void PostSpawnSetup(bool respawningAfterLoad)
@@ -118,6 +119,9 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		/// <summary>选中水网物件或正在放水网建筑时为 true，下一次 OnGUI 把水箱水位条标记出来。</summary>
 		public bool MarkTowersForDraw;
 
+		/// <summary>同上，热水罐/热水器的红色水温条。</summary>
+		public bool MarkHeatingForDraw;
+
 		private bool dirty = true;
 
 		public HygienePipeMapComp(Map map) : base(map)
@@ -127,6 +131,11 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		public void RequestTankBars()
 		{
 			MarkTowersForDraw = true;
+		}
+
+		public void RequestHeaterBars()
+		{
+			MarkHeatingForDraw = true;
 		}
 
 		public override void FinalizeInit()
@@ -140,22 +149,36 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 			if (PipeDesignators.IsPlacing(PipeType.Water))
 			{
 				MarkTowersForDraw = true;
+				MarkHeatingForDraw = true;
 			}
-			if (!MarkTowersForDraw)
+			if (MarkTowersForDraw)
 			{
-				return;
-			}
-			foreach (PlumbingNet net in PipeNets)
-			{
-				foreach (CompWaterStorage tower in net.WaterTowers)
+				MarkTowersForDraw = false;
+				foreach (PlumbingNet net in PipeNets)
 				{
-					if (tower != null)
+					foreach (CompWaterStorage tower in net.WaterTowers)
 					{
-						tower.DrawOverlay = true;
+						if (tower != null)
+						{
+							tower.DrawOverlay = true;
+						}
 					}
 				}
 			}
-			MarkTowersForDraw = false;
+			if (MarkHeatingForDraw)
+			{
+				MarkHeatingForDraw = false;
+				foreach (PlumbingNet net in PipeNets)
+				{
+					foreach (CompHeatStore heatStore in net.HeatStores)
+					{
+						if (heatStore != null)
+						{
+							heatStore.DrawOverlay = true;
+						}
+					}
+				}
+			}
 		}
 
 		public override void MapComponentTick()

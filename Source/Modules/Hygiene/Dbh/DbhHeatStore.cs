@@ -21,8 +21,18 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 	/// DBH CompHeatStore 的移植：热水罐保存 0–1 的归一化水温，
 	/// 由管网 HeatingCap 决定目标温度，洗澡时按 tick 扣除。
 	/// </summary>
+	[StaticConstructorOnStartup]
 	public class CompHeatStore : ThingComp
 	{
+		public static readonly Vector2 BarSize = new Vector2(0.7f, 0.2f);
+
+		public static readonly Material HeatBarFilledMat = SolidColorMaterials.SimpleSolidColorMaterial(Color.red);
+
+		public static readonly Material BarUnfilledMat = SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.2f, 0.2f, 0.2f));
+
+		/// <summary>由 <see cref="HygienePipeMapComp"/> 在选中水网设施或铺水网时置位，画完即复位。</summary>
+		public bool DrawOverlay;
+
 		private CompFlickable flicker;
 		private CompPipe pipeComp;
 		private float heaterTempInt;
@@ -76,6 +86,33 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		public override string CompInspectStringExtra()
 		{
 			return "CK.Hygiene.HotWaterTemp".Translate((heaterTempInt * 100f).ToString("0"));
+		}
+
+		public override void PostDrawExtraSelectionOverlays()
+		{
+			base.PostDrawExtraSelectionOverlays();
+			// 和 DBH 一样：选中任意水网物件时，把全图热水罐/热水器的水温条一起亮出来。
+			parent.Map?.GetComponent<HygienePipeMapComp>()?.RequestHeaterBars();
+		}
+
+		public override void PostDraw()
+		{
+			base.PostDraw();
+			if (!DrawOverlay)
+			{
+				return;
+			}
+			GenDraw.DrawFillableBar(new GenDraw.FillableBarRequest
+			{
+				center = parent.DrawPos + Vector3.up * 0.1f,
+				size = BarSize,
+				fillPercent = heaterTempInt,
+				filledMat = HeatBarFilledMat,
+				unfilledMat = BarUnfilledMat,
+				margin = 0.05f,
+				rotation = Rot4.East
+			});
+			DrawOverlay = false;
 		}
 	}
 }

@@ -31,6 +31,7 @@
 
 ### Added
 
+- **热水罐/热水器红色水温条**：`CompHeatStore` 补回 DBH 的水温进度条，用 `GenDraw.DrawFillableBar` 画红色条（深灰底），填充值就是 0–100% 的归一化水温（`HeaterTemp`），温度从 0 升到 100% 时条会填满；和蓝色水位条同一套触发条件：选中任意带 `CompPipe` 的水网物件或正在放水网建筑时，全图热水罐/热水器一起显示。
 - **水箱蓝色水位条**：迁移时丢了 DBH 的水箱进度条。`CompWaterStorage` 现在在 `PostDraw` 里用 `GenDraw.DrawFillableBar` 画青色水位条（深灰底），填充比例是当前水量/容量；选中任意带 `CompPipe` 的水网物件（水箱、水泵、水井、热水器、管道、洁具）或正在放水网建筑时，全图水箱一起显示，和 DBH 一致。
 - **铺管覆盖层**：新增 `Source/Modules/Hygiene/PipeOverlay.cs`（`SectionLayer_WaterPipeOverlay` / `SectionLayer_SewagePipeOverlay`）。选中水管或污水管的建造设计器时，已安装的同模式管件会按 4×4 连接图集画成半透明覆盖层：水管蓝色、污水管青绿色，补线与对齐时能直接看到现有走向；只在该设计器选中时显示，平时画面不变。
 - **便携安装包**：新增 `make-portable.ps1`，生成 `dist/ColonyKit-<version>-portable.zip`（内含 `install.bat`、`install.ps1` 与 `使用说明.txt`）；`install.bat` 只做 ASCII 启动器，安装逻辑在 `install.ps1`：自动定位 RimWorld（注册表 + Steam 库 VDF + 常见 GOG 路径，找不到时可拖入目录）、游戏运行时拒绝覆盖、把旧版备份为 `Mods/ColonyKit.bak-N`、检查 Harmony、提示外部 RimJobWorld 冲突，最后复制到 `Mods/ColonyKit`；成功信息绿色、错误红色、警告黄色。
