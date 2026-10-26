@@ -233,7 +233,8 @@ def top_factory(d, cx, cy, kind):
     if kind == "two-station":
         w, h = 280, 210
     elif kind == "auto":
-        w, h = 280, 280
+        # 2 wide x 6 deep, drawn with a 40 px cell so it fits the cell height
+        w, h = 80, 240
     elif kind == "frame":
         w, h = 140, 140
     else:
@@ -277,16 +278,31 @@ def top_factory(d, cx, cy, kind):
             d.text((x + 10, y + 24), f"M{i+1}", font=F_TINY, fill=TEXT if i != 2 else DARK2)
         line(d, [(x2 - 12, y2 - 20), (x2 - 12, y1 + 10), (x1 + 50, y1 + 10)], OUTLINE, 4)
     else:
-        # auto factory: dark roof, vents, central core, twin arms
-        rr(d, (x1 + 18, y1 + 20, x2 - 18, y2 - 26), 6, DARK2, OUTLINE, 1)
-        for i in range(4):
-            d.rectangle((x1 + 32, y1 + 34 + i * 18, x2 - 32, y1 + 40 + i * 18), fill=(24, 83, 96, 255), outline=OUTLINE, width=1)
-        ellipse(d, (cx - 24, cy - 24, cx + 24, cy + 24), (25, 58, 70, 255), OUTLINE, 1)
-        ellipse(d, (cx - 11, cy - 11, cx + 11, cy + 11), CYAN, None)
+        # 2x6 unmanned factory: narrow long hall, six roof modules, side service arms
+        rr(d, (x1 + 10, y1 + 16, x2 - 10, y2 - 24), 6, DARK2, OUTLINE, 1)
+        # 2 x 6 footprint grid
+        for i in range(1, 6):
+            d.line((x1 + 10, y1 + 16 + i * 40, x2 - 10, y1 + 16 + i * 40),
+                   fill=(38, 58, 66, 160), width=1)
+        d.line((cx, y1 + 16, cx, y2 - 24), fill=(38, 58, 66, 160), width=1)
+        # six roof modules / skylights
+        for i in range(6):
+            yy = y1 + 26 + i * 38
+            d.rectangle((cx - 26, yy, cx + 26, yy + 12), fill=(24, 83, 96, 255),
+                        outline=OUTLINE, width=1)
+            d.rectangle((cx - 20, yy + 3, cx + 20, yy + 5), fill=CYAN_DIM)
+        # central core and short radial arms
+        ellipse(d, (cx - 18, cy - 28, cx + 18, cy + 28), (25, 58, 70, 255), OUTLINE, 1)
+        ellipse(d, (cx - 8, cy - 14, cx + 8, cy + 14), CYAN, None)
         for side in (-1, 1):
-            line(d, [(cx + side * 82, cy + 46), (cx + side * 36, cy + 14), (cx + side * 18, cy - 8)], OUTLINE, 4)
-            line(d, [(cx + side * 82, cy + 46), (cx + side * 36, cy + 14), (cx + side * 18, cy - 8)], STEEL_LIGHT, 2)
-        d.text((cx - 46, y2 - 26), "UNMANNED / 24H", font=F_TINY, fill=CYAN)
+            line(d, [(cx + side * 34, cy + 32), (cx + side * 22, cy + 8), (cx + side * 10, cy - 8)], OUTLINE, 4)
+            line(d, [(cx + side * 34, cy + 32), (cx + side * 22, cy + 8), (cx + side * 10, cy - 8)], STEEL_LIGHT, 2)
+            ellipse(d, (cx + side * 10 - 4, cy - 12, cx + side * 10 + 4, cy - 4), AMBER, OUTLINE, 1)
+        # south office / control box
+        rr(d, (cx - 26, y2 - 54, cx + 26, y2 - 28), 4, PANEL, OUTLINE, 1)
+        d.rectangle((cx - 18, y2 - 47, cx + 2, y2 - 41), fill=CYAN)
+        d.rectangle((cx - 18, y2 - 37, cx - 2, y2 - 33), fill=GREEN)
+        d.text((cx - 30, y2 - 22), "AUTO / 24H", font=F_TINY, fill=CYAN)
 
 
 def top_module(d, cx, cy, kind):
@@ -371,7 +387,7 @@ def main():
             (12, "两工位工厂", "4×3 · TWO-STATION", lambda d, x, y: top_factory(d, x, y, "two-station")),
             (13, "骨架厂", "2×2 · FRAME", lambda d, x, y: top_factory(d, x, y, "frame")),
             (14, "预制工厂", "3×3 · PREFAB", lambda d, x, y: top_factory(d, x, y, "prefab")),
-            (15, "无人自动工厂", "4×4 · UNMANNED", lambda d, x, y: top_factory(d, x, y, "auto")),
+            (15, "无人自动工厂", "2×6 · UNMANNED", lambda d, x, y: top_factory(d, x, y, "auto")),
         ]),
         ("自卫模块 / DEFENSE MODULES", [
             (16, "电弧焊枪", "MODULE · WELDER", lambda d, x, y: top_module(d, x, y, "welder")),
