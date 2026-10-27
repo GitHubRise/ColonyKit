@@ -6,7 +6,7 @@
 	<CK.Robotics.MkVCombat.Status.Engaged>engaged</CK.Robotics.MkVCombat.Status.Engaged>
 	<CK.Robotics.MkVCombat.Status.Returning>returning</CK.Robotics.MkVCombat.Status.Returning>
 	<CK.Robotics.MkVCombat.Status.Idle>idle</CK.Robotics.MkVCombat.Status.Idle>
-	<CK.Robotics.MkVCombat.Inspect>Weapon: {0} · Combat: {1}</CK.Robotics.MkVCombat.Inspect>
+	<CK.Robotics.MkVCombat.Inspect>Weapon · Combat: {1}</CK.Robotics.MkVCombat.Inspect>
 	<CK.Robotics.MkVCombat.Target>Target: {0}</CK.Robotics.MkVCombat.Target>
 	<CK.Robotics.MkVCombat.Range>Engage range: {0} cells · return distance: {1} cells</CK.Robotics.MkVCombat.Range>
 	<CK.Robotics.Inspect.LowPowerStandby>Low-power standby: charging conversion ×1.2</CK.Robotics.Inspect.LowPowerStandby>
@@ -25,18 +25,20 @@
 	<CK.Robotics.Overview.Hearing>Hearing</CK.Robotics.Overview.Hearing>
 	<CK.Robotics.Overview.Filtration>Fluid filtration</CK.Robotics.Overview.Filtration>
 	<CK.Robotics.Overview.Power>Power supply</CK.Robotics.Overview.Power>
-	<CK.Robotics.RobotInfo.Name>Name: {0}</CK.Robotics.RobotInfo.Name>
-	<CK.Robotics.RobotInfo.Kind>Model: {0}</CK.Robotics.RobotInfo.Kind>
-	<CK.Robotics.RobotInfo.Age>Age: {0} years</CK.Robotics.RobotInfo.Age>
-	<CK.Robotics.RobotInfo.BirthYear>Born: {0}</CK.Robotics.RobotInfo.BirthYear>
-	<CK.Robotics.RobotInfo.Faction>Faction: {0}</CK.Robotics.RobotInfo.Faction>
-	<CK.Robotics.RobotInfo.Durability>Durability: {0} / {1}</CK.Robotics.RobotInfo.Durability>
-	<CK.Robotics.RobotInfo.Energy>Energy: {0}</CK.Robotics.RobotInfo.Energy>
+	<CK.Robotics.RobotInfo.Name>Name</CK.Robotics.RobotInfo.Name>
+	<CK.Robotics.RobotInfo.Kind>Model</CK.Robotics.RobotInfo.Kind>
+	<CK.Robotics.RobotInfo.Age>Age</CK.Robotics.RobotInfo.Age>
+	<CK.Robotics.RobotInfo.AgeValue>{0} years</CK.Robotics.RobotInfo.AgeValue>
+	<CK.Robotics.RobotInfo.BirthYear>Born</CK.Robotics.RobotInfo.BirthYear>
+	<CK.Robotics.RobotInfo.BirthYearValue>{0}</CK.Robotics.RobotInfo.BirthYearValue>
+	<CK.Robotics.RobotInfo.Faction>Faction</CK.Robotics.RobotInfo.Faction>
+	<CK.Robotics.RobotInfo.Durability>Durability</CK.Robotics.RobotInfo.Durability>
+	<CK.Robotics.RobotInfo.Energy>Energy</CK.Robotics.RobotInfo.Energy>
 	<CK.Robotics.RobotInfo.Weapon>Weapon: {0}</CK.Robotics.RobotInfo.Weapon>
-	<CK.Robotics.RobotInfo.Melee>Melee: {0}</CK.Robotics.RobotInfo.Melee>
+	<CK.Robotics.RobotInfo.Melee>Melee</CK.Robotics.RobotInfo.Melee>
 	<CK.Robotics.ArcBlade>arc blade</CK.Robotics.ArcBlade>
-	<CK.Robotics.RobotInfo.Combat>Combat: {0}</CK.Robotics.RobotInfo.Combat>
-	<CK.Robotics.RobotInfo.Task>Current task: {0}</CK.Robotics.RobotInfo.Task>
+	<CK.Robotics.RobotInfo.Combat>Combat</CK.Robotics.RobotInfo.Combat>
+	<CK.Robotics.RobotInfo.Task>Current task</CK.Robotics.RobotInfo.Task>
 	<CK.Robotics.Command.Draft>Draft</CK.Robotics.Command.Draft>
 	<CK.Robotics.Command.Undraft>Undraft</CK.Robotics.Command.Undraft>
 	<CK.Robotics.Command.Draft.Desc>Put the Mk-V into the drafted state for manual movement and attacks; click again to release.</CK.Robotics.Command.Draft.Desc>

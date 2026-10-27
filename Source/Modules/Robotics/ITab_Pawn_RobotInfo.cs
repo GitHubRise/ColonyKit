@@ -38,9 +38,11 @@ namespace ColonyKit.Modules.Robotics
 			DrawRow(ref y, "CK.Robotics.RobotInfo.Name".Translate(), pawn.LabelShort);
 			DrawRow(ref y, "CK.Robotics.RobotInfo.Kind".Translate(), pawn.kindDef?.LabelCap ?? pawn.def.LabelCap);
 			DrawRow(ref y, "CK.Robotics.RobotInfo.Age".Translate(),
-				pawn.ageTracker == null ? "-" : pawn.ageTracker.AgeBiologicalYears.ToString());
+				pawn.ageTracker == null ? "-" : "CK.Robotics.RobotInfo.AgeValue".Translate(
+					pawn.ageTracker.AgeBiologicalYears));
 			DrawRow(ref y, "CK.Robotics.RobotInfo.BirthYear".Translate(),
-				pawn.ageTracker == null ? "-" : pawn.ageTracker.BirthYear.ToString());
+				pawn.ageTracker == null ? "-" : "CK.Robotics.RobotInfo.BirthYearValue".Translate(
+					pawn.ageTracker.BirthYear));
 			DrawRow(ref y, "CK.Robotics.RobotInfo.Faction".Translate(), pawn.Faction?.Name ?? "-");
 			DrawRow(ref y, "CK.Robotics.RobotInfo.Durability".Translate(),
 				(comp?.Durability ?? 0f).ToString("0") + " / "
