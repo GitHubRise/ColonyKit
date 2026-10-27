@@ -7,6 +7,7 @@
 		<description>Stores hot water for showers and baths. Connect it to a water heater; more tanks lower the network's target temperature, so pair them with enough heating capacity.</description>
 		<thingClass>Building</thingClass>
 		<size>(1,1)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<tickerType>Normal</tickerType>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_WaterTank</texPath>

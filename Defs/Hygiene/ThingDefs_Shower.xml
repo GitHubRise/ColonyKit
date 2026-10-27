@@ -49,12 +49,12 @@
 		<label>power shower</label>
 		<description>DBH power shower: heats water on demand, cleans twice as fast, uses more water.</description>
 		<thingClass>ColonyKit.Modules.Hygiene.Building_PowerShower</thingClass>
-		<size>(2,2)</size>
+		<size>(1,1)</size>
 		<tickerType>Rare</tickerType>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_ShowerPower</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(2,2)</drawSize>
+			<drawSize>(1,1)</drawSize>
 			<shaderType>CutoutComplex</shaderType>
 		</graphicData>
 		<rotatable>true</rotatable>

@@ -90,7 +90,9 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		public override void PostDraw()
 		{
 			base.PostDraw();
-			if (!DrawOverlay)
+			// 选中水箱本身时也画：MapComponentOnGUI 的 DrawOverlay 只覆盖“选中管网/铺管”的路径，
+			// 这里再兜一层，避免 OnGUI 与地图绘制的先后顺序让选中的箱子看不到条。
+			if (!DrawOverlay && !(Find.Selector != null && Find.Selector.IsSelected(parent)))
 			{
 				return;
 			}

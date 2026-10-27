@@ -98,7 +98,8 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		public override void PostDraw()
 		{
 			base.PostDraw();
-			if (!DrawOverlay)
+			// 同 CompWaterStorage：选中热水罐/热水器本身时也画，不依赖 OnGUI 的置位。
+			if (!DrawOverlay && !(Find.Selector != null && Find.Selector.IsSelected(parent)))
 			{
 				return;
 			}

@@ -68,6 +68,9 @@
 		<description>Stores water for plumbed fixtures. Capacity: 2000 L.</description>
 		<thingClass>Building</thingClass>
 		<size>(1,1)</size>
+		<!-- 水位条在 CompWaterStorage.PostDraw 里画；MapMeshOnly 的建筑不参与动态绘制，
+		     PostDraw 永远不执行（DBH 的 BasedHygieneMom 也用 MapMeshAndRealTime）。 -->
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_WaterTank</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -109,6 +112,7 @@
 		<description>Stores a large amount of water for plumbed fixtures. Capacity: 8000 L.</description>
 		<thingClass>Building</thingClass>
 		<size>(2,2)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_WaterTankGiant</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -232,6 +236,7 @@
 		<description>Heats water for connected showers and has a small built-in hot water tank. Add hot water tanks for more hot water; requires power.</description>
 		<thingClass>Building</thingClass>
 		<size>(1,1)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_WaterHeater</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

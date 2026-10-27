@@ -65,6 +65,11 @@
 				<rect>(0,0.35,1,0.3)</rect>
 			</damageData>
 		</graphicData>
+		<!-- 连管图集的 graphicData.Linked 为 true；原版 GhostUtility 会直接拿
+		     uiIconPath 生成放置虚影，没有 uiIconPath 就会用 null 路径查
+		     ContentFinder，选中污水管设计器时每帧抛 ArgumentNullException。 -->
+		<uiIconPath>Things/Building/Hygiene/CK_WaterPipe_MenuIcon</uiIconPath>
+		<uiIconScale>0.7</uiIconScale>
 		<building>
 			<ai_chillDestination>false</ai_chillDestination>
 			<isInert>true</isInert>
