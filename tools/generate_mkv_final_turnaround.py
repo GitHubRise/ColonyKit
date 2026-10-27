@@ -6,7 +6,7 @@ import os
 
 import cv2
 import numpy as np
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageOps
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAWNS = os.path.join(ROOT, "docs", "robot-textures", "pawns")
@@ -188,7 +188,8 @@ def main():
     east = canvas_from(ImageOps.mirror(side))
     top_canvas = canvas_from(top)
 
-    for key, img, raw in (("south", south, front), ("north", north, back), ("east", east, side),
+    for key, img, raw in (("south", south, front), ("north", north, back),
+                          ("east", east, ImageOps.mirror(side)),
                           ("west", west, side), ("top", top_canvas, top)):
         img.save(os.path.join(PAWNS, f"MkV_{key}_512.png"))
         sprite_from(raw).save(os.path.join(PAWNS, f"MkV_{key}_128.png"))
@@ -198,5 +199,4 @@ def main():
 
 
 if __name__ == "__main__":
-    from PIL import ImageOps
     main()

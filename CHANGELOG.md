@@ -6,6 +6,11 @@
 
 ### Fixed
 
+- **Mk-V 东/西贴图方向**：MkV_east.png 之前与 MkV_west.png 完全相同，都是朝左的侧身；现改为 MkV_west.png 的水平镜像，东向朝右、西向朝左。	ools/generate_mkv_final_turnaround.py 的 128px 输出也改为镜像东向，避免重新生成时回退。
+
+
+### Fixed
+
 - **点污水管设计器每帧红字**：`CK_SewagePipe` 是 `Graphic_Single` + `linkType=Basic` 的连管图，原版 `GhostUtility.GhostGraphicFor` 对 `graphicData.Linked` 会直接拿 `uiIconPath` 生成放置虚影；污水管没写 `uiIconPath`，于是用 null 路径查 `ContentFinder`，每帧抛 `ArgumentNullException: Parameter name: key`（`UIRootUpdate` → `Designator_Place.DrawGhost`）。补上 `uiIconPath`（复用清水管菜单图标，菜单里再按 Def 颜色染成淡橄榄绿），水管本来就有 `uiIconPath`，不受影响。
 - **水箱、热水罐、热水器的水位条/水温条都不显示**：这些 Def 没写 `drawerType`，继承 Core `BuildingBase` 的 `MapMeshOnly`，建筑不参与动态绘制，`CompWaterStorage.PostDraw` / `CompHeatStore.PostDraw` 从来没被调用（探针计数器 `water=0/0 heat=0/0`）。按 DBH 的 `BasedHygieneMom` 给水箱、巨型水箱、热水器、热水罐补 `MapMeshAndRealTime`；另外选中水箱/热水罐本身时也直接画条，不再只依赖 `MapComponentOnGUI` 置 `DrawOverlay`。
 - **电热水淋浴器占位 2×2**：`CK_ShowerPower` 的 `size` 和 `drawSize` 都写成 (2,2)，而贴图是 128×128（1 格）。改为 1×1，与简易淋浴器一致。
