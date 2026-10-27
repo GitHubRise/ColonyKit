@@ -179,6 +179,16 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<CK.Hygiene.BathHot>Water: hot</CK.Hygiene.BathHot>
 	<CK.Hygiene.BathCold>Water: cold</CK.Hygiene.BathCold>
 	<CK.Hygiene.BathOccupants>Bathers: {0}/{1}</CK.Hygiene.BathOccupants>
+	<CK.Hygiene.FloatMenu.UseToilet>Use toilet</CK.Hygiene.FloatMenu.UseToilet>
+	<CK.Hygiene.FloatMenu.WashHands>Wash hands</CK.Hygiene.FloatMenu.WashHands>
+	<CK.Hygiene.FloatMenu.Shower>Take shower</CK.Hygiene.FloatMenu.Shower>
+	<CK.Hygiene.FloatMenu.Bath>Take bath</CK.Hygiene.FloatMenu.Bath>
+	<CK.Hygiene.FloatMenu.DrawWater>Draw water</CK.Hygiene.FloatMenu.DrawWater>
+	<CK.Hygiene.FloatMenu.Unblock>Unblock</CK.Hygiene.FloatMenu.Unblock>
+	<CK.Hygiene.FloatMenu.Clean>Clean</CK.Hygiene.FloatMenu.Clean>
+	<CK.Hygiene.FloatMenu.Disabled>({0})</CK.Hygiene.FloatMenu.Disabled>
+	<CK.Hygiene.FloatMenu.CannotUse>Cannot use right now</CK.Hygiene.FloatMenu.CannotUse>
+	<CK.Hygiene.FloatMenu.NoWaterTank>No water tank with free space</CK.Hygiene.FloatMenu.NoWaterTank>
 	<ColonyKit.Module.Hygiene.Name>Shower</ColonyKit.Module.Hygiene.Name>
 	<ColonyKit.Module.Hygiene.Desc>Hygiene need, shower and hot water; based on DBH.</ColonyKit.Module.Hygiene.Desc>
 	<ColonyKit.Module.Storage.Name>Warehouse / stacking</ColonyKit.Module.Storage.Name>

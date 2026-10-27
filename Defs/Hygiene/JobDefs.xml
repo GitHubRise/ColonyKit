@@ -43,4 +43,10 @@
 		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_EmptySepticTank</driverClass>
 		<reportString>emptying septic tank.</reportString>
 	</JobDef>
+	<JobDef>
+		<defName>CK_DrawWater</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_DrawWater</driverClass>
+		<reportString>drawing water.</reportString>
+		<casualInterruptible>true</casualInterruptible>
+	</JobDef>
 </Defs>
