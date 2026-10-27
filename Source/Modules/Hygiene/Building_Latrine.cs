@@ -1,4 +1,3 @@
-using ColonyKit.Modules.Hygiene.Dbh;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -6,10 +5,9 @@ using Verse;
 namespace ColonyKit.Modules.Hygiene
 {
 	/// <summary>
-	/// DBH Building_Latrine 的完整移植（含逻辑与数值）：
-	/// 没接污水网时是干厕所，每次使用把 14 堆进坑里，坑满 500 后必须清空（清出粪渣）；
-	/// 一旦水网与污水网都接通、且网上有没堵的化粪池/污水处理设施，就按 DBH 的规则
-	/// 当冲水厕所用：先 PushSewage（连坑里存货一起推）成功，才抽 14 的水。
+	/// DBH Building_Latrine 的移植：纯旱厕，不接水管也不接污水管，
+	/// 每次使用把 14 堆进坑里，坑满 500 后必须由殖民者清空（清出粪渣）才能继续用。
+	/// 和马桶/浴缸那种「自带水管 + 污水管」的洁具不同，旱厕完全靠人处理。
 	///
 	/// 继承 Building_Toilet 是为了复用选点、使用流程、告警与浴室房间判定的既有逻辑。
 	/// </summary>
@@ -23,14 +21,12 @@ namespace ColonyKit.Modules.Hygiene
 
 		public float sewage;
 
-		private CompPipe sewagePipe;
-
 		public override FixtureQuality Quality => FixtureQuality.shabby;
 
-		/// <summary>坑里每多一次使用就多 14；接上污水网后这 14 同时也是冲水量。</summary>
-		public override float waterUsed => SewagePerUse * HygieneSettings.Current.waterUseMultiplier;
+		/// <summary>旱厕不消耗水。</summary>
+		public override float waterUsed => 0f;
 
-		/// <summary>旱厕本身不依赖供水；接网后由 Working() 里的 base 检查水网。</summary>
+		/// <summary>没有水管也算「有水」：旱厕不参与水网检查。</summary>
 		public override bool HasWaterSupply => true;
 
 		public override bool PowerRequiredToUse => false;
@@ -42,80 +38,21 @@ namespace ColonyKit.Modules.Hygiene
 
 		public float PitFillPercent => Mathf.Clamp01(sewage / SewageLimit);
 
-		public CompPipe SewagePipe
-		{
-			get
-			{
-				if (sewagePipe == null)
-				{
-					foreach (CompPipe candidate in GetComps<CompPipe>())
-					{
-						if (candidate.mode == PipeType.Sewage)
-						{
-							sewagePipe = candidate;
-							break;
-						}
-					}
-				}
-				return sewagePipe;
-			}
-		}
-
-		/// <summary>水管与污水管都接通，且污水网上有可用设施：按 DBH 当冲水厕所。</summary>
-		public bool Plumbed
-		{
-			get
-			{
-				PlumbingNet waterNet = pipe?.pipeNet;
-				PlumbingNet sewageNet = SewagePipe?.pipeNet;
-				if (waterNet == null || sewageNet == null)
-				{
-					return false;
-				}
-				for (int i = 0; i < sewageNet.Sewers.Count; i++)
-				{
-					CompSewageHandler sewer = sewageNet.Sewers[i];
-					if (sewer != null && !sewer.Blocked)
-					{
-						return true;
-					}
-				}
-				return false;
-			}
-		}
-
 		public override AcceptanceReport Working(float WaterUsed = 0f)
 		{
-			if (Plumbed)
-			{
-				return base.Working(WaterUsed);
-			}
-			// 没接污水网：干厕所，只看粪坑还装不装得下。
+			// 只看粪坑还装不装得下；没有水网/电网参与。
 			return PitFull ? "CK.Hygiene.PitFull".Translate() : AcceptanceReport.WasAccepted;
 		}
 
+		/// <summary>盖一次坑。返回 false 表示坑已满，本次使用无效。</summary>
 		public override bool TryUseFlush()
 		{
-			if (!Plumbed)
-			{
-				if (PitFull)
-				{
-					return false;
-				}
-				sewage = Mathf.Min(sewage + waterUsed, SewageLimit);
-				return true;
-			}
-
-			// DBH 的顺序：先把坑里的存货和这次的一起推给污水网，推成功才算这次使用，
-			// 然后再抽水；抽不到水时污水已经走了，和原版行为一致。
-			float load = Mathf.Min(sewage + waterUsed, SewageLimit);
-			CompPipe sewer = SewagePipe;
-			if (sewer?.pipeNet == null || !sewer.pipeNet.PushSewage(load))
+			if (PitFull)
 			{
 				return false;
 			}
-			sewage = 0f;
-			return pipe.pipeNet.PullWater(waterUsed, out _);
+			sewage = Mathf.Min(sewage + SewagePerUse, SewageLimit);
+			return true;
 		}
 
 		/// <summary>清空作业完工时调用；清到 0 时顺手把浮点残渣抹平。</summary>
@@ -139,19 +76,17 @@ namespace ColonyKit.Modules.Hygiene
 		public override string GetInspectString()
 		{
 			string text = base.GetInspectString();
-			// 坑满且没接网时 base 已经写了「粪坑已满」，不再重复。
-			if (!Spawned || (PitFull && !Plumbed))
+			// 坑满时 base 已经把 Working() 的理由（坑满）写进去了，不再重复一行。
+			if (!Spawned || PitFull)
 			{
 				return text;
 			}
-			string line = Plumbed
-				? "CK.Hygiene.LatrinePlumbed".Translate().ToString()
-				: "CK.Hygiene.PitLevel".Translate(PitFillPercent.ToStringPercent("0")).ToString();
+			string pit = "CK.Hygiene.PitLevel".Translate(PitFillPercent.ToStringPercent("0")).ToString();
 			if (text.NullOrEmpty())
 			{
-				return line;
+				return pit;
 			}
-			return text + "\n" + line;
+			return text + "\n" + pit;
 		}
 	}
 }

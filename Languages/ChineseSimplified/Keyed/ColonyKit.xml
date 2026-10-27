@@ -196,8 +196,7 @@
 	<CK.Hygiene.FloatMenu.BasinEmpty>脸盆里没有水</CK.Hygiene.FloatMenu.BasinEmpty>
 	<CK.Hygiene.BasinWater>脸盆水量: {0}/{1} 升</CK.Hygiene.BasinWater>
 	<CK.Hygiene.PitLevel>粪坑存量: {0}</CK.Hygiene.PitLevel>
-	<CK.Hygiene.PitFull>粪坑已满：清空它，或者接上污水管</CK.Hygiene.PitFull>
-	<CK.Hygiene.LatrinePlumbed>已接污水管网：按冲水厕所使用</CK.Hygiene.LatrinePlumbed>
+	<CK.Hygiene.PitFull>粪坑已满：需要清空</CK.Hygiene.PitFull>
 	<CK.Agriculture.Fertilize>施肥</CK.Agriculture.Fertilize>
 	<CK.Agriculture.FertilizeDesc>在耕地上刷施肥标记，工人每格消耗 10 个有机肥，提高该格肥力。</CK.Agriculture.FertilizeDesc>
 	<CK.Agriculture.AlreadyFertilized>这格已经施过肥</CK.Agriculture.AlreadyFertilized>

@@ -196,8 +196,7 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<CK.Hygiene.FloatMenu.BasinEmpty>The basin is empty</CK.Hygiene.FloatMenu.BasinEmpty>
 	<CK.Hygiene.BasinWater>Basin water: {0}/{1} L</CK.Hygiene.BasinWater>
 	<CK.Hygiene.PitLevel>Pit fill: {0}</CK.Hygiene.PitLevel>
-	<CK.Hygiene.PitFull>Pit full - empty it or plumb it</CK.Hygiene.PitFull>
-	<CK.Hygiene.LatrinePlumbed>Plumbed: flushes to the sewage network</CK.Hygiene.LatrinePlumbed>
+	<CK.Hygiene.PitFull>Pit full - needs emptying</CK.Hygiene.PitFull>
 	<CK.Agriculture.Fertilize>Fertilize</CK.Agriculture.Fertilize>
 	<CK.Agriculture.FertilizeDesc>Mark soil for fertilizing. Colonists spend 10 biosolids per cell to raise its fertility.</CK.Agriculture.FertilizeDesc>
 	<CK.Agriculture.AlreadyFertilized>Already fertilized</CK.Agriculture.AlreadyFertilized>

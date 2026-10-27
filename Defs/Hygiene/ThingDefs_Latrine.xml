@@ -2,12 +2,12 @@
 <Defs>
 	<!-- 旱厕：DBH PitLatrine 的对应物（数值与逻辑照搬）。
 	     不要求 CK_HygieneResearch，给部落和开局当最便宜的如厕方案；
-	     贴图直接用 DBH 的 Latrine_*（64×64，drawSize 1×1）。
-	     没接污水管时是干厕所；接上水网+污水网后按冲水厕所工作。 -->
+	     刻意不挂水管/污水管：和马桶、浴缸不同，旱厕完全靠小人手动清空。
+	     贴图直接用 DBH 的 Latrine_*（64×64，drawSize 1×1）。 -->
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_PitLatrine</defName>
 		<label>pit latrine</label>
-		<description>A pit latrine. Without plumbing it needs no water or power: waste drops into a 500-unit pit (14 per use) that must be emptied by a colonist. Once connected to both a water pipe and a sewage pipe, it flushes like a cheap toilet instead.</description>
+		<description>A pit latrine. Needs no water, power or plumbing: waste drops into a 500-unit pit (14 per use) that must be emptied by a colonist. Unlike toilets and bathtubs it never connects to a pipe network.</description>
 		<thingClass>ColonyKit.Modules.Hygiene.Building_Latrine</thingClass>
 		<size>(1,1)</size>
 		<graphicData>
@@ -35,13 +35,5 @@
 			<Cleanliness>-5</Cleanliness>
 			<Flammability>1</Flammability>
 		</statBases>
-		<comps>
-			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
-				<mode>Water</mode>
-			</li>
-			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
-				<mode>Sewage</mode>
-			</li>
-		</comps>
 	</ThingDef>
 </Defs>
