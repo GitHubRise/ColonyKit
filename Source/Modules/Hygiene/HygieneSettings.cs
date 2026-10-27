@@ -75,6 +75,9 @@ namespace ColonyKit.Modules.Hygiene
 		/// <summary>灌溉满格时的肥力倍率（DBH 默认 180%）。</summary>
 		public float irrigationStrength = 1.8f;
 
+		/// <summary>是否在地面画出施肥（土褐）/灌溉（淡蓝）覆盖层。</summary>
+		public bool showAgricultureOverlay = true;
+
 		/// <summary>检测到 DBH 时的处理策略。</summary>
 		public HygieneDbhPolicy dbhPolicy = HygieneDbhPolicy.SoftOff;
 
@@ -247,6 +250,7 @@ namespace ColonyKit.Modules.Hygiene
 			Scribe_Values.Look(ref fertilizerStrength, "fertilizerStrength", 1.1f);
 			Scribe_Values.Look(ref fertilizerLifespanDays, "fertilizerLifespanDays", 60f);
 			Scribe_Values.Look(ref irrigationStrength, "irrigationStrength", 1.8f);
+			Scribe_Values.Look(ref showAgricultureOverlay, "showAgricultureOverlay", true);
 			Scribe_Values.Look(ref dbhPolicy, "dbhPolicy", HygieneDbhPolicy.SoftOff);
 			Scribe_Values.Look(ref prisonersGetHygiene, "prisonersGetHygiene", true);
 			Scribe_Values.Look(ref guestsGetHygiene, "guestsGetHygiene", true);
@@ -319,6 +323,7 @@ namespace ColonyKit.Modules.Hygiene
 			fertilizerStrength = 1.1f;
 			fertilizerLifespanDays = 60f;
 			irrigationStrength = 1.8f;
+			showAgricultureOverlay = true;
 			dbhPolicy = HygieneDbhPolicy.SoftOff;
 			prisonersGetHygiene = true;
 			guestsGetHygiene = true;

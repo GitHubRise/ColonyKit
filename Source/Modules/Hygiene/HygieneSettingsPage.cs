@@ -80,6 +80,11 @@ namespace ColonyKit.Modules.Hygiene
 			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.Contamination.Desc".Loc());
 
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Agriculture".Loc());
+			data.showAgricultureOverlay = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Hygiene.ShowOverlay".Loc(),
+				ref data.showAgricultureOverlay,
+				"ColonyKit.Settings.Hygiene.ShowOverlay.Desc".Loc());
 			data.fertilizerStrength = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Hygiene.FertilizerStrength".Loc(),

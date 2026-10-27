@@ -61,6 +61,22 @@ namespace ColonyKit.Modules.Hygiene.Agriculture
 				$"irrigation={HygieneSettings.Current.irrigationStrength:F2} " +
 				$"lifespan={HygieneSettings.Current.fertilizerLifespanDays:F0}d");
 
+			// 覆盖层：确认 section 能拿到我们的 layer，并且网格能重建（顶点/索引写错会在这里炸）。
+			// 刚生成地图时 MapDrawer 还没建 section，SectionAt 会 NRE，那就交给 tick 里的 FlushOverlay 验证。
+			try
+			{
+				Section section = map.mapDrawer.SectionAt(cell);
+				SectionLayer layer = section?.GetLayer(typeof(SectionLayer_Agriculture));
+				layer?.Regenerate();
+				ModLog.Info("Hygiene",
+					$"agriculture selftest: overlay section={section != null} " +
+					$"layer={layer?.GetType().Name ?? "null"} visible={layer?.Visible}");
+			}
+			catch (System.Exception ex)
+			{
+				ModLog.Info("Hygiene", "agriculture selftest: overlay deferred to tick: " + ex.GetType().Name);
+			}
+
 			// 堆肥厂：塞 100 个粪渣，看容量与进度有没有动。
 			ThingDef composterDef = DefDatabase<ThingDef>.GetNamedSilentFail("CK_BiosolidsComposter");
 			ThingDef sludgeDef = DefDatabase<ThingDef>.GetNamedSilentFail("CK_FecalSludge");
