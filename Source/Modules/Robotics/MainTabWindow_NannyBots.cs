@@ -35,7 +35,8 @@ namespace ColonyKit.Modules.Robotics
 		private Vector2 workScroll;
 		private Vector2 statusScroll;
 
-		public override Vector2 RequestedTabSize => new Vector2(980f, 700f);
+		public override Vector2 RequestedTabSize =>
+			new Vector2(Mathf.Max(980f, NameWidth + RobotChores.Count * ChoreWidth + 40f), 700f);
 
 		public void SelectTab(int value)
 		{
@@ -156,8 +157,13 @@ namespace ColonyKit.Modules.Robotics
 					rect.height);
 				bool allOn = AllHavePriority(chore);
 				bool newValue = allOn;
-				Rect checkbox = new Rect(cell.x + 4f, cell.y + 3f, 18f, 18f);
-				Widgets.Checkbox(checkbox.position, ref newValue, 18f);
+				const float checkSize = 18f;
+				Rect checkbox = new Rect(
+					cell.x + (cell.width - checkSize) / 2f,
+					cell.y + 2f,
+					checkSize,
+					checkSize);
+				Widgets.Checkbox(checkbox.position, ref newValue, checkSize);
 				if (newValue != allOn)
 				{
 					SetAllPriorities(chore, newValue ? 3 : 0);
