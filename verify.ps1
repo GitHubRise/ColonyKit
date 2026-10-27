@@ -10,6 +10,7 @@
 	  3. Defs 根元素是 <Defs>，Patches 根元素是 <Patch> 且子节点是 <Operation>
 	  4. 补丁里的 <xpath> 能在本地 Defs 合并文档里命中（命中不了只警告，可能指向原版 Def）
 	  5. Assemblies 存在且只有 .dll
+  6. AutoScrollView 里的 Listing 保持单列（否则内容超出视口时换列，滚动条永远不出现）
 
 .EXAMPLE
 	.\verify.ps1
@@ -130,6 +131,16 @@ else {
 	$other = Get-ChildItem $assembliesDir -Recurse -File | Where-Object { $_.Extension -ne '.dll' -and $_.Extension -ne '.pdb' -and $_.Extension -ne '.xml' }
 	if ($other) {
 		$warnings.Add("Assemblies/ 里有非程序集文件：$($other.Name -join ', ')")
+	}
+}
+
+# 6. 设置页滚动视图：Listing 默认会在内容超过 rect 高度时换列，换列后高度测不出来，
+#    滚动条永远不出现、后面的参数也点不到；AutoScrollView 必须显式单列。
+$autoScrollPath = Join-Path $root 'Source\UI\AutoScrollView.cs'
+if (Test-Path $autoScrollPath) {
+	$autoScrollText = Get-Content $autoScrollPath -Raw -Encoding utf8
+	if ($autoScrollText -notmatch 'maxOneColumn\s*=\s*true') {
+		$problems.Add('Source/UI/AutoScrollView.cs 缺少 maxOneColumn = true：内容超过视口时 Listing 会换列，滚动条不会出现')
 	}
 }
 

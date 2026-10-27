@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- **设置页参数一多就没有滚动条、后半页点不到**：`AutoScrollView` 用上一帧高度当 `Listing_Standard.Begin` 的 rect，但 `Listing` 默认在 `curY + 行高 > rect.height` 时自动换列（`NewColumnIfNeeded`）——内容一超过视口就被甩到第二列，`curY` 归零，第二列又画在视口右侧被裁掉，量出来的高度永远不超过视口，`viewRect` 也就永远撑不开，滚动条始终不出现。机器人、卫生、蓝图、常规、保温这些参数多的页因此只显示到第一屏。现在固定 `maxOneColumn = true`（与框架模板、RJW、StackXXL 的设置页写法一致），高度改用 `MaxColumnHeightSeen` 回写，并给滚动条预留 16 px 列宽；搜索过滤让内容变短时滚动条自动收起。
+
 ## [0.0.3] - 2026-10-27
 
 ### Fixed
