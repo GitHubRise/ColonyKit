@@ -141,6 +141,22 @@ namespace ColonyKit.Modules.Robotics
 				RoboticsSettings.MaxChargePower,
 				50f,
 				value => "CK.Robotics.Watts".Loc(value.ToString("0")));
+			data.chargeEfficiency = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.ChargeEfficiency".Loc(),
+				data.chargeEfficiency,
+				RoboticsSettings.MinChargeEfficiency,
+				RoboticsSettings.MaxChargeEfficiency,
+				1f,
+				value => value.ToString("0") + "%");
+			data.powerConversionRate = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.PowerConversionRate".Loc(),
+				data.powerConversionRate,
+				RoboticsSettings.MinPowerConversionRate,
+				RoboticsSettings.MaxPowerConversionRate,
+				1f,
+				value => value.ToString("0") + "%");
 
 			data.refuelThreshold = SettingsWidgets.Slider(
 				listing,
@@ -232,6 +248,30 @@ namespace ColonyKit.Modules.Robotics
 
 			listing.Gap();
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.PassiveCharging".Loc());
+			data.mkvChargePower = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVChargePower".Loc(),
+				data.mkvChargePower,
+				RoboticsSettings.MinMkvChargePower,
+				RoboticsSettings.MaxMkvChargePower,
+				50f,
+				value => "CK.Robotics.Watts".Loc(value.ToString("0")));
+			data.mkvChargeEfficiency = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVChargeEfficiency".Loc(),
+				data.mkvChargeEfficiency,
+				RoboticsSettings.MinMkvChargeEfficiency,
+				RoboticsSettings.MaxMkvChargeEfficiency,
+				1f,
+				value => value.ToString("0") + "%");
+			data.mkvPowerConversionRate = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVPowerConversionRate".Loc(),
+				data.mkvPowerConversionRate,
+				RoboticsSettings.MinMkvPowerConversionRate,
+				RoboticsSettings.MaxMkvPowerConversionRate,
+				1f,
+				value => value.ToString("0") + "%");
 			data.mkvSolarCharging = SettingsWidgets.Checkbox(
 				listing,
 				"ColonyKit.Settings.Robotics.MkVSolarCharging".Loc(),

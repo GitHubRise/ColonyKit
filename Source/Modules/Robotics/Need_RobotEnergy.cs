@@ -78,6 +78,7 @@ namespace ColonyKit.Modules.Robotics
 			RoboticsSettings settings = NannyBotUtility.Settings;
 			Map map = pawn.Map;
 			float gain = 0f;
+			float conversion = Mathf.Clamp(settings.mkvPowerConversionRate / 100f, 0.1f, 3f);
 			const float PassiveShareOfStation = 0.4f;
 			const float FullChargeTicks = 10000f;
 
@@ -86,14 +87,14 @@ namespace ColonyKit.Modules.Robotics
 				float light = map.glowGrid.GroundGlowAt(pawn.Position);
 				float factor = ThresholdFactor(light, settings.mkvLightThreshold);
 				gain += MaxLevel * (PassiveShareOfStation / FullChargeTicks) * 150f
-					* (settings.mkvSolarEfficiency / 100f) * factor;
+					* conversion * (settings.mkvSolarEfficiency / 100f) * factor;
 			}
 			if (settings.mkvWindCharging && settings.mkvWindEfficiency > 0f)
 			{
 				float wind = Mathf.Clamp01(map.weatherManager.CurWindSpeedFactor);
 				float factor = ThresholdFactor(wind, settings.mkvWindThreshold);
 				gain += MaxLevel * (PassiveShareOfStation / FullChargeTicks) * 150f
-					* (settings.mkvWindEfficiency / 100f) * factor;
+					* conversion * (settings.mkvWindEfficiency / 100f) * factor;
 			}
 			return gain;
 		}

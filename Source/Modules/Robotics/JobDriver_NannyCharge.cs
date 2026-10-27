@@ -50,7 +50,15 @@ namespace ColonyKit.Modules.Robotics
 				}
 
 				station.TryGetComp<CompNannyBotStation>()?.SetCharging(true);
-				energy.Charge(delta * energy.MaxLevel * ChargePerTick);
+				RoboticsSettings settings = NannyBotUtility.Settings;
+				bool isMkV = NannyBotUtility.IsMkV(pawn);
+				float efficiency = UnityEngine.Mathf.Clamp(
+					(isMkV ? settings.mkvChargeEfficiency : settings.chargeEfficiency) / 100f, 0.1f, 3f);
+				float conversion = UnityEngine.Mathf.Clamp(
+					(isMkV ? settings.mkvPowerConversionRate : settings.powerConversionRate) / 100f, 0.1f, 3f);
+				float powerFactor = UnityEngine.Mathf.Clamp(
+					(isMkV ? settings.mkvChargePower : settings.chargePower) / 1000f, 0.1f, 10f);
+				energy.Charge(delta * energy.MaxLevel * ChargePerTick * efficiency * conversion * powerFactor);
 				if (energy.IsFull)
 				{
 					ReadyForNextToil();

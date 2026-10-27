@@ -135,7 +135,10 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return;
 			}
-			float chargePower = NannyBotUtility.Settings.chargePower;
+			RoboticsSettings settings = NannyBotUtility.Settings;
+			float chargePower = NannyBotUtility.IsMkV(robot)
+				? settings.mkvChargePower
+				: settings.chargePower;
 			float desired = -(charging ? chargePower : Props.idlePower);
 			if (!Mathf.Approximately(power.PowerOutput, desired))
 			{

@@ -44,6 +44,23 @@ namespace ColonyKit.Modules.Robotics
 		public const float MaxChargePower = 10000f;
 		public const float DefaultChargePower = 1000f;
 
+		public const float MinChargeEfficiency = 10f;
+		public const float MaxChargeEfficiency = 300f;
+		public const float DefaultChargeEfficiency = 100f;
+		public const float MinPowerConversionRate = 10f;
+		public const float MaxPowerConversionRate = 300f;
+		public const float DefaultPowerConversionRate = 100f;
+
+		public const float MinMkvChargePower = 100f;
+		public const float MaxMkvChargePower = 10000f;
+		public const float DefaultMkvChargePower = 1000f;
+		public const float MinMkvChargeEfficiency = 10f;
+		public const float MaxMkvChargeEfficiency = 300f;
+		public const float DefaultMkvChargeEfficiency = 100f;
+		public const float MinMkvPowerConversionRate = 10f;
+		public const float MaxMkvPowerConversionRate = 300f;
+		public const float DefaultMkvPowerConversionRate = 100f;
+
 		public const float MinMkvAttackSpeed = 0.5f;
 		public const float MaxMkvAttackSpeed = 2f;
 		public const float DefaultMkvAttackSpeed = 1f;
@@ -94,6 +111,11 @@ namespace ColonyKit.Modules.Robotics
 		public int batteryCapacity = DefaultBatteryCapacity;
 		public float workRadius = DefaultWorkRadius;
 		public float chargePower = DefaultChargePower;
+		public float chargeEfficiency = DefaultChargeEfficiency;
+		public float powerConversionRate = DefaultPowerConversionRate;
+		public float mkvChargePower = DefaultMkvChargePower;
+		public float mkvChargeEfficiency = DefaultMkvChargeEfficiency;
+		public float mkvPowerConversionRate = DefaultMkvPowerConversionRate;
 		public float mkvAttackSpeed = DefaultMkvAttackSpeed;
 		public float mkvHitChance = DefaultMkvHitChance;
 		public bool mkvSolarCharging = true;
@@ -139,6 +161,11 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref batteryCapacity, "batteryCapacity", DefaultBatteryCapacity);
 			Scribe_Values.Look(ref workRadius, "workRadius", DefaultWorkRadius);
 			Scribe_Values.Look(ref chargePower, "chargePower", DefaultChargePower);
+			Scribe_Values.Look(ref chargeEfficiency, "chargeEfficiency", DefaultChargeEfficiency);
+			Scribe_Values.Look(ref powerConversionRate, "powerConversionRate", DefaultPowerConversionRate);
+			Scribe_Values.Look(ref mkvChargePower, "mkvChargePower", DefaultMkvChargePower);
+			Scribe_Values.Look(ref mkvChargeEfficiency, "mkvChargeEfficiency", DefaultMkvChargeEfficiency);
+			Scribe_Values.Look(ref mkvPowerConversionRate, "mkvPowerConversionRate", DefaultMkvPowerConversionRate);
 			Scribe_Values.Look(ref mkvAttackSpeed, "mkvAttackSpeed", DefaultMkvAttackSpeed);
 			Scribe_Values.Look(ref mkvHitChance, "mkvHitChance", DefaultMkvHitChance);
 			Scribe_Values.Look(ref mkvSolarCharging, "mkvSolarCharging", true);
@@ -181,6 +208,27 @@ namespace ColonyKit.Modules.Robotics
 			float chargePowerValue = chargePower;
 			chargePower = ClampFloat(chargePower, MinChargePower, MaxChargePower);
 			changed |= !Approximately(chargePowerValue, chargePower);
+
+			float chargeEfficiencyValue = chargeEfficiency;
+			chargeEfficiency = ClampFloat(chargeEfficiency, MinChargeEfficiency, MaxChargeEfficiency);
+			changed |= !Approximately(chargeEfficiencyValue, chargeEfficiency);
+
+			float conversionValue = powerConversionRate;
+			powerConversionRate = ClampFloat(powerConversionRate, MinPowerConversionRate, MaxPowerConversionRate);
+			changed |= !Approximately(conversionValue, powerConversionRate);
+
+			float mkvPowerValue = mkvChargePower;
+			mkvChargePower = ClampFloat(mkvChargePower, MinMkvChargePower, MaxMkvChargePower);
+			changed |= !Approximately(mkvPowerValue, mkvChargePower);
+
+			float mkvEfficiencyValue = mkvChargeEfficiency;
+			mkvChargeEfficiency = ClampFloat(mkvChargeEfficiency, MinMkvChargeEfficiency, MaxMkvChargeEfficiency);
+			changed |= !Approximately(mkvEfficiencyValue, mkvChargeEfficiency);
+
+			float mkvConversionValue = mkvPowerConversionRate;
+			mkvPowerConversionRate = ClampFloat(mkvPowerConversionRate,
+				MinMkvPowerConversionRate, MaxMkvPowerConversionRate);
+			changed |= !Approximately(mkvConversionValue, mkvPowerConversionRate);
 
 			float attackSpeed = mkvAttackSpeed;
 			mkvAttackSpeed = ClampFloat(mkvAttackSpeed, MinMkvAttackSpeed, MaxMkvAttackSpeed);
@@ -257,6 +305,11 @@ namespace ColonyKit.Modules.Robotics
 			batteryCapacity = DefaultBatteryCapacity;
 			workRadius = DefaultWorkRadius;
 			chargePower = DefaultChargePower;
+			chargeEfficiency = DefaultChargeEfficiency;
+			powerConversionRate = DefaultPowerConversionRate;
+			mkvChargePower = DefaultMkvChargePower;
+			mkvChargeEfficiency = DefaultMkvChargeEfficiency;
+			mkvPowerConversionRate = DefaultMkvPowerConversionRate;
 			mkvAttackSpeed = DefaultMkvAttackSpeed;
 			mkvHitChance = DefaultMkvHitChance;
 			mkvSolarCharging = true;
