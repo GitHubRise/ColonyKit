@@ -139,6 +139,53 @@ namespace ColonyKit.Modules.Robotics
 					: "CK.Robotics.Cells".Loc(value.ToString("0")));
 
 			listing.Gap();
+			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.Combat".Loc());
+			data.mkvCombatEnabled = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVCombatEnabled".Loc(),
+				ref data.mkvCombatEnabled,
+				"ColonyKit.Settings.Robotics.MkVCombatEnabled.Desc".Loc());
+			data.mkvReturnToBay = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVReturnToBay".Loc(),
+				ref data.mkvReturnToBay,
+				"ColonyKit.Settings.Robotics.MkVReturnToBay.Desc".Loc());
+			data.mkvAutoPickupWeapons = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVAutoPickupWeapons".Loc(),
+				ref data.mkvAutoPickupWeapons,
+				"ColonyKit.Settings.Robotics.MkVAutoPickupWeapons.Desc".Loc());
+			data.mkvEngageRange = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVEngageRange".Loc(),
+				data.mkvEngageRange,
+				RoboticsSettings.MinEngageRange,
+				RoboticsSettings.MaxEngageRange,
+				1f,
+				value => "CK.Robotics.Cells".Loc(value.ToString("0")));
+			data.mkvReturnRange = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVReturnRange".Loc(),
+				data.mkvReturnRange,
+				RoboticsSettings.MinReturnRange,
+				RoboticsSettings.MaxReturnRange,
+				1f,
+				value => "CK.Robotics.Cells".Loc(value.ToString("0")));
+			data.mkvWeaponPickupRadius = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVWeaponPickupRadius".Loc(),
+				data.mkvWeaponPickupRadius,
+				RoboticsSettings.MinWeaponPickupRadius,
+				RoboticsSettings.MaxWeaponPickupRadius,
+				1f,
+				value => "CK.Robotics.Cells".Loc(value.ToString("0")));
+			data.mkvBayAutoStart = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVBayAutoStart".Loc(),
+				ref data.mkvBayAutoStart,
+				"ColonyKit.Settings.Robotics.MkVBayAutoStart.Desc".Loc());
+
+			listing.Gap();
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.Area".Loc());
 
 			List<RobotAreaMode> modes = new List<RobotAreaMode>

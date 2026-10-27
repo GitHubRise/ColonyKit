@@ -28,6 +28,18 @@ namespace ColonyKit.Modules.Robotics
 		public const float MaxWorkRadius = 200f;
 		public const float DefaultWorkRadius = 40f;
 
+		public const float MinEngageRange = 4f;
+		public const float MaxEngageRange = 45f;
+		public const float DefaultEngageRange = 28f;
+
+		public const float MinReturnRange = 1f;
+		public const float MaxReturnRange = 12f;
+		public const float DefaultReturnRange = 2f;
+
+		public const float MinWeaponPickupRadius = 4f;
+		public const float MaxWeaponPickupRadius = 45f;
+		public const float DefaultWeaponPickupRadius = 28f;
+
 		public string SettingsKey => "robotics";
 
 		// 家务总开关。
@@ -56,6 +68,15 @@ namespace ColonyKit.Modules.Robotics
 		public RobotAreaMode areaMode = RobotAreaMode.Unrestricted;
 		public string allowedAreaLabel = "";
 
+		// Mk-V 作战与专用组装舱。
+		public bool mkvCombatEnabled = true;
+		public bool mkvReturnToBay = true;
+		public bool mkvAutoPickupWeapons = true;
+		public bool mkvBayAutoStart = false;
+		public float mkvEngageRange = DefaultEngageRange;
+		public float mkvReturnRange = DefaultReturnRange;
+		public float mkvWeaponPickupRadius = DefaultWeaponPickupRadius;
+
 		public void ExposeData()
 		{
 			Scribe_Values.Look(ref sweep, "sweep", true);
@@ -78,6 +99,13 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref workRadius, "workRadius", DefaultWorkRadius);
 			Scribe_Values.Look(ref areaMode, "areaMode", RobotAreaMode.Unrestricted);
 			Scribe_Values.Look(ref allowedAreaLabel, "allowedAreaLabel", "");
+			Scribe_Values.Look(ref mkvCombatEnabled, "mkvCombatEnabled", true);
+			Scribe_Values.Look(ref mkvReturnToBay, "mkvReturnToBay", true);
+			Scribe_Values.Look(ref mkvAutoPickupWeapons, "mkvAutoPickupWeapons", true);
+			Scribe_Values.Look(ref mkvBayAutoStart, "mkvBayAutoStart", false);
+			Scribe_Values.Look(ref mkvEngageRange, "mkvEngageRange", DefaultEngageRange);
+			Scribe_Values.Look(ref mkvReturnRange, "mkvReturnRange", DefaultReturnRange);
+			Scribe_Values.Look(ref mkvWeaponPickupRadius, "mkvWeaponPickupRadius", DefaultWeaponPickupRadius);
 		}
 
 		public bool Validate()
@@ -98,6 +126,18 @@ namespace ColonyKit.Modules.Robotics
 			float radius = workRadius;
 			workRadius = ClampFloat(workRadius, MinWorkRadius, MaxWorkRadius);
 			changed |= !Approximately(radius, workRadius);
+
+			float engage = mkvEngageRange;
+			mkvEngageRange = ClampFloat(mkvEngageRange, MinEngageRange, MaxEngageRange);
+			changed |= !Approximately(engage, mkvEngageRange);
+
+			float returnRange = mkvReturnRange;
+			mkvReturnRange = ClampFloat(mkvReturnRange, MinReturnRange, MaxReturnRange);
+			changed |= !Approximately(returnRange, mkvReturnRange);
+
+			float pickupRadius = mkvWeaponPickupRadius;
+			mkvWeaponPickupRadius = ClampFloat(mkvWeaponPickupRadius, MinWeaponPickupRadius, MaxWeaponPickupRadius);
+			changed |= !Approximately(pickupRadius, mkvWeaponPickupRadius);
 
 			if (areaMode != RobotAreaMode.Unrestricted
 				&& areaMode != RobotAreaMode.Home
@@ -136,6 +176,13 @@ namespace ColonyKit.Modules.Robotics
 			workRadius = DefaultWorkRadius;
 			areaMode = RobotAreaMode.Unrestricted;
 			allowedAreaLabel = "";
+			mkvCombatEnabled = true;
+			mkvReturnToBay = true;
+			mkvAutoPickupWeapons = true;
+			mkvBayAutoStart = false;
+			mkvEngageRange = DefaultEngageRange;
+			mkvReturnRange = DefaultReturnRange;
+			mkvWeaponPickupRadius = DefaultWeaponPickupRadius;
 		}
 
 		private static int ClampInt(int value, int min, int max)

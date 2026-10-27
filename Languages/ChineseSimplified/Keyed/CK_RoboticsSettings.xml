@@ -36,6 +36,19 @@
 	<ColonyKit.Settings.Robotics.WorkRadius>工作半径</ColonyKit.Settings.Robotics.WorkRadius>
 	<ColonyKit.Settings.Robotics.Unlimited>不限</ColonyKit.Settings.Robotics.Unlimited>
 
+	<ColonyKit.Settings.Robotics.Section.Combat>Mk-V 作战</ColonyKit.Settings.Robotics.Section.Combat>
+	<ColonyKit.Settings.Robotics.MkVCombatEnabled>自动作战</ColonyKit.Settings.Robotics.MkVCombatEnabled>
+	<ColonyKit.Settings.Robotics.MkVCombatEnabled.Desc>允许 Mk-V 自动索敌、开火和回舱；关闭后 Mk-V 只做家务，不主动交战。</ColonyKit.Settings.Robotics.MkVCombatEnabled.Desc>
+	<ColonyKit.Settings.Robotics.MkVReturnToBay>脱战后回舱</ColonyKit.Settings.Robotics.MkVReturnToBay>
+	<ColonyKit.Settings.Robotics.MkVReturnToBay.Desc>目标离开交战范围后返回 Mk-V 组装舱；关闭后直接恢复家务。</ColonyKit.Settings.Robotics.MkVReturnToBay.Desc>
+	<ColonyKit.Settings.Robotics.MkVAutoPickupWeapons>自动拾取武器</ColonyKit.Settings.Robotics.MkVAutoPickupWeapons>
+	<ColonyKit.Settings.Robotics.MkVAutoPickupWeapons.Desc>Mk-V 会寻找评分更高的远程武器并换装；关闭后只使用出生自带的电弧发射器。</ColonyKit.Settings.Robotics.MkVAutoPickupWeapons.Desc>
+	<ColonyKit.Settings.Robotics.MkVEngageRange>交战范围</ColonyKit.Settings.Robotics.MkVEngageRange>
+	<ColonyKit.Settings.Robotics.MkVReturnRange>回舱判定距离</ColonyKit.Settings.Robotics.MkVReturnRange>
+	<ColonyKit.Settings.Robotics.MkVWeaponPickupRadius>武器拾取范围</ColonyKit.Settings.Robotics.MkVWeaponPickupRadius>
+	<ColonyKit.Settings.Robotics.MkVBayAutoStart>组装舱自动开工</ColonyKit.Settings.Robotics.MkVBayAutoStart>
+	<ColonyKit.Settings.Robotics.MkVBayAutoStart.Desc>材料、电力和研究都满足时，Mk-V 组装舱自动开始下一台；关闭后需要手动点击开始。</ColonyKit.Settings.Robotics.MkVBayAutoStart.Desc>
+
 	<ColonyKit.Settings.Robotics.Section.Area>工作区域</ColonyKit.Settings.Robotics.Section.Area>
 	<ColonyKit.Settings.Robotics.AreaMode>区域模式</ColonyKit.Settings.Robotics.AreaMode>
 	<ColonyKit.Settings.Robotics.Area.Unrestricted>不限</ColonyKit.Settings.Robotics.Area.Unrestricted>

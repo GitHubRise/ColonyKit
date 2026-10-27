@@ -14,7 +14,8 @@ namespace ColonyKit.Modules.Robotics
 		protected override Job TryGiveJob(Pawn pawn)
 		{
 			if (!NannyBotUtility.IsMkV(pawn) || pawn.Dead || pawn.Downed || !pawn.Spawned
-				|| pawn.Map == null || pawn.equipment == null)
+				|| pawn.Map == null || pawn.equipment == null
+				|| !NannyBotUtility.Settings.mkvAutoPickupWeapons)
 			{
 				return null;
 			}
@@ -39,7 +40,8 @@ namespace ColonyKit.Modules.Robotics
 				{
 					continue;
 				}
-				if (pawn.Position.DistanceTo(thing.Position) > 28f)
+				if (pawn.Position.DistanceTo(thing.Position) >
+					NannyBotUtility.Settings.mkvWeaponPickupRadius)
 				{
 					continue;
 				}

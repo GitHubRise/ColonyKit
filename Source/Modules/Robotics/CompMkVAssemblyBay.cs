@@ -111,6 +111,12 @@ namespace ColonyKit.Modules.Robotics
 				}
 			}
 
+			if (!working && NannyBotUtility.Settings.mkvBayAutoStart
+				&& parent.IsHashIntervalTick(600) && CanStart(out _))
+			{
+				StartAssembly();
+			}
+
 			ApplyPower();
 			glower?.UpdateLit(parent.Map);
 		}

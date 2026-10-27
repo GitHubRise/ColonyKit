@@ -19,6 +19,11 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return null;
 			}
+			if (!NannyBotUtility.Settings.mkvCombatEnabled)
+			{
+				combat.Clear();
+				return null;
+			}
 
 			Pawn target = FindTarget(pawn, combat.EngageRange);
 			if (target != null)
@@ -47,10 +52,20 @@ namespace ColonyKit.Modules.Robotics
 
 			if (combat.state == MkVCombatState.Engaged)
 			{
+				if (!NannyBotUtility.Settings.mkvReturnToBay)
+				{
+					combat.Clear();
+					return null;
+				}
 				combat.SetReturning();
 			}
 			if (combat.state == MkVCombatState.Returning)
 			{
+				if (!NannyBotUtility.Settings.mkvReturnToBay)
+				{
+					combat.Clear();
+					return null;
+				}
 				return ReturnJob(pawn, combat);
 			}
 			return null;

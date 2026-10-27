@@ -7,9 +7,6 @@ namespace ColonyKit.Modules.Robotics
 {
 	public class CompProperties_MkVCombat : CompProperties
 	{
-		public float engageRange = 28f;
-		public float returnRange = 2f;
-
 		public CompProperties_MkVCombat()
 		{
 			compClass = typeof(CompMkVCombat);
@@ -31,8 +28,6 @@ namespace ColonyKit.Modules.Robotics
 		public Building homeBay;
 		public int lastTargetTick;
 
-		private CompProperties_MkVCombat Props => (CompProperties_MkVCombat)props;
-
 		private Pawn Pawn => parent as Pawn;
 
 		public Building HomeBay
@@ -50,9 +45,9 @@ namespace ColonyKit.Modules.Robotics
 
 		public bool IsEngaged => state == MkVCombatState.Engaged;
 
-		public float EngageRange => Props.engageRange;
+		public float EngageRange => NannyBotUtility.Settings.mkvEngageRange;
 
-		public float ReturnRange => Props.returnRange;
+		public float ReturnRange => NannyBotUtility.Settings.mkvReturnRange;
 
 		public void SetEngaged(Pawn newTarget)
 		{
@@ -98,6 +93,9 @@ namespace ColonyKit.Modules.Robotics
 					? "CK.Robotics.MkVCombat.Status.Returning".Translate()
 					: "CK.Robotics.MkVCombat.Status.Idle".Translate();
 			string line = "CK.Robotics.MkVCombat.Inspect".Translate(weapon, status);
+			line += "\n" + "CK.Robotics.MkVCombat.Range".Translate(
+				EngageRange.ToString("0"),
+				ReturnRange.ToString("0"));
 			if (target != null && !target.Dead)
 			{
 				line += "\n" + "CK.Robotics.MkVCombat.Target".Translate(target.LabelShort);

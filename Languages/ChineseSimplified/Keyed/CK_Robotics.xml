@@ -8,6 +8,7 @@
 	<CK.Robotics.MkVCombat.Status.Idle>待命</CK.Robotics.MkVCombat.Status.Idle>
 	<CK.Robotics.MkVCombat.Inspect>武器：{0} · 战斗状态：{1}</CK.Robotics.MkVCombat.Inspect>
 	<CK.Robotics.MkVCombat.Target>目标：{0}</CK.Robotics.MkVCombat.Target>
+	<CK.Robotics.MkVCombat.Range>交战范围：{0} 格 · 回舱判定：{1} 格</CK.Robotics.MkVCombat.Range>
 	<CK.Robotics.MkVCombat.Disengage>脱战并回舱</CK.Robotics.MkVCombat.Disengage>
 	<CK.Robotics.MkVCombat.Disengage.Desc>立即停止交战，返回组装舱/最近的充电桩。</CK.Robotics.MkVCombat.Disengage.Desc>
 	<CK.RobotManagement.Status.Combat>战斗中</CK.RobotManagement.Status.Combat>

@@ -8,6 +8,7 @@
 	<CK.Robotics.MkVCombat.Status.Idle>idle</CK.Robotics.MkVCombat.Status.Idle>
 	<CK.Robotics.MkVCombat.Inspect>Weapon: {0} · Combat: {1}</CK.Robotics.MkVCombat.Inspect>
 	<CK.Robotics.MkVCombat.Target>Target: {0}</CK.Robotics.MkVCombat.Target>
+	<CK.Robotics.MkVCombat.Range>Engage range: {0} cells · return distance: {1} cells</CK.Robotics.MkVCombat.Range>
 	<CK.Robotics.MkVCombat.Disengage>Disengage and return</CK.Robotics.MkVCombat.Disengage>
 	<CK.Robotics.MkVCombat.Disengage.Desc>Stop fighting immediately and return to the assembly bay or nearest charging station.</CK.Robotics.MkVCombat.Disengage.Desc>
 	<CK.RobotManagement.Status.Combat>In combat</CK.RobotManagement.Status.Combat>
