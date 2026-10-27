@@ -96,6 +96,10 @@ namespace ColonyKit.Modules.Robotics
 
 		private static void AddMechanicalVagina(Pawn pawn)
 		{
+			if (!RjwCompat.Loaded)
+			{
+				return;
+			}
 			HediffDef def = DefDatabase<HediffDef>.GetNamedSilentFail("CK_ArtificialVaginaMech");
 			if (def == null || pawn?.health?.hediffSet == null || pawn.health.hediffSet.HasHediff(def))
 			{
@@ -120,6 +124,10 @@ namespace ColonyKit.Modules.Robotics
 
 		private static void SexualizeRjw(Pawn pawn)
 		{
+			if (!RjwCompat.Loaded)
+			{
+				return;
+			}
 			try
 			{
 				Type sexualizer = Type.GetType("rjw.Sexualizer, RJW");

@@ -12,6 +12,11 @@ namespace ColonyKit.Modules.Robotics
 	[HarmonyPatch]
 	internal static class Patch_RjwRmbMkV
 	{
+		private static bool Prepare()
+		{
+			return RjwCompat.Loaded;
+		}
+
 		private static MethodBase TargetMethod()
 		{
 			return AccessTools.Method("rjw.RMB.RMB_Sex:DoChecks");

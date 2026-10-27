@@ -11,6 +11,11 @@ namespace ColonyKit.Modules.Robotics
 	[HarmonyPatch]
 	internal static class Patch_RjwMkVCompatibility
 	{
+		private static bool Prepare()
+		{
+			return RjwCompat.Loaded;
+		}
+
 		private static MethodBase TargetMethod()
 		{
 			return AccessTools.Method("rjw.xxx:can_do_loving");
