@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [0.0.3] - 2026-10-27
+
 ### Fixed
 
 - **污水管只剩一个「口」+ 一根竖嘴**：`CK_SewagePipe` 之前用 `Graphic_Multi` 的单向贴图（方形管身 + 朝北的圆嘴），上一版按「管道不需要旋转」把 Q/E 去掉后，所有污水管都只能画北向那一张——横着铺也是一排「口」，接不上邻居。现在改成和 DBH 原版、水管一样的 4×4 连管图集：`Graphic_Single` + `linkType=Basic` + `linkFlags=Custom6`（和清水管的 `Custom5` 分开），贴淡橄榄绿以便区分；四邻自动选片，直管、拐角、丁字、十字都能正确显示，也不再需要旋转。
@@ -136,6 +138,14 @@
 - quicktest（只开 Core + Harmony + ColonyKit）：`modules=10`；Blueprint 模块加载、库初始化正常。
 - 临时实机探针：在地图空地生成 5×5 墙圈 + 中心 1×2 床，捕获 17 条 → 平放/旋转 90° 各生成 17 个原版 `Blueprint_Build`；旋转后床蓝图朝向为 East；模板保存/读取/删除通过。
 - 未覆盖：10×10 基地、存读档、缺 Mod 场景、真实鼠标 UI 点击/拖框。
+
+### Packaging
+
+- `About/About.xml` / `Source/ColonyKit.csproj` 版本升到 `0.0.3`；`About` 的「最近更新」收敛为 6 条玩家可读说明。
+- 发布链路与产物说明整理为 [docs/发布脚本说明.md](docs/发布脚本说明.md)（dist 里只有 zip，脚本在仓库根目录）。
+- **修复 `make-portable.ps1 -SkipBuild -SkipVerify` 必报「package.ps1 失败」**：`$LASTEXITCODE` 在全新 PowerShell 进程里是 `$null`，`$null -ne 0` 成立，而该路径下 `package.ps1` 一次外部程序都不会调。现在 `package.ps1` / `make-portable.ps1` 调子脚本前归零、成功结束时再归零（与 `build.ps1` 处理 robocopy 成功码的做法一致）。
+- 产物：`dist/ColonyKit-0.0.3.zip`（2,599 文件 / 约 5.39 MB）与 `dist/ColonyKit-0.0.3-portable.zip`（2,618 文件 / 约 8.40 MB，内置 Harmony + `install.bat`）。
+- 验证：`verify.ps1` 0 问题 / 91 个「xpath 未命中本地 Defs」警告；`build.ps1` 0 error / 0 warning；解压便携包后在假 RimWorld 目录跑 `install.ps1 /auto`，成功安装 ColonyKit 0.0.3 与随包 Harmony，退出码 0。
 
 ### Removed
 
