@@ -11,7 +11,7 @@
 
 ### Added
 
-- **RJW 基础兼容（Mk-V）**：Mk-V 设为女性机体，使用带 MechGenitals / MechChest / MechAnus 的专用身体，生成时调用 RJW 的 Sexualizer.sexualize_pawn，使其获得机械族人工性器官并可参与 RJW 的自愿互动；另对 RJW 的 xxx.can_do_loving 打补丁放行 Mk-V，并补建关系表，避免恋爱/社交互动读取空 relations 导致 FloatMenu NRE。 RJW 只带机械阴茎，Mk-V 为女性，因此额外定义并安装机械人造阴道 CK_ArtificialVaginaMech，让 MechanoidsCompatibility.IsMechanoidSexy 能识别 Mk-V。怀孕/生育暂不处理。
+- **RJW 基础兼容（Mk-V）**：Mk-V 设为女性机体，使用带 MechGenitals / MechChest / MechAnus 的专用身体，生成时调用 RJW 的 Sexualizer.sexualize_pawn，使其获得机械族人工性器官并可参与 RJW 的自愿互动；另对 RJW 的 xxx.can_do_loving 打补丁放行 Mk-V，并补建关系表，避免恋爱/社交互动读取空 relations 导致 FloatMenu NRE。 RJW 只带机械阴茎，Mk-V 为女性，因此额外定义并安装机械人造阴道 CK_ArtificialVaginaMech，让 MechanoidsCompatibility.IsMechanoidSexy 能识别 Mk-V。 另对 RJW 的 RMB_Sex.DoChecks 打补丁：Mk-V 参与时跳过好感/吸引力门槛，避免因没有社交历史导致菜单被静默过滤（不要求睡觉，床边/野外均可用 quick sex 路径）。怀孕/生育暂不处理。
 
 ### Fixed
 
