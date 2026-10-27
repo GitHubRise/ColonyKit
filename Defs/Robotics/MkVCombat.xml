@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef ParentName="BaseGun">
+		<defName>CK_ArcEmitter</defName>
+		<label>arc emitter</label>
+		<description>A compact arc emitter designed as the Mk-V android's standard weapon. It fires a short-lived electric bolt that burns and staggers the target.</description>
+		<techLevel>Spacer</techLevel>
+		<graphicData>
+			<texPath>Things/Item/Equipment/WeaponRanged/CK_ArcEmitter</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<uiIconScale>1.15</uiIconScale>
+		<statBases>
+			<Mass>4.5</Mass>
+			<MarketValue>1200</MarketValue>
+			<MaxHitPoints>150</MaxHitPoints>
+			<AccuracyTouch>0.70</AccuracyTouch>
+			<AccuracyShort>0.75</AccuracyShort>
+			<AccuracyMedium>0.65</AccuracyMedium>
+			<AccuracyLong>0.50</AccuracyLong>
+			<RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
+		</statBases>
+		<weaponTags>
+			<li>Gun</li>
+			<li>SpacerGun</li>
+		</weaponTags>
+		<tradeTags>
+			<li>WeaponRanged</li>
+		</tradeTags>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+		</weaponClasses>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>CK_ArcBolt</defaultProjectile>
+				<warmupTime>0.8</warmupTime>
+				<range>28</range>
+				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCastTail>GunTail_Light</soundCastTail>
+				<muzzleFlashScale>8</muzzleFlashScale>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+			</li>
+		</verbs>
+		<tools>
+			<li>
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>6</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>CK_ArcBolt</defName>
+		<label>arc bolt</label>
+		<thingClass>ColonyKit.Modules.Robotics.Projectile_CKArcBolt</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/CK_ArcBolt</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Burn</damageDef>
+			<damageAmountBase>9</damageAmountBase>
+			<armorPenetrationBase>0.25</armorPenetrationBase>
+			<stoppingPower>1.5</stoppingPower>
+			<speed>70</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="MoteBase">
+		<defName>CK_Mote_ArcImpact</defName>
+		<graphicData>
+			<texPath>Things/Mote/CK_ArcImpact</texPath>
+		</graphicData>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<mote>
+			<fadeInTime>0.03</fadeInTime>
+			<solidTime>0.10</solidTime>
+			<fadeOutTime>0.24</fadeOutTime>
+			<collide>false</collide>
+		</mote>
+	</ThingDef>
+</Defs>

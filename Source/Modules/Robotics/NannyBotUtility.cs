@@ -19,7 +19,12 @@ namespace ColonyKit.Modules.Robotics
 		{
 			return pawn != null
 				&& pawn.def != null
-				&& pawn.def == NannyBotDefOf.CK_RobotNanny;
+				&& (pawn.def == NannyBotDefOf.CK_RobotNanny || pawn.def == NannyBotDefOf.CK_RobotMkV);
+		}
+
+		public static bool IsMkV(Pawn pawn)
+		{
+			return pawn != null && pawn.def == NannyBotDefOf.CK_RobotMkV;
 		}
 
 		public static CompNannyBot BotComp(Pawn pawn)
@@ -231,6 +236,12 @@ namespace ColonyKit.Modules.Robotics
 		public static bool IsStationUsable(Pawn pawn, Building station, bool requirePower)
 		{
 			if (pawn?.Map == null || station == null || !station.Spawned || station.Map != pawn.Map)
+			{
+				return false;
+			}
+			// 组装舱不是充电桩；只接受真正的保姆机器人工作站。
+			if (station.def != NannyBotDefOf.CK_NannyBotStation
+				|| station.TryGetComp<CompNannyBotStation>() == null)
 			{
 				return false;
 			}

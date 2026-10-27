@@ -6,4 +6,9 @@
 	<CK_NannyBotStation.description>1×1 的组装舱兼充电桩。建成后会自动组装一台保姆机器人；机器人损毁后可在冷却结束时重新组装。充电需要通电；断电时机器人仍能工作，但电量耗尽后会停机。</CK_NannyBotStation.description>
 	<CK_MkVAssemblyBay.label>Mk-V 专用组装舱</CK_MkVAssemblyBay.label>
 	<CK_MkVAssemblyBay.description>2×2 的 Mk-V 专用组装舱，拥有独立配方、待机/工作功耗和生产节拍，不占用保姆机器人工作站。需要 Mk-V 整合研究及全部七项前置研究；完成的 Mk-V 为后续作战体系预留接口。</CK_MkVAssemblyBay.description>
+	<CK_RobotMkV.label>Mk-V 自维护机器人</CK_RobotMkV.label>
+	<CK_RobotMkV.description>具备战斗能力的 Mk-V 家政机器人。沿用保姆机器人的机体和电池系统，但使用专用战斗 ThinkTree，可装备外部武器。</CK_RobotMkV.description>
+	<CK_ArcEmitter.label>电弧发射器</CK_ArcEmitter.label>
+	<CK_ArcEmitter.description>为 Mk-V 设计的紧凑型电弧发射器，发射短寿命电弧弹，灼烧并迟滞目标。Mk-V 出生时自带一把，也可以换装更好的远程武器。</CK_ArcEmitter.description>
+	<CK_ArcBolt.label>电弧弹</CK_ArcBolt.label>
 </LanguageData>

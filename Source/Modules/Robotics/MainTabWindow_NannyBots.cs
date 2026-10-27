@@ -598,6 +598,19 @@ namespace ColonyKit.Modules.Robotics
 				color = Color.grey;
 				return;
 			}
+			CompMkVCombat combat = robot.TryGetComp<CompMkVCombat>();
+			if (combat != null && combat.state == MkVCombatState.Engaged)
+			{
+				text = "CK.RobotManagement.Status.Combat".Translate();
+				color = new Color(0.92f, 0.52f, 0.35f);
+				return;
+			}
+			if (combat != null && combat.state == MkVCombatState.Returning)
+			{
+				text = "CK.RobotManagement.Status.Returning".Translate();
+				color = new Color(0.45f, 0.80f, 0.95f);
+				return;
+			}
 			if (energy != null && energy.IsCharging)
 			{
 				text = "CK.RobotManagement.Status.Charging".Translate();

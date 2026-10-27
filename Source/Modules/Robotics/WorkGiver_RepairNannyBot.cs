@@ -9,7 +9,7 @@ namespace ColonyKit.Modules.Robotics
 	public class WorkGiver_RepairNannyBot : WorkGiver_Scanner
 	{
 		public override ThingRequest PotentialWorkThingRequest =>
-			ThingRequest.ForDef(NannyBotDefOf.CK_RobotNanny);
+			ThingRequest.ForGroup(ThingRequestGroup.Pawn);
 
 		public override PathEndMode PathEndMode => PathEndMode.Touch;
 

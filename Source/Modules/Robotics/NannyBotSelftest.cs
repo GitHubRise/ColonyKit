@@ -50,6 +50,71 @@ namespace ColonyKit.Modules.Robotics
 			return IntVec3.Invalid;
 		}
 
+		private static void ProbeMkVBay(Map map, StringBuilder builder)
+		{
+			ThingDef def = DefDatabase<ThingDef>.GetNamedSilentFail("CK_MkVAssemblyBay");
+			builder.Append(" mkvBayDef=").Append(def != null)
+				.Append(" mkvBayTicker=").Append(def?.tickerType.ToString() ?? "none");
+			if (def == null)
+			{
+				return;
+			}
+
+			IntVec3 cell = FindFreeRect(map, map.Center, 20, 2, 2);
+			if (!cell.IsValid)
+			{
+				builder.Append(" mkvBayCell=none");
+				return;
+			}
+
+			Thing bay = ThingMaker.MakeThing(def);
+			GenSpawn.Spawn(bay, cell, map, Rot4.South);
+			CompMkVAssemblyBay comp = bay.TryGetComp<CompMkVAssemblyBay>();
+			builder.Append(" mkvBayComp=").Append(comp != null);
+			if (comp == null)
+			{
+				bay.Destroy(DestroyMode.Vanish);
+				return;
+			}
+
+			var complete = AccessTools.Method(typeof(CompMkVAssemblyBay), "CompleteAssembly");
+			builder.Append(" mkvBayCompleteMethod=").Append(complete != null);
+			try
+			{
+				complete?.Invoke(comp, null);
+			}
+			catch (Exception exception)
+			{
+				ModLog.Warn("Robotics", $"Mk-V bay probe failed: {exception.Message}");
+			}
+
+			Pawn mkv = null;
+			foreach (Pawn pawn in map.mapPawns.AllPawnsSpawned)
+			{
+				if (pawn.kindDef == NannyBotDefOf.CK_RobotMkVKind)
+				{
+					mkv = pawn;
+					break;
+				}
+			}
+
+			builder.Append(" mkvSpawned=").Append(mkv != null);
+			if (mkv != null)
+			{
+				CompNannyBot mkvComp = mkv.TryGetComp<CompNannyBot>();
+				CompMkVCombat combat = mkv.TryGetComp<CompMkVCombat>();
+				builder.Append(" mkvName=").Append(mkv.Name?.ToStringShort ?? "none")
+					.Append(" mkvThink=").Append(mkv.RaceProps.thinkTreeMain?.defName ?? "none")
+					.Append(" mkvWeapon=").Append(mkv.equipment?.Primary?.def?.defName ?? "none")
+					.Append(" mkvCombat=").Append(combat != null)
+					.Append(" mkvHomeBayIsBay=").Append(combat?.homeBay == bay)
+					.Append(" mkvHomeIsBay=").Append(mkvComp?.homeStation == bay)
+					.Append(" mkvHome=").Append(mkvComp?.homeStation?.def?.defName ?? "none");
+				mkv.Destroy(DestroyMode.Vanish);
+			}
+			bay.Destroy(DestroyMode.Vanish);
+		}
+
 		public static void RunIfRequested(Game game)
 		{
 			if (ran || game == null || !GenCommandLine.CommandLineArgPassed(CommandLineKey))
@@ -320,6 +385,7 @@ namespace ColonyKit.Modules.Robotics
 						botComp.Notify_RepairFinished();
 					}
 				}
+				ProbeMkVBay(map, builder);
 				ModLog.Force("Robotics", builder.ToString());
 
 				if (GenCommandLine.CommandLineArgPassed("-colonykit-robotics-ui-test"))

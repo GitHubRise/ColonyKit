@@ -10,6 +10,7 @@ namespace ColonyKit.Modules.Robotics
 		protected override Job TryGiveJob(Pawn pawn)
 		{
 			if (!NannyBotUtility.IsNannyBot(pawn) || pawn.Downed
+				|| NannyBotUtility.IsMkV(pawn)
 				|| !ModuleRegistry.IsEnabled(NannyBotUtility.ModuleId)
 				|| !NannyBotUtility.Settings.dangerAvoidance)
 			{

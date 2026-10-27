@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 	<CK.Robotics.RobotName>Nanny robot {0}</CK.Robotics.RobotName>
+	<CK.Robotics.MkVName>Mk-V robot {0}</CK.Robotics.MkVName>
+	<CK.Robotics.MkVCombat.NoWeapon>no weapon</CK.Robotics.MkVCombat.NoWeapon>
+	<CK.Robotics.MkVCombat.Status.Engaged>engaged</CK.Robotics.MkVCombat.Status.Engaged>
+	<CK.Robotics.MkVCombat.Status.Returning>returning</CK.Robotics.MkVCombat.Status.Returning>
+	<CK.Robotics.MkVCombat.Status.Idle>idle</CK.Robotics.MkVCombat.Status.Idle>
+	<CK.Robotics.MkVCombat.Inspect>Weapon: {0} · Combat: {1}</CK.Robotics.MkVCombat.Inspect>
+	<CK.Robotics.MkVCombat.Target>Target: {0}</CK.Robotics.MkVCombat.Target>
+	<CK.Robotics.MkVCombat.Disengage>Disengage and return</CK.Robotics.MkVCombat.Disengage>
+	<CK.Robotics.MkVCombat.Disengage.Desc>Stop fighting immediately and return to the assembly bay or nearest charging station.</CK.Robotics.MkVCombat.Disengage.Desc>
+	<CK.RobotManagement.Status.Combat>In combat</CK.RobotManagement.Status.Combat>
+	<CK.RobotManagement.Status.Returning>Returning</CK.RobotManagement.Status.Returning>
 
 	<CK.Robotics.Toggle.Sweep.Label>Sweep</CK.Robotics.Toggle.Sweep.Label>
 	<CK.Robotics.Toggle.Sweep.Desc>Clean filth inside the home area (dirt, blood, vomit and so on).</CK.Robotics.Toggle.Sweep.Desc>
@@ -49,10 +60,6 @@
 
 	<CK.Robotics.Station.Assemble>Assemble nanny robot</CK.Robotics.Station.Assemble>
 	<CK.Robotics.Station.Assemble.Desc>Assemble one nanny robot at this station. A destroyed robot must wait for the cooldown.</CK.Robotics.Station.Assemble.Desc>
-	<CK.Robotics.Station.AssembleMkV>Assemble Mk-V robot</CK.Robotics.Station.AssembleMkV>
-	<CK.Robotics.Station.AssembleMkV.Desc>Assemble the Mk-V self-maintaining robot. Requires mechanical body, actuation, perception, AI compute, dexterous hands, power and software research, plus the Mk-V integration project.</CK.Robotics.Station.AssembleMkV.Desc>
-	<CK.Robotics.Station.RequiresMkVResearch>All prerequisite Mk-V research must be completed first.</CK.Robotics.Station.RequiresMkVResearch>
-	<CK.Robotics.Station.AssembledMkV>Mk-V robot assembled: {0}</CK.Robotics.Station.AssembledMkV>
 
 	<CK.Robotics.MkVBay.Start>Start Mk-V assembly</CK.Robotics.MkVBay.Start>
 	<CK.Robotics.MkVBay.Start.Desc>Consume the dedicated recipe and start one Mk-V assembly. Recipe: {0}. The bay draws working power until the robot is complete.</CK.Robotics.MkVBay.Start.Desc>

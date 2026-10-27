@@ -18,12 +18,26 @@ namespace ColonyKit.Modules.Robotics
 		/// <summary>组装时功耗（W）。</summary>
 		public float workPower = 1500f;
 
-		/// <summary>一次 Mk-V 组装消耗的独立配方材料。</summary>
-		public List<ThingDefCountClass> ingredients = new List<ThingDefCountClass>();
+		/// <summary>独立配方材料数量；固定四种材料，避免在 XML 中解析复杂列表。</summary>
+		public int steelCount = 350;
+		public int componentCount = 12;
+		public int advancedComponentCount = 8;
+		public int plasteelCount = 40;
 
 		public CompProperties_MkVAssemblyBay()
 		{
 			compClass = typeof(CompMkVAssemblyBay);
+		}
+
+		public List<ThingDefCountClass> GetIngredients()
+		{
+			return new List<ThingDefCountClass>
+			{
+				new ThingDefCountClass(ThingDefOf.Steel, steelCount),
+				new ThingDefCountClass(ThingDefOf.ComponentIndustrial, componentCount),
+				new ThingDefCountClass(ThingDefOf.ComponentSpacer, advancedComponentCount),
+				new ThingDefCountClass(ThingDefOf.Plasteel, plasteelCount)
+			};
 		}
 	}
 
@@ -51,6 +65,8 @@ namespace ColonyKit.Modules.Robotics
 		}
 
 		public bool IsWorking => working;
+
+		public bool IsPowered => power != null && power.PowerOn;
 
 		public float Progress => Props.workTicks <= 0
 			? 0f
@@ -80,7 +96,7 @@ namespace ColonyKit.Modules.Robotics
 
 			if (working)
 			{
-				if (power != null && !power.PowerOn)
+				if (!IsPowered)
 				{
 					ApplyPower();
 					glower?.UpdateLit(parent.Map);
@@ -91,6 +107,7 @@ namespace ColonyKit.Modules.Robotics
 				if (progressTicks >= Props.workTicks)
 				{
 					CompleteAssembly();
+					return;
 				}
 			}
 
@@ -105,7 +122,7 @@ namespace ColonyKit.Modules.Robotics
 				return;
 			}
 			float desired = -(working ? Props.workPower : Props.idlePower);
-			if (power.PowerOutput != desired)
+			if (!Mathf.Approximately(power.PowerOutput, desired))
 			{
 				power.PowerOutput = desired;
 			}
@@ -117,7 +134,7 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return false;
 			}
-			foreach (ThingDefCountClass ingredient in Props.ingredients)
+			foreach (ThingDefCountClass ingredient in Props.GetIngredients())
 			{
 				if (ingredient?.thingDef == null || ingredient.count <= 0)
 				{
@@ -137,7 +154,7 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return;
 			}
-			foreach (ThingDefCountClass ingredient in Props.ingredients)
+			foreach (ThingDefCountClass ingredient in Props.GetIngredients())
 			{
 				if (ingredient?.thingDef == null || ingredient.count <= 0)
 				{
@@ -177,7 +194,7 @@ namespace ColonyKit.Modules.Robotics
 				reason = "CK.Robotics.MkVBay.MissingResearch".Translate();
 				return false;
 			}
-			if (power == null || !power.PowerOn)
+			if (!IsPowered)
 			{
 				reason = "CK.Robotics.MkVBay.NoPower".Translate();
 				return false;
@@ -213,6 +230,7 @@ namespace ColonyKit.Modules.Robotics
 			working = true;
 			progressTicks = 0;
 			ApplyPower();
+			glower?.UpdateLit(parent.Map);
 			Messages.Message(
 				"CK.Robotics.MkVBay.Started".Translate(),
 				parent,
@@ -229,6 +247,7 @@ namespace ColonyKit.Modules.Robotics
 			working = false;
 			progressTicks = 0;
 			ApplyPower();
+			glower?.UpdateLit(parent.Map);
 			Messages.Message(
 				"CK.Robotics.MkVBay.Cancelled".Translate(),
 				parent,
@@ -240,6 +259,7 @@ namespace ColonyKit.Modules.Robotics
 			working = false;
 			progressTicks = 0;
 			ApplyPower();
+			glower?.UpdateLit(parent.Map);
 
 			if (NannyBotDefOf.CK_RobotMkVKind == null)
 			{
@@ -254,18 +274,24 @@ namespace ColonyKit.Modules.Robotics
 				return;
 			}
 
-			IntVec3 cell = CellFinder.RandomClosewalkCellNear(parent.Position, parent.Map, 4);
-			if (!cell.IsValid || !cell.InBounds(parent.Map))
+			Map map = parent.Map;
+			IntVec3 cell = CellFinder.RandomClosewalkCellNear(
+				parent.Position,
+				map,
+				4,
+				c => c.Standable(map) && c.GetEdifice(map) == null && !c.Fogged(map));
+			if (!IsUsableSpawnCell(cell, map))
 			{
 				cell = parent.InteractionCell;
 			}
-			if (!cell.IsValid || !cell.InBounds(parent.Map))
+			if (!IsUsableSpawnCell(cell, map))
 			{
-				cell = parent.Position;
+				ModLog.Error("Robotics", "No standable cell near the Mk-V assembly bay; robot was not spawned.");
+				return;
 			}
 
 			int number = 1;
-			foreach (Pawn other in parent.Map.mapPawns.AllPawnsSpawned)
+			foreach (Pawn other in map.mapPawns.AllPawnsSpawned)
 			{
 				if (NannyBotUtility.IsNannyBot(other))
 				{
@@ -273,24 +299,51 @@ namespace ColonyKit.Modules.Robotics
 				}
 			}
 			pawn.Name = new NameSingle(
-				"CK.Robotics.RobotName".Translate(number).ToString(),
+				"CK.Robotics.MkVName".Translate(number).ToString(),
 				true);
 			if (pawn.playerSettings == null)
 			{
 				pawn.playerSettings = new Pawn_PlayerSettings(pawn);
 			}
 
-			GenSpawn.Spawn(pawn, cell, parent.Map, Rot4.South);
+			GenSpawn.Spawn(pawn, cell, map, Rot4.South);
+			if (!pawn.Spawned)
+			{
+				ModLog.Error("Robotics", "Mk-V pawn could not be spawned next to the assembly bay.");
+				return;
+			}
+			if (NannyBotDefOf.CK_ArcEmitter != null && pawn.equipment != null && pawn.equipment.Primary == null)
+			{
+				ThingWithComps weapon = ThingMaker.MakeThing(NannyBotDefOf.CK_ArcEmitter) as ThingWithComps;
+				if (weapon != null)
+				{
+					pawn.equipment.AddEquipment(weapon);
+				}
+			}
 			CompNannyBot comp = pawn.TryGetComp<CompNannyBot>();
 			if (comp != null)
 			{
-				comp.homeStation = parent as Building;
+				// 组装舱只负责生产，不兼作充电桩；让 Mk-V 使用最近的保姆机器人工作站。
+				comp.homeStation = NannyBotUtility.FindStation(pawn, false);
+			}
+			CompMkVCombat combat = pawn.TryGetComp<CompMkVCombat>();
+			if (combat != null)
+			{
+				combat.homeBay = parent as Building;
 			}
 
 			Messages.Message(
 				"CK.Robotics.MkVBay.Completed".Translate(pawn.LabelShort),
 				pawn,
 				MessageTypeDefOf.PositiveEvent);
+		}
+
+		private static bool IsUsableSpawnCell(IntVec3 cell, Map map)
+		{
+			return cell.IsValid
+				&& cell.InBounds(map)
+				&& cell.Standable(map)
+				&& cell.GetEdifice(map) == null;
 		}
 
 		public override IEnumerable<Gizmo> CompGetGizmosExtra()
@@ -315,9 +368,8 @@ namespace ColonyKit.Modules.Robotics
 			Command_Action start = new Command_Action
 			{
 				defaultLabel = "CK.Robotics.MkVBay.Start".Translate(),
-				defaultDesc = "CK.Robotics.MkVBay.Start.Desc".Translate(Props.ingredients
-					.Select(i => $"{i.thingDef.label} x{i.count}")
-					.ToLineList(" · ")),
+				defaultDesc = "CK.Robotics.MkVBay.Start.Desc".Translate(string.Join(" · ",
+					Props.GetIngredients().Select(i => $"{i.thingDef.label} x{i.count}"))),
 				icon = ContentFinder<Texture2D>.Get("UI/Commands/CK_Assemble", false)
 					?? TexCommand.Install,
 				action = () => StartAssembly()
@@ -333,15 +385,26 @@ namespace ColonyKit.Modules.Robotics
 
 		public override string CompInspectStringExtra()
 		{
+			List<string> lines = new List<string>();
 			if (working)
 			{
-				return "CK.Robotics.MkVBay.InspectWorking".Translate(Progress.ToStringPercent());
+				lines.Add("CK.Robotics.MkVBay.InspectWorking".Translate(Progress.ToStringPercent()));
+				if (!IsPowered)
+				{
+					lines.Add("CK.Robotics.MkVBay.NoPower".Translate());
+				}
+				return string.Join("\n", lines);
 			}
 			if (!ResearchFinished)
 			{
 				return "CK.Robotics.MkVBay.InspectResearch".Translate();
 			}
-			return "CK.Robotics.MkVBay.InspectIdle".Translate();
+			lines.Add("CK.Robotics.MkVBay.InspectIdle".Translate());
+			if (!IsPowered)
+			{
+				lines.Add("CK.Robotics.MkVBay.NoPower".Translate());
+			}
+			return string.Join("\n", lines);
 		}
 	}
 }

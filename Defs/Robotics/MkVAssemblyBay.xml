@@ -4,7 +4,8 @@
 		<defName>CK_MkVAssemblyBay</defName>
 		<label>Mk-V assembly bay</label>
 		<description>A dedicated Mk-V assembly bay with its own recipe, power draw and production cycle. It does not change the nanny robot station used for earlier models. Requires the Mk-V integration research and all seven subsystem projects.</description>
-		<thingClass>Building</thingClass>
+		<thingClass>ColonyKit.Modules.Robotics.Building_MkVAssemblyBay</thingClass>
+		<tickerType>Normal</tickerType>
 		<size>(2,2)</size>
 		<graphicData>
 			<texPath>Things/Building/Robotics/CK_MkVAssemblyBay</texPath>
@@ -43,24 +44,10 @@
 				<workTicks>30000</workTicks>
 				<idlePower>100</idlePower>
 				<workPower>1500</workPower>
-				<ingredients>
-					<li>
-						<thingDef>Steel</thingDef>
-						<count>350</count>
-					</li>
-					<li>
-						<thingDef>ComponentIndustrial</thingDef>
-						<count>12</count>
-					</li>
-					<li>
-						<thingDef>ComponentSpacer</thingDef>
-						<count>8</count>
-					</li>
-					<li>
-						<thingDef>Plasteel</thingDef>
-						<count>40</count>
-					</li>
-				</ingredients>
+				<steelCount>350</steelCount>
+				<componentCount>12</componentCount>
+				<advancedComponentCount>8</advancedComponentCount>
+				<plasteelCount>40</plasteelCount>
 			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>3</glowRadius>

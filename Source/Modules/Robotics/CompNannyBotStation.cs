@@ -144,11 +144,6 @@ namespace ColonyKit.Modules.Robotics
 
 		public bool TrySpawnRobot(bool manual = true)
 		{
-			return TrySpawnRobot(NannyBotDefOf.CK_RobotNannyKind, manual);
-		}
-
-		public bool TrySpawnRobot(PawnKindDef kind, bool manual = true)
-		{
 			if (!ModuleRegistry.IsEnabled(NannyBotUtility.ModuleId))
 			{
 				return false;
@@ -180,9 +175,10 @@ namespace ColonyKit.Modules.Robotics
 				return false;
 			}
 
+			PawnKindDef kind = NannyBotDefOf.CK_RobotNannyKind;
 			if (kind == null)
 			{
-				ModLog.Error("Robotics", "Robot PawnKindDef missing; cannot assemble robot.");
+				ModLog.Error("Robotics", "CK_RobotNannyKind missing; cannot assemble a nanny robot.");
 				return false;
 			}
 
@@ -225,11 +221,8 @@ namespace ColonyKit.Modules.Robotics
 
 			robot = pawn;
 			nextBuildTick = now + Props.rebuildCooldownTicks;
-			string messageKey = kind == NannyBotDefOf.CK_RobotMkVKind
-				? "CK.Robotics.Station.AssembledMkV"
-				: "CK.Robotics.Station.Assembled";
 			Messages.Message(
-				messageKey.Translate(pawn.LabelShort),
+				"CK.Robotics.Station.Assembled".Translate(pawn.LabelShort),
 				pawn,
 				MessageTypeDefOf.PositiveEvent);
 			return true;

@@ -8,8 +8,10 @@ namespace ColonyKit.Modules.Robotics
 	public static class NannyBotDefOf
 	{
 		public static ThingDef CK_RobotNanny;
+		public static ThingDef CK_RobotMkV;
 		public static PawnKindDef CK_RobotNannyKind;
 		public static PawnKindDef CK_RobotMkVKind;
+		public static ThingDef CK_ArcEmitter;
 		public static ThingDef CK_NannyBotStation;
 		public static JobDef CK_NannyCleanFilth;
 		public static JobDef CK_NannyCharge;

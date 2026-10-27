@@ -31,4 +31,25 @@
 			</subNodes>
 		</thinkRoot>
 	</ThinkTreeDef>
+
+	<ThinkTreeDef>
+		<defName>CK_MkVAndroid</defName>
+		<thinkRoot Class="ThinkNode_Priority">
+			<subNodes>
+				<li Class="ThinkNode_Subtree">
+					<treeDef>Downed</treeDef>
+				</li>
+				<li Class="ThinkNode_Subtree">
+					<treeDef>BurningResponse</treeDef>
+				</li>
+				<li Class="ThinkNode_QueuedJob" />
+				<li Class="ColonyKit.Modules.Robotics.JobGiver_MkVCombat" />
+				<li Class="ColonyKit.Modules.Robotics.JobGiver_MkVWeaponPickup" />
+				<li Class="RimWorld.JobGiver_PickUpOpportunisticWeapon" />
+				<li Class="ThinkNode_Subtree">
+					<treeDef>CK_NannyBot</treeDef>
+				</li>
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
 </Defs>

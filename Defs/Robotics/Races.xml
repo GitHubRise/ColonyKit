@@ -54,10 +54,65 @@
 		</comps>
 	</ThingDef>
 
+	<ThingDef ParentName="BasePawn">
+		<defName>CK_RobotMkV</defName>
+		<label>Mk-V nanny robot</label>
+		<description>A combat-capable Mk-V household android. It shares the nanny robot chassis and battery system, but uses a dedicated combat ThinkTree and can equip external weapons.</description>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<statBases>
+			<MoveSpeed>4.2</MoveSpeed>
+			<MarketValue>2500</MarketValue>
+			<Mass>45</Mass>
+			<ComfyTemperatureMin>-50</ComfyTemperatureMin>
+			<ComfyTemperatureMax>60</ComfyTemperatureMax>
+			<Flammability>0</Flammability>
+			<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+			<ArmorRating_Heat>1</ArmorRating_Heat>
+			<CarryingCapacity>75</CarryingCapacity>
+			<CleaningSpeed>1.25</CleaningSpeed>
+			<PsychicSensitivity>0</PsychicSensitivity>
+			<ToxicResistance>1</ToxicResistance>
+		</statBases>
+		<race>
+			<body>CK_NannyBotBody</body>
+			<baseBodySize>0.8</baseBodySize>
+			<baseHealthScale>0.9</baseHealthScale>
+			<intelligence>ToolUser</intelligence>
+			<thinkTreeMain>CK_MkVAndroid</thinkTreeMain>
+			<fleshType>Mechanoid</fleshType>
+			<needsRest>false</needsRest>
+			<foodType>None</foodType>
+			<hasGenders>false</hasGenders>
+			<lifeExpectancy>2500</lifeExpectancy>
+			<bloodDef>Filth_MachineBits</bloodDef>
+			<renderTree>Misc</renderTree>
+			<canBecomeShambler>false</canBecomeShambler>
+			<lifeStageAges>
+				<li>
+					<def>MechanoidFullyFormed</def>
+					<minAge>0</minAge>
+				</li>
+			</lifeStageAges>
+		</race>
+		<butcherProducts>
+			<Steel>20</Steel>
+		</butcherProducts>
+		<inspectorTabs>
+			<li>ITab_Pawn_Health</li>
+			<li>ITab_Pawn_Needs</li>
+			<li>ITab_Pawn_Log</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="ColonyKit.Modules.Robotics.CompProperties_NannyBot" />
+			<li Class="ColonyKit.Modules.Robotics.CompProperties_MkVCombat" />
+		</comps>
+	</ThingDef>
+
 	<PawnKindDef>
 		<defName>CK_RobotMkVKind</defName>
-		<label>Mk-V nanny robot</label>
-		<race>CK_RobotNanny</race>
+		<label>Mk-V self-maintaining robot</label>
+		<race>CK_RobotMkV</race>
 		<defaultFactionDef>PlayerColony</defaultFactionDef>
 		<combatPower>0</combatPower>
 		<isFighter>false</isFighter>

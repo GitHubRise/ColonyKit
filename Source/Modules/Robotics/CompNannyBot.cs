@@ -68,7 +68,7 @@ namespace ColonyKit.Modules.Robotics
 		/// <summary>正在被殖民者维修；维修期间不充电、不接新家务。</summary>
 		public bool repairing;
 
-		/// <summary>组装它的充电桩；桩被拆掉后会自动改用最近的桩。</summary>
+		/// <summary>常用充电桩；桩被拆掉后会自动改用最近的桩。</summary>
 		public Building homeStation;
 
 		private Graphic paintedGraphic;
