@@ -16,7 +16,15 @@
 	<CK.Robotics.Menu.ReturnToBay>Return to assembly bay</CK.Robotics.Menu.ReturnToBay>
 	<CK.Robotics.Menu.RepairRobot>Repair robot: {0}</CK.Robotics.Menu.RepairRobot>
 	<CK.Robotics.Menu.NoStation>No usable charging station.</CK.Robotics.Menu.NoStation>
-	<CK.Robotics.Tab.RobotInfo>Character</CK.Robotics.Tab.RobotInfo>
+	<CK.Robotics.Tab.RobotInfo>Overview</CK.Robotics.Tab.RobotInfo>
+	<CK.Robotics.Overview.Title>Overview</CK.Robotics.Overview.Title>
+	<CK.Robotics.Overview.DataProcessing>Data processing</CK.Robotics.Overview.DataProcessing>
+	<CK.Robotics.Overview.Moving>Moving</CK.Robotics.Overview.Moving>
+	<CK.Robotics.Overview.Manipulation>Manipulation</CK.Robotics.Overview.Manipulation>
+	<CK.Robotics.Overview.Sight>Sight</CK.Robotics.Overview.Sight>
+	<CK.Robotics.Overview.Hearing>Hearing</CK.Robotics.Overview.Hearing>
+	<CK.Robotics.Overview.Filtration>Fluid filtration</CK.Robotics.Overview.Filtration>
+	<CK.Robotics.Overview.Power>Power supply</CK.Robotics.Overview.Power>
 	<CK.Robotics.RobotInfo.Name>Name: {0}</CK.Robotics.RobotInfo.Name>
 	<CK.Robotics.RobotInfo.Kind>Model: {0}</CK.Robotics.RobotInfo.Kind>
 	<CK.Robotics.RobotInfo.Faction>Faction: {0}</CK.Robotics.RobotInfo.Faction>

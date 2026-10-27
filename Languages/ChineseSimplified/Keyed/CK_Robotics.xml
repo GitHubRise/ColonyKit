@@ -16,7 +16,15 @@
 	<CK.Robotics.Menu.ReturnToBay>返回组装舱</CK.Robotics.Menu.ReturnToBay>
 	<CK.Robotics.Menu.RepairRobot>维修机器人：{0}</CK.Robotics.Menu.RepairRobot>
 	<CK.Robotics.Menu.NoStation>没有可用的充电桩。</CK.Robotics.Menu.NoStation>
-	<CK.Robotics.Tab.RobotInfo>角色</CK.Robotics.Tab.RobotInfo>
+	<CK.Robotics.Tab.RobotInfo>概况</CK.Robotics.Tab.RobotInfo>
+	<CK.Robotics.Overview.Title>概况</CK.Robotics.Overview.Title>
+	<CK.Robotics.Overview.DataProcessing>数据处理</CK.Robotics.Overview.DataProcessing>
+	<CK.Robotics.Overview.Moving>移动能力</CK.Robotics.Overview.Moving>
+	<CK.Robotics.Overview.Manipulation>操作能力</CK.Robotics.Overview.Manipulation>
+	<CK.Robotics.Overview.Sight>视觉能力</CK.Robotics.Overview.Sight>
+	<CK.Robotics.Overview.Hearing>听觉能力</CK.Robotics.Overview.Hearing>
+	<CK.Robotics.Overview.Filtration>液体过滤</CK.Robotics.Overview.Filtration>
+	<CK.Robotics.Overview.Power>动力供给</CK.Robotics.Overview.Power>
 	<CK.Robotics.RobotInfo.Name>名称：{0}</CK.Robotics.RobotInfo.Name>
 	<CK.Robotics.RobotInfo.Kind>型号：{0}</CK.Robotics.RobotInfo.Kind>
 	<CK.Robotics.RobotInfo.Faction>阵营：{0}</CK.Robotics.RobotInfo.Faction>
