@@ -1017,9 +1017,144 @@ def mkii5_east():
     return im
 
 
+def mkii6_south():
+    """Mk-II v6: cleaner redraw of the toy reference, closer head/body proportions."""
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    shell = (213, 211, 203, 255)
+    shell_hi = (240, 238, 230, 255)
+    shell_lo = (163, 161, 154, 255)
+    face = (16, 18, 20, 255)
+    body = (48, 49, 52, 255)
+    body_hi = (67, 68, 72, 255)
+    gold = (188, 150, 89, 255)
+    gold_hi = (222, 184, 116, 255)
+    gold_lo = (128, 98, 56, 255)
+    eye = (109, 190, 255, 255)
+    eye_hi = (198, 232, 255, 255)
+    ellipse(d, (24, 114, 104, 126), (0, 0, 0, 52))
+
+    # smaller gold capsule arms, behind body
+    for side in (-1, 1):
+        x1 = 12 if side == -1 else 96
+        x2 = 30 if side == -1 else 114
+        rr(d, (x1, 74, x2, 108), 9, gold, OUTLINE, 2)
+        rr(d, (x1 + 4, 78, x2 - 4, 98), 7, gold_hi, None)
+        ellipse(d, (x1 + 1, 100, x2 - 1, 112), gold, OUTLINE, 2)
+
+    # rounded body
+    rr(d, (34, 60, 94, 112), 20, body, OUTLINE, 2)
+    ellipse(d, (36, 98, 92, 116), body, OUTLINE, 2)
+    line(d, [(52, 78), (64, 86), (76, 78)], (78, 80, 84, 255), 2)
+    line(d, [(52, 78), (64, 86), (76, 78)], (34, 35, 38, 255), 1)
+    ellipse(d, (44, 64, 84, 78), body_hi, None)
+
+    # neck
+    ellipse(d, (54, 66, 74, 82), (34, 35, 38, 255), OUTLINE, 1)
+
+    # small gold ears
+    for x in (16, 96):
+        ellipse(d, (x, 36, x + 18, 56), gold, OUTLINE, 2)
+        ellipse(d, (x + 4, 40, x + 14, 52), gold_hi, None)
+        ellipse(d, (x + 6, 44, x + 12, 50), gold_lo, None)
+
+    # head shell
+    rr(d, (24, 16, 104, 76), 22, shell, OUTLINE, 2)
+    rr(d, (28, 20, 100, 72), 19, shell_hi, None)
+    rr(d, (29, 21, 99, 71), 18, shell, OUTLINE, 1)
+    # black glass face
+    rr(d, (32, 24, 96, 68), 16, face, OUTLINE, 2)
+    rr(d, (36, 28, 92, 64), 13, (12, 14, 16, 255), None)
+
+    # two rounded blue eyes
+    for x in (42, 68):
+        rr(d, (x, 40, x + 18, 55), 4, eye, None)
+        rr(d, (x + 3, 42, x + 15, 48), 3, eye_hi, None)
+        ellipse(d, (x + 5, 43, x + 13, 51), (226, 247, 255, 255), None)
+
+    # shell highlight
+    line(d, [(32, 20), (94, 20)], (252, 250, 242, 255), 2)
+    # hover base
+    ellipse(d, (42, 108, 86, 118), (31, 32, 35, 255), None)
+    return im
+
+
+def mkii6_north():
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    shell = (213, 211, 203, 255)
+    shell_hi = (240, 238, 230, 255)
+    body = (48, 49, 52, 255)
+    gold = (188, 150, 89, 255)
+    gold_hi = (222, 184, 116, 255)
+    ellipse(d, (24, 114, 104, 126), (0, 0, 0, 52))
+    for side in (-1, 1):
+        x1 = 12 if side == -1 else 96
+        x2 = 30 if side == -1 else 114
+        rr(d, (x1, 74, x2, 108), 9, gold, OUTLINE, 2)
+        ellipse(d, (x1 + 1, 100, x2 - 1, 112), gold, OUTLINE, 2)
+    rr(d, (34, 60, 94, 112), 20, body, OUTLINE, 2)
+    ellipse(d, (36, 98, 92, 116), body, OUTLINE, 2)
+    rr(d, (48, 70, 80, 104), 10, (38, 39, 42, 255), OUTLINE, 1)
+    line(d, [(64, 74), (64, 100)], (74, 76, 80, 255), 2)
+    for x in (16, 96):
+        ellipse(d, (x, 36, x + 18, 56), gold, OUTLINE, 2)
+        ellipse(d, (x + 4, 40, x + 14, 52), gold_hi, None)
+    rr(d, (24, 16, 104, 76), 22, shell, OUTLINE, 2)
+    rr(d, (28, 20, 100, 72), 19, shell_hi, None)
+    rr(d, (29, 21, 99, 71), 18, shell, OUTLINE, 1)
+    # rear vent panel
+    rr(d, (42, 30, 86, 58), 9, (38, 39, 42, 255), OUTLINE, 1)
+    for x in (50, 58, 66, 74):
+        d.rectangle((P(x), P(35), P(x + 3), P(52)), fill=(107, 106, 102, 255))
+    ellipse(d, (60, 61, 68, 69), gold, OUTLINE, 1)
+    line(d, [(32, 20), (94, 20)], (252, 250, 242, 255), 2)
+    return im
+
+
+def mkii6_east():
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    shell = (213, 211, 203, 255)
+    shell_hi = (240, 238, 230, 255)
+    face = (16, 18, 20, 255)
+    body = (48, 49, 52, 255)
+    body_hi = (67, 68, 72, 255)
+    gold = (188, 150, 89, 255)
+    gold_hi = (222, 184, 116, 255)
+    eye = (109, 190, 255, 255)
+    eye_hi = (198, 232, 255, 255)
+    ellipse(d, (26, 114, 102, 126), (0, 0, 0, 52))
+    # visible gold arm
+    rr(d, (90, 74, 114, 108), 9, gold, OUTLINE, 2)
+    rr(d, (95, 78, 109, 98), 7, gold_hi, None)
+    ellipse(d, (92, 100, 112, 112), gold, OUTLINE, 2)
+    # side body
+    rr(d, (42, 60, 94, 112), 18, body, OUTLINE, 2)
+    ellipse(d, (44, 98, 92, 116), body, OUTLINE, 2)
+    line(d, [(56, 78), (68, 86), (80, 78)], (78, 80, 84, 255), 2)
+    ellipse(d, (50, 64, 86, 78), body_hi, None)
+    # side head
+    rr(d, (36, 16, 104, 76), 21, shell, OUTLINE, 2)
+    rr(d, (40, 20, 100, 72), 18, shell_hi, None)
+    # side face panel
+    rr(d, (74, 24, 102, 68), 14, face, OUTLINE, 2)
+    rr(d, (79, 29, 98, 63), 10, (12, 14, 16, 255), None)
+    rr(d, (84, 40, 98, 54), 4, eye, None)
+    rr(d, (87, 42, 95, 48), 3, eye_hi, None)
+    # gold ear on the side shell
+    ellipse(d, (46, 36, 64, 56), gold, OUTLINE, 2)
+    ellipse(d, (50, 40, 60, 52), gold_hi, None)
+    ellipse(d, (52, 44, 58, 50), (128, 98, 56, 255), None)
+    # neck
+    ellipse(d, (60, 66, 78, 82), (34, 35, 38, 255), OUTLINE, 1)
+    line(d, [(44, 20), (96, 20)], (252, 250, 242, 255), 2)
+    return im
+
+
 def robot_south(tier):
     if tier == "MkII":
-        return mkii5_south()
+        return mkii6_south()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (20, 114, 108, 124), (0, 0, 0, 50))
@@ -1034,7 +1169,7 @@ def robot_south(tier):
 
 def robot_north(tier):
     if tier == "MkII":
-        return mkii5_north()
+        return mkii6_north()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (20, 114, 108, 124), (0, 0, 0, 50))
@@ -1054,7 +1189,7 @@ def robot_north(tier):
 
 def robot_east(tier):
     if tier == "MkII":
-        return mkii5_east()
+        return mkii6_east()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (22, 114, 106, 124), (0, 0, 0, 50))
