@@ -45,10 +45,10 @@ namespace ColonyKit.Modules.Robotics
 		public const float DefaultChargePower = 1000f;
 
 		public const float MinChargeEfficiency = 10f;
-		public const float MaxChargeEfficiency = 300f;
+		public const float MaxChargeEfficiency = 1000f;
 		public const float DefaultChargeEfficiency = 100f;
 		public const float MinPowerConversionRate = 10f;
-		public const float MaxPowerConversionRate = 300f;
+		public const float MaxPowerConversionRate = 1000f;
 		public const float DefaultPowerConversionRate = 100f;
 
 		public const float MinMkvChargePower = 100f;

@@ -38,9 +38,9 @@
 	<ColonyKit.Settings.Robotics.Section.Parameters>参数</ColonyKit.Settings.Robotics.Section.Parameters>
 	<ColonyKit.Settings.Robotics.ChargeThreshold>充电阈值</ColonyKit.Settings.Robotics.ChargeThreshold>
 	<ColonyKit.Settings.Robotics.BatteryCapacity>电池容量</ColonyKit.Settings.Robotics.BatteryCapacity>
-	<ColonyKit.Settings.Robotics.ChargePower>充电功耗</ColonyKit.Settings.Robotics.ChargePower>
-	<ColonyKit.Settings.Robotics.ChargeEfficiency>充电效率</ColonyKit.Settings.Robotics.ChargeEfficiency>
-	<ColonyKit.Settings.Robotics.PowerConversionRate>电力转换率</ColonyKit.Settings.Robotics.PowerConversionRate>
+	<ColonyKit.Settings.Robotics.ChargePower>普通机器人充电功耗</ColonyKit.Settings.Robotics.ChargePower>
+	<ColonyKit.Settings.Robotics.ChargeEfficiency>普通机器人充电效率</ColonyKit.Settings.Robotics.ChargeEfficiency>
+	<ColonyKit.Settings.Robotics.PowerConversionRate>普通机器人电力转换率</ColonyKit.Settings.Robotics.PowerConversionRate>
 	<ColonyKit.Settings.Robotics.RefuelThreshold>加燃料阈值</ColonyKit.Settings.Robotics.RefuelThreshold>
 	<ColonyKit.Settings.Robotics.WorkRadius>工作半径</ColonyKit.Settings.Robotics.WorkRadius>
 	<ColonyKit.Settings.Robotics.Unlimited>不限</ColonyKit.Settings.Robotics.Unlimited>

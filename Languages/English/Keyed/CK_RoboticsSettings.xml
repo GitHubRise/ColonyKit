@@ -38,9 +38,9 @@
 	<ColonyKit.Settings.Robotics.Section.Parameters>Parameters</ColonyKit.Settings.Robotics.Section.Parameters>
 	<ColonyKit.Settings.Robotics.ChargeThreshold>Charge threshold</ColonyKit.Settings.Robotics.ChargeThreshold>
 	<ColonyKit.Settings.Robotics.BatteryCapacity>Battery capacity</ColonyKit.Settings.Robotics.BatteryCapacity>
-	<ColonyKit.Settings.Robotics.ChargePower>Charging power</ColonyKit.Settings.Robotics.ChargePower>
-	<ColonyKit.Settings.Robotics.ChargeEfficiency>Charging efficiency</ColonyKit.Settings.Robotics.ChargeEfficiency>
-	<ColonyKit.Settings.Robotics.PowerConversionRate>Power conversion rate</ColonyKit.Settings.Robotics.PowerConversionRate>
+	<ColonyKit.Settings.Robotics.ChargePower>Normal robot charging power</ColonyKit.Settings.Robotics.ChargePower>
+	<ColonyKit.Settings.Robotics.ChargeEfficiency>Normal robot charging efficiency</ColonyKit.Settings.Robotics.ChargeEfficiency>
+	<ColonyKit.Settings.Robotics.PowerConversionRate>Normal robot power conversion rate</ColonyKit.Settings.Robotics.PowerConversionRate>
 	<ColonyKit.Settings.Robotics.RefuelThreshold>Refuel threshold</ColonyKit.Settings.Robotics.RefuelThreshold>
 	<ColonyKit.Settings.Robotics.WorkRadius>Work radius</ColonyKit.Settings.Robotics.WorkRadius>
 	<ColonyKit.Settings.Robotics.Unlimited>Unlimited</ColonyKit.Settings.Robotics.Unlimited>
