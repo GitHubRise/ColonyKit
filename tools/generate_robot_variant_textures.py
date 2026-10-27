@@ -576,9 +576,159 @@ def mkii_east():
     return im
 
 
+def mkii3_south():
+    """Mk-II v3: tri-wheel spindle with halo sensor ring and saddle modules."""
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    p = TIERS["MkII"]
+    ellipse(d, (12, 116, 116, 128), (0, 0, 0, 55))
+    # tri-wheel base: two front wheels, one rear center wheel
+    for x, y in ((20, 98), (82, 98), (51, 94)):
+        ellipse(d, (x, y, x + 26, y + 26), TREAD, OUTLINE, 2)
+        ellipse(d, (x + 6, y + 6, x + 20, y + 20), STEEL_MID, OUTLINE, 2)
+        ellipse(d, (x + 11, y + 11, x + 15, y + 15), DARK2, OUTLINE, 1)
+        for i in range(4):
+            d.rectangle((P(x + 4 + i * 6), P(y + 22), P(x + 7 + i * 6), P(y + 25)), fill=(82, 91, 102, 255))
+    # central chassis / axle
+    polygon(d, [(46, 86), (82, 86), (94, 104), (34, 104)], DARK, OUTLINE)
+    polygon(d, [(52, 90), (76, 90), (84, 100), (44, 100)], DARK2, OUTLINE)
+    line(d, [(64, 88), (64, 108)], STEEL_LIGHT, 2)
+    # exposed vertical frame
+    for x in (38, 84):
+        d.rectangle((P(x), P(34), P(x + 7), P(86)), fill=STEEL, outline=OUTLINE, width=P(1))
+    d.rectangle((P(38), P(34), P(91), P(40)), fill=STEEL_MID, outline=OUTLINE, width=P(1))
+    d.rectangle((P(38), P(80), P(91), P(86)), fill=STEEL_MID, outline=OUTLINE, width=P(1))
+    # four swappable front modules
+    for i, col in enumerate((GREEN, STEEL_MID, AMBER, GREEN)):
+        y = 42 + i * 10
+        rr(d, (44, y, 84, y + 8), 2, DARK2, OUTLINE, 1)
+        d.rectangle((P(48), P(y + 2), P(60), P(y + 6)), fill=col)
+        d.rectangle((P(64), P(y + 2), P(80), P(y + 4)), fill=STEEL_MID)
+        bolt(d, 46, y + 4, 1)
+        bolt(d, 82, y + 4, 1)
+    # saddle modules / tool pods
+    for x in (14, 94):
+        rr(d, (x, 46, x + 20, 84), 4, p["accent"], OUTLINE, 2)
+        d.rectangle((P(x + 4), P(52), P(x + 16), P(57)), fill=GREEN)
+        d.rectangle((P(x + 4), P(62), P(x + 16), P(68)), fill=DARK2)
+        d.rectangle((P(x + 4), P(74), P(x + 16), P(78)), fill=STEEL_MID)
+        bolt(d, x + 5, 48, 1)
+        bolt(d, x + 15, 48, 1)
+    # small manipulator arms below pods
+    for x in (16, 96):
+        rr(d, (x, 82, x + 14, 106), 3, p["shell"], OUTLINE, 1)
+        polygon(d, [(x, 106), (x + 14, 106), (x + 10, 116), (x + 3, 116)], STEEL_LIGHT, OUTLINE)
+    # halo sensor ring
+    ellipse(d, (40, 8, 88, 48), STEEL_MID, OUTLINE, 2)
+    ellipse(d, (47, 15, 81, 41), (20, 28, 37, 255), OUTLINE, 1)
+    ellipse(d, (56, 21, 72, 35), GREEN, OUTLINE, 1)
+    ellipse(d, (60, 25, 68, 31), (235, 255, 255, 255), None)
+    # side sensor points on the ring
+    for x in (42, 86):
+        ellipse(d, (x - 2, 26, x + 2, 30), AMBER_LIGHT, OUTLINE, 1)
+    # neck
+    d.rectangle((P(58), P(38), P(70), P(46)), fill=DARK2, outline=OUTLINE, width=P(1))
+    # twin blade antennae
+    for x, lean in ((44, -6), (84, 6)):
+        line(d, [(x, 10), (x + lean, 2)], OUTLINE, 2)
+        polygon(d, [(x + lean - 4, 2), (x + lean + 4, 2), (x + lean, 8)], GREEN, OUTLINE)
+    # hazard base
+    for i in range(5):
+        polygon(d, [(40 + i * 10, 104), (45 + i * 10, 104), (43 + i * 10, 98), (38 + i * 10, 98)], AMBER)
+    return im
+
+
+def mkii3_north():
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    p = TIERS["MkII"]
+    ellipse(d, (12, 116, 116, 128), (0, 0, 0, 55))
+    for x, y in ((20, 98), (82, 98), (51, 94)):
+        ellipse(d, (x, y, x + 26, y + 26), TREAD, OUTLINE, 2)
+        ellipse(d, (x + 6, y + 6, x + 20, y + 20), STEEL_MID, OUTLINE, 2)
+    polygon(d, [(46, 86), (82, 86), (94, 104), (34, 104)], DARK, OUTLINE)
+    # rear frame
+    for x in (38, 84):
+        d.rectangle((P(x), P(34), P(x + 7), P(86)), fill=STEEL, outline=OUTLINE, width=P(1))
+    d.rectangle((P(38), P(34), P(91), P(40)), fill=STEEL_MID, outline=OUTLINE, width=P(1))
+    # rear battery modules
+    for i, col in enumerate((DARK2, STEEL_MID, GREEN)):
+        y = 44 + i * 14
+        rr(d, (44, y, 84, y + 11), 2, col, OUTLINE, 1)
+        d.rectangle((P(48), P(y + 3), P(58), P(y + 7)), fill=GREEN if i != 1 else AMBER)
+        d.rectangle((P(64), P(y + 3), P(80), P(y + 5)), fill=STEEL_MID)
+    # rear ports
+    for x in (42, 80):
+        d.rectangle((P(x), P(44), P(x + 4), P(82)), fill=STEEL_LIGHT, outline=OUTLINE, width=P(1))
+    # saddle modules
+    for x in (14, 94):
+        rr(d, (x, 46, x + 20, 84), 4, p["accent"], OUTLINE, 2)
+        d.rectangle((P(x + 4), P(54), P(x + 16), P(60)), fill=STEEL_MID)
+        d.rectangle((P(x + 4), P(70), P(x + 16), P(76)), fill=DARK2)
+    for x in (16, 96):
+        rr(d, (x, 82, x + 14, 106), 3, p["shell"], OUTLINE, 1)
+    # halo ring rear
+    ellipse(d, (40, 8, 88, 48), STEEL_MID, OUTLINE, 2)
+    ellipse(d, (47, 15, 81, 41), (20, 28, 37, 255), OUTLINE, 1)
+    for x in (56, 62, 68, 74):
+        d.rectangle((P(x), P(22), P(x + 3), P(34)), fill=STEEL_MID)
+    for x in (42, 86):
+        ellipse(d, (x - 2, 26, x + 2, 30), AMBER_LIGHT, OUTLINE, 1)
+    d.rectangle((P(58), P(38), P(70), P(46)), fill=DARK2, outline=OUTLINE, width=P(1))
+    for x, lean in ((44, -6), (84, 6)):
+        line(d, [(x, 10), (x + lean, 2)], OUTLINE, 2)
+        polygon(d, [(x + lean - 4, 2), (x + lean + 4, 2), (x + lean, 8)], GREEN, OUTLINE)
+    return im
+
+
+def mkii3_east():
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    p = TIERS["MkII"]
+    ellipse(d, (14, 116, 114, 128), (0, 0, 0, 55))
+    # two visible wheels in profile
+    for x in (26, 80):
+        ellipse(d, (x, 96, x + 28, 124), TREAD, OUTLINE, 2)
+        ellipse(d, (x + 6, 102, x + 22, 118), STEEL_MID, OUTLINE, 2)
+        ellipse(d, (x + 11, 107, x + 17, 113), DARK2, OUTLINE, 1)
+    # chassis
+    polygon(d, [(34, 84), (92, 84), (102, 104), (26, 104)], DARK, OUTLINE)
+    line(d, [(64, 86), (64, 108)], STEEL_LIGHT, 2)
+    # side frame / rails
+    d.rectangle((P(44), P(34), P(51), P(86)), fill=STEEL, outline=OUTLINE, width=P(1))
+    d.rectangle((P(84), P(34), P(91), P(86)), fill=STEEL, outline=OUTLINE, width=P(1))
+    d.rectangle((P(44), P(34), P(91), P(40)), fill=STEEL_MID, outline=OUTLINE, width=P(1))
+    # side modules
+    for i, col in enumerate((GREEN, DARK2, STEEL_MID)):
+        y = 44 + i * 11
+        rr(d, (52, y, 84, y + 8), 2, DARK2, OUTLINE, 1)
+        d.rectangle((P(56), P(y + 2), P(68), P(y + 6)), fill=col)
+        d.rectangle((P(72), P(y + 2), P(80), P(y + 4)), fill=STEEL_MID)
+    # saddle module
+    rr(d, (78, 46, 98, 84), 4, p["accent"], OUTLINE, 2)
+    d.rectangle((P(82), P(52), P(94), P(57)), fill=GREEN)
+    d.rectangle((P(82), P(64), P(94), P(70)), fill=DARK2)
+    rr(d, (88, 82, 102, 106), 3, p["shell"], OUTLINE, 1)
+    polygon(d, [(100, 106), (110, 106), (106, 116), (98, 114)], STEEL_LIGHT, OUTLINE)
+    # halo ring side
+    ellipse(d, (42, 8, 90, 48), STEEL_MID, OUTLINE, 2)
+    ellipse(d, (49, 15, 83, 41), (20, 28, 37, 255), OUTLINE, 1)
+    rr(d, (74, 22, 88, 34), 2, (20, 28, 37, 255), OUTLINE, 1)
+    d.rectangle((P(78), P(26), P(86), P(30)), fill=GREEN)
+    d.rectangle((P(60), P(38), P(72), P(46)), fill=DARK2, outline=OUTLINE, width=P(1))
+    # antenna
+    for x, lean in ((50, -6), (86, 6)):
+        line(d, [(x, 10), (x + lean, 2)], OUTLINE, 2)
+        polygon(d, [(x + lean - 4, 2), (x + lean + 4, 2), (x + lean, 8)], GREEN, OUTLINE)
+    # side tool block
+    rr(d, (104, 82, 116, 94), 2, DARK, OUTLINE, 1)
+    d.rectangle((P(107), P(86), P(113), P(90)), fill=GREEN)
+    return im
+
+
 def robot_south(tier):
     if tier == "MkII":
-        return mkii_south()
+        return mkii3_south()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (20, 114, 108, 124), (0, 0, 0, 50))
@@ -593,7 +743,7 @@ def robot_south(tier):
 
 def robot_north(tier):
     if tier == "MkII":
-        return mkii_north()
+        return mkii3_north()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (20, 114, 108, 124), (0, 0, 0, 50))
@@ -613,7 +763,7 @@ def robot_north(tier):
 
 def robot_east(tier):
     if tier == "MkII":
-        return mkii_east()
+        return mkii3_east()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (22, 114, 106, 124), (0, 0, 0, 50))
