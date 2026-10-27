@@ -167,7 +167,7 @@
 	<CK.Hygiene.HotWaterTemp>Hot water temperature: {0}%</CK.Hygiene.HotWaterTemp>
 	<CK.Hygiene.GutBugMessage>{0} caught a gut infection from dirty water or poor hygiene.</CK.Hygiene.GutBugMessage>
 	<CK.Hygiene.Alert.FixtureBlocked>Hygiene fixtures unavailable</CK.Hygiene.Alert.FixtureBlocked>
-	<CK.Hygiene.Alert.FixtureBlockedDesc>These hygiene fixtures have no water, a blocked drain, or no power:
+	<CK.Hygiene.Alert.FixtureBlockedDesc>These hygiene fixtures have no water, a blocked drain, no power, or a full pit:
 {0}</CK.Hygiene.Alert.FixtureBlockedDesc>
 	<CK.Hygiene.Alert.FixtureBusy>Hygiene fixture queue / long occupation</CK.Hygiene.Alert.FixtureBusy>
 	<CK.Hygiene.Alert.FixtureBusyDesc>Some hygiene fixtures have been occupied for a long time, or someone needs a shower/toilet but none is free:
@@ -195,6 +195,8 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<CK.Hygiene.FloatMenu.BasinFull>The basin is full</CK.Hygiene.FloatMenu.BasinFull>
 	<CK.Hygiene.FloatMenu.BasinEmpty>The basin is empty</CK.Hygiene.FloatMenu.BasinEmpty>
 	<CK.Hygiene.BasinWater>Basin water: {0}/{1} L</CK.Hygiene.BasinWater>
+	<CK.Hygiene.PitLevel>Pit fill: {0}</CK.Hygiene.PitLevel>
+	<CK.Hygiene.PitFull>Pit full - needs emptying</CK.Hygiene.PitFull>
 	<ColonyKit.Module.Hygiene.Name>Shower</ColonyKit.Module.Hygiene.Name>
 	<ColonyKit.Module.Hygiene.Desc>Hygiene need, shower and hot water; based on DBH.</ColonyKit.Module.Hygiene.Desc>
 	<ColonyKit.Module.Storage.Name>Warehouse / stacking</ColonyKit.Module.Storage.Name>

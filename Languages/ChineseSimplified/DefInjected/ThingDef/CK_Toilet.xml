@@ -6,4 +6,6 @@
 	<CK_SewagePipe.description>连接马桶与化粪池的污水管。不阻挡移动，可以铺在墙下；按住左键拖动可快速布线。</CK_SewagePipe.description>
 	<CK_SepticTank.label>化粪池</CK_SepticTank.label>
 	<CK_SepticTank.description>DBH 式化粪池，储存污水直到清空。</CK_SepticTank.description>
+	<CK_PitLatrine.label>旱厕</CK_PitLatrine.label>
+	<CK_PitLatrine.description>不用水也不用接电的旱厕：粪污直接落进 500 容量的粪坑（每次使用 14）。坑满后必须由殖民者清空才能继续使用。</CK_PitLatrine.description>
 </LanguageData>

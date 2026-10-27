@@ -2,4 +2,5 @@
 <LanguageData>
 	<CK_UseToilet.reportString>正在上厕所。</CK_UseToilet.reportString>
 	<CK_EmptySepticTank.reportString>正在抽污。</CK_EmptySepticTank.reportString>
+	<CK_EmptyLatrine.reportString>正在清空旱厕。</CK_EmptyLatrine.reportString>
 </LanguageData>

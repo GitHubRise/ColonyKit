@@ -45,7 +45,7 @@ namespace ColonyKit.Modules.Hygiene
 			Scribe_Values.Look(ref seatUp, "seatUp", false);
 		}
 
-		public bool TryUseFlush()
+		public virtual bool TryUseFlush()
 		{
 			CompPipe waterPipe = pipe;
 			CompPipe sewagePipe = null;

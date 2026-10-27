@@ -18,6 +18,12 @@
 
 - **选中殖民者右键洁具/水井的指令菜单**：新增 `FloatMenuOptionProvider_HygieneFixtures`（RimWorld 1.6 的 FloatMenuOptionProvider 系统，无需 Harmony 补丁），按设备给出不同操作：马桶「使用厕所」、洗手池「洗手」、淋浴器「淋浴」、浴缸/双人浴缸「泡澡」、水井「打水」。堵塞的洁具额外出现「清理堵塞」（复用 `CK_NannyUnblock` 的疏通 Job，只依赖 `CompBlockage`），洁具周围一格有污渍时出现「清洁」（原版 Clean Job + 队列目标）。不可用时会显示灰项和原因（堵塞/没有供水/无法到达/当前无法使用）。新增 `CK_DrawWater` Job：手动从水井往同网水箱注水 30 升（600 tick，0.05 L/tick），水箱全满或水网没有水箱时提前结束。
 - **携带式脸盆（铁 / 木两种材质）**：新增普通物品 `CK_WashBasinItem`（铁，钢铁 20 + 600 工作）与 `CK_WashBasinWoodItem`（木，木头 10 + 300 工作，更轻、耐久 60 并可染成木色），均在卫生研究后于手工点制作。它们**不占武器位、不需要装备**：放在殖民者物品栏里随身携带，右键水井「用脸盆打水」时如果身上没带会自动去地上/仓库取一只（`CK_FillBasin`，300 tick 装 30 升），右键水箱「倒入水箱」把水放进同网水箱（`CK_EmptyBasin`，120 tick、0.25 L/tick，水箱满了剩下的留在盆里）。脸盆水量由 `CompBasinWater` 保存，检视面板显示「脸盆水量」，随身携带/读档都不丢。水井的普通「打水」仍保留。
+- **旱厕（`CK_PitLatrine`）**：移植 DBH 的 `PitLatrine`。1×1、木头 25、无研究前置，既不接水管也不用接电（`Building_Latrine` 继承 `Building_Toilet` 复用选点/使用/告警逻辑，只覆盖 `waterUsed=0`、`HasWaterSupply=true`、`PowerRequiredToUse=false` 与 `Graphic`，避免再维护一套平行代码）。粪坑容量 500、每次使用堆入 14，满了 `Working()` 返回 `CK.Hygiene.PitFull` 并停用；检视面板显示 `CK.Hygiene.PitLevel` 百分比。新增 `WorkGiver_EmptyLatrine`（Cleaning，非强制 80% 起、强制留 14 下限）与 `CK_EmptyLatrine` Job（300–900 tick，按存量加权，完工清零），粪污按 DBH 的设定视为运走、不产出物品。美观 -6、清洁度 -5，可作为私人/公共浴室洁具统计。四向贴图 `CK_PitLatrine_{north,south,east,west}.png` 由 `temp/scripts/latrine-tex.py` 生成（先画 north 再旋转 90° 得到其余三向，保证朝向一致）。
+
+### Changed
+
+- **Mk-V 绘制尺寸继续放大**：`drawSize` 由 1.75 提到 2.2、`baseBodySize` 由 1.0 提到 1.1，阴影同步放大；此前只在 About 的「最近更新」里记过，补进 CHANGELOG 留档。
+- **About「最近更新」收敛**：按 §2.4 的约定，本小节只保留本次（2026-10-28 旱厕）的 4 条玩家可读说明，2026-10-27 的 Mk-V / 污水管 / 水网 / 右键洁具菜单等条目全部留在本文件；描述里只留一行指路。
 
 ## [0.0.3] - 2026-10-27
 

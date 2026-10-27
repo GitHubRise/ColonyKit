@@ -167,7 +167,7 @@
 	<CK.Hygiene.HotWaterTemp>热水温度: {0}%</CK.Hygiene.HotWaterTemp>
 	<CK.Hygiene.GutBugMessage>{0} 因脏水/卫生问题患上了肠道感染。</CK.Hygiene.GutBugMessage>
 	<CK.Hygiene.Alert.FixtureBlocked>卫生设施无法使用</CK.Hygiene.Alert.FixtureBlocked>
-	<CK.Hygiene.Alert.FixtureBlockedDesc>以下卫生设施断水、堵塞或断电：
+	<CK.Hygiene.Alert.FixtureBlockedDesc>以下卫生设施断水、堵塞、断电或粪坑已满：
 {0}</CK.Hygiene.Alert.FixtureBlockedDesc>
 	<CK.Hygiene.Alert.FixtureBusy>卫生设施排队/长期占用</CK.Hygiene.Alert.FixtureBusy>
 	<CK.Hygiene.Alert.FixtureBusyDesc>部分卫生设施长时间被占用，或有人需要洗澡/上厕所但没有空位：
@@ -195,6 +195,8 @@
 	<CK.Hygiene.FloatMenu.BasinFull>脸盆已经满了</CK.Hygiene.FloatMenu.BasinFull>
 	<CK.Hygiene.FloatMenu.BasinEmpty>脸盆里没有水</CK.Hygiene.FloatMenu.BasinEmpty>
 	<CK.Hygiene.BasinWater>脸盆水量: {0}/{1} 升</CK.Hygiene.BasinWater>
+	<CK.Hygiene.PitLevel>粪坑存量: {0}</CK.Hygiene.PitLevel>
+	<CK.Hygiene.PitFull>粪坑已满，需要清空</CK.Hygiene.PitFull>
 	<ColonyKit.Module.Hygiene.Name>淋浴</ColonyKit.Module.Hygiene.Name>
 	<ColonyKit.Module.Hygiene.Desc>卫生需求、淋浴与热水；参考 DBH 的淋浴实现。</ColonyKit.Module.Hygiene.Desc>
 	<ColonyKit.Module.Storage.Name>立体库 / 物品堆叠</ColonyKit.Module.Storage.Name>

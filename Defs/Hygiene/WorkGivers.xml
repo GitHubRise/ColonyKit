@@ -12,4 +12,16 @@
 			<li>Manipulation</li>
 		</requiredCapacities>
 	</WorkGiverDef>
+	<WorkGiverDef>
+		<defName>CK_EmptyLatrine</defName>
+		<label>empty latrine</label>
+		<giverClass>ColonyKit.Modules.Hygiene.WorkGiver_EmptyLatrine</giverClass>
+		<workType>Cleaning</workType>
+		<verb>empty</verb>
+		<gerund>emptying</gerund>
+		<priorityInType>5</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
 </Defs>

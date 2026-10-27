@@ -3,4 +3,7 @@
 	<CK_EmptySepticTank.label>清空化粪池</CK_EmptySepticTank.label>
 	<CK_EmptySepticTank.verb>清空化粪池</CK_EmptySepticTank.verb>
 	<CK_EmptySepticTank.gerund>清空化粪池</CK_EmptySepticTank.gerund>
+	<CK_EmptyLatrine.label>清空旱厕</CK_EmptyLatrine.label>
+	<CK_EmptyLatrine.verb>清空旱厕</CK_EmptyLatrine.verb>
+	<CK_EmptyLatrine.gerund>清空旱厕</CK_EmptyLatrine.gerund>
 </LanguageData>
