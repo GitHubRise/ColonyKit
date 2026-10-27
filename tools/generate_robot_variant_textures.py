@@ -874,9 +874,152 @@ def mkii4_east():
     return im
 
 
+def mkii5_south():
+    """Mk-II v5: soft toy robot, black glass face, two blue eyes, gold ears and arms."""
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    shell = (214, 211, 202, 255)
+    shell_hi = (238, 235, 226, 255)
+    shell_lo = (166, 163, 156, 255)
+    face = (17, 19, 21, 255)
+    body = (48, 49, 52, 255)
+    body_hi = (66, 67, 71, 255)
+    gold = (190, 151, 89, 255)
+    gold_hi = (222, 184, 116, 255)
+    eye = (111, 190, 255, 255)
+    eye_hi = (196, 232, 255, 255)
+    ellipse(d, (22, 112, 106, 126), (0, 0, 0, 55))
+
+    # gold capsule arms behind the body
+    for side in (-1, 1):
+        x1 = 8 if side == -1 else 92
+        x2 = 30 if side == -1 else 114
+        rr(d, (x1, 68, x2, 108), 11, gold, OUTLINE, 2)
+        rr(d, (x1 + 4, 72, x2 - 4, 96), 8, gold_hi, None)
+        ellipse(d, (x1 + 1, 98, x2 - 1, 112), gold, OUTLINE, 2)
+
+    # soft rounded body
+    rr(d, (36, 58, 92, 112), 22, body, OUTLINE, 2)
+    ellipse(d, (38, 98, 90, 116), body, OUTLINE, 2)
+    # chest V seam
+    line(d, [(52, 76), (64, 84), (76, 76)], (78, 79, 84, 255), 2)
+    line(d, [(52, 76), (64, 84), (76, 76)], (35, 36, 39, 255), 1)
+    # body top highlight
+    ellipse(d, (44, 62, 84, 76), body_hi, None)
+
+    # neck
+    ellipse(d, (54, 64, 74, 80), (35, 36, 39, 255), OUTLINE, 1)
+
+    # gold ears (behind the head rim)
+    for x in (8, 100):
+        ellipse(d, (x, 32, x + 20, 58), gold, OUTLINE, 2)
+        ellipse(d, (x + 4, 37, x + 16, 53), gold_hi, None)
+        ellipse(d, (x + 7, 41, x + 13, 49), (118, 91, 54, 255), None)
+
+    # head shell
+    rr(d, (20, 14, 108, 76), 24, shell, OUTLINE, 2)
+    rr(d, (25, 19, 103, 71), 20, shell_hi, None)
+    rr(d, (26, 21, 102, 69), 19, shell, OUTLINE, 1)
+    # black glass face
+    rr(d, (28, 24, 100, 66), 17, face, OUTLINE, 2)
+    rr(d, (32, 28, 96, 62), 14, (12, 14, 16, 255), None)
+
+    # two blue eyes
+    for x in (38, 70):
+        rr(d, (x, 38, x + 20, 54), 5, eye, None)
+        rr(d, (x + 3, 41, x + 17, 47), 3, eye_hi, None)
+        ellipse(d, (x + 6, 42, x + 15, 50), (225, 247, 255, 255), None)
+
+    # head rim highlight
+    line(d, [(30, 18), (92, 18)], (250, 248, 240, 255), 2)
+    # hover base shadow ring
+    ellipse(d, (40, 108, 88, 118), (32, 33, 36, 255), None)
+    return im
+
+
+def mkii5_north():
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    shell = (214, 211, 202, 255)
+    shell_hi = (238, 235, 226, 255)
+    shell_lo = (166, 163, 156, 255)
+    body = (48, 49, 52, 255)
+    body_hi = (66, 67, 71, 255)
+    gold = (190, 151, 89, 255)
+    gold_hi = (222, 184, 116, 255)
+    ellipse(d, (22, 112, 106, 126), (0, 0, 0, 55))
+    for side in (-1, 1):
+        x1 = 8 if side == -1 else 92
+        x2 = 30 if side == -1 else 114
+        rr(d, (x1, 68, x2, 108), 11, gold, OUTLINE, 2)
+        ellipse(d, (x1 + 1, 98, x2 - 1, 112), gold, OUTLINE, 2)
+    rr(d, (36, 58, 92, 112), 22, body, OUTLINE, 2)
+    ellipse(d, (38, 98, 90, 116), body, OUTLINE, 2)
+    # rear panel / seam
+    rr(d, (46, 68, 82, 104), 10, (38, 39, 42, 255), OUTLINE, 1)
+    line(d, [(64, 72), (64, 100)], (72, 74, 78, 255), 2)
+    for x in (10, 98):
+        ellipse(d, (x, 32, x + 20, 58), gold, OUTLINE, 2)
+        ellipse(d, (x + 4, 37, x + 16, 53), gold_hi, None)
+    # head rear shell
+    rr(d, (20, 14, 108, 76), 24, shell, OUTLINE, 2)
+    rr(d, (25, 19, 103, 71), 20, shell_hi, None)
+    rr(d, (26, 21, 102, 69), 19, shell, OUTLINE, 1)
+    # rear vent
+    rr(d, (40, 30, 88, 58), 9, (38, 39, 42, 255), OUTLINE, 1)
+    for x in (48, 57, 66, 75):
+        d.rectangle((P(x), P(35), P(x + 3), P(52)), fill=(105, 104, 100, 255))
+    # gold back dot / seam
+    ellipse(d, (60, 60, 68, 68), gold, OUTLINE, 1)
+    line(d, [(30, 18), (92, 18)], (250, 248, 240, 255), 2)
+    return im
+
+
+def mkii5_east():
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    shell = (214, 211, 202, 255)
+    shell_hi = (238, 235, 226, 255)
+    face = (17, 19, 21, 255)
+    body = (48, 49, 52, 255)
+    body_hi = (66, 67, 71, 255)
+    gold = (190, 151, 89, 255)
+    gold_hi = (222, 184, 116, 255)
+    eye = (111, 190, 255, 255)
+    eye_hi = (196, 232, 255, 255)
+    ellipse(d, (24, 112, 104, 126), (0, 0, 0, 55))
+    # one visible gold arm, front
+    rr(d, (86, 68, 112, 108), 11, gold, OUTLINE, 2)
+    rr(d, (91, 72, 107, 96), 8, gold_hi, None)
+    ellipse(d, (88, 98, 110, 112), gold, OUTLINE, 2)
+    # side body
+    rr(d, (42, 58, 94, 112), 20, body, OUTLINE, 2)
+    ellipse(d, (44, 98, 92, 116), body, OUTLINE, 2)
+    line(d, [(58, 76), (68, 84), (78, 76)], (78, 79, 84, 255), 2)
+    ellipse(d, (50, 62, 86, 76), body_hi, None)
+    # side head
+    rr(d, (34, 14, 104, 76), 23, shell, OUTLINE, 2)
+    rr(d, (39, 19, 99, 71), 19, shell_hi, None)
+    # side face panel, wrapping the front
+    rr(d, (68, 24, 102, 66), 14, face, OUTLINE, 2)
+    rr(d, (76, 30, 98, 61), 10, (12, 14, 16, 255), None)
+    # one visible eye
+    rr(d, (80, 38, 98, 54), 4, eye, None)
+    rr(d, (83, 41, 95, 47), 2, eye_hi, None)
+    # gold ear, side
+    ellipse(d, (42, 32, 62, 58), gold, OUTLINE, 2)
+    ellipse(d, (46, 37, 58, 53), gold_hi, None)
+    ellipse(d, (49, 41, 55, 49), (118, 91, 54, 255), None)
+    # neck
+    ellipse(d, (58, 64, 76, 80), (35, 36, 39, 255), OUTLINE, 1)
+    # rim highlight
+    line(d, [(44, 18), (96, 18)], (250, 248, 240, 255), 2)
+    return im
+
+
 def robot_south(tier):
     if tier == "MkII":
-        return mkii4_south()
+        return mkii5_south()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (20, 114, 108, 124), (0, 0, 0, 50))
@@ -891,7 +1034,7 @@ def robot_south(tier):
 
 def robot_north(tier):
     if tier == "MkII":
-        return mkii4_north()
+        return mkii5_north()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (20, 114, 108, 124), (0, 0, 0, 50))
@@ -911,7 +1054,7 @@ def robot_north(tier):
 
 def robot_east(tier):
     if tier == "MkII":
-        return mkii4_east()
+        return mkii5_east()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (22, 114, 106, 124), (0, 0, 0, 50))
