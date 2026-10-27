@@ -27,6 +27,8 @@
 	<CK.Robotics.Overview.Power>动力供给</CK.Robotics.Overview.Power>
 	<CK.Robotics.RobotInfo.Name>名称：{0}</CK.Robotics.RobotInfo.Name>
 	<CK.Robotics.RobotInfo.Kind>型号：{0}</CK.Robotics.RobotInfo.Kind>
+	<CK.Robotics.RobotInfo.Age>年龄：{0} 岁</CK.Robotics.RobotInfo.Age>
+	<CK.Robotics.RobotInfo.BirthYear>生于：{0} 年</CK.Robotics.RobotInfo.BirthYear>
 	<CK.Robotics.RobotInfo.Faction>阵营：{0}</CK.Robotics.RobotInfo.Faction>
 	<CK.Robotics.RobotInfo.Durability>耐久：{0} / {1}</CK.Robotics.RobotInfo.Durability>
 	<CK.Robotics.RobotInfo.Energy>电量：{0}</CK.Robotics.RobotInfo.Energy>

@@ -27,6 +27,8 @@
 	<CK.Robotics.Overview.Power>Power supply</CK.Robotics.Overview.Power>
 	<CK.Robotics.RobotInfo.Name>Name: {0}</CK.Robotics.RobotInfo.Name>
 	<CK.Robotics.RobotInfo.Kind>Model: {0}</CK.Robotics.RobotInfo.Kind>
+	<CK.Robotics.RobotInfo.Age>Age: {0} years</CK.Robotics.RobotInfo.Age>
+	<CK.Robotics.RobotInfo.BirthYear>Born: {0}</CK.Robotics.RobotInfo.BirthYear>
 	<CK.Robotics.RobotInfo.Faction>Faction: {0}</CK.Robotics.RobotInfo.Faction>
 	<CK.Robotics.RobotInfo.Durability>Durability: {0} / {1}</CK.Robotics.RobotInfo.Durability>
 	<CK.Robotics.RobotInfo.Energy>Energy: {0}</CK.Robotics.RobotInfo.Energy>
