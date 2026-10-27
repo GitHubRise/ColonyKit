@@ -57,6 +57,10 @@ namespace ColonyKit.Modules.Robotics
 							? "CK.Robotics.MkVCombat.Status.Returning".Translate()
 							: "CK.Robotics.MkVCombat.Status.Idle".Translate()) + "\n";
 			}
+			if (comp != null && comp.lowPowerStandby)
+			{
+				text += "\n" + "CK.Robotics.RobotInfo.LowPowerStandby".Translate();
+			}
 			text += "CK.Robotics.RobotInfo.Task".Translate(NannyBotJobUtility.TaskText(pawn));
 
 			Text.Font = GameFont.Small;

@@ -55,10 +55,10 @@ namespace ColonyKit.Modules.Robotics
 		public const float MaxMkvChargePower = 10000f;
 		public const float DefaultMkvChargePower = 1000f;
 		public const float MinMkvChargeEfficiency = 10f;
-		public const float MaxMkvChargeEfficiency = 300f;
+		public const float MaxMkvChargeEfficiency = 1000f;
 		public const float DefaultMkvChargeEfficiency = 100f;
 		public const float MinMkvPowerConversionRate = 10f;
-		public const float MaxMkvPowerConversionRate = 300f;
+		public const float MaxMkvPowerConversionRate = 1000f;
 		public const float DefaultMkvPowerConversionRate = 100f;
 
 		public const float MinMkvAttackSpeed = 0.5f;
@@ -69,12 +69,12 @@ namespace ColonyKit.Modules.Robotics
 		public const float MaxMkvHitChance = 1.5f;
 		public const float DefaultMkvHitChance = 1f;
 
-		public const float MinMkvSolarEfficiency = 0f;
-		public const float MaxMkvSolarEfficiency = 100f;
-		public const float DefaultMkvSolarEfficiency = 50f;
-		public const float MinMkvWindEfficiency = 0f;
-		public const float MaxMkvWindEfficiency = 100f;
-		public const float DefaultMkvWindEfficiency = 40f;
+		public const float MinMkvSolarEfficiency = 10f;
+		public const float MaxMkvSolarEfficiency = 1000f;
+		public const float DefaultMkvSolarEfficiency = 100f;
+		public const float MinMkvWindEfficiency = 10f;
+		public const float MaxMkvWindEfficiency = 1000f;
+		public const float DefaultMkvWindEfficiency = 100f;
 		public const float MinMkvLightThreshold = 0f;
 		public const float MaxMkvLightThreshold = 1f;
 		public const float DefaultMkvLightThreshold = 0.25f;

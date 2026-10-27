@@ -32,6 +32,14 @@ namespace ColonyKit.Modules.Robotics
 			Toil charge = ToilMaker.MakeToil("CK_NannyCharge");
 			charge.defaultCompleteMode = ToilCompleteMode.Never;
 			charge.FailOnDespawnedNullOrForbidden(StationInd);
+			CompNannyBot bot = pawn.TryGetComp<CompNannyBot>();
+			charge.initAction = () =>
+			{
+				if (bot != null && NannyBotUtility.IsMkV(pawn))
+				{
+					bot.lowPowerStandby = true;
+				}
+			};
 			charge.tickIntervalAction = delta =>
 			{
 				Building station = Station;
@@ -53,11 +61,15 @@ namespace ColonyKit.Modules.Robotics
 				RoboticsSettings settings = NannyBotUtility.Settings;
 				bool isMkV = NannyBotUtility.IsMkV(pawn);
 				float efficiency = UnityEngine.Mathf.Clamp(
-					(isMkV ? settings.mkvChargeEfficiency : settings.chargeEfficiency) / 100f, 0.1f, 3f);
+					(isMkV ? settings.mkvChargeEfficiency : settings.chargeEfficiency) / 100f, 0.1f, 10f);
 				float conversion = UnityEngine.Mathf.Clamp(
-					(isMkV ? settings.mkvPowerConversionRate : settings.powerConversionRate) / 100f, 0.1f, 3f);
+					(isMkV ? settings.mkvPowerConversionRate : settings.powerConversionRate) / 100f, 0.1f, 10f);
 				float powerFactor = UnityEngine.Mathf.Clamp(
 					(isMkV ? settings.mkvChargePower : settings.chargePower) / 1000f, 0.1f, 10f);
+				if (isMkV)
+				{
+					conversion *= 1.2f;
+				}
 				energy.Charge(delta * energy.MaxLevel * ChargePerTick * efficiency * conversion * powerFactor);
 				if (energy.IsFull)
 				{
@@ -67,6 +79,10 @@ namespace ColonyKit.Modules.Robotics
 			charge.AddFinishAction(() =>
 			{
 				Station?.TryGetComp<CompNannyBotStation>()?.SetCharging(false);
+				if (bot != null)
+				{
+					bot.lowPowerStandby = false;
+				}
 			});
 			charge.WithProgressBar(StationInd, () => Energy?.CurLevelPercentage ?? 0f);
 			yield return charge;

@@ -599,6 +599,12 @@ namespace ColonyKit.Modules.Robotics
 				color = Color.grey;
 				return;
 			}
+			if (comp != null && comp.lowPowerStandby)
+			{
+				text = "CK.RobotManagement.Status.LowPowerStandby".Translate();
+				color = new Color(0.35f, 0.88f, 0.95f);
+				return;
+			}
 			CompMkVCombat combat = robot.TryGetComp<CompMkVCombat>();
 			if (combat != null && combat.state == MkVCombatState.Engaged)
 			{

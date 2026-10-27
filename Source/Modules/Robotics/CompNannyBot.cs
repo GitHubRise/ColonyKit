@@ -64,6 +64,9 @@ namespace ColonyKit.Modules.Robotics
 		public bool haul = true;
 		public bool paused;
 
+		/// <summary>Mk-V 在充电桩上进入低功耗待机，充电转换率额外 ×1.2。</summary>
+		public bool lowPowerStandby;
+
 		public float durability = -1f;
 		public int paintIndex;
 
@@ -172,6 +175,7 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref scrub, "ck_robotics_scrub", true);
 			Scribe_Values.Look(ref haul, "ck_robotics_haul", true);
 			Scribe_Values.Look(ref paused, "ck_robotics_paused", false);
+			Scribe_Values.Look(ref lowPowerStandby, "ck_robotics_lowPowerStandby", false);
 			Scribe_Values.Look(ref durability, "ck_robotics_durability", -1f);
 			if (durability < 0f)
 			{
@@ -210,6 +214,10 @@ namespace ColonyKit.Modules.Robotics
 			{
 				Scrap();
 				return;
+			}
+			if (lowPowerStandby && pawn.CurJobDef != NannyBotDefOf.CK_NannyCharge)
+			{
+				lowPowerStandby = false;
 			}
 
 			if (parent.IsHashIntervalTick(60))
@@ -442,6 +450,10 @@ namespace ColonyKit.Modules.Robotics
 			lines.Add("CK.Robotics.Inspect.Durability".Translate(
 				durability.ToString("0"),
 				MaxDurability.ToString("0")));
+			if (lowPowerStandby)
+			{
+				lines.Add("CK.Robotics.Inspect.LowPowerStandby".Translate());
+			}
 			lines.Add("CK.Robotics.Inspect.ActiveChores".Translate(ActiveChoreCount));
 
 			if (repairing)

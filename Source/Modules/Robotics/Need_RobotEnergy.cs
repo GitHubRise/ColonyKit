@@ -78,7 +78,7 @@ namespace ColonyKit.Modules.Robotics
 			RoboticsSettings settings = NannyBotUtility.Settings;
 			Map map = pawn.Map;
 			float gain = 0f;
-			float conversion = Mathf.Clamp(settings.mkvPowerConversionRate / 100f, 0.1f, 3f);
+			float conversion = Mathf.Clamp(settings.mkvPowerConversionRate / 100f, 0.1f, 10f);
 			const float PassiveShareOfStation = 0.4f;
 			const float FullChargeTicks = 10000f;
 
