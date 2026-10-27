@@ -95,6 +95,26 @@ namespace ColonyKit.Modules.Hygiene
 				value => (value * 100f).ToString("0") + "%");
 			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.FertilizerStrength.Desc".Loc());
 
+			data.fertilizerMinFertility = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.FertilizerFloor".Loc(),
+				data.fertilizerMinFertility,
+				HygieneSettings.MinFertilizerFloor,
+				HygieneSettings.MaxFertilizerFloor,
+				0.05f,
+				value => (value * 100f).ToString("0") + "%");
+			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.FertilizerFloor.Desc".Loc());
+
+			data.fertilizerMaxFertility = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.FertilizerCap".Loc(),
+				data.fertilizerMaxFertility,
+				HygieneSettings.MinFertilizerCap,
+				HygieneSettings.MaxFertilizerCap,
+				0.05f,
+				value => (value * 100f).ToString("0") + "%");
+			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.FertilizerCap.Desc".Loc());
+
 			data.fertilizerLifespanDays = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Hygiene.FertilizerLifespan".Loc(),

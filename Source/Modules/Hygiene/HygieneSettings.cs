@@ -42,6 +42,10 @@ namespace ColonyKit.Modules.Hygiene
 		public const float MaxFertilizerLifespan = 240f;
 		public const float MinIrrigationStrength = 1f;
 		public const float MaxIrrigationStrength = 3f;
+		public const float MinFertilizerFloor = 0f;
+		public const float MaxFertilizerFloor = 2f;
+		public const float MinFertilizerCap = 0.5f;
+		public const float MaxFertilizerCap = 5f;
 
 		private const string DefaultExemptBodies = "HumanoidTerminator,AIRobot,AIPawn";
 		private static HygieneSettings fallback;
@@ -74,6 +78,12 @@ namespace ColonyKit.Modules.Hygiene
 
 		/// <summary>灌溉满格时的肥力倍率（DBH 默认 180%）。</summary>
 		public float irrigationStrength = 1.8f;
+
+		/// <summary>施肥后肥力的下限（DBH 的 0.5，让沙地也能种）。</summary>
+		public float fertilizerMinFertility = 0.5f;
+
+		/// <summary>施肥后肥力的上限（含灌溉加成），默认 200%。</summary>
+		public float fertilizerMaxFertility = 2f;
 
 		/// <summary>是否在地面画出施肥（土褐）/灌溉（淡蓝）覆盖层。</summary>
 		public bool showAgricultureOverlay = true;
@@ -250,6 +260,8 @@ namespace ColonyKit.Modules.Hygiene
 			Scribe_Values.Look(ref fertilizerStrength, "fertilizerStrength", 1.1f);
 			Scribe_Values.Look(ref fertilizerLifespanDays, "fertilizerLifespanDays", 60f);
 			Scribe_Values.Look(ref irrigationStrength, "irrigationStrength", 1.8f);
+			Scribe_Values.Look(ref fertilizerMinFertility, "fertilizerMinFertility", 0.5f);
+			Scribe_Values.Look(ref fertilizerMaxFertility, "fertilizerMaxFertility", 2f);
 			Scribe_Values.Look(ref showAgricultureOverlay, "showAgricultureOverlay", true);
 			Scribe_Values.Look(ref dbhPolicy, "dbhPolicy", HygieneDbhPolicy.SoftOff);
 			Scribe_Values.Look(ref prisonersGetHygiene, "prisonersGetHygiene", true);
@@ -272,6 +284,13 @@ namespace ColonyKit.Modules.Hygiene
 			changed |= Clamp(ref fertilizerStrength, MinFertilizerStrength, MaxFertilizerStrength, 1.1f);
 			changed |= Clamp(ref fertilizerLifespanDays, MinFertilizerLifespan, MaxFertilizerLifespan, 60f);
 			changed |= Clamp(ref irrigationStrength, MinIrrigationStrength, MaxIrrigationStrength, 1.8f);
+			changed |= Clamp(ref fertilizerMinFertility, MinFertilizerFloor, MaxFertilizerFloor, 0.5f);
+			changed |= Clamp(ref fertilizerMaxFertility, MinFertilizerCap, MaxFertilizerCap, 2f);
+			if (fertilizerMinFertility > fertilizerMaxFertility)
+			{
+				fertilizerMinFertility = fertilizerMaxFertility;
+				changed = true;
+			}
 
 			if (dbhPolicy != HygieneDbhPolicy.SoftOff
 				&& dbhPolicy != HygieneDbhPolicy.AlwaysOn
@@ -323,6 +342,8 @@ namespace ColonyKit.Modules.Hygiene
 			fertilizerStrength = 1.1f;
 			fertilizerLifespanDays = 60f;
 			irrigationStrength = 1.8f;
+			fertilizerMinFertility = 0.5f;
+			fertilizerMaxFertility = 2f;
 			showAgricultureOverlay = true;
 			dbhPolicy = HygieneDbhPolicy.SoftOff;
 			prisonersGetHygiene = true;

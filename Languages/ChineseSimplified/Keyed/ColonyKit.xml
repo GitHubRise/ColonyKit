@@ -335,6 +335,10 @@
 	<ColonyKit.Settings.Hygiene.ShowOverlay.Desc>在地面画出施肥（土褐）和灌溉（淡蓝）的覆盖色；关掉后只能看施肥标记和作物长势。</ColonyKit.Settings.Hygiene.ShowOverlay.Desc>
 	<ColonyKit.Settings.Hygiene.FertilizerStrength>施肥肥力倍率</ColonyKit.Settings.Hygiene.FertilizerStrength>
 	<ColonyKit.Settings.Hygiene.FertilizerStrength.Desc>施肥后这格地膜的肥力倍率；110% 为 DBH 默认。</ColonyKit.Settings.Hygiene.FertilizerStrength.Desc>
+	<ColonyKit.Settings.Hygiene.FertilizerFloor>施肥后肥力下限</ColonyKit.Settings.Hygiene.FertilizerFloor>
+	<ColonyKit.Settings.Hygiene.FertilizerFloor.Desc>施肥后的肥力至少抬到这么多；50% 为 DBH 默认（贫瘠沙地也能种）。</ColonyKit.Settings.Hygiene.FertilizerFloor.Desc>
+	<ColonyKit.Settings.Hygiene.FertilizerCap>施肥后肥力上限</ColonyKit.Settings.Hygiene.FertilizerCap>
+	<ColonyKit.Settings.Hygiene.FertilizerCap.Desc>施肥（含灌溉加成）后能达到的最高肥力；200% 为默认。调高会更肥，调低能压住叠乘。</ColonyKit.Settings.Hygiene.FertilizerCap.Desc>
 	<ColonyKit.Settings.Hygiene.FertilizerLifespan>施肥有效期</ColonyKit.Settings.Hygiene.FertilizerLifespan>
 	<ColonyKit.Settings.Hygiene.FertilizerLifespan.Desc>一次施肥能维持多少天；60 天为 DBH 默认。</ColonyKit.Settings.Hygiene.FertilizerLifespan.Desc>
 	<ColonyKit.Settings.Hygiene.IrrigationStrength>灌溉肥力倍率</ColonyKit.Settings.Hygiene.IrrigationStrength>

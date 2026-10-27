@@ -247,16 +247,28 @@ namespace ColonyKit.Modules.Hygiene.Agriculture
 				return;
 			}
 			HygieneSettings settings = HygieneSettings.Current;
-			if (comp.FertilizerAt(loc) > 0f)
-			{
-				// 和 DBH 一样保留 0.5 的下限：贫瘠/沙地施肥后也能种。
-				__result = Mathf.Max(__result * settings.fertilizerStrength, 0.5f);
-			}
+			float fertilizer = comp.FertilizerAt(loc);
 			float irrigation = comp.IrrigationAt(loc);
+			if (fertilizer <= 0f && irrigation <= 0f)
+			{
+				return;
+			}
+			float value = __result;
+			if (fertilizer > 0f)
+			{
+				// 和 DBH 一样保留下限：贫瘠/沙地施肥后也能种；上下限都在设置页可调。
+				value = Mathf.Max(value * settings.fertilizerStrength, settings.fertilizerMinFertility);
+			}
 			if (irrigation > 0f)
 			{
-				__result *= GenMath.LerpDoubleClamped(0f, 100f, 1f, settings.irrigationStrength, irrigation);
+				value *= GenMath.LerpDoubleClamped(0f, 100f, 1f, settings.irrigationStrength, irrigation);
 			}
+			if (fertilizer > 0f)
+			{
+				// 上限把灌溉加成也算进去，避免施肥 + 灌溉叠出离谱的肥力。
+				value = Mathf.Min(value, settings.fertilizerMaxFertility);
+			}
+			__result = value;
 		}
 	}
 }

@@ -59,6 +59,8 @@ namespace ColonyKit.Modules.Hygiene.Agriculture
 				$"fertility before={before:F3} afterFertilizer={fertilized:F3} afterIrrigation={irrigated:F3}; " +
 				$"settings strength={HygieneSettings.Current.fertilizerStrength:F2} " +
 				$"irrigation={HygieneSettings.Current.irrigationStrength:F2} " +
+				$"floor={HygieneSettings.Current.fertilizerMinFertility:F2} " +
+				$"cap={HygieneSettings.Current.fertilizerMaxFertility:F2} " +
 				$"lifespan={HygieneSettings.Current.fertilizerLifespanDays:F0}d");
 
 			// 覆盖层：确认 section 能拿到我们的 layer，并且网格能重建（顶点/索引写错会在这里炸）。

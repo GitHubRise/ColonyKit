@@ -335,6 +335,10 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<ColonyKit.Settings.Hygiene.ShowOverlay.Desc>Tints fertilized (brown) and irrigated (blue) cells on the ground. Turn off to rely on designations and crop growth only.</ColonyKit.Settings.Hygiene.ShowOverlay.Desc>
 	<ColonyKit.Settings.Hygiene.FertilizerStrength>Fertilizer strength</ColonyKit.Settings.Hygiene.FertilizerStrength>
 	<ColonyKit.Settings.Hygiene.FertilizerStrength.Desc>Fertility multiplier on fertilized cells; 110% is the DBH default.</ColonyKit.Settings.Hygiene.FertilizerStrength.Desc>
+	<ColonyKit.Settings.Hygiene.FertilizerFloor>Fertilizer minimum fertility</ColonyKit.Settings.Hygiene.FertilizerFloor>
+	<ColonyKit.Settings.Hygiene.FertilizerFloor.Desc>Fertilized cells are raised to at least this fertility; 50% is the DBH default (so poor sand can grow).</ColonyKit.Settings.Hygiene.FertilizerFloor.Desc>
+	<ColonyKit.Settings.Hygiene.FertilizerCap>Fertilizer maximum fertility</ColonyKit.Settings.Hygiene.FertilizerCap>
+	<ColonyKit.Settings.Hygiene.FertilizerCap.Desc>Highest fertility a fertilized cell can reach, irrigation included; 200% by default. Raise for richer soil, lower to rein in the stacking.</ColonyKit.Settings.Hygiene.FertilizerCap.Desc>
 	<ColonyKit.Settings.Hygiene.FertilizerLifespan>Fertilizer lifespan</ColonyKit.Settings.Hygiene.FertilizerLifespan>
 	<ColonyKit.Settings.Hygiene.FertilizerLifespan.Desc>Days a single application keeps working; 60 days is the DBH default.</ColonyKit.Settings.Hygiene.FertilizerLifespan.Desc>
 	<ColonyKit.Settings.Hygiene.IrrigationStrength>Irrigation strength</ColonyKit.Settings.Hygiene.IrrigationStrength>
