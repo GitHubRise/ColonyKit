@@ -44,7 +44,8 @@ namespace ColonyKit.Modules.Hygiene
 				$"water defs: pipe={DefExists("CK_DbhWaterPipe")}, tank={DefExists("CK_DbhWaterTank")}, " +
 				$"giant={DefExists("CK_DbhWaterTankGiant")}, pump={DefExists("CK_DbhWaterPump")}, " +
 				$"well={DefExists("CK_DbhWaterWell")}, heater={DefExists("CK_DbhWaterHeater")}; " +
-				$"hygiene menu={DefDatabase<DesignationCategoryDef>.GetNamedSilentFail("CK_Hygiene") != null}");
+				$"hygiene menu={DefDatabase<DesignationCategoryDef>.GetNamedSilentFail("CK_Hygiene") != null}; " +
+				$"latrine={DefExists("CK_PitLatrine")}, emptyLatrineJob={DefDatabase<JobDef>.GetNamedSilentFail("CK_EmptyLatrine") != null}");
 		}
 
 		private static bool DefExists(string defName)
