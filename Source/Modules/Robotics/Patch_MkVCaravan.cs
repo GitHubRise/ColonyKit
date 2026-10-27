@@ -54,6 +54,16 @@ namespace ColonyKit.Modules.Robotics
 			return true;
 		}
 
+		[HarmonyPatch(typeof(CaravanUtility), nameof(CaravanUtility.IsOwner))]
+		[HarmonyPostfix]
+		private static void AllowMkVCaravanOwner(Pawn pawn, Faction caravanFaction, ref bool __result)
+		{
+			if (!__result && NannyBotUtility.IsMkV(pawn) && caravanFaction == Faction.OfPlayer)
+			{
+				__result = true;
+			}
+		}
+
 		[HarmonyPatch(typeof(DaysWorthOfFoodCalculator), nameof(DaysWorthOfFoodCalculator.ApproxDaysWorthOfFood),
 			new[] { typeof(Caravan) })]
 		[HarmonyPostfix]

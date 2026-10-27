@@ -156,6 +156,12 @@ namespace ColonyKit.Modules.Robotics
 			{
 				durability = MaxDurability;
 			}
+			Pawn pawn = Pawn;
+			if (NannyBotUtility.IsMkV(pawn) && pawn != null && pawn.skills == null)
+			{
+				// 商队/工作检查会读取技能；机械族默认没有技能组件。
+				pawn.skills = new Pawn_SkillTracker(pawn);
+			}
 		}
 
 		public override void PostPostApplyDamage(DamageInfo dinfo, float totalDamageDealt)
