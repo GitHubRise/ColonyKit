@@ -26,6 +26,12 @@
 	<ColonyKit.Settings.Robotics.Storage.Desc>Prefer delivering hauled items directly into vertical warehouses.</ColonyKit.Settings.Robotics.Storage.Desc>
 	<ColonyKit.Settings.Robotics.Rescue>Priority rescue</ColonyKit.Settings.Robotics.Rescue>
 	<ColonyKit.Settings.Robotics.Rescue.Desc>Carry downed colony members to a bed first.</ColonyKit.Settings.Robotics.Rescue.Desc>
+	<ColonyKit.Settings.Robotics.Cook>Cooking (Mk-V)</ColonyKit.Settings.Robotics.Cook>
+	<ColonyKit.Settings.Robotics.Cook.Desc>Let Mk-V work cooking bills at stoves.</ColonyKit.Settings.Robotics.Cook.Desc>
+	<ColonyKit.Settings.Robotics.Doctor>Doctor (Mk-V)</ColonyKit.Settings.Robotics.Doctor>
+	<ColonyKit.Settings.Robotics.Doctor.Desc>Let Mk-V tend injured colonists and prisoners.</ColonyKit.Settings.Robotics.Doctor.Desc>
+	<ColonyKit.Settings.Robotics.Research>Research (Mk-V)</ColonyKit.Settings.Robotics.Research>
+	<ColonyKit.Settings.Robotics.Research.Desc>Let Mk-V work research benches on the current project.</ColonyKit.Settings.Robotics.Research.Desc>
 	<ColonyKit.Settings.Robotics.DangerAvoidance>Avoid danger</ColonyKit.Settings.Robotics.DangerAvoidance>
 	<ColonyKit.Settings.Robotics.DangerAvoidance.Desc>Stop chores and return to the station while enemies are near or the map is at high danger.</ColonyKit.Settings.Robotics.DangerAvoidance.Desc>
 
@@ -54,6 +60,15 @@
 	<ColonyKit.Settings.Robotics.MkVBayAutoStart>Auto-start assembly bay</ColonyKit.Settings.Robotics.MkVBayAutoStart>
 	<ColonyKit.Settings.Robotics.MkVBayAutoStart.Desc>When materials, power and research are all available, the Mk-V bay starts the next robot automatically. When off, start it manually.</ColonyKit.Settings.Robotics.MkVBayAutoStart.Desc>
 
+	<ColonyKit.Settings.Robotics.Section.PassiveCharging>Mk-V charging</ColonyKit.Settings.Robotics.Section.PassiveCharging>
+	<ColonyKit.Settings.Robotics.MkVSolarCharging>Solar charging</ColonyKit.Settings.Robotics.MkVSolarCharging>
+	<ColonyKit.Settings.Robotics.MkVSolarCharging.Desc>Mk-V passively recharges outdoors when light is above the threshold.</ColonyKit.Settings.Robotics.MkVSolarCharging.Desc>
+	<ColonyKit.Settings.Robotics.MkVWindCharging>Wind charging</ColonyKit.Settings.Robotics.MkVWindCharging>
+	<ColonyKit.Settings.Robotics.MkVWindCharging.Desc>Mk-V passively recharges outdoors when wind is above the threshold.</ColonyKit.Settings.Robotics.MkVWindCharging.Desc>
+	<ColonyKit.Settings.Robotics.MkVSolarEfficiency>Solar efficiency</ColonyKit.Settings.Robotics.MkVSolarEfficiency>
+	<ColonyKit.Settings.Robotics.MkVWindEfficiency>Wind efficiency</ColonyKit.Settings.Robotics.MkVWindEfficiency>
+	<ColonyKit.Settings.Robotics.MkVLightThreshold>Light threshold</ColonyKit.Settings.Robotics.MkVLightThreshold>
+	<ColonyKit.Settings.Robotics.MkVWindThreshold>Wind threshold</ColonyKit.Settings.Robotics.MkVWindThreshold>
 	<ColonyKit.Settings.Robotics.Section.Area>Work area</ColonyKit.Settings.Robotics.Section.Area>
 	<ColonyKit.Settings.Robotics.AreaMode>Area mode</ColonyKit.Settings.Robotics.AreaMode>
 	<ColonyKit.Settings.Robotics.Area.Unrestricted>Unrestricted</ColonyKit.Settings.Robotics.Area.Unrestricted>
@@ -155,4 +170,10 @@
 	<CK.Robotics.Chore.Hygiene.Desc>Empty septic tanks, unblock fixtures and clean bathroom filth.</CK.Robotics.Chore.Hygiene.Desc>
 	<CK.Robotics.Chore.RopeAnimals.Label>Rope</CK.Robotics.Chore.RopeAnimals.Label>
 	<CK.Robotics.Chore.RopeAnimals.Desc>Rope colony animals to pens or hitching posts, and unrope them when needed.</CK.Robotics.Chore.RopeAnimals.Desc>
+	<CK.Robotics.Chore.Cook.Label>Cooking</CK.Robotics.Chore.Cook.Label>
+	<CK.Robotics.Chore.Cook.Desc>Work cooking bills at stoves (Mk-V only).</CK.Robotics.Chore.Cook.Desc>
+	<CK.Robotics.Chore.Doctor.Label>Doctor</CK.Robotics.Chore.Doctor.Label>
+	<CK.Robotics.Chore.Doctor.Desc>Tend injured colonists and prisoners (Mk-V only).</CK.Robotics.Chore.Doctor.Desc>
+	<CK.Robotics.Chore.Research.Label>Research</CK.Robotics.Chore.Research.Label>
+	<CK.Robotics.Chore.Research.Desc>Work research benches on the current project (Mk-V only).</CK.Robotics.Chore.Research.Desc>
 </LanguageData>

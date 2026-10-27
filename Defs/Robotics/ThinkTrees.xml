@@ -17,6 +17,9 @@
 						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotCharge" />
 						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotRescue" />
 						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotFirefight" />
+						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotDoctor" />
+						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotCook" />
+						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotResearch" />
 						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotRefuel" />
 						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotHygiene" />
 						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotFeedPrisoner" />

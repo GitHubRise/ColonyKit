@@ -43,7 +43,7 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return false;
 			}
-			if (pawn.Dead || pawn.Downed || !pawn.Spawned || pawn.Map == null)
+			if (pawn.Dead || pawn.Downed || !pawn.Spawned || pawn.Map == null || pawn.Drafted)
 			{
 				return false;
 			}

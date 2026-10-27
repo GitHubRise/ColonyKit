@@ -52,6 +52,19 @@ namespace ColonyKit.Modules.Robotics
 		public const float MaxMkvHitChance = 1.5f;
 		public const float DefaultMkvHitChance = 1f;
 
+		public const float MinMkvSolarEfficiency = 0f;
+		public const float MaxMkvSolarEfficiency = 100f;
+		public const float DefaultMkvSolarEfficiency = 50f;
+		public const float MinMkvWindEfficiency = 0f;
+		public const float MaxMkvWindEfficiency = 100f;
+		public const float DefaultMkvWindEfficiency = 40f;
+		public const float MinMkvLightThreshold = 0f;
+		public const float MaxMkvLightThreshold = 1f;
+		public const float DefaultMkvLightThreshold = 0.25f;
+		public const float MinMkvWindThreshold = 0f;
+		public const float MaxMkvWindThreshold = 1f;
+		public const float DefaultMkvWindThreshold = 0.2f;
+
 		public string SettingsKey => "robotics";
 
 		// 家务总开关。
@@ -66,6 +79,9 @@ namespace ColonyKit.Modules.Robotics
 		public bool ropeAnimals = true;
 		public bool storage = true;
 		public bool rescue = true;
+		public bool cook = true;
+		public bool doctor = true;
+		public bool research = true;
 		public bool dangerAvoidance = true;
 
 		// 表现。
@@ -80,6 +96,12 @@ namespace ColonyKit.Modules.Robotics
 		public float chargePower = DefaultChargePower;
 		public float mkvAttackSpeed = DefaultMkvAttackSpeed;
 		public float mkvHitChance = DefaultMkvHitChance;
+		public bool mkvSolarCharging = true;
+		public bool mkvWindCharging = true;
+		public float mkvSolarEfficiency = DefaultMkvSolarEfficiency;
+		public float mkvWindEfficiency = DefaultMkvWindEfficiency;
+		public float mkvLightThreshold = DefaultMkvLightThreshold;
+		public float mkvWindThreshold = DefaultMkvWindThreshold;
 		public RobotAreaMode areaMode = RobotAreaMode.Unrestricted;
 		public string allowedAreaLabel = "";
 
@@ -106,6 +128,9 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref ropeAnimals, "ropeAnimals", true);
 			Scribe_Values.Look(ref storage, "storage", true);
 			Scribe_Values.Look(ref rescue, "rescue", true);
+			Scribe_Values.Look(ref cook, "cook", true);
+			Scribe_Values.Look(ref doctor, "doctor", true);
+			Scribe_Values.Look(ref research, "research", true);
 			Scribe_Values.Look(ref dangerAvoidance, "dangerAvoidance", true);
 			Scribe_Values.Look(ref sounds, "sounds", true);
 			Scribe_Values.Look(ref chargingGlow, "chargingGlow", true);
@@ -116,6 +141,12 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref chargePower, "chargePower", DefaultChargePower);
 			Scribe_Values.Look(ref mkvAttackSpeed, "mkvAttackSpeed", DefaultMkvAttackSpeed);
 			Scribe_Values.Look(ref mkvHitChance, "mkvHitChance", DefaultMkvHitChance);
+			Scribe_Values.Look(ref mkvSolarCharging, "mkvSolarCharging", true);
+			Scribe_Values.Look(ref mkvWindCharging, "mkvWindCharging", true);
+			Scribe_Values.Look(ref mkvSolarEfficiency, "mkvSolarEfficiency", DefaultMkvSolarEfficiency);
+			Scribe_Values.Look(ref mkvWindEfficiency, "mkvWindEfficiency", DefaultMkvWindEfficiency);
+			Scribe_Values.Look(ref mkvLightThreshold, "mkvLightThreshold", DefaultMkvLightThreshold);
+			Scribe_Values.Look(ref mkvWindThreshold, "mkvWindThreshold", DefaultMkvWindThreshold);
 			Scribe_Values.Look(ref areaMode, "areaMode", RobotAreaMode.Unrestricted);
 			Scribe_Values.Look(ref allowedAreaLabel, "allowedAreaLabel", "");
 			Scribe_Values.Look(ref startWithMkV, "startWithMkV", true);
@@ -159,6 +190,22 @@ namespace ColonyKit.Modules.Robotics
 			mkvHitChance = ClampFloat(mkvHitChance, MinMkvHitChance, MaxMkvHitChance);
 			changed |= !Approximately(hitChance, mkvHitChance);
 
+			float solar = mkvSolarEfficiency;
+			mkvSolarEfficiency = ClampFloat(mkvSolarEfficiency, MinMkvSolarEfficiency, MaxMkvSolarEfficiency);
+			changed |= !Approximately(solar, mkvSolarEfficiency);
+
+			float wind = mkvWindEfficiency;
+			mkvWindEfficiency = ClampFloat(mkvWindEfficiency, MinMkvWindEfficiency, MaxMkvWindEfficiency);
+			changed |= !Approximately(wind, mkvWindEfficiency);
+
+			float light = mkvLightThreshold;
+			mkvLightThreshold = ClampFloat(mkvLightThreshold, MinMkvLightThreshold, MaxMkvLightThreshold);
+			changed |= !Approximately(light, mkvLightThreshold);
+
+			float windThreshold = mkvWindThreshold;
+			mkvWindThreshold = ClampFloat(mkvWindThreshold, MinMkvWindThreshold, MaxMkvWindThreshold);
+			changed |= !Approximately(windThreshold, mkvWindThreshold);
+
 			float engage = mkvEngageRange;
 			mkvEngageRange = ClampFloat(mkvEngageRange, MinEngageRange, MaxEngageRange);
 			changed |= !Approximately(engage, mkvEngageRange);
@@ -199,6 +246,9 @@ namespace ColonyKit.Modules.Robotics
 			ropeAnimals = true;
 			storage = true;
 			rescue = true;
+			cook = true;
+			doctor = true;
+			research = true;
 			dangerAvoidance = true;
 			sounds = true;
 			chargingGlow = true;
@@ -209,6 +259,12 @@ namespace ColonyKit.Modules.Robotics
 			chargePower = DefaultChargePower;
 			mkvAttackSpeed = DefaultMkvAttackSpeed;
 			mkvHitChance = DefaultMkvHitChance;
+			mkvSolarCharging = true;
+			mkvWindCharging = true;
+			mkvSolarEfficiency = DefaultMkvSolarEfficiency;
+			mkvWindEfficiency = DefaultMkvWindEfficiency;
+			mkvLightThreshold = DefaultMkvLightThreshold;
+			mkvWindThreshold = DefaultMkvWindThreshold;
 			areaMode = RobotAreaMode.Unrestricted;
 			allowedAreaLabel = "";
 			startWithMkV = true;

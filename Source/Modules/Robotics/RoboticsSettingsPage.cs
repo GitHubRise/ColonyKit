@@ -81,6 +81,21 @@ namespace ColonyKit.Modules.Robotics
 				"ColonyKit.Settings.Robotics.Rescue".Loc(),
 				ref data.rescue,
 				"ColonyKit.Settings.Robotics.Rescue.Desc".Loc());
+			data.cook = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.Cook".Loc(),
+				ref data.cook,
+				"ColonyKit.Settings.Robotics.Cook.Desc".Loc());
+			data.doctor = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.Doctor".Loc(),
+				ref data.doctor,
+				"ColonyKit.Settings.Robotics.Doctor.Desc".Loc());
+			data.research = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.Research".Loc(),
+				ref data.research,
+				"ColonyKit.Settings.Robotics.Research.Desc".Loc());
 			data.dangerAvoidance = SettingsWidgets.Checkbox(
 				listing,
 				"ColonyKit.Settings.Robotics.DangerAvoidance".Loc(),
@@ -214,6 +229,51 @@ namespace ColonyKit.Modules.Robotics
 				"ColonyKit.Settings.Robotics.MkVBayAutoStart".Loc(),
 				ref data.mkvBayAutoStart,
 				"ColonyKit.Settings.Robotics.MkVBayAutoStart.Desc".Loc());
+
+			listing.Gap();
+			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.PassiveCharging".Loc());
+			data.mkvSolarCharging = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVSolarCharging".Loc(),
+				ref data.mkvSolarCharging,
+				"ColonyKit.Settings.Robotics.MkVSolarCharging.Desc".Loc());
+			data.mkvWindCharging = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVWindCharging".Loc(),
+				ref data.mkvWindCharging,
+				"ColonyKit.Settings.Robotics.MkVWindCharging.Desc".Loc());
+			data.mkvSolarEfficiency = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVSolarEfficiency".Loc(),
+				data.mkvSolarEfficiency,
+				RoboticsSettings.MinMkvSolarEfficiency,
+				RoboticsSettings.MaxMkvSolarEfficiency,
+				1f,
+				value => value.ToString("0") + "%");
+			data.mkvWindEfficiency = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVWindEfficiency".Loc(),
+				data.mkvWindEfficiency,
+				RoboticsSettings.MinMkvWindEfficiency,
+				RoboticsSettings.MaxMkvWindEfficiency,
+				1f,
+				value => value.ToString("0") + "%");
+			data.mkvLightThreshold = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVLightThreshold".Loc(),
+				data.mkvLightThreshold,
+				RoboticsSettings.MinMkvLightThreshold,
+				RoboticsSettings.MaxMkvLightThreshold,
+				0.01f,
+				value => value.ToStringPercent());
+			data.mkvWindThreshold = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVWindThreshold".Loc(),
+				data.mkvWindThreshold,
+				RoboticsSettings.MinMkvWindThreshold,
+				RoboticsSettings.MaxMkvWindThreshold,
+				0.01f,
+				value => value.ToStringPercent());
 
 			listing.Gap();
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.Area".Loc());

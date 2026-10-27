@@ -26,6 +26,12 @@
 	<ColonyKit.Settings.Robotics.Storage.Desc>搬运时优先把物品直接送进立体库。</ColonyKit.Settings.Robotics.Storage.Desc>
 	<ColonyKit.Settings.Robotics.Rescue>优先救援</ColonyKit.Settings.Robotics.Rescue>
 	<ColonyKit.Settings.Robotics.Rescue.Desc>发现殖民地人员倒地时，优先抱回床上。</ColonyKit.Settings.Robotics.Rescue.Desc>
+	<ColonyKit.Settings.Robotics.Cook>烹饪（Mk-V）</ColonyKit.Settings.Robotics.Cook>
+	<ColonyKit.Settings.Robotics.Cook.Desc>允许 Mk-V 在炉灶上处理烹饪账单。</ColonyKit.Settings.Robotics.Cook.Desc>
+	<ColonyKit.Settings.Robotics.Doctor>医疗（Mk-V）</ColonyKit.Settings.Robotics.Doctor>
+	<ColonyKit.Settings.Robotics.Doctor.Desc>允许 Mk-V 给受伤的殖民者和囚犯做医疗处理。</ColonyKit.Settings.Robotics.Doctor.Desc>
+	<ColonyKit.Settings.Robotics.Research>研究（Mk-V）</ColonyKit.Settings.Robotics.Research>
+	<ColonyKit.Settings.Robotics.Research.Desc>允许 Mk-V 在研究台推进当前研究。</ColonyKit.Settings.Robotics.Research.Desc>
 	<ColonyKit.Settings.Robotics.DangerAvoidance>危险规避</ColonyKit.Settings.Robotics.DangerAvoidance>
 	<ColonyKit.Settings.Robotics.DangerAvoidance.Desc>附近有敌人或全图高危险时，停止家务并回充电桩待命。</ColonyKit.Settings.Robotics.DangerAvoidance.Desc>
 
@@ -54,6 +60,15 @@
 	<ColonyKit.Settings.Robotics.MkVBayAutoStart>组装舱自动开工</ColonyKit.Settings.Robotics.MkVBayAutoStart>
 	<ColonyKit.Settings.Robotics.MkVBayAutoStart.Desc>材料、电力和研究都满足时，Mk-V 组装舱自动开始下一台；关闭后需要手动点击开始。</ColonyKit.Settings.Robotics.MkVBayAutoStart.Desc>
 
+	<ColonyKit.Settings.Robotics.Section.PassiveCharging>Mk-V 充电</ColonyKit.Settings.Robotics.Section.PassiveCharging>
+	<ColonyKit.Settings.Robotics.MkVSolarCharging>太阳能充电</ColonyKit.Settings.Robotics.MkVSolarCharging>
+	<ColonyKit.Settings.Robotics.MkVSolarCharging.Desc>Mk-V 在露天且光照达到阈值时被动充电。</ColonyKit.Settings.Robotics.MkVSolarCharging.Desc>
+	<ColonyKit.Settings.Robotics.MkVWindCharging>风能充电</ColonyKit.Settings.Robotics.MkVWindCharging>
+	<ColonyKit.Settings.Robotics.MkVWindCharging.Desc>Mk-V 在露天且风速达到阈值时被动充电。</ColonyKit.Settings.Robotics.MkVWindCharging.Desc>
+	<ColonyKit.Settings.Robotics.MkVSolarEfficiency>太阳能效率</ColonyKit.Settings.Robotics.MkVSolarEfficiency>
+	<ColonyKit.Settings.Robotics.MkVWindEfficiency>风能效率</ColonyKit.Settings.Robotics.MkVWindEfficiency>
+	<ColonyKit.Settings.Robotics.MkVLightThreshold>光照阈值</ColonyKit.Settings.Robotics.MkVLightThreshold>
+	<ColonyKit.Settings.Robotics.MkVWindThreshold>风速阈值</ColonyKit.Settings.Robotics.MkVWindThreshold>
 	<ColonyKit.Settings.Robotics.Section.Area>工作区域</ColonyKit.Settings.Robotics.Section.Area>
 	<ColonyKit.Settings.Robotics.AreaMode>区域模式</ColonyKit.Settings.Robotics.AreaMode>
 	<ColonyKit.Settings.Robotics.Area.Unrestricted>不限</ColonyKit.Settings.Robotics.Area.Unrestricted>
@@ -155,4 +170,10 @@
 	<CK.Robotics.Chore.Hygiene.Desc>清空化粪池、疏通堵塞洁具、清理卫生间污渍。</CK.Robotics.Chore.Hygiene.Desc>
 	<CK.Robotics.Chore.RopeAnimals.Label>牵引动物</CK.Robotics.Chore.RopeAnimals.Label>
 	<CK.Robotics.Chore.RopeAnimals.Desc>把殖民地动物牵回围栏或拴系点，必要时解开绳索。</CK.Robotics.Chore.RopeAnimals.Desc>
+	<CK.Robotics.Chore.Cook.Label>烹饪</CK.Robotics.Chore.Cook.Label>
+	<CK.Robotics.Chore.Cook.Desc>在炉灶上处理烹饪账单（仅 Mk-V）。</CK.Robotics.Chore.Cook.Desc>
+	<CK.Robotics.Chore.Doctor.Label>医疗</CK.Robotics.Chore.Doctor.Label>
+	<CK.Robotics.Chore.Doctor.Desc>给受伤的殖民者/囚犯做医疗处理（仅 Mk-V）。</CK.Robotics.Chore.Doctor.Desc>
+	<CK.Robotics.Chore.Research.Label>研究</CK.Robotics.Chore.Research.Label>
+	<CK.Robotics.Chore.Research.Desc>在研究台推进当前研究项目（仅 Mk-V）。</CK.Robotics.Chore.Research.Desc>
 </LanguageData>

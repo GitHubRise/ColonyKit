@@ -61,7 +61,51 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return;
 			}
-			CurLevel = Mathf.Max(0f, CurLevel - MaxLevel * DrainPerInterval);
+			float drain = MaxLevel * DrainPerInterval;
+			float passive = PassiveRechargePerInterval();
+			CurLevel = Mathf.Clamp(CurLevel - drain + passive, 0f, MaxLevel);
+		}
+
+		/// <summary>Mk-V 在露天时按光照和风速被动吸收太阳能/风能；充电桩充电期间不叠加。</summary>
+		private float PassiveRechargePerInterval()
+		{
+			if (!NannyBotUtility.IsMkV(pawn) || pawn.Map == null || !pawn.Spawned
+				|| pawn.Map.roofGrid.Roofed(pawn.Position))
+			{
+				return 0f;
+			}
+
+			RoboticsSettings settings = NannyBotUtility.Settings;
+			Map map = pawn.Map;
+			float gain = 0f;
+			const float PassiveShareOfStation = 0.4f;
+			const float FullChargeTicks = 10000f;
+
+			if (settings.mkvSolarCharging && settings.mkvSolarEfficiency > 0f)
+			{
+				float light = map.glowGrid.GroundGlowAt(pawn.Position);
+				float factor = ThresholdFactor(light, settings.mkvLightThreshold);
+				gain += MaxLevel * (PassiveShareOfStation / FullChargeTicks) * 150f
+					* (settings.mkvSolarEfficiency / 100f) * factor;
+			}
+			if (settings.mkvWindCharging && settings.mkvWindEfficiency > 0f)
+			{
+				float wind = Mathf.Clamp01(map.weatherManager.CurWindSpeedFactor);
+				float factor = ThresholdFactor(wind, settings.mkvWindThreshold);
+				gain += MaxLevel * (PassiveShareOfStation / FullChargeTicks) * 150f
+					* (settings.mkvWindEfficiency / 100f) * factor;
+			}
+			return gain;
+		}
+
+		private static float ThresholdFactor(float value, float threshold)
+		{
+			threshold = Mathf.Clamp01(threshold);
+			if (value <= threshold)
+			{
+				return 0f;
+			}
+			return Mathf.Clamp01((value - threshold) / Mathf.Max(0.01f, 1f - threshold));
 		}
 
 		public override void ExposeData()
