@@ -19,7 +19,7 @@ namespace ColonyKit
 		public override void DoContents(Listing_Standard listing, ColonyKitSettings settings)
 		{
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Section.Modules".Loc());
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Modules.Hint".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Modules.Hint".Loc());
 
 			foreach (IColonyKitModule module in ModuleRegistry.All)
 			{
@@ -48,7 +48,7 @@ namespace ColonyKit
 			}
 
 			listing.Gap();
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Modules.RestartHint".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Modules.RestartHint".Loc());
 		}
 
 		public override void Reset(ColonyKitSettings settings)

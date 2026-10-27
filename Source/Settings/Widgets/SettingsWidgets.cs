@@ -50,6 +50,36 @@ namespace ColonyKit
 			listing.Label(text);
 		}
 
+		/// <summary>
+		/// 追加说明文字（灰色）：用来解释上面的控件或本页整体行为，
+		/// 与真正的设置项名称区分开，避免整页文字同样醒目。
+		/// </summary>
+		/// <remarks>
+		/// 只改颜色，字号/换行与 <see cref="Label"/> 一致，也参与检索过滤。
+		/// 警告、状态读数这类需要被注意的行仍用 <see cref="Label"/>。
+		/// </remarks>
+		public static void Description(Listing_Standard listing, string text)
+		{
+			if (!BeginControl(listing, text, null))
+			{
+				return;
+			}
+
+			Color previousColor = GUI.color;
+			GUI.color = DescriptionColor;
+			try
+			{
+				listing.Label(text);
+			}
+			finally
+			{
+				GUI.color = previousColor;
+			}
+		}
+
+		/// <summary>追加说明文字的颜色：白色文字压暗，保持可读但不抢眼。</summary>
+		public static readonly Color DescriptionColor = new Color(0.68f, 0.68f, 0.68f);
+
 		/// <summary>按钮，参与检索；未命中时返回 false。</summary>
 		public static bool Button(Listing_Standard listing, string label)
 		{

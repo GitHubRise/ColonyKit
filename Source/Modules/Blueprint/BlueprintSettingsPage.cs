@@ -24,7 +24,7 @@ namespace ColonyKit.Modules.Blueprint
 		{
 			BlueprintSettings data = settings.GetModuleSettings<BlueprintSettings>();
 
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Blueprint.Hint".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Blueprint.Hint".Loc());
 			listing.Gap();
 
 			SettingsWidgets.Dropdown(
@@ -34,7 +34,7 @@ namespace ColonyKit.Modules.Blueprint
 				Modes,
 				ModeLabel,
 				mode => data.materialMode = mode);
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Blueprint.MaterialMode.Desc".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Blueprint.MaterialMode.Desc".Loc());
 
 			int side = Mathf.RoundToInt(SettingsWidgets.Slider(
 				listing,
@@ -45,7 +45,7 @@ namespace ColonyKit.Modules.Blueprint
 				1f,
 				value => value.ToString("0")));
 			data.maxSide = Mathf.Clamp(side, BlueprintSettings.MinMaxSide, BlueprintSettings.MaxMaxSide);
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Blueprint.MaxSide.Desc".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Blueprint.MaxSide.Desc".Loc());
 
 			int entries = Mathf.RoundToInt(SettingsWidgets.Slider(
 				listing,
@@ -56,7 +56,7 @@ namespace ColonyKit.Modules.Blueprint
 				50f,
 				value => value.ToString("0")));
 			data.maxEntries = Mathf.Clamp(entries, BlueprintSettings.MinMaxEntries, BlueprintSettings.MaxMaxEntries);
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Blueprint.MaxEntries.Desc".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Blueprint.MaxEntries.Desc".Loc());
 
 			int records = Mathf.RoundToInt(SettingsWidgets.Slider(
 				listing,
@@ -67,7 +67,7 @@ namespace ColonyKit.Modules.Blueprint
 				8f,
 				value => value.ToString("0")));
 			data.maxRecords = Mathf.Clamp(records, BlueprintSettings.MinMaxRecords, BlueprintSettings.MaxMaxRecords);
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Blueprint.MaxRecords.Desc".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Blueprint.MaxRecords.Desc".Loc());
 
 			data.verboseLog = SettingsWidgets.Checkbox(
 				listing,

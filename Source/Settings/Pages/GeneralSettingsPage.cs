@@ -43,7 +43,7 @@ namespace ColonyKit
 				new[] { ModLanguage.Auto, ModLanguage.English, ModLanguage.ChineseSimplified },
 				language => ("ColonyKit.Settings.Language." + language).Loc(),
 				language => general.language = language);
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Language.Desc".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Language.Desc".Loc());
 
 			LocalizationSettings localization = settings.GetModuleSettings<LocalizationSettings>();
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Section.TranslationScheme".Loc());
@@ -65,7 +65,7 @@ namespace ColonyKit
 				Find.WindowStack.Add(new Dialog_LocalizationSchemes(localization));
 			}
 
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Localization.Hint".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Localization.Hint".Loc());
 
 			LoggingSettings logging = settings.logging;
 
@@ -123,7 +123,7 @@ namespace ColonyKit
 				ModLog.Info("Settings", "test log line from the settings page");
 			}
 
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Diagnostics.Hint".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Diagnostics.Hint".Loc());
 
 			if (SettingsWidgets.Button(listing, "ColonyKit.Settings.Diagnostics.Dump".Loc()))
 			{

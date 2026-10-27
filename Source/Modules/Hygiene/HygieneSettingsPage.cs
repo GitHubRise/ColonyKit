@@ -24,7 +24,7 @@ namespace ColonyKit.Modules.Hygiene
 		{
 			HygieneSettings data = settings.GetModuleSettings<HygieneSettings>();
 
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.Hint".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.Hint".Loc());
 			listing.Gap();
 
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Needs".Loc());
@@ -36,7 +36,7 @@ namespace ColonyKit.Modules.Hygiene
 				HygieneSettings.MaxRate,
 				0.05f,
 				value => "×" + value.ToString("0.00"));
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.NeedsRate.Desc".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.NeedsRate.Desc".Loc());
 
 			data.bladderRateMultiplier = SettingsWidgets.Slider(
 				listing,
@@ -46,7 +46,7 @@ namespace ColonyKit.Modules.Hygiene
 				HygieneSettings.MaxRate,
 				0.05f,
 				value => "×" + value.ToString("0.00"));
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.BladderRate.Desc".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.BladderRate.Desc".Loc());
 
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Water".Loc());
 			data.waterUseMultiplier = SettingsWidgets.Slider(
@@ -57,7 +57,7 @@ namespace ColonyKit.Modules.Hygiene
 				HygieneSettings.MaxWaterUse,
 				0.05f,
 				value => "×" + value.ToString("0.00"));
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.WaterUse.Desc".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.WaterUse.Desc".Loc());
 
 			data.hotWaterUseMultiplier = SettingsWidgets.Slider(
 				listing,
@@ -67,7 +67,7 @@ namespace ColonyKit.Modules.Hygiene
 				HygieneSettings.MaxHotWaterUse,
 				0.05f,
 				value => "×" + value.ToString("0.00"));
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.HotWaterUse.Desc".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.HotWaterUse.Desc".Loc());
 
 			data.contaminationChanceMultiplier = SettingsWidgets.Slider(
 				listing,
@@ -77,7 +77,7 @@ namespace ColonyKit.Modules.Hygiene
 				HygieneSettings.MaxContamination,
 				0.05f,
 				value => (value * 100f).ToString("0") + "%");
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.Contamination.Desc".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.Contamination.Desc".Loc());
 
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Agriculture".Loc());
 			data.showAgricultureOverlay = SettingsWidgets.Checkbox(
@@ -93,7 +93,7 @@ namespace ColonyKit.Modules.Hygiene
 				HygieneSettings.MaxFertilizerStrength,
 				0.01f,
 				value => (value * 100f).ToString("0") + "%");
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.FertilizerStrength.Desc".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.FertilizerStrength.Desc".Loc());
 
 			data.fertilizerMinFertility = SettingsWidgets.Slider(
 				listing,
@@ -103,7 +103,7 @@ namespace ColonyKit.Modules.Hygiene
 				HygieneSettings.MaxFertilizerFloor,
 				0.05f,
 				value => (value * 100f).ToString("0") + "%");
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.FertilizerFloor.Desc".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.FertilizerFloor.Desc".Loc());
 
 			data.fertilizerMaxFertility = SettingsWidgets.Slider(
 				listing,
@@ -113,7 +113,7 @@ namespace ColonyKit.Modules.Hygiene
 				HygieneSettings.MaxFertilizerCap,
 				0.05f,
 				value => (value * 100f).ToString("0") + "%");
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.FertilizerCap.Desc".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.FertilizerCap.Desc".Loc());
 
 			data.fertilizerLifespanDays = SettingsWidgets.Slider(
 				listing,
@@ -123,7 +123,7 @@ namespace ColonyKit.Modules.Hygiene
 				HygieneSettings.MaxFertilizerLifespan,
 				5f,
 				value => value.ToString("0") + " d");
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.FertilizerLifespan.Desc".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.FertilizerLifespan.Desc".Loc());
 
 			data.irrigationStrength = SettingsWidgets.Slider(
 				listing,
@@ -133,7 +133,7 @@ namespace ColonyKit.Modules.Hygiene
 				HygieneSettings.MaxIrrigationStrength,
 				0.05f,
 				value => (value * 100f).ToString("0") + "%");
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.IrrigationStrength.Desc".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.IrrigationStrength.Desc".Loc());
 
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Bath".Loc());
 			data.doubleBathInviteChance = SettingsWidgets.Slider(
@@ -144,7 +144,7 @@ namespace ColonyKit.Modules.Hygiene
 				HygieneSettings.MaxInviteChance,
 				0.01f,
 				value => (value * 100f).ToString("0") + "%");
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.InviteChance.Desc".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.InviteChance.Desc".Loc());
 
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Dbh".Loc());
 			HygieneDbhPolicy policy = data.dbhPolicy;
@@ -159,7 +159,7 @@ namespace ColonyKit.Modules.Hygiene
 					data.dbhPolicy = value;
 					HygieneUtility.RefreshAllPawns();
 				});
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.Dbh.Policy.Desc".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.Dbh.Policy.Desc".Loc());
 			SettingsWidgets.Label(
 				listing,
 				(data.DbhDetected
@@ -167,7 +167,7 @@ namespace ColonyKit.Modules.Hygiene
 					: "ColonyKit.Settings.Hygiene.Dbh.NotDetected").Loc());
 
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Exemptions".Loc());
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.Exemptions.Hint".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.Exemptions.Hint".Loc());
 
 			bool beforePrisoners = data.prisonersGetHygiene;
 			data.prisonersGetHygiene = SettingsWidgets.Checkbox(

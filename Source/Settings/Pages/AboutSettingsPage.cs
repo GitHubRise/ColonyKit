@@ -29,7 +29,7 @@ namespace ColonyKit
 				content?.ModMetaData?.ModVersion ?? "?"));
 
 			listing.Gap();
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.About.Hint".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.About.Hint".Loc());
 		}
 	}
 }

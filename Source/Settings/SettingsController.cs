@@ -206,8 +206,12 @@ namespace ColonyKit
 			if (hintWidth > 0f)
 			{
 				TextAnchor previousAnchor = Text.Anchor;
+				Color previousColor = GUI.color;
 				Text.Anchor = TextAnchor.MiddleLeft;
+				// 这是补充说明而不是设置项，跟随页面里的说明文字一起压灰。
+				GUI.color = SettingsWidgets.DescriptionColor;
 				Widgets.Label(new Rect(hintX, inRect.y, hintWidth, inRect.height), "ColonyKit.Settings.Hint".Loc());
+				GUI.color = previousColor;
 				Text.Anchor = previousAnchor;
 			}
 

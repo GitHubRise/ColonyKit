@@ -17,7 +17,7 @@ namespace ColonyKit.Modules.Storage
 		{
 			StorageSettings data = settings.GetModuleSettings<StorageSettings>();
 
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Storage.Hint".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Storage.Hint".Loc());
 			listing.Gap();
 
 			bool beforeEnabled = data.enabled;
@@ -47,7 +47,7 @@ namespace ColonyKit.Modules.Storage
 			int beforeMultiplier = data.stackMultiplier;
 			if (StorageResearch.Tier1Finished)
 			{
-				SettingsWidgets.Label(listing, "ColonyKit.Settings.Storage.Tier1Fixed".Loc());
+				SettingsWidgets.Description(listing, "ColonyKit.Settings.Storage.Tier1Fixed".Loc());
 			}
 			else
 			{
@@ -84,7 +84,7 @@ namespace ColonyKit.Modules.Storage
 			{
 				data.warehouseStackCapacity = capacity;
 			}
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Storage.WarehouseStacks.Desc".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Storage.WarehouseStacks.Desc".Loc());
 
 			data.logChanges = SettingsWidgets.Checkbox(
 				listing,

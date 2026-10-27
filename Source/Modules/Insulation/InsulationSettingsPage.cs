@@ -16,7 +16,7 @@ namespace ColonyKit.Modules.Insulation
 		{
 			InsulationSettings data = settings.GetModuleSettings<InsulationSettings>();
 
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Insulation.Hint".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Insulation.Hint".Loc());
 			listing.Gap();
 
 			data.enabled = SettingsWidgets.Checkbox(
@@ -35,7 +35,7 @@ namespace ColonyKit.Modules.Insulation
 				InsulationSettings.MaxRatio,
 				0.1f,
 				value => value.ToString("0.0"));
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Insulation.Ratio.Desc".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Insulation.Ratio.Desc".Loc());
 
 			int layers = Mathf.RoundToInt(SettingsWidgets.Slider(
 				listing,
@@ -46,7 +46,7 @@ namespace ColonyKit.Modules.Insulation
 				1f,
 				value => value.ToString("0")));
 			data.maxLayers = Mathf.Clamp(layers, InsulationSettings.MinLayers, InsulationSettings.MaxLayers);
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Insulation.MaxLayers.Desc".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Insulation.MaxLayers.Desc".Loc());
 
 			data.includeNaturalRock = SettingsWidgets.Checkbox(
 				listing,
@@ -74,11 +74,11 @@ namespace ColonyKit.Modules.Insulation
 				roofLayers,
 				InsulationSettings.MinRoofWallLayers,
 				InsulationSettings.MaxRoofWallLayers);
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Insulation.RoofMinLayers.Desc".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Insulation.RoofMinLayers.Desc".Loc());
 
 			listing.Gap();
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Insulation.Formula".Loc());
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Insulation.RoofFormula".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Insulation.Formula".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Insulation.RoofFormula".Loc());
 		}
 
 		public override void Reset(ColonyKitSettings settings)

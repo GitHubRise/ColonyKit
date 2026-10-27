@@ -18,7 +18,7 @@ namespace ColonyKit.Modules.Robotics
 		{
 			RoboticsSettings data = settings.GetModuleSettings<RoboticsSettings>();
 
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Robotics.Hint".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Robotics.Hint".Loc());
 			listing.Gap();
 
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.Chores".Loc());
@@ -368,7 +368,7 @@ namespace ColonyKit.Modules.Robotics
 							? "ColonyKit.Settings.Robotics.Unlimited".Loc()
 							: label,
 						label => data.allowedAreaLabel = label);
-					SettingsWidgets.Label(
+					SettingsWidgets.Description(
 						listing,
 						"ColonyKit.Settings.Robotics.AreaLabel.Desc".Loc());
 				}
@@ -376,7 +376,7 @@ namespace ColonyKit.Modules.Robotics
 
 			listing.Gap();
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.Maintenance".Loc());
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Robotics.DurabilityHint".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Robotics.DurabilityHint".Loc());
 			data.sounds = SettingsWidgets.Checkbox(
 				listing,
 				"ColonyKit.Settings.Robotics.Sounds".Loc(),
