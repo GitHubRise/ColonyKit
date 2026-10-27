@@ -14,5 +14,27 @@
 			<li>CanBePenetrated</li>
 			<li>CanBeFertilized</li>
 		</genitalTags>
+		<stages>
+			<li>
+				<label>Micro</label>
+				<minSeverity>0.01</minSeverity>
+			</li>
+			<li>
+				<label>Tight</label>
+				<minSeverity>0.20</minSeverity>
+			</li>
+			<li>
+				<label>Average</label>
+				<minSeverity>0.40</minSeverity>
+			</li>
+			<li>
+				<label>Loose</label>
+				<minSeverity>0.60</minSeverity>
+			</li>
+			<li>
+				<label>Gaping</label>
+				<minSeverity>0.80</minSeverity>
+			</li>
+		</stages>
 	</rjw.HediffDef_SexPart>
 </Defs>
