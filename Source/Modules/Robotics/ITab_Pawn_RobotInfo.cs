@@ -43,6 +43,11 @@ namespace ColonyKit.Modules.Robotics
 				energy == null ? "-" : energy.CurLevel.ToString("0") + " / " + energy.MaxLevel.ToString("0")) + "\n";
 			text += "CK.Robotics.RobotInfo.Weapon".Translate(
 				pawn.equipment?.Primary?.LabelCap ?? "CK.Robotics.MkVCombat.NoWeapon".Translate()) + "\n";
+			if (NannyBotUtility.IsMkV(pawn))
+			{
+				text += "CK.Robotics.RobotInfo.Melee".Translate(
+					"CK.Robotics.ArcBlade".Translate()) + "\n";
+			}
 			if (combat != null)
 			{
 				text += "CK.Robotics.RobotInfo.Combat".Translate(

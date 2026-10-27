@@ -16,6 +16,8 @@
 	<CK.Robotics.RobotInfo.Durability>耐久：{0} / {1}</CK.Robotics.RobotInfo.Durability>
 	<CK.Robotics.RobotInfo.Energy>电量：{0}</CK.Robotics.RobotInfo.Energy>
 	<CK.Robotics.RobotInfo.Weapon>武器：{0}</CK.Robotics.RobotInfo.Weapon>
+	<CK.Robotics.RobotInfo.Melee>近战：{0}</CK.Robotics.RobotInfo.Melee>
+	<CK.Robotics.ArcBlade>电弧刃</CK.Robotics.ArcBlade>
 	<CK.Robotics.RobotInfo.Combat>战斗：{0}</CK.Robotics.RobotInfo.Combat>
 	<CK.Robotics.RobotInfo.Task>当前任务：{0}</CK.Robotics.RobotInfo.Task>
 	<CK.Robotics.Command.Draft>征召</CK.Robotics.Command.Draft>
