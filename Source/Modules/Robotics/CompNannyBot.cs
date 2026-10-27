@@ -25,7 +25,7 @@ namespace ColonyKit.Modules.Robotics
 	{
 		public const float DefaultMaxDurability = 1000f;
 
-		public const float MkVMaxDurability = 1800f;
+		public const float MkVMaxDurability = 5000f;
 
 		/// <summary>每 1 点实际伤害损耗的耐久；约 250 点伤害报废。</summary>
 		public const float DurabilityLossPerDamage = 4f;
@@ -75,6 +75,7 @@ namespace ColonyKit.Modules.Robotics
 		/// <summary>Mk-V 的技能只在首次生成/技能档案升级时随机一次。</summary>
 		private bool skillsInitialized;
 		private int skillsProfileVersion;
+		private bool durabilityMigratedTo5000;
 
 		/// <summary>正在被殖民者维修；维修期间不充电、不接新家务。</summary>
 		public bool repairing;
@@ -241,6 +242,12 @@ namespace ColonyKit.Modules.Robotics
 				durability = MaxDurability;
 			}
 			Pawn pawn = Pawn;
+			if (!durabilityMigratedTo5000 && NannyBotUtility.IsMkV(pawn) && durability > 0f)
+			{
+				// 旧档 Mk-V 的上限是 1800；按比例迁移到 5000，保留已受的伤。
+				durability = Mathf.Clamp(durability / 1800f * MkVMaxDurability, 1f, MkVMaxDurability);
+				durabilityMigratedTo5000 = true;
+			}
 			if (NannyBotUtility.IsMkV(pawn) && pawn != null)
 			{
 				// 商队/工作检查会读取技能，而技能记录会访问 story.traits；机械族默认两者都没有。
@@ -289,6 +296,7 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref lowPowerStandby, "ck_robotics_lowPowerStandby", false);
 			Scribe_Values.Look(ref skillsInitialized, "ck_robotics_skillsInitialized", false);
 			Scribe_Values.Look(ref skillsProfileVersion, "ck_robotics_skillsProfileVersion", 0);
+			Scribe_Values.Look(ref durabilityMigratedTo5000, "ck_robotics_durabilityMigrated5000", false);
 			Scribe_Values.Look(ref durability, "ck_robotics_durability", -1f);
 			if (durability < 0f)
 			{

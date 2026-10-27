@@ -68,9 +68,9 @@
 			<ComfyTemperatureMin>-50</ComfyTemperatureMin>
 			<ComfyTemperatureMax>60</ComfyTemperatureMax>
 			<Flammability>0</Flammability>
-			<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
-			<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
-			<ArmorRating_Heat>1</ArmorRating_Heat>
+			<ArmorRating_Sharp>0.9</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.6</ArmorRating_Blunt>
+			<ArmorRating_Heat>3</ArmorRating_Heat>
 			<CarryingCapacity>75</CarryingCapacity>
 			<CleaningSpeed>1.25</CleaningSpeed>
 			<PsychicSensitivity>0</PsychicSensitivity>
