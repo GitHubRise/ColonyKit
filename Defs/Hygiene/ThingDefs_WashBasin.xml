@@ -4,6 +4,7 @@
 	<ThingDef ParentName="BaseWeapon">
 		<defName>CK_WashBasinItem</defName>
 		<label>wash basin</label>
+		<techLevel>Industrial</techLevel>
 		<description>A portable wash basin. Equip it like a tool, right-click a water well to fill it, then right-click a water tank to pour the water in.</description>
 		<graphicData>
 			<texPath>Things/Item/CK_WashBasin</texPath>
