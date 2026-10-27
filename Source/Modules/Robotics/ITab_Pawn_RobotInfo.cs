@@ -4,7 +4,7 @@ using Verse;
 
 namespace ColonyKit.Modules.Robotics
 {
-	/// <summary>机器人的「概况」页：按原版概览样式列出关键能力。</summary>
+	/// <summary>机器人的「角色」页：按原版概览样式列出关键能力。</summary>
 	public class ITab_Pawn_RobotInfo : ITab
 	{
 		private static readonly (string key, PawnCapacityDef capacity)[] Rows =
@@ -29,7 +29,7 @@ namespace ColonyKit.Modules.Robotics
 
 		protected override void UpdateSize()
 		{
-			size = new Vector2(280f, 420f);
+			size = new Vector2(300f, 360f);
 		}
 
 		protected override void FillTab()
@@ -41,8 +41,6 @@ namespace ColonyKit.Modules.Robotics
 			}
 
 			Text.Font = GameFont.Small;
-			Text.Anchor = TextAnchor.MiddleLeft;
-
 			float y = 18f;
 			for (int i = 0; i < Rows.Length; i++)
 			{
@@ -51,15 +49,17 @@ namespace ColonyKit.Modules.Robotics
 				{
 					continue;
 				}
+
 				float level = Mathf.Clamp01(pawn.health.capacities.GetLevel(capacity));
-				Rect row = new Rect(18f, y, size.x - 36f, 30f);
-				Widgets.Label(row, Rows[i].key.Translate());
-				Text.Anchor = TextAnchor.MiddleRight;
-				Widgets.Label(row, level.ToStringPercent());
+				Rect labelRect = new Rect(18f, y, size.x - 100f, 30f);
+				Rect valueRect = new Rect(size.x - 82f, y, 64f, 30f);
+
 				Text.Anchor = TextAnchor.MiddleLeft;
+				Widgets.Label(labelRect, Rows[i].key.Translate());
+				Text.Anchor = TextAnchor.MiddleRight;
+				Widgets.Label(valueRect, level.ToStringPercent());
 				y += 34f;
 			}
-
 			Text.Anchor = TextAnchor.UpperLeft;
 		}
 	}

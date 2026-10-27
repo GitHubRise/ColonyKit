@@ -16,7 +16,7 @@
 	<CK.Robotics.Menu.ReturnToBay>Return to assembly bay</CK.Robotics.Menu.ReturnToBay>
 	<CK.Robotics.Menu.RepairRobot>Repair robot: {0}</CK.Robotics.Menu.RepairRobot>
 	<CK.Robotics.Menu.NoStation>No usable charging station.</CK.Robotics.Menu.NoStation>
-	<CK.Robotics.Tab.RobotInfo>Overview</CK.Robotics.Tab.RobotInfo>
+	<CK.Robotics.Tab.RobotInfo>Character</CK.Robotics.Tab.RobotInfo>
 	<CK.Robotics.Overview.Title>Overview</CK.Robotics.Overview.Title>
 	<CK.Robotics.Overview.DataProcessing>Data processing</CK.Robotics.Overview.DataProcessing>
 	<CK.Robotics.Overview.Moving>Moving</CK.Robotics.Overview.Moving>
