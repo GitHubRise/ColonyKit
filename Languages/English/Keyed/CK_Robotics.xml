@@ -12,6 +12,7 @@
 	<CK.Robotics.Inspect.LowPowerStandby>Low-power standby: charging conversion ×1.2</CK.Robotics.Inspect.LowPowerStandby>
 	<CK.Robotics.RobotInfo.LowPowerStandby>Low-power standby: charging conversion ×1.2</CK.Robotics.RobotInfo.LowPowerStandby>
 	<CK.RobotManagement.Status.LowPowerStandby>Fast-charge standby</CK.RobotManagement.Status.LowPowerStandby>
+	<CK.Robotics.Menu.EquipWeapon>Equip weapon: {0}</CK.Robotics.Menu.EquipWeapon>
 	<CK.Robotics.Menu.ChargeAtStation>Charge at station</CK.Robotics.Menu.ChargeAtStation>
 	<CK.Robotics.Menu.ReturnToBay>Return to assembly bay</CK.Robotics.Menu.ReturnToBay>
 	<CK.Robotics.Menu.RepairRobot>Repair robot: {0}</CK.Robotics.Menu.RepairRobot>

@@ -12,6 +12,7 @@
 	<CK.Robotics.Inspect.LowPowerStandby>低功耗待机：充电转换率 ×1.2</CK.Robotics.Inspect.LowPowerStandby>
 	<CK.Robotics.RobotInfo.LowPowerStandby>低功耗待机：充电转换率 ×1.2</CK.Robotics.RobotInfo.LowPowerStandby>
 	<CK.RobotManagement.Status.LowPowerStandby>快充待机</CK.RobotManagement.Status.LowPowerStandby>
+	<CK.Robotics.Menu.EquipWeapon>拾取武器：{0}</CK.Robotics.Menu.EquipWeapon>
 	<CK.Robotics.Menu.ChargeAtStation>去充电</CK.Robotics.Menu.ChargeAtStation>
 	<CK.Robotics.Menu.ReturnToBay>返回组装舱</CK.Robotics.Menu.ReturnToBay>
 	<CK.Robotics.Menu.RepairRobot>维修机器人：{0}</CK.Robotics.Menu.RepairRobot>

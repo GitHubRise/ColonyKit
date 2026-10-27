@@ -21,7 +21,24 @@ namespace ColonyKit.Modules.Robotics
 		public override IEnumerable<FloatMenuOption> GetOptionsFor(Thing clickedThing, FloatMenuContext context)
 		{
 			Pawn selected = context.FirstSelectedPawn;
-			if (selected == null || !NannyBotUtility.IsNannyBot(selected)
+			if (selected == null)
+			{
+				yield break;
+			}
+
+			if (NannyBotUtility.IsMkV(selected)
+				&& clickedThing is ThingWithComps weapon
+				&& weapon.def.IsWeapon
+				&& !weapon.IsForbidden(selected)
+				&& selected.CanReserve(weapon)
+				&& EquipmentUtility.CanEquip(weapon, selected))
+			{
+				yield return new FloatMenuOption(
+					"CK.Robotics.Menu.EquipWeapon".Translate(weapon.LabelShort),
+					() => OrderEquip(selected, weapon));
+			}
+
+			if (!NannyBotUtility.IsNannyBot(selected)
 				|| !(clickedThing is Building building)
 				|| building.def != NannyBotDefOf.CK_NannyBotStation)
 			{
@@ -66,6 +83,16 @@ namespace ColonyKit.Modules.Robotics
 					"CK.Robotics.Menu.RepairRobot".Translate(clickedPawn.LabelShort),
 					() => OrderRepair(selected, clickedPawn));
 			}
+		}
+
+		private static void OrderEquip(Pawn robot, ThingWithComps weapon)
+		{
+			if (robot == null || weapon == null || !weapon.Spawned)
+			{
+				return;
+			}
+			Job job = JobMaker.MakeJob(JobDefOf.Equip, weapon);
+			robot.jobs.TryTakeOrderedJob(job);
 		}
 
 		private static void OrderCharge(Pawn robot, Building station)
