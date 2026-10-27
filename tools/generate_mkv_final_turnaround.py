@@ -13,7 +13,7 @@ PAWNS = os.path.join(ROOT, "docs", "robot-textures", "pawns")
 FRONT = os.path.join(PAWNS, "MkV_direct_portrait.png")
 SIDE = os.path.join(PAWNS, "MkV_ref_side.png")
 BACK = os.path.join(PAWNS, "MkV_ref_back.png")
-TOP = os.path.join(PAWNS, "MkV_ref_top.png")
+TOP = os.path.join(PAWNS, "MkV_ref_true_top.png")
 
 SUIT = (232, 240, 245, 255)
 SUIT_HI = (252, 254, 255, 255)
@@ -157,13 +157,15 @@ def compose(south: Image.Image, north: Image.Image, east: Image.Image, west: Ima
     for x in range(0, 2000, 40):
         d.line((x, 0, x, 1040), fill=(27, 40, 47, 70), width=1)
     d.text((28, 18), "Mk-V · FINAL TURNAROUND", font=font(34, True), fill=(235, 243, 244, 255))
-    d.text((30, 58), "front/side/back from the supplied renders · top view reconstructed · white armor / black ponytail / purple seams", font=font(13), fill=(148, 174, 180, 255))
+    d.text((30, 58), "front / side / back / high-angle top from the supplied renders · white armor · black ponytail · purple seams", font=font(13), fill=(148, 174, 180, 255))
     items = [("south", "南 / FRONT", south), ("north", "北 / BACK", north), ("east", "东 / RIGHT", east), ("west", "西 / LEFT", west), ("top", "俯视 / TOP", top)]
     for i, (key, label, img) in enumerate(items):
         x = 24 + i * 394
-        scale = min(350 / img.width, 880 / img.height)
+        max_w = 220 if key == "top" else 350
+        scale = min(max_w / img.width, 880 / img.height)
         thumb = img.resize((int(img.width * scale), int(img.height * scale)), Image.LANCZOS)
-        sheet.alpha_composite(thumb, (x, 90))
+        y = 90 + (max(0, 880 - thumb.height) // 2 if key == "top" else 0)
+        sheet.alpha_composite(thumb, (x, y))
         d.text((x, 978), label, font=font(16, True), fill=(230, 240, 242, 255))
         d.text((x, 1002), f"MkV_{key}_512.png", font=font(10), fill=(142, 170, 176, 255))
     sheet.convert("RGB").save(os.path.join(PAWNS, "MkV_turnaround_final.png"), quality=95)
@@ -177,15 +179,14 @@ def main():
     front = normalize(front_cut)
     side = normalize(side_cut)
     back = normalize(back_cut)
-    # The supplied "top" render is a high-angle view, not an orthographic top.
-    # Keep the reconstructed top-down plan for the actual top slot.
-    top = top_plan()
+    # The latest supplied render is the true high-angle top view.
+    top = normalize(cutout(TOP))
 
     south = canvas_from(front)
     north = canvas_from(back)
     west = canvas_from(side)              # side render faces left
     east = canvas_from(ImageOps.mirror(side))
-    top_canvas = top
+    top_canvas = canvas_from(top)
 
     for key, img, raw in (("south", south, front), ("north", north, back), ("east", east, side),
                           ("west", west, side), ("top", top_canvas, top)):
