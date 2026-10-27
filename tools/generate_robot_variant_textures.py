@@ -71,6 +71,10 @@ def text(d, xy, value, fill, size=8, bold=True):
     d.text((P(xy[0]), P(xy[1])), value, font=font(size * S, bold), fill=fill)
 
 
+def bolt(d, x, y, r=1.5):
+    ellipse(d, (x - r, y - r, x + r, y + r), STEEL_LIGHT, OUTLINE, 1)
+
+
 TIERS = {
     "MkI": dict(shell=STEEL_LIGHT, shell2=STEEL_MID, accent=(62, 126, 166, 255), glow=CYAN,
                 head="round", body=(30, 44, 98, 104), tread=30),
@@ -249,7 +253,332 @@ def tool(d, tier, facing="south"):
             line(d, [(108, 67), (120, 67)], CYAN, 2)
 
 
+def mkii_south():
+    """Mk-II alternate style: low modular helmet, stacked plates, bolt-on shoulder pods."""
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    p = TIERS["MkII"]
+    ellipse(d, (16, 114, 112, 124), (0, 0, 0, 50))
+    # wide treads
+    for x in (12, 78):
+        rr(d, (x, 92, x + 38, 116), 8, TREAD, OUTLINE, 1)
+        rr(d, (x - 2, 88, x + 40, 97), 4, STEEL, OUTLINE, 1)
+        for i in range(3):
+            d.rectangle((P(x + 9 + i * 9), P(99), P(x + 14 + i * 9), P(108)), fill=(82, 91, 102, 255))
+        d.rectangle((P(x + 4), P(103), P(x + 10), P(107)), fill=AMBER, outline=OUTLINE, width=P(1))
+    # lower base / hazard skirt
+    rr(d, (26, 82, 102, 110), 6, DARK, OUTLINE, 1)
+    for x in (34, 46, 58, 70, 82):
+        d.rectangle((P(x), P(100), P(x + 8), P(107)), fill=STEEL_MID, outline=OUTLINE, width=P(1))
+    hazard = [(36, 108), (44, 108), (40, 100), (32, 100)]
+    for i in range(4):
+        polygon(d, [(40 + i * 12, 108), (46 + i * 12, 108), (43 + i * 12, 100), (37 + i * 12, 100)], AMBER)
+    # stacked modular torso
+    rr(d, (30, 52, 98, 96), 8, p["shell"], OUTLINE, 2)
+    rr(d, (36, 58, 92, 90), 5, p["shell2"], OUTLINE, 1)
+    # plate seams
+    for y in (64, 76):
+        d.rectangle((P(38), P(y), P(90), P(y + 2)), fill=DARK2)
+    # side rails with latches
+    for x in (24, 94):
+        rr(d, (x, 54, x + 10, 98), 3, DARK, OUTLINE, 1)
+        for y in (62, 78):
+            d.rectangle((P(x + 1), P(y), P(x + 9), P(y + 5)), fill=STEEL_MID, outline=OUTLINE, width=P(1))
+    # bolt-on shoulder pods
+    for x in (14, 94):
+        rr(d, (x, 58, x + 20, 82), 4, p["accent"], OUTLINE, 2)
+        d.rectangle((P(x + 4), P(63), P(x + 16), P(68)), fill=GREEN)
+        for bx, by in ((x + 4, 75), (x + 16, 75)):
+            ellipse(d, (P(bx - 1), P(by - 1), P(bx + 1), P(by + 1)), AMBER_LIGHT, OUTLINE, 1)
+    # arms below shoulder pods
+    for x in (16, 98):
+        rr(d, (x, 80, x + 14, 104), 4, p["shell"], OUTLINE, 1)
+        ellipse(d, (x - 1, 100, x + 15, 110), p["shell2"], OUTLINE, 1)
+    # chest module bay
+    rr(d, (42, 60, 86, 86), 4, p["accent"], OUTLINE, 1)
+    for i in range(3):
+        rr(d, (47 + i * 12, 64, 57 + i * 12, 82), 2, DARK2, OUTLINE, 1)
+        d.rectangle((P(49 + i * 12), P(68), P(55 + i * 12), P(72)), fill=(GREEN, CYAN, AMBER)[i])
+    d.rectangle((P(42), P(60), P(86), P(63)), fill=DARK2, outline=OUTLINE, width=P(1))
+    # low wide helmet
+    rr(d, (32, 14, 96, 54), 8, p["shell"], OUTLINE, 2)
+    rr(d, (38, 20, 90, 48), 5, p["shell2"], OUTLINE, 1)
+    rr(d, (38, 27, 90, 41), 4, (20, 28, 37, 255), OUTLINE, 1)
+    d.rectangle((P(44), P(31), P(84), P(36)), fill=GREEN)
+    d.rectangle((P(50), P(36), P(78), P(39)), fill=STEEL_MID)
+    # side sensor pods on helmet
+    for x in (22, 94):
+        rr(d, (x, 24, x + 12, 46), 3, DARK, OUTLINE, 1)
+        d.rectangle((P(x + 3), P(29), P(x + 9), P(34)), fill=GREEN)
+        ellipse(d, (P(x + 4), P(38), P(x + 8), P(42)), AMBER_LIGHT, None)
+    # twin short antennae
+    for x, lean in ((46, -4), (82, 4)):
+        line(d, [(x, 14), (x + lean, 4)], OUTLINE, 2)
+        ellipse(d, (x + lean - 3, 0, x + lean + 3, 6), GREEN, OUTLINE, 1)
+    # small tool block on right arm
+    rr(d, (106, 84, 118, 96), 2, DARK, OUTLINE, 1)
+    d.rectangle((P(109), P(88), P(115), P(92)), fill=GREEN)
+    return im
+
+
+def mkii_north():
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    p = TIERS["MkII"]
+    ellipse(d, (16, 114, 112, 124), (0, 0, 0, 50))
+    for x in (12, 78):
+        rr(d, (x, 92, x + 38, 116), 8, TREAD, OUTLINE, 1)
+        rr(d, (x - 2, 88, x + 40, 97), 4, STEEL, OUTLINE, 1)
+        for i in range(3):
+            d.rectangle((P(x + 9 + i * 9), P(99), P(x + 14 + i * 9), P(108)), fill=(82, 91, 102, 255))
+    rr(d, (26, 82, 102, 110), 6, DARK, OUTLINE, 1)
+    rr(d, (30, 52, 98, 96), 8, p["shell"], OUTLINE, 2)
+    rr(d, (36, 58, 92, 90), 5, p["shell2"], OUTLINE, 1)
+    # rear module rack
+    for x in (44, 58, 72):
+        rr(d, (x, 60, x + 10, 88), 2, DARK2, OUTLINE, 1)
+        d.rectangle((P(x + 2), P(64), P(x + 8), P(70)), fill=GREEN)
+        d.rectangle((P(x + 2), P(78), P(x + 8), P(82)), fill=STEEL_MID)
+    # rear cable / port
+    d.rectangle((P(38), P(64), P(42), P(88)), fill=STEEL_MID, outline=OUTLINE, width=P(1))
+    d.rectangle((P(88), P(64), P(92), P(88)), fill=STEEL_MID, outline=OUTLINE, width=P(1))
+    # shoulder pods
+    for x in (14, 94):
+        rr(d, (x, 58, x + 20, 82), 4, p["accent"], OUTLINE, 2)
+        d.rectangle((P(x + 4), P(70), P(x + 16), P(75)), fill=STEEL_MID)
+    for x in (16, 98):
+        rr(d, (x, 80, x + 14, 104), 4, p["shell"], OUTLINE, 1)
+    # low helmet rear vent
+    rr(d, (32, 14, 96, 54), 8, p["shell"], OUTLINE, 2)
+    rr(d, (38, 20, 90, 48), 5, p["shell2"], OUTLINE, 1)
+    rr(d, (38, 25, 90, 43), 4, (20, 28, 37, 255), OUTLINE, 1)
+    for x in (44, 53, 62, 71, 80):
+        d.rectangle((P(x), P(30), P(x + 3), P(38)), fill=STEEL_MID)
+    for x in (22, 94):
+        rr(d, (x, 24, x + 12, 46), 3, DARK, OUTLINE, 1)
+        d.rectangle((P(x + 3), P(31), P(x + 9), P(36)), fill=GREEN)
+    for x, lean in ((46, -4), (82, 4)):
+        line(d, [(x, 14), (x + lean, 4)], OUTLINE, 2)
+        ellipse(d, (x + lean - 3, 0, x + lean + 3, 6), GREEN, OUTLINE, 1)
+    return im
+
+
+def mkii_east():
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    p = TIERS["MkII"]
+    ellipse(d, (20, 114, 108, 124), (0, 0, 0, 50))
+    # one wide tread
+    rr(d, (22, 92, 106, 116), 8, TREAD, OUTLINE, 1)
+    rr(d, (20, 88, 108, 97), 4, STEEL, OUTLINE, 1)
+    for x in range(32, 102, 9):
+        d.rectangle((P(x), P(99), P(x + 5), P(108)), fill=(82, 91, 102, 255))
+    # side body with stacked plates
+    rr(d, (36, 50, 96, 100), 7, p["shell"], OUTLINE, 2)
+    rr(d, (42, 56, 90, 94), 4, p["shell2"], OUTLINE, 1)
+    for y in (64, 76):
+        d.rectangle((P(44), P(y), P(88), P(y + 2)), fill=DARK2)
+    # modular side bay
+    rr(d, (48, 60, 74, 88), 3, p["accent"], OUTLINE, 1)
+    for y in (66, 74, 82):
+        d.rectangle((P(52), P(y), P(70), P(y + 3)), fill=GREEN)
+    # shoulder pod
+    rr(d, (78, 54, 98, 78), 3, p["accent"], OUTLINE, 1)
+    d.rectangle((P(83), P(60), P(94), P(65)), fill=STEEL_MID)
+    # arm
+    rr(d, (90, 78, 104, 102), 4, p["shell"], OUTLINE, 1)
+    ellipse(d, (90, 98, 106, 108), p["shell2"], OUTLINE, 1)
+    # low helmet side
+    rr(d, (38, 14, 96, 54), 8, p["shell"], OUTLINE, 2)
+    rr(d, (44, 20, 90, 48), 5, p["shell2"], OUTLINE, 1)
+    # side visor facing right
+    rr(d, (70, 26, 90, 42), 4, (20, 28, 37, 255), OUTLINE, 1)
+    d.rectangle((P(76), P(31), P(87), P(36)), fill=GREEN)
+    # side sensor pod
+    rr(d, (92, 24, 104, 46), 3, DARK, OUTLINE, 1)
+    d.rectangle((P(95), P(30), P(101), P(35)), fill=GREEN)
+    # antenna
+    for x, lean in ((54, -4), (84, 4)):
+        line(d, [(x, 14), (x + lean, 4)], OUTLINE, 2)
+        ellipse(d, (x + lean - 3, 0, x + lean + 3, 6), GREEN, OUTLINE, 1)
+    # tool
+    rr(d, (106, 82, 118, 94), 2, DARK, OUTLINE, 1)
+    d.rectangle((P(109), P(86), P(115), P(90)), fill=GREEN)
+    return im
+
+
+def mkii_south():
+    """Mk-II v2: wheeled modular cube, integrated sensor cap, no separate round head."""
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    p = TIERS["MkII"]
+    ellipse(d, (12, 114, 116, 126), (0, 0, 0, 55))
+    # rear wheels, partly hidden behind chassis
+    for x in (42, 70):
+        ellipse(d, (x, 82, x + 16, 102), TREAD, OUTLINE, 2)
+        ellipse(d, (x + 4, 87, x + 12, 95), STEEL_MID, OUTLINE, 1)
+    # chassis
+    rr(d, (20, 76, 108, 112), 4, DARK, OUTLINE, 2)
+    rr(d, (26, 82, 102, 108), 2, DARK2, OUTLINE, 1)
+    # front wheels
+    for x in (18, 86):
+        ellipse(d, (x, 96, x + 26, 124), TREAD, OUTLINE, 2)
+        ellipse(d, (x + 6, 104, x + 20, 118), STEEL_MID, OUTLINE, 2)
+        ellipse(d, (x + 10, 108, x + 16, 114), DARK2, OUTLINE, 1)
+        # tread blocks
+        for i in range(4):
+            d.rectangle((P(x + 3 + i * 6), P(119), P(x + 6 + i * 6), P(123)), fill=(82, 91, 102, 255))
+    # suspension struts
+    for x in (31, 99):
+        line(d, [(x, 88), (x, 104)], OUTLINE, 3)
+        line(d, [(x, 88), (x, 104)], STEEL_LIGHT, 1)
+    # sharp modular torso block
+    rr(d, (28, 36, 100, 88), 3, p["shell"], OUTLINE, 2)
+    rr(d, (34, 42, 94, 82), 2, p["shell2"], OUTLINE, 1)
+    # vertical plate seams + corner bolts
+    for x in (46, 82):
+        d.rectangle((P(x), P(44), P(x + 2), P(80)), fill=DARK2)
+    for x, y in ((34, 42), (94, 42), (34, 82), (94, 82)):
+        bolt(d, x, y, 1.5)
+    # chest module bay, three swappable blocks
+    rr(d, (40, 48, 88, 80), 3, p["accent"], OUTLINE, 1)
+    for i in range(3):
+        rr(d, (45 + i * 13, 53, 55 + i * 13, 75), 2, DARK2, OUTLINE, 1)
+        d.rectangle((P(47 + i * 13), P(58), P(53 + i * 13), P(63)), fill=(GREEN, CYAN, AMBER)[i])
+        d.rectangle((P(47 + i * 13), P(69), P(53 + i * 13), P(72)), fill=STEEL_MID)
+    # integrated wide sensor cap (not a round head)
+    rr(d, (32, 16, 96, 42), 4, p["shell"], OUTLINE, 2)
+    rr(d, (37, 21, 91, 38), 2, p["shell2"], OUTLINE, 1)
+    rr(d, (40, 26, 88, 36), 2, (20, 28, 37, 255), OUTLINE, 1)
+    d.rectangle((P(46), P(29), P(82), P(33)), fill=GREEN)
+    d.rectangle((P(52), P(34), P(76), P(36)), fill=STEEL_MID)
+    # side sensor pods on the cap
+    for x in (22, 96):
+        rr(d, (x, 24, x + 10, 40), 2, DARK, OUTLINE, 1)
+        d.rectangle((P(x + 3), P(28), P(x + 7), P(32)), fill=GREEN)
+    # top carry cage / twin blades
+    d.rectangle((P(38), P(12), P(90), P(17)), fill=DARK, outline=OUTLINE, width=P(1))
+    for x, lean in ((40, -5), (88, 5)):
+        line(d, [(x, 16), (x + lean, 4)], OUTLINE, 2)
+        polygon(d, [(x + lean - 4, 4), (x + lean + 4, 4), (x + lean, 11)], GREEN, OUTLINE)
+    # bolt-on shoulder sockets
+    for x in (10, 98):
+        rr(d, (x, 44, x + 20, 72), 3, p["accent"], OUTLINE, 2)
+        ellipse(d, (x + 4, 51, x + 16, 63), DARK2, OUTLINE, 1)
+        ellipse(d, (x + 8, 55, x + 12, 59), GREEN, None)
+        bolt(d, x + 5, 68, 1.5)
+        bolt(d, x + 15, 68, 1.5)
+    # modular arms: left clamp, right tool socket
+    rr(d, (12, 70, 28, 104), 3, p["shell"], OUTLINE, 1)
+    rr(d, (100, 70, 116, 104), 3, p["shell"], OUTLINE, 1)
+    # left clamp
+    polygon(d, [(10, 104), (20, 104), (16, 116), (8, 112)], STEEL_LIGHT, OUTLINE)
+    # right tool socket
+    rr(d, (102, 102, 116, 114), 2, DARK, OUTLINE, 1)
+    d.rectangle((P(105), P(106), P(113), P(110)), fill=GREEN)
+    # base hazard
+    for i in range(5):
+        polygon(d, [(36 + i * 12, 112), (43 + i * 12, 112), (40 + i * 12, 105), (33 + i * 12, 105)], AMBER)
+    return im
+
+
+def mkii_north():
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    p = TIERS["MkII"]
+    ellipse(d, (12, 114, 116, 126), (0, 0, 0, 55))
+    for x in (42, 70):
+        ellipse(d, (x, 82, x + 16, 102), TREAD, OUTLINE, 2)
+    rr(d, (20, 76, 108, 112), 4, DARK, OUTLINE, 2)
+    for x in (18, 86):
+        ellipse(d, (x, 96, x + 26, 124), TREAD, OUTLINE, 2)
+        ellipse(d, (x + 6, 104, x + 20, 118), STEEL_MID, OUTLINE, 2)
+    rr(d, (28, 36, 100, 88), 3, p["shell"], OUTLINE, 2)
+    rr(d, (34, 42, 94, 82), 2, p["shell2"], OUTLINE, 1)
+    # rear battery / module rack
+    for x in (42, 58, 74):
+        rr(d, (x, 46, x + 12, 80), 2, DARK2, OUTLINE, 1)
+        d.rectangle((P(x + 2), P(51), P(x + 10), P(57)), fill=GREEN)
+        d.rectangle((P(x + 2), P(66), P(x + 10), P(71)), fill=STEEL_MID)
+        bolt(d, x + 6, 76, 1)
+    # rear ports
+    d.rectangle((P(36), P(47), P(40), P(79)), fill=STEEL_MID, outline=OUTLINE, width=P(1))
+    d.rectangle((P(88), P(47), P(92), P(79)), fill=STEEL_MID, outline=OUTLINE, width=P(1))
+    # rear sensor cap vent
+    rr(d, (32, 16, 96, 42), 4, p["shell"], OUTLINE, 2)
+    rr(d, (37, 21, 91, 38), 2, p["shell2"], OUTLINE, 1)
+    rr(d, (40, 24, 88, 38), 2, (20, 28, 37, 255), OUTLINE, 1)
+    for x in (45, 54, 63, 72, 81):
+        d.rectangle((P(x), P(28), P(x + 3), P(35)), fill=STEEL_MID)
+    for x in (22, 96):
+        rr(d, (x, 24, x + 10, 40), 2, DARK, OUTLINE, 1)
+        d.rectangle((P(x + 3), P(28), P(x + 7), P(32)), fill=GREEN)
+    # cage / blades
+    d.rectangle((P(38), P(12), P(90), P(17)), fill=DARK, outline=OUTLINE, width=P(1))
+    for x, lean in ((40, -5), (88, 5)):
+        line(d, [(x, 16), (x + lean, 4)], OUTLINE, 2)
+        polygon(d, [(x + lean - 4, 4), (x + lean + 4, 4), (x + lean, 11)], GREEN, OUTLINE)
+    # shoulder sockets
+    for x in (10, 98):
+        rr(d, (x, 44, x + 20, 72), 3, p["accent"], OUTLINE, 2)
+        ellipse(d, (x + 4, 51, x + 16, 63), DARK2, OUTLINE, 1)
+        bolt(d, x + 5, 68, 1.5)
+        bolt(d, x + 15, 68, 1.5)
+    # arms from behind
+    for x in (12, 100):
+        rr(d, (x, 70, x + 16, 104), 3, p["shell"], OUTLINE, 1)
+    return im
+
+
+def mkii_east():
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    p = TIERS["MkII"]
+    ellipse(d, (14, 114, 114, 126), (0, 0, 0, 55))
+    # two visible wheels, side profile
+    for x in (28, 82):
+        ellipse(d, (x, 94, x + 28, 124), TREAD, OUTLINE, 2)
+        ellipse(d, (x + 6, 102, x + 22, 116), STEEL_MID, OUTLINE, 2)
+        ellipse(d, (x + 11, 107, x + 17, 113), DARK2, OUTLINE, 1)
+    # chassis / suspension
+    rr(d, (24, 76, 106, 108), 3, DARK, OUTLINE, 2)
+    for x in (42, 96):
+        line(d, [(x, 82), (x, 100)], OUTLINE, 3)
+        line(d, [(x, 82), (x, 100)], STEEL_LIGHT, 1)
+    # side torso block
+    rr(d, (38, 36, 98, 88), 3, p["shell"], OUTLINE, 2)
+    rr(d, (44, 42, 92, 82), 2, p["shell2"], OUTLINE, 1)
+    # side module slots
+    rr(d, (50, 48, 78, 80), 2, p["accent"], OUTLINE, 1)
+    for y in (55, 64, 73):
+        d.rectangle((P(54), P(y), P(74), P(y + 3)), fill=GREEN)
+    # shoulder socket / arm
+    rr(d, (80, 44, 100, 72), 3, p["accent"], OUTLINE, 2)
+    ellipse(d, (84, 51, 96, 63), DARK2, OUTLINE, 1)
+    rr(d, (94, 70, 110, 104), 3, p["shell"], OUTLINE, 1)
+    polygon(d, [(108, 104), (118, 104), (114, 116), (106, 112)], STEEL_LIGHT, OUTLINE)
+    # integrated sensor cap, side
+    rr(d, (42, 16, 100, 42), 4, p["shell"], OUTLINE, 2)
+    rr(d, (47, 21, 95, 38), 2, p["shell2"], OUTLINE, 1)
+    rr(d, (72, 25, 94, 36), 2, (20, 28, 37, 255), OUTLINE, 1)
+    d.rectangle((P(78), P(29), P(92), P(33)), fill=GREEN)
+    # side sensor pod
+    rr(d, (96, 24, 108, 40), 2, DARK, OUTLINE, 1)
+    d.rectangle((P(99), P(28), P(105), P(32)), fill=GREEN)
+    # cage / blades
+    d.rectangle((P(48), P(12), P(96), P(17)), fill=DARK, outline=OUTLINE, width=P(1))
+    for x, lean in ((52, -5), (92, 5)):
+        line(d, [(x, 16), (x + lean, 4)], OUTLINE, 2)
+        polygon(d, [(x + lean - 4, 4), (x + lean + 4, 4), (x + lean, 11)], GREEN, OUTLINE)
+    # side tool socket
+    rr(d, (110, 82, 122, 94), 2, DARK, OUTLINE, 1)
+    d.rectangle((P(113), P(86), P(119), P(90)), fill=GREEN)
+    return im
+
+
 def robot_south(tier):
+    if tier == "MkII":
+        return mkii_south()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (20, 114, 108, 124), (0, 0, 0, 50))
@@ -263,6 +592,8 @@ def robot_south(tier):
 
 
 def robot_north(tier):
+    if tier == "MkII":
+        return mkii_north()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (20, 114, 108, 124), (0, 0, 0, 50))
@@ -281,6 +612,8 @@ def robot_north(tier):
 
 
 def robot_east(tier):
+    if tier == "MkII":
+        return mkii_east()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (22, 114, 106, 124), (0, 0, 0, 50))
