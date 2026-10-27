@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+- **Mk-V 技能档案**：每个 Mk-V 首次生成（或旧档首次载入）随机一次技能，基准为射击/格斗 18、医疗/烹饪/手工 18、采矿 13、建造 8、驯兽 10、艺术/社交 1、智识 15，每项在基准上下 1 级内波动；技能结果写入存档，不再每次读档重摇。
+
 ### Added
 
 - **RJW 基础兼容（Mk-V）**：Mk-V 设为女性机体，使用带 MechGenitals / MechChest / MechAnus 的专用身体，生成时调用 RJW 的 Sexualizer.sexualize_pawn，使其获得机械族人工性器官并可参与 RJW 的自愿互动；另对 RJW 的 xxx.can_do_loving 打补丁放行 Mk-V。怀孕/生育暂不处理。

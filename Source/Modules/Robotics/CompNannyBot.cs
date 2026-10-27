@@ -72,6 +72,9 @@ namespace ColonyKit.Modules.Robotics
 		public float durability = -1f;
 		public int paintIndex;
 
+		/// <summary>Mk-V 的技能只在首次生成/旧档升级时随机一次。</summary>
+		private bool skillsInitialized;
+
 		/// <summary>正在被殖民者维修；维修期间不充电、不接新家务。</summary>
 		public bool repairing;
 
@@ -104,6 +107,26 @@ namespace ColonyKit.Modules.Robotics
 			{
 				Log.Warning($"[ColonyKit] RJW could not sexualize {pawn?.LabelShort}: {exception.Message}");
 			}
+		}
+
+		private static void ApplyRobotSkills(Pawn pawn)
+		{
+			SetSkill(pawn, SkillDefOf.Shooting, 18);
+			SetSkill(pawn, SkillDefOf.Melee, 18);
+			ApplySkill(pawn, SkillDefOf.Medicine, 18);
+			ApplySkill(pawn, SkillDefOf.Cooking, 18);
+			ApplySkill(pawn, SkillDefOf.Crafting, 18);
+			ApplySkill(pawn, SkillDefOf.Mining, 13);
+			ApplySkill(pawn, SkillDefOf.Construction, 8);
+			ApplySkill(pawn, SkillDefOf.Animals, 10);
+			ApplySkill(pawn, SkillDefOf.Artistic, 1);
+			ApplySkill(pawn, SkillDefOf.Social, 1);
+			ApplySkill(pawn, SkillDefOf.Intellectual, 15);
+		}
+
+		private static void ApplySkill(Pawn pawn, SkillDef def, int baseLevel)
+		{
+			SetSkill(pawn, def, Mathf.Clamp(baseLevel + Rand.RangeInclusive(-1, 1), 0, 20));
 		}
 
 		private static void SetSkill(Pawn pawn, SkillDef def, int level)
@@ -196,8 +219,11 @@ namespace ColonyKit.Modules.Robotics
 				{
 					pawn.skills = new Pawn_SkillTracker(pawn);
 				}
-				SetSkill(pawn, SkillDefOf.Shooting, 18);
-				SetSkill(pawn, SkillDefOf.Melee, 18);
+				if (!skillsInitialized)
+				{
+					ApplyRobotSkills(pawn);
+					skillsInitialized = true;
+				}
 				pawn.gender = Gender.Female;
 				SexualizeRjw(pawn);
 			}
@@ -221,6 +247,7 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref haul, "ck_robotics_haul", true);
 			Scribe_Values.Look(ref paused, "ck_robotics_paused", false);
 			Scribe_Values.Look(ref lowPowerStandby, "ck_robotics_lowPowerStandby", false);
+			Scribe_Values.Look(ref skillsInitialized, "ck_robotics_skillsInitialized", false);
 			Scribe_Values.Look(ref durability, "ck_robotics_durability", -1f);
 			if (durability < 0f)
 			{
