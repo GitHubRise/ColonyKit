@@ -54,9 +54,13 @@ def sheet(tier: str, name: str, en: str, spec: str):
     for i, (key, label) in enumerate(views):
         x = 30 + i * 340
         y = 110
-        img = Image.open(os.path.join(SRC, f"{tier}_{key}.png")).convert("RGBA")
-        # Pixel-art review: keep hard pixels, exactly 2.5x.
-        img = img.resize((320, 320), Image.NEAREST)
+        hd_path = os.path.join(SRC, f"{tier}_{key}_512.png")
+        if os.path.exists(hd_path):
+            img = Image.open(hd_path).convert("RGBA").resize((320, 320), Image.LANCZOS)
+        else:
+            img = Image.open(os.path.join(SRC, f"{tier}_{key}.png")).convert("RGBA")
+            # Pixel-art review: keep hard pixels, exactly 2.5x.
+            img = img.resize((320, 320), Image.NEAREST)
         im.alpha_composite(img, (x, y))
         d.rectangle((x, y, x + 320, y + 320), outline=LINE, width=1)
         d.text((x, y + 335), label, font=F_LABEL, fill=TEXT)

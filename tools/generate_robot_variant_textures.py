@@ -1807,6 +1807,745 @@ def mkv_ref_east():
     return im
 
 
+def mkv8_south():
+    """Mk-V v3: refined service android with layered hair, tailored apron and articulated arms."""
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    skin = (238, 205, 187, 255)
+    skin_hi = (252, 228, 212, 255)
+    skin_lo = (210, 170, 154, 255)
+    hair = (26, 28, 32, 255)
+    hair_hi = (67, 69, 76, 255)
+    apron = (244, 242, 236, 255)
+    apron_hi = (255, 254, 250, 255)
+    apron_lo = (206, 203, 195, 255)
+    silver = (183, 189, 193, 255)
+    silver_hi = (228, 233, 235, 255)
+    dark = (52, 55, 60, 255)
+    blue = (74, 176, 220, 255)
+    blue_hi = (187, 233, 248, 255)
+    lip = (179, 95, 92, 255)
+    rose = (214, 145, 138, 255)
+    food_green = (104, 142, 83, 255)
+    food_orange = (212, 124, 64, 255)
+    ellipse(d, (22, 116, 106, 128), (0, 0, 0, 50))
+
+    # feet and lower legs
+    for x in (50, 70):
+        rr(d, (x, 104, x + 8, 119), 4, dark, OUTLINE, 1)
+        rr(d, (x - 3, 117, x + 11, 125), 4, (36, 38, 42, 255), OUTLINE, 1)
+        d.rectangle((P(x - 1), P(120), P(x + 9), P(122)), fill=silver, outline=OUTLINE, width=P(1))
+
+    # ponytail and back hair behind the body
+    polygon(d, [(76, 16), (92, 18), (98, 34), (94, 58), (86, 64), (84, 42), (78, 30)], hair, OUTLINE)
+    line(d, [(86, 24), (92, 38), (91, 54)], hair_hi, 2)
+    ellipse(d, (76, 14, 94, 32), hair, OUTLINE, 1)
+
+    # fitted under-suit
+    rr(d, (48, 54, 80, 106), 8, dark, OUTLINE, 2)
+    # waist seam
+    rr(d, (48, 74, 80, 79), 2, silver, OUTLINE, 1)
+    d.rectangle((P(56), P(75), P(72), P(77)), fill=silver_hi)
+
+    # apron skirt with side shading
+    polygon(d, [(46, 78), (82, 78), (89, 116), (39, 116)], apron, OUTLINE)
+    polygon(d, [(46, 78), (52, 78), (48, 116), (39, 116)], apron_lo, None)
+    polygon(d, [(78, 78), (82, 78), (89, 116), (80, 116)], apron_lo, None)
+    polygon(d, [(53, 80), (75, 80), (79, 111), (49, 111)], apron_hi, None)
+    line(d, [(48, 108), (80, 108)], apron_lo, 1)
+    # apron pocket
+    rr(d, (58, 88, 74, 98), 2, apron_lo, OUTLINE, 1)
+    line(d, [(58, 89), (74, 89)], apron_hi, 1)
+
+    # bib and straps
+    rr(d, (54, 52, 74, 74), 3, apron, OUTLINE, 1)
+    line(d, [(54, 53), (48, 43)], OUTLINE, 3)
+    line(d, [(74, 53), (80, 43)], OUTLINE, 3)
+    d.rectangle((P(61), P(56), P(67), P(59)), fill=apron_hi)
+    d.rectangle((P(63), P(68), P(65), P(71)), fill=silver)
+    # apron waist tie
+    line(d, [(46, 78), (82, 78)], OUTLINE, 2)
+
+    # robotic shoulder caps
+    for x in (32, 84):
+        ellipse(d, (x, 54, x + 16, 70), silver, OUTLINE, 2)
+        ellipse(d, (x + 4, 58, x + 12, 66), dark, OUTLINE, 1)
+        ellipse(d, (x + 6, 60, x + 10, 64), blue, None)
+        ellipse(d, (x + 7, 61, x + 9, 63), blue_hi, None)
+
+    # articulated arms: left bent to tray, right holding a knife
+    # upper arms
+    line(d, [(40, 64), (32, 80)], OUTLINE, 9)
+    line(d, [(40, 64), (32, 80)], silver, 5)
+    line(d, [(88, 64), (96, 80)], OUTLINE, 9)
+    line(d, [(88, 64), (96, 80)], silver, 5)
+    # elbows
+    ellipse(d, (27, 76, 37, 86), silver_hi, OUTLINE, 1)
+    ellipse(d, (91, 76, 101, 86), silver_hi, OUTLINE, 1)
+    # forearms
+    line(d, [(32, 80), (36, 94)], OUTLINE, 8)
+    line(d, [(32, 80), (36, 94)], silver, 4)
+    line(d, [(96, 80), (92, 94)], OUTLINE, 8)
+    line(d, [(96, 80), (92, 94)], silver, 4)
+    # wrists / hands
+    rr(d, (32, 92, 42, 102), 2, silver, OUTLINE, 1)
+    rr(d, (86, 92, 96, 102), 2, silver, OUTLINE, 1)
+    # fingers
+    for i in range(3):
+        line(d, [(35 + i * 3, 101), (35 + i * 3, 105)], OUTLINE, 1)
+        line(d, [(88 + i * 3, 101), (88 + i * 3, 105)], OUTLINE, 1)
+
+    # tray with food in the left hand
+    ellipse(d, (24, 94, 58, 106), (230, 227, 220, 255), OUTLINE, 2)
+    ellipse(d, (28, 96, 54, 102), (250, 248, 241, 255), None)
+    ellipse(d, (32, 96, 38, 101), food_green, None)
+    ellipse(d, (40, 95, 46, 101), food_orange, None)
+    ellipse(d, (46, 97, 50, 101), food_green, None)
+    # knife in the right hand
+    line(d, [(92, 102), (100, 112)], OUTLINE, 3)
+    line(d, [(92, 102), (100, 112)], silver_hi, 2)
+    polygon(d, [(98, 110), (106, 112), (104, 118), (96, 114)], silver, OUTLINE)
+    d.rectangle((P(91), P(99), P(95), P(104)), fill=dark, outline=OUTLINE, width=P(1))
+
+    # mechanical neck
+    rr(d, (56, 46, 72, 58), 3, silver, OUTLINE, 1)
+    for y in (49, 53):
+        d.rectangle((P(58), P(y), P(70), P(y + 2)), fill=dark)
+    # neck collar
+    rr(d, (54, 53, 74, 58), 2, silver_hi, OUTLINE, 1)
+
+    # head / face
+    ellipse(d, (50, 16, 78, 48), skin, OUTLINE, 2)
+    ellipse(d, (54, 20, 74, 44), skin_hi, None)
+    ellipse(d, (76, 22, 80, 44), skin_lo, None)
+    # hair cap and side locks
+    ellipse(d, (47, 12, 80, 36), hair, OUTLINE, 2)
+    ellipse(d, (48, 14, 64, 34), hair, None)
+    polygon(d, [(48, 24), (52, 16), (78, 14), (82, 22), (74, 20), (66, 27), (58, 21), (51, 27)], hair, OUTLINE)
+    ellipse(d, (46, 24, 52, 40), hair, OUTLINE, 1)
+    ellipse(d, (77, 24, 83, 42), hair, OUTLINE, 1)
+    line(d, [(54, 16), (58, 24)], hair_hi, 1)
+    # android ear / cheek seam
+    ellipse(d, (47, 31, 51, 38), silver, OUTLINE, 1)
+    line(d, [(51, 34), (53, 41)], (196, 158, 144, 255), 1)
+    # eyes
+    for x in (56, 67):
+        ellipse(d, (x, 29, x + 8, 36), (249, 249, 246, 255), None)
+        ellipse(d, (x + 2, 30, x + 6, 35), blue, None)
+        ellipse(d, (x + 3, 31, x + 5, 34), (24, 35, 50, 255), None)
+        line(d, [(x - 1, 28), (x + 8, 27)], hair, 1)
+        line(d, [(x + 1, 37), (x + 8, 37)], rose, 1)
+    # nose / lips / chin shadow
+    line(d, [(63, 36), (64, 39)], (198, 160, 145, 255), 1)
+    line(d, [(60, 42), (68, 42)], lip, 2)
+    d.rectangle((P(62), P(42), P(66), P(43)), fill=lip)
+    ellipse(d, (60, 45, 68, 49), (224, 184, 168, 255), None)
+    # hair strand over the forehead
+    line(d, [(61, 20), (66, 24), (72, 22)], hair_hi, 1)
+    # blue hair ornament
+    ellipse(d, (75, 16, 81, 22), blue, OUTLINE, 1)
+    ellipse(d, (77, 18, 79, 20), blue_hi, None)
+    return im
+
+
+def mkv8_north():
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    skin = (238, 205, 187, 255)
+    hair = (26, 28, 32, 255)
+    hair_hi = (67, 69, 76, 255)
+    apron = (244, 242, 236, 255)
+    apron_hi = (255, 254, 250, 255)
+    apron_lo = (206, 203, 195, 255)
+    silver = (183, 189, 193, 255)
+    silver_hi = (228, 233, 235, 255)
+    dark = (52, 55, 60, 255)
+    blue = (74, 176, 220, 255)
+    ellipse(d, (22, 116, 106, 128), (0, 0, 0, 50))
+    for x in (50, 70):
+        rr(d, (x, 104, x + 8, 119), 4, dark, OUTLINE, 1)
+        rr(d, (x - 3, 117, x + 11, 125), 4, (36, 38, 42, 255), OUTLINE, 1)
+    # back hair and ponytail
+    ellipse(d, (46, 12, 82, 42), hair, OUTLINE, 2)
+    polygon(d, [(76, 16), (94, 20), (100, 36), (94, 60), (84, 66), (82, 44), (78, 30)], hair, OUTLINE)
+    line(d, [(86, 26), (93, 40), (91, 55)], hair_hi, 2)
+    # back apron
+    polygon(d, [(46, 78), (82, 78), (89, 116), (39, 116)], apron, OUTLINE)
+    polygon(d, [(52, 80), (76, 80), (79, 111), (49, 111)], apron_hi, None)
+    line(d, [(48, 108), (80, 108)], apron_lo, 1)
+    # apron ties / bow
+    line(d, [(48, 56), (44, 70)], OUTLINE, 3)
+    line(d, [(80, 56), (84, 70)], OUTLINE, 3)
+    ellipse(d, (58, 76, 64, 82), apron, OUTLINE, 1)
+    polygon(d, [(58, 78), (50, 74), (50, 82)], apron, OUTLINE)
+    polygon(d, [(70, 78), (78, 74), (78, 82)], apron, OUTLINE)
+    # shoulders
+    for x in (32, 84):
+        ellipse(d, (x, 54, x + 16, 70), silver, OUTLINE, 2)
+        ellipse(d, (x + 6, 60, x + 10, 64), blue, None)
+    # arms from behind
+    for sx, ex in ((40, 36), (88, 92)):
+        line(d, [(sx, 64), (ex, 80), (ex + 4, 96)], OUTLINE, 9)
+        line(d, [(sx, 64), (ex, 80), (ex + 4, 96)], silver, 5)
+        ellipse(d, (ex + 4 - 4, 92, ex + 4 + 4, 100), silver, OUTLINE, 1)
+    # neck
+    rr(d, (56, 46, 72, 58), 3, silver, OUTLINE, 1)
+    # back of head
+    ellipse(d, (50, 16, 78, 48), skin, OUTLINE, 2)
+    ellipse(d, (48, 12, 82, 44), hair, OUTLINE, 2)
+    ellipse(d, (56, 40, 72, 48), (214, 178, 162, 255), None)
+    # hair highlight / ornament
+    line(d, [(54, 18), (68, 14), (78, 22)], hair_hi, 2)
+    ellipse(d, (74, 16, 80, 22), blue, OUTLINE, 1)
+    return im
+
+
+def mkv8_east():
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    skin = (238, 205, 187, 255)
+    skin_hi = (252, 228, 212, 255)
+    skin_lo = (210, 170, 154, 255)
+    hair = (26, 28, 32, 255)
+    hair_hi = (67, 69, 76, 255)
+    apron = (244, 242, 236, 255)
+    apron_hi = (255, 254, 250, 255)
+    apron_lo = (206, 203, 195, 255)
+    silver = (183, 189, 193, 255)
+    silver_hi = (228, 233, 235, 255)
+    dark = (52, 55, 60, 255)
+    blue = (74, 176, 220, 255)
+    blue_hi = (187, 233, 248, 255)
+    lip = (179, 95, 92, 255)
+    rose = (214, 145, 138, 255)
+    food_green = (104, 142, 83, 255)
+    food_orange = (212, 124, 64, 255)
+    ellipse(d, (24, 116, 104, 128), (0, 0, 0, 50))
+    # feet
+    for x in (50, 70):
+        rr(d, (x, 104, x + 8, 119), 4, dark, OUTLINE, 1)
+        rr(d, (x - 3, 117, x + 11, 125), 4, (36, 38, 42, 255), OUTLINE, 1)
+    # ponytail behind
+    polygon(d, [(56, 16), (40, 20), (32, 36), (36, 62), (46, 66), (48, 44), (52, 30)], hair, OUTLINE)
+    line(d, [(44, 28), (38, 42), (40, 56)], hair_hi, 2)
+    # side body / apron
+    polygon(d, [(48, 78), (80, 78), (85, 116), (44, 116)], apron, OUTLINE)
+    polygon(d, [(54, 80), (76, 80), (79, 111), (50, 111)], apron_hi, None)
+    line(d, [(46, 108), (81, 108)], apron_lo, 1)
+    rr(d, (58, 88, 74, 98), 2, apron_lo, OUTLINE, 1)
+    # side under-suit
+    rr(d, (46, 54, 78, 106), 7, dark, OUTLINE, 2)
+    # shoulder and arm
+    ellipse(d, (78, 54, 94, 70), silver, OUTLINE, 2)
+    ellipse(d, (82, 58, 90, 66), dark, OUTLINE, 1)
+    ellipse(d, (84, 60, 88, 64), blue, None)
+    line(d, [(86, 64), (98, 80), (94, 94)], OUTLINE, 9)
+    line(d, [(86, 64), (98, 80), (94, 94)], silver, 5)
+    ellipse(d, (93, 76, 103, 86), silver_hi, OUTLINE, 1)
+    rr(d, (90, 92, 100, 102), 2, silver, OUTLINE, 1)
+    # tray and food
+    ellipse(d, (50, 94, 84, 106), (230, 227, 220, 255), OUTLINE, 2)
+    ellipse(d, (54, 96, 80, 102), (250, 248, 241, 255), None)
+    ellipse(d, (58, 96, 64, 101), food_green, None)
+    ellipse(d, (66, 95, 72, 101), food_orange, None)
+    # knife at the side
+    line(d, [(98, 102), (106, 112)], OUTLINE, 3)
+    line(d, [(98, 102), (106, 112)], silver_hi, 2)
+    polygon(d, [(104, 110), (112, 112), (110, 118), (102, 114)], silver, OUTLINE)
+    # neck
+    rr(d, (56, 46, 72, 58), 3, silver, OUTLINE, 1)
+    # side head / face
+    ellipse(d, (50, 16, 80, 48), skin, OUTLINE, 2)
+    ellipse(d, (54, 20, 76, 44), skin_hi, None)
+    ellipse(d, (76, 22, 80, 44), skin_lo, None)
+    # hair cap, bangs, ponytail
+    ellipse(d, (46, 12, 82, 38), hair, OUTLINE, 2)
+    polygon(d, [(46, 24), (50, 16), (78, 14), (84, 22), (76, 20), (68, 27), (60, 21), (52, 27)], hair, OUTLINE)
+    ellipse(d, (42, 22, 50, 42), hair, OUTLINE, 1)
+    # eye
+    ellipse(d, (66, 29, 74, 36), (249, 249, 246, 255), None)
+    ellipse(d, (68, 30, 72, 35), blue, None)
+    ellipse(d, (69, 31, 71, 34), (24, 35, 50, 255), None)
+    line(d, [(64, 27), (74, 27)], hair, 1)
+    line(d, [(65, 37), (73, 37)], rose, 1)
+    # nose / lips
+    line(d, [(78, 35), (80, 38)], (198, 160, 145, 255), 1)
+    line(d, [(72, 42), (79, 42)], lip, 2)
+    # cheek seam / ornament
+    line(d, [(50, 34), (52, 41)], (196, 158, 144, 255), 1)
+    ellipse(d, (44, 16, 50, 22), blue, OUTLINE, 1)
+    return im
+
+
+def mkv9_south():
+    """Mk-V v4: full-body slim service android, elegant apron and articulated arms."""
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    skin = (239, 207, 189, 255)
+    skin_hi = (253, 230, 215, 255)
+    skin_lo = (213, 173, 157, 255)
+    hair = (27, 29, 33, 255)
+    hair_hi = (64, 66, 72, 255)
+    apron = (245, 243, 237, 255)
+    apron_hi = (255, 254, 251, 255)
+    apron_lo = (205, 202, 194, 255)
+    silver = (184, 190, 194, 255)
+    silver_hi = (228, 233, 235, 255)
+    dark = (50, 53, 58, 255)
+    blue = (74, 176, 220, 255)
+    blue_hi = (187, 233, 248, 255)
+    lip = (181, 96, 92, 255)
+    rose = (217, 148, 140, 255)
+    food_green = (102, 141, 82, 255)
+    food_orange = (210, 122, 63, 255)
+    ellipse(d, (22, 118, 106, 128), (0, 0, 0, 45))
+
+    # high ponytail behind the head, not covering the face
+    polygon(d, [(74, 14), (86, 16), (92, 28), (90, 43), (82, 48), (78, 32)], hair, OUTLINE)
+    line(d, [(80, 20), (86, 30), (84, 42)], hair_hi, 2)
+    ellipse(d, (72, 12, 86, 24), hair, OUTLINE, 1)
+
+    # slim legs and shoes
+    rr(d, (54, 104, 60, 120), 3, dark, OUTLINE, 1)
+    rr(d, (68, 104, 74, 120), 3, dark, OUTLINE, 1)
+    rr(d, (50, 117, 62, 125), 3, (36, 38, 42, 255), OUTLINE, 1)
+    rr(d, (66, 117, 78, 125), 3, (36, 38, 42, 255), OUTLINE, 1)
+    d.rectangle((P(51), P(120), P(60), P(122)), fill=silver, outline=OUTLINE, width=P(1))
+    d.rectangle((P(68), P(120), P(77), P(122)), fill=silver, outline=OUTLINE, width=P(1))
+
+    # dark under-suit torso
+    rr(d, (54, 46, 74, 82), 6, dark, OUTLINE, 2)
+    # fitted apron skirt
+    polygon(d, [(50, 68), (78, 68), (84, 108), (44, 108)], apron, OUTLINE)
+    polygon(d, [(50, 68), (55, 68), (50, 108), (44, 108)], apron_lo, None)
+    polygon(d, [(75, 68), (78, 68), (84, 108), (78, 108)], apron_lo, None)
+    polygon(d, [(56, 71), (73, 71), (78, 104), (50, 104)], apron_hi, None)
+    # apron pocket / hem
+    rr(d, (58, 82, 72, 94), 2, apron_lo, OUTLINE, 1)
+    line(d, [(58, 83), (72, 83)], apron_hi, 1)
+    line(d, [(48, 102), (80, 102)], apron_lo, 1)
+    # waist belt
+    rr(d, (52, 64, 76, 69), 2, silver, OUTLINE, 1)
+    d.rectangle((P(58), P(65), P(70), P(67)), fill=silver_hi)
+
+    # apron bib and straps
+    rr(d, (56, 48, 72, 66), 3, apron, OUTLINE, 1)
+    line(d, [(57, 49), (52, 40)], OUTLINE, 3)
+    line(d, [(71, 49), (76, 40)], OUTLINE, 3)
+    d.rectangle((P(61), P(52), P(67), P(55)), fill=apron_hi)
+    d.rectangle((P(63), P(61), P(65), P(64)), fill=silver)
+
+    # shoulder caps
+    for x in (42, 74):
+        ellipse(d, (x, 46, x + 16, 62), silver, OUTLINE, 2)
+        ellipse(d, (x + 4, 50, x + 12, 58), dark, OUTLINE, 1)
+        ellipse(d, (x + 6, 52, x + 10, 56), blue, None)
+        ellipse(d, (x + 7, 53, x + 9, 55), blue_hi, None)
+
+    # left arm bent to tray
+    line(d, [(50, 54), (42, 72), (48, 88)], OUTLINE, 8)
+    line(d, [(50, 54), (42, 72), (48, 88)], silver, 4)
+    ellipse(d, (39, 68, 47, 76), silver_hi, OUTLINE, 1)
+    rr(d, (45, 86, 53, 94), 2, silver, OUTLINE, 1)
+    # right arm to knife
+    line(d, [(76, 54), (85, 72), (81, 88)], OUTLINE, 8)
+    line(d, [(76, 54), (85, 72), (81, 88)], silver, 4)
+    ellipse(d, (82, 68, 90, 76), silver_hi, OUTLINE, 1)
+    rr(d, (78, 86, 86, 94), 2, silver, OUTLINE, 1)
+
+    # tray with food
+    ellipse(d, (32, 92, 64, 103), (231, 228, 220, 255), OUTLINE, 2)
+    ellipse(d, (36, 94, 60, 100), (252, 250, 243, 255), None)
+    ellipse(d, (40, 94, 46, 99), food_green, None)
+    ellipse(d, (48, 93, 54, 99), food_orange, None)
+    ellipse(d, (53, 96, 57, 100), food_green, None)
+    # knife
+    line(d, [(84, 94), (92, 106)], OUTLINE, 3)
+    line(d, [(84, 94), (92, 106)], silver_hi, 2)
+    polygon(d, [(90, 104), (98, 106), (96, 112), (88, 108)], silver, OUTLINE)
+    d.rectangle((P(82), P(90), P(86), P(96)), fill=dark, outline=OUTLINE, width=P(1))
+
+    # neck
+    rr(d, (58, 42, 70, 50), 3, silver, OUTLINE, 1)
+    d.rectangle((P(60), P(44), P(68), P(46)), fill=dark)
+
+    # head / face
+    ellipse(d, (52, 15, 76, 43), skin, OUTLINE, 2)
+    ellipse(d, (55, 18, 73, 40), skin_hi, None)
+    ellipse(d, (73, 20, 77, 39), skin_lo, None)
+    # hair cap, bangs and side locks
+    ellipse(d, (49, 11, 79, 32), hair, OUTLINE, 2)
+    polygon(d, [(49, 23), (52, 15), (77, 13), (81, 21), (73, 19), (66, 25), (59, 20), (52, 25)], hair, OUTLINE)
+    ellipse(d, (49, 22, 53, 36), hair, OUTLINE, 1)
+    ellipse(d, (75, 22, 79, 36), hair, OUTLINE, 1)
+    line(d, [(56, 15), (60, 22), (66, 20)], hair_hi, 1)
+    # blue hair tie
+    ellipse(d, (76, 14, 82, 20), blue, OUTLINE, 1)
+    ellipse(d, (78, 16, 80, 18), blue_hi, None)
+    # android ear / cheek seam
+    ellipse(d, (48, 29, 52, 36), silver, OUTLINE, 1)
+    line(d, [(52, 33), (54, 39)], (197, 159, 145, 255), 1)
+    # eyes
+    for x in (56, 66):
+        ellipse(d, (x, 27, x + 7, 34), (249, 249, 246, 255), None)
+        ellipse(d, (x + 2, 28, x + 6, 33), blue, None)
+        ellipse(d, (x + 3, 29, x + 5, 32), (24, 35, 50, 255), None)
+        line(d, [(x - 1, 26), (x + 7, 25)], hair, 1)
+        line(d, [(x + 1, 35), (x + 7, 35)], rose, 1)
+    # nose, lips, chin
+    line(d, [(63, 34), (64, 37)], (198, 160, 145, 255), 1)
+    line(d, [(60, 39), (67, 39)], lip, 2)
+    ellipse(d, (61, 41, 67, 44), (224, 184, 168, 255), None)
+    return im
+
+
+def mkv9_north():
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    hair = (27, 29, 33, 255)
+    hair_hi = (64, 66, 72, 255)
+    apron = (245, 243, 237, 255)
+    apron_hi = (255, 254, 251, 255)
+    apron_lo = (205, 202, 194, 255)
+    silver = (184, 190, 194, 255)
+    dark = (50, 53, 58, 255)
+    blue = (74, 176, 220, 255)
+    skin = (239, 207, 189, 255)
+    ellipse(d, (22, 118, 106, 128), (0, 0, 0, 45))
+    for x in (54, 68):
+        rr(d, (x, 104, x + 6, 120), 3, dark, OUTLINE, 1)
+        rr(d, (x - 3, 117, x + 9, 125), 3, (36, 38, 42, 255), OUTLINE, 1)
+    # back hair and ponytail
+    ellipse(d, (48, 11, 80, 40), hair, OUTLINE, 2)
+    polygon(d, [(72, 14), (86, 18), (92, 30), (88, 46), (80, 50), (78, 32)], hair, OUTLINE)
+    line(d, [(78, 20), (86, 30), (84, 42)], hair_hi, 2)
+    # apron back
+    polygon(d, [(50, 68), (78, 68), (84, 108), (44, 108)], apron, OUTLINE)
+    polygon(d, [(56, 71), (73, 71), (78, 104), (50, 104)], apron_hi, None)
+    line(d, [(48, 102), (80, 102)], apron_lo, 1)
+    # waist bow
+    line(d, [(52, 58), (46, 68)], OUTLINE, 3)
+    line(d, [(76, 58), (82, 68)], OUTLINE, 3)
+    ellipse(d, (58, 68, 64, 74), apron, OUTLINE, 1)
+    polygon(d, [(58, 70), (50, 66), (50, 74)], apron, OUTLINE)
+    polygon(d, [(70, 70), (78, 66), (78, 74)], apron, OUTLINE)
+    # shoulders / arms
+    for x in (42, 74):
+        ellipse(d, (x, 46, x + 16, 62), silver, OUTLINE, 2)
+        ellipse(d, (x + 6, 52, x + 10, 56), blue, None)
+    for sx, ex in ((50, 44), (76, 82)):
+        line(d, [(sx, 54), (ex, 72), (ex + 4, 88)], OUTLINE, 8)
+        line(d, [(sx, 54), (ex, 72), (ex + 4, 88)], silver, 4)
+    # neck
+    rr(d, (58, 42, 70, 50), 3, silver, OUTLINE, 1)
+    # back of head
+    ellipse(d, (52, 15, 76, 43), skin, OUTLINE, 2)
+    ellipse(d, (49, 11, 79, 40), hair, OUTLINE, 2)
+    line(d, [(56, 16), (70, 13), (78, 20)], hair_hi, 2)
+    ellipse(d, (76, 14, 82, 20), blue, OUTLINE, 1)
+    return im
+
+
+def mkv9_east():
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    skin = (239, 207, 189, 255)
+    skin_hi = (253, 230, 215, 255)
+    skin_lo = (213, 173, 157, 255)
+    hair = (27, 29, 33, 255)
+    hair_hi = (64, 66, 72, 255)
+    apron = (245, 243, 237, 255)
+    apron_hi = (255, 254, 251, 255)
+    apron_lo = (205, 202, 194, 255)
+    silver = (184, 190, 194, 255)
+    silver_hi = (228, 233, 235, 255)
+    dark = (50, 53, 58, 255)
+    blue = (74, 176, 220, 255)
+    blue_hi = (187, 233, 248, 255)
+    lip = (181, 96, 92, 255)
+    rose = (217, 148, 140, 255)
+    food_green = (102, 141, 82, 255)
+    food_orange = (210, 122, 63, 255)
+    ellipse(d, (24, 118, 104, 128), (0, 0, 0, 45))
+    # legs
+    for x in (54, 68):
+        rr(d, (x, 104, x + 6, 120), 3, dark, OUTLINE, 1)
+        rr(d, (x - 3, 117, x + 9, 125), 3, (36, 38, 42, 255), OUTLINE, 1)
+    # ponytail behind
+    polygon(d, [(54, 14), (40, 20), (34, 34), (38, 48), (46, 50), (48, 34), (52, 24)], hair, OUTLINE)
+    line(d, [(42, 26), (38, 36), (40, 46)], hair_hi, 2)
+    # apron / body
+    polygon(d, [(50, 68), (78, 68), (84, 108), (44, 108)], apron, OUTLINE)
+    polygon(d, [(56, 71), (73, 71), (78, 104), (50, 104)], apron_hi, None)
+    line(d, [(48, 102), (80, 102)], apron_lo, 1)
+    rr(d, (58, 82, 72, 94), 2, apron_lo, OUTLINE, 1)
+    rr(d, (54, 46, 74, 82), 6, dark, OUTLINE, 2)
+    # shoulder / arm
+    ellipse(d, (74, 46, 90, 62), silver, OUTLINE, 2)
+    ellipse(d, (78, 50, 86, 58), dark, OUTLINE, 1)
+    ellipse(d, (80, 52, 84, 56), blue, None)
+    line(d, [(80, 54), (90, 72), (86, 88)], OUTLINE, 8)
+    line(d, [(80, 54), (90, 72), (86, 88)], silver, 4)
+    ellipse(d, (87, 68, 95, 76), silver_hi, OUTLINE, 1)
+    rr(d, (83, 86, 91, 94), 2, silver, OUTLINE, 1)
+    # tray / food
+    ellipse(d, (48, 92, 80, 103), (231, 228, 220, 255), OUTLINE, 2)
+    ellipse(d, (52, 94, 76, 100), (252, 250, 243, 255), None)
+    ellipse(d, (56, 94, 62, 99), food_green, None)
+    ellipse(d, (64, 93, 70, 99), food_orange, None)
+    # knife
+    line(d, [(88, 94), (96, 106)], OUTLINE, 3)
+    line(d, [(88, 94), (96, 106)], silver_hi, 2)
+    polygon(d, [(94, 104), (102, 106), (100, 112), (92, 108)], silver, OUTLINE)
+    # neck
+    rr(d, (58, 42, 70, 50), 3, silver, OUTLINE, 1)
+    # side head
+    ellipse(d, (52, 15, 78, 43), skin, OUTLINE, 2)
+    ellipse(d, (56, 18, 74, 40), skin_hi, None)
+    ellipse(d, (76, 20, 80, 39), skin_lo, None)
+    # hair cap, bangs, ponytail
+    ellipse(d, (48, 11, 82, 36), hair, OUTLINE, 2)
+    polygon(d, [(48, 23), (52, 15), (77, 13), (83, 21), (75, 19), (68, 26), (60, 20), (52, 25)], hair, OUTLINE)
+    ellipse(d, (44, 20, 50, 38), hair, OUTLINE, 1)
+    ellipse(d, (76, 14, 82, 20), blue, OUTLINE, 1)
+    # eye / nose / lips
+    ellipse(d, (66, 27, 74, 34), (249, 249, 246, 255), None)
+    ellipse(d, (68, 28, 72, 33), blue, None)
+    ellipse(d, (69, 29, 71, 32), (24, 35, 50, 255), None)
+    line(d, [(64, 25), (74, 25)], hair, 1)
+    line(d, [(65, 35), (73, 35)], rose, 1)
+    line(d, [(77, 33), (79, 36)], (198, 160, 145, 255), 1)
+    line(d, [(72, 39), (79, 39)], lip, 2)
+    line(d, [(52, 32), (54, 39)], (197, 159, 145, 255), 1)
+    return im
+
+
+def mkv10_south():
+    """Mk-V v5: refined small-head full-body android, long apron line and slim limbs."""
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    skin = (239, 207, 189, 255)
+    skin_hi = (254, 231, 216, 255)
+    skin_lo = (214, 174, 158, 255)
+    hair = (28, 30, 34, 255)
+    hair_hi = (66, 68, 74, 255)
+    apron = (246, 244, 238, 255)
+    apron_hi = (255, 254, 251, 255)
+    apron_lo = (206, 203, 195, 255)
+    silver = (184, 190, 194, 255)
+    silver_hi = (228, 233, 235, 255)
+    dark = (50, 53, 58, 255)
+    blue = (74, 176, 220, 255)
+    blue_hi = (187, 233, 248, 255)
+    lip = (181, 96, 92, 255)
+    food_green = (102, 141, 82, 255)
+    food_orange = (210, 122, 63, 255)
+    ellipse(d, (22, 118, 106, 128), (0, 0, 0, 45))
+
+    # high ponytail behind
+    polygon(d, [(74, 12), (86, 15), (90, 27), (84, 36), (78, 26)], hair, OUTLINE)
+    line(d, [(80, 18), (85, 27)], hair_hi, 2)
+
+    # slim legs / shoes
+    rr(d, (56, 102, 62, 119), 3, dark, OUTLINE, 1)
+    rr(d, (66, 102, 72, 119), 3, dark, OUTLINE, 1)
+    rr(d, (52, 116, 64, 124), 3, (36, 38, 42, 255), OUTLINE, 1)
+    rr(d, (64, 116, 76, 124), 3, (36, 38, 42, 255), OUTLINE, 1)
+    d.rectangle((P(53), P(119), P(62), P(121)), fill=silver, outline=OUTLINE, width=P(1))
+    d.rectangle((P(66), P(119), P(75), P(121)), fill=silver, outline=OUTLINE, width=P(1))
+
+    # under-suit / torso
+    rr(d, (55, 46, 73, 78), 5, dark, OUTLINE, 2)
+    # fitted apron skirt
+    polygon(d, [(52, 66), (76, 66), (82, 104), (46, 104)], apron, OUTLINE)
+    polygon(d, [(52, 66), (56, 66), (51, 104), (46, 104)], apron_lo, None)
+    polygon(d, [(74, 66), (76, 66), (82, 104), (76, 104)], apron_lo, None)
+    polygon(d, [(57, 69), (72, 69), (76, 100), (52, 100)], apron_hi, None)
+    rr(d, (58, 78, 70, 88), 2, apron_lo, OUTLINE, 1)
+    line(d, [(50, 100), (78, 100)], apron_lo, 1)
+    # waist belt
+    rr(d, (53, 62, 75, 67), 2, silver, OUTLINE, 1)
+    d.rectangle((P(59), P(63), P(69), P(65)), fill=silver_hi)
+
+    # bib / straps
+    rr(d, (57, 47, 71, 64), 3, apron, OUTLINE, 1)
+    line(d, [(58, 48), (54, 40)], OUTLINE, 3)
+    line(d, [(70, 48), (74, 40)], OUTLINE, 3)
+    d.rectangle((P(62), P(50), P(66), P(53)), fill=apron_hi)
+    d.rectangle((P(63), P(59), P(65), P(62)), fill=silver)
+
+    # shoulder caps
+    for x in (44, 72):
+        ellipse(d, (x, 45, x + 16, 61), silver, OUTLINE, 2)
+        ellipse(d, (x + 4, 49, x + 12, 57), dark, OUTLINE, 1)
+        ellipse(d, (x + 6, 51, x + 10, 55), blue, None)
+        ellipse(d, (x + 7, 52, x + 9, 54), blue_hi, None)
+    # arms
+    line(d, [(52, 53), (44, 70), (48, 86)], OUTLINE, 8)
+    line(d, [(52, 53), (44, 70), (48, 86)], silver, 4)
+    ellipse(d, (41, 66, 49, 74), silver_hi, OUTLINE, 1)
+    rr(d, (45, 84, 53, 92), 2, silver, OUTLINE, 1)
+    line(d, [(76, 53), (85, 70), (81, 86)], OUTLINE, 8)
+    line(d, [(76, 53), (85, 70), (81, 86)], silver, 4)
+    ellipse(d, (82, 66, 90, 74), silver_hi, OUTLINE, 1)
+    rr(d, (78, 84, 86, 92), 2, silver, OUTLINE, 1)
+
+    # tray / knife
+    ellipse(d, (34, 90, 64, 100), (231, 228, 220, 255), OUTLINE, 2)
+    ellipse(d, (38, 92, 60, 97), (252, 250, 243, 255), None)
+    ellipse(d, (42, 92, 48, 97), food_green, None)
+    ellipse(d, (50, 91, 56, 97), food_orange, None)
+    line(d, [(84, 92), (92, 104)], OUTLINE, 3)
+    line(d, [(84, 92), (92, 104)], silver_hi, 2)
+    polygon(d, [(90, 102), (98, 104), (96, 110), (88, 106)], silver, OUTLINE)
+
+    # neck
+    rr(d, (59, 40, 69, 47), 3, silver, OUTLINE, 1)
+    # head, smaller and higher
+    ellipse(d, (53, 14, 75, 41), skin, OUTLINE, 2)
+    ellipse(d, (56, 17, 72, 38), skin_hi, None)
+    ellipse(d, (72, 19, 76, 37), skin_lo, None)
+    # hair cap and bangs, kept above the eyes
+    ellipse(d, (50, 10, 78, 30), hair, OUTLINE, 2)
+    polygon(d, [(50, 21), (53, 14), (75, 13), (78, 19), (71, 17), (65, 22), (58, 18), (53, 22)], hair, OUTLINE)
+    ellipse(d, (50, 20, 53, 32), hair, OUTLINE, 1)
+    ellipse(d, (75, 20, 78, 32), hair, OUTLINE, 1)
+    line(d, [(57, 14), (61, 20), (67, 18)], hair_hi, 1)
+    ellipse(d, (75, 12, 81, 18), blue, OUTLINE, 1)
+    ellipse(d, (77, 14, 79, 16), blue_hi, None)
+    # ear seam
+    ellipse(d, (50, 27, 54, 34), silver, OUTLINE, 1)
+    line(d, [(53, 30), (55, 36)], (198, 160, 145, 255), 1)
+    # eyes, brows, nose, lips
+    for x in (57, 66):
+        ellipse(d, (x, 25, x + 7, 31), (249, 249, 246, 255), None)
+        ellipse(d, (x + 2, 26, x + 6, 30), blue, None)
+        ellipse(d, (x + 3, 27, x + 5, 29), (24, 35, 50, 255), None)
+        line(d, [(x - 1, 23), (x + 7, 23)], hair, 1)
+    line(d, [(63, 31), (64, 34)], (198, 160, 145, 255), 1)
+    line(d, [(60, 36), (67, 36)], lip, 1)
+    ellipse(d, (62, 38, 66, 40), (226, 186, 170, 255), None)
+    return im
+
+
+def mkv10_north():
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    hair = (28, 30, 34, 255)
+    hair_hi = (66, 68, 74, 255)
+    apron = (246, 244, 238, 255)
+    apron_hi = (255, 254, 251, 255)
+    apron_lo = (206, 203, 195, 255)
+    silver = (184, 190, 194, 255)
+    dark = (50, 53, 58, 255)
+    blue = (74, 176, 220, 255)
+    skin = (239, 207, 189, 255)
+    ellipse(d, (22, 118, 106, 128), (0, 0, 0, 45))
+    for x in (56, 66):
+        rr(d, (x, 102, x + 6, 119), 3, dark, OUTLINE, 1)
+        rr(d, (x - 3, 116, x + 9, 124), 3, (36, 38, 42, 255), OUTLINE, 1)
+    # back hair / ponytail
+    ellipse(d, (50, 10, 78, 34), hair, OUTLINE, 2)
+    polygon(d, [(72, 12), (86, 16), (90, 30), (84, 40), (78, 26)], hair, OUTLINE)
+    line(d, [(78, 18), (85, 28)], hair_hi, 2)
+    # back apron
+    polygon(d, [(52, 66), (76, 66), (82, 104), (46, 104)], apron, OUTLINE)
+    polygon(d, [(57, 69), (72, 69), (76, 100), (52, 100)], apron_hi, None)
+    line(d, [(50, 100), (78, 100)], apron_lo, 1)
+    # waist bow
+    line(d, [(54, 54), (48, 64)], OUTLINE, 3)
+    line(d, [(74, 54), (80, 64)], OUTLINE, 3)
+    ellipse(d, (60, 64, 66, 70), apron, OUTLINE, 1)
+    polygon(d, [(60, 66), (52, 62), (52, 70)], apron, OUTLINE)
+    polygon(d, [(72, 66), (80, 62), (80, 70)], apron, OUTLINE)
+    # shoulders / arms
+    for x in (44, 72):
+        ellipse(d, (x, 45, x + 16, 61), silver, OUTLINE, 2)
+        ellipse(d, (x + 6, 51, x + 10, 55), blue, None)
+    for sx, ex in ((52, 44), (76, 82)):
+        line(d, [(sx, 53), (ex, 70), (ex + 4, 86)], OUTLINE, 8)
+        line(d, [(sx, 53), (ex, 70), (ex + 4, 86)], silver, 4)
+    # neck
+    rr(d, (59, 40, 69, 47), 3, silver, OUTLINE, 1)
+    # back of head
+    ellipse(d, (53, 14, 75, 41), skin, OUTLINE, 2)
+    ellipse(d, (50, 10, 78, 34), hair, OUTLINE, 2)
+    line(d, [(57, 15), (68, 12), (76, 20)], hair_hi, 2)
+    ellipse(d, (75, 12, 81, 18), blue, OUTLINE, 1)
+    return im
+
+
+def mkv10_east():
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    skin = (239, 207, 189, 255)
+    skin_hi = (254, 231, 216, 255)
+    skin_lo = (214, 174, 158, 255)
+    hair = (28, 30, 34, 255)
+    hair_hi = (66, 68, 74, 255)
+    apron = (246, 244, 238, 255)
+    apron_hi = (255, 254, 251, 255)
+    apron_lo = (206, 203, 195, 255)
+    silver = (184, 190, 194, 255)
+    silver_hi = (228, 233, 235, 255)
+    dark = (50, 53, 58, 255)
+    blue = (74, 176, 220, 255)
+    blue_hi = (187, 233, 248, 255)
+    lip = (181, 96, 92, 255)
+    food_green = (102, 141, 82, 255)
+    food_orange = (210, 122, 63, 255)
+    ellipse(d, (24, 118, 104, 128), (0, 0, 0, 45))
+    for x in (56, 66):
+        rr(d, (x, 102, x + 6, 119), 3, dark, OUTLINE, 1)
+        rr(d, (x - 3, 116, x + 9, 124), 3, (36, 38, 42, 255), OUTLINE, 1)
+    # ponytail behind
+    polygon(d, [(56, 12), (42, 16), (36, 28), (40, 40), (48, 42), (50, 28), (53, 20)], hair, OUTLINE)
+    line(d, [(44, 20), (39, 30), (41, 38)], hair_hi, 2)
+    # apron / body
+    polygon(d, [(52, 66), (76, 66), (82, 104), (46, 104)], apron, OUTLINE)
+    polygon(d, [(57, 69), (72, 69), (76, 100), (52, 100)], apron_hi, None)
+    line(d, [(50, 100), (78, 100)], apron_lo, 1)
+    rr(d, (58, 78, 70, 88), 2, apron_lo, OUTLINE, 1)
+    rr(d, (55, 46, 73, 78), 5, dark, OUTLINE, 2)
+    # shoulder / arm
+    ellipse(d, (72, 45, 88, 61), silver, OUTLINE, 2)
+    ellipse(d, (76, 49, 84, 57), dark, OUTLINE, 1)
+    ellipse(d, (78, 51, 82, 55), blue, None)
+    line(d, [(78, 53), (88, 70), (84, 86)], OUTLINE, 8)
+    line(d, [(78, 53), (88, 70), (84, 86)], silver, 4)
+    ellipse(d, (85, 66, 93, 74), silver_hi, OUTLINE, 1)
+    rr(d, (81, 84, 89, 92), 2, silver, OUTLINE, 1)
+    # tray / food
+    ellipse(d, (48, 90, 78, 100), (231, 228, 220, 255), OUTLINE, 2)
+    ellipse(d, (52, 92, 74, 97), (252, 250, 243, 255), None)
+    ellipse(d, (56, 92, 62, 97), food_green, None)
+    ellipse(d, (64, 91, 70, 97), food_orange, None)
+    # knife
+    line(d, [(86, 92), (94, 104)], OUTLINE, 3)
+    line(d, [(86, 92), (94, 104)], silver_hi, 2)
+    polygon(d, [(92, 102), (100, 104), (98, 110), (90, 106)], silver, OUTLINE)
+    # neck
+    rr(d, (59, 40, 69, 47), 3, silver, OUTLINE, 1)
+    # side head
+    ellipse(d, (54, 14, 78, 41), skin, OUTLINE, 2)
+    ellipse(d, (57, 17, 74, 38), skin_hi, None)
+    ellipse(d, (75, 19, 79, 37), skin_lo, None)
+    # hair cap / bangs / ponytail
+    ellipse(d, (50, 10, 80, 32), hair, OUTLINE, 2)
+    polygon(d, [(50, 21), (53, 14), (76, 13), (81, 20), (73, 18), (66, 23), (59, 18), (53, 22)], hair, OUTLINE)
+    ellipse(d, (44, 18, 50, 34), hair, OUTLINE, 1)
+    ellipse(d, (75, 12, 81, 18), blue, OUTLINE, 1)
+    # eye / nose / lips
+    ellipse(d, (65, 25, 73, 31), (249, 249, 246, 255), None)
+    ellipse(d, (67, 26, 71, 30), blue, None)
+    ellipse(d, (68, 27, 70, 29), (24, 35, 50, 255), None)
+    line(d, [(63, 23), (73, 23)], hair, 1)
+    line(d, [(64, 35), (72, 35)], lip, 1)
+    line(d, [(77, 31), (79, 34)], (198, 160, 145, 255), 1)
+    line(d, [(51, 30), (53, 36)], (198, 160, 145, 255), 1)
+    return im
+
+
 def robot_south(tier):
     if tier == "MkII":
         return mkii7_south()
@@ -1815,7 +2554,7 @@ def robot_south(tier):
     if tier == "MkIV":
         return mkiv_ref_south()
     if tier == "MkV":
-        return mkv_ref_south()
+        return mkv10_south()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (20, 114, 108, 124), (0, 0, 0, 50))
@@ -1836,7 +2575,7 @@ def robot_north(tier):
     if tier == "MkIV":
         return mkiv_ref_north()
     if tier == "MkV":
-        return mkv_ref_north()
+        return mkv10_north()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (20, 114, 108, 124), (0, 0, 0, 50))
@@ -1862,7 +2601,7 @@ def robot_east(tier):
     if tier == "MkIV":
         return mkiv_ref_east()
     if tier == "MkV":
-        return mkv_ref_east()
+        return mkv10_east()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (22, 114, 106, 124), (0, 0, 0, 50))
