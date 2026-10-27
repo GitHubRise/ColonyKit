@@ -13,6 +13,7 @@ PAWNS = os.path.join(ROOT, "docs", "robot-textures", "pawns")
 FRONT = os.path.join(PAWNS, "MkV_direct_portrait.png")
 SIDE = os.path.join(PAWNS, "MkV_ref_side.png")
 BACK = os.path.join(PAWNS, "MkV_ref_back.png")
+TOP = os.path.join(PAWNS, "MkV_ref_top.png")
 
 SUIT = (232, 240, 245, 255)
 SUIT_HI = (252, 254, 255, 255)
@@ -176,6 +177,8 @@ def main():
     front = normalize(front_cut)
     side = normalize(side_cut)
     back = normalize(back_cut)
+    # The supplied "top" render is a high-angle view, not an orthographic top.
+    # Keep the reconstructed top-down plan for the actual top slot.
     top = top_plan()
 
     south = canvas_from(front)
