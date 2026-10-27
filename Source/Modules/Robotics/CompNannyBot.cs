@@ -220,6 +220,11 @@ namespace ColonyKit.Modules.Robotics
 				{
 					pawn.skills = new Pawn_SkillTracker(pawn);
 				}
+				if (pawn.relations == null)
+				{
+					// 原版恋爱/社交互动会读取关系表；机械族默认没有这个组件。
+					pawn.relations = new Pawn_RelationsTracker(pawn);
+				}
 				if (!skillsInitialized || skillsProfileVersion < 3)
 				{
 					ApplyRobotSkills(pawn);

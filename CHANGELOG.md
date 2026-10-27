@@ -10,7 +10,7 @@
 
 ### Added
 
-- **RJW 基础兼容（Mk-V）**：Mk-V 设为女性机体，使用带 MechGenitals / MechChest / MechAnus 的专用身体，生成时调用 RJW 的 Sexualizer.sexualize_pawn，使其获得机械族人工性器官并可参与 RJW 的自愿互动；另对 RJW 的 xxx.can_do_loving 打补丁放行 Mk-V。怀孕/生育暂不处理。
+- **RJW 基础兼容（Mk-V）**：Mk-V 设为女性机体，使用带 MechGenitals / MechChest / MechAnus 的专用身体，生成时调用 RJW 的 Sexualizer.sexualize_pawn，使其获得机械族人工性器官并可参与 RJW 的自愿互动；另对 RJW 的 xxx.can_do_loving 打补丁放行 Mk-V，并补建关系表，避免恋爱/社交互动读取空 relations 导致 FloatMenu NRE。怀孕/生育暂不处理。
 
 ### Fixed
 
