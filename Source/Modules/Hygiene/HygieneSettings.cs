@@ -36,6 +36,12 @@ namespace ColonyKit.Modules.Hygiene
 		public const float MinInviteChance = 0f;
 		public const float MaxInviteChance = 1f;
 		public const float DefaultInviteChance = 0.08f;
+		public const float MinFertilizerStrength = 1f;
+		public const float MaxFertilizerStrength = 2.5f;
+		public const float MinFertilizerLifespan = 5f;
+		public const float MaxFertilizerLifespan = 240f;
+		public const float MinIrrigationStrength = 1f;
+		public const float MaxIrrigationStrength = 3f;
 
 		private const string DefaultExemptBodies = "HumanoidTerminator,AIRobot,AIPawn";
 		private static HygieneSettings fallback;
@@ -59,6 +65,15 @@ namespace ColonyKit.Modules.Hygiene
 
 		/// <summary>泡澡时邀请一名异性共用双人浴缸的概率；0 关闭。</summary>
 		public float doubleBathInviteChance = DefaultInviteChance;
+
+		/// <summary>施肥后的肥力倍率（DBH 默认 110%）。</summary>
+		public float fertilizerStrength = 1.1f;
+
+		/// <summary>一次施肥能维持的天数（DBH 默认 60 天）。</summary>
+		public float fertilizerLifespanDays = 60f;
+
+		/// <summary>灌溉满格时的肥力倍率（DBH 默认 180%）。</summary>
+		public float irrigationStrength = 1.8f;
 
 		/// <summary>检测到 DBH 时的处理策略。</summary>
 		public HygieneDbhPolicy dbhPolicy = HygieneDbhPolicy.SoftOff;
@@ -229,6 +244,9 @@ namespace ColonyKit.Modules.Hygiene
 			Scribe_Values.Look(ref hotWaterUseMultiplier, "hotWaterUseMultiplier", 1f);
 			Scribe_Values.Look(ref contaminationChanceMultiplier, "contaminationChanceMultiplier", 1f);
 			Scribe_Values.Look(ref doubleBathInviteChance, "doubleBathInviteChance", DefaultInviteChance);
+			Scribe_Values.Look(ref fertilizerStrength, "fertilizerStrength", 1.1f);
+			Scribe_Values.Look(ref fertilizerLifespanDays, "fertilizerLifespanDays", 60f);
+			Scribe_Values.Look(ref irrigationStrength, "irrigationStrength", 1.8f);
 			Scribe_Values.Look(ref dbhPolicy, "dbhPolicy", HygieneDbhPolicy.SoftOff);
 			Scribe_Values.Look(ref prisonersGetHygiene, "prisonersGetHygiene", true);
 			Scribe_Values.Look(ref guestsGetHygiene, "guestsGetHygiene", true);
@@ -247,6 +265,9 @@ namespace ColonyKit.Modules.Hygiene
 			changed |= Clamp(ref hotWaterUseMultiplier, MinHotWaterUse, MaxHotWaterUse, 1f);
 			changed |= Clamp(ref contaminationChanceMultiplier, MinContamination, MaxContamination, 1f);
 			changed |= Clamp(ref doubleBathInviteChance, MinInviteChance, MaxInviteChance, DefaultInviteChance);
+			changed |= Clamp(ref fertilizerStrength, MinFertilizerStrength, MaxFertilizerStrength, 1.1f);
+			changed |= Clamp(ref fertilizerLifespanDays, MinFertilizerLifespan, MaxFertilizerLifespan, 60f);
+			changed |= Clamp(ref irrigationStrength, MinIrrigationStrength, MaxIrrigationStrength, 1.8f);
 
 			if (dbhPolicy != HygieneDbhPolicy.SoftOff
 				&& dbhPolicy != HygieneDbhPolicy.AlwaysOn
@@ -295,6 +316,9 @@ namespace ColonyKit.Modules.Hygiene
 			hotWaterUseMultiplier = 1f;
 			contaminationChanceMultiplier = 1f;
 			doubleBathInviteChance = DefaultInviteChance;
+			fertilizerStrength = 1.1f;
+			fertilizerLifespanDays = 60f;
+			irrigationStrength = 1.8f;
 			dbhPolicy = HygieneDbhPolicy.SoftOff;
 			prisonersGetHygiene = true;
 			guestsGetHygiene = true;

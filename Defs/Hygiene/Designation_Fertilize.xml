@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 施肥标记：设计器刷在耕地上，工人每格消耗 10 个有机肥施掉。 -->
+	<DesignationDef>
+		<defName>CK_Fertilize</defName>
+		<texturePath>Designations/CK_Fertilize</texturePath>
+		<targetType>Cell</targetType>
+	</DesignationDef>
+</Defs>

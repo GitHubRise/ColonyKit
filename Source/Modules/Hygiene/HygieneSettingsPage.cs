@@ -79,6 +79,37 @@ namespace ColonyKit.Modules.Hygiene
 				value => (value * 100f).ToString("0") + "%");
 			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.Contamination.Desc".Loc());
 
+			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Agriculture".Loc());
+			data.fertilizerStrength = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.FertilizerStrength".Loc(),
+				data.fertilizerStrength,
+				HygieneSettings.MinFertilizerStrength,
+				HygieneSettings.MaxFertilizerStrength,
+				0.01f,
+				value => (value * 100f).ToString("0") + "%");
+			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.FertilizerStrength.Desc".Loc());
+
+			data.fertilizerLifespanDays = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.FertilizerLifespan".Loc(),
+				data.fertilizerLifespanDays,
+				HygieneSettings.MinFertilizerLifespan,
+				HygieneSettings.MaxFertilizerLifespan,
+				5f,
+				value => value.ToString("0") + " d");
+			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.FertilizerLifespan.Desc".Loc());
+
+			data.irrigationStrength = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.IrrigationStrength".Loc(),
+				data.irrigationStrength,
+				HygieneSettings.MinIrrigationStrength,
+				HygieneSettings.MaxIrrigationStrength,
+				0.05f,
+				value => (value * 100f).ToString("0") + "%");
+			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.IrrigationStrength.Desc".Loc());
+
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Bath".Loc());
 			data.doubleBathInviteChance = SettingsWidgets.Slider(
 				listing,

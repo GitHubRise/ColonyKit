@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<JobDef>
+		<defName>CK_LoadComposter</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.Agriculture.JobDriver_LoadComposter</driverClass>
+		<reportString>filling composter.</reportString>
+	</JobDef>
+	<JobDef>
+		<defName>CK_UnloadComposter</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.Agriculture.JobDriver_UnloadComposter</driverClass>
+		<reportString>taking compost out.</reportString>
+	</JobDef>
+	<JobDef>
+		<defName>CK_PlaceFertilizer</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.Agriculture.JobDriver_PlaceFertilizer</driverClass>
+		<reportString>fertilizing soil.</reportString>
+	</JobDef>
+
+	<WorkGiverDef>
+		<defName>CK_FillComposter</defName>
+		<label>fill composter</label>
+		<giverClass>ColonyKit.Modules.Hygiene.Agriculture.WorkGiver_FillComposter</giverClass>
+		<workType>Hauling</workType>
+		<verb>fill</verb>
+		<gerund>filling</gerund>
+		<priorityInType>19</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+	<WorkGiverDef>
+		<defName>CK_UnloadComposter</defName>
+		<label>take compost out</label>
+		<giverClass>ColonyKit.Modules.Hygiene.Agriculture.WorkGiver_UnloadComposter</giverClass>
+		<workType>Hauling</workType>
+		<verb>take compost</verb>
+		<gerund>taking compost from</gerund>
+		<priorityInType>20</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+	<WorkGiverDef>
+		<defName>CK_PlaceFertilizer</defName>
+		<label>fertilize</label>
+		<giverClass>ColonyKit.Modules.Hygiene.Agriculture.WorkGiver_PlaceFertilizer</giverClass>
+		<workType>Growing</workType>
+		<verb>fertilize</verb>
+		<gerund>fertilizing</gerund>
+		<priorityInType>20</priorityInType>
+		<scanThings>false</scanThings>
+		<scanCells>true</scanCells>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+</Defs>

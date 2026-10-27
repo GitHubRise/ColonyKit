@@ -198,6 +198,22 @@
 	<CK.Hygiene.PitLevel>粪坑存量: {0}</CK.Hygiene.PitLevel>
 	<CK.Hygiene.PitFull>粪坑已满：清空它，或者接上污水管</CK.Hygiene.PitFull>
 	<CK.Hygiene.LatrinePlumbed>已接污水管网：按冲水厕所使用</CK.Hygiene.LatrinePlumbed>
+	<CK.Agriculture.Fertilize>施肥</CK.Agriculture.Fertilize>
+	<CK.Agriculture.FertilizeDesc>在耕地上刷施肥标记，工人每格消耗 10 个有机肥，提高该格肥力。</CK.Agriculture.FertilizeDesc>
+	<CK.Agriculture.AlreadyFertilized>这格已经施过肥</CK.Agriculture.AlreadyFertilized>
+	<CK.Agriculture.ComposterHasSludge>粪渣: {0}/{1}</CK.Agriculture.ComposterHasSludge>
+	<CK.Agriculture.ComposterHasCompost>有机肥: {0}/{1}</CK.Agriculture.ComposterHasCompost>
+	<CK.Agriculture.CompostReady>已经腐熟，可以取肥</CK.Agriculture.CompostReady>
+	<CK.Agriculture.CompostingProgress>腐熟进度: {0}（约 {1}）</CK.Agriculture.CompostingProgress>
+	<CK.Agriculture.ComposterTemperature>温度不理想，腐熟速度 {0}</CK.Agriculture.ComposterTemperature>
+	<CK.Agriculture.NoSludge>没有可用的粪渣</CK.Agriculture.NoSludge>
+	<CK.Agriculture.SprinklerStatus>喷洒半径 {0} 格，每天约 {1} 升；{2}</CK.Agriculture.SprinklerStatus>
+	<CK.Agriculture.WaterOk>水网有水</CK.Agriculture.WaterOk>
+	<CK.Agriculture.NoWater>水网缺水</CK.Agriculture.NoWater>
+	<CK.Agriculture.RadiusUp>扩大喷洒半径</CK.Agriculture.RadiusUp>
+	<CK.Agriculture.RadiusUpDesc>按 1 格递增，最大 6.9 格。</CK.Agriculture.RadiusUpDesc>
+	<CK.Agriculture.RadiusDown>缩小喷洒半径</CK.Agriculture.RadiusDown>
+	<CK.Agriculture.RadiusDownDesc>按 1 格递减，最小 1.9 格。</CK.Agriculture.RadiusDownDesc>
 	<ColonyKit.Module.Hygiene.Name>淋浴</ColonyKit.Module.Hygiene.Name>
 	<ColonyKit.Module.Hygiene.Desc>卫生需求、淋浴与热水；参考 DBH 的淋浴实现。</ColonyKit.Module.Hygiene.Desc>
 	<ColonyKit.Module.Storage.Name>立体库 / 物品堆叠</ColonyKit.Module.Storage.Name>
@@ -315,6 +331,13 @@
 	<ColonyKit.Settings.Hygiene.Contamination>污染概率</ColonyKit.Settings.Hygiene.Contamination>
 	<ColonyKit.Settings.Hygiene.Contamination.Desc>脏水造成污染的概率倍率；100% 为默认，0 为关闭。</ColonyKit.Settings.Hygiene.Contamination.Desc>
 	<ColonyKit.Settings.Hygiene.Section.Bath>双人浴缸</ColonyKit.Settings.Hygiene.Section.Bath>
+	<ColonyKit.Settings.Hygiene.Section.Agriculture>农业（施肥 / 灌溉）</ColonyKit.Settings.Hygiene.Section.Agriculture>
+	<ColonyKit.Settings.Hygiene.FertilizerStrength>施肥肥力倍率</ColonyKit.Settings.Hygiene.FertilizerStrength>
+	<ColonyKit.Settings.Hygiene.FertilizerStrength.Desc>施肥后这格地膜的肥力倍率；110% 为 DBH 默认。</ColonyKit.Settings.Hygiene.FertilizerStrength.Desc>
+	<ColonyKit.Settings.Hygiene.FertilizerLifespan>施肥有效期</ColonyKit.Settings.Hygiene.FertilizerLifespan>
+	<ColonyKit.Settings.Hygiene.FertilizerLifespan.Desc>一次施肥能维持多少天；60 天为 DBH 默认。</ColonyKit.Settings.Hygiene.FertilizerLifespan.Desc>
+	<ColonyKit.Settings.Hygiene.IrrigationStrength>灌溉肥力倍率</ColonyKit.Settings.Hygiene.IrrigationStrength>
+	<ColonyKit.Settings.Hygiene.IrrigationStrength.Desc>洒水器灌满的格子当天的肥力倍率；180% 为 DBH 默认，和施肥叠乘。</ColonyKit.Settings.Hygiene.IrrigationStrength.Desc>
 	<ColonyKit.Settings.Hygiene.InviteChance>邀请异性共浴概率</ColonyKit.Settings.Hygiene.InviteChance>
 	<ColonyKit.Settings.Hygiene.InviteChance.Desc>小人决定泡澡时，如果殖民地有空的双人浴缸，按这个概率邀请一名异性一起泡；8% 为默认，0% 关闭。</ColonyKit.Settings.Hygiene.InviteChance.Desc>
 	<ColonyKit.Settings.Hygiene.Section.Dbh>DBH 兼容</ColonyKit.Settings.Hygiene.Section.Dbh>

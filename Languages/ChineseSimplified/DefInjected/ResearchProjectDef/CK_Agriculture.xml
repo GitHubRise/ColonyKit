@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_SewageSludgeComposting.label>污泥堆肥</CK_SewageSludgeComposting.label>
+	<CK_SewageSludgeComposting.description>把处理过的污泥腐熟成有机肥。施到施肥区里，能在一段时间内提高土壤肥力。</CK_SewageSludgeComposting.description>
+	<CK_Irrigation.label>灌溉</CK_Irrigation.label>
+	<CK_Irrigation.description>建造洒水器，每天早上给周围土地补水，当天的肥力更高。</CK_Irrigation.description>
+</LanguageData>

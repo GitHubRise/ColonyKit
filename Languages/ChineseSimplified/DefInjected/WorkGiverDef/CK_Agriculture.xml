@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_FillComposter.label>装填堆肥厂</CK_FillComposter.label>
+	<CK_FillComposter.verb>装填</CK_FillComposter.verb>
+	<CK_FillComposter.gerund>装填</CK_FillComposter.gerund>
+	<CK_UnloadComposter.label>取出有机肥</CK_UnloadComposter.label>
+	<CK_UnloadComposter.verb>取肥</CK_UnloadComposter.verb>
+	<CK_UnloadComposter.gerund>取肥</CK_UnloadComposter.gerund>
+	<CK_PlaceFertilizer.label>施肥</CK_PlaceFertilizer.label>
+	<CK_PlaceFertilizer.verb>施肥</CK_PlaceFertilizer.verb>
+	<CK_PlaceFertilizer.gerund>施肥</CK_PlaceFertilizer.gerund>
+</LanguageData>

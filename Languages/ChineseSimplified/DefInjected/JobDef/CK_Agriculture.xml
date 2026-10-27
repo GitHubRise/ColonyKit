@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_LoadComposter.reportString>正在装填堆肥厂。</CK_LoadComposter.reportString>
+	<CK_UnloadComposter.reportString>正在取出有机肥。</CK_UnloadComposter.reportString>
+	<CK_PlaceFertilizer.reportString>正在施肥。</CK_PlaceFertilizer.reportString>
+</LanguageData>

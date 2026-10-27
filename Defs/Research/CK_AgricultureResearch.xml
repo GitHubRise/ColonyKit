@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 污泥堆肥：把粪渣变成有机肥，之后才能在施肥区上肥。 -->
+	<ResearchProjectDef>
+		<defName>CK_SewageSludgeComposting</defName>
+		<label>sewage sludge composting</label>
+		<description>Compost treated sewage sludge into biosolids. Spread over a fertilizer area, biosolids raise the fertility of the soil for a while.</description>
+		<baseCost>400</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>CK_HygieneResearch</li>
+		</prerequisites>
+		<tab>CK_HygieneTab</tab>
+		<researchViewX>1</researchViewX>
+		<researchViewY>0</researchViewY>
+	</ResearchProjectDef>
+
+	<!-- 灌溉：洒水器每天早上给附近耕地补水，和施肥叠乘。 -->
+	<ResearchProjectDef>
+		<defName>CK_Irrigation</defName>
+		<label>irrigation</label>
+		<description>Build sprinklers that water the surrounding soil every morning, improving its fertility for the day.</description>
+		<baseCost>300</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>CK_HygieneResearch</li>
+		</prerequisites>
+		<tab>CK_HygieneTab</tab>
+		<researchViewX>2</researchViewX>
+		<researchViewY>0</researchViewY>
+	</ResearchProjectDef>
+</Defs>

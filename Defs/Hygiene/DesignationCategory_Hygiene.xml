@@ -8,6 +8,7 @@
 		<specialDesignatorClasses>
 			<li>Designator_Cancel</li>
 			<li>Designator_Deconstruct</li>
+			<li>ColonyKit.Modules.Hygiene.Agriculture.Designator_Fertilize</li>
 		</specialDesignatorClasses>
 	</DesignationCategoryDef>
 </Defs>

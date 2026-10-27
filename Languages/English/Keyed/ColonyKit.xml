@@ -198,6 +198,22 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<CK.Hygiene.PitLevel>Pit fill: {0}</CK.Hygiene.PitLevel>
 	<CK.Hygiene.PitFull>Pit full - empty it or plumb it</CK.Hygiene.PitFull>
 	<CK.Hygiene.LatrinePlumbed>Plumbed: flushes to the sewage network</CK.Hygiene.LatrinePlumbed>
+	<CK.Agriculture.Fertilize>Fertilize</CK.Agriculture.Fertilize>
+	<CK.Agriculture.FertilizeDesc>Mark soil for fertilizing. Colonists spend 10 biosolids per cell to raise its fertility.</CK.Agriculture.FertilizeDesc>
+	<CK.Agriculture.AlreadyFertilized>Already fertilized</CK.Agriculture.AlreadyFertilized>
+	<CK.Agriculture.ComposterHasSludge>Sludge: {0}/{1}</CK.Agriculture.ComposterHasSludge>
+	<CK.Agriculture.ComposterHasCompost>Compost: {0}/{1}</CK.Agriculture.ComposterHasCompost>
+	<CK.Agriculture.CompostReady>Finished - ready to unload</CK.Agriculture.CompostReady>
+	<CK.Agriculture.CompostingProgress>Composting: {0} (~{1})</CK.Agriculture.CompostingProgress>
+	<CK.Agriculture.ComposterTemperature>Poor temperature, speed {0}</CK.Agriculture.ComposterTemperature>
+	<CK.Agriculture.NoSludge>No fecal sludge available</CK.Agriculture.NoSludge>
+	<CK.Agriculture.SprinklerStatus>Radius {0}, about {1} L/day; {2}</CK.Agriculture.SprinklerStatus>
+	<CK.Agriculture.WaterOk>water network OK</CK.Agriculture.WaterOk>
+	<CK.Agriculture.NoWater>not enough water</CK.Agriculture.NoWater>
+	<CK.Agriculture.RadiusUp>Increase spray radius</CK.Agriculture.RadiusUp>
+	<CK.Agriculture.RadiusUpDesc>Adds 1 cell, up to 6.9.</CK.Agriculture.RadiusUpDesc>
+	<CK.Agriculture.RadiusDown>Decrease spray radius</CK.Agriculture.RadiusDown>
+	<CK.Agriculture.RadiusDownDesc>Removes 1 cell, down to 1.9.</CK.Agriculture.RadiusDownDesc>
 	<ColonyKit.Module.Hygiene.Name>Shower</ColonyKit.Module.Hygiene.Name>
 	<ColonyKit.Module.Hygiene.Desc>Hygiene need, shower and hot water; based on DBH.</ColonyKit.Module.Hygiene.Desc>
 	<ColonyKit.Module.Storage.Name>Warehouse / stacking</ColonyKit.Module.Storage.Name>
@@ -315,6 +331,13 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<ColonyKit.Settings.Hygiene.Contamination>Contamination chance</ColonyKit.Settings.Hygiene.Contamination>
 	<ColonyKit.Settings.Hygiene.Contamination.Desc>Multiplier for dirty-water contamination; 100% is default, 0 disables it.</ColonyKit.Settings.Hygiene.Contamination.Desc>
 	<ColonyKit.Settings.Hygiene.Section.Bath>Double bathtub</ColonyKit.Settings.Hygiene.Section.Bath>
+	<ColonyKit.Settings.Hygiene.Section.Agriculture>Agriculture (fertilizer / irrigation)</ColonyKit.Settings.Hygiene.Section.Agriculture>
+	<ColonyKit.Settings.Hygiene.FertilizerStrength>Fertilizer strength</ColonyKit.Settings.Hygiene.FertilizerStrength>
+	<ColonyKit.Settings.Hygiene.FertilizerStrength.Desc>Fertility multiplier on fertilized cells; 110% is the DBH default.</ColonyKit.Settings.Hygiene.FertilizerStrength.Desc>
+	<ColonyKit.Settings.Hygiene.FertilizerLifespan>Fertilizer lifespan</ColonyKit.Settings.Hygiene.FertilizerLifespan>
+	<ColonyKit.Settings.Hygiene.FertilizerLifespan.Desc>Days a single application keeps working; 60 days is the DBH default.</ColonyKit.Settings.Hygiene.FertilizerLifespan.Desc>
+	<ColonyKit.Settings.Hygiene.IrrigationStrength>Irrigation strength</ColonyKit.Settings.Hygiene.IrrigationStrength>
+	<ColonyKit.Settings.Hygiene.IrrigationStrength.Desc>Fertility multiplier on irrigated cells for the day; 180% is the DBH default and multiplies with fertilizer.</ColonyKit.Settings.Hygiene.IrrigationStrength.Desc>
 	<ColonyKit.Settings.Hygiene.InviteChance>Chance to invite a partner</ColonyKit.Settings.Hygiene.InviteChance>
 	<ColonyKit.Settings.Hygiene.InviteChance.Desc>When a colonist decides to bathe and a free double bathtub is available, this is the chance they invite an opposite-sex colonist to join; 8% is default, 0% disables invitations.</ColonyKit.Settings.Hygiene.InviteChance.Desc>
 	<ColonyKit.Settings.Hygiene.Section.Dbh>DBH compatibility</ColonyKit.Settings.Hygiene.Section.Dbh>

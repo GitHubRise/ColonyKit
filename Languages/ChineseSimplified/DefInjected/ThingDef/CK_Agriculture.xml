@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_Biosolids.label>有机肥</CK_Biosolids.label>
+	<CK_Biosolids.description>腐熟后的污泥。施到施肥区的地里可以提高土壤肥力。</CK_Biosolids.description>
+	<CK_BiosolidsComposter.label>堆肥厂</CK_BiosolidsComposter.label>
+	<CK_BiosolidsComposter.description>把粪渣腐熟成有机肥。容量 250，约三天一炉；天气暖腐熟更快。</CK_BiosolidsComposter.description>
+	<CK_IrrigationSprinkler.label>灌溉洒水器</CK_IrrigationSprinkler.label>
+	<CK_IrrigationSprinkler.description>每天早上给周围的耕地洒一次水，当天的肥力提高。需要接进水管网，每格约 0.16 升水。</CK_IrrigationSprinkler.description>
+</LanguageData>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 有机肥：粪渣经堆肥厂腐熟后的产物，用来给「施肥区」上肥。 -->
+	<ThingDef ParentName="ResourceBase">
+		<defName>CK_Biosolids</defName>
+		<label>biosolids</label>
+		<description>Composted sewage sludge. Colonists spread it over a fertilizer area to raise the fertility of the soil.</description>
+		<graphicData>
+			<texPath>Things/Item/CK_Biosolids</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<thingCategories>
+			<li>CK_Waste</li>
+		</thingCategories>
+		<stackLimit>250</stackLimit>
+		<tradeability>None</tradeability>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Mass>0.05</Mass>
+			<Flammability>5</Flammability>
+			<MarketValue>0.1</MarketValue>
+			<DeteriorationRate>2</DeteriorationRate>
+		</statBases>
+	</ThingDef>
+
+	<!-- 堆肥厂：粪渣 → 有机肥，250 容量，约 3 天腐熟；太冷会变慢，温度越界会烂掉。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_BiosolidsComposter</defName>
+		<label>biosolids composter</label>
+		<description>A composter that turns fecal sludge into biosolids, which colonists then spread to improve soil fertility. Keeps working faster in warm weather.</description>
+		<thingClass>ColonyKit.Modules.Hygiene.Agriculture.Building_Composter</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_Composter</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+			<damageData>
+				<rect>(0.05,0.1,0.9,0.9)</rect>
+			</damageData>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>6</uiOrder>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.45</fillPercent>
+		<pathCost>60</pathCost>
+		<tickerType>Rare</tickerType>
+		<costList>
+			<Steel>45</Steel>
+		</costList>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Mass>10</Mass>
+			<WorkToBuild>600</WorkToBuild>
+			<Flammability>1</Flammability>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Agriculture.CompProperties_Composter">
+				<material>CK_FecalSludge</material>
+				<product>CK_Biosolids</product>
+			</li>
+			<li Class="CompProperties_TemperatureRuinable">
+				<minSafeTemperature>-20</minSafeTemperature>
+				<maxSafeTemperature>60</maxSafeTemperature>
+				<progressPerDegreePerTick>0.00001</progressPerDegreePerTick>
+			</li>
+			<li Class="CompProperties_Forbiddable" />
+		</comps>
+		<researchPrerequisites>
+			<li>CK_SewageSludgeComposting</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<!-- 灌溉洒水器：接水网，每天早上 5 点喷一次，把半径内耕地格子灌满。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_IrrigationSprinkler</defName>
+		<label>irrigation sprinkler</label>
+		<description>Waters the surrounding soil once every morning to improve its fertility for the day. Needs to be connected to a water network; uses about 0.16 L per covered cell.</description>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_Sprinkler</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>7</uiOrder>
+		<passability>Standable</passability>
+		<pathCost>0</pathCost>
+		<fillPercent>0.15</fillPercent>
+		<tickerType>Normal</tickerType>
+		<blockLight>false</blockLight>
+		<holdsRoof>false</holdsRoof>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<costList>
+			<Steel>15</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Mass>2</Mass>
+			<WorkToBuild>250</WorkToBuild>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="ColonyKit.Modules.Hygiene.Agriculture.CompProperties_Sprinkler">
+				<usagePerCell>0.16</usagePerCell>
+				<radius>6.9</radius>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_Irrigation</li>
+		</researchPrerequisites>
+	</ThingDef>
+</Defs>
