@@ -77,6 +77,21 @@
 	<CK.Robotics.MkVBay.InspectWorking>Assembly progress: {0}</CK.Robotics.MkVBay.InspectWorking>
 	<CK.Robotics.MkVBay.InspectResearch>Waiting for the Mk-V integration research.</CK.Robotics.MkVBay.InspectResearch>
 	<CK.Robotics.MkVBay.InspectIdle>Ready to start Mk-V assembly.</CK.Robotics.MkVBay.InspectIdle>
+
+	<CK.Robotics.FactoryName>{0} {1}</CK.Robotics.FactoryName>
+	<CK.Robotics.Factory.Start>Start assembling {0}</CK.Robotics.Factory.Start>
+	<CK.Robotics.Factory.Start.Desc>Assemble {0} here. Recipe: {1}. The factory draws working power during assembly.</CK.Robotics.Factory.Start.Desc>
+	<CK.Robotics.Factory.Cancel>Cancel assembly</CK.Robotics.Factory.Cancel>
+	<CK.Robotics.Factory.Cancel.Desc>Stop the current {0} assembly. Consumed materials are not refunded.</CK.Robotics.Factory.Cancel.Desc>
+	<CK.Robotics.Factory.AlreadyWorking>{0} is already being assembled.</CK.Robotics.Factory.AlreadyWorking>
+	<CK.Robotics.Factory.MissingKind>The factory has no product kind.</CK.Robotics.Factory.MissingKind>
+	<CK.Robotics.Factory.NoPower>The factory has no power.</CK.Robotics.Factory.NoPower>
+	<CK.Robotics.Factory.MissingIngredients>Not enough materials to start assembly.</CK.Robotics.Factory.MissingIngredients>
+	<CK.Robotics.Factory.Started>Assembly started: {0}.</CK.Robotics.Factory.Started>
+	<CK.Robotics.Factory.Cancelled>Assembly cancelled: {0}. Materials are not refunded.</CK.Robotics.Factory.Cancelled>
+	<CK.Robotics.Factory.Completed>{0} assembled: {1}</CK.Robotics.Factory.Completed>
+	<CK.Robotics.Factory.InspectWorking>Assembling {0}: {1}</CK.Robotics.Factory.InspectWorking>
+	<CK.Robotics.Factory.InspectIdle>Ready to assemble {0}.</CK.Robotics.Factory.InspectIdle>
 	<CK.Robotics.Station.HasRobot>The station already has a robot.</CK.Robotics.Station.HasRobot>
 	<CK.Robotics.Station.Cooldown>Reassembly cooldown: {0}</CK.Robotics.Station.Cooldown>
 	<CK.Robotics.Station.NoPower>No power: cannot charge.</CK.Robotics.Station.NoPower>

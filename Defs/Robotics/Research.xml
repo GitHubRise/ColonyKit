@@ -121,6 +121,48 @@
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
+		<defName>CK_RobotMkII</defName>
+		<label>modular robotics</label>
+		<description>Separate the nanny robot into a frame and an assembly station so Mk-II units can be built with interchangeable modules.</description>
+		<baseCost>1800</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>CK_NannyBot</li>
+		</prerequisites>
+		<tab>CK_RoboticsTab</tab>
+		<researchViewX>8</researchViewX>
+		<researchViewY>0</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>CK_RobotMkIII</defName>
+		<label>heavy robotics</label>
+		<description>Reinforced frames and heavier assembly tooling for the Mk-III heavy nanny robot.</description>
+		<baseCost>2600</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>CK_RobotMkII</li>
+		</prerequisites>
+		<tab>CK_RoboticsTab</tab>
+		<researchViewX>8</researchViewX>
+		<researchViewY>2</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>CK_RobotMkIV</defName>
+		<label>field robotics</label>
+		<description>Lightweight prefabricated components and field assembly procedures for the Mk-IV outpost nanny robot.</description>
+		<baseCost>3200</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>CK_RobotMkIII</li>
+		</prerequisites>
+		<tab>CK_RoboticsTab</tab>
+		<researchViewX>8</researchViewX>
+		<researchViewY>4</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
 		<defName>CK_RobotMkV</defName>
 		<label>Mk-V self-maintaining robot</label>
 		<description>Integrate the mechanical body, actuation, perception, AI compute, dexterous hands, power system and software into the final self-maintaining nanny robot.</description>

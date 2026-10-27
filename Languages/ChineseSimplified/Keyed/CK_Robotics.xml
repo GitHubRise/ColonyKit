@@ -77,6 +77,21 @@
 	<CK.Robotics.MkVBay.InspectWorking>组装进度：{0}</CK.Robotics.MkVBay.InspectWorking>
 	<CK.Robotics.MkVBay.InspectResearch>等待 Mk-V 整合研究完成。</CK.Robotics.MkVBay.InspectResearch>
 	<CK.Robotics.MkVBay.InspectIdle>可开始 Mk-V 组装。</CK.Robotics.MkVBay.InspectIdle>
+
+	<CK.Robotics.FactoryName>{0} {1}</CK.Robotics.FactoryName>
+	<CK.Robotics.Factory.Start>开始组装 {0}</CK.Robotics.Factory.Start>
+	<CK.Robotics.Factory.Start.Desc>在工厂组装 {0}。配方：{1}。组装期间持续耗电。</CK.Robotics.Factory.Start.Desc>
+	<CK.Robotics.Factory.Cancel>取消组装</CK.Robotics.Factory.Cancel>
+	<CK.Robotics.Factory.Cancel.Desc>停止当前 {0} 组装，不返还已消耗的材料。</CK.Robotics.Factory.Cancel.Desc>
+	<CK.Robotics.Factory.AlreadyWorking>{0} 正在组装。</CK.Robotics.Factory.AlreadyWorking>
+	<CK.Robotics.Factory.MissingKind>工厂没有指定产品。</CK.Robotics.Factory.MissingKind>
+	<CK.Robotics.Factory.NoPower>工厂未通电。</CK.Robotics.Factory.NoPower>
+	<CK.Robotics.Factory.MissingIngredients>材料不足，无法开始组装。</CK.Robotics.Factory.MissingIngredients>
+	<CK.Robotics.Factory.Started>开始组装 {0}。</CK.Robotics.Factory.Started>
+	<CK.Robotics.Factory.Cancelled>已取消 {0} 组装，材料不返还。</CK.Robotics.Factory.Cancelled>
+	<CK.Robotics.Factory.Completed>{0} 组装完成：{1}</CK.Robotics.Factory.Completed>
+	<CK.Robotics.Factory.InspectWorking>正在组装 {0}：{1}</CK.Robotics.Factory.InspectWorking>
+	<CK.Robotics.Factory.InspectIdle>可组装 {0}。</CK.Robotics.Factory.InspectIdle>
 	<CK.Robotics.Station.HasRobot>工作站已有一台机器人。</CK.Robotics.Station.HasRobot>
 	<CK.Robotics.Station.Cooldown>重新组装冷却中：{0}</CK.Robotics.Station.Cooldown>
 	<CK.Robotics.Station.NoPower>未通电：无法充电。</CK.Robotics.Station.NoPower>

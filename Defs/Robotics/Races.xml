@@ -110,6 +110,86 @@
 	</ThingDef>
 
 	<PawnKindDef>
+		<defName>CK_NannyBotMkIKind</defName>
+		<label>Mk-I nanny robot</label>
+		<race>CK_RobotNanny</race>
+		<defaultFactionDef>PlayerColony</defaultFactionDef>
+		<combatPower>0</combatPower>
+		<isFighter>false</isFighter>
+		<canStrip>false</canStrip>
+		<destroyGearOnDrop>false</destroyGearOnDrop>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Things/Pawn/MkI/MkI</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>0.95</drawSize>
+				</bodyGraphicData>
+			</li>
+		</lifeStages>
+	</PawnKindDef>
+
+	<PawnKindDef>
+		<defName>CK_NannyBotMkIIKind</defName>
+		<label>Mk-II nanny robot</label>
+		<race>CK_RobotNanny</race>
+		<defaultFactionDef>PlayerColony</defaultFactionDef>
+		<combatPower>0</combatPower>
+		<isFighter>false</isFighter>
+		<canStrip>false</canStrip>
+		<destroyGearOnDrop>false</destroyGearOnDrop>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Things/Pawn/MkII/MkII</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>1.05</drawSize>
+				</bodyGraphicData>
+			</li>
+		</lifeStages>
+	</PawnKindDef>
+
+	<PawnKindDef>
+		<defName>CK_NannyBotMkIIIKind</defName>
+		<label>Mk-III nanny robot</label>
+		<race>CK_RobotNanny</race>
+		<defaultFactionDef>PlayerColony</defaultFactionDef>
+		<combatPower>0</combatPower>
+		<isFighter>false</isFighter>
+		<canStrip>false</canStrip>
+		<destroyGearOnDrop>false</destroyGearOnDrop>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Things/Pawn/MkIII/MkIII</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>1.1</drawSize>
+				</bodyGraphicData>
+			</li>
+		</lifeStages>
+	</PawnKindDef>
+
+	<PawnKindDef>
+		<defName>CK_NannyBotMkIVKind</defName>
+		<label>Mk-IV nanny robot</label>
+		<race>CK_RobotNanny</race>
+		<defaultFactionDef>PlayerColony</defaultFactionDef>
+		<combatPower>0</combatPower>
+		<isFighter>false</isFighter>
+		<canStrip>false</canStrip>
+		<destroyGearOnDrop>false</destroyGearOnDrop>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Things/Pawn/MkIV/MkIV</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>1.1</drawSize>
+				</bodyGraphicData>
+			</li>
+		</lifeStages>
+	</PawnKindDef>
+
+	<PawnKindDef>
 		<defName>CK_RobotMkVKind</defName>
 		<label>Mk-V self-maintaining robot</label>
 		<race>CK_RobotMkV</race>

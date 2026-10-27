@@ -2,4 +2,8 @@
 <LanguageData>
 	<CK_RobotNannyKind.label>保姆机器人</CK_RobotNannyKind.label>
 	<CK_RobotMkVKind.label>Mk-V 自维护机器人</CK_RobotMkVKind.label>
+	<CK_NannyBotMkIKind.label>Mk-I 保姆机器人</CK_NannyBotMkIKind.label>
+	<CK_NannyBotMkIIKind.label>Mk-II 保姆机器人</CK_NannyBotMkIIKind.label>
+	<CK_NannyBotMkIIIKind.label>Mk-III 保姆机器人</CK_NannyBotMkIIIKind.label>
+	<CK_NannyBotMkIVKind.label>Mk-IV 保姆机器人</CK_NannyBotMkIVKind.label>
 </LanguageData>

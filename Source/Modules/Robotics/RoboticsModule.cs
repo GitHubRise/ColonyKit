@@ -27,12 +27,22 @@ namespace ColonyKit.Modules.Robotics
 			bool mkvBay = DefDatabase<ThingDef>.GetNamedSilentFail("CK_MkVAssemblyBay") != null;
 			ResearchProjectDef mkvProject = DefDatabase<ResearchProjectDef>.GetNamedSilentFail("CK_RobotMkV");
 			int mkvPrereqs = mkvProject?.prerequisites?.Count ?? 0;
+			bool workshop = DefDatabase<ThingDef>.GetNamedSilentFail("CK_WorkshopFactory") != null;
+			bool twoStation = DefDatabase<ThingDef>.GetNamedSilentFail("CK_TwoStationFactory") != null;
+			bool frame = DefDatabase<ThingDef>.GetNamedSilentFail("CK_FrameFactory") != null;
+			bool prefab = DefDatabase<ThingDef>.GetNamedSilentFail("CK_PrefabFactory") != null;
+			bool unmanned = DefDatabase<ThingDef>.GetNamedSilentFail("CK_UnmannedFactory") != null;
+			bool mk1 = DefDatabase<PawnKindDef>.GetNamedSilentFail("CK_NannyBotMkIKind") != null;
+			bool mk2 = DefDatabase<PawnKindDef>.GetNamedSilentFail("CK_NannyBotMkIIKind") != null;
+			bool mk3 = DefDatabase<PawnKindDef>.GetNamedSilentFail("CK_NannyBotMkIIIKind") != null;
+			bool mk4 = DefDatabase<PawnKindDef>.GetNamedSilentFail("CK_NannyBotMkIVKind") != null;
 
 			ModLog.Info(
 				"Robotics",
 				$"module loaded; race={race}, kind={kind}, station={station}, thinkTree={thinkTree}, " +
 				$"cleanJob={cleanJob}, chargeJob={chargeJob}, energyNeed={energyNeed}, " +
-				$"mkvKind={mkvKind}, mkvBay={mkvBay}, mkvResearch={mkvProject != null}, mkvPrereqs={mkvPrereqs}");
+				$"mkvKind={mkvKind}, mkvBay={mkvBay}, mkvResearch={mkvProject != null}, mkvPrereqs={mkvPrereqs}, " +
+				$"factories={workshop}/{twoStation}/{frame}/{prefab}/{unmanned}, mkKinds={mk1}/{mk2}/{mk3}/{mk4}");
 		}
 
 		public override void OnGameLoaded(Game game)

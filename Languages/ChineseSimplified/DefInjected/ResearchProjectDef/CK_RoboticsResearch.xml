@@ -24,6 +24,13 @@
 	<CK_RoboticsSoftware.label>软件系统</CK_RoboticsSoftware.label>
 	<CK_RoboticsSoftware.description>分层控制软件、失效安全流程与自维护诊断，是 Mk-V 平台的核心软件基础。</CK_RoboticsSoftware.description>
 
+	<CK_RobotMkII.label>模块化机器人</CK_RobotMkII.label>
+	<CK_RobotMkII.description>把保姆机器人拆成骨架与总装模块，为 Mk-II 工厂和可互换部件打基础。</CK_RobotMkII.description>
+	<CK_RobotMkIII.label>重载机器人</CK_RobotMkIII.label>
+	<CK_RobotMkIII.description>强化骨架与重型装配工装，用于生产 Mk-III 重载保姆机器人。</CK_RobotMkIII.description>
+	<CK_RobotMkIV.label>前哨机器人</CK_RobotMkIV.label>
+	<CK_RobotMkIV.description>轻量化预制部件与现场组装流程，用于生产 Mk-IV 前哨保姆机器人。</CK_RobotMkIV.description>
+
 	<CK_RobotMkV.label>Mk-V 自维护机器人</CK_RobotMkV.label>
 	<CK_RobotMkV.description>把机械本体、执行系统、感知系统、AI 计算平台、灵巧手、电池与能源系统、软件系统整合成最终的自维护家政机器人。七项前置研究全部完成后才能组装。</CK_RobotMkV.description>
 </LanguageData>

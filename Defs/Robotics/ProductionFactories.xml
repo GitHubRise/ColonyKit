@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_WorkshopFactory</defName>
+		<label>workshop robot factory</label>
+		<description>A compact workshop that assembles Mk-I nanny robots from a single bill. The first production building in the robotics line.</description>
+		<thingClass>Building</thingClass>
+		<tickerType>Normal</tickerType>
+		<size>(2,2)</size>
+		<graphicData>
+			<texPath>Things/Building/Robotics/WorkshopFactory/WorkshopFactory</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Robotics</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>0</pathCost>
+		<fillPercent>0.45</fillPercent>
+		<castEdgeShadows>true</castEdgeShadows>
+		<uiIconScale>0.85</uiIconScale>
+		<costList>
+			<Steel>220</Steel>
+			<ComponentIndustrial>8</ComponentIndustrial>
+			<ComponentSpacer>2</ComponentSpacer>
+		</costList>
+		<statBases>
+			<MaxHitPoints>350</MaxHitPoints>
+			<Mass>60</Mass>
+			<WorkToBuild>6000</WorkToBuild>
+			<Beauty>0</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+		<researchPrerequisites>
+			<li>CK_NannyBot</li>
+		</researchPrerequisites>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>220</basePowerConsumption>
+			</li>
+			<li Class="ColonyKit.Modules.Robotics.CompProperties_RobotFactory">
+				<productKind>CK_NannyBotMkIKind</productKind>
+				<workTicks>12000</workTicks>
+				<idlePower>350</idlePower>
+				<workPower>900</workPower>
+				<steelCount>220</steelCount>
+				<componentCount>8</componentCount>
+				<advancedComponentCount>2</advancedComponentCount>
+				<plasteelCount>20</plasteelCount>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_TwoStationFactory</defName>
+		<label>two-station robot factory</label>
+		<description>A four-by-three modular factory with separate frame and final-assembly stations. Builds Mk-II nanny robots.</description>
+		<thingClass>Building</thingClass>
+		<tickerType>Normal</tickerType>
+		<size>(4,3)</size>
+		<graphicData>
+			<texPath>Things/Building/Robotics/TwoStationFactory/TwoStationFactory_top</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(4,3)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Robotics</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>0</pathCost>
+		<fillPercent>0.45</fillPercent>
+		<castEdgeShadows>true</castEdgeShadows>
+		<uiIconScale>0.8</uiIconScale>
+		<costList>
+			<Steel>260</Steel>
+			<ComponentIndustrial>9</ComponentIndustrial>
+			<ComponentSpacer>2</ComponentSpacer>
+		</costList>
+		<statBases>
+			<MaxHitPoints>450</MaxHitPoints>
+			<Mass>85</Mass>
+			<WorkToBuild>7500</WorkToBuild>
+			<Beauty>0</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+		<researchPrerequisites>
+			<li>CK_RobotMkII</li>
+		</researchPrerequisites>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>300</basePowerConsumption>
+			</li>
+			<li Class="ColonyKit.Modules.Robotics.CompProperties_RobotFactory">
+				<productKind>CK_NannyBotMkIIKind</productKind>
+				<workTicks>15000</workTicks>
+				<idlePower>450</idlePower>
+				<workPower>1100</workPower>
+				<steelCount>260</steelCount>
+				<componentCount>9</componentCount>
+				<advancedComponentCount>2</advancedComponentCount>
+				<plasteelCount>30</plasteelCount>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_FrameFactory</defName>
+		<label>frame factory</label>
+		<description>A dedicated frame shop with a central hoist and welding arms. Produces the heavy Mk-III nanny robot chassis.</description>
+		<thingClass>Building</thingClass>
+		<tickerType>Normal</tickerType>
+		<size>(2,2)</size>
+		<graphicData>
+			<texPath>Things/Building/Robotics/FrameFactory/FrameFactory</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Robotics</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>0</pathCost>
+		<fillPercent>0.45</fillPercent>
+		<castEdgeShadows>true</castEdgeShadows>
+		<uiIconScale>0.85</uiIconScale>
+		<costList>
+			<Steel>140</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+			<ComponentSpacer>1</ComponentSpacer>
+		</costList>
+		<statBases>
+			<MaxHitPoints>320</MaxHitPoints>
+			<Mass>55</Mass>
+			<WorkToBuild>5000</WorkToBuild>
+			<Beauty>0</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+		<researchPrerequisites>
+			<li>CK_RobotMkIII</li>
+		</researchPrerequisites>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>250</basePowerConsumption>
+			</li>
+			<li Class="ColonyKit.Modules.Robotics.CompProperties_RobotFactory">
+				<productKind>CK_NannyBotMkIIIKind</productKind>
+				<workTicks>12000</workTicks>
+				<idlePower>500</idlePower>
+				<workPower>1300</workPower>
+				<steelCount>140</steelCount>
+				<componentCount>4</componentCount>
+				<advancedComponentCount>1</advancedComponentCount>
+				<plasteelCount>15</plasteelCount>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_PrefabFactory</defName>
+		<label>prefab robot factory</label>
+		<description>A prefabricated workshop with a gantry crane and container stacks. Builds the light Mk-IV outpost nanny robot.</description>
+		<thingClass>Building</thingClass>
+		<tickerType>Normal</tickerType>
+		<size>(3,3)</size>
+		<graphicData>
+			<texPath>Things/Building/Robotics/PrefabFactory/PrefabFactory</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(3,3)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Robotics</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>0</pathCost>
+		<fillPercent>0.45</fillPercent>
+		<castEdgeShadows>true</castEdgeShadows>
+		<uiIconScale>0.8</uiIconScale>
+		<costList>
+			<Steel>200</Steel>
+			<ComponentIndustrial>7</ComponentIndustrial>
+			<ComponentSpacer>2</ComponentSpacer>
+		</costList>
+		<statBases>
+			<MaxHitPoints>400</MaxHitPoints>
+			<Mass>75</Mass>
+			<WorkToBuild>6500</WorkToBuild>
+			<Beauty>0</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+		<researchPrerequisites>
+			<li>CK_RobotMkIV</li>
+		</researchPrerequisites>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>220</basePowerConsumption>
+			</li>
+			<li Class="ColonyKit.Modules.Robotics.CompProperties_RobotFactory">
+				<productKind>CK_NannyBotMkIVKind</productKind>
+				<workTicks>10000</workTicks>
+				<idlePower>300</idlePower>
+				<workPower>800</workPower>
+				<steelCount>200</steelCount>
+				<componentCount>7</componentCount>
+				<advancedComponentCount>2</advancedComponentCount>
+				<plasteelCount>30</plasteelCount>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_UnmannedFactory</defName>
+		<label>unmanned robot factory</label>
+		<description>A long unmanned production line that assembles the combat-capable Mk-V nanny robot. An alternative to the Mk-V dedicated assembly bay.</description>
+		<thingClass>Building</thingClass>
+		<tickerType>Normal</tickerType>
+		<size>(2,6)</size>
+		<graphicData>
+			<texPath>Things/Building/Robotics/UnmannedFactory/UnmannedFactory_top</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,6)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Robotics</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>0</pathCost>
+		<fillPercent>0.45</fillPercent>
+		<castEdgeShadows>true</castEdgeShadows>
+		<uiIconScale>0.7</uiIconScale>
+		<costList>
+			<Steel>420</Steel>
+			<ComponentIndustrial>14</ComponentIndustrial>
+			<ComponentSpacer>4</ComponentSpacer>
+			<Plasteel>80</Plasteel>
+		</costList>
+		<statBases>
+			<MaxHitPoints>650</MaxHitPoints>
+			<Mass>120</Mass>
+			<WorkToBuild>12000</WorkToBuild>
+			<Beauty>0</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+		<researchPrerequisites>
+			<li>CK_RobotMkV</li>
+		</researchPrerequisites>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>350</basePowerConsumption>
+			</li>
+			<li Class="ColonyKit.Modules.Robotics.CompProperties_RobotFactory">
+				<productKind>CK_RobotMkVKind</productKind>
+				<workTicks>30000</workTicks>
+				<idlePower>600</idlePower>
+				<workPower>1500</workPower>
+				<steelCount>420</steelCount>
+				<componentCount>14</componentCount>
+				<advancedComponentCount>4</advancedComponentCount>
+				<plasteelCount>80</plasteelCount>
+			</li>
+		</comps>
+	</ThingDef>
+</Defs>
