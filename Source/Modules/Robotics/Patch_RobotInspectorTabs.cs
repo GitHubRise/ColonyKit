@@ -15,7 +15,7 @@ namespace ColonyKit.Modules.Robotics
 	{
 		private static readonly Type[] Tabs =
 		{
-			typeof(ITab_Pawn_RobotInfo),
+			typeof(ITab_Pawn_Character),
 			typeof(ITab_Pawn_Gear),
 			typeof(ITab_Pawn_Health),
 			typeof(ITab_Pawn_Needs),

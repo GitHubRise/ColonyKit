@@ -88,6 +88,16 @@ namespace ColonyKit.Modules.Robotics
 
 		public float Durability => durability;
 
+		private static void SetSkill(Pawn pawn, SkillDef def, int level)
+		{
+			SkillRecord skill = pawn?.skills?.GetSkill(def);
+			if (skill != null)
+			{
+				skill.Level = level;
+				skill.xpSinceLastLevel = 0f;
+			}
+		}
+
 		public float MaxDurability => NannyBotUtility.IsMkV(Pawn)
 			? MkVMaxDurability
 			: DefaultMaxDurability;
@@ -168,6 +178,8 @@ namespace ColonyKit.Modules.Robotics
 				{
 					pawn.skills = new Pawn_SkillTracker(pawn);
 				}
+				SetSkill(pawn, SkillDefOf.Shooting, 18);
+				SetSkill(pawn, SkillDefOf.Melee, 18);
 			}
 		}
 
