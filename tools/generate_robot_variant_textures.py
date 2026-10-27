@@ -726,9 +726,157 @@ def mkii3_east():
     return im
 
 
+def mkii4_south():
+    """Mk-II v4: low quadruped module carrier, periscope sensor mast, no head dome."""
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    shell = (218, 228, 214, 255)
+    shell2 = (151, 173, 154, 255)
+    accent = (62, 120, 92, 255)
+    eye = (119, 224, 196, 255)
+    ellipse(d, (14, 114, 114, 126), (0, 0, 0, 55))
+
+    # rear legs, drawn first
+    for hip, knee, foot in (((42, 80), (36, 98), (40, 114)), ((86, 80), (92, 98), (88, 114))):
+        line(d, [hip, knee, foot], OUTLINE, 7)
+        line(d, [hip, knee, foot], (84, 96, 84, 255), 3)
+        rr(d, (foot[0] - 6, foot[1] - 2, foot[0] + 8, foot[1] + 4), 2, DARK, OUTLINE, 1)
+    # low body slab
+    rr(d, (24, 52, 104, 92), 7, shell, OUTLINE, 2)
+    rr(d, (30, 58, 98, 88), 4, shell2, OUTLINE, 1)
+    d.rectangle((P(24), P(84), P(104), P(92)), fill=DARK, outline=OUTLINE, width=P(1))
+    # top deck / three swappable cartridges
+    rr(d, (30, 44, 98, 62), 3, DARK2, OUTLINE, 1)
+    for i, col in enumerate((GREEN, STEEL_MID, AMBER)):
+        x = 35 + i * 21
+        rr(d, (x, 47, x + 17, 60), 2, col, OUTLINE, 1)
+        d.rectangle((P(x + 3), P(51), P(x + 14), P(54)), fill=shell if i != 2 else DARK2)
+    # front legs
+    for hip, knee, foot in (((28, 80), (18, 96), (22, 116)), ((100, 80), (110, 96), (106, 116))):
+        line(d, [hip, knee, foot], OUTLINE, 7)
+        line(d, [hip, knee, foot], STEEL_LIGHT, 3)
+        rr(d, (foot[0] - 7, foot[1] - 2, foot[0] + 9, foot[1] + 5), 2, DARK, OUTLINE, 1)
+        bolt(d, knee[0], knee[1], 1.5)
+    # small front utility arms
+    for x, sign in ((20, -1), (108, 1)):
+        line(d, [(x, 66), (x + sign * 2, 86)], OUTLINE, 4)
+        line(d, [(x, 66), (x + sign * 2, 86)], shell2, 2)
+        rr(d, (x + sign * 2 - 4, 84, x + sign * 2 + 6, 94), 2, accent, OUTLINE, 1)
+        d.rectangle((P(x + sign * 2 - 1), P(88), P(x + sign * 2 + 3), P(91)), fill=eye)
+    # periscope sensor mast
+    rr(d, (48, 16, 80, 52), 4, DARK, OUTLINE, 2)
+    rr(d, (53, 21, 75, 47), 3, shell2, OUTLINE, 1)
+    rr(d, (52, 27, 76, 39), 2, (20, 28, 37, 255), OUTLINE, 1)
+    d.rectangle((P(56), P(31), P(72), P(36)), fill=eye)
+    ellipse(d, (60, 32, 68, 38), (235, 255, 255, 255), None)
+    # side sensor dots
+    for x in (50, 78):
+        ellipse(d, (x - 2, 22, x + 2, 26), AMBER_LIGHT, OUTLINE, 1)
+    # mast antenna
+    line(d, [(64, 16), (64, 8)], OUTLINE, 2)
+    ellipse(d, (60, 3, 68, 11), GREEN, OUTLINE, 1)
+    # deck rails / bolts
+    d.rectangle((P(30), P(42), P(98), P(45)), fill=STEEL_MID, outline=OUTLINE, width=P(1))
+    for x in (34, 94):
+        bolt(d, x, 46, 1)
+    # hazard strip on lower front
+    for i in range(5):
+        polygon(d, [(34 + i * 12, 92), (39 + i * 12, 92), (37 + i * 12, 86), (32 + i * 12, 86)], AMBER)
+    return im
+
+
+def mkii4_north():
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    shell = (218, 228, 214, 255)
+    shell2 = (151, 173, 154, 255)
+    accent = (62, 120, 92, 255)
+    ellipse(d, (14, 114, 114, 126), (0, 0, 0, 55))
+    for hip, knee, foot in (((42, 80), (36, 98), (40, 114)), ((86, 80), (92, 98), (88, 114))):
+        line(d, [hip, knee, foot], OUTLINE, 7)
+        line(d, [hip, knee, foot], (84, 96, 84, 255), 3)
+        rr(d, (foot[0] - 6, foot[1] - 2, foot[0] + 8, foot[1] + 4), 2, DARK, OUTLINE, 1)
+    rr(d, (24, 52, 104, 92), 7, shell, OUTLINE, 2)
+    rr(d, (30, 58, 98, 88), 4, shell2, OUTLINE, 1)
+    # rear module rack
+    for i, col in enumerate((DARK2, GREEN, STEEL_MID)):
+        x = 35 + i * 21
+        rr(d, (x, 62, x + 17, 84), 2, col, OUTLINE, 1)
+        d.rectangle((P(x + 3), P(66), P(x + 14), P(69)), fill=STEEL_MID)
+        d.rectangle((P(x + 3), P(76), P(x + 14), P(79)), fill=GREEN if i != 1 else AMBER)
+    # rear ports / cable
+    for x in (32, 94):
+        d.rectangle((P(x), P(62), P(x + 4), P(84)), fill=STEEL_LIGHT, outline=OUTLINE, width=P(1))
+    # front legs from behind
+    for hip, knee, foot in (((28, 80), (18, 96), (22, 116)), ((100, 80), (110, 96), (106, 116))):
+        line(d, [hip, knee, foot], OUTLINE, 7)
+        line(d, [hip, knee, foot], STEEL_LIGHT, 3)
+        rr(d, (foot[0] - 7, foot[1] - 2, foot[0] + 9, foot[1] + 5), 2, DARK, OUTLINE, 1)
+    # mast rear vent
+    rr(d, (48, 16, 80, 52), 4, DARK, OUTLINE, 2)
+    rr(d, (53, 21, 75, 47), 3, shell2, OUTLINE, 1)
+    rr(d, (54, 24, 74, 42), 2, (20, 28, 37, 255), OUTLINE, 1)
+    for x in (58, 63, 68):
+        d.rectangle((P(x), P(28), P(x + 3), P(39)), fill=STEEL_MID)
+    for x in (50, 78):
+        ellipse(d, (x - 2, 22, x + 2, 26), AMBER_LIGHT, OUTLINE, 1)
+    line(d, [(64, 16), (64, 8)], OUTLINE, 2)
+    ellipse(d, (60, 3, 68, 11), GREEN, OUTLINE, 1)
+    # rear shoulders / arms
+    for x, sign in ((20, -1), (108, 1)):
+        line(d, [(x, 66), (x + sign * 2, 86)], OUTLINE, 4)
+        line(d, [(x, 66), (x + sign * 2, 86)], shell2, 2)
+        rr(d, (x + sign * 2 - 4, 84, x + sign * 2 + 6, 94), 2, accent, OUTLINE, 1)
+    return im
+
+
+def mkii4_east():
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    shell = (218, 228, 214, 255)
+    shell2 = (151, 173, 154, 255)
+    accent = (62, 120, 92, 255)
+    eye = (119, 224, 196, 255)
+    ellipse(d, (14, 114, 114, 126), (0, 0, 0, 55))
+    # two visible legs in profile
+    for hip, knee, foot in (((42, 80), (32, 98), (36, 116)), ((88, 80), (98, 98), (94, 116))):
+        line(d, [hip, knee, foot], OUTLINE, 7)
+        line(d, [hip, knee, foot], STEEL_LIGHT, 3)
+        rr(d, (foot[0] - 7, foot[1] - 2, foot[0] + 9, foot[1] + 5), 2, DARK, OUTLINE, 1)
+    # side body slab
+    rr(d, (30, 52, 100, 92), 6, shell, OUTLINE, 2)
+    rr(d, (36, 58, 94, 88), 4, shell2, OUTLINE, 1)
+    d.rectangle((P(30), P(84), P(100), P(92)), fill=DARK, outline=OUTLINE, width=P(1))
+    # top cartridges in profile
+    rr(d, (36, 44, 96, 62), 3, DARK2, OUTLINE, 1)
+    for i, col in enumerate((GREEN, STEEL_MID, AMBER)):
+        x = 40 + i * 18
+        rr(d, (x, 47, x + 14, 60), 2, col, OUTLINE, 1)
+        d.rectangle((P(x + 3), P(51), P(x + 11), P(54)), fill=shell if i != 2 else DARK2)
+    # side mast / eye strip
+    rr(d, (46, 16, 84, 52), 4, DARK, OUTLINE, 2)
+    rr(d, (51, 21, 79, 47), 3, shell2, OUTLINE, 1)
+    rr(d, (66, 27, 82, 39), 2, (20, 28, 37, 255), OUTLINE, 1)
+    d.rectangle((P(71), P(31), P(80), P(36)), fill=eye)
+    # side arm / tool pod
+    line(d, [(92, 66), (104, 84), (100, 96)], OUTLINE, 5)
+    line(d, [(92, 66), (104, 84), (100, 96)], shell2, 2)
+    rr(d, (96, 94, 110, 104), 2, accent, OUTLINE, 1)
+    d.rectangle((P(100), P(97), P(106), P(100)), fill=eye)
+    # mast antenna
+    line(d, [(64, 16), (64, 8)], OUTLINE, 2)
+    ellipse(d, (60, 3, 68, 11), GREEN, OUTLINE, 1)
+    # side sensor dot
+    ellipse(d, (42, 22, 46, 26), AMBER_LIGHT, OUTLINE, 1)
+    # hazard
+    for i in range(4):
+        polygon(d, [(42 + i * 12, 92), (47 + i * 12, 92), (45 + i * 12, 86), (40 + i * 12, 86)], AMBER)
+    return im
+
+
 def robot_south(tier):
     if tier == "MkII":
-        return mkii3_south()
+        return mkii4_south()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (20, 114, 108, 124), (0, 0, 0, 50))
@@ -743,7 +891,7 @@ def robot_south(tier):
 
 def robot_north(tier):
     if tier == "MkII":
-        return mkii3_north()
+        return mkii4_north()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (20, 114, 108, 124), (0, 0, 0, 50))
@@ -763,7 +911,7 @@ def robot_north(tier):
 
 def robot_east(tier):
     if tier == "MkII":
-        return mkii3_east()
+        return mkii4_east()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (22, 114, 106, 124), (0, 0, 0, 50))
