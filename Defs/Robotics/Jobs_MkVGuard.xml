@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<JobDef>
+		<defName>CK_MkVGuard</defName>
+		<driverClass>ColonyKit.Modules.Robotics.JobDriver_MkVGuard</driverClass>
+		<reportString>CK.Robotics.Job.Guard</reportString>
+		<casualInterruptible>true</casualInterruptible>
+		<suspendable>true</suspendable>
+	</JobDef>
+</Defs>

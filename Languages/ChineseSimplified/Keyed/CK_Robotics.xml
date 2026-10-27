@@ -17,6 +17,7 @@
 	<CK.Robotics.Menu.ReturnToBay>返回组装舱</CK.Robotics.Menu.ReturnToBay>
 	<CK.Robotics.Menu.RepairRobot>维修机器人：{0}</CK.Robotics.Menu.RepairRobot>
 	<CK.Robotics.Menu.NoStation>没有可用的充电桩。</CK.Robotics.Menu.NoStation>
+	<CK.Robotics.Job.Guard>警卫</CK.Robotics.Job.Guard>
 	<CK.Robotics.Job.Cloudwatch>看云</CK.Robotics.Job.Cloudwatch>
 	<CK.Robotics.Tab.RobotInfo>角色</CK.Robotics.Tab.RobotInfo>
 	<CK.Robotics.Overview.Title>概况</CK.Robotics.Overview.Title>

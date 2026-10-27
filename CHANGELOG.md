@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- **Mk-V 警卫任务**：没有工作时会随机选择殖民地内的可站立岗位巡逻站岗，到达后停留约 15 秒；发现敌人时中断警卫，交给 Mk-V 战斗节点处理。征召时不触发。
+
 ### Fixed
 
 - **Mk-V 征召后无法手动攻击**：原版 FloatMenuUtility 用 `IsColonistPlayerControlled` 过滤攻击目标，而 Mk-V 不是 Biotech colony mech；新增补丁让玩家阵营 Mk-V 通过该检查，征召后右键射击/近战选项恢复。
