@@ -54,11 +54,11 @@
 					</li>
 					<li>
 						<thingDef>ComponentSpacer</thingDef>
-						<count>4</count>
+						<count>8</count>
 					</li>
 					<li>
 						<thingDef>Plasteel</thingDef>
-						<count>80</count>
+						<count>40</count>
 					</li>
 				</ingredients>
 			</li>
