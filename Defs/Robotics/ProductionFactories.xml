@@ -40,14 +40,10 @@
 				<basePowerConsumption>220</basePowerConsumption>
 			</li>
 			<li Class="ColonyKit.Modules.Robotics.CompProperties_RobotFactory">
+				<factoryTier>1</factoryTier>
 				<productKind>CK_NannyBotMkIKind</productKind>
-				<workTicks>12000</workTicks>
 				<idlePower>350</idlePower>
 				<workPower>900</workPower>
-				<steelCount>220</steelCount>
-				<componentCount>8</componentCount>
-				<advancedComponentCount>2</advancedComponentCount>
-				<plasteelCount>20</plasteelCount>
 			</li>
 		</comps>
 	</ThingDef>
@@ -92,14 +88,10 @@
 				<basePowerConsumption>300</basePowerConsumption>
 			</li>
 			<li Class="ColonyKit.Modules.Robotics.CompProperties_RobotFactory">
+				<factoryTier>2</factoryTier>
 				<productKind>CK_NannyBotMkIIKind</productKind>
-				<workTicks>15000</workTicks>
 				<idlePower>450</idlePower>
 				<workPower>1100</workPower>
-				<steelCount>260</steelCount>
-				<componentCount>9</componentCount>
-				<advancedComponentCount>2</advancedComponentCount>
-				<plasteelCount>30</plasteelCount>
 			</li>
 		</comps>
 	</ThingDef>
@@ -144,14 +136,10 @@
 				<basePowerConsumption>250</basePowerConsumption>
 			</li>
 			<li Class="ColonyKit.Modules.Robotics.CompProperties_RobotFactory">
+				<factoryTier>3</factoryTier>
 				<productKind>CK_NannyBotMkIIIKind</productKind>
-				<workTicks>12000</workTicks>
 				<idlePower>500</idlePower>
 				<workPower>1300</workPower>
-				<steelCount>140</steelCount>
-				<componentCount>4</componentCount>
-				<advancedComponentCount>1</advancedComponentCount>
-				<plasteelCount>15</plasteelCount>
 			</li>
 		</comps>
 	</ThingDef>
@@ -196,14 +184,10 @@
 				<basePowerConsumption>220</basePowerConsumption>
 			</li>
 			<li Class="ColonyKit.Modules.Robotics.CompProperties_RobotFactory">
+				<factoryTier>4</factoryTier>
 				<productKind>CK_NannyBotMkIVKind</productKind>
-				<workTicks>10000</workTicks>
 				<idlePower>300</idlePower>
 				<workPower>800</workPower>
-				<steelCount>200</steelCount>
-				<componentCount>7</componentCount>
-				<advancedComponentCount>2</advancedComponentCount>
-				<plasteelCount>30</plasteelCount>
 			</li>
 		</comps>
 	</ThingDef>
@@ -249,14 +233,10 @@
 				<basePowerConsumption>350</basePowerConsumption>
 			</li>
 			<li Class="ColonyKit.Modules.Robotics.CompProperties_RobotFactory">
+				<factoryTier>5</factoryTier>
 				<productKind>CK_RobotMkVKind</productKind>
-				<workTicks>30000</workTicks>
 				<idlePower>600</idlePower>
 				<workPower>1500</workPower>
-				<steelCount>420</steelCount>
-				<componentCount>14</componentCount>
-				<advancedComponentCount>4</advancedComponentCount>
-				<plasteelCount>80</plasteelCount>
 			</li>
 		</comps>
 	</ThingDef>

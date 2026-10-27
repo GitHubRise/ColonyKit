@@ -91,6 +91,9 @@
 	<CK.Robotics.MkVBay.InspectIdle>Ready to start Mk-V assembly.</CK.Robotics.MkVBay.InspectIdle>
 
 	<CK.Robotics.FactoryName>{0} {1}</CK.Robotics.FactoryName>
+	<CK.Robotics.Factory.Select>Select product: {0}</CK.Robotics.Factory.Select>
+	<CK.Robotics.Factory.Select.Desc>This is a tier-{0} factory. It can build its own tier and all lower tiers; the larger the tier gap, the lower the production time, power draw and material use.</CK.Robotics.Factory.Select.Desc>
+	<CK.Robotics.Factory.Available>Can build: {0}</CK.Robotics.Factory.Available>
 	<CK.Robotics.Factory.Start>Start assembling {0}</CK.Robotics.Factory.Start>
 	<CK.Robotics.Factory.Start.Desc>Assemble {0} here. Recipe: {1}. The factory draws working power during assembly.</CK.Robotics.Factory.Start.Desc>
 	<CK.Robotics.Factory.Cancel>Cancel assembly</CK.Robotics.Factory.Cancel>
