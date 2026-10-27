@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_MkVAssemblyBay</defName>
+		<label>Mk-V assembly bay</label>
+		<description>A dedicated Mk-V assembly bay with its own recipe, power draw and production cycle. It does not change the nanny robot station used for earlier models. Requires the Mk-V integration research and all seven subsystem projects.</description>
+		<thingClass>Building</thingClass>
+		<size>(2,2)</size>
+		<graphicData>
+			<texPath>Things/Building/Robotics/CK_MkVAssemblyBay</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Robotics</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>0</pathCost>
+		<fillPercent>0.5</fillPercent>
+		<castEdgeShadows>true</castEdgeShadows>
+		<uiIconScale>0.85</uiIconScale>
+		<costList>
+			<Steel>450</Steel>
+			<ComponentIndustrial>12</ComponentIndustrial>
+			<ComponentSpacer>3</ComponentSpacer>
+			<Plasteel>80</Plasteel>
+		</costList>
+		<statBases>
+			<MaxHitPoints>500</MaxHitPoints>
+			<Mass>80</Mass>
+			<WorkToBuild>8000</WorkToBuild>
+			<Beauty>0</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+		<researchPrerequisites>
+			<li>CK_RobotMkV</li>
+		</researchPrerequisites>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>100</basePowerConsumption>
+			</li>
+			<li Class="ColonyKit.Modules.Robotics.CompProperties_MkVAssemblyBay">
+				<workTicks>30000</workTicks>
+				<idlePower>100</idlePower>
+				<workPower>1500</workPower>
+				<ingredients>
+					<li>
+						<thingDef>Steel</thingDef>
+						<count>350</count>
+					</li>
+					<li>
+						<thingDef>ComponentIndustrial</thingDef>
+						<count>12</count>
+					</li>
+					<li>
+						<thingDef>ComponentSpacer</thingDef>
+						<count>4</count>
+					</li>
+					<li>
+						<thingDef>Plasteel</thingDef>
+						<count>80</count>
+					</li>
+				</ingredients>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(120, 190, 255, 0)</glowColor>
+			</li>
+		</comps>
+	</ThingDef>
+</Defs>

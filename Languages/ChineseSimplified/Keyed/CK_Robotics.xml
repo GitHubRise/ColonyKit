@@ -53,6 +53,22 @@
 	<CK.Robotics.Station.AssembleMkV.Desc>组装一台 Mk-V 自维护机器人。需要完成机械本体、执行系统、感知系统、AI 计算平台、灵巧手、电池与能源系统、软件系统，以及 Mk-V 整合研究。</CK.Robotics.Station.AssembleMkV.Desc>
 	<CK.Robotics.Station.RequiresMkVResearch>尚未完成 Mk-V 所需的全部前置研究。</CK.Robotics.Station.RequiresMkVResearch>
 	<CK.Robotics.Station.AssembledMkV>Mk-V 机器人已组装完成：{0}</CK.Robotics.Station.AssembledMkV>
+
+	<CK.Robotics.MkVBay.Start>开始组装 Mk-V</CK.Robotics.MkVBay.Start>
+	<CK.Robotics.MkVBay.Start.Desc>消耗独立配方材料，开始一次 Mk-V 组装。配方：{0}。组装期间持续耗电，完成时产出 Mk-V。</CK.Robotics.MkVBay.Start.Desc>
+	<CK.Robotics.MkVBay.Cancel>取消组装</CK.Robotics.MkVBay.Cancel>
+	<CK.Robotics.MkVBay.Cancel.Desc>停止当前组装，不返还已消耗的材料。</CK.Robotics.MkVBay.Cancel.Desc>
+	<CK.Robotics.MkVBay.AlreadyWorking>组装舱正在生产 Mk-V。</CK.Robotics.MkVBay.AlreadyWorking>
+	<CK.Robotics.MkVBay.MissingResearch>需要先完成 Mk-V 整合研究及全部七项前置研究。</CK.Robotics.MkVBay.MissingResearch>
+	<CK.Robotics.MkVBay.NoPower>组装舱未通电。</CK.Robotics.MkVBay.NoPower>
+	<CK.Robotics.MkVBay.MissingKind>Mk-V 机器人 Def 缺失。</CK.Robotics.MkVBay.MissingKind>
+	<CK.Robotics.MkVBay.MissingIngredients>材料不足，无法开始组装。</CK.Robotics.MkVBay.MissingIngredients>
+	<CK.Robotics.MkVBay.Started>Mk-V 组装开始。</CK.Robotics.MkVBay.Started>
+	<CK.Robotics.MkVBay.Cancelled>Mk-V 组装已取消，材料不返还。</CK.Robotics.MkVBay.Cancelled>
+	<CK.Robotics.MkVBay.Completed>Mk-V 组装完成：{0}</CK.Robotics.MkVBay.Completed>
+	<CK.Robotics.MkVBay.InspectWorking>组装进度：{0}</CK.Robotics.MkVBay.InspectWorking>
+	<CK.Robotics.MkVBay.InspectResearch>等待 Mk-V 整合研究完成。</CK.Robotics.MkVBay.InspectResearch>
+	<CK.Robotics.MkVBay.InspectIdle>可开始 Mk-V 组装。</CK.Robotics.MkVBay.InspectIdle>
 	<CK.Robotics.Station.HasRobot>工作站已有一台机器人。</CK.Robotics.Station.HasRobot>
 	<CK.Robotics.Station.Cooldown>重新组装冷却中：{0}</CK.Robotics.Station.Cooldown>
 	<CK.Robotics.Station.NoPower>未通电：无法充电。</CK.Robotics.Station.NoPower>

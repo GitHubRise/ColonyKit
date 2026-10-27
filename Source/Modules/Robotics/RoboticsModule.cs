@@ -23,11 +23,16 @@ namespace ColonyKit.Modules.Robotics
 			bool cleanJob = DefDatabase<JobDef>.GetNamedSilentFail("CK_NannyCleanFilth") != null;
 			bool chargeJob = DefDatabase<JobDef>.GetNamedSilentFail("CK_NannyCharge") != null;
 			bool energyNeed = DefDatabase<NeedDef>.GetNamedSilentFail("CK_RobotEnergy") != null;
+			bool mkvKind = DefDatabase<PawnKindDef>.GetNamedSilentFail("CK_RobotMkVKind") != null;
+			bool mkvBay = DefDatabase<ThingDef>.GetNamedSilentFail("CK_MkVAssemblyBay") != null;
+			ResearchProjectDef mkvProject = DefDatabase<ResearchProjectDef>.GetNamedSilentFail("CK_RobotMkV");
+			int mkvPrereqs = mkvProject?.prerequisites?.Count ?? 0;
 
 			ModLog.Info(
 				"Robotics",
 				$"module loaded; race={race}, kind={kind}, station={station}, thinkTree={thinkTree}, " +
-				$"cleanJob={cleanJob}, chargeJob={chargeJob}, energyNeed={energyNeed}");
+				$"cleanJob={cleanJob}, chargeJob={chargeJob}, energyNeed={energyNeed}, " +
+				$"mkvKind={mkvKind}, mkvBay={mkvBay}, mkvResearch={mkvProject != null}, mkvPrereqs={mkvPrereqs}");
 		}
 
 		public override void OnGameLoaded(Game game)

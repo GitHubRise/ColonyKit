@@ -43,15 +43,6 @@ namespace ColonyKit.Modules.Robotics
 
 		private bool HasRobot => robot != null && !robot.Dead && !robot.Destroyed && robot.Spawned;
 
-		private static bool MkVResearched
-		{
-			get
-			{
-				ResearchProjectDef project = DefDatabase<ResearchProjectDef>.GetNamedSilentFail("CK_RobotMkV");
-				return project != null && project.IsFinished;
-			}
-		}
-
 		public override void PostSpawnSetup(bool respawningAfterLoad)
 		{
 			base.PostSpawnSetup(respawningAfterLoad);
@@ -276,40 +267,6 @@ namespace ColonyKit.Modules.Robotics
 				}
 			}
 			yield return assemble;
-
-			if (NannyBotDefOf.CK_RobotMkVKind != null)
-			{
-				Command_Action assembleMkV = new Command_Action
-				{
-					defaultLabel = "CK.Robotics.Station.AssembleMkV".Translate(),
-					defaultDesc = "CK.Robotics.Station.AssembleMkV.Desc".Translate(),
-					icon = ContentFinder<Texture2D>.Get("UI/Commands/CK_Assemble", false)
-						?? TexCommand.Install,
-					action = () => TrySpawnRobot(NannyBotDefOf.CK_RobotMkVKind, true)
-				};
-
-				if (!MkVResearched)
-				{
-					assembleMkV.Disabled = true;
-					assembleMkV.disabledReason = "CK.Robotics.Station.RequiresMkVResearch".Translate();
-				}
-				else if (HasRobot)
-				{
-					assembleMkV.Disabled = true;
-					assembleMkV.disabledReason = "CK.Robotics.Station.HasRobot".Translate();
-				}
-				else
-				{
-					int now = Find.TickManager.TicksGame;
-					if (now < nextBuildTick)
-					{
-						assembleMkV.Disabled = true;
-						assembleMkV.disabledReason = "CK.Robotics.Station.Cooldown".Translate(
-							(nextBuildTick - now).ToStringTicksToPeriod());
-					}
-				}
-				yield return assembleMkV;
-			}
 
 			if (HasRobot)
 			{
