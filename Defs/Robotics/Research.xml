@@ -25,7 +25,7 @@
 	<ResearchProjectDef>
 		<defName>CK_RoboticsMechanicalBody</defName>
 		<label>robotic mechanical body</label>
-		<description>Load-bearing chassis, joints, armor mounts and maintenance access for a self-maintaining domestic android.</description>
+		<description>Load-bearing chassis, joints, armor mounts and maintenance access for a self-maintaining domestic robot.</description>
 		<baseCost>1800</baseCost>
 		<techLevel>Industrial</techLevel>
 		<prerequisites>
@@ -67,7 +67,7 @@
 	<ResearchProjectDef>
 		<defName>CK_RoboticsAI</defName>
 		<label>AI compute platform</label>
-		<description>A compact inference core that schedules chores, handles interruptions and keeps the android stable over long deployments.</description>
+		<description>A compact inference core that schedules chores, handles interruptions and keeps the robot stable over long deployments.</description>
 		<baseCost>3200</baseCost>
 		<techLevel>Industrial</techLevel>
 		<prerequisites>
@@ -95,7 +95,7 @@
 	<ResearchProjectDef>
 		<defName>CK_RoboticsPower</defName>
 		<label>battery and energy system</label>
-		<description>High-density cells, thermal control and self-diagnostic charging hardware for a long-endurance android.</description>
+		<description>High-density cells, thermal control and self-diagnostic charging hardware for a long-endurance robot.</description>
 		<baseCost>2800</baseCost>
 		<techLevel>Industrial</techLevel>
 		<prerequisites>
@@ -122,8 +122,8 @@
 
 	<ResearchProjectDef>
 		<defName>CK_RobotMkV</defName>
-		<label>Mk-V self-maintaining android</label>
-		<description>Integrate the mechanical body, actuation, perception, AI compute, dexterous hands, power system and software into the final self-maintaining nanny android.</description>
+		<label>Mk-V self-maintaining robot</label>
+		<description>Integrate the mechanical body, actuation, perception, AI compute, dexterous hands, power system and software into the final self-maintaining nanny robot.</description>
 		<baseCost>8000</baseCost>
 		<techLevel>Spacer</techLevel>
 		<prerequisites>

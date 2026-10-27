@@ -49,10 +49,10 @@
 
 	<CK.Robotics.Station.Assemble>组装保姆机器人</CK.Robotics.Station.Assemble>
 	<CK.Robotics.Station.Assemble.Desc>在工作站组装一台保姆机器人。机器人损毁后需要等待冷却结束。</CK.Robotics.Station.Assemble.Desc>
-	<CK.Robotics.Station.AssembleMkV>组装 Mk-V 安卓</CK.Robotics.Station.AssembleMkV>
-	<CK.Robotics.Station.AssembleMkV.Desc>组装一台 Mk-V 自维护安卓。需要完成机械本体、执行系统、感知系统、AI 计算平台、灵巧手、电池与能源系统、软件系统，以及 Mk-V 整合研究。</CK.Robotics.Station.AssembleMkV.Desc>
+	<CK.Robotics.Station.AssembleMkV>组装 Mk-V 机器人</CK.Robotics.Station.AssembleMkV>
+	<CK.Robotics.Station.AssembleMkV.Desc>组装一台 Mk-V 自维护机器人。需要完成机械本体、执行系统、感知系统、AI 计算平台、灵巧手、电池与能源系统、软件系统，以及 Mk-V 整合研究。</CK.Robotics.Station.AssembleMkV.Desc>
 	<CK.Robotics.Station.RequiresMkVResearch>尚未完成 Mk-V 所需的全部前置研究。</CK.Robotics.Station.RequiresMkVResearch>
-	<CK.Robotics.Station.AssembledMkV>Mk-V 安卓已组装完成：{0}</CK.Robotics.Station.AssembledMkV>
+	<CK.Robotics.Station.AssembledMkV>Mk-V 机器人已组装完成：{0}</CK.Robotics.Station.AssembledMkV>
 	<CK.Robotics.Station.HasRobot>工作站已有一台机器人。</CK.Robotics.Station.HasRobot>
 	<CK.Robotics.Station.Cooldown>重新组装冷却中：{0}</CK.Robotics.Station.Cooldown>
 	<CK.Robotics.Station.NoPower>未通电：无法充电。</CK.Robotics.Station.NoPower>
