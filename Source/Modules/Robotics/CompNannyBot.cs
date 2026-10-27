@@ -157,10 +157,17 @@ namespace ColonyKit.Modules.Robotics
 				durability = MaxDurability;
 			}
 			Pawn pawn = Pawn;
-			if (NannyBotUtility.IsMkV(pawn) && pawn != null && pawn.skills == null)
+			if (NannyBotUtility.IsMkV(pawn) && pawn != null)
 			{
-				// 商队/工作检查会读取技能；机械族默认没有技能组件。
-				pawn.skills = new Pawn_SkillTracker(pawn);
+				// 商队/工作检查会读取技能，而技能记录会访问 story.traits；机械族默认两者都没有。
+				if (pawn.story == null)
+				{
+					pawn.story = new Pawn_StoryTracker(pawn);
+				}
+				if (pawn.skills == null)
+				{
+					pawn.skills = new Pawn_SkillTracker(pawn);
+				}
 			}
 		}
 
