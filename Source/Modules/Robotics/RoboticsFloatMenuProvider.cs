@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Reflection;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -58,6 +60,14 @@ namespace ColonyKit.Modules.Robotics
 				yield break;
 			}
 
+			if (RjwCompat.Loaded && NannyBotUtility.IsMkV(clickedPawn) && selected != clickedPawn)
+			{
+				foreach (FloatMenuOption option in GetRjwSexOptions(selected, clickedPawn))
+				{
+					yield return option;
+				}
+			}
+
 			if (selected == clickedPawn && NannyBotUtility.IsNannyBot(selected))
 			{
 				Building station = NannyBotUtility.FindStation(selected, false);
@@ -82,6 +92,31 @@ namespace ColonyKit.Modules.Robotics
 				yield return new FloatMenuOption(
 					"CK.Robotics.Menu.RepairRobot".Translate(clickedPawn.LabelShort),
 					() => OrderRepair(selected, clickedPawn));
+			}
+		}
+
+		private static IEnumerable<FloatMenuOption> GetRjwSexOptions(Pawn initiator, Pawn target)
+		{
+			IEnumerable<FloatMenuOption> options = null;
+			try
+			{
+				Type rmbSex = Type.GetType("rjw.RMB.RMB_Sex, RJW");
+				MethodInfo getOptions = rmbSex?.GetMethod(
+					"GetOptions",
+					BindingFlags.Public | BindingFlags.Static);
+				options = getOptions?.Invoke(null, new object[] { initiator, target }) as IEnumerable<FloatMenuOption>;
+			}
+			catch (Exception exception)
+			{
+				Log.Warning($"[ColonyKit] RJW sex menu failed: {exception.Message}");
+			}
+			if (options == null)
+			{
+				yield break;
+			}
+			foreach (FloatMenuOption option in options)
+			{
+				yield return option;
 			}
 		}
 
