@@ -194,7 +194,9 @@ namespace ColonyKit.Modules.Hygiene
 			}
 			foreach (Thing thing in map.listerThings.AllThings)
 			{
-				if (thing.TryGetComp<CompBasinWater>() == null
+				CompBasinWater basin = thing.TryGetComp<CompBasinWater>();
+				if (basin == null
+					|| basin.IsFull
 					|| thing.IsForbidden(pawn)
 					|| thing.IsBurning())
 				{
