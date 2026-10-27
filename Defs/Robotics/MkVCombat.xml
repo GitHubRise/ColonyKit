@@ -14,11 +14,11 @@
 			<Mass>4.5</Mass>
 			<MarketValue>1200</MarketValue>
 			<MaxHitPoints>150</MaxHitPoints>
-			<AccuracyTouch>0.70</AccuracyTouch>
-			<AccuracyShort>0.75</AccuracyShort>
-			<AccuracyMedium>0.65</AccuracyMedium>
-			<AccuracyLong>0.50</AccuracyLong>
-			<RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
+			<AccuracyTouch>0.79</AccuracyTouch>
+			<AccuracyShort>0.72</AccuracyShort>
+			<AccuracyMedium>0.72</AccuracyMedium>
+			<AccuracyLong>0.66</AccuracyLong>
+			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
 		</statBases>
 		<weaponTags>
 			<li>Gun</li>
@@ -67,8 +67,8 @@
 		</graphicData>
 		<projectile>
 			<damageDef>Burn</damageDef>
-			<damageAmountBase>9</damageAmountBase>
-			<armorPenetrationBase>0.25</armorPenetrationBase>
+			<damageAmountBase>58</damageAmountBase>
+			<armorPenetrationBase>0.35</armorPenetrationBase>
 			<stoppingPower>1.5</stoppingPower>
 			<speed>70</speed>
 		</projectile>
