@@ -28,15 +28,21 @@ namespace ColonyKit.Modules.Robotics
 			Pawn target = FindTarget(pawn, combat.EngageRange);
 			if (target != null)
 			{
+				combat.SetEngaged(target);
+				float distance = pawn.Position.DistanceTo(target.Position);
+				if (distance <= 1.9f)
+				{
+					Job melee = JobMaker.MakeJob(JobDefOf.AttackMelee, target);
+					melee.expiryInterval = 300;
+					return melee;
+				}
+
 				Verb verb = pawn.TryGetAttackVerb(target, false);
 				if (verb == null)
 				{
 					combat.Clear();
 					return null;
 				}
-
-				combat.SetEngaged(target);
-				float distance = pawn.Position.DistanceTo(target.Position);
 				if (distance > verb.verbProps.range)
 				{
 					Job move = JobMaker.MakeJob(JobDefOf.Goto, target.Position);

@@ -12,8 +12,8 @@ namespace ColonyKit.Modules.Robotics
 		/// <summary>待机功耗（W）；充电时切到 <see cref="chargePower"/>。</summary>
 		public float idlePower = 50f;
 
-		/// <summary>充电功耗（W）；休眠快充按 4 小时充满。</summary>
-		public float chargePower = 4000f;
+		/// <summary>充电功耗（W）；默认 1000W，可在设置页 100–10000W 调整。</summary>
+		public float chargePower = 1000f;
 
 		/// <summary>机器人损毁后，重新组装的冷却 tick（默认 1 天）。</summary>
 		public int rebuildCooldownTicks = 60000;
@@ -135,7 +135,8 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return;
 			}
-			float desired = -(charging ? Props.chargePower : Props.idlePower);
+			float chargePower = NannyBotUtility.Settings.chargePower;
+			float desired = -(charging ? chargePower : Props.idlePower);
 			if (!Mathf.Approximately(power.PowerOutput, desired))
 			{
 				power.PowerOutput = desired;

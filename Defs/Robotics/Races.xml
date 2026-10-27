@@ -95,7 +95,18 @@
 				</li>
 			</lifeStageAges>
 		</race>
-		<butcherProducts>
+				<tools>
+			<li>
+				<label>arc blade</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>22</power>
+				<cooldownTime>1.5</cooldownTime>
+				<armorPenetration>0.25</armorPenetration>
+			</li>
+		</tools>
+<butcherProducts>
 			<Steel>20</Steel>
 		</butcherProducts>
 		<inspectorTabs>

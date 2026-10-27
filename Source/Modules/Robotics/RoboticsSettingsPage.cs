@@ -118,6 +118,15 @@ namespace ColonyKit.Modules.Robotics
 				NannyBotUtility.ApplyBatteryCapacity(beforeCapacity, data.batteryCapacity);
 			}
 
+			data.chargePower = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.ChargePower".Loc(),
+				data.chargePower,
+				RoboticsSettings.MinChargePower,
+				RoboticsSettings.MaxChargePower,
+				50f,
+				value => "CK.Robotics.Watts".Loc(value.ToString("0")));
+
 			data.refuelThreshold = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Robotics.RefuelThreshold".Loc(),
@@ -179,6 +188,22 @@ namespace ColonyKit.Modules.Robotics
 				RoboticsSettings.MaxWeaponPickupRadius,
 				1f,
 				value => "CK.Robotics.Cells".Loc(value.ToString("0")));
+			data.mkvAttackSpeed = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVAttackSpeed".Loc(),
+				data.mkvAttackSpeed,
+				RoboticsSettings.MinMkvAttackSpeed,
+				RoboticsSettings.MaxMkvAttackSpeed,
+				0.05f,
+				value => "x" + value.ToString("0.00"));
+			data.mkvHitChance = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVHitChance".Loc(),
+				data.mkvHitChance,
+				RoboticsSettings.MinMkvHitChance,
+				RoboticsSettings.MaxMkvHitChance,
+				0.05f,
+				value => value.ToStringPercent());
 			data.mkvBayAutoStart = SettingsWidgets.Checkbox(
 				listing,
 				"ColonyKit.Settings.Robotics.MkVBayAutoStart".Loc(),

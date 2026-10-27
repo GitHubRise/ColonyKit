@@ -32,6 +32,7 @@
 	<ColonyKit.Settings.Robotics.Section.Parameters>参数</ColonyKit.Settings.Robotics.Section.Parameters>
 	<ColonyKit.Settings.Robotics.ChargeThreshold>充电阈值</ColonyKit.Settings.Robotics.ChargeThreshold>
 	<ColonyKit.Settings.Robotics.BatteryCapacity>电池容量</ColonyKit.Settings.Robotics.BatteryCapacity>
+	<ColonyKit.Settings.Robotics.ChargePower>充电功耗</ColonyKit.Settings.Robotics.ChargePower>
 	<ColonyKit.Settings.Robotics.RefuelThreshold>加燃料阈值</ColonyKit.Settings.Robotics.RefuelThreshold>
 	<ColonyKit.Settings.Robotics.WorkRadius>工作半径</ColonyKit.Settings.Robotics.WorkRadius>
 	<ColonyKit.Settings.Robotics.Unlimited>不限</ColonyKit.Settings.Robotics.Unlimited>
@@ -46,6 +47,8 @@
 	<ColonyKit.Settings.Robotics.MkVEngageRange>交战范围</ColonyKit.Settings.Robotics.MkVEngageRange>
 	<ColonyKit.Settings.Robotics.MkVReturnRange>回舱判定距离</ColonyKit.Settings.Robotics.MkVReturnRange>
 	<ColonyKit.Settings.Robotics.MkVWeaponPickupRadius>武器拾取范围</ColonyKit.Settings.Robotics.MkVWeaponPickupRadius>
+	<ColonyKit.Settings.Robotics.MkVAttackSpeed>Mk-V 攻击速度</ColonyKit.Settings.Robotics.MkVAttackSpeed>
+	<ColonyKit.Settings.Robotics.MkVHitChance>Mk-V 命中率</ColonyKit.Settings.Robotics.MkVHitChance>
 	<ColonyKit.Settings.Robotics.MkVBayAutoStart>组装舱自动开工</ColonyKit.Settings.Robotics.MkVBayAutoStart>
 	<ColonyKit.Settings.Robotics.MkVBayAutoStart.Desc>材料、电力和研究都满足时，Mk-V 组装舱自动开始下一台；关闭后需要手动点击开始。</ColonyKit.Settings.Robotics.MkVBayAutoStart.Desc>
 

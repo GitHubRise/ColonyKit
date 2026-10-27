@@ -40,6 +40,18 @@ namespace ColonyKit.Modules.Robotics
 		public const float MaxWeaponPickupRadius = 45f;
 		public const float DefaultWeaponPickupRadius = 28f;
 
+		public const float MinChargePower = 100f;
+		public const float MaxChargePower = 10000f;
+		public const float DefaultChargePower = 1000f;
+
+		public const float MinMkvAttackSpeed = 0.5f;
+		public const float MaxMkvAttackSpeed = 2f;
+		public const float DefaultMkvAttackSpeed = 1f;
+
+		public const float MinMkvHitChance = 0.5f;
+		public const float MaxMkvHitChance = 1.5f;
+		public const float DefaultMkvHitChance = 1f;
+
 		public string SettingsKey => "robotics";
 
 		// 家务总开关。
@@ -65,6 +77,9 @@ namespace ColonyKit.Modules.Robotics
 		public float refuelThreshold = DefaultRefuelThreshold;
 		public int batteryCapacity = DefaultBatteryCapacity;
 		public float workRadius = DefaultWorkRadius;
+		public float chargePower = DefaultChargePower;
+		public float mkvAttackSpeed = DefaultMkvAttackSpeed;
+		public float mkvHitChance = DefaultMkvHitChance;
 		public RobotAreaMode areaMode = RobotAreaMode.Unrestricted;
 		public string allowedAreaLabel = "";
 
@@ -97,6 +112,9 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref refuelThreshold, "refuelThreshold", DefaultRefuelThreshold);
 			Scribe_Values.Look(ref batteryCapacity, "batteryCapacity", DefaultBatteryCapacity);
 			Scribe_Values.Look(ref workRadius, "workRadius", DefaultWorkRadius);
+			Scribe_Values.Look(ref chargePower, "chargePower", DefaultChargePower);
+			Scribe_Values.Look(ref mkvAttackSpeed, "mkvAttackSpeed", DefaultMkvAttackSpeed);
+			Scribe_Values.Look(ref mkvHitChance, "mkvHitChance", DefaultMkvHitChance);
 			Scribe_Values.Look(ref areaMode, "areaMode", RobotAreaMode.Unrestricted);
 			Scribe_Values.Look(ref allowedAreaLabel, "allowedAreaLabel", "");
 			Scribe_Values.Look(ref mkvCombatEnabled, "mkvCombatEnabled", true);
@@ -126,6 +144,18 @@ namespace ColonyKit.Modules.Robotics
 			float radius = workRadius;
 			workRadius = ClampFloat(workRadius, MinWorkRadius, MaxWorkRadius);
 			changed |= !Approximately(radius, workRadius);
+
+			float chargePowerValue = chargePower;
+			chargePower = ClampFloat(chargePower, MinChargePower, MaxChargePower);
+			changed |= !Approximately(chargePowerValue, chargePower);
+
+			float attackSpeed = mkvAttackSpeed;
+			mkvAttackSpeed = ClampFloat(mkvAttackSpeed, MinMkvAttackSpeed, MaxMkvAttackSpeed);
+			changed |= !Approximately(attackSpeed, mkvAttackSpeed);
+
+			float hitChance = mkvHitChance;
+			mkvHitChance = ClampFloat(mkvHitChance, MinMkvHitChance, MaxMkvHitChance);
+			changed |= !Approximately(hitChance, mkvHitChance);
 
 			float engage = mkvEngageRange;
 			mkvEngageRange = ClampFloat(mkvEngageRange, MinEngageRange, MaxEngageRange);
@@ -174,6 +204,9 @@ namespace ColonyKit.Modules.Robotics
 			refuelThreshold = DefaultRefuelThreshold;
 			batteryCapacity = DefaultBatteryCapacity;
 			workRadius = DefaultWorkRadius;
+			chargePower = DefaultChargePower;
+			mkvAttackSpeed = DefaultMkvAttackSpeed;
+			mkvHitChance = DefaultMkvHitChance;
 			areaMode = RobotAreaMode.Unrestricted;
 			allowedAreaLabel = "";
 			mkvCombatEnabled = true;

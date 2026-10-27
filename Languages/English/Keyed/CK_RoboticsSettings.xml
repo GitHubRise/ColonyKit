@@ -32,6 +32,7 @@
 	<ColonyKit.Settings.Robotics.Section.Parameters>Parameters</ColonyKit.Settings.Robotics.Section.Parameters>
 	<ColonyKit.Settings.Robotics.ChargeThreshold>Charge threshold</ColonyKit.Settings.Robotics.ChargeThreshold>
 	<ColonyKit.Settings.Robotics.BatteryCapacity>Battery capacity</ColonyKit.Settings.Robotics.BatteryCapacity>
+	<ColonyKit.Settings.Robotics.ChargePower>Charging power</ColonyKit.Settings.Robotics.ChargePower>
 	<ColonyKit.Settings.Robotics.RefuelThreshold>Refuel threshold</ColonyKit.Settings.Robotics.RefuelThreshold>
 	<ColonyKit.Settings.Robotics.WorkRadius>Work radius</ColonyKit.Settings.Robotics.WorkRadius>
 	<ColonyKit.Settings.Robotics.Unlimited>Unlimited</ColonyKit.Settings.Robotics.Unlimited>
@@ -46,6 +47,8 @@
 	<ColonyKit.Settings.Robotics.MkVEngageRange>Engage range</ColonyKit.Settings.Robotics.MkVEngageRange>
 	<ColonyKit.Settings.Robotics.MkVReturnRange>Return distance</ColonyKit.Settings.Robotics.MkVReturnRange>
 	<ColonyKit.Settings.Robotics.MkVWeaponPickupRadius>Weapon pickup radius</ColonyKit.Settings.Robotics.MkVWeaponPickupRadius>
+	<ColonyKit.Settings.Robotics.MkVAttackSpeed>Mk-V attack speed</ColonyKit.Settings.Robotics.MkVAttackSpeed>
+	<ColonyKit.Settings.Robotics.MkVHitChance>Mk-V hit chance</ColonyKit.Settings.Robotics.MkVHitChance>
 	<ColonyKit.Settings.Robotics.MkVBayAutoStart>Auto-start assembly bay</ColonyKit.Settings.Robotics.MkVBayAutoStart>
 	<ColonyKit.Settings.Robotics.MkVBayAutoStart.Desc>When materials, power and research are all available, the Mk-V bay starts the next robot automatically. When off, start it manually.</ColonyKit.Settings.Robotics.MkVBayAutoStart.Desc>
 
