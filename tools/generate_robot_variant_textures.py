@@ -1289,9 +1289,179 @@ def mkii7_east():
     return im
 
 
+def mkiii_ref_south():
+    """Mk-III v2: white/orange humanoid service robot on a wheeled base."""
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    white = (241, 238, 232, 255)
+    white_hi = (255, 253, 247, 255)
+    white_lo = (203, 200, 194, 255)
+    orange = (232, 94, 54, 255)
+    orange_hi = (247, 128, 88, 255)
+    screen = (18, 20, 22, 255)
+    dark = (52, 55, 59, 255)
+    joint = (91, 94, 98, 255)
+    eye = (244, 245, 240, 255)
+    gold = (232, 180, 76, 255)
+    ellipse(d, (18, 116, 110, 128), (0, 0, 0, 55))
+
+    # wheeled orange base
+    rr(d, (22, 100, 106, 118), 8, orange, OUTLINE, 2)
+    rr(d, (26, 96, 102, 108), 5, orange_hi, None)
+    rr(d, (28, 110, 100, 122), 4, (226, 222, 214, 255), OUTLINE, 1)
+    for x in (30, 86):
+        ellipse(d, (x, 108, x + 18, 124), (34, 36, 39, 255), OUTLINE, 2)
+        ellipse(d, (x + 4, 112, x + 14, 120), joint, OUTLINE, 1)
+    # skirt
+    rr(d, (34, 96, 94, 106), 4, white_lo, OUTLINE, 1)
+
+    # legs / hip block (mostly hidden by base and torso)
+    rr(d, (50, 88, 64, 106), 4, dark, OUTLINE, 1)
+    rr(d, (68, 88, 82, 106), 4, dark, OUTLINE, 1)
+
+    # torso
+    rr(d, (38, 46, 90, 98), 12, white, OUTLINE, 2)
+    rr(d, (43, 51, 85, 93), 9, white_hi, None)
+    # black chest screen
+    rr(d, (50, 58, 78, 90), 6, screen, OUTLINE, 2)
+    rr(d, (54, 62, 74, 86), 4, (10, 11, 13, 255), None)
+    # orange shoulder pads
+    rr(d, (31, 52, 43, 66), 4, orange, OUTLINE, 1)
+    rr(d, (85, 52, 97, 66), 4, orange, OUTLINE, 1)
+    # gold chest badge
+    rr(d, (58, 48, 70, 55), 2, gold, OUTLINE, 1)
+
+    # neck
+    rr(d, (58, 42, 70, 50), 3, joint, OUTLINE, 1)
+
+    # head shell
+    rr(d, (36, 14, 92, 50), 13, white, OUTLINE, 2)
+    rr(d, (41, 19, 87, 46), 10, white_hi, None)
+    # black face screen
+    rr(d, (44, 21, 84, 43), 7, screen, OUTLINE, 2)
+    rr(d, (48, 25, 80, 39), 5, (10, 11, 13, 255), None)
+    # two white eyes
+    rr(d, (52, 28, 60, 36), 3, eye, None)
+    rr(d, (68, 28, 76, 36), 3, eye, None)
+    # orange ear discs
+    for x in (28, 92):
+        ellipse(d, (x, 26, x + 14, 42), orange, OUTLINE, 2)
+        ellipse(d, (x + 4, 30, x + 10, 38), orange_hi, None)
+
+    # left arm, hanging with gripper
+    line(d, [(38, 64), (28, 82), (34, 96)], OUTLINE, 10)
+    line(d, [(38, 64), (28, 82), (34, 96)], white, 6)
+    ellipse(d, (26, 78, 36, 88), joint, OUTLINE, 1)
+    ellipse(d, (28, 92, 38, 102), joint, OUTLINE, 1)
+    # right arm, extended with a folded cloth
+    line(d, [(90, 64), (104, 78), (110, 88)], OUTLINE, 10)
+    line(d, [(90, 64), (104, 78), (110, 88)], white, 6)
+    ellipse(d, (100, 74, 110, 84), joint, OUTLINE, 1)
+    rr(d, (106, 86, 120, 96), 3, (200, 166, 112, 255), OUTLINE, 1)
+    d.rectangle((P(109), P(89), P(117), P(92)), fill=(224, 190, 136, 255))
+    # small gold wrist band
+    d.rectangle((P(104), P(82), P(108), P(86)), fill=gold, outline=OUTLINE, width=P(1))
+    # base front light
+    ellipse(d, (60, 112, 68, 118), (244, 238, 214, 255), None)
+    return im
+
+
+def mkiii_ref_north():
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    white = (241, 238, 232, 255)
+    white_hi = (255, 253, 247, 255)
+    white_lo = (203, 200, 194, 255)
+    orange = (232, 94, 54, 255)
+    screen = (18, 20, 22, 255)
+    dark = (52, 55, 59, 255)
+    joint = (91, 94, 98, 255)
+    gold = (232, 180, 76, 255)
+    ellipse(d, (18, 116, 110, 128), (0, 0, 0, 55))
+    rr(d, (22, 100, 106, 118), 8, orange, OUTLINE, 2)
+    rr(d, (28, 110, 100, 122), 4, (226, 222, 214, 255), OUTLINE, 1)
+    for x in (30, 86):
+        ellipse(d, (x, 108, x + 18, 124), (34, 36, 39, 255), OUTLINE, 2)
+    rr(d, (34, 96, 94, 106), 4, white_lo, OUTLINE, 1)
+    rr(d, (50, 88, 64, 106), 4, dark, OUTLINE, 1)
+    rr(d, (68, 88, 82, 106), 4, dark, OUTLINE, 1)
+    # back torso with orange battery panel
+    rr(d, (38, 46, 90, 98), 12, white, OUTLINE, 2)
+    rr(d, (43, 51, 85, 93), 9, white_hi, None)
+    rr(d, (52, 58, 76, 88), 6, dark, OUTLINE, 1)
+    rr(d, (56, 62, 72, 82), 4, orange, OUTLINE, 1)
+    d.rectangle((P(60), P(66), P(68), P(70)), fill=gold, outline=OUTLINE, width=P(1))
+    # neck / head back
+    rr(d, (58, 42, 70, 50), 3, joint, OUTLINE, 1)
+    rr(d, (36, 14, 92, 50), 13, white, OUTLINE, 2)
+    rr(d, (41, 19, 87, 46), 10, white_hi, None)
+    # rear vent
+    rr(d, (48, 24, 80, 40), 4, screen, OUTLINE, 1)
+    for x in (53, 60, 67, 74):
+        d.rectangle((P(x), P(28), P(x + 3), P(36)), fill=(112, 111, 107, 255))
+    for x in (28, 92):
+        ellipse(d, (x, 26, x + 14, 42), orange, OUTLINE, 2)
+    # arms from behind
+    for x in (28, 100):
+        line(d, [(x, 64), (x - 4, 82), (x, 96)], OUTLINE, 10)
+        line(d, [(x, 64), (x - 4, 82), (x, 96)], white, 6)
+        ellipse(d, (x - 5, 78, x + 5, 88), joint, OUTLINE, 1)
+    return im
+
+
+def mkiii_ref_east():
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    white = (241, 238, 232, 255)
+    white_hi = (255, 253, 247, 255)
+    orange = (232, 94, 54, 255)
+    orange_hi = (247, 128, 88, 255)
+    screen = (18, 20, 22, 255)
+    joint = (91, 94, 98, 255)
+    eye = (244, 245, 240, 255)
+    gold = (232, 180, 76, 255)
+    ellipse(d, (20, 116, 108, 128), (0, 0, 0, 55))
+    # wheeled base side
+    rr(d, (20, 100, 108, 118), 8, orange, OUTLINE, 2)
+    rr(d, (24, 96, 104, 108), 5, orange_hi, None)
+    rr(d, (26, 110, 104, 122), 4, (226, 222, 214, 255), OUTLINE, 1)
+    for x in (28, 84):
+        ellipse(d, (x, 108, x + 18, 124), (34, 36, 39, 255), OUTLINE, 2)
+        ellipse(d, (x + 4, 112, x + 14, 120), joint, OUTLINE, 1)
+    # side torso
+    rr(d, (42, 46, 94, 98), 12, white, OUTLINE, 2)
+    rr(d, (47, 51, 89, 93), 9, white_hi, None)
+    # front chest screen edge
+    rr(d, (78, 58, 94, 90), 5, screen, OUTLINE, 2)
+    d.rectangle((P(83), P(64), P(90), P(84)), fill=(10, 11, 13, 255))
+    # shoulder pad
+    rr(d, (60, 48, 82, 60), 4, orange, OUTLINE, 1)
+    # gold badge
+    rr(d, (54, 54, 64, 60), 2, gold, OUTLINE, 1)
+    # side head
+    rr(d, (36, 14, 96, 50), 13, white, OUTLINE, 2)
+    rr(d, (41, 19, 91, 46), 10, white_hi, None)
+    rr(d, (72, 21, 94, 43), 7, screen, OUTLINE, 2)
+    rr(d, (78, 27, 91, 37), 4, eye, None)
+    # orange ear disc
+    ellipse(d, (44, 26, 58, 42), orange, OUTLINE, 2)
+    ellipse(d, (48, 30, 54, 38), orange_hi, None)
+    # neck
+    rr(d, (62, 42, 74, 50), 3, joint, OUTLINE, 1)
+    # extended arm
+    line(d, [(88, 64), (104, 78), (112, 88)], OUTLINE, 10)
+    line(d, [(88, 64), (104, 78), (112, 88)], white, 6)
+    ellipse(d, (100, 74, 110, 84), joint, OUTLINE, 1)
+    rr(d, (108, 86, 122, 96), 3, (200, 166, 112, 255), OUTLINE, 1)
+    d.rectangle((P(111), P(89), P(119), P(92)), fill=(224, 190, 136, 255))
+    return im
+
+
 def robot_south(tier):
     if tier == "MkII":
         return mkii7_south()
+    if tier == "MkIII":
+        return mkiii_ref_south()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (20, 114, 108, 124), (0, 0, 0, 50))
@@ -1307,6 +1477,8 @@ def robot_south(tier):
 def robot_north(tier):
     if tier == "MkII":
         return mkii7_north()
+    if tier == "MkIII":
+        return mkiii_ref_north()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (20, 114, 108, 124), (0, 0, 0, 50))
@@ -1327,6 +1499,8 @@ def robot_north(tier):
 def robot_east(tier):
     if tier == "MkII":
         return mkii7_east()
+    if tier == "MkIII":
+        return mkiii_ref_east()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (22, 114, 106, 124), (0, 0, 0, 50))
