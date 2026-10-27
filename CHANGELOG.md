@@ -6,6 +6,9 @@
 
 ### Fixed
 
+- **污水管网会斜穿墙角连成一片**：`HygienePipeMapComp.RegenPipeGrids` 判断联通用的是 `cell.DistanceTo(other) <= 1.5f`，斜对角（√2≈1.414）也算相邻，于是污水管（以及水管）能绕过墙角把两段并不相接的管子并进同一张网：水/污水跨墙流动，四向连管贴图却显示断开。现改为只认四邻（曼哈顿距离 1），多格建筑任意一格贴边才算接通。
+- **化粪池满了不会积压、污水被悄悄丢掉**：`PlumbingNet.PushSewage` 原来要求「当前量 + 本次量 ≤ 容量」，否则直接返回 false，而马桶 `TryUseFlush` 又不看返回值。结果化粪池永远到不了容量，`CompSewageHandler.CompTickRare` 里的 `Blocked`/`SpillSewage` 分支成了死代码，满池后每次冲水只是白白消耗 14 L 水。现按 DBH 的规则：按 `priority` 取最高一档、平均分摊，允许超出容量，由 TickRare 标 `Blocked` 并溢出污染；被堵住的池子不再接收污水。
+- **化粪池刚存 14 L 就被抽干**：`WorkGiver_EmptySepticTank` 只判断 `sewageBuffer > 1f`，每冲一次水都会派一趟「清空化粪池」，池子永远攒不满，溢出/堵塞也就永远不会发生。现改为非强制时到 80% 容量才开工（`capacity * 0.8`），强制时保留 10 L 下限；同时补上 `CanReserveAndReach`、燃烧中与已标记拆除的检查，避免小人被派去够不着的池子后反复失败。
 - **设置页参数一多就没有滚动条、后半页点不到**：`AutoScrollView` 用上一帧高度当 `Listing_Standard.Begin` 的 rect，但 `Listing` 默认在 `curY + 行高 > rect.height` 时自动换列（`NewColumnIfNeeded`）——内容一超过视口就被甩到第二列，`curY` 归零，第二列又画在视口右侧被裁掉，量出来的高度永远不超过视口，`viewRect` 也就永远撑不开，滚动条始终不出现。机器人、卫生、蓝图、常规、保温这些参数多的页因此只显示到第一屏。现在固定 `maxOneColumn = true`（与框架模板、RJW、StackXXL 的设置页写法一致），高度改用 `MaxColumnHeightSeen` 回写，并给滚动条预留 16 px 列宽；搜索过滤让内容变短时滚动条自动收起。
 
 ## [0.0.3] - 2026-10-27

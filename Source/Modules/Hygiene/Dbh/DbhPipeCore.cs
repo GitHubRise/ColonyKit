@@ -261,11 +261,14 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 			{
 				return false;
 			}
+			// 只认四邻相接：原来用 DistanceTo <= 1.5，斜对角（√2）也算连通，
+			// 于是污水管能绕过墙角接到另一段管子上，和 Graphic_Linked 的
+			// 四向连管贴图对不上，水/污水网还会跨墙串在一起。
 			foreach (IntVec3 cell in a.OccupiedRect())
 			{
 				foreach (IntVec3 other in b.OccupiedRect())
 				{
-					if (cell.DistanceTo(other) <= 1.5f)
+					if (Mathf.Abs(cell.x - other.x) + Mathf.Abs(cell.z - other.z) == 1)
 					{
 						return true;
 					}
@@ -325,15 +328,27 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 
 		public bool PushSewage(float amount)
 		{
-			foreach (CompSewageHandler sewer in Sewers)
+			if (amount <= 0f)
 			{
-				if (sewer != null && !sewer.Blocked && sewer.sewageBuffer + amount <= sewer.Props.capacity)
-				{
-					sewer.sewageBuffer += amount;
-					return true;
-				}
+				return false;
 			}
-			return false;
+			List<CompSewageHandler> open = Sewers.Where(s => s != null && !s.Blocked).ToList();
+			if (open.Count == 0)
+			{
+				return false;
+			}
+			// 按 DBH 的规则选最高优先级的一档，再平均分摊；这里不能再加
+			// “当前量 + 本次量 <= 容量”的过滤：那会让化粪池永远到不了容量，
+			// CompSewageHandler.CompTickRare 里的 Blocked/溢出分支永远不触发，
+			// 溢出的污水也被悄悄丢掉。允许超出容量，由 TickRare 标 Blocked 并溢出。
+			int maxPrio = open.Max(s => s.Props.priority);
+			List<CompSewageHandler> top = open.Where(s => s.Props.priority == maxPrio).ToList();
+			float each = amount / top.Count;
+			for (int i = 0; i < top.Count; i++)
+			{
+				top[i].sewageBuffer += each;
+			}
+			return true;
 		}
 
 		public void InitNet()
