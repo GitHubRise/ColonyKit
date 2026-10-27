@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Reflection;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -87,6 +89,22 @@ namespace ColonyKit.Modules.Robotics
 		private Pawn Pawn => parent as Pawn;
 
 		public float Durability => durability;
+
+		private static void SexualizeRjw(Pawn pawn)
+		{
+			try
+			{
+				Type sexualizer = Type.GetType("rjw.Sexualizer, RJW");
+				MethodInfo sexualize = sexualizer?.GetMethod(
+					"sexualize_pawn",
+					BindingFlags.Public | BindingFlags.Static);
+				sexualize?.Invoke(null, new object[] { pawn });
+			}
+			catch (Exception exception)
+			{
+				Log.Warning($"[ColonyKit] RJW could not sexualize {pawn?.LabelShort}: {exception.Message}");
+			}
+		}
 
 		private static void SetSkill(Pawn pawn, SkillDef def, int level)
 		{
@@ -180,6 +198,8 @@ namespace ColonyKit.Modules.Robotics
 				}
 				SetSkill(pawn, SkillDefOf.Shooting, 18);
 				SetSkill(pawn, SkillDefOf.Melee, 18);
+				pawn.gender = Gender.Female;
+				SexualizeRjw(pawn);
 			}
 		}
 

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+<BodyDef>
+		<defName>CK_MkVBody</defName>
+		<label>Mk-V chassis</label>
+		<corePart>
+			<def>MechanicalThoraxCanManipulate</def>
+			<height>Middle</height>
+			<depth>Outside</depth>
+			<parts>
+				<li>
+					<def>MechanicalNeck</def>
+					<coverage>0.1</coverage>
+					<height>Top</height>
+					<parts>
+						<li>
+							<def>MechanicalHead</def>
+							<coverage>0.8</coverage>
+							<parts>
+								<li>
+									<def>ArtificialBrain</def>
+									<coverage>0.1</coverage>
+									<depth>Inside</depth>
+								</li>
+								<li>
+									<def>SightSensor</def>
+									<coverage>0.1</coverage>
+								</li>
+								<li>
+									<def>SightSensor</def>
+									<coverage>0.1</coverage>
+								</li>
+								<li>
+									<def>HearingSensor</def>
+									<coverage>0.1</coverage>
+								</li>
+								<li>
+									<def>HearingSensor</def>
+									<coverage>0.1</coverage>
+								</li>
+							</parts>
+						</li>
+					</parts>
+				</li>
+				<li>
+					<def>MechanicalShoulder</def>
+					<customLabel>left shoulder</customLabel>
+					<coverage>0.16</coverage>
+					<parts>
+						<li>
+							<def>MechanicalArm</def>
+							<customLabel>left arm</customLabel>
+							<coverage>0.85</coverage>
+							<parts>
+								<li>
+									<def>MechanicalHand</def>
+									<customLabel>left hand</customLabel>
+									<coverage>0.2</coverage>
+									<height>Bottom</height>
+								</li>
+							</parts>
+						</li>
+					</parts>
+				</li>
+				<li>
+					<def>MechanicalShoulder</def>
+					<customLabel>right shoulder</customLabel>
+					<coverage>0.16</coverage>
+					<parts>
+						<li>
+							<def>MechanicalArm</def>
+							<customLabel>right arm</customLabel>
+							<coverage>0.85</coverage>
+							<parts>
+								<li>
+									<def>MechanicalHand</def>
+									<customLabel>right hand</customLabel>
+									<coverage>0.2</coverage>
+									<height>Bottom</height>
+								</li>
+							</parts>
+						</li>
+					</parts>
+				</li>
+				<li>
+					<def>MechanicalLeg</def>
+					<customLabel>left tread</customLabel>
+					<coverage>0.2</coverage>
+					<height>Bottom</height>
+					<parts>
+						<li>
+							<def>MechanicalFoot</def>
+							<customLabel>left tread</customLabel>
+							<coverage>0.3</coverage>
+						</li>
+					</parts>
+				</li>
+				<li>
+					<def>MechanicalLeg</def>
+					<customLabel>right tread</customLabel>
+					<coverage>0.2</coverage>
+					<height>Bottom</height>
+					<parts>
+						<li>
+							<def>MechanicalFoot</def>
+							<customLabel>right tread</customLabel>
+							<coverage>0.3</coverage>
+						</li>
+					</parts>
+				</li>
+				<li>
+					<def>Reactor</def>
+					<coverage>0.07</coverage>
+					<depth>Inside</depth>
+				</li>
+				<li>
+					<def>FluidReprocessor</def>
+					<coverage>0.05</coverage>
+					<depth>Inside</depth>
+				</li>
+				<li>
+					<def>MechGenitals</def>
+					<coverage>0.04</coverage>
+					<depth>Outside</depth>
+				</li>
+				<li>
+					<def>MechChest</def>
+					<coverage>0.04</coverage>
+					<height>Top</height>
+				</li>
+				<li>
+					<def>MechAnus</def>
+					<coverage>0.03</coverage>
+					<depth>Inside</depth>
+				</li>
+			</parts>
+		</corePart>
+	</BodyDef>
+</Defs>

@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- **RJW 基础兼容（Mk-V）**：Mk-V 设为女性机体，使用带 MechGenitals / MechChest / MechAnus 的专用身体，生成时调用 RJW 的 Sexualizer.sexualize_pawn，使其获得机械族人工性器官并可参与 RJW 的自愿互动；怀孕/生育暂不处理。
+
 ### Fixed
 
 - **Mk-V 东/西贴图方向**：MkV_east.png 之前与 MkV_west.png 完全相同，都是朝左的侧身；现改为 MkV_west.png 的水平镜像，东向朝右、西向朝左。	ools/generate_mkv_final_turnaround.py 的 128px 输出也改为镜像东向，避免重新生成时回退。
