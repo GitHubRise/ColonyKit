@@ -358,6 +358,7 @@ namespace ColonyKit.Modules.Robotics
 						: "CK.Robotics.Command.Draft".Translate(),
 					defaultDesc = "CK.Robotics.Command.Draft.Desc".Translate(),
 					icon = TexCommand.Draft,
+					hotKey = KeyBindingDefOf.Command_ColonistDraft,
 					isActive = () => pawn.Drafted,
 					toggleAction = () =>
 					{
