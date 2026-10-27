@@ -53,5 +53,17 @@ namespace ColonyKit.Modules.Robotics
 			}
 			return true;
 		}
+
+		[HarmonyPatch(typeof(DaysWorthOfFoodCalculator), nameof(DaysWorthOfFoodCalculator.ApproxDaysWorthOfFood),
+			new[] { typeof(Caravan) })]
+		[HarmonyPostfix]
+		private static void InfiniteFoodForMkV(Caravan caravan, ref float __result)
+		{
+			List<Pawn> pawns = caravan?.PawnsListForReading;
+			if (pawns != null && pawns.Count > 0 && pawns.All(NannyBotUtility.IsMkV))
+			{
+				__result = DaysWorthOfFoodCalculator.InfiniteDaysWorthOfFood;
+			}
+		}
 	}
 }
