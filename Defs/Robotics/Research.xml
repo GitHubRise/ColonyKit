@@ -20,4 +20,123 @@
 		<researchViewX>0</researchViewX>
 		<researchViewY>0</researchViewY>
 	</ResearchProjectDef>
+
+	<!-- Mk-V 前置研究：七个分系统全部完成后，才能解锁 Mk-V 的组装。 -->
+	<ResearchProjectDef>
+		<defName>CK_RoboticsMechanicalBody</defName>
+		<label>robotic mechanical body</label>
+		<description>Load-bearing chassis, joints, armor mounts and maintenance access for a self-maintaining domestic android.</description>
+		<baseCost>1800</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>CK_NannyBot</li>
+		</prerequisites>
+		<tab>CK_RoboticsTab</tab>
+		<researchViewX>-6</researchViewX>
+		<researchViewY>0</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>CK_RoboticsActuation</defName>
+		<label>robotic actuation system</label>
+		<description>High-torque actuators and closed-loop limb control for precise household manipulation.</description>
+		<baseCost>2200</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>CK_NannyBot</li>
+		</prerequisites>
+		<tab>CK_RoboticsTab</tab>
+		<researchViewX>-4</researchViewX>
+		<researchViewY>0</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>CK_RoboticsPerception</defName>
+		<label>robotic perception system</label>
+		<description>Stereo optical sensors, proximity arrays and spatial mapping for safe movement around furniture and colonists.</description>
+		<baseCost>2600</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>CK_NannyBot</li>
+		</prerequisites>
+		<tab>CK_RoboticsTab</tab>
+		<researchViewX>-2</researchViewX>
+		<researchViewY>-2</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>CK_RoboticsAI</defName>
+		<label>AI compute platform</label>
+		<description>A compact inference core that schedules chores, handles interruptions and keeps the android stable over long deployments.</description>
+		<baseCost>3200</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>CK_NannyBot</li>
+		</prerequisites>
+		<tab>CK_RoboticsTab</tab>
+		<researchViewX>0</researchViewX>
+		<researchViewY>-2</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>CK_RoboticsDexterousHand</defName>
+		<label>dexterous robotic hand</label>
+		<description>Multi-finger hands with force feedback for cooking, cleaning and handling delicate household objects.</description>
+		<baseCost>2400</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>CK_NannyBot</li>
+		</prerequisites>
+		<tab>CK_RoboticsTab</tab>
+		<researchViewX>2</researchViewX>
+		<researchViewY>0</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>CK_RoboticsPower</defName>
+		<label>battery and energy system</label>
+		<description>High-density cells, thermal control and self-diagnostic charging hardware for a long-endurance android.</description>
+		<baseCost>2800</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>CK_NannyBot</li>
+		</prerequisites>
+		<tab>CK_RoboticsTab</tab>
+		<researchViewX>4</researchViewX>
+		<researchViewY>0</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>CK_RoboticsSoftware</defName>
+		<label>robotic software system</label>
+		<description>Layered control software, fail-safe routines and self-maintenance diagnostics for the Mk-V platform.</description>
+		<baseCost>3600</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>CK_NannyBot</li>
+		</prerequisites>
+		<tab>CK_RoboticsTab</tab>
+		<researchViewX>6</researchViewX>
+		<researchViewY>0</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>CK_RobotMkV</defName>
+		<label>Mk-V self-maintaining android</label>
+		<description>Integrate the mechanical body, actuation, perception, AI compute, dexterous hands, power system and software into the final self-maintaining nanny android.</description>
+		<baseCost>8000</baseCost>
+		<techLevel>Spacer</techLevel>
+		<prerequisites>
+			<li>CK_RoboticsMechanicalBody</li>
+			<li>CK_RoboticsActuation</li>
+			<li>CK_RoboticsPerception</li>
+			<li>CK_RoboticsAI</li>
+			<li>CK_RoboticsDexterousHand</li>
+			<li>CK_RoboticsPower</li>
+			<li>CK_RoboticsSoftware</li>
+		</prerequisites>
+		<tab>CK_RoboticsTab</tab>
+		<researchViewX>0</researchViewX>
+		<researchViewY>3</researchViewY>
+	</ResearchProjectDef>
 </Defs>

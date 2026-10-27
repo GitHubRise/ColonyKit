@@ -43,6 +43,15 @@ namespace ColonyKit.Modules.Robotics
 
 		private bool HasRobot => robot != null && !robot.Dead && !robot.Destroyed && robot.Spawned;
 
+		private static bool MkVResearched
+		{
+			get
+			{
+				ResearchProjectDef project = DefDatabase<ResearchProjectDef>.GetNamedSilentFail("CK_RobotMkV");
+				return project != null && project.IsFinished;
+			}
+		}
+
 		public override void PostSpawnSetup(bool respawningAfterLoad)
 		{
 			base.PostSpawnSetup(respawningAfterLoad);
@@ -144,6 +153,11 @@ namespace ColonyKit.Modules.Robotics
 
 		public bool TrySpawnRobot(bool manual = true)
 		{
+			return TrySpawnRobot(NannyBotDefOf.CK_RobotNannyKind, manual);
+		}
+
+		public bool TrySpawnRobot(PawnKindDef kind, bool manual = true)
+		{
 			if (!ModuleRegistry.IsEnabled(NannyBotUtility.ModuleId))
 			{
 				return false;
@@ -175,18 +189,16 @@ namespace ColonyKit.Modules.Robotics
 				return false;
 			}
 
-			if (NannyBotDefOf.CK_RobotNannyKind == null)
+			if (kind == null)
 			{
-				ModLog.Error("Robotics", "CK_RobotNannyKind missing; cannot assemble nanny bot.");
+				ModLog.Error("Robotics", "Robot PawnKindDef missing; cannot assemble robot.");
 				return false;
 			}
 
-			Pawn pawn = PawnGenerator.GeneratePawn(
-				NannyBotDefOf.CK_RobotNannyKind,
-				Faction.OfPlayer);
+			Pawn pawn = PawnGenerator.GeneratePawn(kind, Faction.OfPlayer);
 			if (pawn == null)
 			{
-				ModLog.Error("Robotics", "PawnGenerator returned null for CK_RobotNannyKind.");
+				ModLog.Error("Robotics", $"PawnGenerator returned null for {kind.defName}.");
 				return false;
 			}
 
@@ -222,8 +234,11 @@ namespace ColonyKit.Modules.Robotics
 
 			robot = pawn;
 			nextBuildTick = now + Props.rebuildCooldownTicks;
+			string messageKey = kind == NannyBotDefOf.CK_RobotMkVKind
+				? "CK.Robotics.Station.AssembledMkV"
+				: "CK.Robotics.Station.Assembled";
 			Messages.Message(
-				"CK.Robotics.Station.Assembled".Translate(pawn.LabelShort),
+				messageKey.Translate(pawn.LabelShort),
 				pawn,
 				MessageTypeDefOf.PositiveEvent);
 			return true;
@@ -261,6 +276,40 @@ namespace ColonyKit.Modules.Robotics
 				}
 			}
 			yield return assemble;
+
+			if (NannyBotDefOf.CK_RobotMkVKind != null)
+			{
+				Command_Action assembleMkV = new Command_Action
+				{
+					defaultLabel = "CK.Robotics.Station.AssembleMkV".Translate(),
+					defaultDesc = "CK.Robotics.Station.AssembleMkV.Desc".Translate(),
+					icon = ContentFinder<Texture2D>.Get("UI/Commands/CK_Assemble", false)
+						?? TexCommand.Install,
+					action = () => TrySpawnRobot(NannyBotDefOf.CK_RobotMkVKind, true)
+				};
+
+				if (!MkVResearched)
+				{
+					assembleMkV.Disabled = true;
+					assembleMkV.disabledReason = "CK.Robotics.Station.RequiresMkVResearch".Translate();
+				}
+				else if (HasRobot)
+				{
+					assembleMkV.Disabled = true;
+					assembleMkV.disabledReason = "CK.Robotics.Station.HasRobot".Translate();
+				}
+				else
+				{
+					int now = Find.TickManager.TicksGame;
+					if (now < nextBuildTick)
+					{
+						assembleMkV.Disabled = true;
+						assembleMkV.disabledReason = "CK.Robotics.Station.Cooldown".Translate(
+							(nextBuildTick - now).ToStringTicksToPeriod());
+					}
+				}
+				yield return assembleMkV;
+			}
 
 			if (HasRobot)
 			{

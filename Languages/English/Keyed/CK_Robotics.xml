@@ -49,6 +49,10 @@
 
 	<CK.Robotics.Station.Assemble>Assemble nanny robot</CK.Robotics.Station.Assemble>
 	<CK.Robotics.Station.Assemble.Desc>Assemble one nanny robot at this station. A destroyed robot must wait for the cooldown.</CK.Robotics.Station.Assemble.Desc>
+	<CK.Robotics.Station.AssembleMkV>Assemble Mk-V android</CK.Robotics.Station.AssembleMkV>
+	<CK.Robotics.Station.AssembleMkV.Desc>Assemble the Mk-V self-maintaining android. Requires mechanical body, actuation, perception, AI compute, dexterous hands, power and software research, plus the Mk-V integration project.</CK.Robotics.Station.AssembleMkV.Desc>
+	<CK.Robotics.Station.RequiresMkVResearch>All prerequisite Mk-V research must be completed first.</CK.Robotics.Station.RequiresMkVResearch>
+	<CK.Robotics.Station.AssembledMkV>Mk-V android assembled: {0}</CK.Robotics.Station.AssembledMkV>
 	<CK.Robotics.Station.HasRobot>The station already has a robot.</CK.Robotics.Station.HasRobot>
 	<CK.Robotics.Station.Cooldown>Reassembly cooldown: {0}</CK.Robotics.Station.Cooldown>
 	<CK.Robotics.Station.NoPower>No power: cannot charge.</CK.Robotics.Station.NoPower>

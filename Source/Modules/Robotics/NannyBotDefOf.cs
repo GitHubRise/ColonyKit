@@ -9,6 +9,7 @@ namespace ColonyKit.Modules.Robotics
 	{
 		public static ThingDef CK_RobotNanny;
 		public static PawnKindDef CK_RobotNannyKind;
+		public static PawnKindDef CK_RobotMkVKind;
 		public static ThingDef CK_NannyBotStation;
 		public static JobDef CK_NannyCleanFilth;
 		public static JobDef CK_NannyCharge;

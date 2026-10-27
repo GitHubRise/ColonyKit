@@ -55,6 +55,29 @@
 	</ThingDef>
 
 	<PawnKindDef>
+		<defName>CK_RobotMkVKind</defName>
+		<label>Mk-V nanny android</label>
+		<race>CK_RobotNanny</race>
+		<defaultFactionDef>PlayerColony</defaultFactionDef>
+		<combatPower>0</combatPower>
+		<isFighter>false</isFighter>
+		<canStrip>false</canStrip>
+		<destroyGearOnDrop>false</destroyGearOnDrop>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Things/Pawn/MkV/MkV</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>1.15</drawSize>
+					<shadowData>
+						<volume>(0.45, 0.5, 0.45)</volume>
+					</shadowData>
+				</bodyGraphicData>
+			</li>
+		</lifeStages>
+	</PawnKindDef>
+
+	<PawnKindDef>
 		<defName>CK_RobotNannyKind</defName>
 		<label>nanny robot</label>
 		<race>CK_RobotNanny</race>

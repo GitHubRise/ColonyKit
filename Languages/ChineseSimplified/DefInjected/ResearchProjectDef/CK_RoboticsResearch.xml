@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_NannyBot.label>家政机器人</CK_NannyBot.label>
+	<CK_NannyBot.description>建造保姆机器人工作站。工作站会组装一台不需要吃饭睡觉的家政机器人，可扫地、清洁和搬运，并从殖民地电网充电。</CK_NannyBot.description>
+
+	<CK_RoboticsMechanicalBody.label>机械本体</CK_RoboticsMechanicalBody.label>
+	<CK_RoboticsMechanicalBody.description>研究自维护家政安卓的承重骨架、关节、装甲安装点与维护开口。</CK_RoboticsMechanicalBody.description>
+
+	<CK_RoboticsActuation.label>执行系统</CK_RoboticsActuation.label>
+	<CK_RoboticsActuation.description>高扭矩执行器与闭环肢体控制，让机器人能精确完成家务操作。</CK_RoboticsActuation.description>
+
+	<CK_RoboticsPerception.label>感知系统</CK_RoboticsPerception.label>
+	<CK_RoboticsPerception.description>双目视觉、接近传感器阵列与空间建图，保证机器人在家具和殖民者之间安全移动。</CK_RoboticsPerception.description>
+
+	<CK_RoboticsAI.label>AI 计算平台</CK_RoboticsAI.label>
+	<CK_RoboticsAI.description>紧凑的推理核心，负责任务调度、中断处理和长期运行稳定性。</CK_RoboticsAI.description>
+
+	<CK_RoboticsDexterousHand.label>灵巧手</CK_RoboticsDexterousHand.label>
+	<CK_RoboticsDexterousHand.description>带力反馈的多指手，用于烹饪、清洁和抓取精细家居物品。</CK_RoboticsDexterousHand.description>
+
+	<CK_RoboticsPower.label>电池与能源系统</CK_RoboticsPower.label>
+	<CK_RoboticsPower.description>高密度电池、热管理与自诊断充电硬件，支撑长时间家政作业。</CK_RoboticsPower.description>
+
+	<CK_RoboticsSoftware.label>软件系统</CK_RoboticsSoftware.label>
+	<CK_RoboticsSoftware.description>分层控制软件、失效安全流程与自维护诊断，是 Mk-V 平台的核心软件基础。</CK_RoboticsSoftware.description>
+
+	<CK_RobotMkV.label>Mk-V 自维护安卓</CK_RobotMkV.label>
+	<CK_RobotMkV.description>把机械本体、执行系统、感知系统、AI 计算平台、灵巧手、电池与能源系统、软件系统整合成最终的自维护家政安卓。七项前置研究全部完成后才能组装。</CK_RobotMkV.description>
+</LanguageData>
