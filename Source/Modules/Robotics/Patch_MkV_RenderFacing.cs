@@ -13,7 +13,7 @@ namespace ColonyKit.Modules.Robotics
 		private static void Postfix(PawnRenderTree __instance, ref PawnDrawParms parms)
 		{
 			Pawn pawn = __instance?.pawn;
-			if (!NannyBotUtility.IsMkV(pawn) || pawn.Drafted || pawn.pather == null || !pawn.pather.Moving)
+			if (!NannyBotUtility.IsMkV(pawn) || pawn.pather == null || !pawn.pather.Moving)
 			{
 				return;
 			}

@@ -17,7 +17,11 @@ namespace ColonyKit.Modules.Robotics
 		private static void Postfix(Pawn_RotationTracker __instance)
 		{
 			Pawn pawn = PawnField?.GetValue(__instance) as Pawn;
-			if (!NannyBotUtility.IsMkV(pawn) || pawn.Drafted || pawn.pather == null || !pawn.pather.Moving)
+			if (!NannyBotUtility.IsMkV(pawn))
+			{
+				return;
+			}
+			if (pawn.pather == null || !pawn.pather.Moving)
 			{
 				return;
 			}
