@@ -120,17 +120,17 @@
 				</li>
 				<li>
 					<def>MechGenitals</def>
-					<coverage>0.04</coverage>
+					<coverage>0.01</coverage>
 					<depth>Outside</depth>
 				</li>
 				<li>
 					<def>MechChest</def>
-					<coverage>0.04</coverage>
+					<coverage>0.01</coverage>
 					<height>Top</height>
 				</li>
 				<li>
 					<def>MechAnus</def>
-					<coverage>0.03</coverage>
+					<coverage>0.01</coverage>
 					<depth>Inside</depth>
 				</li>
 			</parts>
