@@ -46,9 +46,11 @@
   - 「施肥」用原版 `Designation`（`CK_Fertilize`）而不是自定义 Area：`Designator_Fertilize` 在耕地上刷标记，`WorkGiver_PlaceFertilizer`（Growing）一次带最多 10×格数的有机肥，`JobDriver_PlaceFertilizer` 每格消耗 10 个、施完删标记。省掉了自定义 Area 的 Grid 与存档问题（1.6 的 `Area.Grid` 不在公开 API 里）。
   - `MapComponent_Agriculture` 用稀疏 `Dictionary<int,float>` 存施肥/灌溉量并随地图存档；施肥按 `fertilizerLifespanDays` 均摊衰减、灌溉当天蒸发完。`Patch_FertilityGrid_Agriculture` 给 `FertilityGrid.CalculateFertilityAt` 加 Postfix：施肥格 `max(原肥力 × 施肥倍率, 0.5)`，灌溉格再乘 `Lerp(1 → 灌溉倍率, 水量)`。
   - `CK_IrrigationSprinkler`（15 钢 + 1 零部件，「灌溉」研究）+ `CompSprinkler`：接水网，每天 5 点喷一次，水量 0.16 L/格，半径 1.9–6.9 可调，半径内 `fertility > 0` 且通视的格子灌满。
-  - 设置页新增「农业（施肥 / 灌溉）」：施肥倍率 100%–250%（默认 110%）、有效期 5–240 天（默认 60）、灌溉倍率 100%–300%（默认 180%）、施肥后肥力下限 0%–200%（默认 50%，DBH 的沙地保底）、施肥后肥力上限 50%–500%（默认 200%，灌溉加成也计入；`Validate()` 保证下限不高于上限）。
+  - 设置页新增「农业（施肥 / 灌溉）」：施肥倍率 100%–500%（默认 110%）、有效期 5–240 天（默认 60）、灌溉倍率 100%–500%（默认 180%）、施肥后肥力下限 0%–200%（默认 50%，DBH 的沙地保底）、施肥后肥力上限 50%–500%（默认 200%，灌溉加成也计入；`Validate()` 保证下限不高于上限）。
   - 自检（`-colonykit-agriculture-test`）实测：土质肥力 1.000 → 施肥 1.100 → 再灌溉 1.980（=110%×180%，即玩家说的「200%」）；堆肥厂塞 100 粪渣后 `spaceLeft=150`；洒水器 `radius=6.9, usage=23.2 L/天`；Def 全在。
   - 地面覆盖层 `SectionLayer_Agriculture`：一个 section 一次拼出施肥格（土褐）与灌溉格（淡蓝）的四边形，颜色随剩余量淡出；`MapComponent_Agriculture` 把变化的格子按 section 归并后在 tick 末尾重画（`mapDrawer.SectionAt` + `Section.GetLayer`）。设置页可关（`showAgricultureOverlay`）。
+- **双人浴缸专属心情**：新增 ThoughtDef `CK_BathTogether`（+24 心情、`durationDays` 2 天、`stackLimit` 1、带气泡），`JobDriver_TakeBathTogether.FinishBath` 在共浴完成（`completed`）时给自己加一条；两人各自的 Job 都会走 finish，所以双方都拿到。中英 DefInjected 同步补齐。
+
 
 ## [0.0.3] - 2026-10-27
 

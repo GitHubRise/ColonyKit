@@ -155,6 +155,12 @@ namespace ColonyKit.Modules.Hygiene
 			pawn.filth?.CarriedFilthListForReading?.Clear();
 			SanitationUtil.ApplyBathroomThought(pawn, bath);
 			SanitationUtil.WaterTempCheck(pawn, waterCold, true);
+			// 双人共浴的专属心情：+24，持续 2 天（两人各自的 Job 完成时都会拿到）。
+			ThoughtDef together = DefDatabase<ThoughtDef>.GetNamedSilentFail("CK_BathTogether");
+			if (together != null)
+			{
+				pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(together);
+			}
 			pawn.needs?.TryGetNeed<Need_Hygiene>()?.CleanContamination();
 			SanitationUtil.ContaminationCheckWater(pawn, waterQuality);
 			if (last)

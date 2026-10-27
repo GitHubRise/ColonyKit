@@ -102,6 +102,20 @@
 		<showBubble>true</showBubble>
 	</ThoughtDef>
 	<ThoughtDef>
+		<!-- 双人浴缸共浴：+24 心情，持续 2 天。 -->
+		<defName>CK_BathTogether</defName>
+		<durationDays>2</durationDays>
+		<stackLimit>1</stackLimit>
+		<showBubble>true</showBubble>
+		<stages>
+			<li>
+				<label>bath together</label>
+				<description>I shared a warm bath with someone I like. That was wonderful.</description>
+				<baseMoodEffect>24</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+	<ThoughtDef>
 		<defName>CK_PrivateBathroom</defName>
 		<durationDays>1</durationDays>
 		<stackLimit>1</stackLimit>

@@ -37,11 +37,11 @@ namespace ColonyKit.Modules.Hygiene
 		public const float MaxInviteChance = 1f;
 		public const float DefaultInviteChance = 0.08f;
 		public const float MinFertilizerStrength = 1f;
-		public const float MaxFertilizerStrength = 2.5f;
+		public const float MaxFertilizerStrength = 5f;
 		public const float MinFertilizerLifespan = 5f;
 		public const float MaxFertilizerLifespan = 240f;
 		public const float MinIrrigationStrength = 1f;
-		public const float MaxIrrigationStrength = 3f;
+		public const float MaxIrrigationStrength = 5f;
 		public const float MinFertilizerFloor = 0f;
 		public const float MaxFertilizerFloor = 2f;
 		public const float MinFertilizerCap = 0.5f;
