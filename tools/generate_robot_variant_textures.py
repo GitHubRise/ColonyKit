@@ -2628,7 +2628,8 @@ def robot_east(tier):
 
 def main():
     tiers = ["MkI", "MkII", "MkIII", "MkIV", "MkV"]
-    for tier in tiers:
+    # Mk-V is a direct-use asset made from the supplied renders. Do not overwrite it here.
+    for tier in [t for t in tiers if t != "MkV"]:
         robot_south(tier).resize((128, 128), Image.LANCZOS).save(os.path.join(OUT, f"{tier}_south.png"))
         robot_north(tier).resize((128, 128), Image.LANCZOS).save(os.path.join(OUT, f"{tier}_north.png"))
         east = robot_east(tier)
