@@ -36,7 +36,7 @@ ROBOTS = [
     ("MkII", "Mk-II 模块化保姆机", "MODULAR NANNY", "T2 · 1×1 · 绿色模块型"),
     ("MkIII", "Mk-III 重载保姆机", "HEAVY-DUTY NANNY", "T3 · 1×1 · 琥珀重载型"),
     ("MkIV", "Mk-IV 前哨保姆机", "OUTPOST NANNY", "T4 · 1×1 · 暗灰/橙前哨型"),
-    ("MkV", "Mk-V 自维护保姆机", "SELF-MAINTAINING NANNY", "T5 · 1×1 · 象牙/金旗舰型"),
+    ("MkV", "Mk-V 自维护保姆机", "SELF-MAINTAINING NANNY", "T5 · 1×1 · 白围裙/黑马尾旗舰型"),
 ]
 
 
