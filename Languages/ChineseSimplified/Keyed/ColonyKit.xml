@@ -332,6 +332,8 @@
 	<ColonyKit.Settings.Hygiene.Contamination.Desc>脏水造成污染的概率倍率；100% 为默认，0 为关闭。</ColonyKit.Settings.Hygiene.Contamination.Desc>
 	<ColonyKit.Settings.Hygiene.Section.Bath>双人浴缸</ColonyKit.Settings.Hygiene.Section.Bath>
 	<ColonyKit.Settings.Hygiene.Section.Agriculture>农业（施肥 / 灌溉）</ColonyKit.Settings.Hygiene.Section.Agriculture>
+	<ColonyKit.Settings.Hygiene.ShowOverlay>显示施肥/灌溉覆盖层</ColonyKit.Settings.Hygiene.ShowOverlay>
+	<ColonyKit.Settings.Hygiene.ShowOverlay.Desc>在地面画出施肥（土褐）和灌溉（淡蓝）的覆盖色；关掉后只能看施肥标记和作物长势。</ColonyKit.Settings.Hygiene.ShowOverlay.Desc>
 	<ColonyKit.Settings.Hygiene.FertilizerStrength>施肥肥力倍率</ColonyKit.Settings.Hygiene.FertilizerStrength>
 	<ColonyKit.Settings.Hygiene.FertilizerStrength.Desc>施肥后这格地膜的肥力倍率；110% 为 DBH 默认。</ColonyKit.Settings.Hygiene.FertilizerStrength.Desc>
 	<ColonyKit.Settings.Hygiene.FertilizerLifespan>施肥有效期</ColonyKit.Settings.Hygiene.FertilizerLifespan>

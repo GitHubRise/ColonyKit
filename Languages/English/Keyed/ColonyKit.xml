@@ -332,6 +332,8 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<ColonyKit.Settings.Hygiene.Contamination.Desc>Multiplier for dirty-water contamination; 100% is default, 0 disables it.</ColonyKit.Settings.Hygiene.Contamination.Desc>
 	<ColonyKit.Settings.Hygiene.Section.Bath>Double bathtub</ColonyKit.Settings.Hygiene.Section.Bath>
 	<ColonyKit.Settings.Hygiene.Section.Agriculture>Agriculture (fertilizer / irrigation)</ColonyKit.Settings.Hygiene.Section.Agriculture>
+	<ColonyKit.Settings.Hygiene.ShowOverlay>Show fertilizer / irrigation overlay</ColonyKit.Settings.Hygiene.ShowOverlay>
+	<ColonyKit.Settings.Hygiene.ShowOverlay.Desc>Tints fertilized (brown) and irrigated (blue) cells on the ground. Turn off to rely on designations and crop growth only.</ColonyKit.Settings.Hygiene.ShowOverlay.Desc>
 	<ColonyKit.Settings.Hygiene.FertilizerStrength>Fertilizer strength</ColonyKit.Settings.Hygiene.FertilizerStrength>
 	<ColonyKit.Settings.Hygiene.FertilizerStrength.Desc>Fertility multiplier on fertilized cells; 110% is the DBH default.</ColonyKit.Settings.Hygiene.FertilizerStrength.Desc>
 	<ColonyKit.Settings.Hygiene.FertilizerLifespan>Fertilizer lifespan</ColonyKit.Settings.Hygiene.FertilizerLifespan>
