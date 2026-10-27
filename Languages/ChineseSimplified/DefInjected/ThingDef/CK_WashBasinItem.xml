@@ -2,4 +2,6 @@
 <LanguageData>
 	<CK_WashBasinItem.label>脸盆</CK_WashBasinItem.label>
 	<CK_WashBasinItem.description>便携脸盆。像工具一样装备后可带到水井边打水（30 升），再右键水箱把水倒进去。</CK_WashBasinItem.description>
+	<CK_WashBasinWoodItem.label>木脸盆</CK_WashBasinWoodItem.label>
+	<CK_WashBasinWoodItem.description>木制便携脸盆。功能和铁脸盆一样，更便宜也更轻，耐久低一些。</CK_WashBasinWoodItem.description>
 </LanguageData>

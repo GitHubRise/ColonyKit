@@ -29,7 +29,7 @@ namespace ColonyKit.Modules.Hygiene
 			pour.initAction = () => workDone = 0;
 			pour.tickIntervalAction = delta =>
 			{
-				CompBasinWater basin = JobDriver_FillBasin.Basin(pawn);
+				CompBasinWater basin = JobDriver_FillBasin.CarriedBasinWithWater(pawn);
 				if (basin == null || basin.IsEmpty)
 				{
 					ReadyForNextToil();

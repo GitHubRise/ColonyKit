@@ -1,31 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-	<!-- 便携脸盆：装备在武器栏，带去水井打水，再倒进水箱。 -->
-	<ThingDef ParentName="BaseWeapon">
+	<!-- 便携脸盆：普通物品，放在物品栏里随身携带；右键水井自动取用打水，右键水箱倒水。 -->
+	<ThingDef ParentName="ResourceBase">
 		<defName>CK_WashBasinItem</defName>
 		<label>wash basin</label>
-		<techLevel>Industrial</techLevel>
-		<description>A portable wash basin. Equip it like a tool, right-click a water well to fill it, then right-click a water tank to pour the water in.</description>
+		<description>A portable wash basin. Keep it in a colonist's inventory; right-click a water well to fill it, then right-click a water tank to pour the water in.</description>
 		<graphicData>
 			<texPath>Things/Item/CK_WashBasin</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(0.9,0.9)</drawSize>
 		</graphicData>
 		<uiIconScale>1.2</uiIconScale>
+		<rotatable>false</rotatable>
 		<thingCategories>
-			<li>WeaponsMelee</li>
+			<li>Manufactured</li>
 		</thingCategories>
 		<stackLimit>1</stackLimit>
-		<tools>
-			<li>
-				<label>basin</label>
-				<capacities>
-					<li>Blunt</li>
-				</capacities>
-				<power>3</power>
-				<cooldownTime>2</cooldownTime>
-			</li>
-		</tools>
 		<comps>
 			<li Class="ColonyKit.Modules.Hygiene.CompProperties_BasinWater">
 				<Capacity>30</Capacity>
@@ -34,13 +24,17 @@
 		<statBases>
 			<Mass>0.8</Mass>
 			<WorkToMake>600</WorkToMake>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>0.5</Flammability>
+			<DeteriorationRate>2</DeteriorationRate>
+			<MarketValue>25</MarketValue>
 		</statBases>
 	</ThingDef>
 
 	<RecipeDef>
 		<defName>CK_MakeWashBasin</defName>
 		<label>make wash basin</label>
-		<description>Craft a portable wash basin for carrying water from a well.</description>
+		<description>Craft a portable steel wash basin for carrying water from a well.</description>
 		<jobString>making a wash basin.</jobString>
 		<workAmount>600</workAmount>
 		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
@@ -57,6 +51,65 @@
 		</ingredients>
 		<products>
 			<CK_WashBasinItem>1</CK_WashBasinItem>
+		</products>
+		<recipeUsers>
+			<li>CraftingSpot</li>
+		</recipeUsers>
+		<researchPrerequisite>CK_HygieneResearch</researchPrerequisite>
+	</RecipeDef>
+
+	<!-- 木脸盆：更便宜、更轻，耐久低一些；功能与铁脸盆完全相同。 -->
+	<ThingDef ParentName="ResourceBase">
+		<defName>CK_WashBasinWoodItem</defName>
+		<label>wooden wash basin</label>
+		<description>A cheap wooden wash basin. Same as the steel one, but cheaper and lighter.</description>
+		<graphicData>
+			<texPath>Things/Item/CK_WashBasin</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(0.9,0.9)</drawSize>
+			<color>(0.72,0.52,0.32)</color>
+		</graphicData>
+		<uiIconScale>1.2</uiIconScale>
+		<rotatable>false</rotatable>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<stackLimit>1</stackLimit>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.CompProperties_BasinWater">
+				<Capacity>30</Capacity>
+			</li>
+		</comps>
+		<statBases>
+			<Mass>0.5</Mass>
+			<WorkToMake>300</WorkToMake>
+			<MaxHitPoints>60</MaxHitPoints>
+			<Flammability>0.8</Flammability>
+			<DeteriorationRate>2</DeteriorationRate>
+			<MarketValue>12</MarketValue>
+		</statBases>
+	</ThingDef>
+
+	<RecipeDef>
+		<defName>CK_MakeWashBasinWood</defName>
+		<label>make wooden wash basin</label>
+		<description>Craft a cheap wooden wash basin for carrying water from a well.</description>
+		<jobString>making a wooden wash basin.</jobString>
+		<workAmount>300</workAmount>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<workSkill>Crafting</workSkill>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<products>
+			<CK_WashBasinWoodItem>1</CK_WashBasinWoodItem>
 		</products>
 		<recipeUsers>
 			<li>CraftingSpot</li>

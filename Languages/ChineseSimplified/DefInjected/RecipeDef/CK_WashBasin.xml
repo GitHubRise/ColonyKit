@@ -3,4 +3,7 @@
 	<CK_MakeWashBasin.label>制作脸盆</CK_MakeWashBasin.label>
 	<CK_MakeWashBasin.description>用 20 钢铁制作一个便携脸盆。装备后可以在水井打水，再倒进水箱。</CK_MakeWashBasin.description>
 	<CK_MakeWashBasin.jobString>正在制作脸盆。</CK_MakeWashBasin.jobString>
+	<CK_MakeWashBasinWood.label>制作木脸盆</CK_MakeWashBasinWood.label>
+	<CK_MakeWashBasinWood.description>用 10 木头制作一个木脸盆，更便宜也更轻。</CK_MakeWashBasinWood.description>
+	<CK_MakeWashBasinWood.jobString>正在制作木脸盆。</CK_MakeWashBasinWood.jobString>
 </LanguageData>
