@@ -32,8 +32,8 @@
 			<li>CK_NannyBot</li>
 		</prerequisites>
 		<tab>CK_RoboticsTab</tab>
-		<researchViewX>-6</researchViewX>
-		<researchViewY>0</researchViewY>
+		<researchViewX>0</researchViewX>
+		<researchViewY>2</researchViewY>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
@@ -46,8 +46,8 @@
 			<li>CK_NannyBot</li>
 		</prerequisites>
 		<tab>CK_RoboticsTab</tab>
-		<researchViewX>-4</researchViewX>
-		<researchViewY>0</researchViewY>
+		<researchViewX>2</researchViewX>
+		<researchViewY>2</researchViewY>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
@@ -60,8 +60,8 @@
 			<li>CK_NannyBot</li>
 		</prerequisites>
 		<tab>CK_RoboticsTab</tab>
-		<researchViewX>-2</researchViewX>
-		<researchViewY>-2</researchViewY>
+		<researchViewX>4</researchViewX>
+		<researchViewY>2</researchViewY>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
@@ -74,8 +74,8 @@
 			<li>CK_NannyBot</li>
 		</prerequisites>
 		<tab>CK_RoboticsTab</tab>
-		<researchViewX>0</researchViewX>
-		<researchViewY>-2</researchViewY>
+		<researchViewX>6</researchViewX>
+		<researchViewY>2</researchViewY>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
@@ -178,7 +178,7 @@
 			<li>CK_RoboticsSoftware</li>
 		</prerequisites>
 		<tab>CK_RoboticsTab</tab>
-		<researchViewX>0</researchViewX>
-		<researchViewY>3</researchViewY>
+		<researchViewX>3</researchViewX>
+		<researchViewY>4</researchViewY>
 	</ResearchProjectDef>
 </Defs>
