@@ -112,8 +112,8 @@ namespace ColonyKit.Modules.Robotics
 
 		private static void ApplyRobotSkills(Pawn pawn)
 		{
-			SetSkill(pawn, SkillDefOf.Shooting, 18);
-			SetSkill(pawn, SkillDefOf.Melee, 18);
+			SetSkill(pawn, SkillDefOf.Shooting, Mathf.Clamp(18 + Rand.RangeInclusive(-5, 5), 16, 20));
+			SetSkill(pawn, SkillDefOf.Melee, Mathf.Clamp(18 + Rand.RangeInclusive(-5, 5), 16, 20));
 			ApplySkill(pawn, SkillDefOf.Medicine, 18);
 			ApplySkill(pawn, SkillDefOf.Cooking, 18);
 			ApplySkill(pawn, SkillDefOf.Crafting, 18);
@@ -220,11 +220,11 @@ namespace ColonyKit.Modules.Robotics
 				{
 					pawn.skills = new Pawn_SkillTracker(pawn);
 				}
-				if (!skillsInitialized || skillsProfileVersion < 2)
+				if (!skillsInitialized || skillsProfileVersion < 3)
 				{
 					ApplyRobotSkills(pawn);
 					skillsInitialized = true;
-					skillsProfileVersion = 2;
+					skillsProfileVersion = 3;
 				}
 				pawn.gender = Gender.Female;
 				SexualizeRjw(pawn);
