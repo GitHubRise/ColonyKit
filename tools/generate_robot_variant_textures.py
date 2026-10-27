@@ -1457,11 +1457,170 @@ def mkiii_ref_east():
     return im
 
 
+def mkiv_ref_south():
+    """Mk-IV v2: dark outpost tower robot with binocular eyes and wheeled base."""
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    shell = (67, 69, 73, 255)
+    shell_hi = (91, 94, 98, 255)
+    shell_lo = (42, 44, 48, 255)
+    orange = (232, 116, 48, 255)
+    lens = (23, 25, 28, 255)
+    lens_rim = (145, 148, 151, 255)
+    pillow = (236, 229, 212, 255)
+    pillow_lo = (200, 192, 176, 255)
+    ellipse(d, (18, 116, 110, 128), (0, 0, 0, 55))
+
+    # wheeled base
+    rr(d, (24, 98, 104, 116), 7, shell, OUTLINE, 2)
+    rr(d, (30, 104, 98, 112), 4, shell_hi, None)
+    for x in (26, 84):
+        ellipse(d, (x, 108, x + 18, 124), (30, 32, 35, 255), OUTLINE, 2)
+        ellipse(d, (x + 4, 112, x + 14, 120), shell_hi, OUTLINE, 1)
+    # orange hazard band
+    for i in range(6):
+        polygon(d, [(32 + i * 11, 114), (37 + i * 11, 114), (35 + i * 11, 108), (30 + i * 11, 108)], orange)
+    # front drawer
+    rr(d, (46, 108, 82, 120), 2, shell_lo, OUTLINE, 1)
+    d.rectangle((P(52), P(112), P(76), P(114)), fill=orange)
+
+    # tall column / body
+    rr(d, (54, 44, 74, 102), 5, shell, OUTLINE, 2)
+    rr(d, (58, 50, 70, 98), 3, shell_hi, None)
+    d.rectangle((P(60), P(52), P(62), P(96)), fill=orange)
+    for y in (58, 70, 82):
+        d.rectangle((P(64), P(y), P(70), P(y + 2)), fill=shell_lo)
+
+    # shoulder block
+    rr(d, (46, 40, 82, 58), 5, shell, OUTLINE, 2)
+    rr(d, (50, 44, 78, 54), 3, shell_hi, None)
+    d.rectangle((P(56), P(43), P(72), P(46)), fill=shell_lo)
+
+    # angular head with two binocular lenses
+    polygon(d, [(48, 10), (78, 10), (86, 18), (86, 38), (78, 45), (48, 45), (40, 38), (40, 18)], shell, OUTLINE)
+    polygon(d, [(52, 15), (74, 15), (80, 21), (80, 35), (74, 40), (52, 40), (46, 35), (46, 21)], shell_hi, OUTLINE)
+    # binocular eyes
+    for x in (54, 68):
+        ellipse(d, (x, 22, x + 12, 34), lens_rim, OUTLINE, 1)
+        ellipse(d, (x + 2, 24, x + 10, 32), lens, None)
+        ellipse(d, (x + 4, 26, x + 8, 30), (135, 208, 230, 255), None)
+    d.rectangle((P(52), P(37), P(80), P(40)), fill=shell_lo)
+    # orange side markers
+    for x in (38, 86):
+        d.rectangle((P(x), P(24), P(x + 4), P(31)), fill=orange, outline=OUTLINE, width=P(1))
+
+    # long articulated arms
+    for side in (-1, 1):
+        sx = 46 if side == -1 else 82
+        ex = 44 if side == -1 else 84
+        elbow = (32 if side == -1 else 96, 66)
+        line(d, [(sx, 52), elbow, (ex, 84)], OUTLINE, 8)
+        line(d, [(sx, 52), elbow, (ex, 84)], shell_hi, 4)
+        ellipse(d, (elbow[0] - 5, elbow[1] - 5, elbow[0] + 5, elbow[1] + 5), shell_lo, OUTLINE, 1)
+    # pillow held across the front
+    rr(d, (42, 74, 86, 94), 10, pillow, OUTLINE, 2)
+    rr(d, (46, 77, 82, 88), 7, pillow_lo, None)
+    line(d, [(48, 80), (80, 80)], (251, 246, 232, 255), 2)
+    line(d, [(48, 86), (80, 86)], (220, 212, 194, 255), 1)
+    # gripper fingers clamp the pillow edges
+    for x in (44, 84):
+        line(d, [(x - 4, 82), (x - 1, 91)], OUTLINE, 2)
+        line(d, [(x + 4, 82), (x + 1, 91)], OUTLINE, 2)
+        ellipse(d, (x - 4, 88, x + 4, 94), shell_lo, OUTLINE, 1)
+    return im
+
+
+def mkiv_ref_north():
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    shell = (67, 69, 73, 255)
+    shell_hi = (91, 94, 98, 255)
+    shell_lo = (42, 44, 48, 255)
+    orange = (232, 116, 48, 255)
+    ellipse(d, (18, 116, 110, 128), (0, 0, 0, 55))
+    rr(d, (24, 98, 104, 116), 7, shell, OUTLINE, 2)
+    rr(d, (30, 104, 98, 112), 4, shell_hi, None)
+    for x in (26, 84):
+        ellipse(d, (x, 108, x + 18, 124), (30, 32, 35, 255), OUTLINE, 2)
+    for i in range(6):
+        polygon(d, [(32 + i * 11, 114), (37 + i * 11, 114), (35 + i * 11, 108), (30 + i * 11, 108)], orange)
+    # rear column
+    rr(d, (54, 44, 74, 102), 5, shell, OUTLINE, 2)
+    rr(d, (58, 50, 70, 98), 3, shell_hi, None)
+    rr(d, (60, 56, 68, 92), 2, shell_lo, OUTLINE, 1)
+    for y in (62, 74, 86):
+        d.rectangle((P(61), P(y), P(67), P(y + 3)), fill=shell_hi)
+    rr(d, (46, 40, 82, 58), 5, shell, OUTLINE, 2)
+    # rear head
+    polygon(d, [(48, 10), (78, 10), (86, 18), (86, 38), (78, 45), (48, 45), (40, 38), (40, 18)], shell, OUTLINE)
+    polygon(d, [(52, 15), (74, 15), (80, 21), (80, 35), (74, 40), (52, 40), (46, 35), (46, 21)], shell_hi, OUTLINE)
+    d.rectangle((P(54), P(22), P(74), P(36)), fill=shell_lo, outline=OUTLINE, width=P(1))
+    for x in (57, 62, 67, 72):
+        d.rectangle((P(x), P(25), P(x + 2), P(33)), fill=shell_hi)
+    for x in (38, 86):
+        d.rectangle((P(x), P(24), P(x + 4), P(31)), fill=orange, outline=OUTLINE, width=P(1))
+    # rear arms
+    for side in (-1, 1):
+        sx = 46 if side == -1 else 82
+        ex = 34 if side == -1 else 94
+        line(d, [(sx, 52), (32 if side == -1 else 96, 66), (ex, 82)], OUTLINE, 8)
+        line(d, [(sx, 52), (32 if side == -1 else 96, 66), (ex, 82)], shell_hi, 4)
+        rr(d, (ex - 6, 80, ex + 6, 88), 2, shell_lo, OUTLINE, 1)
+    return im
+
+
+def mkiv_ref_east():
+    im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    shell = (67, 69, 73, 255)
+    shell_hi = (91, 94, 98, 255)
+    shell_lo = (42, 44, 48, 255)
+    orange = (232, 116, 48, 255)
+    lens = (23, 25, 28, 255)
+    lens_rim = (145, 148, 151, 255)
+    pillow = (236, 229, 212, 255)
+    ellipse(d, (16, 116, 112, 128), (0, 0, 0, 55))
+    # side base
+    rr(d, (22, 100, 106, 118), 7, shell, OUTLINE, 2)
+    rr(d, (28, 106, 100, 114), 4, shell_hi, None)
+    for x in (30, 82):
+        ellipse(d, (x, 110, x + 18, 126), (30, 32, 35, 255), OUTLINE, 2)
+        ellipse(d, (x + 4, 114, x + 14, 122), shell_hi, OUTLINE, 1)
+    for i in range(5):
+        polygon(d, [(34 + i * 11, 116), (39 + i * 11, 116), (37 + i * 11, 110), (32 + i * 11, 110)], orange)
+    # side column
+    rr(d, (52, 44, 74, 102), 5, shell, OUTLINE, 2)
+    rr(d, (57, 50, 69, 98), 3, shell_hi, None)
+    d.rectangle((P(61), P(52), P(63), P(96)), fill=orange)
+    # shoulder block
+    rr(d, (46, 40, 82, 58), 5, shell, OUTLINE, 2)
+    # side head, one lens visible
+    polygon(d, [(50, 10), (80, 10), (88, 18), (88, 38), (80, 45), (50, 45), (42, 38), (42, 18)], shell, OUTLINE)
+    polygon(d, [(54, 15), (76, 15), (82, 21), (82, 35), (76, 40), (54, 40), (48, 35), (48, 21)], shell_hi, OUTLINE)
+    ellipse(d, (74, 22, 86, 34), lens_rim, OUTLINE, 1)
+    ellipse(d, (76, 24, 84, 32), lens, None)
+    ellipse(d, (78, 26, 82, 30), (135, 208, 230, 255), None)
+    d.rectangle((P(54), P(37), P(82), P(40)), fill=shell_lo)
+    # side arm and pillow
+    line(d, [(76, 52), (96, 66), (90, 84)], OUTLINE, 8)
+    line(d, [(76, 52), (96, 66), (90, 84)], shell_hi, 4)
+    ellipse(d, (91, 61, 101, 71), shell_lo, OUTLINE, 1)
+    rr(d, (54, 74, 96, 94), 10, pillow, OUTLINE, 2)
+    rr(d, (58, 77, 92, 88), 7, (200, 192, 176, 255), None)
+    # visible gripper fingers on the pillow edge
+    line(d, [(86, 82), (89, 91)], OUTLINE, 2)
+    line(d, [(94, 82), (91, 91)], OUTLINE, 2)
+    ellipse(d, (86, 88, 94, 94), shell_lo, OUTLINE, 1)
+    return im
+
+
 def robot_south(tier):
     if tier == "MkII":
         return mkii7_south()
     if tier == "MkIII":
         return mkiii_ref_south()
+    if tier == "MkIV":
+        return mkiv_ref_south()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (20, 114, 108, 124), (0, 0, 0, 50))
@@ -1479,6 +1638,8 @@ def robot_north(tier):
         return mkii7_north()
     if tier == "MkIII":
         return mkiii_ref_north()
+    if tier == "MkIV":
+        return mkiv_ref_north()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (20, 114, 108, 124), (0, 0, 0, 50))
@@ -1501,6 +1662,8 @@ def robot_east(tier):
         return mkii7_east()
     if tier == "MkIII":
         return mkiii_ref_east()
+    if tier == "MkIV":
+        return mkiv_ref_east()
     im = Image.new("RGBA", (128 * S, 128 * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     ellipse(d, (22, 114, 106, 124), (0, 0, 0, 50))
