@@ -78,8 +78,8 @@
 		</statBases>
 		<race>
 			<body>CK_NannyBotBody</body>
-			<baseBodySize>1</baseBodySize>
-			<baseHealthScale>1</baseHealthScale>
+			<baseBodySize>1.1</baseBodySize>
+			<baseHealthScale>1.1</baseHealthScale>
 			<intelligence>ToolUser</intelligence>
 			<thinkTreeMain>CK_MkVAndroid</thinkTreeMain>
 			<fleshType>Mechanoid</fleshType>
@@ -218,9 +218,9 @@
 				<bodyGraphicData>
 					<texPath>Things/Pawn/MkV/MkV</texPath>
 					<graphicClass>Graphic_Multi</graphicClass>
-					<drawSize>1.75</drawSize>
+					<drawSize>2.2</drawSize>
 					<shadowData>
-						<volume>(0.65, 0.7, 0.65)</volume>
+						<volume>(0.85, 0.9, 0.85)</volume>
 					</shadowData>
 				</bodyGraphicData>
 			</li>
