@@ -19,10 +19,12 @@ namespace ColonyKit.Modules.Robotics
 
 			Toil guard = ToilMaker.MakeToil("MkVGuard");
 			guard.defaultCompleteMode = ToilCompleteMode.Delay;
-			guard.defaultDuration = 900;
+			guard.defaultDuration = 300;
 			guard.tickIntervalAction = delta =>
 			{
-				if (pawn.mindState?.enemyTarget != null)
+				if (pawn.IsHashIntervalTick(30)
+					&& (pawn.mindState?.enemyTarget != null
+						|| GenHostility.AnyHostileActiveThreatToPlayer(pawn.Map)))
 				{
 					pawn.jobs.EndCurrentJob(JobCondition.InterruptForced);
 				}

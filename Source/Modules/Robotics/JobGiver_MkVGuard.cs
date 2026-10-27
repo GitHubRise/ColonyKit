@@ -14,7 +14,7 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return null;
 			}
-			if (!Rand.Chance(0.35f))
+			if (!Rand.Chance(0.8f))
 			{
 				return null;
 			}
