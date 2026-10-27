@@ -94,6 +94,30 @@ namespace ColonyKit.Modules.Robotics
 
 		public float Durability => durability;
 
+		private static void AddMechanicalVagina(Pawn pawn)
+		{
+			HediffDef def = DefDatabase<HediffDef>.GetNamedSilentFail("CK_ArtificialVaginaMech");
+			if (def == null || pawn?.health?.hediffSet == null || pawn.health.hediffSet.HasHediff(def))
+			{
+				return;
+			}
+			BodyPartRecord part = null;
+			for (int i = 0; i < pawn.RaceProps.body.AllParts.Count; i++)
+			{
+				BodyPartRecord candidate = pawn.RaceProps.body.AllParts[i];
+				if (candidate.def?.defName == "MechGenitals")
+				{
+					part = candidate;
+					break;
+				}
+			}
+			if (part != null)
+			{
+				Hediff hediff = HediffMaker.MakeHediff(def, pawn, part);
+				pawn.health.AddHediff(hediff, part);
+			}
+		}
+
 		private static void SexualizeRjw(Pawn pawn)
 		{
 			try
@@ -233,6 +257,7 @@ namespace ColonyKit.Modules.Robotics
 				}
 				pawn.gender = Gender.Female;
 				SexualizeRjw(pawn);
+				AddMechanicalVagina(pawn);
 			}
 		}
 

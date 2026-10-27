@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- RJW only ships a mechanical penis. Mk-V is female, so add a matching artificial vagina
+	     at the MechGenitals body part; MechanoidsCompatibility recognizes any artificial part there. -->
+	<rjw.HediffDef_SexPart ParentName="ArtificialPrivatePartMech">
+		<defName>CK_ArtificialVaginaMech</defName>
+		<label>mechanical vagina</label>
+		<labelNoun>a mechanical vagina</labelNoun>
+		<description>An artificial vaginal unit built into the Mk-V chassis.</description>
+		<defaultBodyPart>MechGenitals</defaultBodyPart>
+		<sizeProfile>DefaultVaginaSizes</sizeProfile>
+		<genitalFamily>Vagina</genitalFamily>
+		<genitalTags>
+			<li>CanBePenetrated</li>
+			<li>CanBeFertilized</li>
+		</genitalTags>
+	</rjw.HediffDef_SexPart>
+</Defs>
