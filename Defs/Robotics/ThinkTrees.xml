@@ -52,6 +52,8 @@
 				<li Class="ThinkNode_Subtree">
 					<treeDef>CK_NannyBot</treeDef>
 				</li>
+				<li Class="ColonyKit.Modules.Robotics.JobGiver_MkVCloudwatch" />
+				<li Class="ColonyKit.Modules.Robotics.JobGiver_MkVWander" />
 			</subNodes>
 		</thinkRoot>
 	</ThinkTreeDef>
