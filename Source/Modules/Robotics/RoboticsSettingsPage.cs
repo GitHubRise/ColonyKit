@@ -149,6 +149,11 @@ namespace ColonyKit.Modules.Robotics
 
 			listing.Gap();
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.Combat".Loc());
+			data.startWithMkV = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.StartWithMkV".Loc(),
+				ref data.startWithMkV,
+				"ColonyKit.Settings.Robotics.StartWithMkV.Desc".Loc());
 			data.mkvCombatEnabled = SettingsWidgets.Checkbox(
 				listing,
 				"ColonyKit.Settings.Robotics.MkVCombatEnabled".Loc(),

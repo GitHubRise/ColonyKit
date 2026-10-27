@@ -84,6 +84,7 @@ namespace ColonyKit.Modules.Robotics
 		public string allowedAreaLabel = "";
 
 		// Mk-V 作战与专用组装舱。
+		public bool startWithMkV = true;
 		public bool mkvCombatEnabled = true;
 		public bool mkvReturnToBay = true;
 		public bool mkvAutoPickupWeapons = true;
@@ -117,6 +118,7 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref mkvHitChance, "mkvHitChance", DefaultMkvHitChance);
 			Scribe_Values.Look(ref areaMode, "areaMode", RobotAreaMode.Unrestricted);
 			Scribe_Values.Look(ref allowedAreaLabel, "allowedAreaLabel", "");
+			Scribe_Values.Look(ref startWithMkV, "startWithMkV", true);
 			Scribe_Values.Look(ref mkvCombatEnabled, "mkvCombatEnabled", true);
 			Scribe_Values.Look(ref mkvReturnToBay, "mkvReturnToBay", true);
 			Scribe_Values.Look(ref mkvAutoPickupWeapons, "mkvAutoPickupWeapons", true);
@@ -209,6 +211,7 @@ namespace ColonyKit.Modules.Robotics
 			mkvHitChance = DefaultMkvHitChance;
 			areaMode = RobotAreaMode.Unrestricted;
 			allowedAreaLabel = "";
+			startWithMkV = true;
 			mkvCombatEnabled = true;
 			mkvReturnToBay = true;
 			mkvAutoPickupWeapons = true;

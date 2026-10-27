@@ -38,6 +38,8 @@
 	<ColonyKit.Settings.Robotics.Unlimited>Unlimited</ColonyKit.Settings.Robotics.Unlimited>
 
 	<ColonyKit.Settings.Robotics.Section.Combat>Mk-V combat</ColonyKit.Settings.Robotics.Section.Combat>
+	<ColonyKit.Settings.Robotics.StartWithMkV>Start with a Mk-V</ColonyKit.Settings.Robotics.StartWithMkV>
+	<ColonyKit.Settings.Robotics.StartWithMkV.Desc>Spawn one Mk-V on the player's starting map in a new game. Existing saves are not affected.</ColonyKit.Settings.Robotics.StartWithMkV.Desc>
 	<ColonyKit.Settings.Robotics.MkVCombatEnabled>Automatic combat</ColonyKit.Settings.Robotics.MkVCombatEnabled>
 	<ColonyKit.Settings.Robotics.MkVCombatEnabled.Desc>Let Mk-V acquire targets, fire and return automatically. When off, Mk-V only performs chores.</ColonyKit.Settings.Robotics.MkVCombatEnabled.Desc>
 	<ColonyKit.Settings.Robotics.MkVReturnToBay>Return to bay after combat</ColonyKit.Settings.Robotics.MkVReturnToBay>

@@ -38,6 +38,8 @@
 	<ColonyKit.Settings.Robotics.Unlimited>不限</ColonyKit.Settings.Robotics.Unlimited>
 
 	<ColonyKit.Settings.Robotics.Section.Combat>Mk-V 作战</ColonyKit.Settings.Robotics.Section.Combat>
+	<ColonyKit.Settings.Robotics.StartWithMkV>开局赠送 Mk-V</ColonyKit.Settings.Robotics.StartWithMkV>
+	<ColonyKit.Settings.Robotics.StartWithMkV.Desc>新开局在玩家起始地图直接生成一台 Mk-V；只影响新游戏，不影响已有存档。</ColonyKit.Settings.Robotics.StartWithMkV.Desc>
 	<ColonyKit.Settings.Robotics.MkVCombatEnabled>自动作战</ColonyKit.Settings.Robotics.MkVCombatEnabled>
 	<ColonyKit.Settings.Robotics.MkVCombatEnabled.Desc>允许 Mk-V 自动索敌、开火和回舱；关闭后 Mk-V 只做家务，不主动交战。</ColonyKit.Settings.Robotics.MkVCombatEnabled.Desc>
 	<ColonyKit.Settings.Robotics.MkVReturnToBay>脱战后回舱</ColonyKit.Settings.Robotics.MkVReturnToBay>
