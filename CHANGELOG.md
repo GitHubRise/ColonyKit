@@ -12,6 +12,8 @@
 ### Fixed
 
 - **开发者菜单 BaseGen 子菜单整列英文**：`地图 → BaseGen「基地生成」` 列出的是 87 个 BaseGen 规则符号（`RuleDef.symbol`，如 `settlement`、`basePart_indoors_division`、`ship_core`），表里没有对应词条，整列只有 `灭火器` 是中文。现按 `menu="map"` 补齐 86 条（定居点、远古神殿/废墟、飞船、室内房间、照明、储藏、触发器等），key 用去掉下划线的规范化符号，列表显示 `basePart_indoors` 这类原始符号也能命中。
+- **生成菜单里的动物、污渍、穿梭机仍是英文**：`生成 → 生成动物群 / 生成污渍 / 生成穿梭机` 三个子菜单直接显示英文（`Alpaca`、`Grizzly bear`、`Filth_Dirt`、`Incoming`…），表里没有词条。现补 105 条 `menu="spawning"`：58 种动物 + 3 种昆虫（官方中文名，同时按英文标签与 defName 建 key，`Bear_Grizzly` 与 `Grizzly bear` 都能命中）、32 种污渍（含 RJW 的 `FilthCum/FilthGirlCum/FilthInsectCum/ResinCum`）、穿梭机的 `Incoming/Crashing/Stationary`、`[random suitable]` 与 `ArchotechBreasts`。
+- **`生成污渍…` 这类弹窗列表不吃翻译补丁**：`SpawnFilth` 走的是 `Dialog_DebugOptionListLister`，标签直接画在按钮上、不经过 `DebugActionNode.LabelNow`，于是补 `Dialog_DebugOptionLister.ButtonDebug` 前缀补丁在绘制前翻一道；筛选仍用原文（输入英文照样能过滤），工具光标上的文字保持原样。
 - **点污水管设计器每帧红字**：`CK_SewagePipe` 是 `Graphic_Single` + `linkType=Basic` 的连管图，原版 `GhostUtility.GhostGraphicFor` 对 `graphicData.Linked` 会直接拿 `uiIconPath` 生成放置虚影；污水管没写 `uiIconPath`，于是用 null 路径查 `ContentFinder`，每帧抛 `ArgumentNullException: Parameter name: key`（`UIRootUpdate` → `Designator_Place.DrawGhost`）。补上 `uiIconPath`（复用清水管菜单图标，菜单里再按 Def 颜色染成淡橄榄绿），水管本来就有 `uiIconPath`，不受影响。
 - **水箱、热水罐、热水器的水位条/水温条都不显示**：这些 Def 没写 `drawerType`，继承 Core `BuildingBase` 的 `MapMeshOnly`，建筑不参与动态绘制，`CompWaterStorage.PostDraw` / `CompHeatStore.PostDraw` 从来没被调用（探针计数器 `water=0/0 heat=0/0`）。按 DBH 的 `BasedHygieneMom` 给水箱、巨型水箱、热水器、热水罐补 `MapMeshAndRealTime`；另外选中水箱/热水罐本身时也直接画条，不再只依赖 `MapComponentOnGUI` 置 `DrawOverlay`。
 - **电热水淋浴器占位 2×2**：`CK_ShowerPower` 的 `size` 和 `drawSize` 都写成 (2,2)，而贴图是 128×128（1 格）。改为 1×1，与简易淋浴器一致。

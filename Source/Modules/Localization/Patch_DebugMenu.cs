@@ -17,6 +17,20 @@ namespace ColonyKit.Modules.Localization
 	}
 
 	/// <summary>
+	/// 弹窗式列表（<c>Dialog_DebugOptionListLister</c>，例如「生成污渍…」列出全部污渍 defName）
+	/// 直接把 option.label 画到按钮上，不经过 <see cref="LudeonTK.DebugActionNode.LabelNow"/>，
+	/// 所以在这里再翻一道；筛选仍用原文，输入英文照样能过滤。
+	/// </summary>
+	[HarmonyPatch(typeof(LudeonTK.Dialog_DebugOptionLister), nameof(LudeonTK.Dialog_DebugOptionLister.ButtonDebug))]
+	internal static class Patch_Dialog_DebugOptionLister_ButtonDebug
+	{
+		public static void Prefix(ref string label)
+		{
+			label = DevLabelTranslations.Translate(label);
+		}
+	}
+
+	/// <summary>
 	/// Debug 窗口按钮的 tooltip 是硬编码字符串；在 DrawButtons 里每个字符串常量后
 	/// 插入一次 TranslateTooltip，只翻译已知的提示。
 	/// </summary>
