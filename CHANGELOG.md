@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- **Mk-V 征召后无法手动攻击**：原版 FloatMenuUtility 用 `IsColonistPlayerControlled` 过滤攻击目标，而 Mk-V 不是 Biotech colony mech；新增补丁让玩家阵营 Mk-V 通过该检查，征召后右键射击/近战选项恢复。
+
 ### Added
 
 - **Mk-V 闲逛/待机/看云**：Mk-V 没有工作时会像殖民者一样在殖民地附近闲逛，偶尔到露天位置躺下看云；看云使用独立 JobDef，不依赖 Joy 需求。征召时两者都不会触发。
