@@ -21,7 +21,9 @@ namespace ColonyKit.Modules.Robotics
 	/// </summary>
 	public class CompNannyBot : ThingComp
 	{
-		public const float MaxDurability = 1000f;
+		public const float DefaultMaxDurability = 1000f;
+
+		public const float MkVMaxDurability = 1800f;
 
 		/// <summary>每 1 点实际伤害损耗的耐久；约 250 点伤害报废。</summary>
 		public const float DurabilityLossPerDamage = 4f;
@@ -62,7 +64,7 @@ namespace ColonyKit.Modules.Robotics
 		public bool haul = true;
 		public bool paused;
 
-		public float durability = MaxDurability;
+		public float durability = -1f;
 		public int paintIndex;
 
 		/// <summary>正在被殖民者维修；维修期间不充电、不接新家务。</summary>
@@ -82,6 +84,10 @@ namespace ColonyKit.Modules.Robotics
 		private Pawn Pawn => parent as Pawn;
 
 		public float Durability => durability;
+
+		public float MaxDurability => NannyBotUtility.IsMkV(Pawn)
+			? MkVMaxDurability
+			: DefaultMaxDurability;
 
 		public bool HasPaint => paintIndex > 0 && paintIndex < PaintPalette.Length;
 
@@ -145,7 +151,7 @@ namespace ColonyKit.Modules.Robotics
 			EnsurePriorities();
 			if (durability < 0f)
 			{
-				durability = 0f;
+				durability = MaxDurability;
 			}
 		}
 
@@ -166,7 +172,11 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref scrub, "ck_robotics_scrub", true);
 			Scribe_Values.Look(ref haul, "ck_robotics_haul", true);
 			Scribe_Values.Look(ref paused, "ck_robotics_paused", false);
-			Scribe_Values.Look(ref durability, "ck_robotics_durability", MaxDurability);
+			Scribe_Values.Look(ref durability, "ck_robotics_durability", -1f);
+			if (durability < 0f)
+			{
+				durability = MaxDurability;
+			}
 			Scribe_Values.Look(ref paintIndex, "ck_robotics_paintIndex", 0);
 			Scribe_References.Look(ref homeStation, "ck_robotics_homeStation");
 			Scribe_Collections.Look(
@@ -326,6 +336,32 @@ namespace ColonyKit.Modules.Robotics
 				}
 			};
 			yield return pause;
+
+			if (NannyBotUtility.IsMkV(pawn) && !pawn.IsColonyMech)
+			{
+				if (pawn.drafter == null)
+				{
+					pawn.drafter = new Pawn_DraftController(pawn);
+				}
+				Command_Toggle draft = new Command_Toggle
+				{
+					defaultLabel = pawn.Drafted
+						? "CK.Robotics.Command.Undraft".Translate()
+						: "CK.Robotics.Command.Draft".Translate(),
+					defaultDesc = "CK.Robotics.Command.Draft.Desc".Translate(),
+					icon = TexCommand.Draft,
+					isActive = () => pawn.Drafted,
+					toggleAction = () =>
+					{
+						if (pawn.drafter == null)
+						{
+							pawn.drafter = new Pawn_DraftController(pawn);
+						}
+						pawn.drafter.Drafted = !pawn.drafter.Drafted;
+					}
+				};
+				yield return draft;
+			}
 
 			yield return CommandAction(
 				"CK.Robotics.Command.Recall".Translate(),

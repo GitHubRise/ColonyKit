@@ -14,7 +14,7 @@ namespace ColonyKit.Modules.Robotics
 		protected override Job TryGiveJob(Pawn pawn)
 		{
 			if (!NannyBotUtility.IsMkV(pawn) || pawn.Dead || pawn.Downed || !pawn.Spawned
-				|| pawn.Map == null || pawn.equipment == null
+				|| pawn.Drafted || pawn.Map == null || pawn.equipment == null
 				|| !NannyBotUtility.Settings.mkvAutoPickupWeapons)
 			{
 				return null;

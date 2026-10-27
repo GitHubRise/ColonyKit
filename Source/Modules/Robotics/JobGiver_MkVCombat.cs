@@ -15,7 +15,7 @@ namespace ColonyKit.Modules.Robotics
 				return null;
 			}
 			CompMkVCombat combat = pawn.TryGetComp<CompMkVCombat>();
-			if (combat == null)
+			if (combat == null || pawn.Drafted)
 			{
 				return null;
 			}

@@ -35,7 +35,7 @@ namespace ColonyKit.Modules.Robotics
 				return false;
 			}
 			CompNannyBot comp = robot.TryGetComp<CompNannyBot>();
-			if (comp == null || comp.Durability >= CompNannyBot.MaxDurability - 0.5f)
+			if (comp == null || comp.Durability >= comp.MaxDurability - 0.5f)
 			{
 				return false;
 			}

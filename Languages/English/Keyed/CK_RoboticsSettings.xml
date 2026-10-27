@@ -63,7 +63,7 @@
 	<ColonyKit.Settings.Robotics.AreaLabel.Desc>Name of an area on the map. If it is missing, work is unrestricted.</ColonyKit.Settings.Robotics.AreaLabel.Desc>
 
 	<ColonyKit.Settings.Robotics.Section.Maintenance>Maintenance</ColonyKit.Settings.Robotics.Section.Maintenance>
-	<ColonyKit.Settings.Robotics.DurabilityHint>Durability caps at 1000. It only drops when the robot takes damage (about 250 damage scraps it); daily work does not wear it down. At 0 it scraps into steel and components. Colonists repair it with the Construction work type. Charging is blocked while the robot is being repaired and resumes after repair finishes.</ColonyKit.Settings.Robotics.DurabilityHint>
+	<ColonyKit.Settings.Robotics.DurabilityHint>Durability caps at 1000 for normal robots and 1800 for the Mk-V. It only drops when the robot takes damage (about 250 damage scraps it); daily work does not wear it down. At 0 it scraps into steel and components. Colonists repair it with the Construction work type. Charging is blocked while the robot is being repaired and resumes after repair finishes.</ColonyKit.Settings.Robotics.DurabilityHint>
 	<ColonyKit.Settings.Robotics.Sounds>Beeps</ColonyKit.Settings.Robotics.Sounds>
 	<ColonyKit.Settings.Robotics.Sounds.Desc>Occasional beeps while working; one low-battery warning.</ColonyKit.Settings.Robotics.Sounds.Desc>
 	<ColonyKit.Settings.Robotics.ChargingGlow>Charging glow</ColonyKit.Settings.Robotics.ChargingGlow>

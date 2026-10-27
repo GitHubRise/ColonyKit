@@ -105,6 +105,10 @@ namespace ColonyKit.Modules.Robotics
 				CompMkVCombat combat = mkv.TryGetComp<CompMkVCombat>();
 				builder.Append(" mkvName=").Append(mkv.Name?.ToStringShort ?? "none")
 					.Append(" mkvThink=").Append(mkv.RaceProps.thinkTreeMain?.defName ?? "none")
+					.Append(" mkvDurability=").Append(mkvComp?.Durability.ToString("0") ?? "none")
+					.Append("/").Append(mkvComp?.MaxDurability.ToString("0") ?? "none")
+					.Append(" mkvDrafter=").Append(mkv.drafter != null)
+					.Append(" mkvTools=").Append(mkv.def.tools?.Count ?? 0)
 					.Append(" mkvWeapon=").Append(mkv.equipment?.Primary?.def?.defName ?? "none")
 					.Append(" mkvCombat=").Append(combat != null)
 					.Append(" mkvHomeBayIsBay=").Append(combat?.homeBay == bay)

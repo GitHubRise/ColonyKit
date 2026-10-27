@@ -492,13 +492,14 @@ namespace ColonyKit.Modules.Robotics
 
 			Rect durabilityRect = new Rect(x, row.y, StatusBarWidth, row.height);
 			float durability = comp == null ? 0f : comp.Durability;
+			float maxDurability = comp?.MaxDurability ?? CompNannyBot.DefaultMaxDurability;
 			DrawStatusBarCell(
 				durabilityRect,
-				durability / CompNannyBot.MaxDurability,
-				durability.ToString("0") + " / " + CompNannyBot.MaxDurability.ToString("0"),
+				durability / maxDurability,
+				durability.ToString("0") + " / " + maxDurability.ToString("0"),
 				"CK.Robotics.Inspect.Durability".Translate(
 					durability.ToString("0"),
-					CompNannyBot.MaxDurability.ToString("0")));
+					maxDurability.ToString("0")));
 			x += StatusBarWidth;
 			DrawStatusColumnLine(x, row);
 

@@ -9,6 +9,18 @@
 	<CK.Robotics.MkVCombat.Inspect>Weapon: {0} · Combat: {1}</CK.Robotics.MkVCombat.Inspect>
 	<CK.Robotics.MkVCombat.Target>Target: {0}</CK.Robotics.MkVCombat.Target>
 	<CK.Robotics.MkVCombat.Range>Engage range: {0} cells · return distance: {1} cells</CK.Robotics.MkVCombat.Range>
+	<CK.Robotics.Tab.RobotInfo>Character</CK.Robotics.Tab.RobotInfo>
+	<CK.Robotics.RobotInfo.Name>Name: {0}</CK.Robotics.RobotInfo.Name>
+	<CK.Robotics.RobotInfo.Kind>Model: {0}</CK.Robotics.RobotInfo.Kind>
+	<CK.Robotics.RobotInfo.Faction>Faction: {0}</CK.Robotics.RobotInfo.Faction>
+	<CK.Robotics.RobotInfo.Durability>Durability: {0} / {1}</CK.Robotics.RobotInfo.Durability>
+	<CK.Robotics.RobotInfo.Energy>Energy: {0}</CK.Robotics.RobotInfo.Energy>
+	<CK.Robotics.RobotInfo.Weapon>Weapon: {0}</CK.Robotics.RobotInfo.Weapon>
+	<CK.Robotics.RobotInfo.Combat>Combat: {0}</CK.Robotics.RobotInfo.Combat>
+	<CK.Robotics.RobotInfo.Task>Current task: {0}</CK.Robotics.RobotInfo.Task>
+	<CK.Robotics.Command.Draft>Draft</CK.Robotics.Command.Draft>
+	<CK.Robotics.Command.Undraft>Undraft</CK.Robotics.Command.Undraft>
+	<CK.Robotics.Command.Draft.Desc>Put the Mk-V into the drafted state for manual movement and attacks; click again to release.</CK.Robotics.Command.Draft.Desc>
 	<CK.Robotics.MkVCombat.Disengage>Disengage and return</CK.Robotics.MkVCombat.Disengage>
 	<CK.Robotics.MkVCombat.Disengage.Desc>Stop fighting immediately and return to the assembly bay or nearest charging station.</CK.Robotics.MkVCombat.Disengage.Desc>
 	<CK.RobotManagement.Status.Combat>In combat</CK.RobotManagement.Status.Combat>

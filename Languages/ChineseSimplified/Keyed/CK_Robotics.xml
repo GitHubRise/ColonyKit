@@ -9,6 +9,18 @@
 	<CK.Robotics.MkVCombat.Inspect>武器：{0} · 战斗状态：{1}</CK.Robotics.MkVCombat.Inspect>
 	<CK.Robotics.MkVCombat.Target>目标：{0}</CK.Robotics.MkVCombat.Target>
 	<CK.Robotics.MkVCombat.Range>交战范围：{0} 格 · 回舱判定：{1} 格</CK.Robotics.MkVCombat.Range>
+	<CK.Robotics.Tab.RobotInfo>角色</CK.Robotics.Tab.RobotInfo>
+	<CK.Robotics.RobotInfo.Name>名称：{0}</CK.Robotics.RobotInfo.Name>
+	<CK.Robotics.RobotInfo.Kind>型号：{0}</CK.Robotics.RobotInfo.Kind>
+	<CK.Robotics.RobotInfo.Faction>阵营：{0}</CK.Robotics.RobotInfo.Faction>
+	<CK.Robotics.RobotInfo.Durability>耐久：{0} / {1}</CK.Robotics.RobotInfo.Durability>
+	<CK.Robotics.RobotInfo.Energy>电量：{0}</CK.Robotics.RobotInfo.Energy>
+	<CK.Robotics.RobotInfo.Weapon>武器：{0}</CK.Robotics.RobotInfo.Weapon>
+	<CK.Robotics.RobotInfo.Combat>战斗：{0}</CK.Robotics.RobotInfo.Combat>
+	<CK.Robotics.RobotInfo.Task>当前任务：{0}</CK.Robotics.RobotInfo.Task>
+	<CK.Robotics.Command.Draft>征召</CK.Robotics.Command.Draft>
+	<CK.Robotics.Command.Undraft>解除征召</CK.Robotics.Command.Undraft>
+	<CK.Robotics.Command.Draft.Desc>让 Mk-V 进入征召状态，可手动移动和攻击；再次点击解除。</CK.Robotics.Command.Draft.Desc>
 	<CK.Robotics.MkVCombat.Disengage>脱战并回舱</CK.Robotics.MkVCombat.Disengage>
 	<CK.Robotics.MkVCombat.Disengage.Desc>立即停止交战，返回组装舱/最近的充电桩。</CK.Robotics.MkVCombat.Disengage.Desc>
 	<CK.RobotManagement.Status.Combat>战斗中</CK.RobotManagement.Status.Combat>

@@ -44,7 +44,9 @@
 		<butcherProducts>
 			<Steel>20</Steel>
 		</butcherProducts>
-		<inspectorTabs>
+		<inspectorTabs Inherit="False">
+			<li>ColonyKit.Modules.Robotics.ITab_Pawn_RobotInfo</li>
+			<li>ITab_Pawn_Gear</li>
 			<li>ITab_Pawn_Health</li>
 			<li>ITab_Pawn_Needs</li>
 			<li>ITab_Pawn_Log</li>
@@ -109,7 +111,9 @@
 <butcherProducts>
 			<Steel>20</Steel>
 		</butcherProducts>
-		<inspectorTabs>
+		<inspectorTabs Inherit="False">
+			<li>ColonyKit.Modules.Robotics.ITab_Pawn_RobotInfo</li>
+			<li>ITab_Pawn_Gear</li>
 			<li>ITab_Pawn_Health</li>
 			<li>ITab_Pawn_Needs</li>
 			<li>ITab_Pawn_Log</li>
