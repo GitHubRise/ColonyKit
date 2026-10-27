@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-	<!-- 旱厕：DBH PitLatrine 的对应物。刻意不挂 CompProperties_Pipe / CompProperties_Power，
-	     也不要求 CK_HygieneResearch，给部落和开局当最便宜的如厕方案。 -->
+	<!-- 旱厕：DBH PitLatrine 的对应物（数值与逻辑照搬）。
+	     不要求 CK_HygieneResearch，给部落和开局当最便宜的如厕方案；
+	     贴图直接用 DBH 的 Latrine_*（64×64，drawSize 1×1）。
+	     没接污水管时是干厕所；接上水网+污水网后按冲水厕所工作。 -->
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_PitLatrine</defName>
 		<label>pit latrine</label>
-		<description>A pit latrine. No water or power needed: waste drops into a 500-unit pit (14 per use). Once the pit is full it must be emptied by a colonist before it can be used again.</description>
+		<description>A pit latrine. Without plumbing it needs no water or power: waste drops into a 500-unit pit (14 per use) that must be emptied by a colonist. Once connected to both a water pipe and a sewage pipe, it flushes like a cheap toilet instead.</description>
 		<thingClass>ColonyKit.Modules.Hygiene.Building_Latrine</thingClass>
 		<size>(1,1)</size>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_PitLatrine</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(2,2)</drawSize>
+			<drawSize>(1,1)</drawSize>
 			<shaderType>Cutout</shaderType>
 		</graphicData>
 		<rotatable>true</rotatable>
@@ -33,5 +35,13 @@
 			<Cleanliness>-5</Cleanliness>
 			<Flammability>1</Flammability>
 		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Sewage</mode>
+			</li>
+		</comps>
 	</ThingDef>
 </Defs>

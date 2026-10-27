@@ -7,8 +7,8 @@ using Verse.AI;
 namespace ColonyKit.Modules.Hygiene
 {
 	/// <summary>
-	/// 清空旱厕：走到坑边挖 300–900 tick（越满越久），完工时把坑清空。
-	/// 粪污按 DBH 的设定视为被运走，不再生成物品。
+	/// 清空旱厕：走到坑边挖 300–900 tick（越满越久），完工时按 DBH 的做法
+	/// 把坑里的存量变成粪渣（CK_FecalSludge）掉在殖民者脚下，坑清零。
 	/// </summary>
 	public class JobDriver_EmptyLatrine : JobDriver
 	{
@@ -35,10 +35,24 @@ namespace ColonyKit.Modules.Hygiene
 			empty.socialMode = RandomSocialMode.Quiet;
 			empty.AddFinishAction(() =>
 			{
-				if (job.targetA.Thing is Building_Latrine target)
+				if (!(job.targetA.Thing is Building_Latrine target))
 				{
-					target.Empty(Building_Latrine.PitCapacity);
+					return;
 				}
+				int amount = Mathf.CeilToInt(target.sewage);
+				target.Empty(Building_Latrine.SewageLimit);
+				if (amount <= 0 || pawn.Map == null)
+				{
+					return;
+				}
+				ThingDef sludgeDef = DefDatabase<ThingDef>.GetNamedSilentFail("CK_FecalSludge");
+				if (sludgeDef == null)
+				{
+					return;
+				}
+				Thing sludge = ThingMaker.MakeThing(sludgeDef);
+				sludge.stackCount = Mathf.Min(amount, sludgeDef.stackLimit);
+				GenPlace.TryPlaceThing(sludge, pawn.Position, pawn.Map, ThingPlaceMode.Near);
 			});
 			yield return empty;
 		}

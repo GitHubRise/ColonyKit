@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 污水产出的垃圾：旱厕清空、化粪池抽出都会得到粪渣，后续堆肥成有机肥。 -->
+	<ThingCategoryDef>
+		<defName>CK_Waste</defName>
+		<label>waste</label>
+		<parent>Root</parent>
+	</ThingCategoryDef>
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>CK_FecalSludge</defName>
+		<label>fecal sludge</label>
+		<description>A barrel filled with fecal sludge. Dump it, burn it, or compost it into biosolids.</description>
+		<graphicData>
+			<texPath>Things/Item/CK_FecalSludge</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<thingCategories>
+			<li>CK_Waste</li>
+		</thingCategories>
+		<stackLimit>500</stackLimit>
+		<tradeability>None</tradeability>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Mass>0.05</Mass>
+			<Flammability>1</Flammability>
+			<Beauty>-40</Beauty>
+			<Cleanliness>-25</Cleanliness>
+			<DeteriorationRate>2</DeteriorationRate>
+		</statBases>
+	</ThingDef>
+</Defs>

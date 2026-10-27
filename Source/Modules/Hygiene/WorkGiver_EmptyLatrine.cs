@@ -25,7 +25,7 @@ namespace ColonyKit.Modules.Hygiene
 				return false;
 			}
 			// 非强制时留出余量（80%），避免刚用过一次就派人；强制时只要坑里还有东西就干。
-			float threshold = forced ? Building_Latrine.PitPerUse : Building_Latrine.PitCapacity * 0.8f;
+			float threshold = forced ? Building_Latrine.SewagePerUse : Building_Latrine.SewageLimit * 0.8f;
 			if (latrine.sewage < threshold)
 			{
 				return false;

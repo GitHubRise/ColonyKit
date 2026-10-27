@@ -196,7 +196,8 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<CK.Hygiene.FloatMenu.BasinEmpty>The basin is empty</CK.Hygiene.FloatMenu.BasinEmpty>
 	<CK.Hygiene.BasinWater>Basin water: {0}/{1} L</CK.Hygiene.BasinWater>
 	<CK.Hygiene.PitLevel>Pit fill: {0}</CK.Hygiene.PitLevel>
-	<CK.Hygiene.PitFull>Pit full - needs emptying</CK.Hygiene.PitFull>
+	<CK.Hygiene.PitFull>Pit full - empty it or plumb it</CK.Hygiene.PitFull>
+	<CK.Hygiene.LatrinePlumbed>Plumbed: flushes to the sewage network</CK.Hygiene.LatrinePlumbed>
 	<ColonyKit.Module.Hygiene.Name>Shower</ColonyKit.Module.Hygiene.Name>
 	<ColonyKit.Module.Hygiene.Desc>Hygiene need, shower and hot water; based on DBH.</ColonyKit.Module.Hygiene.Desc>
 	<ColonyKit.Module.Storage.Name>Warehouse / stacking</ColonyKit.Module.Storage.Name>
