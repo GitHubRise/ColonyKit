@@ -88,10 +88,55 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				CompPipe pipe = building.GetComp<CompPipe>();
 				PlumbingNet net = pipe?.pipeNet;
-				bool canDraw = net != null && net.WaterTowers.Any(t => t != null && t.WorkingNow && t.space > 1f);
+				bool reachable = pawn.CanReserveAndReach(building, PathEndMode.Touch, pawn.NormalMaxDanger());
+				bool canDraw = reachable
+					&& net != null
+					&& net.WaterTowers.Any(t => t != null && t.WorkingNow && t.space > 1f);
 				yield return UseOption("CK.Hygiene.FloatMenu.DrawWater", pawn, building, "CK_DrawWater",
 					canDraw,
 					canDraw ? null : "CK.Hygiene.FloatMenu.NoWaterTank".Translate().ToString());
+
+				// 脸盆：装备后才能打水，装满 30 升带回去倒进水箱。
+				CompBasinWater basin = JobDriver_FillBasin.Basin(pawn);
+				if (basin == null)
+				{
+					yield return UseOption("CK.Hygiene.FloatMenu.FillBasin", pawn, building, "CK_FillBasin", false,
+						"CK.Hygiene.FloatMenu.NeedBasin".Translate().ToString());
+				}
+				else if (basin.IsFull)
+				{
+					yield return UseOption("CK.Hygiene.FloatMenu.FillBasin", pawn, building, "CK_FillBasin", false,
+						"CK.Hygiene.FloatMenu.BasinFull".Translate().ToString());
+				}
+				else
+				{
+					bool canFill = reachable && net != null;
+					string fillReason = canFill
+						? null
+						: (reachable
+							? "CK.Hygiene.NoWaterSupply".Translate().ToString()
+							: "CannotReach".Translate().ToString());
+					yield return UseOption("CK.Hygiene.FloatMenu.FillBasin", pawn, building, "CK_FillBasin",
+						canFill, fillReason);
+				}
+			}
+
+			// 倒水：装备的脸盆里有水时，把水倒进水箱所在水网。
+			CompWaterStorage storage = building.TryGetComp<CompWaterStorage>();
+			if (storage != null)
+			{
+				CompBasinWater basin = JobDriver_FillBasin.Basin(pawn);
+				if (basin != null && !basin.IsEmpty)
+				{
+					CompPipe pipe = building.GetComp<CompPipe>();
+					PlumbingNet net = pipe?.pipeNet;
+					bool canPour = pawn.CanReserveAndReach(building, PathEndMode.Touch, pawn.NormalMaxDanger())
+						&& net != null
+						&& net.WaterTowers.Any(t => t != null && t.WorkingNow && t.space > 0.1f);
+					yield return UseOption("CK.Hygiene.FloatMenu.PourBasin", pawn, building, "CK_EmptyBasin",
+						canPour,
+						canPour ? null : "CK.Hygiene.FloatMenu.NoWaterTank".Translate().ToString());
+				}
 			}
 		}
 

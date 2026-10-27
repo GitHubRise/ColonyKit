@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 便携脸盆：装备在武器栏，带去水井打水，再倒进水箱。 -->
+	<ThingDef ParentName="BaseWeapon">
+		<defName>CK_WashBasinItem</defName>
+		<label>wash basin</label>
+		<description>A portable wash basin. Equip it like a tool, right-click a water well to fill it, then right-click a water tank to pour the water in.</description>
+		<graphicData>
+			<texPath>Things/Item/CK_WashBasin</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(0.9,0.9)</drawSize>
+		</graphicData>
+		<uiIconScale>1.2</uiIconScale>
+		<thingCategories>
+			<li>WeaponsMelee</li>
+		</thingCategories>
+		<stackLimit>1</stackLimit>
+		<tools>
+			<li>
+				<label>basin</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>3</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+		</tools>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.CompProperties_BasinWater">
+				<Capacity>30</Capacity>
+			</li>
+		</comps>
+		<statBases>
+			<Mass>0.8</Mass>
+			<WorkToMake>600</WorkToMake>
+		</statBases>
+	</ThingDef>
+
+	<RecipeDef>
+		<defName>CK_MakeWashBasin</defName>
+		<label>make wash basin</label>
+		<description>Craft a portable wash basin for carrying water from a well.</description>
+		<jobString>making a wash basin.</jobString>
+		<workAmount>600</workAmount>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<workSkill>Crafting</workSkill>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<products>
+			<CK_WashBasinItem>1</CK_WashBasinItem>
+		</products>
+		<recipeUsers>
+			<li>CraftingSpot</li>
+		</recipeUsers>
+		<researchPrerequisite>CK_HygieneResearch</researchPrerequisite>
+	</RecipeDef>
+</Defs>

@@ -4,4 +4,6 @@
 	<CK_TakeBath.reportString>正在泡澡。</CK_TakeBath.reportString>
 	<CK_TakeBathTogether.reportString>正在和别人一起泡澡。</CK_TakeBathTogether.reportString>
 	<CK_DrawWater.reportString>正在打水。</CK_DrawWater.reportString>
+	<CK_FillBasin.reportString>正在用脸盆打水。</CK_FillBasin.reportString>
+	<CK_EmptyBasin.reportString>正在倒水。</CK_EmptyBasin.reportString>
 </LanguageData>

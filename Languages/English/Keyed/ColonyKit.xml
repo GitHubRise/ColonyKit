@@ -189,6 +189,12 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<CK.Hygiene.FloatMenu.Disabled>({0})</CK.Hygiene.FloatMenu.Disabled>
 	<CK.Hygiene.FloatMenu.CannotUse>Cannot use right now</CK.Hygiene.FloatMenu.CannotUse>
 	<CK.Hygiene.FloatMenu.NoWaterTank>No water tank with free space</CK.Hygiene.FloatMenu.NoWaterTank>
+	<CK.Hygiene.FloatMenu.FillBasin>Fill basin</CK.Hygiene.FloatMenu.FillBasin>
+	<CK.Hygiene.FloatMenu.PourBasin>Pour into tank</CK.Hygiene.FloatMenu.PourBasin>
+	<CK.Hygiene.FloatMenu.NeedBasin>Equip a wash basin first</CK.Hygiene.FloatMenu.NeedBasin>
+	<CK.Hygiene.FloatMenu.BasinFull>The basin is full</CK.Hygiene.FloatMenu.BasinFull>
+	<CK.Hygiene.FloatMenu.BasinEmpty>The basin is empty</CK.Hygiene.FloatMenu.BasinEmpty>
+	<CK.Hygiene.BasinWater>Basin water: {0}/{1} L</CK.Hygiene.BasinWater>
 	<ColonyKit.Module.Hygiene.Name>Shower</ColonyKit.Module.Hygiene.Name>
 	<ColonyKit.Module.Hygiene.Desc>Hygiene need, shower and hot water; based on DBH.</ColonyKit.Module.Hygiene.Desc>
 	<ColonyKit.Module.Storage.Name>Warehouse / stacking</ColonyKit.Module.Storage.Name>

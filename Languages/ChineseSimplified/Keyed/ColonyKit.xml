@@ -189,6 +189,12 @@
 	<CK.Hygiene.FloatMenu.Disabled>（{0}）</CK.Hygiene.FloatMenu.Disabled>
 	<CK.Hygiene.FloatMenu.CannotUse>当前无法使用</CK.Hygiene.FloatMenu.CannotUse>
 	<CK.Hygiene.FloatMenu.NoWaterTank>没有可加水的水箱</CK.Hygiene.FloatMenu.NoWaterTank>
+	<CK.Hygiene.FloatMenu.FillBasin>用脸盆打水</CK.Hygiene.FloatMenu.FillBasin>
+	<CK.Hygiene.FloatMenu.PourBasin>倒入水箱</CK.Hygiene.FloatMenu.PourBasin>
+	<CK.Hygiene.FloatMenu.NeedBasin>需要先装备脸盆</CK.Hygiene.FloatMenu.NeedBasin>
+	<CK.Hygiene.FloatMenu.BasinFull>脸盆已经满了</CK.Hygiene.FloatMenu.BasinFull>
+	<CK.Hygiene.FloatMenu.BasinEmpty>脸盆里没有水</CK.Hygiene.FloatMenu.BasinEmpty>
+	<CK.Hygiene.BasinWater>脸盆水量: {0}/{1} 升</CK.Hygiene.BasinWater>
 	<ColonyKit.Module.Hygiene.Name>淋浴</ColonyKit.Module.Hygiene.Name>
 	<ColonyKit.Module.Hygiene.Desc>卫生需求、淋浴与热水；参考 DBH 的淋浴实现。</ColonyKit.Module.Hygiene.Desc>
 	<ColonyKit.Module.Storage.Name>立体库 / 物品堆叠</ColonyKit.Module.Storage.Name>

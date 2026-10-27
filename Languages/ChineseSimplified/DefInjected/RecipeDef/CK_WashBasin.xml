@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_MakeWashBasin.label>制作脸盆</CK_MakeWashBasin.label>
+	<CK_MakeWashBasin.description>用 20 钢铁制作一个便携脸盆。装备后可以在水井打水，再倒进水箱。</CK_MakeWashBasin.description>
+	<CK_MakeWashBasin.jobString>正在制作脸盆。</CK_MakeWashBasin.jobString>
+</LanguageData>

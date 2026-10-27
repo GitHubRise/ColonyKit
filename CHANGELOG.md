@@ -17,6 +17,7 @@
 ### Added
 
 - **选中殖民者右键洁具/水井的指令菜单**：新增 `FloatMenuOptionProvider_HygieneFixtures`（RimWorld 1.6 的 FloatMenuOptionProvider 系统，无需 Harmony 补丁），按设备给出不同操作：马桶「使用厕所」、洗手池「洗手」、淋浴器「淋浴」、浴缸/双人浴缸「泡澡」、水井「打水」。堵塞的洁具额外出现「清理堵塞」（复用 `CK_NannyUnblock` 的疏通 Job，只依赖 `CompBlockage`），洁具周围一格有污渍时出现「清洁」（原版 Clean Job + 队列目标）。不可用时会显示灰项和原因（堵塞/没有供水/无法到达/当前无法使用）。新增 `CK_DrawWater` Job：手动从水井往同网水箱注水 30 升（600 tick，0.05 L/tick），水箱全满或水网没有水箱时提前结束。
+- **便携脸盆**：新增武器栏物品 `CK_WashBasinItem`（ParentName `BaseWeapon`，钢铁 20、600 工作、卫生研究后在手工点制作，中英文名称/说明齐全）。装备后右键水井出现「用脸盆打水」（`CK_FillBasin`，300 tick 装 30 升），右键水箱出现「倒入水箱」（`CK_EmptyBasin`，120 tick、0.25 L/tick 倒进同网水箱，水箱满了剩下的留在盆里）。脸盆的水量由 `CompBasinWater` 保存，检视面板显示「脸盆水量」，卸载/读档都不丢。水井的普通「打水」仍保留。
 
 ## [0.0.3] - 2026-10-27
 

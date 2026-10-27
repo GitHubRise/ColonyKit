@@ -49,4 +49,16 @@
 		<reportString>drawing water.</reportString>
 		<casualInterruptible>true</casualInterruptible>
 	</JobDef>
+	<JobDef>
+		<defName>CK_FillBasin</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_FillBasin</driverClass>
+		<reportString>filling a wash basin.</reportString>
+		<casualInterruptible>true</casualInterruptible>
+	</JobDef>
+	<JobDef>
+		<defName>CK_EmptyBasin</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_EmptyBasin</driverClass>
+		<reportString>pouring water.</reportString>
+		<casualInterruptible>true</casualInterruptible>
+	</JobDef>
 </Defs>
