@@ -50,9 +50,20 @@
 		<thingClass>Building</thingClass>
 		<size>(1,1)</size>
 		<graphicData>
-			<texPath>Things/Building/Hygiene/CK_SewagePipe</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
+			<!-- 和 DBH 一样用 4×4 连管图集，按四邻自动选片；原来是 Graphic_Multi 的单向“方口+竖嘴”贴图，
+			     去掉旋转后所有污水管都只剩同一个朝向，看起来像一排“口”字。 -->
+			<texPath>Things/Building/Hygiene/CK_WaterPipe_Atlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<linkType>Basic</linkType>
+			<linkFlags>
+				<li>Custom6</li>
+			</linkFlags>
+			<!-- 与水管的白色区分：淡橄榄绿。 -->
+			<color>(0.74,0.82,0.64)</color>
 			<drawSize>(1,1)</drawSize>
+			<damageData>
+				<rect>(0,0.35,1,0.3)</rect>
+			</damageData>
 		</graphicData>
 		<building>
 			<ai_chillDestination>false</ai_chillDestination>
@@ -60,6 +71,9 @@
 			<isEdifice>false</isEdifice>
 			<canLandGravshipOn>true</canLandGravshipOn>
 			<canConstructInCorner>true</canConstructInCorner>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Hygiene/CK_WaterPipe_Atlas_Blueprint</texPath>
+			</blueprintGraphicData>
 		</building>
 		<drawerType>MapMeshOnly</drawerType>
 		<altitudeLayer>Conduits</altitudeLayer>

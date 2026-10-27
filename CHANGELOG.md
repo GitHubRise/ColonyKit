@@ -6,6 +6,7 @@
 
 ### Fixed
 
+- **污水管只剩一个「口」+ 一根竖嘴**：`CK_SewagePipe` 之前用 `Graphic_Multi` 的单向贴图（方形管身 + 朝北的圆嘴），上一版按「管道不需要旋转」把 Q/E 去掉后，所有污水管都只能画北向那一张——横着铺也是一排「口」，接不上邻居。现在改成和 DBH 原版、水管一样的 4×4 连管图集：`Graphic_Single` + `linkType=Basic` + `linkFlags=Custom6`（和清水管的 `Custom5` 分开），贴淡橄榄绿以便区分；四邻自动选片，直管、拐角、丁字、十字都能正确显示，也不再需要旋转。
 - **机器人状态页挤成一行文字**：`MainTabWindow_NannyBots` 的状态页原来用 `CK.RobotManagement.Row` 把电量、耐久、任务、工作站、状态拼成一整行，列对不齐，也没有表头。现改为真正的表格：机器人 / 状态 / 当前任务 / 电量 / 耐久 / 工作站 / 操作七列，表头固定、隔行底色，电量与耐久各有一条按百分比变色的进度条；空闲机器人显示「待命」而不是「工作中」。
 - **机器人任务显示内部名（HaulToCell / CK_NannyCleanFilth）**：原版 JobDef 基本只有 `reportString` 没有 `label`，`CurJobDef.label` 会回退成 defName。新增 `NannyBotJobUtility`，把机器人会接到的任务（搬运、灭火、制作、加燃料、囚犯喂食、救援、牵动物、卫生、充电、前往/待命等）统一映射到 `CK.Robotics.Task.*`，并在任务后附带目标物品/小人；状态表、任务提示和左下角信息栏共用同一套名字，中英文 Keyed 同步补齐。
 - **殖民者/囚犯也会显示「机器人电量」需求**：`CK_RobotEnergy` 的 `minIntelligence` 是 Humanlike，`ShouldHaveNeed` 的基类逻辑会让所有人类都拿到这个需求；原来的 Postfix 只能在机器人为 false 时补 true，挡不住人类。改为 Prefix 完全接管：只有 `CK_RobotNanny` 返回 true，其他 Pawn 一律 false（设置里关闭机器人模块时同样 false）。自检日志新增 `humanlikesWithEnergy=0` 用于回归。
@@ -37,6 +38,8 @@
 - `GeneralSettings.language` 默认值与 `ModLoc` 回退语言改为 `ChineseSimplified`。
 
 ### Added
+
+- **Mk-V 前置科技树**：机械本体、执行系统、感知系统、AI 计算平台、灵巧手、电池与能源系统、软件系统七项前置研究全部完成后，再进行 Mk-V 整合研究；工作站随后解锁「组装 Mk-V 安卓」，使用确认的白甲/黑马尾四向贴图。
 
 - **机器人左下角信息栏显示当前任务**：选中保姆机器人时，检查面板在电量下方新增「任务：…」，与耐久、已启用家务数、暂停/维修/停机状态一起显示；任务名与状态表一致（如「搬运物品（钢铁）」「回桩充电」），并附上目标物品或小人。
 - **双人浴缸 `CK_DoubleBath`**：2×2、320 升/缸，可两人同时泡澡。`Building_DoubleBath` 按当前 Job 统计占用（读档后依然准确），超过两人不可用，最后离开的人才放水；贴图由单缸贴图取左半边拉伸镜像成一只宽缸（`tools/generate_double_bath_texture.py`）。
