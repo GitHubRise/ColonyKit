@@ -32,6 +32,8 @@ $installer = Join-Path $root 'installer'
 $packageArgs = @{}
 if ($SkipBuild)  { $packageArgs.SkipBuild  = $true }
 if ($SkipVerify) { $packageArgs.SkipVerify = $true }
+# package.ps1 可能一次外部程序都没调，$LASTEXITCODE 会是 $null 或调用方的残留值。
+$global:LASTEXITCODE = 0
 & (Join-Path $root 'package.ps1') @packageArgs
 if ($LASTEXITCODE -ne 0) { throw 'package.ps1 失败，已中止便携包生成。' }
 
@@ -135,3 +137,6 @@ try {
 finally {
 	if (Test-Path $stage) { Remove-Item $stage -Recurse -Force }
 }
+
+# 同 build.ps1：本脚本的成功路径不会留下外部程序退出码，显式归零，避免调用方误判。
+$global:LASTEXITCODE = 0

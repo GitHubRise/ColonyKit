@@ -26,12 +26,16 @@ $root  = $PSScriptRoot
 $dist  = Join-Path $root 'dist'
 
 # 先校验再构建：结构问题（About 位置、XML 语法）在这里就能拦下，不用等打完包才发现。
+# $LASTEXITCODE 在全新进程里是 $null（$null -ne 0 成立），而调用方可能刚跑过失败的原生程序，
+# 所以每次调子脚本前先归零，只信子脚本自己写出的退出码。
 if (-not $SkipVerify) {
+	$global:LASTEXITCODE = 0
 	& (Join-Path $root 'verify.ps1')
 	if ($LASTEXITCODE -ne 0) { throw '静态校验失败，已中止打包。' }
 }
 
 if (-not $SkipBuild) {
+	$global:LASTEXITCODE = 0
 	& (Join-Path $root 'build.ps1')
 	if ($LASTEXITCODE -ne 0) { throw '构建失败，已中止打包。' }
 }
@@ -112,3 +116,7 @@ try {
 finally {
 	if (Test-Path $stage) { Remove-Item $stage -Recurse -Force }
 }
+
+# 打包全程可能一次外部程序都没调（-SkipVerify -SkipBuild），$LASTEXITCODE 会残留调用方的值；
+# 调用方（make-portable.ps1）靠它判断成败，这里显式归零。
+$global:LASTEXITCODE = 0
