@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 洗衣机（DBH WashingMachine 的 1:1 移植）：把死人穿过的衣服洗回可穿。
+	     和 DBH 的差异只有管道：DBH 一张网供水排污，CK 是水网 + 污水网两张，所以挂了两个 Pipe comp。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_WashingMachine</defName>
+		<label>washing machine</label>
+		<description>Washes clothes so well that you can't even tell someone died wearing it! Needs to be connected to both a water pipe and a sewage pipe, and to power.</description>
+		<thingClass>ColonyKit.Modules.Hygiene.Building_WashingMachine</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_WashingMachine</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<rotatable>true</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>13</uiOrder>
+		<hasInteractionCell>true</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<tickerType>Normal</tickerType>
+		<canOverlapZones>false</canOverlapZones>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>true</castEdgeShadows>
+		<pathCost>60</pathCost>
+		<costList>
+			<Steel>100</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>1200</WorkToBuild>
+			<Mass>25</Mass>
+			<JoyGainFactor>1</JoyGainFactor>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Sewage</mode>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>420</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Forbiddable" />
+			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Breakdownable" />
+		</comps>
+		<building>
+			<joyKind>Meditative</joyKind>
+			<watchBuildingStandDistanceRange>
+				<min>1</min>
+				<max>3</max>
+			</watchBuildingStandDistanceRange>
+			<watchBuildingStandRectWidth>3</watchBuildingStandRectWidth>
+			<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+			<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+			<defaultStorageSettings>
+				<priority>Important</priority>
+				<filter>
+					<categories>
+						<li>Apparel</li>
+					</categories>
+					<disallowedThingDefs>
+						<li>Apparel_ShieldBelt</li>
+						<li>Apparel_SmokepopBelt</li>
+					</disallowedThingDefs>
+				</filter>
+			</defaultStorageSettings>
+			<fixedStorageSettings>
+				<filter>
+					<categories>
+						<li>Apparel</li>
+					</categories>
+				</filter>
+			</fixedStorageSettings>
+		</building>
+		<inspectorTabs>
+			<li>ITab_Storage</li>
+		</inspectorTabs>
+		<researchPrerequisites>
+			<li>CK_WashingMachines</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<JobDef>
+		<defName>CK_LoadWashing</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_WashingMachineLoad</driverClass>
+		<reportString>loading TargetA</reportString>
+		<suspendable>false</suspendable>
+	</JobDef>
+	<JobDef>
+		<defName>CK_UnloadWashing</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_WashingMachineUnload</driverClass>
+		<reportString>unloading TargetA</reportString>
+	</JobDef>
+	<JobDef>
+		<defName>CK_WatchWashingMachine</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_WatchWashingMachine</driverClass>
+		<reportString>watching the spin cycle</reportString>
+		<joyDuration>4000</joyDuration>
+		<joyKind>Meditative</joyKind>
+	</JobDef>
+
+	<WorkGiverDef>
+		<defName>CK_LoadWashing</defName>
+		<label>load washing</label>
+		<giverClass>ColonyKit.Modules.Hygiene.WorkGiver_WashingLoad</giverClass>
+		<workType>Hauling</workType>
+		<verb>load washing</verb>
+		<gerund>loading washing</gerund>
+		<priorityInType>22</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+	<WorkGiverDef>
+		<defName>CK_UnloadWashing</defName>
+		<label>unload washing</label>
+		<giverClass>ColonyKit.Modules.Hygiene.WorkGiver_WashingUnload</giverClass>
+		<workType>Hauling</workType>
+		<verb>unload washing</verb>
+		<gerund>unloading washing</gerund>
+		<priorityInType>23</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<JoyGiverDef>
+		<defName>CK_WatchWashingMachine</defName>
+		<giverClass>JoyGiver_WatchBuilding</giverClass>
+		<baseChance>1</baseChance>
+		<thingDefs>
+			<li>CK_WashingMachine</li>
+		</thingDefs>
+		<jobDef>CK_WatchWashingMachine</jobDef>
+		<desireSit>false</desireSit>
+		<joyKind>Meditative</joyKind>
+	</JoyGiverDef>
+
+	<SoundDef>
+		<defName>CK_WashingMachine</defName>
+		<sustain>True</sustain>
+		<maxSimultaneous>2</maxSimultaneous>
+		<context>MapOnly</context>
+		<eventNames />
+		<priorityMode>PrioritizeNearest</priorityMode>
+		<subSounds>
+			<li>
+				<muteWhenPaused>True</muteWhenPaused>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>DBH/washingmachine</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>40</min>
+					<max>40</max>
+				</volumeRange>
+				<distRange>
+					<min>0</min>
+					<max>20</max>
+				</distRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+</Defs>

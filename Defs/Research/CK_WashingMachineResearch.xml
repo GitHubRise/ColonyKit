@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 洗衣机研究：DBH 的 WashingMachines（1200 点，工业），这里接在 CK 的卫生研究后面。 -->
+	<ResearchProjectDef>
+		<defName>CK_WashingMachines</defName>
+		<label>washing machines</label>
+		<description>Build washing machines that can wash clothes so well that you couldn't even tell someone died wearing it!</description>
+		<baseCost>1200</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>CK_HygieneResearch</li>
+		</prerequisites>
+		<tab>CK_HygieneTab</tab>
+		<researchViewX>3</researchViewX>
+		<researchViewY>1</researchViewY>
+	</ResearchProjectDef>
+</Defs>

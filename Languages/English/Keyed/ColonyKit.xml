@@ -195,6 +195,12 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<CK.Hygiene.FloatMenu.BasinFull>The basin is full</CK.Hygiene.FloatMenu.BasinFull>
 	<CK.Hygiene.FloatMenu.BasinEmpty>The basin is empty</CK.Hygiene.FloatMenu.BasinEmpty>
 	<CK.Hygiene.BasinWater>Basin water: {0}/{1} L</CK.Hygiene.BasinWater>
+	<CK.Hygiene.NoSewage>No sewage connection</CK.Hygiene.NoSewage>
+	<CK.Hygiene.WashingSpinning>Spinning...</CK.Hygiene.WashingSpinning>
+	<CK.Hygiene.WashingUnload>Ready to unload</CK.Hygiene.WashingUnload>
+	<CK.Hygiene.WashingLoad>In machine: {0}/{1}</CK.Hygiene.WashingLoad>
+	<CK.Hygiene.WashingNoSpace>No space left</CK.Hygiene.WashingNoSpace>
+	<CK.Hygiene.NoDirtyClothes>No dirty clothes found</CK.Hygiene.NoDirtyClothes>
 	<CK.Hygiene.TubEmpty>No water left in the tub</CK.Hygiene.TubEmpty>
 	<CK.Hygiene.TubWater>Water: {0}/{1} uses</CK.Hygiene.TubWater>
 	<CK.Hygiene.TubFull>The tub is already full</CK.Hygiene.TubFull>

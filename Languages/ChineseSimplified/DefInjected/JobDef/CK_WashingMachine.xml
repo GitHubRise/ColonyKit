@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_LoadWashing.reportString>正在装填洗衣机。</CK_LoadWashing.reportString>
+	<CK_UnloadWashing.reportString>正在取出衣物。</CK_UnloadWashing.reportString>
+	<CK_WatchWashingMachine.reportString>在看洗衣机转筒。</CK_WatchWashingMachine.reportString>
+</LanguageData>

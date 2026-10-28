@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_LoadWashing.label>装填洗衣机</CK_LoadWashing.label>
+	<CK_LoadWashing.verb>装填</CK_LoadWashing.verb>
+	<CK_LoadWashing.gerund>装填</CK_LoadWashing.gerund>
+	<CK_UnloadWashing.label>取出衣物</CK_UnloadWashing.label>
+	<CK_UnloadWashing.verb>取出</CK_UnloadWashing.verb>
+	<CK_UnloadWashing.gerund>取出</CK_UnloadWashing.gerund>
+</LanguageData>

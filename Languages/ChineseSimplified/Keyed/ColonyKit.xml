@@ -195,6 +195,12 @@
 	<CK.Hygiene.FloatMenu.BasinFull>脸盆已经满了</CK.Hygiene.FloatMenu.BasinFull>
 	<CK.Hygiene.FloatMenu.BasinEmpty>脸盆里没有水</CK.Hygiene.FloatMenu.BasinEmpty>
 	<CK.Hygiene.BasinWater>脸盆水量: {0}/{1} 升</CK.Hygiene.BasinWater>
+	<CK.Hygiene.NoSewage>缺少排污设备</CK.Hygiene.NoSewage>
+	<CK.Hygiene.WashingSpinning>运行中...</CK.Hygiene.WashingSpinning>
+	<CK.Hygiene.WashingUnload>立即取出</CK.Hygiene.WashingUnload>
+	<CK.Hygiene.WashingLoad>洗衣机内: {0}/{1}</CK.Hygiene.WashingLoad>
+	<CK.Hygiene.WashingNoSpace>没有空间</CK.Hygiene.WashingNoSpace>
+	<CK.Hygiene.NoDirtyClothes>没有脏衣服</CK.Hygiene.NoDirtyClothes>
 	<CK.Hygiene.TubEmpty>水盆里没水了，需要补水</CK.Hygiene.TubEmpty>
 	<CK.Hygiene.TubWater>水量: {0}/{1} 次</CK.Hygiene.TubWater>
 	<CK.Hygiene.TubFull>水盆已经满了</CK.Hygiene.TubFull>

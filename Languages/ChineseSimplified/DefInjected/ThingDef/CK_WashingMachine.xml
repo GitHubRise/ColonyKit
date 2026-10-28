@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<!-- 文案沿用 DBH 简体中文包。 -->
+	<CK_WashingMachine.label>洗衣机</CK_WashingMachine.label>
+	<CK_WashingMachine.description>这台机器如此优秀，以至于殖民者甚至无法发现这件衣服曾被死人穿过！需要同时接进水管和污水管，并通电。</CK_WashingMachine.description>
+</LanguageData>
