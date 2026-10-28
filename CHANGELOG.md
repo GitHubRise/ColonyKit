@@ -4,6 +4,14 @@
 
 ## [Unreleased]
 
+### Localization
+
+- **RJW 机械阴道中文化**：`CK_ArtificialVaginaMech` 的名称、说明和五个尺寸阶段（微型/紧致/标准/松弛/扩张）补上中文，不再显示英文 `Mechanical vagina (Tight)`。
+
+### Changed
+
+- **Mk-V 电弧发射器三连发**：`CK_ArcEmitter` 的 `Verb_Shoot` 新增 `burstShotCount` 3 与 `ticksBetweenBurstShots` 10，一轮射出 3 发电弧弹；单发伤害仍为 58、护甲穿透 35%、射程 28 格，2 秒冷却从整轮打完才开始计算，一轮全中合计 174 伤害。命中特效、自动索敌与武器拾取逻辑不变。
+
 ### Added
 
 - **蓝图置顶/分组/标签**：`BlueprintRecord` 新增 `pinned`、`group`、`tags`（最多 8 个、每个 24 字符），随存档保存；左侧列表按「置顶 → 分组名 → 未分组」排列并显示 ★、分组标题与 #标签；新增筛选框（名称/分组/标签，`#` 只搜标签）；详情新增「编辑」与「置顶/取消置顶」，右键行可快速置顶/编辑；`Dialog_BlueprintProperties` 编辑名称/分组/标签/置顶；模板 XML 可选写入 `group`/`tags`，置顶不写入模板。
