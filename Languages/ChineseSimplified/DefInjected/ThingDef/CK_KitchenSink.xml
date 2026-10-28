@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<!-- 文案沿用 DBH 简体中文包。 -->
+	<CK_KitchenSink.label>厨房水槽</CK_KitchenSink.label>
+	<CK_KitchenSink.description>与洗手池有相同功能的厨房水槽，大幅提高房间的清洁度。</CK_KitchenSink.description>
+</LanguageData>

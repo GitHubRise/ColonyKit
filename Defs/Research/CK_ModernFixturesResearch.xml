@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 现代卫浴设施：DBH ModernFixtures（600 点，工业），厨房水槽等现代洁具的门槛。 -->
+	<ResearchProjectDef>
+		<defName>CK_ModernFixtures</defName>
+		<label>modern bathroom fixtures</label>
+		<description>Build modern-style bathroom fixtures like toilets and showers.</description>
+		<baseCost>600</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>CK_HygieneResearch</li>
+		</prerequisites>
+		<tab>CK_HygieneTab</tab>
+		<researchViewX>2</researchViewX>
+		<researchViewY>2</researchViewY>
+	</ResearchProjectDef>
+</Defs>
