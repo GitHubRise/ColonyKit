@@ -82,6 +82,13 @@
 	<ColonyKit.Settings.Robotics.AreaLabel>区域名称</ColonyKit.Settings.Robotics.AreaLabel>
 	<ColonyKit.Settings.Robotics.AreaLabel.Desc>填写地图上区域的名字；找不到时按「不限」处理。</ColonyKit.Settings.Robotics.AreaLabel.Desc>
 
+	<ColonyKit.Settings.Robotics.Section.Appearance>外观</ColonyKit.Settings.Robotics.Section.Appearance>
+	<ColonyKit.Settings.Robotics.MkVTextureHint>Mk-V 的身体贴图、绘制大小和宽高比例。修改后立即作用于所有 Mk-V；贴图路径必须同时包含 _north/_south/_east/_west 四张图。</ColonyKit.Settings.Robotics.MkVTextureHint>
+	<ColonyKit.Settings.Robotics.MkVTexturePath>贴图路径</ColonyKit.Settings.Robotics.MkVTexturePath>
+	<ColonyKit.Settings.Robotics.MkVTexturePath.Desc>相对于 Textures 目录的无扩展名路径，例如 Things/Pawn/MkV/MkV。</ColonyKit.Settings.Robotics.MkVTexturePath.Desc>
+	<ColonyKit.Settings.Robotics.MkVDrawSize>绘制大小</ColonyKit.Settings.Robotics.MkVDrawSize>
+	<ColonyKit.Settings.Robotics.MkVWidthScale>宽度比例</ColonyKit.Settings.Robotics.MkVWidthScale>
+	<ColonyKit.Settings.Robotics.MkVHeightScale>高度比例</ColonyKit.Settings.Robotics.MkVHeightScale>
 	<ColonyKit.Settings.Robotics.Section.Maintenance>维护与表现</ColonyKit.Settings.Robotics.Section.Maintenance>
 	<ColonyKit.Settings.Robotics.DurabilityHint>普通机器人耐久上限 1000，Mk-V 为 1800。只有受到伤害时才会损耗（约 250 点伤害报废），日常工作不损耗；耐久为 0 时报废成钢和零部件，殖民者可在「建造」工作中维修。维修期间机器人不会充电，修完才恢复充电。</ColonyKit.Settings.Robotics.DurabilityHint>
 	<ColonyKit.Settings.Robotics.Sounds>滴滴声</ColonyKit.Settings.Robotics.Sounds>

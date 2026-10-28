@@ -375,6 +375,44 @@ namespace ColonyKit.Modules.Robotics
 			}
 
 			listing.Gap();
+			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.Appearance".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Robotics.MkVTextureHint".Loc());
+			data.mkvTexturePath = SettingsWidgets.TextField(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVTexturePath".Loc(),
+				data.mkvTexturePath,
+				120,
+				"ColonyKit.Settings.Robotics.MkVTexturePath.Desc".Loc());
+			if (data.mkvTexturePath.NullOrEmpty())
+			{
+				data.mkvTexturePath = RoboticsSettings.DefaultMkvTexturePath;
+			}
+			data.mkvDrawSize = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVDrawSize".Loc(),
+				data.mkvDrawSize,
+				RoboticsSettings.MinMkvDrawSize,
+				RoboticsSettings.MaxMkvDrawSize,
+				0.05f,
+				value => value.ToString("0.00"));
+			data.mkvWidthScale = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVWidthScale".Loc(),
+				data.mkvWidthScale,
+				RoboticsSettings.MinMkvSkinScale,
+				RoboticsSettings.MaxMkvSkinScale,
+				0.01f,
+				value => value.ToStringPercent());
+			data.mkvHeightScale = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVHeightScale".Loc(),
+				data.mkvHeightScale,
+				RoboticsSettings.MinMkvSkinScale,
+				RoboticsSettings.MaxMkvSkinScale,
+				0.01f,
+				value => value.ToStringPercent());
+
+			listing.Gap();
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.Maintenance".Loc());
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Robotics.DurabilityHint".Loc());
 			data.sounds = SettingsWidgets.Checkbox(

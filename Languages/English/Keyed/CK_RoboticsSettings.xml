@@ -82,6 +82,13 @@
 	<ColonyKit.Settings.Robotics.AreaLabel>Area name</ColonyKit.Settings.Robotics.AreaLabel>
 	<ColonyKit.Settings.Robotics.AreaLabel.Desc>Name of an area on the map. If it is missing, work is unrestricted.</ColonyKit.Settings.Robotics.AreaLabel.Desc>
 
+	<ColonyKit.Settings.Robotics.Section.Appearance>Appearance</ColonyKit.Settings.Robotics.Section.Appearance>
+	<ColonyKit.Settings.Robotics.MkVTextureHint>Body texture, draw size and width/height scale for Mk-V. Changes apply immediately to all Mk-V pawns; the path must provide _north/_south/_east/_west textures.</ColonyKit.Settings.Robotics.MkVTextureHint>
+	<ColonyKit.Settings.Robotics.MkVTexturePath>Texture path</ColonyKit.Settings.Robotics.MkVTexturePath>
+	<ColonyKit.Settings.Robotics.MkVTexturePath.Desc>Path under Textures without extension, for example Things/Pawn/MkV/MkV.</ColonyKit.Settings.Robotics.MkVTexturePath.Desc>
+	<ColonyKit.Settings.Robotics.MkVDrawSize>Draw size</ColonyKit.Settings.Robotics.MkVDrawSize>
+	<ColonyKit.Settings.Robotics.MkVWidthScale>Width scale</ColonyKit.Settings.Robotics.MkVWidthScale>
+	<ColonyKit.Settings.Robotics.MkVHeightScale>Height scale</ColonyKit.Settings.Robotics.MkVHeightScale>
 	<ColonyKit.Settings.Robotics.Section.Maintenance>Maintenance</ColonyKit.Settings.Robotics.Section.Maintenance>
 	<ColonyKit.Settings.Robotics.DurabilityHint>Durability caps at 1000 for normal robots and 1800 for the Mk-V. It only drops when the robot takes damage (about 250 damage scraps it); daily work does not wear it down. At 0 it scraps into steel and components. Colonists repair it with the Construction work type. Charging is blocked while the robot is being repaired and resumes after repair finishes.</ColonyKit.Settings.Robotics.DurabilityHint>
 	<ColonyKit.Settings.Robotics.Sounds>Beeps</ColonyKit.Settings.Robotics.Sounds>
