@@ -14,9 +14,10 @@ namespace ColonyKit.Modules.Robotics
 	{
 		private static void Postfix(Pawn_DraftController __instance, ref bool __result)
 		{
-			if (!__result && NannyBotUtility.IsMkV(__instance?.pawn))
+			if (NannyBotUtility.IsMkV(__instance?.pawn))
 			{
-				__result = true;
+				// 统一由 CompNannyBot 的自定义征召按钮处理，避免原版按钮隐藏/重复。
+				__result = false;
 			}
 		}
 	}

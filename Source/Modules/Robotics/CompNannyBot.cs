@@ -466,7 +466,7 @@ namespace ColonyKit.Modules.Robotics
 			};
 			yield return pause;
 
-			if (NannyBotUtility.IsMkV(pawn) && !pawn.IsColonyMech)
+			if (NannyBotUtility.IsMkV(pawn))
 			{
 				if (pawn.drafter == null)
 				{
