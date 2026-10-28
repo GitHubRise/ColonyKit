@@ -292,6 +292,8 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		public List<CompWaterHeater> Heaters = new List<CompWaterHeater>();
 		public List<CompHeatStore> HeatStores = new List<CompHeatStore>();
 		public List<CompHeatStore> HotWaterTanks = new List<CompHeatStore>();
+
+		public List<CompThermostat> Thermostats = new List<CompThermostat>();
 		public List<CompSewageHandler> Sewers = new List<CompSewageHandler>();
 		public List<CompPipe> Pipes = new List<CompPipe>();
 		public float WaterCap;
@@ -302,6 +304,16 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		public float HeatStoreCapacitySum;
 		public float HeatingCap;
 		/// <summary>网上有正在工作的净水设备时，整张网拉出来的水都按已处理算。</summary>
+		/// <summary>DBH PlumbingNet.ThermostatBingo：网上有温控器时，至少要有一个在要热。</summary>
+		public bool ThermostatBingo()
+		{
+			if (Thermostats.Count == 0)
+			{
+				return true;
+			}
+			return Thermostats.Any(t => t.RequestHeating);
+		}
+
 		public bool HasFilter => PipedThings.Any(
 			t => t != null && t.TryGetComp<CompWaterFiltration>()?.WorkingNow == true);
 
@@ -362,6 +374,7 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 			Heaters.Clear();
 			HeatStores.Clear();
 			HotWaterTanks.Clear();
+			Thermostats.Clear();
 			Sewers.Clear();
 			foreach (ThingWithComps thing in PipedThings)
 			{
@@ -394,6 +407,11 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 					{
 						HotWaterTanks.Add(heatStore);
 					}
+				}
+				CompThermostat thermostat = thing.TryGetComp<CompThermostat>();
+				if (thermostat != null)
+				{
+					Thermostats.Add(thermostat);
 				}
 				CompSewageHandler sewer = thing.TryGetComp<CompSewageHandler>();
 				if (sewer != null)

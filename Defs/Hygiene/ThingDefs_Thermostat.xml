@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 温控器（DBH Thermostat 的 1:1 移植）：贴墙、接热水管网，按房间温度给锅炉要热/停炉。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_Thermostat</defName>
+		<label>thermostat</label>
+		<description>Used to control electric and gas boilers. More than one can be placed. Connects via standard plumbing.</description>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_Thermostat</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1,1)</drawSize>
+			<drawOffsetNorth>(0,0,0.7)</drawOffsetNorth>
+			<drawOffsetSouth>(0,0,-0.5)</drawOffsetSouth>
+			<drawOffsetWest>(-0.5,0,0)</drawOffsetWest>
+			<drawOffsetEast>(0.5,0,0)</drawOffsetEast>
+			<damageData>
+				<rect>(0.05,0.05,0.95,0.95)</rect>
+			</damageData>
+		</graphicData>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<terrainAffordanceNeeded IsNull="True" />
+		<building>
+			<isEdifice>false</isEdifice>
+			<isAttachment>true</isAttachment>
+		</building>
+		<tickerType>Rare</tickerType>
+		<rotatable>true</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>33</uiOrder>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<pathCost>0</pathCost>
+		<costList>
+			<Steel>10</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<statBases>
+			<MaxHitPoints>20</MaxHitPoints>
+			<WorkToBuild>200</WorkToBuild>
+			<Mass>1</Mass>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="CompProperties_TempControl">
+				<compClass>ColonyKit.Modules.Hygiene.Dbh.CompThermostat</compClass>
+				<maxTargetTemperature>35</maxTargetTemperature>
+				<minTargetTemperature>5</minTargetTemperature>
+				<defaultTargetTemperature>21</defaultTargetTemperature>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>Placeworker_AttachedToWall</li>
+		</placeWorkers>
+		<researchPrerequisites>
+			<li>CK_CentralHeating</li>
+		</researchPrerequisites>
+	</ThingDef>
+</Defs>

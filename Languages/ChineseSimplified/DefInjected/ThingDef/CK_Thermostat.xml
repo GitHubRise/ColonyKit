@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_Thermostat.label>温控器</CK_Thermostat.label>
+	<CK_Thermostat.description>用于控制电力和燃气锅炉，通过管道连接；可以放置多个。</CK_Thermostat.description>
+</LanguageData>

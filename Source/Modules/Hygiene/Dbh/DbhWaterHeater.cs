@@ -71,7 +71,13 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 			}
 		}
 
-		public bool Running => WorkingNow && (thermostatOn || !Props.ThermostatControl);
+		public bool ThermostatAllows => !Props.ThermostatControl
+			|| parent.GetComp<CompPipe>()?.pipeNet == null
+			|| parent.GetComp<CompPipe>().pipeNet.ThermostatBingo();
+
+		public bool Running => WorkingNow
+			&& (thermostatOn || !Props.ThermostatControl)
+			&& ThermostatAllows;
 
 		public virtual float Capacity => Running ? Props.Capacity * ModeMultiplier : 0f;
 

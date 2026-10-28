@@ -195,6 +195,9 @@
 	<CK.Hygiene.FloatMenu.BasinFull>脸盆已经满了</CK.Hygiene.FloatMenu.BasinFull>
 	<CK.Hygiene.FloatMenu.BasinEmpty>脸盆里没有水</CK.Hygiene.FloatMenu.BasinEmpty>
 	<CK.Hygiene.BasinWater>脸盆水量: {0}/{1} 升</CK.Hygiene.BasinWater>
+	<CK.Hygiene.ThermostatTarget>目标温度</CK.Hygiene.ThermostatTarget>
+	<CK.Hygiene.ThermostatCalling>正在要求加热</CK.Hygiene.ThermostatCalling>
+	<CK.Hygiene.ThermostatIdle>已达标，停止加热</CK.Hygiene.ThermostatIdle>
 	<CK.Hygiene.SolarHeaterOutput>当前出力: {0} U（效率 {1}）</CK.Hygiene.SolarHeaterOutput>
 	<CK.Hygiene.SolarHeaterCold>气温太低，效率下降</CK.Hygiene.SolarHeaterCold>
 	<CK.Hygiene.SolarHeaterRoofed>被屋顶遮挡，效率下降</CK.Hygiene.SolarHeaterRoofed>
