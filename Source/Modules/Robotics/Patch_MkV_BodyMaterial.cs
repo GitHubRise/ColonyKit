@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Reflection;
 using HarmonyLib;
 using RimWorld;
@@ -13,6 +14,9 @@ namespace ColonyKit.Modules.Robotics
 	[HarmonyPatch]
 	internal static class Patch_MkV_BodyMaterial
 	{
+		private static readonly Dictionary<int, Rot4> LastRotation = new Dictionary<int, Rot4>();
+		private static bool loggedGraphic;
+
 		private static MethodBase TargetMethod()
 		{
 			return AccessTools.Method(typeof(PawnRenderNodeWorker), "GetMaterial",
@@ -27,6 +31,23 @@ namespace ColonyKit.Modules.Robotics
 				|| !(node.PrimaryGraphic is Graphic_Multi graphic))
 			{
 				return;
+			}
+			if (!loggedGraphic)
+			{
+				loggedGraphic = true;
+				Log.Message($"[ColonyKit][MkVskin] graphicPath={graphic.GraphicPath} "
+					+ $"north={graphic.MatNorth?.name} east={graphic.MatEast?.name} "
+					+ $"south={graphic.MatSouth?.name} west={graphic.MatWest?.name} "
+					+ $"westFlipped={graphic.WestFlipped}");
+			}
+			Rot4 rotation = pawn.Rotation;
+			Rot4 last;
+			if (!LastRotation.TryGetValue(pawn.thingIDNumber, out last) || last != rotation)
+			{
+				LastRotation[pawn.thingIDNumber] = rotation;
+				Log.Message($"[ColonyKit][MkVskin] {pawn.LabelShort} rot={rotation} "
+					+ $"facing={parms.facing} drafted={pawn.Drafted} posture={pawn.GetPosture()} "
+					+ $"moving={pawn.pather?.Moving} graphic={graphic.GraphicPath}");
 			}
 			switch (pawn.Rotation.AsInt)
 			{
