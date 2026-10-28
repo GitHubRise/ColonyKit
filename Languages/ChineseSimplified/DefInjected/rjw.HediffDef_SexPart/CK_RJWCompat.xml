@@ -9,4 +9,16 @@
 	<CK_ArtificialVaginaMech.stages.Average.label>标准</CK_ArtificialVaginaMech.stages.Average.label>
 	<CK_ArtificialVaginaMech.stages.Loose.label>松弛</CK_ArtificialVaginaMech.stages.Loose.label>
 	<CK_ArtificialVaginaMech.stages.Gaping.label>扩张</CK_ArtificialVaginaMech.stages.Gaping.label>
+
+	<CK_ArtificialBreastsMech.label>机械胸部</CK_ArtificialBreastsMech.label>
+	<CK_ArtificialBreastsMech.labelNoun>机械胸部</CK_ArtificialBreastsMech.labelNoun>
+	<CK_ArtificialBreastsMech.description>为 Mk-V 机体安装的人造胸部部件；属于 RJW 的机械族性部件。</CK_ArtificialBreastsMech.description>
+
+	<CK_ArtificialBreastsMech.stages.Nipples.label>仅乳头</CK_ArtificialBreastsMech.stages.Nipples.label>
+	<CK_ArtificialBreastsMech.stages.Tiny.label>极小</CK_ArtificialBreastsMech.stages.Tiny.label>
+	<CK_ArtificialBreastsMech.stages.Small.label>小</CK_ArtificialBreastsMech.stages.Small.label>
+	<CK_ArtificialBreastsMech.stages.Average.label>标准</CK_ArtificialBreastsMech.stages.Average.label>
+	<CK_ArtificialBreastsMech.stages.Large.label>大</CK_ArtificialBreastsMech.stages.Large.label>
+	<CK_ArtificialBreastsMech.stages.Huge.label>巨大</CK_ArtificialBreastsMech.stages.Huge.label>
+	<CK_ArtificialBreastsMech.stages.Enormous.label>超大</CK_ArtificialBreastsMech.stages.Enormous.label>
 </LanguageData>

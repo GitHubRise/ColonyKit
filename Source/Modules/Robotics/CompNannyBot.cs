@@ -126,6 +126,33 @@ namespace ColonyKit.Modules.Robotics
 			}
 		}
 
+		private static void AddMechanicalBreasts(Pawn pawn)
+		{
+			if (!RjwCompat.Loaded)
+			{
+				return;
+			}
+			HediffDef def = DefDatabase<HediffDef>.GetNamedSilentFail("CK_ArtificialBreastsMech");
+			if (def == null || pawn?.health?.hediffSet == null || pawn.health.hediffSet.HasHediff(def))
+			{
+				return;
+			}
+			BodyPartRecord part = null;
+			for (int i = 0; i < pawn.RaceProps.body.AllParts.Count; i++)
+			{
+				BodyPartRecord candidate = pawn.RaceProps.body.AllParts[i];
+				if (candidate.def?.defName == "MechChest")
+				{
+					part = candidate;
+					break;
+				}
+			}
+			if (part != null)
+			{
+				pawn.health.AddHediff(HediffMaker.MakeHediff(def, pawn, part), part);
+			}
+		}
+
 		private static void SexualizeRjw(Pawn pawn)
 		{
 			if (!RjwCompat.Loaded)
@@ -281,6 +308,7 @@ namespace ColonyKit.Modules.Robotics
 				pawn.gender = Gender.Female;
 				SexualizeRjw(pawn);
 				AddMechanicalVagina(pawn);
+				AddMechanicalBreasts(pawn);
 			}
 		}
 

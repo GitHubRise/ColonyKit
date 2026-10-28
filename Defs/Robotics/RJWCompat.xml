@@ -37,4 +37,47 @@
 			</li>
 		</stages>
 	</rjw.HediffDef_SexPart>
+
+	<rjw.HediffDef_SexPart ParentName="ArtificialPrivatePartMech">
+		<defName>CK_ArtificialBreastsMech</defName>
+		<label>mechanical breasts</label>
+		<labelNoun>mechanical breasts</labelNoun>
+		<description>Artificial breast units built into the Mk-V chassis.</description>
+		<defaultBodyPart>MechChest</defaultBodyPart>
+		<sizeProfile>DefaultBreastSizes</sizeProfile>
+		<genitalFamily>Breasts</genitalFamily>
+		<genitalTags>
+			<li>CanLactate</li>
+		</genitalTags>
+		<stages>
+			<li>
+				<label>Nipples</label>
+				<minSeverity>0.01</minSeverity>
+			</li>
+			<li>
+				<label>Tiny</label>
+				<minSeverity>0.02</minSeverity>
+			</li>
+			<li>
+				<label>Small</label>
+				<minSeverity>0.20</minSeverity>
+			</li>
+			<li>
+				<label>Average</label>
+				<minSeverity>0.40</minSeverity>
+			</li>
+			<li>
+				<label>Large</label>
+				<minSeverity>0.60</minSeverity>
+			</li>
+			<li>
+				<label>Huge</label>
+				<minSeverity>0.80</minSeverity>
+			</li>
+			<li>
+				<label>Enormous</label>
+				<minSeverity>1.00</minSeverity>
+			</li>
+		</stages>
+	</rjw.HediffDef_SexPart>
 </Defs>

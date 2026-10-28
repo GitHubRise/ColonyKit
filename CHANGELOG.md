@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- **Mk-V 机械胸部**：为 Mk-V 的 `MechChest` 部位新增 `CK_ArtificialBreastsMech` 人造胸部 Hediff，包含乳头/极小/小/标准/大/巨大/超大阶段，并补上中文翻译。
+
 ### Localization
 
 - **RJW 机械阴道中文化**：`CK_ArtificialVaginaMech` 的名称、说明和五个尺寸阶段（微型/紧致/标准/松弛/扩张）补上中文，不再显示英文 `Mechanical vagina (Tight)`。
