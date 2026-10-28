@@ -21,12 +21,33 @@ namespace ColonyKit.Modules.Hygiene
 			foreach (Thing thing in map.listerThings.ThingsInGroup(ThingRequestGroup.BuildingArtificial))
 			{
 				float priority;
-				if (thing is Building_Basin)
+				bool animal = pawn.RaceProps.Animal;
+				if (thing is Building_WaterTrough)
 				{
-					priority = 9f;
+					if (!animal)
+					{
+						continue;
+					}
+					priority = 12f;
+				}
+				else if (thing is Building_WaterTub tub)
+				{
+					if (tub.ForAnimalsOnly && !animal)
+					{
+						continue;
+					}
+					priority = animal ? 6f : 9f;
+				}
+				else if (thing is Building_Basin)
+				{
+					priority = animal ? 3f : 9f;
 				}
 				else if (thing is Building_HotTub)
 				{
+					if (animal)
+					{
+						continue;
+					}
 					priority = 5f;
 				}
 				else

@@ -48,6 +48,24 @@ namespace ColonyKit.Modules.Hygiene
 			});
 			drink.tickAction = () =>
 			{
+				if (job.targetA.Thing is Building_WaterTub tub)
+				{
+					// 水盆/动物水槽自带水：每 60 tick 消耗一次水量，空了就结束。
+					if (pawn.IsHashIntervalTick(60))
+					{
+						if (!tub.TryUseWater(out ContaminationLevel tubContam))
+						{
+							EndJobWith(JobCondition.Incompletable);
+							return;
+						}
+						if (tubContam > waterQuality)
+						{
+							waterQuality = tubContam;
+						}
+					}
+					pawn.needs?.TryGetNeed<Need_Thirst>()?.Drink();
+					return;
+				}
 				CompPipe pipe = job.targetA.Thing.TryGetComp<CompPipe>();
 				if (pipe?.pipeNet != null)
 				{

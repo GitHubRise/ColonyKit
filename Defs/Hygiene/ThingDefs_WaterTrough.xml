@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 动物水槽（DBH WaterTrough 的 1:1 移植）：2×1，动物专用；自带水 + 浮球补水 + 接雨水。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_WaterTrough</defName>
+		<label>Water Trough</label>
+		<description>Trough of water used by animals, a service box with a ballcock valve automatically refills the water when the level is low, also refills in rain.</description>
+		<thingClass>ColonyKit.Modules.Hygiene.Building_WaterTrough</thingClass>
+		<size>(2,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_WaterTrough</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(2,1)</drawSize>
+		</graphicData>
+		<rotatable>true</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>22</uiOrder>
+		<tickerType>Rare</tickerType>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.15</fillPercent>
+		<pathCost>8</pathCost>
+		<costList>
+			<Steel>15</Steel>
+		</costList>
+		<defaultStuff>Steel</defaultStuff>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>60</costStuffCount>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<WorkToBuild>250</WorkToBuild>
+			<Flammability>0</Flammability>
+			<Beauty>-5</Beauty>
+			<Cleanliness>-5</Cleanliness>
+			<Mass>5</Mass>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="CompProperties_Forbiddable" />
+		</comps>
+		<researchPrerequisites>
+			<li>CK_HygieneResearch</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<!-- 动物口渴：插进原版动物思考树，让动物自己找水槽/水边喝水。 -->
+	<ThinkTreeDef>
+		<defName>CK_AnimalThirst</defName>
+		<insertTag>Animal_PreMain</insertTag>
+		<insertPriority>90</insertPriority>
+		<thinkRoot Class="ThinkNode_Tagger">
+			<tagToGive>SatisfyingNeeds</tagToGive>
+			<subNodes>
+				<li Class="ColonyKit.Modules.Hygiene.JobGiver_DrinkWater" />
+			</subNodes>
+		</thinkRoot>
+	</ThinkTreeDef>
+</Defs>

@@ -34,6 +34,9 @@ namespace ColonyKit.Modules.Hygiene
 
 		public override FixtureQuality Quality => FixtureQuality.shabby;
 
+		/// <summary>动物水槽标记：FindBestDrink 里人类不会去喝、动物优先喝。</summary>
+		public virtual bool ForAnimalsOnly => false;
+
 		/// <summary>水盆不靠水网也能用：盆里有水就行。</summary>
 		public override bool HasWaterSupply => usesRemaining > 0 || HasNetWater;
 
