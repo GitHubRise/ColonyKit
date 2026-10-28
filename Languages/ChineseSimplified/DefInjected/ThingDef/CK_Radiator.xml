@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_Radiator.label>散热器</CK_Radiator.label>
+	<CK_Radiator.description>用锅炉热水加热房间。需要 100 加热单位。</CK_Radiator.description>
+	<CK_RadiatorLarge.label>大型散热器</CK_RadiatorLarge.label>
+	<CK_RadiatorLarge.description>输出是普通散热器的三倍，适合大房间。需要 300 加热单位。</CK_RadiatorLarge.description>
+	<CK_TowelRail.label>毛巾架</CK_TowelRail.label>
+	<CK_TowelRail.description>浴室里的取暖毛巾架。</CK_TowelRail.description>
+</LanguageData>

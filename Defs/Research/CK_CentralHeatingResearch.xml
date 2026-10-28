@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 中央供暖：DBH CentralHeating（400 点，工业），暖气片/毛巾架的门槛。 -->
+	<ResearchProjectDef>
+		<defName>CK_CentralHeating</defName>
+		<label>central heating</label>
+		<description>Build central heating systems with radiators, hot water tanks, boilers and thermostats.</description>
+		<baseCost>400</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>CK_HygieneResearch</li>
+		</prerequisites>
+		<tags>
+			<li>ClassicStart</li>
+		</tags>
+		<tab>CK_HygieneTab</tab>
+		<researchViewX>2</researchViewX>
+		<researchViewY>0</researchViewY>
+	</ResearchProjectDef>
+</Defs>

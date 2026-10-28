@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 暖气片系统（DBH Radiator / RadiatorLarge / TowelRail 的 1:1 移植）。
+	     都是贴墙安装、走热水管（CK 的水网），吃管网里的热水给房间升温。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_Radiator</defName>
+		<label>radiator</label>
+		<description>Heats rooms using hot water from boilers. Requires 100 heating units.</description>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_Radiator</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<drawOffsetNorth>(0,0,0.5)</drawOffsetNorth>
+			<drawOffsetSouth>(0,0,-0.5)</drawOffsetSouth>
+			<drawOffsetWest>(-0.5,0,0)</drawOffsetWest>
+			<drawOffsetEast>(0.5,0,0)</drawOffsetEast>
+			<damageData>
+				<rect>(0.05,0.05,0.95,0.95)</rect>
+			</damageData>
+		</graphicData>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<terrainAffordanceNeeded IsNull="True" />
+		<passability>Standable</passability>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<rotatable>true</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>25</uiOrder>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>10</costStuffCount>
+		<costList>
+			<Steel>15</Steel>
+		</costList>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<WorkToBuild>700</WorkToBuild>
+			<Mass>50</Mass>
+		</statBases>
+		<comps>
+			<li>
+				<compClass>CompColorable</compClass>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="CompProperties_Flickable">
+				<commandTexture>Things/Building/Hygiene/CK_PipeValve</commandTexture>
+				<commandLabelKey>CK.Hygiene.ValveToggle</commandLabelKey>
+				<commandDescKey>CK.Hygiene.ValveToggleDesc</commandDescKey>
+			</li>
+			<li Class="CompProperties_TempControl">
+				<maxTargetTemperature>35</maxTargetTemperature>
+				<minTargetTemperature>5</minTargetTemperature>
+				<defaultTargetTemperature>21</defaultTargetTemperature>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Radiator">
+				<StoreCapacity>100</StoreCapacity>
+				<Energy>21</Energy>
+				<HeatingRate>250</HeatingRate>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_CentralHeating</li>
+		</researchPrerequisites>
+		<placeWorkers>
+			<li>PlaceWorker_Heater</li>
+			<li>Placeworker_AttachedToWall</li>
+		</placeWorkers>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<building>
+			<isEdifice>false</isEdifice>
+			<isAttachment>true</isAttachment>
+		</building>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_RadiatorLarge</defName>
+		<label>large radiator</label>
+		<description>Three times the output of a standard radiator. Useful for larger rooms. Requires 300 heating units.</description>
+		<thingClass>Building</thingClass>
+		<size>(2,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_RadiatorLarge</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(3,2)</drawSize>
+			<drawOffsetNorth>(0,0,0.5)</drawOffsetNorth>
+			<drawOffsetSouth>(0,0,-0.5)</drawOffsetSouth>
+			<drawOffsetWest>(-0.5,0,0)</drawOffsetWest>
+			<drawOffsetEast>(0.5,0,0)</drawOffsetEast>
+			<damageData>
+				<rect>(0.05,0.05,0.95,0.95)</rect>
+			</damageData>
+		</graphicData>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<terrainAffordanceNeeded IsNull="True" />
+		<passability>Standable</passability>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<rotatable>true</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>26</uiOrder>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>60</costStuffCount>
+		<costList>
+			<Steel>15</Steel>
+		</costList>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<WorkToBuild>700</WorkToBuild>
+			<Mass>50</Mass>
+		</statBases>
+		<comps>
+			<li>
+				<compClass>CompColorable</compClass>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="CompProperties_Flickable">
+				<commandTexture>Things/Building/Hygiene/CK_PipeValve</commandTexture>
+				<commandLabelKey>CK.Hygiene.ValveToggle</commandLabelKey>
+				<commandDescKey>CK.Hygiene.ValveToggleDesc</commandDescKey>
+			</li>
+			<li Class="CompProperties_TempControl">
+				<maxTargetTemperature>35</maxTargetTemperature>
+				<minTargetTemperature>5</minTargetTemperature>
+				<defaultTargetTemperature>21</defaultTargetTemperature>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Radiator">
+				<StoreCapacity>300</StoreCapacity>
+				<Energy>60</Energy>
+				<HeatingRate>250</HeatingRate>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_CentralHeating</li>
+		</researchPrerequisites>
+		<placeWorkers>
+			<li>PlaceWorker_Heater</li>
+			<li>Placeworker_AttachedToWall</li>
+		</placeWorkers>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<building>
+			<isEdifice>false</isEdifice>
+			<isAttachment>true</isAttachment>
+		</building>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_TowelRail</defName>
+		<label>Towel Rail</label>
+		<description>Impressive bathroom towel rail.</description>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_TowelRail</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<drawOffsetNorth>(0,0,0.5)</drawOffsetNorth>
+			<drawOffsetSouth>(0,0,-0.5)</drawOffsetSouth>
+			<drawOffsetWest>(-0.5,0,0)</drawOffsetWest>
+			<drawOffsetEast>(0.5,0,0)</drawOffsetEast>
+			<damageData>
+				<rect>(0.05,0.05,0.95,0.95)</rect>
+			</damageData>
+		</graphicData>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<terrainAffordanceNeeded IsNull="True" />
+		<passability>Standable</passability>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<rotatable>true</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>27</uiOrder>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>10</costStuffCount>
+		<costList>
+			<Steel>15</Steel>
+		</costList>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<WorkToBuild>700</WorkToBuild>
+			<Mass>50</Mass>
+			<Beauty>6</Beauty>
+		</statBases>
+		<comps>
+			<li>
+				<compClass>CompColorable</compClass>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="CompProperties_Flickable">
+				<commandTexture>Things/Building/Hygiene/CK_PipeValve</commandTexture>
+				<commandLabelKey>CK.Hygiene.ValveToggle</commandLabelKey>
+				<commandDescKey>CK.Hygiene.ValveToggleDesc</commandDescKey>
+			</li>
+			<li Class="CompProperties_TempControl">
+				<maxTargetTemperature>35</maxTargetTemperature>
+				<minTargetTemperature>5</minTargetTemperature>
+				<defaultTargetTemperature>21</defaultTargetTemperature>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Radiator">
+				<StoreCapacity>100</StoreCapacity>
+				<Energy>21</Energy>
+				<HeatingRate>250</HeatingRate>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_CentralHeating</li>
+		</researchPrerequisites>
+		<placeWorkers>
+			<li>PlaceWorker_Heater</li>
+			<li>Placeworker_AttachedToWall</li>
+		</placeWorkers>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<building>
+			<isEdifice>false</isEdifice>
+			<isAttachment>true</isAttachment>
+		</building>
+	</ThingDef>
+</Defs>

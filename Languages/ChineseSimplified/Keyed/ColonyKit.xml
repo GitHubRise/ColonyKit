@@ -195,6 +195,8 @@
 	<CK.Hygiene.FloatMenu.BasinFull>脸盆已经满了</CK.Hygiene.FloatMenu.BasinFull>
 	<CK.Hygiene.FloatMenu.BasinEmpty>脸盆里没有水</CK.Hygiene.FloatMenu.BasinEmpty>
 	<CK.Hygiene.BasinWater>脸盆水量: {0}/{1} 升</CK.Hygiene.BasinWater>
+	<CK.Hygiene.RadiatorHeating>供暖: {0} 单位  热水余量: {1}</CK.Hygiene.RadiatorHeating>
+	<CK.Hygiene.RadiatorCap>当前热量: {0}</CK.Hygiene.RadiatorCap>
 	<CK.Hygiene.RequiresSaunaRoom>需要建在桑拿房内</CK.Hygiene.RequiresSaunaRoom>
 	<CK.Hygiene.HotTubWater>浴缸水量: {0}/{1} L</CK.Hygiene.HotTubWater>
 	<CK.Hygiene.ValveClosed>阀门关闭</CK.Hygiene.ValveClosed>
