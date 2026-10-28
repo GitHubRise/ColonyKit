@@ -27,6 +27,7 @@
 - **隔间门（DBH `ToiletStallDoor` 1:1）**：`CK_ToiletStallDoor`，金属/木/石 5 材料、HP 250、`DoorMoveable`、`RealtimeOnly`、`Blueprint_Door`、可盖墙上；`Building_StallDoor` 实现开合动画/自动关门，走到门口由 `Pawn_PathFollower.SetupMoveIntoNextCell` 的补丁推开（`pawn`/`nextCell` 走 `FieldRef`）。`PrivacyUtil` 的洗澡/如厕视线检查加了 validator：门所在格按遮挡处理——只挡隐私视线，不影响战斗视线。声音沿用 DBH 的 `stalldoor/close1.ogg`。
 - **洗衣机（DBH `WashingMachine` 1:1）**：`CK_WashingMachine`（钢 100 + 2 零部件、420W、WorkToBuild 1200）。`Building_WashingMachine : Building, IStoreSettingsParent, IThingHolder`：5 格容量，装一件 +1500 tick 转筒，每 30 tick 抽 1 L 水、推 0.5 污水，取出时清 `WornByCorpse`；空转 10 W、转筒 420 W，带 DBH 的洗衣音效与围观 JoyGiver。管道按 CK 的两张网适配：同时挂 Water + Sewage 两个 Pipe comp。新增 `CK_LoadWashing`/`CK_UnloadWashing`/`CK_WatchWashingMachine` 三个 Job、两个 Hauling WorkGiver 与 `CK_WashingMachines` 研究（1200，接在卫生研究后）。
 - **厨房水槽（DBH `KitchenSink` 1:1）**：`CK_KitchenSink`，3×1、`drawSize` (4,2)、钢 15 + 35 材料、`Cleanliness` 5、Beauty 10、HP 75、WorkToBuild 550；thingClass 复用 `Building_Basin`（洗手逻辑完全一样），接水网 + 堵塞 comp。新增 `CK_ModernFixtures` 研究（600，接在 `CK_HygieneResearch` 后），对应 DBH 的 `ModernFixtures`。
+- **水过滤器（DBH `WaterTreatment` 1:1）**：新增 `CompWaterFiltration`/`CompProperties_WaterFiltration`（移植自 DBH，`WorkingNow` = 开着 + 通电 + 没坏）。`PlumbingNet.HasFilter` 从写死的 `false` 改成检查网上是否有工作中的净水设备，`PullWater` 在 `HasFilter` 时把水质按 `Treated` 返回——即 DBH 的「过滤整张网」。建筑 `CK_WaterTreatment`：2×2、钢 250 + 5 零部件、800 W、WorkToBuild 2500、Flickable/Breakdownable、挂 **水网** Pipe（DBH 是单管网，CK 两网需挂水网）；`CK_WaterFiltration` 研究 1500 点。
 
 ### Changed
 
