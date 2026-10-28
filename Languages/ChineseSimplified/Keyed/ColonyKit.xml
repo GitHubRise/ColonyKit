@@ -195,6 +195,12 @@
 	<CK.Hygiene.FloatMenu.BasinFull>脸盆已经满了</CK.Hygiene.FloatMenu.BasinFull>
 	<CK.Hygiene.FloatMenu.BasinEmpty>脸盆里没有水</CK.Hygiene.FloatMenu.BasinEmpty>
 	<CK.Hygiene.BasinWater>脸盆水量: {0}/{1} 升</CK.Hygiene.BasinWater>
+	<CK.Hygiene.CoolingCapacity>制冷量: 室内 {0} / 室外 {1}（{2}）</CK.Hygiene.CoolingCapacity>
+	<CK.Hygiene.CoolingMode>制冷档位: {0} 单位（{1} W）</CK.Hygiene.CoolingMode>
+	<CK.Hygiene.CoolingLower>降低制冷档位</CK.Hygiene.CoolingLower>
+	<CK.Hygiene.CoolingRaise>提高制冷档位</CK.Hygiene.CoolingRaise>
+	<CK.Hygiene.LowCoolingCap>室外机制冷量不足</CK.Hygiene.LowCoolingCap>
+	<CK.Hygiene.CoolingUnits>需求: {0} 制冷单位</CK.Hygiene.CoolingUnits>
 	<CK.Hygiene.FanCooling>正在降温</CK.Hygiene.FanCooling>
 	<CK.Hygiene.FanIdle>待机（房间已够凉）</CK.Hygiene.FanIdle>
 	<CK.Hygiene.ThermostatTarget>目标温度</CK.Hygiene.ThermostatTarget>

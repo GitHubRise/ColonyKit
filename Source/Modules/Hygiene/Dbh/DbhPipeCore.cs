@@ -294,6 +294,16 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		public List<CompHeatStore> HotWaterTanks = new List<CompHeatStore>();
 
 		public List<CompThermostat> Thermostats = new List<CompThermostat>();
+
+		public List<CompAirconIndoorUnit> Airvents = new List<CompAirconIndoorUnit>();
+
+		public List<CompAirconBaseUnit> Aircons = new List<CompAirconBaseUnit>();
+
+		public float OutdoorUnitCapacitySum;
+
+		public float IndoorUnitCapacitySum;
+
+		public float CoolingCap;
 		public List<CompSewageHandler> Sewers = new List<CompSewageHandler>();
 		public List<CompPipe> Pipes = new List<CompPipe>();
 		public float WaterCap;
@@ -375,6 +385,8 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 			HeatStores.Clear();
 			HotWaterTanks.Clear();
 			Thermostats.Clear();
+			Airvents.Clear();
+			Aircons.Clear();
 			Sewers.Clear();
 			foreach (ThingWithComps thing in PipedThings)
 			{
@@ -407,6 +419,16 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 					{
 						HotWaterTanks.Add(heatStore);
 					}
+				}
+				CompAirconIndoorUnit airvent = thing.TryGetComp<CompAirconIndoorUnit>();
+				if (airvent != null)
+				{
+					Airvents.Add(airvent);
+				}
+				CompAirconBaseUnit aircon = thing.TryGetComp<CompAirconBaseUnit>();
+				if (aircon != null)
+				{
+					Aircons.Add(aircon);
 				}
 				CompThermostat thermostat = thing.TryGetComp<CompThermostat>();
 				if (thermostat != null)
@@ -481,6 +503,14 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 				}
 			}
 			BoilerCapacitySum = Heaters.Sum(h => h.Capacity);
+			// DBH TickAircon：室外制冷量不足时按比例打折。
+			OutdoorUnitCapacitySum = Aircons.Sum(a => a.Capacity);
+			IndoorUnitCapacitySum = Airvents.Sum(v => v.Capacity);
+			CoolingCap = 0f;
+			if (IndoorUnitCapacitySum > 0f)
+			{
+				CoolingCap = Mathf.Clamp01(1f - (IndoorUnitCapacitySum - OutdoorUnitCapacitySum) / IndoorUnitCapacitySum);
+			}
 			HeatStoreCapacitySum = HeatStores.Sum(h => h.GetStoreCapacity);
 			HeatingCap = HeatStoreCapacitySum > 0f
 				? Mathf.Clamp01(BoilerCapacitySum / HeatStoreCapacitySum)

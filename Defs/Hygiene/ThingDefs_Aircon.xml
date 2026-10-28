@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 多联机空调（DBH AirConOutdoorUnit / AirconIndoorUnit 的 1:1 移植）：室外机 + 室内机，走「空气管」网。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_AirconPipe</defName>
+		<label>air-con pipe</label>
+		<description>Refrigerant line for multi-split air conditioners. Connects outdoor units to indoor units and freezers.</description>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_WaterPipe_Atlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<linkType>Basic</linkType>
+			<linkFlags>
+				<li>Custom6</li>
+			</linkFlags>
+			<color>(0.62,0.84,0.94)</color>
+			<drawSize>(1,1)</drawSize>
+			<damageData>
+				<rect>(0,0.35,1,0.3)</rect>
+			</damageData>
+		</graphicData>
+		<uiIconPath>Things/Building/Hygiene/CK_WaterPipe_MenuIcon</uiIconPath>
+		<uiIconScale>0.7</uiIconScale>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<isInert>true</isInert>
+			<isEdifice>false</isEdifice>
+			<canConstructInCorner>true</canConstructInCorner>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Hygiene/CK_WaterPipe_Atlas_Blueprint</texPath>
+			</blueprintGraphicData>
+		</building>
+		<drawerType>MapMeshOnly</drawerType>
+		<altitudeLayer>Conduits</altitudeLayer>
+		<passability>Standable</passability>
+		<fillPercent>0.1</fillPercent>
+		<costList>
+			<Steel>1</Steel>
+		</costList>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>40</uiOrder>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Air</mode>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_MultiSplitAirCon</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_AirConOutdoorUnit</defName>
+		<label>air-con outdoor unit</label>
+		<description>Multi-split air conditioner unit. Place outdoors and pipe to indoor units or freezer units. Power mode selection with 100-1000 cooling units capacity.</description>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_AirconOutdoorUnit</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>41</uiOrder>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>true</castEdgeShadows>
+		<pathCost>8</pathCost>
+		<costList>
+			<Steel>90</Steel>
+			<ComponentIndustrial>3</ComponentIndustrial>
+		</costList>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<statBases>
+			<MaxHitPoints>125</MaxHitPoints>
+			<WorkToBuild>1600</WorkToBuild>
+			<Mass>50</Mass>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Air</mode>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_AirconBaseUnit">
+				<BaseCapacity>100</BaseCapacity>
+				<PowerModes>10</PowerModes>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>200</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Breakdownable" />
+		</comps>
+		<researchPrerequisites>
+			<li>CK_MultiSplitAirCon</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_AirconIndoorUnit</defName>
+		<label>air-con indoor unit</label>
+		<description>Indoor air-con unit for rooms. Connect to outdoor air-con units. Requires 100 cooling units.</description>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_AirconIndoorUnit</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1,1)</drawSize>
+			<drawOffsetNorth>(0,0,0.7)</drawOffsetNorth>
+			<drawOffsetSouth>(0,0,-0.5)</drawOffsetSouth>
+			<drawOffsetWest>(-0.5,0,0)</drawOffsetWest>
+			<drawOffsetEast>(0.5,0,0)</drawOffsetEast>
+			<damageData>
+				<rect>(0.05,0.05,0.95,0.95)</rect>
+			</damageData>
+		</graphicData>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<terrainAffordanceNeeded IsNull="True" />
+		<building>
+			<isEdifice>false</isEdifice>
+			<isAttachment>true</isAttachment>
+		</building>
+		<passability>Standable</passability>
+		<blockWind>false</blockWind>
+		<pathCost>0</pathCost>
+		<castEdgeShadows>false</castEdgeShadows>
+		<clearBuildingArea>false</clearBuildingArea>
+		<rotatable>true</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>42</uiOrder>
+		<costList>
+			<Steel>25</Steel>
+		</costList>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>400</WorkToBuild>
+			<Mass>50</Mass>
+		</statBases>
+		<comps>
+			<li>
+				<compClass>CompColorable</compClass>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Air</mode>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>25</basePowerConsumption>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_CompAirconUnit">
+				<compClass>ColonyKit.Modules.Hygiene.Dbh.CompRoomUnit</compClass>
+				<energyPerSecond>-21</energyPerSecond>
+				<CoolingRate>250</CoolingRate>
+				<Capacity>100</Capacity>
+			</li>
+			<li Class="CompProperties_TempControl">
+				<compClass>ColonyKit.Modules.Hygiene.Dbh.CompThermostat</compClass>
+				<maxTargetTemperature>35</maxTargetTemperature>
+				<minTargetTemperature>5</minTargetTemperature>
+				<defaultTargetTemperature>21</defaultTargetTemperature>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>Placeworker_AttachedToWall</li>
+		</placeWorkers>
+		<researchPrerequisites>
+			<li>CK_MultiSplitAirCon</li>
+		</researchPrerequisites>
+	</ThingDef>
+</Defs>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_AirconPipe.label>空调管</CK_AirconPipe.label>
+	<CK_AirconPipe.description>多联机空调的冷媒管，把室外机接到室内机和冷库上。</CK_AirconPipe.description>
+	<CK_AirConOutdoorUnit.label>空调室外机</CK_AirconOutdoorUnit.label>
+	<CK_AirConOutdoorUnit.description>多联机空调的室外机。放在室外，用空调管接到室内机或冷库；功率档位可选，制冷量 100–1000。</CK_AirConOutdoorUnit.description>
+	<CK_AirconIndoorUnit.label>空调室内机</CK_AirconIndoorUnit.label>
+	<CK_AirconIndoorUnit.description>房间用的空调室内机，需要接到室外机，占用 100 制冷单位。</CK_AirconIndoorUnit.description>
+</LanguageData>
