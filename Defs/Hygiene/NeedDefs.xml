@@ -25,7 +25,7 @@
 		<label>bladder</label>
 		<description>How urgently this person needs a toilet.</description>
 		<baseLevel>1</baseLevel>
-		<minIntelligence>Humanlike</minIntelligence>
+		<minIntelligence>Animal</minIntelligence>
 		<listPriority>320</listPriority>
 		<showOnNeedList>true</showOnNeedList>
 		<Exemptions>
