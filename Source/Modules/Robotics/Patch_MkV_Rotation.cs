@@ -25,6 +25,7 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return;
 			}
+			Rot4 before = pawn.Rotation;
 			IntVec3 delta = pawn.pather.nextCell - pawn.Position;
 			if (delta.x > 0)
 			{
@@ -41,6 +42,11 @@ namespace ColonyKit.Modules.Robotics
 			else if (delta.z < 0)
 			{
 				pawn.Rotation = Rot4.South;
+			}
+			if (pawn.Rotation != before)
+			{
+				// 强制丢弃上一帧的绘制缓存，避免身体继续显示旧方向。
+				pawn.Drawer?.renderer?.renderTree?.SetDirty();
 			}
 		}
 	}
