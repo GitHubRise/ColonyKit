@@ -83,6 +83,9 @@ namespace ColonyKit.Modules.Robotics
 		/// <summary>常用充电桩；桩被拆掉后会自动改用最近的桩。</summary>
 		public Building homeStation;
 
+		private Rot4 lastBodyRotation;
+		private bool hasLastBodyRotation;
+
 		private Graphic paintedGraphic;
 		private Graphic paintedBase;
 		private int paintedIndex = -1;
@@ -329,6 +332,17 @@ namespace ColonyKit.Modules.Robotics
 			if (pawn == null || pawn.Dead || !pawn.Spawned)
 			{
 				return;
+			}
+
+			if (NannyBotUtility.IsMkV(pawn))
+			{
+				if (hasLastBodyRotation && lastBodyRotation != pawn.Rotation)
+				{
+					// 旋转状态先变了但绘制缓存仍停留在上一方向时，强制刷新纹理图集与立绘缓存。
+					pawn.Drawer?.renderer?.SetAllGraphicsDirty();
+				}
+				lastBodyRotation = pawn.Rotation;
+				hasLastBodyRotation = true;
 			}
 
 			if (durability <= 0f)
