@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 游泳池：DBH SwimmingPools（500 点，中世纪）。 -->
+	<ResearchProjectDef>
+		<defName>CK_SwimmingPools</defName>
+		<label>swimming pools</label>
+		<description>Build swimming pools.</description>
+		<baseCost>500</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>CK_HygieneResearch</li>
+		</prerequisites>
+		<tab>CK_HygieneTab</tab>
+		<researchViewX>3</researchViewX>
+		<researchViewY>4</researchViewY>
+	</ResearchProjectDef>
+</Defs>

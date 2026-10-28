@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 游泳池（DBH DBHSwimmingPool 的 1:1 移植）：9×5 铺地式，先灌满水，19℃ 以上才能游。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_SwimmingPool</defName>
+		<label>swimming pool</label>
+		<description>Swimming pool used for hydrotherapy, relaxation, or pleasure. Must be filled with water from water towers first.</description>
+		<thingClass>ColonyKit.Modules.Hygiene.Building_Pool</thingClass>
+		<size>(9,5)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_SwimmingPool</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(11,7)</drawSize>
+			<shaderType>Cutout</shaderType>
+		</graphicData>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>45</uiOrder>
+		<rotatable>true</rotatable>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>450</costStuffCount>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.15</fillPercent>
+		<pathCost>0</pathCost>
+		<statBases>
+			<MaxHitPoints>1500</MaxHitPoints>
+			<WorkToBuild>20000</WorkToBuild>
+			<Flammability>0</Flammability>
+			<Beauty>200</Beauty>
+			<Comfort>0.6</Comfort>
+			<JoyGainFactor>1</JoyGainFactor>
+			<Mass>100</Mass>
+		</statBases>
+		<building>
+			<bed_healPerDay>9</bed_healPerDay>
+			<ai_chillDestination>true</ai_chillDestination>
+			<joyKind>CK_Hydrotherapy</joyKind>
+		</building>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li>
+				<compClass>CompColorable</compClass>
+			</li>
+		</comps>
+		<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+		<researchPrerequisites>
+			<li>CK_SwimmingPools</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<JobDef>
+		<defName>CK_GoSwimming</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_GoSwimming</driverClass>
+		<reportString>swimming.</reportString>
+		<joyKind>CK_Hydrotherapy</joyKind>
+		<joyDuration>3000</joyDuration>
+		<joyMaxParticipants>4</joyMaxParticipants>
+	</JobDef>
+
+	<JoyGiverDef>
+		<defName>CK_GoSwimming</defName>
+		<giverClass>ColonyKit.Modules.Hygiene.JoyGiver_GoSwimming</giverClass>
+		<baseChance>4</baseChance>
+		<thingDefs>
+			<li>CK_SwimmingPool</li>
+		</thingDefs>
+		<jobDef>CK_GoSwimming</jobDef>
+		<desireSit>false</desireSit>
+		<joyKind>CK_Hydrotherapy</joyKind>
+	</JoyGiverDef>
+</Defs>

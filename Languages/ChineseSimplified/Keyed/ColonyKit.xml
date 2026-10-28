@@ -195,6 +195,10 @@
 	<CK.Hygiene.FloatMenu.BasinFull>脸盆已经满了</CK.Hygiene.FloatMenu.BasinFull>
 	<CK.Hygiene.FloatMenu.BasinEmpty>脸盆里没有水</CK.Hygiene.FloatMenu.BasinEmpty>
 	<CK.Hygiene.BasinWater>脸盆水量: {0}/{1} 升</CK.Hygiene.BasinWater>
+	<CK.Hygiene.PoolWater>水量: {0}/{1} L</CK.Hygiene.PoolWater>
+	<CK.Hygiene.PoolEmpty>还没灌水</CK.Hygiene.PoolEmpty>
+	<CK.Hygiene.PoolTooCold>水温太低（{0}）</CK.Hygiene.PoolTooCold>
+	<CK.Hygiene.PoolGeyserHeated>由地热加温</CK.Hygiene.PoolGeyserHeated>
 	<CK.Hygiene.FreezerBlocked>冷库被堵住</CK.Hygiene.FreezerBlocked>
 	<CK.Hygiene.CoolingCapacity>制冷量: 室内 {0} / 室外 {1}（{2}）</CK.Hygiene.CoolingCapacity>
 	<CK.Hygiene.CoolingMode>制冷档位: {0} 单位（{1} W）</CK.Hygiene.CoolingMode>

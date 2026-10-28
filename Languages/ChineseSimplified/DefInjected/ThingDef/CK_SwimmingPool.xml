@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_SwimmingPool.label>游泳池</CK_SwimmingPool.label>
+	<CK_SwimmingPool.description>用于水疗、放松和娱乐的游泳池，需要先从水网灌水；水温 19℃ 以上才能下水。</CK_SwimmingPool.description>
+	<CK_GoSwimming.reportString>在游泳。</CK_GoSwimming.reportString>
+</LanguageData>
