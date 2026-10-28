@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<!-- 译法沿用 DBH 简体中文包。 -->
+	<CK_ToiletStallDoor.label>隔间门</CK_ToiletStallDoor.label>
+	<CK_ToiletStallDoor.description>隔间门只能阻挡人的视线，方便使用卫生设施，并不会分割房间和防止热量流失。</CK_ToiletStallDoor.description>
+</LanguageData>

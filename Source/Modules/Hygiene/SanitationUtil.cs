@@ -231,7 +231,10 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return false;
 			}
-			return GenSight.LineOfSight(source.Position, target.Position, source.Map);
+			// 隔间门只挡隐私视线：门所在格当作遮挡，普通战斗视线不受影响。
+			return GenSight.LineOfSight(
+				source.Position, target.Position, source.Map, skipFirstCell: false,
+				validator: c => !(c.GetEdifice(source.Map) is Building_StallDoor));
 		}
 
 		public static bool CaresIfSeenBathingBy(this Pawn source, Pawn target)
@@ -248,7 +251,9 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return false;
 			}
-			if (!GenSight.LineOfSight(source.Position, target.Position, source.Map))
+			if (!GenSight.LineOfSight(
+				source.Position, target.Position, source.Map, skipFirstCell: false,
+				validator: c => !(c.GetEdifice(source.Map) is Building_StallDoor)))
 			{
 				return false;
 			}

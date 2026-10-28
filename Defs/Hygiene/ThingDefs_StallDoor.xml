@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 隔间门（DBH ToiletStallDoor 的 1:1 移植）：只挡隐私视线，不隔房间/不挡热量。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_ToiletStallDoor</defName>
+		<label>stall door</label>
+		<description>Thin door which only blocks line of sight to people using bathroom fixtures. Does not create new rooms or prevent heat loss.</description>
+		<thingClass>ColonyKit.Modules.Hygiene.Building_StallDoor</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_StallDoor_Mover</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<damageData>
+				<enabled>false</enabled>
+			</damageData>
+		</graphicData>
+		<uiIconPath>Things/Building/Hygiene/CK_StallDoor_UI</uiIconPath>
+		<size>(1,1)</size>
+		<category>Building</category>
+		<altitudeLayer>DoorMoveable</altitudeLayer>
+		<useHitPoints>true</useHitPoints>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>5</costStuffCount>
+		<statBases>
+			<WorkToBuild>250</WorkToBuild>
+			<MaxHitPoints>250</MaxHitPoints>
+			<Flammability>1</Flammability>
+		</statBases>
+		<passability>Standable</passability>
+		<fillPercent>0.15</fillPercent>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<tickerType>Normal</tickerType>
+		<rotatable>false</rotatable>
+		<staticSunShadowHeight>1</staticSunShadowHeight>
+		<blockLight>false</blockLight>
+		<drawerType>RealtimeOnly</drawerType>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>12</uiOrder>
+		<designationHotKey>Misc1</designationHotKey>
+		<building>
+			<soundDoorOpenManual>CK_StallDoor</soundDoorOpenManual>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Hygiene/CK_StallDoor_Blueprint</texPath>
+			</blueprintGraphicData>
+			<blueprintClass>Blueprint_Door</blueprintClass>
+			<isEdifice>true</isEdifice>
+			<isInert>true</isInert>
+			<canPlaceOverWall>true</canPlaceOverWall>
+		</building>
+		<comps>
+			<li Class="CompProperties_Forbiddable" />
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_DoorLearnOpeningSpeed</li>
+		</placeWorkers>
+	</ThingDef>
+
+	<SoundDef>
+		<defName>CK_StallDoor</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipFolderPath>DBH/stalldoor</clipFolderPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>150</min>
+					<max>150</max>
+				</volumeRange>
+				<pitchRange>
+					<min>0.95</min>
+					<max>1.05</max>
+				</pitchRange>
+				<distRange>
+					<min>0</min>
+					<max>20</max>
+				</distRange>
+				<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+</Defs>
