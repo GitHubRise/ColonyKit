@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<!-- 文案沿用 DBH 简体中文包。 -->
+	<CK_WaterTreatment.label>水过滤器</CK_WaterTreatment.label>
+	<CK_WaterTreatment.description>清除 99.99% 的细菌！过滤水塔中储存的水，消除疾病风险。</CK_WaterTreatment.description>
+</LanguageData>

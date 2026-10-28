@@ -301,7 +301,9 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		public float BoilerCapacitySum;
 		public float HeatStoreCapacitySum;
 		public float HeatingCap;
-		public bool HasFilter => false;
+		/// <summary>网上有正在工作的净水设备时，整张网拉出来的水都按已处理算。</summary>
+		public bool HasFilter => PipedThings.Any(
+			t => t != null && t.TryGetComp<CompWaterFiltration>()?.WorkingNow == true);
 
 		public float WaterStorage => WaterTowers.Where(t => t.WorkingNow).Sum(t => t.WaterStorage);
 
@@ -426,6 +428,10 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 				{
 					break;
 				}
+			}
+			if (HasFilter)
+			{
+				contam = ContaminationLevel.Treated;
 			}
 			return true;
 		}

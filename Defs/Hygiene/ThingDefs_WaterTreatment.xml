@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 净水厂（DBH WaterTreatment 的 1:1 移植）：接在水网上，整张网的水都按已处理算。
+	     DBH 里它挂在「Sewage」模式的管上（单管网），CK 是两张网，所以挂水网。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_WaterTreatment</defName>
+		<label>water treatment</label>
+		<description>Cleans 99.99% of germs! Filters existing water in storage towers, and any water used by fixtures, eliminating the risk of disease.</description>
+		<thingClass>Building</thingClass>
+		<size>(2,2)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_WaterTreatment</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>15</uiOrder>
+		<tickerType>Normal</tickerType>
+		<canOverlapZones>false</canOverlapZones>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>true</castEdgeShadows>
+		<pathCost>60</pathCost>
+		<costList>
+			<Steel>250</Steel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<statBases>
+			<MaxHitPoints>120</MaxHitPoints>
+			<WorkToBuild>2500</WorkToBuild>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Breakdownable" />
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>800</basePowerConsumption>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterFiltration" />
+		</comps>
+		<researchPrerequisites>
+			<li>CK_WaterFiltration</li>
+		</researchPrerequisites>
+	</ThingDef>
+</Defs>
