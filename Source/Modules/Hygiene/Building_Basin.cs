@@ -17,7 +17,7 @@ namespace ColonyKit.Modules.Hygiene
 
 		public override FixtureQuality Quality => FixtureQuality.normal;
 
-		public bool TryUseWater(out ContaminationLevel contam)
+		public virtual bool TryUseWater(out ContaminationLevel contam)
 		{
 			contam = ContaminationLevel.Treated;
 			float amount = waterUsedPerTick * HygieneSettings.Current.waterUseMultiplier;

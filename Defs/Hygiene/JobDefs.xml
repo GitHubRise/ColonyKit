@@ -66,4 +66,10 @@
 		<reportString>pouring water.</reportString>
 		<casualInterruptible>true</casualInterruptible>
 	</JobDef>
+	<JobDef>
+		<defName>CK_FillTub</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_FillTubFromBasin</driverClass>
+		<reportString>filling the water tub.</reportString>
+		<casualInterruptible>true</casualInterruptible>
+	</JobDef>
 </Defs>

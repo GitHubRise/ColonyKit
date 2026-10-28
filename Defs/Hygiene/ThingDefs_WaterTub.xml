@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 摆放式水盆（DBH WashBucket / water tub 的对应物）：
+	     1×1 摆在地方就能洗漱，不需要研究；一盆 30 次用量，用一次少一次。
+	     露天会接雨水；接了水网后会自动补水；也可以拿便携脸盆往里倒水。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_WaterTub</defName>
+		<label>water tub</label>
+		<description>A simple tub of water for washing up. Holds 30 uses and is used up one wash at a time. Fills up in the rain, refills itself when connected to a water network, or can be topped up by pouring in a portable wash basin.</description>
+		<thingClass>ColonyKit.Modules.Hygiene.Building_WaterTub</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_WaterTub</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(1,1)</drawSize>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>8</uiOrder>
+		<hasInteractionCell>true</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.15</fillPercent>
+		<pathCost>8</pathCost>
+		<tickerType>Rare</tickerType>
+		<castEdgeShadows>true</castEdgeShadows>
+		<costList>
+			<WoodLog>15</WoodLog>
+		</costList>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<Mass>5</Mass>
+			<WorkToBuild>250</WorkToBuild>
+			<Beauty>-5</Beauty>
+			<Cleanliness>-5</Cleanliness>
+			<Flammability>1</Flammability>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+		</comps>
+	</ThingDef>
+</Defs>

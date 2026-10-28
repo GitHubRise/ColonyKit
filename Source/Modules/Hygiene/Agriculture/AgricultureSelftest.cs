@@ -103,6 +103,38 @@ namespace ColonyKit.Modules.Hygiene.Agriculture
 					$"agriculture selftest failed: composter={composterDef != null} sludge={sludgeDef != null}");
 			}
 
+			// 摆放式水盆：30 次用量、用一次减一、满了倒不进去、空了 Working 会拒绝。
+			ThingDef tubDef = DefDatabase<ThingDef>.GetNamedSilentFail("CK_WaterTub");
+			if (tubDef != null)
+			{
+				IntVec3 spot = CellFinder.RandomClosewalkCellNear(map.Center, map, 8, c => c.Standable(map));
+				Building_WaterTub tub = ThingMaker.MakeThing(tubDef) as Building_WaterTub;
+				if (tub != null)
+				{
+					GenSpawn.Spawn(tub, spot, map, Rot4.North);
+					int start = tub.usesRemaining;
+					tub.UseOnce();
+					int afterUse = tub.usesRemaining;
+					int addedWhenFull = tub.AddWater(5, ContaminationLevel.Untreated);
+					while (tub.usesRemaining > 0)
+					{
+						tub.UseOnce();
+					}
+					AcceptanceReport emptyReport = tub.Working();
+					bool usedDry = tub.TryUseWater(out ContaminationLevel _);
+					int back = tub.AddWater(30, ContaminationLevel.Untreated);
+					ModLog.Info("Hygiene",
+						$"agriculture selftest: watertub start={start} afterUse={afterUse} " +
+						$"addedWhenFull={addedWhenFull} emptyAccepted={emptyReport.Accepted} " +
+						$"useWhileEmpty={usedDry} refilled={back} now={tub.usesRemaining} " +
+						$"inspect=\"{tub.GetInspectString().Replace('\n', '|')}\"");
+				}
+			}
+			else
+			{
+				ModLog.Error("Hygiene", "agriculture selftest failed: water tub def missing.");
+			}
+
 			// 洒水器：Def + comp 是否齐。
 			ThingDef sprinklerDef = DefDatabase<ThingDef>.GetNamedSilentFail("CK_IrrigationSprinkler");
 			if (sprinklerDef != null)

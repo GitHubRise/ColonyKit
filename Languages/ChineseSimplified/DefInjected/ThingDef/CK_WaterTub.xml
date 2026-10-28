@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_WaterTub.label>水盆</CK_WaterTub.label>
+	<CK_WaterTub.description>摆在地上的简易水盆，不接管道也能洗漱。一盆水 30 次用量，用一次少一次；露天下雨会自动接水，接上水网会自动补水，也可以拿便携脸盆倒水进去。</CK_WaterTub.description>
+</LanguageData>

@@ -44,6 +44,22 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				yield return UseOption("CK.Hygiene.FloatMenu.WashHands", pawn, basin, "CK_WashHands",
 					basin.CanUse(pawn), RejectReason(basin));
+
+				// 摆放式水盆：随身带的脸盆里有水时，可以倒进去补水（最多补满 30 次）。
+				if (clickedThing is Building_WaterTub tub)
+				{
+					CompBasinWater filled = JobDriver_FillBasin.CarriedBasinWithWater(pawn);
+					if (filled != null)
+					{
+						bool full = tub.usesRemaining >= Building_WaterTub.MaxUses;
+						bool canPour = !full && pawn.CanReserveAndReach(tub, PathEndMode.Touch, pawn.NormalMaxDanger());
+						yield return UseOption("CK.Hygiene.FloatMenu.FillTub", pawn, tub, "CK_FillTub",
+							canPour,
+							full
+								? "CK.Hygiene.TubFull".Translate().ToString()
+								: "CannotReach".Translate().ToString());
+					}
+				}
 			}
 			else if (clickedThing is Building_Shower shower)
 			{

@@ -51,6 +51,11 @@ namespace ColonyKit.Modules.Hygiene
 				{
 					basin.occupiedSinceTick = -1;
 				}
+				// 水盆是一次一用的存水设施：洗完扣一次用量（DBH 的 UseBucket）。
+				if (job.targetA.Thing is Building_WaterTub tub)
+				{
+					tub.UseOnce();
+				}
 				SanitationUtil.ApplyBathroomThought(pawn, job.targetA.Thing as Building_AssignableFixture);
 				SanitationUtil.ContaminationCheckWater(pawn, waterQuality);
 				SanitationUtil.CheckForBlockage(job.targetA.Thing as Building);

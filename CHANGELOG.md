@@ -76,6 +76,8 @@
   - 地面覆盖层 `SectionLayer_Agriculture`：一个 section 一次拼出施肥格（土褐）与灌溉格（淡蓝）的四边形，颜色随剩余量淡出；`MapComponent_Agriculture` 把变化的格子按 section 归并后在 tick 末尾重画（`mapDrawer.SectionAt` + `Section.GetLayer`）。设置页可关（`showAgricultureOverlay`）。
 - **双人浴缸专属心情**：新增 ThoughtDef `CK_BathTogether`（+24 心情、`durationDays` 2 天、`stackLimit` 1、带气泡），`JobDriver_TakeBathTogether.FinishBath` 在共浴完成（`completed`）时给自己加一条；两人各自的 Job 都会走 finish，所以双方都拿到。中英 DefInjected 同步补齐。
 
+- **摆放式水盆（DBH `WashBucket` / water tub）**：新增 `CK_WaterTub`（1×1、木头 15、无研究前置，贴图取 DBH `cleanBucket` + `cleanBucket_water`）。`Building_WaterTub : Building_Basin`：30 次用量、`UseOnce()` 每次洗漱扣 1、露天 `RainRate > 0.2` 时 TickRare +1（水质降为未处理）、接水网时低于 10 次自动补水（DBH 的浮球阀，可用 Gizmo 关闭）、`AddWater` 供便携脸盆倒水，`Working()` 空盆返回 `CK.Hygiene.TubEmpty`。洗漱复用 `CK_WashHands`（`TryUseWater` 改为 virtual），新增 `CK_FillTub` + 右键「倒入水盆」，把脸盆里的水（最多 30）倒进水盆。中英文案、检视面板（水量/水质）与水面贴图同步。
+
 
 ## [0.0.3] - 2026-10-27
 

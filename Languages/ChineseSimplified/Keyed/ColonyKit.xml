@@ -195,6 +195,16 @@
 	<CK.Hygiene.FloatMenu.BasinFull>脸盆已经满了</CK.Hygiene.FloatMenu.BasinFull>
 	<CK.Hygiene.FloatMenu.BasinEmpty>脸盆里没有水</CK.Hygiene.FloatMenu.BasinEmpty>
 	<CK.Hygiene.BasinWater>脸盆水量: {0}/{1} 升</CK.Hygiene.BasinWater>
+	<CK.Hygiene.TubEmpty>水盆里没水了，需要补水</CK.Hygiene.TubEmpty>
+	<CK.Hygiene.TubWater>水量: {0}/{1} 次</CK.Hygiene.TubWater>
+	<CK.Hygiene.TubFull>水盆已经满了</CK.Hygiene.TubFull>
+	<CK.Hygiene.WaterTreated>水: 已处理</CK.Hygiene.WaterTreated>
+	<CK.Hygiene.WaterUntreated>水: 未处理</CK.Hygiene.WaterUntreated>
+	<CK.Hygiene.WaterContaminated>水: 已污染</CK.Hygiene.WaterContaminated>
+	<CK.Hygiene.AutoRefill>自动补水</CK.Hygiene.AutoRefill>
+	<CK.Hygiene.AutoRefillDesc>接水网时自动把水盆补满；关掉后只靠雨水和手动倒水。</CK.Hygiene.AutoRefillDesc>
+	<CK.Hygiene.AutoRefillOff>自动补水已关闭</CK.Hygiene.AutoRefillOff>
+	<CK.Hygiene.FloatMenu.FillTub>倒入水盆</CK.Hygiene.FloatMenu.FillTub>
 	<CK.Hygiene.PitLevel>粪坑存量: {0}</CK.Hygiene.PitLevel>
 	<CK.Hygiene.PitFull>粪坑已满：需要清空</CK.Hygiene.PitFull>
 	<CK.Agriculture.Fertilize>施肥</CK.Agriculture.Fertilize>
