@@ -77,6 +77,8 @@ namespace ColonyKit.Modules.Blueprint
 				return;
 			}
 
+			// 点击时强制重算：连续放置后地图上已经多了蓝图/框架，不能沿用上一份缓存。
+			hasCache = false;
 			EnsurePlacements(c);
 			if (!cachedCanPlace)
 			{
@@ -89,6 +91,10 @@ namespace ColonyKit.Modules.Blueprint
 			}
 
 			int placed = BlueprintPlacementUtility.PlaceAll(placements, Map, out int skipped, out int substituted);
+			// 落地后地图已变；下一帧/下一次点击必须重新校验，避免在同一格重复叠蓝图。
+			hasCache = false;
+			cachedFootprint.Clear();
+			cachedCosts.Clear();
 
 			if (placed > 0)
 			{

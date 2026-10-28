@@ -319,6 +319,23 @@ namespace ColonyKit.Modules.Blueprint
 			skipped = 0;
 			substituted = 0;
 
+			// 先把整张蓝图要覆盖的旧建筑/框架清掉，再统一生成新蓝图。
+			// 不能边生成边 Wipe：墙+电缆这类同格条目后放的会把先放的蓝图擦掉。
+			foreach (BlueprintPlacement placement in placements)
+			{
+				if (placement.def == null || !placement.report.Accepted)
+				{
+					continue;
+				}
+
+				GenSpawn.WipeExistingThings(
+					placement.position,
+					placement.rotation,
+					placement.def.blueprintDef,
+					map,
+					DestroyMode.Deconstruct);
+			}
+
 			foreach (BlueprintPlacement placement in placements)
 			{
 				if (placement.def == null)
@@ -335,14 +352,6 @@ namespace ColonyKit.Modules.Blueprint
 				{
 					substituted++;
 				}
-
-				// 与原版建造设计器一致：允许替换（replaceTags）时先清掉旧建筑/框架。
-				GenSpawn.WipeExistingThings(
-					placement.position,
-					placement.rotation,
-					placement.def.blueprintDef,
-					map,
-					DestroyMode.Deconstruct);
 
 				// God mode skips the build job entirely: spawn the finished building.
 				if (DebugSettings.godMode)

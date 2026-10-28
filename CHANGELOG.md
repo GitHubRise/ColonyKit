@@ -16,6 +16,7 @@
 
 ### Fixed
 
+- **连续蓝图放置偶发报错/叠蓝图**：`Designator_BlueprintPlace` 之前只在鼠标格/旋转/镜像/策略/地图变化时重算缓存，落地后地图已经多了蓝图/框架，但鼠标没动时点击仍沿用落图前的「可放」结果，第二次点击会直接再生成一份；不可替换的建筑会叠出重复蓝图，可替换的会被 `WipeExistingThings` 拆掉刚放的部分，后续施工 Job 可能报错。现在点击时强制重算并清空落地后缓存；`PlaceAll` 也改为先统一清掉整张蓝图的旧物再逐条生成，避免墙/电缆同格条目互相擦除。
 - **Mk-V 征召后无法手动攻击**：原版 FloatMenuUtility 用 `IsColonistPlayerControlled` 过滤攻击目标，而 Mk-V 不是 Biotech colony mech；新增补丁让玩家阵营 Mk-V 通过该检查，征召后右键射击/近战选项恢复。
 
 ### Added
