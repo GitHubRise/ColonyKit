@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_Thirst.label>口渴</CK_Thirst.label>
+	<CK_Thirst.description>身体的大多数生理过程都需要水。口渴降到 0 小人会逐渐脱水而死。</CK_Thirst.description>
+</LanguageData>

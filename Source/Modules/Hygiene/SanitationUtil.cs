@@ -58,6 +58,36 @@ namespace ColonyKit.Modules.Hygiene
 			}
 		}
 
+		/// <summary>
+		/// 喝水的污染判定（DBH SanitationUtil.ContaminationCheckDrinking 的移植）：
+		/// 严重污染必得肠胃病并留坏心情，未处理水 0.2% 概率，干净水给「清爽」好心情。
+		/// </summary>
+		public static void ContaminationCheckDrinking(Pawn pawn, ContaminationLevel level)
+		{
+			if (pawn?.health == null || pawn.AnimalOrWildMan())
+			{
+				return;
+			}
+			float chance = HygieneSettings.Current.contaminationChanceMultiplier;
+			switch (level)
+			{
+			case ContaminationLevel.Contaminated:
+				pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(ThoughtDef.Named("CK_DrankDirtyWater"));
+				GiveNastyGutBug(pawn, level);
+				break;
+			case ContaminationLevel.Untreated:
+				if (Rand.Chance(0.002f * chance))
+				{
+					pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(ThoughtDef.Named("CK_DrankDirtyWater"));
+					GiveNastyGutBug(pawn, level);
+				}
+				break;
+			default:
+				pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(ThoughtDef.Named("CK_DrankCleanWater"));
+				break;
+			}
+		}
+
 		public static void ContaminationCheckWater(Pawn pawn, ContaminationLevel level)
 		{
 			if (pawn?.health == null || level < ContaminationLevel.Untreated)

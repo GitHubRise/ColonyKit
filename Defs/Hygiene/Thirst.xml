@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 口渴系统（DBH Need_Thirst / 喝水 Job 的 1:1 移植）。 -->
+	<NeedDef>
+		<defName>CK_Thirst</defName>
+		<needClass>ColonyKit.Modules.Hygiene.Need_Thirst</needClass>
+		<label>thirst</label>
+		<description>Water is required for many of life's physiological processes. If this reaches zero then the creature will slowly die of dehydration.</description>
+		<minIntelligence>Humanlike</minIntelligence>
+		<baseLevel>0.8</baseLevel>
+		<listPriority>402</listPriority>
+		<showForCaravanMembers>true</showForCaravanMembers>
+	</NeedDef>
+
+	<StatDef>
+		<defName>CK_ThirstRateMultiplier</defName>
+		<label>thirst rate factor</label>
+		<description>A multiplier on how quickly a creature becomes thirsty.</description>
+		<category>BasicsPawn</category>
+		<defaultBaseValue>1</defaultBaseValue>
+		<toStringStyle>PercentZero</toStringStyle>
+		<showOnAnimals>false</showOnAnimals>
+		<hideAtValue>1</hideAtValue>
+		<minValue>0</minValue>
+		<displayPriorityInCategory>75</displayPriorityInCategory>
+		<scenarioRandomizable>true</scenarioRandomizable>
+	</StatDef>
+
+	<HediffDef>
+		<defName>CK_Dehydration</defName>
+		<label>dehydration</label>
+		<description>Dehydration is a condition that can occur when the loss of body fluids, mostly water, exceeds the amount that is taken in.</description>
+		<lethalSeverity>1</lethalSeverity>
+		<scenarioCanAdd>true</scenarioCanAdd>
+		<everCurableByItem>false</everCurableByItem>
+		<tendable>false</tendable>
+		<stages>
+			<li>
+				<label>trivial</label>
+				<socialFightChanceFactor>1.5</socialFightChanceFactor>
+				<hungerRateFactorOffset>0.1</hungerRateFactorOffset>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.05</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.2</minSeverity>
+				<label>minor</label>
+				<socialFightChanceFactor>2</socialFightChanceFactor>
+				<hungerRateFactorOffset>0.2</hungerRateFactorOffset>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.10</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.4</minSeverity>
+				<label>moderate</label>
+				<socialFightChanceFactor>2.5</socialFightChanceFactor>
+				<hungerRateFactorOffset>0.4</hungerRateFactorOffset>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.20</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.6</minSeverity>
+				<label>severe</label>
+				<socialFightChanceFactor>3</socialFightChanceFactor>
+				<hungerRateFactorOffset>0.8</hungerRateFactorOffset>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.30</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.8</minSeverity>
+				<label>extreme</label>
+				<lifeThreatening>true</lifeThreatening>
+				<hungerRateFactorOffset>1</hungerRateFactorOffset>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<setMax>0.1</setMax>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+	</HediffDef>
+
+	<ThoughtDef>
+		<defName>CK_DrankDirtyWater</defName>
+		<durationDays>0.1</durationDays>
+		<stackLimit>1</stackLimit>
+		<stages>
+			<li>
+				<label>drank filthy water</label>
+				<description>Drank contaminated water.</description>
+				<baseMoodEffect>-3</baseMoodEffect>
+			</li>
+		</stages>
+		<showBubble>true</showBubble>
+	</ThoughtDef>
+
+	<ThoughtDef>
+		<defName>CK_DrankCleanWater</defName>
+		<durationDays>0.04</durationDays>
+		<stackLimit>1</stackLimit>
+		<stages>
+			<li>
+				<label>refreshed</label>
+				<description>Drank refreshing clean water.</description>
+				<baseMoodEffect>2</baseMoodEffect>
+			</li>
+		</stages>
+		<showBubble>true</showBubble>
+	</ThoughtDef>
+
+	<JobDef>
+		<defName>CK_DrinkFromBasin</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_DrinkFromBasin</driverClass>
+		<reportString>drinking from TargetA.</reportString>
+	</JobDef>
+
+	<JobDef>
+		<defName>CK_DrinkFromGround</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_DrinkFromGround</driverClass>
+		<reportString>drinking water.</reportString>
+	</JobDef>
+</Defs>

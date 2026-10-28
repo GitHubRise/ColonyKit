@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_DrankDirtyWater.stages.0.label>喝了脏水</CK_DrankDirtyWater.stages.0.label>
+	<CK_DrankDirtyWater.stages.0.description>喝了被污染的水。</CK_DrankDirtyWater.stages.0.description>
+	<CK_DrankCleanWater.stages.0.label>神清气爽</CK_DrankCleanWater.stages.0.label>
+	<CK_DrankCleanWater.stages.0.description>喝了干净的水。</CK_DrankCleanWater.stages.0.description>
+</LanguageData>

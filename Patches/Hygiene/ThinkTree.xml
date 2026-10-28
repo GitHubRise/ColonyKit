@@ -6,6 +6,8 @@
 			<li Class="PatchOperationAdd">
 				<xpath>Defs/ThinkTreeDef[defName = "SatisfyBasicNeeds"]/thinkRoot[@Class = "ThinkNode_Tagger"]/subNodes/li[@Class = "ThinkNode_PrioritySorter"]/subNodes</xpath>
 				<value>
+					<li Class="ColonyKit.Modules.Hygiene.JobGiver_DrinkWater"/>
+					<li Class="ColonyKit.Modules.Hygiene.JobGiver_DrinkWaterUrgent"/>
 					<li Class="ColonyKit.Modules.Hygiene.JobGiver_HaveWash"/>
 					<li Class="ColonyKit.Modules.Hygiene.JobGiver_UseToilet"/>
 				</value>
@@ -13,6 +15,8 @@
 			<li Class="PatchOperationAdd">
 				<xpath>Defs/ThinkTreeDef[defName = "MainColonistBehaviorCore"]/thinkRoot[@Class = "ThinkNode_Tagger"]/subNodes/li[@Class = "ThinkNode_PrioritySorter"]/subNodes</xpath>
 				<value>
+					<li Class="ColonyKit.Modules.Hygiene.JobGiver_DrinkWater"/>
+					<li Class="ColonyKit.Modules.Hygiene.JobGiver_DrinkWaterUrgent"/>
 					<li Class="ColonyKit.Modules.Hygiene.JobGiver_HaveWash"/>
 					<li Class="ColonyKit.Modules.Hygiene.JobGiver_UseToilet"/>
 				</value>

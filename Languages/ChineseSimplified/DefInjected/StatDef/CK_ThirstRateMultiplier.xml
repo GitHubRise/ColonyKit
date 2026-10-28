@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_ThirstRateMultiplier.label>口渴速率</CK_ThirstRateMultiplier.label>
+	<CK_ThirstRateMultiplier.description>变渴的快慢倍率。</CK_ThirstRateMultiplier.description>
+</LanguageData>
