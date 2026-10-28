@@ -24,4 +24,21 @@
 			<li>Manipulation</li>
 		</requiredCapacities>
 	</WorkGiverDef>
+	<!-- 焚烧坑的烧毁清单（DBH DoBillsBurnPit 的 1:1 移植）。 -->
+	<WorkGiverDef>
+		<defName>CK_DoBillsBurnPit</defName>
+		<label>do burn pit bills</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Hauling</workType>
+		<priorityInType>40</priorityInType>
+		<fixedBillGiverDefs>
+			<li>CK_BurnPit</li>
+		</fixedBillGiverDefs>
+		<verb>burn</verb>
+		<gerund>burning at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
 </Defs>

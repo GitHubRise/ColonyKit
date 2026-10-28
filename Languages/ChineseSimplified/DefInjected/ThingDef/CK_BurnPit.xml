@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<!-- 文案沿用 DBH 简体中文包的译法，保持 1:1。 -->
+	<CK_BurnPit.label>燃烧坑</CK_BurnPit.label>
+	<CK_BurnPit.description>用于焚烧尸体、衣物或成瘾品等的土坑，以粪便作为燃料。长期滞留在作用范围内可能对健康造成不良影响。</CK_BurnPit.description>
+</LanguageData>
