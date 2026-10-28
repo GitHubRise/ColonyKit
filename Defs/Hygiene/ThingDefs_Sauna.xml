@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 桑拿（DBH Saunas 1:1）：桑拿加热器 + 桑拿房房间角色 + 蒸桑拿的娱乐 Job。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_SaunaHeaterElec</defName>
+		<label>Electric Sauna Heater</label>
+		<description>A heater designed specifically for creating a sauna room, using a sauna regularly reduces the risk of heart attacks, heats a room to 60c.</description>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_SaunaHeaterElec</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<shaderType>CutoutComplex</shaderType>
+			<damageData>
+				<rect>(0.05,0.05,0.95,0.95)</rect>
+			</damageData>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>20</uiOrder>
+		<blockWind>true</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<pathCost>150</pathCost>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>180</costStuffCount>
+		<costList>
+			<Steel>20</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>1250</WorkToBuild>
+			<Mass>25</Mass>
+			<JoyGainFactor>1.4</JoyGainFactor>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Forbiddable" />
+			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Glower">
+				<glowRadius>5</glowRadius>
+				<glowColor>(217,112,33,0)</glowColor>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.CompProperties_SaunaHeater">
+				<heatPerSecond>34</heatPerSecond>
+				<heatPushMaxTemperature>65</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>1000</basePowerConsumption>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_Saunas</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_SaunaHeaterLog</defName>
+		<label>Fueled Sauna Heater</label>
+		<description>A heater designed specifically for creating a sauna room, using a sauna regularly reduces the risk of heart attacks, heats a room to 60c.</description>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_SaunaHeaterLog</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<shaderType>Cutout</shaderType>
+			<damageData>
+				<rect>(0.05,0.05,0.95,0.95)</rect>
+			</damageData>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>21</uiOrder>
+		<blockWind>true</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<pathCost>150</pathCost>
+		<stuffCategories>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>200</costStuffCount>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>1000</WorkToBuild>
+			<Mass>50</Mass>
+			<JoyGainFactor>1.4</JoyGainFactor>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Forbiddable" />
+			<li Class="CompProperties_Glower">
+				<glowRadius>5</glowRadius>
+				<glowColor>(217,112,33,0)</glowColor>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.CompProperties_SaunaHeater">
+				<heatPerSecond>34</heatPerSecond>
+				<heatPushMaxTemperature>70</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Refuelable">
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<fuelConsumptionRate>22</fuelConsumptionRate>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+				<fuelCapacity>75</fuelCapacity>
+				<fuelFilter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</fuelFilter>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_Saunas</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<RoomRoleDef>
+		<defName>CK_SaunaRoom</defName>
+		<label>sauna room</label>
+		<workerClass>ColonyKit.Modules.Hygiene.RoomRoleWorker_Sauna</workerClass>
+		<relatedStats>
+			<li>Cleanliness</li>
+		</relatedStats>
+	</RoomRoleDef>
+
+	<JobDef>
+		<defName>CK_UseSauna</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_UseSauna</driverClass>
+		<reportString>using sauna</reportString>
+		<joyKind>CK_Hydrotherapy</joyKind>
+		<joyDuration>4000</joyDuration>
+		<joyMaxParticipants>1</joyMaxParticipants>
+	</JobDef>
+
+	<JoyGiverDef>
+		<defName>CK_UseSauna</defName>
+		<giverClass>ColonyKit.Modules.Hygiene.JoyGiver_UseSauna</giverClass>
+		<baseChance>1</baseChance>
+		<thingDefs>
+			<li>CK_SaunaHeaterElec</li>
+			<li>CK_SaunaHeaterLog</li>
+		</thingDefs>
+		<jobDef>CK_UseSauna</jobDef>
+		<desireSit>false</desireSit>
+		<joyKind>CK_Hydrotherapy</joyKind>
+	</JoyGiverDef>
+</Defs>

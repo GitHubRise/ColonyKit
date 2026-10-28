@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_SaunaHeaterElec.label>桑拿加热器（电）</CK_SaunaHeaterElec.label>
+	<CK_SaunaHeaterElec.description>专门用来造桑拿房的加热器，把房间加热到 60℃。经常蒸桑拿能降低心脏病发作的风险。</CK_SaunaHeaterElec.description>
+	<CK_SaunaHeaterLog.label>桑拿加热器（烧柴）</CK_SaunaHeaterLog.label>
+	<CK_SaunaHeaterLog.description>专门用来造桑拿房的加热器，烧木头，把房间加热到 60℃。经常蒸桑拿能降低心脏病发作的风险。</CK_SaunaHeaterLog.description>
+</LanguageData>
