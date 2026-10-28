@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 浴垫（DBH BathMat 的 1:1 移植）：织物小垫子，带品质与艺术描述，放浴缸旁边。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_BathMat</defName>
+		<label>Bath Mat</label>
+		<description>A small mat used next to a bathtub to absorb water.</description>
+		<thingClass>Building</thingClass>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Things/Building/Hygiene/CK_BathMat</texPath>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<defaultStuff>Cloth</defaultStuff>
+		<size>(1,1)</size>
+		<stuffCategories>
+			<li>Fabric</li>
+		</stuffCategories>
+		<costStuffCount>20</costStuffCount>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Beauty>8</Beauty>
+			<Flammability>1</Flammability>
+			<Mass>2.5</Mass>
+			<WorkToBuild>800</WorkToBuild>
+		</statBases>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<passability>Standable</passability>
+		<altitudeLayer>Building</altitudeLayer>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<filthLeaving>Filth_RubbleBuilding</filthLeaving>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<repairEffect>Repair</repairEffect>
+		<rotatable>true</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>11</uiOrder>
+		<comps>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+			<li Class="CompProperties_Art">
+				<nameMaker>NamerArtFurniture</nameMaker>
+				<descriptionMaker>ArtDescription_Furniture</descriptionMaker>
+				<minQualityForArtistic>Awful</minQualityForArtistic>
+			</li>
+		</comps>
+		<thingCategories>
+			<li>BuildingsFurniture</li>
+		</thingCategories>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<inspectorTabs>
+			<li>ITab_Art</li>
+		</inspectorTabs>
+	</ThingDef>
+</Defs>
