@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_PipeValve.label>管道阀门</CK_PipeValve.label>
+	<CK_PipeValve.description>打开或关闭管道之间的连接。</CK_PipeValve.description>
+	<CK_SewageOutlet.label>排污口</CK_SewageOutlet.label>
+	<CK_SewageOutlet.description>可以放置在任何地方。污水会出现在地上或流进水中。随着时间推移，污水会慢慢消失。树木、河湖或雨水能加快去污水的速度。</CK_SewageOutlet.description>
+</LanguageData>

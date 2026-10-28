@@ -195,6 +195,9 @@
 	<CK.Hygiene.FloatMenu.BasinFull>脸盆已经满了</CK.Hygiene.FloatMenu.BasinFull>
 	<CK.Hygiene.FloatMenu.BasinEmpty>脸盆里没有水</CK.Hygiene.FloatMenu.BasinEmpty>
 	<CK.Hygiene.BasinWater>脸盆水量: {0}/{1} 升</CK.Hygiene.BasinWater>
+	<CK.Hygiene.ValveClosed>阀门关闭</CK.Hygiene.ValveClosed>
+	<CK.Hygiene.ValveToggle>切换阀门</CK.Hygiene.ValveToggle>
+	<CK.Hygiene.ValveToggleDesc>打开或关闭阀门</CK.Hygiene.ValveToggleDesc>
 	<CK.Hygiene.SewageProcessing>处理能力: {0} L/天  未处理: {1} L ({2})</CK.Hygiene.SewageProcessing>
 	<CK.Hygiene.DoNotDrainTank>不要排空</CK.Hygiene.DoNotDrainTank>
 	<CK.Hygiene.DrainSepticTankAt>排水阈值: {0}</CK.Hygiene.DrainSepticTankAt>

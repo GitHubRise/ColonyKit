@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 管道阀门（DBH plumbingValve 的 1:1 移植）：关掉即断网（RegenPipeGrids 会跳过关闭的管件）。
+	     CK 是水/污水两张网，所以同时挂两个 Pipe comp；放在哪张网上就断哪张网。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_PipeValve</defName>
+		<label>plumbing valve</label>
+		<description>Opens or closes connections between pipes.</description>
+		<thingClass>ColonyKit.Modules.Hygiene.Building_Valve</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_PipeValve</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>17</uiOrder>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>Standable</passability>
+		<pathCost>75</pathCost>
+		<constructEffect>ConstructMetal</constructEffect>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<costList>
+			<Steel>15</Steel>
+		</costList>
+		<statBases>
+			<MaxHitPoints>80</MaxHitPoints>
+			<WorkToBuild>350</WorkToBuild>
+			<Flammability>1</Flammability>
+			<Beauty>-2</Beauty>
+			<Mass>2</Mass>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Sewage</mode>
+			</li>
+			<li Class="CompProperties_Flickable">
+				<commandTexture>Things/Building/Hygiene/CK_PipeValve</commandTexture>
+				<commandLabelKey>CK.Hygiene.ValveToggle</commandLabelKey>
+				<commandDescKey>CK.Hygiene.ValveToggleDesc</commandDescKey>
+			</li>
+		</comps>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<isInert>true</isInert>
+			<isEdifice>false</isEdifice>
+		</building>
+		<researchPrerequisites>
+			<li>CK_HygieneResearch</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<!-- 排污口（DBH SewageOutlet 的 1:1 移植）：把污水倒到前方空地，交给污染网格扩散/降解。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_SewageOutlet</defName>
+		<label>sewage outlet</label>
+		<description>Can be placed anywhere. Sewage will pool and spread on land or disperse in water. Sewage cleans up over time; the presence of trees, water, or rain will speed this up.</description>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_SewageOutlet</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(3,3)</drawSize>
+			<damageData>
+				<rect>(0.05,0.05,0.95,0.95)</rect>
+			</damageData>
+		</graphicData>
+		<uiIconPath>UI/CK_SewageOutlet</uiIconPath>
+		<rotatable>true</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>18</uiOrder>
+		<tickerType>Normal</tickerType>
+		<drawerType>RealtimeOnly</drawerType>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>60</pathCost>
+		<stuffCategories>
+			<li>Woody</li>
+			<li>Stony</li>
+			<li>Metallic</li>
+		</stuffCategories>
+		<costStuffCount>50</costStuffCount>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<WorkToBuild>1500</WorkToBuild>
+			<Flammability>0</Flammability>
+			<Beauty>-25</Beauty>
+			<Cleanliness>-100</Cleanliness>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Sewage</mode>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_SewageHandler">
+				<compClass>ColonyKit.Modules.Hygiene.Dbh.CompSewageOutlet</compClass>
+				<capacity>3200</capacity>
+				<priority>0</priority>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.CompProperties_Blockage" />
+		</comps>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+		</building>
+		<researchPrerequisites>
+			<li>CK_HygieneResearch</li>
+		</researchPrerequisites>
+	</ThingDef>
+</Defs>
