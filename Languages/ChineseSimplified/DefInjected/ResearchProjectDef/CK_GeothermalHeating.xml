@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_GeothermalHeating.label>地热供暖</CK_GeothermalHeating.label>
+	<CK_GeothermalHeating.description>解锁地热加热器，可以建在间歇泉上，为中央供暖和热水箱提供热量。</CK_GeothermalHeating.description>
+</LanguageData>

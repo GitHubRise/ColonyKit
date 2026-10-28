@@ -73,7 +73,7 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 
 		public bool Running => WorkingNow && (thermostatOn || !Props.ThermostatControl);
 
-		public float Capacity => Running ? Props.Capacity * ModeMultiplier : 0f;
+		public virtual float Capacity => Running ? Props.Capacity * ModeMultiplier : 0f;
 
 		public override void PostSpawnSetup(bool respawningAfterLoad)
 		{

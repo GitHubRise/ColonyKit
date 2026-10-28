@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 太阳能加热器（DBH SolarHeater 的 1:1 移植）：出力 0–2000，随天光/露天/气温变化。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_SolarHeater</defName>
+		<label>solar heater</label>
+		<description>Uses sunlight to heat hot water tanks and radiators. 0-2000 units of heating power depending on light level and ambient temperature.</description>
+		<thingClass>Building</thingClass>
+		<size>(3,3)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_SolarHeater</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,3)</drawSize>
+			<damageData>
+				<rect>(0.05,0.05,0.95,0.95)</rect>
+			</damageData>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>31</uiOrder>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>true</castEdgeShadows>
+		<pathCost>150</pathCost>
+		<costList>
+			<Steel>75</Steel>
+		</costList>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>1000</WorkToBuild>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterHeater">
+				<compClass>ColonyKit.Modules.Hygiene.Dbh.CompWaterHeaterSolar</compClass>
+				<Capacity>2000</Capacity>
+				<ThermostatControl>false</ThermostatControl>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_CentralHeating</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<!-- 地热加热器（DBH GeothermHeater 的 1:1 移植）：必须盖在蒸汽间歇泉上，恒定 3700。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_GeothermHeater</defName>
+		<label>Geothermal heater</label>
+		<description>Uses geothermal heat to heat hot water tanks and radiators. 3700 units of heating.</description>
+		<thingClass>Building</thingClass>
+		<size>(2,2)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_GeothermHeater</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,3)</drawSize>
+			<damageData>
+				<rect>(0.05,0.05,0.95,0.95)</rect>
+			</damageData>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>32</uiOrder>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>true</castEdgeShadows>
+		<pathCost>150</pathCost>
+		<costList>
+			<ComponentIndustrial>4</ComponentIndustrial>
+			<Steel>240</Steel>
+		</costList>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>4000</WorkToBuild>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterHeater">
+				<compClass>ColonyKit.Modules.Hygiene.Dbh.CompWaterHeaterGeo</compClass>
+				<Capacity>3700</Capacity>
+				<ThermostatControl>false</ThermostatControl>
+			</li>
+			<li Class="CompProperties_Breakdownable" />
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_OnSteamGeyser</li>
+		</placeWorkers>
+		<researchPrerequisites>
+			<li>CK_GeothermalHeating</li>
+		</researchPrerequisites>
+	</ThingDef>
+</Defs>

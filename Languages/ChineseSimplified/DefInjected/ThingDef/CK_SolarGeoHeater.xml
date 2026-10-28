@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_SolarHeater.label>太阳能加热器</CK_SolarHeater.label>
+	<CK_SolarHeater.description>太阳能加热装置。加热量随光照和环境温度变化，范围在 0 到 2000 U 之间。</CK_SolarHeater.description>
+	<CK_GeothermHeater.label>地热加热器</CK_GeothermHeater.label>
+	<CK_GeothermHeater.description>利用地热加热热水箱和暖气，恒定提供 3700 U 加热量。必须建在蒸汽间歇泉上。</CK_GeothermHeater.description>
+</LanguageData>
