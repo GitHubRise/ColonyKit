@@ -25,6 +25,7 @@
 - **燃烧坑（DBH `BurnPit` 1:1）**：`CK_BurnPit`（钢 20、无研究前置，贴图取 DBH `burnPit`）。`Building_BurnPit : Building_WorkTable` + `CompProperties_Refuelable`（燃料只收 `CK_FecalSludge`，容量 250、速率 100、雨天 0.0006/tick）、`CompHeatPusherPowered`（21 热/秒、28℃ 上限）、`CompProperties_Glower`（半径 10）；配方走原版 `CremateCorpse`/`BurnApparel`/`BurnDrugs`；`UsedThisTick` 冒烟冒火，每 1500 tick 让 13.9 格内小人40% 概率被熏脏；新增 `CK_DoBillsBurnPit`（`WorkGiver_DoBill`、Hauling、`fixedBillGiverDefs=CK_BurnPit`）。中文文案沿用 DBH 译法（「燃烧坑」）。
 - **浴垫（DBH `BathMat` 1:1）**：`CK_BathMat`，织物（Cloth/20）、Beauty 8、HP 50、WorkToBuild 800，`CompQuality` + `CompProperties_Art`（原版 `NamerArtFurniture`/`ArtDescription_Furniture`）与 `ITab_Art`，贴图取 DBH。
 - **隔间门（DBH `ToiletStallDoor` 1:1）**：`CK_ToiletStallDoor`，金属/木/石 5 材料、HP 250、`DoorMoveable`、`RealtimeOnly`、`Blueprint_Door`、可盖墙上；`Building_StallDoor` 实现开合动画/自动关门，走到门口由 `Pawn_PathFollower.SetupMoveIntoNextCell` 的补丁推开（`pawn`/`nextCell` 走 `FieldRef`）。`PrivacyUtil` 的洗澡/如厕视线检查加了 validator：门所在格按遮挡处理——只挡隐私视线，不影响战斗视线。声音沿用 DBH 的 `stalldoor/close1.ogg`。
+- **洗衣机（DBH `WashingMachine` 1:1）**：`CK_WashingMachine`（钢 100 + 2 零部件、420W、WorkToBuild 1200）。`Building_WashingMachine : Building, IStoreSettingsParent, IThingHolder`：5 格容量，装一件 +1500 tick 转筒，每 30 tick 抽 1 L 水、推 0.5 污水，取出时清 `WornByCorpse`；空转 10 W、转筒 420 W，带 DBH 的洗衣音效与围观 JoyGiver。管道按 CK 的两张网适配：同时挂 Water + Sewage 两个 Pipe comp。新增 `CK_LoadWashing`/`CK_UnloadWashing`/`CK_WatchWashingMachine` 三个 Job、两个 Hauling WorkGiver 与 `CK_WashingMachines` 研究（1200，接在卫生研究后）。
 
 ### Changed
 
