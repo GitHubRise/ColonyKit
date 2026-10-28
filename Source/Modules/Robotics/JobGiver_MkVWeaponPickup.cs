@@ -77,7 +77,15 @@ namespace ColonyKit.Modules.Robotics
 				}
 			}
 			float damage = def.projectile?.GetDamageAmount(def, null) ?? 0f;
-			return def.BaseMarketValue + range * 2f + damage * 12f;
+			int burst = 1;
+			if (def.Verbs != null)
+			{
+				for (int i = 0; i < def.Verbs.Count; i++)
+				{
+					burst = Mathf.Max(burst, def.Verbs[i].burstShotCount);
+				}
+			}
+			return def.BaseMarketValue + range * 2f + damage * burst * 12f;
 		}
 	}
 }
