@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_FreezerUnit.label>大型制冷机</CK_FreezerUnit.label>
+	<CK_FreezerUnit.description>用于制造冷库的大型制冷机，用空调管与室外机相连，制冷量 300 U。</CK_FreezerUnit.description>
+	<CK_PetWaterBowl.label>宠物水碗</CK_PetWaterBowl.label>
+	<CK_PetWaterBowl.description>供动物饮水的小水碗，不需要接管道。</CK_PetWaterBowl.description>
+</LanguageData>

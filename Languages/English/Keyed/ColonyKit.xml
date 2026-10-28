@@ -195,6 +195,7 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<CK.Hygiene.FloatMenu.BasinFull>The basin is full</CK.Hygiene.FloatMenu.BasinFull>
 	<CK.Hygiene.FloatMenu.BasinEmpty>The basin is empty</CK.Hygiene.FloatMenu.BasinEmpty>
 	<CK.Hygiene.BasinWater>Basin water: {0}/{1} L</CK.Hygiene.BasinWater>
+	<CK.Hygiene.FreezerBlocked>Freezer is blocked</CK.Hygiene.FreezerBlocked>
 	<CK.Hygiene.CoolingCapacity>Cooling: indoor {0} / outdoor {1} ({2})</CK.Hygiene.CoolingCapacity>
 	<CK.Hygiene.CoolingMode>Cooling mode: {0} units ({1} W)</CK.Hygiene.CoolingMode>
 	<CK.Hygiene.CoolingLower>Lower cooling mode</CK.Hygiene.CoolingLower>

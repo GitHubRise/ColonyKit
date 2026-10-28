@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 冷库机组（DBH FreezerUnit 的 1:1 移植）：2×1 嵌在墙里，把朝内那间房降到零下。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_FreezerUnit</defName>
+		<label>walk-in freezer unit</label>
+		<description>Freezer unit for creating a walk-in freezer. Connect to outdoor air-con units. Requires 300 cooling units.</description>
+		<thingClass>Building</thingClass>
+		<size>(2,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_FreezerUnit</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2,1)</drawSize>
+			<damageData>
+				<rect>(0.05,0.05,0.95,0.95)</rect>
+			</damageData>
+		</graphicData>
+		<rotatable>true</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>43</uiOrder>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<passability>Impassable</passability>
+		<blockWind>true</blockWind>
+		<fillPercent>1</fillPercent>
+		<coversFloor>true</coversFloor>
+		<blockLight>true</blockLight>
+		<canOverlapZones>false</canOverlapZones>
+		<castEdgeShadows>true</castEdgeShadows>
+		<staticSunShadowHeight>1</staticSunShadowHeight>
+		<costList>
+			<Steel>30</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>800</WorkToBuild>
+			<Mass>50</Mass>
+		</statBases>
+		<building>
+			<isEdifice>true</isEdifice>
+			<canPlaceOverWall>true</canPlaceOverWall>
+		</building>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Air</mode>
+			</li>
+			<li Class="CompProperties_TempControl">
+				<compClass>ColonyKit.Modules.Hygiene.Dbh.CompThermostat</compClass>
+				<maxTargetTemperature>2</maxTargetTemperature>
+				<minTargetTemperature>-22</minTargetTemperature>
+				<defaultTargetTemperature>-4</defaultTargetTemperature>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_CompAirconUnit">
+				<compClass>ColonyKit.Modules.Hygiene.Dbh.CompFreezerUnit</compClass>
+				<energyPerSecond>-60</energyPerSecond>
+				<CoolingRate>250</CoolingRate>
+				<Capacity>300</Capacity>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>25</basePowerConsumption>
+			</li>
+			<li>
+				<compClass>CompColorable</compClass>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_MultiSplitAirCon</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<!-- 宠物水碗（DBH PetWaterBowl 的 1:1 移植）：1×1 的小水碗，不接管，靠雨水/手动补水。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_PetWaterBowl</defName>
+		<label>Water Bowl</label>
+		<description>Bowl of water used by animals.</description>
+		<thingClass>ColonyKit.Modules.Hygiene.Building_WaterTrough</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_PetWaterBowl</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>44</uiOrder>
+		<tickerType>Rare</tickerType>
+		<fillPercent>0.05</fillPercent>
+		<passability>PassThroughOnly</passability>
+		<pathCost>4</pathCost>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>15</costStuffCount>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<statBases>
+			<MaxHitPoints>55</MaxHitPoints>
+			<WorkToBuild>150</WorkToBuild>
+			<Flammability>0</Flammability>
+			<Cleanliness>-5</Cleanliness>
+			<Mass>1</Mass>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Forbiddable" />
+		</comps>
+		<researchPrerequisites>
+			<li>CK_HygieneResearch</li>
+		</researchPrerequisites>
+	</ThingDef>
+</Defs>
