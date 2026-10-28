@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 智能马桶（DBH ToiletAdv 的 1:1 移植）：7 L/次、品质 fine、不会被堵（不挂 CompBlockage）。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_SmartToilet</defName>
+		<label>smart toilet</label>
+		<description>Comfortable, self cleaning, unblockable, super efficient smart toilet. Uses only 7 L per flush.</description>
+		<thingClass>ColonyKit.Modules.Hygiene.Building_AdvToilet</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_SmartToilet</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<shaderType>CutoutComplex</shaderType>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<rotatable>true</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>28</uiOrder>
+		<hasInteractionCell>true</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.15</fillPercent>
+		<pathCost>8</pathCost>
+		<costList>
+			<Steel>20</Steel>
+		</costList>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<WorkToBuild>1950</WorkToBuild>
+			<Flammability>1</Flammability>
+			<Beauty>6</Beauty>
+			<Comfort>0.78</Comfort>
+			<Mass>18</Mass>
+		</statBases>
+		<building>
+			<isSittable>true</isSittable>
+		</building>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Sewage</mode>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>75</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable" />
+		</comps>
+		<researchPrerequisites>
+			<li>CK_AdvancedToilets</li>
+		</researchPrerequisites>
+	</ThingDef>
+</Defs>

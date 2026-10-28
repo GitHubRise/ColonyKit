@@ -8,6 +8,17 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 	{
 		public float WaterStorageCap = 10000f;
 
+		/// <summary>DBH：不靠管网、自己产水（雨水桶等）。</summary>
+		public bool Auto;
+
+		/// <summary>下雨时自动接水（雨水桶）。</summary>
+		public bool AutoOnRain;
+
+		/// <summary>每个 Tickrate 产多少水；AutoOnRain 时再乘雨量。</summary>
+		public float AutoGenRate = 1f;
+
+		public int Tickrate = 60;
+
 		public CompProperties_WaterStorage()
 		{
 			compClass = typeof(CompWaterStorage);
@@ -43,8 +54,24 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		public override void CompTick()
 		{
 			base.CompTick();
-			if (parent?.Map != null
-				&& parent.Map.GetComponent<MapComponent_SewagePollution>()?.WaterPolluted == true)
+			if (parent?.Map == null || ParentHolder is MinifiedThing)
+			{
+				return;
+			}
+			// DBH 的接雨水：下雨时按雨量给桶里加水（雨水桶只有这个进水途径）。
+			float rainRate = parent.Map.weatherManager?.RainRate ?? 0f;
+			if ((Props.Auto || (Props.AutoOnRain && rainRate > 0.01f))
+				&& parent.IsHashIntervalTick(Mathf.Max(1, Props.Tickrate))
+				&& WorkingNow)
+			{
+				float gain = Props.AutoGenRate;
+				if (Props.AutoOnRain)
+				{
+					gain *= rainRate;
+				}
+				WaterStorage = Mathf.Min(WaterStorage + gain, Props.WaterStorageCap);
+			}
+			if (parent.Map.GetComponent<MapComponent_SewagePollution>()?.WaterPolluted == true)
 			{
 				WaterQuality = ContaminationLevel.Contaminated;
 			}

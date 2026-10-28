@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 雨水桶（DBH WaterButt 的 1:1 移植）：不接管网，下雨接水，容量 100 L，能当洗手池用。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_WaterButt</defName>
+		<label>water butt</label>
+		<description>Stores water for use by plumbed fixtures. Slowly fills when raining. Capacity: 100 L.</description>
+		<thingClass>ColonyKit.Modules.Hygiene.Building_Butt</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_WaterButt</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<damageData>
+				<rect>(0.05,0.05,0.95,0.95)</rect>
+			</damageData>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>29</uiOrder>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.15</fillPercent>
+		<pathCost>60</pathCost>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<canOverlapZones>true</canOverlapZones>
+		<stuffCategories>
+			<li>Woody</li>
+			<li>Stony</li>
+			<li>Metallic</li>
+		</stuffCategories>
+		<costStuffCount>25</costStuffCount>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<socialPropernessMatters>true</socialPropernessMatters>
+		<statBases>
+			<Beauty>-15</Beauty>
+			<Mass>2</Mass>
+			<MaxHitPoints>75</MaxHitPoints>
+			<WorkToBuild>1000</WorkToBuild>
+		</statBases>
+		<comps>
+			<li>
+				<compClass>CompColorable</compClass>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterStorage">
+				<AutoOnRain>true</AutoOnRain>
+				<AutoGenRate>1</AutoGenRate>
+				<WaterStorageCap>100</WaterStorageCap>
+				<Tickrate>60</Tickrate>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_HygieneResearch</li>
+		</researchPrerequisites>
+	</ThingDef>
+</Defs>

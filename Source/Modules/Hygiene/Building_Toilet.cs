@@ -17,6 +17,9 @@ namespace ColonyKit.Modules.Hygiene
 
 		public override FixtureQuality Quality => FixtureQuality.normal;
 
+		/// <summary>马桶圈放下的贴图路径；智能马桶会覆盖它换自己的美术。</summary>
+		protected virtual string SeatUpTexPath => "Things/Building/Hygiene/CK_ToiletUp";
+
 		public override Graphic Graphic
 		{
 			get
@@ -29,7 +32,7 @@ namespace ColonyKit.Modules.Hygiene
 				{
 					seatUpGraphic = GraphicDatabase.Get(
 						typeof(Graphic_Multi),
-						"Things/Building/Hygiene/CK_ToiletUp",
+						SeatUpTexPath,
 						ShaderDatabase.CutoutComplex,
 						def.graphicData.drawSize,
 						Color.white,

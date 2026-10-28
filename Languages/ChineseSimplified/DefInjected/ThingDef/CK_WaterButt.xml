@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_WaterButt.label>雨水桶</CK_WaterButt.label>
+	<CK_WaterButt.description>下雨时慢慢接水，容量 100 L，能当洗手池用。水被污染后需要排掉。</CK_WaterButt.description>
+</LanguageData>
