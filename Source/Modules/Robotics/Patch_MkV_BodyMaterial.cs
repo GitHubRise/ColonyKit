@@ -41,28 +41,34 @@ namespace ColonyKit.Modules.Robotics
 					+ $"westFlipped={graphic.WestFlipped}");
 			}
 			Rot4 rotation = pawn.Rotation;
+			Material chosen = null;
+			switch (rotation.AsInt)
+			{
+				case 0:
+					chosen = graphic.MatNorth;
+					break;
+				case 1:
+					chosen = graphic.MatEast;
+					break;
+				case 2:
+					chosen = graphic.MatSouth;
+					break;
+				case 3:
+					chosen = graphic.MatWest;
+					break;
+			}
+			if (chosen != null)
+			{
+				__result = chosen;
+			}
 			Rot4 last;
 			if (!LastRotation.TryGetValue(pawn.thingIDNumber, out last) || last != rotation)
 			{
 				LastRotation[pawn.thingIDNumber] = rotation;
 				Log.Message($"[ColonyKit][MkVskin] {pawn.LabelShort} rot={rotation} "
-					+ $"facing={parms.facing} drafted={pawn.Drafted} posture={pawn.GetPosture()} "
-					+ $"moving={pawn.pather?.Moving} graphic={graphic.GraphicPath}");
-			}
-			switch (pawn.Rotation.AsInt)
-			{
-				case 0:
-					__result = graphic.MatNorth;
-					break;
-				case 1:
-					__result = graphic.MatEast;
-					break;
-				case 2:
-					__result = graphic.MatSouth;
-					break;
-				case 3:
-					__result = graphic.MatWest;
-					break;
+					+ $"chosen={chosen?.name} facing={parms.facing} drafted={pawn.Drafted} "
+					+ $"posture={pawn.GetPosture()} moving={pawn.pather?.Moving} "
+					+ $"graphic={graphic.GraphicPath}");
 			}
 		}
 	}

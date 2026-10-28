@@ -267,6 +267,11 @@ namespace ColonyKit.Modules.Robotics
 					// 原版恋爱/社交互动会读取关系表；机械族默认没有这个组件。
 					pawn.relations = new Pawn_RelationsTracker(pawn);
 				}
+				if (pawn.equipment == null)
+				{
+					// 武器拾取/装备 Job 需要装备栏；没有它 JobDriver_Equip 会立即失败并刷任务。
+					pawn.equipment = new Pawn_EquipmentTracker(pawn);
+				}
 				if (!skillsInitialized || skillsProfileVersion < 3)
 				{
 					ApplyRobotSkills(pawn);
