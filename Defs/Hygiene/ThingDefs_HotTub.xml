@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 热水按摩浴缸（DBH HotTub 的 1:1 移植）：2×2、首次使用时从水网注 1000 L、自加热、不需要排污口。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_HotTub</defName>
+		<label>hot tub</label>
+		<description>Hot tub used for hydrotherapy, relaxation, or pleasure. Filled with water from water towers on first use. Self-heated and does not require a sewage outlet.</description>
+		<thingClass>ColonyKit.Modules.Hygiene.Building_HotTub</thingClass>
+		<size>(2,2)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_HotTub</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,3)</drawSize>
+			<shaderType>CutoutComplex</shaderType>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>19</uiOrder>
+		<tickerType>Normal</tickerType>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.15</fillPercent>
+		<pathCost>8</pathCost>
+		<costList>
+			<Steel>20</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</costList>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>150</costStuffCount>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>4000</WorkToBuild>
+			<Flammability>0.3</Flammability>
+			<Beauty>25</Beauty>
+			<Comfort>1.8</Comfort>
+			<JoyGainFactor>1.4</JoyGainFactor>
+			<Mass>100</Mass>
+		</statBases>
+		<building>
+			<bed_healPerDay>9</bed_healPerDay>
+			<ai_chillDestination>true</ai_chillDestination>
+			<joyKind>CK_Hydrotherapy</joyKind>
+		</building>
+		<comps>
+			<li>
+				<compClass>CompColorable</compClass>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>500</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+		</comps>
+		<constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+		<researchPrerequisites>
+			<li>CK_HotTubs</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<JoyKindDef>
+		<defName>CK_Hydrotherapy</defName>
+		<label>hydrotherapy</label>
+	</JoyKindDef>
+
+	<JobDef>
+		<defName>CK_UseHotTub</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_UseHotTub</driverClass>
+		<reportString>soaking in a hot tub.</reportString>
+		<joyKind>CK_Hydrotherapy</joyKind>
+		<joyMaxParticipants>2</joyMaxParticipants>
+	</JobDef>
+
+	<JoyGiverDef>
+		<defName>CK_UseHotTub</defName>
+		<giverClass>ColonyKit.Modules.Hygiene.JoyGiver_UseHotTub</giverClass>
+		<baseChance>1</baseChance>
+		<thingDefs>
+			<li>CK_HotTub</li>
+		</thingDefs>
+		<jobDef>CK_UseHotTub</jobDef>
+		<desireSit>false</desireSit>
+		<joyKind>CK_Hydrotherapy</joyKind>
+	</JoyGiverDef>
+</Defs>

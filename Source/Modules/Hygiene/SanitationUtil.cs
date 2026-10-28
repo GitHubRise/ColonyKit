@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -162,6 +163,48 @@ namespace ColonyKit.Modules.Hygiene
 		public static void CheckForBlockage(Building building)
 		{
 			building?.GetComp<CompBlockage>()?.CheckForBlockage();
+		}
+
+		/// <summary>
+		/// 水疗（DBH SanitationUtil.Hydrotherapy 的移植）：泡澡期间加速自然愈合；
+		/// healscars 时还会慢慢消掉永久疤痕。
+		/// </summary>
+		public static void Hydrotherapy(Pawn pawn, ThingWithComps building, bool healscars = false)
+		{
+			if (pawn?.health == null || pawn.Map == null)
+			{
+				return;
+			}
+			if (pawn.IsHashIntervalTick(100) && pawn.health.hediffSet.GetNaturallyHealingInjuredParts().Any())
+			{
+				FleckMaker.ThrowMetaIcon(pawn.Position, pawn.Map, FleckDefOf.HealingCross);
+			}
+			if (!pawn.IsHashIntervalTick(600) || (pawn.needs.food != null && pawn.needs.food.Starving))
+			{
+				return;
+			}
+			if (pawn.health.hediffSet.HasNaturallyHealingInjury())
+			{
+				float amount = 8f;
+				if (pawn.GetPosture() != PawnPosture.Standing)
+				{
+					amount += 4f + (building?.def?.building?.bed_healPerDay ?? 0f);
+				}
+				List<Hediff_Injury> injuries = new List<Hediff_Injury>();
+				pawn.health.hediffSet.GetHediffs(ref injuries);
+				injuries.Where(HediffUtility.CanHealNaturally).RandomElement()
+					?.Heal(amount * pawn.HealthScale * 0.01f);
+			}
+			else if (healscars)
+			{
+				List<Hediff_Injury> scars = new List<Hediff_Injury>();
+				pawn.health.hediffSet.GetHediffs(ref scars);
+				scars.Where(x => x.IsPermanent()
+						&& x.Part != null
+						&& x.Part.depth == BodyPartDepth.Outside)
+					.TryRandomElement(out Hediff_Injury scar);
+				scar?.Heal(1f * pawn.HealthScale * 0.01f);
+			}
 		}
 	}
 

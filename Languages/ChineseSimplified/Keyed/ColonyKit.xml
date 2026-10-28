@@ -195,6 +195,7 @@
 	<CK.Hygiene.FloatMenu.BasinFull>脸盆已经满了</CK.Hygiene.FloatMenu.BasinFull>
 	<CK.Hygiene.FloatMenu.BasinEmpty>脸盆里没有水</CK.Hygiene.FloatMenu.BasinEmpty>
 	<CK.Hygiene.BasinWater>脸盆水量: {0}/{1} 升</CK.Hygiene.BasinWater>
+	<CK.Hygiene.HotTubWater>浴缸水量: {0}/{1} L</CK.Hygiene.HotTubWater>
 	<CK.Hygiene.ValveClosed>阀门关闭</CK.Hygiene.ValveClosed>
 	<CK.Hygiene.ValveToggle>切换阀门</CK.Hygiene.ValveToggle>
 	<CK.Hygiene.ValveToggleDesc>打开或关闭阀门</CK.Hygiene.ValveToggleDesc>
