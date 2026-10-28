@@ -195,6 +195,8 @@
 	<CK.Hygiene.FloatMenu.BasinFull>脸盆已经满了</CK.Hygiene.FloatMenu.BasinFull>
 	<CK.Hygiene.FloatMenu.BasinEmpty>脸盆里没有水</CK.Hygiene.FloatMenu.BasinEmpty>
 	<CK.Hygiene.BasinWater>脸盆水量: {0}/{1} 升</CK.Hygiene.BasinWater>
+	<CK.Hygiene.FanCooling>正在降温</CK.Hygiene.FanCooling>
+	<CK.Hygiene.FanIdle>待机（房间已够凉）</CK.Hygiene.FanIdle>
 	<CK.Hygiene.ThermostatTarget>目标温度</CK.Hygiene.ThermostatTarget>
 	<CK.Hygiene.ThermostatCalling>正在要求加热</CK.Hygiene.ThermostatCalling>
 	<CK.Hygiene.ThermostatIdle>已达标，停止加热</CK.Hygiene.ThermostatIdle>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 吊扇（DBH CeilingFan / CeilingFanS 的 1:1 移植）：吊在天花板上，靠空气循环降温，带灯。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_CeilingFan</defName>
+		<label>ceiling fan 2x2</label>
+		<description>Cools a room by circulating air. Includes a built-in lamp.</description>
+		<thingClass>ColonyKit.Modules.Hygiene.Building_CeilingFan</thingClass>
+		<size>(2,2)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_CeilingFanBlades</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<terrainAffordanceNeeded IsNull="True" />
+		<altitudeLayer>Weather</altitudeLayer>
+		<clearBuildingArea>false</clearBuildingArea>
+		<passability>Standable</passability>
+		<drawerType>RealtimeOnly</drawerType>
+		<blockWind>false</blockWind>
+		<blockLight>false</blockLight>
+		<holdsRoof>false</holdsRoof>
+		<castEdgeShadows>false</castEdgeShadows>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>34</uiOrder>
+		<costList>
+			<Steel>40</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<WorkToBuild>700</WorkToBuild>
+			<Mass>15</Mass>
+		</statBases>
+		<building>
+			<isInert>true</isInert>
+			<isEdifice>false</isEdifice>
+			<canBuildNonEdificesUnder>true</canBuildNonEdificesUnder>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Hygiene/CK_CeilingFanBlades</texPath>
+			</blueprintGraphicData>
+		</building>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>50</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Glower">
+				<glowRadius>9</glowRadius>
+				<glowColor>(214,148,94,0)</glowColor>
+				<colorPickerEnabled>true</colorPickerEnabled>
+				<darklightToggle>true</darklightToggle>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_CentralHeating</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_CeilingFanS</defName>
+		<label>ceiling fan 1x1</label>
+		<description>Cools a room by circulating air. Includes a built-in lamp.</description>
+		<thingClass>ColonyKit.Modules.Hygiene.Building_CeilingFan</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_CeilingFanBlades</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<terrainAffordanceNeeded IsNull="True" />
+		<altitudeLayer>Weather</altitudeLayer>
+		<clearBuildingArea>false</clearBuildingArea>
+		<passability>Standable</passability>
+		<drawerType>RealtimeOnly</drawerType>
+		<blockWind>false</blockWind>
+		<blockLight>false</blockLight>
+		<holdsRoof>false</holdsRoof>
+		<castEdgeShadows>false</castEdgeShadows>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>35</uiOrder>
+		<uiIconScale>0.5</uiIconScale>
+		<costList>
+			<Steel>40</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<WorkToBuild>700</WorkToBuild>
+			<Mass>15</Mass>
+		</statBases>
+		<building>
+			<isInert>true</isInert>
+			<isEdifice>false</isEdifice>
+			<canBuildNonEdificesUnder>true</canBuildNonEdificesUnder>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Hygiene/CK_CeilingFanBlades</texPath>
+			</blueprintGraphicData>
+		</building>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>50</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Glower">
+				<glowRadius>9</glowRadius>
+				<glowColor>(214,148,94,0)</glowColor>
+				<colorPickerEnabled>true</colorPickerEnabled>
+				<darklightToggle>true</darklightToggle>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_CentralHeating</li>
+		</researchPrerequisites>
+	</ThingDef>
+</Defs>

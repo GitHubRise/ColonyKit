@@ -195,6 +195,8 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<CK.Hygiene.FloatMenu.BasinFull>The basin is full</CK.Hygiene.FloatMenu.BasinFull>
 	<CK.Hygiene.FloatMenu.BasinEmpty>The basin is empty</CK.Hygiene.FloatMenu.BasinEmpty>
 	<CK.Hygiene.BasinWater>Basin water: {0}/{1} L</CK.Hygiene.BasinWater>
+	<CK.Hygiene.FanCooling>Cooling</CK.Hygiene.FanCooling>
+	<CK.Hygiene.FanIdle>Idle (room already cool)</CK.Hygiene.FanIdle>
 	<CK.Hygiene.ThermostatTarget>Target temperature</CK.Hygiene.ThermostatTarget>
 	<CK.Hygiene.ThermostatCalling>Requesting heat</CK.Hygiene.ThermostatCalling>
 	<CK.Hygiene.ThermostatIdle>At target, heating off</CK.Hygiene.ThermostatIdle>
