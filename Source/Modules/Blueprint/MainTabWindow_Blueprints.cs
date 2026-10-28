@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -10,11 +12,16 @@ namespace ColonyKit.Modules.Blueprint
 	public class MainTabWindow_Blueprints : MainTabWindow
 	{
 		private const float ListWidth = 300f;
-		private const float RowHeight = 48f;
+		private const float RowHeight = 64f;
+		private const float HeaderHeight = 22f;
 
 		private static readonly Color ShortageColor = new Color(1f, 0.42f, 0.42f);
+		private static readonly Color HeaderColor = new Color(0.68f, 0.68f, 0.68f);
+		private static readonly Color TagColor = new Color(0.66f, 0.78f, 0.92f);
+		private static readonly Color PinnedColor = new Color(1f, 0.82f, 0.35f);
 
 		private BlueprintRecord selected;
+		private string filter = "";
 		private Vector2 listScroll;
 		private Vector2 materialScroll;
 		private Vector2 templateScroll;
@@ -127,38 +134,120 @@ namespace ColonyKit.Modules.Blueprint
 				new Rect(inner.x, inner.y, inner.width, 22f),
 				"CK.Blueprint.Tab.Library".Translate());
 
-			Rect outRect = new Rect(inner.x, inner.y + 24f, inner.width, inner.height - 24f);
+			Rect filterRect = new Rect(inner.x, inner.y + 24f, inner.width, 24f);
+			Widgets.Label(
+				new Rect(filterRect.x, filterRect.y + 2f, 40f, 20f),
+				"CK.Blueprint.Filter.Label".Translate());
+			Rect filterField = new Rect(filterRect.x + 42f, filterRect.y, filterRect.width - 42f, 24f);
+			filter = Widgets.TextField(filterField, filter ?? "");
+			TooltipHandler.TipRegion(filterRect, "CK.Blueprint.Filter.Tip".Translate());
+
+			Rect outRect = new Rect(inner.x, inner.y + 54f, inner.width, inner.height - 54f);
 			if (library.records.Count == 0)
 			{
 				Widgets.Label(new Rect(outRect.x, outRect.y, outRect.width, 40f), "CK.Blueprint.Tab.Empty".Translate());
 				return;
 			}
 
-			float viewHeight = Mathf.Max(outRect.height, library.records.Count * RowHeight);
+			List<BlueprintListRow> rows = BuildRows(library);
+			int visible = 0;
+			foreach (BlueprintListRow row in rows)
+			{
+				if (!row.IsHeader)
+				{
+					visible++;
+				}
+			}
+
+			if (!filter.NullOrEmpty())
+			{
+				Widgets.Label(
+					new Rect(inner.x + inner.width - 104f, inner.y, 104f, 20f),
+					"CK.Blueprint.Filter.Count".Translate(visible, library.records.Count));
+			}
+
+			if (rows.Count == 0)
+			{
+				Widgets.Label(
+					new Rect(outRect.x, outRect.y, outRect.width, 40f),
+					"CK.Blueprint.Filter.NoMatch".Translate());
+				return;
+			}
+
+			float contentHeight = 0f;
+			foreach (BlueprintListRow row in rows)
+			{
+				contentHeight += row.IsHeader ? HeaderHeight : RowHeight;
+			}
+
+			float viewHeight = Mathf.Max(outRect.height, contentHeight);
 			Rect viewRect = new Rect(0f, 0f, outRect.width - 18f, viewHeight);
 
 			Widgets.BeginScrollView(outRect, ref listScroll, viewRect);
 			float y = 0f;
-			foreach (BlueprintRecord record in library.records)
+			foreach (BlueprintListRow row in rows)
 			{
-				Rect row = new Rect(0f, y, viewRect.width, RowHeight - 4f);
+				if (row.IsHeader)
+				{
+					DrawListHeader(new Rect(0f, y, viewRect.width, HeaderHeight), row.header);
+					y += HeaderHeight;
+					continue;
+				}
+
+				BlueprintRecord record = row.record;
+				Rect rowRect = new Rect(0f, y, viewRect.width, RowHeight - 4f);
 				if (record == selected)
 				{
-					Widgets.DrawHighlightSelected(row);
+					Widgets.DrawHighlightSelected(rowRect);
 				}
 				else
 				{
-					Widgets.DrawHighlightIfMouseover(row);
+					Widgets.DrawHighlightIfMouseover(rowRect);
 				}
 
 				Widgets.Label(
-					new Rect(row.x + 4f, row.y + 3f, row.width - 8f, 20f),
+					new Rect(rowRect.x + 4f, rowRect.y + 3f, rowRect.width - 26f, 20f),
 					record.name ?? "");
+				if (record.pinned)
+				{
+					GUI.color = PinnedColor;
+					Widgets.Label(new Rect(rowRect.xMax - 20f, rowRect.y + 3f, 18f, 20f), "★");
+					GUI.color = Color.white;
+				}
+
 				Widgets.Label(
-					new Rect(row.x + 4f, row.y + 22f, row.width - 8f, 18f),
+					new Rect(rowRect.x + 4f, rowRect.y + 22f, rowRect.width - 8f, 18f),
 					"CK.Blueprint.Tab.RowMeta".Translate(record.sizeX, record.sizeZ, record.entries.Count));
 
-				if (Widgets.ButtonInvisible(row))
+				string tagText = TagsText(record.tags, 3);
+				if (!tagText.NullOrEmpty())
+				{
+					Text.Font = GameFont.Tiny;
+					GUI.color = TagColor;
+					Widgets.Label(new Rect(rowRect.x + 4f, rowRect.y + 39f, rowRect.width - 8f, 16f), tagText);
+					GUI.color = Color.white;
+					Text.Font = GameFont.Small;
+				}
+				else if (!record.group.NullOrEmpty())
+				{
+					Text.Font = GameFont.Tiny;
+					GUI.color = HeaderColor;
+					Widgets.Label(new Rect(rowRect.x + 4f, rowRect.y + 39f, rowRect.width - 8f, 16f), record.group);
+					GUI.color = Color.white;
+					Text.Font = GameFont.Small;
+				}
+
+				if (Event.current.type == EventType.MouseDown
+					&& Event.current.button == 1
+					&& Mouse.IsOver(rowRect))
+				{
+					ShowRecordMenu(record);
+					Event.current.Use();
+					y += RowHeight;
+					continue;
+				}
+
+				if (Widgets.ButtonInvisible(rowRect))
 				{
 					Select(record);
 				}
@@ -166,6 +255,184 @@ namespace ColonyKit.Modules.Blueprint
 				y += RowHeight;
 			}
 			Widgets.EndScrollView();
+		}
+
+		private void DrawListHeader(Rect rect, string label)
+		{
+			Text.Font = GameFont.Tiny;
+			GUI.color = HeaderColor;
+			Widgets.Label(new Rect(rect.x + 4f, rect.y + 2f, rect.width - 8f, 18f), label);
+			GUI.color = Color.white;
+			Text.Font = GameFont.Small;
+			Widgets.DrawLineHorizontal(rect.x, rect.y + rect.height - 2f, rect.width);
+		}
+
+		private List<BlueprintListRow> BuildRows(BlueprintLibrary library)
+		{
+			List<BlueprintListRow> rows = new List<BlueprintListRow>();
+			List<BlueprintRecord> pinned = new List<BlueprintRecord>();
+			List<BlueprintRecord> ungrouped = new List<BlueprintRecord>();
+			Dictionary<string, List<BlueprintRecord>> groups =
+				new Dictionary<string, List<BlueprintRecord>>(StringComparer.OrdinalIgnoreCase);
+
+			foreach (BlueprintRecord record in library.records)
+			{
+				if (!MatchesFilter(record))
+				{
+					continue;
+				}
+
+				if (record.pinned)
+				{
+					pinned.Add(record);
+				}
+				else if (!record.group.NullOrEmpty())
+				{
+					if (!groups.TryGetValue(record.group, out List<BlueprintRecord> list))
+					{
+						list = new List<BlueprintRecord>();
+						groups[record.group] = list;
+					}
+					list.Add(record);
+				}
+				else
+				{
+					ungrouped.Add(record);
+				}
+			}
+
+			if (pinned.Count > 0)
+			{
+				rows.Add(HeaderRow("CK.Blueprint.Pinned".Translate()));
+				foreach (BlueprintRecord record in pinned)
+				{
+					rows.Add(RecordRow(record));
+				}
+			}
+
+			List<string> groupNames = new List<string>(groups.Keys);
+			groupNames.Sort(StringComparer.OrdinalIgnoreCase);
+			foreach (string group in groupNames)
+			{
+				rows.Add(HeaderRow(group));
+				foreach (BlueprintRecord record in groups[group])
+				{
+					rows.Add(RecordRow(record));
+				}
+			}
+
+			if (ungrouped.Count > 0)
+			{
+				if (pinned.Count > 0 || groupNames.Count > 0)
+				{
+					rows.Add(HeaderRow("CK.Blueprint.Ungrouped".Translate()));
+				}
+				foreach (BlueprintRecord record in ungrouped)
+				{
+					rows.Add(RecordRow(record));
+				}
+			}
+
+			return rows;
+		}
+
+		private static BlueprintListRow HeaderRow(string header)
+		{
+			return new BlueprintListRow { header = header };
+		}
+
+		private static BlueprintListRow RecordRow(BlueprintRecord record)
+		{
+			return new BlueprintListRow { record = record };
+		}
+
+		private bool MatchesFilter(BlueprintRecord record)
+		{
+			string query = filter?.Trim();
+			if (query.NullOrEmpty())
+			{
+				return true;
+			}
+
+			bool tagsOnly = query.StartsWith("#");
+			string needle = tagsOnly ? query.Substring(1).Trim() : query;
+			if (needle.NullOrEmpty())
+			{
+				return true;
+			}
+
+			if (!tagsOnly)
+			{
+				if (!record.name.NullOrEmpty()
+					&& record.name.IndexOf(needle, StringComparison.OrdinalIgnoreCase) >= 0)
+				{
+					return true;
+				}
+				if (!record.group.NullOrEmpty()
+					&& record.group.IndexOf(needle, StringComparison.OrdinalIgnoreCase) >= 0)
+				{
+					return true;
+				}
+			}
+
+			if (record.tags != null)
+			{
+				foreach (string tag in record.tags)
+				{
+					if (!tag.NullOrEmpty()
+						&& tag.IndexOf(needle, StringComparison.OrdinalIgnoreCase) >= 0)
+					{
+						return true;
+					}
+				}
+			}
+			return false;
+		}
+
+		private static string TagsText(List<string> tags, int max)
+		{
+			if (tags == null || tags.Count == 0)
+			{
+				return "";
+			}
+
+			int count = Math.Min(max, tags.Count);
+			StringBuilder builder = new StringBuilder();
+			for (int index = 0; index < count; index++)
+			{
+				if (index > 0)
+				{
+					builder.Append(' ');
+				}
+				builder.Append('#').Append(tags[index]);
+			}
+			if (tags.Count > count)
+			{
+				builder.Append(" +").Append(tags.Count - count);
+			}
+			return builder.ToString();
+		}
+
+		private void ShowRecordMenu(BlueprintRecord record)
+		{
+			List<FloatMenuOption> options = new List<FloatMenuOption>
+			{
+				new FloatMenuOption(
+					(record.pinned ? "CK.Blueprint.Tab.Unpin" : "CK.Blueprint.Tab.Pin").Translate(),
+					() => record.pinned = !record.pinned),
+				new FloatMenuOption(
+					"CK.Blueprint.Menu.Edit".Translate(),
+					() => Find.WindowStack.Add(new Dialog_BlueprintProperties(record)))
+			};
+			Find.WindowStack.Add(new FloatMenu(options));
+		}
+
+		private sealed class BlueprintListRow
+		{
+			public string header;
+			public BlueprintRecord record;
+
+			public bool IsHeader => record == null && header != null;
 		}
 
 		private void DrawDetails(Rect rect, BlueprintLibrary library, BlueprintSettings settings)
@@ -186,8 +453,14 @@ namespace ColonyKit.Modules.Blueprint
 			float y = inner.y;
 
 			Text.Font = GameFont.Medium;
-			Widgets.Label(new Rect(inner.x, y, inner.width, 30f), selected.name ?? "");
+			Widgets.Label(new Rect(inner.x, y, inner.width - 24f, 30f), selected.name ?? "");
 			Text.Font = GameFont.Small;
+			if (selected.pinned)
+			{
+				GUI.color = PinnedColor;
+				Widgets.Label(new Rect(inner.xMax - 22f, y + 4f, 20f, 22f), "★");
+				GUI.color = Color.white;
+			}
 			y += 30f;
 
 			Widgets.Label(
@@ -198,6 +471,21 @@ namespace ColonyKit.Modules.Blueprint
 					selected.entries.Count,
 					selected.createdTick));
 			y += 26f;
+
+			if (!selected.group.NullOrEmpty())
+			{
+				Widgets.Label(
+					new Rect(inner.x, y, inner.width, 20f),
+					"CK.Blueprint.Details.Group".Translate(selected.group));
+				y += 20f;
+			}
+			if (selected.tags != null && selected.tags.Count > 0)
+			{
+				Widgets.Label(
+					new Rect(inner.x, y, inner.width, 20f),
+					"CK.Blueprint.Details.Tags".Translate(TagsText(selected.tags, 99)));
+				y += 20f;
+			}
 
 			if (DrawActionButtons(new Rect(inner.x, y, inner.width, 32f), library, settings))
 			{
@@ -229,13 +517,21 @@ namespace ColonyKit.Modules.Blueprint
 			}
 			x += 100f;
 
-			if (Widgets.ButtonText(new Rect(x, rect.y, 76f, 30f), "CK.Blueprint.Tab.Rename".Translate()))
+			if (Widgets.ButtonText(new Rect(x, rect.y, 72f, 30f), "CK.Blueprint.Tab.Edit".Translate()))
 			{
-				Find.WindowStack.Add(new Dialog_RenameBlueprint(record));
+				Find.WindowStack.Add(new Dialog_BlueprintProperties(record));
 			}
-			x += 80f;
+			x += 76f;
 
-			if (Widgets.ButtonText(new Rect(x, rect.y, 76f, 30f), "CK.Blueprint.Tab.Delete".Translate()))
+			if (Widgets.ButtonText(
+				new Rect(x, rect.y, 88f, 30f),
+				(record.pinned ? "CK.Blueprint.Tab.Unpin" : "CK.Blueprint.Tab.Pin").Translate()))
+			{
+				record.pinned = !record.pinned;
+			}
+			x += 92f;
+
+			if (Widgets.ButtonText(new Rect(x, rect.y, 72f, 30f), "CK.Blueprint.Tab.Delete".Translate()))
 			{
 				BlueprintRecord toDelete = record;
 				Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation(
@@ -351,6 +647,19 @@ namespace ColonyKit.Modules.Blueprint
 				string label = template.record != null
 					? template.record.name + "  " + template.record.sizeX + "×" + template.record.sizeZ
 					: Path.GetFileNameWithoutExtension(template.path);
+				if (template.record != null)
+				{
+					if (!template.record.group.NullOrEmpty())
+					{
+						label = "[" + template.record.group + "] " + label;
+					}
+
+					string templateTags = TagsText(template.record.tags, 3);
+					if (!templateTags.NullOrEmpty())
+					{
+						label += "  " + templateTags;
+					}
+				}
 
 				if (template.record == null)
 				{

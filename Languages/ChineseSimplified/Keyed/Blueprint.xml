@@ -53,6 +53,27 @@
 	<CK.Blueprint.Tab.Substitution>原 {0} → {1}</CK.Blueprint.Tab.Substitution>
 	<CK.Blueprint.Tab.Place>放置</CK.Blueprint.Tab.Place>
 	<CK.Blueprint.Tab.Rename>重命名</CK.Blueprint.Tab.Rename>
+	<CK.Blueprint.Tab.Edit>编辑</CK.Blueprint.Tab.Edit>
+	<CK.Blueprint.Tab.Pin>置顶</CK.Blueprint.Tab.Pin>
+	<CK.Blueprint.Tab.Unpin>取消置顶</CK.Blueprint.Tab.Unpin>
+	<CK.Blueprint.Pinned>置顶</CK.Blueprint.Pinned>
+	<CK.Blueprint.Ungrouped>未分组</CK.Blueprint.Ungrouped>
+	<CK.Blueprint.Details.Group>分组：{0}</CK.Blueprint.Details.Group>
+	<CK.Blueprint.Details.Tags>标签：{0}</CK.Blueprint.Details.Tags>
+	<CK.Blueprint.Filter.Label>筛选</CK.Blueprint.Filter.Label>
+	<CK.Blueprint.Filter.Tip>按名称、分组或标签筛选；输入 #标签 只搜标签。</CK.Blueprint.Filter.Tip>
+	<CK.Blueprint.Filter.Count>{0}/{1} 张</CK.Blueprint.Filter.Count>
+	<CK.Blueprint.Filter.NoMatch>没有匹配的蓝图。</CK.Blueprint.Filter.NoMatch>
+	<CK.Blueprint.Menu.Edit>编辑属性</CK.Blueprint.Menu.Edit>
+	<CK.Blueprint.Properties.Title>编辑蓝图属性</CK.Blueprint.Properties.Title>
+	<CK.Blueprint.Properties.Name>名称</CK.Blueprint.Properties.Name>
+	<CK.Blueprint.Properties.Group>分组（留空 = 未分组）</CK.Blueprint.Properties.Group>
+	<CK.Blueprint.Properties.Tags>标签（逗号分隔，最多 8 个）</CK.Blueprint.Properties.Tags>
+	<CK.Blueprint.Properties.Pinned>置顶显示</CK.Blueprint.Properties.Pinned>
+	<CK.Blueprint.Properties.Hint>置顶的蓝图排在列表最前；分组按名称排序，未分组排在最后。</CK.Blueprint.Properties.Hint>
+	<CK.Blueprint.Properties.NameEmpty>名称不能为空。</CK.Blueprint.Properties.NameEmpty>
+	<CK.Blueprint.Properties.OK>确定</CK.Blueprint.Properties.OK>
+	<CK.Blueprint.Properties.Cancel>取消</CK.Blueprint.Properties.Cancel>
 	<CK.Blueprint.Tab.Delete>删除</CK.Blueprint.Tab.Delete>
 	<CK.Blueprint.Tab.SaveTemplate>另存为模板</CK.Blueprint.Tab.SaveTemplate>
 	<CK.Blueprint.Tab.LoadTemplate>载入</CK.Blueprint.Tab.LoadTemplate>

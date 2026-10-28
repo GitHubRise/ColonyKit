@@ -371,15 +371,16 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 
 **已实现**
 
-- `BlueprintRecord`：名称、尺寸、版本、条目列表（`defName` / `stuffDefName` / `rot` / 相对坐标）；坐标原点取捕获建筑的包围盒左下角。
+- `BlueprintRecord`：名称、尺寸、版本、条目列表（`defName` / `stuffDefName` / `rot` / 相对坐标）、置顶/分组/标签；坐标原点取捕获建筑的包围盒左下角。
 - 捕获：`Designator_BlueprintCapture` 拉框，只收**玩家阵营、已完工、可见**的建筑（跳过蓝图/框架/矿物/自然岩石/物品）；拖框空白边距会被裁掉；不含地形。
-- 库：`BlueprintLibrary` 每存档一份，由模块自己的 `BlueprintGameComponent` 持有；`MainTabWindow_Blueprints` 列表、重命名、删除、材料统计、放置、模板区。
+- 库：`BlueprintLibrary` 每存档一份，由模块自己的 `BlueprintGameComponent` 持有；`MainTabWindow_Blueprints` 列表、置顶/分组/标签、筛选、编辑、删除、材料统计、放置、模板区。
 - 放置：`Designator_BlueprintPlace` 带幽灵预览，Q/E 旋转、B 镜像、逐条校验（Def/材质/研究/边界，地形/占用/水域走 `CanPlaceBlueprintAt`）；缺 Def 跳过，其余任一失败整张拒绝；放置后设计器保留，可连续复刻多份。
 - 施工：逐条 `GenSpawn.WipeExistingThings` + `GenConstruct.PlaceBlueprintForBuild`，保留材质与朝向；先整张校验再落地，缺 Def 条目跳过。上帝模式直接生成完工建筑。
 - 材料：三档策略（原材质优先 / 就地取材（默认）/ 最便宜）；放置前显示总需求 vs 地图现有，缺料高亮（不阻止放置），替换材料有说明。
-- 存档与模板：库随存档保存，schema 带版本号；缺 Mod/缺 Def 跳过并计数；玩家模板写到 `Config/ColonyKit/Blueprints/*.xml`，Mod 根目录 `Blueprints/*.xml` 为只读内置模板，同名玩家模板优先。
+- 组织：置顶记录排最前，其余按分组名排序、未分组最后；标签最多 8 个，列表显示 `#标签`；顶部筛选框匹配名称/分组/标签（`#` 只搜标签）。
+- 存档与模板：库随存档保存，schema 带版本号；缺 Mod/缺 Def 跳过并计数；玩家模板写到 `Config/ColonyKit/Blueprints/*.xml`（保留分组/标签），Mod 根目录 `Blueprints/*.xml` 为只读内置模板，同名玩家模板优先。
 
-**后续**：包含地形/物品、创意工坊分享、搜索/分页、按研究门控、JSON 导入导出。
+**后续**：包含地形/物品、创意工坊分享、分页、按研究门控、JSON 导入导出。
 
 **不做**：跨地图远程施工、自动重建/修复。
 
@@ -536,7 +537,7 @@ M3-0 写 `docs/decisions/storage-kernel.md`，记录原型、性能、兼容性�
 - [x] **M5-0** 数据 schema：`BlueprintRecord` / `BlueprintEntry`，版本号、坐标系、`defName`/`stuff`/`rot`；尺寸/条目/库上限进设置；决策写 `docs/decisions/blueprint-format.md`。
 	- 完成：2026-10-25；地形不进 schema（首版范围）。
 - [x] **M5-1** 捕获：`Designator_BlueprintCapture` 拉框，只收玩家建造的完工建筑，跳过蓝图/框架/矿物/物品；点击后自动入库并打开蓝图页。
-- [x] **M5-2** 库：`BlueprintLibrary` 由模块的 `BlueprintGameComponent` 持有；`MainTabWindow_Blueprints` 列表、重命名、删除、材料统计、放置。
+- [x] **M5-2** 库：`BlueprintLibrary` 由模块的 `BlueprintGameComponent` 持有；`MainTabWindow_Blueprints` 列表、置顶/分组/标签/筛选、编辑、删除、材料统计、放置。
 - [x] **M5-3** 放置预览：`Designator_BlueprintPlace`，Q/E 旋转、B 镜像、逐条红绿校验（地形/占用/水域/研究/材料）；放置后设计器保留可连续复刻。
 - [x] **M5-4** 施工：逐条 `GenConstruct.PlaceBlueprintForBuild`，保留材质/朝向；先全量校验再落地，失败时零生成。
 - [x] **M5-5** 材料清单：总需求 vs 地图现有，缺料高亮；三档材料策略（原材质优先/就地取材/最便宜）。

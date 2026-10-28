@@ -79,6 +79,24 @@ namespace ColonyKit.Modules.Blueprint
 					writer.WriteElementString("sizeZ", record.sizeZ.ToString(CultureInfo.InvariantCulture));
 					writer.WriteElementString("createdTick", record.createdTick.ToString(CultureInfo.InvariantCulture));
 
+					if (!record.group.NullOrEmpty())
+					{
+						writer.WriteElementString("group", record.group);
+					}
+
+					if (record.tags != null && record.tags.Count > 0)
+					{
+						writer.WriteStartElement("tags");
+						foreach (string tag in record.tags)
+						{
+							if (!tag.NullOrEmpty())
+							{
+								writer.WriteElementString("li", tag);
+							}
+						}
+						writer.WriteEndElement();
+					}
+
 					writer.WriteStartElement("entries");
 					foreach (BlueprintEntry entry in record.entries)
 					{
@@ -210,8 +228,21 @@ namespace ColonyKit.Modules.Blueprint
 					name = root["name"]?.InnerText,
 					sizeX = ParseInt(root["sizeX"]?.InnerText, 1),
 					sizeZ = ParseInt(root["sizeZ"]?.InnerText, 1),
-					createdTick = ParseInt(root["createdTick"]?.InnerText, 0)
+					createdTick = ParseInt(root["createdTick"]?.InnerText, 0),
+					group = root["group"]?.InnerText
 				};
+
+				XmlNode tagsNode = root["tags"];
+				if (tagsNode != null)
+				{
+					foreach (XmlNode node in tagsNode.ChildNodes)
+					{
+						if (node is XmlElement element && element.Name == "li" && !element.InnerText.NullOrEmpty())
+						{
+							record.tags.Add(element.InnerText.Trim());
+						}
+					}
+				}
 
 				XmlNode entriesNode = root["entries"];
 				if (entriesNode != null)

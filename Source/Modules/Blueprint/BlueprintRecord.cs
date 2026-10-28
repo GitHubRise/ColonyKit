@@ -48,6 +48,9 @@ namespace ColonyKit.Modules.Blueprint
 	public class BlueprintRecord : IExposable, IRenameable
 	{
 		public const int CurrentVersion = 1;
+		public const int MaxTags = 8;
+		public const int MaxTagLength = 24;
+		public const int MaxGroupLength = 32;
 
 		/// <summary>存档内唯一编号；模板读入时由库重新分配。</summary>
 		public int id;
@@ -56,6 +59,15 @@ namespace ColonyKit.Modules.Blueprint
 		public int version = CurrentVersion;
 
 		public string name;
+
+		/// <summary>置顶显示；列表里排在所有分组之前。</summary>
+		public bool pinned;
+
+		/// <summary>分组名；空/NULL 表示未分组。</summary>
+		public string group;
+
+		/// <summary>标签；用于列表显示与筛选，不参与放置。</summary>
+		public List<string> tags = new List<string>();
 
 		/// <summary>捕获范围宽度（格）。</summary>
 		public int sizeX = 1;
@@ -89,6 +101,9 @@ namespace ColonyKit.Modules.Blueprint
 			Scribe_Values.Look(ref sizeX, "ck_blueprint_sizeX", 1);
 			Scribe_Values.Look(ref sizeZ, "ck_blueprint_sizeZ", 1);
 			Scribe_Values.Look(ref createdTick, "ck_blueprint_createdTick", 0);
+			Scribe_Values.Look(ref pinned, "ck_blueprint_pinned", false);
+			Scribe_Values.Look(ref group, "ck_blueprint_group");
+			Scribe_Collections.Look(ref tags, "ck_blueprint_tags", LookMode.Value);
 			Scribe_Collections.Look(ref entries, "ck_blueprint_entries", LookMode.Deep);
 
 			if (entries == null)
@@ -109,6 +124,48 @@ namespace ColonyKit.Modules.Blueprint
 			{
 				name = "CK.Blueprint.DefaultName".Translate(0);
 			}
+
+			group = group?.Trim();
+			if (group.NullOrEmpty())
+			{
+				group = null;
+			}
+			else if (group.Length > MaxGroupLength)
+			{
+				group = group.Substring(0, MaxGroupLength);
+			}
+
+			if (tags == null)
+			{
+				tags = new List<string>();
+			}
+
+			HashSet<string> seenTags = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+			List<string> cleanTags = new List<string>(tags.Count);
+			foreach (string tag in tags)
+			{
+				if (tag.NullOrEmpty())
+				{
+					continue;
+				}
+
+				string trimmed = tag.Trim();
+				if (trimmed.Length > MaxTagLength)
+				{
+					trimmed = trimmed.Substring(0, MaxTagLength);
+				}
+				if (trimmed.Length == 0 || !seenTags.Add(trimmed))
+				{
+					continue;
+				}
+
+				cleanTags.Add(trimmed);
+				if (cleanTags.Count >= MaxTags)
+				{
+					break;
+				}
+			}
+			tags = cleanTags;
 
 			if (entries == null)
 			{
@@ -147,6 +204,9 @@ namespace ColonyKit.Modules.Blueprint
 				sizeX = sizeX,
 				sizeZ = sizeZ,
 				createdTick = createdTick,
+				pinned = pinned,
+				group = group,
+				tags = tags == null ? new List<string>() : new List<string>(tags),
 				entries = new List<BlueprintEntry>(entries?.Count ?? 0)
 			};
 

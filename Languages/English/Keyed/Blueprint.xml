@@ -53,6 +53,27 @@
 	<CK.Blueprint.Tab.Substitution>{0} → {1}</CK.Blueprint.Tab.Substitution>
 	<CK.Blueprint.Tab.Place>Place</CK.Blueprint.Tab.Place>
 	<CK.Blueprint.Tab.Rename>Rename</CK.Blueprint.Tab.Rename>
+	<CK.Blueprint.Tab.Edit>Edit</CK.Blueprint.Tab.Edit>
+	<CK.Blueprint.Tab.Pin>Pin</CK.Blueprint.Tab.Pin>
+	<CK.Blueprint.Tab.Unpin>Unpin</CK.Blueprint.Tab.Unpin>
+	<CK.Blueprint.Pinned>Pinned</CK.Blueprint.Pinned>
+	<CK.Blueprint.Ungrouped>Ungrouped</CK.Blueprint.Ungrouped>
+	<CK.Blueprint.Details.Group>Group: {0}</CK.Blueprint.Details.Group>
+	<CK.Blueprint.Details.Tags>Tags: {0}</CK.Blueprint.Details.Tags>
+	<CK.Blueprint.Filter.Label>Filter</CK.Blueprint.Filter.Label>
+	<CK.Blueprint.Filter.Tip>Filter by name, group or tag; start with # to search tags only.</CK.Blueprint.Filter.Tip>
+	<CK.Blueprint.Filter.Count>{0}/{1}</CK.Blueprint.Filter.Count>
+	<CK.Blueprint.Filter.NoMatch>No blueprints match the filter.</CK.Blueprint.Filter.NoMatch>
+	<CK.Blueprint.Menu.Edit>Edit properties</CK.Blueprint.Menu.Edit>
+	<CK.Blueprint.Properties.Title>Blueprint properties</CK.Blueprint.Properties.Title>
+	<CK.Blueprint.Properties.Name>Name</CK.Blueprint.Properties.Name>
+	<CK.Blueprint.Properties.Group>Group (blank = ungrouped)</CK.Blueprint.Properties.Group>
+	<CK.Blueprint.Properties.Tags>Tags (comma-separated, max 8)</CK.Blueprint.Properties.Tags>
+	<CK.Blueprint.Properties.Pinned>Pin to top</CK.Blueprint.Properties.Pinned>
+	<CK.Blueprint.Properties.Hint>Pinned blueprints come first; groups sort by name, ungrouped last.</CK.Blueprint.Properties.Hint>
+	<CK.Blueprint.Properties.NameEmpty>Name cannot be empty.</CK.Blueprint.Properties.NameEmpty>
+	<CK.Blueprint.Properties.OK>OK</CK.Blueprint.Properties.OK>
+	<CK.Blueprint.Properties.Cancel>Cancel</CK.Blueprint.Properties.Cancel>
 	<CK.Blueprint.Tab.Delete>Delete</CK.Blueprint.Tab.Delete>
 	<CK.Blueprint.Tab.SaveTemplate>Save as template</CK.Blueprint.Tab.SaveTemplate>
 	<CK.Blueprint.Tab.LoadTemplate>Load</CK.Blueprint.Tab.LoadTemplate>
