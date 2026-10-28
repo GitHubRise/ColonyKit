@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<!-- 文案沿用 DBH 简体中文包。 -->
+	<CK_SewageTreatment.label>污水处理池</CK_SewageTreatment.label>
+	<CK_SewageTreatment.description>随时间逐渐处理污水的设备。达到满负荷后，多余的污水将不经处理直接溢出。</CK_SewageTreatment.description>
+</LanguageData>

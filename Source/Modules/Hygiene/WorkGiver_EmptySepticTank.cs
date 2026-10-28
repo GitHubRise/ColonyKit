@@ -24,6 +24,12 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return false;
 			}
+			// 带 DBH 排水设置的池子（污水处理池/可处理化粪池）按自己的阈值判断：
+			// 非强制时要 AllowDrain 且超过 PcntToEmpty 才清（DBH WorkGiver_emptySepticTank 的行为）。
+			if (!forced && comp is CompSepticTank septic && !septic.EmptyNow)
+			{
+				return false;
+			}
 			// 原来只要超过 1 L 就开工：每冲一次水都会派一趟活，化粪池的缓冲容量
 			// 永远用不上，Blocked/溢出也永远见不到。非强制时等到 80% 容量再抽；
 			// 强制时留 10 L 下限，避免点一下只抽掉几升。

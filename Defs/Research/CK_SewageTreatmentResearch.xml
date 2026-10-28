@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 污水处理：DBH SewageTreatment（2000 点，工业），污水处理池的门槛。 -->
+	<ResearchProjectDef>
+		<defName>CK_SewageTreatment</defName>
+		<label>sewage treatment</label>
+		<description>Build large sewage treatment systems which accumulate large amounts of sewage and provide fast treatment of sewage.</description>
+		<baseCost>2000</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>CK_HygieneResearch</li>
+		</prerequisites>
+		<tab>CK_HygieneTab</tab>
+		<researchViewX>4</researchViewX>
+		<researchViewY>2</researchViewY>
+	</ResearchProjectDef>
+</Defs>

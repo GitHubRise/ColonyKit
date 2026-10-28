@@ -195,6 +195,11 @@
 	<CK.Hygiene.FloatMenu.BasinFull>脸盆已经满了</CK.Hygiene.FloatMenu.BasinFull>
 	<CK.Hygiene.FloatMenu.BasinEmpty>脸盆里没有水</CK.Hygiene.FloatMenu.BasinEmpty>
 	<CK.Hygiene.BasinWater>脸盆水量: {0}/{1} 升</CK.Hygiene.BasinWater>
+	<CK.Hygiene.SewageProcessing>处理能力: {0} L/天  未处理: {1} L ({2})</CK.Hygiene.SewageProcessing>
+	<CK.Hygiene.DoNotDrainTank>不要排空</CK.Hygiene.DoNotDrainTank>
+	<CK.Hygiene.DrainSepticTankAt>排水阈值: {0}</CK.Hygiene.DrainSepticTankAt>
+	<CK.Hygiene.DrainSepticTank>排水</CK.Hygiene.DrainSepticTank>
+	<CK.Hygiene.DrainSepticTankDesc>设置粎便污泥排入桶中的水平。粎桶可以移动、翻倒、燃烧或变成有机肥。</CK.Hygiene.DrainSepticTankDesc>
 	<CK.Hygiene.NoSewage>缺少排污设备</CK.Hygiene.NoSewage>
 	<CK.Hygiene.WashingSpinning>运行中...</CK.Hygiene.WashingSpinning>
 	<CK.Hygiene.WashingUnload>立即取出</CK.Hygiene.WashingUnload>

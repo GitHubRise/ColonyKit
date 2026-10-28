@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 污水处理池（DBH SewageTreatment 的 1:1 移植）：5×5、按天处理污水、带排水阈值设置。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_SewageTreatment</defName>
+		<label>sewage treatment</label>
+		<description>Slowly cleans sewage over time. If it reaches full capacity then excess sewage is sent directly to sewage outlets without treatment.</description>
+		<thingClass>Building</thingClass>
+		<size>(5,5)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_SewageTreatment</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(5,5)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>16</uiOrder>
+		<tickerType>Normal</tickerType>
+		<drawerType>RealtimeOnly</drawerType>
+		<canOverlapZones>false</canOverlapZones>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<pathCost>60</pathCost>
+		<costList>
+			<Steel>400</Steel>
+			<ComponentIndustrial>8</ComponentIndustrial>
+		</costList>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<statBases>
+			<MaxHitPoints>350</MaxHitPoints>
+			<WorkToBuild>5000</WorkToBuild>
+			<Flammability>0</Flammability>
+			<Beauty>-12</Beauty>
+			<Cleanliness>-100</Cleanliness>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Breakdownable" />
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Sewage</mode>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>500</basePowerConsumption>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_SepticTank">
+				<compClass>ColonyKit.Modules.Hygiene.Dbh.CompSepticTank</compClass>
+				<TreatedPerDay>500</TreatedPerDay>
+				<capacity>10000</capacity>
+				<priority>2</priority>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_SewageTreatment</li>
+		</researchPrerequisites>
+	</ThingDef>
+</Defs>
