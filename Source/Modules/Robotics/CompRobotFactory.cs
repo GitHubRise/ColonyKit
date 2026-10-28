@@ -228,6 +228,24 @@ namespace ColonyKit.Modules.Robotics
 
 		private bool IsPowered => power != null && power.PowerOn;
 
+		private string MissingIngredientsText()
+		{
+			if (parent.Map == null)
+			{
+				return "";
+			}
+			List<string> missing = new List<string>();
+			foreach (ThingDefCountClass ingredient in AdjustedIngredients)
+			{
+				int have = parent.Map.resourceCounter.GetCount(ingredient.thingDef);
+				if (have < ingredient.count)
+				{
+					missing.Add($"{ingredient.thingDef.label} {have}/{ingredient.count}");
+				}
+			}
+			return string.Join("、", missing);
+		}
+
 		private bool HasIngredients(Map map)
 		{
 			if (map == null)
@@ -293,7 +311,7 @@ namespace ColonyKit.Modules.Robotics
 			}
 			if (!HasIngredients(parent.Map))
 			{
-				reason = "CK.Robotics.Factory.MissingIngredients".Translate();
+				reason = "CK.Robotics.Factory.MissingIngredients".Translate(MissingIngredientsText());
 				return false;
 			}
 			reason = null;
@@ -477,6 +495,15 @@ namespace ColonyKit.Modules.Robotics
 				};
 				yield break;
 			}
+
+			yield return new Command_Action
+			{
+				defaultLabel = "CK.Robotics.Factory.Bill".Translate(),
+				defaultDesc = "CK.Robotics.Factory.Bill.Desc".Translate(MissingIngredientsText()),
+				icon = ContentFinder<Texture2D>.Get("UI/Commands/CK_Assemble", false)
+					?? TexCommand.Install,
+				action = OpenProductMenu
+			};
 
 			yield return new Command_Action
 			{

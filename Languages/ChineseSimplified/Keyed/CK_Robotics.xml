@@ -129,7 +129,9 @@
 	<CK.Robotics.Factory.AlreadyWorking>{0} 正在组装。</CK.Robotics.Factory.AlreadyWorking>
 	<CK.Robotics.Factory.MissingKind>工厂没有指定产品。</CK.Robotics.Factory.MissingKind>
 	<CK.Robotics.Factory.NoPower>工厂未通电。</CK.Robotics.Factory.NoPower>
-	<CK.Robotics.Factory.MissingIngredients>材料不足，无法开始组装。</CK.Robotics.Factory.MissingIngredients>
+	<CK.Robotics.Factory.Bill>生产清单</CK.Robotics.Factory.Bill>
+	<CK.Robotics.Factory.Bill.Desc>查看本工厂可生产的所有型号与配方；缺少材料：{0}。</CK.Robotics.Factory.Bill.Desc>
+	<CK.Robotics.Factory.MissingIngredients>材料不足：{0}</CK.Robotics.Factory.MissingIngredients>
 	<CK.Robotics.Factory.Started>开始组装 {0}。</CK.Robotics.Factory.Started>
 	<CK.Robotics.Factory.Cancelled>已取消 {0} 组装，材料不返还。</CK.Robotics.Factory.Cancelled>
 	<CK.Robotics.Factory.Completed>{0} 组装完成：{1}</CK.Robotics.Factory.Completed>
