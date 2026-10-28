@@ -21,6 +21,7 @@
 ### Added
 
 - **Mk-V 闲逛/待机/看云**：Mk-V 没有工作时会像殖民者一样在殖民地附近闲逛，偶尔到露天位置躺下看云；看云使用独立 JobDef，不依赖 Joy 需求。征召时两者都不会触发。
+- **燃烧坑（DBH `BurnPit` 1:1）**：`CK_BurnPit`（钢 20、无研究前置，贴图取 DBH `burnPit`）。`Building_BurnPit : Building_WorkTable` + `CompProperties_Refuelable`（燃料只收 `CK_FecalSludge`，容量 250、速率 100、雨天 0.0006/tick）、`CompHeatPusherPowered`（21 热/秒、28℃ 上限）、`CompProperties_Glower`（半径 10）；配方走原版 `CremateCorpse`/`BurnApparel`/`BurnDrugs`；`UsedThisTick` 冒烟冒火，每 1500 tick 让 13.9 格内小人40% 概率被熏脏；新增 `CK_DoBillsBurnPit`（`WorkGiver_DoBill`、Hauling、`fixedBillGiverDefs=CK_BurnPit`）。中文文案沿用 DBH 译法（「燃烧坑」）。
 
 ### Changed
 
