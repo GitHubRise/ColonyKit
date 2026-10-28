@@ -17,6 +17,12 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		/// <summary>Boiler heating capacity, matching DBH's default 250.</summary>
 		public float Capacity = 250f;
 
+		/// <summary>
+		/// DBH 的 ThermostatControl：电/燃气锅炉按热水罐温度自动启停；
+		/// 柴火锅炉设成 false，只要烧着就一直出力。
+		/// </summary>
+		public bool ThermostatControl = true;
+
 		public CompProperties_WaterHeater()
 		{
 			compClass = typeof(CompWaterHeater);
@@ -65,9 +71,9 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 			}
 		}
 
-		public float Capacity => WorkingNow && thermostatOn
-			? Props.Capacity * ModeMultiplier
-			: 0f;
+		public bool Running => WorkingNow && (thermostatOn || !Props.ThermostatControl);
+
+		public float Capacity => Running ? Props.Capacity * ModeMultiplier : 0f;
 
 		public override void PostSpawnSetup(bool respawningAfterLoad)
 		{
@@ -94,6 +100,11 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 			base.CompTick();
 			RefreshThermostat();
 			UpdatePowerOutput();
+			// 烧柴/烧油锅炉要真的烧燃料（CompRefuelable 只在被通知时扣）。
+			if (fuel != null && Running)
+			{
+				fuel.Notify_UsedThisTick();
+			}
 		}
 
 		/// <summary>热水罐达到恒温上限后停炉，低于下限再启动；LowCap 会强制启动。</summary>
@@ -159,7 +170,7 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		{
 			string status = !WorkingNow
 				? "CK.Hygiene.HeaterOff".Translate()
-				: (thermostatOn ? "CK.Hygiene.HeaterOn".Translate() : "CK.Hygiene.HeaterStandby".Translate());
+				: (Running ? "CK.Hygiene.HeaterOn".Translate() : "CK.Hygiene.HeaterStandby".Translate());
 			return status + "\n" + "CK.Hygiene.BoilerModeLine".Translate(ModeLabel(mode));
 		}
 

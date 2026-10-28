@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 柴火锅炉：DBH LogBoilers（400 点，中世纪）。 -->
+	<ResearchProjectDef>
+		<defName>CK_LogBoilers</defName>
+		<label>heating</label>
+		<description>Build log boilers which can be used to heat rooms and can be placed adjacent to baths to heat bathwater.</description>
+		<baseCost>400</baseCost>
+		<techLevel>Medieval</techLevel>
+		<tags>
+			<li>ClassicStart</li>
+		</tags>
+		<tab>CK_HygieneTab</tab>
+		<researchViewX>0</researchViewX>
+		<researchViewY>2</researchViewY>
+	</ResearchProjectDef>
+</Defs>

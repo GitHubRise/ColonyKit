@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_LogBoiler.label>锅炉</CK_LogBoiler.label>
+	<CK_LogBoiler.description>加热装置。为暖气和热水箱提供 2000 U 的加热量，以原木为燃料，同时会加热房间。</CK_LogBoiler.description>
+</LanguageData>
