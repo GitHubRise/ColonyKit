@@ -299,6 +299,8 @@ namespace ColonyKit.Modules.Robotics
 					// 武器拾取/装备 Job 需要装备栏；没有它 JobDriver_Equip 会立即失败并刷任务。
 					pawn.equipment = new Pawn_EquipmentTracker(pawn);
 				}
+				// 重新评估需求，让 Mk-V 也拿到口渴/膀胱等兼容需求。
+				pawn.needs?.AddOrRemoveNeedsAsAppropriate();
 				if (!skillsInitialized || skillsProfileVersion < 3)
 				{
 					ApplyRobotSkills(pawn);

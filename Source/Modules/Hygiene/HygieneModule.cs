@@ -106,7 +106,8 @@ namespace ColonyKit.Modules.Hygiene
 		private static void Postfix(Pawn_NeedsTracker __instance, NeedDef nd, ref bool __result)
 		{
 			if (__result || nd == null
-				|| (nd.defName != "CK_Hygiene" && nd.defName != "CK_Bladder"))
+				|| (nd.defName != "CK_Hygiene" && nd.defName != "CK_Bladder"
+					&& nd.defName != "CK_Thirst"))
 			{
 				return;
 			}

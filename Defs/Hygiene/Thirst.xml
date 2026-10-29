@@ -9,6 +9,7 @@
 		<minIntelligence>Animal</minIntelligence>
 		<baseLevel>0.8</baseLevel>
 		<listPriority>402</listPriority>
+		<showOnNeedList>true</showOnNeedList>
 		<showForCaravanMembers>true</showForCaravanMembers>
 	</NeedDef>
 

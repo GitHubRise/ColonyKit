@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ColonyKit.Modules.Robotics;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -149,13 +150,19 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return false;
 			}
-			if (!pawn.RaceProps.Humanlike || pawn.RaceProps.IsMechanoid)
+			bool mkVHydrationNeed = NannyBotUtility.IsMkV(pawn)
+				&& (def.defName == "CK_Bladder" || def.defName == "CK_Thirst");
+			if ((!pawn.RaceProps.Humanlike || pawn.RaceProps.IsMechanoid) && !mkVHydrationNeed)
 			{
 				return false;
 			}
 			if ((int)pawn.RaceProps.intelligence < (int)def.minIntelligence)
 			{
 				return false;
+			}
+			if (mkVHydrationNeed)
+			{
+				return true;
 			}
 			return !IsExempt(pawn);
 		}

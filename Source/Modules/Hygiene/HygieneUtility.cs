@@ -1,4 +1,5 @@
 using System;
+using ColonyKit.Modules.Robotics;
 using RimWorld;
 using Verse;
 
@@ -58,8 +59,8 @@ namespace ColonyKit.Modules.Hygiene
 			foreach (Pawn pawn in PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive)
 			{
 				if (pawn?.needs == null
-					|| !pawn.RaceProps.Humanlike
-					|| pawn.RaceProps.IsMechanoid)
+					|| ((!pawn.RaceProps.Humanlike || pawn.RaceProps.IsMechanoid)
+						&& !NannyBotUtility.IsMkV(pawn)))
 				{
 					continue;
 				}
