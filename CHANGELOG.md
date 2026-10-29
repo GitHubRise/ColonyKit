@@ -6,6 +6,8 @@
 
 ### Fixed
 
+- **Mk-V 电弧发射器无法手动瞄准**：原版 `VerbTracker.CreateVerbTargetCommand` 对机械族额外要求 `MechanitorUtility.EverControllable`，Mk-V 没有 `OverseerSubject` 所以永远返回 false，武器指令被禁用为「无法命令不由你操控的角色」。现在对玩家阵营、已生成且未倒地的 Mk-V 放行 `EverControllable`，电弧发射器的瞄准指令、手动攻击和右键命令均可正常使用。
+
 - **Mk-V 卫生需求自维护**：口渴和膀胱条保留用于 RJW/卫生面板，但 Mk-V 作为机械体会自行循环补充，不再因为没有水源或厕所而脱水/憋坏。
 
 ### Fixed
