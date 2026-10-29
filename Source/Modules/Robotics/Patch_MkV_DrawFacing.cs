@@ -59,27 +59,43 @@ namespace ColonyKit.Modules.Robotics
 				{
 					continue;
 				}
+				string suffix;
 				Material material;
 				switch (pawn.Rotation.AsInt)
 				{
 					case 0:
+						suffix = "north";
 						material = graphic.MatNorth;
 						break;
 					case 1:
+						suffix = "east";
 						material = graphic.MatEast;
 						break;
 					case 2:
+						suffix = "south";
 						material = graphic.MatSouth;
 						break;
 					case 3:
+						suffix = "west";
 						material = graphic.MatWest;
 						break;
 					default:
+						suffix = null;
 						material = null;
 						break;
 				}
 				if (material != null)
 				{
+					Texture2D texture = suffix == null
+						? null
+						: ContentFinder<Texture2D>.Get(graphic.GraphicPath + "_" + suffix, false);
+					if (texture != null)
+					{
+						material = new Material(ShaderDatabase.Cutout)
+						{
+							mainTexture = texture
+						};
+					}
 					request.material = material;
 					requests[i] = request;
 				}
