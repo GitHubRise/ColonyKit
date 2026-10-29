@@ -103,7 +103,8 @@
 				<capacities>
 					<li>Cut</li>
 				</capacities>
-				<power>22</power>
+				<!-- 1.8x the original 22 power: 22 * 1.8 = 39.6 -->
+				<power>39.6</power>
 				<cooldownTime>1.5</cooldownTime>
 				<armorPenetration>0.25</armorPenetration>
 			</li>
