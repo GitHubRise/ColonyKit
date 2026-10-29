@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<ColonyKit.Module.WorkPriority.Name>9-step work priorities</ColonyKit.Module.WorkPriority.Name>
+	<ColonyKit.Module.WorkPriority.Desc>Raises the WORK tab priority cap from 4 to 9 (1 highest, 9 lowest). Clicking a cell cycles through 1-9 as before, and shift-clicking a column header shifts the whole column. New colonists start with Firefight 1, Patient 2 and everything else 5; numbers already set in existing saves are left alone.</ColonyKit.Module.WorkPriority.Desc>
+
+	<Priority5>Priority 5</Priority5>
+	<Priority6>Priority 6</Priority6>
+	<Priority7>Priority 7</Priority7>
+	<Priority8>Priority 8</Priority8>
+	<Priority9>Priority 9</Priority9>
+</LanguageData>

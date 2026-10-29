@@ -4,6 +4,14 @@
 
 ## [Unreleased]
 
+### Added
+
+- **工作优先级 9 级**：原版「工作」页的优先级上限写死为 4（`Pawn_WorkSettings.LowestPriority`、`WidgetsWork.DrawWorkBoxFor` 与 `PawnColumnWorker_WorkPriority.HeaderClicked` 里的绕圈常量）。新模块 `work-priority` 把这三处换成运行时上限 `WorkPriorityModule.MaxPriority`：单元格左/右键在 1–9 之间绕圈、0 为关闭，列头 Shift 点击整列升降；5–9 走 `Pawn_WorkSettings.SetPriority` 的前缀直接写优先级表，不再触发原版「Trying to set work to invalid priority」日志。5–9 级另给一套渐暗的灰度（`WidgetsWork.ColorOfPriority` 后缀），并补 `Priority5`–`Priority9` 词条，悬停提示显示「第 N 优先级 / Priority N」；教程「手动分配工作优先级」里「标记 4 为最后去做」通过反射改成 9（1.6 把 `helpText` 改成了 private）。模块关闭时 `MaxPriority` 退回 4，行为与原版一致。
+
+- **默认工作优先级：灭火 1 / 就医 2 / 其余 5**：新小人在两条初始化路径后套用默认值——`Pawn_WorkSettings.EnableAndInitialize`（新出生、新加入）与 `GameInitData.PrepForMapGen`（新开局起始殖民者，原版会先 `DisableAll()` 再按技能挑几个设 3，绕过前者）。不能从事的工作（特质/背景/健康禁用）保持 0；机械族有自己的 `mechWorkTypePriorities`，不套用。已有存档里玩家调过的数字不会被改。
+
+- **工作优先级自检**：`-colonykit-workpriority-test` 启动参数下，`FinalizeInit` 时取一名殖民者，临时打开手动优先级模式，回读 9/5 写入、灭火 1、就医 2 与其余 18 项是否为 5，结果一行写进日志（`selftest: ... pass=True/False`）。
+
 ### Fixed
 
 - **燃烧坑空转烧燃料**：`CompProperties_Refuelable` 没写 `consumeFuelOnlyWhenUsed`，1.6 里该字段默认 `false`，于是燃烧坑哪怕一张账单都没排也按 `fuelConsumptionRate` 每天烧 100、露天雨天再按 0.0006/tick 烧 36，250 容量两天空。现在显式设为 `true`，只在 `Building_WorkTable.UsedThisTick` 真正干活时扣燃料（原版燃料工作台同款做法）。

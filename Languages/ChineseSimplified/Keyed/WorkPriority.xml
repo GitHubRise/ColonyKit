@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<ColonyKit.Module.WorkPriority.Name>工作优先级 9 级</ColonyKit.Module.WorkPriority.Name>
+	<ColonyKit.Module.WorkPriority.Desc>把「工作」页的优先级上限从 4 提到 9（1 最高、9 最低）：左右点击照原版绕圈，Shift 点列头整列升降。新小人默认灭火 1、就医 2、其余 5；已有存档里已调过的数字不变。</ColonyKit.Module.WorkPriority.Desc>
+
+	<Priority5>第 5 优先级</Priority5>
+	<Priority6>第 6 优先级</Priority6>
+	<Priority7>第 7 优先级</Priority7>
+	<Priority8>第 8 优先级</Priority8>
+	<Priority9>第 9 优先级</Priority9>
+</LanguageData>
