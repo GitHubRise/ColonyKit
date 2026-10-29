@@ -34,6 +34,13 @@ namespace ColonyKit.Modules.Hygiene
 				JobFailReason.Is("CK.Hygiene.NoDirtyClothes".Translate());
 				return false;
 			}
+			// 没水/没污水网/断电时不要接活：否则衣服塞进去转不动，只能手动卸。
+			AcceptanceReport working = washer.Working();
+			if (!working.Accepted)
+			{
+				JobFailReason.Is(working.Reason);
+				return false;
+			}
 			return !t.IsBurning();
 		}
 

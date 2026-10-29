@@ -58,6 +58,9 @@
 					</thingDefs>
 				</fuelFilter>
 				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+				<!-- 不写这个字段，1.6 的 CompRefuelable 会在空转时也按 fuelConsumptionRate 烧燃料
+				     （100/天，露天再加 36/天），250 容量的坑两天空。原版燃料工作台都显式写 true。 -->
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<compClass>CompHeatPusherPowered</compClass>

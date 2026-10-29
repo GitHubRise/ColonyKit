@@ -6,6 +6,16 @@
 
 ### Fixed
 
+- **燃烧坑空转烧燃料**：`CompProperties_Refuelable` 没写 `consumeFuelOnlyWhenUsed`，1.6 里该字段默认 `false`，于是燃烧坑哪怕一张账单都没排也按 `fuelConsumptionRate` 每天烧 100、露天雨天再按 0.0006/tick 烧 36，250 容量两天空。现在显式设为 `true`，只在 `Building_WorkTable.UsedThisTick` 真正干活时扣燃料（原版燃料工作台同款做法）。
+
+- **洗衣机把衣服塞进不能洗的机器**：`WorkGiver_WashingLoad` 只查空间、脏衣服与禁用，没查 `Working()`；没水、没污水网或断电时殖民者照样装载，`SpinCycleTicksLeft` 卡住只能手动卸。现在装载前先判定 `Working()`，失败时把「No water supply / No sewage / No power」作为 JobFailReason 显示。
+
+- **化粪池清空凭空销毁污水**：`JobDriver_EmptySepticTank` 抽出来的污水只做了 `CompSewageHandler.Empty`，返回值丢掉，全模组只有旱厕会产出 `CK_FecalSludge`。冲水马桶 + 化粪池的殖民地于是永远没有燃料，燃烧坑的烧尸账单和生物固体堆肥机一起饿死。现在清空作业按抽走量在地面掉粪渣（每升 1 单位，按 500 一垛拆分），中途被打断也只掉已经抽出来的部分。
+
+- **雨水桶接的雨取不出来**：`CK_WaterButt` 只挂了 `CompWaterStorage`，没有 `CompProperties_Pipe`，既不进 `PlumbingNet` 也不是 `Building_Basin`，洗手/喝水/右键菜单都找不到它，Def 描述里的「给管网供水」无法实现。现在补上 Water 模式的 `CompProperties_Pipe`，接上水管即为水网里的水箱，洁具可以直接取用（水质按未处理算）。
+
+### Fixed
+
 - **Mk-V 电弧发射器无法手动瞄准**：原版 `VerbTracker.CreateVerbTargetCommand` 对机械族额外要求 `MechanitorUtility.EverControllable`，Mk-V 没有 `OverseerSubject` 所以永远返回 false，武器指令被禁用为「无法命令不由你操控的角色」。现在对玩家阵营、已生成且未倒地的 Mk-V 放行 `EverControllable`，电弧发射器的瞄准指令、手动攻击和右键命令均可正常使用。
 
 - **Mk-V 卫生需求自维护**：口渴和膀胱条保留用于 RJW/卫生面板，但 Mk-V 作为机械体会自行循环补充，不再因为没有水源或厕所而脱水/憋坏。

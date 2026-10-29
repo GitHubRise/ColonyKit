@@ -43,6 +43,11 @@
 			<li>
 				<compClass>CompColorable</compClass>
 			</li>
+			<!-- 必须接管网：只挂 CompWaterStorage 时，接来的雨谁也取不出来（不进 PlumbingNet，
+			     又不是 Building_Basin），描述里「给管网供水」就成了空话。 -->
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
 			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterStorage">
 				<AutoOnRain>true</AutoOnRain>
 				<AutoGenRate>1</AutoGenRate>
