@@ -129,6 +129,7 @@
 	<CK.Robotics.Factory.AlreadyWorking>{0} 正在组装。</CK.Robotics.Factory.AlreadyWorking>
 	<CK.Robotics.Factory.MissingKind>工厂没有指定产品。</CK.Robotics.Factory.MissingKind>
 	<CK.Robotics.Factory.NoPower>工厂未通电。</CK.Robotics.Factory.NoPower>
+	<CK.Robotics.Caravan.RobotsSection>机器人</CK.Robotics.Caravan.RobotsSection>
 	<CK.Robotics.Factory.Bill>生产清单</CK.Robotics.Factory.Bill>
 	<CK.Robotics.Factory.Bill.Desc>查看本工厂可生产的所有型号与配方；缺少材料：{0}。</CK.Robotics.Factory.Bill.Desc>
 	<CK.Robotics.Factory.MissingIngredients>材料不足：{0}</CK.Robotics.Factory.MissingIngredients>

@@ -129,6 +129,7 @@
 	<CK.Robotics.Factory.AlreadyWorking>{0} is already being assembled.</CK.Robotics.Factory.AlreadyWorking>
 	<CK.Robotics.Factory.MissingKind>The factory has no product kind.</CK.Robotics.Factory.MissingKind>
 	<CK.Robotics.Factory.NoPower>The factory has no power.</CK.Robotics.Factory.NoPower>
+	<CK.Robotics.Caravan.RobotsSection>Robots</CK.Robotics.Caravan.RobotsSection>
 	<CK.Robotics.Factory.Bill>Production list</CK.Robotics.Factory.Bill>
 	<CK.Robotics.Factory.Bill.Desc>All models and recipes available in this factory. Missing: {0}.</CK.Robotics.Factory.Bill.Desc>
 	<CK.Robotics.Factory.MissingIngredients>Not enough materials: {0}</CK.Robotics.Factory.MissingIngredients>
