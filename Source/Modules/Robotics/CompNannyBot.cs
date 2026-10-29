@@ -403,6 +403,22 @@ namespace ColonyKit.Modules.Robotics
 
 			if (NannyBotUtility.IsMkV(pawn))
 			{
+				// Mk-V 是机械体：口渴/膀胱只用于 RJW 与卫生面板的兼容显示，
+				// 不应要求它像殖民者一样找水或抢厕所。这里让机体自行循环补充，
+				// 避免在缺水/无厕所地图上出现脱水或膀胱崩溃。
+				if (parent.IsHashIntervalTick(120))
+				{
+					Need thirst = pawn.needs?.TryGetNeed<ColonyKit.Modules.Hygiene.Need_Thirst>();
+					if (thirst != null && thirst.CurLevel < 0.9f)
+					{
+						thirst.CurLevel = Mathf.Min(1f, thirst.CurLevel + 0.05f);
+					}
+					Need bladder = pawn.needs?.TryGetNeed<ColonyKit.Modules.Hygiene.Need_Bladder>();
+					if (bladder != null && bladder.CurLevel < 0.9f)
+					{
+						bladder.CurLevel = Mathf.Min(1f, bladder.CurLevel + 0.05f);
+					}
+				}
 				if (hasLastBodyRotation && lastBodyRotation != pawn.Rotation)
 				{
 					// 旋转状态先变了但绘制缓存仍停留在上一方向时，强制刷新纹理图集与立绘缓存。
