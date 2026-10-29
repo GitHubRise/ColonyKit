@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using ColonyKit.Modules.Hygiene.Dbh;
+using ColonyKit.Modules.Robotics;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -103,8 +104,9 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return AllowSlaves;
 			}
-			if (pawn.IsColonist)
+			if (pawn.IsColonist || NannyBotUtility.IsNannyBot(pawn))
 			{
+				// 机械保姆不是 Humanlike，原版 IsColonist 认不出来；按殖民者处理。
 				return AllowColonists;
 			}
 			if (pawn.IsQuestLodger() || pawn.IsWildMan())

@@ -278,6 +278,13 @@ namespace ColonyKit.Modules.Robotics
 				durability = Mathf.Clamp(durability / 1800f * MkVMaxDurability, 1f, MkVMaxDurability);
 				durabilityMigratedTo5000 = true;
 			}
+			// 机械保姆（Mk-I ~ Mk-V）统一补口渴/膀胱：先让需求表按 Def 重新评估，再兜底直接补。
+			pawn.needs?.AddOrRemoveNeedsAsAppropriate();
+			ColonyKit.Modules.Hygiene.HygieneUtility.EnsureRobotNeeds(pawn);
+			if (NannyBotUtility.IsNannyBot(pawn))
+			{
+				LogRobotNeeds(pawn);
+			}
 			if (NannyBotUtility.IsMkV(pawn) && pawn != null)
 			{
 				// 商队/工作检查会读取技能，而技能记录会访问 story.traits；机械族默认两者都没有。
@@ -299,8 +306,7 @@ namespace ColonyKit.Modules.Robotics
 					// 武器拾取/装备 Job 需要装备栏；没有它 JobDriver_Equip 会立即失败并刷任务。
 					pawn.equipment = new Pawn_EquipmentTracker(pawn);
 				}
-				// 重新评估需求，让 Mk-V 也拿到口渴/膀胱等兼容需求。
-				pawn.needs?.AddOrRemoveNeedsAsAppropriate();
+				// 需求已在上面对所有机械保姆统一补齐，这里不再重复评估。
 				if (!skillsInitialized || skillsProfileVersion < 3)
 				{
 					ApplyRobotSkills(pawn);
@@ -312,6 +318,32 @@ namespace ColonyKit.Modules.Robotics
 				AddMechanicalVagina(pawn);
 				AddMechanicalBreasts(pawn);
 			}
+		}
+
+		/// <summary>临时诊断：读档/出厂时列出机械保姆实际拿到的需求，确认口渴/膀胱已注入。</summary>
+		private static void LogRobotNeeds(Pawn pawn)
+		{
+			if (pawn?.needs == null)
+			{
+				return;
+			}
+			string list = "";
+			foreach (Need need in pawn.needs.AllNeeds)
+			{
+				if (need?.def == null)
+				{
+					continue;
+				}
+				if (list.Length > 0)
+				{
+					list += ",";
+				}
+				list += need.def.defName;
+			}
+			ModLog.Info(
+				"Robotics",
+				$"{pawn.LabelShort} needs={list} thirst={pawn.needs.TryGetNeed<ColonyKit.Modules.Hygiene.Need_Thirst>() != null} " +
+				$"bladder={pawn.needs.TryGetNeed<ColonyKit.Modules.Hygiene.Need_Bladder>() != null}");
 		}
 
 		public override void PostPostApplyDamage(DamageInfo dinfo, float totalDamageDealt)

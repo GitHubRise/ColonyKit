@@ -53,6 +53,11 @@ namespace ColonyKit.Modules.Hygiene
 				PrivacyUtil.ToiletPrivacyLOS(pawn);
 				SanitationUtil.CheckForBlockage(job.targetA.Thing as Building);
 				SanitationUtil.ContaminationFromCellForPawn(pawn, pawn.Position);
+				// 机械保姆没有卫生需求，洗手只会白耗水。
+				if (!pawn.RaceProps.Humanlike)
+				{
+					return;
+				}
 				Building_Basin basin = FindBasin(pawn);
 				if (basin != null)
 				{

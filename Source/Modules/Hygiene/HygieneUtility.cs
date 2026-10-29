@@ -17,6 +17,22 @@ namespace ColonyKit.Modules.Hygiene
 			return Ensure<Need_Bladder>(pawn, "CK_Bladder");
 		}
 
+		public static Need_Thirst EnsureThirst(Pawn pawn)
+		{
+			return Ensure<Need_Thirst>(pawn, "CK_Thirst");
+		}
+
+		/// <summary>机械保姆的补需求入口：读档/出厂时直接把口渴和膀胱补上。</summary>
+		public static void EnsureRobotNeeds(Pawn pawn)
+		{
+			if (!NannyBotUtility.IsNannyBot(pawn) || pawn.needs == null)
+			{
+				return;
+			}
+			EnsureThirst(pawn);
+			EnsureBladder(pawn);
+		}
+
 		private static T Ensure<T>(Pawn pawn, string defName) where T : Need
 		{
 			if (pawn?.needs == null)
@@ -60,11 +76,12 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				if (pawn?.needs == null
 					|| ((!pawn.RaceProps.Humanlike || pawn.RaceProps.IsMechanoid)
-						&& !NannyBotUtility.IsMkV(pawn)))
+						&& !NannyBotUtility.IsNannyBot(pawn)))
 				{
 					continue;
 				}
 				pawn.needs.AddOrRemoveNeedsAsAppropriate();
+				EnsureRobotNeeds(pawn);
 			}
 		}
 	}

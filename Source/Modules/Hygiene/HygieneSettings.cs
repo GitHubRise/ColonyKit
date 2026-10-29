@@ -150,9 +150,10 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return false;
 			}
-			bool mkVHydrationNeed = NannyBotUtility.IsMkV(pawn)
+			// 机械保姆（Mk-I ~ Mk-V）是仿生人设定：只有口渴/膀胱两个需求对它们开放。
+			bool robotHydrationNeed = NannyBotUtility.IsNannyBot(pawn)
 				&& (def.defName == "CK_Bladder" || def.defName == "CK_Thirst");
-			if ((!pawn.RaceProps.Humanlike || pawn.RaceProps.IsMechanoid) && !mkVHydrationNeed)
+			if ((!pawn.RaceProps.Humanlike || pawn.RaceProps.IsMechanoid) && !robotHydrationNeed)
 			{
 				return false;
 			}
@@ -160,7 +161,7 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return false;
 			}
-			if (mkVHydrationNeed)
+			if (robotHydrationNeed)
 			{
 				return true;
 			}
