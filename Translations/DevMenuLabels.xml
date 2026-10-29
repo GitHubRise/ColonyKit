@@ -2064,5 +2064,24 @@
     <entry key="blueprintcarpetslate" menu="spawning" zh="地毯（板岩）（蓝图）" />
     <entry key="framecarpetblack" menu="spawning" zh="地毯（黑）（建造中）" />
     <entry key="blueprintcarpetblack" menu="spawning" zh="地毯（黑）（蓝图）" />
+    <!-- 地图 →「运行地图生成器 / 生成口袋地图」子菜单：直接列出 MapGeneratorDef 的 defName -->
+    <entry key="basefaction" menu="map" zh="派系基地" />
+    <entry key="baseplayer" menu="map" zh="玩家基地" />
+    <entry key="encounter" menu="map" zh="遭遇" />
+    <entry key="escapeship" menu="map" zh="逃离飞船" />
+    <!-- 弹窗里按小人名字列出的列表（世界小人 / 雕像对象等）：只在开发者菜单里显示成中文，不改存档里的名字 -->
+    <entry key="krystal" menu="pawns" zh="克丽丝托" />
+    <entry key="strange" menu="pawns" zh="斯特兰奇" />
+    <entry key="huntsman" menu="pawns" zh="亨茨曼" />
+    <entry key="li" menu="pawns" zh="李" />
+    <entry key="maliphalo" menu="pawns" zh="马利法洛" />
+    <entry key="julie" menu="pawns" zh="朱莉" />
+    <entry key="yuliya" menu="pawns" zh="尤利娅" />
+    <entry key="david" menu="pawns" zh="大卫" />
+    <entry key="joe" menu="pawns" zh="乔" />
+    <entry key="sergei" menu="pawns" zh="谢尔盖" />
+    <entry key="redo" menu="pawns" zh="雷多" />
+    <entry key="chaz" menu="pawns" zh="查兹" />
+    <entry key="nordgren" menu="pawns" zh="诺德格伦" />
   </entries>
 </DevMenuTranslations>

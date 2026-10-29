@@ -22,6 +22,7 @@
 
 ### Localization
 
+- **开发者菜单补译（地图生成器 / 小人名单）**：`地图 → 运行地图生成器 / 生成口袋地图` 子菜单直接显示 `MapGeneratorDef` 的 defName（`Base_Faction`、`Base_Player`、`Encounter`、`EscapeShip`），现补 4 条 `menu=map`；按小人名字列出的调试弹窗（世界小人、雕像对象等）补 13 条 `menu=pawns` 音译，只在开发者菜单里显示成中文，不改存档里的名字。翻译表现有 2030 条词条 + 34 个菜单名，`sources/devmenu-zh` 的源表同步更新。
 - **RJW 机械阴道中文化**：`CK_ArtificialVaginaMech` 的名称、说明和五个尺寸阶段（微型/紧致/标准/松弛/扩张）补上中文，不再显示英文 `Mechanical vagina (Tight)`。
 
 ### Changed
