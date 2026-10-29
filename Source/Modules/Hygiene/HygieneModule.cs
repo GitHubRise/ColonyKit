@@ -1,3 +1,4 @@
+using ColonyKit.Modules.Robotics;
 using HarmonyLib;
 using RimWorld;
 using Verse;
@@ -71,10 +72,27 @@ namespace ColonyKit.Modules.Hygiene
 			int humanlikes = 0;
 			int withNeed = 0;
 			int withBladder = 0;
+			int robots = 0;
+			int robotThirst = 0;
+			int robotBladder = 0;
 			foreach (Map map in game.Maps)
 			{
 				foreach (Pawn pawn in map.mapPawns.AllPawnsSpawned)
 				{
+					if (NannyBotUtility.IsNannyBot(pawn))
+					{
+						HygieneUtility.EnsureRobotNeeds(pawn);
+						robots++;
+						if (pawn.needs?.TryGetNeed<Need_Thirst>() != null)
+						{
+							robotThirst++;
+						}
+						if (pawn.needs?.TryGetNeed<Need_Bladder>() != null)
+						{
+							robotBladder++;
+						}
+						continue;
+					}
 					if (!pawn.RaceProps.Humanlike || pawn.RaceProps.IsMechanoid)
 					{
 						continue;
@@ -93,6 +111,7 @@ namespace ColonyKit.Modules.Hygiene
 			ModLog.Info(
 				"Hygiene",
 				$"need injection check: humanlikes={humanlikes}, withHygiene={withNeed}, withBladder={withBladder}; " +
+				$"robots={robots}, robotThirst={robotThirst}, robotBladder={robotBladder}; " +
 				$"policy={HygieneSettings.Current.dbhPolicy}, run={HygieneSettings.Current.ShouldRunHygiene}");
 		}
 	}
