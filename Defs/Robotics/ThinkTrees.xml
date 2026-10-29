@@ -48,7 +48,7 @@
 				<li Class="ThinkNode_QueuedJob" />
 				<li Class="ColonyKit.Modules.Robotics.JobGiver_MkVCombat" />
 				<li Class="ColonyKit.Modules.Robotics.JobGiver_MkVWeaponPickup" />
-				<li Class="RimWorld.JobGiver_PickUpOpportunisticWeapon" />
+				<!-- 原版 JobGiver_PickUpOpportunisticWeapon 不检查 IsForbidden；丢下的武器默认被禁用，会每 tick 重复下 Equip 并触发 started 10 jobs 报错。自动换枪交给上面的专用评分逻辑。 -->
 				<li Class="ThinkNode_Subtree">
 					<treeDef>CK_NannyBot</treeDef>
 				</li>

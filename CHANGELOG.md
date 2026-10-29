@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- **Mk-V 丢下武器后刷屏报错**：原版 `JobGiver_PickUpOpportunisticWeapon` 不检查 `IsForbidden`，而 `DropEquipment` 默认把丢下的武器设为禁用；Mk-V 因此会每 tick 对同一件禁用武器反复下 `Equip`，触发 `started 10 jobs in one tick` 错误恢复。`CK_MkVAndroid` ThinkTree 已移除该原版节点，自动换枪继续由 `JobGiver_MkVWeaponPickup` 负责（它本来就会跳过禁用武器）。
+
 ### Added
 
 - **Mk-V 口渴与膀胱需求**：卫生模块现在允许 Mk-V 注入 `CK_Thirst` / `CK_Bladder`；口渴条常驻需求页，读档/生成时会立即重新评估。
