@@ -59,6 +59,12 @@
 	<ColonyKit.Settings.Robotics.MkVWeaponPickupRadius>Weapon pickup radius</ColonyKit.Settings.Robotics.MkVWeaponPickupRadius>
 	<ColonyKit.Settings.Robotics.MkVAttackSpeed>Mk-V attack speed</ColonyKit.Settings.Robotics.MkVAttackSpeed>
 	<ColonyKit.Settings.Robotics.MkVHitChance>Mk-V hit chance</ColonyKit.Settings.Robotics.MkVHitChance>
+	<ColonyKit.Settings.Robotics.RobotPowerEfficiency>Robot power efficiency</ColonyKit.Settings.Robotics.RobotPowerEfficiency>
+	<ColonyKit.Settings.Robotics.RobotPowerEfficiency.Desc>Shared by all Mk robots; 100% is the baseline, higher values make each battery last longer.</ColonyKit.Settings.Robotics.RobotPowerEfficiency.Desc>
+	<ColonyKit.Settings.Robotics.MkvBurstShotCount>Arc emitter burst count</ColonyKit.Settings.Robotics.MkvBurstShotCount>
+	<ColonyKit.Settings.Robotics.MkvBurstShotCount.Desc>Default 5, range 1-8.</ColonyKit.Settings.Robotics.MkvBurstShotCount.Desc>
+	<ColonyKit.Settings.Robotics.MkvBurstCooldown>Arc emitter burst interval</ColonyKit.Settings.Robotics.MkvBurstCooldown>
+	<ColonyKit.Settings.Robotics.MkvBurstCooldown.Desc>Default 1.4 s, range 0.4-3.0 s.</ColonyKit.Settings.Robotics.MkvBurstCooldown.Desc>
 	<ColonyKit.Settings.Robotics.MkVBayAutoStart>Auto-start assembly bay</ColonyKit.Settings.Robotics.MkVBayAutoStart>
 	<ColonyKit.Settings.Robotics.MkVBayAutoStart.Desc>When materials, power and research are all available, the Mk-V bay starts the next robot automatically. When off, start it manually.</ColonyKit.Settings.Robotics.MkVBayAutoStart.Desc>
 

@@ -61,7 +61,10 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return;
 			}
-			float drain = MaxLevel * DrainPerInterval;
+			// 所有 Mk 系列共用这个耗电效率：100% 为基准，150% 表示同样电量能工作更久。
+			float efficiency = Mathf.Clamp(
+				NannyBotUtility.Settings.robotPowerEfficiency / 100f, 0.1f, 3f);
+			float drain = MaxLevel * DrainPerInterval / efficiency;
 			float passive = PassiveRechargePerInterval();
 			CurLevel = Mathf.Clamp(CurLevel - drain + passive, 0f, MaxLevel);
 		}

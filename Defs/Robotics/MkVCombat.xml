@@ -3,7 +3,7 @@
 	<ThingDef ParentName="BaseGun">
 		<defName>CK_ArcEmitter</defName>
 		<label>arc emitter</label>
-		<description>A compact arc emitter designed as the Mk-V android's standard weapon. It fires short-lived electric bolts in a three-round burst that burns and staggers the target.</description>
+		<description>A compact arc emitter designed as the Mk-V android's standard weapon. It fires short-lived electric bolts in a five-round burst that burns and staggers the target.</description>
 		<techLevel>Spacer</techLevel>
 		<graphicData>
 			<texPath>Things/Item/Equipment/WeaponRanged/CK_ArcEmitter</texPath>
@@ -18,7 +18,7 @@
 			<AccuracyShort>0.72</AccuracyShort>
 			<AccuracyMedium>0.72</AccuracyMedium>
 			<AccuracyLong>0.66</AccuracyLong>
-			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+			<RangedWeapon_Cooldown>1.4</RangedWeapon_Cooldown>
 		</statBases>
 		<weaponTags>
 			<li>Gun</li>
@@ -36,7 +36,7 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>CK_ArcBolt</defaultProjectile>
 				<warmupTime>0.8</warmupTime>
-				<burstShotCount>3</burstShotCount>
+				<burstShotCount>5</burstShotCount>
 				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
 				<range>28</range>
 				<soundCast>Shot_ChargeRifle</soundCast>

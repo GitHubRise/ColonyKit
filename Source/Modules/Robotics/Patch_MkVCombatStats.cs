@@ -18,11 +18,32 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return;
 			}
+			// ArcEmitter 使用独立的“连发间隔”设置，默认 1.4 秒；其他 Mk-V
+			// 近战武器继续由攻击速度倍率控制。
+			if (attacker.equipment?.Primary?.def == NannyBotDefOf.CK_ArcEmitter)
+			{
+				__result = Mathf.Clamp(NannyBotUtility.Settings.mkvBurstCooldown,
+					RoboticsSettings.MinMkvBurstCooldown, RoboticsSettings.MaxMkvBurstCooldown);
+				return;
+			}
 			float speed = Mathf.Clamp(NannyBotUtility.Settings.mkvAttackSpeed,
 				RoboticsSettings.MinMkvAttackSpeed, RoboticsSettings.MaxMkvAttackSpeed);
 			if (speed > 0.001f)
 			{
 				__result /= speed;
+			}
+		}
+
+		[HarmonyPatch(typeof(Verb), nameof(Verb.BurstShotCount), MethodType.Getter)]
+		[HarmonyPostfix]
+		private static void AdjustBurstShotCount(Verb __instance, ref int __result)
+		{
+			if (__instance?.CasterPawn is Pawn pawn
+				&& NannyBotUtility.IsMkV(pawn)
+				&& __instance.EquipmentSource?.def == NannyBotDefOf.CK_ArcEmitter)
+			{
+				__result = Mathf.Clamp(NannyBotUtility.Settings.mkvBurstShotCount,
+					RoboticsSettings.MinMkvBurstShotCount, RoboticsSettings.MaxMkvBurstShotCount);
 			}
 		}
 

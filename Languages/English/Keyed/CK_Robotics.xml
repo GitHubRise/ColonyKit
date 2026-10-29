@@ -131,6 +131,7 @@
 	<CK.Robotics.Factory.NoPower>The factory has no power.</CK.Robotics.Factory.NoPower>
 	<CK.Robotics.Caravan.RobotsSection>Robots</CK.Robotics.Caravan.RobotsSection>
 	<CK.Robotics.Factory.Bill>Production list</CK.Robotics.Factory.Bill>
+	<CK.Robotics.BurstShots>{0} shots</CK.Robotics.BurstShots>
 	<CK.Robotics.Factory.Bill.Desc>All models and recipes available in this factory. Missing: {0}.</CK.Robotics.Factory.Bill.Desc>
 	<CK.Robotics.Factory.MissingIngredients>Not enough materials: {0}</CK.Robotics.Factory.MissingIngredients>
 	<CK.Robotics.Factory.Started>Assembly started: {0}.</CK.Robotics.Factory.Started>

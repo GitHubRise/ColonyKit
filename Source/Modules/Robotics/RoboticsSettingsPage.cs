@@ -133,6 +133,15 @@ namespace ColonyKit.Modules.Robotics
 				NannyBotUtility.ApplyBatteryCapacity(beforeCapacity, data.batteryCapacity);
 			}
 
+			data.robotPowerEfficiency = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.RobotPowerEfficiency".Loc(),
+				data.robotPowerEfficiency,
+				RoboticsSettings.MinRobotPowerEfficiency,
+				RoboticsSettings.MaxRobotPowerEfficiency,
+				5f,
+				value => value.ToString("0") + "%");
+
 			data.chargePower = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Robotics.ChargePower".Loc(),
@@ -240,6 +249,22 @@ namespace ColonyKit.Modules.Robotics
 				RoboticsSettings.MaxMkvHitChance,
 				0.05f,
 				value => value.ToStringPercent());
+			data.mkvBurstShotCount = Mathf.RoundToInt(SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkvBurstShotCount".Loc(),
+				data.mkvBurstShotCount,
+				RoboticsSettings.MinMkvBurstShotCount,
+				RoboticsSettings.MaxMkvBurstShotCount,
+				1f,
+				value => "CK.Robotics.BurstShots".Loc(value.ToString("0"))));
+			data.mkvBurstCooldown = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkvBurstCooldown".Loc(),
+				data.mkvBurstCooldown,
+				RoboticsSettings.MinMkvBurstCooldown,
+				RoboticsSettings.MaxMkvBurstCooldown,
+				0.1f,
+				value => value.ToString("0.0") + " s");
 			data.mkvBayAutoStart = SettingsWidgets.Checkbox(
 				listing,
 				"ColonyKit.Settings.Robotics.MkVBayAutoStart".Loc(),
@@ -248,30 +273,8 @@ namespace ColonyKit.Modules.Robotics
 
 			listing.Gap();
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.PassiveCharging".Loc());
-			data.mkvChargePower = SettingsWidgets.Slider(
-				listing,
-				"ColonyKit.Settings.Robotics.MkVChargePower".Loc(),
-				data.mkvChargePower,
-				RoboticsSettings.MinMkvChargePower,
-				RoboticsSettings.MaxMkvChargePower,
-				50f,
-				value => "CK.Robotics.Watts".Loc(value.ToString("0")));
-			data.mkvChargeEfficiency = SettingsWidgets.Slider(
-				listing,
-				"ColonyKit.Settings.Robotics.MkVChargeEfficiency".Loc(),
-				data.mkvChargeEfficiency,
-				RoboticsSettings.MinMkvChargeEfficiency,
-				RoboticsSettings.MaxMkvChargeEfficiency,
-				1f,
-				value => value.ToString("0") + "%");
-			data.mkvPowerConversionRate = SettingsWidgets.Slider(
-				listing,
-				"ColonyKit.Settings.Robotics.MkVPowerConversionRate".Loc(),
-				data.mkvPowerConversionRate,
-				RoboticsSettings.MinMkvPowerConversionRate,
-				RoboticsSettings.MaxMkvPowerConversionRate,
-				1f,
-				value => value.ToString("0") + "%");
+
+			// 太阳能/风能放在最上面：这两项是 Mk-V 在野外的主要补能方式。
 			data.mkvSolarCharging = SettingsWidgets.Checkbox(
 				listing,
 				"ColonyKit.Settings.Robotics.MkVSolarCharging".Loc(),
@@ -314,6 +317,32 @@ namespace ColonyKit.Modules.Robotics
 				RoboticsSettings.MaxMkvWindThreshold,
 				0.01f,
 				value => value.ToStringPercent());
+
+			listing.Gap();
+			data.mkvChargePower = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVChargePower".Loc(),
+				data.mkvChargePower,
+				RoboticsSettings.MinMkvChargePower,
+				RoboticsSettings.MaxMkvChargePower,
+				50f,
+				value => "CK.Robotics.Watts".Loc(value.ToString("0")));
+			data.mkvChargeEfficiency = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVChargeEfficiency".Loc(),
+				data.mkvChargeEfficiency,
+				RoboticsSettings.MinMkvChargeEfficiency,
+				RoboticsSettings.MaxMkvChargeEfficiency,
+				1f,
+				value => value.ToString("0") + "%");
+			data.mkvPowerConversionRate = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVPowerConversionRate".Loc(),
+				data.mkvPowerConversionRate,
+				RoboticsSettings.MinMkvPowerConversionRate,
+				RoboticsSettings.MaxMkvPowerConversionRate,
+				1f,
+				value => value.ToString("0") + "%");
 
 			listing.Gap();
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.Area".Loc());
@@ -373,44 +402,6 @@ namespace ColonyKit.Modules.Robotics
 						"ColonyKit.Settings.Robotics.AreaLabel.Desc".Loc());
 				}
 			}
-
-			listing.Gap();
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.Appearance".Loc());
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Robotics.MkVTextureHint".Loc());
-			data.mkvTexturePath = SettingsWidgets.TextField(
-				listing,
-				"ColonyKit.Settings.Robotics.MkVTexturePath".Loc(),
-				data.mkvTexturePath,
-				120,
-				"ColonyKit.Settings.Robotics.MkVTexturePath.Desc".Loc());
-			if (data.mkvTexturePath.NullOrEmpty())
-			{
-				data.mkvTexturePath = RoboticsSettings.DefaultMkvTexturePath;
-			}
-			data.mkvDrawSize = SettingsWidgets.Slider(
-				listing,
-				"ColonyKit.Settings.Robotics.MkVDrawSize".Loc(),
-				data.mkvDrawSize,
-				RoboticsSettings.MinMkvDrawSize,
-				RoboticsSettings.MaxMkvDrawSize,
-				0.05f,
-				value => value.ToString("0.00"));
-			data.mkvWidthScale = SettingsWidgets.Slider(
-				listing,
-				"ColonyKit.Settings.Robotics.MkVWidthScale".Loc(),
-				data.mkvWidthScale,
-				RoboticsSettings.MinMkvSkinScale,
-				RoboticsSettings.MaxMkvSkinScale,
-				0.01f,
-				value => value.ToStringPercent());
-			data.mkvHeightScale = SettingsWidgets.Slider(
-				listing,
-				"ColonyKit.Settings.Robotics.MkVHeightScale".Loc(),
-				data.mkvHeightScale,
-				RoboticsSettings.MinMkvSkinScale,
-				RoboticsSettings.MaxMkvSkinScale,
-				0.01f,
-				value => value.ToStringPercent());
 
 			listing.Gap();
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.Maintenance".Loc());

@@ -59,6 +59,12 @@
 	<ColonyKit.Settings.Robotics.MkVWeaponPickupRadius>武器拾取范围</ColonyKit.Settings.Robotics.MkVWeaponPickupRadius>
 	<ColonyKit.Settings.Robotics.MkVAttackSpeed>Mk-V 攻击速度</ColonyKit.Settings.Robotics.MkVAttackSpeed>
 	<ColonyKit.Settings.Robotics.MkVHitChance>Mk-V 命中率</ColonyKit.Settings.Robotics.MkVHitChance>
+	<ColonyKit.Settings.Robotics.RobotPowerEfficiency>机器人耗电效率</ColonyKit.Settings.Robotics.RobotPowerEfficiency>
+	<ColonyKit.Settings.Robotics.RobotPowerEfficiency.Desc>所有 Mk 系列机器人共用；100% 为基准，数值越高，同一块电池工作时间越长。</ColonyKit.Settings.Robotics.RobotPowerEfficiency.Desc>
+	<ColonyKit.Settings.Robotics.MkvBurstShotCount>电弧发射器连发数</ColonyKit.Settings.Robotics.MkvBurstShotCount>
+	<ColonyKit.Settings.Robotics.MkvBurstShotCount.Desc>默认 5 连发，可调 1–8 发。</ColonyKit.Settings.Robotics.MkvBurstShotCount.Desc>
+	<ColonyKit.Settings.Robotics.MkvBurstCooldown>电弧发射器连发间隔</ColonyKit.Settings.Robotics.MkvBurstCooldown>
+	<ColonyKit.Settings.Robotics.MkvBurstCooldown.Desc>默认 1.4 秒，可调 0.4–3.0 秒。</ColonyKit.Settings.Robotics.MkvBurstCooldown.Desc>
 	<ColonyKit.Settings.Robotics.MkVBayAutoStart>组装舱自动开工</ColonyKit.Settings.Robotics.MkVBayAutoStart>
 	<ColonyKit.Settings.Robotics.MkVBayAutoStart.Desc>材料、电力和研究都满足时，Mk-V 组装舱自动开始下一台；关闭后需要手动点击开始。</ColonyKit.Settings.Robotics.MkVBayAutoStart.Desc>
 

@@ -28,9 +28,18 @@ namespace ColonyKit.Modules.Robotics
 		public const float MaxWorkRadius = 200f;
 		public const float DefaultWorkRadius = 40f;
 
-		public const float MinEngageRange = 4f;
-		public const float MaxEngageRange = 45f;
-		public const float DefaultEngageRange = 28f;
+		public const float MinEngageRange = 1f;
+		public const float MaxEngageRange = 60f;
+		public const float DefaultEngageRange = 45f;
+		public const int MinMkvBurstShotCount = 1;
+		public const int MaxMkvBurstShotCount = 8;
+		public const int DefaultMkvBurstShotCount = 5;
+		public const float MinMkvBurstCooldown = 0.4f;
+		public const float MaxMkvBurstCooldown = 3f;
+		public const float DefaultMkvBurstCooldown = 1.4f;
+		public const float MinRobotPowerEfficiency = 10f;
+		public const float MaxRobotPowerEfficiency = 300f;
+		public const float DefaultRobotPowerEfficiency = 150f;
 
 		public const float MinReturnRange = 1f;
 		public const float MaxReturnRange = 12f;
@@ -126,12 +135,11 @@ namespace ColonyKit.Modules.Robotics
 		public float mkvPowerConversionRate = DefaultMkvPowerConversionRate;
 		public float mkvAttackSpeed = DefaultMkvAttackSpeed;
 		public float mkvHitChance = DefaultMkvHitChance;
+		public int mkvBurstShotCount = DefaultMkvBurstShotCount;
+		public float mkvBurstCooldown = DefaultMkvBurstCooldown;
+		public float robotPowerEfficiency = DefaultRobotPowerEfficiency;
 		public bool mkvSolarCharging = true;
 		public bool mkvWindCharging = true;
-		public string mkvTexturePath = DefaultMkvTexturePath;
-		public float mkvDrawSize = DefaultMkvDrawSize;
-		public float mkvWidthScale = DefaultMkvSkinScale;
-		public float mkvHeightScale = DefaultMkvSkinScale;
 		public float mkvSolarEfficiency = DefaultMkvSolarEfficiency;
 		public float mkvWindEfficiency = DefaultMkvWindEfficiency;
 		public float mkvLightThreshold = DefaultMkvLightThreshold;
@@ -180,12 +188,11 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref mkvPowerConversionRate, "mkvPowerConversionRate", DefaultMkvPowerConversionRate);
 			Scribe_Values.Look(ref mkvAttackSpeed, "mkvAttackSpeed", DefaultMkvAttackSpeed);
 			Scribe_Values.Look(ref mkvHitChance, "mkvHitChance", DefaultMkvHitChance);
+			Scribe_Values.Look(ref mkvBurstShotCount, "mkvBurstShotCount", DefaultMkvBurstShotCount);
+			Scribe_Values.Look(ref mkvBurstCooldown, "mkvBurstCooldown", DefaultMkvBurstCooldown);
+			Scribe_Values.Look(ref robotPowerEfficiency, "robotPowerEfficiency", DefaultRobotPowerEfficiency);
 			Scribe_Values.Look(ref mkvSolarCharging, "mkvSolarCharging", true);
 			Scribe_Values.Look(ref mkvWindCharging, "mkvWindCharging", true);
-			Scribe_Values.Look(ref mkvTexturePath, "mkvTexturePath", DefaultMkvTexturePath);
-			Scribe_Values.Look(ref mkvDrawSize, "mkvDrawSize", DefaultMkvDrawSize);
-			Scribe_Values.Look(ref mkvWidthScale, "mkvWidthScale", DefaultMkvSkinScale);
-			Scribe_Values.Look(ref mkvHeightScale, "mkvHeightScale", DefaultMkvSkinScale);
 			Scribe_Values.Look(ref mkvSolarEfficiency, "mkvSolarEfficiency", DefaultMkvSolarEfficiency);
 			Scribe_Values.Look(ref mkvWindEfficiency, "mkvWindEfficiency", DefaultMkvWindEfficiency);
 			Scribe_Values.Look(ref mkvLightThreshold, "mkvLightThreshold", DefaultMkvLightThreshold);
@@ -254,20 +261,20 @@ namespace ColonyKit.Modules.Robotics
 			mkvHitChance = ClampFloat(mkvHitChance, MinMkvHitChance, MaxMkvHitChance);
 			changed |= !Approximately(hitChance, mkvHitChance);
 
-			if (mkvTexturePath.NullOrEmpty())
-			{
-				mkvTexturePath = DefaultMkvTexturePath;
-				changed = true;
-			}
-			float drawSize = mkvDrawSize;
-			mkvDrawSize = ClampFloat(mkvDrawSize, MinMkvDrawSize, MaxMkvDrawSize);
-			changed |= !Approximately(drawSize, mkvDrawSize);
-			float widthScale = mkvWidthScale;
-			mkvWidthScale = ClampFloat(mkvWidthScale, MinMkvSkinScale, MaxMkvSkinScale);
-			changed |= !Approximately(widthScale, mkvWidthScale);
-			float heightScale = mkvHeightScale;
-			mkvHeightScale = ClampFloat(mkvHeightScale, MinMkvSkinScale, MaxMkvSkinScale);
-			changed |= !Approximately(heightScale, mkvHeightScale);
+			int burst = mkvBurstShotCount;
+			mkvBurstShotCount = ClampInt(mkvBurstShotCount, MinMkvBurstShotCount, MaxMkvBurstShotCount);
+			changed |= burst != mkvBurstShotCount;
+
+			float burstCooldown = mkvBurstCooldown;
+			mkvBurstCooldown = ClampFloat(mkvBurstCooldown, MinMkvBurstCooldown, MaxMkvBurstCooldown);
+			changed |= !Approximately(burstCooldown, mkvBurstCooldown);
+
+			float powerEfficiency = robotPowerEfficiency;
+			robotPowerEfficiency = ClampFloat(robotPowerEfficiency,
+				MinRobotPowerEfficiency, MaxRobotPowerEfficiency);
+			changed |= !Approximately(powerEfficiency, robotPowerEfficiency);
+
+
 
 			float solar = mkvSolarEfficiency;
 			mkvSolarEfficiency = ClampFloat(mkvSolarEfficiency, MinMkvSolarEfficiency, MaxMkvSolarEfficiency);
@@ -343,10 +350,9 @@ namespace ColonyKit.Modules.Robotics
 			mkvPowerConversionRate = DefaultMkvPowerConversionRate;
 			mkvAttackSpeed = DefaultMkvAttackSpeed;
 			mkvHitChance = DefaultMkvHitChance;
-			mkvTexturePath = DefaultMkvTexturePath;
-			mkvDrawSize = DefaultMkvDrawSize;
-			mkvWidthScale = DefaultMkvSkinScale;
-			mkvHeightScale = DefaultMkvSkinScale;
+			mkvBurstShotCount = DefaultMkvBurstShotCount;
+			mkvBurstCooldown = DefaultMkvBurstCooldown;
+			robotPowerEfficiency = DefaultRobotPowerEfficiency;
 			mkvSolarCharging = true;
 			mkvWindCharging = true;
 			mkvSolarEfficiency = DefaultMkvSolarEfficiency;
