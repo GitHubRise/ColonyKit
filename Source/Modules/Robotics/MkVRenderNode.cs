@@ -85,8 +85,19 @@ namespace ColonyKit.Modules.Robotics
 						// 朝南：使用正面图。
 						return graphic.MatSouth;
 					case 3:
-						// 朝西：使用朝左的侧面图。
-						return graphic.MatWest;
+						// FIXED(2026-10-30): 这里不能返回 graphic.MatWest。
+						//
+						// 原版语义上 Rot4.West 应该使用 MatWest；但这套 Mk-V
+						// 的 west/east 贴图在 Graphic_Multi 的材质索引中与实际
+						// 朝向相反：MatWest 实际显示朝右，MatEast 才是朝左。
+						// 之前向西走时人物一直朝右，就是在这里取错了材质。
+						//
+						// 现在强制使用 MatEast 来得到“朝左”的画面：
+						//return graphic.MatWest; // 原版语义，但这套贴图会朝右
+						return graphic.MatEast;    // 实际正确的左侧画面
+						//
+						// 警告：以后若重新生成、镜像或交换 MkV_east.png /
+						// MkV_west.png，必须同步重新验证这里，不能只改贴图。
 				}
 			}
 			// 回退路径：
