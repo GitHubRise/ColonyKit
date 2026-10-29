@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!--
+		Mk-V 专用渲染树。
+		只保留身体和手持物两个节点：
+		- Body 使用自定义的 PawnRenderNode_MkVBody / Worker，按 pawn.Rotation 选四向材质
+		- Carried 负责显示征召后装备的远程武器
+		不再沿用 Misc 渲染树的 Body 节点，避免身体方向被原版缓存固定。
+	-->
+	<PawnRenderTreeDef>
+		<defName>CK_MkV</defName>
+		<root Class="PawnRenderNodeProperties_Parent">
+			<debugLabel>Root</debugLabel>
+			<tagDef>Root</tagDef>
+			<children>
+				<li>
+					<debugLabel>Body</debugLabel>
+					<tagDef>Body</tagDef>
+					<nodeClass>ColonyKit.Modules.Robotics.PawnRenderNode_MkVBody</nodeClass>
+					<workerClass>ColonyKit.Modules.Robotics.PawnRenderNodeWorker_MkVBody</workerClass>
+					<baseLayer>0</baseLayer>
+				</li>
+				<li Class="PawnRenderNodeProperties_Carried">
+					<debugLabel>Carried</debugLabel>
+					<workerClass>PawnRenderNodeWorker_Carried</workerClass>
+				</li>
+			</children>
+		</root>
+	</PawnRenderTreeDef>
+</Defs>

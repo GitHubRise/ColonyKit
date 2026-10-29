@@ -58,16 +58,4 @@ namespace ColonyKit.Modules.Robotics
 		}
 	}
 
-	[HarmonyLib.HarmonyPatch(typeof(PawnRenderNode_AnimalPart), nameof(PawnRenderNode_AnimalPart.GraphicFor))]
-	internal static class Patch_MkV_Skin
-	{
-		private static void Postfix(Pawn pawn, ref Graphic __result)
-		{
-			Graphic custom = MkVSkinUtility.GraphicFor(pawn);
-			if (custom != null)
-			{
-				__result = custom;
-			}
-		}
-	}
 }

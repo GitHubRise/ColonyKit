@@ -88,7 +88,7 @@
 			<hasGenders>true</hasGenders>
 			<lifeExpectancy>2500</lifeExpectancy>
 			<bloodDef>Filth_MachineBits</bloodDef>
-			<renderTree>Animal</renderTree>
+			<renderTree>CK_MkV</renderTree>
 			<canBecomeShambler>false</canBecomeShambler>
 			<lifeStageAges>
 				<li>
