@@ -153,7 +153,14 @@ namespace ColonyKit.Modules.Hygiene
 				error = "water spot bill options missing";
 				return false;
 			}
-			ModLog.Info("Hygiene", $"water selftest: bill options={options.Count}");
+			options[0].action?.Invoke();
+			if (spot.BillStack.Count != 1)
+			{
+				error = "water spot bill add failed";
+				return false;
+			}
+			spot.BillStack.Clear();
+			ModLog.Info("Hygiene", $"water selftest: bill options={options.Count}, add ok");
 			tap.SetDrawOrder(1);
 			intakeStartWater = tap.StoredWater;
 			bucket = SpawnItem(bucketDef, bucketCell);
