@@ -84,4 +84,10 @@
 		<reportString>drinking from a water container.</reportString>
 		<casualInterruptible>true</casualInterruptible>
 	</JobDef>
+	<JobDef>
+		<defName>CK_FillSpotBucket</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_FillSpotBucket</driverClass>
+		<reportString>filling a water bucket.</reportString>
+		<casualInterruptible>true</casualInterruptible>
+	</JobDef>
 </Defs>

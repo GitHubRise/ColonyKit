@@ -251,8 +251,8 @@
 	<CK.Hygiene.WaterPoint.DrawProgress>取水进度：{0} / {1} 次</CK.Hygiene.WaterPoint.DrawProgress>
 	<CK.Hygiene.WaterPoint.Clear>清空</CK.Hygiene.WaterPoint.Clear>
 	<CK.Hygiene.WaterPoint.TankLine>水箱：{0} / {1} 升</CK.Hygiene.WaterPoint.TankLine>
-	<CK.Hygiene.WaterPoint.FlowFast>进水：通电，速度为无电的 8 倍</CK.Hygiene.WaterPoint.FlowFast>
-	<CK.Hygiene.WaterPoint.FlowSlow>进水：无电，慢速</CK.Hygiene.WaterPoint.FlowSlow>
+	<CK.Hygiene.WaterPoint.FlowFast>进水：通电 {0} 升/小时</CK.Hygiene.WaterPoint.FlowFast>
+	<CK.Hygiene.WaterPoint.FlowSlow>进水：无电 {0} 升/小时</CK.Hygiene.WaterPoint.FlowSlow>
 	<CK.Hygiene.WaterPoint.SurfaceInlet>水上进水口：同网水泵可抽取地表水（{0} 升/天）</CK.Hygiene.WaterPoint.SurfaceInlet>
 	<CK.Hygiene.WaterPoint.WellReady>同网水井：可用</CK.Hygiene.WaterPoint.WellReady>
 	<CK.Hygiene.WaterPoint.NoWell>同网水井：没有</CK.Hygiene.WaterPoint.NoWell>
@@ -267,6 +267,18 @@
 	<CK.Hygiene.WaterPoint.SurfaceReady>附近地表水：可用</CK.Hygiene.WaterPoint.SurfaceReady>
 	<CK.Hygiene.WaterPoint.NoSource>同网没有水井，附近也没有地表水</CK.Hygiene.WaterPoint.NoSource>
 	<CK.Hygiene.WaterSpot.NeedWater>只能建在河流、浅水等水面上</CK.Hygiene.WaterSpot.NeedWater>
+	<CK.Hygiene.WaterSpot.Tab>清单</CK.Hygiene.WaterSpot.Tab>
+	<CK.Hygiene.WaterSpot.TabTitle>取水点清单</CK.Hygiene.WaterSpot.TabTitle>
+	<CK.Hygiene.WaterSpot.AddDraw>+ 取水 {0} 次</CK.Hygiene.WaterSpot.AddDraw>
+	<CK.Hygiene.WaterSpot.AddMaintain>+ 维持 {0} 个满桶</CK.Hygiene.WaterSpot.AddMaintain>
+	<CK.Hygiene.WaterSpot.FilledBuckets>殖民地满桶：{0}</CK.Hygiene.WaterSpot.FilledBuckets>
+	<CK.Hygiene.WaterSpot.NoTasks>还没有任务。用上面的按钮添加「取水 N 次」或「维持 N 个满桶」。</CK.Hygiene.WaterSpot.NoTasks>
+	<CK.Hygiene.WaterSpot.DrawTask>取水：{0} / {1} 次</CK.Hygiene.WaterSpot.DrawTask>
+	<CK.Hygiene.WaterSpot.MaintainTask>维持：{0} / {1} 个满桶</CK.Hygiene.WaterSpot.MaintainTask>
+	<CK.Hygiene.WaterSpot.Delete>删除</CK.Hygiene.WaterSpot.Delete>
+	<CK.Hygiene.WaterSpot.Hint>每次取水需要一只空水桶；维持任务按地图/殖民者物品栏里的满桶计数。</CK.Hygiene.WaterSpot.Hint>
+	<CK.Hygiene.WaterSpot.FreeWater>无限地表水</CK.Hygiene.WaterSpot.FreeWater>
+	<CK.Hygiene.WaterSpot.Drinkable>可直接喝水、洗手</CK.Hygiene.WaterSpot.Drinkable>
 	<CK.Hygiene.WaterPoint.IceReady>制冰条件：温度 ≤0°C，可以制冰</CK.Hygiene.WaterPoint.IceReady>
 	<CK.Hygiene.WaterPoint.IceWarm>制冰条件：温度高于 0°C，不会结冰</CK.Hygiene.WaterPoint.IceWarm>
 	<CK.Hygiene.WaterPoint.SetIce>设置制冰次数（当前 {0}）</CK.Hygiene.WaterPoint.SetIce>

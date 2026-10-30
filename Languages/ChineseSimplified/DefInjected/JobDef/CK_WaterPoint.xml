@@ -2,4 +2,5 @@
 <LanguageData>
 	<CK_FillWaterPoint.reportString>正在取水。</CK_FillWaterPoint.reportString>
 	<CK_DrinkFromCarried.reportString>正在喝水。</CK_DrinkFromCarried.reportString>
+	<CK_FillSpotBucket.reportString>正在取水。</CK_FillSpotBucket.reportString>
 </LanguageData>

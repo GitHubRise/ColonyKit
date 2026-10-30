@@ -53,4 +53,16 @@
 			<li>Manipulation</li>
 		</requiredCapacities>
 	</WorkGiverDef>
+	<WorkGiverDef>
+		<defName>CK_FillWaterSpot</defName>
+		<label>fill water spot</label>
+		<giverClass>ColonyKit.Modules.Hygiene.WorkGiver_FillWaterSpot</giverClass>
+		<workType>Hauling</workType>
+		<priorityInType>34</priorityInType>
+		<verb>fill water at</verb>
+		<gerund>filling water at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
 </Defs>

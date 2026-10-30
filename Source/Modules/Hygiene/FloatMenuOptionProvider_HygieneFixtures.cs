@@ -99,11 +99,16 @@ namespace ColonyKit.Modules.Hygiene
 					filth);
 			}
 
-			// 取水点：可以直接喝水（洗手走上面的 Building_Basin 分支）。
+			// 水龙头/免费取水点：可以直接喝水（洗手走上面的 Building_Basin 分支）。
 			if (building is Building_WaterPoint waterPoint)
 			{
 				yield return UseOption("CK.Hygiene.FloatMenu.Drink", pawn, waterPoint, "CK_DrinkFromBasin",
 					waterPoint.CanUse(pawn), RejectReason(waterPoint));
+			}
+			else if (building is Building_WaterSpot waterSpot)
+			{
+				yield return UseOption("CK.Hygiene.FloatMenu.Drink", pawn, waterSpot, "CK_DrinkFromBasin",
+					waterSpot.CanUse(pawn), RejectReason(waterSpot));
 			}
 
 			// 打水：水井（地下水）、取水点/水箱（同网存水）都能用随身容器接。

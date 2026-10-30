@@ -22,12 +22,16 @@ namespace ColonyKit.Modules.Hygiene
 		private static bool ran;
 		private static bool armed;
 		private static bool tapPhaseDone;
+		private static bool spotPhaseDone;
+		private static bool drinkPhaseDone;
+		private static bool listPhaseDone;
 		private static bool finishPending;
 		private static Map map;
 		private static Pawn pawn;
 		private static Building_WaterPoint tap;
 		private static Building_WaterSpot spot;
 		private static Thing bucket;
+		private static WaterSpotTask listTask;
 		private static int startTick;
 		private static int nextLogTick;
 		private static string failure;
@@ -291,20 +295,66 @@ namespace ColonyKit.Modules.Hygiene
 				return;
 			}
 
-			if (elapsed >= nextLogTick)
+			if (!spotPhaseDone)
 			{
-				nextLogTick = elapsed + 500;
-				Log("spot");
-			}
-			CompBasinWater container = bucket?.TryGetComp<CompBasinWater>();
-			if (container != null && container.Water >= 59f)
-			{
-				Finish(true);
+				if (elapsed >= nextLogTick)
+				{
+					nextLogTick = elapsed + 500;
+					Log("spot");
+				}
+				CompBasinWater container = bucket?.TryGetComp<CompBasinWater>();
+				if (container != null && container.Water >= 59f)
+				{
+					spotPhaseDone = true;
+					ModLog.Info("Hygiene", "water selftest spot phase done: bucket full");
+					StartDrinkPhase();
+					nextLogTick = elapsed + 250;
+				}
+				else if (elapsed >= MaxTicks)
+				{
+					Finish(false);
+				}
 				return;
 			}
-			if (elapsed >= MaxTicks)
+
+			if (!drinkPhaseDone)
 			{
-				Finish(false);
+				if (elapsed >= nextLogTick)
+				{
+					nextLogTick = elapsed + 500;
+					Log("drink");
+				}
+				Need_Thirst thirst = pawn?.needs?.TryGetNeed<Need_Thirst>();
+				if (thirst != null && thirst.CurLevel >= 0.9f)
+				{
+					drinkPhaseDone = true;
+					ModLog.Info("Hygiene", $"water selftest drink phase done: thirst={thirst.CurLevel:F2}");
+					StartListPhase();
+					nextLogTick = elapsed + 250;
+				}
+				else if (elapsed >= MaxTicks)
+				{
+					Finish(false);
+				}
+				return;
+			}
+
+			if (!listPhaseDone)
+			{
+				if (elapsed >= nextLogTick)
+				{
+					nextLogTick = elapsed + 500;
+					Log("list");
+				}
+				if (listTask != null && listTask.completed >= 1)
+				{
+					listPhaseDone = true;
+					Finish(true);
+				}
+				else if (elapsed >= MaxTicks)
+				{
+					Finish(false);
+				}
 			}
 		}
 
@@ -329,6 +379,60 @@ namespace ColonyKit.Modules.Hygiene
 			}
 		}
 
+		/// <summary>把口渴压到 20%，让小人从免费取水点喝水，验证「口渴能喝到水」。</summary>
+		private static void StartDrinkPhase()
+		{
+			Need_Thirst thirst = pawn?.needs?.TryGetNeed<Need_Thirst>();
+			JobDef drinkDef = DefDatabase<JobDef>.GetNamedSilentFail("CK_DrinkFromBasin");
+			if (thirst == null || drinkDef == null || spot == null)
+			{
+				Fail("drink phase missing");
+				return;
+			}
+			thirst.CurLevel = 0.2f;
+			Job job = JobMaker.MakeJob(drinkDef, spot);
+			pawn.jobs.StopAll(false);
+			if (!pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc))
+			{
+				Fail("drink job rejected");
+			}
+		}
+
+		/// <summary>在免费取水点清单里加一条「取水 1 次」，让 WorkGiver 派活验证清单真的会执行。</summary>
+		private static void StartListPhase()
+		{
+			if (spot == null || bucket == null)
+			{
+				Fail("list phase missing");
+				return;
+			}
+			CompBasinWater container = bucket.TryGetComp<CompBasinWater>();
+			if (container != null)
+			{
+				container.Water = 0f;
+			}
+			spot.AddTask(WaterSpotTaskType.Draw, 1);
+			listTask = spot.Tasks.LastOrDefault(t => t.type == WaterSpotTaskType.Draw);
+			WorkGiverDef def = DefDatabase<WorkGiverDef>.GetNamedSilentFail("CK_FillWaterSpot");
+			WorkGiver_Scanner workGiver = def?.Worker as WorkGiver_Scanner;
+			if (workGiver == null || !workGiver.HasJobOnThing(pawn, spot))
+			{
+				Fail("list workgiver rejected");
+				return;
+			}
+			Job job = workGiver.JobOnThing(pawn, spot);
+			if (job == null)
+			{
+				Fail("list workgiver produced no job");
+				return;
+			}
+			pawn.jobs.StopAll(false);
+			if (!pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc))
+			{
+				Fail("list job rejected");
+			}
+		}
+
 		private static void Log(string phase)
 		{
 			CompBasinWater container = bucket?.TryGetComp<CompBasinWater>();
@@ -337,7 +441,9 @@ namespace ColonyKit.Modules.Hygiene
 				$"water selftest {phase}: tick={Find.TickManager.TicksGame - startTick} " +
 				$"job={pawn?.CurJobDef?.defName ?? "none"} " +
 				$"tapDelivered={tap?.deliveredDraws ?? 0} tapWater={(tap?.StoredWater ?? 0f):F1} " +
-				$"bucketWater={(container?.Water ?? -1f):F1} bucketSpawned={bucket?.Spawned}");
+				$"bucketWater={(container?.Water ?? -1f):F1} bucketSpawned={bucket?.Spawned} " +
+				$"thirst={(pawn?.needs?.TryGetNeed<Need_Thirst>()?.CurLevel ?? -1f):F2} " +
+				$"listCompleted={listTask?.completed ?? -1}");
 		}
 
 		private static void Fail(string reason)

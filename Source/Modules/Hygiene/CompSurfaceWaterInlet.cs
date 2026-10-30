@@ -3,6 +3,23 @@ using Verse;
 
 namespace ColonyKit.Modules.Hygiene
 {
+	public class CompProperties_FreeWaterInlet : CompProperties_WaterInlet
+	{
+		public CompProperties_FreeWaterInlet()
+		{
+			compClass = typeof(CompFreeWaterInlet);
+		}
+	}
+
+	/// <summary>免费取水点的进水口：只作为「可打水」的标记，不显示「地下水能力」。</summary>
+	public class CompFreeWaterInlet : CompWaterInlet
+	{
+		public override string CompInspectStringExtra()
+		{
+			return null;
+		}
+	}
+
 	public class CompProperties_SurfaceWaterInlet : CompProperties_WaterInlet
 	{
 		public CompProperties_SurfaceWaterInlet()

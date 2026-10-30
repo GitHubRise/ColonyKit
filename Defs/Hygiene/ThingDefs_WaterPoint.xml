@@ -93,8 +93,11 @@
 		<placeWorkers>
 			<li>ColonyKit.Modules.Hygiene.PlaceWorker_WaterSpot</li>
 		</placeWorkers>
+		<inspectorTabs>
+			<li>ColonyKit.Modules.Hygiene.ITab_WaterSpot</li>
+		</inspectorTabs>
 		<comps>
-			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterInlet">
+			<li Class="ColonyKit.Modules.Hygiene.CompProperties_FreeWaterInlet">
 				<Capacity>2000</Capacity>
 			</li>
 		</comps>

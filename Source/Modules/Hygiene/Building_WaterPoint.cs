@@ -31,12 +31,22 @@ namespace ColonyKit.Modules.Hygiene
 		/// <summary>每多少 tick 冻出一块冰（室外 ≤ 0°C 时）。</summary>
 		public const int IceProduceTicks = 1000;
 
-		/// <summary>无电时每 250 tick 的重力进水量；通电时 ×8。</summary>
-		private const float PassiveIntakeLiters = 0.5f;
+		/// <summary>无电时每小时上水 25 升；通电时 200 升/小时。</summary>
+		private const float UnpoweredIntakeLitersPerHour = 25f;
+
+		private const float PoweredIntakeLitersPerHour = 200f;
+
+		/// <summary>RimWorld 一天 60000 tick，按 24 小时算，一小时 2500 tick。</summary>
+		private const int TicksPerHour = 2500;
 
 		private const int PassiveIntakeInterval = 250;
 
-		private const float PoweredIntakeMultiplier = 8f;
+		/// <summary>每 250 tick 的无电进水量：25 L/h × 250 / 2500 = 2.5 L。</summary>
+		private const float PassiveIntakeLiters =
+			UnpoweredIntakeLitersPerHour * PassiveIntakeInterval / TicksPerHour;
+
+		private const float PoweredIntakeMultiplier =
+			PoweredIntakeLitersPerHour / UnpoweredIntakeLitersPerHour;
 
 		public int targetDraws;
 
@@ -100,6 +110,10 @@ namespace ColonyKit.Modules.Hygiene
 
 		/// <summary>水龙头是否通电；通电时进水是无电的 8 倍。</summary>
 		public bool PoweredIntake => powerComp != null && powerComp.PowerOn;
+
+		/// <summary>当前进水速度（升/小时），供检视页显示具体数值。</summary>
+		public float IntakeLitersPerHour =>
+			PoweredIntake ? PoweredIntakeLitersPerHour : UnpoweredIntakeLitersPerHour;
 
 		/// <summary>没电也能喝/洗手（水箱里的水仍可用），只是进水慢。</summary>
 		public override bool PowerRequiredToUse => false;
@@ -350,8 +364,8 @@ namespace ColonyKit.Modules.Hygiene
 			}
 
 			Append(PoweredIntake
-				? "CK.Hygiene.WaterPoint.FlowFast".Translate()
-				: "CK.Hygiene.WaterPoint.FlowSlow".Translate());
+				? "CK.Hygiene.WaterPoint.FlowFast".Translate(IntakeLitersPerHour.ToString("F0"))
+				: "CK.Hygiene.WaterPoint.FlowSlow".Translate(IntakeLitersPerHour.ToString("F0")));
 			CompSurfaceWaterInlet inlet = GetComp<CompSurfaceWaterInlet>();
 			if (inlet != null && inlet.GroundWaterCapacity > 0.0001f)
 			{
