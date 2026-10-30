@@ -12,8 +12,8 @@
 | 目标游戏版本 | RimWorld 1.6.4871（`supportedVersions` 只写 `1.6`） |
 | 目标框架 | `net472` + `Krafs.Rimworld.Ref` |
 | 硬依赖 | Harmony（`brrainz.harmony`） |
-| 可选兼容 | DBH、Stack XXL（RJW 1.6 与精心准备 1.6.2 已内置，不再作为外部依赖） |
-| 工程状态 | 0.0.2 框架已生成（M0 完成）；汉化、立体库、蓝图、淋浴/热水、机器人首版均已落地；RJW 1.6 与精心准备 1.6.2 已迁入并随包构建 |
+| 可选兼容 | DBH、Stack XXL；精心准备 1.6.2 已内置，不再作为外部依赖 |
+| 工程状态 | 0.0.2 框架已生成（M0 完成）；汉化、立体库、蓝图、淋浴/热水、机器人首版均已落地；精心准备 1.6.2 已迁入并随包构建 |
 
 > 本文件 2026-10-25 曾按 `CustomEnhance`（自定义强化）立项，同日先调整为 `ColonyKit` 五系统，随后追加智能机器人模块；旧的强化设计未实施。
 
@@ -31,12 +31,11 @@
 | 蓝图 | ✅ 0.0.2 首版 | 拉框捕获、幽灵预览/旋转/镜像、逐条校验、三档材料策略、每存档库、跨存档 XML 模板、设置页；上帝模式放置直接建成；地形/物品不含，实机待验 |
 | 淋浴/水网 | ✅ 0.0.3 | 1×1 淋浴器（可独立放置）、`卫生` 建造菜单；DBH 风格 1×1 水管（可拖拽、可铺墙下）、1×1 水箱/2×2 巨型水箱、1×1 水泵、1×1 水井、1×1 热水器；泵需水井 |
 | 机器人 | ✅ M6 二阶段 | 保姆机器人：扫地/清洁/搬运/灭火/屠宰/加燃料/囚犯送餐/卫生/救援、耐久 1000/维修/报废、设置页、工作管控+状态双页签、手动指令、涂装/音效/光效；其余型号未做 |
-| RJW | ✅ 已内置 | `Source/Rjw` 独立工程 → `RJW.dll`；Defs/Patches/Languages/Textures/Sounds 全量迁入，外部 `rim.job.world` 不兼容 |
 | 精心准备 | ✅ 已内置（可开关） | `Source/PrepareCarefully` 镜像上游 1.6.2 → `EdBPrepareCarefully.dll`；Defs/Textures/Languages（含 249 条中文）迁入；设置 → 模块可关，关掉即卸掉它的两个 Postfix；外部 `EdB.PrepareCarefully` 不兼容 |
 | 实机 | ✅ quicktest + 人工 | `-Deploy` + `-quicktest` 通过；精心准备的按钮、控制台开关已验证 |
 | 来源映射 | ✅ | [docs/参考源码映射.md](docs/参考源码映射.md) |
 
-> 0.0.2 不改变游戏平衡；它验证「框架复制 → 改名 → 模块注册 → 构建/校验」链路，并同步 0.0.2 的 P0 修复；RJW 1.6 本体已作为独立程序集内置。
+> 0.0.2 不改变游戏平衡；它验证「框架复制 → 改名 → 模块注册 → 构建/校验」链路，并同步 0.0.2 的 P0 修复。
 
 ---
 
@@ -238,7 +237,7 @@ sources/ColonyKit/
 │  ├─ Blueprint/
 │  └─ Robotics/
 ├─ Patches/
-│  ├─ Compatibility/                  ← MayRequire 补丁（DBH/StackXXL/RJW）
+│  ├─ Compatibility/                  ← MayRequire 补丁（DBH/StackXXL）
 │  └─ Needs/                          ← 需求注入（ShouldHaveNeed Postfix，卫生/机器人能量）
 ├─ Languages/
 │  ├─ English/{Keyed,DefInjected}
@@ -319,7 +318,7 @@ cd E:\RimWorld-WorkSpace\sources\ColonyKit
 - 念头：洁净/肮脏、热水澡、冷水澡、今天洗过澡、浴室、洗澡/如厕隐私、失禁。
 - 卫生设置页：需求速率、耗水、热水用量、污染概率、DBH 三策略、需求豁免。
 - Alert：设施断水/堵塞/断电；淋浴长期占用/排队。
-- 附加：淋浴后清 RJW 污渍 + 排房间清洁；脏水/污染导致 `CK_GutBug`。
+- 附加：淋浴后清携带污渍 + 排房间清洁；脏水/污染导致 `CK_GutBug`。
 
 **后续**：DBH 三种肠道疾病、更细的八档锅炉曲线、衣物清洁、真正 FIFO 排队。
 
