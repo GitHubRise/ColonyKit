@@ -277,7 +277,8 @@ sources/ColonyKit/
 │  ├─ 构建与发布.md / 调查指南.md / 参考源码映射.md
 │  ├─ ARCHITECTURE.md / balance.md（待建）/ l10n.md（待建）
 │  └─ decisions/（Index.md + ADR）   ← 技术选型记录（水网、存储内核、机器人 Pawn、蓝图格式）
-├─ build.ps1 / verify.ps1 / package.ps1
+├─ build.ps1 / build-with-rjw.ps1 / sync-rjw.ps1
+├─ verify.ps1 / package.ps1 / make-portable.ps1
 └─ dist/                              ← 打包产物，不提交
 ```
 
@@ -288,14 +289,16 @@ sources/ColonyKit/
 ```powershell
 cd E:\RimWorld-WorkSpace\sources\ColonyKit
 
-.\build.ps1              # Release → Assemblies\ColonyKit.dll
-.\build.ps1 -Clean       # 清 obj / bin / Assemblies
+.\build.ps1              # 正常构建：只编 ColonyKit.dll，复用现有 Assemblies\RJW.dll
+.\build.ps1 -Clean       # 清 obj / bin / Assemblies\ColonyKit.*（保留 RJW.dll）
 .\build.ps1 -Deploy      # 部署到 Mods\ColonyKit（先退出游戏）
+.\build-with-rjw.ps1     # 连内置 RJW 一起重编（改了 Source\Rjw 或刚同步过 RJW 之后）
+.\sync-rjw.ps1           # 从 sources/rjw/1.6 同步内置 RJW（-DryRun 先看差异）
 .\verify.ps1             # packageId / XML / 补丁 xpath / 程序集静态检查
-.\package.ps1            # verify + build + dist\ColonyKit-<version>.zip
+.\package.ps1            # verify + build-with-rjw + dist\ColonyKit-<version>.zip
 ```
 
-`build.ps1` 默认 `ModsPath` 是 `E:\SteamLibrary\steamapps\common\RimWorld\Mods`，与本机安装路径一致。
+`build.ps1` / `build-with-rjw.ps1` 默认 `ModsPath` 是 `E:\SteamLibrary\steamapps\common\RimWorld\Mods`，与本机安装路径一致。
 
 ---
 

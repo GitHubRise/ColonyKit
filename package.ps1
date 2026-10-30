@@ -5,7 +5,7 @@
 
 .DESCRIPTION
 	1. 可选先跑 verify.ps1
-	2. 构建（除非 -SkipBuild）
+	2. 构建（除非 -SkipBuild）：走 build-with-rjw.ps1，连内置 RJW 一起重编后再打包
 	3. 把 About / Assemblies / Defs / Patches / Languages / Translations / Textures 复制到临时目录
 	4. 检查：About/About.xml 在第一层、没有 Source/obj/bin、程序集只有 .dll
 	5. 压缩到 dist\ColonyKit-<modVersion>.zip
@@ -36,12 +36,13 @@ if (-not $SkipVerify) {
 
 if (-not $SkipBuild) {
 	$global:LASTEXITCODE = 0
-	& (Join-Path $root 'build.ps1')
+	# 发布包必须带最新的内置 RJW，所以走 with-rjw（build.ps1 默认复用旧 RJW.dll）。
+	& (Join-Path $root 'build-with-rjw.ps1')
 	if ($LASTEXITCODE -ne 0) { throw '构建失败，已中止打包。' }
 }
 
 $dll = Join-Path $root 'Assemblies\ColonyKit.dll'
-if (-not (Test-Path $dll)) { throw "缺少产物：$dll（先运行 build.ps1）" }
+if (-not (Test-Path $dll)) { throw "缺少产物：$dll（先运行 build-with-rjw.ps1）" }
 
 [xml]$about = Get-Content (Join-Path $root 'About\About.xml') -Encoding utf8
 $version = $about.ModMetaData.modVersion

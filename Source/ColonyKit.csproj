@@ -22,7 +22,9 @@
 		<None Include="Rjw\**\*.cs" />
 	</ItemGroup>
 	<ItemGroup>
-		<!-- 内置 RJW：一起构建到 Assemblies，但 ColonyKit 不引用其类型。 -->
-		<ProjectReference Include="Rjw\RimJobWorld.Main.csproj" ReferenceOutputAssembly="false" Private="false" />
+		<!-- 内置 RJW：一起构建到 Assemblies，但 ColonyKit 不引用其类型。
+		     build.ps1（正常）传 -p:BuildRjw=false 只编 ColonyKit，复用已有的 Assemblies\RJW.dll；
+		     build-with-rjw.ps1 传 -p:BuildRjw=true 连 RJW 子工程一起重编。 -->
+		<ProjectReference Include="Rjw\RimJobWorld.Main.csproj" ReferenceOutputAssembly="false" Private="false" Condition="'$(BuildRjw)' != 'false'" />
 	</ItemGroup>
 </Project>
