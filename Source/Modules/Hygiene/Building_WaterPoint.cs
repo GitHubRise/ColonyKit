@@ -5,27 +5,45 @@ using ColonyKit.Modules.Hygiene.Dbh;
 using RimWorld;
 using UnityEngine;
 using Verse;
+using Verse.AI;
 
 namespace ColonyKit.Modules.Hygiene
 {
 	/// <summary>
 	/// 取水点：接在水网上的公共水龙头 + 150 L 小水箱。
 	/// 殖民者可以直接在这里喝水、洗手，也能用水桶接水带走；
-	/// 在检视页设置「取水次数」后，会自动派活拿水桶去同网水井打水倒回这里。
+	/// 在检视页设置「取水次数」后，会自动派活拿水桶去同网水井或附近池塘/河边打水倒回来。
+	/// 设置「制冰次数」后，室外温度 ≤ 0°C 时会把水箱里的水冻成冰块（每块 10 L）。
 	/// 同网有工作的水泵时打水快，没有水泵只能手动慢慢打。
 	/// </summary>
 	public class Building_WaterPoint : Building_Basin
 	{
 		public const int MaxDraws = 99;
 
+		public const int MaxIce = 99;
+
 		/// <summary>低于这个水量就不值得再派一趟打水，避免半桶空跑。</summary>
 		public const float MinDrawLiters = 20f;
+
+		/// <summary>一块冰含多少升水。</summary>
+		public const float IceWaterLiters = 10f;
+
+		/// <summary>每多少 tick 冻出一块冰（室外 ≤ 0°C 时）。</summary>
+		public const int IceProduceTicks = 1000;
 
 		public int targetDraws;
 
 		public int deliveredDraws;
 
+		public int targetIce;
+
+		public int madeIce;
+
 		private CompWaterStorage storage;
+
+		private int surfaceCheckTick = -9999;
+
+		private bool surfaceNear;
 
 		public CompWaterStorage Storage => storage ?? (storage = GetComp<CompWaterStorage>());
 
@@ -39,7 +57,30 @@ namespace ColonyKit.Modules.Hygiene
 
 		public bool HasPendingDraws => RemainingDraws > 0;
 
+		public int RemainingIce => Mathf.Max(0, targetIce - madeIce);
+
+		public bool HasPendingIce => RemainingIce > 0;
+
 		public bool Pumped => pipe?.pipeNet?.WaterPumps.Any(p => p != null && p.WorkingNow) == true;
+
+		/// <summary>所在位置温度不高于 0°C 就能把水冻成冰（冷库/冬天室外都行）。</summary>
+		public bool CanFreeze => Map != null && Position.GetTemperature(Map) <= 0f;
+
+		/// <summary>附近（40 格内）有没有可站人的地表水；检视页每 250 tick 缓存一次。</summary>
+		public bool HasSurfaceWaterNear
+		{
+			get
+			{
+				int now = Find.TickManager?.TicksGame ?? 0;
+				if (surfaceCheckTick < 0 || now - surfaceCheckTick >= 250)
+				{
+					surfaceCheckTick = now;
+					surfaceNear = Map != null
+						&& WaterSourceUtility.FindSurfaceWaterStandCell(Map, Position, 40f).IsValid;
+				}
+				return surfaceNear;
+			}
+		}
 
 		public override bool CanSetGender => false;
 
@@ -60,6 +101,35 @@ namespace ColonyKit.Modules.Hygiene
 			base.ExposeData();
 			Scribe_Values.Look(ref targetDraws, "targetDraws", 0);
 			Scribe_Values.Look(ref deliveredDraws, "deliveredDraws", 0);
+			Scribe_Values.Look(ref targetIce, "targetIce", 0);
+			Scribe_Values.Look(ref madeIce, "madeIce", 0);
+		}
+
+		protected override void Tick()
+		{
+			base.Tick();
+			if (Map == null
+				|| !HasPendingIce
+				|| !CanFreeze
+				|| StoredWater < IceWaterLiters
+				|| !this.IsHashIntervalTick(IceProduceTicks))
+			{
+				return;
+			}
+			CompWaterStorage tank = Storage;
+			ThingDef iceDef = DefDatabase<ThingDef>.GetNamedSilentFail("CK_IceBlock");
+			if (tank == null || iceDef == null)
+			{
+				return;
+			}
+			Thing ice = ThingMaker.MakeThing(iceDef);
+			if (!GenPlace.TryPlaceThing(ice, Position, Map, ThingPlaceMode.Near))
+			{
+				ice.Destroy(DestroyMode.Vanish);
+				return;
+			}
+			tank.WaterStorage = Mathf.Max(0f, tank.WaterStorage - IceWaterLiters);
+			madeIce++;
 		}
 
 		public void SetDrawOrder(int count)
@@ -88,6 +158,26 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				deliveredDraws++;
 			}
+		}
+
+		public void SetIceOrder(int count)
+		{
+			count = Mathf.Clamp(count, 0, MaxIce);
+			if (count != targetIce)
+			{
+				targetIce = count;
+				madeIce = 0;
+			}
+			if (madeIce > targetIce)
+			{
+				madeIce = targetIce;
+			}
+		}
+
+		public void CancelIceOrder()
+		{
+			targetIce = 0;
+			madeIce = 0;
 		}
 
 		/// <summary>把一桶水倒进水箱；返回实际倒进去的升数。</summary>
@@ -142,6 +232,30 @@ namespace ColonyKit.Modules.Hygiene
 			return best;
 		}
 
+		/// <summary>
+		/// 取水次数用的水源：同网水井优先；没有水井就找附近小池塘/河边的可站格。
+		/// 返回 Thing 表示水井，返回 Cell 表示地表水的可站格；没有则 Invalid。
+		/// </summary>
+		public LocalTargetInfo FindDrawSource(Pawn pawn, out bool surface)
+		{
+			surface = false;
+			Thing well = FindWellForDraw();
+			// 有井但小人够不着时继续找地表水，不要因为一口远处的井放弃就近的池塘。
+			if (well != null
+				&& (pawn == null
+					|| pawn.CanReserveAndReach(well, PathEndMode.Touch, pawn.NormalMaxDanger())))
+			{
+				return new LocalTargetInfo(well);
+			}
+			IntVec3 stand = WaterSourceUtility.FindSurfaceWaterStandCell(pawn, Position, 40f);
+			if (stand.IsValid)
+			{
+				surface = true;
+				return new LocalTargetInfo(stand);
+			}
+			return LocalTargetInfo.Invalid;
+		}
+
 		/// <summary>取水点不消耗热水：喝水和洗手都直接从水网取常温水。</summary>
 		public override bool TryUseWater(out ContaminationLevel contam)
 		{
@@ -176,9 +290,19 @@ namespace ColonyKit.Modules.Hygiene
 			if (targetDraws > 0)
 			{
 				Append("CK.Hygiene.WaterPoint.DrawProgress".Translate(deliveredDraws, targetDraws));
-				Append(FindWellForDraw() != null
+				Thing well = FindWellForDraw();
+				Append(well != null
 					? "CK.Hygiene.WaterPoint.WellReady".Translate()
-					: "CK.Hygiene.WaterPoint.NoWell".Translate());
+					: HasSurfaceWaterNear
+						? "CK.Hygiene.WaterPoint.SurfaceReady".Translate()
+						: "CK.Hygiene.WaterPoint.NoSource".Translate());
+			}
+			if (targetIce > 0)
+			{
+				Append("CK.Hygiene.WaterPoint.IceProgress".Translate(madeIce, targetIce));
+				Append(CanFreeze
+					? "CK.Hygiene.WaterPoint.IceReady".Translate()
+					: "CK.Hygiene.WaterPoint.IceWarm".Translate());
 			}
 			return builder.ToString().TrimEndNewlines();
 		}
@@ -207,6 +331,26 @@ namespace ColonyKit.Modules.Hygiene
 					defaultLabel = "CK.Hygiene.WaterPoint.CancelDraws".Translate(),
 					defaultDesc = "CK.Hygiene.WaterPoint.CancelDrawsDesc".Translate(),
 					action = CancelDrawOrder
+				};
+			}
+			yield return new Command_Action
+			{
+				defaultLabel = "CK.Hygiene.WaterPoint.SetIce".Translate(targetIce),
+				defaultDesc = "CK.Hygiene.WaterPoint.SetIceDesc".Translate(),
+				action = () => Find.WindowStack.Add(new Dialog_Slider(
+					(int value) => "CK.Hygiene.WaterPoint.SetIceSlider".Translate(value),
+					0,
+					MaxIce,
+					SetIceOrder,
+					targetIce))
+			};
+			if (targetIce > 0)
+			{
+				yield return new Command_Action
+				{
+					defaultLabel = "CK.Hygiene.WaterPoint.CancelIce".Translate(),
+					defaultDesc = "CK.Hygiene.WaterPoint.CancelIceDesc".Translate(),
+					action = CancelIceOrder
 				};
 			}
 		}

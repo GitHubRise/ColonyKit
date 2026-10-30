@@ -255,12 +255,28 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<CK.Hygiene.WaterPoint.FlowSlow>Supply: manual, slow drawing</CK.Hygiene.WaterPoint.FlowSlow>
 	<CK.Hygiene.WaterPoint.WellReady>Well on network: yes</CK.Hygiene.WaterPoint.WellReady>
 	<CK.Hygiene.WaterPoint.NoWell>Well on network: none</CK.Hygiene.WaterPoint.NoWell>
-	<CK.Hygiene.WaterPoint.TabHint>Each draw is one 60 L bucket. Colonists need a bucket in their inventory or on the ground and a well on the same network.</CK.Hygiene.WaterPoint.TabHint>
+	<CK.Hygiene.WaterPoint.TabHint>Each draw is one 60 L bucket. Water comes from a well on the same network, or from a nearby pond or river. Colonists need a bucket in their inventory or on the ground. Ice needs a temperature of 0°C or below.</CK.Hygiene.WaterPoint.TabHint>
 	<CK.Hygiene.WaterPoint.SetDraws>Set number of draws ({0})</CK.Hygiene.WaterPoint.SetDraws>
 	<CK.Hygiene.WaterPoint.SetDrawsDesc>Open a slider to set how many buckets to draw. Work stops when the count is reached.</CK.Hygiene.WaterPoint.SetDrawsDesc>
 	<CK.Hygiene.WaterPoint.SetDrawsSlider>Draws: {0}</CK.Hygiene.WaterPoint.SetDrawsSlider>
 	<CK.Hygiene.WaterPoint.CancelDraws>Cancel draws</CK.Hygiene.WaterPoint.CancelDraws>
 	<CK.Hygiene.WaterPoint.CancelDrawsDesc>Clear the current draw order.</CK.Hygiene.WaterPoint.CancelDrawsDesc>
+	<CK.Hygiene.WaterPoint.IceProgress>Ice: {0} / {1} blocks (10 L each)</CK.Hygiene.WaterPoint.IceProgress>
+	<CK.Hygiene.WaterPoint.ClearIce>Clear ice</CK.Hygiene.WaterPoint.ClearIce>
+	<CK.Hygiene.WaterPoint.SurfaceReady>Surface water nearby: yes</CK.Hygiene.WaterPoint.SurfaceReady>
+	<CK.Hygiene.WaterPoint.NoSource>No well on the network and no surface water nearby</CK.Hygiene.WaterPoint.NoSource>
+	<CK.Hygiene.WaterPoint.IceReady>Freezing: at 0°C or below</CK.Hygiene.WaterPoint.IceReady>
+	<CK.Hygiene.WaterPoint.IceWarm>Freezing: above 0°C, will not freeze</CK.Hygiene.WaterPoint.IceWarm>
+	<CK.Hygiene.WaterPoint.SetIce>Set number of ice blocks ({0})</CK.Hygiene.WaterPoint.SetIce>
+	<CK.Hygiene.WaterPoint.SetIceDesc>Open a slider to set how many ice blocks to freeze. At 0°C or below, one block is frozen every 1000 ticks and uses 10 L of water.</CK.Hygiene.WaterPoint.SetIceDesc>
+	<CK.Hygiene.WaterPoint.SetIceSlider>Ice blocks: {0}</CK.Hygiene.WaterPoint.SetIceSlider>
+	<CK.Hygiene.WaterPoint.CancelIce>Cancel ice</CK.Hygiene.WaterPoint.CancelIce>
+	<CK.Hygiene.WaterPoint.CancelIceDesc>Clear the current ice order.</CK.Hygiene.WaterPoint.CancelIceDesc>
+	<CK.Hygiene.Ice.Melt>Melt into water</CK.Hygiene.Ice.Melt>
+	<CK.Hygiene.Ice.MeltDesc>Melt this block into a nearby water point for {0} L of water. Needs a temperature above 0°C and free space in the tank.</CK.Hygiene.Ice.MeltDesc>
+	<CK.Hygiene.Ice.TooCold>Too cold for ice to melt</CK.Hygiene.Ice.TooCold>
+	<CK.Hygiene.Ice.NoPoint>No water point with free space within 10 cells</CK.Hygiene.Ice.NoPoint>
+	<CK.Hygiene.Ice.Melted>The ice melted and the water point gained {0} L</CK.Hygiene.Ice.Melted>
 	<CK.Hygiene.FloatMenu.FillTub>Pour in basin</CK.Hygiene.FloatMenu.FillTub>
 	<CK.Hygiene.PitLevel>Pit fill: {0}</CK.Hygiene.PitLevel>
 	<CK.Hygiene.PitFull>Pit full - needs emptying</CK.Hygiene.PitFull>

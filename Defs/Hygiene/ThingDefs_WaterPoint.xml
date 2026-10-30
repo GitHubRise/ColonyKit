@@ -6,7 +6,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_WaterPoint</defName>
 		<label>water point</label>
-		<description>A public water point with a small 150 L tank. Colonists can drink and wash here, and fill buckets from it. Set a number of draws and they will carry water here from a well on the same network using buckets. Pumped networks fill buckets quickly; without a pump, drawing at the well is slow.</description>
+		<description>A public water point with a small 150 L tank. Colonists can drink and wash here, and fill buckets from it. Set a number of draws and they will carry water here from a well on the same network, or from a nearby pond or river, using buckets. At 0°C or below, water in the tank can be frozen into ice blocks. Pumped networks fill buckets quickly; without a pump, drawing at the well is slow.</description>
 		<thingClass>ColonyKit.Modules.Hygiene.Building_WaterPoint</thingClass>
 		<size>(1,1)</size>
 		<drawerType>MapMeshAndRealTime</drawerType>
@@ -57,7 +57,7 @@
 	<ThingDef ParentName="ResourceBase">
 		<defName>CK_WaterBucket</defName>
 		<label>water bucket</label>
-		<description>A sturdy steel bucket for carrying water. Holds 60 L. Fill it at a water point or a well, drink from it, or pour it into a water tub or tank.</description>
+		<description>A sturdy steel bucket for carrying water. Holds 60 L. Fill it at a water point, a well, or a pond or river; drink from it, or pour it into a water tub or tank. Water never spoils.</description>
 		<graphicData>
 			<texPath>Things/Item/CK_WaterBucket</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -110,4 +110,34 @@
 		</recipeUsers>
 		<researchPrerequisite>CK_HygieneResearch</researchPrerequisite>
 	</RecipeDef>
+
+	<!-- 冰块：10 L 水冻成的一块冰，不腐烂、不降解；放在取水点旁融化回水。 -->
+	<ThingDef ParentName="ResourceBase">
+		<defName>CK_IceBlock</defName>
+		<label>ice block</label>
+		<description>A block of ice holding 10 L of water. It never spoils. Place it near a water point in a warm room and melt it to recover the water.</description>
+		<graphicData>
+			<texPath>Things/Item/CK_IceBlock</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(0.75,0.75)</drawSize>
+		</graphicData>
+		<uiIconScale>1.1</uiIconScale>
+		<rotatable>false</rotatable>
+		<thingCategories>
+			<li>Resources</li>
+		</thingCategories>
+		<stackLimit>20</stackLimit>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.CompProperties_IceBlock">
+				<WaterLiters>10</WaterLiters>
+			</li>
+		</comps>
+		<statBases>
+			<Mass>0.5</Mass>
+			<MarketValue>6</MarketValue>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Flammability>0</Flammability>
+			<DeteriorationRate>0</DeteriorationRate>
+		</statBases>
+	</ThingDef>
 </Defs>

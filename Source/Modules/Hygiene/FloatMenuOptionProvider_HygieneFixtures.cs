@@ -178,8 +178,59 @@ namespace ColonyKit.Modules.Hygiene
 			}
 		}
 
+		/// <summary>
+		/// 右键小池塘/河边的水面：用随身容器打水。取水 Job 的 TargetA 是岸边可站格，
+		/// 司机再从它反查相邻水格。
+		/// </summary>
+		public override IEnumerable<FloatMenuOption> GetOptions(FloatMenuContext context)
+		{
+			Pawn pawn = context.FirstSelectedPawn;
+			Map map = context.map;
+			IntVec3 waterCell = context.ClickedCell;
+			if (pawn == null
+				|| map == null
+				|| !pawn.IsColonistPlayerControlled
+				|| !waterCell.InBounds(map)
+				|| !waterCell.GetTerrain(map).IsWater)
+			{
+				yield break;
+			}
+			IntVec3 stand = WaterSourceUtility.FindStandCell(pawn, waterCell);
+			if (!stand.IsValid)
+			{
+				yield break;
+			}
+
+			CompBasinWater carried = WaterContainerUtility.CarriedContainer(pawn, requireWater: false);
+			Thing spare = carried == null ? WaterContainerUtility.FindSpawnedContainer(pawn, requireWater: false) : null;
+			CompBasinWater container = carried ?? spare?.TryGetComp<CompBasinWater>();
+			if (container != null)
+			{
+				string fillKey = WaterContainerUtility.IsBucket(container)
+					? "CK.Hygiene.FloatMenu.FillBucket"
+					: "CK.Hygiene.FloatMenu.FillBasin";
+				yield return UseOption(fillKey, pawn, stand, "CK_FillBasin", true, null, spare);
+				yield break;
+			}
+
+			CompBasinWater fullCarried = WaterContainerUtility.CarriedContainerAny(pawn);
+			if (fullCarried != null)
+			{
+				string fullKey = WaterContainerUtility.IsBucket(fullCarried)
+					? "CK.Hygiene.FloatMenu.FillBucket"
+					: "CK.Hygiene.FloatMenu.FillBasin";
+				yield return UseOption(fullKey, pawn, stand, "CK_FillBasin", false,
+					"CK.Hygiene.FloatMenu.ContainerFull".Translate().ToString());
+			}
+			else
+			{
+				yield return UseOption("CK.Hygiene.FloatMenu.FillBasin", pawn, stand, "CK_FillBasin", false,
+					"CK.Hygiene.FloatMenu.NeedContainer".Translate().ToString());
+			}
+		}
+
 		private static FloatMenuOption UseOption(
-			string labelKey, Pawn pawn, Thing target, string jobDefName, bool canDo, string reason,
+			string labelKey, Pawn pawn, LocalTargetInfo target, string jobDefName, bool canDo, string reason,
 			Thing targetB = null)
 		{
 			string label = labelKey.Translate();
@@ -198,7 +249,8 @@ namespace ColonyKit.Modules.Hygiene
 				label,
 				() =>
 				{
-					Job job = JobMaker.MakeJob(def, target);
+					Job job = JobMaker.MakeJob(def);
+					job.targetA = target;
 					if (targetB != null)
 					{
 						job.targetB = targetB;
@@ -207,7 +259,7 @@ namespace ColonyKit.Modules.Hygiene
 				},
 				MenuOptionPriority.Default,
 				null,
-				target);
+				target.Thing);
 		}
 
 		private static string FillReason(bool reachable, bool sourceHasWater)

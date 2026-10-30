@@ -45,7 +45,7 @@ namespace ColonyKit.Modules.Hygiene
 				$"water defs: pipe={DefExists("CK_DbhWaterPipe")}, tank={DefExists("CK_DbhWaterTank")}, " +
 				$"giant={DefExists("CK_DbhWaterTankGiant")}, pump={DefExists("CK_DbhWaterPump")}, " +
 				$"well={DefExists("CK_DbhWaterWell")}, heater={DefExists("CK_DbhWaterHeater")}; " +
-				$"waterPoint={DefExists("CK_WaterPoint")}, bucket={DefExists("CK_WaterBucket")}, " +
+				$"waterPoint={DefExists("CK_WaterPoint")}, bucket={DefExists("CK_WaterBucket")}, ice={DefExists("CK_IceBlock")}, " +
 				$"fillPointJob={JobExists("CK_FillWaterPoint")}, drinkCarriedJob={JobExists("CK_DrinkFromCarried")}, " +
 				$"fillPointWorkGiver={WorkGiverExists("CK_FillWaterPoint")}; " +
 				$"hygiene menu={DefDatabase<DesignationCategoryDef>.GetNamedSilentFail("CK_Hygiene") != null}; " +

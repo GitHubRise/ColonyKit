@@ -255,12 +255,28 @@
 	<CK.Hygiene.WaterPoint.FlowSlow>供水：手动，打水慢</CK.Hygiene.WaterPoint.FlowSlow>
 	<CK.Hygiene.WaterPoint.WellReady>同网水井：可用</CK.Hygiene.WaterPoint.WellReady>
 	<CK.Hygiene.WaterPoint.NoWell>同网水井：没有</CK.Hygiene.WaterPoint.NoWell>
-	<CK.Hygiene.WaterPoint.TabHint>每次取水 = 1 桶（60 升）。需要同网有水井，且物品栏或地上有水桶，才会自动派活。</CK.Hygiene.WaterPoint.TabHint>
+	<CK.Hygiene.WaterPoint.TabHint>每次取水 = 1 桶（60 升）。水源优先同网水井，其次附近小池塘/河边；需要物品栏或地上有水桶才会自动派活。制冰需要温度 ≤0°C。</CK.Hygiene.WaterPoint.TabHint>
 	<CK.Hygiene.WaterPoint.SetDraws>设置取水次数（当前 {0}）</CK.Hygiene.WaterPoint.SetDraws>
 	<CK.Hygiene.WaterPoint.SetDrawsDesc>打开滑条设置要打多少桶水；到达次数后自动停止。</CK.Hygiene.WaterPoint.SetDrawsDesc>
 	<CK.Hygiene.WaterPoint.SetDrawsSlider>取水次数：{0}</CK.Hygiene.WaterPoint.SetDrawsSlider>
 	<CK.Hygiene.WaterPoint.CancelDraws>取消取水</CK.Hygiene.WaterPoint.CancelDraws>
 	<CK.Hygiene.WaterPoint.CancelDrawsDesc>清空当前取水次数。</CK.Hygiene.WaterPoint.CancelDrawsDesc>
+	<CK.Hygiene.WaterPoint.IceProgress>制冰进度：{0} / {1} 块（每块 10 升）</CK.Hygiene.WaterPoint.IceProgress>
+	<CK.Hygiene.WaterPoint.ClearIce>清空制冰</CK.Hygiene.WaterPoint.ClearIce>
+	<CK.Hygiene.WaterPoint.SurfaceReady>附近地表水：可用</CK.Hygiene.WaterPoint.SurfaceReady>
+	<CK.Hygiene.WaterPoint.NoSource>同网没有水井，附近也没有地表水</CK.Hygiene.WaterPoint.NoSource>
+	<CK.Hygiene.WaterPoint.IceReady>制冰条件：温度 ≤0°C，可以制冰</CK.Hygiene.WaterPoint.IceReady>
+	<CK.Hygiene.WaterPoint.IceWarm>制冰条件：温度高于 0°C，不会结冰</CK.Hygiene.WaterPoint.IceWarm>
+	<CK.Hygiene.WaterPoint.SetIce>设置制冰次数（当前 {0}）</CK.Hygiene.WaterPoint.SetIce>
+	<CK.Hygiene.WaterPoint.SetIceDesc>打开滑条设置要冻多少块冰；温度 ≤0°C 时每 1000 tick 冻一块，每块消耗 10 升水。</CK.Hygiene.WaterPoint.SetIceDesc>
+	<CK.Hygiene.WaterPoint.SetIceSlider>制冰次数：{0}</CK.Hygiene.WaterPoint.SetIceSlider>
+	<CK.Hygiene.WaterPoint.CancelIce>取消制冰</CK.Hygiene.WaterPoint.CancelIce>
+	<CK.Hygiene.WaterPoint.CancelIceDesc>清空当前制冰次数。</CK.Hygiene.WaterPoint.CancelIceDesc>
+	<CK.Hygiene.Ice.Melt>融化成水</CK.Hygiene.Ice.Melt>
+	<CK.Hygiene.Ice.MeltDesc>把这块冰融进附近的取水点，得到 {0} 升水。需要温度高于 0°C，且取水点水箱有空间。</CK.Hygiene.Ice.MeltDesc>
+	<CK.Hygiene.Ice.TooCold>太冷了，冰不会融化</CK.Hygiene.Ice.TooCold>
+	<CK.Hygiene.Ice.NoPoint>10 格内没有有余量的取水点</CK.Hygiene.Ice.NoPoint>
+	<CK.Hygiene.Ice.Melted>冰块融化，取水点得到 {0} 升水</CK.Hygiene.Ice.Melted>
 	<CK.Hygiene.FloatMenu.FillTub>倒入水盆</CK.Hygiene.FloatMenu.FillTub>
 	<CK.Hygiene.PitLevel>粪坑存量: {0}</CK.Hygiene.PitLevel>
 	<CK.Hygiene.PitFull>粪坑已满：需要清空</CK.Hygiene.PitFull>

@@ -34,9 +34,19 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return false;
 			}
-			Thing well = point.FindWellForDraw();
-			if (well == null
-				|| !pawn.CanReserveAndReach(well, PathEndMode.Touch, pawn.NormalMaxDanger()))
+			LocalTargetInfo source = point.FindDrawSource(pawn, out _);
+			if (!source.IsValid)
+			{
+				return false;
+			}
+			if (source.HasThing)
+			{
+				if (!pawn.CanReserveAndReach(source, PathEndMode.Touch, pawn.NormalMaxDanger()))
+				{
+					return false;
+				}
+			}
+			else if (!pawn.CanReserveAndReach(source, PathEndMode.OnCell, pawn.NormalMaxDanger()))
 			{
 				return false;
 			}
@@ -49,14 +59,16 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return null;
 			}
-			Thing well = point.FindWellForDraw();
+			LocalTargetInfo source = point.FindDrawSource(pawn, out _);
 			Thing bucket = WaterContainerUtility.FindBucketForJob(pawn);
 			JobDef def = DefDatabase<JobDef>.GetNamedSilentFail("CK_FillWaterPoint");
-			if (well == null || bucket == null || def == null)
+			if (!source.IsValid || bucket == null || def == null)
 			{
 				return null;
 			}
-			Job job = JobMaker.MakeJob(def, well, point);
+			Job job = JobMaker.MakeJob(def);
+			job.targetA = source;
+			job.targetB = point;
 			if (bucket.Spawned)
 			{
 				job.targetC = bucket;
