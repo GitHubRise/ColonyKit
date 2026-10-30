@@ -194,6 +194,11 @@
 	<CK.Hygiene.FloatMenu.NeedBasin>需要先装备脸盆</CK.Hygiene.FloatMenu.NeedBasin>
 	<CK.Hygiene.FloatMenu.BasinFull>脸盆已经满了</CK.Hygiene.FloatMenu.BasinFull>
 	<CK.Hygiene.FloatMenu.BasinEmpty>脸盆里没有水</CK.Hygiene.FloatMenu.BasinEmpty>
+	<CK.Hygiene.FloatMenu.Drink>喝水</CK.Hygiene.FloatMenu.Drink>
+	<CK.Hygiene.FloatMenu.FillBucket>用水桶打水</CK.Hygiene.FloatMenu.FillBucket>
+	<CK.Hygiene.FloatMenu.ContainerFull>水桶/脸盆已经满了</CK.Hygiene.FloatMenu.ContainerFull>
+	<CK.Hygiene.FloatMenu.NeedContainer>需要一只水桶或脸盆</CK.Hygiene.FloatMenu.NeedContainer>
+	<CK.Hygiene.FloatMenu.NoWaterSource>这里没有水</CK.Hygiene.FloatMenu.NoWaterSource>
 	<CK.Hygiene.BasinWater>脸盆水量: {0}/{1} 升</CK.Hygiene.BasinWater>
 	<CK.Hygiene.PoolWater>水量: {0}/{1} L</CK.Hygiene.PoolWater>
 	<CK.Hygiene.PoolEmpty>还没灌水</CK.Hygiene.PoolEmpty>
@@ -241,6 +246,21 @@
 	<CK.Hygiene.AutoRefill>自动补水</CK.Hygiene.AutoRefill>
 	<CK.Hygiene.AutoRefillDesc>接水网时自动把水盆补满；关掉后只靠雨水和手动倒水。</CK.Hygiene.AutoRefillDesc>
 	<CK.Hygiene.AutoRefillOff>自动补水已关闭</CK.Hygiene.AutoRefillOff>
+	<CK.Hygiene.WaterPoint.Tab>取水</CK.Hygiene.WaterPoint.Tab>
+	<CK.Hygiene.WaterPoint.TabTitle>取水点</CK.Hygiene.WaterPoint.TabTitle>
+	<CK.Hygiene.WaterPoint.DrawProgress>取水进度：{0} / {1} 次</CK.Hygiene.WaterPoint.DrawProgress>
+	<CK.Hygiene.WaterPoint.Clear>清空</CK.Hygiene.WaterPoint.Clear>
+	<CK.Hygiene.WaterPoint.TankLine>水箱：{0} / {1} 升</CK.Hygiene.WaterPoint.TankLine>
+	<CK.Hygiene.WaterPoint.FlowFast>供水：水泵加压，打水快</CK.Hygiene.WaterPoint.FlowFast>
+	<CK.Hygiene.WaterPoint.FlowSlow>供水：手动，打水慢</CK.Hygiene.WaterPoint.FlowSlow>
+	<CK.Hygiene.WaterPoint.WellReady>同网水井：可用</CK.Hygiene.WaterPoint.WellReady>
+	<CK.Hygiene.WaterPoint.NoWell>同网水井：没有</CK.Hygiene.WaterPoint.NoWell>
+	<CK.Hygiene.WaterPoint.TabHint>每次取水 = 1 桶（60 升）。需要同网有水井，且物品栏或地上有水桶，才会自动派活。</CK.Hygiene.WaterPoint.TabHint>
+	<CK.Hygiene.WaterPoint.SetDraws>设置取水次数（当前 {0}）</CK.Hygiene.WaterPoint.SetDraws>
+	<CK.Hygiene.WaterPoint.SetDrawsDesc>打开滑条设置要打多少桶水；到达次数后自动停止。</CK.Hygiene.WaterPoint.SetDrawsDesc>
+	<CK.Hygiene.WaterPoint.SetDrawsSlider>取水次数：{0}</CK.Hygiene.WaterPoint.SetDrawsSlider>
+	<CK.Hygiene.WaterPoint.CancelDraws>取消取水</CK.Hygiene.WaterPoint.CancelDraws>
+	<CK.Hygiene.WaterPoint.CancelDrawsDesc>清空当前取水次数。</CK.Hygiene.WaterPoint.CancelDrawsDesc>
 	<CK.Hygiene.FloatMenu.FillTub>倒入水盆</CK.Hygiene.FloatMenu.FillTub>
 	<CK.Hygiene.PitLevel>粪坑存量: {0}</CK.Hygiene.PitLevel>
 	<CK.Hygiene.PitFull>粪坑已满：需要清空</CK.Hygiene.PitFull>

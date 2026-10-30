@@ -39,7 +39,7 @@ namespace ColonyKit.Modules.Hygiene
 						return;
 					}
 					float liters = Mathf.Min(basin.Water, Building_WaterTub.MaxUses - tub.usesRemaining);
-					int added = tub.AddWater(Mathf.CeilToInt(liters), ContaminationLevel.Untreated);
+					int added = tub.AddWater(Mathf.CeilToInt(liters), basin.Contamination);
 					basin.Water = Mathf.Max(0f, basin.Water - added);
 				},
 				defaultCompleteMode = ToilCompleteMode.Instant

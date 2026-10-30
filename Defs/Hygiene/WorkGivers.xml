@@ -41,4 +41,16 @@
 		</requiredCapacities>
 		<prioritizeSustains>true</prioritizeSustains>
 	</WorkGiverDef>
+	<WorkGiverDef>
+		<defName>CK_FillWaterPoint</defName>
+		<label>fill water point</label>
+		<giverClass>ColonyKit.Modules.Hygiene.WorkGiver_FillWaterPoint</giverClass>
+		<workType>Hauling</workType>
+		<priorityInType>35</priorityInType>
+		<verb>draw water at</verb>
+		<gerund>drawing water at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
 </Defs>

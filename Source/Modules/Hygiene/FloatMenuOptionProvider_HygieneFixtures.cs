@@ -99,46 +99,63 @@ namespace ColonyKit.Modules.Hygiene
 					filth);
 			}
 
-			// 打水：往同一张水网的水箱里手动加水（没有水箱/水箱全满时不给）。
-			if (building.TryGetComp<CompWaterInlet>() != null)
+			// 取水点：可以直接喝水（洗手走上面的 Building_Basin 分支）。
+			if (building is Building_WaterPoint waterPoint)
+			{
+				yield return UseOption("CK.Hygiene.FloatMenu.Drink", pawn, waterPoint, "CK_DrinkFromBasin",
+					waterPoint.CanUse(pawn), RejectReason(waterPoint));
+			}
+
+			// 打水：水井（地下水）、取水点/水箱（同网存水）都能用随身容器接。
+			bool isWell = building.TryGetComp<CompWaterInlet>() != null;
+			bool isStorage = building.TryGetComp<CompWaterStorage>() != null;
+			if (isWell || isStorage || building is Building_WaterPoint)
 			{
 				CompPipe pipe = building.GetComp<CompPipe>();
 				PlumbingNet net = pipe?.pipeNet;
 				bool reachable = pawn.CanReserveAndReach(building, PathEndMode.Touch, pawn.NormalMaxDanger());
-				bool canDraw = reachable
-					&& net != null
-					&& net.WaterTowers.Any(t => t != null && t.WorkingNow && t.space > 1f);
-				yield return UseOption("CK.Hygiene.FloatMenu.DrawWater", pawn, building, "CK_DrawWater",
-					canDraw,
-					canDraw ? null : "CK.Hygiene.FloatMenu.NoWaterTank".Translate().ToString());
+				bool sourceHasWater = isWell || (net != null && net.WaterStorage > 1f);
 
-				// 脸盆：物品栏里带着就直接装；没带就自动去地上找一只（不占武器位、不装备）。
-				CompBasinWater carried = JobDriver_FillBasin.CarriedBasin(pawn);
-				Thing spare = carried == null ? FindSpawnedBasin(pawn) : null;
-				if (carried != null)
+				if (isWell)
 				{
-					if (carried.IsFull)
-					{
-						yield return UseOption("CK.Hygiene.FloatMenu.FillBasin", pawn, building, "CK_FillBasin", false,
-							"CK.Hygiene.FloatMenu.BasinFull".Translate().ToString());
-					}
-					else
-					{
-						bool canFill = reachable && net != null;
-						yield return UseOption("CK.Hygiene.FloatMenu.FillBasin", pawn, building, "CK_FillBasin",
-							canFill, canFill ? null : FillReason(reachable));
-					}
+					// 保留原「打水」：从水井往同网水箱手动加水。
+					bool canDraw = reachable
+						&& net != null
+						&& net.WaterTowers.Any(t => t != null && t.WorkingNow && t.space > 1f);
+					yield return UseOption("CK.Hygiene.FloatMenu.DrawWater", pawn, building, "CK_DrawWater",
+						canDraw,
+						canDraw ? null : "CK.Hygiene.FloatMenu.NoWaterTank".Translate().ToString());
 				}
-				else if (spare != null)
+
+				// 容器：物品栏里带着就直接装；没带就自动去地上找一只（不占武器位、不装备）。
+				CompBasinWater carried = WaterContainerUtility.CarriedContainer(pawn, requireWater: false);
+				Thing spare = carried == null ? WaterContainerUtility.FindSpawnedContainer(pawn, requireWater: false) : null;
+				CompBasinWater container = carried ?? spare?.TryGetComp<CompBasinWater>();
+				if (container != null)
 				{
-					bool canFill = reachable && net != null;
-					yield return UseOption("CK.Hygiene.FloatMenu.FillBasin", pawn, building, "CK_FillBasin",
-						canFill, canFill ? null : FillReason(reachable), spare);
+					string fillKey = WaterContainerUtility.IsBucket(container)
+						? "CK.Hygiene.FloatMenu.FillBucket"
+						: "CK.Hygiene.FloatMenu.FillBasin";
+					bool canFill = reachable && sourceHasWater;
+					yield return UseOption(fillKey, pawn, building, "CK_FillBasin",
+						canFill, canFill ? null : FillReason(reachable, sourceHasWater), spare);
 				}
 				else
 				{
-					yield return UseOption("CK.Hygiene.FloatMenu.FillBasin", pawn, building, "CK_FillBasin", false,
-						"CK.Hygiene.FloatMenu.NeedBasin".Translate().ToString());
+					CompBasinWater fullCarried = WaterContainerUtility.CarriedContainerAny(pawn);
+					if (fullCarried != null)
+					{
+						string fullKey = WaterContainerUtility.IsBucket(fullCarried)
+							? "CK.Hygiene.FloatMenu.FillBucket"
+							: "CK.Hygiene.FloatMenu.FillBasin";
+						yield return UseOption(fullKey, pawn, building, "CK_FillBasin", false,
+							"CK.Hygiene.FloatMenu.ContainerFull".Translate().ToString());
+					}
+					else
+					{
+						yield return UseOption("CK.Hygiene.FloatMenu.FillBasin", pawn, building, "CK_FillBasin", false,
+							"CK.Hygiene.FloatMenu.NeedContainer".Translate().ToString());
+					}
 				}
 			}
 
@@ -193,37 +210,15 @@ namespace ColonyKit.Modules.Hygiene
 				target);
 		}
 
-		private static string FillReason(bool reachable)
+		private static string FillReason(bool reachable, bool sourceHasWater)
 		{
-			return reachable
+			if (!reachable)
+			{
+				return "CannotReach".Translate().ToString();
+			}
+			return sourceHasWater
 				? "CK.Hygiene.NoWaterSupply".Translate().ToString()
-				: "CannotReach".Translate().ToString();
-		}
-
-		/// <summary>地上找一只可用的空脸盆（自动取用）。</summary>
-		private static Thing FindSpawnedBasin(Pawn pawn)
-		{
-			Map map = pawn?.Map;
-			if (map == null)
-			{
-				return null;
-			}
-			foreach (Thing thing in map.listerThings.AllThings)
-			{
-				CompBasinWater basin = thing.TryGetComp<CompBasinWater>();
-				if (basin == null
-					|| basin.IsFull
-					|| thing.IsForbidden(pawn)
-					|| thing.IsBurning())
-				{
-					continue;
-				}
-				if (pawn.CanReserveAndReach(thing, PathEndMode.ClosestTouch, pawn.NormalMaxDanger()))
-				{
-					return thing;
-				}
-			}
-			return null;
+				: "CK.Hygiene.FloatMenu.NoWaterSource".Translate().ToString();
 		}
 
 		private static string RejectReason(Building_AssignableFixture fixture)

@@ -59,6 +59,9 @@ namespace ColonyKit.Modules.Hygiene
 
 		public virtual bool CanSetGender => true;
 
+		/// <summary>是否显示性别/占用/派床等洁具专用 Gizmo；取水点这类公共设施关掉。</summary>
+		public virtual bool ShowFixtureGizmos => true;
+
 		public bool OccupancyCheck => occupancyCheck && !AnimalsOnly && !ForPrisoners;
 
 		public bool ForPrisoners => Position.IsInPrisonCell(Map);
@@ -172,6 +175,11 @@ namespace ColonyKit.Modules.Hygiene
 			foreach (Gizmo gizmo in base.GetGizmos())
 			{
 				yield return gizmo;
+			}
+
+			if (!ShowFixtureGizmos)
+			{
+				yield break;
 			}
 
 			if (CanSetGender)

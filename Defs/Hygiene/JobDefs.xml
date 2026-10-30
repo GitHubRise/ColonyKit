@@ -72,4 +72,16 @@
 		<reportString>filling the water tub.</reportString>
 		<casualInterruptible>true</casualInterruptible>
 	</JobDef>
+	<JobDef>
+		<defName>CK_FillWaterPoint</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_FillWaterPoint</driverClass>
+		<reportString>drawing water.</reportString>
+		<casualInterruptible>true</casualInterruptible>
+	</JobDef>
+	<JobDef>
+		<defName>CK_DrinkFromCarried</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_DrinkFromCarried</driverClass>
+		<reportString>drinking from a water container.</reportString>
+		<casualInterruptible>true</casualInterruptible>
+	</JobDef>
 </Defs>

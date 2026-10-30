@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_MakeWaterBucket.label>制作水桶</CK_MakeWaterBucket.label>
+	<CK_MakeWaterBucket.description>用 20 钢铁制作一只水桶，能装 60 升水。</CK_MakeWaterBucket.description>
+	<CK_MakeWaterBucket.jobString>正在制作水桶。</CK_MakeWaterBucket.jobString>
+</LanguageData>

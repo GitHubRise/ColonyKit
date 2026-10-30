@@ -48,6 +48,15 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				range = 9999f;
 			}
+			// 随身带着水桶/脸盆时先喝自己的水，省得跑回洗手池。
+			if (WaterContainerUtility.CarriedContainer(pawn, requireWater: true) != null)
+			{
+				JobDef carriedDef = DefDatabase<JobDef>.GetNamedSilentFail("CK_DrinkFromCarried");
+				if (carriedDef != null)
+				{
+					return JobMaker.MakeJob(carriedDef);
+				}
+			}
 			LocalTargetInfo target = ClosestSanitation.FindBestDrink(pawn, urgent, range);
 			if (!target.IsValid)
 			{

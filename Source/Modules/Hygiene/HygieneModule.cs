@@ -45,6 +45,9 @@ namespace ColonyKit.Modules.Hygiene
 				$"water defs: pipe={DefExists("CK_DbhWaterPipe")}, tank={DefExists("CK_DbhWaterTank")}, " +
 				$"giant={DefExists("CK_DbhWaterTankGiant")}, pump={DefExists("CK_DbhWaterPump")}, " +
 				$"well={DefExists("CK_DbhWaterWell")}, heater={DefExists("CK_DbhWaterHeater")}; " +
+				$"waterPoint={DefExists("CK_WaterPoint")}, bucket={DefExists("CK_WaterBucket")}, " +
+				$"fillPointJob={JobExists("CK_FillWaterPoint")}, drinkCarriedJob={JobExists("CK_DrinkFromCarried")}, " +
+				$"fillPointWorkGiver={WorkGiverExists("CK_FillWaterPoint")}; " +
 				$"hygiene menu={DefDatabase<DesignationCategoryDef>.GetNamedSilentFail("CK_Hygiene") != null}; " +
 				$"latrine={DefExists("CK_PitLatrine")}, emptyLatrineJob={DefDatabase<JobDef>.GetNamedSilentFail("CK_EmptyLatrine") != null}");
 		}
@@ -52,6 +55,16 @@ namespace ColonyKit.Modules.Hygiene
 		private static bool DefExists(string defName)
 		{
 			return DefDatabase<ThingDef>.GetNamedSilentFail(defName) != null;
+		}
+
+		private static bool JobExists(string defName)
+		{
+			return DefDatabase<JobDef>.GetNamedSilentFail(defName) != null;
+		}
+
+		private static bool WorkGiverExists(string defName)
+		{
+			return DefDatabase<WorkGiverDef>.GetNamedSilentFail(defName) != null;
 		}
 
 		public override void ResetRuntimeState()

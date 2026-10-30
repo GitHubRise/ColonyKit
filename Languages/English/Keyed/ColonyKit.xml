@@ -194,6 +194,11 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<CK.Hygiene.FloatMenu.NeedBasin>Equip a wash basin first</CK.Hygiene.FloatMenu.NeedBasin>
 	<CK.Hygiene.FloatMenu.BasinFull>The basin is full</CK.Hygiene.FloatMenu.BasinFull>
 	<CK.Hygiene.FloatMenu.BasinEmpty>The basin is empty</CK.Hygiene.FloatMenu.BasinEmpty>
+	<CK.Hygiene.FloatMenu.Drink>Drink</CK.Hygiene.FloatMenu.Drink>
+	<CK.Hygiene.FloatMenu.FillBucket>Fill bucket</CK.Hygiene.FloatMenu.FillBucket>
+	<CK.Hygiene.FloatMenu.ContainerFull>The container is full</CK.Hygiene.FloatMenu.ContainerFull>
+	<CK.Hygiene.FloatMenu.NeedContainer>Needs a bucket or wash basin</CK.Hygiene.FloatMenu.NeedContainer>
+	<CK.Hygiene.FloatMenu.NoWaterSource>No water here</CK.Hygiene.FloatMenu.NoWaterSource>
 	<CK.Hygiene.BasinWater>Basin water: {0}/{1} L</CK.Hygiene.BasinWater>
 	<CK.Hygiene.PoolWater>Water: {0}/{1} L</CK.Hygiene.PoolWater>
 	<CK.Hygiene.PoolEmpty>Not filled yet</CK.Hygiene.PoolEmpty>
@@ -241,6 +246,21 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<CK.Hygiene.AutoRefill>Auto-refill</CK.Hygiene.AutoRefill>
 	<CK.Hygiene.AutoRefillDesc>Refills itself from a connected water network. Turn off to rely on rain and manual pouring.</CK.Hygiene.AutoRefillDesc>
 	<CK.Hygiene.AutoRefillOff>Auto-refill is off</CK.Hygiene.AutoRefillOff>
+	<CK.Hygiene.WaterPoint.Tab>Water</CK.Hygiene.WaterPoint.Tab>
+	<CK.Hygiene.WaterPoint.TabTitle>Water point</CK.Hygiene.WaterPoint.TabTitle>
+	<CK.Hygiene.WaterPoint.DrawProgress>Draws: {0} / {1}</CK.Hygiene.WaterPoint.DrawProgress>
+	<CK.Hygiene.WaterPoint.Clear>Clear</CK.Hygiene.WaterPoint.Clear>
+	<CK.Hygiene.WaterPoint.TankLine>Tank: {0} / {1} L</CK.Hygiene.WaterPoint.TankLine>
+	<CK.Hygiene.WaterPoint.FlowFast>Supply: pumped, fast drawing</CK.Hygiene.WaterPoint.FlowFast>
+	<CK.Hygiene.WaterPoint.FlowSlow>Supply: manual, slow drawing</CK.Hygiene.WaterPoint.FlowSlow>
+	<CK.Hygiene.WaterPoint.WellReady>Well on network: yes</CK.Hygiene.WaterPoint.WellReady>
+	<CK.Hygiene.WaterPoint.NoWell>Well on network: none</CK.Hygiene.WaterPoint.NoWell>
+	<CK.Hygiene.WaterPoint.TabHint>Each draw is one 60 L bucket. Colonists need a bucket in their inventory or on the ground and a well on the same network.</CK.Hygiene.WaterPoint.TabHint>
+	<CK.Hygiene.WaterPoint.SetDraws>Set number of draws ({0})</CK.Hygiene.WaterPoint.SetDraws>
+	<CK.Hygiene.WaterPoint.SetDrawsDesc>Open a slider to set how many buckets to draw. Work stops when the count is reached.</CK.Hygiene.WaterPoint.SetDrawsDesc>
+	<CK.Hygiene.WaterPoint.SetDrawsSlider>Draws: {0}</CK.Hygiene.WaterPoint.SetDrawsSlider>
+	<CK.Hygiene.WaterPoint.CancelDraws>Cancel draws</CK.Hygiene.WaterPoint.CancelDraws>
+	<CK.Hygiene.WaterPoint.CancelDrawsDesc>Clear the current draw order.</CK.Hygiene.WaterPoint.CancelDrawsDesc>
 	<CK.Hygiene.FloatMenu.FillTub>Pour in basin</CK.Hygiene.FloatMenu.FillTub>
 	<CK.Hygiene.PitLevel>Pit fill: {0}</CK.Hygiene.PitLevel>
 	<CK.Hygiene.PitFull>Pit full - needs emptying</CK.Hygiene.PitFull>
