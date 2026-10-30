@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-	<CK_WashBasinItem.label>脸盆</CK_WashBasinItem.label>
-	<CK_WashBasinItem.description>便携脸盆。像工具一样装备后可带到水井边打水（30 升），再右键水箱把水倒进去。</CK_WashBasinItem.description>
-	<CK_WashBasinWoodItem.label>木脸盆</CK_WashBasinWoodItem.label>
-	<CK_WashBasinWoodItem.description>木制便携脸盆。功能和铁脸盆一样，更便宜也更轻，耐久低一些。</CK_WashBasinWoodItem.description>
+	<CK_WashBasinItem.label>水盆</CK_WashBasinItem.label>
+	<CK_WashBasinItem.description>便携水盆，不是固定建筑。可拾取随身携带，带到取水点、水龙头或水井打满水，再带回来给病人、囚徒或自己喝；也能把水倒进水箱。</CK_WashBasinItem.description>
+	<CK_WashBasinWoodItem.label>木水盆</CK_WashBasinWoodItem.label>
+	<CK_WashBasinWoodItem.description>木制便携水盆，功能和水盆一样，更便宜也更轻，耐久低一些。</CK_WashBasinWoodItem.description>
 </LanguageData>

@@ -39,6 +39,8 @@ namespace ColonyKit.Modules.Hygiene
 		private static readonly System.Collections.Generic.List<Thing> bulkBuckets =
 			new System.Collections.Generic.List<Thing>();
 		private static bool bulkPhaseDone;
+		private static bool waterPatientPhaseDone;
+		private static Pawn waterPatient;
 		private static bool basinPhaseDone;
 		private static int startTick;
 		private static int nextLogTick;
@@ -476,6 +478,28 @@ namespace ColonyKit.Modules.Hygiene
 					}
 					bulkPhaseDone = true;
 					ModLog.Info("Hygiene", $"water selftest bulk phase done: full={full}");
+					StartWaterPatientPhase();
+					nextLogTick = elapsed + 250;
+				}
+				else if (elapsed >= MaxTicks)
+				{
+					Finish(false);
+				}
+				return;
+			}
+
+			if (!waterPatientPhaseDone)
+			{
+				if (elapsed >= nextLogTick)
+				{
+					nextLogTick = elapsed + 500;
+					Log("patient");
+				}
+				Need_Thirst thirst = waterPatient?.needs?.TryGetNeed<Need_Thirst>();
+				if (thirst != null && thirst.CurLevel >= 0.95f)
+				{
+					waterPatientPhaseDone = true;
+					ModLog.Info("Hygiene", $"water selftest patient phase done: thirst={thirst.CurLevel:F2}");
 					Finish(true);
 				}
 				else if (elapsed >= MaxTicks)
@@ -625,6 +649,40 @@ namespace ColonyKit.Modules.Hygiene
 			}
 		}
 
+		private static void StartWaterPatientPhase()
+		{
+			waterPatient = map.mapPawns.FreeColonists.FirstOrDefault(p =>
+				p != pawn && p.RaceProps.Humanlike);
+			if (waterPatient == null || basin == null)
+			{
+				Fail("patient phase missing");
+				return;
+			}
+			waterPatient.jobs.StopAll(false);
+			waterPatient.drafter.Drafted = false;
+			Need_Thirst thirst = waterPatient.needs?.TryGetNeed<Need_Thirst>();
+			CompBasinWater water = basin.TryGetComp<CompBasinWater>();
+			if (thirst == null || water == null)
+			{
+				Fail("patient phase missing needs");
+				return;
+			}
+			thirst.CurLevel = 0.2f;
+			water.Water = water.Props.Capacity;
+			JobDef def = DefDatabase<JobDef>.GetNamedSilentFail("CK_WaterPatient");
+			if (def == null)
+			{
+				Fail("water patient job missing");
+				return;
+			}
+			Job job = JobMaker.MakeJob(def, waterPatient);
+			pawn.jobs.StopAll(false);
+			if (!pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc))
+			{
+				Fail("water patient job rejected");
+			}
+		}
+
 		private static void Log(string phase)
 		{
 			CompBasinWater container = bucket?.TryGetComp<CompBasinWater>();
@@ -636,6 +694,7 @@ namespace ColonyKit.Modules.Hygiene
 				$"bucketWater={(container?.Water ?? -1f):F1} bucketSpawned={bucket?.Spawned} " +
 				$"basinWater={(basin?.TryGetComp<CompBasinWater>()?.Water ?? -1f):F1} " +
 				$"thirst={(pawn?.needs?.TryGetNeed<Need_Thirst>()?.CurLevel ?? -1f):F2} " +
+				$"patientThirst={(waterPatient?.needs?.TryGetNeed<Need_Thirst>()?.CurLevel ?? -1f):F2} " +
 				$"listCompleted={listBill?.repeatCount ?? -1}");
 		}
 

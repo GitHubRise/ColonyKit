@@ -96,4 +96,10 @@
 		<reportString>filling water buckets.</reportString>
 		<casualInterruptible>true</casualInterruptible>
 	</JobDef>
+	<JobDef>
+		<defName>CK_WaterPatient</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_WaterPatient</driverClass>
+		<reportString>giving water.</reportString>
+		<casualInterruptible>true</casualInterruptible>
+	</JobDef>
 </Defs>

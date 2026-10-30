@@ -1,3 +1,4 @@
+using ColonyKit.Modules.Hygiene.Dbh;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -37,6 +38,61 @@ namespace ColonyKit.Modules.Hygiene
 				}
 			}
 			return IntVec3.Invalid;
+		}
+
+		/// <summary>
+		/// 给「带容器去装水」找一个可用的装水点：取水点、水龙头、水井、同网有存水的水箱，
+		/// 最后退回附近地表水。返回 Thing 或可站格。
+		/// </summary>
+		public static LocalTargetInfo FindFillSource(Pawn pawn, IntVec3 near, float range = 9999f)
+		{
+			Map map = pawn?.Map;
+			if (map == null)
+			{
+				return LocalTargetInfo.Invalid;
+			}
+			Thing best = null;
+			float bestDistance = float.MaxValue;
+			foreach (Thing thing in map.listerThings.ThingsInGroup(ThingRequestGroup.BuildingArtificial))
+			{
+				if (!IsFillSource(thing))
+				{
+					continue;
+				}
+				if (thing.IsForbidden(pawn)
+					|| !pawn.CanReserveAndReach(thing, PathEndMode.Touch, Danger.Some))
+				{
+					continue;
+				}
+				float distance = thing.Position.DistanceTo(near);
+				if (distance < bestDistance)
+				{
+					bestDistance = distance;
+					best = thing;
+				}
+			}
+			if (best != null)
+			{
+				return new LocalTargetInfo(best);
+			}
+			IntVec3 stand = FindSurfaceWaterStandCell(pawn, near, range);
+			return stand.IsValid ? new LocalTargetInfo(stand) : LocalTargetInfo.Invalid;
+		}
+
+		private static bool IsFillSource(Thing thing)
+		{
+			if (thing is Building_WaterSpot || thing is Building_WaterPoint)
+			{
+				return true;
+			}
+			if (thing.TryGetComp<CompWaterInlet>() != null)
+			{
+				return true;
+			}
+			CompWaterStorage storage = thing.TryGetComp<CompWaterStorage>();
+			return storage != null
+				&& storage.WaterStorage > 1f
+				&& thing.TryGetComp<CompPipe>()?.pipeNet != null;
 		}
 
 		/// <summary>在 near 附近找一处地表水的可站格（供小人取水用，带可达判断）。</summary>

@@ -65,4 +65,28 @@
 			<li>Manipulation</li>
 		</requiredCapacities>
 	</WorkGiverDef>
+	<WorkGiverDef>
+		<defName>CK_WaterPatient</defName>
+		<label>give water to patients</label>
+		<giverClass>ColonyKit.Modules.Hygiene.WorkGiver_WaterIncapacitated</giverClass>
+		<workType>Doctor</workType>
+		<priorityInType>30</priorityInType>
+		<verb>give water to</verb>
+		<gerund>giving water to</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+	<WorkGiverDef>
+		<defName>CK_WaterPrisoner</defName>
+		<label>give water to prisoners</label>
+		<giverClass>ColonyKit.Modules.Hygiene.WorkGiver_WaterIncapacitated</giverClass>
+		<workType>Warden</workType>
+		<priorityInType>30</priorityInType>
+		<verb>give water to</verb>
+		<gerund>giving water to</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
 </Defs>

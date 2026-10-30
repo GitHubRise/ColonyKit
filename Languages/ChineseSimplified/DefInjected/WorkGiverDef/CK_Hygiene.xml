@@ -12,4 +12,10 @@
 	<CK_FillWaterSpot.label>给取水点打水</CK_FillWaterSpot.label>
 	<CK_FillWaterSpot.verb>在取水点打水</CK_FillWaterSpot.verb>
 	<CK_FillWaterSpot.gerund>正在取水点打水</CK_FillWaterSpot.gerund>
+	<CK_WaterPatient.label>给病人喂水</CK_WaterPatient.label>
+	<CK_WaterPatient.verb>喂水给</CK_WaterPatient.verb>
+	<CK_WaterPatient.gerund>正在给病人喂水</CK_WaterPatient.gerund>
+	<CK_WaterPrisoner.label>给囚徒喂水</CK_WaterPrisoner.label>
+	<CK_WaterPrisoner.verb>喂水给</CK_WaterPrisoner.verb>
+	<CK_WaterPrisoner.gerund>正在给囚徒喂水</CK_WaterPrisoner.gerund>
 </LanguageData>

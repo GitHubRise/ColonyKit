@@ -8,7 +8,8 @@
 
 - **「取水」工作类型**：工作页新增 `CK_WaterFetching`（取水）列，`CK_FillWaterPoint` 与 `CK_FillWaterSpot` 从 Hauling 移入；取水点的清单任务、水龙头取水次数都按这一列的优先级派活，不再和搬运抢优先级。
 - **取水点账单式清单**：`Building_WaterSpot` 实现 `IBillGiver`，清单页改用原版 `BillStack.DoListing` / `Bill_Production`，和屠宰点一样有「添加清单」；配方 `CK_DrawWaterBucket`（取水，1 桶）与 `CK_DrawWaterBulk`（批量取水，一次最多 5 桶），点账单进入 `Dialog_BillConfig`，可选做 X 次 / 维持 X 个 / 不限次数；「维持」由 `RecipeWorkerCounter_FullBuckets` 统计地图和殖民者物品栏里的满水桶。
-- **水盆可拾取、取水点可打水**：脸盆/水桶新增 `CK_WaterContainer` 拾取组（最多 3 件），可在玩家主基地直接「拾取」随身携带；选中殖民者右键取水点，水桶走账单任务、脸盆走 `CK_FillBasin` 直接打水；右键水龙头同样支持脸盆/水桶。
+- **水盆可拾取、取水点可打水**：脸盆/水桶新增 `CK_WaterContainer` 拾取组（最多 3 件），可在玩家主基地直接「拾取」随身携带；选中殖民者右键取水点，水桶走账单任务、脸盆走 `CK_FillBasin` 直接打水；右键水龙头同样支持脸盆/水桶。便携盆中文名改为「水盆」（木水盆），明确不是固定建筑。
+- **给无法行动的病人/囚徒喂水**：新增 `WorkGiver_WaterPatient`（医生）与 `WorkGiver_WaterPrisoner`（看守）和 `CK_WaterPatient` Job。医生/看守会拿水盆或水桶，容器空时先去取水点、水龙头、水井或同网水箱打满，再到床边一勺一勺喂到不渴；病人/囚徒全程不需要起身。
 - **水箱银白色贴图**：`CK_WaterTank.png` 与 `CK_WaterTankGiant.png` 重新上色为银白色，水箱、巨型水箱和热水箱统一使用。
 
 ### Fixed
