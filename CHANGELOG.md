@@ -6,6 +6,16 @@
 
 ### Added
 
+- **`-NoRjw` 出包开关**：`package.ps1` / `make-portable.ps1` / `build.ps1` 新增 `-NoRjw`，用来出一个不带内置 RJW 的版本（`dist\ColonyKit-<version>.zip` 与 `-portable-noRjw.zip`）。开关不只是少编一个程序集：`tools\strip-rjw.ps1` 会把 RJW.dll、`Defs\Rjw`、`Patches\Rjw`、依赖 `rjw.HediffDef_SexPart` 的 `Defs\Robotics\RJWCompat.xml`、Mk-V 身上的 MechGenitals/MechChest/MechAnus 三个 RJW 部位、Languages 里指向 RJW 的词条（含 13 个 `rjw.*` 类型目录）与 `incompatibleWith` 里的 `rim.job.world` 一并摘掉。代码不用改：`RjwCompat` 用 `Type.GetType` 探测，RJW 缺席时相关分支自动失效。实测隔离环境 0 XML error / 0 「Could not find def」。
+
+### Fixed
+
+- **空调室外机的中文整份失效**：`Languages\ChineseSimplified\DefInjected\ThingDef\CK_Aircon.xml` 第 5–6 行开标签是 `CK_AirConOutdoorUnit`、闭标签是 `CK_AirconOutdoorUnit`，大小写不一致让整个文件解析失败（游戏日志报 XML error），空调管、室内机、室外机四条中文全部没生效。现统一成 `CK_AirconOutdoorUnit`。
+
+- **加载日志谎报内置 RJW**：`RjwModule` 无条件打印 `bundled RJW 1.6 loaded`，而 `-NoRjw` 包里根本没有 RJW.dll。现按 `RjwCompat.Loaded` 如实输出 `bundled RJW loaded=True/False`。
+
+### Added
+
 - **内置精心准备（可开关）**：把 EdB Prepare Carefully 1.6.2（MIT）按内置 RJW 的方式并入 ColonyKit——源码镜像到 `Source\PrepareCarefully`，由独立工程 `Source\PrepareCarefully.Bundled` 编成 `Assemblies\EdBPrepareCarefully.dll`（不并入 ColonyKit.dll）；Defs / Textures / Languages 合并进对应目录，249 条中文词条一并带上。新增模块 `prepare-carefully`（默认开）：设置里关掉后，`PrepareCarefullyBridge` 会把它的两个 Harmony Postfix 卸掉，开局页不再出现「精心准备」按钮；开关在下一帧生效。外部创意工坊版同时启用时只告警、不接管其补丁，并在 `About.xml` 的 `incompatibleWith` 里标注。配套 `sync-preparecarefully.ps1`（镜像/合并上游）与 `build-with-preparecarefully.ps1`（`build.ps1 -WithPrepareCarefully` 的入口）。
 - **工作优先级 9 级**：原版「工作」页的优先级上限写死为 4（`Pawn_WorkSettings.LowestPriority`、`WidgetsWork.DrawWorkBoxFor` 与 `PawnColumnWorker_WorkPriority.HeaderClicked` 里的绕圈常量）。新模块 `work-priority` 把这三处换成运行时上限 `WorkPriorityModule.MaxPriority`：单元格左/右键在 1–9 之间绕圈、0 为关闭，列头 Shift 点击整列升降；5–9 走 `Pawn_WorkSettings.SetPriority` 的前缀直接写优先级表，不再触发原版「Trying to set work to invalid priority」日志。5–9 级另给一套渐暗的灰度（`WidgetsWork.ColorOfPriority` 后缀），并补 `Priority5`–`Priority9` 词条，悬停提示显示「第 N 优先级 / Priority N」；教程「手动分配工作优先级」里「标记 4 为最后去做」通过反射改成 9（1.6 把 `helpText` 改成了 private）。模块关闭时 `MaxPriority` 退回 4，行为与原版一致。
 

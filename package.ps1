@@ -10,14 +10,21 @@
 	4. 检查：About/About.xml 在第一层、没有 Source/obj/bin、程序集只有 .dll
 	5. 压缩到 dist\ColonyKit-<modVersion>.zip
 
+.PARAMETER NoRjw
+	本次不内置 RJW：构建改用 build.ps1 -NoRjw（不重编、不要求 RJW.dll），
+	复制完再用 tools\strip-rjw.ps1 摘掉 Defs\Rjw、Patches\Rjw、RJW.dll、RJW 专属 Def/词条与
+	About 里的 rim.job.world 不兼容项，产物是 dist\ColonyKit-<modVersion>-noRjw.zip。
+
 .EXAMPLE
 	.\package.ps1
 	.\package.ps1 -SkipBuild
+	.\package.ps1 -NoRjw
 #>
 [CmdletBinding()]
 param(
 	[switch]$SkipBuild,
-	[switch]$SkipVerify
+	[switch]$SkipVerify,
+	[switch]$NoRjw
 )
 
 $ErrorActionPreference = 'Stop'
@@ -36,13 +43,22 @@ if (-not $SkipVerify) {
 
 if (-not $SkipBuild) {
 	$global:LASTEXITCODE = 0
-	# 发布包必须带最新的内置 RJW，所以走 with-rjw（build.ps1 默认复用旧 RJW.dll）。
-	& (Join-Path $root 'build-with-rjw.ps1')
+	if ($NoRjw) {
+		# 不带 RJW 的包连编译都不该碰 RJW 子工程，也不要求上次的 RJW.dll 还在。
+		& (Join-Path $root 'build.ps1') -NoRjw
+	}
+	else {
+		# 发布包必须带最新的内置 RJW，所以走 with-rjw（build.ps1 默认复用旧 RJW.dll）。
+		& (Join-Path $root 'build-with-rjw.ps1')
+	}
 	if ($LASTEXITCODE -ne 0) { throw '构建失败，已中止打包。' }
 }
 
 $dll = Join-Path $root 'Assemblies\ColonyKit.dll'
-if (-not (Test-Path $dll)) { throw "缺少产物：$dll（先运行 build-with-rjw.ps1）" }
+if (-not (Test-Path $dll)) {
+	$hint = if ($NoRjw) { '先运行 .\build.ps1' } else { '先运行 build-with-rjw.ps1' }
+	throw "缺少产物：$dll（$hint）"
+}
 
 [xml]$about = Get-Content (Join-Path $root 'About\About.xml') -Encoding utf8
 $version = $about.ModMetaData.modVersion
@@ -64,6 +80,11 @@ try {
 	if (-not (Test-Path (Join-Path $stage 'About\About.xml'))) {
 		throw '打包内容缺少 About\About.xml（位置不对，会变成一个空 Mod）'
 	}
+
+	if ($NoRjw) {
+		. (Join-Path $root 'tools\strip-rjw.ps1')
+		Remove-RjwContent -Path $stage -SourceRoot $root
+	}
 	foreach ($forbidden in 'Source', 'obj', 'bin') {
 		$hits = Get-ChildItem $stage -Recurse -Directory -Filter $forbidden -ErrorAction SilentlyContinue
 		if ($hits) { throw "打包内容里出现 $forbidden/：$($hits.FullName -join ', ')" }
@@ -75,7 +96,8 @@ try {
 	}
 
 	New-Item -ItemType Directory -Force -Path $dist | Out-Null
-	$zipPath = Join-Path $dist ("ColonyKit-{0}.zip" -f $version)
+	$suffix = if ($NoRjw) { '-noRjw' } else { '' }
+	$zipPath = Join-Path $dist ("ColonyKit-{0}{1}.zip" -f $version, $suffix)
 	if (Test-Path $zipPath) { Remove-Item $zipPath -Force }
 
 	Add-Type -AssemblyName System.IO.Compression

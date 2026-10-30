@@ -16,8 +16,10 @@ namespace ColonyKit.Modules
 		public override void OnDefsLoaded()
 		{
 			bool externalRjw = ModsConfig.IsActive("rim.job.world");
-			ModLog.Info("RJW", $"bundled RJW 1.6 loaded; external rim.job.world active={externalRjw}");
-			if (externalRjw)
+			// -NoRjw 出的包没有 RJW.dll，这时要如实写「未内置」，别让日志骗人。
+			bool bundledRjw = Robotics.RjwCompat.Loaded;
+			ModLog.Info("RJW", $"bundled RJW loaded={bundledRjw}; external rim.job.world active={externalRjw}");
+			if (bundledRjw && externalRjw)
 			{
 				ModLog.Warn(
 					"RJW",

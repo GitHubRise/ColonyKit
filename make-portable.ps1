@@ -14,12 +14,17 @@
 .EXAMPLE
 	.\make-portable.ps1
 	.\make-portable.ps1 -SkipBuild -SkipVerify
+	.\make-portable.ps1 -NoRjw
 	.\make-portable.ps1 -HarmonyPath 'D:\SteamLibrary\steamapps\workshop\content\294100\2009463077'
+
+.PARAMETER NoRjw
+	转发给 package.ps1，产出去掉内置 RJW 的便携包（dist\ColonyKit-<version>-portable-noRjw.zip）。
 #>
 [CmdletBinding()]
 param(
 	[switch]$SkipBuild,
 	[switch]$SkipVerify,
+	[switch]$NoRjw,
 	[string]$HarmonyPath = ''
 )
 
@@ -32,6 +37,8 @@ $installer = Join-Path $root 'installer'
 $packageArgs = @{}
 if ($SkipBuild)  { $packageArgs.SkipBuild  = $true }
 if ($SkipVerify) { $packageArgs.SkipVerify = $true }
+if ($NoRjw)      { $packageArgs.NoRjw      = $true }
+$suffix = if ($NoRjw) { '-noRjw' } else { '' }
 # package.ps1 可能一次外部程序都没调，$LASTEXITCODE 会是 $null 或调用方的残留值。
 $global:LASTEXITCODE = 0
 & (Join-Path $root 'package.ps1') @packageArgs
@@ -68,7 +75,7 @@ function Resolve-HarmonyPath {
 $harmony = Resolve-HarmonyPath $HarmonyPath
 Write-Host ("[harmony] {0}" -f $harmony) -ForegroundColor Cyan
 
-$modZip = Join-Path $dist ("ColonyKit-{0}.zip" -f $version)
+$modZip = Join-Path $dist ("ColonyKit-{0}{1}.zip" -f $version, $suffix)
 if (-not (Test-Path $modZip)) { throw "缺少 Mod 包：$modZip" }
 
 $bat  = Join-Path $installer 'install.bat'
@@ -96,7 +103,7 @@ try {
 	}
 
 	New-Item -ItemType Directory -Force -Path $dist | Out-Null
-	$out = Join-Path $dist ("ColonyKit-{0}-portable.zip" -f $version)
+	$out = Join-Path $dist ("ColonyKit-{0}-portable{1}.zip" -f $version, $suffix)
 	if (Test-Path $out) { Remove-Item $out -Force }
 
 	Add-Type -AssemblyName System.IO.Compression
