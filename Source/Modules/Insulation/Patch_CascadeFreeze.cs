@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+using HarmonyLib;
+using UnityEngine;
 using Verse;
 
 namespace ColonyKit.Modules.Insulation
@@ -39,60 +40,31 @@ namespace ColonyKit.Modules.Insulation
 		}
 	}
 
-	/// <summary>级联冷腔的墙体漏热按理想保温处理。</summary>
-	[HarmonyPatch(typeof(RoomTempTracker), "WallEqualizationTempChangePerInterval")]
-	internal static class Patch_CascadeFreezeWall
+	/// <summary>
+	/// 级联冷腔的每次温度结算后把温度拉回级联目标。
+	/// </summary>
+	/// <remarks>
+	/// 原版 <c>RoomTempTracker.EqualizeTemperature</c> 是所有房间温度变化的唯一出口：
+	/// 墙体、屋顶、无顶、厚岩顶、门廊漏热都在这里结算。这里在结算之后把级联冷腔的温度
+	/// 直接往目标拉 <see cref="CascadeFreeze.StepPerTick"/> 度，等于把漏热整项抵掉，
+	/// 比逐个改漏热系数更不容易漏项；只对识别出的冷腔房间生效。
+	/// </remarks>
+	[HarmonyPatch(typeof(RoomTempTracker), "EqualizeTemperature")]
+	internal static class Patch_CascadeFreezeEqualize
 	{
 		[HarmonyPostfix]
-		private static void Postfix(RoomTempTracker __instance, ref float __result)
+		private static void Postfix(RoomTempTracker __instance)
 		{
-			if (__result != 0f && CascadeFreezePatchUtility.IsCascadeRoom(__instance))
+			if (__instance == null)
 			{
-				__result = 0f;
-			}
-		}
-	}
-
-	/// <summary>级联冷腔的薄屋顶漏热按理想保温处理。</summary>
-	[HarmonyPatch(typeof(RoomTempTracker), "ThinRoofEqualizationTempChangePerInterval")]
-	internal static class Patch_CascadeFreezeRoof
-	{
-		[HarmonyPostfix]
-		private static void Postfix(RoomTempTracker __instance, ref float __result)
-		{
-			if (__result != 0f && CascadeFreezePatchUtility.IsCascadeRoom(__instance))
-			{
-				__result = 0f;
-			}
-		}
-	}
-
-	/// <summary>级联冷腔的无顶漏热按理想保温处理。</summary>
-	[HarmonyPatch(typeof(RoomTempTracker), "NoRoofEqualizationTempChangePerInterval")]
-	internal static class Patch_CascadeFreezeNoRoof
-	{
-		[HarmonyPostfix]
-		private static void Postfix(RoomTempTracker __instance, ref float __result)
-		{
-			if (__result != 0f && CascadeFreezePatchUtility.IsCascadeRoom(__instance))
-			{
-				__result = 0f;
-			}
-		}
-	}
-
-	internal static class CascadeFreezePatchUtility
-	{
-		public static bool IsCascadeRoom(RoomTempTracker tracker)
-		{
-			if (tracker == null)
-			{
-				return false;
+				return;
 			}
 
-			Room room = Traverse.Create(tracker).Field("room").GetValue<Room>();
-			return room != null && room.Map != null && CascadeFreeze.IsInsulated(room);
+			Room room = Traverse.Create(__instance).Field("room").GetValue<Room>();
+			if (room != null && CascadeFreeze.TryGetTarget(room, out float target))
+			{
+				room.Temperature = Mathf.MoveTowards(room.Temperature, target, CascadeFreeze.StepPerTick);
+			}
 		}
 	}
 }
-

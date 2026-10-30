@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -43,7 +43,7 @@ namespace ColonyKit.Modules.Insulation
 		public const float FloorTemperature = -273.15f;
 
 		/// <summary>每个 <c>TickRare</c> 最多拉低多少度，避免温度瞬间跳变。</summary>
-		public const float StepPerTick = 6f;
+		public const float StepPerTick = 60f;
 
 		/// <summary>冷室超过这个格数就不按级联冷腔处理，避免把大厅也冻住。</summary>
 		public const int MaxColdRoomCells = 32;
@@ -62,6 +62,7 @@ namespace ColonyKit.Modules.Insulation
 		private static readonly HashSet<Building_Cooler> visited = new HashSet<Building_Cooler>();
 		private static readonly List<Building_Cooler> chain = new List<Building_Cooler>();
 		private static readonly List<IntVec3> frontier = new List<IntVec3>();
+		private static readonly HashSet<IntVec3> chamberSeen = new HashSet<IntVec3>();
 
 		/// <summary>该房间此刻是否按「理想级联冷腔」结算漏热。</summary>
 		public static bool IsInsulated(Room room)
@@ -84,6 +85,13 @@ namespace ColonyKit.Modules.Insulation
 			}
 
 			return insulatedRooms.Contains(room);
+		}
+
+		/// <summary>取该房间的级联目标温度；不是级联冷腔时返回 false。</summary>
+		public static bool TryGetTarget(Room room, out float target)
+		{
+			target = 0f;
+			return room != null && IsInsulated(room) && targetByRoom.TryGetValue(room, out target);
 		}
 
 		/// <summary>某个 <c>TickRare</c> 里重建链、写入目标温度并拉低冷室。</summary>
@@ -255,7 +263,6 @@ namespace ColonyKit.Modules.Insulation
 					return;
 				}
 
-				Diag($"stage{stage} cold={coldCell} cells={coldRoom.CellCount} target={target:F1}");
 
 				targetByRoom[coldRoom] = target;
 				insulatedRooms.Add(coldRoom);
@@ -287,6 +294,7 @@ namespace ColonyKit.Modules.Insulation
 		private static void AddDoorChamber(Map map, IntVec3 start, float target)
 		{
 			frontier.Clear();
+			chamberSeen.Clear();
 			frontier.Add(start);
 			int scanned = 0;
 
@@ -295,6 +303,11 @@ namespace ColonyKit.Modules.Insulation
 				IntVec3 cell = frontier[frontier.Count - 1];
 				frontier.RemoveAt(frontier.Count - 1);
 				scanned++;
+
+				if (!chamberSeen.Add(cell))
+				{
+					continue;
+				}
 
 				if (!cell.InBounds(map) || !(cell.GetEdifice(map) is Building_Door))
 				{

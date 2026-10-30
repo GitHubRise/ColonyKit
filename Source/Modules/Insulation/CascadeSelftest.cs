@@ -263,9 +263,22 @@ namespace ColonyKit.Modules.Insulation
 			builder.Append(" pocketB=").Append((ArmedOrigin + new IntVec3(4, 0, 0)).GetTemperature(map).ToString("F1"));
 			builder.Append(" doorFirst=").Append((ArmedOrigin + new IntVec3(6, 0, 0)).GetTemperature(map).ToString("F1"));
 			builder.Append(" doorLast=").Append((ArmedOrigin + new IntVec3(11, 0, 0)).GetTemperature(map).ToString("F1"));
+			builder.Append(" doors=");
+			for (int i = 6; i <= 11; i++)
+			{
+				IntVec3 cell = ArmedOrigin + new IntVec3(i, 0, 0);
+				Room room = cell.GetRoom(map);
+				string target = room != null && CascadeFreeze.TryGetTarget(room, out float value)
+					? value.ToString("F0")
+					: "none";
+				builder.Append('[').Append(cell.x).Append(':')
+					.Append(cell.GetTemperature(map).ToString("F0")).Append('/')
+					.Append(target).Append(']');
+			}
 			return builder.ToString();
 		}
 	}
 }
+
 
 
