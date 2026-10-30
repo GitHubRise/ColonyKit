@@ -6,4 +6,10 @@
 	<CK_EmptyLatrine.label>清空旱厕</CK_EmptyLatrine.label>
 	<CK_EmptyLatrine.verb>清空旱厕</CK_EmptyLatrine.verb>
 	<CK_EmptyLatrine.gerund>清空旱厕</CK_EmptyLatrine.gerund>
+	<CK_FillWaterPoint.label>给水龙头打水</CK_FillWaterPoint.label>
+	<CK_FillWaterPoint.verb>在水井打水</CK_FillWaterPoint.verb>
+	<CK_FillWaterPoint.gerund>正在打水</CK_FillWaterPoint.gerund>
+	<CK_FillWaterSpot.label>给取水点打水</CK_FillWaterSpot.label>
+	<CK_FillWaterSpot.verb>在取水点打水</CK_FillWaterSpot.verb>
+	<CK_FillWaterSpot.gerund>正在取水点打水</CK_FillWaterSpot.gerund>
 </LanguageData>

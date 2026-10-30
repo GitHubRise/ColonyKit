@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_FillWaterPoint.label>fill water tap</CK_FillWaterPoint.label>
+	<CK_FillWaterPoint.verb>draw water at a well</CK_FillWaterPoint.verb>
+	<CK_FillWaterPoint.gerund>drawing water</CK_FillWaterPoint.gerund>
+	<CK_FillWaterSpot.label>fill water spot</CK_FillWaterSpot.label>
+	<CK_FillWaterSpot.verb>fill water at a spot</CK_FillWaterSpot.verb>
+	<CK_FillWaterSpot.gerund>filling water at a spot</CK_FillWaterSpot.gerund>
+</LanguageData>

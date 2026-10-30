@@ -41,6 +41,12 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		/// <summary>由 <see cref="HygienePipeMapComp"/> 在选中水网设施或铺管时置位，画完即复位。</summary>
 		public bool DrawOverlay;
 
+		/// <summary>
+		/// 无电也能存/取水。水龙头带 50 W 电力，但断电时水箱仍应可用；
+		/// 该标记只给水龙头这类「电力只影响进水速度」的设施用。
+		/// </summary>
+		public bool IgnorePower;
+
 		private CompPowerTrader power;
 
 		public CompProperties_WaterStorage Props => (CompProperties_WaterStorage)props;
@@ -85,7 +91,7 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 				{
 					return false;
 				}
-				return power == null || power.PowerOn;
+				return power == null || power.PowerOn || IgnorePower;
 			}
 		}
 

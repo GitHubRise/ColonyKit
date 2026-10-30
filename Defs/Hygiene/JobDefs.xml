@@ -90,4 +90,10 @@
 		<reportString>filling a water bucket.</reportString>
 		<casualInterruptible>true</casualInterruptible>
 	</JobDef>
+	<JobDef>
+		<defName>CK_FillSpotBucketBulk</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_FillSpotBucketBulk</driverClass>
+		<reportString>filling water buckets.</reportString>
+		<casualInterruptible>true</casualInterruptible>
+	</JobDef>
 </Defs>

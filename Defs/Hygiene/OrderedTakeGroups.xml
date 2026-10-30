@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 水具（水桶/脸盆）可以像药品一样被殖民者主动「拾取」随身携带。 -->
+	<OrderedTakeGroupDef>
+		<defName>CK_WaterContainer</defName>
+		<label>water container</label>
+		<max>3</max>
+	</OrderedTakeGroupDef>
+</Defs>

@@ -199,6 +199,8 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<CK.Hygiene.FloatMenu.ContainerFull>The container is full</CK.Hygiene.FloatMenu.ContainerFull>
 	<CK.Hygiene.FloatMenu.NeedContainer>Needs a bucket or wash basin</CK.Hygiene.FloatMenu.NeedContainer>
 	<CK.Hygiene.FloatMenu.NoWaterSource>No water here</CK.Hygiene.FloatMenu.NoWaterSource>
+	<CK.Hygiene.FloatMenu.DrawFromSpot>Draw water</CK.Hygiene.FloatMenu.DrawFromSpot>
+	<CK.Hygiene.FloatMenu.NeedBucket>Needs an empty bucket</CK.Hygiene.FloatMenu.NeedBucket>
 	<CK.Hygiene.BasinWater>Basin water: {0}/{1} L</CK.Hygiene.BasinWater>
 	<CK.Hygiene.PoolWater>Water: {0}/{1} L</CK.Hygiene.PoolWater>
 	<CK.Hygiene.PoolEmpty>Not filled yet</CK.Hygiene.PoolEmpty>
@@ -253,10 +255,15 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<CK.Hygiene.WaterPoint.TankLine>Tank: {0} / {1} L</CK.Hygiene.WaterPoint.TankLine>
 	<CK.Hygiene.WaterPoint.FlowFast>Intake: powered {0} L/hour</CK.Hygiene.WaterPoint.FlowFast>
 	<CK.Hygiene.WaterPoint.FlowSlow>Intake: unpowered {0} L/hour</CK.Hygiene.WaterPoint.FlowSlow>
+	<CK.Hygiene.WaterPoint.SourceOnWater>Source: built on water</CK.Hygiene.WaterPoint.SourceOnWater>
+	<CK.Hygiene.WaterPoint.SourceWell>Source: well on the same network</CK.Hygiene.WaterPoint.SourceWell>
+	<CK.Hygiene.WaterPoint.SourceTank>Source: stored water on the same network</CK.Hygiene.WaterPoint.SourceTank>
+	<CK.Hygiene.WaterPoint.SourceSurface>Source: nearby surface water</CK.Hygiene.WaterPoint.SourceSurface>
+	<CK.Hygiene.WaterPoint.SourceNone>Source: none (needs a well/tank on the network, or build near water)</CK.Hygiene.WaterPoint.SourceNone>
 	<CK.Hygiene.WaterPoint.SurfaceInlet>Surface intake: pumps on the network can draw {0} L/day</CK.Hygiene.WaterPoint.SurfaceInlet>
 	<CK.Hygiene.WaterPoint.WellReady>Well on network: yes</CK.Hygiene.WaterPoint.WellReady>
 	<CK.Hygiene.WaterPoint.NoWell>Well on network: none</CK.Hygiene.WaterPoint.NoWell>
-	<CK.Hygiene.WaterPoint.TabHint>Each draw is one 60 L bucket. Water comes from a well on the same network, or from a nearby pond or river. Colonists need a bucket in their inventory or on the ground. Ice needs a temperature of 0°C or below. A tap built on water acts as a surface intake for pumps on the same network.</CK.Hygiene.WaterPoint.TabHint>
+	<CK.Hygiene.WaterPoint.TabHint>Each draw is one 60 L bucket. Water comes from a well on the same network, stored water, or a nearby pond or river. Colonists need a bucket in their inventory or on the ground. Buckets and wash basins can both be carried; right-click a tap to fill either, and a basin does not use a draw. Ice needs a temperature of 0°C or below. A tap built on water acts as a surface intake for pumps on the same network.</CK.Hygiene.WaterPoint.TabHint>
 	<CK.Hygiene.WaterPoint.SetDraws>Set number of draws ({0})</CK.Hygiene.WaterPoint.SetDraws>
 	<CK.Hygiene.WaterPoint.SetDrawsDesc>Open a slider to set how many buckets to draw. Work stops when the count is reached.</CK.Hygiene.WaterPoint.SetDrawsDesc>
 	<CK.Hygiene.WaterPoint.SetDrawsSlider>Draws: {0}</CK.Hygiene.WaterPoint.SetDrawsSlider>
@@ -276,9 +283,12 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<CK.Hygiene.WaterSpot.DrawTask>Draw: {0} / {1}</CK.Hygiene.WaterSpot.DrawTask>
 	<CK.Hygiene.WaterSpot.MaintainTask>Maintain: {0} / {1} full buckets</CK.Hygiene.WaterSpot.MaintainTask>
 	<CK.Hygiene.WaterSpot.Delete>Delete</CK.Hygiene.WaterSpot.Delete>
-	<CK.Hygiene.WaterSpot.Hint>Each draw needs an empty bucket. Maintain counts full buckets on the map and in colonist inventories.</CK.Hygiene.WaterSpot.Hint>
+	<CK.Hygiene.WaterSpot.Hint>List draws need an empty bucket. Maintain counts full buckets on the map and in colonist inventories. Buckets and basins can both be carried; right-click the spot to fill a bucket through the list, or a basin directly.</CK.Hygiene.WaterSpot.Hint>
 	<CK.Hygiene.WaterSpot.FreeWater>Unlimited surface water</CK.Hygiene.WaterSpot.FreeWater>
-	<CK.Hygiene.WaterSpot.Drinkable>Can be drunk from and washed at directly</CK.Hygiene.WaterSpot.Drinkable>
+	<CK.Hygiene.WaterSpot.Drinkable>Drink and wash directly; fill buckets or basins here</CK.Hygiene.WaterSpot.Drinkable>
+	<CK.Hygiene.WaterSpot.Tasks>Tasks: {0}, full buckets: {1}</CK.Hygiene.WaterSpot.Tasks>
+	<CK.Hygiene.WaterSpot.Bills>Bills: {0}, full buckets: {1}</CK.Hygiene.WaterSpot.Bills>
+	<CK.Hygiene.WaterSpot.FullBuckets>full water buckets</CK.Hygiene.WaterSpot.FullBuckets>
 	<CK.Hygiene.WaterPoint.IceReady>Freezing: at 0°C or below</CK.Hygiene.WaterPoint.IceReady>
 	<CK.Hygiene.WaterPoint.IceWarm>Freezing: above 0°C, will not freeze</CK.Hygiene.WaterPoint.IceWarm>
 	<CK.Hygiene.WaterPoint.SetIce>Set number of ice blocks ({0})</CK.Hygiene.WaterPoint.SetIce>

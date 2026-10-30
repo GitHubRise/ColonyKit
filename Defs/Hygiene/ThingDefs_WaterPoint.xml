@@ -94,7 +94,7 @@
 			<li>ColonyKit.Modules.Hygiene.PlaceWorker_WaterSpot</li>
 		</placeWorkers>
 		<inspectorTabs>
-			<li>ColonyKit.Modules.Hygiene.ITab_WaterSpot</li>
+			<li>ColonyKit.Modules.Hygiene.ITab_WaterSpotBills</li>
 		</inspectorTabs>
 		<comps>
 			<li Class="ColonyKit.Modules.Hygiene.CompProperties_FreeWaterInlet">
@@ -120,6 +120,7 @@
 			<li>Manufactured</li>
 		</thingCategories>
 		<stackLimit>1</stackLimit>
+		<orderedTakeGroup>CK_WaterContainer</orderedTakeGroup>
 		<comps>
 			<li Class="ColonyKit.Modules.Hygiene.CompProperties_BasinWater">
 				<Capacity>60</Capacity>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 免费取水点的「添加清单」配方：和屠宰点一样走原版 BillStack。 -->
+	<RecipeDef>
+		<defName>CK_DrawWaterBucket</defName>
+		<label>draw water</label>
+		<description>Fill one 60 L water bucket at this water spot. The bucket must be empty or partly filled.</description>
+		<jobString>drawing water.</jobString>
+		<workAmount>0</workAmount>
+		<workerCounterClass>ColonyKit.Modules.Hygiene.RecipeWorkerCounter_FullBuckets</workerCounterClass>
+		<uiIconThing>CK_WaterBucket</uiIconThing>
+		<recipeUsers>
+			<li>CK_WaterSpot</li>
+		</recipeUsers>
+	</RecipeDef>
+
+	<RecipeDef>
+		<defName>CK_DrawWaterBulk</defName>
+		<label>bulk draw water</label>
+		<description>Fill up to 5 empty water buckets at this water spot in one trip.</description>
+		<jobString>drawing water.</jobString>
+		<workAmount>0</workAmount>
+		<workerCounterClass>ColonyKit.Modules.Hygiene.RecipeWorkerCounter_FullBuckets</workerCounterClass>
+		<uiIconThing>CK_WaterBucket</uiIconThing>
+		<recipeUsers>
+			<li>CK_WaterSpot</li>
+		</recipeUsers>
+	</RecipeDef>
+</Defs>

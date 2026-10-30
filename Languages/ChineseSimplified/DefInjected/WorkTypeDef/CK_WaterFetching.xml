@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_WaterFetching.labelShort>取水</CK_WaterFetching.labelShort>
+	<CK_WaterFetching.pawnLabel>取水者</CK_WaterFetching.pawnLabel>
+	<CK_WaterFetching.gerundLabel>取水</CK_WaterFetching.gerundLabel>
+	<CK_WaterFetching.description>给取水点打水、把水桶送到水龙头。在取水点的清单里添加取水任务后，启用这项工作的殖民者会去完成。</CK_WaterFetching.description>
+	<CK_WaterFetching.verb>取水</CK_WaterFetching.verb>
+</LanguageData>

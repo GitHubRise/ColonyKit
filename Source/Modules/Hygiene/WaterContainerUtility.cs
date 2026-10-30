@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -71,6 +72,55 @@ namespace ColonyKit.Modules.Hygiene
 				}
 			}
 			return best;
+		}
+
+		/// <summary>背包里的脸盆（不含水桶）；默认只找没满的，打水用。</summary>
+		public static CompBasinWater CarriedBasin(Pawn pawn)
+		{
+			if (pawn?.inventory?.innerContainer == null)
+			{
+				return null;
+			}
+			CompBasinWater best = null;
+			foreach (Thing thing in pawn.inventory.innerContainer)
+			{
+				CompBasinWater container = thing.TryGetComp<CompBasinWater>();
+				if (container == null || IsBucket(container) || container.IsFull)
+				{
+					continue;
+				}
+				if (best == null || container.Props.Capacity > best.Props.Capacity)
+				{
+					best = container;
+				}
+			}
+			return best;
+		}
+
+		/// <summary>地上能用的脸盆（不含水桶）；找不到返回 null。</summary>
+		public static Thing FindSpawnedBasin(Pawn pawn)
+		{
+			if (pawn?.Map == null)
+			{
+				return null;
+			}
+			foreach (Thing thing in pawn.Map.listerThings.AllThings)
+			{
+				CompBasinWater container = thing.TryGetComp<CompBasinWater>();
+				if (container == null
+					|| IsBucket(container)
+					|| container.IsFull
+					|| thing.IsForbidden(pawn)
+					|| thing.IsBurning())
+				{
+					continue;
+				}
+				if (pawn.CanReserveAndReach(thing, PathEndMode.ClosestTouch, pawn.NormalMaxDanger()))
+				{
+					return thing;
+				}
+			}
+			return null;
 		}
 
 		/// <summary>背包里的水桶；默认只找没满的（打水用），requireWater 时只找有水的。</summary>
@@ -163,17 +213,99 @@ namespace ColonyKit.Modules.Hygiene
 		/// <summary>自动取水用的水桶：背包里先找，其次地上找。</summary>
 		public static Thing FindBucketForJob(Pawn pawn)
 		{
-			CompBasinWater carried = CarriedBucket(pawn);
-			if (carried != null)
+			return FindBucketsForJob(pawn, 1).FirstOrDefault();
+		}
+
+		/// <summary>
+		/// 一次派活最多要几只空/半满水桶：先拿背包里的，再找地上可达的。
+		/// 批量取水用；背包里的桶不需要再走去拾取。
+		/// </summary>
+		public static List<Thing> FindBucketsForJob(Pawn pawn, int max)
+		{
+			List<Thing> result = new List<Thing>();
+			if (pawn?.Map == null || max <= 0)
 			{
-				return carried.parent;
+				return result;
 			}
-			Thing spawned = FindSpawnedBucket(pawn, requireWater: false);
-			if (spawned != null && pawn.CanReserve(spawned))
+			if (pawn.inventory?.innerContainer != null)
 			{
-				return spawned;
+				foreach (Thing thing in pawn.inventory.innerContainer)
+				{
+					CompBasinWater container = thing.TryGetComp<CompBasinWater>();
+					if (container == null || !IsBucket(container) || container.IsFull)
+					{
+						continue;
+					}
+					result.Add(thing);
+					if (result.Count >= max)
+					{
+						return result;
+					}
+				}
 			}
-			return null;
+			if (BucketDef == null)
+			{
+				return result;
+			}
+			foreach (Thing thing in pawn.Map.listerThings.ThingsOfDef(BucketDef))
+			{
+				if (result.Count >= max)
+				{
+					break;
+				}
+				CompBasinWater container = thing.TryGetComp<CompBasinWater>();
+				if (container == null
+					|| container.IsFull
+					|| result.Contains(thing)
+					|| thing.IsForbidden(pawn)
+					|| thing.IsBurning())
+				{
+					continue;
+				}
+				if (pawn.CanReserveAndReach(thing, PathEndMode.ClosestTouch, pawn.NormalMaxDanger()))
+				{
+					result.Add(thing);
+				}
+			}
+			return result;
+		}
+
+		/// <summary>地图上 + 殖民者物品栏里的满水桶数；给「维持 X 个满桶」账单计数。</summary>
+		public static int CountFullBuckets(Map map)
+		{
+			if (map == null || BucketDef == null)
+			{
+				return 0;
+			}
+			int count = 0;
+			foreach (Thing thing in map.listerThings.ThingsOfDef(BucketDef))
+			{
+				if (IsFullBucket(thing))
+				{
+					count++;
+				}
+			}
+			foreach (Pawn pawn in map.mapPawns.FreeColonists)
+			{
+				if (pawn.inventory?.innerContainer == null)
+				{
+					continue;
+				}
+				foreach (Thing thing in pawn.inventory.innerContainer)
+				{
+					if (thing.def == BucketDef && IsFullBucket(thing))
+					{
+						count++;
+					}
+				}
+			}
+			return count;
+		}
+
+		private static bool IsFullBucket(Thing thing)
+		{
+			CompBasinWater container = thing.TryGetComp<CompBasinWater>();
+			return container != null && container.Water >= 59f;
 		}
 	}
 }

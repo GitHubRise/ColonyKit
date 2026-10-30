@@ -1,12 +1,19 @@
+using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using Verse;
 using Verse.AI;
 
 namespace ColonyKit.Modules.Hygiene
 {
-	/// <summary>免费取水点清单的工作：有未完成的取水/维持任务、且找得到空桶时派活。</summary>
+	/// <summary>
+	/// 免费取水点清单的工作：取 BillStack 里第一条 ShouldDoNow 的账单。
+	/// 「取水」每次 1 桶；「批量取水」一次最多 5 桶。
+	/// </summary>
 	public class WorkGiver_FillWaterSpot : WorkGiver_Scanner
 	{
+		private const int BulkBucketCount = 5;
+
 		public override ThingRequest PotentialWorkThingRequest =>
 			ThingRequest.ForDef(DefDatabase<ThingDef>.GetNamedSilentFail("CK_WaterSpot"));
 
@@ -19,7 +26,12 @@ namespace ColonyKit.Modules.Hygiene
 
 		public override bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)
 		{
-			if (!(t is Building_WaterSpot spot) || !spot.NeedsWork)
+			if (!(t is Building_WaterSpot spot) || !spot.BillStack.AnyShouldDoNow)
+			{
+				return false;
+			}
+			Bill bill = spot.BillStack.FirstShouldDoNow;
+			if (bill == null || !bill.PawnAllowedToStartAnew(pawn))
 			{
 				return false;
 			}
@@ -38,17 +50,36 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return null;
 			}
-			Thing bucket = WaterContainerUtility.FindBucketForJob(pawn);
-			JobDef def = DefDatabase<JobDef>.GetNamedSilentFail("CK_FillSpotBucket");
-			if (bucket == null || def == null)
+			Bill bill = spot.BillStack.FirstShouldDoNow;
+			if (bill == null || !bill.PawnAllowedToStartAnew(pawn))
 			{
 				return null;
 			}
-			Job job = JobMaker.MakeJob(def);
-			job.targetA = spot;
-			if (bucket.Spawned)
+			bool bulk = bill.recipe.defName == "CK_DrawWaterBulk";
+			List<Thing> buckets = WaterContainerUtility.FindBucketsForJob(
+				pawn, bulk ? BulkBucketCount : 1);
+			JobDef def = DefDatabase<JobDef>.GetNamedSilentFail(
+				bulk ? "CK_FillSpotBucketBulk" : "CK_FillSpotBucket");
+			if (buckets.Count == 0 || def == null)
 			{
-				job.targetB = bucket;
+				return null;
+			}
+
+			Job job = JobMaker.MakeJob(def);
+			job.bill = bill;
+			job.targetA = spot;
+			if (bulk)
+			{
+				job.count = buckets.Count;
+				// 背包里的桶不用再走过去拾取；地上的桶放进队列。
+				job.targetQueueB = buckets
+					.Where(b => b.Spawned)
+					.Select(b => new LocalTargetInfo(b))
+					.ToList();
+			}
+			else if (buckets[0].Spawned)
+			{
+				job.targetB = buckets[0];
 			}
 			return job;
 		}

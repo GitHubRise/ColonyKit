@@ -126,6 +126,11 @@ namespace ColonyKit.Modules.Hygiene
 		{
 			base.SpawnSetup(map, respawningAfterLoad);
 			storage = GetComp<CompWaterStorage>();
+			if (storage != null)
+			{
+				// 断电时水箱仍可存取，电力只决定进水速度。
+				storage.IgnorePower = true;
+			}
 		}
 
 		public override void ExposeData()
@@ -189,25 +194,77 @@ namespace ColonyKit.Modules.Hygiene
 			madeIce++;
 		}
 
-		private bool HasNetworkWaterSource()
+		private enum IntakeSource
+		{
+			None,
+			OnWater,
+			Well,
+			Tank,
+			Surface
+		}
+
+		/// <summary>
+		/// 无电进水的水源：建在水面上、同网水井、同网其他水箱存水，或附近 40 格内的地表水。
+		/// 不把水龙头自己的水箱算作水源，避免「自己有一点水就无限自灌」。
+		/// </summary>
+		private IntakeSource CurrentIntakeSource()
 		{
 			if (OnWater)
 			{
-				return true;
+				return IntakeSource.OnWater;
 			}
 			PlumbingNet net = pipe?.pipeNet;
-			if (net == null)
+			if (net != null)
 			{
-				return false;
-			}
-			foreach (CompWaterInlet well in net.WaterWells)
-			{
-				if (well != null && well.parent != this && well.GroundWaterCapacity > 0.0001f)
+				foreach (CompWaterInlet well in net.WaterWells)
 				{
-					return true;
+					if (well != null && well.parent != this && well.GroundWaterCapacity > 0.0001f)
+					{
+						return IntakeSource.Well;
+					}
+				}
+				foreach (CompWaterStorage tank in net.WaterTowers)
+				{
+					if (tank != null
+						&& tank.parent != this
+						&& tank.WorkingNow
+						&& tank.WaterStorage > 1f)
+					{
+						return IntakeSource.Tank;
+					}
 				}
 			}
-			return false;
+			if (HasSurfaceWaterNear)
+			{
+				return IntakeSource.Surface;
+			}
+			return IntakeSource.None;
+		}
+
+		private bool HasNetworkWaterSource()
+		{
+			return CurrentIntakeSource() != IntakeSource.None;
+		}
+
+		/// <summary>检视页/水龙头页显示当前进水来源，避免玩家只看到速度却不知道为什么不进水。</summary>
+		public string IntakeSourceLabel
+		{
+			get
+			{
+				switch (CurrentIntakeSource())
+				{
+					case IntakeSource.OnWater:
+						return "CK.Hygiene.WaterPoint.SourceOnWater".Translate();
+					case IntakeSource.Well:
+						return "CK.Hygiene.WaterPoint.SourceWell".Translate();
+					case IntakeSource.Tank:
+						return "CK.Hygiene.WaterPoint.SourceTank".Translate();
+					case IntakeSource.Surface:
+						return "CK.Hygiene.WaterPoint.SourceSurface".Translate();
+					default:
+						return "CK.Hygiene.WaterPoint.SourceNone".Translate();
+				}
+			}
 		}
 
 		public void SetDrawOrder(int count)
@@ -366,6 +423,7 @@ namespace ColonyKit.Modules.Hygiene
 			Append(PoweredIntake
 				? "CK.Hygiene.WaterPoint.FlowFast".Translate(IntakeLitersPerHour.ToString("F0"))
 				: "CK.Hygiene.WaterPoint.FlowSlow".Translate(IntakeLitersPerHour.ToString("F0")));
+			Append(IntakeSourceLabel);
 			CompSurfaceWaterInlet inlet = GetComp<CompSurfaceWaterInlet>();
 			if (inlet != null && inlet.GroundWaterCapacity > 0.0001f)
 			{

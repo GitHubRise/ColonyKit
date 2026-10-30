@@ -45,7 +45,7 @@
 		<defName>CK_FillWaterPoint</defName>
 		<label>fill water point</label>
 		<giverClass>ColonyKit.Modules.Hygiene.WorkGiver_FillWaterPoint</giverClass>
-		<workType>Hauling</workType>
+		<workType>CK_WaterFetching</workType>
 		<priorityInType>35</priorityInType>
 		<verb>draw water at</verb>
 		<gerund>drawing water at</gerund>
@@ -57,7 +57,7 @@
 		<defName>CK_FillWaterSpot</defName>
 		<label>fill water spot</label>
 		<giverClass>ColonyKit.Modules.Hygiene.WorkGiver_FillWaterSpot</giverClass>
-		<workType>Hauling</workType>
+		<workType>CK_WaterFetching</workType>
 		<priorityInType>34</priorityInType>
 		<verb>fill water at</verb>
 		<gerund>filling water at</gerund>

@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using ColonyKit.Modules.Hygiene.Dbh;
 using HarmonyLib;
 using RimWorld;
@@ -31,10 +33,18 @@ namespace ColonyKit.Modules.Hygiene
 		private static Building_WaterPoint tap;
 		private static Building_WaterSpot spot;
 		private static Thing bucket;
-		private static WaterSpotTask listTask;
+		private static Thing basin;
+		private static Bill_Production listBill;
+		private static Bill_Production bulkBill;
+		private static readonly System.Collections.Generic.List<Thing> bulkBuckets =
+			new System.Collections.Generic.List<Thing>();
+		private static bool bulkPhaseDone;
+		private static bool basinPhaseDone;
 		private static int startTick;
 		private static int nextLogTick;
 		private static string failure;
+		private static bool intakeChecked;
+		private static float intakeStartWater;
 
 		public static void RunIfRequested(Game game)
 		{
@@ -133,8 +143,37 @@ namespace ColonyKit.Modules.Hygiene
 				return false;
 			}
 			ModLog.Info("Hygiene", "water selftest: water spot place rule water=True land=False");
+			Find.Selector.Select(spot, false);
+			ITab_WaterSpotBills tab = new ITab_WaterSpotBills();
+			MethodInfo optionsMaker = typeof(ITab_WaterSpotBills).GetMethod(
+				"OptionsMaker", BindingFlags.Instance | BindingFlags.NonPublic);
+			List<FloatMenuOption> options = optionsMaker?.Invoke(tab, null) as List<FloatMenuOption>;
+			if (options == null || options.Count < 2)
+			{
+				error = "water spot bill options missing";
+				return false;
+			}
+			ModLog.Info("Hygiene", $"water selftest: bill options={options.Count}");
 			tap.SetDrawOrder(1);
+			intakeStartWater = tap.StoredWater;
 			bucket = SpawnItem(bucketDef, bucketCell);
+			for (int i = 0; i < 5; i++)
+			{
+				bulkBuckets.Add(SpawnItem(bucketDef, origin + new IntVec3(i, 0, 2)));
+			}
+
+			ThingDef basinDef = DefDatabase<ThingDef>.GetNamedSilentFail("CK_WashBasinItem");
+			if (basinDef == null || !PawnUtility.CanPickUp(pawn, basinDef))
+			{
+				error = "basin is not pick-up-able";
+				return false;
+			}
+			basin = ThingMaker.MakeThing(basinDef);
+			if (!pawn.inventory.innerContainer.TryAdd(basin))
+			{
+				error = "basin not added to inventory";
+				return false;
+			}
 
 			pawn.Position = pawnCell;
 			pawn.Notify_Teleported(true, true);
@@ -142,6 +181,13 @@ namespace ColonyKit.Modules.Hygiene
 			pawn.drafter.Drafted = false;
 			pawn.workSettings.EnableAndInitialize();
 			pawn.workSettings.SetPriority(WorkTypeDefOf.Hauling, 1);
+			WorkTypeDef waterFetching = DefDatabase<WorkTypeDef>.GetNamedSilentFail("CK_WaterFetching");
+			if (waterFetching == null)
+			{
+				error = "no water fetching work type";
+				return false;
+			}
+			pawn.workSettings.SetPriority(waterFetching, 1);
 			map.GetComponent<MapComponent_Hygiene>()?.PipeComp?.RegenPipeGrids();
 
 			WorkGiverDef workGiverDef = DefDatabase<WorkGiverDef>.GetNamedSilentFail("CK_FillWaterPoint");
@@ -272,6 +318,22 @@ namespace ColonyKit.Modules.Hygiene
 				return;
 			}
 
+			if (!intakeChecked && elapsed >= 300)
+			{
+				intakeChecked = true;
+				float gained = tap.StoredWater - intakeStartWater;
+				if (gained < 1.5f)
+				{
+					failure = $"unpowered intake only {gained:F1} L in 300 ticks";
+					Finish(false);
+					return;
+				}
+				ModLog.Info(
+					"Hygiene",
+					$"water selftest unpowered intake ok: +{gained:F1} L in 300 ticks " +
+					$"(source={tap.IntakeSourceLabel})");
+			}
+
 			if (!tapPhaseDone)
 			{
 				if (elapsed >= nextLogTick)
@@ -346,9 +408,67 @@ namespace ColonyKit.Modules.Hygiene
 					nextLogTick = elapsed + 500;
 					Log("list");
 				}
-				if (listTask != null && listTask.completed >= 1)
+				if (listBill != null && listBill.repeatCount <= 0)
 				{
 					listPhaseDone = true;
+					StartBasinPhase();
+					nextLogTick = elapsed + 250;
+				}
+				else if (elapsed >= MaxTicks)
+				{
+					Finish(false);
+				}
+				return;
+			}
+
+			if (!basinPhaseDone)
+			{
+				if (elapsed >= nextLogTick)
+				{
+					nextLogTick = elapsed + 500;
+					Log("basin");
+				}
+				CompBasinWater water = basin?.TryGetComp<CompBasinWater>();
+				if (water != null && water.Water >= 29f)
+				{
+					basinPhaseDone = true;
+					ModLog.Info("Hygiene", $"water selftest basin phase done: water={water.Water:F1}");
+					StartBulkPhase();
+					nextLogTick = elapsed + 250;
+				}
+				else if (elapsed >= MaxTicks)
+				{
+					Finish(false);
+				}
+				return;
+			}
+
+			if (!bulkPhaseDone)
+			{
+				if (elapsed >= nextLogTick)
+				{
+					nextLogTick = elapsed + 500;
+					Log("bulk");
+				}
+				int full = 0;
+				foreach (Thing b in bulkBuckets)
+				{
+					CompBasinWater c = b?.TryGetComp<CompBasinWater>();
+					if (c != null && c.Water >= 59f)
+					{
+						full++;
+					}
+				}
+				if (bulkBill != null && bulkBill.repeatCount <= 0)
+				{
+					if (full < 2)
+					{
+						failure = $"bulk filled only {full} buckets";
+						Finish(false);
+						return;
+					}
+					bulkPhaseDone = true;
+					ModLog.Info("Hygiene", $"water selftest bulk phase done: full={full}");
 					Finish(true);
 				}
 				else if (elapsed >= MaxTicks)
@@ -411,8 +531,17 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				container.Water = 0f;
 			}
-			spot.AddTask(WaterSpotTaskType.Draw, 1);
-			listTask = spot.Tasks.LastOrDefault(t => t.type == WaterSpotTaskType.Draw);
+			RecipeDef recipe = DefDatabase<RecipeDef>.GetNamedSilentFail("CK_DrawWaterBucket");
+			Bill_Production bill = recipe?.MakeNewBill() as Bill_Production;
+			if (bill == null)
+			{
+				Fail("list recipe missing");
+				return;
+			}
+			bill.repeatMode = BillRepeatModeDefOf.RepeatCount;
+			bill.repeatCount = 1;
+			spot.BillStack.AddBill(bill);
+			listBill = bill;
 			WorkGiverDef def = DefDatabase<WorkGiverDef>.GetNamedSilentFail("CK_FillWaterSpot");
 			WorkGiver_Scanner workGiver = def?.Worker as WorkGiver_Scanner;
 			if (workGiver == null || !workGiver.HasJobOnThing(pawn, spot))
@@ -433,6 +562,62 @@ namespace ColonyKit.Modules.Hygiene
 			}
 		}
 
+		/// <summary>把随身脸盆拿到免费取水点打满，验证脸盆可携带、可当容器打水。</summary>
+		private static void StartBasinPhase()
+		{
+			JobDef fillDef = DefDatabase<JobDef>.GetNamedSilentFail("CK_FillBasin");
+			CompBasinWater water = basin?.TryGetComp<CompBasinWater>();
+			if (fillDef == null || spot == null || water == null)
+			{
+				Fail("basin phase missing");
+				return;
+			}
+			water.Water = 0f;
+			Job job = JobMaker.MakeJob(fillDef, spot);
+			pawn.jobs.StopAll(false);
+			if (!pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc))
+			{
+				Fail("basin job rejected");
+			}
+		}
+
+		private static void StartBulkPhase()
+		{
+			RecipeDef recipe = DefDatabase<RecipeDef>.GetNamedSilentFail("CK_DrawWaterBulk");
+			Bill_Production bill = recipe?.MakeNewBill() as Bill_Production;
+			if (bill == null || spot == null)
+			{
+				Fail("bulk phase missing");
+				return;
+			}
+			bill.repeatMode = BillRepeatModeDefOf.RepeatCount;
+			bill.repeatCount = 1;
+			spot.BillStack.AddBill(bill);
+			bulkBill = bill;
+			WorkGiverDef def = DefDatabase<WorkGiverDef>.GetNamedSilentFail("CK_FillWaterSpot");
+			WorkGiver_Scanner giver = def?.Worker as WorkGiver_Scanner;
+			if (giver == null || !giver.HasJobOnThing(pawn, spot))
+			{
+				Fail("bulk workgiver rejected");
+				return;
+			}
+			Job job = giver.JobOnThing(pawn, spot);
+			if (job == null || job.def.defName != "CK_FillSpotBucketBulk")
+			{
+				Fail("bulk job not produced");
+				return;
+			}
+			ModLog.Info(
+				"Hygiene",
+				$"water selftest bulk job: queue={job.targetQueueB?.Count ?? 0} count={job.count} " +
+				$"carried={pawn.inventory?.innerContainer?.Count ?? -1}");
+			pawn.jobs.StopAll(false);
+			if (!pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc))
+			{
+				Fail("bulk job rejected");
+			}
+		}
+
 		private static void Log(string phase)
 		{
 			CompBasinWater container = bucket?.TryGetComp<CompBasinWater>();
@@ -442,8 +627,9 @@ namespace ColonyKit.Modules.Hygiene
 				$"job={pawn?.CurJobDef?.defName ?? "none"} " +
 				$"tapDelivered={tap?.deliveredDraws ?? 0} tapWater={(tap?.StoredWater ?? 0f):F1} " +
 				$"bucketWater={(container?.Water ?? -1f):F1} bucketSpawned={bucket?.Spawned} " +
+				$"basinWater={(basin?.TryGetComp<CompBasinWater>()?.Water ?? -1f):F1} " +
 				$"thirst={(pawn?.needs?.TryGetNeed<Need_Thirst>()?.CurLevel ?? -1f):F2} " +
-				$"listCompleted={listTask?.completed ?? -1}");
+				$"listCompleted={listBill?.repeatCount ?? -1}");
 		}
 
 		private static void Fail(string reason)

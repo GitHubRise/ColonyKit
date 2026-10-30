@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 取水：给取水点打水、把水桶送到水龙头。工作台里单独一列，方便调节优先级。 -->
+	<WorkTypeDef>
+		<defName>CK_WaterFetching</defName>
+		<labelShort>water</labelShort>
+		<pawnLabel>Water fetcher</pawnLabel>
+		<gerundLabel>fetching water</gerundLabel>
+		<description>Fill buckets at water spots and carry water to water taps. Add draw tasks in a water spot's list, and colonists with this work enabled will fill them.</description>
+		<verb>Fetch water</verb>
+		<naturalPriority>250</naturalPriority>
+		<alwaysStartActive>true</alwaysStartActive>
+		<requireCapableColonist>true</requireCapableColonist>
+		<workTags>
+			<li>ManualDumb</li>
+			<li>Hauling</li>
+			<li>Commoner</li>
+			<li>AllWork</li>
+		</workTags>
+	</WorkTypeDef>
+</Defs>

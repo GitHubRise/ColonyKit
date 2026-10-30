@@ -88,6 +88,8 @@ namespace ColonyKit.Modules.Hygiene
 					? "CK.Hygiene.WaterPoint.FlowFast".Translate(point.IntakeLitersPerHour.ToString("F0"))
 					: "CK.Hygiene.WaterPoint.FlowSlow".Translate(point.IntakeLitersPerHour.ToString("F0")));
 			y += 26f;
+			Widgets.Label(new Rect(0f, y, rect.width, 24f), point.IntakeSourceLabel);
+			y += 26f;
 			Thing well = point.FindWellForDraw();
 			Widgets.Label(
 				new Rect(0f, y, rect.width, 24f),

@@ -4,6 +4,18 @@
 
 ## [Unreleased]
 
+### Added
+
+- **「取水」工作类型**：工作页新增 `CK_WaterFetching`（取水）列，`CK_FillWaterPoint` 与 `CK_FillWaterSpot` 从 Hauling 移入；取水点的清单任务、水龙头取水次数都按这一列的优先级派活，不再和搬运抢优先级。
+- **取水点账单式清单**：`Building_WaterSpot` 实现 `IBillGiver`，清单页改用原版 `BillStack.DoListing` / `Bill_Production`，和屠宰点一样有「添加清单」；配方 `CK_DrawWaterBucket`（取水，1 桶）与 `CK_DrawWaterBulk`（批量取水，一次最多 5 桶），点账单进入 `Dialog_BillConfig`，可选做 X 次 / 维持 X 个 / 不限次数；「维持」由 `RecipeWorkerCounter_FullBuckets` 统计地图和殖民者物品栏里的满水桶。
+- **水盆可拾取、取水点可打水**：脸盆/水桶新增 `CK_WaterContainer` 拾取组（最多 3 件），可在玩家主基地直接「拾取」随身携带；选中殖民者右键取水点，水桶走账单任务、脸盆走 `CK_FillBasin` 直接打水；右键水龙头同样支持脸盆/水桶。
+- **水箱银白色贴图**：`CK_WaterTank.png` 与 `CK_WaterTankGiant.png` 重新上色为银白色，水箱、巨型水箱和热水箱统一使用。
+
+### Fixed
+
+- **水龙头无电不进水**：进水来源不再只认同网水井，还接受同网其他水箱存水和 40 格内可站人的地表水；检视页与水龙头页新增「水源：建在水面上/同网水井/同网存水/附近地表水/无」，无电仍按 25 升/小时进水，通电 200 升/小时。
+- **水龙头水箱断电不可用**：`CompWaterStorage` 新增 `IgnorePower`，水龙头水箱断电时仍计入水网存取；断电也能正常喝水、洗手和接水。
+
 ### Changed
 
 - **Mk-V 交战范围上限 60 → 65 格**：设置页「交战范围」滑条上限提到 65 格，默认值仍是 45 格、下限仍是 1 格；已有存档里玩家调过的值不受影响，原来的 60 格设置仍然有效。

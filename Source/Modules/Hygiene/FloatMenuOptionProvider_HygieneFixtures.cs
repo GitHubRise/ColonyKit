@@ -109,12 +109,56 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				yield return UseOption("CK.Hygiene.FloatMenu.Drink", pawn, waterSpot, "CK_DrinkFromBasin",
 					waterSpot.CanUse(pawn), RejectReason(waterSpot));
+
+				// 直接打水：拿一只空桶到取水点打满，不依赖清单/WorkGiver。
+				Thing spotBucket = WaterContainerUtility.FindBucketForJob(pawn);
+				bool spotReachable = pawn.CanReserveAndReach(
+					waterSpot, PathEndMode.Touch, pawn.NormalMaxDanger());
+				bool bucketReachable = spotBucket == null
+					|| !spotBucket.Spawned
+					|| pawn.CanReserveAndReach(
+						spotBucket, PathEndMode.ClosestTouch, pawn.NormalMaxDanger());
+				string drawReason = !spotReachable
+					? "CannotReach".Translate().ToString()
+					: spotBucket == null
+						? "CK.Hygiene.FloatMenu.NeedBucket".Translate().ToString()
+						: bucketReachable
+							? null
+							: "CannotReach".Translate().ToString();
+				Thing bucketTarget = spotBucket != null && spotBucket.Spawned ? spotBucket : null;
+				yield return UseOption("CK.Hygiene.FloatMenu.DrawFromSpot", pawn, waterSpot, "CK_FillSpotBucket",
+					spotReachable && spotBucket != null && bucketReachable, drawReason, bucketTarget);
+
+				// 脸盆：不占用清单任务，直接拿盆到取水点打水。
+				CompBasinWater carriedBasin = WaterContainerUtility.CarriedBasin(pawn);
+				Thing spareBasin = carriedBasin == null
+					? WaterContainerUtility.FindSpawnedBasin(pawn)
+					: null;
+				CompBasinWater basin = carriedBasin ?? spareBasin?.TryGetComp<CompBasinWater>();
+				bool basinReachable = spareBasin == null
+					|| pawn.CanReserveAndReach(
+						spareBasin, PathEndMode.ClosestTouch, pawn.NormalMaxDanger());
+				bool canFillBasin = spotReachable && basinReachable;
+				if (basin != null)
+				{
+					yield return UseOption("CK.Hygiene.FloatMenu.FillBasin", pawn, waterSpot, "CK_FillBasin",
+						canFillBasin,
+						canFillBasin ? null : "CannotReach".Translate().ToString(),
+						spareBasin);
+				}
+				else if (spotBucket == null)
+				{
+					yield return UseOption("CK.Hygiene.FloatMenu.FillBasin", pawn, waterSpot, "CK_FillBasin",
+						false,
+						"CK.Hygiene.FloatMenu.NeedContainer".Translate().ToString());
+				}
 			}
 
-			// 打水：水井（地下水）、取水点/水箱（同网存水）都能用随身容器接。
+			// 打水：水井（地下水）、水箱（同网存水）都能用随身容器接。
+			// 取水点在上面单独处理：水桶走清单 Job，脸盆走 CK_FillBasin，避免重复菜单项。
 			bool isWell = building.TryGetComp<CompWaterInlet>() != null;
 			bool isStorage = building.TryGetComp<CompWaterStorage>() != null;
-			if (isWell || isStorage || building is Building_WaterPoint)
+			if (!(building is Building_WaterSpot) && (isWell || isStorage || building is Building_WaterPoint))
 			{
 				CompPipe pipe = building.GetComp<CompPipe>();
 				PlumbingNet net = pipe?.pipeNet;

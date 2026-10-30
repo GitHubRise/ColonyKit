@@ -69,7 +69,10 @@ namespace ColonyKit.Modules.Hygiene
 				}
 				if (bucket.IsFull || amount <= 0.0001f)
 				{
-					spot.NotifyBucketFilled();
+					if (job.bill != null)
+					{
+						job.bill.Notify_IterationCompleted(pawn, null);
+					}
 					ReadyForNextToil();
 				}
 			};

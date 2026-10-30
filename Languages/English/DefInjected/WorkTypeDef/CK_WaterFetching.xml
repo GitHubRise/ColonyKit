@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_WaterFetching.labelShort>water</CK_WaterFetching.labelShort>
+	<CK_WaterFetching.pawnLabel>Water fetcher</CK_WaterFetching.pawnLabel>
+	<CK_WaterFetching.gerundLabel>fetching water</CK_WaterFetching.gerundLabel>
+	<CK_WaterFetching.description>Fill buckets at water spots and carry water to water taps. Add draw tasks in a water spot's list, and colonists with this work enabled will fill them.</CK_WaterFetching.description>
+	<CK_WaterFetching.verb>Fetch water</CK_WaterFetching.verb>
+</LanguageData>

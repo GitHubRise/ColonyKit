@@ -199,6 +199,8 @@
 	<CK.Hygiene.FloatMenu.ContainerFull>水桶/脸盆已经满了</CK.Hygiene.FloatMenu.ContainerFull>
 	<CK.Hygiene.FloatMenu.NeedContainer>需要一只水桶或脸盆</CK.Hygiene.FloatMenu.NeedContainer>
 	<CK.Hygiene.FloatMenu.NoWaterSource>这里没有水</CK.Hygiene.FloatMenu.NoWaterSource>
+	<CK.Hygiene.FloatMenu.DrawFromSpot>打水</CK.Hygiene.FloatMenu.DrawFromSpot>
+	<CK.Hygiene.FloatMenu.NeedBucket>需要一只空水桶</CK.Hygiene.FloatMenu.NeedBucket>
 	<CK.Hygiene.BasinWater>脸盆水量: {0}/{1} 升</CK.Hygiene.BasinWater>
 	<CK.Hygiene.PoolWater>水量: {0}/{1} L</CK.Hygiene.PoolWater>
 	<CK.Hygiene.PoolEmpty>还没灌水</CK.Hygiene.PoolEmpty>
@@ -253,10 +255,15 @@
 	<CK.Hygiene.WaterPoint.TankLine>水箱：{0} / {1} 升</CK.Hygiene.WaterPoint.TankLine>
 	<CK.Hygiene.WaterPoint.FlowFast>进水：通电 {0} 升/小时</CK.Hygiene.WaterPoint.FlowFast>
 	<CK.Hygiene.WaterPoint.FlowSlow>进水：无电 {0} 升/小时</CK.Hygiene.WaterPoint.FlowSlow>
+	<CK.Hygiene.WaterPoint.SourceOnWater>水源：建在水面上</CK.Hygiene.WaterPoint.SourceOnWater>
+	<CK.Hygiene.WaterPoint.SourceWell>水源：同网水井</CK.Hygiene.WaterPoint.SourceWell>
+	<CK.Hygiene.WaterPoint.SourceTank>水源：同网存水</CK.Hygiene.WaterPoint.SourceTank>
+	<CK.Hygiene.WaterPoint.SourceSurface>水源：附近地表水</CK.Hygiene.WaterPoint.SourceSurface>
+	<CK.Hygiene.WaterPoint.SourceNone>水源：无（需要同网水井/存水，或建在水边）</CK.Hygiene.WaterPoint.SourceNone>
 	<CK.Hygiene.WaterPoint.SurfaceInlet>水上进水口：同网水泵可抽取地表水（{0} 升/天）</CK.Hygiene.WaterPoint.SurfaceInlet>
 	<CK.Hygiene.WaterPoint.WellReady>同网水井：可用</CK.Hygiene.WaterPoint.WellReady>
 	<CK.Hygiene.WaterPoint.NoWell>同网水井：没有</CK.Hygiene.WaterPoint.NoWell>
-	<CK.Hygiene.WaterPoint.TabHint>每次取水 = 1 桶（60 升）。水源优先同网水井，其次附近小池塘/河边；需要物品栏或地上有水桶才会自动派活。制冰需要温度 ≤0°C。建在水面上的水龙头可作为同网水泵的地表进水口。</CK.Hygiene.WaterPoint.TabHint>
+	<CK.Hygiene.WaterPoint.TabHint>每次取水 = 1 桶（60 升）。水源优先同网水井，其次同网存水/附近小池塘/河边；需要物品栏或地上有水桶才会自动派活。水桶和脸盆都能随身携带，右键水龙头可直接打水；脸盆不占取水次数。制冰需要温度 ≤0°C。建在水面上的水龙头可作为同网水泵的地表进水口。</CK.Hygiene.WaterPoint.TabHint>
 	<CK.Hygiene.WaterPoint.SetDraws>设置取水次数（当前 {0}）</CK.Hygiene.WaterPoint.SetDraws>
 	<CK.Hygiene.WaterPoint.SetDrawsDesc>打开滑条设置要打多少桶水；到达次数后自动停止。</CK.Hygiene.WaterPoint.SetDrawsDesc>
 	<CK.Hygiene.WaterPoint.SetDrawsSlider>取水次数：{0}</CK.Hygiene.WaterPoint.SetDrawsSlider>
@@ -276,9 +283,12 @@
 	<CK.Hygiene.WaterSpot.DrawTask>取水：{0} / {1} 次</CK.Hygiene.WaterSpot.DrawTask>
 	<CK.Hygiene.WaterSpot.MaintainTask>维持：{0} / {1} 个满桶</CK.Hygiene.WaterSpot.MaintainTask>
 	<CK.Hygiene.WaterSpot.Delete>删除</CK.Hygiene.WaterSpot.Delete>
-	<CK.Hygiene.WaterSpot.Hint>每次取水需要一只空水桶；维持任务按地图/殖民者物品栏里的满桶计数。</CK.Hygiene.WaterSpot.Hint>
+	<CK.Hygiene.WaterSpot.Hint>清单取水需要空水桶，维持任务按地图/殖民者物品栏里的满桶计数。水桶和脸盆都能随身携带；选中殖民者右键取水点，水桶走清单任务，脸盆直接打水。</CK.Hygiene.WaterSpot.Hint>
 	<CK.Hygiene.WaterSpot.FreeWater>无限地表水</CK.Hygiene.WaterSpot.FreeWater>
-	<CK.Hygiene.WaterSpot.Drinkable>可直接喝水、洗手</CK.Hygiene.WaterSpot.Drinkable>
+	<CK.Hygiene.WaterSpot.Drinkable>可直接喝水、洗手；水桶/脸盆可打水</CK.Hygiene.WaterSpot.Drinkable>
+	<CK.Hygiene.WaterSpot.Tasks>清单任务：{0} 条，满桶 {1}</CK.Hygiene.WaterSpot.Tasks>
+	<CK.Hygiene.WaterSpot.Bills>清单：{0} 条，满桶 {1}</CK.Hygiene.WaterSpot.Bills>
+	<CK.Hygiene.WaterSpot.FullBuckets>满水桶</CK.Hygiene.WaterSpot.FullBuckets>
 	<CK.Hygiene.WaterPoint.IceReady>制冰条件：温度 ≤0°C，可以制冰</CK.Hygiene.WaterPoint.IceReady>
 	<CK.Hygiene.WaterPoint.IceWarm>制冰条件：温度高于 0°C，不会结冰</CK.Hygiene.WaterPoint.IceWarm>
 	<CK.Hygiene.WaterPoint.SetIce>设置制冰次数（当前 {0}）</CK.Hygiene.WaterPoint.SetIce>
