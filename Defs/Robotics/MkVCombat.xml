@@ -3,8 +3,13 @@
 	<ThingDef ParentName="BaseGun">
 		<defName>CK_ArcEmitter</defName>
 		<label>arc emitter</label>
-		<description>A compact arc emitter designed as the Mk-V android's standard weapon. It fires short-lived electric bolts in a five-round burst that burns and staggers the target.</description>
+		<description>A compact arc emitter designed as the Mk-V android's standard weapon. It fires short-lived electric bolts in a five-round burst that burns and staggers the target. In Mk-V hands its range is extended by a further 15 cells.</description>
 		<techLevel>Spacer</techLevel>
+		<modExtensions>
+			<li Class="ColonyKit.Modules.Robotics.DefModExtension_MkvExclusiveWeapon">
+				<rangeBonus>15</rangeBonus>
+			</li>
+		</modExtensions>
 		<graphicData>
 			<texPath>Things/Item/Equipment/WeaponRanged/CK_ArcEmitter</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -38,7 +43,7 @@
 				<warmupTime>0.8</warmupTime>
 				<burstShotCount>5</burstShotCount>
 				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
-				<range>28</range>
+				<range>36</range>
 				<soundCast>Shot_ChargeRifle</soundCast>
 				<soundCastTail>GunTail_Light</soundCastTail>
 				<muzzleFlashScale>8</muzzleFlashScale>

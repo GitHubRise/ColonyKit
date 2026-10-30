@@ -103,6 +103,11 @@ namespace ColonyKit.Modules.Robotics
 			{
 				CompNannyBot mkvComp = mkv.TryGetComp<CompNannyBot>();
 				CompMkVCombat combat = mkv.TryGetComp<CompMkVCombat>();
+				ThingWithComps weapon = mkv.equipment?.Primary;
+				Verb weaponVerb = weapon?.TryGetComp<CompEquippable>()?.PrimaryVerb;
+				float weaponRange = weapon?.def?.Verbs != null && weapon.def.Verbs.Count > 0
+					? weapon.def.Verbs[0].range
+					: 0f;
 				builder.Append(" mkvName=").Append(mkv.Name?.ToStringShort ?? "none")
 					.Append(" mkvThink=").Append(mkv.RaceProps.thinkTreeMain?.defName ?? "none")
 					.Append(" mkvDurability=").Append(mkvComp?.Durability.ToString("0") ?? "none")
@@ -110,6 +115,9 @@ namespace ColonyKit.Modules.Robotics
 					.Append(" mkvDrafter=").Append(mkv.drafter != null)
 					.Append(" mkvTools=").Append(mkv.def.tools?.Count ?? 0)
 					.Append(" mkvWeapon=").Append(mkv.equipment?.Primary?.def?.defName ?? "none")
+					.Append(" mkvWeaponRange=").Append(weaponRange.ToString("0.#"))
+					.Append(" mkvEffectiveRange=")
+					.Append(weaponVerb != null ? weaponVerb.EffectiveRange.ToString("0.#") : "none")
 					.Append(" mkvCombat=").Append(combat != null)
 					.Append(" mkvHomeBayIsBay=").Append(combat?.homeBay == bay)
 					.Append(" mkvHomeIsBay=").Append(mkvComp?.homeStation == bay)

@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+- **Mk-V 电弧发射器射程**：`CK_ArcEmitter` 的基础射程 28 → 36 格；武器新增 `DefModExtension_MkvExclusiveWeapon`（`rangeBonus` 15），只有 Mk-V 拿着时由 `VerbProperties.AdjustedRange` 的后缀加上去，实战有效射程 51 格，同一把枪在别人手上仍是 36 格。加成后按天气射程上限（大雾、暴风雪等）重新压回，不会突破天气限制；`JobGiver_MkVCombat` 改用 `Verb.EffectiveRange` 判断该继续接近还是原地开火，`JobGiver_MkVWeaponPickup` 的换枪评分也把专属加成算进去，避免 Mk-V 把自带的电弧发射器换成面板更好、实际更差的枪。武器中英文说明同步写明 36 / 51 两档射程，`-colonykit-nannybot-test` 自检新增 `mkvWeaponRange` / `mkvEffectiveRange` 两个探针字段。
+
 ### Added
 
 - **技能一键同步（内置精心准备）**：开局「精心准备」的技能页标题栏，在「禁止（清空）」图标左边新增一个闪电按钮。点一下就把全部技能的等级设成第一个技能（原版顺序即射击）的当前等级；各自的热情（火焰）和资质保持不变，等级仍按背景加成下限与资质结算，点数实时重算。按钮提示走新词条 `EdB.PC.Panel.Skills.SyncTip`，图标与清空/重置同一套线稿风格。

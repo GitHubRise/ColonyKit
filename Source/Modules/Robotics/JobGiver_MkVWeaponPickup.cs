@@ -76,6 +76,14 @@ namespace ColonyKit.Modules.Robotics
 					range = Mathf.Max(range, def.Verbs[i].range);
 				}
 			}
+			// 只有 Mk-V 会跑这个 JobGiver，自己出生自带的电弧发射器要把专属加成算进去，
+			// 否则会因为面板射程偏低被换成实际更差的枪。
+			DefModExtension_MkvExclusiveWeapon exclusive =
+				def.GetModExtension<DefModExtension_MkvExclusiveWeapon>();
+			if (exclusive != null && exclusive.rangeBonus > 0f)
+			{
+				range += exclusive.rangeBonus;
+			}
 			float damage = def.projectile?.GetDamageAmount(def, null) ?? 0f;
 			int burst = 1;
 			if (def.Verbs != null)

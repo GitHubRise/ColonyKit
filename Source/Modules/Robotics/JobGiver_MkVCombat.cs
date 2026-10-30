@@ -5,7 +5,7 @@ using Verse.AI;
 
 namespace ColonyKit.Modules.Robotics
 {
-	/// <summary>Mk-V 专用索敌：28 格内交战，超出后脱战并返回组装舱。</summary>
+	/// <summary>Mk-V 专用索敌：在设置的交战范围内找目标，超出后脱战并返回组装舱。</summary>
 	public class JobGiver_MkVCombat : ThinkNode_JobGiver
 	{
 		protected override Job TryGiveJob(Pawn pawn)
@@ -43,7 +43,8 @@ namespace ColonyKit.Modules.Robotics
 					combat.Clear();
 					return null;
 				}
-				if (distance > verb.verbProps.range)
+				// 用 EffectiveRange 而不是 verbProps.range：电弧发射器在 Mk-V 手上还有 15 格专属加成。
+				if (distance > verb.EffectiveRange)
 				{
 					Job move = JobMaker.MakeJob(JobDefOf.Goto, target.Position);
 					move.locomotionUrgency = LocomotionUrgency.Jog;
