@@ -63,7 +63,10 @@ namespace ColonyKit.Modules.Hygiene
 				{
 					continue;
 				}
-				if (!pawn.CanReserveAndReach(thing, PathEndMode.InteractionCell, Danger.Some))
+				if (!pawn.CanReserveAndReach(
+					thing,
+					thing is Building_AssignableFixture fixture ? fixture.InteractionPathMode : PathEndMode.InteractionCell,
+					Danger.Some))
 				{
 					continue;
 				}

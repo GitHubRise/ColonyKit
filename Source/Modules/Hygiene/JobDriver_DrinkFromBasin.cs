@@ -1,11 +1,16 @@
 using System.Collections.Generic;
 using ColonyKit.Modules.Hygiene.Dbh;
+using RimWorld;
 using Verse;
 using Verse.AI;
 
 namespace ColonyKit.Modules.Hygiene
 {
-	/// <summary>在洗手池/浴缸喝水（DBH JobDriver_DrinkFromBasin 的移植）：每 tick 抽 0.04 L，喝到 99%。</summary>
+	/// <summary>
+	/// 在洗手池/浴缸/取水点喝水（DBH JobDriver_DrinkFromBasin 的移植）：
+	/// 普通洁具走 <see cref="Building_Basin.TryUseWater"/>（取水点会覆盖成无限水或不耗热水），
+	/// 水盆/动物水槽走自带的用量，每 tick 抽 0.04 L，喝到 99%。
+	/// </summary>
 	public class JobDriver_DrinkFromBasin : JobDriver
 	{
 		private ContaminationLevel waterQuality = ContaminationLevel.Treated;
@@ -30,7 +35,9 @@ namespace ColonyKit.Modules.Hygiene
 				return fixture != null && !fixture.Working().Accepted;
 			});
 			yield return Toils_Reserve.Reserve(TargetIndex.A);
-			yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.InteractionCell);
+			PathEndMode pathEnd = (job.targetA.Thing as Building_AssignableFixture)?.InteractionPathMode
+				?? PathEndMode.InteractionCell;
+			yield return Toils_Goto.GotoThing(TargetIndex.A, pathEnd);
 			Toil drink = new Toil
 			{
 				defaultDuration = 500,
@@ -66,6 +73,22 @@ namespace ColonyKit.Modules.Hygiene
 					pawn.needs?.TryGetNeed<Need_Thirst>()?.Drink();
 					return;
 				}
+				if (job.targetA.Thing is Building_Basin basin)
+				{
+					// 洗手池/水龙头/免费取水点：走各自的 TryUseWater。
+					if (!basin.TryUseWater(out ContaminationLevel basinContam))
+					{
+						EndJobWith(JobCondition.Incompletable);
+						return;
+					}
+					if (basinContam > waterQuality)
+					{
+						waterQuality = basinContam;
+					}
+					pawn.needs?.TryGetNeed<Need_Thirst>()?.Drink();
+					return;
+				}
+				// 其他接了水管的洁具（保留旧路径）。
 				CompPipe pipe = job.targetA.Thing.TryGetComp<CompPipe>();
 				if (pipe?.pipeNet != null)
 				{

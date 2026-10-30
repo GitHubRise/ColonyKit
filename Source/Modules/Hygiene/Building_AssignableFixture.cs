@@ -62,6 +62,9 @@ namespace ColonyKit.Modules.Hygiene
 		/// <summary>是否显示性别/占用/派床等洁具专用 Gizmo；取水点这类公共设施关掉。</summary>
 		public virtual bool ShowFixtureGizmos => true;
 
+		/// <summary>走到洁具的寻路方式。普通洁具用固定交互格；水上/免费取水点用 Touch，不依赖脚下地形。</summary>
+		public virtual PathEndMode InteractionPathMode => PathEndMode.InteractionCell;
+
 		public bool OccupancyCheck => occupancyCheck && !AnimalsOnly && !ForPrisoners;
 
 		public bool ForPrisoners => Position.IsInPrisonCell(Map);

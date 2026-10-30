@@ -39,7 +39,7 @@ namespace ColonyKit.Modules.Hygiene
 				&& PawnAllowed(pawn)
 				&& !Occupied(pawn)
 				&& pawn.CanReserve(this)
-				&& pawn.CanReach(this, PathEndMode.InteractionCell, Danger.Deadly)
+				&& pawn.CanReach(this, InteractionPathMode, Danger.Deadly)
 				&& HasWaterSupply
 				&& Working().Accepted;
 		}

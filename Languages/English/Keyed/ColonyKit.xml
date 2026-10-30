@@ -246,16 +246,17 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<CK.Hygiene.AutoRefill>Auto-refill</CK.Hygiene.AutoRefill>
 	<CK.Hygiene.AutoRefillDesc>Refills itself from a connected water network. Turn off to rely on rain and manual pouring.</CK.Hygiene.AutoRefillDesc>
 	<CK.Hygiene.AutoRefillOff>Auto-refill is off</CK.Hygiene.AutoRefillOff>
-	<CK.Hygiene.WaterPoint.Tab>Water</CK.Hygiene.WaterPoint.Tab>
-	<CK.Hygiene.WaterPoint.TabTitle>Water point</CK.Hygiene.WaterPoint.TabTitle>
+	<CK.Hygiene.WaterPoint.Tab>Water tap</CK.Hygiene.WaterPoint.Tab>
+	<CK.Hygiene.WaterPoint.TabTitle>Water tap</CK.Hygiene.WaterPoint.TabTitle>
 	<CK.Hygiene.WaterPoint.DrawProgress>Draws: {0} / {1}</CK.Hygiene.WaterPoint.DrawProgress>
 	<CK.Hygiene.WaterPoint.Clear>Clear</CK.Hygiene.WaterPoint.Clear>
 	<CK.Hygiene.WaterPoint.TankLine>Tank: {0} / {1} L</CK.Hygiene.WaterPoint.TankLine>
-	<CK.Hygiene.WaterPoint.FlowFast>Supply: pumped, fast drawing</CK.Hygiene.WaterPoint.FlowFast>
-	<CK.Hygiene.WaterPoint.FlowSlow>Supply: manual, slow drawing</CK.Hygiene.WaterPoint.FlowSlow>
+	<CK.Hygiene.WaterPoint.FlowFast>Intake: powered, 8x the unpowered speed</CK.Hygiene.WaterPoint.FlowFast>
+	<CK.Hygiene.WaterPoint.FlowSlow>Intake: unpowered, slow</CK.Hygiene.WaterPoint.FlowSlow>
+	<CK.Hygiene.WaterPoint.SurfaceInlet>Surface intake: pumps on the network can draw {0} L/day</CK.Hygiene.WaterPoint.SurfaceInlet>
 	<CK.Hygiene.WaterPoint.WellReady>Well on network: yes</CK.Hygiene.WaterPoint.WellReady>
 	<CK.Hygiene.WaterPoint.NoWell>Well on network: none</CK.Hygiene.WaterPoint.NoWell>
-	<CK.Hygiene.WaterPoint.TabHint>Each draw is one 60 L bucket. Water comes from a well on the same network, or from a nearby pond or river. Colonists need a bucket in their inventory or on the ground. Ice needs a temperature of 0°C or below.</CK.Hygiene.WaterPoint.TabHint>
+	<CK.Hygiene.WaterPoint.TabHint>Each draw is one 60 L bucket. Water comes from a well on the same network, or from a nearby pond or river. Colonists need a bucket in their inventory or on the ground. Ice needs a temperature of 0°C or below. A tap built on water acts as a surface intake for pumps on the same network.</CK.Hygiene.WaterPoint.TabHint>
 	<CK.Hygiene.WaterPoint.SetDraws>Set number of draws ({0})</CK.Hygiene.WaterPoint.SetDraws>
 	<CK.Hygiene.WaterPoint.SetDrawsDesc>Open a slider to set how many buckets to draw. Work stops when the count is reached.</CK.Hygiene.WaterPoint.SetDrawsDesc>
 	<CK.Hygiene.WaterPoint.SetDrawsSlider>Draws: {0}</CK.Hygiene.WaterPoint.SetDrawsSlider>
@@ -265,6 +266,7 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<CK.Hygiene.WaterPoint.ClearIce>Clear ice</CK.Hygiene.WaterPoint.ClearIce>
 	<CK.Hygiene.WaterPoint.SurfaceReady>Surface water nearby: yes</CK.Hygiene.WaterPoint.SurfaceReady>
 	<CK.Hygiene.WaterPoint.NoSource>No well on the network and no surface water nearby</CK.Hygiene.WaterPoint.NoSource>
+	<CK.Hygiene.WaterSpot.NeedWater>Must be placed on water (river, shallow water, etc.)</CK.Hygiene.WaterSpot.NeedWater>
 	<CK.Hygiene.WaterPoint.IceReady>Freezing: at 0°C or below</CK.Hygiene.WaterPoint.IceReady>
 	<CK.Hygiene.WaterPoint.IceWarm>Freezing: above 0°C, will not freeze</CK.Hygiene.WaterPoint.IceWarm>
 	<CK.Hygiene.WaterPoint.SetIce>Set number of ice blocks ({0})</CK.Hygiene.WaterPoint.SetIce>

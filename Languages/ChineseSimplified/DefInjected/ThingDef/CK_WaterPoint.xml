@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-	<CK_WaterPoint.label>取水点</CK_WaterPoint.label>
-	<CK_WaterPoint.description>接在水管上的取水点，带一个 150 升的小水箱。殖民者可以在这里喝水、洗手，也可以用水桶接水带走。在检视页设置「取水次数」后，会自动拿水桶去同网水井或附近小池塘/河边打水倒回来；同网有水泵时打水快，没有水泵只能手动慢慢打。温度 ≤0°C 时可以设置「制冰次数」，把水箱里的水冻成冰块；冰块不会变质，放在取水点旁融化就能把水收回来。</CK_WaterPoint.description>
+	<CK_WaterPoint.label>水龙头</CK_WaterPoint.label>
+	<CK_WaterPoint.description>需要建造、接水网的水龙头，带一个 150 升的小水箱。殖民者可以在这里喝水、洗手，也可以用水桶接水带走。在检视页设置「取水次数」后，会自动拿水桶去同网水井或附近小池塘/河边打水倒回来；同网有水泵时打水快，没有水泵只能手动慢慢打。建在水面上时，它会成为同网水泵的地表进水口，可以经水管把水送到远处。温度 ≤0°C 时可以设置「制冰次数」，把水箱里的水冻成冰块；冰块不会变质，放在水龙头旁融化就能把水收回来。</CK_WaterPoint.description>
+	<CK_WaterSpot.label>取水点</CK_WaterSpot.label>
+	<CK_WaterSpot.description>蓝色的免费取水点，类似屠宰点。无需材料、无需研究，放下去就能直接喝水、洗手、用水桶打水，不需要水管或水箱，视为一处无限的地表水源。</CK_WaterSpot.description>
 	<CK_WaterBucket.label>水桶</CK_WaterBucket.label>
-	<CK_WaterBucket.description>结实的钢制水桶，能装 60 升水。可以在取水点、水井或小池塘/河边接水，直接喝，也可以倒进水盆或水箱。水不会变质，也没有保质期。</CK_WaterBucket.description>
+	<CK_WaterBucket.description>结实的钢制水桶，能装 60 升水。可以在水龙头、取水点、水井或小池塘/河边接水，直接喝，也可以倒进水盆或水箱。水不会变质，也没有保质期。</CK_WaterBucket.description>
 	<CK_IceBlock.label>冰块</CK_IceBlock.label>
-	<CK_IceBlock.description>一块含 10 升水的冰。不会腐烂、不会降解，也没有保质期；放在取水点旁、温度高于 0°C 时可以在检视面板把它融化成水。</CK_IceBlock.description>
+	<CK_IceBlock.description>一块含 10 升水的冰。不会腐烂、不会降解，也没有保质期；放在水龙头旁、温度高于 0°C 时可以在检视面板把它融化成水。</CK_IceBlock.description>
 </LanguageData>

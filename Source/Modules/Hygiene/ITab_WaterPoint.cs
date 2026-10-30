@@ -84,7 +84,7 @@ namespace ColonyKit.Modules.Hygiene
 			y += 26f;
 			Widgets.Label(
 				new Rect(0f, y, rect.width, 24f),
-				point.Pumped
+				point.PoweredIntake
 					? "CK.Hygiene.WaterPoint.FlowFast".Translate()
 					: "CK.Hygiene.WaterPoint.FlowSlow".Translate());
 			y += 26f;

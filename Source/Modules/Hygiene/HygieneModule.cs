@@ -82,6 +82,7 @@ namespace ColonyKit.Modules.Hygiene
 			// 让存档里已有的需求按当前策略/豁免重新评估；新需求由 ShouldHaveNeed 补丁负责。
 			HygieneUtility.RefreshAllPawns();
 			Agriculture.AgricultureSelftest.RunIfRequested(game);
+			WaterSelftest.RunIfRequested(game);
 			int humanlikes = 0;
 			int withNeed = 0;
 			int withBladder = 0;

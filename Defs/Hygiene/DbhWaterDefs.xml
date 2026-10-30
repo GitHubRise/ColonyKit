@@ -4,7 +4,8 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_DbhWaterPipe</defName>
 		<label>water pipe</label>
-		<description>Plumbing for connecting water wells, pumps, tanks, heaters and fixtures. Can be placed under walls and other buildings, like a power conduit.</description>
+		<terrainAffordanceNeeded IsNull="True" />
+		<description>Plumbing for connecting water wells, pumps, tanks, heaters and fixtures. Can be placed under walls and other buildings, like a power conduit. Can also be laid across water.</description>
 		<thingClass>Building</thingClass>
 		<size>(1,1)</size>
 		<graphicData>

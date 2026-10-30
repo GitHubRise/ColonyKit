@@ -73,8 +73,19 @@ namespace ColonyKit.Modules.Hygiene
 			return best;
 		}
 
-		/// <summary>背包里的水桶；没有水桶时返回 null。</summary>
+		/// <summary>背包里的水桶；默认只找没满的（打水用），requireWater 时只找有水的。</summary>
 		public static CompBasinWater CarriedBucket(Pawn pawn, bool requireWater = false)
+		{
+			return CarriedBucketInternal(pawn, requireWater, allowFull: false);
+		}
+
+		/// <summary>背包里的水桶，满的也算（倒水/结算用）。</summary>
+		public static CompBasinWater CarriedBucketAny(Pawn pawn)
+		{
+			return CarriedBucketInternal(pawn, requireWater: false, allowFull: true);
+		}
+
+		private static CompBasinWater CarriedBucketInternal(Pawn pawn, bool requireWater, bool allowFull)
 		{
 			if (pawn?.inventory?.innerContainer == null)
 			{
@@ -86,7 +97,7 @@ namespace ColonyKit.Modules.Hygiene
 				CompBasinWater container = thing.TryGetComp<CompBasinWater>();
 				if (container == null
 					|| !IsBucket(container)
-					|| (requireWater ? container.IsEmpty : container.IsFull))
+					|| (requireWater ? container.IsEmpty : (!allowFull && container.IsFull)))
 				{
 					continue;
 				}

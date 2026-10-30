@@ -116,7 +116,7 @@ namespace ColonyKit.Modules.Hygiene
 				bool reachable = pawn.CanReserveAndReach(building, PathEndMode.Touch, pawn.NormalMaxDanger());
 				bool sourceHasWater = isWell || (net != null && net.WaterStorage > 1f);
 
-				if (isWell)
+				if (isWell && !(building is Building_WaterSpot))
 				{
 					// 保留原「打水」：从水井往同网水箱手动加水。
 					bool canDraw = reachable

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-	<!-- 取水点：接在水网上的公共水龙头 + 150 L 小水箱。
-	     可以喝水、洗手、用水桶接水；检视页能设置「取水次数」，
-	     小人会自动拿水桶去同网水井打水倒回来。 -->
+	<!-- 水龙头：需要建造、接水网的水龙头 + 150 L 小水箱。
+	     可以喝水、洗手、用水桶接水；检视页能设置「取水次数」和「制冰次数」。
+	     建在水面上时作为同网水泵的地表进水口，可经水管远距离供水。
+	     另有一个免费取水点（CK_WaterSpot，蓝色地贴，无需建造）。 -->
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_WaterPoint</defName>
-		<label>water point</label>
-		<description>A public water point with a small 150 L tank. Colonists can drink and wash here, and fill buckets from it. Set a number of draws and they will carry water here from a well on the same network, or from a nearby pond or river, using buckets. At 0°C or below, water in the tank can be frozen into ice blocks. Pumped networks fill buckets quickly; without a pump, drawing at the well is slow.</description>
+		<label>water tap</label>
+		<description>A constructed water tap with a small 150 L tank. Colonists can drink and wash here, and fill buckets from it. Set a number of draws and they will carry water here from a well on the same network, or from a nearby pond or river, using buckets. Build it on water and it becomes a surface intake that pumps on the same network can draw from, so water can be piped over long distances. Below 0°C, water in the tank can be frozen into ice blocks. Pumped networks fill buckets quickly; without a pump, drawing at the well is slow.</description>
 		<thingClass>ColonyKit.Modules.Hygiene.Building_WaterPoint</thingClass>
+		<terrainAffordanceNeeded IsNull="True" />
+		<minifiedDef>MinifiedThing</minifiedDef>
 		<size>(1,1)</size>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
@@ -19,22 +22,19 @@
 		<rotatable>false</rotatable>
 		<designationCategory>CK_Hygiene</designationCategory>
 		<uiOrder>45</uiOrder>
-		<hasInteractionCell>true</hasInteractionCell>
-		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
 		<passability>PassThroughOnly</passability>
 		<fillPercent>0.2</fillPercent>
 		<pathCost>8</pathCost>
 		<tickerType>Normal</tickerType>
 		<castEdgeShadows>true</castEdgeShadows>
 		<costList>
-			<Steel>50</Steel>
-			<ComponentIndustrial>1</ComponentIndustrial>
+			<Steel>25</Steel>
 		</costList>
 		<statBases>
-			<MaxHitPoints>120</MaxHitPoints>
-			<Mass>20</Mass>
-			<WorkToBuild>800</WorkToBuild>
-			<Beauty>2</Beauty>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Mass>5</Mass>
+			<WorkToBuild>300</WorkToBuild>
+			<Beauty>0</Beauty>
 			<Flammability>0</Flammability>
 		</statBases>
 		<inspectorTabs>
@@ -47,13 +47,61 @@
 			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterStorage">
 				<WaterStorageCap>150</WaterStorageCap>
 			</li>
+			<li Class="ColonyKit.Modules.Hygiene.CompProperties_SurfaceWaterInlet">
+				<Capacity>2000</Capacity>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>50</basePowerConsumption>
+			</li>
 		</comps>
 		<researchPrerequisites>
 			<li>CK_HygieneResearch</li>
 		</researchPrerequisites>
 	</ThingDef>
 
-	<!-- 水桶：比脸盆大（60 L），用来从取水点/水井接水、倒进水盆或水箱。 -->
+	<!-- 免费取水点：蓝色地贴，类似屠宰点。无需材料/研究，WorkToBuild 0；
+	     放下去就能喝水、洗手、用水桶打水，不接水网、不存水，视为无限地表水源。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_WaterSpot</defName>
+		<label>water spot</label>
+		<description>A free blue water collection spot, like a butcher spot. Needs no materials or research and is built instantly. Colonists can drink and wash here, and fill buckets directly. It does not need pipes or a tank; it counts as an unlimited surface water source.</description>
+		<thingClass>ColonyKit.Modules.Hygiene.Building_WaterSpot</thingClass>
+		<terrainAffordanceNeeded IsNull="True" />
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_WaterSpot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<useHitPoints>false</useHitPoints>
+		<size>(1,1)</size>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>5</uiOrder>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.1</fillPercent>
+		<rotatable>false</rotatable>
+		<surfaceType>Item</surfaceType>
+		<statBases>
+			<WorkToBuild>0</WorkToBuild>
+			<Mass>0.1</Mass>
+		</statBases>
+		<building>
+			<isInert>true</isInert>
+			<ai_chillDestination>false</ai_chillDestination>
+		</building>
+		<placeWorkers>
+			<li>ColonyKit.Modules.Hygiene.PlaceWorker_WaterSpot</li>
+		</placeWorkers>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterInlet">
+				<Capacity>2000</Capacity>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<!-- 水桶：比脸盆大（60 L），用来从水龙头/水井/取水点接水、倒进水盆或水箱。 -->
+
 	<ThingDef ParentName="ResourceBase">
 		<defName>CK_WaterBucket</defName>
 		<label>water bucket</label>

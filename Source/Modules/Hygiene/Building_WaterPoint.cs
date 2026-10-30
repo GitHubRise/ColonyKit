@@ -31,6 +31,13 @@ namespace ColonyKit.Modules.Hygiene
 		/// <summary>每多少 tick 冻出一块冰（室外 ≤ 0°C 时）。</summary>
 		public const int IceProduceTicks = 1000;
 
+		/// <summary>无电时每 250 tick 的重力进水量；通电时 ×8。</summary>
+		private const float PassiveIntakeLiters = 0.5f;
+
+		private const int PassiveIntakeInterval = 250;
+
+		private const float PoweredIntakeMultiplier = 8f;
+
 		public int targetDraws;
 
 		public int deliveredDraws;
@@ -86,6 +93,17 @@ namespace ColonyKit.Modules.Hygiene
 
 		public override bool ShowFixtureGizmos => false;
 
+		public override PathEndMode InteractionPathMode => PathEndMode.Touch;
+
+		/// <summary>水龙头是否建在水面上；水面上时作为同网水泵的地表进水口。</summary>
+		public bool OnWater => Map != null && Position.GetTerrain(Map).IsWater;
+
+		/// <summary>水龙头是否通电；通电时进水是无电的 8 倍。</summary>
+		public bool PoweredIntake => powerComp != null && powerComp.PowerOn;
+
+		/// <summary>没电也能喝/洗手（水箱里的水仍可用），只是进水慢。</summary>
+		public override bool PowerRequiredToUse => false;
+
 		public override FixtureQuality Quality => FixtureQuality.shabby;
 
 		public override float waterUsed => 2f * HygieneSettings.Current.waterUseMultiplier;
@@ -108,8 +126,33 @@ namespace ColonyKit.Modules.Hygiene
 		protected override void Tick()
 		{
 			base.Tick();
-			if (Map == null
-				|| !HasPendingIce
+			if (Map == null)
+			{
+				return;
+			}
+
+			// 无电慢速重力进水；通电时 ×8。水源可以是水面，或同网水井/其他水上进水口。
+			if (this.IsHashIntervalTick(PassiveIntakeInterval)
+				&& StoredWater < Capacity
+				&& HasNetworkWaterSource())
+			{
+				CompWaterStorage intakeTank = Storage;
+				if (intakeTank != null)
+				{
+					float amount = PassiveIntakeLiters * (PoweredIntake ? PoweredIntakeMultiplier : 1f);
+					float added = Mathf.Min(amount, intakeTank.space);
+					if (added > 0f)
+					{
+						if (intakeTank.WaterStorage <= 0.01f)
+						{
+							intakeTank.WaterQuality = ContaminationLevel.Untreated;
+						}
+						intakeTank.WaterStorage += added;
+					}
+				}
+			}
+
+			if (!HasPendingIce
 				|| !CanFreeze
 				|| StoredWater < IceWaterLiters
 				|| !this.IsHashIntervalTick(IceProduceTicks))
@@ -130,6 +173,27 @@ namespace ColonyKit.Modules.Hygiene
 			}
 			tank.WaterStorage = Mathf.Max(0f, tank.WaterStorage - IceWaterLiters);
 			madeIce++;
+		}
+
+		private bool HasNetworkWaterSource()
+		{
+			if (OnWater)
+			{
+				return true;
+			}
+			PlumbingNet net = pipe?.pipeNet;
+			if (net == null)
+			{
+				return false;
+			}
+			foreach (CompWaterInlet well in net.WaterWells)
+			{
+				if (well != null && well.parent != this && well.GroundWaterCapacity > 0.0001f)
+				{
+					return true;
+				}
+			}
+			return false;
 		}
 
 		public void SetDrawOrder(int count)
@@ -215,6 +279,7 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				Thing thing = well?.parent;
 				if (thing == null
+					|| thing == this
 					|| !thing.Spawned
 					|| thing.Map != Map
 					|| well.GroundWaterCapacity <= 0f
@@ -284,9 +349,15 @@ namespace ColonyKit.Modules.Hygiene
 				builder.Append(line);
 			}
 
-			Append(Pumped
+			Append(PoweredIntake
 				? "CK.Hygiene.WaterPoint.FlowFast".Translate()
 				: "CK.Hygiene.WaterPoint.FlowSlow".Translate());
+			CompSurfaceWaterInlet inlet = GetComp<CompSurfaceWaterInlet>();
+			if (inlet != null && inlet.GroundWaterCapacity > 0.0001f)
+			{
+				Append("CK.Hygiene.WaterPoint.SurfaceInlet".Translate(
+					inlet.GroundWaterCapacity.ToString("F0")));
+			}
 			if (targetDraws > 0)
 			{
 				Append("CK.Hygiene.WaterPoint.DrawProgress".Translate(deliveredDraws, targetDraws));

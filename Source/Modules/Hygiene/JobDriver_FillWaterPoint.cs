@@ -135,7 +135,7 @@ namespace ColonyKit.Modules.Hygiene
 			pour.initAction = () =>
 			{
 				Building_WaterPoint point = job.GetTarget(PointInd).Thing as Building_WaterPoint;
-				CompBasinWater bucket = WaterContainerUtility.CarriedBucket(pawn);
+				CompBasinWater bucket = WaterContainerUtility.CarriedBucketAny(pawn);
 				if (point == null || bucket == null)
 				{
 					EndJobWith(JobCondition.Incompletable);

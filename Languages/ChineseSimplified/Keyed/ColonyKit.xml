@@ -246,16 +246,17 @@
 	<CK.Hygiene.AutoRefill>自动补水</CK.Hygiene.AutoRefill>
 	<CK.Hygiene.AutoRefillDesc>接水网时自动把水盆补满；关掉后只靠雨水和手动倒水。</CK.Hygiene.AutoRefillDesc>
 	<CK.Hygiene.AutoRefillOff>自动补水已关闭</CK.Hygiene.AutoRefillOff>
-	<CK.Hygiene.WaterPoint.Tab>取水</CK.Hygiene.WaterPoint.Tab>
-	<CK.Hygiene.WaterPoint.TabTitle>取水点</CK.Hygiene.WaterPoint.TabTitle>
+	<CK.Hygiene.WaterPoint.Tab>水龙头</CK.Hygiene.WaterPoint.Tab>
+	<CK.Hygiene.WaterPoint.TabTitle>水龙头</CK.Hygiene.WaterPoint.TabTitle>
 	<CK.Hygiene.WaterPoint.DrawProgress>取水进度：{0} / {1} 次</CK.Hygiene.WaterPoint.DrawProgress>
 	<CK.Hygiene.WaterPoint.Clear>清空</CK.Hygiene.WaterPoint.Clear>
 	<CK.Hygiene.WaterPoint.TankLine>水箱：{0} / {1} 升</CK.Hygiene.WaterPoint.TankLine>
-	<CK.Hygiene.WaterPoint.FlowFast>供水：水泵加压，打水快</CK.Hygiene.WaterPoint.FlowFast>
-	<CK.Hygiene.WaterPoint.FlowSlow>供水：手动，打水慢</CK.Hygiene.WaterPoint.FlowSlow>
+	<CK.Hygiene.WaterPoint.FlowFast>进水：通电，速度为无电的 8 倍</CK.Hygiene.WaterPoint.FlowFast>
+	<CK.Hygiene.WaterPoint.FlowSlow>进水：无电，慢速</CK.Hygiene.WaterPoint.FlowSlow>
+	<CK.Hygiene.WaterPoint.SurfaceInlet>水上进水口：同网水泵可抽取地表水（{0} 升/天）</CK.Hygiene.WaterPoint.SurfaceInlet>
 	<CK.Hygiene.WaterPoint.WellReady>同网水井：可用</CK.Hygiene.WaterPoint.WellReady>
 	<CK.Hygiene.WaterPoint.NoWell>同网水井：没有</CK.Hygiene.WaterPoint.NoWell>
-	<CK.Hygiene.WaterPoint.TabHint>每次取水 = 1 桶（60 升）。水源优先同网水井，其次附近小池塘/河边；需要物品栏或地上有水桶才会自动派活。制冰需要温度 ≤0°C。</CK.Hygiene.WaterPoint.TabHint>
+	<CK.Hygiene.WaterPoint.TabHint>每次取水 = 1 桶（60 升）。水源优先同网水井，其次附近小池塘/河边；需要物品栏或地上有水桶才会自动派活。制冰需要温度 ≤0°C。建在水面上的水龙头可作为同网水泵的地表进水口。</CK.Hygiene.WaterPoint.TabHint>
 	<CK.Hygiene.WaterPoint.SetDraws>设置取水次数（当前 {0}）</CK.Hygiene.WaterPoint.SetDraws>
 	<CK.Hygiene.WaterPoint.SetDrawsDesc>打开滑条设置要打多少桶水；到达次数后自动停止。</CK.Hygiene.WaterPoint.SetDrawsDesc>
 	<CK.Hygiene.WaterPoint.SetDrawsSlider>取水次数：{0}</CK.Hygiene.WaterPoint.SetDrawsSlider>
@@ -265,6 +266,7 @@
 	<CK.Hygiene.WaterPoint.ClearIce>清空制冰</CK.Hygiene.WaterPoint.ClearIce>
 	<CK.Hygiene.WaterPoint.SurfaceReady>附近地表水：可用</CK.Hygiene.WaterPoint.SurfaceReady>
 	<CK.Hygiene.WaterPoint.NoSource>同网没有水井，附近也没有地表水</CK.Hygiene.WaterPoint.NoSource>
+	<CK.Hygiene.WaterSpot.NeedWater>只能建在河流、浅水等水面上</CK.Hygiene.WaterSpot.NeedWater>
 	<CK.Hygiene.WaterPoint.IceReady>制冰条件：温度 ≤0°C，可以制冰</CK.Hygiene.WaterPoint.IceReady>
 	<CK.Hygiene.WaterPoint.IceWarm>制冰条件：温度高于 0°C，不会结冰</CK.Hygiene.WaterPoint.IceWarm>
 	<CK.Hygiene.WaterPoint.SetIce>设置制冰次数（当前 {0}）</CK.Hygiene.WaterPoint.SetIce>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 	<CK_DbhWaterPipe.label>水管</CK_DbhWaterPipe.label>
-	<CK_DbhWaterPipe.description>连接水井、水泵、水箱、热水器和洁具的管道。像电缆一样不阻挡移动，可以铺在墙下；按住左键拖动可快速布线。</CK_DbhWaterPipe.description>
+	<CK_DbhWaterPipe.description>连接水井、水泵、水箱、热水器和洁具的管道。像电缆一样不阻挡移动，可以铺在墙下，也可以铺在水面上；按住左键拖动可快速布线。</CK_DbhWaterPipe.description>
 	<CK_DbhWaterTank.label>水箱</CK_DbhWaterTank.label>
 	<CK_DbhWaterTank.description>为洁具储水，容量 2000 升。</CK_DbhWaterTank.description>
 	<CK_DbhWaterTankGiant.label>巨型水箱</CK_DbhWaterTankGiant.label>

@@ -17,7 +17,9 @@ namespace ColonyKit.Modules.Hygiene
 		protected override IEnumerable<Toil> MakeNewToils()
 		{
 			this.FailOnDestroyedNullOrForbidden(TargetIndex.A);
-			yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.InteractionCell);
+			PathEndMode pathEnd = (job.targetA.Thing as Building_AssignableFixture)?.InteractionPathMode
+				?? PathEndMode.InteractionCell;
+			yield return Toils_Goto.GotoThing(TargetIndex.A, pathEnd);
 			Toil wash = new Toil
 			{
 				defaultDuration = 100,
