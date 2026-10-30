@@ -1,4 +1,5 @@
 using System;
+using ColonyKit.Modules;
 using HarmonyLib;
 using Verse;
 
@@ -28,6 +29,10 @@ namespace ColonyKit
 				// 模块由程序集自动发现：新增模块不需要改本文件。
 				int discovered = ModuleRegistry.DiscoverFromAssembly(typeof(Bootstrap).Assembly);
 				ModuleRegistry.InitAll();
+
+				// 被禁用的模块不会走 OnDefsLoaded，这里补一次目标状态，
+				// 由 PrepareCarefullyBridge 在主循环里把内置精心准备的补丁对齐。
+				PrepareCarefullyBridge.Request(ModuleRegistry.IsEnabled("prepare-carefully"));
 
 				ModLog.Info("Bootstrap", $"loaded; modules={ModuleRegistry.All.Count} (discovered={discovered})");
 			}

@@ -6,6 +6,7 @@
 
 ### Added
 
+- **内置精心准备（可开关）**：把 EdB Prepare Carefully 1.6.2（MIT）按内置 RJW 的方式并入 ColonyKit——源码镜像到 `Source\PrepareCarefully`，由独立工程 `Source\PrepareCarefully.Bundled` 编成 `Assemblies\EdBPrepareCarefully.dll`（不并入 ColonyKit.dll）；Defs / Textures / Languages 合并进对应目录，249 条中文词条一并带上。新增模块 `prepare-carefully`（默认开）：设置里关掉后，`PrepareCarefullyBridge` 会把它的两个 Harmony Postfix 卸掉，开局页不再出现「精心准备」按钮；开关在下一帧生效。外部创意工坊版同时启用时只告警、不接管其补丁，并在 `About.xml` 的 `incompatibleWith` 里标注。配套 `sync-preparecarefully.ps1`（镜像/合并上游）与 `build-with-preparecarefully.ps1`（`build.ps1 -WithPrepareCarefully` 的入口）。
 - **工作优先级 9 级**：原版「工作」页的优先级上限写死为 4（`Pawn_WorkSettings.LowestPriority`、`WidgetsWork.DrawWorkBoxFor` 与 `PawnColumnWorker_WorkPriority.HeaderClicked` 里的绕圈常量）。新模块 `work-priority` 把这三处换成运行时上限 `WorkPriorityModule.MaxPriority`：单元格左/右键在 1–9 之间绕圈、0 为关闭，列头 Shift 点击整列升降；5–9 走 `Pawn_WorkSettings.SetPriority` 的前缀直接写优先级表，不再触发原版「Trying to set work to invalid priority」日志。5–9 级另给一套渐暗的灰度（`WidgetsWork.ColorOfPriority` 后缀），并补 `Priority5`–`Priority9` 词条，悬停提示显示「第 N 优先级 / Priority N」；教程「手动分配工作优先级」里「标记 4 为最后去做」通过反射改成 9（1.6 把 `helpText` 改成了 private）。模块关闭时 `MaxPriority` 退回 4，行为与原版一致。
 
 - **默认工作优先级：灭火 1 / 就医 2 / 其余 5**：新小人在两条初始化路径后套用默认值——`Pawn_WorkSettings.EnableAndInitialize`（新出生、新加入）与 `GameInitData.PrepForMapGen`（新开局起始殖民者，原版会先 `DisableAll()` 再按技能挑几个设 3，绕过前者）。不能从事的工作（特质/背景/健康禁用）保持 0；机械族有自己的 `mechWorkTypePriorities`，不套用。已有存档里玩家调过的数字不会被改。

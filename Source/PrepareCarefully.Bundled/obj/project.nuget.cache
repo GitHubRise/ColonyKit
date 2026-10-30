@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "jWALkNuWViI=",
+  "success": true,
+  "projectFilePath": "E:\\RimWorld-WorkSpace\\sources\\ColonyKit\\Source\\PrepareCarefully.Bundled\\PrepareCarefully.Bundled.csproj",
+  "expectedPackageFiles": [
+    "E:\\RimWorld-WorkSpace\\.tools\\nuget\\krafs.rimworld.ref\\1.6.4871\\krafs.rimworld.ref.1.6.4871.nupkg.sha512",
+    "E:\\RimWorld-WorkSpace\\.tools\\nuget\\lib.harmony\\2.4.3\\lib.harmony.2.4.3.nupkg.sha512",
+    "E:\\RimWorld-WorkSpace\\.tools\\nuget\\microsoft.netframework.referenceassemblies\\1.0.3\\microsoft.netframework.referenceassemblies.1.0.3.nupkg.sha512",
+    "E:\\RimWorld-WorkSpace\\.tools\\nuget\\microsoft.netframework.referenceassemblies.net472\\1.0.3\\microsoft.netframework.referenceassemblies.net472.1.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

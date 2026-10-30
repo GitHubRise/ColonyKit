@@ -270,6 +270,8 @@
 	<ColonyKit.Module.Localization.Desc>文本替换与汉化管线；参考 DevMenuChinese。</ColonyKit.Module.Localization.Desc>
 	<ColonyKit.Module.Rjw.Name>RJW 本体</ColonyKit.Module.Rjw.Name>
 	<ColonyKit.Module.Rjw.Desc>内置 RJW 1.6；外部 RimJobWorld 请勿同时启用。</ColonyKit.Module.Rjw.Desc>
+  <ColonyKit.Module.PrepareCarefully.Name>精心准备（内置）</ColonyKit.Module.PrepareCarefully.Name>
+  <ColonyKit.Module.PrepareCarefully.Desc>内置 EdB 精心准备 1.6.2；关掉后开局页不再显示「精心准备」按钮。请勿同时启用外部版本。</ColonyKit.Module.PrepareCarefully.Desc>
 
 	<ColonyKit.Settings.Tab.Storage>立体库</ColonyKit.Settings.Tab.Storage>
 	<ColonyKit.Settings.Storage.Hint>全局堆叠规则 + 立体库容量：一级研究前按本页倍率；完成一级后全局固定 ×10；二级/三级只放大立体库内部每堆。仓库容量按堆计，可在本页调整。</ColonyKit.Settings.Storage.Hint>

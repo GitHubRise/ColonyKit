@@ -36,6 +36,7 @@ param(
 	[switch]$Clean,
 	[switch]$NoRebuild,
 	[switch]$WithRjw,
+	[switch]$WithPrepareCarefully,
 	[ValidateSet('Debug', 'Release')]
 	[string]$Configuration = 'Release',
 	[string]$ModsPath = 'E:\SteamLibrary\steamapps\common\RimWorld\Mods'
@@ -47,6 +48,7 @@ $root       = $PSScriptRoot
 $workspace  = Split-Path (Split-Path $root -Parent) -Parent
 $project    = Join-Path $root 'Source\ColonyKit.csproj'
 $rjwProject = Join-Path $root 'Source\Rjw\RimJobWorld.Main.csproj'
+$pcProject  = Join-Path $root 'Source\PrepareCarefully.Bundled\PrepareCarefully.Bundled.csproj'
 $assemblies = Join-Path $root 'Assemblies'
 $dotnet     = Join-Path $workspace '.tools\dotnet\dotnet.exe'
 $nuget      = Join-Path $workspace '.tools\nuget'
@@ -67,8 +69,15 @@ if (-not $WithRjw -and -not (Test-Path $rjwDll)) {
 	throw "缺少内置 RJW 的程序集：$rjwDll`n先运行 .\build-with-rjw.ps1 生成一次，之后的正常构建会直接复用它。"
 }
 
+$pcDll = Join-Path $assemblies 'EdBPrepareCarefully.dll'
+if (-not $WithPrepareCarefully -and -not (Test-Path $pcDll)) {
+	throw "缺少内置精心准备的程序集：$pcDll`n先运行 .\build-with-preparecarefully.ps1 生成一次，之后的正常构建会直接复用它。"
+}
+
 $buildRjw = if ($WithRjw) { 'true' } else { 'false' }
+$buildPc  = if ($WithPrepareCarefully) { 'true' } else { 'false' }
 if ($WithRjw -and -not (Test-Path $rjwProject)) { throw "RJW 工程文件不存在：$rjwProject" }
+if ($WithPrepareCarefully -and -not (Test-Path $pcProject)) { throw "精心准备工程文件不存在：$pcProject" }
 
 $env:DOTNET_CLI_TELEMETRY_OPTOUT = '1'
 $env:DOTNET_NOLOGO = '1'
@@ -76,33 +85,31 @@ $env:DOTNET_NOLOGO = '1'
 Push-Location (Join-Path $root 'Source')
 try {
 	if ($Clean) {
-		foreach ($dir in 'obj', 'bin', 'Rjw\obj', 'Rjw\bin') {
+		foreach ($dir in 'obj', 'bin', 'Rjw\obj', 'Rjw\bin', 'PrepareCarefully.Bundled\obj', 'PrepareCarefully.Bundled\bin') {
 			$path = Join-Path (Join-Path $root 'Source') $dir
 			if (Test-Path $path) { Remove-Item $path -Recurse -Force }
 		}
-		if ($WithRjw) {
-			if (Test-Path $assemblies) { Remove-Item $assemblies -Recurse -Force }
-			Write-Host '[clean] obj / bin / Assemblies 已删除' -ForegroundColor DarkGray
+		$leafs = @('ColonyKit.dll', 'ColonyKit.pdb', 'ColonyKit.xml')
+		if ($WithRjw) { $leafs += @('RJW.dll', 'RJW.pdb') }
+		if ($WithPrepareCarefully) { $leafs += @('EdBPrepareCarefully.dll', 'EdBPrepareCarefully.pdb') }
+		foreach ($leaf in $leafs) {
+			$p = Join-Path $assemblies $leaf
+			if (Test-Path $p) { Remove-Item $p -Force }
 		}
-		else {
-			# 正常构建不动 RJW.dll：它是上一次 build-with-rjw.ps1 的产物，删了就得重编。
-			foreach ($leaf in 'ColonyKit.dll', 'ColonyKit.pdb', 'ColonyKit.xml') {
-				$p = Join-Path $assemblies $leaf
-				if (Test-Path $p) { Remove-Item $p -Force }
-			}
-			Write-Host '[clean] obj / bin / Assemblies\ColonyKit.* 已删除（保留 RJW.dll）' -ForegroundColor DarkGray
-		}
+		Write-Host ("[clean] obj / bin 与旧产物已删除：{0}" -f ($leafs -join ', ')) -ForegroundColor DarkGray
 	}
 
 	# 用工作区的离线包目录；--packages 必须和首次 restore 的路径一致，
 	# 否则 obj\project.assets.json 里记录的路径对不上，build 会重新找包。
 	$assets = Join-Path (Join-Path $root 'Source') 'obj\project.assets.json'
 	$rjwAssets = Join-Path (Join-Path $root 'Source\Rjw') 'obj\project.assets.json'
+	$pcAssets = Join-Path (Join-Path $root 'Source\PrepareCarefully.Bundled') 'obj\project.assets.json'
 	$needRestore = -not (Test-Path $assets)
 	if ($WithRjw -and -not (Test-Path $rjwAssets)) { $needRestore = $true }
+	if ($WithPrepareCarefully -and -not (Test-Path $pcAssets)) { $needRestore = $true }
 	if ($needRestore) {
 		Write-Host '[restore] dotnet restore' -ForegroundColor Cyan
-		$restoreArgs = @('restore', $project, "-p:BuildRjw=$buildRjw", '--no-dependencies')
+		$restoreArgs = @('restore', $project, "-p:BuildRjw=$buildRjw", "-p:BuildPc=$buildPc", '--no-dependencies')
 		# --no-dependencies：不带 -p 的嵌套 restore 会忽略上面的属性，把 RJW 又拉回来。
 		if (Test-Path (Join-Path $workspace '.tools')) {
 			$restoreArgs += @('--packages', $nuget)
@@ -110,19 +117,19 @@ try {
 		& $dotnet @restoreArgs 2>&1 | Out-String | Write-Verbose
 		if ($LASTEXITCODE -ne 0) { throw "restore 失败（exit $LASTEXITCODE）" }
 
-		if ($WithRjw -and -not (Test-Path $rjwAssets)) {
-			Write-Host '[restore] dotnet restore (RJW)' -ForegroundColor Cyan
-			$rjwRestoreArgs = @('restore', $rjwProject)
-			if (Test-Path (Join-Path $workspace '.tools')) {
-				$rjwRestoreArgs += @('--packages', $nuget)
-			}
-			& $dotnet @rjwRestoreArgs 2>&1 | Out-String | Write-Verbose
-			if ($LASTEXITCODE -ne 0) { throw "RJW restore 失败（exit $LASTEXITCODE）" }
+		foreach ($sub in @(@{ Name = 'RJW'; Proj = $rjwProject; Assets = $rjwAssets; On = $WithRjw },
+		                  @{ Name = '精心准备'; Proj = $pcProject; Assets = $pcAssets; On = $WithPrepareCarefully })) {
+			if (-not $sub.On -or (Test-Path $sub.Assets)) { continue }
+			Write-Host ("[restore] dotnet restore ({0})" -f $sub.Name) -ForegroundColor Cyan
+			$subArgs = @('restore', $sub.Proj)
+			if (Test-Path (Join-Path $workspace '.tools')) { $subArgs += @('--packages', $nuget) }
+			& $dotnet @subArgs 2>&1 | Out-String | Write-Verbose
+			if ($LASTEXITCODE -ne 0) { throw ("{0} restore 失败（exit {1}）" -f $sub.Name, $LASTEXITCODE) }
 		}
 	}
 
-	Write-Host ("[build] {0}（BuildRjw={1}）" -f $Configuration, $buildRjw) -ForegroundColor Cyan
-	$buildArgs = @('build', $project, '-c', $Configuration, '--no-restore', "-p:BuildRjw=$buildRjw")
+	Write-Host ("[build] {0}（BuildRjw={1}, BuildPc={2}）" -f $Configuration, $buildRjw, $buildPc) -ForegroundColor Cyan
+	$buildArgs = @('build', $project, '-c', $Configuration, '--no-restore', "-p:BuildRjw=$buildRjw", "-p:BuildPc=$buildPc")
 	if (-not $NoRebuild) { $buildArgs += '-t:Rebuild' }
 	$log = & $dotnet @buildArgs 2>&1 | Out-String
 	$exit = $LASTEXITCODE
@@ -141,9 +148,11 @@ try {
 	if (-not (Test-Path $dll)) { throw "未找到产物：$dll" }
 	$file = Get-Item $dll
 	Write-Host ("[ok] {0}  {1:N0} bytes" -f $file.FullName, $file.Length) -ForegroundColor Green
-	$rjwFile = Get-Item $rjwDll -ErrorAction SilentlyContinue
-	if ($rjwFile) {
-		Write-Host ("[ok] {0}  {1:N0} bytes  {2:yyyy-MM-dd HH:mm}（{3}）" -f $rjwFile.FullName, $rjwFile.Length, $rjwFile.LastWriteTime, ($(if ($WithRjw) { '本次重编' } else { '复用既有产物' }))) -ForegroundColor Green
+	foreach ($pair in @(@{ File = $rjwDll; Rebuilt = $WithRjw }, @{ File = $pcDll; Rebuilt = $WithPrepareCarefully })) {
+		$f = Get-Item $pair.File -ErrorAction SilentlyContinue
+		if ($f) {
+			Write-Host ("[ok] {0}  {1:N0} bytes  {2:yyyy-MM-dd HH:mm}（{3}）" -f $f.FullName, $f.Length, $f.LastWriteTime, ($(if ($pair.Rebuilt) { '本次重编' } else { '复用既有产物' }))) -ForegroundColor Green
+		}
 	}
 
 	if ($Deploy) {
@@ -163,7 +172,7 @@ try {
 			if ($LASTEXITCODE -ge 8) { throw "robocopy 失败：$name（exit $LASTEXITCODE）" }
 		}
 
-		foreach ($pair in @(@{ Src = $dll; Dst = (Join-Path $target 'Assemblies\ColonyKit.dll') }, @{ Src = $rjwDll; Dst = (Join-Path $target 'Assemblies\RJW.dll') })) {
+		foreach ($pair in @(@{ Src = $dll; Dst = (Join-Path $target 'Assemblies\ColonyKit.dll') }, @{ Src = $rjwDll; Dst = (Join-Path $target 'Assemblies\RJW.dll') }, @{ Src = $pcDll; Dst = (Join-Path $target 'Assemblies\EdBPrepareCarefully.dll') })) {
 			if (-not (Test-Path $pair.Src)) { throw "部署校验失败：源文件不存在 $($pair.Src)" }
 			$hashSrc = (Get-FileHash $pair.Src -Algorithm SHA256).Hash
 			$hashDst = (Get-FileHash $pair.Dst -Algorithm SHA256).Hash
@@ -178,3 +187,4 @@ finally {
 
 # robocopy 的成功码是 0–7，直接在调用方看 $LASTEXITCODE 会误判为失败。
 $global:LASTEXITCODE = 0
+

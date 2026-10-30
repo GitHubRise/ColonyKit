@@ -1,0 +1,9 @@
+E:\RimWorld-WorkSpace\sources\ColonyKit\Assemblies\EdBPrepareCarefully.dll
+E:\RimWorld-WorkSpace\sources\ColonyKit\Assemblies\EdBPrepareCarefully.pdb
+E:\RimWorld-WorkSpace\sources\ColonyKit\Source\PrepareCarefully.Bundled\obj\Release\PrepareCarefully.Bundled.csproj.AssemblyReference.cache
+E:\RimWorld-WorkSpace\sources\ColonyKit\Source\PrepareCarefully.Bundled\obj\Release\PrepareCarefully.Bundled.GeneratedMSBuildEditorConfig.editorconfig
+E:\RimWorld-WorkSpace\sources\ColonyKit\Source\PrepareCarefully.Bundled\obj\Release\PrepareCarefully.Bundled.csproj.CoreCompileInputs.cache
+E:\RimWorld-WorkSpace\sources\ColonyKit\Source\PrepareCarefully.Bundled\obj\Release\PrepareC.4391C0B3.Up2Date
+E:\RimWorld-WorkSpace\sources\ColonyKit\Source\PrepareCarefully.Bundled\obj\Release\EdBPrepareCarefully.dll
+E:\RimWorld-WorkSpace\sources\ColonyKit\Source\PrepareCarefully.Bundled\obj\Release\EdBPrepareCarefully.pdb
+E:\RimWorld-WorkSpace\sources\ColonyKit\Source\PrepareCarefully.Bundled\obj\Release\PrepareCarefully.Bundled.sourcelink.json

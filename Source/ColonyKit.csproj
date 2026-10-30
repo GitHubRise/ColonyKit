@@ -20,11 +20,18 @@
 		<!-- 内置 RJW：由独立工程编译，不并入 ColonyKit.dll。 -->
 		<Compile Remove="Rjw\**\*.cs" />
 		<None Include="Rjw\**\*.cs" />
+		<!-- 内置「精心准备」：同样是独立工程 + 独立程序集。 -->
+		<Compile Remove="PrepareCarefully\**\*.cs" />
+		<None Include="PrepareCarefully\**\*.cs" />
+		<!-- 独立工程自己的 obj/bin 不要被 ColonyKit 的默认通配吃进来。 -->
+		<Compile Remove="PrepareCarefully.Bundled\**\*.cs" />
 	</ItemGroup>
 	<ItemGroup>
 		<!-- 内置 RJW：一起构建到 Assemblies，但 ColonyKit 不引用其类型。
 		     build.ps1（正常）传 -p:BuildRjw=false 只编 ColonyKit，复用已有的 Assemblies\RJW.dll；
 		     build-with-rjw.ps1 传 -p:BuildRjw=true 连 RJW 子工程一起重编。 -->
 		<ProjectReference Include="Rjw\RimJobWorld.Main.csproj" ReferenceOutputAssembly="false" Private="false" Condition="'$(BuildRjw)' != 'false'" />
+		<!-- 内置精心准备：同上，-p:BuildPc=true 时重编 EdBPrepareCarefully.dll。 -->
+		<ProjectReference Include="PrepareCarefully.Bundled\PrepareCarefully.Bundled.csproj" ReferenceOutputAssembly="false" Private="false" Condition="'$(BuildPc)' != 'false'" />
 	</ItemGroup>
 </Project>

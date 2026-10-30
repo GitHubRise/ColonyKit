@@ -270,6 +270,8 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<ColonyKit.Module.Localization.Desc>Text replacement and Chinese localization; based on DevMenuChinese.</ColonyKit.Module.Localization.Desc>
 	<ColonyKit.Module.Rjw.Name>RJW (bundled)</ColonyKit.Module.Rjw.Name>
 	<ColonyKit.Module.Rjw.Desc>RJW 1.6 is bundled; do not enable an external RimJobWorld at the same time.</ColonyKit.Module.Rjw.Desc>
+  <ColonyKit.Module.PrepareCarefully.Name>Prepare Carefully (bundled)</ColonyKit.Module.PrepareCarefully.Name>
+  <ColonyKit.Module.PrepareCarefully.Desc>EdB Prepare Carefully 1.6.2 is bundled; turn it off to hide the entry button. Do not enable an external copy at the same time.</ColonyKit.Module.PrepareCarefully.Desc>
 
 	<ColonyKit.Settings.Tab.Storage>Storage</ColonyKit.Settings.Tab.Storage>
 	<ColonyKit.Settings.Storage.Hint>Global stack rules and warehouse capacity: before Tier 1 the slider below applies; after Tier 1 the global limit is fixed at ×10. Tier 2/3 only enlarge stacks inside the vertical warehouse. Capacity is counted in stacks.</ColonyKit.Settings.Storage.Hint>
