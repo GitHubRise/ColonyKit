@@ -413,6 +413,7 @@ namespace EdB.PrepareCarefully {
             skillsPanel.IncrementSkillButtonClicked += controllerPawns.IncrementSkill;
             skillsPanel.DecrementSkillButtonClicked += controllerPawns.DecrementSkill;
             skillsPanel.SkillBarClicked += controllerPawns.SetSkillLevel;
+            skillsPanel.SyncSkillsButtonClicked += controllerPawns.SyncSkillLevels;
             skillsPanel.ClearSkillsButtonClicked += controllerPawns.ClearSkillsAndPassions;
             skillsPanel.ResetSkillsButtonClicked += controllerPawns.ResetAddedSkillLevelsAndPassions;
 

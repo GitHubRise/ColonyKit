@@ -452,6 +452,7 @@ Click the randomize button to generate a colonist with this xenotype</EdB.PC.Pan
 
   <EdB.PC.Panel.Skills.ResetTip>Reset all skills and passions to their original values</EdB.PC.Panel.Skills.ResetTip>
   <EdB.PC.Panel.Skills.ClearTip>Clear all skills and passions by setting them to their lowest possible levels</EdB.PC.Panel.Skills.ClearTip>
+  <EdB.PC.Panel.Skills.SyncTip>Set every skill to the current level of {0}</EdB.PC.Panel.Skills.SyncTip>
 
   <EdB.PC.Panel.Titles.Header>Titles</EdB.PC.Panel.Titles.Header>
   <EdB.PC.Panel.Titles.None>No titles</EdB.PC.Panel.Titles.None>

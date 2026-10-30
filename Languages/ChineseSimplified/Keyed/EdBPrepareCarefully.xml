@@ -260,6 +260,7 @@
   <EdB.PC.Panel.SelectedEquipment.Remove>移除物资</EdB.PC.Panel.SelectedEquipment.Remove>
   <EdB.PC.Panel.Skills.ResetTip>将所有技能和兴趣重置为初始值</EdB.PC.Panel.Skills.ResetTip>
   <EdB.PC.Panel.Skills.ClearTip>将所有技能和兴趣设置为最低</EdB.PC.Panel.Skills.ClearTip>
+  <EdB.PC.Panel.Skills.SyncTip>将所有技能的等级同步为「{0}」的当前等级</EdB.PC.Panel.Skills.SyncTip>
   <EdB.PC.Panel.Titles.Header>头衔</EdB.PC.Panel.Titles.Header>
   <EdB.PC.Panel.Titles.None>无头衔</EdB.PC.Panel.Titles.None>
   <EdB.PC.Panel.Traits.None>无特性</EdB.PC.Panel.Traits.None>

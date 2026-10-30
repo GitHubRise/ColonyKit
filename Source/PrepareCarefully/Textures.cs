@@ -25,6 +25,7 @@ namespace EdB.PrepareCarefully {
         public static Texture2D TextureButtonGenderMale;
         public static Texture2D TextureButtonReset;
         public static Texture2D TextureButtonClearSkills;
+        public static Texture2D TextureButtonSyncSkills;
         public static Texture2D TextureDropdownIndicator;
         public static Texture2D TextureAlert;
         public static Texture2D TextureAlertSmall;
@@ -111,6 +112,7 @@ namespace EdB.PrepareCarefully {
             TextureButtonRandomLarge = ContentFinder<Texture2D>.Get("EdB/PrepareCarefully/ButtonRandomLarge", true);
             TexturePassionNone = ContentFinder<Texture2D>.Get("EdB/PrepareCarefully/NoPassion", true);
             TextureButtonClearSkills = ContentFinder<Texture2D>.Get("EdB/PrepareCarefully/ButtonClear", true);
+            TextureButtonSyncSkills = ContentFinder<Texture2D>.Get("EdB/PrepareCarefully/ButtonSyncSkills", true);
             TextureButtonCloseSmall = ContentFinder<Texture2D>.Get("EdB/PrepareCarefully/ButtonCloseSmall", true);
             TextureButtonDelete = ContentFinder<Texture2D>.Get("EdB/PrepareCarefully/ButtonDelete", true);
             TextureButtonDeleteTab = ContentFinder<Texture2D>.Get("EdB/PrepareCarefully/ButtonDeleteTab", true);

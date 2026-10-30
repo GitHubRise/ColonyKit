@@ -223,6 +223,22 @@ namespace EdB.PrepareCarefully {
             PawnManager.SetSkillLevel(ViewState?.CurrentPawn, skill, value);
         }
 
+        // Copies the displayed level of the first skill in the pawn's skill list
+        // (in vanilla order that is Shooting) onto every other skill. Passions are
+        // left alone, and each skill still keeps its own aptitude and backstory
+        // minimum, because the actual assignment goes through PawnManager.SetSkillLevel.
+        public void SyncSkillLevels() {
+            CustomizedPawn customizedPawn = ViewState?.CurrentPawn;
+            Pawn pawn = customizedPawn?.Pawn;
+            if (pawn?.skills?.skills == null || pawn.skills.skills.Count == 0) {
+                return;
+            }
+            int level = pawn.skills.skills[0].Level;
+            foreach (SkillRecord record in pawn.skills.skills) {
+                PawnManager.SetSkillLevel(customizedPawn, record.def, level);
+            }
+        }
+
         public void UpdateSkillPassion(SkillDef skill) {
             // Left-click increases passion. Right-click decreases it
             bool increase = Event.current.button != 1 ? true : false;

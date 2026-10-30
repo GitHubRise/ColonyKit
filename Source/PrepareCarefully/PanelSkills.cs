@@ -11,6 +11,7 @@ namespace EdB.PrepareCarefully {
     public class PanelSkills : PanelBase {
         public delegate void ResetSkillsButtonClickedHandler();
         public delegate void ClearSkillsButtonClickedHandler();
+        public delegate void SyncSkillsButtonClickedHandler();
         public delegate void IncrementSkillButtonClickedHandler(SkillDef skill);
         public delegate void DecrementSkillButtonClickedHandler(SkillDef skill);
         public delegate void SkillBarClickedHandler(SkillDef skill, int value);
@@ -18,6 +19,7 @@ namespace EdB.PrepareCarefully {
 
         public event ClearSkillsButtonClickedHandler ClearSkillsButtonClicked;
         public event ResetSkillsButtonClickedHandler ResetSkillsButtonClicked;
+        public event SyncSkillsButtonClickedHandler SyncSkillsButtonClicked;
         public event PassionButtonClickedHandler PassionButtonClicked;
         public event IncrementSkillButtonClickedHandler IncrementSkillButtonClicked;
         public event DecrementSkillButtonClickedHandler DecrementSkillButtonClicked;
@@ -40,6 +42,7 @@ namespace EdB.PrepareCarefully {
 
         protected static Rect RectButtonClearSkills;
         protected static Rect RectButtonResetSkills;
+        protected static Rect RectButtonSyncSkills;
         protected static Rect RectLabel;
         protected static Rect RectPassion;
         protected static Rect RectSkillBar;
@@ -78,6 +81,7 @@ namespace EdB.PrepareCarefully {
             Vector2 skillBarSize = new Vector2(availableContentWidth - passionSize.x - passionPadding
                 - arrowsWidth - maxLabelSize.x - labelPadding, 22);
 
+            RectButtonSyncSkills = new Rect(PanelRect.width - 92, 9, 20, 20);
             RectButtonClearSkills = new Rect(PanelRect.width - 65, 9, 20, 20);
             RectButtonResetSkills = new Rect(PanelRect.width - 38, 8, 23, 21);
             RectLabel = new Rect(0, 0, maxLabelSize.x, maxLabelSize.y);
@@ -99,6 +103,16 @@ namespace EdB.PrepareCarefully {
 
             CustomizedPawn customizedPawn = ViewState.CurrentPawn;
             Pawn pawn = customizedPawn.Pawn;
+
+            // Sync button: set every skill to the current level of the first skill.
+            Style.SetGUIColorForButton(RectButtonSyncSkills);
+            GUI.DrawTexture(RectButtonSyncSkills, Textures.TextureButtonSyncSkills);
+            if (Widgets.ButtonInvisible(RectButtonSyncSkills, false)) {
+                SoundDefOf.Tick_Low.PlayOneShotOnCamera();
+                SyncSkillsButtonClicked?.Invoke();
+            }
+            TooltipHandler.TipRegion(RectButtonSyncSkills,
+                "EdB.PC.Panel.Skills.SyncTip".Translate(GetFirstSkillLabel(pawn)));
 
             // Clear button
             Style.SetGUIColorForButton(RectButtonClearSkills);
@@ -214,6 +228,13 @@ namespace EdB.PrepareCarefully {
             }
 
             GUI.color = Color.white;
+        }
+
+        protected static string GetFirstSkillLabel(Pawn pawn) {
+            if (pawn?.skills?.skills == null || pawn.skills.skills.Count == 0) {
+                return "-";
+            }
+            return pawn.skills.skills[0].def.skillLabel.CapitalizeFirst();
         }
 
         public Texture2D GetPassionTextureForSkill(SkillRecord skillRecord) {
