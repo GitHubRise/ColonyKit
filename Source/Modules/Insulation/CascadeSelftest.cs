@@ -1,5 +1,8 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text;
+using ColonyKit.Modules.Blueprint;
 using RimWorld;
 using Verse;
 
@@ -57,6 +60,16 @@ namespace ColonyKit.Modules.Insulation
 
 			CascadeFreeze.TestBypassPower = true;
 
+			if (TryBuildBlueprintRig(map))
+			{
+				ArmedMap = map;
+				ArmedStartTick = Find.TickManager.TicksGame;
+				Armed = true;
+				Find.TickManager.CurTimeSpeed = TimeSpeed.Ultrafast;
+				ModLog.Info("Insulation", $"cascade selftest blueprint rig built at {ArmedOrigin}; waiting {RunTicks} ticks");
+				return;
+			}
+
 			ClearRect(map, origin, 14, 3);
 
 			// 冷却端（热侧）在 origin，向东依次是：空调 / 小室 / 空调 / 小室 / 空调 / 门廊 / 封头。
@@ -101,8 +114,89 @@ namespace ColonyKit.Modules.Insulation
 			ModLog.Info("Insulation", $"cascade selftest rig built at {origin}; waiting {RunTicks} ticks");
 		}
 
-		private static void BuildWalls(Map map, int fromX, int toX, int z)
+		/// <summary>
+		/// 用内置「低版本永恒温室」模板搭出完整结构（只放墙 / 门 / 空调），给冷室加顶，
+		/// 然后把四段门廊的探针位置记下来。模板缺失或找不到空地时返回 false。
+		/// </summary>
+		private static bool TryBuildBlueprintRig(Map map)
 		{
+			string root = ColonyKitMod.Instance?.Content?.RootDir;
+			if (root.NullOrEmpty())
+			{
+				return false;
+			}
+
+			string path = Path.Combine(root, "Blueprints", "低版本永恒温室.xml");
+			if (!File.Exists(path))
+			{
+				return false;
+			}
+
+			BlueprintTemplate template = BlueprintTemplateStorage.Load(path, true);
+			if (template.record == null || template.record.entries.Count == 0)
+			{
+				return false;
+			}
+
+			int width = template.record.sizeX;
+			int height = template.record.sizeZ;
+			if (!TryFindClearRect(map, width, height, out IntVec3 origin))
+			{
+				return false;
+			}
+
+			ClearRect(map, origin, width, height);
+			CellRect rect = new CellRect(origin.x, origin.z, width, height);
+			foreach (IntVec3 cell in rect.Cells)
+			{
+				if (cell.InBounds(map))
+				{
+					map.terrainGrid.SetTerrain(cell, TerrainDefOf.Soil);
+				}
+			}
+
+			foreach (BlueprintEntry entry in template.record.entries)
+			{
+				ThingDef def = DefDatabase<ThingDef>.GetNamedSilentFail(entry.defName);
+				if (def == null || (def != ThingDefOf.Wall && def != ThingDefOf.Door && def != ThingDefOf.Cooler))
+				{
+					continue;
+				}
+
+				ThingDef stuff = entry.stuffDefName.NullOrEmpty()
+					? null
+					: DefDatabase<ThingDef>.GetNamedSilentFail(entry.stuffDefName);
+				Thing thing = ThingMaker.MakeThing(def, stuff);
+				IntVec3 cell = origin + new IntVec3(entry.x, 0, entry.z);
+				GenSpawn.Spawn(thing, cell, map, new Rot4(entry.rot));
+				thing.SetFaction(Faction.OfPlayer);
+				if (def == ThingDefOf.Cooler)
+				{
+					thing.TryGetComp<CompTempControl>().TargetTemperature = CascadeFreeze.FloorTemperature;
+				}
+			}
+
+			// 冷室必须有顶，否则会被判成室外房间、温度每 120 tick 重置。
+			foreach (IntVec3 cell in rect.Cells)
+			{
+				if (cell.InBounds(map))
+				{
+					map.roofGrid.SetRoof(cell, RoofDefOf.RoofConstructed);
+				}
+			}
+
+			probes = new[]
+			{
+				origin + new IntVec3(13, 0, 20),
+				origin + new IntVec3(25, 0, 20),
+				origin + new IntVec3(20, 0, 13),
+				origin + new IntVec3(20, 0, 25)
+			};
+			ArmedOrigin = origin;
+			return true;
+		}
+
+		private static void BuildWalls(Map map, int fromX, int toX, int z)		{
 			for (int x = fromX; x <= toX; x++)
 			{
 				Thing wall = ThingMaker.MakeThing(ThingDefOf.Wall, ThingDefOf.BlocksGranite);
@@ -123,13 +217,7 @@ namespace ColonyKit.Modules.Insulation
 						for (int dx = 0; dx < width && free; dx++)
 						{
 							IntVec3 cell = new IntVec3(x + dx, 0, z + dz);
-							TerrainDef terrain = cell.GetTerrain(map);
-							if (!cell.InBounds(map)
-								|| terrain == null
-								|| !terrain.affordances.Contains(TerrainAffordanceDefOf.Heavy)
-								|| cell.GetEdifice(map) != null
-								|| cell.GetRoof(map) != null
-								|| cell.Fogged(map))
+							if (!cell.InBounds(map) || cell.GetEdifice(map) != null || cell.Fogged(map))
 							{
 								free = false;
 							}
@@ -168,6 +256,7 @@ namespace ColonyKit.Modules.Insulation
 		private static bool Armed;
 		private static Map ArmedMap;
 		private static IntVec3 ArmedOrigin;
+		private static IntVec3[] probes;
 		private static int ArmedStartTick;
 		private static int nextLogTick = LogInterval;
 		private static int pumpFrames;
@@ -245,12 +334,33 @@ namespace ColonyKit.Modules.Insulation
 
 			Armed = false;
 			float ambient = ArmedOrigin.GetTemperature(map);
-			float pocketB = (ArmedOrigin + new IntVec3(4, 0, 0)).GetTemperature(map);
-			float doorLast = (ArmedOrigin + new IntVec3(11, 0, 0)).GetTemperature(map);
-			bool pass = doorLast <= -271f && pocketB <= ambient - 200f;
+			bool pass;
+			string detail;
+			if (probes != null && probes.Length > 0)
+			{
+				pass = true;
+				StringBuilder summary = new StringBuilder("probes=");
+				foreach (IntVec3 cell in probes)
+				{
+					float temp = cell.GetTemperature(map);
+					summary.Append('[').Append(cell).Append(':').Append(temp.ToString("F1")).Append(']');
+					if (temp > -271f)
+					{
+						pass = false;
+					}
+				}
 
-			ModLog.Info("Insulation",
-				$"cascade selftest: ambient={ambient:F1} pocketB={pocketB:F1} doorLast={doorLast:F1} pass={pass}");
+				detail = summary.ToString();
+			}
+			else
+			{
+				float pocketB = (ArmedOrigin + new IntVec3(4, 0, 0)).GetTemperature(map);
+				float doorLast = (ArmedOrigin + new IntVec3(11, 0, 0)).GetTemperature(map);
+				pass = doorLast <= -271f && pocketB <= ambient - 200f;
+				detail = $"pocketB={pocketB:F1} doorLast={doorLast:F1}";
+			}
+
+			ModLog.Info("Insulation", $"cascade selftest: ambient={ambient:F1} {detail} pass={pass}");
 			Root.Shutdown();
 		}
 
@@ -259,6 +369,23 @@ namespace ColonyKit.Modules.Insulation
 			StringBuilder builder = new StringBuilder();
 			builder.Append("tick=").Append(Find.TickManager.TicksGame - ArmedStartTick);
 			builder.Append(" ambient=").Append(ArmedOrigin.GetTemperature(map).ToString("F1"));
+
+			if (probes != null && probes.Length > 0)
+			{
+				foreach (IntVec3 cell in probes)
+				{
+					Room probeRoom = cell.GetRoom(map);
+					string probeTarget = probeRoom != null && CascadeFreeze.TryGetTarget(probeRoom, out float probeValue)
+						? probeValue.ToString("F0")
+						: "none";
+					builder.Append(' ').Append(cell).Append('=')
+						.Append(cell.GetTemperature(map).ToString("F1"))
+						.Append("/").Append(probeTarget);
+				}
+
+				return builder.ToString();
+			}
+
 			builder.Append(" pocketA=").Append((ArmedOrigin + new IntVec3(2, 0, 0)).GetTemperature(map).ToString("F1"));
 			builder.Append(" pocketB=").Append((ArmedOrigin + new IntVec3(4, 0, 0)).GetTemperature(map).ToString("F1"));
 			builder.Append(" doorFirst=").Append((ArmedOrigin + new IntVec3(6, 0, 0)).GetTemperature(map).ToString("F1"));
