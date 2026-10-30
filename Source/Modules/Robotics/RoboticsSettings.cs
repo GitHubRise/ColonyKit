@@ -29,7 +29,7 @@ namespace ColonyKit.Modules.Robotics
 		public const float DefaultWorkRadius = 40f;
 
 		public const float MinEngageRange = 1f;
-		public const float MaxEngageRange = 60f;
+		public const float MaxEngageRange = 65f;
 		public const float DefaultEngageRange = 45f;
 		public const int MinMkvBurstShotCount = 1;
 		public const int MaxMkvBurstShotCount = 8;

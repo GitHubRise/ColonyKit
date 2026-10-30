@@ -6,6 +6,7 @@
 
 ### Changed
 
+- **Mk-V 交战范围上限 60 → 65 格**：设置页「交战范围」滑条上限提到 65 格，默认值仍是 45 格、下限仍是 1 格；已有存档里玩家调过的值不受影响，原来的 60 格设置仍然有效。
 - **Mk-V 电弧发射器射程**：`CK_ArcEmitter` 的基础射程 28 → 36 格；武器新增 `DefModExtension_MkvExclusiveWeapon`（`rangeBonus` 15），只有 Mk-V 拿着时由 `VerbProperties.AdjustedRange` 的后缀加上去，实战有效射程 51 格，同一把枪在别人手上仍是 36 格。加成后按天气射程上限（大雾、暴风雪等）重新压回，不会突破天气限制；`JobGiver_MkVCombat` 改用 `Verb.EffectiveRange` 判断该继续接近还是原地开火，`JobGiver_MkVWeaponPickup` 的换枪评分也把专属加成算进去，避免 Mk-V 把自带的电弧发射器换成面板更好、实际更差的枪。武器中英文说明同步写明 36 / 51 两档射程，`-colonykit-nannybot-test` 自检新增 `mkvWeaponRange` / `mkvEffectiveRange` 两个探针字段。
 
 ### Added
