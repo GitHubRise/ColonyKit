@@ -19,4 +19,6 @@
 	<ColonyKit.Settings.Insulation.RoofMinLayers.Desc>默认 3，即“墙体大于 2”才触发；只统计玩家墙，自然岩层按上面的开关。</ColonyKit.Settings.Insulation.RoofMinLayers.Desc>
 	<ColonyKit.Settings.Insulation.RoofFormula>屋顶系数同样为 f(d) = (1 + r) / (1 + r × d)，d = 最薄一侧的墙层数。</ColonyKit.Settings.Insulation.RoofFormula>
 	<ColonyKit.Settings.Insulation.Formula>当前公式：d 层连续墙体 → 漏热 × (1 + r) / (1 + r × d)；d ≤ 1 时不减。</ColonyKit.Settings.Insulation.Formula>
+	<ColonyKit.Settings.Insulation.Cascade>启用级联冷室（三段串联空调）</ColonyKit.Settings.Insulation.Cascade>
+	<ColonyKit.Settings.Insulation.Cascade.Desc>识别「同向、间隔 2 格、中间夹着四面封死小室」的三台以上空调链，按理想级联结算：第 N 段冷室目标 = 热端温度 − 130 × N，最低 -273°C；链上冷室在通电且目标温度够低时按无漏热处理，断电或把目标调高就立刻退回原版。只对这类串联结构生效，普通摆法不受影响。</ColonyKit.Settings.Insulation.Cascade.Desc>
 </LanguageData>

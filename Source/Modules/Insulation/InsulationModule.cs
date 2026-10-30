@@ -21,5 +21,10 @@ namespace ColonyKit.Modules.Insulation
 		public override string DescriptionKey => "ColonyKit.Module.Insulation.Desc";
 
 		public override int InitOrder => 110;
+
+		public override void OnGameLoaded(Verse.Game game)
+		{
+			CascadeSelftest.RunIfRequested(game);
+		}
 	}
 }

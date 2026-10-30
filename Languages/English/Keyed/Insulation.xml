@@ -19,4 +19,6 @@
 	<ColonyKit.Settings.Insulation.RoofMinLayers.Desc>Default 3 (walls thicker than 2). Only counted walls apply; natural rock follows the toggle above.</ColonyKit.Settings.Insulation.RoofMinLayers.Desc>
 	<ColonyKit.Settings.Insulation.RoofFormula>Roof factor is also f(d) = (1 + r) / (1 + r × d), with d = the thinnest wall side.</ColonyKit.Settings.Insulation.RoofFormula>
 	<ColonyKit.Settings.Insulation.Formula>Current formula: d consecutive wall layers scale leak by (1 + r) / (1 + r × d); d ≤ 1 means no change.</ColonyKit.Settings.Insulation.Formula>
+	<ColonyKit.Settings.Insulation.Cascade>Enable cascade cold chamber (3 coolers in series)</ColonyKit.Settings.Insulation.Cascade>
+	<ColonyKit.Settings.Insulation.Cascade.Desc>Detects a chain of three or more same-facing coolers spaced 2 tiles apart with a fully sealed 1-tile pocket between them, and treats it as an ideal cascade: stage N targets ambient − 130 × N, down to -273°C. While the chain is powered and its target is low enough, the chain's cold rooms are treated as leak-free; losing power or raising the target restores vanilla behavior. Only this series layout is affected.</ColonyKit.Settings.Insulation.Cascade.Desc>
 </LanguageData>

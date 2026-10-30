@@ -39,6 +39,9 @@ namespace ColonyKit.Modules.Insulation
 		/// <summary>屋顶加厚所需的最小墙层数；默认 3，即“墙体大于 2”。</summary>
 		public int roofMinWallLayers = DefaultRoofWallLayers;
 
+		/// <summary>级联冷室：三段以上同向串联空调按理想级联结算，可压到 -273°C。</summary>
+		public bool cascadeFreeze = true;
+
 		public void ExposeData()
 		{
 			Scribe_Values.Look(ref enabled, "ck_insulation_enabled", true);
@@ -47,6 +50,7 @@ namespace ColonyKit.Modules.Insulation
 			Scribe_Values.Look(ref includeNaturalRock, "ck_insulation_naturalRock", false);
 			Scribe_Values.Look(ref thickenRoof, "ck_insulation_thickenRoof", true);
 			Scribe_Values.Look(ref roofMinWallLayers, "ck_insulation_roofMinWallLayers", DefaultRoofWallLayers);
+			Scribe_Values.Look(ref cascadeFreeze, "ck_insulation_cascadeFreeze", true);
 		}
 
 		public bool Validate()
@@ -87,6 +91,7 @@ namespace ColonyKit.Modules.Insulation
 			includeNaturalRock = false;
 			thickenRoof = true;
 			roofMinWallLayers = DefaultRoofWallLayers;
+			cascadeFreeze = true;
 		}
 	}
 

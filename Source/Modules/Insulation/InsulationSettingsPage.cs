@@ -79,6 +79,13 @@ namespace ColonyKit.Modules.Insulation
 			listing.Gap();
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Insulation.Formula".Loc());
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Insulation.RoofFormula".Loc());
+
+			listing.Gap();
+			data.cascadeFreeze = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Insulation.Cascade".Loc(),
+				ref data.cascadeFreeze,
+				"ColonyKit.Settings.Insulation.Cascade.Desc".Loc());
 		}
 
 		public override void Reset(ColonyKitSettings settings)
