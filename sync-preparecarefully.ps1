@@ -55,7 +55,7 @@ foreach ($p in $srcSource, $srcDefs, $srcTex, $srcLang) {
 }
 
 $textExt = @('.xml', '.txt', '.cs', '.md', '.json', '.yml', '.yaml', '.csv')
-$exclude = @('(^|\\)(obj|bin)(\\|$)')
+$exclude = @('(^|\\)(obj|bin)(\\|$)', '\.TMP$', '~RF')
 
 function Get-RelFileMap {
 	param([string]$Path, [string[]]$Exclude = @())

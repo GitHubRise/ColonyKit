@@ -4,6 +4,8 @@ Source/obj/
 Source/bin/
 Source/Rjw/obj/
 Source/Rjw/bin/
+Source/PrepareCarefully.Bundled/obj/
+Source/PrepareCarefully.Bundled/bin/
 dist/
 *.user
 build-error.log
