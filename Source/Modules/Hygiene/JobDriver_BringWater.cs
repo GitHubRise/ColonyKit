@@ -40,7 +40,8 @@ namespace ColonyKit.Modules.Hygiene
 
 		protected override IEnumerable<Toil> MakeNewToils()
 		{
-			this.FailOnDespawnedNullOrForbidden(TargetInd);
+			this.FailOnDespawnedOrNull(TargetInd);
+			this.FailOn(() => TargetPawn == null || TargetPawn.Dead);
 
 			Thing bottle = job.GetTarget(BottleInd).Thing;
 			if (bottle != null && bottle.Spawned)
@@ -101,8 +102,7 @@ namespace ColonyKit.Modules.Hygiene
 			give.defaultCompleteMode = ToilCompleteMode.Delay;
 			give.defaultDuration = selfDrink ? HandOverTicks : FeedTicks;
 			give.socialMode = RandomSocialMode.Quiet;
-			give.FailOnDespawnedNullOrForbidden(TargetInd);
-			give.FailOn(() => TargetPawn == null || TargetPawn.Dead);
+			give.FailOnDespawnedOrNull(TargetInd);
 			if (selfDrink)
 			{
 				give.initAction = () => BringWaterUtility.HandOverBottles(pawn, target, job.count);

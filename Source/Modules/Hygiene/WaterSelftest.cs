@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using ColonyKit.Modules.Hygiene.Dbh;
 using HarmonyLib;
@@ -105,6 +105,7 @@ namespace ColonyKit.Modules.Hygiene
 			startTick = Find.TickManager.TicksGame;
 			nextLogTick = startTick + 250;
 			armed = true;
+			QuietNannyBots();
 			Find.TickManager.CurTimeSpeed = TimeSpeed.Ultrafast;
 			ModLog.Info(
 				"Hygiene",
@@ -247,6 +248,7 @@ namespace ColonyKit.Modules.Hygiene
 				return false;
 			}
 			pawn.jobs.StopAll(false);
+			job.playerForced = true;
 			pawn.jobs.StartJob(job, JobCondition.InterruptForced);
 			return true;
 		}
@@ -548,7 +550,22 @@ namespace ColonyKit.Modules.Hygiene
 					Need_Thirst thirst = pawn?.needs?.TryGetNeed<Need_Thirst>();
 					if (bottle == null || thirst == null)
 					{
-						failure = "mineral water bottle missing";
+						System.Text.StringBuilder inv = new System.Text.StringBuilder();
+						if (pawn?.inventory?.innerContainer != null)
+						{
+							foreach (Thing thing in pawn.inventory.innerContainer)
+							{
+								inv.Append(thing.def.defName).Append('x').Append(thing.stackCount).Append(';');
+							}
+						}
+						int onGround = 0;
+						foreach (Thing thing in map.listerThings.ThingsOfDef(MineralWaterUtility.Def))
+						{
+							onGround += thing.stackCount;
+						}
+						failure = "mineral water bottle missing" +
+							$" (inv=[{inv}] groundMineral={onGround} job={pawn?.CurJobDef?.defName ?? "none"}" +
+							$" carried={pawn?.carryTracker?.CarriedThing?.def?.defName ?? "none"})";
 						Finish(false);
 						return;
 					}
@@ -841,9 +858,16 @@ namespace ColonyKit.Modules.Hygiene
 				Fail("bring water defs missing");
 				return;
 			}
-			if (!TryFindDryCell(out IntVec3 cell))
+			// 囚徒就放在送水人旁边：这里验证的是「送水 Job + 对方自己会喝」，
+			// 不靠远处格子考验寻路（quicktest 地图上随机远格常被山体围住，会静默失败）。
+			IntVec3 cell = CellFinder.RandomClosewalkCellNear(
+				pawn.Position,
+				map,
+				3,
+				c => c.Standable(map) && c != pawn.Position && c.GetZone(map) == null);
+			if (!cell.IsValid)
 			{
-				Fail("no cell away from water");
+				Fail("no cell next to water carrier");
 				return;
 			}
 			Faction faction = Find.FactionManager.AllFactions.ToList().FirstOrDefault(f =>
@@ -865,10 +889,12 @@ namespace ColonyKit.Modules.Hygiene
 			}
 			thirst.CurLevel = 0.15f;
 			bringWaterTarget = prisoner;
-			bringWaterNeeded = BringWaterUtility.ShouldDeliverWater(prisoner);
+			// 「要不要送水」的判断要自洽：够得着水时不该派活，够不着时必须派。
+			bool canReachWater = BringWaterUtility.CanReachDrinkSource(prisoner);
+			bringWaterNeeded = BringWaterUtility.ShouldDeliverWater(prisoner) == !canReachWater;
 			if (!bringWaterNeeded)
 			{
-				Fail("prisoner can still reach water");
+				Fail("should-deliver inconsistent with reachable water");
 				return;
 			}
 			WorkGiverDef giverDef = DefDatabase<WorkGiverDef>.GetNamedSilentFail("CK_BringWaterPrisoner");
@@ -892,35 +918,59 @@ namespace ColonyKit.Modules.Hygiene
 				"Hygiene",
 				$"water selftest bring water start: prisoner={prisoner.LabelShort} cell={cell} " +
 				$"count={job.count} needWater={bringWaterNeeded} workGiver={bringWaterWorkGiver} " +
-				$"tapBottle={bringWaterTapBottle} ({before:F1}->{after:F1})");
+				$"tapBottle={bringWaterTapBottle} ({before:F1}->{after:F1}) " +
+				$"forbidden={prisoner.IsForbidden(pawn)} " +
+				$"touch={pawn.CanReach(prisoner, PathEndMode.Touch, Danger.Deadly)} " +
+				$"reserve={pawn.CanReserve(prisoner, 1, -1, null, false)} " +
+				$"prisonerOfColony={prisoner.IsPrisonerOfColony}");
 			ForceJob(job, "bring water job not started");
 		}
 
-		/// <summary>找一格离取水装置 40 格以上、附近也没有地表水的空地，模拟「牢房里没水」。</summary>
-		private static bool TryFindDryCell(out IntVec3 cell)
+		/// <summary>
+		/// 直接 StartJob 派活：<c>TryTakeOrderedJob</c> 只是把 Job 排进队列，
+		/// 空闲发呆任务会不停插队（实测能拖 5000+ tick），自检等不起。
+		/// 玩家在浮窗里右键走的是 TryTakeOrderedJob，和这里的自检路径无关。
+		/// </summary>
+		private static void ForceJob(Job job, string failure)
 		{
-			cell = IntVec3.Invalid;
-			if (map == null)
+			if (job == null)
 			{
-				return false;
+				Fail(failure);
+				return;
 			}
-			foreach (IntVec3 candidate in GenRadial.RadialCellsAround(rigOrigin, 50f, true))
+			pawn.jobs.StopAll(false);
+			pawn.jobs.StartJob(job, JobCondition.InterruptForced);
+			if (pawn.CurJobDef == null || pawn.CurJobDef != job.def)
 			{
-				if (!candidate.InBounds(map)
-					|| !candidate.Standable(map)
-					|| candidate.Fogged(map)
-					|| candidate.DistanceTo(rigOrigin) < 42f)
+				Fail(failure);
+			}
+		}
+
+
+		/// <summary>
+		/// 自检期间让地图上的保姆机器人安分点：暂停家务、把口渴灌满，
+		/// 免得它去占水龙头/抢水桶，把取水点工作器的可用性判断搅成偶发失败。
+		/// </summary>
+		private static void QuietNannyBots()
+		{
+			if (map?.mapPawns == null)
+			{
+				return;
+			}
+			foreach (Pawn bot in map.mapPawns.AllPawnsSpawned)
+			{
+				Robotics.CompNannyBot comp = Robotics.NannyBotUtility.BotComp(bot);
+				if (comp == null)
 				{
 					continue;
 				}
-				if (WaterSourceUtility.FindSurfaceWaterStandCell(map, candidate, 40f).IsValid)
+				comp.paused = true;
+				Need_Thirst thirst = bot.needs?.TryGetNeed<Need_Thirst>();
+				if (thirst != null)
 				{
-					continue;
+					thirst.CurLevel = 1f;
 				}
-				cell = candidate;
-				return true;
 			}
-			return false;
 		}
 
 		/// <summary>囚徒那支 ThinkTree 里有没有喝水节点（原版囚徒分支没有）。</summary>
@@ -955,6 +1005,7 @@ namespace ColonyKit.Modules.Hygiene
 				$"patientThirst={(waterPatient?.needs?.TryGetNeed<Need_Thirst>()?.CurLevel ?? -1f):F2} " +
 				$"bringThirst={(bringWaterTarget?.needs?.TryGetNeed<Need_Thirst>()?.CurLevel ?? -1f):F2} " +
 				$"bringCarried={MineralWaterUtility.Carried(bringWaterTarget)?.stackCount ?? 0} " +
+				$"bottleBill={bottleBill?.repeatCount ?? -99} " +
 				$"listCompleted={listBill?.repeatCount ?? -1}");
 		}
 
