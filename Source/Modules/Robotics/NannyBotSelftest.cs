@@ -118,6 +118,7 @@ namespace ColonyKit.Modules.Robotics
 					.Append(" mkvTools=").Append(mkv.def.tools?.Count ?? 0)
 					.Append(" mkvWeapon=").Append(mkv.equipment?.Primary?.def?.defName ?? "none")
 					.Append(" mkvCarry=").Append(mkv.GetStatValue(StatDefOf.CarryingCapacity).ToString("0"))
+					.Append(" mkvCarrySetting=").Append(CarrySettingProbe(mkv))
 					.Append(" mkvOffhand=").Append(MkVLoadout.Offhand(mkv)?.def?.defName ?? "none")
 					.Append(" mkvWeaponRange=").Append(weaponRange.ToString("0.#"))
 					.Append(" mkvEffectiveRange=")
@@ -416,6 +417,20 @@ namespace ColonyKit.Modules.Robotics
 				chained.Destroy(DestroyMode.Vanish);
 			}
 			victim.Destroy(DestroyMode.Vanish);
+		}
+
+		/// <summary>
+		/// 携带能力探针：把 Mk-V 的设置临时改成 300，确认 GetStatValue 立刻跟着变（说明补丁生效、
+		/// 没有被 StatPart_BodySize 再乘一次），然后还原。
+		/// </summary>
+		private static string CarrySettingProbe(Pawn pawn)
+		{
+			RoboticsSettings settings = NannyBotUtility.Settings;
+			float oldValue = settings.mkvCarryCapacity;
+			settings.mkvCarryCapacity = 300f;
+			float value = pawn.GetStatValue(StatDefOf.CarryingCapacity);
+			settings.mkvCarryCapacity = oldValue;
+			return value.ToString("0");
 		}
 
 		public static void RunIfRequested(Game game)

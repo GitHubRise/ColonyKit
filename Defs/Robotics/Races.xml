@@ -15,8 +15,9 @@
 			<ArmorRating_Sharp>0.2</ArmorRating_Sharp>
 			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
 			<ArmorRating_Heat>1</ArmorRating_Heat>
-			<!-- 携带能力会被 StatPart_BodySize 乘一次（Mk-I~IV 体型 0.8），140 × 0.8 = 112。 -->
-			<CarryingCapacity>140</CarryingCapacity>
+			<!-- 携带能力实际由设置页给出（Patch_RobotCarryCapacity 覆盖最终值）；这里的基数只作
+			     Def 层面的兜底：StatPart_BodySize 会乘体型，165 × 0.8 = 132（默认值）。 -->
+			<CarryingCapacity>165</CarryingCapacity>
 			<CleaningSpeed>1.25</CleaningSpeed>
 			<PsychicSensitivity>0</PsychicSensitivity>
 			<ToxicResistance>1</ToxicResistance>
@@ -72,8 +73,8 @@
 			<ArmorRating_Sharp>0.9</ArmorRating_Sharp>
 			<ArmorRating_Blunt>0.6</ArmorRating_Blunt>
 			<ArmorRating_Heat>3</ArmorRating_Heat>
-			<!-- 同上：Mk-V 体型 1.1，163.6364 × 1.1 = 180。 -->
-			<CarryingCapacity>163.6364</CarryingCapacity>
+			<!-- 同上：兜底基数 231.8182 × 体型 1.1 = 255（默认值）。 -->
+			<CarryingCapacity>231.8182</CarryingCapacity>
 			<CleaningSpeed>1.25</CleaningSpeed>
 			<PsychicSensitivity>0</PsychicSensitivity>
 			<ToxicResistance>1</ToxicResistance>

@@ -42,6 +42,9 @@
 	<ColonyKit.Settings.Robotics.Section.Parameters>参数</ColonyKit.Settings.Robotics.Section.Parameters>
 	<ColonyKit.Settings.Robotics.ChargeThreshold>充电阈值</ColonyKit.Settings.Robotics.ChargeThreshold>
 	<ColonyKit.Settings.Robotics.BatteryCapacity>电池容量</ColonyKit.Settings.Robotics.BatteryCapacity>
+	<ColonyKit.Settings.Robotics.RobotCarryCapacity>Mk 系列携带能力</ColonyKit.Settings.Robotics.RobotCarryCapacity>
+	<ColonyKit.Settings.Robotics.MkvCarryCapacity>Mk-V 携带能力</ColonyKit.Settings.Robotics.MkvCarryCapacity>
+	<ColonyKit.Settings.Robotics.CarryCapacityHint>这里是信息卡上显示的最终值，60–600。原版会按体型再乘一次携带能力，本 Mod 已改成直接使用设置值；数值越高，一次搬运/拾取能拿的件数越多。商队质量容量是另一套数值，不受这里影响。</ColonyKit.Settings.Robotics.CarryCapacityHint>
 	<ColonyKit.Settings.Robotics.ChargePower>普通机器人充电功耗</ColonyKit.Settings.Robotics.ChargePower>
 	<ColonyKit.Settings.Robotics.ChargeEfficiency>普通机器人充电效率</ColonyKit.Settings.Robotics.ChargeEfficiency>
 	<ColonyKit.Settings.Robotics.PowerConversionRate>普通机器人电力转换率</ColonyKit.Settings.Robotics.PowerConversionRate>
@@ -123,6 +126,7 @@
 	<ColonyKit.Settings.Robotics.ChargingGlow.Desc>机器人对接充电时，充电桩发出淡蓝色光。</ColonyKit.Settings.Robotics.ChargingGlow.Desc>
 
 	<CK.Robotics.Watts>{0} W</CK.Robotics.Watts>
+	<CK.Robotics.Kilograms>{0} kg</CK.Robotics.Kilograms>
 	<CK.Robotics.Cells>{0} 格</CK.Robotics.Cells>
 	<CK.Robotics.Hours>{0} 小时</CK.Robotics.Hours>
 	<CK.Robotics.EnergyTip>电量：{0} / {1} W</CK.Robotics.EnergyTip>

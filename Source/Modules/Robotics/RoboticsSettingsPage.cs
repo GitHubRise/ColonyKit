@@ -143,6 +143,25 @@ namespace ColonyKit.Modules.Robotics
 				NannyBotUtility.ApplyBatteryCapacity(beforeCapacity, data.batteryCapacity);
 			}
 
+			data.robotCarryCapacity = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.RobotCarryCapacity".Loc(),
+				data.robotCarryCapacity,
+				RoboticsSettings.MinRobotCarryCapacity,
+				RoboticsSettings.MaxRobotCarryCapacity,
+				1f,
+				value => "CK.Robotics.Kilograms".Loc(value.ToString("0")));
+			data.mkvCarryCapacity = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkvCarryCapacity".Loc(),
+				data.mkvCarryCapacity,
+				RoboticsSettings.MinRobotCarryCapacity,
+				RoboticsSettings.MaxRobotCarryCapacity,
+				1f,
+				value => "CK.Robotics.Kilograms".Loc(value.ToString("0")));
+			SettingsWidgets.Description(
+				listing, "ColonyKit.Settings.Robotics.CarryCapacityHint".Loc());
+
 			data.robotPowerEfficiency = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Robotics.RobotPowerEfficiency".Loc(),

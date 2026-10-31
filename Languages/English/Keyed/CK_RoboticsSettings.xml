@@ -42,6 +42,9 @@
 	<ColonyKit.Settings.Robotics.Section.Parameters>Parameters</ColonyKit.Settings.Robotics.Section.Parameters>
 	<ColonyKit.Settings.Robotics.ChargeThreshold>Charge threshold</ColonyKit.Settings.Robotics.ChargeThreshold>
 	<ColonyKit.Settings.Robotics.BatteryCapacity>Battery capacity</ColonyKit.Settings.Robotics.BatteryCapacity>
+	<ColonyKit.Settings.Robotics.RobotCarryCapacity>Mk-series carrying capacity</ColonyKit.Settings.Robotics.RobotCarryCapacity>
+	<ColonyKit.Settings.Robotics.MkvCarryCapacity>Mk-V carrying capacity</ColonyKit.Settings.Robotics.MkvCarryCapacity>
+	<ColonyKit.Settings.Robotics.CarryCapacityHint>The final value shown on the info card, 60-600. Vanilla scales carrying capacity by body size; this mod uses the setting directly. Higher values let a robot haul or pick up more per trip. Caravan mass capacity is a separate value and is not affected.</ColonyKit.Settings.Robotics.CarryCapacityHint>
 	<ColonyKit.Settings.Robotics.ChargePower>Normal robot charging power</ColonyKit.Settings.Robotics.ChargePower>
 	<ColonyKit.Settings.Robotics.ChargeEfficiency>Normal robot charging efficiency</ColonyKit.Settings.Robotics.ChargeEfficiency>
 	<ColonyKit.Settings.Robotics.PowerConversionRate>Normal robot power conversion rate</ColonyKit.Settings.Robotics.PowerConversionRate>
@@ -123,6 +126,7 @@
 	<ColonyKit.Settings.Robotics.ChargingGlow.Desc>Light the station while a robot is docked and charging.</ColonyKit.Settings.Robotics.ChargingGlow.Desc>
 
 	<CK.Robotics.Watts>{0} W</CK.Robotics.Watts>
+	<CK.Robotics.Kilograms>{0} kg</CK.Robotics.Kilograms>
 	<CK.Robotics.Cells>{0} cells</CK.Robotics.Cells>
 	<CK.Robotics.Hours>{0} h</CK.Robotics.Hours>
 	<CK.Robotics.EnergyTip>Energy: {0} / {1} W</CK.Robotics.EnergyTip>

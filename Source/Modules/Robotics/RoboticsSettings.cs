@@ -28,6 +28,12 @@ namespace ColonyKit.Modules.Robotics
 		public const float MaxWorkRadius = 200f;
 		public const float DefaultWorkRadius = 40f;
 
+		// 机器人携带能力：设置页里填的就是信息卡显示的值，不再乘体型。
+		public const float MinRobotCarryCapacity = 60f;
+		public const float MaxRobotCarryCapacity = 600f;
+		public const float DefaultRobotCarryCapacity = 132f;
+		public const float DefaultMkvCarryCapacity = 255f;
+
 		public const float MinEngageRange = 1f;
 		public const float MaxEngageRange = 65f;
 		public const float DefaultEngageRange = 45f;
@@ -175,6 +181,8 @@ namespace ColonyKit.Modules.Robotics
 		public float refuelThreshold = DefaultRefuelThreshold;
 		public int batteryCapacity = DefaultBatteryCapacity;
 		public float workRadius = DefaultWorkRadius;
+		public float robotCarryCapacity = DefaultRobotCarryCapacity;
+		public float mkvCarryCapacity = DefaultMkvCarryCapacity;
 		public float chargePower = DefaultChargePower;
 		public float chargeEfficiency = DefaultChargeEfficiency;
 		public float powerConversionRate = DefaultPowerConversionRate;
@@ -254,6 +262,8 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref refuelThreshold, "refuelThreshold", DefaultRefuelThreshold);
 			Scribe_Values.Look(ref batteryCapacity, "batteryCapacity", DefaultBatteryCapacity);
 			Scribe_Values.Look(ref workRadius, "workRadius", DefaultWorkRadius);
+			Scribe_Values.Look(ref robotCarryCapacity, "robotCarryCapacity", DefaultRobotCarryCapacity);
+			Scribe_Values.Look(ref mkvCarryCapacity, "mkvCarryCapacity", DefaultMkvCarryCapacity);
 			Scribe_Values.Look(ref chargePower, "chargePower", DefaultChargePower);
 			Scribe_Values.Look(ref chargeEfficiency, "chargeEfficiency", DefaultChargeEfficiency);
 			Scribe_Values.Look(ref powerConversionRate, "powerConversionRate", DefaultPowerConversionRate);
@@ -323,6 +333,16 @@ namespace ColonyKit.Modules.Robotics
 			float radius = workRadius;
 			workRadius = ClampFloat(workRadius, MinWorkRadius, MaxWorkRadius);
 			changed |= !Approximately(radius, workRadius);
+
+			float robotCarry = robotCarryCapacity;
+			robotCarryCapacity = ClampFloat(robotCarryCapacity,
+				MinRobotCarryCapacity, MaxRobotCarryCapacity);
+			changed |= !Approximately(robotCarry, robotCarryCapacity);
+
+			float mkvCarry = mkvCarryCapacity;
+			mkvCarryCapacity = ClampFloat(mkvCarryCapacity,
+				MinRobotCarryCapacity, MaxRobotCarryCapacity);
+			changed |= !Approximately(mkvCarry, mkvCarryCapacity);
 
 			float chargePowerValue = chargePower;
 			chargePower = ClampFloat(chargePower, MinChargePower, MaxChargePower);
@@ -500,6 +520,8 @@ namespace ColonyKit.Modules.Robotics
 			refuelThreshold = DefaultRefuelThreshold;
 			batteryCapacity = DefaultBatteryCapacity;
 			workRadius = DefaultWorkRadius;
+			robotCarryCapacity = DefaultRobotCarryCapacity;
+			mkvCarryCapacity = DefaultMkvCarryCapacity;
 			chargePower = DefaultChargePower;
 			chargeEfficiency = DefaultChargeEfficiency;
 			powerConversionRate = DefaultPowerConversionRate;
