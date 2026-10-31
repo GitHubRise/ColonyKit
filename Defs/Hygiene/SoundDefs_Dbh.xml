@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- DBH 卫生音效（12 个）：HygieneSounds.xml 的 1:1 移植，defName 加 CK_ 前缀，音效仍指向 Sounds/DBH 下的 ogg。
+	     CK_StallDoor（ThingDefs_StallDoor.xml）与 CK_WashingMachine（ThingDefs_WashingMachine.xml）已定义，这里不再重复。 -->
+	<SoundDef>
+		<defName>CK_VacuumToilet</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>DBH/vacuumtoilet</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>7</min>
+					<max>7</max>
+				</volumeRange>
+				<distRange>
+					<min>0</min>
+					<max>50.27907</max>
+				</distRange>
+				<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<SoundDef>
+		<defName>CK_DrainHole</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>DBH/drain</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>30</min>
+					<max>30</max>
+				</volumeRange>
+				<distRange>
+					<min>0</min>
+					<max>20</max>
+				</distRange>
+				<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<SoundDef>
+		<defName>CK_ToiletFlush</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipFolderPath>DBH/flushes</clipFolderPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>50</min>
+					<max>50</max>
+				</volumeRange>
+				<distRange>
+					<min>0</min>
+					<max>20</max>
+				</distRange>
+				<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<SoundDef>
+		<defName>CK_SewageStart</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>DBH/sewage</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>25</min>
+					<max>25</max>
+				</volumeRange>
+				<distRange>
+					<min>0</min>
+					<max>50.27907</max>
+				</distRange>
+				<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<SoundDef>
+		<defName>CK_Sprinklers</defName>
+		<sustain>True</sustain>
+		<maxSimultaneous>2</maxSimultaneous>
+		<context>MapOnly</context>
+		<eventNames />
+		<priorityMode>PrioritizeNearest</priorityMode>
+		<subSounds>
+			<li>
+				<muteWhenPaused>True</muteWhenPaused>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>DBH/sprinkler</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>85</min>
+					<max>85</max>
+				</volumeRange>
+				<distRange>
+					<min>0</min>
+					<max>30</max>
+				</distRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<SoundDef>
+		<defName>CK_ShowerAmbience</defName>
+		<sustain>True</sustain>
+		<maxSimultaneous>2</maxSimultaneous>
+		<context>MapOnly</context>
+		<eventNames />
+		<priorityMode>PrioritizeNearest</priorityMode>
+		<subSounds>
+			<li>
+				<muteWhenPaused>True</muteWhenPaused>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>DBH/shower</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>80</min>
+					<max>80</max>
+				</volumeRange>
+				<distRange>
+					<min>0</min>
+					<max>20</max>
+				</distRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<SoundDef>
+		<defName>CK_SewageAmbience</defName>
+		<sustain>True</sustain>
+		<maxSimultaneous>2</maxSimultaneous>
+		<context>MapOnly</context>
+		<eventNames />
+		<priorityMode>PrioritizeNearest</priorityMode>
+		<sustainStartSound>CK_SewageStart</sustainStartSound>
+		<sustainStopSound>CK_SewageStart</sustainStopSound>
+		<subSounds>
+			<li>
+				<muteWhenPaused>True</muteWhenPaused>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>DBH/sewageLoop</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>25</min>
+					<max>25</max>
+				</volumeRange>
+				<distRange>
+					<min>0</min>
+					<max>20</max>
+				</distRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<SoundDef>
+		<defName>CK_HotTubAmbience</defName>
+		<sustain>True</sustain>
+		<maxSimultaneous>2</maxSimultaneous>
+		<context>MapOnly</context>
+		<eventNames />
+		<priorityMode>PrioritizeNearest</priorityMode>
+		<subSounds>
+			<li>
+				<muteWhenPaused>True</muteWhenPaused>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>DBH/hottub</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>85</min>
+					<max>85</max>
+				</volumeRange>
+				<distRange>
+					<min>0</min>
+					<max>20</max>
+				</distRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<SoundDef>
+		<defName>CK_Plunging</defName>
+		<sustain>True</sustain>
+		<maxSimultaneous>2</maxSimultaneous>
+		<context>MapOnly</context>
+		<eventNames />
+		<priorityMode>PrioritizeNearest</priorityMode>
+		<subSounds>
+			<li>
+				<muteWhenPaused>True</muteWhenPaused>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>DBH/plunger</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>5</min>
+					<max>5</max>
+				</volumeRange>
+				<distRange>
+					<min>0</min>
+					<max>20</max>
+				</distRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<!-- 以下 3 个 DBH 1.6 只留了 ogg、没给 SoundDef：按同类音量/距离补上。 -->
+	<SoundDef>
+		<defName>CK_WaterPump</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>DBH/WaterPump</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>40</min>
+					<max>40</max>
+				</volumeRange>
+				<distRange>
+					<min>0</min>
+					<max>20</max>
+				</distRange>
+				<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<SoundDef>
+		<defName>CK_Drips</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>DBH/drips</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>20</min>
+					<max>20</max>
+				</volumeRange>
+				<distRange>
+					<min>0</min>
+					<max>20</max>
+				</distRange>
+				<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<SoundDef>
+		<defName>CK_Defecate</defName>
+		<context>MapOnly</context>
+		<eventNames />
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>DBH/defecate</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>40</min>
+					<max>40</max>
+				</volumeRange>
+				<distRange>
+					<min>0</min>
+					<max>20</max>
+				</distRange>
+				<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+</Defs>

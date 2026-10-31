@@ -45,7 +45,7 @@
 			<li Class="CompProperties_Forbiddable" />
 		</comps>
 		<researchPrerequisites>
-			<li>CK_HygieneResearch</li>
+			<li>CK_Plumbing</li>
 		</researchPrerequisites>
 	</ThingDef>
 </Defs>

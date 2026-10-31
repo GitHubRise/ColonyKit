@@ -2,6 +2,7 @@ using ColonyKit.Modules.Hygiene.Dbh;
 using RimWorld;
 using Verse;
 using Verse.AI;
+using Verse.Sound;
 
 namespace ColonyKit.Modules.Hygiene
 {
@@ -71,6 +72,8 @@ namespace ColonyKit.Modules.Hygiene
 			cold = true;
 			WaterInTub = 0f;
 			contamination = ContaminationLevel.Treated;
+			// 拔塞排水时响一次（和 DBH Building_bath 一致）。
+			DefDatabase<SoundDef>.GetNamed("CK_DrainHole").PlayOneShot(this);
 			return true;
 		}
 

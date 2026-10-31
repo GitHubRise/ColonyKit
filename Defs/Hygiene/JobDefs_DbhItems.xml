@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- F 组新增的 JobDef：便盆清洗。冰箱改为 Building_Storage，不再需要装货 Job。 -->
+	<JobDef>
+		<defName>CK_CleanBedpan</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_CleanBedpan</driverClass>
+		<reportString>cleaning a bed pan.</reportString>
+		<casualInterruptible>true</casualInterruptible>
+	</JobDef>
+</Defs>

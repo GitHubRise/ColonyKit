@@ -7,6 +7,7 @@
 		<label>plumbing valve</label>
 		<description>Opens or closes connections between pipes.</description>
 		<thingClass>ColonyKit.Modules.Hygiene.Building_Valve</thingClass>
+		<tickerType>Normal</tickerType>
 		<size>(1,1)</size>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_PipeValve</texPath>
@@ -50,7 +51,7 @@
 			<isEdifice>false</isEdifice>
 		</building>
 		<researchPrerequisites>
-			<li>CK_HygieneResearch</li>
+			<li>CK_Plumbing</li>
 		</researchPrerequisites>
 	</ThingDef>
 
@@ -107,7 +108,7 @@
 			<ai_chillDestination>false</ai_chillDestination>
 		</building>
 		<researchPrerequisites>
-			<li>CK_HygieneResearch</li>
+			<li>CK_Plumbing</li>
 		</researchPrerequisites>
 	</ThingDef>
 </Defs>

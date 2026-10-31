@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_FilthUrine.label>尿液</CK_FilthUrine.label>
+	<CK_FilthUrine.description>地上的尿液。</CK_FilthUrine.description>
+
+	<CK_FilthFaeces.label>粪便</CK_FilthFaeces.label>
+	<CK_FilthFaeces.description>地上的粪便，又脏又臭。</CK_FilthFaeces.description>
+
+	<CK_RawSewage.label>原污水</CK_RawSewage.label>
+	<CK_RawSewage.description>洒在地上的原污水，又脏又难清理。</CK_RawSewage.description>
+</LanguageData>

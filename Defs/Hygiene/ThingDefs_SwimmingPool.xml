@@ -6,6 +6,7 @@
 		<label>swimming pool</label>
 		<description>Swimming pool used for hydrotherapy, relaxation, or pleasure. Must be filled with water from water towers first.</description>
 		<thingClass>ColonyKit.Modules.Hygiene.Building_Pool</thingClass>
+		<tickerType>Normal</tickerType>
 		<size>(9,5)</size>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_SwimmingPool</texPath>

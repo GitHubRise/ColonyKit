@@ -58,7 +58,7 @@
 			</li>
 		</comps>
 		<researchPrerequisites>
-			<li>CK_HygieneResearch</li>
+			<li>CK_Plumbing</li>
 		</researchPrerequisites>
 	</ThingDef>
 
@@ -101,7 +101,7 @@
 			</li>
 		</comps>
 		<researchPrerequisites>
-			<li>CK_HygieneResearch</li>
+			<li>CK_Plumbing</li>
 		</researchPrerequisites>
 		<uiOrder>20</uiOrder>
 	</ThingDef>
@@ -142,7 +142,7 @@
 			</li>
 		</comps>
 		<researchPrerequisites>
-			<li>CK_HygieneResearch</li>
+			<li>CK_Plumbing</li>
 		</researchPrerequisites>
 		<uiOrder>30</uiOrder>
 	</ThingDef>
@@ -151,7 +151,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_DbhWaterPump</defName>
 		<label>water pump</label>
-		<description>Pumps ground water from water wells into connected tanks. Requires power and at least one water well. Capacity: 1500 L/day.</description>
+		<description>Pumps ground water from water wells into connected tanks. Requires power and at least one water well. Capacity: 4000 L/day.</description>
 		<thingClass>Building</thingClass>
 		<size>(1,1)</size>
 		<graphicData>
@@ -183,11 +183,11 @@
 			<li Class="CompProperties_Flickable" />
 			<li Class="CompProperties_Breakdownable" />
 			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterPumpingStation">
-				<Capacity>1500</Capacity>
+				<Capacity>4000</Capacity>
 			</li>
 		</comps>
 		<researchPrerequisites>
-			<li>CK_HygieneResearch</li>
+			<li>CK_ElectricPumps</li>
 		</researchPrerequisites>
 		<uiOrder>40</uiOrder>
 	</ThingDef>
@@ -225,7 +225,7 @@
 			</li>
 		</comps>
 		<researchPrerequisites>
-			<li>CK_HygieneResearch</li>
+			<li>CK_Plumbing</li>
 		</researchPrerequisites>
 		<uiOrder>50</uiOrder>
 	</ThingDef>

@@ -32,7 +32,9 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 
 		public float Pcnt => sewageBuffer / Props.capacity;
 
-		public float TreatedPerDay => Props.TreatedPerDay;
+		/// <summary>每天处理多少升污水；叠乘设置里的「化粪池处理速率」倍率。</summary>
+		public float TreatedPerDay =>
+			Props.TreatedPerDay * ColonyKit.Modules.Hygiene.HygieneSettings.Current.sewageProcRate;
 
 		public float TreatedPerTick => TreatedPerDay / 60000f;
 

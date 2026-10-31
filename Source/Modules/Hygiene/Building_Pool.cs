@@ -96,6 +96,27 @@ namespace ColonyKit.Modules.Hygiene
 					waterLevel = Mathf.Min(Capacity, waterLevel + FillPerTick);
 				}
 			}
+			// 水面每 60 tick 随机一处水花，限频避免每 tick 生成。
+			if (HasWater && this.IsHashIntervalTick(60))
+			{
+				ThrowWaterSplash();
+			}
+		}
+
+		private void ThrowWaterSplash()
+		{
+			FleckDef splashes = DefDatabase<FleckDef>.GetNamedSilentFail("CK_MoteWaterSplashes");
+			if (splashes == null)
+			{
+				return;
+			}
+			Vector3 loc = this.OccupiedRect().RandomCell.ToVector3Shifted();
+			loc.y += 0.05f;
+			if (!loc.ShouldSpawnMotesAt(Map))
+			{
+				return;
+			}
+			FleckMaker.Static(loc, Map, splashes, Rand.Range(0.6f, 1f));
 		}
 
 		protected override void DrawAt(Vector3 drawLoc, bool flip = false)

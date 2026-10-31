@@ -34,6 +34,8 @@ namespace ColonyKit.Modules.Hygiene
 				defaultCompleteMode = ToilCompleteMode.Delay
 			};
 			wash.FailOnDestroyedNullOrForbidden(TargetIndex.A);
+			// 水声跟着 toil 起停（DBH 同款）：中断时游戏自己收掉 sustainer。
+			wash.PlaySustainerOrSound(() => DefDatabase<SoundDef>.GetNamed("CK_ShowerAmbience"));
 			wash.initAction = () =>
 			{
 				Building_Shower shower = job.targetA.Thing as Building_Shower;

@@ -4,6 +4,7 @@ using ColonyKit.Modules.Hygiene.Dbh;
 using RimWorld;
 using UnityEngine;
 using Verse;
+using Verse.Sound;
 
 namespace ColonyKit.Modules.Hygiene.Agriculture
 {
@@ -99,23 +100,57 @@ namespace ColonyKit.Modules.Hygiene.Agriculture
 				}
 			}
 			MapComponent_Agriculture comp = MapComponent_Agriculture.Get(map);
-			if (comp == null)
+			if (comp != null)
 			{
-				return true;
+				int cells = GenRadial.NumCellsInRadius(radius);
+				for (int i = 0; i < cells; i++)
+				{
+					IntVec3 cell = parent.Position + GenRadial.RadialPattern[i];
+					if (!cell.InBounds(map)
+						|| !GenSight.LineOfSight(parent.Position, cell, map)
+						|| cell.GetTerrain(map).fertility <= 0f)
+					{
+						continue;
+					}
+					comp.AddIrrigation(cell, 100f);
+				}
+			}
+			PlaySprayEffects(map);
+			return true;
+		}
+
+		/// <summary>
+		/// 喷水成功的表现：半径内随机 8 格各抛一团灌溉水雾，并播一次喷洒音（A 组 CK_Sprinklers）。
+		/// 只在每天一次的 TrySpray 里调用，不参与每 tick 逻辑。
+		/// </summary>
+		private void PlaySprayEffects(Map map)
+		{
+			DefDatabase<SoundDef>.GetNamedSilentFail("CK_Sprinklers")?.PlayOneShot(parent);
+			FleckDef spray = DefDatabase<FleckDef>.GetNamedSilentFail("CK_MoteIrrigation");
+			if (spray == null)
+			{
+				return;
 			}
 			int cells = GenRadial.NumCellsInRadius(radius);
-			for (int i = 0; i < cells; i++)
+			if (cells <= 1)
 			{
-				IntVec3 cell = parent.Position + GenRadial.RadialPattern[i];
-				if (!cell.InBounds(map)
-					|| !GenSight.LineOfSight(parent.Position, cell, map)
-					|| cell.GetTerrain(map).fertility <= 0f)
+				return;
+			}
+			for (int i = 0; i < 8; i++)
+			{
+				IntVec3 cell = parent.Position + GenRadial.RadialPattern[Rand.Range(1, cells)];
+				if (!cell.InBounds(map))
 				{
 					continue;
 				}
-				comp.AddIrrigation(cell, 100f);
+				Vector3 loc = cell.ToVector3Shifted();
+				loc.y += 0.4f;
+				if (!loc.ShouldSpawnMotesAt(map))
+				{
+					continue;
+				}
+				FleckMaker.Static(loc, map, spray, Rand.Range(0.4f, 0.9f));
 			}
-			return true;
 		}
 
 		public override string CompInspectStringExtra()

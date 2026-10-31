@@ -56,6 +56,7 @@
 		<label>air-con outdoor unit</label>
 		<description>Multi-split air conditioner unit. Place outdoors and pipe to indoor units or freezer units. Power mode selection with 100-1000 cooling units capacity.</description>
 		<thingClass>Building</thingClass>
+		<tickerType>Normal</tickerType>
 		<size>(1,1)</size>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_AirconOutdoorUnit</texPath>
@@ -103,6 +104,7 @@
 		<label>air-con indoor unit</label>
 		<description>Indoor air-con unit for rooms. Connect to outdoor air-con units. Requires 100 cooling units.</description>
 		<thingClass>Building</thingClass>
+		<tickerType>Normal</tickerType>
 		<size>(1,1)</size>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_AirconIndoorUnit</texPath>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_WashPatient.reportString>正在给病人洗澡。</CK_WashPatient.reportString>
+	<CK_ClearBlockage.reportString>正在疏通洁具。</CK_ClearBlockage.reportString>
+	<CK_RemoveSewage.reportString>正在铲除污水。</CK_RemoveSewage.reportString>
+	<CK_DrainWater.reportString>正在排空水箱。</CK_DrainWater.reportString>
+	<CK_KickOver.reportString>正在倒掉污水。</CK_KickOver.reportString>
+</LanguageData>

@@ -10,5 +10,7 @@ namespace ColonyKit.Modules.Hygiene
 		public static StatDef CK_BladderRateMultiplier;
 		public static HediffDef CK_BadHygiene;
 		public static HediffDef CK_GutBug;
+		public static HediffDef CK_BionicBladder;
+		public static HediffDef CK_HygieneEnhancer;
 	}
 }

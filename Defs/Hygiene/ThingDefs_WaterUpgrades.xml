@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 高级水网建筑（DBH 水网线的升级件）：风泵/泵站把井水抽进水箱，深水井与低温节点提供更大的水源，
+	     巨型水塔扩容，燃气锅炉烧化合燃料供热，消防喷淋接水网灭火，简易水井供手动打水。 -->
+
+	<!-- 风泵：3×2，不耗电、不烧燃料，靠风力抽水。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_WindPump</defName>
+		<label>wind pump</label>
+		<description>Draws ground water from connected wells into tanks without using any power or fuel. Capacity: 2000 L/day.</description>
+		<thingClass>Building</thingClass>
+		<size>(3,2)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_WindPump</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>46</uiOrder>
+		<passability>Impassable</passability>
+		<fillPercent>1</fillPercent>
+		<blockWind>true</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<pathCost>150</pathCost>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<stuffCategories>
+			<li>Woody</li>
+			<li>Stony</li>
+			<li>Metallic</li>
+		</stuffCategories>
+		<costStuffCount>80</costStuffCount>
+		<costList>
+			<Steel>25</Steel>
+		</costList>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>2500</WorkToBuild>
+			<Mass>50</Mass>
+			<Flammability>1</Flammability>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterPumpingStation">
+				<compClass>ColonyKit.Modules.Hygiene.Dbh.CompWindPump</compClass>
+				<Capacity>2000</Capacity>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_Plumbing</li>
+		</researchPrerequisites>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<allowAutoroof>false</allowAutoroof>
+		</building>
+	</ThingDef>
+
+	<!-- 泵站：2×2，1000 W，10000 L/天。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_PumpingStation</defName>
+		<label>pumping station</label>
+		<description>A large electric pump that draws ground water from wells into connected tanks. Requires power and at least one water well. Capacity: 10000 L/day.</description>
+		<thingClass>Building</thingClass>
+		<size>(2,2)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_PumpingStation</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>47</uiOrder>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.3</fillPercent>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>true</castEdgeShadows>
+		<pathCost>60</pathCost>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<costList>
+			<Steel>120</Steel>
+			<ComponentIndustrial>3</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<WorkToBuild>5000</WorkToBuild>
+			<Mass>50</Mass>
+			<Flammability>1</Flammability>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>1000</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Breakdownable" />
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterPumpingStation">
+				<Capacity>10000</Capacity>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_LargeWaterPumps</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<!-- 深水井：1×1，4000 L/天，不受地表污染影响（Deep）。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_DeepWaterWell</defName>
+		<label>deep water well</label>
+		<description>Drills deep into the aquifer for a large supply of ground water. Works like a water well, but yields far more water. Capacity: 4000 L/day.</description>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_DeepWaterWell</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>51</uiOrder>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.25</fillPercent>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<pathCost>60</pathCost>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<costList>
+			<Steel>100</Steel>
+		</costList>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<WorkToBuild>29000</WorkToBuild>
+			<Mass>20</Mass>
+			<Flammability>1</Flammability>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterInlet">
+				<Capacity>4000</Capacity>
+				<Deep>true</Deep>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_DeepWells</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<!-- 巨型水塔：3×3，50000 L。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_WaterTowerHuge</defName>
+		<label>huge water tower</label>
+		<description>Stores a very large amount of water for plumbed fixtures. Capacity: 50000 L.</description>
+		<thingClass>Building</thingClass>
+		<size>(3,3)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_WaterTowerHuge</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,4)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>36</uiOrder>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.3</fillPercent>
+		<blockWind>true</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<pathCost>60</pathCost>
+		<tickerType>Normal</tickerType>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<costList>
+			<Steel>200</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<WorkToBuild>5000</WorkToBuild>
+			<Mass>50</Mass>
+			<Beauty>-15</Beauty>
+			<Flammability>0</Flammability>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterStorage">
+				<WaterStorageCap>50000</WaterStorageCap>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_LargeWaterPumps</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<!-- 燃气锅炉：1×1，烧化合燃料，2000 加热单位，可由温控器控制。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_GasBoiler</defName>
+		<label>gas boiler</label>
+		<description>Produces 2000 heating units for radiators and hot water tanks. Burns chemfuel and can be controlled by thermostats.</description>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_GasBoiler</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<damageData>
+				<rect>(0.05,0.05,0.95,0.95)</rect>
+			</damageData>
+		</graphicData>
+		<rotatable>true</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>61</uiOrder>
+		<tickerType>Normal</tickerType>
+		<blockWind>true</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<pathCost>150</pathCost>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<costList>
+			<Steel>80</Steel>
+			<ComponentIndustrial>3</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<WorkToBuild>1500</WorkToBuild>
+			<Mass>50</Mass>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterHeater">
+				<Capacity>2000</Capacity>
+				<ThermostatControl>true</ThermostatControl>
+			</li>
+			<!-- 自带小热水罐：CompWaterHeater 的恒温逻辑只认热水罐，没有罐时燃气锅炉会一直待机。 -->
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_HeatStore">
+				<StoreCapacity>100</StoreCapacity>
+				<RiseRate>0.0024</RiseRate>
+				<FallRate>0.00001</FallRate>
+				<ForRunningWater>true</ForRunningWater>
+			</li>
+			<li Class="CompProperties_Breakdownable" />
+			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Refuelable">
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<fuelConsumptionRate>4</fuelConsumptionRate>
+				<fuelCapacity>25</fuelCapacity>
+				<fuelFilter>
+					<thingDefs>
+						<li>Chemfuel</li>
+					</thingDefs>
+				</fuelFilter>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_CentralHeating</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<!-- 消防喷淋：1×1，接水网，房间内或 9.9 格有火时喷水灭火。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_FireSprinkler</defName>
+		<label>fire sprinkler</label>
+		<description>Triggered by fire in its room or nearby. Douses flames with a spray of water from the plumbing network. Uses 2 L of water per spray.</description>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_FireSprinkler</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>70</uiOrder>
+		<passability>Standable</passability>
+		<fillPercent>0.1</fillPercent>
+		<blockWind>false</blockWind>
+		<blockLight>false</blockLight>
+		<holdsRoof>false</holdsRoof>
+		<castEdgeShadows>false</castEdgeShadows>
+		<pathCost>0</pathCost>
+		<tickerType>Normal</tickerType>
+		<clearBuildingArea>false</clearBuildingArea>
+		<costList>
+			<Steel>15</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>500</WorkToBuild>
+			<Mass>2</Mass>
+			<Flammability>1</Flammability>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_FireSprinkler">
+				<Radius>9.9</Radius>
+				<WaterPerSpray>2</WaterPerSpray>
+				<SprayInterval>60</SprayInterval>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_FireSuppression</li>
+		</researchPrerequisites>
+		<building>
+			<isInert>true</isInert>
+			<isEdifice>false</isEdifice>
+			<canBuildNonEdificesUnder>true</canBuildNonEdificesUnder>
+		</building>
+	</ThingDef>
+
+	<!-- 简易水井：1×1，只有 CompWaterInlet，不接管道，供手动打水。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_PrimitiveWell</defName>
+		<label>primitive well</label>
+		<description>A hand-drawn well that reaches ground water. Colonists can fill buckets and basins here, but it does not connect to pipes. Capacity: 2000 L/day.</description>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_PrimitiveWell</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>52</uiOrder>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.2</fillPercent>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<pathCost>60</pathCost>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>25</costStuffCount>
+		<defaultStuff>WoodLog</defaultStuff>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>2000</WorkToBuild>
+			<Flammability>1</Flammability>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterInlet">
+				<Capacity>2000</Capacity>
+				<Piped>false</Piped>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_Plumbing</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<!-- 低温开采节点：1×1，3000 L/天，同时释放 30 热/秒，不需要电。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_CryoExtractionNode</defName>
+		<label>cryo extraction node</label>
+		<description>Extracts and sublimates volatile ices trapped beneath asteroid regolith, producing usable water and giving off substantial heat. Does not need power. Capacity: 3000 L/day.</description>
+		<thingClass>Building</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_CryoExtractionNode</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>80</uiOrder>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.25</fillPercent>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>true</castEdgeShadows>
+		<pathCost>60</pathCost>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<tickerType>Normal</tickerType>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<costList>
+			<Steel>100</Steel>
+			<Plasteel>50</Plasteel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<WorkToBuild>16000</WorkToBuild>
+			<Mass>40</Mass>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_Pipe">
+				<mode>Water</mode>
+			</li>
+			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterInlet">
+				<Capacity>3000</Capacity>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<heatPerSecond>30</heatPerSecond>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>CK_AsteroidCryoMining</li>
+		</researchPrerequisites>
+		<building>
+			<isEdifice>false</isEdifice>
+		</building>
+	</ThingDef>
+</Defs>

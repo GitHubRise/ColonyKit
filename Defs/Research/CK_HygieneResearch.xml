@@ -14,6 +14,7 @@
 		<baseCost>800</baseCost>
 		<techLevel>Industrial</techLevel>
 		<prerequisites>
+			<li>CK_Plumbing</li>
 			<li>Electricity</li>
 		</prerequisites>
 		<tab>CK_HygieneTab</tab>

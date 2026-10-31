@@ -6,6 +6,7 @@
 		<label>water butt</label>
 		<description>Stores water for use by plumbed fixtures. Slowly fills when raining. Capacity: 100 L.</description>
 		<thingClass>ColonyKit.Modules.Hygiene.Building_Butt</thingClass>
+		<tickerType>Normal</tickerType>
 		<size>(1,1)</size>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_WaterButt</texPath>
@@ -56,7 +57,7 @@
 			</li>
 		</comps>
 		<researchPrerequisites>
-			<li>CK_HygieneResearch</li>
+			<li>CK_Plumbing</li>
 		</researchPrerequisites>
 	</ThingDef>
 </Defs>

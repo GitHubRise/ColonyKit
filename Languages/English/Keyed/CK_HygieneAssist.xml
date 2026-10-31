@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK.Hygiene.Assist.RemoveSewage>Remove sewage</CK.Hygiene.Assist.RemoveSewage>
+	<CK.Hygiene.Assist.RemoveSewageDesc>Mark polluted cells to be shoveled clean. Each cell takes 120 ticks and leaves one barrel of fecal sludge.</CK.Hygiene.Assist.RemoveSewageDesc>
+
+	<CK.Hygiene.Assist.DrainTank>Drain tank</CK.Hygiene.Assist.DrainTank>
+	<CK.Hygiene.Assist.DrainTankDesc>Mark water storage to be drained. The water is dumped on the ground and becomes pollution.</CK.Hygiene.Assist.DrainTankDesc>
+
+	<CK.Hygiene.Assist.KickOver>Kick over</CK.Hygiene.Assist.KickOver>
+	<CK.Hygiene.Assist.KickOverDesc>Spill this barrel of fecal sludge on the ground.</CK.Hygiene.Assist.KickOverDesc>
+
+	<CK.Hygiene.Assist.RemovePlumbing>Remove pipes</CK.Hygiene.Assist.RemovePlumbing>
+	<CK.Hygiene.Assist.RemovePlumbingDesc>Designate plumbing buildings (anything with a pipe) for deconstruction.</CK.Hygiene.Assist.RemovePlumbingDesc>
+</LanguageData>

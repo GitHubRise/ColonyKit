@@ -7,6 +7,7 @@
 		<label>radiator</label>
 		<description>Heats rooms using hot water from boilers. Requires 100 heating units.</description>
 		<thingClass>Building</thingClass>
+		<tickerType>Normal</tickerType>
 		<size>(1,1)</size>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_Radiator</texPath>
@@ -84,6 +85,7 @@
 		<label>large radiator</label>
 		<description>Three times the output of a standard radiator. Useful for larger rooms. Requires 300 heating units.</description>
 		<thingClass>Building</thingClass>
+		<tickerType>Normal</tickerType>
 		<size>(2,1)</size>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_RadiatorLarge</texPath>
@@ -161,6 +163,7 @@
 		<label>Towel Rail</label>
 		<description>Impressive bathroom towel rail.</description>
 		<thingClass>Building</thingClass>
+		<tickerType>Normal</tickerType>
 		<size>(1,1)</size>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_TowelRail</texPath>

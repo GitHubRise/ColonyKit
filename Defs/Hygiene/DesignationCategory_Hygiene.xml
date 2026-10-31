@@ -9,6 +9,10 @@
 			<li>Designator_Cancel</li>
 			<li>Designator_Deconstruct</li>
 			<li>ColonyKit.Modules.Hygiene.Agriculture.Designator_Fertilize</li>
+			<li>ColonyKit.Modules.Hygiene.Designator_RemoveSewage</li>
+			<li>ColonyKit.Modules.Hygiene.Designator_DrainTank</li>
+			<li>ColonyKit.Modules.Hygiene.Designator_KickOver</li>
+			<li>ColonyKit.Modules.Hygiene.Designator_RemovePlumbing</li>
 		</specialDesignatorClasses>
 	</DesignationCategoryDef>
 </Defs>

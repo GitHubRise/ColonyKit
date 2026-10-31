@@ -241,12 +241,17 @@ namespace ColonyKit.Modules.Hygiene.Agriculture
 	{
 		private static void Postfix(FertilityGrid __instance, IntVec3 loc, ref float __result)
 		{
+			HygieneSettings settings = HygieneSettings.Current;
+			// 地形基础肥力倍率先乘上，施肥/灌溉都在它之上叠乘；1.0 时和原版完全一致。
+			if (settings.terrainFertilityFactor != 1f)
+			{
+				__result *= settings.terrainFertilityFactor;
+			}
 			MapComponent_Agriculture comp = MapComponent_Agriculture.ForGrid(__instance);
 			if (comp == null)
 			{
 				return;
 			}
-			HygieneSettings settings = HygieneSettings.Current;
 			float fertilizer = comp.FertilizerAt(loc);
 			float irrigation = comp.IrrigationAt(loc);
 			if (fertilizer <= 0f && irrigation <= 0f)

@@ -8,6 +8,7 @@
 		<label>water tub</label>
 		<description>A simple tub of water for washing up. Holds 30 uses and is used up one wash at a time. Fills up in the rain, refills itself when connected to a water network, or can be topped up by pouring in a portable wash basin.</description>
 		<thingClass>ColonyKit.Modules.Hygiene.Building_WaterTub</thingClass>
+		<tickerType>Rare</tickerType>
 		<size>(1,1)</size>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_WaterTub</texPath>

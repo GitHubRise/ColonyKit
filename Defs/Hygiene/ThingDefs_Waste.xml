@@ -29,5 +29,9 @@
 			<Cleanliness>-25</Cleanliness>
 			<DeteriorationRate>2</DeteriorationRate>
 		</statBases>
+		<!-- 「倒掉」：右键/设计器刷标记后由工人把桶踢翻在地上（CompKickOver）。 -->
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.CompProperties_KickOver" />
+		</comps>
 	</ThingDef>
 </Defs>

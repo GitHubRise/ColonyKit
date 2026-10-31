@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_WashPatient.label>给病人洗澡</CK_WashPatient.label>
+	<CK_WashPatient.verb>给…洗澡</CK_WashPatient.verb>
+	<CK_WashPatient.gerund>正在给病人洗澡</CK_WashPatient.gerund>
+
+	<CK_WashChild.label>给孩子洗澡</CK_WashChild.label>
+	<CK_WashChild.verb>给…洗澡</CK_WashChild.verb>
+	<CK_WashChild.gerund>正在给孩子洗澡</CK_WashChild.gerund>
+
+	<CK_ClearBlockage.label>疏通堵塞</CK_ClearBlockage.label>
+	<CK_ClearBlockage.verb>疏通</CK_ClearBlockage.verb>
+	<CK_ClearBlockage.gerund>正在疏通</CK_ClearBlockage.gerund>
+
+	<CK_CleanFilthIndoors.label>清理室内污渍</CK_CleanFilthIndoors.label>
+	<CK_CleanFilthIndoors.verb>清理</CK_CleanFilthIndoors.verb>
+	<CK_CleanFilthIndoors.gerund>正在清理</CK_CleanFilthIndoors.gerund>
+
+	<CK_RemoveSewage.label>铲污水装桶</CK_RemoveSewage.label>
+	<CK_RemoveSewage.verb>铲除污水</CK_RemoveSewage.verb>
+	<CK_RemoveSewage.gerund>正在铲除污水</CK_RemoveSewage.gerund>
+
+	<CK_DrainWater.label>排空水箱</CK_DrainWater.label>
+	<CK_DrainWater.verb>排空</CK_DrainWater.verb>
+	<CK_DrainWater.gerund>正在排空</CK_DrainWater.gerund>
+
+	<CK_KickOver.label>倒掉粪渣</CK_KickOver.label>
+	<CK_KickOver.verb>倒掉</CK_KickOver.verb>
+	<CK_KickOver.gerund>正在倒掉</CK_KickOver.gerund>
+</LanguageData>

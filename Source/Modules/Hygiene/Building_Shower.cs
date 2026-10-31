@@ -1,5 +1,6 @@
 using ColonyKit.Modules.Hygiene.Dbh;
 using RimWorld;
+using UnityEngine;
 using Verse;
 using Verse.AI;
 
@@ -59,7 +60,37 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				cold = false;
 			}
+			ThrowWashSteam();
 			return true;
+		}
+
+		/// <summary>
+		/// 洗澡时每 30 tick 在花洒位置冒一团蒸汽（DBH Mote_WashSteam）。
+		/// 淋浴器的 tickerType 是 Rare，没有每 tick 的 Tick()，所以挂在
+		/// JobDriver_TakeShower 每 tick 调用的 TryUseWater 上，和 DBH 一样；
+		/// occupiedSinceTick 由 Job 的 init/finishAction 维护。
+		/// </summary>
+		private void ThrowWashSteam()
+		{
+			if (!Spawned || occupiedSinceTick < 0 || !this.IsHashIntervalTick(30))
+			{
+				return;
+			}
+			FleckDef steam = DefDatabase<FleckDef>.GetNamedSilentFail("CK_MoteWashSteam");
+			if (steam == null)
+			{
+				return;
+			}
+			Vector3 loc = Position.ToVector3Shifted();
+			loc += new Vector3(Rand.Range(-0.2f, 0.2f), 0f, Rand.Range(-0.2f, 0.2f));
+			if (!loc.ShouldSpawnMotesAt(Map))
+			{
+				return;
+			}
+			FleckCreationData data = FleckMaker.GetDataStatic(loc, Map, steam, 1.2f);
+			data.velocityAngle = 0f;
+			data.velocitySpeed = Rand.Range(0.1f, 0.15f);
+			Map.flecks.CreateFleck(data);
 		}
 
 		public float WaterAvailable => pipe?.pipeNet?.WaterStorage ?? 0f;

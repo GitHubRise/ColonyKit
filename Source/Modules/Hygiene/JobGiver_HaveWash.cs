@@ -22,7 +22,9 @@ namespace ColonyKit.Modules.Hygiene
 			}
 
 			float threshold = 0.2f;
-			TraitDef hygienic = DefDatabase<TraitDef>.GetNamedSilentFail("Hygienic");
+			// 优先本包的 CK_Hygienic，没定义时退回 DBH 的 Hygienic。
+			TraitDef hygienic = DefDatabase<TraitDef>.GetNamedSilentFail("CK_Hygienic")
+				?? DefDatabase<TraitDef>.GetNamedSilentFail("Hygienic");
 			if (hygienic != null)
 			{
 				switch (pawn.story?.traits?.DegreeOfTrait(hygienic) ?? 0)

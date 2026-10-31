@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 卫生仿生（DBH Hediffs_Hygiene_Bionics 的移植）：前置 CK_HygieneBionics（G 组的研究节点）。
+	     效果照抄 DBH：仿生膀胱让排尿与口渴速度 -50%，卫生增强器让卫生下降速度 -50%。
+	     制作配方由 ThingDef 的 recipeMaker 自动生成（在装配台做），这里只写安装手术。 -->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>CK_BionicBladder</defName>
+		<label>bionic bladder</label>
+		<labelNoun>a bionic bladder</labelNoun>
+		<description>An installed bionic bladder. A chemical recycling system breaks down waste products from the body into molecules which are recycled, with the remainder released as gas.</description>
+		<descriptionHyperlinks>
+			<ThingDef>CK_BionicBladder</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>CK_BionicBladder</spawnThingOnRemoved>
+		<stages>
+			<li>
+				<statOffsets>
+					<CK_BladderRateMultiplier>-0.5</CK_BladderRateMultiplier>
+					<CK_ThirstRateMultiplier>-0.5</CK_ThirstRateMultiplier>
+				</statOffsets>
+			</li>
+		</stages>
+	</HediffDef>
+
+	<ThingDef ParentName="BodyPartBionicBase">
+		<defName>CK_BionicBladder</defName>
+		<label>bionic bladder</label>
+		<description>An advanced artificial bladder. A chemical recycling system breaks down waste products from the body into molecules which are recycled, the remainder being released as gas - the downside being that it gives the user gas.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>CK_InstallBionicBladder</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<Plasteel>10</Plasteel>
+			<ComponentSpacer>3</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>2</Mass>
+		</statBases>
+		<recipeMaker>
+			<researchPrerequisite>CK_HygieneBionics</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+
+	<RecipeDef ParentName="SurgeryInstallImplantBase">
+		<defName>CK_InstallBionicBladder</defName>
+		<label>install bionic bladder</label>
+		<description>Install a bionic bladder.</description>
+		<descriptionHyperlinks>
+			<ThingDef>CK_BionicBladder</ThingDef>
+			<HediffDef>CK_BionicBladder</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing bionic bladder.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>CK_BionicBladder</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>CK_BionicBladder</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Torso</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>CK_BionicBladder</addsHediff>
+	</RecipeDef>
+
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>CK_HygieneEnhancer</defName>
+		<label>hygiene enhancer</label>
+		<labelNoun>a hygiene enhancer</labelNoun>
+		<description>An installed hygiene enhancer. Releases mechanites that break down dead skin cells and other detritus on the skin and hair, releasing it harmlessly into the air.</description>
+		<descriptionHyperlinks>
+			<ThingDef>CK_HygieneEnhancer</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>CK_HygieneEnhancer</spawnThingOnRemoved>
+		<stages>
+			<li>
+				<statOffsets>
+					<CK_HygieneRateMultiplier>-0.5</CK_HygieneRateMultiplier>
+				</statOffsets>
+			</li>
+		</stages>
+	</HediffDef>
+
+	<ThingDef ParentName="BodyPartBionicBase">
+		<defName>CK_HygieneEnhancer</defName>
+		<label>hygiene enhancer</label>
+		<description>Releases mechanites that break down dead skin cells and other detritus on the skin and hair, releasing it harmlessly into the air.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>CK_InstallHygieneEnhancer</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<Plasteel>10</Plasteel>
+			<ComponentSpacer>3</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>2</Mass>
+		</statBases>
+		<recipeMaker>
+			<researchPrerequisite>CK_HygieneBionics</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+
+	<RecipeDef ParentName="SurgeryInstallImplantBase">
+		<defName>CK_InstallHygieneEnhancer</defName>
+		<label>install hygiene enhancer</label>
+		<description>Install a hygiene enhancer.</description>
+		<descriptionHyperlinks>
+			<ThingDef>CK_HygieneEnhancer</ThingDef>
+			<HediffDef>CK_HygieneEnhancer</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing hygiene enhancer.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>CK_HygieneEnhancer</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>CK_HygieneEnhancer</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Torso</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>CK_HygieneEnhancer</addsHediff>
+	</RecipeDef>
+</Defs>

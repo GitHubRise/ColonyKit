@@ -1,5 +1,6 @@
 using ColonyKit.Modules.Hygiene.Dbh;
 using RimWorld;
+using UnityEngine;
 using Verse;
 using Verse.AI;
 
@@ -42,6 +43,33 @@ namespace ColonyKit.Modules.Hygiene
 				&& pawn.CanReach(this, InteractionPathMode, Danger.Deadly)
 				&& HasWaterSupply
 				&& Working().Accepted;
+		}
+
+		protected override void Tick()
+		{
+			base.Tick();
+			// 有水的洗手池每 120 tick 在交互格滴一下水花；限频，别每 tick 生成。
+			if (!HasWaterSupply || !this.IsHashIntervalTick(120))
+			{
+				return;
+			}
+			IntVec3 cell = InteractionCell;
+			if (!cell.IsValid || !cell.InBounds(Map))
+			{
+				return;
+			}
+			FleckDef splashes = DefDatabase<FleckDef>.GetNamedSilentFail("CK_MoteWaterSplashes");
+			if (splashes == null)
+			{
+				return;
+			}
+			Vector3 loc = cell.ToVector3Shifted();
+			loc.y += 0.1f;
+			if (!loc.ShouldSpawnMotesAt(Map))
+			{
+				return;
+			}
+			FleckMaker.Static(loc, Map, splashes, Rand.Range(0.5f, 0.8f));
 		}
 	}
 }

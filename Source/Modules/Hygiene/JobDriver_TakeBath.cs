@@ -46,6 +46,8 @@ namespace ColonyKit.Modules.Hygiene
 				defaultCompleteMode = ToilCompleteMode.Delay
 			};
 			bathe.FailOnDestroyedNullOrForbidden(TargetIndex.A);
+			// 泡澡时持续放水声；到时长或中断由 toil 负责停。
+			bathe.PlaySustainerOrSound(() => DefDatabase<SoundDef>.GetNamed("CK_ShowerAmbience"));
 			bathe.initAction = () =>
 			{
 				if (job.targetA.Thing is Building_Bath bath)

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- DBH Effects/Mote_Visual.xml + Effecter_Misc.xml 的移植；贴图在 Textures/Things/Mote/。 -->
+
+	<!-- ===== Fleck：尿液/污水/灌溉水/蒸汽/气泡/水花 ===== -->
+
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>CK_MoteUrine</defName>
+		<graphicData>
+			<texPath>Things/Mote/Urine</texPath>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.40</fadeInTime>
+		<solidTime>2</solidTime>
+		<fadeOutTime>2</fadeOutTime>
+	</FleckDef>
+
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>CK_MoteSewage</defName>
+		<graphicData>
+			<texPath>Things/Mote/Sewage</texPath>
+		</graphicData>
+		<altitudeLayer>MoteLow</altitudeLayer>
+		<fadeInTime>0.40</fadeInTime>
+		<solidTime>2</solidTime>
+		<fadeOutTime>2</fadeOutTime>
+	</FleckDef>
+
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>CK_MoteIrrigation</defName>
+		<graphicData>
+			<texPath>Things/Mote/Irrigation</texPath>
+		</graphicData>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<fadeInTime>0.40</fadeInTime>
+		<solidTime>2</solidTime>
+		<fadeOutTime>2</fadeOutTime>
+	</FleckDef>
+
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>CK_FleckSteamRoom</defName>
+		<graphicData>
+			<texPath>Things/Mote/Steam2</texPath>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>2</fadeInTime>
+		<solidTime>2</solidTime>
+		<fadeOutTime>5</fadeOutTime>
+	</FleckDef>
+
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>CK_MoteWashSteam</defName>
+		<graphicData>
+			<texPath>Things/Mote/Steam1</texPath>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>1</fadeInTime>
+		<solidTime>0</solidTime>
+		<fadeOutTime>2</fadeOutTime>
+		<growthRate>0.12</growthRate>
+	</FleckDef>
+
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>CK_MoteBubbles</defName>
+		<graphicData>
+			<texPath>Things/Mote/Bubbles</texPath>
+		</graphicData>
+		<altitudeLayer>Building</altitudeLayer>
+		<altitudeLayerIncOffset>0.63</altitudeLayerIncOffset>
+		<fadeInTime>1</fadeInTime>
+		<solidTime>0</solidTime>
+		<fadeOutTime>0.2</fadeOutTime>
+		<growthRate>0.1</growthRate>
+	</FleckDef>
+
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>CK_MoteWaterSplashes</defName>
+		<graphicData>
+			<texPath>Things/Mote/Splash</texPath>
+		</graphicData>
+		<altitudeLayer>MoteLow</altitudeLayer>
+		<fadeInTime>0.04</fadeInTime>
+		<solidTime>0.5</solidTime>
+		<fadeOutTime>2</fadeOutTime>
+	</FleckDef>
+
+	<!-- ===== Effecter ===== -->
+
+	<EffecterDef>
+		<defName>CK_Fecal</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerContinuous</subEffecterClass>
+				<scale>
+					<min>0.5</min>
+					<max>0.7</max>
+				</scale>
+				<ticksBetweenMotes>20</ticksBetweenMotes>
+				<positionLerpFactor>-0.35</positionLerpFactor>
+				<positionRadius>0.2</positionRadius>
+				<moteDef>CK_MoteFecalBit</moteDef>
+			</li>
+		</children>
+	</EffecterDef>
+
+	<EffecterDef>
+		<defName>CK_WashingEffect</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_SprayerContinuous</subEffecterClass>
+				<scale>
+					<min>0.2</min>
+					<max>0.7</max>
+				</scale>
+				<ticksBetweenMotes>20</ticksBetweenMotes>
+				<positionLerpFactor>0.6</positionLerpFactor>
+				<positionRadius>0.6</positionRadius>
+				<fleckDef>CK_MoteWaterSplashes</fleckDef>
+			</li>
+		</children>
+	</EffecterDef>
+
+	<EffecterDef>
+		<defName>CK_CarryBucket</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_DrifterEmoteContinuous</subEffecterClass>
+				<moteDef>CK_MoteBucket</moteDef>
+				<positionRadius>1</positionRadius>
+				<spawnLocType>OnSource</spawnLocType>
+				<scale>
+					<min>0.6</min>
+					<max>0.6</max>
+				</scale>
+				<rotation>
+					<min>20</min>
+					<max>20</max>
+				</rotation>
+			</li>
+		</children>
+	</EffecterDef>
+
+	<EffecterDef>
+		<defName>CK_Unblocking</defName>
+		<children>
+			<li>
+				<subEffecterClass>SubEffecter_InteractSymbol</subEffecterClass>
+				<moteDef>CK_MotePlunger</moteDef>
+			</li>
+		</children>
+	</EffecterDef>
+
+	<!-- ===== Mote ThingDef（Effecter 用） ===== -->
+
+	<ThingDef ParentName="MoteBase">
+		<defName>CK_MoteFecalBit</defName>
+		<altitudeLayer>MoteLow</altitudeLayer>
+		<mote>
+			<fadeInTime>0.08</fadeInTime>
+			<solidTime>0.4</solidTime>
+			<fadeOutTime>0.25</fadeOutTime>
+		</mote>
+		<graphicData>
+			<texPath>Things/Mote/FecalBit</texPath>
+		</graphicData>
+	</ThingDef>
+
+	<ThingDef ParentName="MoteBase">
+		<defName>CK_MoteBucket</defName>
+		<thingClass>MoteDualAttached</thingClass>
+		<altitudeLayer>MetaOverlays</altitudeLayer>
+		<graphicData>
+			<texPath>Things/Mote/Bucket</texPath>
+		</graphicData>
+	</ThingDef>
+
+	<ThingDef ParentName="MoteBase">
+		<defName>CK_MotePlunger</defName>
+		<thingClass>MoteDualAttached</thingClass>
+		<altitudeLayer>MetaOverlays</altitudeLayer>
+		<mote>
+			<solidTime>120</solidTime>
+		</mote>
+		<graphicData>
+			<texPath>Things/Mote/Plunger</texPath>
+		</graphicData>
+	</ThingDef>
+</Defs>

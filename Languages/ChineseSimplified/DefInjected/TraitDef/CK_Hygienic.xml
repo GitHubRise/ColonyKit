@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_Hygienic.degreeDatas.germaphobe.label>洁癖</CK_Hygienic.degreeDatas.germaphobe.label>
+	<CK_Hygienic.degreeDatas.germaphobe.description>[PAWN_nameDef]对细菌有执念，洗澡次数会远远多于常人。</CK_Hygienic.degreeDatas.germaphobe.description>
+
+	<CK_Hygienic.degreeDatas.hygienic.label>爱干净</CK_Hygienic.degreeDatas.hygienic.label>
+	<CK_Hygienic.degreeDatas.hygienic.description>[PAWN_nameDef]很讲卫生，洗澡次数会比常人更多。</CK_Hygienic.degreeDatas.hygienic.description>
+
+	<CK_Hygienic.degreeDatas.unhygienic.label>不爱干净</CK_Hygienic.degreeDatas.unhygienic.label>
+	<CK_Hygienic.degreeDatas.unhygienic.description>[PAWN_nameDef]很不讲卫生，洗澡次数会比常人更少。</CK_Hygienic.degreeDatas.unhygienic.description>
+
+	<CK_Hygienic.degreeDatas.slob.label>邋遢</CK_Hygienic.degreeDatas.slob.label>
+	<CK_Hygienic.degreeDatas.slob.description>[PAWN_nameDef]对清洁的要求极低，非要洗不可时才会去洗。</CK_Hygienic.degreeDatas.slob.description>
+</LanguageData>

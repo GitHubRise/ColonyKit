@@ -6,6 +6,7 @@
 		<label>thermostat</label>
 		<description>Used to control electric and gas boilers. More than one can be placed. Connects via standard plumbing.</description>
 		<thingClass>Building</thingClass>
+		<tickerType>Rare</tickerType>
 		<size>(1,1)</size>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_Thermostat</texPath>

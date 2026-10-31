@@ -6,6 +6,7 @@
 		<label>smart toilet</label>
 		<description>Comfortable, self cleaning, unblockable, super efficient smart toilet. Uses only 7 L per flush.</description>
 		<thingClass>ColonyKit.Modules.Hygiene.Building_AdvToilet</thingClass>
+		<tickerType>Rare</tickerType>
 		<size>(1,1)</size>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_SmartToilet</texPath>

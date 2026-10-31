@@ -7,6 +7,7 @@
 		<label>kitchen sink</label>
 		<description>Everything but a kitchen sink. Increases room cleanliness.</description>
 		<thingClass>ColonyKit.Modules.Hygiene.Building_Basin</thingClass>
+		<tickerType>Normal</tickerType>
 		<size>(3,1)</size>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_KitchenSink</texPath>

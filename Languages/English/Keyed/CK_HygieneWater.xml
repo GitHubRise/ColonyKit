@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 水网升级建筑的检视文案（E 组）。 -->
+<LanguageData>
+	<CK.Hygiene.FireSprinkler.Status>Fire sprinkler: {0}</CK.Hygiene.FireSprinkler.Status>
+	<CK.Hygiene.FireSprinkler.Ready>ready</CK.Hygiene.FireSprinkler.Ready>
+	<CK.Hygiene.FireSprinkler.NoWater>no water in the network</CK.Hygiene.FireSprinkler.NoWater>
+	<CK.Hygiene.FireSprinkler.NoNetwork>not connected to a water network</CK.Hygiene.FireSprinkler.NoNetwork>
+</LanguageData>

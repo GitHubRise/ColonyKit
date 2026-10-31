@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 管道工程：DBH 的水管/污水管门槛。原来的 CK_HygieneResearch 只讲淋浴，
+	     这里补一条更早的 Medieval 前置，让雨水桶、水槽、排污口这些不用电的玩意儿先解锁。 -->
+	<ResearchProjectDef>
+		<defName>CK_Plumbing</defName>
+		<label>plumbing</label>
+		<description>Lay water and sewage pipes and install unpowered fixtures such as rain barrels, water troughs and sewage outlets.</description>
+		<baseCost>400</baseCost>
+		<techLevel>Medieval</techLevel>
+		<tab>CK_HygieneTab</tab>
+		<researchViewX>0</researchViewX>
+		<researchViewY>1</researchViewY>
+	</ResearchProjectDef>
+
+	<!-- 化粪池：中世纪就能挖，先把污水存起来。 -->
+	<ResearchProjectDef>
+		<defName>CK_SepticTanks</defName>
+		<label>septic tanks</label>
+		<description>Build septic tanks that hold sewage until it is treated or pumped out.</description>
+		<baseCost>500</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>CK_Plumbing</li>
+		</prerequisites>
+		<tab>CK_HygieneTab</tab>
+		<researchViewX>1</researchViewX>
+		<researchViewY>3</researchViewY>
+	</ResearchProjectDef>
+
+	<!-- 电动水泵：接在卫生设施之后，泵站/风泵的起点。 -->
+	<ResearchProjectDef>
+		<defName>CK_ElectricPumps</defName>
+		<label>electric pumps</label>
+		<description>Build electric water pumps and pumping stations that push water through the plumbing network.</description>
+		<baseCost>500</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>CK_HygieneResearch</li>
+			<li>Electricity</li>
+		</prerequisites>
+		<tab>CK_HygieneTab</tab>
+		<researchViewX>1</researchViewX>
+		<researchViewY>2</researchViewY>
+	</ResearchProjectDef>
+
+	<!-- 大型水泵：泵站与巨型水塔。 -->
+	<ResearchProjectDef>
+		<defName>CK_LargeWaterPumps</defName>
+		<label>large water pumps</label>
+		<description>Build large pumping stations and huge water towers for colonies with heavy water demand.</description>
+		<baseCost>2000</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>CK_ElectricPumps</li>
+		</prerequisites>
+		<tab>CK_HygieneTab</tab>
+		<researchViewX>2</researchViewX>
+		<researchViewY>3</researchViewY>
+	</ResearchProjectDef>
+
+	<!-- 深水井：直接从深层含水层取水。 -->
+	<ResearchProjectDef>
+		<defName>CK_DeepWells</defName>
+		<label>deep water wells</label>
+		<description>Drill deep wells that draw clean water from far below the surface.</description>
+		<baseCost>2000</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>CK_ElectricPumps</li>
+		</prerequisites>
+		<tab>CK_HygieneTab</tab>
+		<researchViewX>2</researchViewX>
+		<researchViewY>4</researchViewY>
+	</ResearchProjectDef>
+
+	<!-- 消防喷淋：接在灌溉之后，喷淋头靠管网里的水灭火。 -->
+	<ResearchProjectDef>
+		<defName>CK_FireSuppression</defName>
+		<label>fire suppression</label>
+		<description>Install sprinklers that extinguish fires with water from the plumbing network.</description>
+		<baseCost>500</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>CK_Irrigation</li>
+		</prerequisites>
+		<tab>CK_HygieneTab</tab>
+		<researchViewX>3</researchViewX>
+		<researchViewY>2</researchViewY>
+	</ResearchProjectDef>
+
+	<!-- 卫生仿生：膀胱/卫生增强器。 -->
+	<ResearchProjectDef>
+		<defName>CK_HygieneBionics</defName>
+		<label>hygiene bionics</label>
+		<description>Craft and install bionic organs that reduce a colonist's need for the toilet and for washing.</description>
+		<baseCost>2500</baseCost>
+		<techLevel>Spacer</techLevel>
+		<prerequisites>
+			<li>CK_WaterFiltration</li>
+			<li>Fabrication</li>
+			<li>Prosthetics</li>
+		</prerequisites>
+		<tab>CK_HygieneTab</tab>
+		<researchViewX>5</researchViewX>
+		<researchViewY>2</researchViewY>
+	</ResearchProjectDef>
+
+	<!-- 小行星低温开采：低温开采节点，取水顺带供暖。 -->
+	<ResearchProjectDef>
+		<defName>CK_AsteroidCryoMining</defName>
+		<label>asteroid cryo mining</label>
+		<description>Extract water from ice-rich asteroids with cryo extraction nodes, which also give off heat.</description>
+		<baseCost>1500</baseCost>
+		<techLevel>Spacer</techLevel>
+		<prerequisites>
+			<li>CK_WaterFiltration</li>
+		</prerequisites>
+		<tab>CK_HygieneTab</tab>
+		<researchViewX>5</researchViewX>
+		<researchViewY>0</researchViewY>
+	</ResearchProjectDef>
+</Defs>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!--
+		污渍：DBH Filth_Various.xml 的 CK_ 变体（不占用 DBH 原名，同开 DBH 时不会 defName 冲突）。
+		贴图沿用原版 Things/Filth/Spatter 与 Things/Filth/LiquidFuel；
+		代码查找顺序为 CK_* → DBH 原名回落。
+	-->
+	<ThingDef Name="CK_BasedFilth" Abstract="True">
+		<thingClass>Filth</thingClass>
+		<category>Filth</category>
+		<altitudeLayer>Filth</altitudeLayer>
+		<useHitPoints>false</useHitPoints>
+		<drawerType>MapMeshOnly</drawerType>
+		<graphicData>
+			<shaderType>Transparent</shaderType>
+			<graphicClass>Graphic_Cluster</graphicClass>
+		</graphicData>
+		<statBases>
+			<Beauty>-15</Beauty>
+			<Cleanliness>-5</Cleanliness>
+		</statBases>
+	</ThingDef>
+
+	<ThingDef ParentName="CK_BasedFilth">
+		<defName>CK_FilthUrine</defName>
+		<label>urine</label>
+		<description>Urine on the ground.</description>
+		<statBases>
+			<Beauty>-40</Beauty>
+			<Cleanliness>-15</Cleanliness>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Filth/LiquidFuel</texPath>
+			<shaderType>Transparent</shaderType>
+			<color>(255, 240, 160, 100)</color>
+		</graphicData>
+		<filth>
+			<disappearsInDays>10~15</disappearsInDays>
+			<rainWashes>true</rainWashes>
+			<cleaningWorkToReduceThickness>70</cleaningWorkToReduceThickness>
+			<canFilthAttach>true</canFilthAttach>
+			<maxThickness>1</maxThickness>
+		</filth>
+	</ThingDef>
+
+	<ThingDef ParentName="CK_BasedFilth">
+		<defName>CK_FilthFaeces</defName>
+		<label>faeces</label>
+		<description>Faeces on the ground. Filthy.</description>
+		<statBases>
+			<Beauty>-40</Beauty>
+			<Cleanliness>-35</Cleanliness>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Filth/Spatter</texPath>
+			<color>(48, 30, 8, 100)</color>
+		</graphicData>
+		<pathCost>5</pathCost>
+		<filth>
+			<disappearsInDays>10~15</disappearsInDays>
+			<rainWashes>true</rainWashes>
+			<cleaningWorkToReduceThickness>130</cleaningWorkToReduceThickness>
+			<canFilthAttach>true</canFilthAttach>
+			<allowsFire>false</allowsFire>
+		</filth>
+	</ThingDef>
+
+	<ThingDef ParentName="CK_BasedFilth">
+		<defName>CK_RawSewage</defName>
+		<label>raw sewage</label>
+		<description>Raw sewage spilled on the ground. Disgusting and hard to clean.</description>
+		<statBases>
+			<Beauty>-40</Beauty>
+			<Cleanliness>-35</Cleanliness>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Filth/Spatter</texPath>
+			<color>(48, 30, 8, 100)</color>
+		</graphicData>
+		<pathCost>5</pathCost>
+		<filth>
+			<disappearsInDays>10~15</disappearsInDays>
+			<rainWashes>true</rainWashes>
+			<cleaningWorkToReduceThickness>130</cleaningWorkToReduceThickness>
+			<canFilthAttach>true</canFilthAttach>
+			<allowsFire>false</allowsFire>
+		</filth>
+	</ThingDef>
+</Defs>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_WindPump.label>风泵</CK_WindPump.label>
+	<CK_WindPump.description>不耗电、不烧燃料，靠风力把水井里的地下水抽进连通的水箱。容量 2000 升/天。</CK_WindPump.description>
+	<CK_PumpingStation.label>泵站</CK_PumpingStation.label>
+	<CK_PumpingStation.description>大型电动水泵，把水井里的地下水抽进连通的水箱。需要电力和至少一口水井，容量 10000 升/天。</CK_PumpingStation.description>
+	<CK_DeepWaterWell.label>深水井</CK_DeepWaterWell.label>
+	<CK_DeepWaterWell.description>向深层含水层钻井，提供大量地下水。用法和水井一样，但出水量大得多。容量 4000 升/天。</CK_DeepWaterWell.description>
+	<CK_WaterTowerHuge.label>巨型水塔</CK_WaterTowerHuge.label>
+	<CK_WaterTowerHuge.description>为管道洁具储存大量用水。容量 50000 升。</CK_WaterTowerHuge.description>
+	<CK_GasBoiler.label>燃气锅炉</CK_GasBoiler.label>
+	<CK_GasBoiler.description>为暖气片和热水罐提供 2000 加热单位。烧化合燃料，可由温控器控制。</CK_GasBoiler.description>
+	<CK_FireSprinkler.label>消防喷淋</CK_FireSprinkler.label>
+	<CK_FireSprinkler.description>房间内或附近出现火灾时自动启动，用管网里的水喷淋灭火。每次喷水消耗 2 升水。</CK_FireSprinkler.description>
+	<CK_PrimitiveWell.label>简易水井</CK_PrimitiveWell.label>
+	<CK_PrimitiveWell.description>手动打水的地下水井。居民可以在这里打水装桶或装盆，但它不接管道。容量 2000 升/天。</CK_PrimitiveWell.description>
+	<CK_CryoExtractionNode.label>低温开采节点</CK_CryoExtractionNode.label>
+	<CK_CryoExtractionNode.description>从小行星风化层下开采并升华挥发性冰，产出可用的水，同时释放大量热量。不需要电力。容量 3000 升/天。</CK_CryoExtractionNode.description>
+</LanguageData>

@@ -478,4 +478,18 @@
 	<ColonyKit.Settings.Hygiene.ExemptHediffs.Desc>拥有这些 Hediff 的小人不会获得本模块的需求。</ColonyKit.Settings.Hygiene.ExemptHediffs.Desc>
 	<ColonyKit.Settings.Hygiene.ApplyExemptions>应用到现有小人</ColonyKit.Settings.Hygiene.ApplyExemptions>
 	<ColonyKit.Settings.Hygiene.Applied>卫生需求已按当前设置重新评估。</ColonyKit.Settings.Hygiene.Applied>
+	<ColonyKit.Settings.Hygiene.Section.Sewage>污水</ColonyKit.Settings.Hygiene.Section.Sewage>
+	<ColonyKit.Settings.Hygiene.PumpCapacity>水泵容量倍率</ColonyKit.Settings.Hygiene.PumpCapacity>
+	<ColonyKit.Settings.Hygiene.PumpCapacity.Desc>水泵、风泵和泵站日产水量的倍率；100% 为 DBH 原值。</ColonyKit.Settings.Hygiene.PumpCapacity.Desc>
+	<ColonyKit.Settings.Hygiene.SewageGrid>每格污水上限倍率</ColonyKit.Settings.Hygiene.SewageGrid>
+	<ColonyKit.Settings.Hygiene.SewageGrid.Desc>单格最多能囤多少污水的倍率（基准 20）；100% 为默认。调低污水摊得更开，调高则积得更深但范围更小。</ColonyKit.Settings.Hygiene.SewageGrid.Desc>
+	<ColonyKit.Settings.Hygiene.SewageCleanup>污水自然清理速率</ColonyKit.Settings.Hygiene.SewageCleanup>
+	<ColonyKit.Settings.Hygiene.SewageCleanup.Desc>地上污水自然降解与扩散的快慢；100% 为默认，0% 表示既不衰减也不扩散，只能靠清污工作清理。</ColonyKit.Settings.Hygiene.SewageCleanup.Desc>
+	<ColonyKit.Settings.Hygiene.SewageProc>污水处理速率倍率</ColonyKit.Settings.Hygiene.SewageProc>
+	<ColonyKit.Settings.Hygiene.SewageProc.Desc>化粪池/污水处理池每天能处理多少污水的倍率；100% 为 DBH 原值。</ColonyKit.Settings.Hygiene.SewageProc.Desc>
+	<ColonyKit.Settings.Hygiene.Section.Cleaning>清洁</ColonyKit.Settings.Hygiene.Section.Cleaning>
+	<ColonyKit.Settings.Hygiene.PriorityIndoorCleaning>优先清理室内污渍</ColonyKit.Settings.Hygiene.PriorityIndoorCleaning>
+	<ColonyKit.Settings.Hygiene.PriorityIndoorCleaning.Desc>开启后清洁工优先处理居家区内、有屋顶的污渍，再去处理室外。</ColonyKit.Settings.Hygiene.PriorityIndoorCleaning.Desc>
+	<ColonyKit.Settings.Hygiene.TerrainFertility>地形基础肥力倍率</ColonyKit.Settings.Hygiene.TerrainFertility>
+	<ColonyKit.Settings.Hygiene.TerrainFertility.Desc>所有地形自身肥力的倍率，乘在施肥/灌溉加成之前；100% 为原版。</ColonyKit.Settings.Hygiene.TerrainFertility.Desc>
 </LanguageData>

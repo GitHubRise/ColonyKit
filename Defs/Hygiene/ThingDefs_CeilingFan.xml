@@ -6,6 +6,7 @@
 		<label>ceiling fan 2x2</label>
 		<description>Cools a room by circulating air. Includes a built-in lamp.</description>
 		<thingClass>ColonyKit.Modules.Hygiene.Building_CeilingFan</thingClass>
+		<tickerType>Normal</tickerType>
 		<size>(2,2)</size>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_CeilingFanBlades</texPath>
@@ -65,6 +66,7 @@
 		<label>ceiling fan 1x1</label>
 		<description>Cools a room by circulating air. Includes a built-in lamp.</description>
 		<thingClass>ColonyKit.Modules.Hygiene.Building_CeilingFan</thingClass>
+		<tickerType>Normal</tickerType>
 		<size>(1,1)</size>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_CeilingFanBlades</texPath>

@@ -67,6 +67,7 @@
 		<label>water spot</label>
 		<description>A free blue water collection spot, like a butcher spot. Needs no materials or research and is built instantly. Colonists can drink and wash here, and fill buckets directly. It does not need pipes or a tank; it counts as an unlimited surface water source.</description>
 		<thingClass>ColonyKit.Modules.Hygiene.Building_WaterSpot</thingClass>
+		<tickerType>Normal</tickerType>
 		<terrainAffordanceNeeded IsNull="True" />
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_WaterSpot</texPath>

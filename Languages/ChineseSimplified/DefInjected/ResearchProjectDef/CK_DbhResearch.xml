@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_Plumbing.label>管道工程</CK_Plumbing.label>
+	<CK_Plumbing.description>铺设水管与污水管，安装雨水桶、水槽、排污口这类不需要电的设施。</CK_Plumbing.description>
+	<CK_SepticTanks.label>化粪池</CK_SepticTanks.label>
+	<CK_SepticTanks.description>建造化粪池，把污水储存起来，直到被处理或抽走。</CK_SepticTanks.description>
+	<CK_ElectricPumps.label>电动水泵</CK_ElectricPumps.label>
+	<CK_ElectricPumps.description>建造电动水泵和泵站，把水送入管网。</CK_ElectricPumps.description>
+	<CK_LargeWaterPumps.label>大型水泵</CK_LargeWaterPumps.label>
+	<CK_LargeWaterPumps.description>建造大型泵站和巨型水塔，满足用水量巨大的殖民地。</CK_LargeWaterPumps.description>
+	<CK_DeepWells.label>深水井</CK_DeepWells.label>
+	<CK_DeepWells.description>开凿深水井，从地下深处抽取干净的水。</CK_DeepWells.description>
+	<CK_FireSuppression.label>消防灭火</CK_FireSuppression.label>
+	<CK_FireSuppression.description>安装喷淋头，用水网里的水扑灭火灾。</CK_FireSuppression.description>
+	<CK_HygieneBionics.label>卫生仿生体</CK_HygieneBionics.label>
+	<CK_HygieneBionics.description>制作并安装仿生器官，降低殖民者对如厕和清洗的需求。</CK_HygieneBionics.description>
+	<CK_AsteroidCryoMining.label>小行星低温开采</CK_AsteroidCryoMining.label>
+	<CK_AsteroidCryoMining.description>用低温开采节点从富冰小行星中取水，节点还会散发热量。</CK_AsteroidCryoMining.description>
+</LanguageData>

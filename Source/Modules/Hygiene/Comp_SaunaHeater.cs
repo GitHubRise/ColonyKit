@@ -103,6 +103,41 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				steamTicks--;
 			}
+			// 被使用后的 60 tick 内每 10 tick 冒一团桑拿蒸汽（DBH 同款：房间内随机取点）。
+			if (steamTicks > 0 && parent.Spawned && parent.IsHashIntervalTick(10))
+			{
+				ThrowSteamFleck();
+			}
+		}
+
+		private void ThrowSteamFleck()
+		{
+			Room room = parent.GetRoom();
+			if (room == null)
+			{
+				return;
+			}
+			IntVec3 cell = room.Cells.RandomElement();
+			if (!cell.IsValid || cell.DistanceTo(parent.Position) > 10f)
+			{
+				return;
+			}
+			FleckDef steam = DefDatabase<FleckDef>.GetNamedSilentFail("CK_FleckSteamRoom");
+			if (steam == null)
+			{
+				return;
+			}
+			Vector3 loc = cell.ToVector3Shifted();
+			loc += new Vector3(Rand.Value - 0.5f, 0f, Rand.Value - 0.5f);
+			loc.y = AltitudeLayer.MoteOverhead.AltitudeFor();
+			if (!loc.ShouldSpawnMotesAt(parent.Map))
+			{
+				return;
+			}
+			FleckCreationData data = FleckMaker.GetDataStatic(loc, parent.Map, steam, Rand.Range(2f, 3f));
+			data.velocityAngle = Rand.Bool ? 90f : -90f;
+			data.velocitySpeed = 0.032f;
+			parent.Map.flecks.CreateFleck(data);
 		}
 	}
 }

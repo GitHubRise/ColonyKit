@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- ============ Job ============ -->
+
+	<JobDef>
+		<defName>CK_WashPatient</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_WashPatient</driverClass>
+		<reportString>washing TargetA.</reportString>
+		<casualInterruptible>true</casualInterruptible>
+	</JobDef>
+
+	<JobDef>
+		<defName>CK_ClearBlockage</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_FixBlockage</driverClass>
+		<reportString>unclogging TargetA.</reportString>
+	</JobDef>
+
+	<JobDef>
+		<defName>CK_RemoveSewage</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_RemoveSewage</driverClass>
+		<reportString>shoveling sewage.</reportString>
+	</JobDef>
+
+	<JobDef>
+		<defName>CK_DrainWater</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_DrainWater</driverClass>
+		<reportString>draining TargetA.</reportString>
+	</JobDef>
+
+	<JobDef>
+		<defName>CK_KickOver</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_KickOver</driverClass>
+		<reportString>dumping TargetA.</reportString>
+	</JobDef>
+
+	<!-- ============ WorkGiver ============ -->
+
+	<WorkGiverDef>
+		<defName>CK_WashPatient</defName>
+		<label>wash patients</label>
+		<giverClass>ColonyKit.Modules.Hygiene.WorkGiver_WashPatient</giverClass>
+		<workType>Doctor</workType>
+		<verb>wash</verb>
+		<gerund>washing</gerund>
+		<priorityInType>52</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<!-- Childcare 工作类型由 Biotech 提供；没装 DLC 时跳过这一条，避免 WorkTypeDef 缺失报错。 -->
+	<WorkGiverDef MayRequire="Ludeon.RimWorld.Biotech">
+		<defName>CK_WashChild</defName>
+		<label>wash children</label>
+		<giverClass>ColonyKit.Modules.Hygiene.WorkGiver_WashChild</giverClass>
+		<workType>Childcare</workType>
+		<verb>wash</verb>
+		<gerund>washing</gerund>
+		<priorityInType>52</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>CK_ClearBlockage</defName>
+		<label>clear blockages</label>
+		<giverClass>ColonyKit.Modules.Hygiene.WorkGiver_FixBlockage</giverClass>
+		<workType>Cleaning</workType>
+		<verb>clear blockage</verb>
+		<gerund>clearing blockage</gerund>
+		<priorityInType>50</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>CK_CleanFilthIndoors</defName>
+		<label>clean filth indoors</label>
+		<giverClass>ColonyKit.Modules.Hygiene.WorkGiver_CleanFilthIndoors</giverClass>
+		<workType>Cleaning</workType>
+		<verb>clean</verb>
+		<gerund>cleaning</gerund>
+		<priorityInType>6</priorityInType>
+		<directOrderable>false</directOrderable>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>CK_RemoveSewage</defName>
+		<label>shovel sewage into barrels</label>
+		<giverClass>ColonyKit.Modules.Hygiene.WorkGiver_RemoveSewage</giverClass>
+		<workType>Hauling</workType>
+		<verb>remove sewage</verb>
+		<gerund>removing sewage</gerund>
+		<priorityInType>21</priorityInType>
+		<scanThings>false</scanThings>
+		<scanCells>true</scanCells>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>CK_DrainWater</defName>
+		<label>drain water tanks</label>
+		<giverClass>ColonyKit.Modules.Hygiene.WorkGiver_DrainWater</giverClass>
+		<workType>BasicWorker</workType>
+		<verb>drain</verb>
+		<gerund>draining</gerund>
+		<priorityInType>600</priorityInType>
+		<canBeDoneWhileDrafted>true</canBeDoneWhileDrafted>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>CK_KickOver</defName>
+		<label>dump sewage barrels</label>
+		<giverClass>ColonyKit.Modules.Hygiene.WorkGiver_KickOver</giverClass>
+		<workType>Hauling</workType>
+		<verb>dump</verb>
+		<gerund>dumping</gerund>
+		<priorityInType>22</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<!-- ============ Designation ============ -->
+
+	<DesignationDef>
+		<defName>CK_RemoveSewageDes</defName>
+		<texturePath>Designations/Haul</texturePath>
+		<targetType>Cell</targetType>
+	</DesignationDef>
+
+	<DesignationDef>
+		<defName>CK_DrainTankDes</defName>
+		<texturePath>UI/CK_SewageOutlet</texturePath>
+		<targetType>Thing</targetType>
+		<removeIfBuildingDespawned>true</removeIfBuildingDespawned>
+	</DesignationDef>
+
+	<DesignationDef>
+		<defName>CK_KickOverDes</defName>
+		<texturePath>Things/Item/CK_FecalSludge</texturePath>
+		<targetType>Thing</targetType>
+	</DesignationDef>
+</Defs>

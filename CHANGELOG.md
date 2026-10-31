@@ -6,6 +6,16 @@
 
 ### Added
 
+- **DBH 音效与特效整组迁移**：复制 16 个 DBH ogg，新建 12 个 `CK_` SoundDef（淋浴/浴缸/热浴缸环境音、冲水、洒水、疏通、排水、污水、排便、水泵、滴水等）。淋浴/浴缸/热浴缸 Job 循环播放环境音，冲水/拔塞/喷淋/灌溉各接一次性音效。7 个 FleckDef（蒸汽/水花/泡泡/灌溉水雾/尿液/污水）、4 个 EffecterDef 与 3 个 Mote ThingDef 一并迁入，淋浴蒸汽、热浴缸泡泡、泳池水花、洗手池滴水、桑拿蒸汽、灌溉喷雾全部限频并做离屏跳过。
+- **水网升级建筑（DBH 1:1）**：风泵（无电 2000 L/天）、泵站（1000 W / 10000 L/天）、深水井（4000 L/天、不受污染）、巨型水塔（50000 L）、燃气锅炉（烧化合燃料、2000 供热、自带 100 热水罐）、消防喷淋（房间/9.9 格有火时耗 2 L 水灭火）、原始水井（无研究前置、手动打水）、低温采水节点（3000 L/天 + 30 热/秒）。现有电动泵容量 1500 → 4000 L/天，并受设置页「水泵容量」倍率影响。
+- **研究线补齐**：新增 `CK_Plumbing`（400/中世纪，管道、水井、水泵、水箱、旱厕与动物设施的前置）、`CK_ElectricPumps`、`CK_LargeWaterPumps`、`CK_DeepWells`、`CK_SepticTanks`、`CK_FireSuppression`、`CK_HygieneBionics`、`CK_AsteroidCryoMining` 共 9 个节点；`CK_HygieneResearch` 增加 `CK_Plumbing` 前置，研究树坐标重排为非负，避免节点被裁掉。
+- **卫生设置页新增污水/清洁/肥力参数**：水泵容量倍率（25%–200%）、每格污水上限（20%–400%）、污水自然清理速率（0–300%）、污水处理速率（10%–200%）、地形基础肥力（20%–180%）、室内优先清洁开关；分别接入泵容量、污水网格、化粪池、肥力补丁与清洁工作器。
+- **照护与清洁工作**：医生/看守给卧床病人和婴儿洗澡（`CK_WashPatient`，带水源打水与 800 tick 擦洗）、自动疏通堵塞洁具（`CK_ClearBlockage`，播疏通音）、室内优先清洁（`CleanFilthIndoors`，设置页可开关）、铲污水入桶（`CK_RemoveSewage`，标记格 → 粪渣）、倒污水（`CK_KickOver`）、排空水箱（`CK_DrainWater`），以及「铲污水 / 排空水箱 / 拆整段管道」三个设计器。
+- **新物品与仿生**：便盆（`CK_BedPan`，卧床病人自动使用，脏了由 Cleaning 工作清洗）、水壶（`CK_WaterBottle`，3 L 可随身携带/打水/饮用）、冰箱（`CK_Fridge`，1×1 食物储物柜，走原版搬运与取料，放冷库中可按房间温度保鲜）、仿生膀胱与卫生增强器（植入后膀胱/口渴或卫生消耗 -50%）、粪渣炼化配方（75 粪渣 → 35 化合燃料）。
+- **三处静默失效修复**：新增 `CK_FilthFaeces` / `CK_FilthUrine` / `CK_RawSewage` 污渍与 `CK_Hygienic` 特质，并把 `Need_Bladder`、`DbhSewage`、`MapComponent_SewagePollution`、`JobGiver_HaveWash` 的查找改成「先 CK_ 变体、再回退 DBH 原名」；独立运行（不装 DBH）时随地大小便/化粪池溢出会真正生成污渍，特质也会按 4 档调整洗澡阈值。
+- **tickerType 补全**：泳池、桑拿加热器、吊扇、洗手池/水池/厨房水槽、柴火/太阳能/地热锅炉、散热器、温控器、空调室内外机、冷库机组、雨水桶、水盆、阀门、马桶/浴缸等 def 补上 `Normal`/`Rare`，修复「泳池永不灌满、桑拿不加热、吊扇不转、暖气不工作」等既有问题。
+- **冰箱改为食物储物柜**：DBH 的 `HygieneRefrigerator` 原版定义是注释掉的死内容（容器里的食物原版取不到），这里落成 `Building_Storage` 食物柜，避免搬运工把食物搬进容器后小人不会吃、厨师不会取料。
+
 - **Mk-V 内置隔寒/隔热**：设置页新增「Mk-V 隔寒」「Mk-V 隔热」滑条（0–100°C，默认 20 / 30），按内置服装保温处理：舒适温度下限 = `ComfyTemperatureMin` − 隔寒，上限 = `ComfyTemperatureMax` + 隔热，Mk-V 默认从 -50/60°C 变成 -70/90°C；和穿衣、特性等其他修正叠加。属性页新增两个只对 Mk-V 显示的 `CK_MkVInsulationCold` / `CK_MkVInsulationHeat` 行，数值随设置实时变化。`-colonykit-nannybot-test` 自检新增 `mkvComfort` 探针。
 - **Mk-V 特性与承伤乘数**：Mk-V 首次生成/首次读档时固定获得 5 个特性——格斗者、冷枪手、坚韧、敏捷、疾步如飞（`Brawler` / `ShootingAccuracy` 1 度 / `Tough` / `Nimble` / `SpeedOffset` 2 度），直接写进原版 `story.traits`，角色页可见、属性按原版特性规则结算。设置页「追加随机特性（Mk-V）」默认关闭；打开后再额外随机 2 个特性（快速学习、超凡记忆等），已有特性不重复。新增「Mk-V 承伤乘数」滑条（10%–500%，默认 100%），通过 `StatExtension.GetStatValue` 后缀乘到原版 `IncomingDamageFactor` 上，和坚韧等特性的乘数叠乘；属性页的「承伤乘数」固定显示最终值（100% 时也不再按原版 `hideAtValue` 隐藏）。`-colonykit-nannybot-test` 自检新增 `mkvTraits` / `incomingDamage` 探针，后者打印原值、临时调到 50% 后的值和临时加「坚韧」后的值。
 - **Mk-V 尸体处理**：机器人工作页新增「尸体处理」列（默认优先级 3，设置页「家务」区可关）。Mk-V 先找带原版 `CremateCorpse` 账单的燃烧坑/焚化炉，按各自 DoBill 工作器把敌人尸体送过去烧掉；没有可做的焚化账单时，把最近的一具敌人尸体搬进允许尸体的库存区（`HaulAIUtility.HaulToStorageJob`，即普通的尸体存放区/垃圾区）。只处理敌对阵营的尸体，殖民地成员和友方遗体不动；已存入有效尸体区、正在燃烧或被别人预定的尸体跳过。敌人在家区域外死亡时尸体默认带禁用标记，工作器会先解除禁用再下单（焚化与搬运两条路径都会），否则原版 DoBill/搬运都会跳过。

@@ -1,6 +1,7 @@
 using RimWorld;
 using UnityEngine;
 using Verse;
+using Verse.Sound;
 
 namespace ColonyKit.Modules.Hygiene
 {
@@ -52,6 +53,8 @@ namespace ColonyKit.Modules.Hygiene
 				return false;
 			}
 			sewage = Mathf.Min(sewage + SewagePerUse, SewageLimit);
+			// 旱厕没有水，用「如厕」声代替冲水声。
+			DefDatabase<SoundDef>.GetNamed("CK_Defecate").PlayOneShot(this);
 			return true;
 		}
 
@@ -63,6 +66,11 @@ namespace ColonyKit.Modules.Hygiene
 			if (sewage < 0.01f)
 			{
 				sewage = 0f;
+			}
+			// 掏空粪坑时来一声冲水音，给玩家「清掉了」的反馈。
+			if (drained > 0f)
+			{
+				DefDatabase<SoundDef>.GetNamed("CK_ToiletFlush").PlayOneShot(this);
 			}
 			return drained;
 		}

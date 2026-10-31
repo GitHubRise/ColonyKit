@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_BionicBladder.label>仿生膀胱</CK_BionicBladder.label>
+	<CK_BionicBladder.description>已安装的仿生膀胱。内置化学回收系统把体内废物分解成可回收的分子，剩下的以气体形式排出；排尿与口渴速度降低 50%。</CK_BionicBladder.description>
+	<CK_HygieneEnhancer.label>卫生增强器</CK_HygieneEnhancer.label>
+	<CK_HygieneEnhancer.description>已安装的卫生增强器。释放机械微粒分解皮肤与头发上的死皮和污物；卫生下降速度降低 50%。</CK_HygieneEnhancer.description>
+</LanguageData>

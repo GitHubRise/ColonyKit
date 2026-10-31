@@ -87,12 +87,89 @@ namespace ColonyKit.Modules.Hygiene
 					pawn.needs.mood.thoughts.memories.TryGainMemory(soiledSelf);
 				}
 			}
-			ThingDef filth = DefDatabase<ThingDef>.GetNamedSilentFail(
-				Rand.Chance(0.5f) ? "FilthFaeces" : "FilthUrine");
+			ThingDef filth = FindFilthDef();
 			if (filth != null)
 			{
 				FilthMaker.TryMakeFilth(pawn.Position, pawn.Map, filth);
 			}
+		}
+
+		/// <summary>优先用 ColonyKit 自己的污渍 def；没装/未定义时退回 DBH 原名。</summary>
+		private static ThingDef FindFilthDef()
+		{
+			bool faeces = Rand.Chance(0.5f);
+			ThingDef filth = DefDatabase<ThingDef>.GetNamedSilentFail(
+				faeces ? "CK_FilthFaeces" : "CK_FilthUrine");
+			if (filth != null)
+			{
+				return filth;
+			}
+			return DefDatabase<ThingDef>.GetNamedSilentFail(
+				faeces ? "FilthFaeces" : "FilthUrine");
+		}
+
+		/// <summary>
+		/// 床边有没有干净的便盆：先找随身携带的，再找所在房间（大厅/露天时只找身边 2 格）。
+		/// 找到就返回，找不到返回 null（此时保持原来的「憋回去」行为）。
+		/// </summary>
+		private CompBedPan FindCleanBedPan()
+		{
+			Map map = pawn.MapHeld;
+			if (map == null)
+			{
+				return null;
+			}
+			if (pawn.inventory != null)
+			{
+				foreach (Thing item in pawn.inventory.innerContainer)
+				{
+					CompBedPan carried = item.TryGetComp<CompBedPan>();
+					if (carried != null && !carried.used)
+					{
+						return carried;
+					}
+				}
+			}
+			Room room = pawn.GetRoom();
+			if (room != null && !room.IsHuge && room.CellCount <= 500)
+			{
+				foreach (IntVec3 cell in room.Cells)
+				{
+					CompBedPan pan = BedPanAt(cell, map);
+					if (pan != null)
+					{
+						return pan;
+					}
+				}
+				return null;
+			}
+			for (int i = 0; i < GenRadial.NumCellsInRadius(2f); i++)
+			{
+				IntVec3 cell = pawn.Position + GenRadial.RadialPattern[i];
+				if (!cell.InBounds(map))
+				{
+					continue;
+				}
+				CompBedPan pan = BedPanAt(cell, map);
+				if (pan != null)
+				{
+					return pan;
+				}
+			}
+			return null;
+		}
+
+		private static CompBedPan BedPanAt(IntVec3 cell, Map map)
+		{
+			foreach (Thing thing in cell.GetThingList(map))
+			{
+				CompBedPan pan = thing.TryGetComp<CompBedPan>();
+				if (pan != null && !pan.used)
+				{
+					return pan;
+				}
+			}
+			return null;
 		}
 
 		public override void ExposeData()
@@ -129,6 +206,12 @@ namespace ColonyKit.Modules.Hygiene
 					|| pawn.health.capacities.GetLevel(PawnCapacityDefOf.Moving) < 0.3f
 					|| pawn.CurJob?.playerForced == true))
 			{
+				// 用便盆之前不需要下床；用完后便盆变脏，等 F 组的清洗工作来处理。
+				CompBedPan pan = FindCleanBedPan();
+				if (pan != null)
+				{
+					pan.Use();
+				}
 				CurLevel = 1f;
 				return;
 			}

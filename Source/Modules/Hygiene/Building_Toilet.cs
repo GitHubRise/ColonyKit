@@ -3,6 +3,7 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 using Verse.AI;
+using Verse.Sound;
 
 namespace ColonyKit.Modules.Hygiene
 {
@@ -72,6 +73,8 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				sewagePipe.pipeNet.PushSewage(waterUsed);
 			}
+			// 水已经放下去了：冲水声放在最后，和 DBH 一致。
+			DefDatabase<SoundDef>.GetNamed("CK_ToiletFlush").PlayOneShot(this);
 			return true;
 		}
 

@@ -29,11 +29,23 @@ namespace ColonyKit.Modules.Hygiene
 				return;
 			}
 			int index = map.cellIndices.CellToIndex(cell);
-			pollution[index] = Mathf.Min(20f, pollution[index] + amount);
+			float cap = 20f * HygieneSettings.Current.sewageGridCapacity;
+			pollution[index] = Mathf.Min(cap, pollution[index] + amount);
 			if (pollution[index] > 1f && cell.GetTerrain(map).IsWater)
 			{
 				waterPolluted = true;
 			}
+		}
+
+		/// <summary>减少一格污水（清污工作、倒粪等用），不会减到负数。</summary>
+		public void ReducePollution(IntVec3 cell, float amount)
+		{
+			if (!cell.InBounds(map) || amount <= 0f)
+			{
+				return;
+			}
+			int index = map.cellIndices.CellToIndex(cell);
+			pollution[index] = Mathf.Max(0f, pollution[index] - amount);
 		}
 
 		/// <summary>
@@ -60,6 +72,11 @@ namespace ColonyKit.Modules.Hygiene
 				return;
 			}
 			int numCells = map.cellIndices.NumGridCells;
+			// 基准：每次刷新保留 82%（衰减 18%）、向四邻扩散 4.5%；
+			// 倍率为 0 时既不衰减也不扩散（污水只能靠清污工作移除）。
+			float cleanupRate = Mathf.Max(0f, HygieneSettings.Current.sewageCleanupRate);
+			float retain = 1f - Mathf.Clamp01(0.18f * cleanupRate);
+			float spreadFactor = 0.045f * cleanupRate;
 			float[] next = new float[numCells];
 			for (int i = 0; i < numCells; i++)
 			{
@@ -69,8 +86,8 @@ namespace ColonyKit.Modules.Hygiene
 					continue;
 				}
 				IntVec3 cell = map.cellIndices.IndexToCell(i);
-				next[i] += value * 0.82f;
-				float spread = value * 0.045f;
+				next[i] += value * retain;
+				float spread = value * spreadFactor;
 				foreach (IntVec3 neighbor in GenAdj.CardinalDirections)
 				{
 					IntVec3 target = cell + neighbor;
@@ -81,7 +98,9 @@ namespace ColonyKit.Modules.Hygiene
 				}
 				if (value > 1.5f && !cell.GetTerrain(map).IsWater)
 				{
-					ThingDef filth = DefDatabase<ThingDef>.GetNamedSilentFail("FilthFaeces");
+					// 优先本包的 CK_ 版污渍，没装/未定义时回退 DBH 原名（同 Need_Bladder 的查找顺序）。
+					ThingDef filth = DefDatabase<ThingDef>.GetNamedSilentFail("CK_FilthFaeces")
+						?? DefDatabase<ThingDef>.GetNamedSilentFail("FilthFaeces");
 					if (filth != null && cell.GetFirstThing(map, filth) == null)
 					{
 						FilthMaker.TryMakeFilth(cell, map, filth);

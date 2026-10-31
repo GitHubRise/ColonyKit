@@ -35,7 +35,8 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 			}
 		}
 
-		public float Capacity => WorkingNow ? Props.Capacity : 0f;
+		// 设置里的水泵容量倍率同时作用于电动泵、泵站和风泵；默认 1 时行为不变。
+		public float Capacity => WorkingNow ? Props.Capacity * HygieneSettings.Current.pumpCapacityMultiplier : 0f;
 
 		public override void PostSpawnSetup(bool respawningAfterLoad)
 		{

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_BedPan.label>便盆</CK_BedPan.label>
+	<CK_BedPan.description>卧床病人用来接大小便的盆。用脏之后要有人搬到水边洗干净才能再用。</CK_BedPan.description>
+	<CK_WaterBottle.label>水壶</CK_WaterBottle.label>
+	<CK_WaterBottle.description>钢制小水壶，装 3 升饮用水。放进殖民者物品栏就能随身喝，也能给卧床的病人喂水。</CK_WaterBottle.description>
+	<CK_Fridge.label>冰箱</CK_Fridge.label>
+	<CK_Fridge.description>低温保存食物的储物柜，共 40 格。搬运工会用「装冰箱」把食物搬进去。</CK_Fridge.description>
+	<CK_BionicBladder.label>仿生膀胱</CK_BionicBladder.label>
+	<CK_BionicBladder.description>高级人造膀胱。内置化学回收系统把体内废物分解成可回收的分子，剩下的以气体形式排出——代价是使用者会胀气。</CK_BionicBladder.description>
+	<CK_HygieneEnhancer.label>卫生增强器</CK_HygieneEnhancer.label>
+	<CK_HygieneEnhancer.description>释放机械微粒，分解皮肤与头发上的死皮和污物，并无害地散到空气里。</CK_HygieneEnhancer.description>
+</LanguageData>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 冰箱（DBH HygieneRefrigerator 的移植）：DBH 原版把它的容器接口注释掉了，
+	     这里落成 1×1 的「食物柜」——物品摆在格子上，原版搬运/取料/进食都能直接用；
+	     放进冷库房间时按房间温度自然保鲜。贴图四向，west 用 east 的复制件。 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>CK_Fridge</defName>
+		<label>refrigerator</label>
+		<description>A food cabinet that keeps meals within easy reach. Haulers stock it automatically. Place it in a freezer to stop food from spoiling.</description>
+		<thingClass>Building_Storage</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Hygiene/CK_Fridge</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1.5,1.5)</drawSize>
+		</graphicData>
+		<rotatable>true</rotatable>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<designationCategory>CK_Hygiene</designationCategory>
+		<uiOrder>48</uiOrder>
+		<canOverlapZones>false</canOverlapZones>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<blockWind>true</blockWind>
+		<castEdgeShadows>true</castEdgeShadows>
+		<pathCost>60</pathCost>
+		<costList>
+			<Steel>80</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>1200</WorkToBuild>
+			<Mass>25</Mass>
+			<Flammability>0.5</Flammability>
+		</statBases>
+		<building>
+			<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+			<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+			<maxItemsInCell>3</maxItemsInCell>
+			<defaultStorageSettings>
+				<priority>Preferred</priority>
+				<filter>
+					<categories>
+						<li>Foods</li>
+					</categories>
+				</filter>
+			</defaultStorageSettings>
+			<fixedStorageSettings>
+				<filter>
+					<categories>
+						<li>Foods</li>
+					</categories>
+				</filter>
+			</fixedStorageSettings>
+		</building>
+		<inspectorTabs>
+			<li>ITab_Storage</li>
+		</inspectorTabs>
+		<researchPrerequisites>
+			<li>CK_HygieneResearch</li>
+		</researchPrerequisites>
+	</ThingDef>
+</Defs>

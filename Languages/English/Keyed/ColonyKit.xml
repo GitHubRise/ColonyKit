@@ -478,4 +478,18 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<ColonyKit.Settings.Hygiene.ExemptHediffs.Desc>Pawns with any of these hediffs receive no needs from this module.</ColonyKit.Settings.Hygiene.ExemptHediffs.Desc>
 	<ColonyKit.Settings.Hygiene.ApplyExemptions>Apply to existing pawns</ColonyKit.Settings.Hygiene.ApplyExemptions>
 	<ColonyKit.Settings.Hygiene.Applied>Hygiene needs re-evaluated with the current settings.</ColonyKit.Settings.Hygiene.Applied>
+	<ColonyKit.Settings.Hygiene.Section.Sewage>Sewage</ColonyKit.Settings.Hygiene.Section.Sewage>
+	<ColonyKit.Settings.Hygiene.PumpCapacity>Water pump capacity</ColonyKit.Settings.Hygiene.PumpCapacity>
+	<ColonyKit.Settings.Hygiene.PumpCapacity.Desc>Multiplier on the daily output of water pumps, wind pumps and pumping stations; 100% is the DBH value.</ColonyKit.Settings.Hygiene.PumpCapacity.Desc>
+	<ColonyKit.Settings.Hygiene.SewageGrid>Sewage per cell cap</ColonyKit.Settings.Hygiene.SewageGrid>
+	<ColonyKit.Settings.Hygiene.SewageGrid.Desc>Multiplier on how much sewage one cell can hold (base 20); 100% is default. Lower it to make spills spread out sooner, raise it for fewer but deeper puddles.</ColonyKit.Settings.Hygiene.SewageGrid.Desc>
+	<ColonyKit.Settings.Hygiene.SewageCleanup>Sewage natural cleanup rate</ColonyKit.Settings.Hygiene.SewageCleanup>
+	<ColonyKit.Settings.Hygiene.SewageCleanup.Desc>How fast spilled sewage decays and spreads on the ground; 100% is default, 0% means it neither decays nor spreads and must be cleaned up by hand.</ColonyKit.Settings.Hygiene.SewageCleanup.Desc>
+	<ColonyKit.Settings.Hygiene.SewageProc>Sewage processing rate</ColonyKit.Settings.Hygiene.SewageProc>
+	<ColonyKit.Settings.Hygiene.SewageProc.Desc>Multiplier on how many litres per day septic tanks and treatment pools process; 100% is the DBH value.</ColonyKit.Settings.Hygiene.SewageProc.Desc>
+	<ColonyKit.Settings.Hygiene.Section.Cleaning>Cleaning</ColonyKit.Settings.Hygiene.Section.Cleaning>
+	<ColonyKit.Settings.Hygiene.PriorityIndoorCleaning>Prioritize indoor filth</ColonyKit.Settings.Hygiene.PriorityIndoorCleaning>
+	<ColonyKit.Settings.Hygiene.PriorityIndoorCleaning.Desc>When on, cleaners handle filth under a roof inside the home area before outdoor filth.</ColonyKit.Settings.Hygiene.PriorityIndoorCleaning.Desc>
+	<ColonyKit.Settings.Hygiene.TerrainFertility>Base terrain fertility</ColonyKit.Settings.Hygiene.TerrainFertility>
+	<ColonyKit.Settings.Hygiene.TerrainFertility.Desc>Multiplier on the fertility every terrain provides, applied before fertilizer and irrigation bonuses; 100% is vanilla.</ColonyKit.Settings.Hygiene.TerrainFertility.Desc>
 </LanguageData>

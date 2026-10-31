@@ -79,7 +79,65 @@ namespace ColonyKit.Modules.Hygiene
 				value => (value * 100f).ToString("0") + "%");
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.Contamination.Desc".Loc());
 
+			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Sewage".Loc());
+			data.pumpCapacityMultiplier = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.PumpCapacity".Loc(),
+				data.pumpCapacityMultiplier,
+				HygieneSettings.MinPumpCapacity,
+				HygieneSettings.MaxPumpCapacity,
+				0.05f,
+				value => "×" + value.ToString("0.00"));
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.PumpCapacity.Desc".Loc());
+
+			data.sewageGridCapacity = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.SewageGrid".Loc(),
+				data.sewageGridCapacity,
+				HygieneSettings.MinSewageGrid,
+				HygieneSettings.MaxSewageGrid,
+				0.05f,
+				value => "×" + value.ToString("0.00"));
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.SewageGrid.Desc".Loc());
+
+			data.sewageCleanupRate = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.SewageCleanup".Loc(),
+				data.sewageCleanupRate,
+				HygieneSettings.MinSewageCleanup,
+				HygieneSettings.MaxSewageCleanup,
+				0.05f,
+				value => "×" + value.ToString("0.00"));
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.SewageCleanup.Desc".Loc());
+
+			data.sewageProcRate = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.SewageProc".Loc(),
+				data.sewageProcRate,
+				HygieneSettings.MinSewageProc,
+				HygieneSettings.MaxSewageProc,
+				0.05f,
+				value => "×" + value.ToString("0.00"));
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.SewageProc.Desc".Loc());
+
+			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Cleaning".Loc());
+			data.priorityIndoorCleaning = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Hygiene.PriorityIndoorCleaning".Loc(),
+				ref data.priorityIndoorCleaning,
+				"ColonyKit.Settings.Hygiene.PriorityIndoorCleaning.Desc".Loc());
+
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Agriculture".Loc());
+			data.terrainFertilityFactor = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.TerrainFertility".Loc(),
+				data.terrainFertilityFactor,
+				HygieneSettings.MinTerrainFertility,
+				HygieneSettings.MaxTerrainFertility,
+				0.01f,
+				value => (value * 100f).ToString("0") + "%");
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.TerrainFertility.Desc".Loc());
+
 			data.showAgricultureOverlay = SettingsWidgets.Checkbox(
 				listing,
 				"ColonyKit.Settings.Hygiene.ShowOverlay".Loc(),

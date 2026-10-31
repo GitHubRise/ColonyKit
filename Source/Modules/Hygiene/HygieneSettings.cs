@@ -47,6 +47,16 @@ namespace ColonyKit.Modules.Hygiene
 		public const float MaxFertilizerFloor = 2f;
 		public const float MinFertilizerCap = 0.5f;
 		public const float MaxFertilizerCap = 5f;
+		public const float MinPumpCapacity = 0.25f;
+		public const float MaxPumpCapacity = 2f;
+		public const float MinSewageGrid = 0.2f;
+		public const float MaxSewageGrid = 4f;
+		public const float MinSewageCleanup = 0f;
+		public const float MaxSewageCleanup = 3f;
+		public const float MinSewageProc = 0.1f;
+		public const float MaxSewageProc = 2f;
+		public const float MinTerrainFertility = 0.2f;
+		public const float MaxTerrainFertility = 1.8f;
 
 		private const string DefaultExemptBodies = "HumanoidTerminator,AIRobot,AIPawn";
 		private static HygieneSettings fallback;
@@ -68,6 +78,21 @@ namespace ColonyKit.Modules.Hygiene
 		/// <summary>脏水造成污染的概率倍率；0 为关闭，1 为原版默认。</summary>
 		public float contaminationChanceMultiplier = 1f;
 
+		/// <summary>水泵/风泵/泵站的容量倍率；1 为 DBH 原值。</summary>
+		public float pumpCapacityMultiplier = 1f;
+
+		/// <summary>每格污水上限倍率，基准 20（DBH 的 SewageGridCapacity）。</summary>
+		public float sewageGridCapacity = 1f;
+
+		/// <summary>污水自然降解与扩散速率倍率；0 为不衰减、不扩散。</summary>
+		public float sewageCleanupRate = 1f;
+
+		/// <summary>化粪池/污水处理池的日处理量倍率；1 为 DBH 原值。</summary>
+		public float sewageProcRate = 1f;
+
+		/// <summary>优先清理有顶且落在居家区内的污渍。</summary>
+		public bool priorityIndoorCleaning = false;
+
 		/// <summary>泡澡时邀请一名异性共用双人浴缸的概率；0 关闭。</summary>
 		public float doubleBathInviteChance = DefaultInviteChance;
 
@@ -85,6 +110,9 @@ namespace ColonyKit.Modules.Hygiene
 
 		/// <summary>施肥后肥力的上限（含灌溉加成），默认 200%。</summary>
 		public float fertilizerMaxFertility = 2f;
+
+		/// <summary>地形基础肥力倍率；1 为原版地形肥力，乘在施肥/灌溉之前。</summary>
+		public float terrainFertilityFactor = 1f;
 
 		/// <summary>是否在地面画出施肥（土褐）/灌溉（淡蓝）覆盖层。</summary>
 		public bool showAgricultureOverlay = true;
@@ -264,12 +292,18 @@ namespace ColonyKit.Modules.Hygiene
 			Scribe_Values.Look(ref waterUseMultiplier, "waterUseMultiplier", 1f);
 			Scribe_Values.Look(ref hotWaterUseMultiplier, "hotWaterUseMultiplier", 1f);
 			Scribe_Values.Look(ref contaminationChanceMultiplier, "contaminationChanceMultiplier", 1f);
+			Scribe_Values.Look(ref pumpCapacityMultiplier, "pumpCapacityMultiplier", 1f);
+			Scribe_Values.Look(ref sewageGridCapacity, "sewageGridCapacity", 1f);
+			Scribe_Values.Look(ref sewageCleanupRate, "sewageCleanupRate", 1f);
+			Scribe_Values.Look(ref sewageProcRate, "sewageProcRate", 1f);
+			Scribe_Values.Look(ref priorityIndoorCleaning, "priorityIndoorCleaning", false);
 			Scribe_Values.Look(ref doubleBathInviteChance, "doubleBathInviteChance", DefaultInviteChance);
 			Scribe_Values.Look(ref fertilizerStrength, "fertilizerStrength", 1.1f);
 			Scribe_Values.Look(ref fertilizerLifespanDays, "fertilizerLifespanDays", 60f);
 			Scribe_Values.Look(ref irrigationStrength, "irrigationStrength", 1.8f);
 			Scribe_Values.Look(ref fertilizerMinFertility, "fertilizerMinFertility", 0.5f);
 			Scribe_Values.Look(ref fertilizerMaxFertility, "fertilizerMaxFertility", 2f);
+			Scribe_Values.Look(ref terrainFertilityFactor, "terrainFertilityFactor", 1f);
 			Scribe_Values.Look(ref showAgricultureOverlay, "showAgricultureOverlay", true);
 			Scribe_Values.Look(ref dbhPolicy, "dbhPolicy", HygieneDbhPolicy.SoftOff);
 			Scribe_Values.Look(ref prisonersGetHygiene, "prisonersGetHygiene", true);
@@ -288,12 +322,17 @@ namespace ColonyKit.Modules.Hygiene
 			changed |= Clamp(ref waterUseMultiplier, MinWaterUse, MaxWaterUse, 1f);
 			changed |= Clamp(ref hotWaterUseMultiplier, MinHotWaterUse, MaxHotWaterUse, 1f);
 			changed |= Clamp(ref contaminationChanceMultiplier, MinContamination, MaxContamination, 1f);
+			changed |= Clamp(ref pumpCapacityMultiplier, MinPumpCapacity, MaxPumpCapacity, 1f);
+			changed |= Clamp(ref sewageGridCapacity, MinSewageGrid, MaxSewageGrid, 1f);
+			changed |= Clamp(ref sewageCleanupRate, MinSewageCleanup, MaxSewageCleanup, 1f);
+			changed |= Clamp(ref sewageProcRate, MinSewageProc, MaxSewageProc, 1f);
 			changed |= Clamp(ref doubleBathInviteChance, MinInviteChance, MaxInviteChance, DefaultInviteChance);
 			changed |= Clamp(ref fertilizerStrength, MinFertilizerStrength, MaxFertilizerStrength, 1.1f);
 			changed |= Clamp(ref fertilizerLifespanDays, MinFertilizerLifespan, MaxFertilizerLifespan, 60f);
 			changed |= Clamp(ref irrigationStrength, MinIrrigationStrength, MaxIrrigationStrength, 1.8f);
 			changed |= Clamp(ref fertilizerMinFertility, MinFertilizerFloor, MaxFertilizerFloor, 0.5f);
 			changed |= Clamp(ref fertilizerMaxFertility, MinFertilizerCap, MaxFertilizerCap, 2f);
+			changed |= Clamp(ref terrainFertilityFactor, MinTerrainFertility, MaxTerrainFertility, 1f);
 			if (fertilizerMinFertility > fertilizerMaxFertility)
 			{
 				fertilizerMinFertility = fertilizerMaxFertility;
@@ -346,12 +385,18 @@ namespace ColonyKit.Modules.Hygiene
 			waterUseMultiplier = 1f;
 			hotWaterUseMultiplier = 1f;
 			contaminationChanceMultiplier = 1f;
+			pumpCapacityMultiplier = 1f;
+			sewageGridCapacity = 1f;
+			sewageCleanupRate = 1f;
+			sewageProcRate = 1f;
+			priorityIndoorCleaning = false;
 			doubleBathInviteChance = DefaultInviteChance;
 			fertilizerStrength = 1.1f;
 			fertilizerLifespanDays = 60f;
 			irrigationStrength = 1.8f;
 			fertilizerMinFertility = 0.5f;
 			fertilizerMaxFertility = 2f;
+			terrainFertilityFactor = 1f;
 			showAgricultureOverlay = true;
 			dbhPolicy = HygieneDbhPolicy.SoftOff;
 			prisonersGetHygiene = true;

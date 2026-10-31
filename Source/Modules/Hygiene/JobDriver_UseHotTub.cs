@@ -102,6 +102,8 @@ namespace ColonyKit.Modules.Hygiene
 				defaultCompleteMode = ToilCompleteMode.Delay
 			};
 			soak.FailOnDestroyedNullOrForbidden(TargetIndex.A);
+			// 热水浴缸用 DBH 的 hottub_Ambience，而不是淋浴水声。
+			soak.PlaySustainerOrSound(() => DefDatabase<SoundDef>.GetNamed("CK_HotTubAmbience"));
 			soak.socialMode = RandomSocialMode.SuperActive;
 			soak.initAction = () =>
 			{

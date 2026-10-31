@@ -80,7 +80,9 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 			{
 				return;
 			}
-			ThingDef filth = DefDatabase<ThingDef>.GetNamedSilentFail("FilthFaeces");
+			// 和 Need_Bladder 一致：优先本包定义的污渍，未定义时退回 DBH 原名。
+			ThingDef filth = DefDatabase<ThingDef>.GetNamedSilentFail("CK_FilthFaeces")
+				?? DefDatabase<ThingDef>.GetNamedSilentFail("FilthFaeces");
 			if (filth == null)
 			{
 				return;

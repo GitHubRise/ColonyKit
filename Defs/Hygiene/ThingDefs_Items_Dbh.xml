@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 便盆（DBH BedPan 的移植）：卧床病人用完后变脏，需要有人搬到水边清洗才能再用。
+	     D 组的 Need_Bladder 卧床分支会用这里的 CompBedPan：房间里有干净的便盆就直接用掉。 -->
+	<ThingDef ParentName="ResourceBase">
+		<defName>CK_BedPan</defName>
+		<label>bed pan</label>
+		<description>A receptacle used by a bedridden patient for urine and faeces. Once used, someone has to carry it to water and clean it before it can be used again.</description>
+		<graphicData>
+			<texPath>Things/Item/CK_BedPan</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(0.9,0.9)</drawSize>
+			<onGroundRandomRotateAngle>65</onGroundRandomRotateAngle>
+		</graphicData>
+		<uiIconScale>1.1</uiIconScale>
+		<rotatable>false</rotatable>
+		<thingCategories>
+			<li>CK_Waste</li>
+		</thingCategories>
+		<stackLimit>1</stackLimit>
+		<tradeability>None</tradeability>
+		<randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Beauty>-40</Beauty>
+			<Cleanliness>-25</Cleanliness>
+			<Mass>0.2</Mass>
+			<Flammability>1</Flammability>
+			<DeteriorationRate>2</DeteriorationRate>
+			<MarketValue>15</MarketValue>
+		</statBases>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.CompProperties_BedPan" />
+		</comps>
+	</ThingDef>
+
+	<RecipeDef>
+		<defName>CK_MakeBedPan</defName>
+		<label>make bed pan</label>
+		<description>Craft a steel bed pan for colonists who cannot leave their bed.</description>
+		<jobString>making a bed pan.</jobString>
+		<workAmount>400</workAmount>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<workSkill>Crafting</workSkill>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<products>
+			<CK_BedPan>1</CK_BedPan>
+		</products>
+		<recipeUsers>
+			<li>CraftingSpot</li>
+		</recipeUsers>
+		<researchPrerequisite>CK_HygieneResearch</researchPrerequisite>
+	</RecipeDef>
+
+	<!-- 水壶（DBH DBH_WaterBottle 的移植）：随身携带 3 L 饮用水，可以随身喝、喂病人、倒进水盆或水槽。 -->
+	<ThingDef ParentName="ResourceBase">
+		<defName>CK_WaterBottle</defName>
+		<label>water bottle</label>
+		<description>A small steel bottle of drinking water. Holds 3 L. Keep it in a colonist's inventory to drink on the go, or to give water to a patient who cannot get up.</description>
+		<graphicData>
+			<texPath>Things/Item/CK_WaterBottle</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(0.8,0.8)</drawSize>
+		</graphicData>
+		<uiIconScale>1.2</uiIconScale>
+		<rotatable>false</rotatable>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<stackLimit>10</stackLimit>
+		<orderedTakeGroup>CK_WaterContainer</orderedTakeGroup>
+		<comps>
+			<li Class="ColonyKit.Modules.Hygiene.CompProperties_BasinWater">
+				<Capacity>3</Capacity>
+			</li>
+		</comps>
+		<statBases>
+			<Mass>0.3</Mass>
+			<WorkToMake>200</WorkToMake>
+			<MaxHitPoints>60</MaxHitPoints>
+			<Flammability>0</Flammability>
+			<DeteriorationRate>2</DeteriorationRate>
+			<MarketValue>8</MarketValue>
+		</statBases>
+	</ThingDef>
+
+	<RecipeDef>
+		<defName>CK_MakeWaterBottle</defName>
+		<label>make water bottle</label>
+		<description>Craft a small steel water bottle for carrying drinking water.</description>
+		<jobString>making a water bottle.</jobString>
+		<workAmount>200</workAmount>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<workSkill>Crafting</workSkill>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<products>
+			<CK_WaterBottle>1</CK_WaterBottle>
+		</products>
+		<recipeUsers>
+			<li>CraftingSpot</li>
+		</recipeUsers>
+		<researchPrerequisite>CK_HygieneResearch</researchPrerequisite>
+	</RecipeDef>
+</Defs>

@@ -58,6 +58,31 @@ namespace ColonyKit.Modules.Hygiene
 			Scribe_Values.Look(ref contaminated, "tubContamination", ContaminationLevel.Untreated);
 		}
 
+		protected override void Tick()
+		{
+			base.Tick();
+			// 有水时每 60 tick 在水面随机点冒一串泡泡（DBH Mote_MyBubbles）。
+			if (WaterInTub <= 0f || !this.IsHashIntervalTick(60))
+			{
+				return;
+			}
+			FleckDef bubbles = DefDatabase<FleckDef>.GetNamedSilentFail("CK_MoteBubbles");
+			if (bubbles == null)
+			{
+				return;
+			}
+			Vector3 loc = this.TrueCenter();
+			loc.y += 0.63f;
+			loc.x += Rand.Range(-0.75f, 0.75f);
+			loc.z += Rand.Range(-0.75f, 0.75f);
+			if (!loc.ShouldSpawnMotesAt(Map))
+			{
+				return;
+			}
+			FleckCreationData data = FleckMaker.GetDataStatic(loc, Map, bubbles, Rand.Range(0.2f, 0.5f));
+			Map.flecks.CreateFleck(data);
+		}
+
 		public AcceptanceReport Working()
 		{
 			if (powerComp != null && !powerComp.PowerOn)

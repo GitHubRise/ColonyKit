@@ -7,5 +7,5 @@
 	<CK_DbhWaterTankGiant.label>巨型水箱</CK_DbhWaterTankGiant.label>
 	<CK_DbhWaterTankGiant.description>大型储水设施，容量 8000 升。</CK_DbhWaterTankGiant.description>
 	<CK_DbhWaterPump.label>水泵</CK_DbhWaterPump.label>
-	<CK_DbhWaterPump.description>把水井里的地下水抽进连通的水箱。需要电力和至少一口水井，容量 1500 升/天。</CK_DbhWaterPump.description>
+	<CK_DbhWaterPump.description>把水井里的地下水抽进连通的水箱。需要电力和至少一口水井，容量 4000 升/天。</CK_DbhWaterPump.description>
 </LanguageData>

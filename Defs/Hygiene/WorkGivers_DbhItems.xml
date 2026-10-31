@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- F 组新增的 WorkGiverDef：清洗便盆（Cleaning）。冰箱改为 Building_Storage，走原版搬运。 -->
+	<WorkGiverDef>
+		<defName>CK_CleanBedpan</defName>
+		<label>clean bed pan</label>
+		<giverClass>ColonyKit.Modules.Hygiene.WorkGiver_CleanBedpan</giverClass>
+		<workType>Cleaning</workType>
+		<verb>clean</verb>
+		<gerund>cleaning</gerund>
+		<priorityInType>50</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+</Defs>

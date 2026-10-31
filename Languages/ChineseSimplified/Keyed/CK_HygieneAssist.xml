@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK.Hygiene.Assist.RemoveSewage>铲除污水</CK.Hygiene.Assist.RemoveSewage>
+	<CK.Hygiene.Assist.RemoveSewageDesc>标记被污水污染的格子，工人每格铲 120 tick，清掉污染并产出 1 桶粪渣。</CK.Hygiene.Assist.RemoveSewageDesc>
+
+	<CK.Hygiene.Assist.DrainTank>排空水箱</CK.Hygiene.Assist.DrainTank>
+	<CK.Hygiene.Assist.DrainTankDesc>标记要排空的储水设施，水会放到地上并转成地面污染。</CK.Hygiene.Assist.DrainTankDesc>
+
+	<CK.Hygiene.Assist.KickOver>倒掉</CK.Hygiene.Assist.KickOver>
+	<CK.Hygiene.Assist.KickOverDesc>把这桶粪渣倒在地上。</CK.Hygiene.Assist.KickOverDesc>
+
+	<CK.Hygiene.Assist.RemovePlumbing>拆除管道</CK.Hygiene.Assist.RemovePlumbing>
+	<CK.Hygiene.Assist.RemovePlumbingDesc>框选带管道的建筑并打上拆除标记。</CK.Hygiene.Assist.RemovePlumbingDesc>
+</LanguageData>

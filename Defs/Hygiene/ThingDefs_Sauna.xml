@@ -6,6 +6,7 @@
 		<label>Electric Sauna Heater</label>
 		<description>A heater designed specifically for creating a sauna room, using a sauna regularly reduces the risk of heart attacks, heats a room to 60c.</description>
 		<thingClass>Building</thingClass>
+		<tickerType>Normal</tickerType>
 		<size>(1,1)</size>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_SaunaHeaterElec</texPath>
@@ -63,6 +64,7 @@
 		<label>Fueled Sauna Heater</label>
 		<description>A heater designed specifically for creating a sauna room, using a sauna regularly reduces the risk of heart attacks, heats a room to 60c.</description>
 		<thingClass>Building</thingClass>
+		<tickerType>Normal</tickerType>
 		<size>(1,1)</size>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_SaunaHeaterLog</texPath>

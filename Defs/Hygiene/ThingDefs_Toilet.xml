@@ -5,6 +5,7 @@
 		<label>toilet</label>
 		<description>DBH-style toilet. Uses 14 L per flush; colonist bladder need uses it automatically.</description>
 		<thingClass>ColonyKit.Modules.Hygiene.Building_Toilet</thingClass>
+		<tickerType>Rare</tickerType>
 		<size>(1,1)</size>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_Toilet</texPath>
@@ -106,7 +107,7 @@
 			</li>
 		</comps>
 		<researchPrerequisites>
-			<li>CK_HygieneResearch</li>
+			<li>CK_Plumbing</li>
 		</researchPrerequisites>
 	</ThingDef>
 
@@ -144,7 +145,7 @@
 			</li>
 		</comps>
 		<researchPrerequisites>
-			<li>CK_HygieneResearch</li>
+			<li>CK_SepticTanks</li>
 		</researchPrerequisites>
 	</ThingDef>
 </Defs>

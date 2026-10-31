@@ -6,6 +6,7 @@
 		<label>walk-in freezer unit</label>
 		<description>Freezer unit for creating a walk-in freezer. Connect to outdoor air-con units. Requires 300 cooling units.</description>
 		<thingClass>Building</thingClass>
+		<tickerType>Normal</tickerType>
 		<size>(2,1)</size>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_FreezerUnit</texPath>
@@ -108,7 +109,7 @@
 			<li Class="CompProperties_Forbiddable" />
 		</comps>
 		<researchPrerequisites>
-			<li>CK_HygieneResearch</li>
+			<li>CK_Plumbing</li>
 		</researchPrerequisites>
 	</ThingDef>
 </Defs>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_MakeBedPan.label>制作便盆</CK_MakeBedPan.label>
+	<CK_MakeBedPan.description>给下不了床的殖民者做一个钢制便盆。</CK_MakeBedPan.description>
+	<CK_MakeWaterBottle.label>制作水壶</CK_MakeWaterBottle.label>
+	<CK_MakeWaterBottle.description>做一个随身携带饮用水的小钢水壶。</CK_MakeWaterBottle.description>
+	<CK_MakeChemfuelFromFecalSludge.label>用粪渣炼制化合燃料</CK_MakeChemfuelFromFecalSludge.label>
+	<CK_MakeChemfuelFromFecalSludge.description>把一批粪渣炼制成化合燃料，让旱厕/化粪池里的东西有点用处。</CK_MakeChemfuelFromFecalSludge.description>
+	<CK_InstallBionicBladder.label>安装仿生膀胱</CK_InstallBionicBladder.label>
+	<CK_InstallBionicBladder.description>安装一个仿生膀胱。</CK_InstallBionicBladder.description>
+	<CK_InstallHygieneEnhancer.label>安装卫生增强器</CK_InstallHygieneEnhancer.label>
+	<CK_InstallHygieneEnhancer.description>安装一个卫生增强器。</CK_InstallHygieneEnhancer.description>
+</LanguageData>
