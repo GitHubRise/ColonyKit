@@ -15,7 +15,8 @@
 			<ArmorRating_Sharp>0.2</ArmorRating_Sharp>
 			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
 			<ArmorRating_Heat>1</ArmorRating_Heat>
-			<CarryingCapacity>75</CarryingCapacity>
+			<!-- 携带能力会被 StatPart_BodySize 乘一次（Mk-I~IV 体型 0.8），140 × 0.8 = 112。 -->
+			<CarryingCapacity>140</CarryingCapacity>
 			<CleaningSpeed>1.25</CleaningSpeed>
 			<PsychicSensitivity>0</PsychicSensitivity>
 			<ToxicResistance>1</ToxicResistance>
@@ -71,7 +72,8 @@
 			<ArmorRating_Sharp>0.9</ArmorRating_Sharp>
 			<ArmorRating_Blunt>0.6</ArmorRating_Blunt>
 			<ArmorRating_Heat>3</ArmorRating_Heat>
-			<CarryingCapacity>75</CarryingCapacity>
+			<!-- 同上：Mk-V 体型 1.1，163.6364 × 1.1 = 180。 -->
+			<CarryingCapacity>163.6364</CarryingCapacity>
 			<CleaningSpeed>1.25</CleaningSpeed>
 			<PsychicSensitivity>0</PsychicSensitivity>
 			<ToxicResistance>1</ToxicResistance>

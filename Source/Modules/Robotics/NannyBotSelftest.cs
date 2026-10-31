@@ -117,6 +117,7 @@ namespace ColonyKit.Modules.Robotics
 					.Append(" mkvDrafter=").Append(mkv.drafter != null)
 					.Append(" mkvTools=").Append(mkv.def.tools?.Count ?? 0)
 					.Append(" mkvWeapon=").Append(mkv.equipment?.Primary?.def?.defName ?? "none")
+					.Append(" mkvCarry=").Append(mkv.GetStatValue(StatDefOf.CarryingCapacity).ToString("0"))
 					.Append(" mkvOffhand=").Append(MkVLoadout.Offhand(mkv)?.def?.defName ?? "none")
 					.Append(" mkvWeaponRange=").Append(weaponRange.ToString("0.#"))
 					.Append(" mkvEffectiveRange=")
@@ -472,6 +473,7 @@ namespace ColonyKit.Modules.Robotics
 						.Append(" moving=").Append(robot.health.capacities.GetLevel(PawnCapacityDefOf.Moving).ToString("0.00"))
 						.Append(" manipulation=").Append(robot.health.capacities.GetLevel(PawnCapacityDefOf.Manipulation).ToString("0.00"))
 						.Append(" consciousness=").Append(robot.health.capacities.GetLevel(PawnCapacityDefOf.Consciousness).ToString("0.00"))
+						.Append(" carry=").Append(robot.GetStatValue(StatDefOf.CarryingCapacity).ToString("0"))
 						.Append(" playerSettings=").Append(robot.playerSettings != null);
 
 					int humanlikesWithEnergy = 0;
