@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using HarmonyLib;
 using RimWorld;
 using RimWorld.Planet;
@@ -9,8 +10,8 @@ namespace ColonyKit.Modules.Hygiene
 {
 	/// <summary>
 	/// 商队里原版只处理食物/休息/娱乐，不会走 Need_Thirst.NeedInterval，口渴实际上被冻住。
-	/// 这里让口渴在商队里按正常速率下降；水只从商队随身携带的水盆/水桶里喝，
-	/// 不再自动从河流/降雨里“找到水源”，没带水就会真的渴死。
+	/// 这里让口渴在商队里按正常速率下降；水优先喝随身水盆/水桶，没有就按地块
+	/// 的河流/降雨找水（和 DBH 的商队取水一致），找不到才会渴死。
 	/// </summary>
 	[HarmonyPatch(typeof(Caravan_NeedsTracker), "NeedsTrackerTickInterval")]
 	internal static class Patch_CaravanThirstTick
@@ -60,17 +61,40 @@ namespace ColonyKit.Modules.Hygiene
 				return;
 			}
 			CompBasinWater container = FindWaterContainer(__instance.caravan);
-			if (container == null)
+			if (container != null)
 			{
-				return;
+				float taken = container.Drain(Mathf.Min(LitersPerDrink, container.Water));
+				if (taken > 0.01f)
+				{
+					thirst.Drink(ThirstPerDrink * (taken / LitersPerDrink));
+					SanitationUtil.ContaminationCheckDrinking(pawn, container.Contamination);
+					return;
+				}
 			}
-			float taken = container.Drain(Mathf.Min(LitersPerDrink, container.Water));
-			if (taken <= 0.01f)
+			TryForageWater(__instance.caravan, pawn, thirst);
+		}
+
+		/// <summary>
+		/// 地块有河流就一定能取水；否则按降雨量给概率（0–2000 映射到 0–1）。
+		/// 取到的水按未处理水做污染判定。
+		/// </summary>
+		internal static bool TryForageWater(Caravan caravan, Pawn pawn, Need_Thirst thirst)
+		{
+			if (caravan == null || !caravan.Tile.Valid)
 			{
-				return;
+				return false;
 			}
-			thirst.Drink(ThirstPerDrink * (taken / LitersPerDrink));
-			SanitationUtil.ContaminationCheckDrinking(pawn, container.Contamination);
+			Tile tile = Find.WorldGrid[caravan.Tile];
+			bool river = tile.Mutators != null
+				&& tile.Mutators.Any(m => m.categories != null && m.categories.Contains("River"));
+			float chance = GenMath.LerpDoubleClamped(0f, 2000f, 0f, 1f, tile.rainfall);
+			if (!river && !Rand.Chance(chance))
+			{
+				return false;
+			}
+			thirst.Drink(ThirstPerDrink);
+			SanitationUtil.ContaminationCheckWater(pawn, ContaminationLevel.Untreated);
+			return true;
 		}
 
 		private static CompBasinWater FindWaterContainer(Caravan caravan)
