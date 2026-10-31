@@ -11,6 +11,15 @@
 					<treeDef>BurningResponse</treeDef>
 				</li>
 				<li Class="ThinkNode_QueuedJob" />
+				<!-- 加入远行队后，商队职责压过所有自动行为：先搬物资、去集合点、随队出发。
+				     必须排在所有 JobGiver 前面，否则机器人会被家务/巡逻/索敌拖住，远行队迟迟走不了。 -->
+				<li Class="ColonyKit.Modules.Robotics.ThinkNode_ConditionalFormingCaravan">
+					<subNodes>
+						<li Class="ThinkNode_Subtree">
+							<treeDef>LordDuty</treeDef>
+						</li>
+					</subNodes>
+				</li>
 				<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotFlee" />
 				<li Class="ThinkNode_PrioritySorter">
 					<subNodes>
@@ -52,6 +61,14 @@
 					<treeDef>BurningResponse</treeDef>
 				</li>
 				<li Class="ThinkNode_QueuedJob" />
+				<!-- 远行队最高优先：Mk-V 自己的索敌/捡枪/守卫都要给商队职责让路。 -->
+				<li Class="ColonyKit.Modules.Robotics.ThinkNode_ConditionalFormingCaravan">
+					<subNodes>
+						<li Class="ThinkNode_Subtree">
+							<treeDef>LordDuty</treeDef>
+						</li>
+					</subNodes>
+				</li>
 				<li Class="ColonyKit.Modules.Robotics.JobGiver_MkVCombat" />
 				<li Class="ColonyKit.Modules.Robotics.JobGiver_MkVWeaponPickup" />
 				<!-- 原版 JobGiver_PickUpOpportunisticWeapon 不检查 IsForbidden；丢下的武器默认被禁用，会每 tick 重复下 Equip 并触发 started 10 jobs 报错。自动换枪交给上面的专用评分逻辑。 -->

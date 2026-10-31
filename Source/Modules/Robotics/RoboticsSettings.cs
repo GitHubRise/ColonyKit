@@ -55,6 +55,11 @@ namespace ColonyKit.Modules.Robotics
 		public const float MaxWeaponPickupRadius = 45f;
 		public const float DefaultWeaponPickupRadius = 28f;
 
+		// 新开局赠送的 Mk-V 数量：0 为不赠送。
+		public const int MinStartWithMkVCount = 0;
+		public const int MaxStartWithMkVCount = 5;
+		public const int DefaultStartWithMkVCount = 1;
+
 		public const float MinChargePower = 100f;
 		public const float MaxChargePower = 10000f;
 		public const float DefaultChargePower = 1000f;
@@ -227,7 +232,7 @@ namespace ColonyKit.Modules.Robotics
 		public string allowedAreaLabel = "";
 
 		// Mk-V 作战与专用组装舱。
-		public bool startWithMkV = true;
+		public int startWithMkVCount = DefaultStartWithMkVCount;
 		public bool mkvCombatEnabled = true;
 		public bool mkvReturnToBay = true;
 		public bool mkvAutoPickupWeapons = true;
@@ -304,7 +309,17 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref mkvWindThreshold, "mkvWindThreshold", DefaultMkvWindThreshold);
 			Scribe_Values.Look(ref areaMode, "areaMode", RobotAreaMode.Unrestricted);
 			Scribe_Values.Look(ref allowedAreaLabel, "allowedAreaLabel", "");
-			Scribe_Values.Look(ref startWithMkV, "startWithMkV", true);
+			Scribe_Values.Look(ref startWithMkVCount, "startWithMkVCount", -1);
+			// 旧版本这里是「开局赠送 Mk-V」布尔开关：只有新节点缺失时才按 1/0 台迁移。
+			if (Scribe.mode == LoadSaveMode.LoadingVars)
+			{
+				bool legacyStartWithMkV = true;
+				Scribe_Values.Look(ref legacyStartWithMkV, "startWithMkV", true);
+				if (startWithMkVCount < 0)
+				{
+					startWithMkVCount = legacyStartWithMkV ? 1 : 0;
+				}
+			}
 			Scribe_Values.Look(ref mkvCombatEnabled, "mkvCombatEnabled", true);
 			Scribe_Values.Look(ref mkvReturnToBay, "mkvReturnToBay", true);
 			Scribe_Values.Look(ref mkvAutoPickupWeapons, "mkvAutoPickupWeapons", true);
@@ -480,6 +495,10 @@ namespace ColonyKit.Modules.Robotics
 			mkvWeaponPickupRadius = ClampFloat(mkvWeaponPickupRadius, MinWeaponPickupRadius, MaxWeaponPickupRadius);
 			changed |= !Approximately(pickupRadius, mkvWeaponPickupRadius);
 
+			int mkvCount = startWithMkVCount;
+			startWithMkVCount = ClampInt(startWithMkVCount, MinStartWithMkVCount, MaxStartWithMkVCount);
+			changed |= mkvCount != startWithMkVCount;
+
 			if (areaMode != RobotAreaMode.Unrestricted
 				&& areaMode != RobotAreaMode.Home
 				&& areaMode != RobotAreaMode.Custom)
@@ -562,7 +581,7 @@ namespace ColonyKit.Modules.Robotics
 			mkvWindThreshold = DefaultMkvWindThreshold;
 			areaMode = RobotAreaMode.Unrestricted;
 			allowedAreaLabel = "";
-			startWithMkV = true;
+			startWithMkVCount = DefaultStartWithMkVCount;
 			mkvCombatEnabled = true;
 			mkvReturnToBay = true;
 			mkvAutoPickupWeapons = true;

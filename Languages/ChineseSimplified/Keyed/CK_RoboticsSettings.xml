@@ -53,8 +53,8 @@
 	<ColonyKit.Settings.Robotics.Unlimited>不限</ColonyKit.Settings.Robotics.Unlimited>
 
 	<ColonyKit.Settings.Robotics.Section.Combat>Mk-V 作战</ColonyKit.Settings.Robotics.Section.Combat>
-	<ColonyKit.Settings.Robotics.StartWithMkV>开局赠送 Mk-V</ColonyKit.Settings.Robotics.StartWithMkV>
-	<ColonyKit.Settings.Robotics.StartWithMkV.Desc>新开局在玩家起始地图直接生成一台 Mk-V；只影响新游戏，不影响已有存档。</ColonyKit.Settings.Robotics.StartWithMkV.Desc>
+	<ColonyKit.Settings.Robotics.StartWithMkV>开局赠送 Mk-V 数量</ColonyKit.Settings.Robotics.StartWithMkV>
+	<ColonyKit.Settings.Robotics.StartWithMkV.Desc>新开局在玩家起始地图生成指定数量的 Mk-V（0–5 台，默认 1 台，0 为不赠送）；只影响新游戏，不影响已有存档。</ColonyKit.Settings.Robotics.StartWithMkV.Desc>
 	<ColonyKit.Settings.Robotics.MkVCombatEnabled>自动作战</ColonyKit.Settings.Robotics.MkVCombatEnabled>
 	<ColonyKit.Settings.Robotics.MkVCombatEnabled.Desc>允许 Mk-V 自动索敌、开火和回舱；关闭后 Mk-V 只做家务，不主动交战。</ColonyKit.Settings.Robotics.MkVCombatEnabled.Desc>
 	<ColonyKit.Settings.Robotics.MkVReturnToBay>脱战后回舱</ColonyKit.Settings.Robotics.MkVReturnToBay>
@@ -81,7 +81,7 @@
 	<ColonyKit.Settings.Robotics.MkVInsulationHeat>Mk-V 隔热</ColonyKit.Settings.Robotics.MkVInsulationHeat>
 	<ColonyKit.Settings.Robotics.MkVInsulationHint>内置保温相当于一件衣服的隔寒/隔热：舒适温度下限再降「隔寒」度数，上限再升「隔热」度数；默认 20°C / 30°C。</ColonyKit.Settings.Robotics.MkVInsulationHint>
 	<ColonyKit.Settings.Robotics.MkvRandomTraits>追加随机特性（Mk-V）</ColonyKit.Settings.Robotics.MkvRandomTraits>
-	<ColonyKit.Settings.Robotics.MkvRandomTraits.Desc>Mk-V 默认固定获得格斗者、冷枪手、坚韧、敏捷、疾步如飞；打开后再额外随机 2 个特性（快速学习、超凡记忆等），已有特性不会重复。</ColonyKit.Settings.Robotics.MkvRandomTraits.Desc>
+	<ColonyKit.Settings.Robotics.MkvRandomTraits.Desc>Mk-V 默认固定获得坚韧、敏捷、疾步如飞；打开后再从格斗者、冷枪手、快速学习、超凡记忆里随机抽 2 个（不会一次拿全），已有特性不会重复。</ColonyKit.Settings.Robotics.MkvRandomTraits.Desc>
 	<ColonyKit.Settings.Robotics.RobotPowerEfficiency>机器人耗电效率</ColonyKit.Settings.Robotics.RobotPowerEfficiency>
 	<ColonyKit.Settings.Robotics.RobotPowerEfficiency.Desc>所有 Mk 系列机器人共用；100% 为基准，数值越高，同一块电池工作时间越长。</ColonyKit.Settings.Robotics.RobotPowerEfficiency.Desc>
 	<ColonyKit.Settings.Robotics.MkvBurstShotCount>电弧发射器连发数</ColonyKit.Settings.Robotics.MkvBurstShotCount>
@@ -249,4 +249,5 @@
 	<CK.Robotics.Command.Ai.Desc>切换这台 Mk-V 是否接受 DeepSeek 的决策；设置页总开关关闭时一律不请求。</CK.Robotics.Command.Ai.Desc>
 	<CK.Robotics.Inspect.Ai>AI：{0}</CK.Robotics.Inspect.Ai>
 	<CK.Robotics.Inspect.Ai.Waiting>等待决策</CK.Robotics.Inspect.Ai.Waiting>
+	<CK.Robotics.Inspect.Ai.Caravan>跟随远行队</CK.Robotics.Inspect.Ai.Caravan>
 </LanguageData>

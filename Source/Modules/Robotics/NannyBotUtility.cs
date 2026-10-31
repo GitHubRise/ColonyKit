@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 using Verse.AI;
+using Verse.AI.Group;
 
 namespace ColonyKit.Modules.Robotics
 {
@@ -25,6 +26,16 @@ namespace ColonyKit.Modules.Robotics
 		public static bool IsMkV(Pawn pawn)
 		{
 			return pawn != null && pawn.def == NannyBotDefOf.CK_RobotMkV;
+		}
+
+		/// <summary>
+		/// 已加入正在组建的远行队（商队 Lord 还在本图收集物资/集合），此时商队职责是最高优先任务。
+		/// </summary>
+		public static bool IsFormingCaravan(Pawn pawn)
+		{
+			return pawn != null
+				&& pawn.Spawned
+				&& pawn.GetLord()?.LordJob is LordJob_FormAndSendCaravan;
 		}
 
 		public static CompNannyBot BotComp(Pawn pawn)

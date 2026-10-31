@@ -69,6 +69,17 @@ namespace ColonyKit.Modules.Robotics
 			}
 
 			int pawnId = pawn.thingIDNumber;
+			// 已加入正在组建的远行队：商队职责是最高优先任务，AI 不再抢活；
+			// 在途请求的结果直接丢掉，避免它回到基地后又执行一条过期的旧动作。
+			if (NannyBotUtility.IsFormingCaravan(pawn))
+			{
+				Results.TryRemove(pawnId, out _);
+				InFlight.TryRemove(pawnId, out _);
+				comp.AiLastAction = "CK.Robotics.Inspect.Ai.Caravan".Translate();
+				comp.AiLastError = "";
+				return;
+			}
+
 			AiRequestResult result;
 			if (Results.TryRemove(pawnId, out result))
 			{
@@ -776,6 +787,11 @@ namespace ColonyKit.Modules.Robotics
 			comp.AiLastAction = result.action ?? "";
 			comp.AiLastSay = result.say ?? "";
 			if (pawn.Drafted || pawn.InMentalState || pawn.Dead || !pawn.Spawned)
+			{
+				return;
+			}
+			// 远行队优先：请求返回时商队已经在组建，就不再执行这条过期动作。
+			if (NannyBotUtility.IsFormingCaravan(pawn))
 			{
 				return;
 			}

@@ -7,6 +7,7 @@ using RimWorld;
 using RimWorld.Planet;
 using Verse;
 using Verse.AI;
+using Verse.AI.Group;
 
 namespace ColonyKit.Modules.Robotics
 {
@@ -134,6 +135,8 @@ namespace ColonyKit.Modules.Robotics
 				ProbeMkVDualWield(mkv, builder);
 				ProbeMkVBackupWeapon(mkv, builder);
 				ProbeArcBladeEffects(mkv, map, builder);
+				ProbeCaravanPriority(map, mkv, builder);
+				ProbeMkvRandomTraits(mkv, builder);
 				mkv.Destroy(DestroyMode.Vanish);
 			}
 			bay.Destroy(DestroyMode.Vanish);
@@ -156,6 +159,116 @@ namespace ColonyKit.Modules.Robotics
 				builder.Append(traits[i].def.defName).Append(':').Append(traits[i].Degree);
 			}
 			return builder.ToString();
+		}
+
+		/// <summary>
+		/// 随机特性探针：临时打开「追加随机特性」再结算一次，确认只从池里抽 2 个、
+		/// 格斗者和冷枪手不会同时出现；结果写进日志后立刻把开关还原。
+		/// </summary>
+		private static void ProbeMkvRandomTraits(Pawn pawn, StringBuilder builder)
+		{
+			RoboticsSettings settings = NannyBotUtility.Settings;
+			bool oldValue = settings.mkvRandomTraits;
+			settings.mkvRandomTraits = true;
+			CompNannyBot.ApplyRobotTraitsForTest(pawn);
+			settings.mkvRandomTraits = oldValue;
+
+			string[] pool = { "Brawler", "ShootingAccuracy", "FastLearner", "GreatMemory" };
+			List<string> picked = new List<string>();
+			bool brawler = false;
+			bool triggerHappy = false;
+			foreach (string name in pool)
+			{
+				TraitDef def = DefDatabase<TraitDef>.GetNamedSilentFail(name);
+				Trait trait = def == null ? null : pawn.story?.traits?.GetTrait(def);
+				if (trait == null)
+				{
+					continue;
+				}
+				picked.Add(def.defName + ":" + trait.Degree);
+				brawler |= def.defName == "Brawler";
+				triggerHappy |= def.defName == "ShootingAccuracy";
+			}
+			builder.Append(" mkvRandomPicked=").Append(picked.Count)
+				.Append(" mkvRandom=").Append(picked.Count == 0 ? "none" : string.Join(",", picked))
+				.Append(" mkvRandomConflict=").Append(brawler && triggerHappy);
+		}
+
+		/// <summary>
+		/// 远行队优先探针：把 Mk-V 塞进一支正在组建的商队 Lord，确认三件事：
+		/// 1) 思考树最前面接上了 LordDuty 子树；
+		/// 2) 进入「收集物资」阶段时它拿到和殖民者一样的打包职责；
+		/// 3) 思考结果里的 Job 真的带上了这支 Lord，而不是家务/巡逻那种散活。
+		/// 探针结束立刻撤掉 Lord，免得测试用的商队真把它带离地图。
+		/// </summary>
+		private static void ProbeCaravanPriority(Map map, Pawn mkv, StringBuilder builder)
+		{
+			bool node = mkv.thinker.TryGetMainTreeThinkNode<ThinkNode_ConditionalFormingCaravan>() != null;
+			builder.Append(" caravanNode=").Append(node);
+
+			IntVec3 meeting = CellFinder.RandomClosewalkCellNear(
+				map.Center, map, 10, c => c.Standable(map) && c.GetEdifice(map) == null);
+			IntVec3 exit = CellFinder.RandomClosewalkCellNear(
+				map.Center, map, 14, c => c.Standable(map) && c.GetEdifice(map) == null);
+			IntVec3 cargoCell = CellFinder.RandomClosewalkCellNear(
+				mkv.Position, map, 6, c => c.Standable(map) && c.GetEdifice(map) == null);
+			if (!meeting.IsValid || !exit.IsValid || !cargoCell.IsValid)
+			{
+				builder.Append(" caravanCells=none");
+				return;
+			}
+
+			// 地上放一堆钢当货，检查组队时 Mk-V 会不会真的去搬。
+			Thing cargo = ThingMaker.MakeThing(ThingDefOf.Steel);
+			cargo.stackCount = 25;
+			GenSpawn.Spawn(cargo, cargoCell, map);
+			TransferableOneWay transferable = new TransferableOneWay();
+			transferable.things.Add(cargo);
+			transferable.ForceTo(25);
+			List<TransferableOneWay> transferables = new List<TransferableOneWay> { transferable };
+
+			LordJob job = new LordJob_FormAndSendCaravan(
+				transferables,
+				new List<Pawn>(),
+				meeting,
+				exit,
+				map.Tile,
+				map.Tile);
+			Lord lord = LordMaker.MakeNewLord(Faction.OfPlayer, job, map, new[] { mkv });
+			if (lord == null)
+			{
+				builder.Append(" caravanLord=False");
+				cargo.Destroy(DestroyMode.Vanish);
+				return;
+			}
+
+			// 手工跑一遍「收集物资」阶段：原版按 IsColonist 分流，Mk-V 本该被丢去
+			// 集合点等待，我们的后缀会把它改写成和殖民者一样的打包职责。
+			LordToil_PrepareCaravan_GatherItems gather = new LordToil_PrepareCaravan_GatherItems(meeting);
+			gather.lord = lord;
+			gather.UpdateAllDuties();
+			builder.Append(" caravanFlag=").Append(NannyBotUtility.IsFormingCaravan(mkv))
+				.Append(" caravanDuty=").Append(mkv.mindState?.duty?.def?.defName ?? "none");
+			ThinkResult result = mkv.thinker.MainThinkNodeRoot
+				.TryIssueJobPackage(mkv, new JobIssueParams());
+			builder.Append(" caravanJob=").Append(result.Job?.def?.defName ?? "none")
+				.Append(" caravanJobLord=").Append(result.Job != null && result.Job.lord == lord);
+
+			// 手头有长活（研究、做饭之类）时，加入远行队要能把它立刻打断一次。
+			CompNannyBot comp = NannyBotUtility.BotComp(mkv);
+			Job busy = JobMaker.MakeJob(JobDefOf.Wait, 5000);
+			mkv.jobs.StartJob(busy, JobCondition.InterruptForced);
+			bool busyBefore = mkv.CurJobDef == JobDefOf.Wait;
+			comp?.EnsureCaravanPriority(mkv);
+			builder.Append(" caravanDropBusy=").Append(busyBefore)
+				.Append("->").Append(mkv.CurJobDef != JobDefOf.Wait);
+
+			map.lordManager.RemoveLord(lord);
+			if (!cargo.Destroyed)
+			{
+				cargo.Destroy(DestroyMode.Vanish);
+			}
+			builder.Append(" caravanCleared=").Append(!NannyBotUtility.IsFormingCaravan(mkv));
 		}
 
 		/// <summary>舒适温度探针：隔寒/隔热设置应用后的舒适温度下限/上限。</summary>
@@ -466,6 +579,18 @@ namespace ColonyKit.Modules.Robotics
 			float value = pawn.GetStatValue(StatDefOf.CarryingCapacity);
 			settings.mkvCarryCapacity = oldValue;
 			return value.ToString("0");
+		}
+
+		/// <summary>开局赠送数量探针：临时填 9，确认 Validate 夹回 5 台后还原。</summary>
+		private static string StartMkVCountProbe()
+		{
+			RoboticsSettings settings = NannyBotUtility.Settings;
+			int original = settings.startWithMkVCount;
+			settings.startWithMkVCount = 9;
+			settings.Validate();
+			int clamped = settings.startWithMkVCount;
+			settings.startWithMkVCount = original;
+			return original + "/9->" + clamped;
 		}
 
 		public static void RunIfRequested(Game game)

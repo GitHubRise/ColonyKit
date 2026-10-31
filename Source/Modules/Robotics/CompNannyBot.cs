@@ -5,6 +5,7 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 using Verse.AI;
+using Verse.AI.Group;
 using Verse.Sound;
 
 namespace ColonyKit.Modules.Robotics
@@ -104,6 +105,9 @@ namespace ColonyKit.Modules.Robotics
 
 		private Rot4 lastBodyRotation;
 		private bool hasLastBodyRotation;
+
+		/// <summary>已经为哪一支远行队打断过手头的活；同一支只打断一次，避免反复中止自己的等待任务。</summary>
+		private int caravanDropLordId = -1;
 
 		private Graphic paintedGraphic;
 		private Graphic paintedBase;
@@ -207,27 +211,40 @@ namespace ColonyKit.Modules.Robotics
 			ApplySkill(pawn, SkillDefOf.Intellectual, 15);
 		}
 
-		/// <summary>Mk-V 固定特性：格斗者、冷枪手、坚韧、敏捷、疾步如飞。</summary>
+		/// <summary>Mk-V 固定特性：坚韧、敏捷、疾步如飞。</summary>
 		private static readonly string[] RobotFixedTraitDefNames =
 		{
-			"Brawler",
-			"ShootingAccuracy",
 			"Tough",
 			"Nimble",
 			"SpeedOffset"
 		};
 
-		/// <summary>与固定特性一一对应的度数：冷枪手 1，疾步如飞 2，其余 0。</summary>
-		private static readonly int[] RobotFixedTraitDegrees = { 0, 1, 0, 0, 2 };
+		/// <summary>与固定特性一一对应的度数：疾步如飞 2，其余 0。</summary>
+		private static readonly int[] RobotFixedTraitDegrees = { 0, 0, 2 };
 
-		/// <summary>开启「随机特性」时额外抽取的特性池；固定列表里已有的会跳过。</summary>
+		/// <summary>旧版固定特性（格斗者、冷枪手）：升到 v3 时从老存档的 Mk-V 身上摘掉，改由随机池抽取。</summary>
+		private static readonly string[] RobotLegacyFixedTraitDefNames = { "Brawler", "ShootingAccuracy" };
+
+		/// <summary>
+		/// 开启「随机特性」时额外抽取的特性池：格斗者、冷枪手也在池里。
+		/// 池子比抽取数多，每次只抽 <see cref="RobotRandomTraitCount"/> 个，不会一次把整池拿全。
+		/// </summary>
 		private static readonly string[] RobotRandomTraitDefNames =
 		{
+			"Brawler",
+			"ShootingAccuracy",
 			"FastLearner",
-			"GreatMemory",
-			"Tough",
-			"Nimble"
+			"GreatMemory"
 		};
+
+		/// <summary>与随机池一一对应的度数：冷枪手是 -1 度（trigger-happy），其余 0。</summary>
+		private static readonly int[] RobotRandomTraitDegrees = { 0, -1, 0, 0 };
+
+		/// <summary>随机特性每次最多抽几个；必须小于池子大小，否则等于把随机池发全。</summary>
+		private const int RobotRandomTraitCount = 2;
+
+		/// <summary>特性档案版本：3 起固定 3 个特性，格斗者/冷枪手移入随机池。</summary>
+		private const int RobotTraitsProfileVersion = 3;
 
 		private static void GrantRobotTrait(Pawn pawn, string defName, int degree)
 		{
@@ -237,36 +254,93 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return;
 			}
-			// 固定特性里格斗者和冷枪手在模板里互斥，但两者都是玩家点名要的，
-			// 这里直接写入，不走随机生成的冲突过滤。
+			// 直接写入，不走随机生成的冲突过滤：随机池自己用 CanGrantRandomTrait
+			// 挡掉互斥组合（格斗者 ↔ 冷枪手在原版里就互相排斥）。
 			traits.GainTrait(new Trait(def, degree));
+		}
+
+		/// <summary>把旧版固定特性（格斗者、冷枪手）从老存档的 Mk-V 身上摘掉；新版里它们只从随机池出。</summary>
+		private static void StripRobotLegacyTraits(Pawn pawn)
+		{
+			TraitSet traits = pawn?.story?.traits;
+			if (traits == null)
+			{
+				return;
+			}
+			for (int i = 0; i < RobotLegacyFixedTraitDefNames.Length; i++)
+			{
+				TraitDef def = DefDatabase<TraitDef>.GetNamedSilentFail(RobotLegacyFixedTraitDefNames[i]);
+				Trait trait = def == null ? null : traits.GetTrait(def);
+				if (trait != null)
+				{
+					traits.RemoveTrait(trait);
+				}
+			}
+		}
+
+		/// <summary>随机池里的某个特性现在能不能给：没拿过，也不和身上已有的特性互斥。</summary>
+		private static bool CanGrantRandomTrait(TraitSet traits, string defName)
+		{
+			TraitDef def = DefDatabase<TraitDef>.GetNamedSilentFail(defName);
+			if (def == null || traits.HasTrait(def))
+			{
+				return false;
+			}
+			for (int i = 0; i < traits.allTraits.Count; i++)
+			{
+				TraitDef ownedDef = traits.allTraits[i]?.def;
+				if (ownedDef == null)
+				{
+					continue;
+				}
+				// 原版两个特性只在一个方向写 conflictingTraits，两个方向都要查。
+				if (def.conflictingTraits != null && def.conflictingTraits.Contains(ownedDef))
+				{
+					return false;
+				}
+				if (ownedDef.conflictingTraits != null && ownedDef.conflictingTraits.Contains(def))
+				{
+					return false;
+				}
+			}
+			return true;
 		}
 
 		private static void ApplyRobotTraits(Pawn pawn)
 		{
+			StripRobotLegacyTraits(pawn);
 			for (int i = 0; i < RobotFixedTraitDefNames.Length; i++)
 			{
 				GrantRobotTrait(pawn, RobotFixedTraitDefNames[i], RobotFixedTraitDegrees[i]);
 			}
-			if (!NannyBotUtility.Settings.mkvRandomTraits)
+			if (!NannyBotUtility.Settings.mkvRandomTraits || pawn?.story?.traits == null)
 			{
 				return;
 			}
-			TraitSet traits = pawn?.story?.traits;
-			List<string> pool = new List<string>(RobotRandomTraitDefNames);
-			pool.RemoveAll(name =>
+			TraitSet traits = pawn.story.traits;
+			List<int> pool = new List<int>();
+			for (int i = 0; i < RobotRandomTraitDefNames.Length; i++)
 			{
-				TraitDef def = DefDatabase<TraitDef>.GetNamedSilentFail(name);
-				return def == null || traits == null || traits.HasTrait(def);
-			});
-			int count = Mathf.Min(2, pool.Count);
-			for (int i = 0; i < count; i++)
-			{
-				int index = Rand.Range(0, pool.Count);
-				string name = pool[index];
-				pool.RemoveAt(index);
-				GrantRobotTrait(pawn, name, 0);
+				pool.Add(i);
 			}
+			for (int picked = 0; picked < RobotRandomTraitCount && pool.Count > 0; picked++)
+			{
+				pool.RemoveAll(index => !CanGrantRandomTrait(traits, RobotRandomTraitDefNames[index]));
+				if (pool.Count == 0)
+				{
+					break;
+				}
+				int slot = Rand.Range(0, pool.Count);
+				int choice = pool[slot];
+				pool.RemoveAt(slot);
+				GrantRobotTrait(pawn, RobotRandomTraitDefNames[choice], RobotRandomTraitDegrees[choice]);
+			}
+		}
+
+		/// <summary>仅供 -colonykit-nannybot-test 自检：按当前设置再结算一次特性。</summary>
+		internal static void ApplyRobotTraitsForTest(Pawn pawn)
+		{
+			ApplyRobotTraits(pawn);
 		}
 
 		private static void ApplySkill(Pawn pawn, SkillDef def, int baseLevel)
@@ -405,12 +479,13 @@ namespace ColonyKit.Modules.Robotics
 					skillsInitialized = true;
 					skillsProfileVersion = 3;
 				}
-				if (!traitsInitialized || traitsProfileVersion < 2)
+				if (!traitsInitialized || traitsProfileVersion < RobotTraitsProfileVersion)
 				{
 					// 固定特性始终补齐；随机特性由设置页决定是否追加。
+					// 老存档的 Mk-V 在升级到这里时先摘掉旧版的格斗者/冷枪手，避免和新规则叠在一起。
 					ApplyRobotTraits(pawn);
 					traitsInitialized = true;
-					traitsProfileVersion = 2;
+					traitsProfileVersion = RobotTraitsProfileVersion;
 				}
 				AiNextTick = Find.TickManager.TicksGame + 120;
 				pawn.gender = Gender.Female;
@@ -553,6 +628,7 @@ namespace ColonyKit.Modules.Robotics
 				{
 					pawn.jobs.EndCurrentJob(JobCondition.InterruptForced);
 				}
+				EnsureCaravanPriority(pawn);
 				MkVAiService.Tick(this);
 			}
 
@@ -582,6 +658,32 @@ namespace ColonyKit.Modules.Robotics
 					PlayBeep("CK_NannyBotBeep");
 				}
 			}
+		}
+
+		/// <summary>
+		/// 加入远行队后商队职责是最高优先任务：把还在做的家务/巡逻/索敌打断一次，
+		/// 下一个 tick 的思考就会直接走思考树最前面的 LordDuty（搬物资、去集合点、随队出发）。
+		/// 只打断一次，机器人自己派的等待/闲逛任务不会被反复中止。
+		/// </summary>
+		internal void EnsureCaravanPriority(Pawn pawn)
+		{
+			Lord lord = pawn.GetLord();
+			if (!(lord?.LordJob is LordJob_FormAndSendCaravan))
+			{
+				caravanDropLordId = -1;
+				return;
+			}
+			if (caravanDropLordId == lord.loadID)
+			{
+				return;
+			}
+			caravanDropLordId = lord.loadID;
+			Job job = pawn.CurJob;
+			if (job == null || job.lord == lord || job.playerForced)
+			{
+				return;
+			}
+			pawn.jobs.EndCurrentJob(JobCondition.InterruptForced);
 		}
 
 		public void Wear(float amount)

@@ -6,7 +6,7 @@
 
 ### Added
 
-- **Mk-V 备用武器**：选中 Mk-V 右键地上的武器新增「存为备用武器」，走原版 `TakeInventory`（120 tick、`checkEncumbrance`）。武器进背包后按真实质量占用负重——Mk-V 的负重上限由 `MassUtility.Capacity` 给出（200 kg，装备 + 衣物 + 背包一起算），所以能塞几把完全由剩余负重决定；放不下时右键项灰掉并显示还差多少 kg。新增「武器配置」Gizmo（`MkVLoadoutGizmo`）：列出背包里的备用武器，点选即可换到手上（双手已满时按「专属武器保留、优先换掉和新武器同类的那把」丢一把回背包），也可以把主手/副手收回背包；换完统一排序，远程武器始终回主手，避免主手近战、副手枪打不响。只有玩家点选才会换装，Mk-V 自己不会动。检查面板新增「背包备用：… · 负重 X / Y kg」一行。`-colonykit-nannybot-test` 自检新增 `spareCanStore` / `spareInBag` / `spareEquipped` / `spareStashed` 探针。
+- **Mk-V 备用武器**：选中 Mk-V 右键地上的武器新增「存为备用武器」，走原版 `TakeInventory`（120 tick、`checkEncumbrance`）。武器进背包后按真实质量占用负重——Mk-V 的负重上限直接取信息卡上的「携带能力」（默认 255，装备 + 衣物 + 背包一起算），所以能塞几把完全由剩余负重决定；放不下时右键项灰掉并显示还差多少 kg。新增「武器配置」Gizmo（`MkVLoadoutGizmo`）：列出背包里的备用武器，点选即可换到手上（双手已满时按「专属武器保留、优先换掉和新武器同类的那把」丢一把回背包），也可以把主手/副手收回背包；换完统一排序，远程武器始终回主手，避免主手近战、副手枪打不响。只有玩家点选才会换装，Mk-V 自己不会动。检查面板新增「背包备用：… · 负重 X / Y kg」一行。`-colonykit-nannybot-test` 自检新增 `spareCanStore` / `spareInBag` / `spareEquipped` / `spareStashed` 探针。
 - **Mk-V DeepSeek AI**：设置页新增「Mk-V AI（DeepSeek）」区：总开关、API Key、接口地址（默认 `https://api.deepseek.com`）、模型（`deepseek-chat`）、思考间隔（默认 20 s）、超时、最大回复 token、随机度、允许主动交战、显示台词和「测试连接」。开启后每台 Mk-V 按间隔把局势（血量、电量、位置、敌人、倒地殖民者、火焰）和候选动作发给模型，模型只能从候选 id 里选（攻击、救援、灭火、回舱、巡逻、屠宰、做饭、手工、搬运粮食/木头、医疗、研究、交还常规 AI），主线程校验后再下 Job，不执行任意代码；正在做家务时不会被 AI 打断，只有身边有敌人、倒地殖民者或近处火焰才允许中断，避免做饭/屠宰/搬运做到一半被反复抢走。每台 Mk-V 有独立「AI 控制」Gizmo；总开关或该 Gizmo 关闭时完全不发请求。HTTP 在后台线程、TLS 1.2，结果回主线程；失败只记日志并退回常规 AI。API Key 明文保存在本机模组设置，UI 有警告；最多同时 2 个请求。`-colonykit-ai-test` 自检用假响应验证 JSON 解析，并用无效 Key 访问真实 DeepSeek 验证 HTTPS 链路（预期 401）。
 - **瓶装水三件套**：新增 1 L 矿泉水、纯净水、凉白开。取水点可免容器直接装矿泉水；带工作净水器的水龙头可装纯净水；篝火/燃油炉灶/电炉灶可把瓶装水烧成凉白开。三者解渴均为 +0.2；矿泉水按未处理水判定，可能中毒，纯净水和凉白开不会。
 - **凉白开批量**：新增 `CK_BoilWaterBulk`，一次消耗 10 瓶矿泉水/纯净水、产出 10 瓶凉白开；单瓶和批量工作时长均为 200 tick。
@@ -38,6 +38,8 @@
 
 ### Fixed
 
+- **Mk-V 加入远行队后拖住出发**：机器人的自定义思考树一直没接原版 `LordDuty`，被加进组建中的商队后仍按家务/巡逻/索敌/回舱派活，组建流程只能干等它，远行队迟迟走不了。现在 `CK_NannyBot` 与 `CK_MkVAndroid` 两棵树都在 `ThinkNode_QueuedJob` 之后插入 `ThinkNode_ConditionalFormingCaravan`（只在 `LordJob_FormAndSendCaravan` 的 Lord 下生效），把原版 `LordDuty` 子树顶到所有 JobGiver 前面；`CompNannyBot` 在机器人加入远行队时，会把它手头那条不属于商队、也不是玩家亲自下的长活（研究/做饭/巡逻等）打断一次，只打断一次以免反复中止自己的等待任务。`MkVAiService` 在组队期间不再派动作，并丢掉在途请求的过期结果。另外 `LordToil_PrepareCaravan_GatherItems.UpdateAllDuties` 对 Mk-V 补一条后缀：原版按 `IsColonist` 分流会把机械体丢去「集合点等待」，现在 Mk-V 和殖民者一样拿到打包职责，只有 Mk-V 的远行队也能把选中的物资装进背包带走，不会空手出发。`-colonykit-nannybot-test` 自检新增 `caravanNode` / `caravanFlag` / `caravanDuty` / `caravanJob` / `caravanJobLord` / `caravanDropBusy` / `caravanCleared` 探针。
+
 - **喝瓶装水时小人原地卡死、每 tick 刷 `Exception in CheckCurrentToilEndOrFail`**：`JobGiver_DrinkWater` 给矿泉水/纯净水/凉白开派的是原版 `Ingest`，但 `JobMaker.MakeJob` 把 `job.count` 留成默认的 -1。原版 `Toils_Misc.TakeItemFromInventoryToCarrier` 取数量用的是 `Mathf.Min(stackCount, count)`，-1 等于一件也不拿，于是 `carryTracker.CarriedThing` 为 null，随后 `curJob.SetTarget(A, ...)` 把目标清空；下一个 toil 的全局失效检查 `!IngestibleSource.Destroyed` 读到 null 空引用，`CheckCurrentToilEndOrFail` 每 tick 报一次错，小人永远喝不到水（日志里 `driver.job=(Ingest ...)` 恰好没有 `A = ...`）。现在明确 `count = 1`（一次喝 1 瓶）。已用临时探针复现并验证：修前 toil 0→1 时 `targetA` 被清空并抛空引用，修后完整走完 Ingest 并回复口渴。
 - **提桶特效 `CK_MoteBucket` 空引用拖垮整局**：`Defs/Hygiene/Effects_Dbh.xml` 里的 `CK_MoteBucket` 少了 DBH 原 def 里的空 `<mote>` 节点，`ThingDef.mote` 为 null，提桶特效一生成就在 `Mote.Tick` / `Mote.RealtimeUpdate` 里空引用，`Root.Update` 整局抛异常、小人停摆（还会连带存档出现 `not deep-saved` 提示）。补回空节点（默认 1 s 生命周期，与 DBH 一致）。
 - **找水刷「Not enough squares to get to radius 80」红字**：`ClosestSanitation.TryFindWaterCell` 与 `WaterSourceUtility.FindSurfaceWaterStandCell` 先把搜索范围收到 80 再交给 `GenRadial.RadialCellsAround`，但原版径向表只排 20000 格、最远 79.81228 格（`GenRadial.MaxRadialPatternRadius`），半径一到这个值 `NumCellsInRadius` 就打印 `Not enough squares to get to radius 80. Max is 79.81228` 并返回整张表。小人离地图四边都超过 80 格时（250×250 地图中间、口渴到 0 或中暑时范围是 9999）每次找水都刷一条；之前那次「按到地图边缘的距离收半径」并没有拦住它。现在统一按 `WaterSourceUtility.MaxWaterSearchRadius`（60 格；原来 12000 格的扫描上限也只覆盖到约 62 格）封顶，并去掉按地图边缘收半径的旧逻辑（它反而让贴边的小人只能搜身边几格）。`-colonykit-water-test` 自检新增 `radius guard` 探针：用 `Log.Messages` 计数确认对地图中心做一次全图找水后没有新增该错误。
@@ -50,6 +52,11 @@
 - **水龙头水箱断电不可用**：`CompWaterStorage` 新增 `IgnorePower`，水龙头水箱断电时仍计入水网存取；断电也能正常喝水、洗手和接水。
 
 ### Changed
+
+- **Mk-V 负重统一按「携带能力」**：`MassUtility.Capacity` 不再固定 200 kg，改为直接返回 `StatDefOf.CarryingCapacity`（设置页「Mk-V 携带能力」，默认 255，60–600 可调）。信息卡、Gear 页的 `MassCarried X / Y`、背包/装备质量判定（含备用武器）和商队质量容量现在读同一个数，商队容量提示里的分项也换成这个值；Mk-I～IV 不受影响。
+- **Mk-V 固定特性缩到 3 个、格斗者/冷枪手改随机**：Mk-V 出场固定只有坚韧、敏捷、疾步如飞（`Tough` / `Nimble` / `SpeedOffset` 2 度）；格斗者（`Brawler`）和冷枪手（`ShootingAccuracy` -1 度，原版 trigger-happy）挪进「追加随机特性」池，与快速学习、超凡记忆一起每次随机抽 2 个——池子 4 个、只抽 2 个，不会一次把随机特性拿全。抽取时按原版 `conflictingTraits`（双向）过滤，格斗者和冷枪手不会同时出现在同一台 Mk-V 上；已有的特性不重复抽。老存档的 Mk-V 在读档时按 `traitsProfileVersion` 3 重新结算：先摘掉旧版固定给的格斗者/冷枪手，再补 3 个固定特性，随机池按设置决定是否重抽。设置页说明同步改写。
+
+- **开局赠送 Mk-V 改成数量可调**：设置页「Mk-V 作战」原来的「开局赠送 Mk-V」勾选框换成「开局赠送 Mk-V 数量」滑条（0–5 台，默认 1 台，0 即不赠送）。`Scenario.GenerateIntoMap` 的后缀按设置值循环生成，每台依次在出生点附近的空地落位，沿用原来的命名（「Mk-V 机器人 N」）和出厂装备（主手电弧发射器 + 副手电弧刃），几台不会叠在同一格；地图上已经有 Mk-V（剧本自带或别的模组放的）时仍然保持原样，不追加。旧配置里的布尔开关在读档时迁移成 1 / 0 台，原来关掉的不会因为换字段而重新变成赠送。`-colonykit-nannybot-test` 自检新增 `mkvStartCount` 探针（临时填 9，确认被 `Validate` 夹回 5 台后还原）。
 
 - **Mk-V 交战范围上限 60 → 65 格**：设置页「交战范围」滑条上限提到 65 格，默认值仍是 45 格、下限仍是 1 格；已有存档里玩家调过的值不受影响，原来的 60 格设置仍然有效。
 - **Mk-V 电弧发射器射程**：`CK_ArcEmitter` 的基础射程 28 → 36 格；武器新增 `DefModExtension_MkvExclusiveWeapon`（`rangeBonus` 15），只有 Mk-V 拿着时由 `VerbProperties.AdjustedRange` 的后缀加上去，实战有效射程 51 格，同一把枪在别人手上仍是 36 格。加成后按天气射程上限（大雾、暴风雪等）重新压回，不会突破天气限制；`JobGiver_MkVCombat` 改用 `Verb.EffectiveRange` 判断该继续接近还是原地开火，`JobGiver_MkVWeaponPickup` 的换枪评分也把专属加成算进去，避免 Mk-V 把自带的电弧发射器换成面板更好、实际更差的枪。武器中英文说明同步写明 36 / 51 两档射程，`-colonykit-nannybot-test` 自检新增 `mkvWeaponRange` / `mkvEffectiveRange` 两个探针字段。

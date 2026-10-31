@@ -53,8 +53,8 @@
 	<ColonyKit.Settings.Robotics.Unlimited>Unlimited</ColonyKit.Settings.Robotics.Unlimited>
 
 	<ColonyKit.Settings.Robotics.Section.Combat>Mk-V combat</ColonyKit.Settings.Robotics.Section.Combat>
-	<ColonyKit.Settings.Robotics.StartWithMkV>Start with a Mk-V</ColonyKit.Settings.Robotics.StartWithMkV>
-	<ColonyKit.Settings.Robotics.StartWithMkV.Desc>Spawn one Mk-V on the player's starting map in a new game. Existing saves are not affected.</ColonyKit.Settings.Robotics.StartWithMkV.Desc>
+	<ColonyKit.Settings.Robotics.StartWithMkV>Starting Mk-V count</ColonyKit.Settings.Robotics.StartWithMkV>
+	<ColonyKit.Settings.Robotics.StartWithMkV.Desc>Spawn this many Mk-V androids (0-5, default 1) on the player's starting map in a new game. 0 disables the gift. Existing saves are not affected.</ColonyKit.Settings.Robotics.StartWithMkV.Desc>
 	<ColonyKit.Settings.Robotics.MkVCombatEnabled>Automatic combat</ColonyKit.Settings.Robotics.MkVCombatEnabled>
 	<ColonyKit.Settings.Robotics.MkVCombatEnabled.Desc>Let Mk-V acquire targets, fire and return automatically. When off, Mk-V only performs chores.</ColonyKit.Settings.Robotics.MkVCombatEnabled.Desc>
 	<ColonyKit.Settings.Robotics.MkVReturnToBay>Return to bay after combat</ColonyKit.Settings.Robotics.MkVReturnToBay>
@@ -81,7 +81,7 @@
 	<ColonyKit.Settings.Robotics.MkVInsulationHeat>Mk-V heat insulation</ColonyKit.Settings.Robotics.MkVInsulationHeat>
 	<ColonyKit.Settings.Robotics.MkVInsulationHint>Built-in insulation works like worn apparel: the cold value lowers the comfortable temperature floor and the heat value raises the ceiling. Defaults 20°C / 30°C.</ColonyKit.Settings.Robotics.MkVInsulationHint>
 	<ColonyKit.Settings.Robotics.MkvRandomTraits>Extra random traits (Mk-V)</ColonyKit.Settings.Robotics.MkvRandomTraits>
-	<ColonyKit.Settings.Robotics.MkvRandomTraits.Desc>Mk-V always gets Brawler, Careful shooter, Tough, Nimble and Jogger. Turn this on to roll 2 extra traits (Fast learner, Great memory, ...); existing traits are never duplicated.</ColonyKit.Settings.Robotics.MkvRandomTraits.Desc>
+	<ColonyKit.Settings.Robotics.MkvRandomTraits.Desc>Mk-V always gets Tough, Nimble and Jogger. Turn this on to roll 2 traits out of Brawler, Trigger-happy, Fast learner and Great memory (never all of them); existing traits are never duplicated.</ColonyKit.Settings.Robotics.MkvRandomTraits.Desc>
 	<ColonyKit.Settings.Robotics.RobotPowerEfficiency>Robot power efficiency</ColonyKit.Settings.Robotics.RobotPowerEfficiency>
 	<ColonyKit.Settings.Robotics.RobotPowerEfficiency.Desc>Shared by all Mk robots; 100% is the baseline, higher values make each battery last longer.</ColonyKit.Settings.Robotics.RobotPowerEfficiency.Desc>
 	<ColonyKit.Settings.Robotics.MkvBurstShotCount>Arc emitter burst count</ColonyKit.Settings.Robotics.MkvBurstShotCount>
@@ -249,4 +249,5 @@
 	<CK.Robotics.Command.Ai.Desc>Toggle whether this Mk-V follows DeepSeek decisions. Nothing is sent while the settings master switch is off.</CK.Robotics.Command.Ai.Desc>
 	<CK.Robotics.Inspect.Ai>AI: {0}</CK.Robotics.Inspect.Ai>
 	<CK.Robotics.Inspect.Ai.Waiting>waiting for a decision</CK.Robotics.Inspect.Ai.Waiting>
+	<CK.Robotics.Inspect.Ai.Caravan>joining the caravan</CK.Robotics.Inspect.Ai.Caravan>
 </LanguageData>

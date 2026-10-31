@@ -218,11 +218,17 @@ namespace ColonyKit.Modules.Robotics
 
 			listing.Gap();
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.Combat".Loc());
-			data.startWithMkV = SettingsWidgets.Checkbox(
+			// 0 = 不赠送；默认 1 台，和旧版「开局赠送 Mk-V」勾选框的效果一致。
+			data.startWithMkVCount = Mathf.RoundToInt(SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Robotics.StartWithMkV".Loc(),
-				ref data.startWithMkV,
-				"ColonyKit.Settings.Robotics.StartWithMkV.Desc".Loc());
+				data.startWithMkVCount,
+				RoboticsSettings.MinStartWithMkVCount,
+				RoboticsSettings.MaxStartWithMkVCount,
+				1f,
+				value => "CK.Robotics.Robots".Loc(value.ToString("0"))));
+			SettingsWidgets.Description(
+				listing, "ColonyKit.Settings.Robotics.StartWithMkV.Desc".Loc());
 			data.mkvCombatEnabled = SettingsWidgets.Checkbox(
 				listing,
 				"ColonyKit.Settings.Robotics.MkVCombatEnabled".Loc(),
