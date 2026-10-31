@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 
@@ -17,23 +16,10 @@ namespace ColonyKit
 	public class ColonyKitMod : Mod
 	{
 		/// <summary>
-		/// 设置窗口的分组调度器。一个 Mod 可以有多条设置菜单（见 <see cref="ColonyKitHygieneSettingsMod"/>
-		/// 等薄壳入口）：本类负责主入口和另外几组页面，每组一个控制器，首次打开时才创建。
+		/// 设置窗口的调度器。首次打开设置页时才创建，
+		/// 确保此时 settings 已从磁盘读入、各页对象可用。
 		/// </summary>
-		private readonly Dictionary<int, SettingsController> groupControllers =
-			new Dictionary<int, SettingsController>();
-
-		/// <summary>
-		/// 设置分组：按模块把 8 个页签拆到不同菜单里，避免一个窗口塞满页签。
-		/// 顺序必须和 <see cref="DrawSettingsGroup"/> 的下标一致。
-		/// </summary>
-		private static readonly string[][] SettingsGroups =
-		{
-			new[] { "modules", "general-settings", "about" },
-			new[] { "hygiene", "insulation" },
-			new[] { "robotics" },
-			new[] { "storage", "blueprint" }
-		};
+		private SettingsController controller;
 
 		/// <summary>
 		/// 全局单例。Harmony 补丁和 GameComponent 通过它拿设置。
@@ -82,70 +68,36 @@ namespace ColonyKit
 
 		/// <summary>
 		/// 设置页内容。多页签、滚动、重置都委托给 <see cref="SettingsController"/>，
-		/// 本类只负责按分组把控制器建起来。
+		/// 本类只负责在第一次打开时把控制器建起来。
 		/// 只改内存，不需要手动保存：关闭窗口时 <c>Dialog_ModSettings.PreClose()</c>
 		/// 会调用 <see cref="Mod.WriteSettings"/>。
 		/// </summary>
 		public override void DoSettingsWindowContents(Rect inRect)
 		{
-			DrawSettingsGroup(inRect, 0);
-		}
-
-		/// <summary>卫生 / 保温分组；由 <see cref="ColonyKitHygieneSettingsMod"/> 调用。</summary>
-		public void DrawHygieneSettings(Rect inRect)
-		{
-			DrawSettingsGroup(inRect, 1);
-		}
-
-		/// <summary>机器人分组；由 <see cref="ColonyKitRoboticsSettingsMod"/> 调用。</summary>
-		public void DrawRoboticsSettings(Rect inRect)
-		{
-			DrawSettingsGroup(inRect, 2);
-		}
-
-		/// <summary>立体库 / 蓝图分组；由 <see cref="ColonyKitStorageSettingsMod"/> 调用。</summary>
-		public void DrawStorageSettings(Rect inRect)
-		{
-			DrawSettingsGroup(inRect, 3);
-		}
-
-		private void DrawSettingsGroup(Rect inRect, int group)
-		{
-			GetGroupController(group)?.Draw(inRect);
-		}
-
-		private SettingsController GetGroupController(int group)
-		{
-			if (Settings == null || group < 0 || group >= SettingsGroups.Length)
+			if (controller == null && Settings != null)
 			{
-				return null;
+				controller = new SettingsController(Settings);
 			}
 
-			if (!groupControllers.TryGetValue(group, out SettingsController controller) || controller == null)
-			{
-				controller = new SettingsController(Settings, SettingsGroups[group]);
-				groupControllers[group] = controller;
-			}
-
-			return controller;
+			controller?.Draw(inRect);
 		}
 
 		/// <summary>
-		/// 打开设置前预选页面（深链接/自动化测试）。会在所有分组里找这个页面，
-		/// 找到哪组就选中哪组——注意调用方要打开对应分组的窗口才会看见效果。
+		/// 打开设置前预选页面（深链接/自动化测试）。会按需创建控制器。
 		/// </summary>
 		public bool SelectSettingsPage(string pageId)
 		{
-			for (int group = 0; group < SettingsGroups.Length; group++)
+			if (Settings == null)
 			{
-				SettingsController controller = GetGroupController(group);
-				if (controller != null && controller.HasPage(pageId))
-				{
-					return controller.SelectPage(pageId);
-				}
+				return false;
 			}
 
-			return false;
+			if (controller == null)
+			{
+				controller = new SettingsController(Settings);
+			}
+
+			return controller.SelectPage(pageId);
 		}
 	}
 }

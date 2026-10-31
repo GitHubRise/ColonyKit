@@ -39,13 +39,12 @@ namespace ColonyKit
 
 		private int selectedIndex;
 
-		public SettingsController(ColonyKitSettings settings, IEnumerable<string> pageIds = null)
+		public SettingsController(ColonyKitSettings settings)
 		{
 			this.settings = settings ?? throw new ArgumentNullException(nameof(settings));
 
 			// 页面由程序集自动发现：新增 SettingsPage 子类即可，不需要改本文件。
-			// pageIds 非空时只保留这些页，供「薄壳」设置入口按模块分组显示。
-			pages = DiscoverPages(pageIds);
+			pages = DiscoverPages();
 
 			if (pages.Count == 0)
 			{
@@ -53,7 +52,7 @@ namespace ColonyKit
 			}
 		}
 
-		private static List<SettingsPage> DiscoverPages(IEnumerable<string> pageIds)
+		private static List<SettingsPage> DiscoverPages()
 		{
 			var discovered = new List<SettingsPage>();
 
@@ -88,23 +87,11 @@ namespace ColonyKit
 				.OrderBy(page => page.Order)
 				.ToList();
 
-			if (pageIds != null)
-			{
-				var wanted = new HashSet<string>(pageIds);
-				result = result.Where(page => wanted.Contains(page.Id)).ToList();
-			}
-
 			ModLog.Info(
 				"Settings",
 				"discovered pages: " + string.Join(", ", result.Select(page => page.Id)));
 
 			return result;
-		}
-
-		/// <summary>本控制器里是否包含这个页面（分组可能只拿到一部分页）。</summary>
-		public bool HasPage(string pageId)
-		{
-			return !pageId.NullOrEmpty() && pages.Any(page => page.Id == pageId);
 		}
 
 		/// <summary>
@@ -132,21 +119,13 @@ namespace ColonyKit
 		/// </summary>
 		public void Draw(Rect inRect)
 		{
-			float top = inRect.y;
-			float usedHeight = 0f;
-			// 只有一个页面的入口（例如单独的「机器人」菜单）不画页签栏，少一行空白。
-			if (pages.Count > 1)
-			{
-				Rect tabsRect = new Rect(inRect.x, inRect.y, inRect.width, TabHeight);
-				DrawTabs(tabsRect);
-				top = tabsRect.yMax + 4f;
-				usedHeight = TabHeight + 4f;
-			}
+			Rect tabsRect = new Rect(inRect.x, inRect.y, inRect.width, TabHeight);
+			DrawTabs(tabsRect);
 
-			Rect toolbarRect = new Rect(inRect.x, top, inRect.width, ToolbarHeight);
+			Rect toolbarRect = new Rect(inRect.x, tabsRect.yMax + 4f, inRect.width, ToolbarHeight);
 			DrawToolbar(toolbarRect);
 
-			usedHeight += ToolbarHeight + ContentGap;
+			float usedHeight = TabHeight + 4f + ToolbarHeight + ContentGap;
 			Rect contentRect = new Rect(
 				inRect.x,
 				inRect.y + usedHeight,
