@@ -541,25 +541,30 @@ namespace ColonyKit.Modules.Robotics
 				"ColonyKit.Settings.Robotics.Ai.Enabled".Loc(),
 				ref data.aiEnabled,
 				"ColonyKit.Settings.Robotics.Ai.Enabled.Desc".Loc());
+			listing.Gap(6f);
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Robotics.Ai.Hint".Loc());
+			listing.Gap(6f);
 			data.aiApiKey = SettingsWidgets.TextField(
 				listing,
 				"ColonyKit.Settings.Robotics.Ai.ApiKey".Loc(),
 				data.aiApiKey,
 				200,
 				"ColonyKit.Settings.Robotics.Ai.ApiKey.Desc".Loc());
+			listing.Gap(6f);
 			data.aiBaseUrl = SettingsWidgets.TextField(
 				listing,
 				"ColonyKit.Settings.Robotics.Ai.BaseUrl".Loc(),
 				data.aiBaseUrl,
 				200,
 				"ColonyKit.Settings.Robotics.Ai.BaseUrl.Desc".Loc());
+			listing.Gap(6f);
 			data.aiModel = SettingsWidgets.TextField(
 				listing,
 				"ColonyKit.Settings.Robotics.Ai.Model".Loc(),
 				data.aiModel,
 				64,
 				"ColonyKit.Settings.Robotics.Ai.Model.Desc".Loc());
+			listing.Gap(6f);
 			data.aiInterval = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Robotics.Ai.Interval".Loc(),
@@ -568,6 +573,7 @@ namespace ColonyKit.Modules.Robotics
 				RoboticsSettings.MaxAiInterval,
 				1f,
 				value => value.ToString("0") + " s");
+			listing.Gap(6f);
 			data.aiTimeout = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Robotics.Ai.Timeout".Loc(),
@@ -576,6 +582,7 @@ namespace ColonyKit.Modules.Robotics
 				RoboticsSettings.MaxAiTimeout,
 				1f,
 				value => value.ToString("0") + " s");
+			listing.Gap(6f);
 			data.aiMaxTokens = Mathf.RoundToInt(SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Robotics.Ai.MaxTokens".Loc(),
@@ -584,6 +591,7 @@ namespace ColonyKit.Modules.Robotics
 				RoboticsSettings.MaxAiMaxTokens,
 				16f,
 				value => value.ToString("0")));
+			listing.Gap(6f);
 			data.aiTemperature = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Robotics.Ai.Temperature".Loc(),
@@ -592,20 +600,24 @@ namespace ColonyKit.Modules.Robotics
 				RoboticsSettings.MaxAiTemperature,
 				0.05f,
 				value => value.ToString("0.00"));
+			listing.Gap(6f);
 			data.aiAllowCombat = SettingsWidgets.Checkbox(
 				listing,
 				"ColonyKit.Settings.Robotics.Ai.Combat".Loc(),
 				ref data.aiAllowCombat,
 				"ColonyKit.Settings.Robotics.Ai.Combat.Desc".Loc());
+			listing.Gap(6f);
 			data.aiSpeech = SettingsWidgets.Checkbox(
 				listing,
 				"ColonyKit.Settings.Robotics.Ai.Speech".Loc(),
 				ref data.aiSpeech,
 				"ColonyKit.Settings.Robotics.Ai.Speech.Desc".Loc());
+			listing.Gap(6f);
 			if (SettingsWidgets.Button(listing, "ColonyKit.Settings.Robotics.Ai.Test".Loc()))
 			{
 				MkVAiService.TestConnection(data);
 			}
+			listing.Gap(6f);
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Robotics.Ai.Cost".Loc());
 
 			listing.Gap();
