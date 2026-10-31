@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 凉白开：1 瓶按 1 L 水计算；用篝火/炉灶把瓶装水烧开再放凉，喝完不会中毒。 -->
+	<ThingDef ParentName="ResourceBase">
+		<defName>CK_BoiledWater</defName>
+		<label>boiled water</label>
+		<description>A sealed 1 L bottle of boiled water, cooled down. Boiling kills germs, so it cannot cause food poisoning. Drink it directly to restore thirst.</description>
+		<graphicData>
+			<texPath>Things/Item/CK_BoiledWater</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			<drawSize>(0.6,0.9)</drawSize>
+		</graphicData>
+		<uiIconScale>1.2</uiIconScale>
+		<rotatable>false</rotatable>
+		<thingCategories>
+			<li>Foods</li>
+		</thingCategories>
+		<stackLimit>25</stackLimit>
+		<ingestible>
+			<preferability>NeverForNutrition</preferability>
+			<foodType>Fluid</foodType>
+			<baseIngestTicks>60</baseIngestTicks>
+			<babiesCanIngest>true</babiesCanIngest>
+		</ingestible>
+		<statBases>
+			<Mass>1</Mass>
+			<MarketValue>2</MarketValue>
+			<MaxHitPoints>30</MaxHitPoints>
+			<Flammability>0</Flammability>
+			<DeteriorationRate>0</DeteriorationRate>
+			<Nutrition>0.01</Nutrition>
+		</statBases>
+	</ThingDef>
+</Defs>

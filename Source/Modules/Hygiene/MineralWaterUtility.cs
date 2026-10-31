@@ -7,8 +7,8 @@ using Verse.AI;
 namespace ColonyKit.Modules.Hygiene
 {
 	/// <summary>
-	/// 1 L 一瓶的瓶装水：矿泉水（未处理，可能闹肚子）和纯净水（过滤，不会中毒）。
-	/// 两者都恢复 0.2 口渴，不需要容器。
+	/// 1 L 一瓶的瓶装水：矿泉水（未处理，可能闹肚子）、纯净水（过滤）和凉白开（烧开）。
+	/// 三者都恢复 0.2 口渴，不需要容器；除矿泉水外都不会中毒。
 	/// </summary>
 	internal static class MineralWaterUtility
 	{
@@ -19,6 +19,8 @@ namespace ColonyKit.Modules.Hygiene
 		private static ThingDef cachedMineral;
 
 		private static ThingDef cachedPurified;
+
+		private static ThingDef cachedBoiled;
 
 		public static ThingDef Def
 		{
@@ -44,6 +46,18 @@ namespace ColonyKit.Modules.Hygiene
 			}
 		}
 
+		public static ThingDef BoiledDef
+		{
+			get
+			{
+				if (cachedBoiled == null)
+				{
+					cachedBoiled = DefDatabase<ThingDef>.GetNamedSilentFail("CK_BoiledWater");
+				}
+				return cachedBoiled;
+			}
+		}
+
 		public static bool IsMineralWater(Thing thing)
 		{
 			return thing != null && thing.def == Def;
@@ -54,9 +68,14 @@ namespace ColonyKit.Modules.Hygiene
 			return thing != null && thing.def == PurifiedDef;
 		}
 
+		public static bool IsBoiledWater(Thing thing)
+		{
+			return thing != null && thing.def == BoiledDef;
+		}
+
 		public static bool IsBottledWater(Thing thing)
 		{
-			return IsMineralWater(thing) || IsPurifiedWater(thing);
+			return IsMineralWater(thing) || IsPurifiedWater(thing) || IsBoiledWater(thing);
 		}
 
 		public static Thing Carried(Pawn pawn)
@@ -81,7 +100,7 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return null;
 			}
-			return FindSpawnedDef(pawn, Def) ?? FindSpawnedDef(pawn, PurifiedDef);
+			return FindSpawnedDef(pawn, Def) ?? FindSpawnedDef(pawn, PurifiedDef) ?? FindSpawnedDef(pawn, BoiledDef);
 		}
 
 		private static Thing FindSpawnedDef(Pawn pawn, ThingDef def)
@@ -138,6 +157,15 @@ namespace ColonyKit.Modules.Hygiene
 				return;
 			}
 			if (MineralWaterUtility.IsPurifiedWater(__instance))
+			{
+				thirst.Drink(MineralWaterUtility.ThirstPerBottle);
+				ThoughtDef mood = DefDatabase<ThoughtDef>.GetNamedSilentFail("CK_DrankPurifiedWater");
+				if (mood != null)
+				{
+					ingester.needs?.mood?.thoughts?.memories?.TryGainMemory(mood);
+				}
+			}
+			else if (MineralWaterUtility.IsBoiledWater(__instance))
 			{
 				thirst.Drink(MineralWaterUtility.ThirstPerBottle);
 			}

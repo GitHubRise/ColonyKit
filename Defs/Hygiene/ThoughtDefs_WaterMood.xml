@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThoughtDef>
+		<defName>CK_DrankPurifiedWater</defName>
+		<durationDays>0.5</durationDays>
+		<stackLimit>1</stackLimit>
+		<stages>
+			<li>
+				<label>clean water</label>
+				<description>I drank a bottle of clean purified water. It is a small comfort.</description>
+				<baseMoodEffect>2</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+</Defs>

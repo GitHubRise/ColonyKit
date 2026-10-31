@@ -63,14 +63,15 @@ namespace ColonyKit.Modules.Hygiene
 			Thing bottle = MineralWaterUtility.FindInCaravan(__instance.caravan);
 			if (bottle != null)
 			{
-				bool purified = MineralWaterUtility.IsPurifiedWater(bottle);
+				bool clean = MineralWaterUtility.IsPurifiedWater(bottle)
+					|| MineralWaterUtility.IsBoiledWater(bottle);
 				bottle.stackCount--;
 				if (bottle.stackCount <= 0)
 				{
 					bottle.Destroy();
 				}
 				thirst.Drink(MineralWaterUtility.ThirstPerBottle);
-				if (!purified)
+				if (!clean)
 				{
 					SanitationUtil.ContaminationCheckDrinking(pawn, ContaminationLevel.Untreated);
 				}

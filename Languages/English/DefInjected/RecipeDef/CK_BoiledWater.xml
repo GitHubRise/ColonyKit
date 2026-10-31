@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_BoilWater.label>Boil water</CK_BoilWater.label>
+	<CK_BoilWater.description>Boil one 1 L bottle of water on a campfire or stove, then let it cool into boiled water. Boiling kills germs, so it cannot cause food poisoning.</CK_BoilWater.description>
+	<CK_BoilWater.jobString>boiling water.</CK_BoilWater.jobString>
+</LanguageData>

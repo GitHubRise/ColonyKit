@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_BoilWater.label>烧凉白开</CK_BoilWater.label>
+	<CK_BoilWater.description>拿一瓶 1 升瓶装水到篝火或炉灶烧开，放凉后装回一瓶。烧开能杀菌，不会导致食物中毒。</CK_BoilWater.description>
+	<CK_BoilWater.jobString>正在烧水。</CK_BoilWater.jobString>
+</LanguageData>
