@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 	<CK_DrankPurifiedWater.label>clean water</CK_DrankPurifiedWater.label>
-	<CK_DrankPurifiedWater.description>I drank a bottle of clean purified water. It is a small comfort.</CK_DrankPurifiedWater.description>
+	<CK_DrankPurifiedWater.description>I drank a bottle of clean purified water. It lifted my mood.</CK_DrankPurifiedWater.description>
+	<CK_DrankBoiledWater.label>warm boiled water</CK_DrankBoiledWater.label>
+	<CK_DrankBoiledWater.description>I drank a bottle of boiled water. It is soothing.</CK_DrankBoiledWater.description>
 </LanguageData>

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 	<CK_DrankPurifiedWater.label>喝到纯净水</CK_DrankPurifiedWater.label>
-	<CK_DrankPurifiedWater.description>喝到一瓶干净的纯净水，心里舒服了一点。</CK_DrankPurifiedWater.description>
+	<CK_DrankPurifiedWater.description>喝到一瓶干净的纯净水，心情好了不少。</CK_DrankPurifiedWater.description>
+	<CK_DrankBoiledWater.label>喝到凉白开</CK_DrankBoiledWater.label>
+	<CK_DrankBoiledWater.description>喝到一瓶放凉的凉白开，心里舒服了一点。</CK_DrankBoiledWater.description>
 </LanguageData>

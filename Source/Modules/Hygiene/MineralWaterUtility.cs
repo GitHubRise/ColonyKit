@@ -159,15 +159,12 @@ namespace ColonyKit.Modules.Hygiene
 			if (MineralWaterUtility.IsPurifiedWater(__instance))
 			{
 				thirst.Drink(MineralWaterUtility.ThirstPerBottle);
-				ThoughtDef mood = DefDatabase<ThoughtDef>.GetNamedSilentFail("CK_DrankPurifiedWater");
-				if (mood != null)
-				{
-					ingester.needs?.mood?.thoughts?.memories?.TryGainMemory(mood);
-				}
+				GainWaterMood(ingester, "CK_DrankPurifiedWater", "CK_DrankBoiledWater");
 			}
 			else if (MineralWaterUtility.IsBoiledWater(__instance))
 			{
 				thirst.Drink(MineralWaterUtility.ThirstPerBottle);
+				GainWaterMood(ingester, "CK_DrankBoiledWater", "CK_DrankPurifiedWater");
 			}
 			else if (MineralWaterUtility.IsMineralWater(__instance))
 			{
@@ -175,6 +172,25 @@ namespace ColonyKit.Modules.Hygiene
 				SanitationUtil.ContaminationCheckDrinking(ingester, ContaminationLevel.Untreated);
 			}
 			HygieneUtility.AddDrinkSatiety(ingester);
+		}
+
+		private static void GainWaterMood(Pawn pawn, string gainDefName, string removeDefName)
+		{
+			MemoryThoughtHandler memories = pawn?.needs?.mood?.thoughts?.memories;
+			if (memories == null)
+			{
+				return;
+			}
+			ThoughtDef remove = DefDatabase<ThoughtDef>.GetNamedSilentFail(removeDefName);
+			if (remove != null)
+			{
+				memories.RemoveMemoriesOfDef(remove);
+			}
+			ThoughtDef gain = DefDatabase<ThoughtDef>.GetNamedSilentFail(gainDefName);
+			if (gain != null)
+			{
+				memories.TryGainMemory(gain);
+			}
 		}
 	}
 }
