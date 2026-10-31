@@ -417,6 +417,30 @@ namespace ColonyKit.Modules.Robotics
 			victim.Destroy(DestroyMode.Vanish);
 		}
 
+		/// <summary>
+		/// 设置分组探针：每个页都属于「殖民地套件」主菜单或某个薄壳菜单，
+		/// 确认拆分后深链接依然能找到所有页。
+		/// </summary>
+		private static void ProbeSettingsGroups(StringBuilder builder)
+		{
+			ColonyKitMod mod = ColonyKitMod.Instance;
+			if (mod == null)
+			{
+				builder.Append(" settingsGroups=none");
+				return;
+			}
+			string[] pages = { "modules", "general-settings", "about", "hygiene", "insulation", "robotics", "storage", "blueprint" };
+			int found = 0;
+			for (int i = 0; i < pages.Length; i++)
+			{
+				if (mod.SelectSettingsPage(pages[i]))
+				{
+					found++;
+				}
+			}
+			builder.Append(" settingsGroups=").Append(found).Append('/').Append(pages.Length);
+		}
+
 		public static void RunIfRequested(Game game)
 		{
 			if (ran || game == null || !GenCommandLine.CommandLineArgPassed(CommandLineKey))
@@ -688,6 +712,7 @@ namespace ColonyKit.Modules.Robotics
 					}
 				}
 				ProbeMkVBay(map, builder);
+				ProbeSettingsGroups(builder);
 				ModLog.Force("Robotics", builder.ToString());
 
 				if (GenCommandLine.CommandLineArgPassed("-colonykit-robotics-ui-test"))

@@ -2,6 +2,9 @@
 <!-- 设置页字符串。键名对应 Source/Settings 下的 Translate 调用。 -->
 <LanguageData>
 	<ColonyKit.SettingsCategory>Colony Kit</ColonyKit.SettingsCategory>
+	<ColonyKit.SettingsCategory.Hygiene>Colony Kit · Hygiene &amp; Insulation</ColonyKit.SettingsCategory.Hygiene>
+	<ColonyKit.SettingsCategory.Robotics>Colony Kit · Robotics</ColonyKit.SettingsCategory.Robotics>
+	<ColonyKit.SettingsCategory.Storage>Colony Kit · Storage &amp; Blueprints</ColonyKit.SettingsCategory.Storage>
 
 	<ColonyKit.Settings.Hint>Changes apply immediately; they are saved when this window closes.</ColonyKit.Settings.Hint>
 	<ColonyKit.Settings.Search.Hint>Search this page…</ColonyKit.Settings.Search.Hint>

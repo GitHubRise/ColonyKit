@@ -2,6 +2,9 @@
 <!-- 设置页字符串。键名对应 Source/Settings 下的 Translate 调用。 -->
 <LanguageData>
 	<ColonyKit.SettingsCategory>殖民地套件</ColonyKit.SettingsCategory>
+	<ColonyKit.SettingsCategory.Hygiene>殖民地套件 · 卫生与保温</ColonyKit.SettingsCategory.Hygiene>
+	<ColonyKit.SettingsCategory.Robotics>殖民地套件 · 机器人</ColonyKit.SettingsCategory.Robotics>
+	<ColonyKit.SettingsCategory.Storage>殖民地套件 · 仓储与建造</ColonyKit.SettingsCategory.Storage>
 
 	<ColonyKit.Settings.Hint>修改立即生效，关闭窗口时保存。</ColonyKit.Settings.Hint>
 	<ColonyKit.Settings.Search.Hint>检索本页设置…</ColonyKit.Settings.Search.Hint>
