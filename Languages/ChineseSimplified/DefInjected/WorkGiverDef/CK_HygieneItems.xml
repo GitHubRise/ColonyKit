@@ -3,4 +3,7 @@
 	<CK_CleanBedpan.label>清洗便盆</CK_CleanBedpan.label>
 	<CK_CleanBedpan.verb>清洗</CK_CleanBedpan.verb>
 	<CK_CleanBedpan.gerund>清洗</CK_CleanBedpan.gerund>
+	<CK_CleanBedpanDoctor.label>清洗便盆</CK_CleanBedpanDoctor.label>
+	<CK_CleanBedpanDoctor.verb>清洗</CK_CleanBedpanDoctor.verb>
+	<CK_CleanBedpanDoctor.gerund>清洗</CK_CleanBedpanDoctor.gerund>
 </LanguageData>
