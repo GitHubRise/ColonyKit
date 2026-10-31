@@ -42,6 +42,8 @@ namespace ColonyKit.Modules.Robotics
 			"Refuel",
 			"RefuelAtomic",
 			"FeedPatient",
+			"TendPatient",
+			"Research",
 			"Rescue",
 			"RopeToPen",
 			"RopeRoamerToUnenclosedPen",
@@ -824,7 +826,7 @@ namespace ColonyKit.Modules.Robotics
 			return string.Join("\n", lines);
 		}
 
-		private static bool IsWorkJob(JobDef def)
+		internal static bool IsWorkJob(JobDef def)
 		{
 			return def != null && WorkJobs.Contains(def.defName);
 		}

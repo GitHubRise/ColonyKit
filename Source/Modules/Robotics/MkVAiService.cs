@@ -82,6 +82,12 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return;
 			}
+			// 正在做家务（屠宰/搬运/做饭/手工等）时先让它做完；只有身边有敌人、
+			// 倒地殖民者或近处火焰才允许 AI 打断。
+			if (CompNannyBot.IsWorkJob(pawn.CurJobDef) && !HasUrgentSituation(pawn))
+			{
+				return;
+			}
 			if (string.IsNullOrWhiteSpace(settings.aiApiKey))
 			{
 				if (warnedNoKeyPawn != pawnId)
@@ -392,6 +398,13 @@ namespace ColonyKit.Modules.Robotics
 				}
 			}
 
+			AddChoreCandidate(candidates, pawn, "butcher", "屠宰尸体（屠宰台账单）");
+			AddChoreCandidate(candidates, pawn, "cook", "做饭（炉灶账单）");
+			AddChoreCandidate(candidates, pawn, "craft", "手工制作（工作台账单）");
+			AddChoreCandidate(candidates, pawn, "haul", "搬运收割的粮食/木头等散落物");
+			AddChoreCandidate(candidates, pawn, "doctor", "治疗受伤的殖民者/囚犯");
+			AddChoreCandidate(candidates, pawn, "research", "推进当前研究");
+
 			candidates.Add(new AiCandidate
 			{
 				id = "return",
@@ -427,6 +440,81 @@ namespace ColonyKit.Modules.Robotics
 				fires = fires,
 				candidates = candidates.ToArray()
 			};
+		}
+
+		private static void AddChoreCandidate(
+			List<AiCandidate> candidates, Pawn pawn, string chore, string label)
+		{
+			if (ChoreJob(chore, pawn) == null)
+			{
+				return;
+			}
+			candidates.Add(new AiCandidate
+			{
+				id = "chore:" + chore,
+				kind = "chore",
+				label = label,
+				dist = 0
+			});
+		}
+
+		private static Job ChoreJob(string chore, Pawn pawn)
+		{
+			JobIssueParams issue = new JobIssueParams();
+			switch (chore)
+			{
+				case "butcher":
+					return new JobGiver_NannyBotButcher().TryIssueJobPackage(pawn, issue).Job;
+				case "cook":
+					return new JobGiver_NannyBotCook().TryIssueJobPackage(pawn, issue).Job;
+				case "craft":
+					return new JobGiver_NannyBotCrafting().TryIssueJobPackage(pawn, issue).Job;
+				case "haul":
+					return new JobGiver_NannyBotHaul().TryIssueJobPackage(pawn, issue).Job;
+				case "doctor":
+					return new JobGiver_NannyBotDoctor().TryIssueJobPackage(pawn, issue).Job;
+				case "research":
+					return new JobGiver_NannyBotResearch().TryIssueJobPackage(pawn, issue).Job;
+				default:
+					return null;
+			}
+		}
+
+		/// <summary>身边有敌人、倒地殖民者或近处火焰时，允许 AI 打断当前家务。</summary>
+		private static bool HasUrgentSituation(Pawn pawn)
+		{
+			Map map = pawn.Map;
+			if (map == null)
+			{
+				return false;
+			}
+			foreach (IAttackTarget target in map.attackTargetsCache.TargetsHostileToColony)
+			{
+				Thing thing = target?.Thing;
+				if (thing != null && thing.Spawned
+					&& thing.Position.InHorDistOf(pawn.Position, 20f)
+					&& GenHostility.IsActiveThreatToPlayer(target))
+				{
+					return true;
+				}
+			}
+			foreach (Pawn colonist in map.mapPawns.FreeColonistsSpawned)
+			{
+				if (colonist.Downed && !colonist.Dead
+					&& colonist.Position.InHorDistOf(pawn.Position, 20f))
+				{
+					return true;
+				}
+			}
+			foreach (Thing fire in map.listerThings.ThingsInGroup(ThingRequestGroup.Fire))
+			{
+				if (fire != null && fire.Spawned
+					&& fire.Position.InHorDistOf(pawn.Position, 8f))
+				{
+					return true;
+				}
+			}
+			return false;
 		}
 
 		private static async Task<AiRequestResult> SendAsync(AiHttpRequest request)
@@ -702,6 +790,19 @@ namespace ColonyKit.Modules.Robotics
 		{
 			if (string.IsNullOrEmpty(action) || action == "work")
 			{
+				return;
+			}
+			if (action.StartsWith("chore:", StringComparison.Ordinal))
+			{
+				Job choreJob = ChoreJob(action.Substring("chore:".Length), pawn);
+				if (choreJob != null)
+				{
+					StartJob(pawn, choreJob);
+				}
+				else
+				{
+					comp.AiLastError = "当前没有可做的动作：" + action;
+				}
 				return;
 			}
 			if (action == "return")
