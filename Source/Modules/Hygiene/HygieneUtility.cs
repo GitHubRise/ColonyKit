@@ -29,6 +29,23 @@ namespace ColonyKit.Modules.Hygiene
 			pawn.needs.food.CurLevel = Mathf.Min(1f, pawn.needs.food.CurLevel + points);
 		}
 
+		/// <summary>把设置里的凉白开工作时长写回单瓶/批量配方。</summary>
+		public static void ApplyWaterRecipeSettings()
+		{
+			int ticks = Mathf.Clamp(HygieneSettings.Current.boiledWaterWorkTicks, 20, 2000);
+			ApplyRecipeWork("CK_BoilWater", ticks);
+			ApplyRecipeWork("CK_BoilWaterBulk", ticks);
+		}
+
+		private static void ApplyRecipeWork(string defName, int ticks)
+		{
+			RecipeDef recipe = DefDatabase<RecipeDef>.GetNamedSilentFail(defName);
+			if (recipe != null)
+			{
+				recipe.workAmount = ticks;
+			}
+		}
+
 		public static Need_Hygiene EnsureNeed(Pawn pawn)
 		{
 			return Ensure<Need_Hygiene>(pawn, "CK_Hygiene");

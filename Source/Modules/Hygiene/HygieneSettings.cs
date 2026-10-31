@@ -99,6 +99,9 @@ namespace ColonyKit.Modules.Hygiene
 
 		public int boiledWaterMood = 2;
 
+		/// <summary>凉白开单瓶/批量配方的工作量（tick）。</summary>
+		public int boiledWaterWorkTicks = 200;
+
 		/// <summary>水泵/风泵/泵站的容量倍率；1 为 DBH 原值。</summary>
 		public float pumpCapacityMultiplier = 1f;
 
@@ -322,6 +325,7 @@ namespace ColonyKit.Modules.Hygiene
 			Scribe_Values.Look(ref boiledWaterThirst, "boiledWaterThirst", 0.2f);
 			Scribe_Values.Look(ref boiledWaterSatiety, "boiledWaterSatiety", 0.05f);
 			Scribe_Values.Look(ref boiledWaterMood, "boiledWaterMood", 2);
+			Scribe_Values.Look(ref boiledWaterWorkTicks, "boiledWaterWorkTicks", 200);
 			Scribe_Values.Look(ref pumpCapacityMultiplier, "pumpCapacityMultiplier", 1f);
 			Scribe_Values.Look(ref sewageGridCapacity, "sewageGridCapacity", 1f);
 			Scribe_Values.Look(ref sewageCleanupRate, "sewageCleanupRate", 1f);
@@ -360,6 +364,7 @@ namespace ColonyKit.Modules.Hygiene
 			changed |= Clamp(ref boiledWaterThirst, 0f, 1f, 0.2f);
 			changed |= Clamp(ref boiledWaterSatiety, 0f, 0.2f, 0.05f);
 			changed |= ClampInt(ref boiledWaterMood, 0, 20, 2);
+			changed |= ClampInt(ref boiledWaterWorkTicks, 20, 2000, 200);
 			changed |= Clamp(ref pumpCapacityMultiplier, MinPumpCapacity, MaxPumpCapacity, 1f);
 			changed |= Clamp(ref sewageGridCapacity, MinSewageGrid, MaxSewageGrid, 1f);
 			changed |= Clamp(ref sewageCleanupRate, MinSewageCleanup, MaxSewageCleanup, 1f);
@@ -442,6 +447,7 @@ namespace ColonyKit.Modules.Hygiene
 			boiledWaterThirst = 0.2f;
 			boiledWaterSatiety = 0.05f;
 			boiledWaterMood = 2;
+			boiledWaterWorkTicks = 200;
 			pumpCapacityMultiplier = 1f;
 			sewageGridCapacity = 1f;
 			sewageCleanupRate = 1f;

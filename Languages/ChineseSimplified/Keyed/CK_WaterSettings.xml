@@ -8,6 +8,7 @@
 	<ColonyKit.Settings.Hygiene.Water.Thirst>解渴量</ColonyKit.Settings.Hygiene.Water.Thirst>
 	<ColonyKit.Settings.Hygiene.Water.Satiety>饱腹感</ColonyKit.Settings.Hygiene.Water.Satiety>
 	<ColonyKit.Settings.Hygiene.Water.Mood>心情</ColonyKit.Settings.Hygiene.Water.Mood>
+	<ColonyKit.Settings.Hygiene.Water.WorkTicks>凉白开工作时长</ColonyKit.Settings.Hygiene.Water.WorkTicks>
 	<ColonyKit.Settings.Hygiene.Water.MineralPoison>矿泉水可能中毒</ColonyKit.Settings.Hygiene.Water.MineralPoison>
 	<ColonyKit.Settings.Hygiene.Water.MineralPoison.Desc>关闭后矿泉水按干净水处理，不再做未处理水污染判定。纯净水和凉白开始终不会中毒。</ColonyKit.Settings.Hygiene.Water.MineralPoison.Desc>
 </LanguageData>

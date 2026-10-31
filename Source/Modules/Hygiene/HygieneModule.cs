@@ -50,6 +50,7 @@ namespace ColonyKit.Modules.Hygiene
 				$"fillPointWorkGiver={WorkGiverExists("CK_FillWaterPoint")}; " +
 				$"hygiene menu={DefDatabase<DesignationCategoryDef>.GetNamedSilentFail("CK_Hygiene") != null}; " +
 				$"latrine={DefExists("CK_PitLatrine")}, emptyLatrineJob={DefDatabase<JobDef>.GetNamedSilentFail("CK_EmptyLatrine") != null}");
+			HygieneUtility.ApplyWaterRecipeSettings();
 		}
 
 		private static bool DefExists(string defName)

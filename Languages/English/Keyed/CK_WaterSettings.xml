@@ -8,6 +8,7 @@
 	<ColonyKit.Settings.Hygiene.Water.Thirst>Thirst restored</ColonyKit.Settings.Hygiene.Water.Thirst>
 	<ColonyKit.Settings.Hygiene.Water.Satiety>Food restored</ColonyKit.Settings.Hygiene.Water.Satiety>
 	<ColonyKit.Settings.Hygiene.Water.Mood>Mood</ColonyKit.Settings.Hygiene.Water.Mood>
+	<ColonyKit.Settings.Hygiene.Water.WorkTicks>Boiled water work</ColonyKit.Settings.Hygiene.Water.WorkTicks>
 	<ColonyKit.Settings.Hygiene.Water.MineralPoison>Mineral water can cause poisoning</ColonyKit.Settings.Hygiene.Water.MineralPoison>
 	<ColonyKit.Settings.Hygiene.Water.MineralPoison.Desc>When off, mineral water is treated as clean and no untreated-water contamination check is made. Purified water and boiled water never cause poisoning.</ColonyKit.Settings.Hygiene.Water.MineralPoison.Desc>
 </LanguageData>

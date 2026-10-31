@@ -155,6 +155,19 @@ namespace ColonyKit.Modules.Hygiene
 				20f,
 				1f,
 				value => "+" + value.ToString("0")));
+			int beforeBoiledWork = data.boiledWaterWorkTicks;
+			data.boiledWaterWorkTicks = Mathf.RoundToInt(SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.Water.WorkTicks".Loc(),
+				data.boiledWaterWorkTicks,
+				20f,
+				2000f,
+				10f,
+				value => value.ToString("0") + " tick"));
+			if (data.boiledWaterWorkTicks != beforeBoiledWork)
+			{
+				HygieneUtility.ApplyWaterRecipeSettings();
+			}
 
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Sewage".Loc());
 			data.pumpCapacityMultiplier = SettingsWidgets.Slider(
