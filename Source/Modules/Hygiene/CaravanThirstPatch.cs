@@ -75,6 +75,7 @@ namespace ColonyKit.Modules.Hygiene
 				{
 					SanitationUtil.ContaminationCheckDrinking(pawn, ContaminationLevel.Untreated);
 				}
+				HygieneUtility.AddDrinkSatiety(pawn);
 				return;
 			}
 			CompBasinWater container = FindWaterContainer(__instance.caravan);
@@ -85,6 +86,7 @@ namespace ColonyKit.Modules.Hygiene
 				{
 					thirst.Drink(ThirstPerDrink * (taken / LitersPerDrink));
 					SanitationUtil.ContaminationCheckDrinking(pawn, container.Contamination);
+					HygieneUtility.AddDrinkSatiety(pawn);
 					return;
 				}
 			}
@@ -111,6 +113,7 @@ namespace ColonyKit.Modules.Hygiene
 			}
 			thirst.Drink(ThirstPerDrink);
 			SanitationUtil.ContaminationCheckWater(pawn, ContaminationLevel.Untreated);
+			HygieneUtility.AddDrinkSatiety(pawn);
 			return true;
 		}
 

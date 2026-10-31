@@ -107,6 +107,7 @@ namespace ColonyKit.Modules.Hygiene
 			drink.AddFinishAction(() =>
 			{
 				SanitationUtil.ContaminationCheckDrinking(pawn, waterQuality);
+				HygieneUtility.AddDrinkSatiety(pawn);
 			});
 			yield return drink;
 		}

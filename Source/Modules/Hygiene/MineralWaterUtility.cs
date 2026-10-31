@@ -147,7 +147,7 @@ namespace ColonyKit.Modules.Hygiene
 	{
 		private static void Postfix(Thing __instance, Pawn ingester)
 		{
-			if (ingester == null)
+			if (ingester == null || !MineralWaterUtility.IsBottledWater(__instance))
 			{
 				return;
 			}
@@ -174,6 +174,7 @@ namespace ColonyKit.Modules.Hygiene
 				thirst.Drink(MineralWaterUtility.ThirstPerBottle);
 				SanitationUtil.ContaminationCheckDrinking(ingester, ContaminationLevel.Untreated);
 			}
+			HygieneUtility.AddDrinkSatiety(ingester);
 		}
 	}
 }

@@ -1,12 +1,25 @@
 using System;
 using ColonyKit.Modules.Robotics;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace ColonyKit.Modules.Hygiene
 {
 	internal static class HygieneUtility
 	{
+		/// <summary>喝一次水增加 2 点（0.02）饱腹感。</summary>
+		public const float SatietyPerDrink = 0.02f;
+
+		public static void AddDrinkSatiety(Pawn pawn)
+		{
+			if (pawn?.needs?.food == null)
+			{
+				return;
+			}
+			pawn.needs.food.CurLevel = Mathf.Min(1f, pawn.needs.food.CurLevel + SatietyPerDrink);
+		}
+
 		public static Need_Hygiene EnsureNeed(Pawn pawn)
 		{
 			return Ensure<Need_Hygiene>(pawn, "CK_Hygiene");

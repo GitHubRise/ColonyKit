@@ -212,6 +212,7 @@ namespace ColonyKit.Modules.Hygiene
 				if (patient != null && !patient.Dead)
 				{
 					SanitationUtil.ContaminationCheckDrinking(patient, waterQuality);
+					HygieneUtility.AddDrinkSatiety(patient);
 				}
 			});
 			return feed;

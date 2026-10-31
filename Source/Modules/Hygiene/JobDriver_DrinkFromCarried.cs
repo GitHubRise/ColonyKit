@@ -64,6 +64,7 @@ namespace ColonyKit.Modules.Hygiene
 				if (drank)
 				{
 					SanitationUtil.ContaminationCheckDrinking(pawn, waterQuality);
+					HygieneUtility.AddDrinkSatiety(pawn);
 				}
 			});
 			yield return drink;

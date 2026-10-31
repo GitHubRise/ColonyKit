@@ -37,6 +37,7 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				// 直接喝地表水：按脚下格子的污染程度判定（CK 已经把污染网格搬过来了）。
 				SanitationUtil.ContaminationFromCellForPawn(pawn, pawn.Position);
+				HygieneUtility.AddDrinkSatiety(pawn);
 			});
 			yield return drink;
 		}
