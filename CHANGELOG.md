@@ -14,6 +14,7 @@
 
 ### Fixed
 
+- **冰块物品分类报错**：`CK_IceBlock` 的 `thingCategories` 写了 Core 里并不存在的 `Resources`，只加载 Core（不带 Odyssey）时启动会报 `Could not resolve cross-reference to Verse.ThingCategoryDef named Resources`，并弹出 XML 错误窗口；现改为和钢、石料相同的 `ResourcesRaw`。
 - **水龙头无电不进水**：进水来源不再只认同网水井，还接受同网其他水箱存水和 40 格内可站人的地表水；检视页与水龙头页新增「水源：建在水面上/同网水井/同网存水/附近地表水/无」，无电仍按 25 升/小时进水，通电 200 升/小时。
 - **水龙头水箱断电不可用**：`CompWaterStorage` 新增 `IgnorePower`，水龙头水箱断电时仍计入水网存取；断电也能正常喝水、洗手和接水。
 
@@ -408,4 +409,3 @@
 - 翻译表来自 `sources/devmenu-zh/Translations/DevMenuLabels.xml` 当前版本；后续新增词条要同步复制。
 - 模板自带的 `pawn-menu` / `notifications` / `build-control` / `tech-tree` / `diagnostics` 模块保留，作为框架能力；后续按需裁剪。
 - 未添加对 DBH / StackXXL / RJW 的硬依赖；移植对应模块时再决定依赖或复制。
-

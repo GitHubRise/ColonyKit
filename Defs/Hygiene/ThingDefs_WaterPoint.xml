@@ -176,7 +176,7 @@
 		<uiIconScale>1.1</uiIconScale>
 		<rotatable>false</rotatable>
 		<thingCategories>
-			<li>Resources</li>
+			<li>ResourcesRaw</li>
 		</thingCategories>
 		<stackLimit>20</stackLimit>
 		<comps>
