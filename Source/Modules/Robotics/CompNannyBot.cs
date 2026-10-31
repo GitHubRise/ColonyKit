@@ -88,6 +88,15 @@ namespace ColonyKit.Modules.Robotics
 		/// <summary>正在被殖民者维修；维修期间不充电、不接新家务。</summary>
 		public bool repairing;
 
+		/// <summary>Mk-V 的 AI 控制开关（每台独立）；总开关在设置页。</summary>
+		public bool AiControl = true;
+
+		/// <summary>AI 下一次允许派发的时间，以及最近一次动作/台词/错误。</summary>
+		public int AiNextTick;
+		public string AiLastAction;
+		public string AiLastSay;
+		public string AiLastError;
+
 		/// <summary>常用充电桩；桩被拆掉后会自动改用最近的桩。</summary>
 		public Building homeStation;
 
@@ -102,7 +111,7 @@ namespace ColonyKit.Modules.Robotics
 		/// <summary>每项家务的优先级 0（关闭）–8；1 最高，索引对应 RobotChore。</summary>
 		private List<int> chorePriorities;
 
-		private Pawn Pawn => parent as Pawn;
+		internal Pawn Pawn => parent as Pawn;
 
 		public float Durability => durability;
 
@@ -401,6 +410,7 @@ namespace ColonyKit.Modules.Robotics
 					traitsInitialized = true;
 					traitsProfileVersion = 2;
 				}
+				AiNextTick = Find.TickManager.TicksGame + 120;
 				pawn.gender = Gender.Female;
 				SexualizeRjw(pawn);
 				AddMechanicalVagina(pawn);
@@ -451,6 +461,7 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref scrub, "ck_robotics_scrub", true);
 			Scribe_Values.Look(ref haul, "ck_robotics_haul", true);
 			Scribe_Values.Look(ref paused, "ck_robotics_paused", false);
+			Scribe_Values.Look(ref AiControl, "ck_robotics_aiControl", true);
 			Scribe_Values.Look(ref lowPowerStandby, "ck_robotics_lowPowerStandby", false);
 			Scribe_Values.Look(ref skillsInitialized, "ck_robotics_skillsInitialized", false);
 			Scribe_Values.Look(ref skillsProfileVersion, "ck_robotics_skillsProfileVersion", 0);
@@ -540,6 +551,7 @@ namespace ColonyKit.Modules.Robotics
 				{
 					pawn.jobs.EndCurrentJob(JobCondition.InterruptForced);
 				}
+				MkVAiService.Tick(this);
 			}
 
 			if (!parent.IsHashIntervalTick(250))
@@ -679,6 +691,20 @@ namespace ColonyKit.Modules.Robotics
 					}
 				};
 				yield return draft;
+
+				Command_Toggle ai = new Command_Toggle
+				{
+					defaultLabel = "CK.Robotics.Command.Ai".Translate(),
+					defaultDesc = "CK.Robotics.Command.Ai.Desc".Translate(),
+					icon = TexCommand.GatherSpotActive,
+					isActive = () => AiControl,
+					toggleAction = () =>
+					{
+						AiControl = !AiControl;
+						AiNextTick = Find.TickManager.TicksGame + 120;
+					}
+				};
+				yield return ai;
 			}
 
 			yield return CommandAction(
@@ -765,6 +791,23 @@ namespace ColonyKit.Modules.Robotics
 				lines.Add("CK.Robotics.Inspect.LowPowerStandby".Translate());
 			}
 			lines.Add("CK.Robotics.Inspect.ActiveChores".Translate(ActiveChoreCount));
+
+			if (NannyBotUtility.IsMkV(pawn) && NannyBotUtility.Settings.aiEnabled)
+			{
+				string action = string.IsNullOrEmpty(AiLastAction)
+					? "CK.Robotics.Inspect.Ai.Waiting".Translate()
+					: AiLastAction;
+				string aiLine = "CK.Robotics.Inspect.Ai".Translate(action);
+				if (!string.IsNullOrEmpty(AiLastSay))
+				{
+					aiLine += " \"" + AiLastSay + "\"";
+				}
+				if (!string.IsNullOrEmpty(AiLastError))
+				{
+					aiLine += " (" + AiLastError + ")";
+				}
+				lines.Add(aiLine);
+			}
 
 			if (repairing)
 			{

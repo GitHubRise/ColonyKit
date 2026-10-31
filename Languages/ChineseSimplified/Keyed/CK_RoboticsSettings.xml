@@ -219,4 +219,30 @@
 	<CK.Robotics.Chore.CorpseDisposal.Desc>把敌人尸体送进燃烧坑/焚化炉，或搬进允许尸体的库存区（仅 Mk-V）。</CK.Robotics.Chore.CorpseDisposal.Desc>
 	<CK.Robotics.Chore.Craft.Label>手工制作</CK.Robotics.Chore.Craft.Label>
 	<CK.Robotics.Chore.Craft.Desc>在制作、锻造、裁缝、艺术工作台上完成账单（仅 Mk-V）。</CK.Robotics.Chore.Craft.Desc>
+
+	<ColonyKit.Settings.Robotics.Section.Ai>Mk-V AI（DeepSeek）</ColonyKit.Settings.Robotics.Section.Ai>
+	<ColonyKit.Settings.Robotics.Ai.Enabled>启用 AI 控制</ColonyKit.Settings.Robotics.Ai.Enabled>
+	<ColonyKit.Settings.Robotics.Ai.Enabled.Desc>允许 Mk-V 定期把当前局势和候选动作发给 DeepSeek，由模型选择下一步。总开关关闭时所有 Mk-V 恢复常规 AI。</ColonyKit.Settings.Robotics.Ai.Enabled.Desc>
+	<ColonyKit.Settings.Robotics.Ai.Hint>需要 DeepSeek API Key（OpenAI 兼容接口）。Key 会明文保存在模组设置里，建议单独建一个低额度 Key；只发送游戏内状态和候选动作，不发送存档文件。</ColonyKit.Settings.Robotics.Ai.Hint>
+	<ColonyKit.Settings.Robotics.Ai.ApiKey>API Key</ColonyKit.Settings.Robotics.Ai.ApiKey>
+	<ColonyKit.Settings.Robotics.Ai.ApiKey.Desc>DeepSeek 控制台生成的 sk-... Key，只保存在本机模组设置。</ColonyKit.Settings.Robotics.Ai.ApiKey.Desc>
+	<ColonyKit.Settings.Robotics.Ai.BaseUrl>接口地址</ColonyKit.Settings.Robotics.Ai.BaseUrl>
+	<ColonyKit.Settings.Robotics.Ai.BaseUrl.Desc>默认 https://api.deepseek.com，也可直接填完整的 /chat/completions 地址。</ColonyKit.Settings.Robotics.Ai.BaseUrl.Desc>
+	<ColonyKit.Settings.Robotics.Ai.Model>模型</ColonyKit.Settings.Robotics.Ai.Model>
+	<ColonyKit.Settings.Robotics.Ai.Model.Desc>默认 deepseek-chat；deepseek-reasoner 更慢、更贵。</ColonyKit.Settings.Robotics.Ai.Model.Desc>
+	<ColonyKit.Settings.Robotics.Ai.Interval>思考间隔</ColonyKit.Settings.Robotics.Ai.Interval>
+	<ColonyKit.Settings.Robotics.Ai.Timeout>请求超时</ColonyKit.Settings.Robotics.Ai.Timeout>
+	<ColonyKit.Settings.Robotics.Ai.MaxTokens>最大回复长度</ColonyKit.Settings.Robotics.Ai.MaxTokens>
+	<ColonyKit.Settings.Robotics.Ai.Temperature>随机度</ColonyKit.Settings.Robotics.Ai.Temperature>
+	<ColonyKit.Settings.Robotics.Ai.Combat>允许 AI 主动交战</ColonyKit.Settings.Robotics.Ai.Combat>
+	<ColonyKit.Settings.Robotics.Ai.Combat.Desc>关闭后候选里不会出现攻击目标，AI 只做救援、灭火、回舱、巡逻和家务。</ColonyKit.Settings.Robotics.Ai.Combat.Desc>
+	<ColonyKit.Settings.Robotics.Ai.Speech>显示 AI 台词</ColonyKit.Settings.Robotics.Ai.Speech>
+	<ColonyKit.Settings.Robotics.Ai.Speech.Desc>AI 返回的短句会以漂浮文字显示在 Mk-V 头顶。</ColonyKit.Settings.Robotics.Ai.Speech.Desc>
+	<ColonyKit.Settings.Robotics.Ai.Test>测试连接</ColonyKit.Settings.Robotics.Ai.Test>
+	<ColonyKit.Settings.Robotics.Ai.Cost>每次请求都会消耗 DeepSeek 额度；默认 20 秒一次、最多同时 2 个请求。API Key 只保存在本机 Config 里，请自行保管。</ColonyKit.Settings.Robotics.Ai.Cost>
+
+	<CK.Robotics.Command.Ai>AI 控制</CK.Robotics.Command.Ai>
+	<CK.Robotics.Command.Ai.Desc>切换这台 Mk-V 是否接受 DeepSeek 的决策；设置页总开关关闭时一律不请求。</CK.Robotics.Command.Ai.Desc>
+	<CK.Robotics.Inspect.Ai>AI：{0}</CK.Robotics.Inspect.Ai>
+	<CK.Robotics.Inspect.Ai.Waiting>等待决策</CK.Robotics.Inspect.Ai.Waiting>
 </LanguageData>

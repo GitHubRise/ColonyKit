@@ -510,6 +510,80 @@ namespace ColonyKit.Modules.Robotics
 			}
 
 			listing.Gap();
+			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.Ai".Loc());
+			data.aiEnabled = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.Enabled".Loc(),
+				ref data.aiEnabled,
+				"ColonyKit.Settings.Robotics.Ai.Enabled.Desc".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Robotics.Ai.Hint".Loc());
+			data.aiApiKey = SettingsWidgets.TextField(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.ApiKey".Loc(),
+				data.aiApiKey,
+				200,
+				"ColonyKit.Settings.Robotics.Ai.ApiKey.Desc".Loc());
+			data.aiBaseUrl = SettingsWidgets.TextField(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.BaseUrl".Loc(),
+				data.aiBaseUrl,
+				200,
+				"ColonyKit.Settings.Robotics.Ai.BaseUrl.Desc".Loc());
+			data.aiModel = SettingsWidgets.TextField(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.Model".Loc(),
+				data.aiModel,
+				64,
+				"ColonyKit.Settings.Robotics.Ai.Model.Desc".Loc());
+			data.aiInterval = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.Interval".Loc(),
+				data.aiInterval,
+				RoboticsSettings.MinAiInterval,
+				RoboticsSettings.MaxAiInterval,
+				1f,
+				value => value.ToString("0") + " s");
+			data.aiTimeout = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.Timeout".Loc(),
+				data.aiTimeout,
+				RoboticsSettings.MinAiTimeout,
+				RoboticsSettings.MaxAiTimeout,
+				1f,
+				value => value.ToString("0") + " s");
+			data.aiMaxTokens = Mathf.RoundToInt(SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.MaxTokens".Loc(),
+				data.aiMaxTokens,
+				RoboticsSettings.MinAiMaxTokens,
+				RoboticsSettings.MaxAiMaxTokens,
+				16f,
+				value => value.ToString("0")));
+			data.aiTemperature = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.Temperature".Loc(),
+				data.aiTemperature,
+				0f,
+				RoboticsSettings.MaxAiTemperature,
+				0.05f,
+				value => value.ToString("0.00"));
+			data.aiAllowCombat = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.Combat".Loc(),
+				ref data.aiAllowCombat,
+				"ColonyKit.Settings.Robotics.Ai.Combat.Desc".Loc());
+			data.aiSpeech = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.Speech".Loc(),
+				ref data.aiSpeech,
+				"ColonyKit.Settings.Robotics.Ai.Speech.Desc".Loc());
+			if (SettingsWidgets.Button(listing, "ColonyKit.Settings.Robotics.Ai.Test".Loc()))
+			{
+				MkVAiService.TestConnection(data);
+			}
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Robotics.Ai.Cost".Loc());
+
+			listing.Gap();
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.Maintenance".Loc());
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Robotics.DurabilityHint".Loc());
 			data.sounds = SettingsWidgets.Checkbox(

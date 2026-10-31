@@ -219,4 +219,30 @@
 	<CK.Robotics.Chore.CorpseDisposal.Desc>Carry enemy corpses to a burn pit or crematorium, or into a stockpile that accepts corpses (Mk-V only).</CK.Robotics.Chore.CorpseDisposal.Desc>
 	<CK.Robotics.Chore.Craft.Label>Crafting</CK.Robotics.Chore.Craft.Label>
 	<CK.Robotics.Chore.Craft.Desc>Work crafting, smithing, tailoring and art benches (Mk-V only).</CK.Robotics.Chore.Craft.Desc>
+
+	<ColonyKit.Settings.Robotics.Section.Ai>Mk-V AI (DeepSeek)</ColonyKit.Settings.Robotics.Section.Ai>
+	<ColonyKit.Settings.Robotics.Ai.Enabled>Enable AI control</ColonyKit.Settings.Robotics.Ai.Enabled>
+	<ColonyKit.Settings.Robotics.Ai.Enabled.Desc>Let Mk-V periodically send the current situation and candidate actions to DeepSeek and follow the chosen one. With the master switch off, every Mk-V uses the regular AI.</ColonyKit.Settings.Robotics.Ai.Enabled.Desc>
+	<ColonyKit.Settings.Robotics.Ai.Hint>Requires a DeepSeek API key (OpenAI-compatible endpoint). The key is stored in plain text in the mod settings; use a dedicated low-quota key. Only in-game state and candidate actions are sent, never save files.</ColonyKit.Settings.Robotics.Ai.Hint>
+	<ColonyKit.Settings.Robotics.Ai.ApiKey>API key</ColonyKit.Settings.Robotics.Ai.ApiKey>
+	<ColonyKit.Settings.Robotics.Ai.ApiKey.Desc>A sk-... key from the DeepSeek console; it stays in the local mod settings only.</ColonyKit.Settings.Robotics.Ai.ApiKey.Desc>
+	<ColonyKit.Settings.Robotics.Ai.BaseUrl>Endpoint</ColonyKit.Settings.Robotics.Ai.BaseUrl>
+	<ColonyKit.Settings.Robotics.Ai.BaseUrl.Desc>Defaults to https://api.deepseek.com; a full /chat/completions URL also works.</ColonyKit.Settings.Robotics.Ai.BaseUrl.Desc>
+	<ColonyKit.Settings.Robotics.Ai.Model>Model</ColonyKit.Settings.Robotics.Ai.Model>
+	<ColonyKit.Settings.Robotics.Ai.Model.Desc>Defaults to deepseek-chat; deepseek-reasoner is slower and more expensive.</ColonyKit.Settings.Robotics.Ai.Model.Desc>
+	<ColonyKit.Settings.Robotics.Ai.Interval>Think interval</ColonyKit.Settings.Robotics.Ai.Interval>
+	<ColonyKit.Settings.Robotics.Ai.Timeout>Request timeout</ColonyKit.Settings.Robotics.Ai.Timeout>
+	<ColonyKit.Settings.Robotics.Ai.MaxTokens>Max reply tokens</ColonyKit.Settings.Robotics.Ai.MaxTokens>
+	<ColonyKit.Settings.Robotics.Ai.Temperature>Temperature</ColonyKit.Settings.Robotics.Ai.Temperature>
+	<ColonyKit.Settings.Robotics.Ai.Combat>Allow AI to engage</ColonyKit.Settings.Robotics.Ai.Combat>
+	<ColonyKit.Settings.Robotics.Ai.Combat.Desc>When off, no attack targets are offered; the AI only rescues, firefights, returns, patrols or works.</ColonyKit.Settings.Robotics.Ai.Combat.Desc>
+	<ColonyKit.Settings.Robotics.Ai.Speech>Show AI speech</ColonyKit.Settings.Robotics.Ai.Speech>
+	<ColonyKit.Settings.Robotics.Ai.Speech.Desc>Show the returned short line as floating text above the Mk-V.</ColonyKit.Settings.Robotics.Ai.Speech.Desc>
+	<ColonyKit.Settings.Robotics.Ai.Test>Test connection</ColonyKit.Settings.Robotics.Ai.Test>
+	<ColonyKit.Settings.Robotics.Ai.Cost>Every request consumes DeepSeek quota; the defaults are one request per 20 s and at most 2 concurrent requests. The API key is stored in the local Config folder; keep it safe.</ColonyKit.Settings.Robotics.Ai.Cost>
+
+	<CK.Robotics.Command.Ai>AI control</CK.Robotics.Command.Ai>
+	<CK.Robotics.Command.Ai.Desc>Toggle whether this Mk-V follows DeepSeek decisions. Nothing is sent while the settings master switch is off.</CK.Robotics.Command.Ai.Desc>
+	<CK.Robotics.Inspect.Ai>AI: {0}</CK.Robotics.Inspect.Ai>
+	<CK.Robotics.Inspect.Ai.Waiting>waiting for a decision</CK.Robotics.Inspect.Ai.Waiting>
 </LanguageData>

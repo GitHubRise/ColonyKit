@@ -1,3 +1,4 @@
+using ColonyKit.Modules.Robotics;
 using Verse;
 
 namespace ColonyKit
@@ -25,6 +26,16 @@ namespace ColonyKit
 
 			// 新游戏/读档后让各模块恢复状态、清掉上一局残留。
 			ModuleRegistry.NotifyGameLoaded(Current.Game);
+		}
+
+		public override void GameComponentTick()
+		{
+			base.GameComponentTick();
+			if (Find.TickManager.TicksGame % 30 == 0)
+			{
+				// AI 设置页「测试连接」的结果只能在主线程弹消息。
+				MkVAiService.DrainTestMessages();
+			}
 		}
 	}
 }

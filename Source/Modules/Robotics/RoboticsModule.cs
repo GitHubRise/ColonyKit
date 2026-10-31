@@ -46,6 +46,11 @@ namespace ColonyKit.Modules.Robotics
 
 			// 设置文件在 Mod 构造时就已经读好，这里把电弧刃的面板数值写进 Def。
 			MkVArcBlade.ApplySettings();
+
+			if (GenCommandLine.CommandLineArgPassed(MkVAiSelfTest.CommandLineKey))
+			{
+				MkVAiSelfTest.Run();
+			}
 		}
 
 		public override void OnGameLoaded(Game game)

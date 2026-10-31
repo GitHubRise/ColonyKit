@@ -110,6 +110,20 @@ namespace ColonyKit.Modules.Robotics
 		public const float DefaultMkvInsulationCold = 20f;
 		public const float DefaultMkvInsulationHeat = 30f;
 
+		public const float MinAiInterval = 5f;
+		public const float MaxAiInterval = 300f;
+		public const float DefaultAiInterval = 20f;
+		public const float MinAiTimeout = 5f;
+		public const float MaxAiTimeout = 120f;
+		public const float DefaultAiTimeout = 30f;
+		public const int MinAiMaxTokens = 64;
+		public const int MaxAiMaxTokens = 2048;
+		public const int DefaultAiMaxTokens = 300;
+		public const float MaxAiTemperature = 1.5f;
+		public const float DefaultAiTemperature = 0.7f;
+		public const string DefaultAiBaseUrl = "https://api.deepseek.com";
+		public const string DefaultAiModel = "deepseek-chat";
+
 		public const float MinMkvSolarEfficiency = 10f;
 		public const float MaxMkvSolarEfficiency = 1000f;
 		public const float DefaultMkvSolarEfficiency = 100f;
@@ -180,6 +194,18 @@ namespace ColonyKit.Modules.Robotics
 		public float mkvInsulationCold = DefaultMkvInsulationCold;
 		public float mkvInsulationHeat = DefaultMkvInsulationHeat;
 		public bool mkvRandomTraits = false;
+
+		// Mk-V AI（DeepSeek/OpenAI 兼容接口）。
+		public bool aiEnabled = false;
+		public string aiApiKey = "";
+		public string aiBaseUrl = DefaultAiBaseUrl;
+		public string aiModel = DefaultAiModel;
+		public float aiInterval = DefaultAiInterval;
+		public float aiTimeout = DefaultAiTimeout;
+		public int aiMaxTokens = DefaultAiMaxTokens;
+		public float aiTemperature = DefaultAiTemperature;
+		public bool aiAllowCombat = true;
+		public bool aiSpeech = true;
 		public int mkvBurstShotCount = DefaultMkvBurstShotCount;
 		public float mkvBurstCooldown = DefaultMkvBurstCooldown;
 		public float robotPowerEfficiency = DefaultRobotPowerEfficiency;
@@ -247,6 +273,16 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref mkvInsulationCold, "mkvInsulationCold", DefaultMkvInsulationCold);
 			Scribe_Values.Look(ref mkvInsulationHeat, "mkvInsulationHeat", DefaultMkvInsulationHeat);
 			Scribe_Values.Look(ref mkvRandomTraits, "mkvRandomTraits", false);
+			Scribe_Values.Look(ref aiEnabled, "aiEnabled", false);
+			Scribe_Values.Look(ref aiApiKey, "aiApiKey", "");
+			Scribe_Values.Look(ref aiBaseUrl, "aiBaseUrl", DefaultAiBaseUrl);
+			Scribe_Values.Look(ref aiModel, "aiModel", DefaultAiModel);
+			Scribe_Values.Look(ref aiInterval, "aiInterval", DefaultAiInterval);
+			Scribe_Values.Look(ref aiTimeout, "aiTimeout", DefaultAiTimeout);
+			Scribe_Values.Look(ref aiMaxTokens, "aiMaxTokens", DefaultAiMaxTokens);
+			Scribe_Values.Look(ref aiTemperature, "aiTemperature", DefaultAiTemperature);
+			Scribe_Values.Look(ref aiAllowCombat, "aiAllowCombat", true);
+			Scribe_Values.Look(ref aiSpeech, "aiSpeech", true);
 			Scribe_Values.Look(ref mkvBurstShotCount, "mkvBurstShotCount", DefaultMkvBurstShotCount);
 			Scribe_Values.Look(ref mkvBurstCooldown, "mkvBurstCooldown", DefaultMkvBurstCooldown);
 			Scribe_Values.Look(ref robotPowerEfficiency, "robotPowerEfficiency", DefaultRobotPowerEfficiency);
@@ -365,6 +401,22 @@ namespace ColonyKit.Modules.Robotics
 			mkvInsulationHeat = ClampFloat(mkvInsulationHeat, MinMkvInsulation, MaxMkvInsulation);
 			changed |= !Approximately(insulationHeat, mkvInsulationHeat);
 
+			float aiIntervalValue = aiInterval;
+			aiInterval = ClampFloat(aiInterval, MinAiInterval, MaxAiInterval);
+			changed |= !Approximately(aiIntervalValue, aiInterval);
+
+			float aiTimeoutValue = aiTimeout;
+			aiTimeout = ClampFloat(aiTimeout, MinAiTimeout, MaxAiTimeout);
+			changed |= !Approximately(aiTimeoutValue, aiTimeout);
+
+			int aiTokens = aiMaxTokens;
+			aiMaxTokens = ClampInt(aiMaxTokens, MinAiMaxTokens, MaxAiMaxTokens);
+			changed |= aiTokens != aiMaxTokens;
+
+			float aiTemp = aiTemperature;
+			aiTemperature = ClampFloat(aiTemperature, 0f, MaxAiTemperature);
+			changed |= !Approximately(aiTemp, aiTemperature);
+
 			int burst = mkvBurstShotCount;
 			mkvBurstShotCount = ClampInt(mkvBurstShotCount, MinMkvBurstShotCount, MaxMkvBurstShotCount);
 			changed |= burst != mkvBurstShotCount;
@@ -467,6 +519,16 @@ namespace ColonyKit.Modules.Robotics
 			mkvInsulationCold = DefaultMkvInsulationCold;
 			mkvInsulationHeat = DefaultMkvInsulationHeat;
 			mkvRandomTraits = false;
+			aiEnabled = false;
+			aiApiKey = "";
+			aiBaseUrl = DefaultAiBaseUrl;
+			aiModel = DefaultAiModel;
+			aiInterval = DefaultAiInterval;
+			aiTimeout = DefaultAiTimeout;
+			aiMaxTokens = DefaultAiMaxTokens;
+			aiTemperature = DefaultAiTemperature;
+			aiAllowCombat = true;
+			aiSpeech = true;
 			mkvBurstShotCount = DefaultMkvBurstShotCount;
 			mkvBurstCooldown = DefaultMkvBurstCooldown;
 			robotPowerEfficiency = DefaultRobotPowerEfficiency;
