@@ -13,6 +13,15 @@ namespace ColonyKit.Modules.Hygiene
 	/// </summary>
 	internal static class WaterSourceUtility
 	{
+		/// <summary>
+		/// 找水格时 GenRadial 搜索半径的上限。GenRadial 的径向表固定 20000 格，最远只排到
+		/// 79.81228 格（<see cref="GenRadial.MaxRadialPatternRadius"/>）；半径达到或超过它，
+		/// <see cref="GenRadial.NumCellsInRadius"/> 就会打印
+		/// "Not enough squares to get to radius ..."（例如盖在 250×250 地图中间的小人，
+		/// 到四边都超过 80 格，半径 80 就会触发），并返回整张表。
+		/// 搜索循环本来就在 12000 格处截断（约 62 格），所以统一按 60 格封顶，行为和以前一致。
+		/// </summary>
+		public const float MaxWaterSearchRadius = 60f;
 		public static bool IsSurfaceWater(Map map, IntVec3 cell)
 		{
 			return map != null && cell.InBounds(map) && cell.GetTerrain(map).IsWater;
@@ -108,12 +117,8 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return IntVec3.Invalid;
 			}
-			// 和 ClosestSanitation 一样先按到地图边缘的距离收半径，避免
-			// GenRadial 超出地图边界时打印 "Not enough squares" 并截断。
-			float edgeDistance = Mathf.Min(
-				Mathf.Min(near.x, map.Size.x - 1 - near.x),
-				Mathf.Min(near.z, map.Size.z - 1 - near.z));
-			float radius = Mathf.Min(Mathf.Min(range, 80f), edgeDistance - 0.01f);
+			// 半径超过径向表上限，每次找水都会刷红字；见 MaxWaterSearchRadius。
+			float radius = Mathf.Min(range, MaxWaterSearchRadius);
 			if (radius <= 0.01f)
 			{
 				return IntVec3.Invalid;

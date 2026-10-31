@@ -169,6 +169,10 @@
 		<defName>CK_MoteBucket</defName>
 		<thingClass>MoteDualAttached</thingClass>
 		<altitudeLayer>MetaOverlays</altitudeLayer>
+		<!-- MoteBase 不带 <mote>，这里必须留一个空节点（和 DBH 的 Mote_Bucket 一致）：
+		     缺了它 def.mote 为 null，Mote.Tick / RealtimeUpdate 每次都会空引用，
+		     整局 Update 抛异常、小人停摆。空节点 = 默认 solidTime 1s。 -->
+		<mote />
 		<graphicData>
 			<texPath>Things/Mote/Bucket</texPath>
 		</graphicData>

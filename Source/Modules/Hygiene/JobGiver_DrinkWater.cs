@@ -52,7 +52,13 @@ namespace ColonyKit.Modules.Hygiene
 			Thing bottle = MineralWaterUtility.Carried(pawn) ?? MineralWaterUtility.FindSpawned(pawn);
 			if (bottle != null)
 			{
-				return JobMaker.MakeJob(JobDefOf.Ingest, bottle);
+				Job bottleJob = JobMaker.MakeJob(JobDefOf.Ingest, bottle);
+				// JobMaker 默认把 count 留成 -1，而原版 Toils_Misc.TakeItemFromInventoryToCarrier
+				// 取的是 Mathf.Min(stackCount, count)，-1 等于一件也不拿、targetA 随即被清空，
+				// 下一个 toil 的全局失效检查就读到 null 抛空引用（整局 Update 刷红字、小人卡死）。
+				// 明确「喝 1 瓶」。
+				bottleJob.count = 1;
+				return bottleJob;
 			}
 			// 随身带着水桶/脸盆时先喝自己的水，省得跑回洗手池。
 			if (WaterContainerUtility.CarriedContainer(pawn, requireWater: true) != null)

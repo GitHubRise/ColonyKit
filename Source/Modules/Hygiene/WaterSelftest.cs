@@ -75,6 +75,11 @@ namespace ColonyKit.Modules.Hygiene
 				Fail("no map");
 				return;
 			}
+			if (!CheckWaterSearchRadiusGuard())
+			{
+				Fail("GenRadial radius log");
+				return;
+			}
 			pawn = map.mapPawns.FreeColonists.FirstOrDefault(p =>
 				p.RaceProps.Humanlike
 				&& !p.Downed
@@ -100,8 +105,42 @@ namespace ColonyKit.Modules.Hygiene
 				$"water selftest armed: pawn={pawn.LabelShort} tap={tap.Position} spot={spot.Position} bucket={bucket.Position}");
 		}
 
-		private static bool TryBuildRig(out string error)
+		/// <summary>
+		/// 回归：全图找水（range 9999）时搜索半径必须压在 GenRadial 径向表内。
+		/// 以前半径原样传进 80，<c>NumCellsInRadius</c> 会打印
+		/// "Not enough squares to get to radius 80. Max is 79.81228"，
+		/// 站在地图中间的小人每次找水都刷一条红字；现在按
+		/// <see cref="WaterSourceUtility.MaxWaterSearchRadius"/> 封顶。
+		/// </summary>
+		private static bool CheckWaterSearchRadiusGuard()
 		{
+			int before = CountGenRadialRadiusLogs();
+			WaterSourceUtility.FindSurfaceWaterStandCell(map, map.Center, 9999f);
+			Pawn drinker = map.mapPawns.AllPawnsSpawned.FirstOrDefault(p => p.RaceProps.Humanlike);
+			if (drinker != null)
+			{
+				ClosestSanitation.TryFindWaterCell(drinker, 9999f);
+			}
+			int after = CountGenRadialRadiusLogs();
+			bool pass = after == before;
+			ModLog.Info("Hygiene", $"water selftest radius guard: pass={pass} before={before} after={after}");
+			return pass;
+		}
+
+		private static int CountGenRadialRadiusLogs()
+		{
+			int count = 0;
+			foreach (LogMessage message in Verse.Log.Messages)
+			{
+				if (message.text != null && message.text.Contains("Not enough squares to get to radius"))
+				{
+					count += message.repeats;
+				}
+			}
+			return count;
+		}
+
+		private static bool TryBuildRig(out string error)		{
 			error = null;
 			if (!TryFindArea(map, out IntVec3 origin))
 			{

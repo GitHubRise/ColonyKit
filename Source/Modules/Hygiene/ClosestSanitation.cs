@@ -105,14 +105,8 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return LocalTargetInfo.Invalid;
 			}
-			// 原版 GenRadial.RadialCellsAround 在半径超出地图边界时会打印
-			// "Not enough squares to get to radius ..." 并截断搜索。
-			// 先按当前位置到地图四条边的最小距离收紧半径，既避免红字，
-			// 也保证扫到的每个格子都在 InBounds 内。
-			float edgeDistance = Mathf.Min(
-				Mathf.Min(pawn.Position.x, map.Size.x - 1 - pawn.Position.x),
-				Mathf.Min(pawn.Position.z, map.Size.z - 1 - pawn.Position.z));
-			float radius = Mathf.Min(Mathf.Min(range, 80f), edgeDistance - 0.01f);
+			// 半径不能超过径向表上限，否则每次找水都会刷红字；见 WaterSourceUtility.MaxWaterSearchRadius。
+			float radius = Mathf.Min(range, WaterSourceUtility.MaxWaterSearchRadius);
 			if (radius <= 0.01f)
 			{
 				return LocalTargetInfo.Invalid;

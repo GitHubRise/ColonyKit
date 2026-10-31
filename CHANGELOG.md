@@ -35,6 +35,9 @@
 
 ### Fixed
 
+- **喝瓶装水时小人原地卡死、每 tick 刷 `Exception in CheckCurrentToilEndOrFail`**：`JobGiver_DrinkWater` 给矿泉水/纯净水/凉白开派的是原版 `Ingest`，但 `JobMaker.MakeJob` 把 `job.count` 留成默认的 -1。原版 `Toils_Misc.TakeItemFromInventoryToCarrier` 取数量用的是 `Mathf.Min(stackCount, count)`，-1 等于一件也不拿，于是 `carryTracker.CarriedThing` 为 null，随后 `curJob.SetTarget(A, ...)` 把目标清空；下一个 toil 的全局失效检查 `!IngestibleSource.Destroyed` 读到 null 空引用，`CheckCurrentToilEndOrFail` 每 tick 报一次错，小人永远喝不到水（日志里 `driver.job=(Ingest ...)` 恰好没有 `A = ...`）。现在明确 `count = 1`（一次喝 1 瓶）。已用临时探针复现并验证：修前 toil 0→1 时 `targetA` 被清空并抛空引用，修后完整走完 Ingest 并回复口渴。
+- **提桶特效 `CK_MoteBucket` 空引用拖垮整局**：`Defs/Hygiene/Effects_Dbh.xml` 里的 `CK_MoteBucket` 少了 DBH 原 def 里的空 `<mote>` 节点，`ThingDef.mote` 为 null，提桶特效一生成就在 `Mote.Tick` / `Mote.RealtimeUpdate` 里空引用，`Root.Update` 整局抛异常、小人停摆（还会连带存档出现 `not deep-saved` 提示）。补回空节点（默认 1 s 生命周期，与 DBH 一致）。
+- **找水刷「Not enough squares to get to radius 80」红字**：`ClosestSanitation.TryFindWaterCell` 与 `WaterSourceUtility.FindSurfaceWaterStandCell` 先把搜索范围收到 80 再交给 `GenRadial.RadialCellsAround`，但原版径向表只排 20000 格、最远 79.81228 格（`GenRadial.MaxRadialPatternRadius`），半径一到这个值 `NumCellsInRadius` 就打印 `Not enough squares to get to radius 80. Max is 79.81228` 并返回整张表。小人离地图四边都超过 80 格时（250×250 地图中间、口渴到 0 或中暑时范围是 9999）每次找水都刷一条；之前那次「按到地图边缘的距离收半径」并没有拦住它。现在统一按 `WaterSourceUtility.MaxWaterSearchRadius`（60 格；原来 12000 格的扫描上限也只覆盖到约 62 格）封顶，并去掉按地图边缘收半径的旧逻辑（它反而让贴边的小人只能搜身边几格）。`-colonykit-water-test` 自检新增 `radius guard` 探针：用 `Log.Messages` 计数确认对地图中心做一次全图找水后没有新增该错误。
 - **水壶堆叠与冰箱文案**：水壶改为不可堆叠（`stackLimit 1`），避免整叠共用一个 `CompBasinWater` 水量；冰箱文案改为「自带制冷、50 W、通电不腐烂」。
 - **音效/特效触发点补齐**：水泵工作时播 `CK_WaterPump`，雨水桶接雨播 `CK_Drips`，污水处理池常驻 `CK_SewageAmbience`，旱厕清空播 `CK_Fecal` 效果器，取水/打水时显示 `CK_CarryBucket` 提桶特效；12 个 SoundDef 中 11 个有触发点（只剩未迁的真空马桶音效），4 个 Effecter 全部有触发点。
 - **疏通/如厕/排污的特效与音效接线**：自动疏通接入 `CK_Unblocking` 效果器，马桶/旱厕冲水抛 `CK_MoteSewage`，随地大小便按污渍类型抛 `CK_MoteUrine`/`CK_MoteSewage`，化粪池溢流播 `CK_SewageStart`。
