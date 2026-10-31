@@ -68,5 +68,6 @@
   · 修掉喝瓶装水时小人原地卡死、每秒刷「Exception in CheckCurrentToilEndOrFail」红字的问题：现在会正常开瓶喝完
   · 修掉提桶特效引起的空引用（会连带整局卡顿、存档提示 not deep-saved）
   · 修掉 Mk-V AI 把「交还家务待命」这种正常回复当成请求失败的问题：模型改用 id 字段返回动作时也能认出来
+  · 修掉 Mk-V AI 偶尔刷「响应里没有 content」的问题：deepseek-flash 把答案放进 reasoning_content 时也能正常解析
   </description>
 </ModMetaData>

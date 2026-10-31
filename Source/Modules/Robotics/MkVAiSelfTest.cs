@@ -28,6 +28,15 @@ namespace ColonyKit.Modules.Robotics
 			"{\"id\":\"ck-test\",\"choices\":[{\"message\":{\"role\":\"assistant\","
 			+ "\"content\":\"{\\\"id\\\":\\\"work\\\",\\\"say\\\":\\\"无敌情，交还家务AI待命\\\"}\"}}]}";
 
+		/// <summary>
+		/// deepseek-flash 这类推理模型有时把整段输出放进 reasoning_content、content 留空，
+		/// 解析器要退回复用它（日志里「响应里没有 content」刷屏就是这种形状）。
+		/// </summary>
+		private const string ReasoningResponse =
+			"{\"id\":\"ck-test\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\","
+			+ "\"content\":\"\",\"reasoning_content\":\"{\\\"id\\\":\\\"work\\\",\\\"say\\\":\\\"无敌情，交还家务AI待命\\\"}\"},"
+			+ "\"finish_reason\":\"stop\"}]}";
+
 		private static bool ran;
 
 		static MkVAiSelfTest()
@@ -54,6 +63,10 @@ namespace ColonyKit.Modules.Robotics
 			bool aliasPass = alias != null && alias.ok
 				&& alias.action == "work" && alias.say == "无敌情，交还家务AI待命";
 
+			AiRequestResult reasoning = MkVAiService.ParseForTest(ReasoningResponse);
+			bool reasoningPass = reasoning != null && reasoning.ok
+				&& reasoning.action == "work" && reasoning.say == "无敌情，交还家务AI待命";
+
 			AiRequestResult http = null;
 			try
 			{
@@ -75,9 +88,11 @@ namespace ColonyKit.Modules.Robotics
 			string httpStatus = http == null ? "none" : (http.ok ? "ok" : http.error);
 			string summary = "AI self-test: jsonPass=" + jsonPass
 				+ " aliasPass=" + aliasPass
+				+ " reasoningPass=" + reasoningPass
 				+ " parsedAction=" + (parsed?.action ?? "none")
 				+ " parsedSay=" + (parsed?.say ?? "none")
 				+ " aliasAction=" + (alias?.action ?? "none")
+				+ " reasoningAction=" + (reasoning?.action ?? "none")
 				+ " parsedError=" + (parsed?.error ?? "none")
 				+ " httpStatus=" + httpStatus;
 			ModLog.Force("Robotics", summary);

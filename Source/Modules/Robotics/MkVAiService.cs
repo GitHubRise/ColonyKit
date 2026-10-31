@@ -614,9 +614,19 @@ namespace ColonyKit.Modules.Robotics
 			}
 
 			string content = ExtractJsonString(text, "content");
+			if (string.IsNullOrWhiteSpace(content))
+			{
+				// 新版 DeepSeek 推理模型（deepseek-flash / reasoner）有时会把整段输出
+				// 放进 reasoning_content、content 留空甚至整个字段都不给；直接判失败会让
+				// AI 一条动作也发不出来（日志里就是「响应里没有 content」刷屏）。
+				// 这里退回把 reasoning_content 当作正文再解析一遍。
+				content = ExtractJsonString(text, "reasoning_content");
+			}
 			if (string.IsNullOrEmpty(content))
 			{
-				return AiRequestResult.Failure("响应里没有 content：" + Truncate(text, 160));
+				string finish = ExtractJsonString(text, "finish_reason");
+				return AiRequestResult.Failure(
+					"响应里没有 content（finish_reason=" + (finish ?? "?") + "）：" + Truncate(text, 300));
 			}
 			content = StripCodeFence(content.Trim());
 			string action = ExtractAction(content);
