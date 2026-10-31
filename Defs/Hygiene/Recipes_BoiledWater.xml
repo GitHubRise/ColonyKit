@@ -31,4 +31,36 @@
 		</recipeUsers>
 		<displayPriority>60</displayPriority>
 	</RecipeDef>
+
+	<!-- 批量烧水：一次 10 瓶，工作时长和单瓶一样（300），适合一次烧一批。 -->
+	<RecipeDef>
+		<defName>CK_BoilWaterBulk</defName>
+		<label>boil water (10 bottles)</label>
+		<description>Boil 10 bottles of water at once on a campfire or stove, then let them cool into boiled water. Same 300 work as a single bottle.</description>
+		<jobString>boiling water.</jobString>
+		<workAmount>300</workAmount>
+		<workSpeedStat>CookingSpeed</workSpeedStat>
+		<workSkill>Cooking</workSkill>
+		<uiIconThing>CK_BoiledWater</uiIconThing>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>CK_MineralWater</li>
+						<li>CK_PurifiedWater</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<products>
+			<CK_BoiledWater>10</CK_BoiledWater>
+		</products>
+		<recipeUsers>
+			<li>Campfire</li>
+			<li>FueledStove</li>
+			<li>ElectricStove</li>
+		</recipeUsers>
+		<displayPriority>59</displayPriority>
+	</RecipeDef>
 </Defs>
