@@ -58,7 +58,7 @@ namespace ColonyKit.Modules.Robotics
 
 		/// <summary>
 		/// 让副手武器立刻打一轮：沿用武器自己的连发数和连发间隔，后续子弹由原版
-		/// EquipmentTrackerTick → VerbTick 继续推进；因为不经过 Walkup/站姿流程，
+		/// EquipmentTrackerTick → VerbTick 继续推进；因为不经过暖机/站姿流程，
 		/// 不会覆盖主手的冷却站姿（否则慢速副手会把整台机器人的射速拖慢）。
 		/// </summary>
 		internal static void Fire(Verb verb, LocalTargetInfo target)

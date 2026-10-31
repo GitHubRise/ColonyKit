@@ -8,16 +8,23 @@ namespace ColonyKit.Modules.Hygiene
 {
 	internal static class HygieneUtility
 	{
-		/// <summary>喝一次水增加 2 点（0.02）饱腹感。</summary>
+		/// <summary>普通喝水增加 2 点（0.02）饱腹感；凉白开增加 5 点（0.05）。</summary>
 		public const float SatietyPerDrink = 0.02f;
 
+		public const float SatietyPerBoiledDrink = 0.05f;
+
 		public static void AddDrinkSatiety(Pawn pawn)
+		{
+			AddDrinkSatiety(pawn, SatietyPerDrink);
+		}
+
+		public static void AddDrinkSatiety(Pawn pawn, float points)
 		{
 			if (pawn?.needs?.food == null)
 			{
 				return;
 			}
-			pawn.needs.food.CurLevel = Mathf.Min(1f, pawn.needs.food.CurLevel + SatietyPerDrink);
+			pawn.needs.food.CurLevel = Mathf.Min(1f, pawn.needs.food.CurLevel + points);
 		}
 
 		public static Need_Hygiene EnsureNeed(Pawn pawn)
