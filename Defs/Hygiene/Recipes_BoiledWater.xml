@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-	<!-- 凉白开：拿一瓶 1 L 瓶装水到篝火/炉灶烧开，放凉后装回一瓶；不会中毒。 -->
+	<!-- 鍑夌櫧寮€锛氭嬁涓€鐡?1 L 鐡惰姘村埌绡濈伀/鐐夌伓鐑у紑锛屾斁鍑夊悗瑁呭洖涓€鐡讹紱涓嶄細涓瘨銆?-->
 	<RecipeDef>
 		<defName>CK_BoilWater</defName>
 		<label>boil water</label>
 		<description>Boil one 1 L bottle of water on a campfire or stove, then let it cool into boiled water. Boiling kills germs, so it cannot cause food poisoning.</description>
 		<jobString>boiling water.</jobString>
 		<workAmount>200</workAmount>
-		<workSpeedStat>CookingSpeed</workSpeedStat>
+		<workSpeedStat>CookSpeed</workSpeedStat>
 		<workSkill>Cooking</workSkill>
 		<uiIconThing>CK_BoiledWater</uiIconThing>
 		<ingredients>
@@ -32,14 +32,14 @@
 		<displayPriority>60</displayPriority>
 	</RecipeDef>
 
-	<!-- 批量烧水：一次 10 瓶，工作时长和单瓶一样（200），适合一次烧一批。 -->
+	<!-- 鎵归噺鐑ф按锛氫竴娆?10 鐡讹紝宸ヤ綔鏃堕暱鍜屽崟鐡朵竴鏍凤紙200锛夛紝閫傚悎涓€娆＄儳涓€鎵广€?-->
 	<RecipeDef>
 		<defName>CK_BoilWaterBulk</defName>
 		<label>boil water (10 bottles)</label>
 		<description>Boil 10 bottles of water at once on a campfire or stove, then let them cool into boiled water. Same 200 work as a single bottle.</description>
 		<jobString>boiling water.</jobString>
 		<workAmount>200</workAmount>
-		<workSpeedStat>CookingSpeed</workSpeedStat>
+		<workSpeedStat>CookSpeed</workSpeedStat>
 		<workSkill>Cooking</workSkill>
 		<uiIconThing>CK_BoiledWater</uiIconThing>
 		<ingredients>

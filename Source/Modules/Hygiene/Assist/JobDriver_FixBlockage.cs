@@ -34,6 +34,11 @@ namespace ColonyKit.Modules.Hygiene
 			unclog.WithProgressBarToilDelay(FixtureInd);
 			unclog.PlaySustainerOrSound(
 				() => DefDatabase<SoundDef>.GetNamedSilentFail("CK_Plunging"));
+			EffecterDef unblocking = DefDatabase<EffecterDef>.GetNamedSilentFail("CK_Unblocking");
+			if (unblocking != null)
+			{
+				unclog.WithEffect(unblocking, FixtureInd);
+			}
 			yield return unclog;
 
 			yield return new Toil

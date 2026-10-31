@@ -76,7 +76,7 @@
 		<thingCategories>
 			<li>Manufactured</li>
 		</thingCategories>
-		<stackLimit>10</stackLimit>
+		<stackLimit>1</stackLimit>
 		<orderedTakeGroup>CK_WaterContainer</orderedTakeGroup>
 		<comps>
 			<li Class="ColonyKit.Modules.Hygiene.CompProperties_BasinWater">

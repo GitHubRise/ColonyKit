@@ -75,6 +75,11 @@ namespace ColonyKit.Modules.Hygiene
 			}
 			// 水已经放下去了：冲水声放在最后，和 DBH 一致。
 			DefDatabase<SoundDef>.GetNamed("CK_ToiletFlush").PlayOneShot(this);
+			FleckDef sewageMote = DefDatabase<FleckDef>.GetNamedSilentFail("CK_MoteSewage");
+			if (sewageMote != null)
+			{
+				FleckMaker.Static(Position.ToVector3Shifted(), Map, sewageMote, 1f);
+			}
 			return true;
 		}
 

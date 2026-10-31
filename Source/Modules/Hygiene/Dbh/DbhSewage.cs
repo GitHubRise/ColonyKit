@@ -1,6 +1,7 @@
 using RimWorld;
 using UnityEngine;
 using Verse;
+using Verse.Sound;
 
 namespace ColonyKit.Modules.Hygiene.Dbh
 {
@@ -83,6 +84,11 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 			// 和 Need_Bladder 一致：优先本包定义的污渍，未定义时退回 DBH 原名。
 			ThingDef filth = DefDatabase<ThingDef>.GetNamedSilentFail("CK_FilthFaeces")
 				?? DefDatabase<ThingDef>.GetNamedSilentFail("FilthFaeces");
+			SoundDef spillSound = DefDatabase<SoundDef>.GetNamedSilentFail("CK_SewageStart");
+			if (spillSound != null)
+			{
+				spillSound.PlayOneShot(parent);
+			}
 			if (filth == null)
 			{
 				return;

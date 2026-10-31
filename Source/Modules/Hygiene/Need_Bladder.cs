@@ -91,6 +91,12 @@ namespace ColonyKit.Modules.Hygiene
 			if (filth != null)
 			{
 				FilthMaker.TryMakeFilth(pawn.Position, pawn.Map, filth);
+				string moteName = filth.defName.Contains("Faeces") ? "CK_MoteSewage" : "CK_MoteUrine";
+				FleckDef mote = DefDatabase<FleckDef>.GetNamedSilentFail(moteName);
+				if (mote != null && pawn.Map != null)
+				{
+					FleckMaker.Static(pawn.Position.ToVector3Shifted(), pawn.Map, mote, 1f);
+				}
 			}
 		}
 

@@ -55,6 +55,11 @@ namespace ColonyKit.Modules.Hygiene
 			sewage = Mathf.Min(sewage + SewagePerUse, SewageLimit);
 			// 旱厕没有水，用「如厕」声代替冲水声。
 			DefDatabase<SoundDef>.GetNamed("CK_Defecate").PlayOneShot(this);
+			FleckDef sewageMote = DefDatabase<FleckDef>.GetNamedSilentFail("CK_MoteSewage");
+			if (sewageMote != null)
+			{
+				FleckMaker.Static(Position.ToVector3Shifted(), Map, sewageMote, 1f);
+			}
 			return true;
 		}
 
