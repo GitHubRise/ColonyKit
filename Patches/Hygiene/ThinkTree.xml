@@ -21,6 +21,15 @@
 					<li Class="ColonyKit.Modules.Hygiene.JobGiver_UseToilet"/>
 				</value>
 			</li>
+			<!-- 囚徒自己也要会喝水：原版囚徒分支的「满足需求」里没有喝水节点，
+			     送进牢房的水（以及牢房里的水龙头/洗手池）他们根本不会去用。 -->
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThinkTreeDef[defName = "Humanlike"]/thinkRoot[@Class = "ThinkNode_Priority"]/subNodes/li[@Class = "ThinkNode_ConditionalPrisoner"]/subNodes/li[@Class = "ThinkNode_Tagger"][tagToGive = "SatisfyingNeeds"]/subNodes/li[@Class = "ThinkNode_PrioritySorter"]/subNodes</xpath>
+				<value>
+					<li Class="ColonyKit.Modules.Hygiene.JobGiver_DrinkWater"/>
+					<li Class="ColonyKit.Modules.Hygiene.JobGiver_DrinkWaterUrgent"/>
+				</value>
+			</li>
 		</operations>
 	</Operation>
 </Patch>

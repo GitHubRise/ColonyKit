@@ -51,7 +51,16 @@ namespace ColonyKit.Modules.Hygiene
 
 		public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
 		{
-			if (!(t is Pawn patient))
+			return t is Pawn patient ? TryMakeFeedJob(pawn, patient) : null;
+		}
+
+		/// <summary>
+		/// 造一个「拿容器打水 → 床边喂水」的 Job；右键菜单和送水的兜底路径共用。
+		/// 找不到容器或水源时返回 null。
+		/// </summary>
+		internal static Job TryMakeFeedJob(Pawn pawn, Pawn patient)
+		{
+			if (pawn == null || patient == null || pawn == patient)
 			{
 				return null;
 			}
@@ -59,12 +68,12 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return null;
 			}
-			JobDef def = DefDatabase<JobDef>.GetNamedSilentFail("CK_WaterPatient");
-			if (def == null)
+			JobDef jobDef = DefDatabase<JobDef>.GetNamedSilentFail("CK_WaterPatient");
+			if (jobDef == null)
 			{
 				return null;
 			}
-			Job job = JobMaker.MakeJob(def, patient);
+			Job job = JobMaker.MakeJob(jobDef, patient);
 			if (container.parent.Spawned)
 			{
 				job.targetB = container.parent;

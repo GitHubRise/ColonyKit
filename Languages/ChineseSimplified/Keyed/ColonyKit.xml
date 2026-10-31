@@ -201,6 +201,12 @@
 	<CK.Hygiene.FloatMenu.NoWaterSource>这里没有水</CK.Hygiene.FloatMenu.NoWaterSource>
 	<CK.Hygiene.FloatMenu.DrawFromSpot>打水</CK.Hygiene.FloatMenu.DrawFromSpot>
 	<CK.Hygiene.FloatMenu.NeedBucket>需要一只空水桶</CK.Hygiene.FloatMenu.NeedBucket>
+	<CK.Hygiene.FloatMenu.BringWater>送水</CK.Hygiene.FloatMenu.BringWater>
+	<CK.Hygiene.FloatMenu.FeedWater>喂水</CK.Hygiene.FloatMenu.FeedWater>
+	<CK.Hygiene.FloatMenu.CleanPawn>清洁</CK.Hygiene.FloatMenu.CleanPawn>
+	<CK.Hygiene.FloatMenu.NoWaterToDeliver>没有可送的水：瓶装水，或者一只水桶/脸盆加一处水源</CK.Hygiene.FloatMenu.NoWaterToDeliver>
+	<CK.Hygiene.FloatMenu.NotBedridden>只有卧床的病人、婴儿或囚徒需要别人清洁</CK.Hygiene.FloatMenu.NotBedridden>
+	<CK.Hygiene.FloatMenu.NeedsWater>水网里至少要有 1 升水</CK.Hygiene.FloatMenu.NeedsWater>
 	<CK.Hygiene.BasinWater>脸盆水量: {0}/{1} 升</CK.Hygiene.BasinWater>
 	<CK.Hygiene.PoolWater>水量: {0}/{1} L</CK.Hygiene.PoolWater>
 	<CK.Hygiene.PoolEmpty>还没灌水</CK.Hygiene.PoolEmpty>

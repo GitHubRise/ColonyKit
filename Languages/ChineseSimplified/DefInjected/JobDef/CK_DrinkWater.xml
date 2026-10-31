@@ -2,4 +2,5 @@
 <LanguageData>
 	<CK_DrinkFromBasin.reportString>在洗手池喝水。</CK_DrinkFromBasin.reportString>
 	<CK_DrinkFromGround.reportString>在喝水。</CK_DrinkFromGround.reportString>
+	<CK_BringWater.reportString>在送水。</CK_BringWater.reportString>
 </LanguageData>

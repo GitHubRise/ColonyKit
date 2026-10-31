@@ -434,6 +434,32 @@ namespace ColonyKit.Modules.Hygiene
 			return net.PullWater(1f, out quality);
 		}
 
+		/// <summary>
+		/// 水龙头可以直接装 1 L 矿泉水：水网里有至少 1 升水、水龙头出得了水、小人够得着。
+		/// 和取水点一样不需要水桶/脸盆，只是这里要真的从水网里抽走 1 升。
+		/// </summary>
+		public bool CanBottleMineralWater(Pawn pawn)
+		{
+			PlumbingNet net = pipe?.pipeNet;
+			return net != null
+				&& net.WaterStorage >= 1f
+				&& HasWaterSupply
+				&& pawn != null
+				&& pawn.CanReserveAndReach(this, InteractionPathMode, pawn.NormalMaxDanger());
+		}
+
+		/// <summary>从水网抽 1 L 常温水装瓶，返回抽到的水质（未处理/已污染都照实记录）。</summary>
+		public bool TryDrawMineralBottle(out ContaminationLevel quality)
+		{
+			quality = ContaminationLevel.Untreated;
+			PlumbingNet net = pipe?.pipeNet;
+			if (net == null || !HasWaterSupply)
+			{
+				return false;
+			}
+			return net.PullWater(1f, out quality);
+		}
+
 		public override string GetInspectString()
 		{
 			StringBuilder builder = new StringBuilder(base.GetInspectString());

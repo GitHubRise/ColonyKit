@@ -4,7 +4,7 @@ using Verse.AI;
 
 namespace ColonyKit.Modules.Robotics
 {
-	/// <summary>给殖民地囚犯喂食/送餐；复用原版 Warden 喂食逻辑。</summary>
+	/// <summary>送餐/喂餐：给殖民地囚犯送饭（原版 Warden 喂食），也给卧床病人喂食（原版医生喂食）。</summary>
 	public class JobGiver_NannyBotFeedPrisoner : JobGiver_NannyBotChore
 	{
 		protected override RobotChore Chore => RobotChore.FeedPrisoners;
@@ -24,6 +24,29 @@ namespace ColonyKit.Modules.Robotics
 					continue;
 				}
 				Job job = feed.JobOnThing(pawn, prisoner);
+				if (job != null)
+				{
+					return job;
+				}
+			}
+
+			// 卧床病人：原版「给病人喂食」工作器（DoctorFeedHumanlikes）。
+			WorkGiver_FeedPatient patientFeed = DefDatabase<WorkGiverDef>
+				.GetNamedSilentFail("DoctorFeedHumanlikes")?.Worker as WorkGiver_FeedPatient;
+			if (patientFeed == null || patientFeed.PotentialWorkThingsGlobal(pawn) == null)
+			{
+				return null;
+			}
+			foreach (Thing thing in patientFeed.PotentialWorkThingsGlobal(pawn))
+			{
+				if (thing == null
+					|| !thing.Spawned
+					|| !NannyBotUtility.IsWithinWorkArea(pawn, thing.Position)
+					|| !patientFeed.HasJobOnThing(pawn, thing))
+				{
+					continue;
+				}
+				Job job = patientFeed.JobOnThing(pawn, thing);
 				if (job != null)
 				{
 					return job;

@@ -6,4 +6,16 @@
 	<CK_FillWaterSpot.label>fill water spot</CK_FillWaterSpot.label>
 	<CK_FillWaterSpot.verb>fill water at a spot</CK_FillWaterSpot.verb>
 	<CK_FillWaterSpot.gerund>filling water at a spot</CK_FillWaterSpot.gerund>
+	<CK_WaterPatient.label>give water to patients</CK_WaterPatient.label>
+	<CK_WaterPatient.verb>give water to</CK_WaterPatient.verb>
+	<CK_WaterPatient.gerund>giving water to</CK_WaterPatient.gerund>
+	<CK_WaterPrisoner.label>give water to prisoners</CK_WaterPrisoner.label>
+	<CK_WaterPrisoner.verb>give water to</CK_WaterPrisoner.verb>
+	<CK_WaterPrisoner.gerund>giving water to</CK_WaterPrisoner.gerund>
+	<CK_BringWaterPatient.label>bring water to patients</CK_BringWaterPatient.label>
+	<CK_BringWaterPatient.verb>bring water to</CK_BringWaterPatient.verb>
+	<CK_BringWaterPatient.gerund>bringing water to</CK_BringWaterPatient.gerund>
+	<CK_BringWaterPrisoner.label>bring water to prisoners</CK_BringWaterPrisoner.label>
+	<CK_BringWaterPrisoner.verb>bring water to</CK_BringWaterPrisoner.verb>
+	<CK_BringWaterPrisoner.gerund>bringing water to</CK_BringWaterPrisoner.gerund>
 </LanguageData>

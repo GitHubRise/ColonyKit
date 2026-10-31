@@ -36,7 +36,9 @@
 						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotCrafting" />
 						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotRefuel" />
 						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotHygiene" />
+						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotWater" />
 						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotFeedPrisoner" />
+						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotPlants" />
 						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotRopeAnimals" />
 						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotSweep" />
 						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotScrub" />

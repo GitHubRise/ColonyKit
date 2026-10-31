@@ -19,7 +19,11 @@
 	<ColonyKit.Settings.Robotics.Refuel>Refuel generators</ColonyKit.Settings.Robotics.Refuel>
 	<ColonyKit.Settings.Robotics.Refuel.Desc>Refuel wood-fired and chemfuel generators below the threshold.</ColonyKit.Settings.Robotics.Refuel.Desc>
 	<ColonyKit.Settings.Robotics.FeedPrisoners>Feed prisoners</ColonyKit.Settings.Robotics.FeedPrisoners>
-	<ColonyKit.Settings.Robotics.FeedPrisoners.Desc>Feed or deliver meals to hungry colony prisoners.</ColonyKit.Settings.Robotics.FeedPrisoners.Desc>
+	<ColonyKit.Settings.Robotics.FeedPrisoners.Desc>Feed or deliver meals to hungry colony prisoners, and bring food to bedridden patients.</ColonyKit.Settings.Robotics.FeedPrisoners.Desc>
+	<ColonyKit.Settings.Robotics.Water>Bring water</ColonyKit.Settings.Robotics.Water>
+	<ColonyKit.Settings.Robotics.Water.Desc>Bring 1 L bottled water to thirsty patients and prisoners who cannot reach water; feed those who cannot hold a bottle, and fall back to filling a basin or bucket.</ColonyKit.Settings.Robotics.Water.Desc>
+	<ColonyKit.Settings.Robotics.Plants>Growing and harvest</ColonyKit.Settings.Robotics.Plants>
+	<ColonyKit.Settings.Robotics.Plants.Desc>Harvest mature crops in growing zones, cut designated trees and plants, and sow empty fields.</ColonyKit.Settings.Robotics.Plants.Desc>
 	<ColonyKit.Settings.Robotics.Hygiene>Sanitation</ColonyKit.Settings.Robotics.Hygiene>
 	<ColonyKit.Settings.Robotics.Hygiene.Desc>Empty septic tanks and unblock fixtures. Bathroom floor filth is still handled even when sweeping is off.</ColonyKit.Settings.Robotics.Hygiene.Desc>
 	<ColonyKit.Settings.Robotics.RopeAnimals>Rope animals</ColonyKit.Settings.Robotics.RopeAnimals>
@@ -207,8 +211,8 @@
 	<CK.Robotics.Chore.Butcher.Desc>Use the butcher table's butcher bill to process corpses.</CK.Robotics.Chore.Butcher.Desc>
 	<CK.Robotics.Chore.Refuel.Label>Refuel</CK.Robotics.Chore.Refuel.Label>
 	<CK.Robotics.Chore.Refuel.Desc>Refuel wood/chemfuel generators below the threshold.</CK.Robotics.Chore.Refuel.Desc>
-	<CK.Robotics.Chore.FeedPrisoners.Label>Prisoners</CK.Robotics.Chore.FeedPrisoners.Label>
-	<CK.Robotics.Chore.FeedPrisoners.Desc>Feed or deliver meals to hungry colony prisoners.</CK.Robotics.Chore.FeedPrisoners.Desc>
+	<CK.Robotics.Chore.FeedPrisoners.Label>Meals</CK.Robotics.Chore.FeedPrisoners.Label>
+	<CK.Robotics.Chore.FeedPrisoners.Desc>Feed or deliver meals to hungry colony prisoners, and bring food to bedridden patients.</CK.Robotics.Chore.FeedPrisoners.Desc>
 	<CK.Robotics.Chore.Hygiene.Label>Hygiene</CK.Robotics.Chore.Hygiene.Label>
 	<CK.Robotics.Chore.Hygiene.Desc>Empty septic tanks, unblock fixtures and clean bathroom filth.</CK.Robotics.Chore.Hygiene.Desc>
 	<CK.Robotics.Chore.RopeAnimals.Label>Rope</CK.Robotics.Chore.RopeAnimals.Label>
@@ -223,6 +227,10 @@
 	<CK.Robotics.Chore.CorpseDisposal.Desc>Carry enemy corpses to a burn pit or crematorium, or into a stockpile that accepts corpses (Mk-V only).</CK.Robotics.Chore.CorpseDisposal.Desc>
 	<CK.Robotics.Chore.Craft.Label>Crafting</CK.Robotics.Chore.Craft.Label>
 	<CK.Robotics.Chore.Craft.Desc>Work crafting, smithing, tailoring and art benches (Mk-V only).</CK.Robotics.Chore.Craft.Desc>
+	<CK.Robotics.Chore.Water.Label>Water</CK.Robotics.Chore.Water.Label>
+	<CK.Robotics.Chore.Water.Desc>Bring bottled water to thirsty patients and prisoners who cannot reach water, and feed those who cannot drink on their own.</CK.Robotics.Chore.Water.Desc>
+	<CK.Robotics.Chore.Plants.Label>Plants</CK.Robotics.Chore.Plants.Label>
+	<CK.Robotics.Chore.Plants.Desc>Harvest ripe crops, cut designated trees and plants, and sow empty fields.</CK.Robotics.Chore.Plants.Desc>
 
 	<ColonyKit.Settings.Robotics.Section.Ai>Mk-V AI (DeepSeek)</ColonyKit.Settings.Robotics.Section.Ai>
 	<ColonyKit.Settings.Robotics.Ai.Enabled>Enable AI control</ColonyKit.Settings.Robotics.Ai.Enabled>

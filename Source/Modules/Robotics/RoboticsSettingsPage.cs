@@ -106,6 +106,16 @@ namespace ColonyKit.Modules.Robotics
 				"ColonyKit.Settings.Robotics.Crafting".Loc(),
 				ref data.crafting,
 				"ColonyKit.Settings.Robotics.Crafting.Desc".Loc());
+			data.water = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.Water".Loc(),
+				ref data.water,
+				"ColonyKit.Settings.Robotics.Water.Desc".Loc());
+			data.plants = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.Plants".Loc(),
+				ref data.plants,
+				"ColonyKit.Settings.Robotics.Plants.Desc".Loc());
 			data.dangerAvoidance = SettingsWidgets.Checkbox(
 				listing,
 				"ColonyKit.Settings.Robotics.DangerAvoidance".Loc(),

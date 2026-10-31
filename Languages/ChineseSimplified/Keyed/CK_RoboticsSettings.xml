@@ -19,7 +19,11 @@
 	<ColonyKit.Settings.Robotics.Refuel>给发电机加燃料</ColonyKit.Settings.Robotics.Refuel>
 	<ColonyKit.Settings.Robotics.Refuel.Desc>给木柴发电机、化合燃料发电机补充燃料。</ColonyKit.Settings.Robotics.Refuel.Desc>
 	<ColonyKit.Settings.Robotics.FeedPrisoners>给囚犯送餐</ColonyKit.Settings.Robotics.FeedPrisoners>
-	<ColonyKit.Settings.Robotics.FeedPrisoners.Desc>给饥饿的殖民地囚犯喂食或送餐。</ColonyKit.Settings.Robotics.FeedPrisoners.Desc>
+	<ColonyKit.Settings.Robotics.FeedPrisoners.Desc>给饥饿的殖民地囚犯喂食或送餐，也给卧床病人送饭。</ColonyKit.Settings.Robotics.FeedPrisoners.Desc>
+	<ColonyKit.Settings.Robotics.Water>送水喂水</ColonyKit.Settings.Robotics.Water>
+	<ColonyKit.Settings.Robotics.Water.Desc>病人、囚徒口渴又走不到水时，送 1 升瓶装水过去；自己端不起来的当场喂，没有瓶装水就拿水盆水桶去打水。</ColonyKit.Settings.Robotics.Water.Desc>
+	<ColonyKit.Settings.Robotics.Plants>种植收获</ColonyKit.Settings.Robotics.Plants>
+	<ColonyKit.Settings.Robotics.Plants.Desc>收种植区里成熟的作物（玉米、稻米等）、砍掉标记的树和植物，并给空地播种。</ColonyKit.Settings.Robotics.Plants.Desc>
 	<ColonyKit.Settings.Robotics.Hygiene>卫生维护</ColonyKit.Settings.Robotics.Hygiene>
 	<ColonyKit.Settings.Robotics.Hygiene.Desc>清空化粪池、疏通堵塞洁具；即使扫地关闭，也会优先处理卫生间地面污渍。</ColonyKit.Settings.Robotics.Hygiene.Desc>
 	<ColonyKit.Settings.Robotics.RopeAnimals>牵引动物</ColonyKit.Settings.Robotics.RopeAnimals>
@@ -207,8 +211,8 @@
 	<CK.Robotics.Chore.Butcher.Desc>使用屠宰台的屠宰账单处理尸体。</CK.Robotics.Chore.Butcher.Desc>
 	<CK.Robotics.Chore.Refuel.Label>加燃料</CK.Robotics.Chore.Refuel.Label>
 	<CK.Robotics.Chore.Refuel.Desc>给低于阈值的木柴/化合燃料发电机补燃料。</CK.Robotics.Chore.Refuel.Desc>
-	<CK.Robotics.Chore.FeedPrisoners.Label>囚犯送餐</CK.Robotics.Chore.FeedPrisoners.Label>
-	<CK.Robotics.Chore.FeedPrisoners.Desc>给饥饿的殖民地囚犯喂食/送餐。</CK.Robotics.Chore.FeedPrisoners.Desc>
+	<CK.Robotics.Chore.FeedPrisoners.Label>送餐喂食</CK.Robotics.Chore.FeedPrisoners.Label>
+	<CK.Robotics.Chore.FeedPrisoners.Desc>给饥饿的殖民地囚犯送餐，也给卧床病人送饭。</CK.Robotics.Chore.FeedPrisoners.Desc>
 	<CK.Robotics.Chore.Hygiene.Label>卫生</CK.Robotics.Chore.Hygiene.Label>
 	<CK.Robotics.Chore.Hygiene.Desc>清空化粪池、疏通堵塞洁具、清理卫生间污渍。</CK.Robotics.Chore.Hygiene.Desc>
 	<CK.Robotics.Chore.RopeAnimals.Label>牵引动物</CK.Robotics.Chore.RopeAnimals.Label>
@@ -223,6 +227,10 @@
 	<CK.Robotics.Chore.CorpseDisposal.Desc>把敌人尸体送进燃烧坑/焚化炉，或搬进允许尸体的库存区（仅 Mk-V）。</CK.Robotics.Chore.CorpseDisposal.Desc>
 	<CK.Robotics.Chore.Craft.Label>手工制作</CK.Robotics.Chore.Craft.Label>
 	<CK.Robotics.Chore.Craft.Desc>在制作、锻造、裁缝、艺术工作台上完成账单（仅 Mk-V）。</CK.Robotics.Chore.Craft.Desc>
+	<CK.Robotics.Chore.Water.Label>送水喂水</CK.Robotics.Chore.Water.Label>
+	<CK.Robotics.Chore.Water.Desc>病人、囚徒口渴又走不到水时送瓶装水过去；自己端不起来的当场喂水。</CK.Robotics.Chore.Water.Desc>
+	<CK.Robotics.Chore.Plants.Label>种植收获</CK.Robotics.Chore.Plants.Label>
+	<CK.Robotics.Chore.Plants.Desc>收成熟作物、砍掉标记的树和植物，并给空地播种。</CK.Robotics.Chore.Plants.Desc>
 
 	<ColonyKit.Settings.Robotics.Section.Ai>Mk-V AI（DeepSeek）</ColonyKit.Settings.Robotics.Section.Ai>
 	<ColonyKit.Settings.Robotics.Ai.Enabled>启用 AI 控制</ColonyKit.Settings.Robotics.Ai.Enabled>

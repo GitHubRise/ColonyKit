@@ -17,12 +17,14 @@ namespace ColonyKit.Modules.Robotics
 		Doctor = 11,
 		Research = 12,
 		CorpseDisposal = 13,
-		Craft = 14
+		Craft = 14,
+		Water = 15,
+		Plants = 16
 	}
 
 	public static class RobotChores
 	{
-		public const int Count = 15;
+		public const int Count = 17;
 
 		public static readonly RobotChore[] All =
 		{
@@ -40,7 +42,9 @@ namespace ColonyKit.Modules.Robotics
 			RobotChore.Doctor,
 			RobotChore.Research,
 			RobotChore.CorpseDisposal,
-			RobotChore.Craft
+			RobotChore.Craft,
+			RobotChore.Water,
+			RobotChore.Plants
 		};
 
 		public static string LabelKey(RobotChore chore)
@@ -101,6 +105,10 @@ namespace ColonyKit.Modules.Robotics
 					return settings.corpseDisposal;
 				case RobotChore.Craft:
 					return settings.crafting;
+				case RobotChore.Water:
+					return settings.water;
+				case RobotChore.Plants:
+					return settings.plants;
 				default:
 					return false;
 			}

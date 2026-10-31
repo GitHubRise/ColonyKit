@@ -132,6 +132,7 @@ namespace ColonyKit.Modules.Robotics
 					.Append(" incomingDamage=").Append(IncomingDamageProbe(mkv))
 					.Append(" mkvComfort=").Append(TemperatureProbe(mkv));
 				ProbeMkVChores(map, mkv, builder);
+				ProbeCareJobs(map, mkv, builder);
 				ProbeMkVDualWield(mkv, builder);
 				ProbeMkVBackupWeapon(mkv, builder);
 				ProbeArcBladeEffects(mkv, map, builder);
@@ -381,6 +382,87 @@ namespace ColonyKit.Modules.Robotics
 					.Append(" pileAllows=").Append(pile.settings.filter.Allows(corpse));
 			}
 			corpse.Destroy(DestroyMode.Vanish);
+		}
+
+		/// <summary>
+		/// 照护 / 种植家务探针：砍树（砍伐标记）、收玉米（种植区里成熟的玉米）、
+		/// 送水（口渴囚徒 + 一瓶凉白开）。只记录机器人实际能拿到的 Job 名，不参与通过判定。
+		/// </summary>
+		private static void ProbeCareJobs(Map map, Pawn mkv, StringBuilder builder)
+		{
+			try
+			{
+				// 砍树：一棵树 + 砍伐标记 → Plants 应当给出 CutPlant。
+				ThingDef treeDef = DefDatabase<ThingDef>.GetNamedSilentFail("Plant_TreeOak");
+				IntVec3 treeCell = CellFinder.RandomClosewalkCellNear(
+					mkv.Position, map, 6, c => c.Standable(map) && c.GetPlant(map) == null && c.GetZone(map) == null);
+				if (treeDef != null && treeCell.IsValid)
+				{
+					Plant tree = GenSpawn.Spawn(ThingMaker.MakeThing(treeDef), treeCell, map) as Plant;
+					if (tree != null)
+					{
+						tree.Growth = 1f;
+						map.designationManager.AddDesignation(new Designation(tree, DesignationDefOf.CutPlant));
+						ThinkResult cutResult = new JobGiver_NannyBotPlants()
+							.TryIssueJobPackage(mkv, new JobIssueParams());
+						builder.Append(" cutJob=").Append(cutResult.Job?.def?.defName ?? "none");
+						tree.Destroy(DestroyMode.Vanish);
+					}
+				}
+
+				// 收玉米：种植区里一株成熟的玉米 → Plants 应当给出 Harvest。
+				ThingDef cornDef = DefDatabase<ThingDef>.GetNamedSilentFail("Plant_Corn");
+				IntVec3 zoneCell = CellFinder.RandomClosewalkCellNear(
+					mkv.Position, map, 8, c => c.Standable(map) && c.GetZone(map) == null && c.GetPlant(map) == null);
+				if (cornDef != null && zoneCell.IsValid)
+				{
+					Zone_Growing zone = new Zone_Growing(map.zoneManager);
+					map.zoneManager.RegisterZone(zone);
+					zone.AddCell(zoneCell);
+					zone.SetPlantDefToGrow(cornDef);
+					Plant corn = GenSpawn.Spawn(ThingMaker.MakeThing(cornDef), zoneCell, map) as Plant;
+					if (corn != null)
+					{
+						corn.Growth = 1f;
+						ThinkResult harvestResult = new JobGiver_NannyBotPlants()
+							.TryIssueJobPackage(mkv, new JobIssueParams());
+						builder.Append(" harvestJob=").Append(harvestResult.Job?.def?.defName ?? "none");
+						corn.Destroy(DestroyMode.Vanish);
+					}
+					map.zoneManager.DeregisterZone(zone);
+				}
+
+				// 送水：口渴 15% 的囚徒 + 机器人旁边一瓶凉白开。
+				ThingDef boiledDef = DefDatabase<ThingDef>.GetNamedSilentFail("CK_BoiledWater");
+				IntVec3 prisonerCell = CellFinder.RandomClosewalkCellNear(
+					mkv.Position, map, 6, c => c.Standable(map) && c != mkv.Position);
+				if (boiledDef != null && prisonerCell.IsValid)
+				{
+					Pawn prisoner = PawnGenerator.GeneratePawn(PawnKindDefOf.Villager, null);
+					GenSpawn.Spawn(prisoner, prisonerCell, map, WipeMode.Vanish);
+					prisoner.guest?.SetGuestStatus(Faction.OfPlayer, GuestStatus.Prisoner);
+					Hygiene.HygieneUtility.EnsureThirst(prisoner);
+					Hygiene.Need_Thirst thirst = prisoner.needs?.TryGetNeed<Hygiene.Need_Thirst>();
+					if (thirst != null)
+					{
+						thirst.CurLevel = 0.15f;
+					}
+					Thing stack = ThingMaker.MakeThing(boiledDef);
+					stack.stackCount = 2;
+					GenSpawn.Spawn(stack, mkv.Position, map, WipeMode.Vanish);
+					Job direct = Hygiene.BringWaterUtility.TryMakeJob(mkv, prisoner);
+					ThinkResult waterResult = new JobGiver_NannyBotWater()
+						.TryIssueJobPackage(mkv, new JobIssueParams());
+					builder.Append(" waterJob=").Append(direct?.def?.defName ?? "none")
+						.Append(" waterGiver=").Append(waterResult.Job?.def?.defName ?? "none");
+					stack.Destroy(DestroyMode.Vanish);
+					prisoner.Destroy(DestroyMode.Vanish);
+				}
+			}
+			catch (Exception exception)
+			{
+				builder.Append(" careProbe=exception:").Append(exception.GetType().Name);
+			}
 		}
 
 		/// <summary>

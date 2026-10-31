@@ -201,6 +201,12 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<CK.Hygiene.FloatMenu.NoWaterSource>No water here</CK.Hygiene.FloatMenu.NoWaterSource>
 	<CK.Hygiene.FloatMenu.DrawFromSpot>Draw water</CK.Hygiene.FloatMenu.DrawFromSpot>
 	<CK.Hygiene.FloatMenu.NeedBucket>Needs an empty bucket</CK.Hygiene.FloatMenu.NeedBucket>
+	<CK.Hygiene.FloatMenu.BringWater>Bring water</CK.Hygiene.FloatMenu.BringWater>
+	<CK.Hygiene.FloatMenu.FeedWater>Give water</CK.Hygiene.FloatMenu.FeedWater>
+	<CK.Hygiene.FloatMenu.CleanPawn>Clean</CK.Hygiene.FloatMenu.CleanPawn>
+	<CK.Hygiene.FloatMenu.NoWaterToDeliver>No water to deliver: bottled water, or a bucket or basin plus a water source</CK.Hygiene.FloatMenu.NoWaterToDeliver>
+	<CK.Hygiene.FloatMenu.NotBedridden>Only bedridden patients, babies or prisoners need help getting clean</CK.Hygiene.FloatMenu.NotBedridden>
+	<CK.Hygiene.FloatMenu.NeedsWater>Needs at least 1 L of water in the network</CK.Hygiene.FloatMenu.NeedsWater>
 	<CK.Hygiene.BasinWater>Basin water: {0}/{1} L</CK.Hygiene.BasinWater>
 	<CK.Hygiene.PoolWater>Water: {0}/{1} L</CK.Hygiene.PoolWater>
 	<CK.Hygiene.PoolEmpty>Not filled yet</CK.Hygiene.PoolEmpty>

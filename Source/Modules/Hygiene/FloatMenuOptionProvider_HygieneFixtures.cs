@@ -111,6 +111,13 @@ namespace ColonyKit.Modules.Hygiene
 					"CK.Hygiene.FloatMenu.FillPurified", pawn, waterPoint, "CK_FillPurifiedWater",
 					canPurified,
 					canPurified ? null : "CK.Hygiene.FloatMenu.NeedsFilter".Translate().ToString());
+
+				// 水龙头也支持直接装一瓶 1 L 矿泉水：不需要容器，从水网抽 1 升。
+				bool canMineral = waterPoint.CanBottleMineralWater(pawn);
+				yield return UseOption(
+					"CK.Hygiene.FloatMenu.FillBottle", pawn, waterPoint, "CK_FillWaterBottle",
+					canMineral,
+					canMineral ? null : "CK.Hygiene.FloatMenu.NeedsWater".Translate().ToString());
 			}
 			else if (building is Building_WaterSpot waterSpot)
 			{

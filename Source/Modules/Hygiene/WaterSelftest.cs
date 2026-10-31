@@ -18,7 +18,7 @@ namespace ColonyKit.Modules.Hygiene
 	{
 		public const string CommandLineKey = "-colonykit-water-test";
 
-		private const int MaxTicks = 16000;
+		private const int MaxTicks = 18000;
 
 		private static bool ran;
 		private static bool armed;
@@ -43,6 +43,12 @@ namespace ColonyKit.Modules.Hygiene
 		private static bool waterPatientPhaseDone;
 		private static Pawn waterPatient;
 		private static bool basinPhaseDone;
+		private static bool bringWaterPhaseDone;
+		private static Pawn bringWaterTarget;
+		private static bool bringWaterNeeded;
+		private static bool bringWaterWorkGiver;
+		private static bool bringWaterTapBottle;
+		private static IntVec3 rigOrigin;
 		private static int startTick;
 		private static int nextLogTick;
 		private static string failure;
@@ -147,6 +153,7 @@ namespace ColonyKit.Modules.Hygiene
 				error = "no clear area";
 				return false;
 			}
+			rigOrigin = origin;
 			IntVec3 wellCell = origin + new IntVec3(1, 0, 1);
 			IntVec3 pipeCell = origin + new IntVec3(2, 0, 1);
 			IntVec3 tapCell = origin + new IntVec3(3, 0, 1);
@@ -240,11 +247,7 @@ namespace ColonyKit.Modules.Hygiene
 				return false;
 			}
 			pawn.jobs.StopAll(false);
-			if (!pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc))
-			{
-				error = "job rejected";
-				return false;
-			}
+			pawn.jobs.StartJob(job, JobCondition.InterruptForced);
 			return true;
 		}
 
@@ -561,6 +564,57 @@ namespace ColonyKit.Modules.Hygiene
 					ModLog.Info(
 						"Hygiene",
 						$"water selftest bottle phase done: thirst={thirst.CurLevel:F2}");
+					StartBringWaterPhase();
+					nextLogTick = elapsed + 250;
+				}
+				else if (elapsed >= MaxTicks)
+				{
+					Finish(false);
+				}
+				return;
+			}
+
+			if (!bringWaterPhaseDone)
+			{
+				if (elapsed >= nextLogTick)
+				{
+					nextLogTick = elapsed + 500;
+					Log("bringwater");
+				}
+				if (bringWaterTarget == null)
+				{
+					Finish(false);
+					return;
+				}
+				Thing delivered = MineralWaterUtility.Carried(bringWaterTarget);
+				Need_Thirst targetThirst = bringWaterTarget.needs?.TryGetNeed<Need_Thirst>();
+				bool selfDrank = bringWaterTarget.CurJobDef == JobDefOf.Ingest
+					|| (targetThirst != null && targetThirst.CurLevel > 0.3f);
+				if (delivered != null || selfDrank)
+				{
+					bool drinkNode = PrisonerThinkTreeHasDrinkGiver();
+					bool drinkJob = selfDrank;
+					if (!drinkJob && delivered != null)
+					{
+						// 囚徒自己那条线的证据：拿手里的瓶装水，JobGiver 应当发出 Ingest。
+						ThinkResult result = new JobGiver_DrinkWater().TryIssueJobPackage(
+							bringWaterTarget, default(JobIssueParams));
+						drinkJob = result.Job != null && result.Job.def == JobDefOf.Ingest;
+					}
+					bringWaterPhaseDone = true;
+					ModLog.Info(
+						"Hygiene",
+						$"water selftest bring water done: bottles={delivered?.stackCount ?? 0} " +
+						$"selfDrank={selfDrank} needWater={bringWaterNeeded} " +
+						$"workGiver={bringWaterWorkGiver} tapBottle={bringWaterTapBottle} " +
+						$"drinkNode={drinkNode} drinkJob={drinkJob} " +
+						$"thirst={(targetThirst?.CurLevel ?? -1f):F2}");
+					if (!drinkNode || !drinkJob)
+					{
+						failure = "prisoner never drinks delivered water";
+						Finish(false);
+						return;
+					}
 					Finish(true);
 				}
 				else if (elapsed >= MaxTicks)
@@ -584,11 +638,7 @@ namespace ColonyKit.Modules.Hygiene
 				container.Water = 0f;
 			}
 			Job job = JobMaker.MakeJob(fillDef, spot);
-			pawn.jobs.StopAll(false);
-			if (!pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc))
-			{
-				Fail("spot job rejected");
-			}
+			ForceJob(job, "spot job rejected");
 		}
 
 		/// <summary>把口渴压到 20%，让小人从免费取水点喝水，验证「口渴能喝到水」。</summary>
@@ -603,11 +653,7 @@ namespace ColonyKit.Modules.Hygiene
 			}
 			thirst.CurLevel = 0.2f;
 			Job job = JobMaker.MakeJob(drinkDef, spot);
-			pawn.jobs.StopAll(false);
-			if (!pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc))
-			{
-				Fail("drink job rejected");
-			}
+			ForceJob(job, "drink job rejected");
 		}
 
 		/// <summary>在免费取水点清单里加一条「取水 1 次」，让 WorkGiver 派活验证清单真的会执行。</summary>
@@ -647,11 +693,7 @@ namespace ColonyKit.Modules.Hygiene
 				Fail("list workgiver produced no job");
 				return;
 			}
-			pawn.jobs.StopAll(false);
-			if (!pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc))
-			{
-				Fail("list job rejected");
-			}
+			ForceJob(job, "list job rejected");
 		}
 
 		/// <summary>把随身脸盆拿到免费取水点打满，验证脸盆可携带、可当容器打水。</summary>
@@ -666,11 +708,7 @@ namespace ColonyKit.Modules.Hygiene
 			}
 			water.Water = 0f;
 			Job job = JobMaker.MakeJob(fillDef, spot);
-			pawn.jobs.StopAll(false);
-			if (!pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc))
-			{
-				Fail("basin job rejected");
-			}
+			ForceJob(job, "basin job rejected");
 		}
 
 		private static void StartBulkPhase()
@@ -703,11 +741,7 @@ namespace ColonyKit.Modules.Hygiene
 				"Hygiene",
 				$"water selftest bulk job: queue={job.targetQueueB?.Count ?? 0} count={job.count} " +
 				$"carried={pawn.inventory?.innerContainer?.Count ?? -1}");
-			pawn.jobs.StopAll(false);
-			if (!pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc))
-			{
-				Fail("bulk job rejected");
-			}
+			ForceJob(job, "bulk job rejected");
 		}
 
 		private static void StartWaterPatientPhase()
@@ -737,11 +771,7 @@ namespace ColonyKit.Modules.Hygiene
 				return;
 			}
 			Job job = JobMaker.MakeJob(def, waterPatient);
-			pawn.jobs.StopAll(false);
-			if (!pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc))
-			{
-				Fail("water patient job rejected");
-			}
+			ForceJob(job, "water patient job rejected");
 		}
 
 		private static void StartBottlePhase()
@@ -761,7 +791,7 @@ namespace ColonyKit.Modules.Hygiene
 			WorkGiver_Scanner giver = def?.Worker as WorkGiver_Scanner;
 			if (giver == null || !giver.HasJobOnThing(pawn, spot))
 			{
-				Fail("bottle workgiver rejected");
+				Fail("bottle workgiver rejected: " + DescribeWaterSpotBills());
 				return;
 			}
 			Job job = giver.JobOnThing(pawn, spot);
@@ -770,11 +800,145 @@ namespace ColonyKit.Modules.Hygiene
 				Fail("bottle job not produced");
 				return;
 			}
-			pawn.jobs.StopAll(false);
-			if (!pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc))
+			ForceJob(job, "bottle job rejected");
+		}
+
+		/// <summary>
+		/// 送水自检：在离水源很远的地方放一个口渴 15% 的囚徒，医生身边放三瓶凉白开，
+		/// 让医生执行 CK_BringWater；水进囚徒物品栏后，确认囚徒自己那条线真的会去喝
+		/// （ThinkTree 里有喝水节点，JobGiver 能对着手里的瓶装水发出 Ingest）。
+		/// 顺便验证水龙头也能直接装 1 L 矿泉水（水网水量应当少 1 升）。
+		/// </summary>
+		/// <summary>取水点清单的现场状态，供「工作器拒绝」时定位原因。</summary>
+		private static string DescribeWaterSpotBills()
+		{
+			if (spot == null)
 			{
-				Fail("bottle job rejected");
+				return "spot=null";
 			}
+			System.Text.StringBuilder builder = new System.Text.StringBuilder();
+			builder.Append($"bills={spot.BillStack.Count} any={spot.BillStack.AnyShouldDoNow}");
+			foreach (Bill bill in spot.BillStack.Bills)
+			{
+				string mode = bill is Bill_Production prod ? prod.repeatMode?.defName ?? "?" : "-";
+				int count = bill is Bill_Production prod2 ? prod2.repeatCount : -1;
+				builder.Append(
+					$" [{bill.recipe?.defName ?? "?"} mode={mode} count={count} " +
+					$"should={bill.ShouldDoNow()} allowed={bill.PawnAllowedToStartAnew(pawn)}]");
+			}
+			builder.Append(
+				$" reach={pawn.CanReserveAndReach(spot, PathEndMode.Touch, pawn.NormalMaxDanger())}" +
+				$" forbidden={spot.IsForbidden(pawn)}" +
+				$" spawned={spot.Spawned}");
+			return builder.ToString();
+		}
+
+		private static void StartBringWaterPhase()
+		{
+			ThingDef boiled = MineralWaterUtility.BoiledDef;
+			if (boiled == null || pawn == null || map == null)
+			{
+				Fail("bring water defs missing");
+				return;
+			}
+			if (!TryFindDryCell(out IntVec3 cell))
+			{
+				Fail("no cell away from water");
+				return;
+			}
+			Faction faction = Find.FactionManager.AllFactions.ToList().FirstOrDefault(f =>
+				f != null && f != Faction.OfPlayer && !f.IsPlayer && f.def.humanlikeFaction);
+			Pawn prisoner = PawnGenerator.GeneratePawn(PawnKindDefOf.Villager, faction);
+			if (prisoner == null)
+			{
+				Fail("no prisoner generated");
+				return;
+			}
+			GenSpawn.Spawn(prisoner, cell, map, WipeMode.Vanish);
+			prisoner.guest?.SetGuestStatus(Faction.OfPlayer, GuestStatus.Prisoner);
+			HygieneUtility.EnsureThirst(prisoner);
+			Need_Thirst thirst = prisoner.needs?.TryGetNeed<Need_Thirst>();
+			if (thirst == null)
+			{
+				Fail("prisoner has no thirst need");
+				return;
+			}
+			thirst.CurLevel = 0.15f;
+			bringWaterTarget = prisoner;
+			bringWaterNeeded = BringWaterUtility.ShouldDeliverWater(prisoner);
+			if (!bringWaterNeeded)
+			{
+				Fail("prisoner can still reach water");
+				return;
+			}
+			WorkGiverDef giverDef = DefDatabase<WorkGiverDef>.GetNamedSilentFail("CK_BringWaterPrisoner");
+			bringWaterWorkGiver = (giverDef?.Worker as WorkGiver_Scanner)?.HasJobOnThing(pawn, prisoner) == true;
+
+			float before = tap?.StoredWater ?? 0f;
+			bool tapBottle = tap != null && tap.CanBottleMineralWater(pawn) && tap.TryDrawMineralBottle(out _);
+			float after = tap?.StoredWater ?? 0f;
+			bringWaterTapBottle = tapBottle && before - after >= 0.5f;
+
+			Thing stack = ThingMaker.MakeThing(boiled);
+			stack.stackCount = 3;
+			GenSpawn.Spawn(stack, pawn.Position + IntVec3.South, map, WipeMode.Vanish);
+			Job job = BringWaterUtility.TryMakeJob(pawn, prisoner);
+			if (job == null || job.def.defName != "CK_BringWater" || job.count <= 0)
+			{
+				Fail("bring water job missing");
+				return;
+			}
+			ModLog.Info(
+				"Hygiene",
+				$"water selftest bring water start: prisoner={prisoner.LabelShort} cell={cell} " +
+				$"count={job.count} needWater={bringWaterNeeded} workGiver={bringWaterWorkGiver} " +
+				$"tapBottle={bringWaterTapBottle} ({before:F1}->{after:F1})");
+			ForceJob(job, "bring water job not started");
+		}
+
+		/// <summary>找一格离取水装置 40 格以上、附近也没有地表水的空地，模拟「牢房里没水」。</summary>
+		private static bool TryFindDryCell(out IntVec3 cell)
+		{
+			cell = IntVec3.Invalid;
+			if (map == null)
+			{
+				return false;
+			}
+			foreach (IntVec3 candidate in GenRadial.RadialCellsAround(rigOrigin, 50f, true))
+			{
+				if (!candidate.InBounds(map)
+					|| !candidate.Standable(map)
+					|| candidate.Fogged(map)
+					|| candidate.DistanceTo(rigOrigin) < 42f)
+				{
+					continue;
+				}
+				if (WaterSourceUtility.FindSurfaceWaterStandCell(map, candidate, 40f).IsValid)
+				{
+					continue;
+				}
+				cell = candidate;
+				return true;
+			}
+			return false;
+		}
+
+		/// <summary>囚徒那支 ThinkTree 里有没有喝水节点（原版囚徒分支没有）。</summary>
+		private static bool PrisonerThinkTreeHasDrinkGiver()
+		{
+			ThinkTreeDef tree = DefDatabase<ThinkTreeDef>.GetNamedSilentFail("Humanlike");
+			if (tree?.thinkRoot == null)
+			{
+				return false;
+			}
+			foreach (ThinkNode node in tree.thinkRoot.ThisAndChildrenRecursive)
+			{
+				if (node is JobGiver_DrinkWater)
+				{
+					return true;
+				}
+			}
+			return false;
 		}
 
 		private static void Log(string phase)
@@ -789,6 +953,8 @@ namespace ColonyKit.Modules.Hygiene
 				$"basinWater={(basin?.TryGetComp<CompBasinWater>()?.Water ?? -1f):F1} " +
 				$"thirst={(pawn?.needs?.TryGetNeed<Need_Thirst>()?.CurLevel ?? -1f):F2} " +
 				$"patientThirst={(waterPatient?.needs?.TryGetNeed<Need_Thirst>()?.CurLevel ?? -1f):F2} " +
+				$"bringThirst={(bringWaterTarget?.needs?.TryGetNeed<Need_Thirst>()?.CurLevel ?? -1f):F2} " +
+				$"bringCarried={MineralWaterUtility.Carried(bringWaterTarget)?.stackCount ?? 0} " +
 				$"listCompleted={listBill?.repeatCount ?? -1}");
 		}
 

@@ -18,4 +18,10 @@
 	<CK_WaterPrisoner.label>给囚徒喂水</CK_WaterPrisoner.label>
 	<CK_WaterPrisoner.verb>喂水给</CK_WaterPrisoner.verb>
 	<CK_WaterPrisoner.gerund>正在给囚徒喂水</CK_WaterPrisoner.gerund>
+	<CK_BringWaterPatient.label>给病人送水</CK_BringWaterPatient.label>
+	<CK_BringWaterPatient.verb>送水给</CK_BringWaterPatient.verb>
+	<CK_BringWaterPatient.gerund>正在给病人送水</CK_BringWaterPatient.gerund>
+	<CK_BringWaterPrisoner.label>给囚徒送水</CK_BringWaterPrisoner.label>
+	<CK_BringWaterPrisoner.verb>送水给</CK_BringWaterPrisoner.verb>
+	<CK_BringWaterPrisoner.gerund>正在给囚徒送水</CK_BringWaterPrisoner.gerund>
 </LanguageData>

@@ -6,7 +6,8 @@ using Verse.AI;
 namespace ColonyKit.Modules.Hygiene
 {
 	/// <summary>
-	/// 在取水点直接装一瓶 1 L 矿泉水：不需要水桶/脸盆，装满一瓶就完成一次账单。
+	/// 直接装一瓶 1 L 矿泉水：不需要水桶/脸盆，装满一瓶就完成一次账单。
+	/// 在免费取水点装满即完成（不耗水）；在水龙头装则从水网抽走 1 升。
 	/// </summary>
 	public class JobDriver_FillWaterBottle : JobDriver
 	{
@@ -34,6 +35,13 @@ namespace ColonyKit.Modules.Hygiene
 				remainingTicks -= delta;
 				if (remainingTicks > 0)
 				{
+					return;
+				}
+				// 水龙头要从水网里真的抽 1 升；免费取水点装满即可，不耗水。
+				Building_WaterPoint tap = job.GetTarget(SpotInd).Thing as Building_WaterPoint;
+				if (tap != null && !tap.TryDrawMineralBottle(out _))
+				{
+					EndJobWith(JobCondition.Incompletable);
 					return;
 				}
 				ThingDef def = DefDatabase<ThingDef>.GetNamedSilentFail("CK_MineralWater");
