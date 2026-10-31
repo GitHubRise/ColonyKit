@@ -9,6 +9,7 @@
 	<CK.Robotics.MkVCombat.Inspect>Weapon · Combat: {1}</CK.Robotics.MkVCombat.Inspect>
 	<CK.Robotics.MkVCombat.Target>Target: {0}</CK.Robotics.MkVCombat.Target>
 	<CK.Robotics.MkVCombat.Range>Engage range: {0} cells · return distance: {1} cells</CK.Robotics.MkVCombat.Range>
+	<CK.Robotics.MkVCombat.DualWield>Dual wield: {0} (main) + {1} (offhand)</CK.Robotics.MkVCombat.DualWield>
 	<CK.Robotics.Inspect.LowPowerStandby>Low-power standby: charging conversion ×1.2</CK.Robotics.Inspect.LowPowerStandby>
 	<CK.Robotics.RobotInfo.LowPowerStandby>Low-power standby: charging conversion ×1.2</CK.Robotics.RobotInfo.LowPowerStandby>
 	<CK.RobotManagement.Status.LowPowerStandby>Fast-charge standby</CK.RobotManagement.Status.LowPowerStandby>

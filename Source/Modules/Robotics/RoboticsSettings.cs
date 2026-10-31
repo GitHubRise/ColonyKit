@@ -167,6 +167,7 @@ namespace ColonyKit.Modules.Robotics
 		public bool mkvCombatEnabled = true;
 		public bool mkvReturnToBay = true;
 		public bool mkvAutoPickupWeapons = true;
+		public bool mkvDualWield = true;
 		public bool mkvBayAutoStart = false;
 		public float mkvEngageRange = DefaultEngageRange;
 		public float mkvReturnRange = DefaultReturnRange;
@@ -224,6 +225,7 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref mkvCombatEnabled, "mkvCombatEnabled", true);
 			Scribe_Values.Look(ref mkvReturnToBay, "mkvReturnToBay", true);
 			Scribe_Values.Look(ref mkvAutoPickupWeapons, "mkvAutoPickupWeapons", true);
+			Scribe_Values.Look(ref mkvDualWield, "mkvDualWield", true);
 			Scribe_Values.Look(ref mkvBayAutoStart, "mkvBayAutoStart", false);
 			Scribe_Values.Look(ref mkvEngageRange, "mkvEngageRange", DefaultEngageRange);
 			Scribe_Values.Look(ref mkvReturnRange, "mkvReturnRange", DefaultReturnRange);
@@ -405,6 +407,7 @@ namespace ColonyKit.Modules.Robotics
 			mkvCombatEnabled = true;
 			mkvReturnToBay = true;
 			mkvAutoPickupWeapons = true;
+			mkvDualWield = true;
 			mkvBayAutoStart = false;
 			mkvEngageRange = DefaultEngageRange;
 			mkvReturnRange = DefaultReturnRange;

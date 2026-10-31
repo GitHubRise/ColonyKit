@@ -93,6 +93,12 @@ namespace ColonyKit.Modules.Robotics
 					? "CK.Robotics.MkVCombat.Status.Returning".Translate()
 					: "CK.Robotics.MkVCombat.Status.Idle".Translate();
 			string line = "CK.Robotics.MkVCombat.Inspect".Translate(weapon, status);
+			ThingWithComps offhand = MkVLoadout.Offhand(Pawn);
+			if (offhand != null && Pawn.equipment?.Primary != null)
+			{
+				line += "\n" + "CK.Robotics.MkVCombat.DualWield".Translate(
+					Pawn.equipment.Primary.LabelCap, offhand.LabelCap);
+			}
 			line += "\n" + "CK.Robotics.MkVCombat.Range".Translate(
 				EngageRange.ToString("0"),
 				ReturnRange.ToString("0"));

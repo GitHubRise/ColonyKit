@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using HarmonyLib;
 using RimWorld;
@@ -127,6 +128,7 @@ namespace ColonyKit.Modules.Robotics
 					.Append(" incomingDamage=").Append(IncomingDamageProbe(mkv))
 					.Append(" mkvComfort=").Append(TemperatureProbe(mkv));
 				ProbeMkVChores(map, mkv, builder);
+				ProbeMkVDualWield(mkv, builder);
 				mkv.Destroy(DestroyMode.Vanish);
 			}
 			bay.Destroy(DestroyMode.Vanish);
@@ -261,6 +263,74 @@ namespace ColonyKit.Modules.Robotics
 					.Append(" pileAllows=").Append(pile.settings.filter.Allows(corpse));
 			}
 			corpse.Destroy(DestroyMode.Vanish);
+		}
+
+		/// <summary>
+		/// 双持装备探针：第二把远程进副手、第三把武器顶掉非专属武器、专属武器保留；
+		/// 远程 + 近战时副手近战动词可用，双远程时副手动词是 Verb_Shoot。
+		/// </summary>
+		private static void ProbeMkVDualWield(Pawn mkv, StringBuilder builder)
+		{
+			RoboticsSettings settings = NannyBotUtility.Settings;
+			bool oldDual = settings.mkvDualWield;
+			settings.mkvDualWield = true;
+			try
+			{
+				ThingDef pistolDef = DefDatabase<ThingDef>.GetNamedSilentFail("Gun_Autopistol");
+				ThingDef swordDef = DefDatabase<ThingDef>.GetNamedSilentFail("MeleeWeapon_LongSword");
+				builder.Append(" dualBase=").Append(MkVLoadout.HeldWeapons(mkv).Count);
+				if (pistolDef == null || swordDef == null)
+				{
+					builder.Append(" dualProbe=nodef");
+					return;
+				}
+
+				// 第二把远程：专属的电弧发射器留在主手，手枪进副手。
+				mkv.equipment.AddEquipment(ThingMaker.MakeThing(pistolDef) as ThingWithComps);
+				builder.Append(" dualRanged=").Append(MkVLoadout.HeldWeapons(mkv).Count)
+					.Append(':').Append(mkv.equipment.Primary?.def?.defName ?? "none")
+					.Append('/').Append(MkVLoadout.Offhand(mkv)?.def?.defName ?? "none");
+
+				// 第三把是近战：专属武器保留，非专属的手枪被丢下换成长剑副手。
+				mkv.equipment.AddEquipment(ThingMaker.MakeThing(swordDef) as ThingWithComps);
+				builder.Append(" dualMelee=").Append(MkVLoadout.HeldWeapons(mkv).Count)
+					.Append(':').Append(mkv.equipment.Primary?.def?.defName ?? "none")
+					.Append('/').Append(MkVLoadout.Offhand(mkv)?.def?.defName ?? "none")
+					.Append(":exclusive=")
+					.Append(MkVLoadout.IsExclusive(mkv.equipment.Primary?.def));
+
+				ThingWithComps meleeOffhand = MkVLoadout.Offhand(mkv);
+				Verb meleeVerb = meleeOffhand?.TryGetComp<CompEquippable>()?.AllVerbs?
+					.FirstOrDefault(v => v != null && v.IsMeleeAttack);
+				builder.Append(" offhandMelee=").Append(meleeVerb != null);
+
+				// 再装一把枪：近战被换掉，副手变回枪，主手开火时它会跟着打。
+				// 这里走原版 JobDriver_Equip 的同一顺序（先 MakeRoomFor 再 AddEquipment），
+				// 确认 MakeRoomFor 不会把主手丢到地上。
+				ThingWithComps incoming = ThingMaker.MakeThing(pistolDef) as ThingWithComps;
+				mkv.equipment.MakeRoomFor(incoming);
+				mkv.equipment.AddEquipment(incoming);
+				ThingWithComps rangedOffhand = MkVLoadout.Offhand(mkv);
+				Verb offhandVerb = rangedOffhand?.TryGetComp<CompEquippable>()?.PrimaryVerb;
+				builder.Append(" dualRangedAgain=").Append(MkVLoadout.HeldWeapons(mkv).Count)
+					.Append(':').Append(mkv.equipment.Primary?.def?.defName ?? "none")
+					.Append('/').Append(rangedOffhand?.def?.defName ?? "none")
+					.Append(" offhandVerb=")
+					.Append(offhandVerb?.GetType().Name ?? "none");
+
+				// 真打一发：走和跟随开火相同的入口，确认副手动词字段/开火流程没有异常。
+				IntVec3 aim = mkv.Position + IntVec3.East * 6;
+				if (offhandVerb != null && aim.InBounds(mkv.Map))
+				{
+					int before = offhandVerb.LastShotTick;
+					Patch_MkVDualWield.Fire(offhandVerb, new LocalTargetInfo(aim));
+					builder.Append(" offhandFired=").Append(offhandVerb.LastShotTick != before);
+				}
+			}
+			finally
+			{
+				settings.mkvDualWield = oldDual;
+			}
 		}
 
 		public static void RunIfRequested(Game game)

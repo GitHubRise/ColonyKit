@@ -1,13 +1,14 @@
+using System.Collections.Generic;
 using RimWorld;
-using UnityEngine;
 using Verse;
 using Verse.AI;
 
 namespace ColonyKit.Modules.Robotics
 {
 	/// <summary>
-	/// Mk-V 自动拾取更好的远程武器。原版 JobGiver_PickUpOpportunisticWeapon 只比较
-	/// “远程/近战”大类，已经有电弧发射器时不会换成狙击枪，所以这里按射程、伤害和市场价值比较。
+	/// Mk-V 自动拾取更好的武器。原版 JobGiver_PickUpOpportunisticWeapon 只比较「远程/近战」大类，
+	/// 已经有电弧发射器时不会换成狙击枪，所以这里按射程、伤害、市场价值评分。
+	/// 开启双持后还会用第二只手补一把武器：空着副手位就捡最值得拿的，两把都满时只换掉较差的那把。
 	/// </summary>
 	public class JobGiver_MkVWeaponPickup : ThinkNode_JobGiver
 	{
@@ -24,19 +25,40 @@ namespace ColonyKit.Modules.Robotics
 				return null;
 			}
 
-			Thing current = pawn.equipment.Primary;
-			float currentScore = Score(current?.def);
-			Thing best = null;
-			float bestScore = currentScore;
+			bool dual = MkVLoadout.Enabled;
+			List<ThingWithComps> held = MkVLoadout.HeldWeapons(pawn);
+			ThingWithComps primary = pawn.equipment.Primary;
 
+			// 双持：空位从 0 分起算，两把都满时只换掉评分更低的那把；
+			// 关闭双持：沿用旧规则，只有比主手更好的远程武器才换。
+			float baseline = dual
+				? MkVLoadout.PickupBaseline(pawn, held)
+				: (primary != null ? MkVLoadout.WeaponScore(primary.def) : -1f);
+
+			Thing best = null;
+			float bestScore = baseline;
 			foreach (Thing thing in pawn.Map.listerThings.ThingsInGroup(ThingRequestGroup.Weapon))
 			{
-				if (thing == null || thing.Destroyed || !thing.Spawned || thing == current)
+				if (thing == null || thing.Destroyed || !thing.Spawned || thing.def == null)
 				{
 					continue;
 				}
-				if (!thing.def.IsRangedWeapon || thing.IsForbidden(pawn)
-					|| !pawn.CanReserve(thing) || !EquipmentUtility.CanEquip(thing, pawn))
+				ThingWithComps candidate = thing as ThingWithComps;
+				if (candidate == null || held.Contains(candidate))
+				{
+					continue;
+				}
+				// 空手或关闭双持时只捡远程武器，否则 Mk-V 会拿着一把刀上战场。
+				if ((!dual || held.Count == 0) && !thing.def.IsRangedWeapon)
+				{
+					continue;
+				}
+				if (!dual && thing == primary)
+				{
+					continue;
+				}
+				if (thing.IsForbidden(pawn) || !pawn.CanReserve(thing)
+					|| !EquipmentUtility.CanEquip(thing, pawn))
 				{
 					continue;
 				}
@@ -45,12 +67,13 @@ namespace ColonyKit.Modules.Robotics
 				{
 					continue;
 				}
-				float score = Score(thing.def);
-				if (score > bestScore)
+				float score = MkVLoadout.WeaponScore(thing.def);
+				if (score <= bestScore)
 				{
-					best = thing;
-					bestScore = score;
+					continue;
 				}
+				best = thing;
+				bestScore = score;
 			}
 
 			if (best == null)
@@ -60,40 +83,6 @@ namespace ColonyKit.Modules.Robotics
 			Job job = JobMaker.MakeJob(JobDefOf.Equip, best);
 			job.expiryInterval = 600;
 			return job;
-		}
-
-		private static float Score(ThingDef def)
-		{
-			if (def == null || !def.IsRangedWeapon)
-			{
-				return -1f;
-			}
-			float range = 0f;
-			if (def.Verbs != null)
-			{
-				for (int i = 0; i < def.Verbs.Count; i++)
-				{
-					range = Mathf.Max(range, def.Verbs[i].range);
-				}
-			}
-			// 只有 Mk-V 会跑这个 JobGiver，自己出生自带的电弧发射器要把专属加成算进去，
-			// 否则会因为面板射程偏低被换成实际更差的枪。
-			DefModExtension_MkvExclusiveWeapon exclusive =
-				def.GetModExtension<DefModExtension_MkvExclusiveWeapon>();
-			if (exclusive != null && exclusive.rangeBonus > 0f)
-			{
-				range += exclusive.rangeBonus;
-			}
-			float damage = def.projectile?.GetDamageAmount(def, null) ?? 0f;
-			int burst = 1;
-			if (def.Verbs != null)
-			{
-				for (int i = 0; i < def.Verbs.Count; i++)
-				{
-					burst = Mathf.Max(burst, def.Verbs[i].burstShotCount);
-				}
-			}
-			return def.BaseMarketValue + range * 2f + damage * burst * 12f;
 		}
 	}
 }

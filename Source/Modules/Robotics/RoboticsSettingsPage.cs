@@ -219,6 +219,11 @@ namespace ColonyKit.Modules.Robotics
 				"ColonyKit.Settings.Robotics.MkVAutoPickupWeapons".Loc(),
 				ref data.mkvAutoPickupWeapons,
 				"ColonyKit.Settings.Robotics.MkVAutoPickupWeapons.Desc".Loc());
+			data.mkvDualWield = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVDualWield".Loc(),
+				ref data.mkvDualWield,
+				"ColonyKit.Settings.Robotics.MkVDualWield.Desc".Loc());
 			data.mkvEngageRange = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Robotics.MkVEngageRange".Loc(),

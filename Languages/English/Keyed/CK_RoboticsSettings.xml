@@ -58,6 +58,8 @@
 	<ColonyKit.Settings.Robotics.MkVReturnToBay.Desc>Return to the Mk-V assembly bay when the target leaves engage range. When off, Mk-V resumes chores in place.</ColonyKit.Settings.Robotics.MkVReturnToBay.Desc>
 	<ColonyKit.Settings.Robotics.MkVAutoPickupWeapons>Auto-pick up weapons</ColonyKit.Settings.Robotics.MkVAutoPickupWeapons>
 	<ColonyKit.Settings.Robotics.MkVAutoPickupWeapons.Desc>Mk-V looks for a higher-scoring ranged weapon and swaps to it. When off, it keeps its issued arc emitter.</ColonyKit.Settings.Robotics.MkVAutoPickupWeapons.Desc>
+	<ColonyKit.Settings.Robotics.MkVDualWield>Dual wield</ColonyKit.Settings.Robotics.MkVDualWield>
+	<ColonyKit.Settings.Robotics.MkVDualWield.Desc>Mk-V carries one weapon in each hand: a ranged weapon plus a melee weapon (shoot at range, cut up close) or two ranged weapons (both fire together). When both hands are full, equipping another weapon drops the non-exclusive one; the exclusive arc emitter is never replaced.</ColonyKit.Settings.Robotics.MkVDualWield.Desc>
 	<ColonyKit.Settings.Robotics.MkVEngageRange>Engage range</ColonyKit.Settings.Robotics.MkVEngageRange>
 	<ColonyKit.Settings.Robotics.MkVReturnRange>Return distance</ColonyKit.Settings.Robotics.MkVReturnRange>
 	<ColonyKit.Settings.Robotics.MkVWeaponPickupRadius>Weapon pickup radius</ColonyKit.Settings.Robotics.MkVWeaponPickupRadius>

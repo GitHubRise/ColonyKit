@@ -9,6 +9,7 @@
 	<CK.Robotics.MkVCombat.Inspect>武器 · 战斗状态：{1}</CK.Robotics.MkVCombat.Inspect>
 	<CK.Robotics.MkVCombat.Target>目标：{0}</CK.Robotics.MkVCombat.Target>
 	<CK.Robotics.MkVCombat.Range>交战范围：{0} 格 · 回舱判定：{1} 格</CK.Robotics.MkVCombat.Range>
+	<CK.Robotics.MkVCombat.DualWield>双持：{0}（主手） + {1}（副手）</CK.Robotics.MkVCombat.DualWield>
 	<CK.Robotics.Inspect.LowPowerStandby>低功耗待机：充电转换率 ×1.2</CK.Robotics.Inspect.LowPowerStandby>
 	<CK.Robotics.RobotInfo.LowPowerStandby>低功耗待机：充电转换率 ×1.2</CK.Robotics.RobotInfo.LowPowerStandby>
 	<CK.RobotManagement.Status.LowPowerStandby>快充待机</CK.RobotManagement.Status.LowPowerStandby>
