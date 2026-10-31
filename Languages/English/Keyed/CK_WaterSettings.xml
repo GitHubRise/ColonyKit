@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<ColonyKit.Settings.Hygiene.Section.BottledWater>Bottled water</ColonyKit.Settings.Hygiene.Section.BottledWater>
+	<ColonyKit.Settings.Hygiene.BottledWater.Hint>Adjust what one bottle of mineral water, purified water, or boiled water does. Changes apply the next time someone drinks.</ColonyKit.Settings.Hygiene.BottledWater.Hint>
+	<ColonyKit.Settings.Hygiene.Water.Mineral>Mineral water</ColonyKit.Settings.Hygiene.Water.Mineral>
+	<ColonyKit.Settings.Hygiene.Water.Purified>Purified water</ColonyKit.Settings.Hygiene.Water.Purified>
+	<ColonyKit.Settings.Hygiene.Water.Boiled>Boiled water</ColonyKit.Settings.Hygiene.Water.Boiled>
+	<ColonyKit.Settings.Hygiene.Water.Thirst>Thirst restored</ColonyKit.Settings.Hygiene.Water.Thirst>
+	<ColonyKit.Settings.Hygiene.Water.Satiety>Food restored</ColonyKit.Settings.Hygiene.Water.Satiety>
+	<ColonyKit.Settings.Hygiene.Water.Mood>Mood</ColonyKit.Settings.Hygiene.Water.Mood>
+	<ColonyKit.Settings.Hygiene.Water.MineralPoison>Mineral water can cause poisoning</ColonyKit.Settings.Hygiene.Water.MineralPoison>
+	<ColonyKit.Settings.Hygiene.Water.MineralPoison.Desc>When off, mineral water is treated as clean and no untreated-water contamination check is made. Purified water and boiled water never cause poisoning.</ColonyKit.Settings.Hygiene.Water.MineralPoison.Desc>
+</LanguageData>

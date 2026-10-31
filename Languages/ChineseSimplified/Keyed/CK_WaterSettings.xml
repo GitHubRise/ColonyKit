@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<ColonyKit.Settings.Hygiene.Section.BottledWater>瓶装水</ColonyKit.Settings.Hygiene.Section.BottledWater>
+	<ColonyKit.Settings.Hygiene.BottledWater.Hint>调整矿泉水、纯净水、凉白开喝一瓶的效果。修改后下一次喝水生效。</ColonyKit.Settings.Hygiene.BottledWater.Hint>
+	<ColonyKit.Settings.Hygiene.Water.Mineral>矿泉水</ColonyKit.Settings.Hygiene.Water.Mineral>
+	<ColonyKit.Settings.Hygiene.Water.Purified>纯净水</ColonyKit.Settings.Hygiene.Water.Purified>
+	<ColonyKit.Settings.Hygiene.Water.Boiled>凉白开</ColonyKit.Settings.Hygiene.Water.Boiled>
+	<ColonyKit.Settings.Hygiene.Water.Thirst>解渴量</ColonyKit.Settings.Hygiene.Water.Thirst>
+	<ColonyKit.Settings.Hygiene.Water.Satiety>饱腹感</ColonyKit.Settings.Hygiene.Water.Satiety>
+	<ColonyKit.Settings.Hygiene.Water.Mood>心情</ColonyKit.Settings.Hygiene.Water.Mood>
+	<ColonyKit.Settings.Hygiene.Water.MineralPoison>矿泉水可能中毒</ColonyKit.Settings.Hygiene.Water.MineralPoison>
+	<ColonyKit.Settings.Hygiene.Water.MineralPoison.Desc>关闭后矿泉水按干净水处理，不再做未处理水污染判定。纯净水和凉白开始终不会中毒。</ColonyKit.Settings.Hygiene.Water.MineralPoison.Desc>
+</LanguageData>

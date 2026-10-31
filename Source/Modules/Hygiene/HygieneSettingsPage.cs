@@ -79,6 +79,83 @@ namespace ColonyKit.Modules.Hygiene
 				value => (value * 100f).ToString("0") + "%");
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.Contamination.Desc".Loc());
 
+			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.BottledWater".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.BottledWater.Hint".Loc());
+			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.Water.Mineral".Loc());
+			data.mineralWaterThirst = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.Water.Thirst".Loc(),
+				data.mineralWaterThirst,
+				0f,
+				1f,
+				0.01f,
+				value => value.ToString("0.00"));
+			data.mineralWaterSatiety = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.Water.Satiety".Loc(),
+				data.mineralWaterSatiety,
+				0f,
+				0.2f,
+				0.005f,
+				value => value.ToString("0.000"));
+			data.mineralWaterCanPoison = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Hygiene.Water.MineralPoison".Loc(),
+				ref data.mineralWaterCanPoison,
+				"ColonyKit.Settings.Hygiene.Water.MineralPoison.Desc".Loc());
+
+			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.Water.Purified".Loc());
+			data.purifiedWaterThirst = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.Water.Thirst".Loc(),
+				data.purifiedWaterThirst,
+				0f,
+				1f,
+				0.01f,
+				value => value.ToString("0.00"));
+			data.purifiedWaterSatiety = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.Water.Satiety".Loc(),
+				data.purifiedWaterSatiety,
+				0f,
+				0.2f,
+				0.005f,
+				value => value.ToString("0.000"));
+			data.purifiedWaterMood = Mathf.RoundToInt(SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.Water.Mood".Loc(),
+				data.purifiedWaterMood,
+				0f,
+				20f,
+				1f,
+				value => "+" + value.ToString("0")));
+
+			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.Water.Boiled".Loc());
+			data.boiledWaterThirst = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.Water.Thirst".Loc(),
+				data.boiledWaterThirst,
+				0f,
+				1f,
+				0.01f,
+				value => value.ToString("0.00"));
+			data.boiledWaterSatiety = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.Water.Satiety".Loc(),
+				data.boiledWaterSatiety,
+				0f,
+				0.2f,
+				0.005f,
+				value => value.ToString("0.000"));
+			data.boiledWaterMood = Mathf.RoundToInt(SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.Water.Mood".Loc(),
+				data.boiledWaterMood,
+				0f,
+				20f,
+				1f,
+				value => "+" + value.ToString("0")));
+
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Sewage".Loc());
 			data.pumpCapacityMultiplier = SettingsWidgets.Slider(
 				listing,

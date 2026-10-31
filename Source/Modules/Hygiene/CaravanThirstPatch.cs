@@ -65,25 +65,17 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				bool clean = MineralWaterUtility.IsPurifiedWater(bottle)
 					|| MineralWaterUtility.IsBoiledWater(bottle);
-				bool boiled = MineralWaterUtility.IsBoiledWater(bottle);
-				bool purified = MineralWaterUtility.IsPurifiedWater(bottle);
 				bottle.stackCount--;
 				if (bottle.stackCount <= 0)
 				{
 					bottle.Destroy();
 				}
-				thirst.Drink(MineralWaterUtility.ThirstPerBottle);
-				if (!clean)
+				thirst.Drink(MineralWaterUtility.ThirstFor(bottle));
+				if (!clean && HygieneSettings.Current.mineralWaterCanPoison)
 				{
 					SanitationUtil.ContaminationCheckDrinking(pawn, ContaminationLevel.Untreated);
 				}
-				HygieneUtility.AddDrinkSatiety(
-					pawn,
-					boiled
-						? HygieneUtility.SatietyPerBoiledDrink
-						: purified
-							? HygieneUtility.SatietyPerPurifiedDrink
-							: HygieneUtility.SatietyPerDrink);
+				HygieneUtility.AddDrinkSatiety(pawn, MineralWaterUtility.SatietyFor(bottle));
 				return;
 			}
 			CompBasinWater container = FindWaterContainer(__instance.caravan);

@@ -58,6 +58,47 @@ namespace ColonyKit.Modules.Hygiene
 			}
 		}
 
+		private static HygieneSettings Settings => HygieneSettings.Current;
+
+		public static float ThirstFor(Thing thing)
+		{
+			if (IsBoiledWater(thing))
+			{
+				return Settings.boiledWaterThirst;
+			}
+			if (IsPurifiedWater(thing))
+			{
+				return Settings.purifiedWaterThirst;
+			}
+			return Settings.mineralWaterThirst;
+		}
+
+		public static float SatietyFor(Thing thing)
+		{
+			if (IsBoiledWater(thing))
+			{
+				return Settings.boiledWaterSatiety;
+			}
+			if (IsPurifiedWater(thing))
+			{
+				return Settings.purifiedWaterSatiety;
+			}
+			return Settings.mineralWaterSatiety;
+		}
+
+		public static int MoodFor(Thing thing)
+		{
+			if (IsBoiledWater(thing))
+			{
+				return Settings.boiledWaterMood;
+			}
+			if (IsPurifiedWater(thing))
+			{
+				return Settings.purifiedWaterMood;
+			}
+			return 0;
+		}
+
 		public static bool IsMineralWater(Thing thing)
 		{
 			return thing != null && thing.def == Def;
@@ -158,28 +199,35 @@ namespace ColonyKit.Modules.Hygiene
 			}
 			if (MineralWaterUtility.IsPurifiedWater(__instance))
 			{
-				thirst.Drink(MineralWaterUtility.ThirstPerBottle);
-				GainWaterMood(ingester, "CK_DrankPurifiedWater", "CK_DrankBoiledWater");
+				thirst.Drink(MineralWaterUtility.ThirstFor(__instance));
+				GainWaterMood(
+					ingester,
+					"CK_DrankPurifiedWater",
+					"CK_DrankBoiledWater",
+					MineralWaterUtility.MoodFor(__instance));
 			}
 			else if (MineralWaterUtility.IsBoiledWater(__instance))
 			{
-				thirst.Drink(MineralWaterUtility.ThirstPerBottle);
-				GainWaterMood(ingester, "CK_DrankBoiledWater", "CK_DrankPurifiedWater");
+				thirst.Drink(MineralWaterUtility.ThirstFor(__instance));
+				GainWaterMood(
+					ingester,
+					"CK_DrankBoiledWater",
+					"CK_DrankPurifiedWater",
+					MineralWaterUtility.MoodFor(__instance));
 			}
 			else if (MineralWaterUtility.IsMineralWater(__instance))
 			{
-				thirst.Drink(MineralWaterUtility.ThirstPerBottle);
-				SanitationUtil.ContaminationCheckDrinking(ingester, ContaminationLevel.Untreated);
+				thirst.Drink(MineralWaterUtility.ThirstFor(__instance));
+				if (HygieneSettings.Current.mineralWaterCanPoison)
+				{
+					SanitationUtil.ContaminationCheckDrinking(ingester, ContaminationLevel.Untreated);
+				}
 			}
-			float satiety = MineralWaterUtility.IsBoiledWater(__instance)
-				? HygieneUtility.SatietyPerBoiledDrink
-				: MineralWaterUtility.IsPurifiedWater(__instance)
-					? HygieneUtility.SatietyPerPurifiedDrink
-					: HygieneUtility.SatietyPerDrink;
-			HygieneUtility.AddDrinkSatiety(ingester, satiety);
+			HygieneUtility.AddDrinkSatiety(ingester, MineralWaterUtility.SatietyFor(__instance));
 		}
 
-		private static void GainWaterMood(Pawn pawn, string gainDefName, string removeDefName)
+		private static void GainWaterMood(
+			Pawn pawn, string gainDefName, string removeDefName, int mood)
 		{
 			MemoryThoughtHandler memories = pawn?.needs?.mood?.thoughts?.memories;
 			if (memories == null)
@@ -191,11 +239,17 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				memories.RemoveMemoriesOfDef(remove);
 			}
-			ThoughtDef gain = DefDatabase<ThoughtDef>.GetNamedSilentFail(gainDefName);
-			if (gain != null)
+			if (mood <= 0)
 			{
-				memories.TryGainMemory(gain);
+				return;
 			}
+			ThoughtDef gain = DefDatabase<ThoughtDef>.GetNamedSilentFail(gainDefName);
+			if (gain?.stages == null || gain.stages.Count == 0)
+			{
+				return;
+			}
+			gain.stages[0].baseMoodEffect = mood;
+			memories.TryGainMemory(gain);
 		}
 	}
 }

@@ -78,6 +78,27 @@ namespace ColonyKit.Modules.Hygiene
 		/// <summary>脏水造成污染的概率倍率；0 为关闭，1 为原版默认。</summary>
 		public float contaminationChanceMultiplier = 1f;
 
+		/// <summary>矿泉水：解渴量（0–1）、饱腹点（0–0.2）、是否可能中毒。</summary>
+		public float mineralWaterThirst = 0.2f;
+
+		public float mineralWaterSatiety = 0.02f;
+
+		public bool mineralWaterCanPoison = true;
+
+		/// <summary>纯净水：解渴量、饱腹点、心情值（0–20）。</summary>
+		public float purifiedWaterThirst = 0.2f;
+
+		public float purifiedWaterSatiety = 0.03f;
+
+		public int purifiedWaterMood = 5;
+
+		/// <summary>凉白开：解渴量、饱腹点、心情值（0–20）。</summary>
+		public float boiledWaterThirst = 0.2f;
+
+		public float boiledWaterSatiety = 0.05f;
+
+		public int boiledWaterMood = 2;
+
 		/// <summary>水泵/风泵/泵站的容量倍率；1 为 DBH 原值。</summary>
 		public float pumpCapacityMultiplier = 1f;
 
@@ -292,6 +313,15 @@ namespace ColonyKit.Modules.Hygiene
 			Scribe_Values.Look(ref waterUseMultiplier, "waterUseMultiplier", 1f);
 			Scribe_Values.Look(ref hotWaterUseMultiplier, "hotWaterUseMultiplier", 1f);
 			Scribe_Values.Look(ref contaminationChanceMultiplier, "contaminationChanceMultiplier", 1f);
+			Scribe_Values.Look(ref mineralWaterThirst, "mineralWaterThirst", 0.2f);
+			Scribe_Values.Look(ref mineralWaterSatiety, "mineralWaterSatiety", 0.02f);
+			Scribe_Values.Look(ref mineralWaterCanPoison, "mineralWaterCanPoison", true);
+			Scribe_Values.Look(ref purifiedWaterThirst, "purifiedWaterThirst", 0.2f);
+			Scribe_Values.Look(ref purifiedWaterSatiety, "purifiedWaterSatiety", 0.03f);
+			Scribe_Values.Look(ref purifiedWaterMood, "purifiedWaterMood", 5);
+			Scribe_Values.Look(ref boiledWaterThirst, "boiledWaterThirst", 0.2f);
+			Scribe_Values.Look(ref boiledWaterSatiety, "boiledWaterSatiety", 0.05f);
+			Scribe_Values.Look(ref boiledWaterMood, "boiledWaterMood", 2);
 			Scribe_Values.Look(ref pumpCapacityMultiplier, "pumpCapacityMultiplier", 1f);
 			Scribe_Values.Look(ref sewageGridCapacity, "sewageGridCapacity", 1f);
 			Scribe_Values.Look(ref sewageCleanupRate, "sewageCleanupRate", 1f);
@@ -322,6 +352,14 @@ namespace ColonyKit.Modules.Hygiene
 			changed |= Clamp(ref waterUseMultiplier, MinWaterUse, MaxWaterUse, 1f);
 			changed |= Clamp(ref hotWaterUseMultiplier, MinHotWaterUse, MaxHotWaterUse, 1f);
 			changed |= Clamp(ref contaminationChanceMultiplier, MinContamination, MaxContamination, 1f);
+			changed |= Clamp(ref mineralWaterThirst, 0f, 1f, 0.2f);
+			changed |= Clamp(ref mineralWaterSatiety, 0f, 0.2f, 0.02f);
+			changed |= Clamp(ref purifiedWaterThirst, 0f, 1f, 0.2f);
+			changed |= Clamp(ref purifiedWaterSatiety, 0f, 0.2f, 0.03f);
+			changed |= ClampInt(ref purifiedWaterMood, 0, 20, 5);
+			changed |= Clamp(ref boiledWaterThirst, 0f, 1f, 0.2f);
+			changed |= Clamp(ref boiledWaterSatiety, 0f, 0.2f, 0.05f);
+			changed |= ClampInt(ref boiledWaterMood, 0, 20, 2);
 			changed |= Clamp(ref pumpCapacityMultiplier, MinPumpCapacity, MaxPumpCapacity, 1f);
 			changed |= Clamp(ref sewageGridCapacity, MinSewageGrid, MaxSewageGrid, 1f);
 			changed |= Clamp(ref sewageCleanupRate, MinSewageCleanup, MaxSewageCleanup, 1f);
@@ -378,6 +416,16 @@ namespace ColonyKit.Modules.Hygiene
 			return false;
 		}
 
+		private static bool ClampInt(ref int value, int min, int max, int defaultValue)
+		{
+			if (value < min || value > max)
+			{
+				value = Mathf.Clamp(value, min, max);
+				return true;
+			}
+			return false;
+		}
+
 		public void Reset()
 		{
 			hygieneRateMultiplier = 1f;
@@ -385,6 +433,15 @@ namespace ColonyKit.Modules.Hygiene
 			waterUseMultiplier = 1f;
 			hotWaterUseMultiplier = 1f;
 			contaminationChanceMultiplier = 1f;
+			mineralWaterThirst = 0.2f;
+			mineralWaterSatiety = 0.02f;
+			mineralWaterCanPoison = true;
+			purifiedWaterThirst = 0.2f;
+			purifiedWaterSatiety = 0.03f;
+			purifiedWaterMood = 5;
+			boiledWaterThirst = 0.2f;
+			boiledWaterSatiety = 0.05f;
+			boiledWaterMood = 2;
 			pumpCapacityMultiplier = 1f;
 			sewageGridCapacity = 1f;
 			sewageCleanupRate = 1f;
