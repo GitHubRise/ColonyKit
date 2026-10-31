@@ -133,7 +133,7 @@ namespace ColonyKit.Modules.Robotics
 		public const float MaxAiTemperature = 1.5f;
 		public const float DefaultAiTemperature = 0.7f;
 		public const string DefaultAiBaseUrl = "https://api.deepseek.com";
-		public const string DefaultAiModel = "deepseek-chat";
+		public const string DefaultAiModel = "deepseek-flash";
 
 		public const float MinMkvSolarEfficiency = 10f;
 		public const float MaxMkvSolarEfficiency = 1000f;

@@ -233,7 +233,7 @@
 	<ColonyKit.Settings.Robotics.Ai.BaseUrl>接口地址</ColonyKit.Settings.Robotics.Ai.BaseUrl>
 	<ColonyKit.Settings.Robotics.Ai.BaseUrl.Desc>默认 https://api.deepseek.com，也可直接填完整的 /chat/completions 地址。</ColonyKit.Settings.Robotics.Ai.BaseUrl.Desc>
 	<ColonyKit.Settings.Robotics.Ai.Model>模型</ColonyKit.Settings.Robotics.Ai.Model>
-	<ColonyKit.Settings.Robotics.Ai.Model.Desc>默认 deepseek-chat；deepseek-reasoner 更慢、更贵。</ColonyKit.Settings.Robotics.Ai.Model.Desc>
+	<ColonyKit.Settings.Robotics.Ai.Model.Desc>默认 deepseek-flash；也可填 deepseek-chat、deepseek-reasoner（更慢、更贵）。</ColonyKit.Settings.Robotics.Ai.Model.Desc>
 	<ColonyKit.Settings.Robotics.Ai.Interval>思考间隔</ColonyKit.Settings.Robotics.Ai.Interval>
 	<ColonyKit.Settings.Robotics.Ai.Timeout>请求超时</ColonyKit.Settings.Robotics.Ai.Timeout>
 	<ColonyKit.Settings.Robotics.Ai.MaxTokens>最大回复长度</ColonyKit.Settings.Robotics.Ai.MaxTokens>

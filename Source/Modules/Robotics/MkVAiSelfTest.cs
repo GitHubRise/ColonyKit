@@ -49,7 +49,7 @@ namespace ColonyKit.Modules.Robotics
 				{
 					aiBaseUrl = "https://api.deepseek.com",
 					aiApiKey = "invalid-self-test",
-					aiModel = "deepseek-chat",
+					aiModel = RoboticsSettings.DefaultAiModel,
 					aiTimeout = 10f
 				};
 				http = MkVAiService.SendBlockingForTest(

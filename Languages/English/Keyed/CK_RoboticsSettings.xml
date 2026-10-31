@@ -233,7 +233,7 @@
 	<ColonyKit.Settings.Robotics.Ai.BaseUrl>Endpoint</ColonyKit.Settings.Robotics.Ai.BaseUrl>
 	<ColonyKit.Settings.Robotics.Ai.BaseUrl.Desc>Defaults to https://api.deepseek.com; a full /chat/completions URL also works.</ColonyKit.Settings.Robotics.Ai.BaseUrl.Desc>
 	<ColonyKit.Settings.Robotics.Ai.Model>Model</ColonyKit.Settings.Robotics.Ai.Model>
-	<ColonyKit.Settings.Robotics.Ai.Model.Desc>Defaults to deepseek-chat; deepseek-reasoner is slower and more expensive.</ColonyKit.Settings.Robotics.Ai.Model.Desc>
+	<ColonyKit.Settings.Robotics.Ai.Model.Desc>Defaults to deepseek-flash; deepseek-chat and deepseek-reasoner (slower, pricier) also work.</ColonyKit.Settings.Robotics.Ai.Model.Desc>
 	<ColonyKit.Settings.Robotics.Ai.Interval>Think interval</ColonyKit.Settings.Robotics.Ai.Interval>
 	<ColonyKit.Settings.Robotics.Ai.Timeout>Request timeout</ColonyKit.Settings.Robotics.Ai.Timeout>
 	<ColonyKit.Settings.Robotics.Ai.MaxTokens>Max reply tokens</ColonyKit.Settings.Robotics.Ai.MaxTokens>
