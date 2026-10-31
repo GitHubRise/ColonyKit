@@ -267,6 +267,24 @@ namespace ColonyKit.Modules.Robotics
 				RoboticsSettings.MaxMkvIncomingDamageFactor,
 				0.05f,
 				value => value.ToStringPercent());
+			data.mkvInsulationCold = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVInsulationCold".Loc(),
+				data.mkvInsulationCold,
+				RoboticsSettings.MinMkvInsulation,
+				RoboticsSettings.MaxMkvInsulation,
+				1f,
+				value => value.ToString("0") + "°C");
+			data.mkvInsulationHeat = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVInsulationHeat".Loc(),
+				data.mkvInsulationHeat,
+				RoboticsSettings.MinMkvInsulation,
+				RoboticsSettings.MaxMkvInsulation,
+				1f,
+				value => value.ToString("0") + "°C");
+			SettingsWidgets.Description(
+				listing, "ColonyKit.Settings.Robotics.MkVInsulationHint".Loc());
 			data.mkvRandomTraits = SettingsWidgets.Checkbox(
 				listing,
 				"ColonyKit.Settings.Robotics.MkvRandomTraits".Loc(),

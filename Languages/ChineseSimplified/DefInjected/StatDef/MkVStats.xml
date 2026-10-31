@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_MkVInsulationCold.label>隔寒</CK_MkVInsulationCold.label>
+	<CK_MkVInsulationCold.description>Mk-V 机体的内置隔寒：舒适温度下限会降低这么多度。</CK_MkVInsulationCold.description>
+	<CK_MkVInsulationHeat.label>隔热</CK_MkVInsulationHeat.label>
+	<CK_MkVInsulationHeat.description>Mk-V 机体的内置隔热：舒适温度上限会升高这么多度。</CK_MkVInsulationHeat.description>
+</LanguageData>

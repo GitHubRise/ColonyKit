@@ -64,8 +64,11 @@
 	<ColonyKit.Settings.Robotics.MkVAttackSpeed>Mk-V attack speed</ColonyKit.Settings.Robotics.MkVAttackSpeed>
 	<ColonyKit.Settings.Robotics.MkVHitChance>Mk-V hit chance</ColonyKit.Settings.Robotics.MkVHitChance>
 	<ColonyKit.Settings.Robotics.MkVIncomingDamageFactor>Mk-V incoming damage</ColonyKit.Settings.Robotics.MkVIncomingDamageFactor>
-	<ColonyKit.Settings.Robotics.MkvRandomTraits>Random traits (Mk-V)</ColonyKit.Settings.Robotics.MkvRandomTraits>
-	<ColonyKit.Settings.Robotics.MkvRandomTraits.Desc>Newly built or first-loaded Mk-V pawns roll 2 traits (Tough, Nimble, Fast learner, Great memory). Existing traits are kept and never duplicated; turning this off stops rolling traits for new robots.</ColonyKit.Settings.Robotics.MkvRandomTraits.Desc>
+	<ColonyKit.Settings.Robotics.MkVInsulationCold>Mk-V cold insulation</ColonyKit.Settings.Robotics.MkVInsulationCold>
+	<ColonyKit.Settings.Robotics.MkVInsulationHeat>Mk-V heat insulation</ColonyKit.Settings.Robotics.MkVInsulationHeat>
+	<ColonyKit.Settings.Robotics.MkVInsulationHint>Built-in insulation works like worn apparel: the cold value lowers the comfortable temperature floor and the heat value raises the ceiling. Defaults 20°C / 30°C.</ColonyKit.Settings.Robotics.MkVInsulationHint>
+	<ColonyKit.Settings.Robotics.MkvRandomTraits>Extra random traits (Mk-V)</ColonyKit.Settings.Robotics.MkvRandomTraits>
+	<ColonyKit.Settings.Robotics.MkvRandomTraits.Desc>Mk-V always gets Brawler, Careful shooter, Tough, Nimble and Jogger. Turn this on to roll 2 extra traits (Fast learner, Great memory, ...); existing traits are never duplicated.</ColonyKit.Settings.Robotics.MkvRandomTraits.Desc>
 	<ColonyKit.Settings.Robotics.RobotPowerEfficiency>Robot power efficiency</ColonyKit.Settings.Robotics.RobotPowerEfficiency>
 	<ColonyKit.Settings.Robotics.RobotPowerEfficiency.Desc>Shared by all Mk robots; 100% is the baseline, higher values make each battery last longer.</ColonyKit.Settings.Robotics.RobotPowerEfficiency.Desc>
 	<ColonyKit.Settings.Robotics.MkvBurstShotCount>Arc emitter burst count</ColonyKit.Settings.Robotics.MkvBurstShotCount>

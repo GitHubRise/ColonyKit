@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_MkVInsulationCold.label>cold insulation</CK_MkVInsulationCold.label>
+	<CK_MkVInsulationCold.description>Built-in cold insulation of the Mk-V chassis. It lowers the comfortable temperature floor by this many degrees.</CK_MkVInsulationCold.description>
+	<CK_MkVInsulationHeat.label>heat insulation</CK_MkVInsulationHeat.label>
+	<CK_MkVInsulationHeat.description>Built-in heat insulation of the Mk-V chassis. It raises the comfortable temperature ceiling by this many degrees.</CK_MkVInsulationHeat.description>
+</LanguageData>

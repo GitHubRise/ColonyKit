@@ -124,7 +124,8 @@ namespace ColonyKit.Modules.Robotics
 					.Append(" mkvHomeIsBay=").Append(mkvComp?.homeStation == bay)
 					.Append(" mkvHome=").Append(mkvComp?.homeStation?.def?.defName ?? "none")
 					.Append(" mkvTraits=").Append(TraitList(mkv))
-					.Append(" incomingDamage=").Append(IncomingDamageProbe(mkv));
+					.Append(" incomingDamage=").Append(IncomingDamageProbe(mkv))
+					.Append(" mkvComfort=").Append(TemperatureProbe(mkv));
 				ProbeMkVChores(map, mkv, builder);
 				mkv.Destroy(DestroyMode.Vanish);
 			}
@@ -145,12 +146,20 @@ namespace ColonyKit.Modules.Robotics
 				{
 					builder.Append(',');
 				}
-				builder.Append(traits[i].def.defName);
+				builder.Append(traits[i].def.defName).Append(':').Append(traits[i].Degree);
 			}
 			return builder.ToString();
 		}
 
-		/// <summary>承伤乘数探针：原值 / 设置页临时调到 50% 后的值 / 临时加「坚韧」后的值。</summary>
+		/// <summary>舒适温度探针：隔寒/隔热设置应用后的舒适温度下限/上限。</summary>
+		private static string TemperatureProbe(Pawn pawn)
+		{
+			float min = pawn.GetStatValue(StatDefOf.ComfyTemperatureMin, true, 0);
+			float max = pawn.GetStatValue(StatDefOf.ComfyTemperatureMax, true, 0);
+			return min.ToString("0.#") + "/" + max.ToString("0.#");
+		}
+
+		/// <summary>承伤乘数探针：原值 / 设置页临时调到 50% 后的值 / 坚韧乘数下的值。</summary>
 		private static string IncomingDamageProbe(Pawn pawn)
 		{
 			StatDef stat = StatDefOf.IncomingDamageFactor;

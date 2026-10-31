@@ -104,21 +104,47 @@ namespace ColonyKit.Modules.Robotics
 		[HarmonyPatch(typeof(StatExtension), nameof(StatExtension.GetStatValue),
 			new[] { typeof(Thing), typeof(StatDef), typeof(bool), typeof(int) })]
 		[HarmonyPostfix]
-		private static void AdjustIncomingDamage(Thing thing, StatDef stat, ref float __result)
+		private static void AdjustMkVStats(Thing thing, StatDef stat, ref float __result)
 		{
-			if (stat != StatDefOf.IncomingDamageFactor
-				|| !(thing is Pawn pawn) || !NannyBotUtility.IsMkV(pawn))
+			if (!(thing is Pawn pawn) || !NannyBotUtility.IsMkV(pawn))
 			{
 				return;
 			}
-			float factor = Mathf.Clamp(NannyBotUtility.Settings.mkvIncomingDamageFactor,
-				RoboticsSettings.MinMkvIncomingDamageFactor,
-				RoboticsSettings.MaxMkvIncomingDamageFactor);
-			if (factor > 0.0001f)
+			RoboticsSettings settings = NannyBotUtility.Settings;
+			if (stat == StatDefOf.IncomingDamageFactor)
 			{
-				// 原版 DamageWorker_AddInjury 通过这个属性结算承伤；特性（坚韧等）
-				// 的乘数已经在 StatWorker 里算进 __result，这里只叠设置页的倍率。
-				__result *= factor;
+				float factor = Mathf.Clamp(settings.mkvIncomingDamageFactor,
+					RoboticsSettings.MinMkvIncomingDamageFactor,
+					RoboticsSettings.MaxMkvIncomingDamageFactor);
+				if (factor > 0.0001f)
+				{
+					// 原版 DamageWorker_AddInjury 通过这个属性结算承伤；特性（坚韧等）
+					// 的乘数已经在 StatWorker 里算进 __result，这里只叠设置页的倍率。
+					__result *= factor;
+				}
+			}
+			else if (stat == StatDefOf.ComfyTemperatureMin)
+			{
+				// 隔寒：把舒适温度下限再压低，等价于内置服装隔寒。
+				__result -= Mathf.Clamp(settings.mkvInsulationCold,
+					RoboticsSettings.MinMkvInsulation, RoboticsSettings.MaxMkvInsulation);
+			}
+			else if (stat == StatDefOf.ComfyTemperatureMax)
+			{
+				// 隔热：把舒适温度上限再抬高。
+				__result += Mathf.Clamp(settings.mkvInsulationHeat,
+					RoboticsSettings.MinMkvInsulation, RoboticsSettings.MaxMkvInsulation);
+			}
+			else if (stat == NannyBotDefOf.CK_MkVInsulationCold)
+			{
+				// 属性页的「隔寒」行直接显示设置值。
+				__result = Mathf.Clamp(settings.mkvInsulationCold,
+					RoboticsSettings.MinMkvInsulation, RoboticsSettings.MaxMkvInsulation);
+			}
+			else if (stat == NannyBotDefOf.CK_MkVInsulationHeat)
+			{
+				__result = Mathf.Clamp(settings.mkvInsulationHeat,
+					RoboticsSettings.MinMkvInsulation, RoboticsSettings.MaxMkvInsulation);
 			}
 		}
 		[HarmonyPatch(typeof(StatDrawEntry), nameof(StatDrawEntry.ShouldDisplay))]

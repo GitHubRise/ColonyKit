@@ -193,37 +193,65 @@ namespace ColonyKit.Modules.Robotics
 			ApplySkill(pawn, SkillDefOf.Intellectual, 15);
 		}
 
-		private static readonly string[] RobotTraitDefNames =
+		/// <summary>Mk-V 固定特性：格斗者、冷枪手、坚韧、敏捷、疾步如飞。</summary>
+		private static readonly string[] RobotFixedTraitDefNames =
 		{
+			"Brawler",
+			"ShootingAccuracy",
 			"Tough",
 			"Nimble",
-			"FastLearner",
-			"GreatMemory"
+			"SpeedOffset"
 		};
 
-		private static void ApplyRobotTraits(Pawn pawn)
+		/// <summary>与固定特性一一对应的度数：冷枪手 1，疾步如飞 2，其余 0。</summary>
+		private static readonly int[] RobotFixedTraitDegrees = { 0, 1, 0, 0, 2 };
+
+		/// <summary>开启「随机特性」时额外抽取的特性池；固定列表里已有的会跳过。</summary>
+		private static readonly string[] RobotRandomTraitDefNames =
+		{
+			"FastLearner",
+			"GreatMemory",
+			"Tough",
+			"Nimble"
+		};
+
+		private static void GrantRobotTrait(Pawn pawn, string defName, int degree)
 		{
 			TraitSet traits = pawn?.story?.traits;
-			if (traits == null)
+			TraitDef def = DefDatabase<TraitDef>.GetNamedSilentFail(defName);
+			if (traits == null || def == null || traits.HasTrait(def))
 			{
 				return;
 			}
-			List<TraitDef> pool = new List<TraitDef>();
-			for (int i = 0; i < RobotTraitDefNames.Length; i++)
+			// 固定特性里格斗者和冷枪手在模板里互斥，但两者都是玩家点名要的，
+			// 这里直接写入，不走随机生成的冲突过滤。
+			traits.GainTrait(new Trait(def, degree));
+		}
+
+		private static void ApplyRobotTraits(Pawn pawn)
+		{
+			for (int i = 0; i < RobotFixedTraitDefNames.Length; i++)
 			{
-				TraitDef def = DefDatabase<TraitDef>.GetNamedSilentFail(RobotTraitDefNames[i]);
-				if (def != null && !traits.HasTrait(def))
-				{
-					pool.Add(def);
-				}
+				GrantRobotTrait(pawn, RobotFixedTraitDefNames[i], RobotFixedTraitDegrees[i]);
 			}
+			if (!NannyBotUtility.Settings.mkvRandomTraits)
+			{
+				return;
+			}
+			TraitSet traits = pawn?.story?.traits;
+			List<string> pool = new List<string>(RobotRandomTraitDefNames);
+			pool.RemoveAll(name =>
+			{
+				TraitDef def = DefDatabase<TraitDef>.GetNamedSilentFail(name);
+				return def == null || traits == null || traits.HasTrait(def);
+			});
 			int count = Mathf.Min(2, pool.Count);
 			for (int i = 0; i < count; i++)
 			{
 				int index = Rand.Range(0, pool.Count);
-				TraitDef def = pool[index];
+				string name = pool[index];
 				pool.RemoveAt(index);
-				traits.GainTrait(new Trait(def, 0), true);
+				GrantRobotTrait(pawn, name, 0);
 			}
 		}
 
@@ -357,12 +385,12 @@ namespace ColonyKit.Modules.Robotics
 					skillsInitialized = true;
 					skillsProfileVersion = 3;
 				}
-				if (NannyBotUtility.Settings.mkvRandomTraits
-					&& (!traitsInitialized || traitsProfileVersion < 1))
+				if (!traitsInitialized || traitsProfileVersion < 2)
 				{
+					// 固定特性始终补齐；随机特性由设置页决定是否追加。
 					ApplyRobotTraits(pawn);
 					traitsInitialized = true;
-					traitsProfileVersion = 1;
+					traitsProfileVersion = 2;
 				}
 				pawn.gender = Gender.Female;
 				SexualizeRjw(pawn);
