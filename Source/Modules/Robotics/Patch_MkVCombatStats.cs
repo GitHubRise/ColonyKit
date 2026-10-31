@@ -100,5 +100,41 @@ namespace ColonyKit.Modules.Robotics
 					RoboticsSettings.MinMkvHitChance, RoboticsSettings.MaxMkvHitChance);
 			}
 		}
+
+		[HarmonyPatch(typeof(StatExtension), nameof(StatExtension.GetStatValue),
+			new[] { typeof(Thing), typeof(StatDef), typeof(bool), typeof(int) })]
+		[HarmonyPostfix]
+		private static void AdjustIncomingDamage(Thing thing, StatDef stat, ref float __result)
+		{
+			if (stat != StatDefOf.IncomingDamageFactor
+				|| !(thing is Pawn pawn) || !NannyBotUtility.IsMkV(pawn))
+			{
+				return;
+			}
+			float factor = Mathf.Clamp(NannyBotUtility.Settings.mkvIncomingDamageFactor,
+				RoboticsSettings.MinMkvIncomingDamageFactor,
+				RoboticsSettings.MaxMkvIncomingDamageFactor);
+			if (factor > 0.0001f)
+			{
+				// 原版 DamageWorker_AddInjury 通过这个属性结算承伤；特性（坚韧等）
+				// 的乘数已经在 StatWorker 里算进 __result，这里只叠设置页的倍率。
+				__result *= factor;
+			}
+		}
+		[HarmonyPatch(typeof(StatDrawEntry), nameof(StatDrawEntry.ShouldDisplay))]
+		[HarmonyPostfix]
+		private static void ShowIncomingDamage(StatDrawEntry __instance, Thing thing, ref bool __result)
+		{
+			if (__result || __instance?.stat != StatDefOf.IncomingDamageFactor)
+			{
+				return;
+			}
+			// 原版 IncomingDamageFactor 的 hideAtValue 是 1，100% 时不显示；
+			// Mk-V 固定把「承伤乘数」列出来，方便看到设置页/特性叠加后的最终值。
+			if (thing is Pawn pawn && NannyBotUtility.IsMkV(pawn))
+			{
+				__result = true;
+			}
+		}
 	}
 }

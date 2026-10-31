@@ -78,6 +78,10 @@ namespace ColonyKit.Modules.Robotics
 		public const float MaxMkvHitChance = 1.5f;
 		public const float DefaultMkvHitChance = 1f;
 
+		public const float MinMkvIncomingDamageFactor = 0.1f;
+		public const float MaxMkvIncomingDamageFactor = 5f;
+		public const float DefaultMkvIncomingDamageFactor = 1f;
+
 		public const float MinMkvSolarEfficiency = 10f;
 		public const float MaxMkvSolarEfficiency = 1000f;
 		public const float DefaultMkvSolarEfficiency = 100f;
@@ -137,6 +141,8 @@ namespace ColonyKit.Modules.Robotics
 		public float mkvPowerConversionRate = DefaultMkvPowerConversionRate;
 		public float mkvAttackSpeed = DefaultMkvAttackSpeed;
 		public float mkvHitChance = DefaultMkvHitChance;
+		public float mkvIncomingDamageFactor = DefaultMkvIncomingDamageFactor;
+		public bool mkvRandomTraits = true;
 		public int mkvBurstShotCount = DefaultMkvBurstShotCount;
 		public float mkvBurstCooldown = DefaultMkvBurstCooldown;
 		public float robotPowerEfficiency = DefaultRobotPowerEfficiency;
@@ -192,6 +198,8 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref mkvPowerConversionRate, "mkvPowerConversionRate", DefaultMkvPowerConversionRate);
 			Scribe_Values.Look(ref mkvAttackSpeed, "mkvAttackSpeed", DefaultMkvAttackSpeed);
 			Scribe_Values.Look(ref mkvHitChance, "mkvHitChance", DefaultMkvHitChance);
+			Scribe_Values.Look(ref mkvIncomingDamageFactor, "mkvIncomingDamageFactor", DefaultMkvIncomingDamageFactor);
+			Scribe_Values.Look(ref mkvRandomTraits, "mkvRandomTraits", true);
 			Scribe_Values.Look(ref mkvBurstShotCount, "mkvBurstShotCount", DefaultMkvBurstShotCount);
 			Scribe_Values.Look(ref mkvBurstCooldown, "mkvBurstCooldown", DefaultMkvBurstCooldown);
 			Scribe_Values.Look(ref robotPowerEfficiency, "robotPowerEfficiency", DefaultRobotPowerEfficiency);
@@ -264,6 +272,11 @@ namespace ColonyKit.Modules.Robotics
 			float hitChance = mkvHitChance;
 			mkvHitChance = ClampFloat(mkvHitChance, MinMkvHitChance, MaxMkvHitChance);
 			changed |= !Approximately(hitChance, mkvHitChance);
+
+			float incomingDamage = mkvIncomingDamageFactor;
+			mkvIncomingDamageFactor = ClampFloat(mkvIncomingDamageFactor,
+				MinMkvIncomingDamageFactor, MaxMkvIncomingDamageFactor);
+			changed |= !Approximately(incomingDamage, mkvIncomingDamageFactor);
 
 			int burst = mkvBurstShotCount;
 			mkvBurstShotCount = ClampInt(mkvBurstShotCount, MinMkvBurstShotCount, MaxMkvBurstShotCount);
@@ -356,6 +369,8 @@ namespace ColonyKit.Modules.Robotics
 			mkvPowerConversionRate = DefaultMkvPowerConversionRate;
 			mkvAttackSpeed = DefaultMkvAttackSpeed;
 			mkvHitChance = DefaultMkvHitChance;
+			mkvIncomingDamageFactor = DefaultMkvIncomingDamageFactor;
+			mkvRandomTraits = true;
 			mkvBurstShotCount = DefaultMkvBurstShotCount;
 			mkvBurstCooldown = DefaultMkvBurstCooldown;
 			robotPowerEfficiency = DefaultRobotPowerEfficiency;

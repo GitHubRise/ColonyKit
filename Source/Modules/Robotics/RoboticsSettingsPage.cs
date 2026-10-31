@@ -259,6 +259,19 @@ namespace ColonyKit.Modules.Robotics
 				RoboticsSettings.MaxMkvHitChance,
 				0.05f,
 				value => value.ToStringPercent());
+			data.mkvIncomingDamageFactor = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVIncomingDamageFactor".Loc(),
+				data.mkvIncomingDamageFactor,
+				RoboticsSettings.MinMkvIncomingDamageFactor,
+				RoboticsSettings.MaxMkvIncomingDamageFactor,
+				0.05f,
+				value => value.ToStringPercent());
+			data.mkvRandomTraits = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.MkvRandomTraits".Loc(),
+				ref data.mkvRandomTraits,
+				"ColonyKit.Settings.Robotics.MkvRandomTraits.Desc".Loc());
 			data.mkvBurstShotCount = Mathf.RoundToInt(SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Robotics.MkvBurstShotCount".Loc(),

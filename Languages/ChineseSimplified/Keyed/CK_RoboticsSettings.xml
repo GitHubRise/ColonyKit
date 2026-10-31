@@ -63,6 +63,9 @@
 	<ColonyKit.Settings.Robotics.MkVWeaponPickupRadius>武器拾取范围</ColonyKit.Settings.Robotics.MkVWeaponPickupRadius>
 	<ColonyKit.Settings.Robotics.MkVAttackSpeed>Mk-V 攻击速度</ColonyKit.Settings.Robotics.MkVAttackSpeed>
 	<ColonyKit.Settings.Robotics.MkVHitChance>Mk-V 命中率</ColonyKit.Settings.Robotics.MkVHitChance>
+	<ColonyKit.Settings.Robotics.MkVIncomingDamageFactor>Mk-V 承伤乘数</ColonyKit.Settings.Robotics.MkVIncomingDamageFactor>
+	<ColonyKit.Settings.Robotics.MkvRandomTraits>随机特性（Mk-V）</ColonyKit.Settings.Robotics.MkvRandomTraits>
+	<ColonyKit.Settings.Robotics.MkvRandomTraits.Desc>新生成/首次读档的 Mk-V 随机获得 2 个特性（坚韧、敏捷、快速学习、超凡记忆）；已有特性不会重复添加，关闭后不再给新机器人抽特性。</ColonyKit.Settings.Robotics.MkvRandomTraits.Desc>
 	<ColonyKit.Settings.Robotics.RobotPowerEfficiency>机器人耗电效率</ColonyKit.Settings.Robotics.RobotPowerEfficiency>
 	<ColonyKit.Settings.Robotics.RobotPowerEfficiency.Desc>所有 Mk 系列机器人共用；100% 为基准，数值越高，同一块电池工作时间越长。</ColonyKit.Settings.Robotics.RobotPowerEfficiency.Desc>
 	<ColonyKit.Settings.Robotics.MkvBurstShotCount>电弧发射器连发数</ColonyKit.Settings.Robotics.MkvBurstShotCount>

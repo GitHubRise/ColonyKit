@@ -75,6 +75,11 @@ namespace ColonyKit.Modules.Robotics
 		/// <summary>Mk-V 的技能只在首次生成/技能档案升级时随机一次。</summary>
 		private bool skillsInitialized;
 		private int skillsProfileVersion;
+
+		/// <summary>Mk-V 的特性只在首次生成时随机一次，之后随 story 一起存档。</summary>
+		private bool traitsInitialized;
+		private int traitsProfileVersion;
+
 		private bool durabilityMigratedTo5000;
 
 		/// <summary>正在被殖民者维修；维修期间不充电、不接新家务。</summary>
@@ -188,6 +193,40 @@ namespace ColonyKit.Modules.Robotics
 			ApplySkill(pawn, SkillDefOf.Intellectual, 15);
 		}
 
+		private static readonly string[] RobotTraitDefNames =
+		{
+			"Tough",
+			"Nimble",
+			"FastLearner",
+			"GreatMemory"
+		};
+
+		private static void ApplyRobotTraits(Pawn pawn)
+		{
+			TraitSet traits = pawn?.story?.traits;
+			if (traits == null)
+			{
+				return;
+			}
+			List<TraitDef> pool = new List<TraitDef>();
+			for (int i = 0; i < RobotTraitDefNames.Length; i++)
+			{
+				TraitDef def = DefDatabase<TraitDef>.GetNamedSilentFail(RobotTraitDefNames[i]);
+				if (def != null && !traits.HasTrait(def))
+				{
+					pool.Add(def);
+				}
+			}
+			int count = Mathf.Min(2, pool.Count);
+			for (int i = 0; i < count; i++)
+			{
+				int index = Rand.Range(0, pool.Count);
+				TraitDef def = pool[index];
+				pool.RemoveAt(index);
+				traits.GainTrait(new Trait(def, 0), true);
+			}
+		}
+
 		private static void ApplySkill(Pawn pawn, SkillDef def, int baseLevel)
 		{
 			SetSkill(pawn, def, Mathf.Clamp(baseLevel + Rand.RangeInclusive(-5, 5), 0, 20));
@@ -292,6 +331,11 @@ namespace ColonyKit.Modules.Robotics
 				{
 					pawn.story = new Pawn_StoryTracker(pawn);
 				}
+				if (pawn.story.traits == null)
+				{
+					// 老存档/特殊生成路径可能只建了 story 没有 trait 集合；特性面板与统计都读它。
+					pawn.story.traits = new TraitSet(pawn);
+				}
 				if (pawn.skills == null)
 				{
 					pawn.skills = new Pawn_SkillTracker(pawn);
@@ -312,6 +356,13 @@ namespace ColonyKit.Modules.Robotics
 					ApplyRobotSkills(pawn);
 					skillsInitialized = true;
 					skillsProfileVersion = 3;
+				}
+				if (NannyBotUtility.Settings.mkvRandomTraits
+					&& (!traitsInitialized || traitsProfileVersion < 1))
+				{
+					ApplyRobotTraits(pawn);
+					traitsInitialized = true;
+					traitsProfileVersion = 1;
 				}
 				pawn.gender = Gender.Female;
 				SexualizeRjw(pawn);
@@ -366,6 +417,8 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref lowPowerStandby, "ck_robotics_lowPowerStandby", false);
 			Scribe_Values.Look(ref skillsInitialized, "ck_robotics_skillsInitialized", false);
 			Scribe_Values.Look(ref skillsProfileVersion, "ck_robotics_skillsProfileVersion", 0);
+			Scribe_Values.Look(ref traitsInitialized, "ck_robotics_traitsInitialized", false);
+			Scribe_Values.Look(ref traitsProfileVersion, "ck_robotics_traitsProfileVersion", 0);
 			Scribe_Values.Look(ref durabilityMigratedTo5000, "ck_robotics_durabilityMigrated5000", false);
 			Scribe_Values.Look(ref durability, "ck_robotics_durability", -1f);
 			if (durability < 0f)

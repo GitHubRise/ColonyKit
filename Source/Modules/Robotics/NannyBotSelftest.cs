@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text;
 using HarmonyLib;
 using RimWorld;
@@ -121,11 +122,64 @@ namespace ColonyKit.Modules.Robotics
 					.Append(" mkvCombat=").Append(combat != null)
 					.Append(" mkvHomeBayIsBay=").Append(combat?.homeBay == bay)
 					.Append(" mkvHomeIsBay=").Append(mkvComp?.homeStation == bay)
-					.Append(" mkvHome=").Append(mkvComp?.homeStation?.def?.defName ?? "none");
+					.Append(" mkvHome=").Append(mkvComp?.homeStation?.def?.defName ?? "none")
+					.Append(" mkvTraits=").Append(TraitList(mkv))
+					.Append(" incomingDamage=").Append(IncomingDamageProbe(mkv));
 				ProbeMkVChores(map, mkv, builder);
 				mkv.Destroy(DestroyMode.Vanish);
 			}
 			bay.Destroy(DestroyMode.Vanish);
+		}
+
+		private static string TraitList(Pawn pawn)
+		{
+			List<Trait> traits = pawn?.story?.traits?.allTraits;
+			if (traits == null || traits.Count == 0)
+			{
+				return "none";
+			}
+			StringBuilder builder = new StringBuilder();
+			for (int i = 0; i < traits.Count; i++)
+			{
+				if (i > 0)
+				{
+					builder.Append(',');
+				}
+				builder.Append(traits[i].def.defName);
+			}
+			return builder.ToString();
+		}
+
+		/// <summary>承伤乘数探针：原值 / 设置页临时调到 50% 后的值 / 临时加「坚韧」后的值。</summary>
+		private static string IncomingDamageProbe(Pawn pawn)
+		{
+			StatDef stat = StatDefOf.IncomingDamageFactor;
+			if (stat == null)
+			{
+				return "none";
+			}
+			float baseValue = pawn.GetStatValue(stat, true, 0);
+			RoboticsSettings settings = NannyBotUtility.Settings;
+			float oldFactor = settings.mkvIncomingDamageFactor;
+			settings.mkvIncomingDamageFactor = 0.5f;
+			float scaled = pawn.GetStatValue(stat, true, 0);
+			settings.mkvIncomingDamageFactor = oldFactor;
+
+			TraitSet traits = pawn.story?.traits;
+			TraitDef toughDef = DefDatabase<TraitDef>.GetNamedSilentFail("Tough");
+			bool addedTough = false;
+			if (traits != null && toughDef != null && !traits.HasTrait(toughDef))
+			{
+				traits.GainTrait(new Trait(toughDef, 0), true);
+				addedTough = true;
+			}
+			float withTough = pawn.GetStatValue(stat, true, 0);
+			if (addedTough)
+			{
+				traits.RemoveTrait(new Trait(toughDef, 0));
+			}
+			return baseValue.ToString("0.00") + "/" + scaled.ToString("0.00")
+				+ "/" + withTough.ToString("0.00");
 		}
 
 		/// <summary>Mk-V 家务探针：敌人尸体搬运。</summary>
@@ -156,7 +210,7 @@ namespace ColonyKit.Modules.Robotics
 				mkv.Position,
 				map,
 				4,
-				c => c.Standable(map) && c != mkv.Position);
+				c => c.Standable(map) && c != mkv.Position && c.GetZone(map) == null);
 			if (!corpseCell.IsValid)
 			{
 				builder.Append(" corpseProbe=nocell");
@@ -181,7 +235,8 @@ namespace ColonyKit.Modules.Robotics
 				corpseCell,
 				map,
 				6,
-				c => c.Standable(map) && c.GetEdifice(map) == null);
+				c => c.Standable(map) && c.GetEdifice(map) == null
+					&& c != corpseCell && c.GetZone(map) == null);
 			if (storeCell.IsValid)
 			{
 				Zone_Stockpile pile = new Zone_Stockpile(
