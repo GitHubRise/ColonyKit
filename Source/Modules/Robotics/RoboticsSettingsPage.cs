@@ -51,6 +51,11 @@ namespace ColonyKit.Modules.Robotics
 				"ColonyKit.Settings.Robotics.Butcher".Loc(),
 				ref data.butcher,
 				"ColonyKit.Settings.Robotics.Butcher.Desc".Loc());
+			data.corpseDisposal = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.CorpseDisposal".Loc(),
+				ref data.corpseDisposal,
+				"ColonyKit.Settings.Robotics.CorpseDisposal.Desc".Loc());
 			data.refuel = SettingsWidgets.Checkbox(
 				listing,
 				"ColonyKit.Settings.Robotics.Refuel".Loc(),
@@ -96,6 +101,11 @@ namespace ColonyKit.Modules.Robotics
 				"ColonyKit.Settings.Robotics.Research".Loc(),
 				ref data.research,
 				"ColonyKit.Settings.Robotics.Research.Desc".Loc());
+			data.crafting = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.Crafting".Loc(),
+				ref data.crafting,
+				"ColonyKit.Settings.Robotics.Crafting.Desc".Loc());
 			data.dangerAvoidance = SettingsWidgets.Checkbox(
 				listing,
 				"ColonyKit.Settings.Robotics.DangerAvoidance".Loc(),

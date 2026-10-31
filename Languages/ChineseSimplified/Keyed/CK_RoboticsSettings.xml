@@ -14,6 +14,8 @@
 	<ColonyKit.Settings.Robotics.Firefight.Desc>扑灭工作范围内的火。</ColonyKit.Settings.Robotics.Firefight.Desc>
 	<ColonyKit.Settings.Robotics.Butcher>屠宰尸体</ColonyKit.Settings.Robotics.Butcher>
 	<ColonyKit.Settings.Robotics.Butcher.Desc>使用屠宰台上的屠宰账单处理尸体。</ColonyKit.Settings.Robotics.Butcher.Desc>
+	<ColonyKit.Settings.Robotics.CorpseDisposal>尸体处理（Mk-V）</ColonyKit.Settings.Robotics.CorpseDisposal>
+	<ColonyKit.Settings.Robotics.CorpseDisposal.Desc>允许 Mk-V 把敌人尸体送进燃烧坑/焚化炉烧掉，或搬进允许尸体的库存区。</ColonyKit.Settings.Robotics.CorpseDisposal.Desc>
 	<ColonyKit.Settings.Robotics.Refuel>给发电机加燃料</ColonyKit.Settings.Robotics.Refuel>
 	<ColonyKit.Settings.Robotics.Refuel.Desc>给木柴发电机、化合燃料发电机补充燃料。</ColonyKit.Settings.Robotics.Refuel.Desc>
 	<ColonyKit.Settings.Robotics.FeedPrisoners>给囚犯送餐</ColonyKit.Settings.Robotics.FeedPrisoners>
@@ -32,6 +34,8 @@
 	<ColonyKit.Settings.Robotics.Doctor.Desc>允许 Mk-V 给受伤的殖民者和囚犯做医疗处理。</ColonyKit.Settings.Robotics.Doctor.Desc>
 	<ColonyKit.Settings.Robotics.Research>研究（Mk-V）</ColonyKit.Settings.Robotics.Research>
 	<ColonyKit.Settings.Robotics.Research.Desc>允许 Mk-V 在研究台推进当前研究。</ColonyKit.Settings.Robotics.Research.Desc>
+	<ColonyKit.Settings.Robotics.Crafting>手工制作（Mk-V）</ColonyKit.Settings.Robotics.Crafting>
+	<ColonyKit.Settings.Robotics.Crafting.Desc>允许 Mk-V 在制作点、制作台、锻造台、裁缝台和艺术台上处理账单。</ColonyKit.Settings.Robotics.Crafting.Desc>
 	<ColonyKit.Settings.Robotics.DangerAvoidance>危险规避</ColonyKit.Settings.Robotics.DangerAvoidance>
 	<ColonyKit.Settings.Robotics.DangerAvoidance.Desc>附近有敌人或全图高危险时，停止家务并回充电桩待命。</ColonyKit.Settings.Robotics.DangerAvoidance.Desc>
 
@@ -194,4 +198,8 @@
 	<CK.Robotics.Chore.Doctor.Desc>给受伤的殖民者/囚犯做医疗处理（仅 Mk-V）。</CK.Robotics.Chore.Doctor.Desc>
 	<CK.Robotics.Chore.Research.Label>研究</CK.Robotics.Chore.Research.Label>
 	<CK.Robotics.Chore.Research.Desc>在研究台推进当前研究项目（仅 Mk-V）。</CK.Robotics.Chore.Research.Desc>
+	<CK.Robotics.Chore.CorpseDisposal.Label>尸体处理</CK.Robotics.Chore.CorpseDisposal.Label>
+	<CK.Robotics.Chore.CorpseDisposal.Desc>把敌人尸体送进燃烧坑/焚化炉，或搬进允许尸体的库存区（仅 Mk-V）。</CK.Robotics.Chore.CorpseDisposal.Desc>
+	<CK.Robotics.Chore.Craft.Label>手工制作</CK.Robotics.Chore.Craft.Label>
+	<CK.Robotics.Chore.Craft.Desc>在制作、锻造、裁缝、艺术工作台上完成账单（仅 Mk-V）。</CK.Robotics.Chore.Craft.Desc>
 </LanguageData>

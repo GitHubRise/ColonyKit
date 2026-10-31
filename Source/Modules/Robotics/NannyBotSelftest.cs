@@ -122,9 +122,81 @@ namespace ColonyKit.Modules.Robotics
 					.Append(" mkvHomeBayIsBay=").Append(combat?.homeBay == bay)
 					.Append(" mkvHomeIsBay=").Append(mkvComp?.homeStation == bay)
 					.Append(" mkvHome=").Append(mkvComp?.homeStation?.def?.defName ?? "none");
+				ProbeMkVChores(map, mkv, builder);
 				mkv.Destroy(DestroyMode.Vanish);
 			}
 			bay.Destroy(DestroyMode.Vanish);
+		}
+
+		/// <summary>Mk-V 家务探针：敌人尸体搬运。</summary>
+		private static void ProbeMkVChores(Map map, Pawn mkv, StringBuilder builder)
+		{
+			CompNannyBot comp = mkv.TryGetComp<CompNannyBot>();
+			builder.Append(" corpseChore=")
+				.Append(comp != null ? comp.GetPriority(RobotChore.CorpseDisposal) : -1)
+				.Append(" craftChore=")
+				.Append(comp != null ? comp.GetPriority(RobotChore.Craft) : -1);
+
+			// 尸体处理：敌对派系尸体 + 允许尸体的存储区，应给出 HaulToCell。
+			Faction hostile = null;
+			foreach (Faction faction in Find.FactionManager.AllFactionsListForReading)
+			{
+				if (faction.def.humanlikeFaction && faction.HostileTo(Faction.OfPlayer))
+				{
+					hostile = faction;
+					break;
+				}
+			}
+			if (hostile == null || PawnKindDefOf.Pirate == null)
+			{
+				builder.Append(" corpseProbe=nofaction");
+				return;
+			}
+			IntVec3 corpseCell = CellFinder.RandomClosewalkCellNear(
+				mkv.Position,
+				map,
+				4,
+				c => c.Standable(map) && c != mkv.Position);
+			if (!corpseCell.IsValid)
+			{
+				builder.Append(" corpseProbe=nocell");
+				return;
+			}
+			Pawn victim = PawnGenerator.GeneratePawn(PawnKindDefOf.Pirate, hostile);
+			GenSpawn.Spawn(victim, corpseCell, map);
+			victim.Kill(null);
+			Corpse corpse = victim.Corpse;
+			builder.Append(" enemyCorpse=").Append(corpse != null);
+			if (corpse == null)
+			{
+				return;
+			}
+			builder.Append(" corpseFlags=")
+				.Append(corpse.IsForbidden(mkv)).Append('/')
+				.Append(corpse.IsInValidStorage()).Append('/')
+				.Append(mkv.CanReserve(corpse, 1, -1, null, false)).Append('/')
+				.Append(mkv.CanReach(corpse, PathEndMode.ClosestTouch, Danger.Deadly)).Append('/')
+				.Append(NannyBotUtility.IsWithinWorkArea(mkv, corpse.Position));
+			IntVec3 storeCell = CellFinder.RandomClosewalkCellNear(
+				corpseCell,
+				map,
+				6,
+				c => c.Standable(map) && c.GetEdifice(map) == null);
+			if (storeCell.IsValid)
+			{
+				Zone_Stockpile pile = new Zone_Stockpile(
+					StorageSettingsPreset.DefaultStockpile,
+					map.zoneManager);
+				map.zoneManager.RegisterZone(pile);
+				pile.AddCell(storeCell);
+				pile.settings.filter.SetAllow(ThingCategoryDefOf.Corpses, true);
+				ThinkResult corpseResult = new JobGiver_NannyBotCorpseDisposal()
+					.TryIssueJobPackage(mkv, new JobIssueParams());
+				builder.Append(" corpseHaulJob=")
+					.Append(corpseResult.Job?.def?.defName ?? "none")
+					.Append(" pileAllows=").Append(pile.settings.filter.Allows(corpse));
+			}
+			corpse.Destroy(DestroyMode.Vanish);
 		}
 
 		public static void RunIfRequested(Game game)

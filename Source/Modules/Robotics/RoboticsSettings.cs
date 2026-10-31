@@ -116,6 +116,8 @@ namespace ColonyKit.Modules.Robotics
 		public bool cook = true;
 		public bool doctor = true;
 		public bool research = true;
+		public bool corpseDisposal = true;
+		public bool crafting = true;
 		public bool dangerAvoidance = true;
 
 		// 表现。
@@ -173,6 +175,8 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref cook, "cook", true);
 			Scribe_Values.Look(ref doctor, "doctor", true);
 			Scribe_Values.Look(ref research, "research", true);
+			Scribe_Values.Look(ref corpseDisposal, "corpseDisposal", true);
+			Scribe_Values.Look(ref crafting, "crafting", true);
 			Scribe_Values.Look(ref dangerAvoidance, "dangerAvoidance", true);
 			Scribe_Values.Look(ref sounds, "sounds", true);
 			Scribe_Values.Look(ref chargingGlow, "chargingGlow", true);
@@ -335,6 +339,8 @@ namespace ColonyKit.Modules.Robotics
 			cook = true;
 			doctor = true;
 			research = true;
+			corpseDisposal = true;
+			crafting = true;
 			dangerAvoidance = true;
 			sounds = true;
 			chargingGlow = true;

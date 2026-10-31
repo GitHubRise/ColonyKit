@@ -14,6 +14,8 @@
 	<ColonyKit.Settings.Robotics.Firefight.Desc>Beat out fires inside the work area.</ColonyKit.Settings.Robotics.Firefight.Desc>
 	<ColonyKit.Settings.Robotics.Butcher>Butcher corpses</ColonyKit.Settings.Robotics.Butcher>
 	<ColonyKit.Settings.Robotics.Butcher.Desc>Use butcher-table bills to process corpses.</ColonyKit.Settings.Robotics.Butcher.Desc>
+	<ColonyKit.Settings.Robotics.CorpseDisposal>Corpse disposal (Mk-V)</ColonyKit.Settings.Robotics.CorpseDisposal>
+	<ColonyKit.Settings.Robotics.CorpseDisposal.Desc>Let Mk-V carry enemy corpses to a burn pit or crematorium, or into a stockpile that accepts corpses.</ColonyKit.Settings.Robotics.CorpseDisposal.Desc>
 	<ColonyKit.Settings.Robotics.Refuel>Refuel generators</ColonyKit.Settings.Robotics.Refuel>
 	<ColonyKit.Settings.Robotics.Refuel.Desc>Refuel wood-fired and chemfuel generators below the threshold.</ColonyKit.Settings.Robotics.Refuel.Desc>
 	<ColonyKit.Settings.Robotics.FeedPrisoners>Feed prisoners</ColonyKit.Settings.Robotics.FeedPrisoners>
@@ -32,6 +34,8 @@
 	<ColonyKit.Settings.Robotics.Doctor.Desc>Let Mk-V tend injured colonists and prisoners.</ColonyKit.Settings.Robotics.Doctor.Desc>
 	<ColonyKit.Settings.Robotics.Research>Research (Mk-V)</ColonyKit.Settings.Robotics.Research>
 	<ColonyKit.Settings.Robotics.Research.Desc>Let Mk-V work research benches on the current project.</ColonyKit.Settings.Robotics.Research.Desc>
+	<ColonyKit.Settings.Robotics.Crafting>Crafting (Mk-V)</ColonyKit.Settings.Robotics.Crafting>
+	<ColonyKit.Settings.Robotics.Crafting.Desc>Let Mk-V work bills at crafting spots, fabrication, smithy, tailoring and art benches.</ColonyKit.Settings.Robotics.Crafting.Desc>
 	<ColonyKit.Settings.Robotics.DangerAvoidance>Avoid danger</ColonyKit.Settings.Robotics.DangerAvoidance>
 	<ColonyKit.Settings.Robotics.DangerAvoidance.Desc>Stop chores and return to the station while enemies are near or the map is at high danger.</ColonyKit.Settings.Robotics.DangerAvoidance.Desc>
 
@@ -194,4 +198,8 @@
 	<CK.Robotics.Chore.Doctor.Desc>Tend injured colonists and prisoners (Mk-V only).</CK.Robotics.Chore.Doctor.Desc>
 	<CK.Robotics.Chore.Research.Label>Research</CK.Robotics.Chore.Research.Label>
 	<CK.Robotics.Chore.Research.Desc>Work research benches on the current project (Mk-V only).</CK.Robotics.Chore.Research.Desc>
+	<CK.Robotics.Chore.CorpseDisposal.Label>Corpses</CK.Robotics.Chore.CorpseDisposal.Label>
+	<CK.Robotics.Chore.CorpseDisposal.Desc>Carry enemy corpses to a burn pit or crematorium, or into a stockpile that accepts corpses (Mk-V only).</CK.Robotics.Chore.CorpseDisposal.Desc>
+	<CK.Robotics.Chore.Craft.Label>Crafting</CK.Robotics.Chore.Craft.Label>
+	<CK.Robotics.Chore.Craft.Desc>Work crafting, smithing, tailoring and art benches (Mk-V only).</CK.Robotics.Chore.Craft.Desc>
 </LanguageData>
