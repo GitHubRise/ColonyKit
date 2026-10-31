@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-	<CK_DrawWaterBucket.label>Draw water</CK_DrawWaterBucket.label>
+	<CK_DrawWaterBottle.label>Draw mineral water</CK_DrawWaterBottle.label>
+	<CK_DrawWaterBottle.description>Fill one 1 L bottle of mineral water at this water spot. No bucket or basin needed.</CK_DrawWaterBottle.description>
+	<CK_DrawWaterBottle.jobString>drawing mineral water.</CK_DrawWaterBottle.jobString>
+	<CK_DrawWaterBucket.label>Draw water (bucket)</CK_DrawWaterBucket.label>
 	<CK_DrawWaterBucket.description>Fill one 60 L water bucket at this water spot. Needs an empty or partly filled bucket.</CK_DrawWaterBucket.description>
 	<CK_DrawWaterBucket.jobString>drawing water.</CK_DrawWaterBucket.jobString>
 	<CK_DrawWaterBulk.label>Bulk draw water</CK_DrawWaterBulk.label>

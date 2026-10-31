@@ -60,6 +60,17 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return;
 			}
+			Thing bottle = MineralWaterUtility.FindInCaravan(__instance.caravan);
+			if (bottle != null)
+			{
+				bottle.stackCount--;
+				if (bottle.stackCount <= 0)
+				{
+					bottle.Destroy();
+				}
+				thirst.Drink(MineralWaterUtility.ThirstPerBottle);
+				return;
+			}
 			CompBasinWater container = FindWaterContainer(__instance.caravan);
 			if (container != null)
 			{

@@ -152,6 +152,12 @@ namespace ColonyKit.Modules.Hygiene
 						false,
 						"CK.Hygiene.FloatMenu.NeedContainer".Translate().ToString());
 				}
+
+				// 不需要任何容器：直接装一瓶 1 L 矿泉水。
+				yield return UseOption(
+					"CK.Hygiene.FloatMenu.FillBottle", pawn, waterSpot, "CK_FillWaterBottle",
+					spotReachable,
+					spotReachable ? null : "CannotReach".Translate().ToString());
 			}
 
 			// 打水：水井（地下水）、水箱（同网存水）都能用随身容器接。

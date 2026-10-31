@@ -48,6 +48,12 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				range = 9999f;
 			}
+			// 矿泉水：1 L/瓶，直接喝，不需要容器。
+			Thing bottle = MineralWaterUtility.Carried(pawn) ?? MineralWaterUtility.FindSpawned(pawn);
+			if (bottle != null)
+			{
+				return JobMaker.MakeJob(JobDefOf.Ingest, bottle);
+			}
 			// 随身带着水桶/脸盆时先喝自己的水，省得跑回洗手池。
 			if (WaterContainerUtility.CarriedContainer(pawn, requireWater: true) != null)
 			{

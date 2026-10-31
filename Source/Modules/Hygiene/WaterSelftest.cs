@@ -38,6 +38,8 @@ namespace ColonyKit.Modules.Hygiene
 		private static readonly System.Collections.Generic.List<Thing> bulkBuckets =
 			new System.Collections.Generic.List<Thing>();
 		private static bool bulkPhaseDone;
+		private static Bill_Production bottleBill;
+		private static bool bottlePhaseDone;
 		private static bool waterPatientPhaseDone;
 		private static Pawn waterPatient;
 		private static bool basinPhaseDone;
@@ -481,13 +483,51 @@ namespace ColonyKit.Modules.Hygiene
 				{
 					waterPatientPhaseDone = true;
 					ModLog.Info("Hygiene", $"water selftest patient phase done: thirst={thirst.CurLevel:F2}");
-					Finish(true);
+					StartBottlePhase();
+					nextLogTick = elapsed + 250;
 				}
 				else if (elapsed >= MaxTicks)
 				{
 					Finish(false);
 				}
 				return;
+			}
+
+			if (!bottlePhaseDone)
+			{
+				if (elapsed >= nextLogTick)
+				{
+					nextLogTick = elapsed + 500;
+					Log("bottle");
+				}
+				if (bottleBill != null && bottleBill.repeatCount <= 0)
+				{
+					Thing bottle = MineralWaterUtility.Carried(pawn);
+					Need_Thirst thirst = pawn?.needs?.TryGetNeed<Need_Thirst>();
+					if (bottle == null || thirst == null)
+					{
+						failure = "mineral water bottle missing";
+						Finish(false);
+						return;
+					}
+					thirst.CurLevel = 0.2f;
+					bottle.Ingested(pawn, 0f);
+					if (thirst.CurLevel < 0.35f)
+					{
+						failure = "mineral water did not restore thirst";
+						Finish(false);
+						return;
+					}
+					bottlePhaseDone = true;
+					ModLog.Info(
+						"Hygiene",
+						$"water selftest bottle phase done: thirst={thirst.CurLevel:F2}");
+					Finish(true);
+				}
+				else if (elapsed >= MaxTicks)
+				{
+					Finish(false);
+				}
 			}
 		}
 
@@ -662,6 +702,39 @@ namespace ColonyKit.Modules.Hygiene
 			if (!pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc))
 			{
 				Fail("water patient job rejected");
+			}
+		}
+
+		private static void StartBottlePhase()
+		{
+			RecipeDef recipe = DefDatabase<RecipeDef>.GetNamedSilentFail("CK_DrawWaterBottle");
+			Bill_Production bill = recipe?.MakeNewBill() as Bill_Production;
+			if (bill == null || spot == null)
+			{
+				Fail("bottle phase missing");
+				return;
+			}
+			bill.repeatMode = BillRepeatModeDefOf.RepeatCount;
+			bill.repeatCount = 1;
+			spot.BillStack.AddBill(bill);
+			bottleBill = bill;
+			WorkGiverDef def = DefDatabase<WorkGiverDef>.GetNamedSilentFail("CK_FillWaterSpot");
+			WorkGiver_Scanner giver = def?.Worker as WorkGiver_Scanner;
+			if (giver == null || !giver.HasJobOnThing(pawn, spot))
+			{
+				Fail("bottle workgiver rejected");
+				return;
+			}
+			Job job = giver.JobOnThing(pawn, spot);
+			if (job == null || job.def.defName != "CK_FillWaterBottle")
+			{
+				Fail("bottle job not produced");
+				return;
+			}
+			pawn.jobs.StopAll(false);
+			if (!pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc))
+			{
+				Fail("bottle job rejected");
 			}
 		}
 

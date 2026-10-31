@@ -8,7 +8,7 @@ namespace ColonyKit.Modules.Hygiene
 {
 	/// <summary>
 	/// 免费取水点清单的工作：取 BillStack 里第一条 ShouldDoNow 的账单。
-	/// 「取水」每次 1 桶；「批量取水」一次最多 5 桶。
+	/// 「取水（矿泉水）」不需要容器；「取水（水桶）」1 桶；「批量取水」最多 5 桶。
 	/// </summary>
 	public class WorkGiver_FillWaterSpot : WorkGiver_Scanner
 	{
@@ -41,6 +41,10 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return false;
 			}
+			if (bill.recipe.defName == "CK_DrawWaterBottle")
+			{
+				return true;
+			}
 			return WaterContainerUtility.FindBucketForJob(pawn) != null;
 		}
 
@@ -54,6 +58,18 @@ namespace ColonyKit.Modules.Hygiene
 			if (bill == null || !bill.PawnAllowedToStartAnew(pawn))
 			{
 				return null;
+			}
+			if (bill.recipe.defName == "CK_DrawWaterBottle")
+			{
+				JobDef bottleDef = DefDatabase<JobDef>.GetNamedSilentFail("CK_FillWaterBottle");
+				if (bottleDef == null)
+				{
+					return null;
+				}
+				Job bottleJob = JobMaker.MakeJob(bottleDef);
+				bottleJob.bill = bill;
+				bottleJob.targetA = spot;
+				return bottleJob;
 			}
 			bool bulk = bill.recipe.defName == "CK_DrawWaterBulk";
 			List<Thing> buckets = WaterContainerUtility.FindBucketsForJob(

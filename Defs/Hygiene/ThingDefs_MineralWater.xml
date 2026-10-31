@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 矿泉水：1 瓶按 1 L 水计算；取水点可以直接装瓶，不需要水桶/脸盆。 -->
+	<ThingDef ParentName="ResourceBase">
+		<defName>CK_MineralWater</defName>
+		<label>mineral water</label>
+		<description>A sealed 1 L bottle of mineral water. Drink it directly to restore thirst; no container or water network needed.</description>
+		<graphicData>
+			<texPath>Things/Item/CK_MineralWater</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			<drawSize>(0.6,0.9)</drawSize>
+		</graphicData>
+		<uiIconScale>1.2</uiIconScale>
+		<rotatable>false</rotatable>
+		<thingCategories>
+			<li>Foods</li>
+		</thingCategories>
+		<stackLimit>25</stackLimit>
+		<ingestible>
+			<preferability>NeverForNutrition</preferability>
+			<foodType>Fluid</foodType>
+			<baseIngestTicks>60</baseIngestTicks>
+			<babiesCanIngest>true</babiesCanIngest>
+		</ingestible>
+		<statBases>
+			<Mass>1</Mass>
+			<MarketValue>2</MarketValue>
+			<MaxHitPoints>30</MaxHitPoints>
+			<Flammability>0</Flammability>
+			<DeteriorationRate>0</DeteriorationRate>
+			<Nutrition>0.01</Nutrition>
+		</statBases>
+	</ThingDef>
+</Defs>

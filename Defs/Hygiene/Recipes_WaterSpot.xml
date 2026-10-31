@@ -2,6 +2,21 @@
 <Defs>
 	<!-- 免费取水点的「添加清单」配方：和屠宰点一样走原版 BillStack。 -->
 	<RecipeDef>
+		<defName>CK_DrawWaterBottle</defName>
+		<label>draw mineral water</label>
+		<description>Fill one 1 L bottle of mineral water at this water spot. No bucket or basin needed.</description>
+		<jobString>drawing mineral water.</jobString>
+		<workAmount>0</workAmount>
+		<uiIconThing>CK_MineralWater</uiIconThing>
+		<products>
+			<CK_MineralWater>1</CK_MineralWater>
+		</products>
+		<recipeUsers>
+			<li>CK_WaterSpot</li>
+		</recipeUsers>
+	</RecipeDef>
+
+	<RecipeDef>
 		<defName>CK_DrawWaterBucket</defName>
 		<label>draw water</label>
 		<description>Fill one 60 L water bucket at this water spot. The bucket must be empty or partly filled.</description>

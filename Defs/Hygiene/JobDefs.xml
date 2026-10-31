@@ -102,4 +102,10 @@
 		<reportString>giving water.</reportString>
 		<casualInterruptible>true</casualInterruptible>
 	</JobDef>
+	<JobDef>
+		<defName>CK_FillWaterBottle</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_FillWaterBottle</driverClass>
+		<reportString>filling a water bottle.</reportString>
+		<casualInterruptible>true</casualInterruptible>
+	</JobDef>
 </Defs>

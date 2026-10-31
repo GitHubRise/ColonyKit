@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-	<CK_DrawWaterBucket.label>取水</CK_DrawWaterBucket.label>
+	<CK_DrawWaterBottle.label>取水（矿泉水）</CK_DrawWaterBottle.label>
+	<CK_DrawWaterBottle.description>在取水点直接装一瓶 1 升矿泉水，不需要水桶或脸盆。</CK_DrawWaterBottle.description>
+	<CK_DrawWaterBottle.jobString>正在装矿泉水。</CK_DrawWaterBottle.jobString>
+	<CK_DrawWaterBucket.label>取水（水桶）</CK_DrawWaterBucket.label>
 	<CK_DrawWaterBucket.description>在取水点打满一只 60 升水桶。需要一只空桶或半满水桶。</CK_DrawWaterBucket.description>
 	<CK_DrawWaterBucket.jobString>正在打水。</CK_DrawWaterBucket.jobString>
 	<CK_DrawWaterBulk.label>批量取水</CK_DrawWaterBulk.label>
