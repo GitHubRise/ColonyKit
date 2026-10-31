@@ -8,8 +8,10 @@ namespace ColonyKit.Modules.Hygiene
 {
 	internal static class HygieneUtility
 	{
-		/// <summary>普通喝水增加 2 点（0.02）饱腹感；凉白开增加 5 点（0.05）。</summary>
+		/// <summary>普通喝水 2 点（0.02）、纯净水 3 点（0.03）、凉白开 5 点（0.05）。</summary>
 		public const float SatietyPerDrink = 0.02f;
+
+		public const float SatietyPerPurifiedDrink = 0.03f;
 
 		public const float SatietyPerBoiledDrink = 0.05f;
 

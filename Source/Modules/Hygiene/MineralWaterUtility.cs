@@ -171,11 +171,12 @@ namespace ColonyKit.Modules.Hygiene
 				thirst.Drink(MineralWaterUtility.ThirstPerBottle);
 				SanitationUtil.ContaminationCheckDrinking(ingester, ContaminationLevel.Untreated);
 			}
-			HygieneUtility.AddDrinkSatiety(
-				ingester,
-				MineralWaterUtility.IsBoiledWater(__instance)
-					? HygieneUtility.SatietyPerBoiledDrink
-					: HygieneUtility.SatietyPerDrink);
+			float satiety = MineralWaterUtility.IsBoiledWater(__instance)
+				? HygieneUtility.SatietyPerBoiledDrink
+				: MineralWaterUtility.IsPurifiedWater(__instance)
+					? HygieneUtility.SatietyPerPurifiedDrink
+					: HygieneUtility.SatietyPerDrink;
+			HygieneUtility.AddDrinkSatiety(ingester, satiety);
 		}
 
 		private static void GainWaterMood(Pawn pawn, string gainDefName, string removeDefName)
