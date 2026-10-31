@@ -15,7 +15,7 @@ namespace ColonyKit.Modules.Hygiene
 		{
 			defaultLabel = "CK.Hygiene.Assist.RemovePlumbing".Translate();
 			defaultDesc = "CK.Hygiene.Assist.RemovePlumbingDesc".Translate();
-			icon = ContentFinder<Texture2D>.Get("UI/Commands/Deconstruct");
+			icon = ContentFinder<Texture2D>.Get("Things/Building/Hygiene/CK_WaterPipe_MenuIcon");
 			useMouseIcon = true;
 			soundDragSustain = SoundDefOf.Designate_DragAreaAdd;
 			soundDragChanged = null;
