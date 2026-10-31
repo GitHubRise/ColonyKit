@@ -249,5 +249,6 @@
 	<CK.Robotics.Command.Ai.Desc>切换这台 Mk-V 是否接受 DeepSeek 的决策；设置页总开关关闭时一律不请求。</CK.Robotics.Command.Ai.Desc>
 	<CK.Robotics.Inspect.Ai>AI：{0}</CK.Robotics.Inspect.Ai>
 	<CK.Robotics.Inspect.Ai.Waiting>等待决策</CK.Robotics.Inspect.Ai.Waiting>
+	<CK.Robotics.Ai.NoKey>Mk-V AI 已启用，但没有填写 DeepSeek API Key；请到设置 → 机器人 → Mk-V AI 里填写。</CK.Robotics.Ai.NoKey>
 	<CK.Robotics.Inspect.Ai.Caravan>跟随远行队</CK.Robotics.Inspect.Ai.Caravan>
 </LanguageData>

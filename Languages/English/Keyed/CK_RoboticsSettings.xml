@@ -249,5 +249,6 @@
 	<CK.Robotics.Command.Ai.Desc>Toggle whether this Mk-V follows DeepSeek decisions. Nothing is sent while the settings master switch is off.</CK.Robotics.Command.Ai.Desc>
 	<CK.Robotics.Inspect.Ai>AI: {0}</CK.Robotics.Inspect.Ai>
 	<CK.Robotics.Inspect.Ai.Waiting>waiting for a decision</CK.Robotics.Inspect.Ai.Waiting>
+	<CK.Robotics.Ai.NoKey>Mk-V AI is enabled but no DeepSeek API key is set. Open Settings → Robots → Mk-V AI to add one.</CK.Robotics.Ai.NoKey>
 	<CK.Robotics.Inspect.Ai.Caravan>joining the caravan</CK.Robotics.Inspect.Ai.Caravan>
 </LanguageData>

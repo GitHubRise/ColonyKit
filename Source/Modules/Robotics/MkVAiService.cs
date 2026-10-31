@@ -31,6 +31,7 @@ namespace ColonyKit.Modules.Robotics
 		private static readonly ConcurrentQueue<string> TestMessages = new ConcurrentQueue<string>();
 		private static int inFlightCount;
 		private static int warnedNoKeyPawn;
+		private static bool warnedNoKeyGlobal;
 
 		internal class AiHttpRequest
 		{
@@ -93,14 +94,22 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return;
 			}
-			// 正在做家务（屠宰/搬运/做饭/手工等）时先让它做完；只有身边有敌人、
-			// 倒地殖民者或近处火焰才允许 AI 打断。
-			if (CompNannyBot.IsWorkJob(pawn.CurJobDef) && !HasUrgentSituation(pawn))
+			// 正在做家务（屠宰/搬运/做饭/手工等）时先让它做完；只有出现威胁才允许 AI 打断。
+			bool urgent = HasUrgentSituation(pawn);
+			if (CompNannyBot.IsWorkJob(pawn.CurJobDef) && !urgent)
 			{
 				return;
 			}
 			if (string.IsNullOrWhiteSpace(settings.aiApiKey))
 			{
+				if (!warnedNoKeyGlobal)
+				{
+					warnedNoKeyGlobal = true;
+					Messages.Message(
+						"CK.Robotics.Ai.NoKey".Translate(),
+						MessageTypeDefOf.RejectInput,
+						false);
+				}
 				if (warnedNoKeyPawn != pawnId)
 				{
 					warnedNoKeyPawn = pawnId;
@@ -114,12 +123,23 @@ namespace ColonyKit.Modules.Robotics
 				return;
 			}
 			int ticks = Find.TickManager.TicksGame;
+			if (urgent && comp.AiNextTick > ticks + 300)
+			{
+				// 刚发现敌人：把原定的 20 秒思考提前到最多 5 秒后。
+				comp.AiNextTick = ticks + 300;
+			}
 			if (ticks < comp.AiNextTick)
 			{
 				return;
 			}
 
-			comp.AiNextTick = ticks + Mathf.Max(1, Mathf.RoundToInt(settings.aiInterval * 60f));
+			float decisionInterval = settings.aiInterval;
+			if (pawn.Map.dangerWatcher.DangerRating == StoryDanger.High)
+			{
+				// 袭击进行中更频繁地重新决策，最多 5 秒一次。
+				decisionInterval = Mathf.Min(decisionInterval, 5f);
+			}
+			comp.AiNextTick = ticks + Mathf.Max(1, Mathf.RoundToInt(decisionInterval * 60f));
 			if (Interlocked.Increment(ref inFlightCount) > MaxConcurrentRequests)
 			{
 				Interlocked.Decrement(ref inFlightCount);
@@ -264,7 +284,8 @@ namespace ColonyKit.Modules.Robotics
 				RoboticsSettings.MinAiMaxTokens, RoboticsSettings.MaxAiMaxTokens);
 			string system = "你是一台 RimWorld Mk-V 机器人的机载 AI。只能从给出的 candidates 里选择一个 action，"
 				+ "只回复 JSON：{\"action\":\"<候选 id>\",\"say\":\"<不超过 20 字的中文短句>\"}。"
-				+ "不要编造 id。优先保护殖民者、避免无谓送死；没有合适动作时选 work。";
+				+ "不要编造 id。优先保护殖民者、避免无谓送死；只要 candidates 里有敌人，就优先攻击并主动接近，"
+				+ "不要缩在家里做家务。没有合适动作时才选 work。";
 			string user = "当前状态和候选动作（JSON）：\n" + promptJson + "\n请选择一个 action。";
 
 			StringBuilder body = new StringBuilder();
@@ -334,27 +355,25 @@ namespace ColonyKit.Modules.Robotics
 			if (settings.aiAllowCombat)
 			{
 				int attacks = 0;
-				foreach (IAttackTarget target in map.attackTargetsCache.TargetsHostileToColony)
+				// 不按交战范围过滤：海盗可能刚在地图边缘集合，AI 需要能看到远处目标
+				// 并自己走过去（选中后近距攻击、远距 Goto）。
+				foreach (Pawn other in map.mapPawns.AllPawnsSpawned)
 				{
-					Thing thing = target?.Thing;
-					if (thing == null || !thing.Spawned || thing.Destroyed
-						|| !GenHostility.IsActiveThreatToPlayer(target))
+					if (other == null || other == pawn || other.Dead || other.Downed
+						|| !other.Spawned || !other.HostileTo(Faction.OfPlayer)
+						|| other.Position.Fogged(map))
 					{
 						continue;
 					}
-					float distance = thing.Position.DistanceTo(pawn.Position);
-					if (distance > CandidateRange)
-					{
-						continue;
-					}
+					float distance = other.Position.DistanceTo(pawn.Position);
 					hostiles++;
-					if (attacks < 5)
+					if (attacks < 8)
 					{
 						candidates.Add(new AiCandidate
 						{
-							id = "attack:" + thing.thingIDNumber,
+							id = "attack:" + other.thingIDNumber,
 							kind = "attack",
-							label = thing.LabelShort,
+							label = other.LabelShort,
 							dist = Mathf.RoundToInt(distance)
 						});
 						attacks++;
@@ -499,12 +518,23 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return false;
 			}
-			foreach (IAttackTarget target in map.attackTargetsCache.TargetsHostileToColony)
+			// 全图高危险（袭击进行中）时允许打断家务，哪怕敌人还在远处集合。
+			if (map.dangerWatcher.DangerRating == StoryDanger.High)
 			{
-				Thing thing = target?.Thing;
-				if (thing != null && thing.Spawned
-					&& thing.Position.InHorDistOf(pawn.Position, 20f)
-					&& GenHostility.IsActiveThreatToPlayer(target))
+				return true;
+			}
+			float threatRadius = NannyBotUtility.Settings.aiAllowCombat
+				? 9999f
+				: Mathf.Max(20f, NannyBotUtility.Settings.mkvEngageRange + 10f);
+			foreach (Pawn other in map.mapPawns.AllPawnsSpawned)
+			{
+				if (other == null || other == pawn || other.Dead || other.Downed
+					|| !other.Spawned || !other.HostileTo(Faction.OfPlayer)
+					|| other.Position.Fogged(map))
+				{
+					continue;
+				}
+				if (other.Position.InHorDistOf(pawn.Position, threatRadius))
 				{
 					return true;
 				}
@@ -880,10 +910,24 @@ namespace ColonyKit.Modules.Robotics
 
 			if (kind == "attack")
 			{
-				bool ranged = pawn.equipment?.Primary?.def?.IsRangedWeapon == true;
-				Job job = JobMaker.MakeJob(
-					ranged ? JobDefOf.AttackStatic : JobDefOf.AttackMelee, target);
-				StartJob(pawn, job);
+				float distance = pawn.Position.DistanceTo(target.Position);
+				Verb verb = pawn.TryGetAttackVerb(target, false);
+				if (verb != null && distance > verb.EffectiveRange)
+				{
+					// 目标在射程外：先跑过去，下一轮再开火/砍。
+					Job move = JobMaker.MakeJob(JobDefOf.Goto, target.Position);
+					move.locomotionUrgency = LocomotionUrgency.Jog;
+					move.expiryInterval = 600;
+					StartJob(pawn, move);
+				}
+				else
+				{
+					Job attack = JobMaker.MakeJob(
+						distance <= 1.9f ? JobDefOf.AttackMelee : JobDefOf.AttackStatic,
+						target);
+					attack.expiryInterval = 600;
+					StartJob(pawn, attack);
+				}
 			}
 			else if (kind == "fire")
 			{
