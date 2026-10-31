@@ -60,6 +60,11 @@
 	<ColonyKit.Settings.Robotics.MkVAutoPickupWeapons.Desc>Mk-V looks for a higher-scoring ranged weapon and swaps to it. When off, it keeps its issued arc emitter.</ColonyKit.Settings.Robotics.MkVAutoPickupWeapons.Desc>
 	<ColonyKit.Settings.Robotics.MkVDualWield>Dual wield</ColonyKit.Settings.Robotics.MkVDualWield>
 	<ColonyKit.Settings.Robotics.MkVDualWield.Desc>Mk-V carries one weapon in each hand: a ranged weapon plus a melee weapon (shoot at range, cut up close) or two ranged weapons (both fire together). When both hands are full, equipping another weapon drops the non-exclusive one; the exclusive arc emitter is never replaced.</ColonyKit.Settings.Robotics.MkVDualWield.Desc>
+	<ColonyKit.Settings.Robotics.MkvArcBladeHint>On hit with the arc blade: a chance to paralyse the target (default 50%, 10 hours), and a chance to chain that paralysis to other enemies within range of the target (default 20%, 5 cells). Set a chance to 0% to disable that effect. Only hostile targets are affected.</ColonyKit.Settings.Robotics.MkvArcBladeHint>
+	<ColonyKit.Settings.Robotics.MkvArcBladeParalysisChance>Arc blade paralysis chance</ColonyKit.Settings.Robotics.MkvArcBladeParalysisChance>
+	<ColonyKit.Settings.Robotics.MkvArcBladeParalysisHours>Arc blade paralysis duration</ColonyKit.Settings.Robotics.MkvArcBladeParalysisHours>
+	<ColonyKit.Settings.Robotics.MkvArcBladeChainChance>Arc blade chain chance</ColonyKit.Settings.Robotics.MkvArcBladeChainChance>
+	<ColonyKit.Settings.Robotics.MkvArcBladeChainRadius>Arc blade chain radius</ColonyKit.Settings.Robotics.MkvArcBladeChainRadius>
 	<ColonyKit.Settings.Robotics.MkVEngageRange>Engage range</ColonyKit.Settings.Robotics.MkVEngageRange>
 	<ColonyKit.Settings.Robotics.MkVReturnRange>Return distance</ColonyKit.Settings.Robotics.MkVReturnRange>
 	<ColonyKit.Settings.Robotics.MkVWeaponPickupRadius>Weapon pickup radius</ColonyKit.Settings.Robotics.MkVWeaponPickupRadius>
@@ -116,6 +121,7 @@
 
 	<CK.Robotics.Watts>{0} W</CK.Robotics.Watts>
 	<CK.Robotics.Cells>{0} cells</CK.Robotics.Cells>
+	<CK.Robotics.Hours>{0} h</CK.Robotics.Hours>
 	<CK.Robotics.EnergyTip>Energy: {0} / {1} W</CK.Robotics.EnergyTip>
 	<CK.Robotics.Inspect.Battery>Energy: {0} / {1} W</CK.Robotics.Inspect.Battery>
 	<CK.Robotics.Inspect.Durability>Durability: {0} / {1}</CK.Robotics.Inspect.Durability>

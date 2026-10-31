@@ -13,6 +13,7 @@ namespace ColonyKit.Modules.Robotics
 		public static PawnKindDef CK_RobotMkVKind;
 		public static ThingDef CK_ArcEmitter;
 		public static ThingDef CK_ArcBlade;
+		public static HediffDef CK_ArcBladeParalysis;
 		public static ThingDef CK_NannyBotStation;
 		public static JobDef CK_NannyCleanFilth;
 		public static JobDef CK_NannyCharge;

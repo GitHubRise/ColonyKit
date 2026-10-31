@@ -130,6 +130,7 @@ namespace ColonyKit.Modules.Robotics
 					.Append(" mkvComfort=").Append(TemperatureProbe(mkv));
 				ProbeMkVChores(map, mkv, builder);
 				ProbeMkVDualWield(mkv, builder);
+				ProbeArcBladeEffects(mkv, map, builder);
 				mkv.Destroy(DestroyMode.Vanish);
 			}
 			bay.Destroy(DestroyMode.Vanish);
@@ -332,6 +333,75 @@ namespace ColonyKit.Modules.Robotics
 			{
 				settings.mkvDualWield = oldDual;
 			}
+		}
+
+		/// <summary>
+		/// 电弧刃命中特效探针：直接调用麻痹/连锁入口，确认目标倒地、挂上 hediff，
+		/// 并且 5 格内的另一个敌人会被连锁。
+		/// </summary>
+		private static void ProbeArcBladeEffects(Pawn mkv, Map map, StringBuilder builder)
+		{
+			HediffDef def = NannyBotDefOf.CK_ArcBladeParalysis;
+			builder.Append(" bladeHediffDef=").Append(def != null);
+			if (def == null)
+			{
+				return;
+			}
+
+			Faction hostile = null;
+			foreach (Faction faction in Find.FactionManager.AllFactionsListForReading)
+			{
+				if (faction.def.humanlikeFaction && faction.HostileTo(Faction.OfPlayer))
+				{
+					hostile = faction;
+					break;
+				}
+			}
+			if (hostile == null || PawnKindDefOf.Pirate == null)
+			{
+				builder.Append(" bladeProbe=nofaction");
+				return;
+			}
+
+			IntVec3 cell = CellFinder.RandomClosewalkCellNear(
+				mkv.Position, map, 4,
+				c => c.Standable(map) && c != mkv.Position && c.GetEdifice(map) == null);
+			if (!cell.IsValid)
+			{
+				builder.Append(" bladeProbe=nocell");
+				return;
+			}
+			IntVec3 chainedCell = CellFinder.RandomClosewalkCellNear(
+				cell, map, 2,
+				c => c != cell && c.Standable(map) && c.GetEdifice(map) == null);
+
+			int ticks = Patch_MkVArcBladeEffects.HoursToTicks(10f);
+			Pawn victim = PawnGenerator.GeneratePawn(PawnKindDefOf.Pirate, hostile);
+			GenSpawn.Spawn(victim, cell, map);
+			Pawn chained = null;
+			if (chainedCell.IsValid)
+			{
+				chained = PawnGenerator.GeneratePawn(PawnKindDefOf.Pirate, hostile);
+				GenSpawn.Spawn(chained, chainedCell, map);
+			}
+
+			bool before = victim.Downed;
+			Patch_MkVArcBladeEffects.ApplyParalysis(victim, ticks);
+			Hediff applied = victim.health.hediffSet.GetFirstHediffOfDef(def);
+			builder.Append(" bladeParalysis=").Append(before).Append("->").Append(victim.Downed)
+				.Append(":hediff=").Append(applied != null)
+				.Append(":ticks=")
+				.Append(applied?.TryGetComp<HediffComp_Disappears>()?.ticksToDisappear ?? 0);
+
+			if (chained != null)
+			{
+				bool chainedBefore = chained.Downed;
+				Patch_MkVArcBladeEffects.ApplyChain(mkv, victim, 5f, ticks);
+				builder.Append(" bladeChain=").Append(chainedBefore).Append("->").Append(chained.Downed)
+					.Append(":hediff=").Append(chained.health.hediffSet.HasHediff(def));
+				chained.Destroy(DestroyMode.Vanish);
+			}
+			victim.Destroy(DestroyMode.Vanish);
 		}
 
 		public static void RunIfRequested(Game game)

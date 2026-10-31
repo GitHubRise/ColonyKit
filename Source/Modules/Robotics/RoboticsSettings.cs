@@ -78,6 +78,18 @@ namespace ColonyKit.Modules.Robotics
 		public const float MaxMkvHitChance = 1.5f;
 		public const float DefaultMkvHitChance = 1f;
 
+		// 电弧刃的命中特效。
+		public const float MinArcBladeChance = 0f;
+		public const float MaxArcBladeChance = 1f;
+		public const float DefaultArcBladeParalysisChance = 0.5f;
+		public const float DefaultArcBladeChainChance = 0.2f;
+		public const float MinArcBladeParalysisHours = 1f;
+		public const float MaxArcBladeParalysisHours = 24f;
+		public const float DefaultArcBladeParalysisHours = 10f;
+		public const float MinArcBladeChainRadius = 1f;
+		public const float MaxArcBladeChainRadius = 10f;
+		public const float DefaultArcBladeChainRadius = 5f;
+
 		public const float MinMkvIncomingDamageFactor = 0.1f;
 		public const float MaxMkvIncomingDamageFactor = 5f;
 		public const float DefaultMkvIncomingDamageFactor = 1f;
@@ -146,6 +158,10 @@ namespace ColonyKit.Modules.Robotics
 		public float mkvPowerConversionRate = DefaultMkvPowerConversionRate;
 		public float mkvAttackSpeed = DefaultMkvAttackSpeed;
 		public float mkvHitChance = DefaultMkvHitChance;
+		public float mkvArcBladeParalysisChance = DefaultArcBladeParalysisChance;
+		public float mkvArcBladeParalysisHours = DefaultArcBladeParalysisHours;
+		public float mkvArcBladeChainChance = DefaultArcBladeChainChance;
+		public float mkvArcBladeChainRadius = DefaultArcBladeChainRadius;
 		public float mkvIncomingDamageFactor = DefaultMkvIncomingDamageFactor;
 		public float mkvInsulationCold = DefaultMkvInsulationCold;
 		public float mkvInsulationHeat = DefaultMkvInsulationHeat;
@@ -206,6 +222,10 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref mkvPowerConversionRate, "mkvPowerConversionRate", DefaultMkvPowerConversionRate);
 			Scribe_Values.Look(ref mkvAttackSpeed, "mkvAttackSpeed", DefaultMkvAttackSpeed);
 			Scribe_Values.Look(ref mkvHitChance, "mkvHitChance", DefaultMkvHitChance);
+			Scribe_Values.Look(ref mkvArcBladeParalysisChance, "mkvArcBladeParalysisChance", DefaultArcBladeParalysisChance);
+			Scribe_Values.Look(ref mkvArcBladeParalysisHours, "mkvArcBladeParalysisHours", DefaultArcBladeParalysisHours);
+			Scribe_Values.Look(ref mkvArcBladeChainChance, "mkvArcBladeChainChance", DefaultArcBladeChainChance);
+			Scribe_Values.Look(ref mkvArcBladeChainRadius, "mkvArcBladeChainRadius", DefaultArcBladeChainRadius);
 			Scribe_Values.Look(ref mkvIncomingDamageFactor, "mkvIncomingDamageFactor", DefaultMkvIncomingDamageFactor);
 			Scribe_Values.Look(ref mkvInsulationCold, "mkvInsulationCold", DefaultMkvInsulationCold);
 			Scribe_Values.Look(ref mkvInsulationHeat, "mkvInsulationHeat", DefaultMkvInsulationHeat);
@@ -283,6 +303,24 @@ namespace ColonyKit.Modules.Robotics
 			float hitChance = mkvHitChance;
 			mkvHitChance = ClampFloat(mkvHitChance, MinMkvHitChance, MaxMkvHitChance);
 			changed |= !Approximately(hitChance, mkvHitChance);
+
+			float paralysisChance = mkvArcBladeParalysisChance;
+			mkvArcBladeParalysisChance = ClampFloat(mkvArcBladeParalysisChance, MinArcBladeChance, MaxArcBladeChance);
+			changed |= !Approximately(paralysisChance, mkvArcBladeParalysisChance);
+
+			float paralysisHours = mkvArcBladeParalysisHours;
+			mkvArcBladeParalysisHours = ClampFloat(mkvArcBladeParalysisHours,
+				MinArcBladeParalysisHours, MaxArcBladeParalysisHours);
+			changed |= !Approximately(paralysisHours, mkvArcBladeParalysisHours);
+
+			float chainChance = mkvArcBladeChainChance;
+			mkvArcBladeChainChance = ClampFloat(mkvArcBladeChainChance, MinArcBladeChance, MaxArcBladeChance);
+			changed |= !Approximately(chainChance, mkvArcBladeChainChance);
+
+			float chainRadius = mkvArcBladeChainRadius;
+			mkvArcBladeChainRadius = ClampFloat(mkvArcBladeChainRadius,
+				MinArcBladeChainRadius, MaxArcBladeChainRadius);
+			changed |= !Approximately(chainRadius, mkvArcBladeChainRadius);
 
 			float incomingDamage = mkvIncomingDamageFactor;
 			mkvIncomingDamageFactor = ClampFloat(mkvIncomingDamageFactor,
@@ -388,6 +426,10 @@ namespace ColonyKit.Modules.Robotics
 			mkvPowerConversionRate = DefaultMkvPowerConversionRate;
 			mkvAttackSpeed = DefaultMkvAttackSpeed;
 			mkvHitChance = DefaultMkvHitChance;
+			mkvArcBladeParalysisChance = DefaultArcBladeParalysisChance;
+			mkvArcBladeParalysisHours = DefaultArcBladeParalysisHours;
+			mkvArcBladeChainChance = DefaultArcBladeChainChance;
+			mkvArcBladeChainRadius = DefaultArcBladeChainRadius;
 			mkvIncomingDamageFactor = DefaultMkvIncomingDamageFactor;
 			mkvInsulationCold = DefaultMkvInsulationCold;
 			mkvInsulationHeat = DefaultMkvInsulationHeat;

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_ArcBladeParalysis.label>电弧麻痹</CK_ArcBladeParalysis.label>
+	<CK_ArcBladeParalysis.description>被电弧刃击中后运动回路过载，目标瘫倒在地、无法行动，直到电荷消散。</CK_ArcBladeParalysis.description>
+</LanguageData>

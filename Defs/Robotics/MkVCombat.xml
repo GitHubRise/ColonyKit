@@ -71,7 +71,7 @@
 	<ThingDef ParentName="BaseWeapon">
 		<defName>CK_ArcBlade</defName>
 		<label>arc blade</label>
-		<description>An arc blade built for the Mk-V chassis: a heavy alloy spine with a plasma-lit edge and an articulated grip that plugs into the android's forearm socket. The Mk-V carries it in its free hand while the arc emitter stays in the other.</description>
+		<description>An arc blade built for the Mk-V chassis: a heavy alloy spine with a plasma-lit edge and an articulated grip that plugs into the android's forearm socket. Each hit can paralyse a hostile target (50% for 10 hours by default) and sometimes arcs the charge into other enemies nearby (20% within 5 cells by default). The Mk-V carries it in its free hand while the arc emitter stays in the other.</description>
 		<techLevel>Spacer</techLevel>
 		<possessionCount>1</possessionCount>
 		<smeltable>true</smeltable>
@@ -124,6 +124,36 @@
 			</li>
 		</tools>
 	</ThingDef>
+
+	<!-- 电弧刃命中特效：意识压到 0.1（和原版麻醉一样），目标当场昏迷倒地但不会死；
+	     意识到 0 会触发 Consciousness 的 lethalFlesh 直接暴毙，所以不能写成 -1。
+	     默认 10 小时（25,000 tick），实际时长和触发几率都由设置页「Mk-V 作战 → 电弧刃」控制。 -->
+	<HediffDef>
+		<defName>CK_ArcBladeParalysis</defName>
+		<label>arc paralysis</label>
+		<description>The target's motor circuits are overloaded by the arc blade. The victim collapses and cannot act until the charge dissipates.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<isBad>true</isBad>
+		<initialSeverity>1</initialSeverity>
+		<maxSeverity>1</maxSeverity>
+		<defaultLabelColor>(0.45, 0.9, 1)</defaultLabelColor>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>25000~25000</disappearsAfterTicks>
+				<showRemainingTime>true</showRemainingTime>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<setMax>0.1</setMax>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+	</HediffDef>
 
 	<ThingDef ParentName="BaseBullet">
 		<defName>CK_ArcBolt</defName>

@@ -60,6 +60,11 @@
 	<ColonyKit.Settings.Robotics.MkVAutoPickupWeapons.Desc>Mk-V 会寻找评分更高的远程武器并换装；关闭后只使用出生自带的电弧发射器。</ColonyKit.Settings.Robotics.MkVAutoPickupWeapons.Desc>
 	<ColonyKit.Settings.Robotics.MkVDualWield>双持武器</ColonyKit.Settings.Robotics.MkVDualWield>
 	<ColonyKit.Settings.Robotics.MkVDualWield.Desc>Mk-V 左右手各拿一把武器：远程 + 近战（拉开距离用枪、贴脸用刀）或双远程（两把枪一起开火）。两把都拿满后再装备新武器，会优先丢下非专属的那把，专属武器（电弧发射器）永远保留。</ColonyKit.Settings.Robotics.MkVDualWield.Desc>
+	<ColonyKit.Settings.Robotics.MkvArcBladeHint>电弧刃命中敌人时：有几率让目标麻痹倒地（默认 50%、10 小时），另有几率把麻痹连锁给目标周围的其他敌人（默认 20%、5 格）。几率设为 0% 即关闭对应效果；只对敌对目标生效。</ColonyKit.Settings.Robotics.MkvArcBladeHint>
+	<ColonyKit.Settings.Robotics.MkvArcBladeParalysisChance>电弧刃麻痹几率</ColonyKit.Settings.Robotics.MkvArcBladeParalysisChance>
+	<ColonyKit.Settings.Robotics.MkvArcBladeParalysisHours>电弧刃麻痹时长</ColonyKit.Settings.Robotics.MkvArcBladeParalysisHours>
+	<ColonyKit.Settings.Robotics.MkvArcBladeChainChance>电弧刃连锁几率</ColonyKit.Settings.Robotics.MkvArcBladeChainChance>
+	<ColonyKit.Settings.Robotics.MkvArcBladeChainRadius>电弧刃连锁半径</ColonyKit.Settings.Robotics.MkvArcBladeChainRadius>
 	<ColonyKit.Settings.Robotics.MkVEngageRange>交战范围</ColonyKit.Settings.Robotics.MkVEngageRange>
 	<ColonyKit.Settings.Robotics.MkVReturnRange>回舱判定距离</ColonyKit.Settings.Robotics.MkVReturnRange>
 	<ColonyKit.Settings.Robotics.MkVWeaponPickupRadius>武器拾取范围</ColonyKit.Settings.Robotics.MkVWeaponPickupRadius>
@@ -116,6 +121,7 @@
 
 	<CK.Robotics.Watts>{0} W</CK.Robotics.Watts>
 	<CK.Robotics.Cells>{0} 格</CK.Robotics.Cells>
+	<CK.Robotics.Hours>{0} 小时</CK.Robotics.Hours>
 	<CK.Robotics.EnergyTip>电量：{0} / {1} W</CK.Robotics.EnergyTip>
 	<CK.Robotics.Inspect.Battery>电量：{0} / {1} W</CK.Robotics.Inspect.Battery>
 	<CK.Robotics.Inspect.Durability>耐久：{0} / {1}</CK.Robotics.Inspect.Durability>

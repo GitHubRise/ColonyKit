@@ -224,6 +224,40 @@ namespace ColonyKit.Modules.Robotics
 				"ColonyKit.Settings.Robotics.MkVDualWield".Loc(),
 				ref data.mkvDualWield,
 				"ColonyKit.Settings.Robotics.MkVDualWield.Desc".Loc());
+			SettingsWidgets.Description(
+				listing, "ColonyKit.Settings.Robotics.MkvArcBladeHint".Loc());
+			data.mkvArcBladeParalysisChance = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkvArcBladeParalysisChance".Loc(),
+				data.mkvArcBladeParalysisChance,
+				RoboticsSettings.MinArcBladeChance,
+				RoboticsSettings.MaxArcBladeChance,
+				0.05f,
+				value => value.ToStringPercent());
+			data.mkvArcBladeParalysisHours = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkvArcBladeParalysisHours".Loc(),
+				data.mkvArcBladeParalysisHours,
+				RoboticsSettings.MinArcBladeParalysisHours,
+				RoboticsSettings.MaxArcBladeParalysisHours,
+				1f,
+				value => "CK.Robotics.Hours".Loc(value.ToString("0.#")));
+			data.mkvArcBladeChainChance = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkvArcBladeChainChance".Loc(),
+				data.mkvArcBladeChainChance,
+				RoboticsSettings.MinArcBladeChance,
+				RoboticsSettings.MaxArcBladeChance,
+				0.05f,
+				value => value.ToStringPercent());
+			data.mkvArcBladeChainRadius = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkvArcBladeChainRadius".Loc(),
+				data.mkvArcBladeChainRadius,
+				RoboticsSettings.MinArcBladeChainRadius,
+				RoboticsSettings.MaxArcBladeChainRadius,
+				1f,
+				value => "CK.Robotics.Cells".Loc(value.ToString("0")));
 			data.mkvEngageRange = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Robotics.MkVEngageRange".Loc(),
