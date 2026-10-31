@@ -2,6 +2,7 @@
 <LanguageData>
 	<CK.Robotics.RobotName>保姆机器人 {0}</CK.Robotics.RobotName>
 	<CK.Robotics.MkVName>Mk-V 机器人 {0}</CK.Robotics.MkVName>
+	<CK.Robotics.Robots>{0} 台</CK.Robotics.Robots>
 	<CK.Robotics.MkVCombat.NoWeapon>无武器</CK.Robotics.MkVCombat.NoWeapon>
 	<CK.Robotics.MkVCombat.Status.Engaged>交战中</CK.Robotics.MkVCombat.Status.Engaged>
 	<CK.Robotics.MkVCombat.Status.Returning>回舱中</CK.Robotics.MkVCombat.Status.Returning>
@@ -18,6 +19,15 @@
 	<CK.Robotics.Menu.ReturnToBay>返回组装舱</CK.Robotics.Menu.ReturnToBay>
 	<CK.Robotics.Menu.RepairRobot>维修机器人：{0}</CK.Robotics.Menu.RepairRobot>
 	<CK.Robotics.Menu.NoStation>没有可用的充电桩。</CK.Robotics.Menu.NoStation>
+	<CK.Robotics.Menu.StoreAsSpare>存为备用武器：{0}</CK.Robotics.Menu.StoreAsSpare>
+	<CK.Robotics.Menu.StoreAsSpare.TooHeavy>背包负重不够，还差 {0} kg</CK.Robotics.Menu.StoreAsSpare.TooHeavy>
+	<CK.Robotics.Loadout.Title>武器配置</CK.Robotics.Loadout.Title>
+	<CK.Robotics.Loadout.Title.Desc>手动把背包里的备用武器换到手上，或把手上的武器收回背包。Mk-V 自己不会换装；背包里的武器按真实质量占用携带能力，能塞几把算几把。</CK.Robotics.Loadout.Title.Desc>
+	<CK.Robotics.Loadout.EquipSpare>换上备用武器：{0}</CK.Robotics.Loadout.EquipSpare>
+	<CK.Robotics.Loadout.MainToBag>主手放进背包：{0}</CK.Robotics.Loadout.MainToBag>
+	<CK.Robotics.Loadout.OffhandToBag>副手放进背包：{0}</CK.Robotics.Loadout.OffhandToBag>
+	<CK.Robotics.Loadout.Empty>没有可调整的武器。</CK.Robotics.Loadout.Empty>
+	<CK.Robotics.MkVCombat.Spare>背包备用：{0} · 负重 {1} / {2} kg</CK.Robotics.MkVCombat.Spare>
 	<CK.Robotics.Job.Guard.Door>守门</CK.Robotics.Job.Guard.Door>
 	<CK.Robotics.Job.Guard.Prisoner>看守囚犯</CK.Robotics.Job.Guard.Prisoner>
 	<CK.Robotics.Job.Guard.Stockpile>看守仓库</CK.Robotics.Job.Guard.Stockpile>

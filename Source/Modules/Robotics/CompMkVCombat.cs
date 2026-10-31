@@ -99,6 +99,20 @@ namespace ColonyKit.Modules.Robotics
 				line += "\n" + "CK.Robotics.MkVCombat.DualWield".Translate(
 					Pawn.equipment.Primary.LabelCap, offhand.LabelCap);
 			}
+			List<ThingWithComps> spares = MkVLoadout.SpareWeapons(Pawn);
+			if (spares.Count > 0)
+			{
+				List<string> labels = new List<string>();
+				for (int i = 0; i < spares.Count; i++)
+				{
+					labels.Add(spares[i].LabelShort);
+				}
+				// 负重是「装备 + 衣物 + 背包」的总质量，备用武器同样按真实质量占用。
+				line += "\n" + "CK.Robotics.MkVCombat.Spare".Translate(
+					labels.ToCommaList(),
+					MassUtility.GearAndInventoryMass(Pawn).ToString("0.#"),
+					MassUtility.Capacity(Pawn).ToString("0.#"));
+			}
 			line += "\n" + "CK.Robotics.MkVCombat.Range".Translate(
 				EngageRange.ToString("0"),
 				ReturnRange.ToString("0"));
@@ -111,7 +125,15 @@ namespace ColonyKit.Modules.Robotics
 
 		public override IEnumerable<Gizmo> CompGetGizmosExtra()
 		{
-			if (Pawn == null || state == MkVCombatState.Idle)
+			if (Pawn == null)
+			{
+				yield break;
+			}
+			foreach (Gizmo gizmo in MkVLoadoutGizmo.GetGizmos(Pawn))
+			{
+				yield return gizmo;
+			}
+			if (state == MkVCombatState.Idle)
 			{
 				yield break;
 			}

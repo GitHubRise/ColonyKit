@@ -40,6 +40,29 @@ namespace ColonyKit.Modules.Robotics
 					() => OrderEquip(selected, weapon));
 			}
 
+			// 背包备用武器：只由玩家下指令，Mk-V 不会自己捡；能不能装下只看真实质量
+			// （装备 + 衣物 + 背包的总重），装不下时给灰项和还差多少 kg。
+			if (NannyBotUtility.IsMkV(selected)
+				&& clickedThing is ThingWithComps spare
+				&& spare.def != null && spare.def.IsWeapon && spare.Spawned
+				&& !spare.IsForbidden(selected)
+				&& selected.CanReserve(spare)
+				&& selected.CanReach(spare, PathEndMode.ClosestTouch, Danger.Deadly))
+			{
+				string label = "CK.Robotics.Menu.StoreAsSpare".Translate(spare.LabelShort);
+				if (MkVLoadout.CanStoreAsSpare(selected, spare, out float missing))
+				{
+					yield return new FloatMenuOption(label, () => OrderStoreAsSpare(selected, spare));
+				}
+				else
+				{
+					yield return new FloatMenuOption(
+						label + ": " + "CK.Robotics.Menu.StoreAsSpare.TooHeavy".Translate(
+							missing.ToString("0.#")),
+						null);
+				}
+			}
+
 			if (!NannyBotUtility.IsNannyBot(selected)
 				|| !(clickedThing is Building building)
 				|| building.def != NannyBotDefOf.CK_NannyBotStation)
@@ -128,6 +151,22 @@ namespace ColonyKit.Modules.Robotics
 			}
 			Job job = JobMaker.MakeJob(JobDefOf.Equip, weapon);
 			robot.jobs.TryTakeOrderedJob(job);
+		}
+
+		private static void OrderStoreAsSpare(Pawn robot, ThingWithComps weapon)
+		{
+			if (robot == null || weapon == null || !weapon.Spawned)
+			{
+				return;
+			}
+			weapon.SetForbidden(false, false);
+			// 和原版「拾取」同一条 Job：走过去、停顿 120 tick、进背包；
+			// checkEncumbrance 让负重不够时工作自己失败，不会超载硬塞。
+			Job job = JobMaker.MakeJob(JobDefOf.TakeInventory, weapon);
+			job.count = 1;
+			job.checkEncumbrance = true;
+			job.takeInventoryDelay = 120;
+			robot.jobs.TryTakeOrderedJob(job, JobTag.Misc);
 		}
 
 		private static void OrderCharge(Pawn robot, Building station)

@@ -408,5 +408,128 @@ namespace ColonyKit.Modules.Robotics
 			ThingWithComps replaceable = ReplaceableWeapon(pawn);
 			return replaceable != null ? WeaponScore(replaceable.def) : float.MaxValue;
 		}
+
+		/// <summary>背包里的备用武器，按放进背包的先后顺序排列。</summary>
+		public static List<ThingWithComps> SpareWeapons(Pawn pawn)
+		{
+			List<ThingWithComps> result = new List<ThingWithComps>();
+			ThingOwner container = pawn?.inventory?.innerContainer;
+			if (container == null)
+			{
+				return result;
+			}
+			for (int i = 0; i < container.Count; i++)
+			{
+				if (container[i] is ThingWithComps thing && thing.def != null && thing.def.IsWeapon)
+				{
+					result.Add(thing);
+				}
+			}
+			return result;
+		}
+
+		/// <summary>
+		/// 背包还能不能装下这把武器。负重是「装备 + 衣物 + 背包」的总质量，容量由
+		/// <see cref="MassUtility.Capacity"/> 给出（Mk-V 被 Patch_MkVCaravan 固定为 200 kg），
+		/// 所以双手武器已经在扣，背包里的备用武器按真实质量继续扣。
+		/// </summary>
+		public static bool CanStoreAsSpare(Pawn pawn, Thing weapon, out float missingMass)
+		{
+			missingMass = 0f;
+			if (pawn?.inventory == null || weapon?.def == null || !weapon.def.IsWeapon)
+			{
+				return false;
+			}
+			if (!NannyBotUtility.IsMkV(pawn))
+			{
+				return false;
+			}
+			float mass = weapon.GetStatValue(StatDefOf.Mass);
+			missingMass = mass - MassUtility.FreeSpace(pawn);
+			return missingMass <= 0f;
+		}
+
+		/// <summary>
+		/// 把背包里的备用武器换到手上：手上本来只有一把就直接补第二把，已经双持时按
+		/// 「保留专属武器、优先换掉和新武器同类的那把」丢一把进背包。只由玩家点选触发。
+		/// 换完统一排一次序，远程武器始终回主手，避免出现「主手近战、副手枪打不响」。
+		/// </summary>
+		public static bool TryEquipSpare(Pawn pawn, ThingWithComps spare)
+		{
+			if (pawn?.equipment == null || pawn.inventory?.innerContainer == null || spare == null)
+			{
+				return false;
+			}
+			ThingOwner bag = pawn.inventory.innerContainer;
+			if (!bag.Contains(spare) || spare.def == null || !spare.def.IsWeapon
+				|| spare.def.equipmentType != EquipmentType.Primary)
+			{
+				return false;
+			}
+			ThingOwner held = pawn.equipment.GetDirectlyHeldThings();
+			if (held == null)
+			{
+				return false;
+			}
+
+			ThingWithComps primary = Primary(pawn);
+			ThingWithComps offhand = Offhand(pawn);
+			ThingWithComps discard = null;
+			if (primary != null && offhand != null)
+			{
+				ThingWithComps keep = ChooseOffhandToKeep(primary, offhand, spare);
+				discard = keep == primary ? offhand : primary;
+			}
+
+			if (discard != null)
+			{
+				pawn.equipment.Remove(discard);
+			}
+			if (!bag.TryTransferToContainer(spare, held))
+			{
+				if (discard != null)
+				{
+					held.TryAdd(discard);
+				}
+				return false;
+			}
+			if (discard != null && !bag.TryAddOrTransfer(discard))
+			{
+				// 背包塞不回去就原样退回，别把武器弄没。
+				held.Remove(spare);
+				held.TryAdd(discard);
+				bag.TryAddOrTransfer(spare);
+				ModLog.Warn("Robotics",
+					$"MkV loadout could not stash {discard.def?.defName} back into the backpack.");
+				return false;
+			}
+			NormalizeOrder(pawn);
+			ModLog.Info("Robotics",
+				$"MkV loadout equipped spare {spare.def?.defName}; bag={SpareWeapons(pawn).Count}.");
+			return true;
+		}
+
+		/// <summary>把手上的武器放进背包（玩家主动操作）。装备栏里剩下的那把自动成为主手。</summary>
+		public static bool TryStashToBag(Pawn pawn, ThingWithComps weapon)
+		{
+			if (pawn?.equipment == null || pawn.inventory?.innerContainer == null || weapon == null)
+			{
+				return false;
+			}
+			if (!weapon.def.IsWeapon || !pawn.equipment.Contains(weapon))
+			{
+				return false;
+			}
+			ThingOwner bag = pawn.inventory.innerContainer;
+			pawn.equipment.Remove(weapon);
+			if (bag.TryAddOrTransfer(weapon))
+			{
+				return true;
+			}
+			pawn.equipment.AddEquipment(weapon);
+			ModLog.Warn("Robotics",
+				$"MkV loadout could not move {weapon.def?.defName} into the backpack.");
+			return false;
+		}
 	}
 }

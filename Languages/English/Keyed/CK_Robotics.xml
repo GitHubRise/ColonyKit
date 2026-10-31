@@ -2,6 +2,7 @@
 <LanguageData>
 	<CK.Robotics.RobotName>Nanny robot {0}</CK.Robotics.RobotName>
 	<CK.Robotics.MkVName>Mk-V robot {0}</CK.Robotics.MkVName>
+	<CK.Robotics.Robots>{0} Mk-V</CK.Robotics.Robots>
 	<CK.Robotics.MkVCombat.NoWeapon>no weapon</CK.Robotics.MkVCombat.NoWeapon>
 	<CK.Robotics.MkVCombat.Status.Engaged>engaged</CK.Robotics.MkVCombat.Status.Engaged>
 	<CK.Robotics.MkVCombat.Status.Returning>returning</CK.Robotics.MkVCombat.Status.Returning>
@@ -18,6 +19,15 @@
 	<CK.Robotics.Menu.ReturnToBay>Return to assembly bay</CK.Robotics.Menu.ReturnToBay>
 	<CK.Robotics.Menu.RepairRobot>Repair robot: {0}</CK.Robotics.Menu.RepairRobot>
 	<CK.Robotics.Menu.NoStation>No usable charging station.</CK.Robotics.Menu.NoStation>
+	<CK.Robotics.Menu.StoreAsSpare>Store as backup weapon: {0}</CK.Robotics.Menu.StoreAsSpare>
+	<CK.Robotics.Menu.StoreAsSpare.TooHeavy>not enough carry capacity, short {0} kg</CK.Robotics.Menu.StoreAsSpare.TooHeavy>
+	<CK.Robotics.Loadout.Title>Weapon loadout</CK.Robotics.Loadout.Title>
+	<CK.Robotics.Loadout.Title.Desc>Manually move a backup weapon from the backpack into a hand, or stow a hand weapon back into the backpack. The Mk-V never swaps on its own; backpack weapons use real carry capacity, so as many fit as the weight allows.</CK.Robotics.Loadout.Title.Desc>
+	<CK.Robotics.Loadout.EquipSpare>Equip backup weapon: {0}</CK.Robotics.Loadout.EquipSpare>
+	<CK.Robotics.Loadout.MainToBag>Stow main-hand weapon: {0}</CK.Robotics.Loadout.MainToBag>
+	<CK.Robotics.Loadout.OffhandToBag>Stow off-hand weapon: {0}</CK.Robotics.Loadout.OffhandToBag>
+	<CK.Robotics.Loadout.Empty>Nothing to rearrange.</CK.Robotics.Loadout.Empty>
+	<CK.Robotics.MkVCombat.Spare>Backpack: {0} · carried {1} / {2} kg</CK.Robotics.MkVCombat.Spare>
 	<CK.Robotics.Job.Guard.Door>guarding a door</CK.Robotics.Job.Guard.Door>
 	<CK.Robotics.Job.Guard.Prisoner>watching prisoners</CK.Robotics.Job.Guard.Prisoner>
 	<CK.Robotics.Job.Guard.Stockpile>guarding storage</CK.Robotics.Job.Guard.Stockpile>

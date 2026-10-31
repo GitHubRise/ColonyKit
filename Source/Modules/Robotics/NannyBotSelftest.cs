@@ -132,6 +132,7 @@ namespace ColonyKit.Modules.Robotics
 					.Append(" mkvComfort=").Append(TemperatureProbe(mkv));
 				ProbeMkVChores(map, mkv, builder);
 				ProbeMkVDualWield(mkv, builder);
+				ProbeMkVBackupWeapon(mkv, builder);
 				ProbeArcBladeEffects(mkv, map, builder);
 				mkv.Destroy(DestroyMode.Vanish);
 			}
@@ -334,6 +335,40 @@ namespace ColonyKit.Modules.Robotics
 			finally
 			{
 				settings.mkvDualWield = oldDual;
+			}
+		}
+
+		/// <summary>
+		/// 背包备用武器探针：按真实质量判断能不能存、存进背包后换到手上、再收回背包。
+		/// </summary>
+		private static void ProbeMkVBackupWeapon(Pawn mkv, StringBuilder builder)
+		{
+			ThingDef pistolDef = DefDatabase<ThingDef>.GetNamedSilentFail("Gun_Autopistol");
+			ThingWithComps spare = pistolDef == null
+				? null
+				: ThingMaker.MakeThing(pistolDef) as ThingWithComps;
+			if (spare == null)
+			{
+				builder.Append(" spare=nodef");
+				return;
+			}
+			bool canStore = MkVLoadout.CanStoreAsSpare(mkv, spare, out float missing);
+			builder.Append(" spareCanStore=").Append(canStore)
+				.Append(":missing=").Append(missing.ToString("0.#"));
+			if (!canStore || !mkv.inventory.innerContainer.TryAddOrTransfer(spare))
+			{
+				spare.Destroy(DestroyMode.Vanish);
+				return;
+			}
+			builder.Append(" spareInBag=").Append(MkVLoadout.SpareWeapons(mkv).Count)
+				.Append(" free=").Append(MassUtility.FreeSpace(mkv).ToString("0.#"));
+			builder.Append(" spareEquipped=").Append(MkVLoadout.TryEquipSpare(mkv, spare))
+				.Append(" bag=").Append(MkVLoadout.SpareWeapons(mkv).Count);
+			builder.Append(" spareStashed=").Append(MkVLoadout.TryStashToBag(mkv, spare))
+				.Append(" bag=").Append(MkVLoadout.SpareWeapons(mkv).Count);
+			if (mkv.inventory.innerContainer.Contains(spare))
+			{
+				spare.Destroy(DestroyMode.Vanish);
 			}
 		}
 
@@ -645,7 +680,8 @@ namespace ColonyKit.Modules.Robotics
 					RoboticsSettings settings = NannyBotUtility.Settings;
 					builder.Append(" batteryCap=").Append(settings.batteryCapacity)
 						.Append(" chargeThreshold=").Append(settings.chargeThreshold.ToString("0.00"))
-						.Append(" workRadius=").Append(settings.workRadius.ToString("0"));
+						.Append(" workRadius=").Append(settings.workRadius.ToString("0"))
+						.Append(" mkvStartCount=").Append(StartMkVCountProbe());
 
 					if (botComp != null)
 					{
