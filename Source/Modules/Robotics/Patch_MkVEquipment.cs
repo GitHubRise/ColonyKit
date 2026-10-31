@@ -29,8 +29,14 @@ namespace ColonyKit.Modules.Robotics
 				return true;
 			}
 			Pawn pawn = __instance?.pawn;
-			if (pawn == null || !NannyBotUtility.IsMkV(pawn) || !MkVLoadout.Enabled)
+			if (pawn == null || !NannyBotUtility.IsMkV(pawn))
 			{
+				return true;
+			}
+			if (!MkVLoadout.Enabled)
+			{
+				// 双持关闭：先把多余的副手武器放回地上，后面交给原版单武器流程。
+				MkVLoadout.DisarmOffhand(pawn);
 				return true;
 			}
 			if (pawn.MapHeld == null || __instance.Primary == null)

@@ -12,6 +12,8 @@
 	<CK_ArcEmitter.label>电弧发射器</CK_ArcEmitter.label>
 	<CK_ArcEmitter.description>为 Mk-V 设计的紧凑型电弧发射器，五连发电弧弹，灼烧并迟滞目标，基础射程 36 格。Mk-V 持有时触发专属武器加成，额外增加 15 格射程，合计 51 格；其他人拿在手上只有 36 格。Mk-V 出生时自带一把，也可以换装更好的远程武器。</CK_ArcEmitter.description>
 	<CK_ArcBolt.label>电弧弹</CK_ArcBolt.label>
+	<CK_ArcBlade.label>电弧刃</CK_ArcBlade.label>
+	<CK_ArcBlade.description>为 Mk-V 机体设计的近战武器：合金刀脊配等离子刃口，握柄直接插进小臂插槽。Mk-V 出厂时会把它装在副手，和主手的电弧发射器组成「远程 + 近战」双持；换装时它和普通武器一样可以被替换，机体内置的电弧刃仍然保留作为备份。</CK_ArcBlade.description>
 	<CK_WorkshopFactory.label>工坊式机器人工厂</CK_WorkshopFactory.label>
 	<CK_WorkshopFactory.description>2×2 的基础机器人工坊，用单张账单组装 Mk-I 保姆机器人。</CK_WorkshopFactory.description>
 	<CK_TwoStationFactory.label>双工位机器人工厂</CK_TwoStationFactory.label>

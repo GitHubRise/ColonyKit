@@ -82,6 +82,9 @@ namespace ColonyKit.Modules.Robotics
 
 		private bool durabilityMigratedTo5000;
 
+		/// <summary>旧档 Mk-V 首次载入时补发专属电弧刃；补过一次后不再重复发（玩家换掉就是换掉了）。</summary>
+		private bool bladeGranted;
+
 		/// <summary>正在被殖民者维修；维修期间不充电、不接新家务。</summary>
 		public bool repairing;
 
@@ -378,6 +381,12 @@ namespace ColonyKit.Modules.Robotics
 					// 武器拾取/装备 Job 需要装备栏；没有它 JobDriver_Equip 会立即失败并刷任务。
 					pawn.equipment = new Pawn_EquipmentTracker(pawn);
 				}
+				if (!bladeGranted && MkVLoadout.Enabled)
+				{
+					// 新造的 Mk-V 在这里就拿到主手电弧发射器 + 副手电弧刃；旧档 Mk-V 首次载入补发一次。
+					bladeGranted = true;
+					MkVLoadout.GiveStartingWeapons(pawn);
+				}
 				// 需求已在上面对所有机械保姆统一补齐，这里不再重复评估。
 				if (!skillsInitialized || skillsProfileVersion < 3)
 				{
@@ -448,6 +457,7 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref traitsInitialized, "ck_robotics_traitsInitialized", false);
 			Scribe_Values.Look(ref traitsProfileVersion, "ck_robotics_traitsProfileVersion", 0);
 			Scribe_Values.Look(ref durabilityMigratedTo5000, "ck_robotics_durabilityMigrated5000", false);
+			Scribe_Values.Look(ref bladeGranted, "ck_robotics_bladeGranted", false);
 			Scribe_Values.Look(ref durability, "ck_robotics_durability", -1f);
 			if (durability < 0f)
 			{

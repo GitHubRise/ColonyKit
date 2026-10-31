@@ -62,15 +62,8 @@ namespace ColonyKit.Modules.Robotics
 				return;
 			}
 
-			if (NannyBotDefOf.CK_ArcEmitter != null && pawn.equipment != null
-				&& pawn.equipment.Primary == null)
-			{
-				ThingWithComps weapon = ThingMaker.MakeThing(NannyBotDefOf.CK_ArcEmitter) as ThingWithComps;
-				if (weapon != null)
-				{
-					pawn.equipment.AddEquipment(weapon);
-				}
-			}
+			// 主手电弧发射器 + 副手电弧刃；双持关闭时只发主手武器。
+			MkVLoadout.GiveStartingWeapons(pawn);
 
 			grantedThisGame = true;
 			ModLog.Info("Robotics", $"starting Mk-V granted at {cell}.");

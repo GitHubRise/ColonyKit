@@ -117,6 +117,7 @@ namespace ColonyKit.Modules.Robotics
 					.Append(" mkvDrafter=").Append(mkv.drafter != null)
 					.Append(" mkvTools=").Append(mkv.def.tools?.Count ?? 0)
 					.Append(" mkvWeapon=").Append(mkv.equipment?.Primary?.def?.defName ?? "none")
+					.Append(" mkvOffhand=").Append(MkVLoadout.Offhand(mkv)?.def?.defName ?? "none")
 					.Append(" mkvWeaponRange=").Append(weaponRange.ToString("0.#"))
 					.Append(" mkvEffectiveRange=")
 					.Append(weaponVerb != null ? weaponVerb.EffectiveRange.ToString("0.#") : "none")

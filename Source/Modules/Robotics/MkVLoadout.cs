@@ -213,6 +213,78 @@ namespace ColonyKit.Modules.Robotics
 		}
 
 		/// <summary>
+		/// 双持关闭时把副手武器放回地上，只留主手。原版 MakeRoomFor 只会丢主手，
+		/// 若装备栏里还留着第二把，换装后 AddEquipment 会因「已有主手」报错并拒绝。
+		/// </summary>
+		public static void DisarmOffhand(Pawn pawn)
+		{
+			if (pawn?.equipment == null || !pawn.Spawned || pawn.Map == null)
+			{
+				return;
+			}
+			ThingWithComps primary = pawn.equipment.Primary;
+			List<ThingWithComps> held = HeldWeapons(pawn);
+			for (int i = 0; i < held.Count; i++)
+			{
+				if (held[i] == primary)
+				{
+					continue;
+				}
+				if (pawn.equipment.TryDropEquipment(held[i], out ThingWithComps dropped, pawn.Position))
+				{
+					dropped?.SetForbidden(false, false);
+				}
+			}
+		}
+
+		/// <summary>
+		/// 出厂装备：主手电弧发射器，副手电弧刃（双持开启时）。组装舱、工厂和开局赠送都走这里，
+		/// 保证三处产出的 Mk-V 装备一致。
+		/// </summary>
+		public static void GiveStartingWeapons(Pawn pawn)
+		{
+			if (pawn?.equipment == null)
+			{
+				return;
+			}
+			if (pawn.equipment.Primary == null)
+			{
+				Equip(pawn, NannyBotDefOf.CK_ArcEmitter);
+			}
+			if (!Enabled || pawn.equipment.Primary == null || Offhand(pawn) != null)
+			{
+				return;
+			}
+			Equip(pawn, NannyBotDefOf.CK_ArcBlade);
+		}
+
+		private static void Equip(Pawn pawn, ThingDef def)
+		{
+			if (def == null || def.equipmentType != EquipmentType.Primary)
+			{
+				return;
+			}
+			if (!(ThingMaker.MakeThing(def) is ThingWithComps weapon))
+			{
+				return;
+			}
+			if (pawn.MapHeld != null)
+			{
+				pawn.equipment.AddEquipment(weapon);
+				return;
+			}
+			// 还没上地图（生成中途）时走原版会因「已有主手」被拒，这里直接放进对应槽位。
+			if (pawn.equipment.Primary == null)
+			{
+				pawn.equipment.AddEquipment(weapon);
+			}
+			else
+			{
+				AddAsOffhand(pawn, weapon);
+			}
+		}
+
+		/// <summary>
 		/// 保证列表第一把（也就是原版 Primary）是应该拿在主手的武器：有远程就拿远程，
 		/// 否则拿评分更高的。顺序不对时重排一次；顺序正确时什么都不做。
 		/// </summary>

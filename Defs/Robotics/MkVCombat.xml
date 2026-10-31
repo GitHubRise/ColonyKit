@@ -64,6 +64,67 @@
 		</tools>
 	</ThingDef>
 
+	<!-- Mk-V 的专用近战武器：和机体内置的电弧刃同名，组装出来就挂在副手上，
+	     和电弧发射器组成「远程 + 近战」双持。直接挂 BaseWeapon、不做品质/材质也没有
+	     制作账单（继承 BaseMeleeWeapon_Sharp 会带一个空 recipeMaker 报 Config error），
+	     数值固定；专属扩展只挂在电弧发射器上，所以换装时它仍然是可以被替换的普通武器。 -->
+	<ThingDef ParentName="BaseWeapon">
+		<defName>CK_ArcBlade</defName>
+		<label>arc blade</label>
+		<description>An arc blade built for the Mk-V chassis: a heavy alloy spine with a plasma-lit edge and an articulated grip that plugs into the android's forearm socket. The Mk-V carries it in its free hand while the arc emitter stays in the other.</description>
+		<techLevel>Spacer</techLevel>
+		<possessionCount>1</possessionCount>
+		<smeltable>true</smeltable>
+		<graphicData>
+			<texPath>Things/Item/Equipment/WeaponMelee/CK_ArcBlade</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<uiIconScale>1.15</uiIconScale>
+		<thingCategories>
+			<li>WeaponsMelee</li>
+		</thingCategories>
+		<weaponClasses>
+			<li>Melee</li>
+			<li>MeleePiercer</li>
+		</weaponClasses>
+		<statBases>
+			<Mass>3.2</Mass>
+			<MarketValue>1350</MarketValue>
+			<MaxHitPoints>260</MaxHitPoints>
+			<Flammability>0</Flammability>
+		</statBases>
+		<smeltProducts>
+			<Steel>10</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</smeltProducts>
+		<weaponTags>
+			<li>SpacerMelee</li>
+		</weaponTags>
+		<tradeTags>
+			<li>WeaponMelee</li>
+		</tradeTags>
+		<tools>
+			<li>
+				<label>plasma edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>44</power>
+				<cooldownTime>1.4</cooldownTime>
+				<armorPenetration>0.35</armorPenetration>
+			</li>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>26</power>
+				<cooldownTime>1.4</cooldownTime>
+				<armorPenetration>0.2</armorPenetration>
+			</li>
+		</tools>
+	</ThingDef>
+
 	<ThingDef ParentName="BaseBullet">
 		<defName>CK_ArcBolt</defName>
 		<label>arc bolt</label>
