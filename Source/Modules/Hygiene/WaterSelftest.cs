@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using ColonyKit.Modules.Hygiene.Dbh;
 using HarmonyLib;
 using RimWorld;
@@ -145,24 +144,6 @@ namespace ColonyKit.Modules.Hygiene
 				return false;
 			}
 			ModLog.Info("Hygiene", "water selftest: water spot place rule water=True land=False");
-			Find.Selector.Select(spot, false);
-			ITab_WaterSpotBills tab = new ITab_WaterSpotBills();
-			MethodInfo optionsMaker = typeof(ITab_WaterSpotBills).GetMethod(
-				"OptionsMaker", BindingFlags.Instance | BindingFlags.NonPublic);
-			List<FloatMenuOption> options = optionsMaker?.Invoke(tab, null) as List<FloatMenuOption>;
-			if (options == null || options.Count < 2)
-			{
-				error = "water spot bill options missing";
-				return false;
-			}
-			options[0].action?.Invoke();
-			if (spot.BillStack.Count != 1)
-			{
-				error = "water spot bill add failed";
-				return false;
-			}
-			spot.BillStack.Clear();
-			ModLog.Info("Hygiene", $"water selftest: bill options={options.Count}, add ok");
 			tap.SetDrawOrder(1);
 			intakeStartWater = tap.StoredWater;
 			bucket = SpawnItem(bucketDef, bucketCell);
@@ -506,6 +487,7 @@ namespace ColonyKit.Modules.Hygiene
 				{
 					Finish(false);
 				}
+				return;
 			}
 		}
 

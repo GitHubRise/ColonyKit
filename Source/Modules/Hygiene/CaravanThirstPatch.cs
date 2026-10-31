@@ -1,0 +1,94 @@
+using System.Collections.Generic;
+using HarmonyLib;
+using RimWorld;
+using RimWorld.Planet;
+using UnityEngine;
+using Verse;
+
+namespace ColonyKit.Modules.Hygiene
+{
+	/// <summary>
+	/// 商队里原版只处理食物/休息/娱乐，不会走 Need_Thirst.NeedInterval，口渴实际上被冻住。
+	/// 这里让口渴在商队里按正常速率下降；水只从商队随身携带的水盆/水桶里喝，
+	/// 不再自动从河流/降雨里“找到水源”，没带水就会真的渴死。
+	/// </summary>
+	[HarmonyPatch(typeof(Caravan_NeedsTracker), "NeedsTrackerTickInterval")]
+	internal static class Patch_CaravanThirstTick
+	{
+		private static void Postfix(Caravan_NeedsTracker __instance, int delta)
+		{
+			Caravan caravan = __instance?.caravan;
+			if (caravan?.PawnsListForReading == null)
+			{
+				return;
+			}
+			if (Find.TickManager.TicksGame % 150 != 0)
+			{
+				return;
+			}
+			foreach (Pawn pawn in caravan.PawnsListForReading)
+			{
+				if (pawn == null || pawn.Dead)
+				{
+					continue;
+				}
+				pawn.needs?.TryGetNeed<Need_Thirst>()?.NeedInterval();
+			}
+		}
+	}
+
+	[HarmonyPatch(typeof(Caravan_NeedsTracker), "TrySatisfyPawnNeeds")]
+	internal static class Patch_CaravanThirstDrink
+	{
+		private const float LitersPerDrink = 3f;
+
+		private const float ThirstPerDrink = 0.6f;
+
+		private static void Prefix(Caravan_NeedsTracker __instance, Pawn pawn)
+		{
+			if (pawn == null || pawn.Dead)
+			{
+				return;
+			}
+			if (Find.TickManager.TicksGame % 150 != 0)
+			{
+				return;
+			}
+			Need_Thirst thirst = pawn.needs?.TryGetNeed<Need_Thirst>();
+			if (thirst == null || thirst.CurLevel > 0.55f)
+			{
+				return;
+			}
+			CompBasinWater container = FindWaterContainer(__instance.caravan);
+			if (container == null)
+			{
+				return;
+			}
+			float taken = container.Drain(Mathf.Min(LitersPerDrink, container.Water));
+			if (taken <= 0.01f)
+			{
+				return;
+			}
+			thirst.Drink(ThirstPerDrink * (taken / LitersPerDrink));
+			SanitationUtil.ContaminationCheckDrinking(pawn, container.Contamination);
+		}
+
+		private static CompBasinWater FindWaterContainer(Caravan caravan)
+		{
+			if (caravan == null)
+			{
+				return null;
+			}
+			List<Thing> items = CaravanInventoryUtility.AllInventoryItems(caravan);
+			for (int i = 0; i < items.Count; i++)
+			{
+				CompBasinWater container = items[i].TryGetComp<CompBasinWater>();
+				if (container != null && container.Water > 0.5f)
+				{
+					return container;
+				}
+			}
+			return null;
+		}
+	}
+}
