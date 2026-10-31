@@ -90,6 +90,17 @@ namespace ColonyKit.Modules.Robotics
 		public const float MaxArcBladeChainRadius = 10f;
 		public const float DefaultArcBladeChainRadius = 5f;
 
+		// 电弧刃的面板数值（伤害 / 攻击间隔 / 护甲穿透），运行时同步到 ThingDef.tools。
+		public const float MinArcBladeDamage = 10f;
+		public const float MaxArcBladeDamage = 150f;
+		public const float DefaultArcBladeDamage = 50f;
+		public const float MinArcBladeCooldown = 0.4f;
+		public const float MaxArcBladeCooldown = 4f;
+		public const float DefaultArcBladeCooldown = 1.3f;
+		public const float MinArcBladeArmorPenetration = 0f;
+		public const float MaxArcBladeArmorPenetration = 1f;
+		public const float DefaultArcBladeArmorPenetration = 0.4f;
+
 		public const float MinMkvIncomingDamageFactor = 0.1f;
 		public const float MaxMkvIncomingDamageFactor = 5f;
 		public const float DefaultMkvIncomingDamageFactor = 1f;
@@ -162,6 +173,9 @@ namespace ColonyKit.Modules.Robotics
 		public float mkvArcBladeParalysisHours = DefaultArcBladeParalysisHours;
 		public float mkvArcBladeChainChance = DefaultArcBladeChainChance;
 		public float mkvArcBladeChainRadius = DefaultArcBladeChainRadius;
+		public float mkvArcBladeDamage = DefaultArcBladeDamage;
+		public float mkvArcBladeCooldown = DefaultArcBladeCooldown;
+		public float mkvArcBladeArmorPenetration = DefaultArcBladeArmorPenetration;
 		public float mkvIncomingDamageFactor = DefaultMkvIncomingDamageFactor;
 		public float mkvInsulationCold = DefaultMkvInsulationCold;
 		public float mkvInsulationHeat = DefaultMkvInsulationHeat;
@@ -226,6 +240,9 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref mkvArcBladeParalysisHours, "mkvArcBladeParalysisHours", DefaultArcBladeParalysisHours);
 			Scribe_Values.Look(ref mkvArcBladeChainChance, "mkvArcBladeChainChance", DefaultArcBladeChainChance);
 			Scribe_Values.Look(ref mkvArcBladeChainRadius, "mkvArcBladeChainRadius", DefaultArcBladeChainRadius);
+			Scribe_Values.Look(ref mkvArcBladeDamage, "mkvArcBladeDamage", DefaultArcBladeDamage);
+			Scribe_Values.Look(ref mkvArcBladeCooldown, "mkvArcBladeCooldown", DefaultArcBladeCooldown);
+			Scribe_Values.Look(ref mkvArcBladeArmorPenetration, "mkvArcBladeArmorPenetration", DefaultArcBladeArmorPenetration);
 			Scribe_Values.Look(ref mkvIncomingDamageFactor, "mkvIncomingDamageFactor", DefaultMkvIncomingDamageFactor);
 			Scribe_Values.Look(ref mkvInsulationCold, "mkvInsulationCold", DefaultMkvInsulationCold);
 			Scribe_Values.Look(ref mkvInsulationHeat, "mkvInsulationHeat", DefaultMkvInsulationHeat);
@@ -321,6 +338,19 @@ namespace ColonyKit.Modules.Robotics
 			mkvArcBladeChainRadius = ClampFloat(mkvArcBladeChainRadius,
 				MinArcBladeChainRadius, MaxArcBladeChainRadius);
 			changed |= !Approximately(chainRadius, mkvArcBladeChainRadius);
+
+			float bladeDamage = mkvArcBladeDamage;
+			mkvArcBladeDamage = ClampFloat(mkvArcBladeDamage, MinArcBladeDamage, MaxArcBladeDamage);
+			changed |= !Approximately(bladeDamage, mkvArcBladeDamage);
+
+			float bladeCooldown = mkvArcBladeCooldown;
+			mkvArcBladeCooldown = ClampFloat(mkvArcBladeCooldown, MinArcBladeCooldown, MaxArcBladeCooldown);
+			changed |= !Approximately(bladeCooldown, mkvArcBladeCooldown);
+
+			float bladeAp = mkvArcBladeArmorPenetration;
+			mkvArcBladeArmorPenetration = ClampFloat(mkvArcBladeArmorPenetration,
+				MinArcBladeArmorPenetration, MaxArcBladeArmorPenetration);
+			changed |= !Approximately(bladeAp, mkvArcBladeArmorPenetration);
 
 			float incomingDamage = mkvIncomingDamageFactor;
 			mkvIncomingDamageFactor = ClampFloat(mkvIncomingDamageFactor,
@@ -430,6 +460,9 @@ namespace ColonyKit.Modules.Robotics
 			mkvArcBladeParalysisHours = DefaultArcBladeParalysisHours;
 			mkvArcBladeChainChance = DefaultArcBladeChainChance;
 			mkvArcBladeChainRadius = DefaultArcBladeChainRadius;
+			mkvArcBladeDamage = DefaultArcBladeDamage;
+			mkvArcBladeCooldown = DefaultArcBladeCooldown;
+			mkvArcBladeArmorPenetration = DefaultArcBladeArmorPenetration;
 			mkvIncomingDamageFactor = DefaultMkvIncomingDamageFactor;
 			mkvInsulationCold = DefaultMkvInsulationCold;
 			mkvInsulationHeat = DefaultMkvInsulationHeat;

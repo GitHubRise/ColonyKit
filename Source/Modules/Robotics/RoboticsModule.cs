@@ -43,6 +43,9 @@ namespace ColonyKit.Modules.Robotics
 				$"cleanJob={cleanJob}, chargeJob={chargeJob}, energyNeed={energyNeed}, " +
 				$"mkvKind={mkvKind}, mkvBay={mkvBay}, mkvResearch={mkvProject != null}, mkvPrereqs={mkvPrereqs}, " +
 				$"factories={workshop}/{twoStation}/{frame}/{prefab}/{unmanned}, mkKinds={mk1}/{mk2}/{mk3}/{mk4}");
+
+			// 设置文件在 Mod 构造时就已经读好，这里把电弧刃的面板数值写进 Def。
+			MkVArcBlade.ApplySettings();
 		}
 
 		public override void OnGameLoaded(Game game)
@@ -53,6 +56,9 @@ namespace ColonyKit.Modules.Robotics
 			}
 
 			NannyBotSelftest.RunIfRequested(game);
+
+			// 读档后重新同步一次（Def 不会存档，数值存在设置里）。
+			MkVArcBlade.ApplySettings();
 
 			int robots = 0;
 			int withEnergy = 0;

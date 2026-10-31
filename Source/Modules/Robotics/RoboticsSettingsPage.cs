@@ -224,6 +224,30 @@ namespace ColonyKit.Modules.Robotics
 				"ColonyKit.Settings.Robotics.MkVDualWield".Loc(),
 				ref data.mkvDualWield,
 				"ColonyKit.Settings.Robotics.MkVDualWield.Desc".Loc());
+			data.mkvArcBladeDamage = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkvArcBladeDamage".Loc(),
+				data.mkvArcBladeDamage,
+				RoboticsSettings.MinArcBladeDamage,
+				RoboticsSettings.MaxArcBladeDamage,
+				1f,
+				value => value.ToString("0"));
+			data.mkvArcBladeCooldown = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkvArcBladeCooldown".Loc(),
+				data.mkvArcBladeCooldown,
+				RoboticsSettings.MinArcBladeCooldown,
+				RoboticsSettings.MaxArcBladeCooldown,
+				0.1f,
+				value => value.ToString("0.0") + " s");
+			data.mkvArcBladeArmorPenetration = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkvArcBladeArmorPenetration".Loc(),
+				data.mkvArcBladeArmorPenetration,
+				RoboticsSettings.MinArcBladeArmorPenetration,
+				RoboticsSettings.MaxArcBladeArmorPenetration,
+				0.05f,
+				value => value.ToStringPercent());
 			SettingsWidgets.Description(
 				listing, "ColonyKit.Settings.Robotics.MkvArcBladeHint".Loc());
 			data.mkvArcBladeParalysisChance = SettingsWidgets.Slider(
@@ -258,6 +282,8 @@ namespace ColonyKit.Modules.Robotics
 				RoboticsSettings.MaxArcBladeChainRadius,
 				1f,
 				value => "CK.Robotics.Cells".Loc(value.ToString("0")));
+			// 面板数值改完立刻同步到 Def，武器信息卡和近战结算都读同一份数据。
+			MkVArcBlade.ApplySettings();
 			data.mkvEngageRange = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Robotics.MkVEngageRange".Loc(),

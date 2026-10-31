@@ -60,7 +60,10 @@
 	<ColonyKit.Settings.Robotics.MkVAutoPickupWeapons.Desc>Mk-V 会寻找评分更高的远程武器并换装；关闭后只使用出生自带的电弧发射器。</ColonyKit.Settings.Robotics.MkVAutoPickupWeapons.Desc>
 	<ColonyKit.Settings.Robotics.MkVDualWield>双持武器</ColonyKit.Settings.Robotics.MkVDualWield>
 	<ColonyKit.Settings.Robotics.MkVDualWield.Desc>Mk-V 左右手各拿一把武器：远程 + 近战（拉开距离用枪、贴脸用刀）或双远程（两把枪一起开火）。两把都拿满后再装备新武器，会优先丢下非专属的那把，专属武器（电弧发射器）永远保留。</ColonyKit.Settings.Robotics.MkVDualWield.Desc>
-	<ColonyKit.Settings.Robotics.MkvArcBladeHint>电弧刃命中敌人时：有几率让目标麻痹倒地（默认 50%、10 小时），另有几率把麻痹连锁给目标周围的其他敌人（默认 20%、5 格）。几率设为 0% 即关闭对应效果；只对敌对目标生效。</ColonyKit.Settings.Robotics.MkvArcBladeHint>
+	<ColonyKit.Settings.Robotics.MkvArcBladeHint>电弧刃的伤害、攻击间隔和护甲穿透都可调（默认 50 / 1.3 秒 / 40%，武器信息卡会同步）；命中敌人时还有几率让其麻痹倒地（默认 50%、10 小时），以及把麻痹连锁给目标周围的其他敌人（默认 20%、5 格）。几率设为 0% 即关闭对应效果；麻痹和连锁只对敌对目标生效。</ColonyKit.Settings.Robotics.MkvArcBladeHint>
+	<ColonyKit.Settings.Robotics.MkvArcBladeDamage>电弧刃伤害</ColonyKit.Settings.Robotics.MkvArcBladeDamage>
+	<ColonyKit.Settings.Robotics.MkvArcBladeCooldown>电弧刃攻击间隔</ColonyKit.Settings.Robotics.MkvArcBladeCooldown>
+	<ColonyKit.Settings.Robotics.MkvArcBladeArmorPenetration>电弧刃护甲穿透</ColonyKit.Settings.Robotics.MkvArcBladeArmorPenetration>
 	<ColonyKit.Settings.Robotics.MkvArcBladeParalysisChance>电弧刃麻痹几率</ColonyKit.Settings.Robotics.MkvArcBladeParalysisChance>
 	<ColonyKit.Settings.Robotics.MkvArcBladeParalysisHours>电弧刃麻痹时长</ColonyKit.Settings.Robotics.MkvArcBladeParalysisHours>
 	<ColonyKit.Settings.Robotics.MkvArcBladeChainChance>电弧刃连锁几率</ColonyKit.Settings.Robotics.MkvArcBladeChainChance>

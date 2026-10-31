@@ -348,6 +348,19 @@ namespace ColonyKit.Modules.Robotics
 				return;
 			}
 
+			// 面板数值探针：把伤害临时改成 77，确认同步到了 ThingDef.tools（近战结算和信息卡都读它）。
+			RoboticsSettings bladeSettings = NannyBotUtility.Settings;
+			float oldDamage = bladeSettings.mkvArcBladeDamage;
+			bladeSettings.mkvArcBladeDamage = 77f;
+			MkVArcBlade.ApplySettings();
+			ThingDef bladeDef = NannyBotDefOf.CK_ArcBlade;
+			float syncedDamage = bladeDef?.tools != null && bladeDef.tools.Count > 0
+				? bladeDef.tools[0].power
+				: -1f;
+			builder.Append(" bladeDamage=").Append(syncedDamage.ToString("0"));
+			bladeSettings.mkvArcBladeDamage = oldDamage;
+			MkVArcBlade.ApplySettings();
+
 			Faction hostile = null;
 			foreach (Faction faction in Find.FactionManager.AllFactionsListForReading)
 			{
