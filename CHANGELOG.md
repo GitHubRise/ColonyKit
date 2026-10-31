@@ -35,7 +35,7 @@
 
 - **水壶堆叠与冰箱文案**：水壶改为不可堆叠（`stackLimit 1`），避免整叠共用一个 `CompBasinWater` 水量；冰箱改成储物柜后，中文描述同步为「搬运工按原版搬运放食物、放冷库按房间温度保鲜」，不再写 40 格和「装冰箱」Job。
 - **疏通/如厕/排污的特效与音效接线**：自动疏通接入 `CK_Unblocking` 效果器，马桶/旱厕冲水抛 `CK_MoteSewage`，随地大小便按污渍类型抛 `CK_MoteUrine`/`CK_MoteSewage`，化粪池溢流播 `CK_SewageStart`。
-- **凉白开配方速度字段**：`CK_BoilWater` / `CK_BoilWaterBulk` 的 `workSpeedStat` 从不存在的 `CookingSpeed` 改为 `CookSpeed`，消除启动时的 `Could not resolve cross-reference`。
+- **凉白开配方速度字段**：`CK_BoilWater` / `CK_BoilWaterBulk` 的 `workSpeedStat` 从不存在的 `CookingSpeed` 改为 `CookSpeed`，消除启动时的 `Could not resolve cross-reference`；三种瓶装水（矿泉水/凉白开/纯净水）的 `graphicClass` 从 `Graphic_StackCount` 改为 `Graphic_Single`，修掉只有单张贴图时的 `No textures found`。
 - **冰块物品分类报错**：`CK_IceBlock` 的 `thingCategories` 写了 Core 里并不存在的 `Resources`，只加载 Core（不带 Odyssey）时启动会报 `Could not resolve cross-reference to Verse.ThingCategoryDef named Resources`，并弹出 XML 错误窗口；现改为和钢、石料相同的 `ResourcesRaw`。
 - **水龙头无电不进水**：进水来源不再只认同网水井，还接受同网其他水箱存水和 40 格内可站人的地表水；检视页与水龙头页新增「水源：建在水面上/同网水井/同网存水/附近地表水/无」，无电仍按 25 升/小时进水，通电 200 升/小时。
 - **水龙头水箱断电不可用**：`CompWaterStorage` 新增 `IgnorePower`，水龙头水箱断电时仍计入水网存取；断电也能正常喝水、洗手和接水。

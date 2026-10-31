@@ -7,7 +7,7 @@
 		<description>A sealed 1 L bottle of boiled water, cooled down. Boiling kills germs, so it cannot cause food poisoning. Drink it directly to restore thirst.</description>
 		<graphicData>
 			<texPath>Things/Item/CK_BoiledWater</texPath>
-			<graphicClass>Graphic_StackCount</graphicClass>
+			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(0.6,0.9)</drawSize>
 		</graphicData>
 		<uiIconScale>1.2</uiIconScale>

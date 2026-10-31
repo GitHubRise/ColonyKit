@@ -7,7 +7,7 @@
 		<description>A sealed 1 L bottle of purified water. Drink it directly to restore thirst. It is filtered and cannot cause food poisoning.</description>
 		<graphicData>
 			<texPath>Things/Item/CK_PurifiedWater</texPath>
-			<graphicClass>Graphic_StackCount</graphicClass>
+			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(0.6,0.9)</drawSize>
 		</graphicData>
 		<uiIconScale>1.2</uiIconScale>
