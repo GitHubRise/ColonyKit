@@ -589,7 +589,7 @@ namespace ColonyKit.Modules.Robotics
 				return AiRequestResult.Failure("响应里没有 content：" + Truncate(text, 160));
 			}
 			content = StripCodeFence(content.Trim());
-			string action = ExtractJsonString(content, "action");
+			string action = ExtractAction(content);
 			string say = ExtractJsonString(content, "say");
 			if (string.IsNullOrWhiteSpace(action))
 			{
@@ -598,7 +598,7 @@ namespace ColonyKit.Modules.Robotics
 				if (start >= 0 && end > start)
 				{
 					string inner = content.Substring(start, end - start + 1);
-					action = ExtractJsonString(inner, "action");
+					action = ExtractAction(inner);
 					say = ExtractJsonString(inner, "say");
 				}
 			}
@@ -607,6 +607,25 @@ namespace ColonyKit.Modules.Robotics
 				return AiRequestResult.Failure("模型没有返回 action：" + Truncate(content, 160));
 			}
 			return AiRequestResult.Success(action.Trim(), (say ?? "").Trim());
+		}
+
+		/// <summary>
+		/// 取动作 id。提示词要的是 "action"，但模型经常照着 candidates 的字段名回 "id"
+		/// （DeepSeek 实际吐过 {"id":"work","say":"..."}），这里按常见别名依次兜底，
+		/// 免得一份语义完全正确的回复被当成「请求失败」。
+		/// </summary>
+		private static string ExtractAction(string json)
+		{
+			string[] keys = { "action", "act", "id", "choice", "command" };
+			for (int i = 0; i < keys.Length; i++)
+			{
+				string value = ExtractJsonString(json, keys[i]);
+				if (!string.IsNullOrWhiteSpace(value))
+				{
+					return value;
+				}
+			}
+			return null;
 		}
 
 		/// <summary>从 JSON 文本里取第一个 "key":"字符串值"；找不到返回 null。</summary>

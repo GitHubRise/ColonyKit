@@ -20,6 +20,14 @@ namespace ColonyKit.Modules.Robotics
 			"{\"id\":\"ck-test\",\"choices\":[{\"message\":{\"role\":\"assistant\","
 			+ "\"content\":\"{\\\"action\\\":\\\"work\\\",\\\"say\\\":\\\"自检通过\\\"}\"}}]}";
 
+		/// <summary>
+		/// 模型有时照 candidates 的字段名回 id 而不是 action（DeepSeek 实际吐过这个形状），
+		/// 解析器必须兜住，否则一句话都不说就整轮「请求失败」。
+		/// </summary>
+		private const string AliasResponse =
+			"{\"id\":\"ck-test\",\"choices\":[{\"message\":{\"role\":\"assistant\","
+			+ "\"content\":\"{\\\"id\\\":\\\"work\\\",\\\"say\\\":\\\"无敌情，交还家务AI待命\\\"}\"}}]}";
+
 		private static bool ran;
 
 		static MkVAiSelfTest()
@@ -42,6 +50,10 @@ namespace ColonyKit.Modules.Robotics
 			bool jsonPass = parsed != null && parsed.ok
 				&& parsed.action == "work" && parsed.say == "自检通过";
 
+			AiRequestResult alias = MkVAiService.ParseForTest(AliasResponse);
+			bool aliasPass = alias != null && alias.ok
+				&& alias.action == "work" && alias.say == "无敌情，交还家务AI待命";
+
 			AiRequestResult http = null;
 			try
 			{
@@ -62,8 +74,10 @@ namespace ColonyKit.Modules.Robotics
 
 			string httpStatus = http == null ? "none" : (http.ok ? "ok" : http.error);
 			string summary = "AI self-test: jsonPass=" + jsonPass
+				+ " aliasPass=" + aliasPass
 				+ " parsedAction=" + (parsed?.action ?? "none")
 				+ " parsedSay=" + (parsed?.say ?? "none")
+				+ " aliasAction=" + (alias?.action ?? "none")
 				+ " parsedError=" + (parsed?.error ?? "none")
 				+ " httpStatus=" + httpStatus;
 			ModLog.Force("Robotics", summary);
