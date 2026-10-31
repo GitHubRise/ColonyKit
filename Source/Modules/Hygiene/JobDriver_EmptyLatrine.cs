@@ -33,6 +33,11 @@ namespace ColonyKit.Modules.Hygiene
 			};
 			empty.FailOnDestroyedNullOrForbidden(TargetIndex.A);
 			empty.socialMode = RandomSocialMode.Quiet;
+			EffecterDef fecal = DefDatabase<EffecterDef>.GetNamedSilentFail("CK_Fecal");
+			if (fecal != null)
+			{
+				empty.WithEffect(fecal, TargetIndex.A);
+			}
 			empty.AddFinishAction(() =>
 			{
 				if (!(job.targetA.Thing is Building_Latrine target))

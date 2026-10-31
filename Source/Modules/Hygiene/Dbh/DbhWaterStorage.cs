@@ -1,6 +1,7 @@
 using RimWorld;
 using UnityEngine;
 using Verse;
+using Verse.Sound;
 
 namespace ColonyKit.Modules.Hygiene.Dbh
 {
@@ -48,6 +49,7 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		public bool IgnorePower;
 
 		private CompPowerTrader power;
+		private CompPipe pipe;
 
 		public CompProperties_WaterStorage Props => (CompProperties_WaterStorage)props;
 
@@ -77,9 +79,26 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 				}
 				WaterStorage = Mathf.Min(WaterStorage + gain, Props.WaterStorageCap);
 			}
+			// 雨水桶接雨时来一点滴水声，别让「下雨接水」完全没反馈。
+			if (Props.AutoOnRain && rainRate > 0.01f && parent.IsHashIntervalTick(600))
+			{
+				DefDatabase<SoundDef>.GetNamedSilentFail("CK_Drips")?.PlayOneShot(parent);
+			}
 			if (parent.Map.GetComponent<MapComponent_SewagePollution>()?.WaterPolluted == true)
 			{
-				WaterQuality = ContaminationLevel.Contaminated;
+				// 深水井网络把整张网的存水按未受地表污染处理； rainwater butt 没有管网，仍然会脏。
+				bool hasDeepWater = pipe?.pipeNet?.HasDeepWater == true;
+				if (hasDeepWater)
+				{
+					if (WaterQuality == ContaminationLevel.Contaminated)
+					{
+						WaterQuality = ContaminationLevel.Treated;
+					}
+				}
+				else
+				{
+					WaterQuality = ContaminationLevel.Contaminated;
+				}
 			}
 		}
 
@@ -99,6 +118,7 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		{
 			base.PostSpawnSetup(respawningAfterLoad);
 			power = parent.GetComp<CompPowerTrader>();
+			pipe = parent.GetComp<CompPipe>();
 		}
 
 		public override void PostExposeData()

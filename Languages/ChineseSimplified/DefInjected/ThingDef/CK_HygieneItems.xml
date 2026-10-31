@@ -5,7 +5,7 @@
 	<CK_WaterBottle.label>水壶</CK_WaterBottle.label>
 	<CK_WaterBottle.description>钢制小水壶，装 3 升饮用水。放进殖民者物品栏就能随身喝，也能给卧床的病人喂水。</CK_WaterBottle.description>
 	<CK_Fridge.label>冰箱</CK_Fridge.label>
-	<CK_Fridge.description>存放食物的储物柜，搬运工按原版搬运把食物放进来。放进冷库时按房间温度保鲜；本身不制冷。</CK_Fridge.description>
+	<CK_Fridge.description>自带制冷的 1×1 食物柜，耗电 50 W；通电并打开时，放在冰箱格上的食物不会腐烂，搬运工会自动把食物放进来。</CK_Fridge.description>
 	<CK_BionicBladder.label>仿生膀胱</CK_BionicBladder.label>
 	<CK_BionicBladder.description>高级人造膀胱。内置化学回收系统把体内废物分解成可回收的分子，剩下的以气体形式排出——代价是使用者会胀气。</CK_BionicBladder.description>
 	<CK_HygieneEnhancer.label>卫生增强器</CK_HygieneEnhancer.label>

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-	<!-- 冰箱（DBH HygieneRefrigerator 的移植）：DBH 原版把它的容器接口注释掉了，
-	     这里落成 1×1 的「食物柜」——物品摆在格子上，原版搬运/取料/进食都能直接用；
-	     放进冷库房间时按房间温度自然保鲜。贴图四向，west 用 east 的复制件。 -->
+	<!-- 冰箱（DBH HygieneRefrigerator 的移植）：DBH 原版的容器接口被注释掉了，
+	     这里落成 1×1 自带制冷的食物柜——物品摆在格子上，原版搬运/取料/进食都能直接用；
+	     通电并打开时，格上的食物停止腐烂（Patch_CompRottable_Fridge）。贴图四向，west 用 east 的复制件。 -->
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_Fridge</defName>
 		<label>refrigerator</label>
-		<description>A food cabinet that keeps meals within easy reach. Haulers stock it automatically. Place it in a freezer to stop food from spoiling.</description>
+		<description>A self-contained refrigerator. Requires 50 W and keeps stored food from spoiling while powered. Haulers stock it automatically.</description>
 		<thingClass>Building_Storage</thingClass>
+		<tickerType>Normal</tickerType>
 		<size>(1,1)</size>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_Fridge</texPath>
@@ -58,6 +59,14 @@
 		<inspectorTabs>
 			<li>ITab_Storage</li>
 		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>50</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="ColonyKit.Modules.Hygiene.CompProperties_Fridge" />
+		</comps>
 		<researchPrerequisites>
 			<li>CK_HygieneResearch</li>
 		</researchPrerequisites>

@@ -5,7 +5,7 @@
 	<CK_PumpingStation.label>泵站</CK_PumpingStation.label>
 	<CK_PumpingStation.description>大型电动水泵，把水井里的地下水抽进连通的水箱。需要电力和至少一口水井，容量 10000 升/天。</CK_PumpingStation.description>
 	<CK_DeepWaterWell.label>深水井</CK_DeepWaterWell.label>
-	<CK_DeepWaterWell.description>向深层含水层钻井，提供大量地下水。用法和水井一样，但出水量大得多。容量 4000 升/天。</CK_DeepWaterWell.description>
+	<CK_DeepWaterWell.description>向深层含水层钻井，提供大量不受地表污水影响的地下水；同一张水网只要以深水井为水源，存水就不会被地表污染。容量 4000 升/天。</CK_DeepWaterWell.description>
 	<CK_WaterTowerHuge.label>巨型水塔</CK_WaterTowerHuge.label>
 	<CK_WaterTowerHuge.description>为管道洁具储存大量用水。容量 50000 升。</CK_WaterTowerHuge.description>
 	<CK_GasBoiler.label>燃气锅炉</CK_GasBoiler.label>

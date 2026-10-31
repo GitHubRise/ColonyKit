@@ -9,6 +9,7 @@
 		<label>wind pump</label>
 		<description>Draws ground water from connected wells into tanks without using any power or fuel. Capacity: 2000 L/day.</description>
 		<thingClass>Building</thingClass>
+		<tickerType>Normal</tickerType>
 		<size>(3,2)</size>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_WindPump</texPath>
@@ -63,6 +64,7 @@
 		<label>pumping station</label>
 		<description>A large electric pump that draws ground water from wells into connected tanks. Requires power and at least one water well. Capacity: 10000 L/day.</description>
 		<thingClass>Building</thingClass>
+		<tickerType>Normal</tickerType>
 		<size>(2,2)</size>
 		<graphicData>
 			<texPath>Things/Building/Hygiene/CK_PumpingStation</texPath>
@@ -107,11 +109,11 @@
 		</researchPrerequisites>
 	</ThingDef>
 
-	<!-- 深水井：1×1，4000 L/天，出水量比普通水井大。 -->
+	<!-- 深水井：1×1，4000 L/天，不受地表污染影响（Deep）。 -->
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_DeepWaterWell</defName>
 		<label>deep water well</label>
-		<description>Drills deep into the aquifer for a large supply of ground water. Works like a water well, but yields far more water. Capacity: 4000 L/day.</description>
+		<description>Drills deep into the aquifer for a large supply of ground water. Water from deep wells is unaffected by surface pollution, and the well yields far more water than a normal one. Capacity: 4000 L/day.</description>
 		<thingClass>Building</thingClass>
 		<size>(1,1)</size>
 		<graphicData>

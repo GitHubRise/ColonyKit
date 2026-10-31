@@ -47,6 +47,11 @@ namespace ColonyKit.Modules.Hygiene
 
 			Toil fill = ToilMaker.MakeToil("CK_FillBasin");
 			fill.defaultCompleteMode = ToilCompleteMode.Never;
+			EffecterDef carry = DefDatabase<EffecterDef>.GetNamedSilentFail("CK_CarryBucket");
+			if (carry != null)
+			{
+				fill.WithEffect(carry, () => pawn);
+			}
 			if (sourceHasThing)
 			{
 				fill.FailOnDespawnedNullOrForbidden(SourceInd);

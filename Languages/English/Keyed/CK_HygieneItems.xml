@@ -2,4 +2,7 @@
 <LanguageData>
 	<CK.Hygiene.BedPanClean>Bed pan: clean</CK.Hygiene.BedPanClean>
 	<CK.Hygiene.BedPanUsed>Bed pan: used, needs cleaning</CK.Hygiene.BedPanUsed>
+	<CK.Hygiene.Fridge.On>Refrigerating</CK.Hygiene.Fridge.On>
+	<CK.Hygiene.Fridge.Off>Switched off</CK.Hygiene.Fridge.Off>
+	<CK.Hygiene.Fridge.NoPower>No power</CK.Hygiene.Fridge.NoPower>
 </LanguageData>

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using RimWorld;
 using Verse;
+using Verse.Sound;
 
 namespace ColonyKit.Modules.Hygiene.Dbh
 {
@@ -37,6 +38,16 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 
 		// 设置里的水泵容量倍率同时作用于电动泵、泵站和风泵；默认 1 时行为不变。
 		public float Capacity => WorkingNow ? Props.Capacity * HygieneSettings.Current.pumpCapacityMultiplier : 0f;
+
+		public override void CompTick()
+		{
+			base.CompTick();
+			if (!WorkingNow || parent?.Map == null || !parent.IsHashIntervalTick(600))
+			{
+				return;
+			}
+			DefDatabase<SoundDef>.GetNamedSilentFail("CK_WaterPump")?.PlayOneShot(parent);
+		}
 
 		public override void PostSpawnSetup(bool respawningAfterLoad)
 		{

@@ -51,6 +51,10 @@
 				<capacity>10000</capacity>
 				<priority>2</priority>
 			</li>
+			<li Class="CompProperties_AmbientSound">
+				<sound>CK_SewageAmbience</sound>
+				<disabledOnUnpowered>true</disabledOnUnpowered>
+			</li>
 		</comps>
 		<researchPrerequisites>
 			<li>CK_SewageTreatment</li>

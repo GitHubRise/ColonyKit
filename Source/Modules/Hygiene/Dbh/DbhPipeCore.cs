@@ -327,6 +327,19 @@ namespace ColonyKit.Modules.Hygiene.Dbh
 		public bool HasFilter => PipedThings.Any(
 			t => t != null && t.TryGetComp<CompWaterFiltration>()?.WorkingNow == true);
 
+		/// <summary>
+		/// 网上有正在工作的深水井时，整张网的存水按「深层水」处理，不受地表污水污染。
+		/// 只要网上还接了地表水进水口（建在水面上的水龙头/取水点），就仍然按地表水算。
+		/// </summary>
+		public bool HasDeepWater => WaterPumpedPerTick > 0f
+			&& WaterPumps.Any(p => p != null && p.WorkingNow)
+			&& WaterWells.Any(w => w != null && w.Props.Deep && w.GroundWaterCapacity > 0f)
+			&& !PipedThings.Any(t =>
+			{
+				CompSurfaceWaterInlet surface = t?.TryGetComp<CompSurfaceWaterInlet>();
+				return surface != null && surface.GroundWaterCapacity > 0f;
+			});
+
 		public float WaterStorage => WaterTowers.Where(t => t.WorkingNow).Sum(t => t.WaterStorage);
 
 		public bool HasHotWater => HotWaterTanks.Any(t => t.GetStoreCapacity > 0f && t.HeaterTemp > 0f);
