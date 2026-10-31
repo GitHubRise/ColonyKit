@@ -104,6 +104,13 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				yield return UseOption("CK.Hygiene.FloatMenu.Drink", pawn, waterPoint, "CK_DrinkFromBasin",
 					waterPoint.CanUse(pawn), RejectReason(waterPoint));
+
+				// 带净水器的水龙头：直接装一瓶 1 L 纯净水，不会中毒。
+				bool canPurified = waterPoint.CanBottlePurifiedWater(pawn);
+				yield return UseOption(
+					"CK.Hygiene.FloatMenu.FillPurified", pawn, waterPoint, "CK_FillPurifiedWater",
+					canPurified,
+					canPurified ? null : "CK.Hygiene.FloatMenu.NeedsFilter".Translate().ToString());
 			}
 			else if (building is Building_WaterSpot waterSpot)
 			{

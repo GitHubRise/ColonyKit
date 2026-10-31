@@ -408,6 +408,32 @@ namespace ColonyKit.Modules.Hygiene
 			return pipe.pipeNet.PullWater(amount, out contam);
 		}
 
+		/// <summary>
+		/// 带净水器的水龙头可以直接装 1 L 纯净水；没有净水器/没水时不能装。
+		/// </summary>
+		public bool CanBottlePurifiedWater(Pawn pawn)
+		{
+			PlumbingNet net = pipe?.pipeNet;
+			return net != null
+				&& net.HasFilter
+				&& net.WaterStorage >= 1f
+				&& HasWaterSupply
+				&& pawn != null
+				&& pawn.CanReserveAndReach(this, InteractionPathMode, pawn.NormalMaxDanger());
+		}
+
+		/// <summary>从水网抽 1 L 已过滤水，返回水质（正常情况下必为 Treated）。</summary>
+		public bool TryDrawPurifiedBottle(out ContaminationLevel quality)
+		{
+			quality = ContaminationLevel.Treated;
+			PlumbingNet net = pipe?.pipeNet;
+			if (net == null || !net.HasFilter || !HasWaterSupply)
+			{
+				return false;
+			}
+			return net.PullWater(1f, out quality);
+		}
+
 		public override string GetInspectString()
 		{
 			StringBuilder builder = new StringBuilder(base.GetInspectString());
