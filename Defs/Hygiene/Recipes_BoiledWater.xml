@@ -6,7 +6,7 @@
 		<label>boil water</label>
 		<description>Boil one 1 L bottle of water on a campfire or stove, then let it cool into boiled water. Boiling kills germs, so it cannot cause food poisoning.</description>
 		<jobString>boiling water.</jobString>
-		<workAmount>300</workAmount>
+		<workAmount>200</workAmount>
 		<workSpeedStat>CookingSpeed</workSpeedStat>
 		<workSkill>Cooking</workSkill>
 		<uiIconThing>CK_BoiledWater</uiIconThing>
@@ -32,13 +32,13 @@
 		<displayPriority>60</displayPriority>
 	</RecipeDef>
 
-	<!-- 批量烧水：一次 10 瓶，工作时长和单瓶一样（300），适合一次烧一批。 -->
+	<!-- 批量烧水：一次 10 瓶，工作时长和单瓶一样（200），适合一次烧一批。 -->
 	<RecipeDef>
 		<defName>CK_BoilWaterBulk</defName>
 		<label>boil water (10 bottles)</label>
-		<description>Boil 10 bottles of water at once on a campfire or stove, then let them cool into boiled water. Same 300 work as a single bottle.</description>
+		<description>Boil 10 bottles of water at once on a campfire or stove, then let them cool into boiled water. Same 200 work as a single bottle.</description>
 		<jobString>boiling water.</jobString>
-		<workAmount>300</workAmount>
+		<workAmount>200</workAmount>
 		<workSpeedStat>CookingSpeed</workSpeedStat>
 		<workSkill>Cooking</workSkill>
 		<uiIconThing>CK_BoiledWater</uiIconThing>

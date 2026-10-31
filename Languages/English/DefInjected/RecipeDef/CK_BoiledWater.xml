@@ -4,6 +4,6 @@
 	<CK_BoilWater.description>Boil one 1 L bottle of water on a campfire or stove, then let it cool into boiled water. Boiling kills germs, so it cannot cause food poisoning.</CK_BoilWater.description>
 	<CK_BoilWater.jobString>boiling water.</CK_BoilWater.jobString>
 	<CK_BoilWaterBulk.label>Boil water (10 bottles)</CK_BoilWaterBulk.label>
-	<CK_BoilWaterBulk.description>Boil 10 bottles of water at once on a campfire or stove, then let them cool. Same 300 work as a single bottle.</CK_BoilWaterBulk.description>
+	<CK_BoilWaterBulk.description>Boil 10 bottles of water at once on a campfire or stove, then let them cool. Same 200 work as a single bottle.</CK_BoilWaterBulk.description>
 	<CK_BoilWaterBulk.jobString>boiling water.</CK_BoilWaterBulk.jobString>
 </LanguageData>

@@ -4,6 +4,6 @@
 	<CK_BoilWater.description>拿一瓶 1 升瓶装水到篝火或炉灶烧开，放凉后装回一瓶。烧开能杀菌，不会导致食物中毒。</CK_BoilWater.description>
 	<CK_BoilWater.jobString>正在烧水。</CK_BoilWater.jobString>
 	<CK_BoilWaterBulk.label>烧凉白开（10 瓶）</CK_BoilWaterBulk.label>
-	<CK_BoilWaterBulk.description>一次拿 10 瓶 1 升瓶装水到篝火或炉灶烧开，放凉后装回 10 瓶。工作时长和烧 1 瓶一样，都是 300。</CK_BoilWaterBulk.description>
+	<CK_BoilWaterBulk.description>一次拿 10 瓶 1 升瓶装水到篝火或炉灶烧开，放凉后装回 10 瓶。工作时长和烧 1 瓶一样，都是 200。</CK_BoilWaterBulk.description>
 	<CK_BoilWaterBulk.jobString>正在批量烧水。</CK_BoilWaterBulk.jobString>
 </LanguageData>
