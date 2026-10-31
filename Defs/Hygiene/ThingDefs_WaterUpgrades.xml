@@ -107,7 +107,7 @@
 		</researchPrerequisites>
 	</ThingDef>
 
-	<!-- 深水井：1×1，4000 L/天，不受地表污染影响（Deep）。 -->
+	<!-- 深水井：1×1，4000 L/天，出水量比普通水井大。 -->
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_DeepWaterWell</defName>
 		<label>deep water well</label>
@@ -359,9 +359,6 @@
 				<Piped>false</Piped>
 			</li>
 		</comps>
-		<researchPrerequisites>
-			<li>CK_Plumbing</li>
-		</researchPrerequisites>
 	</ThingDef>
 
 	<!-- 低温开采节点：1×1，3000 L/天，同时释放 30 热/秒，不需要电。 -->

@@ -11,6 +11,9 @@ namespace ColonyKit.Modules.Hygiene
 	/// </summary>
 	public class WorkGiver_FixBlockage : WorkGiver_Scanner
 	{
+		public override ThingRequest PotentialWorkThingRequest =>
+			ThingRequest.ForGroup(ThingRequestGroup.BuildingArtificial);
+
 		public override PathEndMode PathEndMode => PathEndMode.Touch;
 
 		public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
