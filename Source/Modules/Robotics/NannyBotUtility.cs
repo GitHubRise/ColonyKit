@@ -202,6 +202,86 @@ namespace ColonyKit.Modules.Robotics
 			return false;
 		}
 
+		/// <summary>
+		/// 医疗床能不能让这台机器人躺上去休养。地图上没人能修、或者有人能修但还没来时，
+		/// 机器人可以来床上慢慢恢复；床必须空着、不是囚犯/奴隶床、没被禁用、走得到。
+		/// <paramref name="allowSelfOccupied"/> 供「已经在床上」的复查使用：自己躺着不算占用。
+		/// </summary>
+		public static bool CanRestInBed(Pawn robot, Building_Bed bed, bool allowSelfOccupied, bool checkReach)
+		{
+			if (robot?.Map == null || bed == null || !bed.Spawned || bed.Map != robot.Map)
+			{
+				return false;
+			}
+			if (!bed.Medical || bed.ForPrisoners || bed.ForSlaves)
+			{
+				return false;
+			}
+			if (bed.IsForbidden(robot) || bed.IsBurning())
+			{
+				return false;
+			}
+			foreach (Pawn occupant in bed.CurOccupants)
+			{
+				if (occupant != robot || !allowSelfOccupied)
+				{
+					return false;
+				}
+			}
+			CompNannyBot comp = BotComp(robot);
+			if (comp == null || comp.Durability >= comp.MaxDurability - 0.5f)
+			{
+				return false;
+			}
+			if (bed.def?.building == null || robot.BodySize > bed.def.building.bed_maxBodySize)
+			{
+				return false;
+			}
+			// 别人（比如真正需要病床的殖民者）先订了床就让出来，机器人换别的地方待着。
+			if (!robot.CanReserve(bed))
+			{
+				return false;
+			}
+			if (checkReach)
+			{
+				IntVec3 slot = RestUtility.GetBedSleepingSlotPosFor(robot, bed);
+				if (!robot.CanReach(slot, PathEndMode.OnCell, Danger.Deadly))
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+
+		/// <summary>找一张最近的、能躺上去休养的医疗床；没有就返回 null（机器人照常干活/野外自修复）。</summary>
+		public static Building_Bed FindBedForRest(Pawn robot)
+		{
+			if (robot?.Map == null)
+			{
+				return null;
+			}
+			Building_Bed best = null;
+			float bestDistance = float.MaxValue;
+			foreach (Building building in robot.Map.listerBuildings.allBuildingsColonist)
+			{
+				if (!(building is Building_Bed bed) || !bed.Medical)
+				{
+					continue;
+				}
+				if (!CanRestInBed(robot, bed, false, true))
+				{
+					continue;
+				}
+				float distance = bed.Position.DistanceToSquared(robot.Position);
+				if (distance < bestDistance)
+				{
+					best = bed;
+					bestDistance = distance;
+				}
+			}
+			return best;
+		}
+
 		public static IEnumerable<Pawn> AllNannyBots()
 		{
 			if (Current.Game == null)

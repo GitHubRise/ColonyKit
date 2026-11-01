@@ -62,6 +62,8 @@ namespace ColonyKit.Modules.Robotics
 					return "CK.Robotics.Task.EmptySepticTank";
 				case "CK_RepairNannyBot":
 					return "CK.Robotics.Task.Repair";
+				case "CK_RobotRestInBed":
+					return "CK.Robotics.Task.BedRest";
 				case "HaulToCell":
 					return "CK.Robotics.Task.HaulToCell";
 				case "HaulToContainer":

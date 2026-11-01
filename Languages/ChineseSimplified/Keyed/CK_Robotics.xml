@@ -12,10 +12,14 @@
 	<CK.Robotics.MkVCombat.Range>交战范围：{0} 格 · 回舱判定：{1} 格</CK.Robotics.MkVCombat.Range>
 	<CK.Robotics.MkVCombat.DualWield>双持：{0}（主手） + {1}（副手）</CK.Robotics.MkVCombat.DualWield>
 	<CK.Robotics.Inspect.LowPowerStandby>低功耗待机：充电转换率 ×1.2</CK.Robotics.Inspect.LowPowerStandby>
+	<CK.Robotics.Inspect.BedRest>医疗床休养中：正在以 {0} 耐久/天的速度恢复。</CK.Robotics.Inspect.BedRest>
 	<CK.Robotics.RobotInfo.LowPowerStandby>低功耗待机：充电转换率 ×1.2</CK.Robotics.RobotInfo.LowPowerStandby>
 	<CK.RobotManagement.Status.LowPowerStandby>快充待机</CK.RobotManagement.Status.LowPowerStandby>
 	<CK.Robotics.Menu.EquipWeapon>拾取武器：{0}</CK.Robotics.Menu.EquipWeapon>
 	<CK.Robotics.Menu.ChargeAtStation>去充电</CK.Robotics.Menu.ChargeAtStation>
+	<CK.Robotics.Menu.RestInBed>去医疗床休养</CK.Robotics.Menu.RestInBed>
+	<CK.Robotics.Menu.RestInBed.Full>已经满耐久，不需要休养</CK.Robotics.Menu.RestInBed.Full>
+	<CK.Robotics.Menu.RestInBed.Unavailable>床暂时用不了（有人占用、被禁用或走不到）</CK.Robotics.Menu.RestInBed.Unavailable>
 	<CK.Robotics.Menu.ReturnToBay>返回组装舱</CK.Robotics.Menu.ReturnToBay>
 	<CK.Robotics.Menu.RepairRobot>维修机器人：{0}</CK.Robotics.Menu.RepairRobot>
 	<CK.Robotics.Menu.NoStation>没有可用的充电桩。</CK.Robotics.Menu.NoStation>
@@ -88,6 +92,7 @@
 	<CK.Robotics.Task.Unblock>疏通洁具</CK.Robotics.Task.Unblock>
 	<CK.Robotics.Task.EmptySepticTank>清空化粪池</CK.Robotics.Task.EmptySepticTank>
 	<CK.Robotics.Task.Repair>维修机器人</CK.Robotics.Task.Repair>
+	<CK.Robotics.Task.BedRest>医疗床休养</CK.Robotics.Task.BedRest>
 	<CK.Robotics.Task.HaulToCell>搬运物品</CK.Robotics.Task.HaulToCell>
 	<CK.Robotics.Task.HaulToContainer>搬运入库</CK.Robotics.Task.HaulToContainer>
 	<CK.Robotics.Task.BeatFire>灭火</CK.Robotics.Task.BeatFire>

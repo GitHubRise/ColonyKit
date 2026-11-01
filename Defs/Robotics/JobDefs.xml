@@ -21,6 +21,13 @@
 	</JobDef>
 
 	<JobDef>
+		<defName>CK_RobotRestInBed</defName>
+		<driverClass>ColonyKit.Modules.Robotics.JobDriver_RobotRestInBed</driverClass>
+		<reportString>resting in a medical bed.</reportString>
+		<casualInterruptible>true</casualInterruptible>
+	</JobDef>
+
+	<JobDef>
 		<defName>CK_NannyUnblock</defName>
 		<driverClass>ColonyKit.Modules.Robotics.JobDriver_NannyUnblock</driverClass>
 		<reportString>unblocking a fixture.</reportString>

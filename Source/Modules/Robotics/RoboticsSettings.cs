@@ -126,6 +126,11 @@ namespace ColonyKit.Modules.Robotics
 		public const float MaxMkvSelfRepairRate = 300f;
 		public const float DefaultMkvSelfRepairRate = 60f;
 
+		// 机器人躺医疗床休养：每天恢复的耐久点数（比野外自修复快，但仍然是「慢慢恢复」）。
+		public const float MinRobotBedRestRate = 0f;
+		public const float MaxRobotBedRestRate = 2000f;
+		public const float DefaultRobotBedRestRate = 300f;
+
 		public const float MinAiInterval = 5f;
 		public const float MaxAiInterval = 300f;
 		public const float DefaultAiInterval = 20f;
@@ -216,6 +221,8 @@ namespace ColonyKit.Modules.Robotics
 		public bool mkvRandomTraits = false;
 		public bool mkvSelfRepair = true;
 		public float mkvSelfRepairRate = DefaultMkvSelfRepairRate;
+		public bool robotBedRest = true;
+		public float robotBedRestRate = DefaultRobotBedRestRate;
 
 		// Mk-V AI（DeepSeek/OpenAI 兼容接口）。
 		public bool aiEnabled = false;
@@ -302,6 +309,8 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref mkvRandomTraits, "mkvRandomTraits", false);
 			Scribe_Values.Look(ref mkvSelfRepair, "mkvSelfRepair", true);
 			Scribe_Values.Look(ref mkvSelfRepairRate, "mkvSelfRepairRate", DefaultMkvSelfRepairRate);
+			Scribe_Values.Look(ref robotBedRest, "robotBedRest", true);
+			Scribe_Values.Look(ref robotBedRestRate, "robotBedRestRate", DefaultRobotBedRestRate);
 			Scribe_Values.Look(ref aiEnabled, "aiEnabled", false);
 			Scribe_Values.Look(ref aiApiKey, "aiApiKey", "");
 			Scribe_Values.Look(ref aiBaseUrl, "aiBaseUrl", DefaultAiBaseUrl);
@@ -456,6 +465,11 @@ namespace ColonyKit.Modules.Robotics
 				mkvSelfRepairRate, MinMkvSelfRepairRate, MaxMkvSelfRepairRate);
 			changed |= !Approximately(selfRepairRate, mkvSelfRepairRate);
 
+			float bedRestRate = robotBedRestRate;
+			robotBedRestRate = ClampFloat(
+				robotBedRestRate, MinRobotBedRestRate, MaxRobotBedRestRate);
+			changed |= !Approximately(bedRestRate, robotBedRestRate);
+
 			float aiIntervalValue = aiInterval;
 			aiInterval = ClampFloat(aiInterval, MinAiInterval, MaxAiInterval);
 			changed |= !Approximately(aiIntervalValue, aiInterval);
@@ -584,6 +598,8 @@ namespace ColonyKit.Modules.Robotics
 			mkvRandomTraits = false;
 			mkvSelfRepair = true;
 			mkvSelfRepairRate = DefaultMkvSelfRepairRate;
+			robotBedRest = true;
+			robotBedRestRate = DefaultRobotBedRestRate;
 			aiEnabled = false;
 			aiApiKey = "";
 			aiBaseUrl = DefaultAiBaseUrl;

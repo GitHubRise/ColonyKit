@@ -24,6 +24,8 @@
 				<li Class="ThinkNode_PrioritySorter">
 					<subNodes>
 						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotCharge" />
+						<!-- 伤得比较重时去空医疗床躺着慢慢恢复；床不够/没有床就跳过，照常干活或野外自修复。 -->
+						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotBedRest" />
 						<!-- 仿生人设定：机械保姆也要喝水、上厕所；卫生模块关闭时这些 JobGiver 会自行返回 0 优先级。 -->
 						<li Class="ColonyKit.Modules.Hygiene.JobGiver_DrinkWaterUrgent" />
 						<li Class="ColonyKit.Modules.Hygiene.JobGiver_UseToilet" />

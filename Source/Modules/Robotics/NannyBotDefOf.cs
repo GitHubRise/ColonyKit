@@ -18,6 +18,7 @@ namespace ColonyKit.Modules.Robotics
 		public static JobDef CK_NannyCleanFilth;
 		public static JobDef CK_NannyCharge;
 		public static JobDef CK_RepairNannyBot;
+		public static JobDef CK_RobotRestInBed;
 		public static JobDef CK_NannyUnblock;
 		public static NeedDef CK_RobotEnergy;
 		public static StatDef CK_MkVInsulationCold;

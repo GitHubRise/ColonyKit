@@ -139,6 +139,7 @@ namespace ColonyKit.Modules.Robotics
 				ProbeCaravanPriority(map, mkv, builder);
 				ProbeMkvRandomTraits(mkv, builder);
 				ProbeThoughtLog(map, mkv, builder);
+				builder.Append(' ').Append(ProbeBedRest(map, mkv));
 				builder.Append(' ').Append(SelfRepairProbe(mkv));
 				mkv.Destroy(DestroyMode.Vanish);
 			}
@@ -1042,6 +1043,118 @@ namespace ColonyKit.Modules.Robotics
 			finally
 			{
 				settings.aiThoughtLog = original;
+			}
+		}
+
+		/// <summary>
+		/// 医疗床休养要在真实 Job / 寻路 / Toil 上跑通：机器人走到床边、躺下、耐久按速率涨。
+		/// 在 Mk-V 旁边放一张医院床，直接 StartJob，然后手动推 tick（PatherTick + JobTrackerTick），
+		/// 结束后停任务、拆床、还原耐久。
+		/// </summary>
+		private static string ProbeBedRest(Map map, Pawn mkv)
+		{
+			CompNannyBot comp = mkv?.TryGetComp<CompNannyBot>();
+			ThingDef hospitalBed = DefDatabase<ThingDef>.GetNamedSilentFail("HospitalBed");
+			if (comp == null || hospitalBed == null)
+			{
+				return "bedRest=none";
+			}
+			Building_Bed bed = null;
+			float oldDurability = comp.durability;
+			try
+			{
+				IntVec3 cell = FindFreeRect(map, mkv.Position, 8, 1, 2);
+				if (!cell.IsValid)
+				{
+					return "bedRest=nocell";
+				}
+				bed = (Building_Bed)ThingMaker.MakeThing(hospitalBed);
+				GenSpawn.Spawn(bed, cell, map, Rot4.South);
+				// 玩家造的床有阵营；没有阵营的床不会进 listerBuildings.allBuildingsColonist，
+				// JobGiver 就找不到它（不是玩法问题，是自检里 MakeThing 的默认状态）。
+				bed.SetFaction(Faction.OfPlayer);
+				comp.durability = 1000f;
+				float before = comp.durability;
+				RoboticsSettings settings = NannyBotUtility.Settings;
+				float oldBedRate = settings.robotBedRestRate;
+				settings.robotBedRestRate = 600f;
+				try
+				{
+				if (mkv.Drafted && mkv.drafter != null)
+				{
+					mkv.drafter.Drafted = false;
+				}
+				Job job = JobMaker.MakeJob(NannyBotDefOf.CK_RobotRestInBed, bed);
+				IntVec3 slot = RestUtility.GetBedSleepingSlotPosFor(mkv, bed);
+				bool canReach = mkv.CanReach(slot, PathEndMode.OnCell, Danger.Deadly);
+				string giver = new JobGiver_NannyBotBedRest()
+					.TryIssueJobPackage(mkv, new JobIssueParams()).Job?.def?.defName ?? "none";
+				// 直接把机器人放到床位上：验证「躺下 → 按速率恢复」这一段，
+				// 寻路本身交给原版补丁/正常 tick 循环（这里只记录 CanReach）。
+				mkv.pather?.StopDead();
+				mkv.Position = slot;
+				mkv.jobs.StartJob(job, JobCondition.InterruptForced);
+				int baseTicks = Find.TickManager.TicksGame;
+				for (int i = 0; i < 600; i++)
+				{
+					Find.TickManager.DebugSetTicksGame(baseTicks + i);
+					mkv.pather?.PatherTick();
+					mkv.jobs?.JobTrackerTick();
+					// 真实 tick 里 Pawn.Tick 每 tick 还会调 JobTrackerTickInterval → DriverTickInterval，
+					// 休息的恢复量就在 tickIntervalAction 里；这里补上，否则只跑 DriverTick 永远不涨。
+					mkv.jobs?.curDriver?.DriverTickInterval(1);
+				}
+				float after = comp.durability;
+				bool jobRunning = mkv.CurJobDef == NannyBotDefOf.CK_RobotRestInBed;
+				bool inBed = mkv.GetPosture().InBed();
+
+				// 没有床时必须老实返回「没活可干」，不能把机器人钉在原地。
+				mkv.jobs?.StopAll(false);
+				if (bed != null && !bed.Destroyed)
+				{
+					bed.Destroy(DestroyMode.Vanish);
+				}
+				comp.durability = 1000f;
+				string giverNoBed = new JobGiver_NannyBotBedRest()
+					.TryIssueJobPackage(mkv, new JobIssueParams()).Job?.def?.defName ?? "none";
+
+				return "bedRestSpawned=" + (bed != null)
+					+ " bedRestCanReach=" + canReach
+					+ " bedRestRate=" + oldBedRate.ToString("0")
+					+ " bedRestEnergy=" + (NannyBotUtility.Energy(mkv)?.CurLevelPercentage.ToString("0.00") ?? "none")
+					+ " bedRestGiver=" + giver
+					+ " bedRestGiverNoBed=" + giverNoBed
+					+ " bedRestJobRunning=" + jobRunning
+					+ " bedRestInBed=" + inBed
+					+ " bedRestDelta=" + (after - before).ToString("0.00")
+					+ " bedRestDurability=" + after.ToString("0")
+					+ " bedRestDriver=" + (mkv.jobs?.curDriver?.GetType().Name ?? "none")
+					+ " bedRestDist=" + mkv.Position.DistanceTo(slot).ToString("0.0");
+				}
+				finally
+				{
+					settings.robotBedRestRate = oldBedRate;
+				}
+			}
+			catch (Exception exception)
+			{
+				return "bedRestError=" + exception.GetType().Name + ":" + exception.Message;
+			}
+			finally
+			{
+				try
+				{
+					mkv?.jobs?.StopAll(false);
+				}
+				catch
+				{
+					// 自检里停任务失败不掩盖真正的结果。
+				}
+				if (bed != null && !bed.Destroyed)
+				{
+					bed.Destroy(DestroyMode.Vanish);
+				}
+				comp.durability = oldDurability;
 			}
 		}
 

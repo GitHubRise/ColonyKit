@@ -654,6 +654,21 @@ namespace ColonyKit.Modules.Robotics
 				value => "CK.Robotics.DurabilityPerDay".Loc(value.ToString("0")));
 			SettingsWidgets.Description(
 				listing, "ColonyKit.Settings.Robotics.MkvSelfRepairRate.Desc".Loc());
+			data.robotBedRest = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.RobotBedRest".Loc(),
+				ref data.robotBedRest,
+				"ColonyKit.Settings.Robotics.RobotBedRest.Desc".Loc());
+			data.robotBedRestRate = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.RobotBedRestRate".Loc(),
+				data.robotBedRestRate,
+				RoboticsSettings.MinRobotBedRestRate,
+				RoboticsSettings.MaxRobotBedRestRate,
+				10f,
+				value => "CK.Robotics.DurabilityPerDay".Loc(value.ToString("0")));
+			SettingsWidgets.Description(
+				listing, "ColonyKit.Settings.Robotics.RobotBedRestRate.Desc".Loc());
 			data.sounds = SettingsWidgets.Checkbox(
 				listing,
 				"ColonyKit.Settings.Robotics.Sounds".Loc(),

@@ -123,11 +123,15 @@
 	<ColonyKit.Settings.Robotics.MkVWidthScale>宽度比例</ColonyKit.Settings.Robotics.MkVWidthScale>
 	<ColonyKit.Settings.Robotics.MkVHeightScale>高度比例</ColonyKit.Settings.Robotics.MkVHeightScale>
 	<ColonyKit.Settings.Robotics.Section.Maintenance>维护与表现</ColonyKit.Settings.Robotics.Section.Maintenance>
-	<ColonyKit.Settings.Robotics.DurabilityHint>普通机器人耐久上限 1000，Mk-V 为 1800。只有受到伤害时才会损耗（约 250 点伤害报废），日常工作不损耗；耐久为 0 时报废成钢和零部件，殖民者可在「建造」工作中维修。维修期间机器人不会充电，修完才恢复充电。</ColonyKit.Settings.Robotics.DurabilityHint>
+	<ColonyKit.Settings.Robotics.DurabilityHint>普通机器人耐久上限 1000，Mk-V 为 5000。只有受到伤害时才会损耗（约 250 点伤害报废），日常工作不损耗；耐久为 0 时报废成钢和零部件，殖民者可在「建造」工作中维修，机器人也可以自己躺医疗床休养。维修期间机器人不会充电，修完才恢复充电。</ColonyKit.Settings.Robotics.DurabilityHint>
 	<ColonyKit.Settings.Robotics.MkvSelfRepair>野外自我修复（Mk-V）</ColonyKit.Settings.Robotics.MkvSelfRepair>
 	<ColonyKit.Settings.Robotics.MkvSelfRepair.Desc>耐久没满、又没人正在来修时（地图上没人能修，或者有人能修但暂时没空过来），Mk-V 会自己慢慢补耐久；一旦有殖民者带着维修任务赶来，自修复立刻让路，让殖民者一次修好。彻底报废（耐久归零）之后不会自我修复。</ColonyKit.Settings.Robotics.MkvSelfRepair.Desc>
 	<ColonyKit.Settings.Robotics.MkvSelfRepairRate>自修复速率</ColonyKit.Settings.Robotics.MkvSelfRepairRate>
 	<ColonyKit.Settings.Robotics.MkvSelfRepairRate.Desc>每天自行恢复的耐久点数，默认 60；Mk-V 满耐久 5000，从濒临报废修回满要几十天。拖到 0 等同于关闭。</ColonyKit.Settings.Robotics.MkvSelfRepairRate.Desc>
+	<ColonyKit.Settings.Robotics.RobotBedRest>医疗床休养（机器人）</ColonyKit.Settings.Robotics.RobotBedRest>
+	<ColonyKit.Settings.Robotics.RobotBedRest.Desc>耐久掉到一半以下、又没人正在修时，机器人会自己找一张空医疗床躺上去慢慢恢复；床被拆、被禁用、被病人占用或订走，或者电量低、口渴、附近有敌人时立刻起身，不会一直占着床。没有空床就跳过，照常干活（Mk-V 还会野外自修复）。</ColonyKit.Settings.Robotics.RobotBedRest.Desc>
+	<ColonyKit.Settings.Robotics.RobotBedRestRate>医疗床恢复速率</ColonyKit.Settings.Robotics.RobotBedRestRate>
+	<ColonyKit.Settings.Robotics.RobotBedRestRate.Desc>躺在医疗床上每天恢复的耐久点数，默认 300（0–2000）；拖到 0 等同于关闭。比野外自修复快，但仍远慢于殖民者维修。</ColonyKit.Settings.Robotics.RobotBedRestRate.Desc>
 	<ColonyKit.Settings.Robotics.Sounds>滴滴声</ColonyKit.Settings.Robotics.Sounds>
 	<ColonyKit.Settings.Robotics.Sounds.Desc>机器人工作时偶尔发出提示音；低电时只提醒一次。</ColonyKit.Settings.Robotics.Sounds.Desc>
 	<ColonyKit.Settings.Robotics.ChargingGlow>充电光效</ColonyKit.Settings.Robotics.ChargingGlow>

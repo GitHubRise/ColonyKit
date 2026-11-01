@@ -63,6 +63,14 @@ namespace ColonyKit.Modules.Robotics
 				}
 			}
 
+			// 医疗床休养：机器人受伤时可以躺上去慢慢恢复；床不可用/没受伤时给灰项并写明原因。
+			if (NannyBotUtility.IsNannyBot(selected)
+				&& clickedThing is Building_Bed bed
+				&& bed.Medical)
+			{
+				yield return RestInBedOption(selected, bed);
+			}
+
 			if (!NannyBotUtility.IsNannyBot(selected)
 				|| !(clickedThing is Building building)
 				|| building.def != NannyBotDefOf.CK_NannyBotStation)
@@ -141,6 +149,41 @@ namespace ColonyKit.Modules.Robotics
 			{
 				yield return option;
 			}
+		}
+
+		private static FloatMenuOption RestInBedOption(Pawn robot, Building_Bed bed)
+		{
+			string label = "CK.Robotics.Menu.RestInBed".Translate();
+			CompNannyBot comp = NannyBotUtility.BotComp(robot);
+			if (comp == null)
+			{
+				return new FloatMenuOption(
+					label + ": " + "CK.Robotics.Menu.RestInBed.Unavailable".Translate(), null);
+			}
+			if (comp.Durability >= comp.MaxDurability - 0.5f)
+			{
+				return new FloatMenuOption(
+					label + ": " + "CK.Robotics.Menu.RestInBed.Full".Translate(), null);
+			}
+			if (!NannyBotUtility.CanRestInBed(robot, bed, false, true))
+			{
+				return new FloatMenuOption(
+					label + ": " + "CK.Robotics.Menu.RestInBed.Unavailable".Translate(), null);
+			}
+			return new FloatMenuOption(label, () => OrderRest(robot, bed));
+		}
+
+		private static void OrderRest(Pawn robot, Building_Bed bed)
+		{
+			if (robot == null || bed == null || !bed.Spawned)
+			{
+				return;
+			}
+			if (robot.Drafted && robot.drafter != null)
+			{
+				robot.drafter.Drafted = false;
+			}
+			robot.jobs.TryTakeOrderedJob(JobMaker.MakeJob(NannyBotDefOf.CK_RobotRestInBed, bed));
 		}
 
 		private static void OrderEquip(Pawn robot, ThingWithComps weapon)

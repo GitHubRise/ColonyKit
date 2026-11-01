@@ -755,6 +755,12 @@ namespace ColonyKit.Modules.Robotics
 				selfRepairing = false;
 				return;
 			}
+			// 正躺在医疗床上休养时只按床上速率恢复，不叠加野外自修复。
+			if (pawn.CurJobDef == NannyBotDefOf.CK_RobotRestInBed)
+			{
+				selfRepairing = false;
+				return;
+			}
 
 			// 每 1000 tick 扫一次地图上有没有人能修，只用来把检查面板的提示说清楚。
 			int now = Find.TickManager.TicksGame;
@@ -982,6 +988,11 @@ namespace ColonyKit.Modules.Robotics
 					? "CK.Robotics.Inspect.SelfRepairing"
 					: "CK.Robotics.Inspect.SelfRepairing.Alone";
 				lines.Add(key.Translate(NannyBotUtility.Settings.mkvSelfRepairRate.ToString("0")));
+			}
+			if (pawn.CurJobDef == NannyBotDefOf.CK_RobotRestInBed)
+			{
+				lines.Add("CK.Robotics.Inspect.BedRest".Translate(
+					NannyBotUtility.Settings.robotBedRestRate.ToString("0")));
 			}
 			if (paused)
 			{
