@@ -106,6 +106,11 @@ namespace ColonyKit.Modules.Robotics
 				"ColonyKit.Settings.Robotics.Crafting".Loc(),
 				ref data.crafting,
 				"ColonyKit.Settings.Robotics.Crafting.Desc".Loc());
+			data.construct = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.Construct".Loc(),
+				ref data.construct,
+				"ColonyKit.Settings.Robotics.Construct.Desc".Loc());
 			data.water = SettingsWidgets.Checkbox(
 				listing,
 				"ColonyKit.Settings.Robotics.Water".Loc(),

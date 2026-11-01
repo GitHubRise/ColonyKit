@@ -325,6 +325,7 @@ namespace ColonyKit.Modules.Robotics
 					+ "② alert=true 表示刚收到敌袭预警：立刻放下家务，选 advance 或攻击候选，朝敌人方向主动出击，用远程武器在射程外开火，不要贴脸；"
 					+ "③ colonists=0 表示地图上没有殖民者：你是唯一的守卫，选 guard 主动承担护卫职责；"
 					+ "④ 没有威胁也没有紧急家务时：先 research_robotics 研究机器人科技，其次 assemble 制造同类；"
+					+ "缺研究台就选 build 先盖研究台，缺做饭的地方就搭篝火（会自己砍树补木料）；"
 					+ "⑤ 优先保护殖民者、避免无谓送死：倒地的殖民者优先救援，标「危急」的（失血/重伤）比家务重要；"
 					+ "附近没有床时会就地铺一张临时医疗睡眠点，把人抱过去再包扎。没有合适动作时才选 work。不要编造 id。"
 					+ "⑥ 交战时边打边撤：敌人贴近就先退到射程边缘、掩体后面的位置再开火，别站着当固定靶；脚下或身边起火时先挪开再打。";
@@ -518,6 +519,22 @@ namespace ColonyKit.Modules.Robotics
 			}
 
 			AddSelfWorkCandidates(candidates, pawn, settings);
+
+			// 缺研究台/做饭的地方：自己下蓝图、砍树补木料，再搬材料去盖。
+			if (settings.construct)
+			{
+				string buildLabel = MkVBuilder.DescribeMissing(pawn);
+				if (buildLabel != null)
+				{
+					candidates.Add(new AiCandidate
+					{
+						id = "build",
+						kind = "build",
+						label = buildLabel,
+						dist = 0
+					});
+				}
+			}
 
 			candidates.Add(new AiCandidate
 			{
@@ -1254,6 +1271,15 @@ namespace ColonyKit.Modules.Robotics
 				else
 				{
 					comp.AiLastError = "研究台不可用";
+				}
+				return;
+			}
+			if (action == "build")
+			{
+				Job buildJob;
+				if (MkVBuilder.TryBuildMissing(pawn, out buildJob) && buildJob != null)
+				{
+					StartJob(pawn, buildJob);
 				}
 				return;
 			}

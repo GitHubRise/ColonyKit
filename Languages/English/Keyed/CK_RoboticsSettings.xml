@@ -40,6 +40,8 @@
 	<ColonyKit.Settings.Robotics.Research.Desc>Let Mk-V work research benches on the current project.</ColonyKit.Settings.Robotics.Research.Desc>
 	<ColonyKit.Settings.Robotics.Crafting>Crafting (Mk-V)</ColonyKit.Settings.Robotics.Crafting>
 	<ColonyKit.Settings.Robotics.Crafting.Desc>Let Mk-V work bills at crafting spots, fabrication, smithy, tailoring and art benches.</ColonyKit.Settings.Robotics.Crafting.Desc>
+	<ColonyKit.Settings.Robotics.Construct>Construction</ColonyKit.Settings.Robotics.Construct>
+	<ColonyKit.Settings.Robotics.Construct.Desc>Let robots haul materials to blueprints and finish frames. When a research bench or a cooking spot is missing, the Mk-V places its own blueprint and marks nearby trees for wood; when off, they only build blueprints you placed.</ColonyKit.Settings.Robotics.Construct.Desc>
 	<ColonyKit.Settings.Robotics.DangerAvoidance>Avoid danger</ColonyKit.Settings.Robotics.DangerAvoidance>
 	<ColonyKit.Settings.Robotics.DangerAvoidance.Desc>Stop chores and return to the station while enemies are near or the map is at high danger.</ColonyKit.Settings.Robotics.DangerAvoidance.Desc>
 
@@ -242,6 +244,8 @@
 	<CK.Robotics.Chore.Water.Desc>Bring bottled water to thirsty patients and prisoners who cannot reach water, and feed those who cannot drink on their own.</CK.Robotics.Chore.Water.Desc>
 	<CK.Robotics.Chore.Plants.Label>Plants</CK.Robotics.Chore.Plants.Label>
 	<CK.Robotics.Chore.Plants.Desc>Harvest ripe crops, cut designated trees and plants, and sow empty fields.</CK.Robotics.Chore.Plants.Desc>
+	<CK.Robotics.Chore.Construct.Label>Construction</CK.Robotics.Chore.Construct.Label>
+	<CK.Robotics.Chore.Construct.Desc>Haul materials to blueprints and finish frames; places its own blueprint and chops wood when a research bench or cooking spot is missing.</CK.Robotics.Chore.Construct.Desc>
 
 	<ColonyKit.Settings.Robotics.Section.Ai>Mk-V AI (DeepSeek)</ColonyKit.Settings.Robotics.Section.Ai>
 	<ColonyKit.Settings.Robotics.Ai.Enabled>Enable AI control</ColonyKit.Settings.Robotics.Ai.Enabled>

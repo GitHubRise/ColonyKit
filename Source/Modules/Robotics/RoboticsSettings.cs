@@ -189,6 +189,10 @@ namespace ColonyKit.Modules.Robotics
 		public bool crafting = true;
 		public bool water = true;
 		public bool plants = true;
+
+		/// <summary>建造：搬材料到蓝图、盖完框架；关了以后也不会自己下蓝图。</summary>
+		public bool construct = true;
+
 		public bool dangerAvoidance = true;
 
 		// 表现。
@@ -291,6 +295,7 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref crafting, "crafting", true);
 			Scribe_Values.Look(ref water, "water", true);
 			Scribe_Values.Look(ref plants, "plants", true);
+			Scribe_Values.Look(ref construct, "construct", true);
 			Scribe_Values.Look(ref dangerAvoidance, "dangerAvoidance", true);
 			Scribe_Values.Look(ref sounds, "sounds", true);
 			Scribe_Values.Look(ref chargingGlow, "chargingGlow", true);
@@ -583,6 +588,7 @@ namespace ColonyKit.Modules.Robotics
 			crafting = true;
 			water = true;
 			plants = true;
+			construct = true;
 			dangerAvoidance = true;
 			sounds = true;
 			chargingGlow = true;

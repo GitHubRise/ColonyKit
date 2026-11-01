@@ -40,6 +40,8 @@
 	<ColonyKit.Settings.Robotics.Research.Desc>允许 Mk-V 在研究台推进当前研究。</ColonyKit.Settings.Robotics.Research.Desc>
 	<ColonyKit.Settings.Robotics.Crafting>手工制作（Mk-V）</ColonyKit.Settings.Robotics.Crafting>
 	<ColonyKit.Settings.Robotics.Crafting.Desc>允许 Mk-V 在制作点、制作台、锻造台、裁缝台和艺术台上处理账单。</ColonyKit.Settings.Robotics.Crafting.Desc>
+	<ColonyKit.Settings.Robotics.Construct>建造</ColonyKit.Settings.Robotics.Construct>
+	<ColonyKit.Settings.Robotics.Construct.Desc>允许机器人把材料搬到蓝图、把框架盖完。缺研究台或做饭的地方时，Mk-V 会自己下蓝图、就地标树砍木料；关闭后只盖玩家已经规划好的蓝图。</ColonyKit.Settings.Robotics.Construct.Desc>
 	<ColonyKit.Settings.Robotics.DangerAvoidance>危险规避</ColonyKit.Settings.Robotics.DangerAvoidance>
 	<ColonyKit.Settings.Robotics.DangerAvoidance.Desc>附近有敌人或全图高危险时，停止家务并回充电桩待命。</ColonyKit.Settings.Robotics.DangerAvoidance.Desc>
 
@@ -242,6 +244,8 @@
 	<CK.Robotics.Chore.Water.Desc>病人、囚徒口渴又走不到水时送瓶装水过去；自己端不起来的当场喂水。</CK.Robotics.Chore.Water.Desc>
 	<CK.Robotics.Chore.Plants.Label>种植收获</CK.Robotics.Chore.Plants.Label>
 	<CK.Robotics.Chore.Plants.Desc>收成熟作物、砍掉标记的树和植物，并给空地播种。</CK.Robotics.Chore.Plants.Desc>
+	<CK.Robotics.Chore.Construct.Label>建造</CK.Robotics.Chore.Construct.Label>
+	<CK.Robotics.Chore.Construct.Desc>搬运材料到蓝图、把框架盖完；缺研究台或做饭的地方时会自己下蓝图、砍树补木料。</CK.Robotics.Chore.Construct.Desc>
 
 	<ColonyKit.Settings.Robotics.Section.Ai>Mk-V AI（DeepSeek）</ColonyKit.Settings.Robotics.Section.Ai>
 	<ColonyKit.Settings.Robotics.Ai.Enabled>启用 AI 控制</ColonyKit.Settings.Robotics.Ai.Enabled>

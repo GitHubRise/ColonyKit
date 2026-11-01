@@ -36,6 +36,7 @@
 						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotCook" />
 						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotResearch" />
 						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotCrafting" />
+						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotConstruct" />
 						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotRefuel" />
 						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotHygiene" />
 						<li Class="ColonyKit.Modules.Robotics.JobGiver_NannyBotWater" />
@@ -86,6 +87,8 @@
 					<treeDef>CK_NannyBot</treeDef>
 				</li>
 				<li Class="ColonyKit.Modules.Robotics.JobGiver_MkVGuard" />
+				<!-- 没活干时把缺的研究台/篝火补上（下蓝图、标树）。 -->
+				<li Class="ColonyKit.Modules.Robotics.JobGiver_MkVBuildEssential" />
 				<li Class="ColonyKit.Modules.Robotics.JobGiver_MkVCloudwatch" />
 				<li Class="ColonyKit.Modules.Robotics.JobGiver_MkVWander" />
 			</subNodes>

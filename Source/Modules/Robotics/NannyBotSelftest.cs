@@ -144,6 +144,7 @@ namespace ColonyKit.Modules.Robotics
 				builder.Append(' ').Append(PassionProbe(mkv));
 				ProbeMkVThreat(map, mkv, builder);
 				ProbeMedicalAid(map, mkv, builder);
+				ProbeConstruction(map, mkv, builder);
 				mkv.Destroy(DestroyMode.Vanish);
 			}
 			bay.Destroy(DestroyMode.Vanish);
@@ -1558,6 +1559,114 @@ namespace ColonyKit.Modules.Robotics
 				}
 				DestroyTestPawn(patient);
 			}
+		}
+
+		/// <summary>
+		/// 建造探针：缺研究台/厨房时会不会自己下蓝图，以及「建造」家务能不能对这个蓝图派活。
+		/// 探完把蓝图拆掉，不影响存档。
+		/// </summary>
+		private static void ProbeConstruction(Map map, Pawn mkv, StringBuilder builder)
+		{
+			Thing blueprint = null;
+			Thing steel = null;
+			Thing wood = null;
+			Pawn builderPawn = null;
+			RoboticsSettings settings = NannyBotUtility.Settings;
+			bool oldDanger = settings.dangerAvoidance;
+			bool oldAlert = settings.aiRaidAdvance;
+			try
+			{
+				// 前面的探针放过敌人，危险度/预警可能还没回落；这里关掉「危险时停工」和「预警停工」再测。
+				settings.dangerAvoidance = false;
+				settings.aiRaidAdvance = false;
+				builder.Append(" aiBenchExists=").Append(MkVBuilder.HasResearchBench(map))
+					.Append(" aiKitchenExists=").Append(MkVBuilder.HasKitchen(map))
+					.Append(" aiBuildCanWork=").Append(NannyBotUtility.CanWork(mkv))
+					.Append(" aiBuildBeingRepaired=").Append(NannyBotUtility.IsBeingRepaired(mkv))
+					.Append(" aiBuildDrafted=").Append(mkv.Drafted)
+					.Append(" aiBuildEnergy=")
+					.Append((NannyBotUtility.Energy(mkv)?.CurLevel ?? -1f).ToString("0.00"))
+					.Append(" aiBuildPaused=").Append(NannyBotUtility.BotComp(mkv)?.paused ?? false)
+					.Append(" aiBuildRepairing=").Append(NannyBotUtility.BotComp(mkv)?.repairing ?? false)
+					.Append(" aiBuildSteel=").Append(map.resourceCounter.GetCount(ThingDefOf.Steel))
+					.Append(" aiBuildWood=").Append(map.resourceCounter.GetCount(ThingDefOf.WoodLog));
+
+				builderPawn = PawnGenerator.GeneratePawn(NannyBotDefOf.CK_RobotMkVKind, Faction.OfPlayer);
+				if (builderPawn != null)
+				{
+					GenSpawn.Spawn(builderPawn,
+						CellFinder.RandomClosewalkCellNear(mkv.Position, map, 6), map);
+				}
+				Pawn robot = builderPawn ?? mkv;
+				builder.Append(" aiBuildFreshCanWork=").Append(NannyBotUtility.CanWork(robot));
+
+				// 自检图是空地图：补一份材料，专门验证「下蓝图 → 建造家务派活」这条链。
+				if (map.resourceCounter.GetCount(ThingDefOf.Steel) < 25)
+				{
+					steel = SpawnStack(ThingDefOf.Steel, 30, map, mkv.Position);
+				}
+				if (map.resourceCounter.GetCount(ThingDefOf.WoodLog) < 80)
+				{
+					wood = SpawnStack(ThingDefOf.WoodLog, 90, map, mkv.Position);
+				}
+				map.resourceCounter.UpdateResourceCounts();
+				builder.Append(" aiBuildSteelAfter=").Append(map.resourceCounter.GetCount(ThingDefOf.Steel))
+					.Append(" aiBuildWoodAfter=").Append(map.resourceCounter.GetCount(ThingDefOf.WoodLog));
+				ThingDef benchDef = DefDatabase<ThingDef>.GetNamedSilentFail(MkVBuilder.ResearchBenchDefName);
+				builder.Append(" aiBuildSpot=")
+					.Append(benchDef != null && MkVBuilder.FindPlacementForTest(robot, benchDef).IsValid);
+
+				Job job;
+				bool placed = MkVBuilder.TryBuildMissing(robot, out job);
+				foreach (Thing thing in map.listerThings.ThingsInGroup(ThingRequestGroup.Blueprint))
+				{
+					string built = thing?.def?.entityDefToBuild?.defName;
+					if (built == MkVBuilder.ResearchBenchDefName
+						|| built == MkVBuilder.CampfireDefName)
+					{
+						blueprint = thing;
+						break;
+					}
+				}
+				builder.Append(" aiBuildPlaced=").Append(placed && blueprint != null)
+					.Append(" aiBuildDef=").Append(blueprint?.def?.entityDefToBuild?.defName ?? "none")
+					.Append(" aiBuildJob=").Append(job != null);
+
+				Job chore = new JobGiver_NannyBotConstruct()
+					.TryIssueJobPackage(robot, new JobIssueParams()).Job;
+				builder.Append(" aiConstructChore=").Append(chore != null);
+			}
+			catch (Exception exception)
+			{
+				builder.Append(" aiBuildError=").Append(exception.Message)
+					.Append(" aiBuildWhere=").Append(exception.TargetSite?.Name ?? "?");
+			}
+			finally
+			{
+				settings.dangerAvoidance = oldDanger;
+				settings.aiRaidAdvance = oldAlert;
+				DestroyTestPawn(builderPawn);
+				if (blueprint != null && !blueprint.Destroyed)
+				{
+					blueprint.Destroy(DestroyMode.Vanish);
+				}
+				if (steel != null && !steel.Destroyed)
+				{
+					steel.Destroy(DestroyMode.Vanish);
+				}
+				if (wood != null && !wood.Destroyed)
+				{
+					wood.Destroy(DestroyMode.Vanish);
+				}
+			}
+		}
+
+		private static Thing SpawnStack(ThingDef def, int count, Map map, IntVec3 near)
+		{
+			Thing thing = ThingMaker.MakeThing(def);
+			thing.stackCount = count;
+			GenSpawn.Spawn(thing, CellFinder.RandomClosewalkCellNear(near, map, 4), map);
+			return thing;
 		}
 	}
 }
