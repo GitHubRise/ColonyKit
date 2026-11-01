@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -130,7 +130,13 @@ namespace ColonyKit.Modules.Robotics
 					.Append(" mkvHome=").Append(mkvComp?.homeStation?.def?.defName ?? "none")
 					.Append(" mkvTraits=").Append(TraitList(mkv))
 					.Append(" incomingDamage=").Append(IncomingDamageProbe(mkv))
-					.Append(" mkvComfort=").Append(TemperatureProbe(mkv));
+					.Append(" mkvComfort=").Append(TemperatureProbe(mkv))
+					.Append(" mkvBiotech=").Append(ModsConfig.BiotechActive)
+					.Append(" mkvIsColonyMech=").Append(mkv.IsColonyMech)
+					.Append(" mkvMiningDisabled=")
+					.Append(mkv.skills?.GetSkill(SkillDefOf.Mining)?.TotallyDisabled ?? false)
+					.Append(" mkvResearchDisabled=")
+					.Append(mkv.skills?.GetSkill(SkillDefOf.Intellectual)?.TotallyDisabled ?? false);
 				ProbeMkVChores(map, mkv, builder);
 				ProbeCareJobs(map, mkv, builder);
 				ProbeMkVDualWield(mkv, builder);
