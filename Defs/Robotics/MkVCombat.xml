@@ -25,6 +25,10 @@
 			<AccuracyLong>0.66</AccuracyLong>
 			<RangedWeapon_Cooldown>1.4</RangedWeapon_Cooldown>
 		</statBases>
+		<smeltProducts>
+			<Steel>20</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</smeltProducts>
 		<weaponTags>
 			<li>Gun</li>
 			<li>SpacerGun</li>

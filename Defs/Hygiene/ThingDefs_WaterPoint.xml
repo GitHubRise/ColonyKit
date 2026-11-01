@@ -11,6 +11,9 @@
 		<thingClass>ColonyKit.Modules.Hygiene.Building_WaterPoint</thingClass>
 		<terrainAffordanceNeeded IsNull="True" />
 		<minifiedDef>MinifiedThing</minifiedDef>
+		<thingCategories>
+			<li>BuildingsMisc</li>
+		</thingCategories>
 		<size>(1,1)</size>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>

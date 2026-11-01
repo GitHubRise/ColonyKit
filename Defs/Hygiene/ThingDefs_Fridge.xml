@@ -17,6 +17,9 @@
 		</graphicData>
 		<rotatable>true</rotatable>
 		<minifiedDef>MinifiedThing</minifiedDef>
+		<thingCategories>
+			<li>BuildingsFurniture</li>
+		</thingCategories>
 		<designationCategory>CK_Hygiene</designationCategory>
 		<uiOrder>48</uiOrder>
 		<canOverlapZones>false</canOverlapZones>
