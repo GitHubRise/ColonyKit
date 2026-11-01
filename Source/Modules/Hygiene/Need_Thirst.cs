@@ -55,6 +55,22 @@ namespace ColonyKit.Modules.Hygiene
 
 		private float FallPerTick => FallPerTickAssumingCategory(CurCategory) * TemperatureFactor;
 
+		/// <summary>
+		/// 基准口渴速度：设置里的「口渴耗尽时间」按初始 80% → 空计，
+		/// 所以每 tick 掉 1 / (小时数 × 2500)；Hydrated 阶段跑满这一速率。
+		/// </summary>
+		private static float BaseFallPerTick
+		{
+			get
+			{
+				float hours = Mathf.Clamp(
+					HygieneSettings.Current.thirstHoursToEmpty,
+					HygieneSettings.MinThirstHours,
+					HygieneSettings.MaxThirstHours);
+				return 1f / (hours * 2500f);
+			}
+		}
+
 		private bool Drinking => Find.TickManager.TicksGame < lastGainTick + 10;
 
 		private float DehydrationSeverityPerInterval =>
@@ -81,14 +97,15 @@ namespace ColonyKit.Modules.Hygiene
 
 		private float FallPerTickAssumingCategory(ThirstCategory cat)
 		{
+			float rate = BaseFallPerTick * ThirstRate;
 			switch (cat)
 			{
 			case ThirstCategory.Hydrated:
-				return 2.6666667E-05f * ThirstRate;
+				return rate;
 			case ThirstCategory.Thirsty:
-				return 2.6666667E-05f * ThirstRate * 0.5f;
+				return rate * 0.5f;
 			case ThirstCategory.Parched:
-				return 2.6666667E-05f * ThirstRate * 0.15f;
+				return rate * 0.15f;
 			default:
 				return 999f;
 			}

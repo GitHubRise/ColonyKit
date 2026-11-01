@@ -5,4 +5,5 @@
 	<CK.Hygiene.FireSprinkler.Ready>ready</CK.Hygiene.FireSprinkler.Ready>
 	<CK.Hygiene.FireSprinkler.NoWater>no water in the network</CK.Hygiene.FireSprinkler.NoWater>
 	<CK.Hygiene.FireSprinkler.NoNetwork>not connected to a water network</CK.Hygiene.FireSprinkler.NoNetwork>
+	<CK.Hygiene.Pouch.Inspect>Water pouch: {0} / {1} L</CK.Hygiene.Pouch.Inspect>
 </LanguageData>

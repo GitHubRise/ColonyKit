@@ -48,8 +48,24 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				range = 9999f;
 			}
-			// 矿泉水：1 L/瓶，直接喝，不需要容器。
-			Thing bottle = MineralWaterUtility.Carried(pawn) ?? MineralWaterUtility.FindSpawned(pawn);
+			// 随身水袋优先：30 L 能顶好几天，不用为每一口跑回水龙头。
+			if (!pawn.RaceProps.Animal && WaterPouchUtility.GetWater(pawn) >= 0.1f)
+			{
+				JobDef pouchDef = DefDatabase<JobDef>.GetNamedSilentFail("CK_DrinkFromPouch");
+				if (pouchDef != null)
+				{
+					return JobMaker.MakeJob(pouchDef);
+				}
+			}
+
+			// 瓶装水：病人/囚徒收到的瓶子谁都能喝；从地上/仓库找瓶子只给殖民者，
+			// 避免访客/敌人顺手拿走殖民地库存。
+			bool colonistLike = pawn.IsColonist || pawn.IsSlave;
+			Thing bottle = MineralWaterUtility.Carried(pawn);
+			if (bottle == null && colonistLike && !pawn.RaceProps.Animal)
+			{
+				bottle = MineralWaterUtility.FindSpawned(pawn);
+			}
 			if (bottle != null)
 			{
 				Job bottleJob = JobMaker.MakeJob(JobDefOf.Ingest, bottle);
@@ -61,7 +77,7 @@ namespace ColonyKit.Modules.Hygiene
 				return bottleJob;
 			}
 			// 随身带着水桶/脸盆时先喝自己的水，省得跑回洗手池。
-			if (WaterContainerUtility.CarriedContainer(pawn, requireWater: true) != null)
+			if (!pawn.RaceProps.Animal && WaterContainerUtility.CarriedContainer(pawn, requireWater: true) != null)
 			{
 				JobDef carriedDef = DefDatabase<JobDef>.GetNamedSilentFail("CK_DrinkFromCarried");
 				if (carriedDef != null)
@@ -69,7 +85,10 @@ namespace ColonyKit.Modules.Hygiene
 					return JobMaker.MakeJob(carriedDef);
 				}
 			}
-			LocalTargetInfo target = ClosestSanitation.FindBestDrink(pawn, urgent, range);
+			// 敌人不许喝殖民地的水龙头/洗手池/水槽，只找地表水；
+			// 访客、商队、囚徒和殖民者可以用殖民地设施。
+			bool hostile = pawn.Faction != null && pawn.Faction.HostileTo(Faction.OfPlayer);
+			LocalTargetInfo target = ClosestSanitation.FindBestDrink(pawn, urgent, range, allowColonyFixtures: !hostile);
 			if (!target.IsValid)
 			{
 				return null;

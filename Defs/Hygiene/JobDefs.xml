@@ -120,4 +120,22 @@
 		<reportString>filling a purified water bottle.</reportString>
 		<casualInterruptible>true</casualInterruptible>
 	</JobDef>
+	<JobDef>
+		<defName>CK_DrinkFromPouch</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_DrinkFromPouch</driverClass>
+		<reportString>drinking from a water pouch.</reportString>
+		<casualInterruptible>true</casualInterruptible>
+	</JobDef>
+	<JobDef>
+		<defName>CK_FillWaterPouch</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_FillWaterPouch</driverClass>
+		<reportString>filling a water pouch.</reportString>
+		<casualInterruptible>true</casualInterruptible>
+	</JobDef>
+	<JobDef>
+		<defName>CK_BottleWaterToStockpile</defName>
+		<driverClass>ColonyKit.Modules.Hygiene.JobDriver_BottleWaterToStockpile</driverClass>
+		<reportString>bottling water for storage.</reportString>
+		<casualInterruptible>true</casualInterruptible>
+	</JobDef>
 </Defs>

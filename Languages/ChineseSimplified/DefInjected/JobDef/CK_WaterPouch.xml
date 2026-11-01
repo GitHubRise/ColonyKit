@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_DrinkFromPouch.reportString>正在喝水袋里的水。</CK_DrinkFromPouch.reportString>
+	<CK_FillWaterPouch.reportString>正在灌水袋。</CK_FillWaterPouch.reportString>
+	<CK_BottleWaterToStockpile.reportString>正在打水入库。</CK_BottleWaterToStockpile.reportString>
+</LanguageData>

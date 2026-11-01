@@ -19,6 +19,20 @@
 					<li Class="ColonyKit.Modules.Hygiene.JobGiver_DrinkWaterUrgent"/>
 					<li Class="ColonyKit.Modules.Hygiene.JobGiver_HaveWash"/>
 					<li Class="ColonyKit.Modules.Hygiene.JobGiver_UseToilet"/>
+					<li Class="ColonyKit.Modules.Hygiene.JobGiver_FillPouch"/>
+				</value>
+			</li>
+			<!-- 领主职责（袭击/围攻/访问/商队）里的喝水：放在 ThinkNode_Duty 之前，
+			     所以口渴时会打断进攻/访问去喝水；找不到水就提前撤离，而不是原地渴死。 -->
+			<li Class="PatchOperationInsert">
+				<xpath>Defs/ThinkTreeDef[defName = "LordDuty"]/thinkRoot/subNodes/li[@Class = "ThinkNode_ConditionalHasLordDuty"]/subNodes/li[@Class = "ThinkNode_Duty"]</xpath>
+				<value>
+					<li Class="ColonyKit.Modules.Hygiene.JobGiver_DrinkWater"/>
+					<li Class="ColonyKit.Modules.Hygiene.ThinkNode_ConditionalThirstyNoWater">
+						<subNodes>
+							<li Class="Verse.AI.JobGiver_ExitMapBest"/>
+						</subNodes>
+					</li>
 				</value>
 			</li>
 			<!-- 囚徒自己也要会喝水：原版囚徒分支的「满足需求」里没有喝水节点，

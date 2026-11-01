@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using ColonyKit.Modules.Hygiene.Dbh;
 using HarmonyLib;
@@ -81,6 +81,9 @@ namespace ColonyKit.Modules.Hygiene
 				Fail("no map");
 				return;
 			}
+			// 取水全流程自检只验证原有取水/送水链路；新的「打水入库」会抢水点，
+			// 这里先暂停，避免和手工排的账单互相占设施。
+			WorkGiver_BottleWater.SuspendedByTest = true;
 			if (!CheckWaterSearchRadiusGuard())
 			{
 				Fail("GenRadial radius log");
@@ -881,6 +884,9 @@ namespace ColonyKit.Modules.Hygiene
 			GenSpawn.Spawn(prisoner, cell, map, WipeMode.Vanish);
 			prisoner.guest?.SetGuestStatus(Faction.OfPlayer, GuestStatus.Prisoner);
 			HygieneUtility.EnsureThirst(prisoner);
+			// 水袋默认给囚徒 30 L；送水自检要验证「手里拿到瓶子会自己喝」，
+			// 先把水袋喝空，否则 JobGiver 会优先喝水袋、不再发 Ingest。
+			WaterPouchUtility.TakeWater(prisoner, WaterPouchUtility.MaxWater);
 			Need_Thirst thirst = prisoner.needs?.TryGetNeed<Need_Thirst>();
 			if (thirst == null)
 			{

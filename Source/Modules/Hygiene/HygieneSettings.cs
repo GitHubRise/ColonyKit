@@ -57,6 +57,12 @@ namespace ColonyKit.Modules.Hygiene
 		public const float MaxSewageProc = 2f;
 		public const float MinTerrainFertility = 0.2f;
 		public const float MaxTerrainFertility = 1.8f;
+		public const float MinThirstHours = 4f;
+		public const float MaxThirstHours = 72f;
+		public const float DefaultThirstHours = 20f;
+		public const float MinFoodWater = 0f;
+		public const float MaxFoodWater = 1f;
+		public const float DefaultFoodWater = 0.25f;
 
 		private const string DefaultExemptBodies = "HumanoidTerminator,AIRobot,AIPawn";
 		private static HygieneSettings fallback;
@@ -101,6 +107,18 @@ namespace ColonyKit.Modules.Hygiene
 
 		/// <summary>凉白开单瓶/批量配方的工作量（tick）。</summary>
 		public int boiledWaterWorkTicks = 200;
+
+		/// <summary>
+		/// 口渴耗尽时间（游戏内小时，25℃）：按「初始 80% → 空」计。
+		/// 4–72 可调，默认 20（原版基准 15）。
+		/// </summary>
+		public float thirstHoursToEmpty = DefaultThirstHours;
+
+		/// <summary>
+		/// 吃任何食物按营养补水：口渴 + 营养 × 该系数。
+		/// 默认 0.25（1.0 营养 ≈ 0.25 口渴 ≈ 1.25 瓶水）；0 关闭。
+		/// </summary>
+		public float foodWaterFactor = DefaultFoodWater;
 
 		/// <summary>水泵/风泵/泵站的容量倍率；1 为 DBH 原值。</summary>
 		public float pumpCapacityMultiplier = 1f;
@@ -326,6 +344,8 @@ namespace ColonyKit.Modules.Hygiene
 			Scribe_Values.Look(ref boiledWaterSatiety, "boiledWaterSatiety", 0.05f);
 			Scribe_Values.Look(ref boiledWaterMood, "boiledWaterMood", 2);
 			Scribe_Values.Look(ref boiledWaterWorkTicks, "boiledWaterWorkTicks", 200);
+			Scribe_Values.Look(ref thirstHoursToEmpty, "thirstHoursToEmpty", DefaultThirstHours);
+			Scribe_Values.Look(ref foodWaterFactor, "foodWaterFactor", DefaultFoodWater);
 			Scribe_Values.Look(ref pumpCapacityMultiplier, "pumpCapacityMultiplier", 1f);
 			Scribe_Values.Look(ref sewageGridCapacity, "sewageGridCapacity", 1f);
 			Scribe_Values.Look(ref sewageCleanupRate, "sewageCleanupRate", 1f);
@@ -365,6 +385,8 @@ namespace ColonyKit.Modules.Hygiene
 			changed |= Clamp(ref boiledWaterSatiety, 0f, 0.2f, 0.05f);
 			changed |= ClampInt(ref boiledWaterMood, 0, 20, 2);
 			changed |= ClampInt(ref boiledWaterWorkTicks, 20, 2000, 200);
+			changed |= Clamp(ref thirstHoursToEmpty, MinThirstHours, MaxThirstHours, DefaultThirstHours);
+			changed |= Clamp(ref foodWaterFactor, MinFoodWater, MaxFoodWater, DefaultFoodWater);
 			changed |= Clamp(ref pumpCapacityMultiplier, MinPumpCapacity, MaxPumpCapacity, 1f);
 			changed |= Clamp(ref sewageGridCapacity, MinSewageGrid, MaxSewageGrid, 1f);
 			changed |= Clamp(ref sewageCleanupRate, MinSewageCleanup, MaxSewageCleanup, 1f);

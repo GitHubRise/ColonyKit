@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
+	<ColonyKit.Settings.Hygiene.ThirstHours>口渴耗尽时间</ColonyKit.Settings.Hygiene.ThirstHours>
+	<ColonyKit.Settings.Hygiene.ThirstHours.Desc>从口渴 80% 到空的小时数（25℃，不含高温加速与低口渴阶段减速）。默认 20 小时，可调 4–72；调小口渴更快，调大更慢。</ColonyKit.Settings.Hygiene.ThirstHours.Desc>
+	<ColonyKit.Settings.Hygiene.FoodWater>食物含水量</ColonyKit.Settings.Hygiene.FoodWater>
+	<ColonyKit.Settings.Hygiene.FoodWater.Desc>吃任何食物都按营养补水：口渴 + 营养 × 系数。默认 0.25（一份 1.0 营养的饭约等于 1.25 瓶水）；0 关闭。动物啃草、啃树同样生效。</ColonyKit.Settings.Hygiene.FoodWater.Desc>
 	<ColonyKit.Settings.Hygiene.Section.BottledWater>瓶装水</ColonyKit.Settings.Hygiene.Section.BottledWater>
 	<ColonyKit.Settings.Hygiene.BottledWater.Hint>调整矿泉水、纯净水、凉白开喝一瓶的效果。修改后下一次喝水生效。</ColonyKit.Settings.Hygiene.BottledWater.Hint>
 	<ColonyKit.Settings.Hygiene.Water.Mineral>矿泉水</ColonyKit.Settings.Hygiene.Water.Mineral>

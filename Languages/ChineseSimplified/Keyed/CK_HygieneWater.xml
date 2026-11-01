@@ -5,4 +5,5 @@
 	<CK.Hygiene.FireSprinkler.Ready>就绪</CK.Hygiene.FireSprinkler.Ready>
 	<CK.Hygiene.FireSprinkler.NoWater>管网无水</CK.Hygiene.FireSprinkler.NoWater>
 	<CK.Hygiene.FireSprinkler.NoNetwork>未接入水网</CK.Hygiene.FireSprinkler.NoNetwork>
+	<CK.Hygiene.Pouch.Inspect>水袋：{0} / {1} L</CK.Hygiene.Pouch.Inspect>
 </LanguageData>

@@ -48,7 +48,26 @@ namespace ColonyKit.Modules.Hygiene
 				value => "×" + value.ToString("0.00"));
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.BladderRate.Desc".Loc());
 
+			data.thirstHoursToEmpty = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.ThirstHours".Loc(),
+				data.thirstHoursToEmpty,
+				HygieneSettings.MinThirstHours,
+				HygieneSettings.MaxThirstHours,
+				1f,
+				value => value.ToString("0") + " h");
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.ThirstHours.Desc".Loc());
+
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Water".Loc());
+			data.foodWaterFactor = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.FoodWater".Loc(),
+				data.foodWaterFactor,
+				HygieneSettings.MinFoodWater,
+				HygieneSettings.MaxFoodWater,
+				0.01f,
+				value => "×" + value.ToString("0.00"));
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.FoodWater.Desc".Loc());
 			data.waterUseMultiplier = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Hygiene.WaterUse".Loc(),

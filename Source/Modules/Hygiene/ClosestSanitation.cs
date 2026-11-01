@@ -9,11 +9,15 @@ namespace ColonyKit.Modules.Hygiene
 	/// <summary>找水喝（DBH ClosestSanitation.FindBestDrink 的移植）：先找洗手池/浴缸类设施，再退到地表水。</summary>
 	internal static class ClosestSanitation
 	{
-		public static LocalTargetInfo FindBestDrink(Pawn pawn, bool urgent, float range = 30f)
+		public static LocalTargetInfo FindBestDrink(Pawn pawn, bool urgent, float range = 30f, bool allowColonyFixtures = true)
 		{
 			if (pawn?.Map == null)
 			{
 				return LocalTargetInfo.Invalid;
+			}
+			if (!allowColonyFixtures)
+			{
+				return TryFindWaterCell(pawn, urgent ? 9999f : range);
 			}
 			Map map = pawn.Map;
 			Thing best = null;

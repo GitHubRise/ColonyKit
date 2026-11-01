@@ -113,4 +113,17 @@
 			<li>Manipulation</li>
 		</requiredCapacities>
 	</WorkGiverDef>
+	<!-- 打水入库：水龙头/免费取水点灌瓶装水，送回原版仓库（搬运工作）。 -->
+	<WorkGiverDef>
+		<defName>CK_BottleWater</defName>
+		<label>bottle water for storage</label>
+		<giverClass>ColonyKit.Modules.Hygiene.WorkGiver_BottleWater</giverClass>
+		<workType>Hauling</workType>
+		<priorityInType>41</priorityInType>
+		<verb>bottle water at</verb>
+		<gerund>bottling water at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
 </Defs>
