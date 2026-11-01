@@ -14,7 +14,8 @@ namespace ColonyKit.Modules.Hygiene
 
 	/// <summary>
 	/// 口渴（DBH Need_Thirst 的移植）：和饥饿一样按天掉，温度越高掉得越快；
-	/// 见底后累积脱水 hediff，最终致死；喝一次 +0.6%。
+	/// 见底后累积脱水 hediff，最终致死；喝水按「每升解渴」折算（默认 0.65）。
+	/// 动物（<see cref="RaceProps.Animal"/>）默认只按 50% 速度口渴，免得野生动物频繁渴死。
 	/// </summary>
 	public class Need_Thirst : Need
 	{
@@ -29,7 +30,12 @@ namespace ColonyKit.Modules.Hygiene
 			get
 			{
 				StatDef stat = ThirstRateStatDef;
-				return stat == null ? 1f : pawn.GetStatValue(stat);
+				float rate = stat == null ? 1f : pawn.GetStatValue(stat);
+				if (pawn.RaceProps.Animal)
+				{
+					rate *= HygieneSettings.Current.animalThirstRate;
+				}
+				return rate;
 			}
 		}
 

@@ -58,6 +58,16 @@ namespace ColonyKit.Modules.Hygiene
 				value => value.ToString("0") + " h");
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.ThirstHours.Desc".Loc());
 
+			data.animalThirstRate = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.AnimalThirst".Loc(),
+				data.animalThirstRate,
+				HygieneSettings.MinAnimalThirstRate,
+				HygieneSettings.MaxAnimalThirstRate,
+				0.05f,
+				value => "×" + value.ToString("0.00"));
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.AnimalThirst.Desc".Loc());
+
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Water".Loc());
 			data.foodWaterFactor = SettingsWidgets.Slider(
 				listing,
@@ -68,6 +78,26 @@ namespace ColonyKit.Modules.Hygiene
 				0.01f,
 				value => "×" + value.ToString("0.00"));
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.FoodWater.Desc".Loc());
+
+			data.herbivorePlantThirst = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.AnimalPlantThirst".Loc(),
+				data.herbivorePlantThirst,
+				0f,
+				HygieneSettings.MaxAnimalFoodThirst,
+				0.01f,
+				value => "+" + value.ToString("0.00"));
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.AnimalPlantThirst.Desc".Loc());
+
+			data.carnivoreMeatThirst = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.AnimalMeatThirst".Loc(),
+				data.carnivoreMeatThirst,
+				0f,
+				HygieneSettings.MaxAnimalFoodThirst,
+				0.01f,
+				value => "+" + value.ToString("0.00"));
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.AnimalMeatThirst.Desc".Loc());
 			data.waterUseMultiplier = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Hygiene.WaterUse".Loc(),
@@ -100,15 +130,16 @@ namespace ColonyKit.Modules.Hygiene
 
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.BottledWater".Loc());
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.BottledWater.Hint".Loc());
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.Water.Mineral".Loc());
-			data.mineralWaterThirst = SettingsWidgets.Slider(
+			data.thirstPerLiter = SettingsWidgets.Slider(
 				listing,
-				"ColonyKit.Settings.Hygiene.Water.Thirst".Loc(),
-				data.mineralWaterThirst,
-				0f,
-				1f,
+				"ColonyKit.Settings.Hygiene.Water.PerLiter".Loc(),
+				data.thirstPerLiter,
+				HygieneSettings.MinThirstPerLiter,
+				HygieneSettings.MaxThirstPerLiter,
 				0.01f,
 				value => value.ToString("0.00"));
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.Water.PerLiter.Desc".Loc());
+			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.Water.Mineral".Loc());
 			data.mineralWaterSatiety = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Hygiene.Water.Satiety".Loc(),
@@ -124,14 +155,6 @@ namespace ColonyKit.Modules.Hygiene
 				"ColonyKit.Settings.Hygiene.Water.MineralPoison.Desc".Loc());
 
 			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.Water.Purified".Loc());
-			data.purifiedWaterThirst = SettingsWidgets.Slider(
-				listing,
-				"ColonyKit.Settings.Hygiene.Water.Thirst".Loc(),
-				data.purifiedWaterThirst,
-				0f,
-				1f,
-				0.01f,
-				value => value.ToString("0.00"));
 			data.purifiedWaterSatiety = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Hygiene.Water.Satiety".Loc(),
@@ -150,14 +173,6 @@ namespace ColonyKit.Modules.Hygiene
 				value => "+" + value.ToString("0")));
 
 			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.Water.Boiled".Loc());
-			data.boiledWaterThirst = SettingsWidgets.Slider(
-				listing,
-				"ColonyKit.Settings.Hygiene.Water.Thirst".Loc(),
-				data.boiledWaterThirst,
-				0f,
-				1f,
-				0.01f,
-				value => value.ToString("0.00"));
 			data.boiledWaterSatiety = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Hygiene.Water.Satiety".Loc(),
@@ -198,6 +213,12 @@ namespace ColonyKit.Modules.Hygiene
 				0.05f,
 				value => "×" + value.ToString("0.00"));
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.PumpCapacity.Desc".Loc());
+
+			data.groundWaterRequired = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Hygiene.GroundWaterRequired".Loc(),
+				ref data.groundWaterRequired,
+				"ColonyKit.Settings.Hygiene.GroundWaterRequired.Desc".Loc());
 
 			data.sewageGridCapacity = SettingsWidgets.Slider(
 				listing,

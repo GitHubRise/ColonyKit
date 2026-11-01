@@ -8,13 +8,14 @@ namespace ColonyKit.Modules.Hygiene
 {
 	/// <summary>
 	/// 1 L 一瓶的瓶装水：矿泉水（未处理，可能闹肚子）、纯净水（过滤）和凉白开（烧开）。
-	/// 三者都恢复 0.2 口渴，不需要容器；除矿泉水外都不会中毒。
+	/// 三种都按「每升解渴」折算（默认 0.65），不需要容器；除矿泉水外都不会中毒。
 	/// </summary>
 	internal static class MineralWaterUtility
 	{
 		public const float LitersPerBottle = 1f;
 
-		public const float ThirstPerBottle = 0.2f;
+		/// <summary>每升水的解渴量，设置页「水与污染 → 每升解渴」可调（默认 0.65）。</summary>
+		public static float ThirstPerLiter => Settings.thirstPerLiter;
 
 		private static ThingDef cachedMineral;
 
@@ -60,17 +61,11 @@ namespace ColonyKit.Modules.Hygiene
 
 		private static HygieneSettings Settings => HygieneSettings.Current;
 
+		/// <summary>喝掉一件水（1 L）解多少渴；三种瓶装水现在共用「每升解渴」。</summary>
 		public static float ThirstFor(Thing thing)
 		{
-			if (IsBoiledWater(thing))
-			{
-				return Settings.boiledWaterThirst;
-			}
-			if (IsPurifiedWater(thing))
-			{
-				return Settings.purifiedWaterThirst;
-			}
-			return Settings.mineralWaterThirst;
+			// 三种瓶装水都是 1 L，解渴只取决于「每升解渴」；参数保留给调用方的三种水区分逻辑。
+			return LitersPerBottle * ThirstPerLiter;
 		}
 
 		public static float SatietyFor(Thing thing)
@@ -182,7 +177,7 @@ namespace ColonyKit.Modules.Hygiene
 		}
 	}
 
-	/// <summary>喝瓶装水时给口渴加 0.2（1 L）；矿泉水可能带未处理水污染，纯净水不会。</summary>
+	/// <summary>喝瓶装水时按 1 L × 每升解渴加口渴（默认 0.65）；矿泉水可能带未处理水污染，纯净水不会。</summary>
 	[HarmonyLib.HarmonyPatch(typeof(Thing), nameof(Thing.Ingested))]
 	internal static class Patch_Thing_Ingested_MineralWater
 	{

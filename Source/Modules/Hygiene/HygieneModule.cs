@@ -84,6 +84,7 @@ namespace ColonyKit.Modules.Hygiene
 			HygieneUtility.RefreshAllPawns();
 			Agriculture.AgricultureSelftest.RunIfRequested(game);
 			WaterSelftest.RunIfRequested(game);
+			GroundWater.GroundWaterSelftest.RunIfRequested(game);
 			ThirstSelftest.RunIfRequested(game);
 			int humanlikes = 0;
 			int withNeed = 0;

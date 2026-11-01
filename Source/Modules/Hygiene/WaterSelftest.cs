@@ -177,6 +177,7 @@ namespace ColonyKit.Modules.Hygiene
 			}
 
 			SpawnBuilding(wellDef, wellCell);
+			EnsureRigGroundWater(map, wellCell);
 			SpawnBuilding(pipeDef, pipeCell);
 			tap = SpawnBuilding(tapDef, tapCell) as Building_WaterPoint;
 			// 免费取水点只能建在水面：把它的格改成浅水，并先验证 PlaceWorker 的放行规则。
@@ -281,6 +282,26 @@ namespace ColonyKit.Modules.Hygiene
 			Thing thing = ThingMaker.MakeThing(def);
 			GenSpawn.Spawn(thing, cell, map);
 			return thing;
+		}
+
+		/// <summary>
+		/// 取水流程自检只验证水桶/水龙头链路，不该被「水井建在贫水格」拖慢：
+		/// 把井周围的浅层水脉抬到富水，让井按接近标称的产量出水。
+		/// </summary>
+		private static void EnsureRigGroundWater(Map map, IntVec3 wellCell)
+		{
+			GroundWater.MapComponent_GroundWater groundWater = map.GetComponent<GroundWater.MapComponent_GroundWater>();
+			if (groundWater == null || !HygieneSettings.Current.groundWaterRequired)
+			{
+				return;
+			}
+			foreach (IntVec3 cell in GenRadial.RadialCellsAround(wellCell, 8f, true))
+			{
+				if (cell.InBounds(map) && groundWater.ValueAt(cell, false) < 80f)
+				{
+					groundWater.SetWaterForTest(cell, 80f);
+				}
+			}
 		}
 
 		private static bool TryFindArea(Map map, out IntVec3 origin)

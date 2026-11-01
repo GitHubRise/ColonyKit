@@ -2,14 +2,21 @@
 <LanguageData>
 	<ColonyKit.Settings.Hygiene.ThirstHours>Time to empty</ColonyKit.Settings.Hygiene.ThirstHours>
 	<ColonyKit.Settings.Hygiene.ThirstHours.Desc>Hours from 80% thirst to empty (25°C, before heat acceleration and low-thirst slowdown). Default 20, range 4–72. Lower means thirstier pawns.</ColonyKit.Settings.Hygiene.ThirstHours.Desc>
+	<ColonyKit.Settings.Hygiene.AnimalThirst>Animal thirst rate</ColonyKit.Settings.Hygiene.AnimalThirst>
+	<ColonyKit.Settings.Hygiene.AnimalThirst.Desc>Thirst rate multiplier for animals (wild, livestock, pets); humanlikes are unaffected. Default 0.50, so the same water lasts twice as long and wild animals rarely die of thirst; 1.00 matches vanilla pacing.</ColonyKit.Settings.Hygiene.AnimalThirst.Desc>
 	<ColonyKit.Settings.Hygiene.FoodWater>Water in food</ColonyKit.Settings.Hygiene.FoodWater>
-	<ColonyKit.Settings.Hygiene.FoodWater.Desc>Every food restores thirst by nutrition × this factor. Default 0.25 (a 1.0-nutrition meal is about 1.25 bottles); 0 disables. Also applies to animals grazing grass or trees.</ColonyKit.Settings.Hygiene.FoodWater.Desc>
+	<ColonyKit.Settings.Hygiene.FoodWater.Desc>Every food restores thirst by nutrition × this factor. Default 0.25 (a 1.0-nutrition meal is about 1.25 bottles); 0 disables. Herbivores and carnivores eating their own food use the two fixed values below instead.</ColonyKit.Settings.Hygiene.FoodWater.Desc>
+	<ColonyKit.Settings.Hygiene.AnimalPlantThirst>Thirst from grazing</ColonyKit.Settings.Hygiene.AnimalPlantThirst>
+	<ColonyKit.Settings.Hygiene.AnimalPlantThirst.Desc>Fixed thirst a herbivore gets per meal of plant food (grass, trees, vegetables, fungus, seeds). Default 0.10; 0 disables and falls back to the nutrition-based value.</ColonyKit.Settings.Hygiene.AnimalPlantThirst.Desc>
+	<ColonyKit.Settings.Hygiene.AnimalMeatThirst>Thirst from eating meat</ColonyKit.Settings.Hygiene.AnimalMeatThirst>
+	<ColonyKit.Settings.Hygiene.AnimalMeatThirst.Desc>Fixed thirst a carnivore gets per meal of meat or a corpse. Default 0.10; 0 disables and falls back to the nutrition-based value.</ColonyKit.Settings.Hygiene.AnimalMeatThirst.Desc>
 	<ColonyKit.Settings.Hygiene.Section.BottledWater>Bottled water</ColonyKit.Settings.Hygiene.Section.BottledWater>
 	<ColonyKit.Settings.Hygiene.BottledWater.Hint>Adjust what one bottle of mineral water, purified water, or boiled water does. Changes apply the next time someone drinks.</ColonyKit.Settings.Hygiene.BottledWater.Hint>
+	<ColonyKit.Settings.Hygiene.Water.PerLiter>Thirst per liter</ColonyKit.Settings.Hygiene.Water.PerLiter>
+	<ColonyKit.Settings.Hygiene.Water.PerLiter.Desc>Thirst restored per liter of water. Default 0.65 (one 1 L bottle restores about 65%, roughly 13 hours at the default 20 h). Bottles, the water pouch, buckets/basins, taps and patient feeding all use this value; range 0.05–2.00.</ColonyKit.Settings.Hygiene.Water.PerLiter.Desc>
 	<ColonyKit.Settings.Hygiene.Water.Mineral>Mineral water</ColonyKit.Settings.Hygiene.Water.Mineral>
 	<ColonyKit.Settings.Hygiene.Water.Purified>Purified water</ColonyKit.Settings.Hygiene.Water.Purified>
 	<ColonyKit.Settings.Hygiene.Water.Boiled>Boiled water</ColonyKit.Settings.Hygiene.Water.Boiled>
-	<ColonyKit.Settings.Hygiene.Water.Thirst>Thirst restored</ColonyKit.Settings.Hygiene.Water.Thirst>
 	<ColonyKit.Settings.Hygiene.Water.Satiety>Food restored</ColonyKit.Settings.Hygiene.Water.Satiety>
 	<ColonyKit.Settings.Hygiene.Water.Mood>Mood</ColonyKit.Settings.Hygiene.Water.Mood>
 	<ColonyKit.Settings.Hygiene.Water.WorkTicks>Boiled water work</ColonyKit.Settings.Hygiene.Water.WorkTicks>

@@ -200,7 +200,7 @@ namespace ColonyKit.Modules.Hygiene
 				{
 					waterQuality = container.Contamination;
 				}
-				thirst.Drink(0.006f * delta);
+				thirst.Drink(taken * MineralWaterUtility.ThirstPerLiter);
 				if (thirst.CurLevel >= 0.999f || container.IsEmpty)
 				{
 					ReadyForNextToil();

@@ -8,6 +8,8 @@ namespace ColonyKit.Modules.Hygiene
 		public CompProperties_FreeWaterInlet()
 		{
 			compClass = typeof(CompFreeWaterInlet);
+			// 免费取水点是无限地表水源，不参与地下水网格。
+			GroundWater = false;
 		}
 	}
 
@@ -25,6 +27,8 @@ namespace ColonyKit.Modules.Hygiene
 		public CompProperties_SurfaceWaterInlet()
 		{
 			compClass = typeof(CompSurfaceWaterInlet);
+			// 水面进水口只看脚下是不是水面，不读地下水网格。
+			GroundWater = false;
 		}
 	}
 

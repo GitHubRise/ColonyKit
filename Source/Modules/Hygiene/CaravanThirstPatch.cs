@@ -43,8 +43,6 @@ namespace ColonyKit.Modules.Hygiene
 	{
 		private const float LitersPerDrink = 3f;
 
-		private const float ThirstPerDrink = 0.6f;
-
 		private static void Prefix(Caravan_NeedsTracker __instance, Pawn pawn)
 		{
 			if (pawn == null || pawn.Dead)
@@ -84,7 +82,7 @@ namespace ColonyKit.Modules.Hygiene
 				float taken = container.Drain(Mathf.Min(LitersPerDrink, container.Water));
 				if (taken > 0.01f)
 				{
-					thirst.Drink(ThirstPerDrink * (taken / LitersPerDrink));
+					thirst.Drink(taken * MineralWaterUtility.ThirstPerLiter);
 					SanitationUtil.ContaminationCheckDrinking(pawn, container.Contamination);
 					HygieneUtility.AddDrinkSatiety(pawn);
 					return;
@@ -111,7 +109,8 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return false;
 			}
-			thirst.Drink(ThirstPerDrink);
+			// 在地块上找水喝一次按 1 L 折算（河流必成，否则看降雨）。
+			thirst.Drink(MineralWaterUtility.ThirstPerLiter);
 			SanitationUtil.ContaminationCheckWater(pawn, ContaminationLevel.Untreated);
 			HygieneUtility.AddDrinkSatiety(pawn);
 			return true;

@@ -63,6 +63,15 @@ namespace ColonyKit.Modules.Hygiene
 		public const float MinFoodWater = 0f;
 		public const float MaxFoodWater = 1f;
 		public const float DefaultFoodWater = 0.25f;
+		public const float MinThirstPerLiter = 0.05f;
+		public const float MaxThirstPerLiter = 2f;
+		public const float DefaultThirstPerLiter = 0.65f;
+		public const float MinAnimalThirstRate = 0.1f;
+		public const float MaxAnimalThirstRate = 1.5f;
+		public const float DefaultAnimalThirstRate = 0.5f;
+		public const float MaxAnimalFoodThirst = 0.5f;
+		public const float DefaultHerbivorePlantThirst = 0.1f;
+		public const float DefaultCarnivoreMeatThirst = 0.1f;
 
 		private const string DefaultExemptBodies = "HumanoidTerminator,AIRobot,AIPawn";
 		private static HygieneSettings fallback;
@@ -84,23 +93,29 @@ namespace ColonyKit.Modules.Hygiene
 		/// <summary>脏水造成污染的概率倍率；0 为关闭，1 为原版默认。</summary>
 		public float contaminationChanceMultiplier = 1f;
 
-		/// <summary>矿泉水：解渴量（0–1）、饱腹点（0–0.2）、是否可能中毒。</summary>
-		public float mineralWaterThirst = 0.2f;
+		/// <summary>每升水的解渴量（0.05–2）：瓶装水 1 L、水袋、水桶、水龙头与病人喂水都按这个折算。</summary>
+		public float thirstPerLiter = DefaultThirstPerLiter;
 
+		/// <summary>动物口渴速度倍率（0.1–1.5）：默认 0.5，即同样多的水能撑两倍时间。</summary>
+		public float animalThirstRate = DefaultAnimalThirstRate;
+
+		/// <summary>草食动物吃植物类食物（草、树、蔬果、菌菇、种子）一次补水，默认 0.1。</summary>
+		public float herbivorePlantThirst = DefaultHerbivorePlantThirst;
+
+		/// <summary>肉食动物吃肉或尸体一次补水，默认 0.1。</summary>
+		public float carnivoreMeatThirst = DefaultCarnivoreMeatThirst;
+
+		/// <summary>矿泉水：饱腹点（0–0.2）、是否可能中毒。</summary>
 		public float mineralWaterSatiety = 0.02f;
 
 		public bool mineralWaterCanPoison = true;
 
-		/// <summary>纯净水：解渴量、饱腹点、心情值（0–20）。</summary>
-		public float purifiedWaterThirst = 0.2f;
-
+		/// <summary>纯净水：饱腹点、心情值（0–20）。</summary>
 		public float purifiedWaterSatiety = 0.03f;
 
 		public int purifiedWaterMood = 5;
 
-		/// <summary>凉白开：解渴量、饱腹点、心情值（0–20）。</summary>
-		public float boiledWaterThirst = 0.2f;
-
+		/// <summary>凉白开：饱腹点、心情值（0–20）。</summary>
 		public float boiledWaterSatiety = 0.05f;
 
 		public int boiledWaterMood = 2;
@@ -158,6 +173,12 @@ namespace ColonyKit.Modules.Hygiene
 
 		/// <summary>是否在地面画出施肥（土褐）/灌溉（淡蓝）覆盖层。</summary>
 		public bool showAgricultureOverlay = true;
+
+		/// <summary>
+		/// 水井必须建在地下水脉上，且产量随水脉厚薄变化（DBH 规则）。
+		/// 关掉后回到旧行为：井可以随便放，按标称产量出水。
+		/// </summary>
+		public bool groundWaterRequired = true;
 
 		/// <summary>检测到 DBH 时的处理策略。</summary>
 		public HygieneDbhPolicy dbhPolicy = HygieneDbhPolicy.SoftOff;
@@ -334,13 +355,14 @@ namespace ColonyKit.Modules.Hygiene
 			Scribe_Values.Look(ref waterUseMultiplier, "waterUseMultiplier", 1f);
 			Scribe_Values.Look(ref hotWaterUseMultiplier, "hotWaterUseMultiplier", 1f);
 			Scribe_Values.Look(ref contaminationChanceMultiplier, "contaminationChanceMultiplier", 1f);
-			Scribe_Values.Look(ref mineralWaterThirst, "mineralWaterThirst", 0.2f);
+			Scribe_Values.Look(ref thirstPerLiter, "thirstPerLiter", DefaultThirstPerLiter);
+			Scribe_Values.Look(ref animalThirstRate, "animalThirstRate", DefaultAnimalThirstRate);
+			Scribe_Values.Look(ref herbivorePlantThirst, "herbivorePlantThirst", DefaultHerbivorePlantThirst);
+			Scribe_Values.Look(ref carnivoreMeatThirst, "carnivoreMeatThirst", DefaultCarnivoreMeatThirst);
 			Scribe_Values.Look(ref mineralWaterSatiety, "mineralWaterSatiety", 0.02f);
 			Scribe_Values.Look(ref mineralWaterCanPoison, "mineralWaterCanPoison", true);
-			Scribe_Values.Look(ref purifiedWaterThirst, "purifiedWaterThirst", 0.2f);
 			Scribe_Values.Look(ref purifiedWaterSatiety, "purifiedWaterSatiety", 0.03f);
 			Scribe_Values.Look(ref purifiedWaterMood, "purifiedWaterMood", 5);
-			Scribe_Values.Look(ref boiledWaterThirst, "boiledWaterThirst", 0.2f);
 			Scribe_Values.Look(ref boiledWaterSatiety, "boiledWaterSatiety", 0.05f);
 			Scribe_Values.Look(ref boiledWaterMood, "boiledWaterMood", 2);
 			Scribe_Values.Look(ref boiledWaterWorkTicks, "boiledWaterWorkTicks", 200);
@@ -359,6 +381,7 @@ namespace ColonyKit.Modules.Hygiene
 			Scribe_Values.Look(ref fertilizerMaxFertility, "fertilizerMaxFertility", 2f);
 			Scribe_Values.Look(ref terrainFertilityFactor, "terrainFertilityFactor", 1f);
 			Scribe_Values.Look(ref showAgricultureOverlay, "showAgricultureOverlay", true);
+			Scribe_Values.Look(ref groundWaterRequired, "groundWaterRequired", true);
 			Scribe_Values.Look(ref dbhPolicy, "dbhPolicy", HygieneDbhPolicy.SoftOff);
 			Scribe_Values.Look(ref prisonersGetHygiene, "prisonersGetHygiene", true);
 			Scribe_Values.Look(ref guestsGetHygiene, "guestsGetHygiene", true);
@@ -376,12 +399,13 @@ namespace ColonyKit.Modules.Hygiene
 			changed |= Clamp(ref waterUseMultiplier, MinWaterUse, MaxWaterUse, 1f);
 			changed |= Clamp(ref hotWaterUseMultiplier, MinHotWaterUse, MaxHotWaterUse, 1f);
 			changed |= Clamp(ref contaminationChanceMultiplier, MinContamination, MaxContamination, 1f);
-			changed |= Clamp(ref mineralWaterThirst, 0f, 1f, 0.2f);
+			changed |= Clamp(ref thirstPerLiter, MinThirstPerLiter, MaxThirstPerLiter, DefaultThirstPerLiter);
+			changed |= Clamp(ref animalThirstRate, MinAnimalThirstRate, MaxAnimalThirstRate, DefaultAnimalThirstRate);
+			changed |= Clamp(ref herbivorePlantThirst, 0f, MaxAnimalFoodThirst, DefaultHerbivorePlantThirst);
+			changed |= Clamp(ref carnivoreMeatThirst, 0f, MaxAnimalFoodThirst, DefaultCarnivoreMeatThirst);
 			changed |= Clamp(ref mineralWaterSatiety, 0f, 0.2f, 0.02f);
-			changed |= Clamp(ref purifiedWaterThirst, 0f, 1f, 0.2f);
 			changed |= Clamp(ref purifiedWaterSatiety, 0f, 0.2f, 0.03f);
 			changed |= ClampInt(ref purifiedWaterMood, 0, 20, 5);
-			changed |= Clamp(ref boiledWaterThirst, 0f, 1f, 0.2f);
 			changed |= Clamp(ref boiledWaterSatiety, 0f, 0.2f, 0.05f);
 			changed |= ClampInt(ref boiledWaterMood, 0, 20, 2);
 			changed |= ClampInt(ref boiledWaterWorkTicks, 20, 2000, 200);
@@ -460,13 +484,14 @@ namespace ColonyKit.Modules.Hygiene
 			waterUseMultiplier = 1f;
 			hotWaterUseMultiplier = 1f;
 			contaminationChanceMultiplier = 1f;
-			mineralWaterThirst = 0.2f;
+			thirstPerLiter = DefaultThirstPerLiter;
+			animalThirstRate = DefaultAnimalThirstRate;
+			herbivorePlantThirst = DefaultHerbivorePlantThirst;
+			carnivoreMeatThirst = DefaultCarnivoreMeatThirst;
 			mineralWaterSatiety = 0.02f;
 			mineralWaterCanPoison = true;
-			purifiedWaterThirst = 0.2f;
 			purifiedWaterSatiety = 0.03f;
 			purifiedWaterMood = 5;
-			boiledWaterThirst = 0.2f;
 			boiledWaterSatiety = 0.05f;
 			boiledWaterMood = 2;
 			boiledWaterWorkTicks = 200;

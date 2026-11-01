@@ -8,8 +8,9 @@ namespace ColonyKit.Modules.Hygiene
 {
 	/// <summary>
 	/// 口渴/水袋自检：带 <c>-colonykit-thirst-test</c> 启动时跑一遍纯逻辑检查
-	/// （Def、水袋加减与上限、食物补水、水袋喝水 Job、LordDuty 里的喝水/撤离节点）。
-	/// 不改地图、不建建筑，几秒内结束，用来防止 XML 或设置被改坏。
+	/// （Def、水袋加减与上限、食物补水、水袋喝水 Job、LordDuty 里的喝水/撤离节点，
+	/// 以及每升解渴、动物口渴速度、草食/肉食动物吃对东西的固定补水）。
+	/// 会临时刷一只牛和一只座狼测速，测完立刻销毁，不建建筑。
 	/// </summary>
 	internal static class ThirstSelftest
 	{
@@ -83,6 +84,66 @@ namespace ColonyKit.Modules.Hygiene
 			bool pouchJob = drinkResult.Job?.def?.defName == "CK_DrinkFromPouch";
 			pass &= pouchJob;
 
+			// 每升解渴：一瓶 1 L 现在按设置值折算（默认 0.65）。
+			HygieneSettings hygiene = HygieneSettings.Current;
+			float perLiter = MineralWaterUtility.ThirstPerLiter;
+			ThingDef mineralDef = MineralWaterUtility.Def;
+			float bottleGain = mineralDef == null
+				? perLiter
+				: MineralWaterUtility.ThirstFor(ThingMaker.MakeThing(mineralDef));
+			bool perLiterOk = Mathf.Abs(perLiter - hygiene.thirstPerLiter) < 0.0001f
+				&& Mathf.Abs(bottleGain - perLiter) < 0.0001f;
+			pass &= perLiterOk;
+
+			// 动物：口渴速度倍率 + 草食/肉食吃对东西的固定补水。
+			float animalRatio = -1f;
+			float herbivoreGain = -1f;
+			float carnivoreGain = -1f;
+			Pawn muffalo = SpawnTestAnimal(map, "Muffalo", pawn);
+			Pawn warg = SpawnTestAnimal(map, "Warg", pawn);
+			Need_Thirst muffaloThirst = muffalo?.needs?.TryGetNeed<Need_Thirst>();
+			Need_Thirst wargThirst = warg?.needs?.TryGetNeed<Need_Thirst>();
+			bool animalNeedOk = muffaloThirst != null && wargThirst != null;
+			pass &= animalNeedOk;
+			if (muffaloThirst != null)
+			{
+				float savedRate = hygiene.animalThirstRate;
+				hygiene.animalThirstRate = 1f;
+				muffaloThirst.CurLevel = 1f;
+				muffaloThirst.NeedInterval();
+				float fullDrop = 1f - muffaloThirst.CurLevel;
+				hygiene.animalThirstRate = 0.5f;
+				muffaloThirst.CurLevel = 1f;
+				muffaloThirst.NeedInterval();
+				float halfDrop = 1f - muffaloThirst.CurLevel;
+				hygiene.animalThirstRate = savedRate;
+				if (fullDrop > 0.000001f)
+				{
+					animalRatio = halfDrop / fullDrop;
+					pass &= Mathf.Abs(animalRatio - 0.5f) < 0.02f;
+				}
+
+				// 草在分类上必须算「植物类食物」，否则吃草的野牛拿不到固定补水。
+				bool grassIsPlant = Patch_Thing_Ingested_FoodWater.IsPlantFood(
+					ThingMaker.MakeThing(ThingDefOf.Plant_Grass));
+				pass &= grassIsPlant;
+				Thing hay = ThingMaker.MakeThing(ThingDefOf.Hay);
+				muffaloThirst.CurLevel = 0.5f;
+				hay.Ingested(muffalo, 0.15f);
+				herbivoreGain = muffaloThirst.CurLevel - 0.5f;
+				pass &= Mathf.Abs(herbivoreGain - hygiene.herbivorePlantThirst) < 0.005f;
+			}
+			if (wargThirst != null)
+			{
+				Thing meat = ThingMaker.MakeThing(FindMeatDef());
+				wargThirst.CurLevel = 0.5f;
+				meat.Ingested(warg, 0.2f);
+				carnivoreGain = wargThirst.CurLevel - 0.5f;
+				pass &= Mathf.Abs(carnivoreGain - hygiene.carnivoreMeatThirst) < 0.005f;
+			}
+			muffalo?.Destroy(DestroyMode.Vanish);
+			warg?.Destroy(DestroyMode.Vanish);
+
 			ThinkTreeDef lordDuty = DefDatabase<ThinkTreeDef>.GetNamedSilentFail("LordDuty");
 			bool lordDrink = lordDuty?.thinkRoot?.ThisAndChildrenRecursive
 				.Any(node => node is JobGiver_DrinkWater) == true;
@@ -99,7 +160,40 @@ namespace ColonyKit.Modules.Hygiene
 				"Hygiene",
 				$"thirst selftest: pass={pass} pouch={start}->{WaterPouchUtility.GetWater(pawn)} " +
 				$"foodGain={gained:F3} expected={expected:F3} pouchJob={pouchJob} " +
+				$"perLiter={perLiter:F2} bottle={bottleGain:F2} " +
+				$"animalNeed={animalNeedOk} animalRatio={animalRatio:F2} " +
+				$"herbivoreGain={herbivoreGain:F2} carnivoreGain={carnivoreGain:F2} " +
 				$"lordDrink={lordDrink} lordExit={lordExit}");
+		}
+
+		/// <summary>临时刷一只动物测口渴/吃食，测完由调用方销毁。</summary>
+		private static Pawn SpawnTestAnimal(Map map, string kindDefName, Pawn near)
+		{
+			PawnKindDef kind = DefDatabase<PawnKindDef>.GetNamedSilentFail(kindDefName);
+			if (map == null || kind == null || near == null)
+			{
+				return null;
+			}
+			Pawn animal = PawnGenerator.GeneratePawn(kind, null);
+			IntVec3 cell = CellFinder.RandomClosewalkCellNear(near.Position, map, 4);
+			GenSpawn.Spawn(animal, cell, map);
+			animal.needs?.AddOrRemoveNeedsAsAppropriate();
+			return animal;
+		}
+
+		/// <summary>随便找一种生肉 def，用来测肉食动物吃肉补水。</summary>
+		private static ThingDef FindMeatDef()
+		{
+			foreach (ThingDef def in DefDatabase<ThingDef>.AllDefs)
+			{
+				if (def.category == ThingCategory.Item
+					&& def.ingestible != null
+					&& (def.ingestible.foodType & FoodTypeFlags.Meat) != 0)
+				{
+					return def;
+				}
+			}
+			return ThingDefOf.Meat_Human;
 		}
 	}
 }

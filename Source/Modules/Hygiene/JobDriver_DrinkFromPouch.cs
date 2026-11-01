@@ -7,14 +7,12 @@ using Verse.AI;
 namespace ColonyKit.Modules.Hygiene
 {
 	/// <summary>
-	/// 从随身水袋喝水：每 tick 消耗 0.02 L、回复 0.004 口渴（1 L = 0.2 口渴），
+	/// 从随身水袋喝水：每 tick 消耗 0.02 L、按「每升解渴」（默认 0.65）回复，
 	/// 喝到不渴或水袋见底为止。水质按袋里最脏的一档做一次污染判定。
 	/// </summary>
 	public class JobDriver_DrinkFromPouch : JobDriver
 	{
 		private const float LitersPerTick = 0.02f;
-
-		private const float ThirstPerLiter = 0.2f;
 
 		public override bool TryMakePreToilReservations(bool errorOnFailed)
 		{
@@ -40,7 +38,7 @@ namespace ColonyKit.Modules.Hygiene
 				}
 				float liters = Mathf.Min(LitersPerTick * delta, water);
 				WaterPouchUtility.TakeWater(pawn, liters);
-				thirst.Drink(liters * ThirstPerLiter);
+				thirst.Drink(liters * MineralWaterUtility.ThirstPerLiter);
 			};
 			yield return drink;
 		}

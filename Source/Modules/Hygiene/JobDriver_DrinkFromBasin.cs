@@ -21,6 +21,16 @@ namespace ColonyKit.Modules.Hygiene
 			Scribe_Values.Look(ref waterQuality, "waterQuality", ContaminationLevel.Treated);
 		}
 
+		/// <summary>喝下去这么多升水，按「每升解渴」折算成口渴。</summary>
+		private void DrinkSip(float liters)
+		{
+			Need_Thirst thirst = pawn.needs?.TryGetNeed<Need_Thirst>();
+			if (thirst != null)
+			{
+				thirst.Drink(liters * MineralWaterUtility.ThirstPerLiter);
+			}
+		}
+
 		public override bool TryMakePreToilReservations(bool errorOnFailed)
 		{
 			return pawn.Reserve(job.targetA, job, 1, -1, null, errorOnFailed);
@@ -70,7 +80,7 @@ namespace ColonyKit.Modules.Hygiene
 							waterQuality = tubContam;
 						}
 					}
-					pawn.needs?.TryGetNeed<Need_Thirst>()?.Drink();
+					DrinkSip(tub.waterUsedPerTick);
 					return;
 				}
 				if (job.targetA.Thing is Building_Basin basin)
@@ -85,7 +95,7 @@ namespace ColonyKit.Modules.Hygiene
 					{
 						waterQuality = basinContam;
 					}
-					pawn.needs?.TryGetNeed<Need_Thirst>()?.Drink();
+					DrinkSip(basin.waterUsedPerTick);
 					return;
 				}
 				// 其他接了水管的洁具（保留旧路径）。
@@ -101,8 +111,11 @@ namespace ColonyKit.Modules.Hygiene
 					{
 						waterQuality = contam;
 					}
+					DrinkSip(0.04f);
+					return;
 				}
-				pawn.needs?.TryGetNeed<Need_Thirst>()?.Drink();
+				// 没有水网也没有盆：按「取水点无限水」的旧行为继续喝。
+				DrinkSip(0.04f);
 			};
 			drink.AddFinishAction(() =>
 			{

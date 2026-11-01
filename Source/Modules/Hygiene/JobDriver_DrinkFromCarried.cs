@@ -7,7 +7,7 @@ namespace ColonyKit.Modules.Hygiene
 {
 	/// <summary>
 	/// 直接喝随身容器（水桶/脸盆）里的水：口渴的小人不用跑回洗手池，
-	/// 每 tick 喝一点、消耗一点水，喝完或解渴就结束；收尾按水质做污染判定。
+	/// 每 tick 喝一点、按喝掉的水量 × 每升解渴补水，喝完或解渴就结束；收尾按水质做污染判定。
 	/// </summary>
 	public class JobDriver_DrinkFromCarried : JobDriver
 	{
@@ -53,7 +53,7 @@ namespace ColonyKit.Modules.Hygiene
 				{
 					waterQuality = container.Contamination;
 				}
-				thirst.Drink(0.006f * delta);
+				thirst.Drink(taken * MineralWaterUtility.ThirstPerLiter);
 				if (thirst.CurLevel >= 0.999f || container.IsEmpty)
 				{
 					ReadyForNextToil();

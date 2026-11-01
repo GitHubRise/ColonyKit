@@ -2,14 +2,21 @@
 <LanguageData>
 	<ColonyKit.Settings.Hygiene.ThirstHours>口渴耗尽时间</ColonyKit.Settings.Hygiene.ThirstHours>
 	<ColonyKit.Settings.Hygiene.ThirstHours.Desc>从口渴 80% 到空的小时数（25℃，不含高温加速与低口渴阶段减速）。默认 20 小时，可调 4–72；调小口渴更快，调大更慢。</ColonyKit.Settings.Hygiene.ThirstHours.Desc>
+	<ColonyKit.Settings.Hygiene.AnimalThirst>动物口渴速度</ColonyKit.Settings.Hygiene.AnimalThirst>
+	<ColonyKit.Settings.Hygiene.AnimalThirst.Desc>动物（野生动物、家畜、宠物）口渴的速度倍率，人形不受影响。默认 0.50，即同样多的水能撑两倍时间，减少野生动物渴死在图上的情况；调回 1.00 与原版一致。</ColonyKit.Settings.Hygiene.AnimalThirst.Desc>
 	<ColonyKit.Settings.Hygiene.FoodWater>食物含水量</ColonyKit.Settings.Hygiene.FoodWater>
-	<ColonyKit.Settings.Hygiene.FoodWater.Desc>吃任何食物都按营养补水：口渴 + 营养 × 系数。默认 0.25（一份 1.0 营养的饭约等于 1.25 瓶水）；0 关闭。动物啃草、啃树同样生效。</ColonyKit.Settings.Hygiene.FoodWater.Desc>
+	<ColonyKit.Settings.Hygiene.FoodWater.Desc>吃任何食物都按营养补水：口渴 + 营养 × 系数。默认 0.25（一份 1.0 营养的饭约等于 1.25 瓶水）；0 关闭。草食/肉食动物吃自己的食物时改用下面两档固定补水。</ColonyKit.Settings.Hygiene.FoodWater.Desc>
+	<ColonyKit.Settings.Hygiene.AnimalPlantThirst>草食动物吃草解渴</ColonyKit.Settings.Hygiene.AnimalPlantThirst>
+	<ColonyKit.Settings.Hygiene.AnimalPlantThirst.Desc>草食动物每吃一次植物类食物（草、树、蔬果、菌菇、种子）固定回复的口渴，默认 0.10；0 关闭，改回按营养折算。</ColonyKit.Settings.Hygiene.AnimalPlantThirst.Desc>
+	<ColonyKit.Settings.Hygiene.AnimalMeatThirst>肉食动物吃肉解渴</ColonyKit.Settings.Hygiene.AnimalMeatThirst>
+	<ColonyKit.Settings.Hygiene.AnimalMeatThirst.Desc>肉食动物每吃一次肉或尸体固定回复的口渴，默认 0.10；0 关闭，改回按营养折算。</ColonyKit.Settings.Hygiene.AnimalMeatThirst.Desc>
 	<ColonyKit.Settings.Hygiene.Section.BottledWater>瓶装水</ColonyKit.Settings.Hygiene.Section.BottledWater>
 	<ColonyKit.Settings.Hygiene.BottledWater.Hint>调整矿泉水、纯净水、凉白开喝一瓶的效果。修改后下一次喝水生效。</ColonyKit.Settings.Hygiene.BottledWater.Hint>
+	<ColonyKit.Settings.Hygiene.Water.PerLiter>每升解渴</ColonyKit.Settings.Hygiene.Water.PerLiter>
+	<ColonyKit.Settings.Hygiene.Water.PerLiter.Desc>每升水回复的口渴，默认 0.65（一瓶 1 L 约回复 65%，按默认 20 小时约撑 13 小时）。瓶装水、水袋、水桶/水盆、水龙头和病人喂水统一按这个值折算，0.05–2.00 可调。</ColonyKit.Settings.Hygiene.Water.PerLiter.Desc>
 	<ColonyKit.Settings.Hygiene.Water.Mineral>矿泉水</ColonyKit.Settings.Hygiene.Water.Mineral>
 	<ColonyKit.Settings.Hygiene.Water.Purified>纯净水</ColonyKit.Settings.Hygiene.Water.Purified>
 	<ColonyKit.Settings.Hygiene.Water.Boiled>凉白开</ColonyKit.Settings.Hygiene.Water.Boiled>
-	<ColonyKit.Settings.Hygiene.Water.Thirst>解渴量</ColonyKit.Settings.Hygiene.Water.Thirst>
 	<ColonyKit.Settings.Hygiene.Water.Satiety>饱腹感</ColonyKit.Settings.Hygiene.Water.Satiety>
 	<ColonyKit.Settings.Hygiene.Water.Mood>心情</ColonyKit.Settings.Hygiene.Water.Mood>
 	<ColonyKit.Settings.Hygiene.Water.WorkTicks>凉白开工作时长</ColonyKit.Settings.Hygiene.Water.WorkTicks>
