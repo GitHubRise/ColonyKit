@@ -77,17 +77,34 @@ namespace ColonyKit.Modules.Hygiene
 			Thing food, Pawn ingester, HygieneSettings settings, out float gain)
 		{
 			gain = 0f;
-			if (ingester.RaceProps.herbivore && IsPlantFood(food))
+			// 1.6 的 RaceProperties 没有 herbivore/carnivore 布尔，只有 Eats(食物类型) 位标记。
+			if (EatsPlantFood(ingester.RaceProps) && IsPlantFood(food))
 			{
 				gain = settings.herbivorePlantThirst;
 				return true;
 			}
-			if (ingester.RaceProps.carnivore && IsMeatFood(food))
+			if (EatsMeatFood(ingester.RaceProps) && IsMeatFood(food))
 			{
 				gain = settings.carnivoreMeatThirst;
 				return true;
 			}
 			return false;
+		}
+
+		/// <summary>草、树、蔬果、菌菇、种子任一类能吃，就算「草食」。</summary>
+		private static bool EatsPlantFood(RaceProperties race)
+		{
+			return race.Eats(FoodTypeFlags.Plant)
+				|| race.Eats(FoodTypeFlags.Tree)
+				|| race.Eats(FoodTypeFlags.VegetableOrFruit)
+				|| race.Eats(FoodTypeFlags.Fungus)
+				|| race.Eats(FoodTypeFlags.Seed);
+		}
+
+		/// <summary>生肉或尸体能吃，就算「肉食」（狼、座狼这类）。</summary>
+		private static bool EatsMeatFood(RaceProperties race)
+		{
+			return race.Eats(FoodTypeFlags.Meat) || race.Eats(FoodTypeFlags.Corpse);
 		}
 	}
 }
