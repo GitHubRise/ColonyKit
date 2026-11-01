@@ -11,7 +11,7 @@
 			<li>CK_CentralHeating</li>
 		</prerequisites>
 		<tab>CK_HygieneTab</tab>
-		<researchViewX>4</researchViewX>
-		<researchViewY>0</researchViewY>
+		<researchViewX>3</researchViewX>
+		<researchViewY>4.5</researchViewY>
 	</ResearchProjectDef>
 </Defs>

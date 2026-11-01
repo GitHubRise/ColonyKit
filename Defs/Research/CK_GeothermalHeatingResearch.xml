@@ -12,6 +12,6 @@
 		</prerequisites>
 		<tab>CK_HygieneTab</tab>
 		<researchViewX>3</researchViewX>
-		<researchViewY>0</researchViewY>
+		<researchViewY>3.75</researchViewY>
 	</ResearchProjectDef>
 </Defs>

@@ -10,7 +10,7 @@
 		<techLevel>Medieval</techLevel>
 		<tab>CK_HygieneTab</tab>
 		<researchViewX>0</researchViewX>
-		<researchViewY>1</researchViewY>
+		<researchViewY>4.5</researchViewY>
 	</ResearchProjectDef>
 
 	<!-- 化粪池：中世纪就能挖，先把污水存起来。 -->
@@ -25,7 +25,7 @@
 		</prerequisites>
 		<tab>CK_HygieneTab</tab>
 		<researchViewX>1</researchViewX>
-		<researchViewY>3</researchViewY>
+		<researchViewY>2.25</researchViewY>
 	</ResearchProjectDef>
 
 	<!-- 电动水泵：接在卫生设施之后，泵站/风泵的起点。 -->
@@ -40,8 +40,8 @@
 			<li>Electricity</li>
 		</prerequisites>
 		<tab>CK_HygieneTab</tab>
-		<researchViewX>1</researchViewX>
-		<researchViewY>2</researchViewY>
+		<researchViewX>2</researchViewX>
+		<researchViewY>8.25</researchViewY>
 	</ResearchProjectDef>
 
 	<!-- 大型水泵：泵站与巨型水塔。 -->
@@ -55,8 +55,8 @@
 			<li>CK_ElectricPumps</li>
 		</prerequisites>
 		<tab>CK_HygieneTab</tab>
-		<researchViewX>2</researchViewX>
-		<researchViewY>3</researchViewY>
+		<researchViewX>3</researchViewX>
+		<researchViewY>8.25</researchViewY>
 	</ResearchProjectDef>
 
 	<!-- 深水井：直接从深层含水层取水。 -->
@@ -70,8 +70,8 @@
 			<li>CK_ElectricPumps</li>
 		</prerequisites>
 		<tab>CK_HygieneTab</tab>
-		<researchViewX>2</researchViewX>
-		<researchViewY>4</researchViewY>
+		<researchViewX>3</researchViewX>
+		<researchViewY>9</researchViewY>
 	</ResearchProjectDef>
 
 	<!-- 消防喷淋：接在灌溉之后，喷淋头靠管网里的水灭火。 -->
@@ -86,7 +86,7 @@
 		</prerequisites>
 		<tab>CK_HygieneTab</tab>
 		<researchViewX>3</researchViewX>
-		<researchViewY>2</researchViewY>
+		<researchViewY>1.5</researchViewY>
 	</ResearchProjectDef>
 
 	<!-- 卫生仿生：膀胱/卫生增强器。 -->
@@ -102,8 +102,8 @@
 			<li>Prosthetics</li>
 		</prerequisites>
 		<tab>CK_HygieneTab</tab>
-		<researchViewX>5</researchViewX>
-		<researchViewY>2</researchViewY>
+		<researchViewX>3</researchViewX>
+		<researchViewY>6.75</researchViewY>
 	</ResearchProjectDef>
 
 	<!-- 小行星低温开采：低温开采节点，取水顺带供暖。 -->
@@ -117,7 +117,7 @@
 			<li>CK_WaterFiltration</li>
 		</prerequisites>
 		<tab>CK_HygieneTab</tab>
-		<researchViewX>5</researchViewX>
-		<researchViewY>0</researchViewY>
+		<researchViewX>3</researchViewX>
+		<researchViewY>6</researchViewY>
 	</ResearchProjectDef>
 </Defs>

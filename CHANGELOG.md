@@ -8,6 +8,10 @@
 
 - **装上 Biotech 后 Mk-V 技能页只剩射击/格斗**：Biotech 把「玩家阵营的机械族」一律当殖民地机械体（`Pawn.IsColonyMech`），而 `Pawn.GetDisabledWorkTypes` 会把 `RaceProps.mechEnabledWorkTypes` 以外的**所有工作类型**标成禁用，于是 Mk-V / 保姆机器人的建造、采矿、烹饪、研究等技能在角色页全显示「-」，工作类型也被判定不可用。新增 `Patch_Pawn_IsColonyMech`：自维护机器人不算 colony mech（它们有自己的能量、装配舱和工作管控，本来就不该走 Biotech 机械体那套），技能与工作类型恢复成没有 DLC 时的样子。`-colonykit-nannybot-test` 新增 `mkvBiotech` / `mkvIsColonyMech` / `mkvMiningDisabled` / `mkvResearchDisabled` 探针；在启用 Biotech 的隔离副本里实测 `mkvBiotech=True mkvIsColonyMech=False mkvMiningDisabled=False mkvResearchDisabled=False`。
 
+### Changed
+
+- **卫生研究树重排（4 列，前置不变）**：`CK_HygieneTab` 的 24 个项目重新排坐标。原来的坐标里「高级淋浴 / 污泥堆肥」都是 (1, 0)、「灌溉 / 中央供暖」都是 (2, 0)，原版 `PlayDataLoader` 每次载入都会跑 `ResearchProjectDef.GenerateNonOverlappingCoordinates()`，把重合的节点往斜下推半格——所以游戏里看到的是方块叠在一起、有一半露在行间，连线还会斜穿别的方块（本模组自己统计过：24 个节点一共 44 处重叠/穿框/交叉）。现在按「供热、管道工程 → 卫生设施 → 各分支」排成 4 列 9 行：右列严格只放下一层（灌溉→消防灭火、中央供暖→地热/多联机、水过滤→小行星开采/卫生仿生体、电动水泵→大型水泵/深水井），每条连线都只走两列之间的空隙，不再压在任何方块上；同一列相邻节点间隔 0.75 格，文字换行也不会互相压住。前置关系、点数、解锁内容一条没改，旧存档研究进度不受影响。
+
 ### Added
 
 - **口渴速度可调，默认放慢 1/3**：`Need_Thirst` 不再写死每 tick 2.6666667E-05，改为读设置页「需求 → 口渴耗尽时间」：4–72 小时可调，默认 **20 小时**（按初始口渴 80% → 空计；满值 100% → 空约为 1.2 倍，因为低于 20% 后仍有 50% / 15% 的阶段减速）。25–50℃ 的 1–3 倍高温加速和 `CK_ThirstRateMultiplier` 属性保留；旧存档不需要迁移。

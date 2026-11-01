@@ -11,8 +11,8 @@
 			<li>CK_HygieneResearch</li>
 		</prerequisites>
 		<tab>CK_HygieneTab</tab>
-		<researchViewX>1</researchViewX>
-		<researchViewY>0</researchViewY>
+		<researchViewX>2</researchViewX>
+		<researchViewY>9</researchViewY>
 	</ResearchProjectDef>
 
 	<!-- 灌溉：洒水器每天早上给附近耕地补水，和施肥叠乘。 -->
@@ -27,6 +27,6 @@
 		</prerequisites>
 		<tab>CK_HygieneTab</tab>
 		<researchViewX>2</researchViewX>
-		<researchViewY>0</researchViewY>
+		<researchViewY>1.5</researchViewY>
 	</ResearchProjectDef>
 </Defs>
