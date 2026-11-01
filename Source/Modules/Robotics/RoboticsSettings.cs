@@ -139,7 +139,9 @@ namespace ColonyKit.Modules.Robotics
 		public const float DefaultAiTimeout = 30f;
 		public const int MinAiMaxTokens = 64;
 		public const int MaxAiMaxTokens = 2048;
-		public const int DefaultAiMaxTokens = 300;
+
+		// 推理模型（deepseek-flash / reasoner）会把不少 token 花在思考过程上，留足余量才不会被截断成纯文字。
+		public const int DefaultAiMaxTokens = 768;
 		public const float MaxAiTemperature = 1.5f;
 		public const float DefaultAiTemperature = 0.7f;
 		public const string DefaultAiBaseUrl = "https://api.deepseek.com";

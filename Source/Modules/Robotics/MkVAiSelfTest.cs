@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using RimWorld;
 using Verse;
@@ -38,6 +38,22 @@ namespace ColonyKit.Modules.Robotics
 			+ "\"content\":\"\",\"reasoning_content\":\"{\\\"id\\\":\\\"work\\\",\\\"say\\\":\\\"无敌情，交还家务AI待命\\\"}\"},"
 			+ "\"finish_reason\":\"stop\"}]}";
 
+		/// <summary>
+		/// 实际遇到过：模型把内容当「思考过程」用英文说了一遍（"We need answer only JSON..."），
+		/// content 里一个 JSON 都没有。这种必须判成「格式失败」，才能触发严格格式重试。
+		/// </summary>
+		private const string ProseResponse =
+			"{\"id\":\"ck-test\",\"choices\":[{\"message\":{\"role\":\"assistant\","
+			+ "\"content\":\"The bot has 65% HP, one hostile at 21 distance. Candidates: attack, work.\"},"
+			+ "\"finish_reason\":\"stop\"}]}";
+
+		/// <summary>content 只是英文总结、真正的 JSON 塞在 reasoning_content 里：解析器要能翻出来。</summary>
+		private const string ReasoningOnlyJsonResponse =
+			"{\"id\":\"ck-test\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\","
+			+ "\"content\":\"I should attack the closest enemy.\","
+			+ "\"reasoning_content\":\"{\\\"action\\\":\\\"attack:123\\\",\\\"say\\\":\\\"先打近的\\\"}\"},"
+			+ "\"finish_reason\":\"stop\"}]}";
+
 		private static bool ran;
 
 		static MkVAiSelfTest()
@@ -71,6 +87,12 @@ namespace ColonyKit.Modules.Robotics
 			bool reasoningPass = reasoning != null && reasoning.ok
 				&& reasoning.action == "work" && reasoning.say == "无敌情，交还家务AI待命";
 
+			AiRequestResult prose = MkVAiService.ParseForTest(ProseResponse);
+			bool proseFail = prose != null && !prose.ok && prose.formatFailure;
+
+			AiRequestResult buried = MkVAiService.ParseForTest(ReasoningOnlyJsonResponse);
+			bool reasoningJsonPass = buried != null && buried.ok && buried.action == "attack:123";
+
 			AiRequestResult http = null;
 			try
 			{
@@ -94,11 +116,14 @@ namespace ColonyKit.Modules.Robotics
 				+ " aliasPass=" + aliasPass
 				+ " reasoningPass=" + reasoningPass
 				+ " thinkPass=" + thinkPass
+				+ " proseFail=" + proseFail
+				+ " reasoningJsonPass=" + reasoningJsonPass
 				+ " parsedAction=" + (parsed?.action ?? "none")
 				+ " parsedSay=" + (parsed?.say ?? "none")
 				+ " parsedThink=" + (parsed?.think ?? "none")
 				+ " aliasAction=" + (alias?.action ?? "none")
 				+ " reasoningAction=" + (reasoning?.action ?? "none")
+				+ " buriedAction=" + (buried?.action ?? "none")
 				+ " parsedError=" + (parsed?.error ?? "none")
 				+ " httpStatus=" + httpStatus;
 			ModLog.Force("Robotics", summary);

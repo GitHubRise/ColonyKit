@@ -1152,7 +1152,18 @@ namespace ColonyKit.Modules.Robotics
 			{
 				lines.Add("CK.Robotics.Inspect.Downed".Translate());
 			}
-			return string.Join("\n", lines);
+			// 空行或行内换行都会触发原版「Inspect string contains empty lines」警告（AI 报错文本里最容易带）。
+			List<string> visible = new List<string>(lines.Count);
+			for (int i = 0; i < lines.Count; i++)
+			{
+				string line = lines[i];
+				if (string.IsNullOrWhiteSpace(line))
+				{
+					continue;
+				}
+				visible.Add(line.Replace('\n', ' ').Replace('\r', ' '));
+			}
+			return string.Join("\n", visible);
 		}
 
 		internal static bool IsWorkJob(JobDef def)

@@ -48,14 +48,17 @@ namespace ColonyKit.Modules.Robotics
 
 		public string error;
 
+		/// <summary>失败原因是「模型没回 JSON」而不是网络/HTTP 错误：这种可以按更严格的格式重试一次。</summary>
+		public bool formatFailure;
+
 		public static AiRequestResult Success(string action, string say, string think = null)
 		{
 			return new AiRequestResult { ok = true, action = action, say = say, think = think };
 		}
 
-		public static AiRequestResult Failure(string error)
+		public static AiRequestResult Failure(string error, bool formatFailure = false)
 		{
-			return new AiRequestResult { ok = false, error = error };
+			return new AiRequestResult { ok = false, error = error, formatFailure = formatFailure };
 		}
 	}
 }

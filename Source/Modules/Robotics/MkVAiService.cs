@@ -41,6 +41,10 @@ namespace ColonyKit.Modules.Robotics
 			public string url;
 			public string key;
 			public string body;
+
+			/// <summary>模型没回 JSON 时用的第二次请求：更严格的格式要求 + 双倍 token。</summary>
+			public string retryBody;
+
 			public float timeout;
 		}
 
@@ -286,19 +290,44 @@ namespace ColonyKit.Modules.Robotics
 				settings.aiTemperature, 0f, RoboticsSettings.MaxAiTemperature);
 			int maxTokens = Mathf.Clamp(settings.aiMaxTokens,
 				RoboticsSettings.MinAiMaxTokens, RoboticsSettings.MaxAiMaxTokens);
-			string system = "你是一台 RimWorld Mk-V 机器人的机载 AI。只能从给出的 candidates 里选择一个 action，"
-				+ "只回复 JSON：{\"action\":\"<候选 id>\",\"say\":\"<不超过 20 字的中文短句>\","
-				+ "\"think\":\"<不超过 60 字、第一人称「我」的中文内心独白>\"}。"
-				+ "think 写你此刻看到了什么、为什么这样决定，用「我」像日记一样叙述；say 是你嘴上说的一句话。"
-				+ "选择规则："
-				+ "① 有敌人时优先攻击：先打带范围武器的目标（燃烧瓶、手雷、火箭筒、迫击炮、喷火器——候选里 tag 为「范围」，或 threat 最高），"
-				+ "其次打武器伤害高、命中高但脆弱的敌人，threat 越大越优先；"
-				+ "② alert=true 表示刚收到敌袭预警：立刻放下家务，选 advance 或攻击候选，朝敌人方向主动出击，用远程武器在射程外开火，不要贴脸；"
-				+ "③ colonists=0 表示地图上没有殖民者：你是唯一的守卫，选 guard 主动承担护卫职责；"
-				+ "④ 没有威胁也没有紧急家务时：先 research_robotics 研究机器人科技，其次 assemble 制造同类；"
-				+ "⑤ 优先保护殖民者、避免无谓送死。没有合适动作时才选 work。不要编造 id。"
-				+ "⑥ 交战时边打边撤：敌人贴近就先退到射程边缘、掩体后面的位置再开火，别站着当固定靶；脚下或身边起火时先挪开再打。";
-			string user = "当前状态和候选动作（JSON）：\n" + promptJson + "\n请选择一个 action。";
+			return new AiHttpRequest
+			{
+				url = url,
+				key = (settings.aiApiKey ?? "").Trim(),
+				body = BuildBody(model, temperature, maxTokens, promptJson, false),
+				// 推理模型偶尔把 token 全花在思考过程上、正文一个字都不剩，这里翻倍再来一次。
+				retryBody = BuildBody(model, temperature,
+					Mathf.Min(maxTokens * 2, RoboticsSettings.MaxAiMaxTokens), promptJson, true),
+				timeout = Mathf.Clamp(settings.aiTimeout,
+					RoboticsSettings.MinAiTimeout, RoboticsSettings.MaxAiTimeout)
+			};
+		}
+
+		private static string BuildBody(
+			string model, float temperature, int maxTokens, string promptJson, bool retry)
+		{
+			string system = retry
+				? "你是 RimWorld Mk-V 机器人的机载 AI。上一次回复不是合法 JSON。"
+					+ "这次只输出一个 JSON 对象，不要解释、不要思考过程、不要 markdown："
+					+ "{\"action\":\"<候选 id>\",\"say\":\"<不超过 20 字的中文短句>\","
+					+ "\"think\":\"<不超过 60 字、第一人称「我」的中文内心独白>\"}。"
+				: "你是一台 RimWorld Mk-V 机器人的机载 AI。只能从给出的 candidates 里选择一个 action，"
+					+ "只回复 JSON：{\"action\":\"<候选 id>\",\"say\":\"<不超过 20 字的中文短句>\","
+					+ "\"think\":\"<不超过 60 字、第一人称「我」的中文内心独白>\"}。"
+					+ "不要输出思考过程、解释或 markdown，只输出这一个 JSON 对象。"
+					+ "think 写你此刻看到了什么、为什么这样决定，用「我」像日记一样叙述；say 是你嘴上说的一句话。"
+					+ "选择规则："
+					+ "① 有敌人时优先攻击：先打带范围武器的目标（燃烧瓶、手雷、火箭筒、迫击炮、喷火器——候选里 tag 为「范围」，或 threat 最高），"
+					+ "其次打武器伤害高、命中高但脆弱的敌人，threat 越大越优先；"
+					+ "② alert=true 表示刚收到敌袭预警：立刻放下家务，选 advance 或攻击候选，朝敌人方向主动出击，用远程武器在射程外开火，不要贴脸；"
+					+ "③ colonists=0 表示地图上没有殖民者：你是唯一的守卫，选 guard 主动承担护卫职责；"
+					+ "④ 没有威胁也没有紧急家务时：先 research_robotics 研究机器人科技，其次 assemble 制造同类；"
+					+ "⑤ 优先保护殖民者、避免无谓送死。没有合适动作时才选 work。不要编造 id。"
+					+ "⑥ 交战时边打边撤：敌人贴近就先退到射程边缘、掩体后面的位置再开火，别站着当固定靶；脚下或身边起火时先挪开再打。";
+			string user = retry
+				? "当前状态和候选动作（JSON）：\n" + promptJson
+					+ "\n只输出一个 JSON 对象，例如 {\"action\":\"work\",\"say\":\"待命\",\"think\":\"没有威胁，我先待命。\"}。"
+				: "当前状态和候选动作（JSON）：\n" + promptJson + "\n请选择一个 action。";
 
 			StringBuilder body = new StringBuilder();
 			body.Append("{\"model\":\"").Append(EscapeJson(model)).Append("\",\"messages\":[");
@@ -308,15 +337,7 @@ namespace ColonyKit.Modules.Robotics
 				.Append(temperature.ToString("0.##", CultureInfo.InvariantCulture));
 			body.Append(",\"max_tokens\":").Append(maxTokens);
 			body.Append(",\"stream\":false,\"response_format\":{\"type\":\"json_object\"}}");
-
-			return new AiHttpRequest
-			{
-				url = url,
-				key = (settings.aiApiKey ?? "").Trim(),
-				body = body.ToString(),
-				timeout = Mathf.Clamp(settings.aiTimeout,
-					RoboticsSettings.MinAiTimeout, RoboticsSettings.MaxAiTimeout)
-			};
+			return body.ToString();
 		}
 
 		private static string SerializePrompt(AiPrompt prompt)
@@ -692,12 +713,34 @@ namespace ColonyKit.Modules.Robotics
 
 		private static async Task<AiRequestResult> SendCoreAsync(AiHttpRequest request, HttpClient client)
 		{
+			AiRequestResult result = await SendOnceAsync(request, client, request.body);
+			if (result == null || result.ok || !result.formatFailure || string.IsNullOrEmpty(request.retryBody))
+			{
+				return result;
+			}
+			// 模型没按 JSON 回（推理模型常把 token 花在思考过程上）：用更严格的格式要求 + 双倍 token 再问一次。
+			ModLog.Warn("Robotics", "Mk-V AI 回复不是 JSON，按严格格式重试一次：" + Truncate(result.error, 120));
+			AiRequestResult retry = await SendOnceAsync(request, client, request.retryBody);
+			if (retry != null && retry.ok)
+			{
+				return retry;
+			}
+			if (retry != null && !string.IsNullOrEmpty(result.error))
+			{
+				retry.error = Truncate(result.error, 120) + "；重试后仍失败：" + Truncate(retry.error, 120);
+			}
+			return retry ?? result;
+		}
+
+		private static async Task<AiRequestResult> SendOnceAsync(
+			AiHttpRequest request, HttpClient client, string body)
+		{
 			try
 			{
 				using (HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Post, request.url))
 				{
 					message.Headers.Authorization = new AuthenticationHeaderValue("Bearer", request.key);
-					message.Content = new StringContent(request.body, Encoding.UTF8, "application/json");
+					message.Content = new StringContent(body, Encoding.UTF8, "application/json");
 					using (CancellationTokenSource timeout = new CancellationTokenSource(
 						TimeSpan.FromSeconds(Mathf.Clamp(request.timeout, 5f, 120f))))
 					using (HttpResponseMessage response = await client.SendAsync(message, timeout.Token))
@@ -726,7 +769,7 @@ namespace ColonyKit.Modules.Robotics
 		{
 			if (string.IsNullOrEmpty(text))
 			{
-				return AiRequestResult.Failure("响应为空");
+				return AiRequestResult.Failure("响应为空", true);
 			}
 
 			int errorIndex = text.IndexOf("\"error\"", StringComparison.Ordinal);
@@ -740,20 +783,22 @@ namespace ColonyKit.Modules.Robotics
 				}
 			}
 
+			string finish = ExtractJsonString(text, "finish_reason");
 			string content = ExtractJsonString(text, "content");
+			string reasoning = ExtractJsonString(text, "reasoning_content");
 			if (string.IsNullOrWhiteSpace(content))
 			{
 				// 新版 DeepSeek 推理模型（deepseek-flash / reasoner）有时会把整段输出
 				// 放进 reasoning_content、content 留空甚至整个字段都不给；直接判失败会让
 				// AI 一条动作也发不出来（日志里就是「响应里没有 content」刷屏）。
 				// 这里退回把 reasoning_content 当作正文再解析一遍。
-				content = ExtractJsonString(text, "reasoning_content");
+				content = reasoning;
 			}
 			if (string.IsNullOrEmpty(content))
 			{
-				string finish = ExtractJsonString(text, "finish_reason");
 				return AiRequestResult.Failure(
-					"响应里没有 content（finish_reason=" + (finish ?? "?") + "）：" + Truncate(text, 300));
+					"响应里没有 content（finish_reason=" + (finish ?? "?") + "）："
+					+ Truncate(Sanitize(text), 300), true);
 			}
 			content = StripCodeFence(content.Trim());
 			string action = ExtractAction(content);
@@ -771,12 +816,58 @@ namespace ColonyKit.Modules.Robotics
 					think = ExtractJsonString(inner, "think");
 				}
 			}
+			if (string.IsNullOrWhiteSpace(action) && !string.IsNullOrEmpty(reasoning)
+				&& !string.Equals(reasoning, content, StringComparison.Ordinal))
+			{
+				// content 只是总结、JSON 塞在思考过程里：再翻一遍 reasoning_content。
+				string innerReasoning = StripCodeFence(reasoning.Trim());
+				action = ExtractAction(innerReasoning);
+				if (!string.IsNullOrWhiteSpace(action))
+				{
+					say = ExtractJsonString(innerReasoning, "say");
+					think = ExtractJsonString(innerReasoning, "think");
+				}
+			}
 			if (string.IsNullOrWhiteSpace(action))
 			{
-				return AiRequestResult.Failure("模型没有返回 action：" + Truncate(content, 160));
+				string hint = finish == "length"
+					? "（回复被截断，finish_reason=length：把设置页「最大回复长度」调大，推理模型建议 1024 以上）"
+					: "";
+				return AiRequestResult.Failure(
+					"模型没有返回 action" + hint + "：" + Truncate(Sanitize(content), 160), true);
 			}
 			return AiRequestResult.Success(
 				action.Trim(), (say ?? "").Trim(), (think ?? "").Trim());
+		}
+
+		/// <summary>
+		/// 把换行/制表符压成空格：这些文本会进 Player.log 和检查面板，
+		/// 带换行会触发原版「Inspect string contains empty lines」警告，还会把日志撑成好几行。
+		/// </summary>
+		internal static string Sanitize(string text)
+		{
+			if (string.IsNullOrEmpty(text))
+			{
+				return text ?? "";
+			}
+			StringBuilder builder = new StringBuilder(text.Length);
+			bool lastWasSpace = false;
+			for (int i = 0; i < text.Length; i++)
+			{
+				char current = text[i];
+				if (char.IsWhiteSpace(current))
+				{
+					if (!lastWasSpace)
+					{
+						builder.Append(' ');
+						lastWasSpace = true;
+					}
+					continue;
+				}
+				builder.Append(current);
+				lastWasSpace = false;
+			}
+			return builder.ToString().Trim();
 		}
 
 		/// <summary>
@@ -963,7 +1054,7 @@ namespace ColonyKit.Modules.Robotics
 			}
 			if (!result.ok)
 			{
-				string error = Truncate(result.error, 160);
+				string error = Truncate(Sanitize(result.error), 160);
 				if (comp.AiLastError != error)
 				{
 					comp.AiLastError = error;
@@ -974,8 +1065,10 @@ namespace ColonyKit.Modules.Robotics
 
 			comp.AiLastError = "";
 			comp.AiLastAction = result.action ?? "";
-			comp.AiLastSay = result.say ?? "";
-			comp.AiLastThink = string.IsNullOrEmpty(result.think) ? comp.AiLastSay : result.think;
+			comp.AiLastSay = Sanitize(result.say);
+			comp.AiLastThink = string.IsNullOrEmpty(result.think)
+				? comp.AiLastSay
+				: Sanitize(result.think);
 			// 放在「已征召/精神崩溃就跳过」之前：打仗时恰恰最想回看它在想什么。
 			LogThought(comp, pawn);
 			if (pawn.Drafted || pawn.InMentalState || pawn.Dead || !pawn.Spawned)
