@@ -69,6 +69,9 @@ namespace ColonyKit.Modules.Robotics
 
 		public static void Tick(CompNannyBot comp)
 		{
+			// 临时医疗睡眠点的清理：只有 Mk-V 会铺，也由它们顺带打扫。
+			MkVMedicalAid.Tick();
+
 			Pawn pawn = comp?.Pawn;
 			if (pawn == null || pawn.Dead || !pawn.Spawned || pawn.Map == null
 				|| !NannyBotUtility.IsMkV(pawn))
@@ -322,7 +325,8 @@ namespace ColonyKit.Modules.Robotics
 					+ "② alert=true 表示刚收到敌袭预警：立刻放下家务，选 advance 或攻击候选，朝敌人方向主动出击，用远程武器在射程外开火，不要贴脸；"
 					+ "③ colonists=0 表示地图上没有殖民者：你是唯一的守卫，选 guard 主动承担护卫职责；"
 					+ "④ 没有威胁也没有紧急家务时：先 research_robotics 研究机器人科技，其次 assemble 制造同类；"
-					+ "⑤ 优先保护殖民者、避免无谓送死。没有合适动作时才选 work。不要编造 id。"
+					+ "⑤ 优先保护殖民者、避免无谓送死：倒地的殖民者优先救援，标「危急」的（失血/重伤）比家务重要；"
+					+ "附近没有床时会就地铺一张临时医疗睡眠点，把人抱过去再包扎。没有合适动作时才选 work。不要编造 id。"
 					+ "⑥ 交战时边打边撤：敌人贴近就先退到射程边缘、掩体后面的位置再开火，别站着当固定靶；脚下或身边起火时先挪开再打。";
 			string user = retry
 				? "当前状态和候选动作（JSON）：\n" + promptJson
@@ -442,7 +446,9 @@ namespace ColonyKit.Modules.Robotics
 					{
 						id = "rescue:" + colonist.thingIDNumber,
 						kind = "rescue",
-						label = "倒地的 " + colonist.LabelShort,
+						label = MkVMedicalAid.IsCritical(colonist)
+							? "危急的 " + colonist.LabelShort + "（失血/重伤）"
+							: "倒地的 " + colonist.LabelShort,
 						dist = Mathf.RoundToInt(distance)
 					});
 				}
@@ -694,6 +700,11 @@ namespace ColonyKit.Modules.Robotics
 				{
 					return true;
 				}
+			}
+			// 附近有失血/伤势危急的倒地者：先放下家务去救人（可能要在旁边铺临时医疗点）。
+			if (MkVMedicalAid.HasCriticalPatientNearby(pawn, 30f))
+			{
+				return true;
 			}
 			foreach (Thing fire in map.listerThings.ThingsInGroup(ThingRequestGroup.Fire))
 			{

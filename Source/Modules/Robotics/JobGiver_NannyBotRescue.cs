@@ -27,6 +27,12 @@ namespace ColonyKit.Modules.Robotics
 				{
 					continue;
 				}
+				// 失血/伤势危急又没近处床位：就地铺一张临时医疗睡眠点，直接抱过去。
+				Job emergency;
+				if (MkVMedicalAid.TryEmergencyRescue(pawn, patient, out emergency))
+				{
+					return emergency;
+				}
 				if (rescue.HasJobOnThing(pawn, patient))
 				{
 					Job job = rescue.JobOnThing(pawn, patient);

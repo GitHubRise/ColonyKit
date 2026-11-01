@@ -143,6 +143,7 @@ namespace ColonyKit.Modules.Robotics
 				builder.Append(' ').Append(SelfRepairProbe(mkv));
 				builder.Append(' ').Append(PassionProbe(mkv));
 				ProbeMkVThreat(map, mkv, builder);
+				ProbeMedicalAid(map, mkv, builder);
 				mkv.Destroy(DestroyMode.Vanish);
 			}
 			bay.Destroy(DestroyMode.Vanish);
@@ -1510,6 +1511,52 @@ namespace ColonyKit.Modules.Robotics
 			if (pawn != null && !pawn.Destroyed)
 			{
 				pawn.Destroy(DestroyMode.Vanish);
+			}
+		}
+
+		/// <summary>
+		/// 紧急救援探针：把一个殖民者打到倒地 + 严重失血，检查会不会就地铺一张医疗睡眠点并给出抱人 Job。
+		/// </summary>
+		private static void ProbeMedicalAid(Map map, Pawn mkv, StringBuilder builder)
+		{
+			Pawn patient = null;
+			Building_Bed spot = null;
+			try
+			{
+				patient = SpawnArmedPawn(map, mkv, Faction.OfPlayer, "Gun_Autopistol");
+				if (patient == null)
+				{
+					builder.Append(" aiMed=none");
+					return;
+				}
+				patient.equipment?.DestroyAllEquipment();
+				HealthUtility.DamageUntilDowned(patient);
+				Hediff bloodLoss = HediffMaker.MakeHediff(HediffDefOf.BloodLoss, patient);
+				bloodLoss.Severity = 0.55f;
+				patient.health.AddHediff(bloodLoss);
+
+				builder.Append(" aiMedDowned=").Append(patient.Downed)
+					.Append(" aiMedCritical=").Append(MkVMedicalAid.IsCritical(patient));
+
+				Job job;
+				bool made = MkVMedicalAid.TryEmergencyRescue(mkv, patient, out job);
+				spot = job?.GetTarget(TargetIndex.B).Thing as Building_Bed;
+				builder.Append(" aiMedJob=").Append(made && job != null)
+					.Append(" aiMedSpot=").Append(spot != null && spot.Medical)
+					.Append(" aiMedDef=").Append(spot?.def?.defName ?? "none")
+					.Append(" aiMedJobTarget=").Append(job?.targetA.Thing == patient);
+			}
+			catch (Exception exception)
+			{
+				builder.Append(" aiMedError=").Append(exception.Message);
+			}
+			finally
+			{
+				if (spot != null && !spot.Destroyed)
+				{
+					spot.Destroy(DestroyMode.Vanish);
+				}
+				DestroyTestPawn(patient);
 			}
 		}
 	}
