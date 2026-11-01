@@ -141,6 +141,7 @@ namespace ColonyKit.Modules.Robotics
 				ProbeThoughtLog(map, mkv, builder);
 				builder.Append(' ').Append(ProbeBedRest(map, mkv));
 				builder.Append(' ').Append(SelfRepairProbe(mkv));
+				builder.Append(' ').Append(PassionProbe(mkv));
 				mkv.Destroy(DestroyMode.Vanish);
 			}
 			bay.Destroy(DestroyMode.Vanish);
@@ -1156,6 +1157,99 @@ namespace ColonyKit.Modules.Robotics
 				}
 				comp.durability = oldDurability;
 			}
+		}
+
+		/// <summary>
+		/// 技能热情：3 大 + 3~6 小（可能变异）、射击/格斗必大火、艺术/社交无热情；
+		/// 顺手验一下 Mk-V 的技能遗忘减半补丁（10 级每 200 tick 原版 -0.1，Mk-V 应为 -0.05）。
+		/// </summary>
+		private static string PassionProbe(Pawn mkv)
+		{
+			if (mkv?.skills == null)
+			{
+				return "passions=none";
+			}
+			int major = 0;
+			int minor = 0;
+			foreach (SkillDef def in DefDatabase<SkillDef>.AllDefsListForReading)
+			{
+				SkillRecord record = mkv.skills.GetSkill(def);
+				if (record == null)
+				{
+					continue;
+				}
+				if (record.passion == Passion.Major)
+				{
+					major++;
+				}
+				else if (record.passion == Passion.Minor)
+				{
+					minor++;
+				}
+			}
+			SkillRecord artistic = mkv.skills.GetSkill(SkillDefOf.Artistic);
+			SkillRecord social = mkv.skills.GetSkill(SkillDefOf.Social);
+			SkillRecord shooting = mkv.skills.GetSkill(SkillDefOf.Shooting);
+			SkillRecord melee = mkv.skills.GetSkill(SkillDefOf.Melee);
+
+			// 遗忘：先在没有「超凡记忆」的情况下量（应 -0.05），再临时加上特质量一次（应 -0.025，验证叠加）。
+			float decay = MeasureSkillDecay(social);
+			float decayWithGreatMemory = decay;
+			TraitSet traits = mkv.story?.traits;
+			TraitDef greatMemoryDef = TraitDefOf.GreatMemory;
+			Trait existing = traits?.GetTrait(greatMemoryDef);
+			bool hadGreatMemory = existing != null;
+			try
+			{
+				if (hadGreatMemory)
+				{
+					traits.RemoveTrait(existing);
+				}
+				decay = MeasureSkillDecay(social);
+				if (traits != null && greatMemoryDef != null)
+				{
+					traits.GainTrait(new Trait(greatMemoryDef, 0));
+					decayWithGreatMemory = MeasureSkillDecay(social);
+				}
+			}
+			finally
+			{
+				if (traits != null && greatMemoryDef != null)
+				{
+					Trait added = traits.GetTrait(greatMemoryDef);
+					if (added != null)
+					{
+						traits.RemoveTrait(added);
+					}
+				}
+				if (hadGreatMemory)
+				{
+					traits.GainTrait(existing);
+				}
+			}
+
+			return "passionMajor=" + major
+				+ " passionMinor=" + minor
+				+ " passionTotal=" + (major + minor)
+				+ " passionShootMajor=" + (shooting?.passion == Passion.Major)
+				+ " passionMeleeMajor=" + (melee?.passion == Passion.Major)
+				+ " passionArtistic=" + (artistic?.passion.ToString() ?? "none")
+				+ " passionSocial=" + (social?.passion.ToString() ?? "none")
+				+ " skillDecay=" + decay.ToString("0.000")
+				+ " skillDecayGreatMemory=" + decayWithGreatMemory.ToString("0.000");
+		}
+
+		/// <summary>把社交设成 10 级、100 经验，跑一次原版 Interval（含 Mk-V 减半补丁），返回经验变化。</summary>
+		private static float MeasureSkillDecay(SkillRecord skill)
+		{
+			if (skill == null)
+			{
+				return 0f;
+			}
+			skill.levelInt = 10;
+			skill.xpSinceLastLevel = 100f;
+			skill.Interval();
+			return skill.xpSinceLastLevel - 100f;
 		}
 
 		/// <summary>

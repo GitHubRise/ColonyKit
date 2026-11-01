@@ -79,6 +79,9 @@ namespace ColonyKit.Modules.Robotics
 		private bool skillsInitialized;
 		private int skillsProfileVersion;
 
+		/// <summary>技能热情档案版本：0 = 还没抽过（新造/旧档首读），1 = 已随机过且写入存档。</summary>
+		private int skillsPassionVersion;
+
 		/// <summary>Mk-V 的特性只在首次生成时随机一次，之后随 story 一起存档。</summary>
 		private bool traitsInitialized;
 		private int traitsProfileVersion;
@@ -220,6 +223,146 @@ namespace ColonyKit.Modules.Robotics
 			ApplySkill(pawn, SkillDefOf.Artistic, 1);
 			ApplySkill(pawn, SkillDefOf.Social, 1);
 			ApplySkill(pawn, SkillDefOf.Intellectual, 15);
+		}
+
+		// ---- 技能热情 ----------------------------------------------------------
+		// 规则（2026-11-01 定稿）：
+		//   池子 9 项：射击、格斗、医疗、烹饪、手工、采矿、建造、动物、智识；艺术/社交永不进池。
+		//   大火：射击 + 格斗 + 从其余 7 项随机 1 项。
+		//   小火：数量 3~6，从池里去掉大火后的技能中随机抽，互不重复。
+		//   变异：整台掷一次 10%，触发后随机 1~2 个小火升级成大火（大火可超过 3 个）。
+		//   热情随 SkillRecord 一起存档，只抽一次；旧档首次载入补一次。
+
+		private const int RobotPassionProfileVersion = 1;
+		private const int RobotMinorMin = 3;
+		private const int RobotMinorMax = 6;
+		private const float RobotMajorMutationChance = 0.1f;
+
+		private static readonly SkillDef[] RobotPassionPool =
+		{
+			SkillDefOf.Shooting,
+			SkillDefOf.Melee,
+			SkillDefOf.Medicine,
+			SkillDefOf.Cooking,
+			SkillDefOf.Crafting,
+			SkillDefOf.Mining,
+			SkillDefOf.Construction,
+			SkillDefOf.Animals,
+			SkillDefOf.Intellectual
+		};
+
+		/// <summary>第三个大火只从这 7 项里抽（射击、格斗已经固定）。</summary>
+		private static readonly SkillDef[] RobotThirdMajorPool =
+		{
+			SkillDefOf.Medicine,
+			SkillDefOf.Cooking,
+			SkillDefOf.Crafting,
+			SkillDefOf.Mining,
+			SkillDefOf.Construction,
+			SkillDefOf.Animals,
+			SkillDefOf.Intellectual
+		};
+
+		/// <summary>给 Mk-V 随机技能热情；只写 passion，不动等级。</summary>
+		private static void ApplyRobotPassions(Pawn pawn)
+		{
+			Pawn_SkillTracker skills = pawn?.skills;
+			if (skills == null)
+			{
+				return;
+			}
+
+			List<SkillRecord> pool = new List<SkillRecord>();
+			foreach (SkillDef def in RobotPassionPool)
+			{
+				SkillRecord record = skills.GetSkill(def);
+				if (record != null)
+				{
+					pool.Add(record);
+				}
+			}
+			if (pool.Count < RobotMinorMin)
+			{
+				return;
+			}
+
+			List<SkillRecord> majors = new List<SkillRecord>();
+			SkillRecord shooting = skills.GetSkill(SkillDefOf.Shooting);
+			SkillRecord melee = skills.GetSkill(SkillDefOf.Melee);
+			if (shooting != null)
+			{
+				majors.Add(shooting);
+			}
+			if (melee != null)
+			{
+				majors.Add(melee);
+			}
+			List<SkillRecord> thirdPool = new List<SkillRecord>();
+			foreach (SkillDef def in RobotThirdMajorPool)
+			{
+				SkillRecord record = skills.GetSkill(def);
+				if (record != null)
+				{
+					thirdPool.Add(record);
+				}
+			}
+			if (thirdPool.Count > 0)
+			{
+				majors.Add(thirdPool.RandomElement());
+			}
+
+			List<SkillRecord> rest = new List<SkillRecord>();
+			foreach (SkillRecord record in pool)
+			{
+				if (!majors.Contains(record))
+				{
+					rest.Add(record);
+				}
+			}
+			int minorCount = Mathf.Clamp(
+				Rand.RangeInclusive(RobotMinorMin, RobotMinorMax), 0, rest.Count);
+			List<SkillRecord> minors = SampleDistinct(rest, minorCount);
+
+			// 整台掷一次 10%；触发后随机 1~2 个小火升级成大火。
+			if (minors.Count > 0 && Rand.Chance(RobotMajorMutationChance))
+			{
+				int mutateCount = Mathf.Clamp(Rand.RangeInclusive(1, 2), 0, minors.Count);
+				for (int i = 0; i < mutateCount; i++)
+				{
+					SkillRecord pick = minors.RandomElement();
+					minors.Remove(pick);
+					majors.Add(pick);
+				}
+			}
+
+			// 池内先清空，再按抽签结果写入；艺术/社交不在池里，永远保持无热情。
+			foreach (SkillRecord record in pool)
+			{
+				record.passion = Passion.None;
+			}
+			foreach (SkillRecord record in majors)
+			{
+				record.passion = Passion.Major;
+			}
+			foreach (SkillRecord record in minors)
+			{
+				record.passion = Passion.Minor;
+			}
+		}
+
+		/// <summary>从列表里随机取 count 个不重复元素（列表很小，直接抽到就移除）。</summary>
+		private static List<SkillRecord> SampleDistinct(List<SkillRecord> source, int count)
+		{
+			List<SkillRecord> copy = new List<SkillRecord>(source);
+			List<SkillRecord> result = new List<SkillRecord>();
+			int target = Mathf.Clamp(count, 0, copy.Count);
+			for (int i = 0; i < target; i++)
+			{
+				SkillRecord pick = copy.RandomElement();
+				copy.Remove(pick);
+				result.Add(pick);
+			}
+			return result;
 		}
 
 		/// <summary>Mk-V 固定特性：坚韧、敏捷、疾步如飞。</summary>
@@ -490,6 +633,12 @@ namespace ColonyKit.Modules.Robotics
 					skillsInitialized = true;
 					skillsProfileVersion = 3;
 				}
+				// 技能热情：新造的随机一次，旧档首次载入补一次（之后随存档固定，不再重掷）。
+				if (skillsPassionVersion < RobotPassionProfileVersion)
+				{
+					ApplyRobotPassions(pawn);
+					skillsPassionVersion = RobotPassionProfileVersion;
+				}
 				if (!traitsInitialized || traitsProfileVersion < RobotTraitsProfileVersion)
 				{
 					// 固定特性始终补齐；随机特性由设置页决定是否追加。
@@ -553,6 +702,7 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref lowPowerStandby, "ck_robotics_lowPowerStandby", false);
 			Scribe_Values.Look(ref skillsInitialized, "ck_robotics_skillsInitialized", false);
 			Scribe_Values.Look(ref skillsProfileVersion, "ck_robotics_skillsProfileVersion", 0);
+			Scribe_Values.Look(ref skillsPassionVersion, "ck_robotics_skillsPassionVersion", 0);
 			Scribe_Values.Look(ref traitsInitialized, "ck_robotics_traitsInitialized", false);
 			Scribe_Values.Look(ref traitsProfileVersion, "ck_robotics_traitsProfileVersion", 0);
 			Scribe_Values.Look(ref durabilityMigratedTo5000, "ck_robotics_durabilityMigrated5000", false);
