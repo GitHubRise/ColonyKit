@@ -62,6 +62,7 @@
 
 ### Fixed
 
+- **模组配置页刷红字「An item with the same key has already been added」**：原版 1.6 的 `ModsConfig.GetModWarnings()` 按 packageId 往 `Dictionary` 里 `Add`，启用列表里同一个模组出现两次（在模组页反复勾选/拖动后会出现，`MorePracticalTraits` 就撞上过）就整页抛异常、点不动。新增 Harmony 前缀：调用前把启用列表去重（同一个 id，或两个不同 id 指向同一个模组），并让 `ActiveModsInLoadOrder` 的缓存失效，原版的警告逻辑照常跑；只在真的去重时才写一条警告日志。
 - **Mk-V AI「模型没有返回 action」刷屏**：实测日志里模型把推理过程当正文回（`content` 是 "We need answer only JSON. Need choose action..." 这类英文说明，一个 JSON 都没有），或是 `reasoning_content` 里有 JSON、`content` 只有一句总结，解析器都判成失败，AI 整轮空转。现在：① `ParseResponse` 把「响应为空 / 没有 content / 没有 action」标成 `formatFailure`，`SendCoreAsync` 遇到它自动用「只输出 JSON、不要思考过程」的严格提示 + **双倍 max_tokens**（上限 2048）重试一次；② `content` 里找不到 action 时再翻一遍 `reasoning_content`，把藏在思考过程里的 JSON 捞出来；③ `finish_reason=length` 时在报错里直接写「回复被截断，把最大回复长度调大」。默认最大回复长度从 300 提到 768（推理模型建议 1024 以上），`-colonykit-ai-test` 新增 `proseFail`（纯英文说明 → 判格式失败）与 `reasoningJsonPass`（JSON 藏在 reasoning_content → 解析出 `attack:123`）用例，实测两个都 True。
 - **检查面板「Inspect string … contains empty lines」警告**：AI 报错文本里带换行时会被塞进 `CompInspectStringExtra`，触发原版警告并把日志撑成多行。新增 `MkVAiService.Sanitize`，所有进日志/检查面板的 `say` / `think` / `error` 都把换行和连续空白压成单个空格；`CompNannyBot` 拼检视文本时再过滤一遍空行并清掉行内换行。
 - **Mk-V AI 把「交还家务待命」当成请求失败**：提示词要求模型回 `{"action":"<候选 id>","say":"..."}`，但 DeepSeek 常照 candidates 的字段名回 `{"id":"work","say":"无敌情，交还家务AI待命"}`；解析器只认 `action`，于是语义完全正确的回复被记成「请求失败」并整轮跳过。现在 `ExtractAction` 依次尝试 `action` / `act` / `id` / `choice` / `command`，`-colonykit-ai-test` 自检新增 `aliasPass` 用例（就是日志里那条 id 形状）。实测 `jsonPass=True aliasPass=True`。
