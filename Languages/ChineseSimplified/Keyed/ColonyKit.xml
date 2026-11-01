@@ -156,6 +156,14 @@
 	<CK.Hygiene.AllowColonistsDesc>关闭后殖民者不会使用。</CK.Hygiene.AllowColonistsDesc>
 	<CK.Hygiene.PumpCapacity>泵送能力: {0} 升/天</CK.Hygiene.PumpCapacity>
 	<CK.Hygiene.GroundWater>地下水能力: {0}</CK.Hygiene.GroundWater>
+	<CK.Hygiene.WellVein.Line>水脉：{0}（×{1}）</CK.Hygiene.WellVein.Line>
+	<CK.Hygiene.WellVein.Rich>丰富</CK.Hygiene.WellVein.Rich>
+	<CK.Hygiene.WellVein.Normal>普通</CK.Hygiene.WellVein.Normal>
+	<CK.Hygiene.WellVein.Poor>贫瘠</CK.Hygiene.WellVein.Poor>
+	<CK.Hygiene.WellVein.Barren>几乎无水</CK.Hygiene.WellVein.Barren>
+	<CK.Hygiene.WellNeedsWater>这里没有地下水，井必须建在水脉上（选中水井或建造时会显示蓝色水脉）。</CK.Hygiene.WellNeedsWater>
+	<CK.Hygiene.Gizmo.GroundWater>显示地下水</CK.Hygiene.Gizmo.GroundWater>
+	<CK.Hygiene.Gizmo.GroundWater.Desc>在地图上显示这张图的逐格地下水脉。颜色越亮水越厚，井的产量也越高。</CK.Hygiene.Gizmo.GroundWater.Desc>
 	<CK.Hygiene.FilthyRoom>肮脏房间系数: {0}</CK.Hygiene.FilthyRoom>
 	<CK.Hygiene.TooHot>过热系数: {0}</CK.Hygiene.TooHot>
 	<CK.Hygiene.InRain>淋雨系数: {0}</CK.Hygiene.InRain>
@@ -487,6 +495,8 @@
 	<ColonyKit.Settings.Hygiene.Section.Sewage>污水</ColonyKit.Settings.Hygiene.Section.Sewage>
 	<ColonyKit.Settings.Hygiene.PumpCapacity>水泵容量倍率</ColonyKit.Settings.Hygiene.PumpCapacity>
 	<ColonyKit.Settings.Hygiene.PumpCapacity.Desc>水泵、风泵和泵站日产水量的倍率；100% 为 DBH 原值。</ColonyKit.Settings.Hygiene.PumpCapacity.Desc>
+	<ColonyKit.Settings.Hygiene.GroundWaterRequired>水井需要地下水脉</ColonyKit.Settings.Hygiene.GroundWaterRequired>
+	<ColonyKit.Settings.Hygiene.GroundWaterRequired.Desc>开启后水井、深水井和简易水井只能建在有地下水的格子（选中或建造时会显示蓝色水脉），产量随水脉厚薄变化、同一条水脉上的多口井分水；关闭后回到旧行为：井可以随便放，按标称产量出水。</ColonyKit.Settings.Hygiene.GroundWaterRequired.Desc>
 	<ColonyKit.Settings.Hygiene.SewageGrid>每格污水上限倍率</ColonyKit.Settings.Hygiene.SewageGrid>
 	<ColonyKit.Settings.Hygiene.SewageGrid.Desc>单格最多能囤多少污水的倍率（基准 20）；100% 为默认。调低污水摊得更开，调高则积得更深但范围更小。</ColonyKit.Settings.Hygiene.SewageGrid.Desc>
 	<ColonyKit.Settings.Hygiene.SewageCleanup>污水自然清理速率</ColonyKit.Settings.Hygiene.SewageCleanup>

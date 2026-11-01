@@ -156,6 +156,14 @@
 	<CK.Hygiene.AllowColonistsDesc>If off, colonists will not use this fixture.</CK.Hygiene.AllowColonistsDesc>
 	<CK.Hygiene.PumpCapacity>Pump capacity: {0} L/day</CK.Hygiene.PumpCapacity>
 	<CK.Hygiene.GroundWater>Ground water capacity: {0}</CK.Hygiene.GroundWater>
+	<CK.Hygiene.WellVein.Line>Water vein: {0} (x{1})</CK.Hygiene.WellVein.Line>
+	<CK.Hygiene.WellVein.Rich>rich</CK.Hygiene.WellVein.Rich>
+	<CK.Hygiene.WellVein.Normal>normal</CK.Hygiene.WellVein.Normal>
+	<CK.Hygiene.WellVein.Poor>poor</CK.Hygiene.WellVein.Poor>
+	<CK.Hygiene.WellVein.Barren>nearly dry</CK.Hygiene.WellVein.Barren>
+	<CK.Hygiene.WellNeedsWater>There is no ground water here. Wells must be built on an underground water vein (the blue vein map shows while selecting or placing a well).</CK.Hygiene.WellNeedsWater>
+	<CK.Hygiene.Gizmo.GroundWater>Show ground water</CK.Hygiene.Gizmo.GroundWater>
+	<CK.Hygiene.Gizmo.GroundWater.Desc>Shows the underground water veins of this map. Brighter cells hold more water, and a well there yields more.</CK.Hygiene.Gizmo.GroundWater.Desc>
 	<CK.Hygiene.FilthyRoom>Filthy room multiplier: {0}</CK.Hygiene.FilthyRoom>
 	<CK.Hygiene.TooHot>Heat multiplier: {0}</CK.Hygiene.TooHot>
 	<CK.Hygiene.InRain>Rain multiplier: {0}</CK.Hygiene.InRain>
@@ -487,6 +495,8 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<ColonyKit.Settings.Hygiene.Section.Sewage>Sewage</ColonyKit.Settings.Hygiene.Section.Sewage>
 	<ColonyKit.Settings.Hygiene.PumpCapacity>Water pump capacity</ColonyKit.Settings.Hygiene.PumpCapacity>
 	<ColonyKit.Settings.Hygiene.PumpCapacity.Desc>Multiplier on the daily output of water pumps, wind pumps and pumping stations; 100% is the DBH value.</ColonyKit.Settings.Hygiene.PumpCapacity.Desc>
+	<ColonyKit.Settings.Hygiene.GroundWaterRequired>Wells need ground water</ColonyKit.Settings.Hygiene.GroundWaterRequired>
+	<ColonyKit.Settings.Hygiene.GroundWaterRequired.Desc>When on, water wells, deep wells and primitive wells can only be built on cells that hold ground water (the blue vein map shows while selecting or placing one). Output scales with the vein, and wells sharing a vein split the water. When off, wells can be placed anywhere and always yield their nominal amount.</ColonyKit.Settings.Hygiene.GroundWaterRequired.Desc>
 	<ColonyKit.Settings.Hygiene.SewageGrid>Sewage per cell cap</ColonyKit.Settings.Hygiene.SewageGrid>
 	<ColonyKit.Settings.Hygiene.SewageGrid.Desc>Multiplier on how much sewage one cell can hold (base 20); 100% is default. Lower it to make spills spread out sooner, raise it for fewer but deeper puddles.</ColonyKit.Settings.Hygiene.SewageGrid.Desc>
 	<ColonyKit.Settings.Hygiene.SewageCleanup>Sewage natural cleanup rate</ColonyKit.Settings.Hygiene.SewageCleanup>

@@ -197,7 +197,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_DbhWaterWell</defName>
 		<label>water well</label>
-		<description>Provides ground water to connected pumps. One well can feed any number of pumps on the same water network. Capacity: 2000 L/day.</description>
+		<description>Drills down to the ground water table. Must be built on an underground water vein and yields more where the vein is rich. Provides ground water to connected pumps; one well can feed any number of pumps on the same water network.</description>
 		<thingClass>Building</thingClass>
 		<size>(1,1)</size>
 		<graphicData>
@@ -223,8 +223,12 @@
 			</li>
 			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterInlet">
 				<Capacity>2000</Capacity>
+				<Radius>7.9</Radius>
 			</li>
 		</comps>
+		<placeWorkers>
+			<li>ColonyKit.Modules.Hygiene.GroundWater.PlaceWorker_GroundWater</li>
+		</placeWorkers>
 		<researchPrerequisites>
 			<li>CK_Plumbing</li>
 		</researchPrerequisites>

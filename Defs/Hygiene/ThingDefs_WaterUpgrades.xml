@@ -113,7 +113,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_DeepWaterWell</defName>
 		<label>deep water well</label>
-		<description>Drills deep into the aquifer for a large supply of ground water. Water from deep wells is unaffected by surface pollution, and the well yields far more water than a normal one. Capacity: 4000 L/day.</description>
+		<description>Drills deep into the aquifer for a large supply of ground water. Must be built on a deep aquifer and yields more where it is rich. Water from deep wells is unaffected by surface pollution, and the well yields far more water than a normal one.</description>
 		<thingClass>Building</thingClass>
 		<size>(1,1)</size>
 		<graphicData>
@@ -145,9 +145,13 @@
 			</li>
 			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterInlet">
 				<Capacity>4000</Capacity>
+				<Radius>13.7</Radius>
 				<Deep>true</Deep>
 			</li>
 		</comps>
+		<placeWorkers>
+			<li>ColonyKit.Modules.Hygiene.GroundWater.PlaceWorker_DeepGroundWater</li>
+		</placeWorkers>
 		<researchPrerequisites>
 			<li>CK_DeepWells</li>
 		</researchPrerequisites>
@@ -326,7 +330,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>CK_PrimitiveWell</defName>
 		<label>primitive well</label>
-		<description>A hand-drawn well that reaches ground water. Colonists can fill buckets and basins here, but it does not connect to pipes. Capacity: 2000 L/day.</description>
+		<description>A hand-drawn well that reaches ground water. Must be dug on an underground water vein. Colonists can fill buckets and basins here, but it does not connect to pipes.</description>
 		<thingClass>Building</thingClass>
 		<size>(1,1)</size>
 		<graphicData>
@@ -358,9 +362,13 @@
 		<comps>
 			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterInlet">
 				<Capacity>2000</Capacity>
+				<Radius>5</Radius>
 				<Piped>false</Piped>
 			</li>
 		</comps>
+		<placeWorkers>
+			<li>ColonyKit.Modules.Hygiene.GroundWater.PlaceWorker_GroundWater</li>
+		</placeWorkers>
 	</ThingDef>
 
 	<!-- 低温开采节点：1×1，3000 L/天，同时释放 30 热/秒，不需要电。 -->
@@ -402,6 +410,7 @@
 			</li>
 			<li Class="ColonyKit.Modules.Hygiene.Dbh.CompProperties_WaterInlet">
 				<Capacity>3000</Capacity>
+				<GroundWater>false</GroundWater>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<heatPerSecond>30</heatPerSecond>
