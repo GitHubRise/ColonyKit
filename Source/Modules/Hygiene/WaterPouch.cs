@@ -28,7 +28,8 @@ namespace ColonyKit.Modules.Hygiene
 
 	/// <summary>
 	/// 随身水袋：每个类人生物一个 0–100 L 的独立水袋，不占物品栏负重。
-	/// 殖民者/奴隶/囚徒开局 30 L；访客、商队、敌人开局 0 L，靠殖民地水源或地表水补。
+	/// 所有类人生物开局都带 30 L（殖民者、奴隶、囚徒、访客、商队、敌人），
+	/// 口渴时先喝自己袋里的水；袋里空了再按各自规则找殖民地水源或地表水。
 	/// 数据挂在 GameComponent 上，随存档序列化，不依赖 ThingDef 的 comps。
 	/// </summary>
 	public class GameComponent_WaterPouches : GameComponent
@@ -122,15 +123,14 @@ namespace ColonyKit.Modules.Hygiene
 			return record;
 		}
 
+		/// <summary>
+		/// 所有类人生物（不分阵营）开局 30 L：囚犯、访客、商队、敌人也一样，
+		/// 口渴时先拿自己袋里的水喝，不会为一口水跑去殖民地水龙头；
+		/// 敌人就算袋里空了也只认地表水，用不了殖民地设施。
+		/// </summary>
 		private static float DefaultWaterFor(Pawn pawn)
 		{
-			if (pawn.Faction == Faction.OfPlayerSilentFail
-				|| pawn.IsPrisonerOfColony
-				|| pawn.IsQuestLodger())
-			{
-				return StartWater;
-			}
-			return 0f;
+			return pawn?.RaceProps != null && pawn.RaceProps.Humanlike ? StartWater : 0f;
 		}
 	}
 

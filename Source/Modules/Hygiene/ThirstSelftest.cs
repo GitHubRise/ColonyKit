@@ -144,6 +144,25 @@ namespace ColonyKit.Modules.Hygiene
 			muffalo?.Destroy(DestroyMode.Vanish);
 			warg?.Destroy(DestroyMode.Vanish);
 
+			// 囚犯/访客/商队/敌人都自带 30 L：口渴时先喝自己水袋里的水。
+			float foreignWater = -1f;
+			bool foreignOwnJob = false;
+			Pawn foreign = SpawnForeignVisitor(map, pawn);
+			if (foreign != null)
+			{
+				foreignWater = WaterPouchUtility.GetWater(foreign);
+				Need_Thirst foreignThirst = foreign.needs?.TryGetNeed<Need_Thirst>();
+				if (foreignThirst != null)
+				{
+					foreignThirst.CurLevel = 0.2f;
+					ThinkResult foreignResult = new JobGiver_DrinkWater()
+						.TryIssueJobPackage(foreign, default(JobIssueParams));
+					foreignOwnJob = foreignResult.Job?.def?.defName == "CK_DrinkFromPouch";
+				}
+				foreign.Destroy(DestroyMode.Vanish);
+			}
+			pass &= foreignWater >= 1f && foreignOwnJob;
+
 			ThinkTreeDef lordDuty = DefDatabase<ThinkTreeDef>.GetNamedSilentFail("LordDuty");
 			bool lordDrink = lordDuty?.thinkRoot?.ThisAndChildrenRecursive
 				.Any(node => node is JobGiver_DrinkWater) == true;
@@ -163,6 +182,7 @@ namespace ColonyKit.Modules.Hygiene
 				$"perLiter={perLiter:F2} bottle={bottleGain:F2} " +
 				$"animalNeed={animalNeedOk} animalRatio={animalRatio:F2} " +
 				$"herbivoreGain={herbivoreGain:F2} carnivoreGain={carnivoreGain:F2} " +
+				$"foreignWater={foreignWater:F1} foreignOwnJob={foreignOwnJob} " +
 				$"lordDrink={lordDrink} lordExit={lordExit}");
 		}
 
@@ -179,6 +199,26 @@ namespace ColonyKit.Modules.Hygiene
 			GenSpawn.Spawn(animal, cell, map);
 			animal.needs?.AddOrRemoveNeedsAsAppropriate();
 			return animal;
+		}
+
+		/// <summary>刷一个非玩家派系的人形（访客/商队/敌人），测「口渴先喝自己水袋」。</summary>
+		private static Pawn SpawnForeignVisitor(Map map, Pawn near)
+		{
+			if (map == null || near == null)
+			{
+				return null;
+			}
+			Faction faction = Find.FactionManager.AllFactions
+				.FirstOrDefault(f => f != null && !f.IsPlayer && f.def != null && f.def.humanlikeFaction);
+			if (faction == null)
+			{
+				return null;
+			}
+			Pawn visitor = PawnGenerator.GeneratePawn(PawnKindDefOf.Villager, faction);
+			IntVec3 cell = CellFinder.RandomClosewalkCellNear(near.Position, map, 4);
+			GenSpawn.Spawn(visitor, cell, map);
+			visitor.needs?.AddOrRemoveNeedsAsAppropriate();
+			return visitor;
 		}
 
 		/// <summary>随便找一种生肉 def，用来测肉食动物吃肉补水。</summary>
