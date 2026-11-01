@@ -170,6 +170,12 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return false;
 			}
+			CompNannyBot comp = robot.TryGetComp<CompNannyBot>();
+			if (comp == null || comp.Durability >= comp.MaxDurability - 0.5f)
+			{
+				// 已经满耐久，没人需要来修。
+				return false;
+			}
 			WorkTypeDef workType = giverDef.workType;
 			foreach (Pawn colonist in robot.Map.mapPawns.FreeColonistsSpawned)
 			{

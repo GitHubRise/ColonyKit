@@ -139,6 +139,7 @@ namespace ColonyKit.Modules.Robotics
 				ProbeCaravanPriority(map, mkv, builder);
 				ProbeMkvRandomTraits(mkv, builder);
 				ProbeThoughtLog(map, mkv, builder);
+				builder.Append(' ').Append(SelfRepairProbe(mkv));
 				mkv.Destroy(DestroyMode.Vanish);
 			}
 			bay.Destroy(DestroyMode.Vanish);
@@ -1041,6 +1042,97 @@ namespace ColonyKit.Modules.Robotics
 			finally
 			{
 				settings.aiThoughtLog = original;
+			}
+		}
+
+		/// <summary>
+		/// 野外自修复要在真实 tick 上真的涨耐久、关掉就不再涨、非 Mk-V 不该涨。
+		/// 这里直接推进 TickManager 的 tick 并调用 CompTick，走的是游戏里同一条路径，
+		/// 只是把 500 tick 压缩成一次循环；结束后恢复设置与原耐久（tick 不回退）。
+		/// </summary>
+		private static string SelfRepairProbe(Pawn mkv)
+		{
+			CompNannyBot comp = mkv?.TryGetComp<CompNannyBot>();
+			if (comp == null)
+			{
+				return "selfRepair=none";
+			}
+
+			Pawn other = null;
+			foreach (Pawn candidate in mkv.Map.mapPawns.AllPawnsSpawned)
+			{
+				if (candidate != mkv && NannyBotUtility.IsNannyBot(candidate))
+				{
+					other = candidate;
+					break;
+				}
+			}
+
+			RoboticsSettings settings = NannyBotUtility.Settings;
+			bool oldEnabled = settings.mkvSelfRepair;
+			float oldRate = settings.mkvSelfRepairRate;
+			float oldDurability = comp.durability;
+			CompNannyBot otherComp = other?.TryGetComp<CompNannyBot>();
+			float otherDurability = otherComp?.durability ?? 0f;
+			int oldTicks = Find.TickManager.TicksGame;
+			try
+			{
+				// 旁边站着殖民者、能正常接维修任务，自修复照样要在「没人来」的空档里生效。
+				settings.mkvSelfRepair = true;
+				settings.mkvSelfRepairRate = 300f;
+				comp.durability = 1000f;
+				bool canRepair = NannyBotUtility.CanBeRepairedOnMap(mkv);
+				float before = comp.durability;
+				for (int i = 0; i < 500; i++)
+				{
+					Find.TickManager.DebugSetTicksGame(oldTicks + i);
+					comp.CompTick();
+				}
+				float afterOn = comp.durability;
+
+				settings.mkvSelfRepair = false;
+				for (int i = 0; i < 500; i++)
+				{
+					Find.TickManager.DebugSetTicksGame(oldTicks + 500 + i);
+					comp.CompTick();
+				}
+				float afterOff = comp.durability;
+
+				// 普通保姆机器人（Mk-I）不该走这条自修复。
+				float otherAfter = 0f;
+				if (otherComp != null)
+				{
+					settings.mkvSelfRepair = true;
+					otherComp.durability = 500f;
+					float otherBefore = otherComp.durability;
+					for (int i = 0; i < 500; i++)
+					{
+						Find.TickManager.DebugSetTicksGame(oldTicks + 1000 + i);
+						otherComp.CompTick();
+					}
+					otherAfter = otherComp.durability - otherBefore;
+				}
+
+				return "selfRepairEnabled=" + oldEnabled
+					+ " selfRepairCanRepairOnMap=" + canRepair
+					+ " selfRepairDelta=" + (afterOn - before).ToString("0.00")
+					+ " selfRepairOffDelta=" + (afterOff - afterOn).ToString("0.00")
+					+ " selfRepairOtherDelta=" + otherAfter.ToString("0.00")
+					+ " selfRepairTicks=" + (Find.TickManager.TicksGame - oldTicks);
+			}
+			catch (Exception exception)
+			{
+				return "selfRepairError=" + exception.GetType().Name + ":" + exception.Message;
+			}
+			finally
+			{
+				settings.mkvSelfRepair = oldEnabled;
+				settings.mkvSelfRepairRate = oldRate;
+				comp.durability = oldDurability;
+				if (otherComp != null)
+				{
+					otherComp.durability = otherDurability;
+				}
 			}
 		}
 	}
