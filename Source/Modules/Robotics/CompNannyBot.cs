@@ -107,6 +107,10 @@ namespace ColonyKit.Modules.Robotics
 		public string AiLastSay;
 		public string AiLastError;
 
+		/// <summary>最近一次第一人称想法，以及已经写进游戏日志的那一句（用来去重）。</summary>
+		public string AiLastThink;
+		public string AiLastLoggedThink;
+
 		/// <summary>常用充电桩；桩被拆掉后会自动改用最近的桩。</summary>
 		public Building homeStation;
 

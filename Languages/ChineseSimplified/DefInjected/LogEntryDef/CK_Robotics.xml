@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CK_MkVThought.label>Mk-V 想法</CK_MkVThought.label>
+	<CK_MkVThought.description>Mk-V 的 AI 做决定时写下的第一人称想法，显示在它的「日志」页。</CK_MkVThought.description>
+</LanguageData>

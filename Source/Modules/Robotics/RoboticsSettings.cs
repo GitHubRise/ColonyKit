@@ -228,6 +228,7 @@ namespace ColonyKit.Modules.Robotics
 		public float aiTemperature = DefaultAiTemperature;
 		public bool aiAllowCombat = true;
 		public bool aiSpeech = true;
+		public bool aiThoughtLog = false;
 		public int mkvBurstShotCount = DefaultMkvBurstShotCount;
 		public float mkvBurstCooldown = DefaultMkvBurstCooldown;
 		public float robotPowerEfficiency = DefaultRobotPowerEfficiency;
@@ -311,6 +312,7 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref aiTemperature, "aiTemperature", DefaultAiTemperature);
 			Scribe_Values.Look(ref aiAllowCombat, "aiAllowCombat", true);
 			Scribe_Values.Look(ref aiSpeech, "aiSpeech", true);
+			Scribe_Values.Look(ref aiThoughtLog, "aiThoughtLog", false);
 			Scribe_Values.Look(ref mkvBurstShotCount, "mkvBurstShotCount", DefaultMkvBurstShotCount);
 			Scribe_Values.Look(ref mkvBurstCooldown, "mkvBurstCooldown", DefaultMkvBurstCooldown);
 			Scribe_Values.Look(ref robotPowerEfficiency, "robotPowerEfficiency", DefaultRobotPowerEfficiency);
@@ -592,6 +594,7 @@ namespace ColonyKit.Modules.Robotics
 			aiTemperature = DefaultAiTemperature;
 			aiAllowCombat = true;
 			aiSpeech = true;
+			aiThoughtLog = false;
 			mkvBurstShotCount = DefaultMkvBurstShotCount;
 			mkvBurstCooldown = DefaultMkvBurstCooldown;
 			robotPowerEfficiency = DefaultRobotPowerEfficiency;

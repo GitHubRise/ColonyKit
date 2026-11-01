@@ -256,6 +256,8 @@
 	<ColonyKit.Settings.Robotics.Ai.Combat.Desc>When off, no attack targets are offered; the AI only rescues, firefights, returns, patrols or works.</ColonyKit.Settings.Robotics.Ai.Combat.Desc>
 	<ColonyKit.Settings.Robotics.Ai.Speech>Show AI speech</ColonyKit.Settings.Robotics.Ai.Speech>
 	<ColonyKit.Settings.Robotics.Ai.Speech.Desc>Show the returned short line as floating text above the Mk-V.</ColonyKit.Settings.Robotics.Ai.Speech.Desc>
+	<ColonyKit.Settings.Robotics.Ai.ThoughtLog>Log AI thoughts</ColonyKit.Settings.Robotics.Ai.ThoughtLog>
+	<ColonyKit.Settings.Robotics.Ai.ThoughtLog.Desc>Each decision also appends a first-person thought to this Mk-V's Log tab (select the robot, then Log), so you can review what it saw and why it chose that action. Off by default because the log only keeps a limited number of entries.</ColonyKit.Settings.Robotics.Ai.ThoughtLog.Desc>
 	<ColonyKit.Settings.Robotics.Ai.Test>Test connection</ColonyKit.Settings.Robotics.Ai.Test>
 	<ColonyKit.Settings.Robotics.Ai.Cost>Every request consumes DeepSeek quota; the defaults are one request per 20 s and at most 2 concurrent requests. The API key is stored in the local Config folder; keep it safe.</ColonyKit.Settings.Robotics.Ai.Cost>
 
@@ -265,4 +267,6 @@
 	<CK.Robotics.Inspect.Ai.Waiting>waiting for a decision</CK.Robotics.Inspect.Ai.Waiting>
 	<CK.Robotics.Ai.NoKey>Mk-V AI is enabled but no DeepSeek API key is set. Open Settings → Robots → Mk-V AI to add one.</CK.Robotics.Ai.NoKey>
 	<CK.Robotics.Inspect.Ai.Caravan>joining the caravan</CK.Robotics.Inspect.Ai.Caravan>
+	<CK.Robotics.Log.Thought>{0} thinks: "{1}"</CK.Robotics.Log.Thought>
+	<CK.Robotics.Log.Thought.NoPawn>A Mk-V once thought: "{0}"</CK.Robotics.Log.Thought.NoPawn>
 </LanguageData>

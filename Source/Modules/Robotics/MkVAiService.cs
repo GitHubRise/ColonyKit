@@ -23,6 +23,9 @@ namespace ColonyKit.Modules.Robotics
 		private const int MaxConcurrentRequests = 2;
 		private const float CandidateRange = 40f;
 
+		/// <summary>写进日志的想法最多保留多少字，模型偶尔会吐长句。</summary>
+		private const int MaxThoughtLength = 120;
+
 		private static readonly HttpClient Http = CreateHttpClient();
 		private static readonly ConcurrentDictionary<int, AiRequestResult> Results =
 			new ConcurrentDictionary<int, AiRequestResult>();
@@ -283,7 +286,9 @@ namespace ColonyKit.Modules.Robotics
 			int maxTokens = Mathf.Clamp(settings.aiMaxTokens,
 				RoboticsSettings.MinAiMaxTokens, RoboticsSettings.MaxAiMaxTokens);
 			string system = "你是一台 RimWorld Mk-V 机器人的机载 AI。只能从给出的 candidates 里选择一个 action，"
-				+ "只回复 JSON：{\"action\":\"<候选 id>\",\"say\":\"<不超过 20 字的中文短句>\"}。"
+				+ "只回复 JSON：{\"action\":\"<候选 id>\",\"say\":\"<不超过 20 字的中文短句>\","
+				+ "\"think\":\"<不超过 60 字、第一人称「我」的中文内心独白>\"}。"
+				+ "think 写你此刻看到了什么、为什么这样决定，用「我」像日记一样叙述；say 是你嘴上说的一句话。"
 				+ "不要编造 id。优先保护殖民者、避免无谓送死；只要 candidates 里有敌人，就优先攻击并主动接近，"
 				+ "不要缩在家里做家务。没有合适动作时才选 work。";
 			string user = "当前状态和候选动作（JSON）：\n" + promptJson + "\n请选择一个 action。";
@@ -631,6 +636,7 @@ namespace ColonyKit.Modules.Robotics
 			content = StripCodeFence(content.Trim());
 			string action = ExtractAction(content);
 			string say = ExtractJsonString(content, "say");
+			string think = ExtractJsonString(content, "think");
 			if (string.IsNullOrWhiteSpace(action))
 			{
 				int start = content.IndexOf('{');
@@ -640,13 +646,15 @@ namespace ColonyKit.Modules.Robotics
 					string inner = content.Substring(start, end - start + 1);
 					action = ExtractAction(inner);
 					say = ExtractJsonString(inner, "say");
+					think = ExtractJsonString(inner, "think");
 				}
 			}
 			if (string.IsNullOrWhiteSpace(action))
 			{
 				return AiRequestResult.Failure("模型没有返回 action：" + Truncate(content, 160));
 			}
-			return AiRequestResult.Success(action.Trim(), (say ?? "").Trim());
+			return AiRequestResult.Success(
+				action.Trim(), (say ?? "").Trim(), (think ?? "").Trim());
 		}
 
 		/// <summary>
@@ -845,6 +853,9 @@ namespace ColonyKit.Modules.Robotics
 			comp.AiLastError = "";
 			comp.AiLastAction = result.action ?? "";
 			comp.AiLastSay = result.say ?? "";
+			comp.AiLastThink = string.IsNullOrEmpty(result.think) ? comp.AiLastSay : result.think;
+			// 放在「已征召/精神崩溃就跳过」之前：打仗时恰恰最想回看它在想什么。
+			LogThought(comp, pawn);
 			if (pawn.Drafted || pawn.InMentalState || pawn.Dead || !pawn.Spawned)
 			{
 				return;
@@ -859,6 +870,34 @@ namespace ColonyKit.Modules.Robotics
 				MoteMaker.ThrowText(pawn.DrawPos, pawn.Map, comp.AiLastSay, 4f);
 			}
 			ExecuteAction(comp, pawn, comp.AiLastAction);
+		}
+
+		/// <summary>
+		/// 把第一人称想法追加到这台 Mk-V 的「日志」页（选中机器人 → 左下角日志）。
+		/// PlayLog 是全局 150 条的环形缓冲，同一句话不重复写，免得把社交/战斗记录挤掉。
+		/// </summary>
+		private static void LogThought(CompNannyBot comp, Pawn pawn)
+		{
+			if (!NannyBotUtility.Settings.aiThoughtLog)
+			{
+				return;
+			}
+			if (pawn == null || pawn.Dead || !pawn.Spawned || pawn.Map == null)
+			{
+				return;
+			}
+			if (Current.Game == null || Current.ProgramState != ProgramState.Playing)
+			{
+				return;
+			}
+			string thought = Truncate(comp.AiLastThink, MaxThoughtLength);
+			if (string.IsNullOrWhiteSpace(thought) || thought == comp.AiLastLoggedThink)
+			{
+				return;
+			}
+			comp.AiLastLoggedThink = thought;
+			Find.PlayLog.Add(new PlayLogEntry_MkVThought(
+				pawn, thought, DefDatabase<LogEntryDef>.GetNamedSilentFail("CK_MkVThought")));
 		}
 
 		private static void ExecuteAction(CompNannyBot comp, Pawn pawn, string action)

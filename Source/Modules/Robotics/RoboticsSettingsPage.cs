@@ -623,6 +623,12 @@ namespace ColonyKit.Modules.Robotics
 				ref data.aiSpeech,
 				"ColonyKit.Settings.Robotics.Ai.Speech.Desc".Loc());
 			listing.Gap(6f);
+			data.aiThoughtLog = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.ThoughtLog".Loc(),
+				ref data.aiThoughtLog,
+				"ColonyKit.Settings.Robotics.Ai.ThoughtLog.Desc".Loc());
+			listing.Gap(6f);
 			if (SettingsWidgets.Button(listing, "ColonyKit.Settings.Robotics.Ai.Test".Loc()))
 			{
 				MkVAiService.TestConnection(data);

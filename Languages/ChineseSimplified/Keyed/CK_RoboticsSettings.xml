@@ -256,6 +256,8 @@
 	<ColonyKit.Settings.Robotics.Ai.Combat.Desc>关闭后候选里不会出现攻击目标，AI 只做救援、灭火、回舱、巡逻和家务。</ColonyKit.Settings.Robotics.Ai.Combat.Desc>
 	<ColonyKit.Settings.Robotics.Ai.Speech>显示 AI 台词</ColonyKit.Settings.Robotics.Ai.Speech>
 	<ColonyKit.Settings.Robotics.Ai.Speech.Desc>AI 返回的短句会以漂浮文字显示在 Mk-V 头顶。</ColonyKit.Settings.Robotics.Ai.Speech.Desc>
+	<ColonyKit.Settings.Robotics.Ai.ThoughtLog>把想法写进日志</ColonyKit.Settings.Robotics.Ai.ThoughtLog>
+	<ColonyKit.Settings.Robotics.Ai.ThoughtLog.Desc>每次决策时用第一人称写下的想法会追加到这台 Mk-V 的「日志」页（选中机器人 → 左下角日志），可以回看它当时看到了什么、为什么这样决定。默认关闭，因为日志位置有限。</ColonyKit.Settings.Robotics.Ai.ThoughtLog.Desc>
 	<ColonyKit.Settings.Robotics.Ai.Test>测试连接</ColonyKit.Settings.Robotics.Ai.Test>
 	<ColonyKit.Settings.Robotics.Ai.Cost>每次请求都会消耗 DeepSeek 额度；默认 20 秒一次、最多同时 2 个请求。API Key 只保存在本机 Config 里，请自行保管。</ColonyKit.Settings.Robotics.Ai.Cost>
 
@@ -265,4 +267,6 @@
 	<CK.Robotics.Inspect.Ai.Waiting>等待决策</CK.Robotics.Inspect.Ai.Waiting>
 	<CK.Robotics.Ai.NoKey>Mk-V AI 已启用，但没有填写 DeepSeek API Key；请到设置 → 机器人 → Mk-V AI 里填写。</CK.Robotics.Ai.NoKey>
 	<CK.Robotics.Inspect.Ai.Caravan>跟随远行队</CK.Robotics.Inspect.Ai.Caravan>
+	<CK.Robotics.Log.Thought>{0} 心想：「{1}」</CK.Robotics.Log.Thought>
+	<CK.Robotics.Log.Thought.NoPawn>某台 Mk-V 曾想：「{0}」</CK.Robotics.Log.Thought.NoPawn>
 </LanguageData>

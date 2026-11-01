@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- Mk-V 的 AI 想法：作为 PlayLog 条目写进游戏日志（选中机器人 → 左下角「日志」页）。 -->
+	<LogEntryDef>
+		<defName>CK_MkVThought</defName>
+		<label>Mk-V thought</label>
+		<description>One first-person thought written by the Mk-V AI when it makes a decision.</description>
+	</LogEntryDef>
+
+</Defs>

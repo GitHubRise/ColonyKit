@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using RimWorld;
 using Verse;
@@ -7,7 +7,7 @@ namespace ColonyKit.Modules.Robotics
 {
 	/// <summary>
 	/// 开发用探针：<c>-colonykit-ai-test</c> 启动时验证两件事：
-	/// 1) DeepSeek 响应 JSON 能解析成 action/say；
+	/// 1) DeepSeek 响应 JSON 能解析成 action/say/think；
 	/// 2) 真实 HTTPS 请求能到达 api.deepseek.com（用无效 Key，预期 401）。
 	/// 不需要真实 API Key，也不消耗额度。
 	/// </summary>
@@ -18,7 +18,8 @@ namespace ColonyKit.Modules.Robotics
 
 		private const string MockResponse =
 			"{\"id\":\"ck-test\",\"choices\":[{\"message\":{\"role\":\"assistant\","
-			+ "\"content\":\"{\\\"action\\\":\\\"work\\\",\\\"say\\\":\\\"自检通过\\\"}\"}}]}";
+			+ "\"content\":\"{\\\"action\\\":\\\"work\\\",\\\"say\\\":\\\"自检通过\\\","
+			+ "\\\"think\\\":\\\"我在自检，一切正常。\\\"}\"}}]}";
 
 		/// <summary>
 		/// 模型有时照 candidates 的字段名回 id 而不是 action（DeepSeek 实际吐过这个形状），
@@ -58,6 +59,9 @@ namespace ColonyKit.Modules.Robotics
 			AiRequestResult parsed = MkVAiService.ParseForTest(MockResponse);
 			bool jsonPass = parsed != null && parsed.ok
 				&& parsed.action == "work" && parsed.say == "自检通过";
+			// think 是「日志」页第一人称独白，缺了不影响执行动作，所以单独报一项。
+			bool thinkPass = parsed != null && parsed.ok
+				&& parsed.think == "我在自检，一切正常。";
 
 			AiRequestResult alias = MkVAiService.ParseForTest(AliasResponse);
 			bool aliasPass = alias != null && alias.ok
@@ -89,8 +93,10 @@ namespace ColonyKit.Modules.Robotics
 			string summary = "AI self-test: jsonPass=" + jsonPass
 				+ " aliasPass=" + aliasPass
 				+ " reasoningPass=" + reasoningPass
+				+ " thinkPass=" + thinkPass
 				+ " parsedAction=" + (parsed?.action ?? "none")
 				+ " parsedSay=" + (parsed?.say ?? "none")
+				+ " parsedThink=" + (parsed?.think ?? "none")
 				+ " aliasAction=" + (alias?.action ?? "none")
 				+ " reasoningAction=" + (reasoning?.action ?? "none")
 				+ " parsedError=" + (parsed?.error ?? "none")

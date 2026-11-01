@@ -29,12 +29,18 @@ namespace ColonyKit.Modules.Robotics
 	{
 		public bool ok;
 		public string action;
+
+		/// <summary>嘴上说的一句短话，显示在头顶。</summary>
 		public string say;
+
+		/// <summary>第一人称的内心独白，写进「日志」页。</summary>
+		public string think;
+
 		public string error;
 
-		public static AiRequestResult Success(string action, string say)
+		public static AiRequestResult Success(string action, string say, string think = null)
 		{
-			return new AiRequestResult { ok = true, action = action, say = say };
+			return new AiRequestResult { ok = true, action = action, say = say, think = think };
 		}
 
 		public static AiRequestResult Failure(string error)

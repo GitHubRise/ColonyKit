@@ -138,6 +138,7 @@ namespace ColonyKit.Modules.Robotics
 				ProbeArcBladeEffects(mkv, map, builder);
 				ProbeCaravanPriority(map, mkv, builder);
 				ProbeMkvRandomTraits(mkv, builder);
+				ProbeThoughtLog(map, mkv, builder);
 				mkv.Destroy(DestroyMode.Vanish);
 			}
 			bay.Destroy(DestroyMode.Vanish);
@@ -985,6 +986,61 @@ namespace ColonyKit.Modules.Robotics
 			catch (Exception exception)
 			{
 				ModLog.Error("Robotics", "selftest threw", exception);
+			}
+		}
+
+		/// <summary>
+		/// AI 想法要能从 PlayLog 走进「日志」页的渲染列表，并且只出现在这台机器人自己的日志里。
+		/// 走的是 ITab_Pawn_Log 实际使用的 GenerateLogLinesFor，所以 Concerns 过滤和文案渲染一起验证。
+		/// </summary>
+		private static void ProbeThoughtLog(Map map, Pawn mkv, StringBuilder builder)
+		{
+			const string thought = "自检想法：我在检查日志页。";
+			RoboticsSettings settings = NannyBotUtility.Settings;
+			bool original = settings.aiThoughtLog;
+			try
+			{
+				LogEntryDef def = DefDatabase<LogEntryDef>.GetNamedSilentFail("CK_MkVThought");
+				builder.Append(" aiLogDef=").Append(def != null);
+
+				settings.aiThoughtLog = true;
+				PlayLogEntry_MkVThought entry = new PlayLogEntry_MkVThought(mkv, thought, def);
+				Find.PlayLog.Add(entry);
+
+				Pawn other = null;
+				foreach (Pawn pawn in map.mapPawns.AllPawnsSpawned)
+				{
+					if (pawn != mkv)
+					{
+						other = pawn;
+						break;
+					}
+				}
+				builder.Append(" aiLogConcerns=").Append(entry.Concerns(mkv))
+					.Append(" aiLogOtherConcerns=").Append(other != null && entry.Concerns(other));
+
+				StringBuilder rendered = new StringBuilder();
+				bool found = false;
+				foreach (ITab_Pawn_Log_Utility.LogLineDisplayable line
+					in ITab_Pawn_Log_Utility.GenerateLogLinesFor(mkv, false, true, true, 300))
+				{
+					if (line.Matches(entry))
+					{
+						line.AppendTo(rendered);
+						found = true;
+						break;
+					}
+				}
+				builder.Append(" aiLogLine=").Append(found)
+					.Append(" aiLogText=").Append(rendered.ToString().Contains(thought));
+			}
+			catch (Exception exception)
+			{
+				builder.Append(" aiLogError=").Append(exception.Message);
+			}
+			finally
+			{
+				settings.aiThoughtLog = original;
 			}
 		}
 	}
