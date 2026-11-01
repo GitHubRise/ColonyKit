@@ -1635,6 +1635,88 @@ namespace ColonyKit.Modules.Robotics
 				Job chore = new JobGiver_NannyBotConstruct()
 					.TryIssueJobPackage(robot, new JobIssueParams()).Job;
 				builder.Append(" aiConstructChore=").Append(chore != null);
+
+				// 研究：有研究台 + 当前项目时，工作器要能真的派出研究 Job（以前只会「想」）。
+				Thing bench = null;
+				try
+				{
+					ThingDef researchBenchDef = DefDatabase<ThingDef>
+						.GetNamedSilentFail(MkVBuilder.ResearchBenchDefName);
+					IntVec3 benchCell = FindFreeRect(map, robot.Position, 20, 3, 2);
+					if (researchBenchDef != null && benchCell.IsValid)
+					{
+						bench = ThingMaker.MakeThing(researchBenchDef, ThingDefOf.WoodLog);
+						GenSpawn.Spawn(bench, benchCell, map, Rot4.South);
+					}
+					ResearchProjectDef researchProject = MkVResearch.NextProject();
+					bool researchSelected = researchProject != null
+						&& MkVResearch.Select(researchProject);
+					Job researchJob = new JobGiver_NannyBotResearch()
+						.TryIssueJobPackage(robot, new JobIssueParams()).Job;
+					builder.Append(" aiResearchBenchSpawned=").Append(bench != null && bench.Spawned)
+						.Append(" aiResearchProject=").Append(researchProject?.defName ?? "none")
+						.Append(" aiResearchSelected=").Append(researchSelected)
+						.Append(" aiResearchJob=").Append(researchJob != null);
+				}
+				finally
+				{
+					if (bench != null && !bench.Destroyed)
+					{
+						bench.Destroy(DestroyMode.Vanish);
+					}
+				}
+
+				// 没木头时应该自己去砍树，而不是干等。
+				if (wood != null && !wood.Destroyed)
+				{
+					wood.Destroy(DestroyMode.Vanish);
+					wood = null;
+				}
+				Thing tree = null;
+				if (!HasAnyTree(map))
+				{
+					tree = SpawnPlant(map, robot.Position, "Plant_TreeOak");
+				}
+				Job woodJob;
+				bool chop = MkVBuilder.TryGatherWood(robot, out woodJob);
+				builder.Append(" aiChopForBuild=").Append(chop && woodJob != null)
+					.Append(" aiTreeSpawned=").Append(tree != null);
+
+				// 没钢铁时应该自己去挖「压实的钢材」。
+				if (steel != null && !steel.Destroyed)
+				{
+					steel.Destroy(DestroyMode.Vanish);
+					steel = null;
+				}
+				Thing rock = null;
+				if (!MkVBuilder.HasMineableSteel(map))
+				{
+					ThingDef rockDef = DefDatabase<ThingDef>
+						.GetNamedSilentFail(MkVBuilder.MineableSteelDefName);
+					if (rockDef != null)
+					{
+						rock = ThingMaker.MakeThing(rockDef);
+						GenSpawn.Spawn(rock,
+							CellFinder.RandomClosewalkCellNear(robot.Position, map, 6), map);
+					}
+				}
+				Job steelJob;
+				bool mine = MkVBuilder.TryGatherSteel(robot, out steelJob);
+				builder.Append(" aiMineForBuild=").Append(mine && steelJob != null)
+					.Append(" aiRockSpawned=").Append(rock != null)
+					.Append(" aiBuildState=").Append(MkVBuilder.DebugState(robot));
+
+				// 直接验证「标树/标矿 → 砍伐/挖矿 Job」这条链（材料充足时上层判断会跳过，这里绕过）。
+				builder.Append(" aiChopJob=").Append(MkVBuilder.ChopForTest(robot) != null)
+					.Append(" aiMineJob=").Append(MkVBuilder.MineForTest(robot) != null);
+				if (tree != null && !tree.Destroyed)
+				{
+					tree.Destroy(DestroyMode.Vanish);
+				}
+				if (rock != null && !rock.Destroyed)
+				{
+					rock.Destroy(DestroyMode.Vanish);
+				}
 			}
 			catch (Exception exception)
 			{
@@ -1666,6 +1748,34 @@ namespace ColonyKit.Modules.Robotics
 			Thing thing = ThingMaker.MakeThing(def);
 			thing.stackCount = count;
 			GenSpawn.Spawn(thing, CellFinder.RandomClosewalkCellNear(near, map, 4), map);
+			return thing;
+		}
+
+		private static bool HasAnyTree(Map map)
+		{
+			foreach (Thing thing in map.listerThings.ThingsInGroup(ThingRequestGroup.Plant))
+			{
+				if (thing is Plant plant && plant.def?.plant != null && plant.def.plant.IsTree)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		private static Thing SpawnPlant(Map map, IntVec3 near, string defName)
+		{
+			ThingDef def = DefDatabase<ThingDef>.GetNamedSilentFail(defName);
+			if (def == null)
+			{
+				return null;
+			}
+			Thing thing = ThingMaker.MakeThing(def);
+			if (thing is Plant plant)
+			{
+				plant.Growth = 1f;
+			}
+			GenSpawn.Spawn(thing, CellFinder.RandomClosewalkCellNear(near, map, 6), map);
 			return thing;
 		}
 	}

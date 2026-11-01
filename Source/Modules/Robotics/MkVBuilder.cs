@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -13,6 +15,9 @@ namespace ColonyKit.Modules.Robotics
 		public const string ResearchBenchDefName = "SimpleResearchBench";
 
 		public const string CampfireDefName = "Campfire";
+
+		/// <summary>原版「压实的钢材」矿。</summary>
+		public const string MineableSteelDefName = "MineableSteel";
 
 		private const int BenchSteelCost = 25;
 
@@ -100,10 +105,15 @@ namespace ColonyKit.Modules.Robotics
 			if (!HasResearchBench(map) && !HasPending(map, ResearchBenchDefName))
 			{
 				ThingDef def = DefDatabase<ThingDef>.GetNamedSilentFail(ResearchBenchDefName);
+				// 钢铁不够但有矿就先下蓝图，后面「缺钢就去采矿」会补上。
 				if (def != null
-					&& CountMaterial(map, ThingDefOf.Steel) >= BenchSteelCost
-					&& EnsureWood(pawn, BenchWoodCost))
+					&& (CountMaterial(map, ThingDefOf.Steel) >= BenchSteelCost
+						|| HasMineableSteel(map)))
 				{
+					if (CountMaterial(map, ThingDefOf.WoodLog) < BenchWoodCost)
+					{
+						DesignateTrees(pawn);
+					}
 					Blueprint_Build blueprint = Place(pawn, def, ThingDefOf.WoodLog);
 					if (blueprint != null)
 					{
@@ -117,8 +127,12 @@ namespace ColonyKit.Modules.Robotics
 			if (!HasKitchen(map) && !HasPending(map, CampfireDefName))
 			{
 				ThingDef def = DefDatabase<ThingDef>.GetNamedSilentFail(CampfireDefName);
-				if (def != null && EnsureWood(pawn, CampfireWoodCost))
+				if (def != null)
 				{
+					if (CountMaterial(map, ThingDefOf.WoodLog) < CampfireWoodCost)
+					{
+						DesignateTrees(pawn);
+					}
 					Blueprint_Build blueprint = Place(pawn, def, null);
 					if (blueprint != null)
 					{
@@ -131,16 +145,294 @@ namespace ColonyKit.Modules.Robotics
 			return false;
 		}
 
+		/// <summary>
+		/// 待建的蓝图/框架需要木料、地图上又没木头时，自己去砍树，而不是站在工地上干等。
+		/// 只砍已经标记为「砍伐」的树（顺手补标记），木头掉在地上后由建造工作搬过去。
+		/// </summary>
+		public static bool TryGatherWood(Pawn pawn, out Job job)
+		{
+			job = null;
+			Map map = pawn?.Map;
+			if (map == null || !NannyBotUtility.Settings.construct
+				|| !NannyBotUtility.CanWork(pawn))
+			{
+				return false;
+			}
+			CompNannyBot comp = NannyBotUtility.BotComp(pawn);
+			if (comp != null && comp.GetEffectivePriority(RobotChore.Construct) <= 0)
+			{
+				return false;
+			}
+			int need = PendingCost(map, ThingDefOf.WoodLog);
+			if (need <= 0 || CountMaterial(map, ThingDefOf.WoodLog) >= need)
+			{
+				return false;
+			}
+			DesignateTrees(pawn);
+			job = CutJob(pawn);
+			return job != null;
+		}
+
+		/// <summary>
+		/// 待建的蓝图/框架缺钢铁、地图上又没有现成的钢时，自己去标矿、挖「被压埋的钢材」。
+		/// </summary>
+		public static bool TryGatherSteel(Pawn pawn, out Job job)
+		{
+			job = null;
+			Map map = pawn?.Map;
+			if (map == null || !NannyBotUtility.Settings.construct
+				|| !NannyBotUtility.CanWork(pawn))
+			{
+				return false;
+			}
+			CompNannyBot comp = NannyBotUtility.BotComp(pawn);
+			if (comp != null && comp.GetEffectivePriority(RobotChore.Construct) <= 0)
+			{
+				return false;
+			}
+			int need = PendingCost(map, ThingDefOf.Steel);
+			if (need <= 0 || CountMaterial(map, ThingDefOf.Steel) >= need)
+			{
+				return false;
+			}
+			DesignateMineables(pawn);
+			job = MineJob(pawn);
+			return job != null;
+		}
+
+		/// <summary>待建蓝图/框架里，这个材料最多要多少（按单件算，不累加）。</summary>
+		private static int PendingCost(Map map, ThingDef material)
+		{
+			if (map?.listerThings == null || material == null)
+			{
+				return 0;
+			}
+			int best = 0;
+			best = Math.Max(best, PendingCostInGroup(map, ThingRequestGroup.Blueprint, material));
+			best = Math.Max(best, PendingCostInGroup(map, ThingRequestGroup.BuildingFrame, material));
+			return best;
+		}
+
+		private static int PendingCostInGroup(Map map, ThingRequestGroup group, ThingDef material)
+		{
+			int best = 0;
+			foreach (Thing thing in map.listerThings.ThingsInGroup(group))
+			{
+				if (thing == null || !thing.Spawned || thing.Faction != Faction.OfPlayer)
+				{
+					continue;
+				}
+				ThingDef buildDef = thing.def?.entityDefToBuild as ThingDef;
+				if (buildDef == null)
+				{
+					continue;
+				}
+				int amount = 0;
+				if (buildDef.costList != null)
+				{
+					for (int i = 0; i < buildDef.costList.Count; i++)
+					{
+						ThingDefCountClass cost = buildDef.costList[i];
+						if (cost?.thingDef == material)
+						{
+							amount += cost.count;
+						}
+					}
+				}
+				if (material == ThingDefOf.WoodLog && buildDef.costStuffCount > 0
+					&& (thing as Blueprint_Build)?.stuffToUse == material)
+				{
+					amount += buildDef.costStuffCount;
+				}
+				if (amount > best)
+				{
+					best = amount;
+				}
+			}
+			return best;
+		}
+
+		/// <summary>地图上有没有可开采的钢矿（压实的钢材）。</summary>
+		public static bool HasMineableSteel(Map map)
+		{
+			ThingDef rockDef = DefDatabase<ThingDef>.GetNamedSilentFail(MineableSteelDefName);
+			if (map?.listerThings == null || rockDef == null)
+			{
+				return false;
+			}
+			foreach (Thing thing in map.listerThings.ThingsOfDef(rockDef))
+			{
+				if (thing != null && thing.Spawned && !thing.Destroyed)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		private static void DesignateMineables(Pawn pawn)
+		{
+			Map map = pawn.Map;
+			ThingDef rockDef = DefDatabase<ThingDef>.GetNamedSilentFail(MineableSteelDefName);
+			if (map == null || rockDef == null)
+			{
+				return;
+			}
+			int count = 0;
+			foreach (Thing rock in map.listerThings.ThingsOfDef(rockDef))
+			{
+				if (rock == null || !rock.Spawned || rock.Destroyed)
+				{
+					continue;
+				}
+				if (!NannyBotUtility.IsWithinWorkArea(pawn, rock.Position)
+					|| !pawn.CanReach(rock, PathEndMode.Touch, Danger.Deadly))
+				{
+					continue;
+				}
+				if (map.designationManager.DesignationAt(rock.Position, DesignationDefOf.Mine) != null)
+				{
+					continue;
+				}
+				map.designationManager.AddDesignation(
+					new Designation(rock.Position, DesignationDefOf.Mine));
+				count++;
+				if (count >= 4)
+				{
+					break;
+				}
+			}
+		}
+
+		private static Job MineJob(Pawn pawn)
+		{
+			WorkGiver_Miner miner = DefDatabase<WorkGiverDef>
+				.GetNamedSilentFail("Mine")?.Worker as WorkGiver_Miner;
+			if (miner == null)
+			{
+				return null;
+			}
+			IEnumerable<Thing> rocks = miner.PotentialWorkThingsGlobal(pawn);
+			if (rocks == null)
+			{
+				return null;
+			}
+			foreach (Thing rock in rocks)
+			{
+				if (rock == null || !rock.Spawned || rock.Destroyed)
+				{
+					continue;
+				}
+				if (!NannyBotUtility.IsWithinWorkArea(pawn, rock.Position))
+				{
+					continue;
+				}
+				Job job = miner.JobOnThing(pawn, rock, false);
+				if (job != null)
+				{
+					return job;
+				}
+			}
+			return null;
+		}
+
+		/// <summary>仅供 -colonykit-nannybot-test 使用：跳过材料判断，直接标树并给砍伐 Job。</summary>
+		internal static Job ChopForTest(Pawn pawn)
+		{
+			DesignateTrees(pawn);
+			return CutJob(pawn);
+		}
+
+		/// <summary>仅供 -colonykit-nannybot-test 使用：跳过材料判断，直接标矿并给挖矿 Job。</summary>
+		internal static Job MineForTest(Pawn pawn)
+		{
+			DesignateMineables(pawn);
+			return MineJob(pawn);
+		}
+
+		/// <summary>仅供 -colonykit-nannybot-test 使用：打印建造备料状态。</summary>
+		internal static string DebugState(Pawn pawn)
+		{
+			Map map = pawn?.Map;
+			if (map == null)
+			{
+				return "no-map";
+			}
+			return "woodNeed=" + PendingCost(map, ThingDefOf.WoodLog)
+				+ ",steelNeed=" + PendingCost(map, ThingDefOf.Steel)
+				+ ",wood=" + CountMaterial(map, ThingDefOf.WoodLog)
+				+ ",steel=" + CountMaterial(map, ThingDefOf.Steel)
+				+ ",mineable=" + HasMineableSteel(map)
+				+ ",pending=" + HasPendingBuild(map);
+		}
+
+		/// <summary>地图上有没有自己阵营待建的蓝图/框架。</summary>
+		private static bool HasPendingBuild(Map map)
+		{
+			return HasPlayerThingInGroup(map, ThingRequestGroup.Blueprint)
+				|| HasPlayerThingInGroup(map, ThingRequestGroup.BuildingFrame);
+		}
+
+		private static bool HasPlayerThingInGroup(Map map, ThingRequestGroup group)
+		{
+			if (map?.listerThings == null)
+			{
+				return false;
+			}
+			foreach (Thing thing in map.listerThings.ThingsInGroup(group))
+			{
+				if (thing != null && thing.Spawned && !thing.Destroyed
+					&& thing.Faction == Faction.OfPlayer)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		private static Job CutJob(Pawn pawn)
+		{
+			WorkGiver_Scanner giver = DefDatabase<WorkGiverDef>
+				.GetNamedSilentFail("PlantsCut")?.Worker as WorkGiver_Scanner;
+			if (giver == null)
+			{
+				return null;
+			}
+			IEnumerable<Thing> things = giver.PotentialWorkThingsGlobal(pawn);
+			if (things == null)
+			{
+				return null;
+			}
+			foreach (Thing thing in things)
+			{
+				if (thing == null || !thing.Spawned || thing.Destroyed)
+				{
+					continue;
+				}
+				if (!NannyBotUtility.IsWithinWorkArea(pawn, thing.Position)
+					|| !giver.HasJobOnThing(pawn, thing))
+				{
+					continue;
+				}
+				Job job = giver.JobOnThing(pawn, thing);
+				if (job != null)
+				{
+					return job;
+				}
+			}
+			return null;
+		}
+
 		private static Job ConstructJobFor(Pawn pawn, Blueprint_Build blueprint)
 		{
 			WorkGiver_ConstructDeliverResourcesToBlueprints giver = DefDatabase<WorkGiverDef>
 				.GetNamedSilentFail("ConstructDeliverResourcesToBlueprints")?.Worker
 				as WorkGiver_ConstructDeliverResourcesToBlueprints;
-			if (giver == null || !giver.HasJobOnThing(pawn, blueprint, true))
+			if (giver == null || !giver.HasJobOnThing(pawn, blueprint, false))
 			{
 				return null;
 			}
-			return giver.JobOnThing(pawn, blueprint, true);
+			return giver.JobOnThing(pawn, blueprint, false);
 		}
 
 		private static Blueprint_Build Place(Pawn pawn, ThingDef def, ThingDef stuff)
@@ -209,17 +501,6 @@ namespace ColonyKit.Modules.Robotics
 		}
 
 		/// <summary>木料够不够；不够就顺手标几棵树（交给「种植/砍伐」家务去砍），这轮先不下蓝图。</summary>
-		private static bool EnsureWood(Pawn pawn, int needed)
-		{
-			Map map = pawn.Map;
-			if (CountMaterial(map, ThingDefOf.WoodLog) >= needed)
-			{
-				return true;
-			}
-			DesignateTrees(pawn);
-			return false;
-		}
-
 		/// <summary>仓库里的 + 散在地上的都算（原版 resourceCounter 只统计仓库格）。</summary>
 		private static int CountMaterial(Map map, ThingDef def)
 		{

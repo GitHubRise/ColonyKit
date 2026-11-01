@@ -6,8 +6,10 @@ namespace ColonyKit.Modules.Robotics
 {
 	/// <summary>
 	/// 建造：把材料搬到蓝图/框架上，再把框架盖完。
-	/// 走原版 WorkGiver，但传 forced=true 跳过殖民者的「工作类型分配」检查
-	/// （机器人没有工作页，原版检查还会因为 workSettings 为空直接报错）。
+	/// 走原版 WorkGiver，但传 forced=false：机器人没有工作页，
+	/// 由 Patch_GenConstruct_CanConstruct 替它们跳过「有没有分配工作类型」这一项，
+	/// 材料/框架的预约检查则保留——否则两个机器人会抢同一摞木头，
+	/// 作业一开始就 TryMakePreToilReservations 失败刷红字。
 	/// </summary>
 	public class JobGiver_NannyBotConstruct : JobGiver_NannyBotChore
 	{
@@ -32,7 +34,18 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return job;
 			}
-			return FinishJob(pawn);
+			job = FinishJob(pawn);
+			if (job != null)
+			{
+				return job;
+			}
+			// 蓝图还差木料、地图上又没木头：自己去砍，别站在工地上干等。
+			if (MkVBuilder.TryGatherWood(pawn, out job))
+			{
+				return job;
+			}
+			// 差钢铁：去矿里挖「压实的钢材」。
+			return MkVBuilder.TryGatherSteel(pawn, out job) ? job : null;
 		}
 
 		private static Job DeliverJob(Pawn pawn, string giverDefName, ThingRequestGroup group)
@@ -53,11 +66,11 @@ namespace ColonyKit.Modules.Robotics
 				{
 					continue;
 				}
-				if (!giver.HasJobOnThing(pawn, thing, true))
+				if (!giver.HasJobOnThing(pawn, thing, false))
 				{
 					continue;
 				}
-				Job job = giver.JobOnThing(pawn, thing, true);
+				Job job = giver.JobOnThing(pawn, thing, false);
 				if (job != null)
 				{
 					return job;

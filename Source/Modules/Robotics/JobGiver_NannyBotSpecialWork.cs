@@ -101,6 +101,13 @@ namespace ColonyKit.Modules.Robotics
 			System.Collections.Generic.IEnumerable<Thing> things = worker.PotentialWorkThingsGlobal(pawn);
 			if (things == null)
 			{
+				// 原版 WorkGiver_Researcher 没有覆写 PotentialWorkThingsGlobal（返回 null 表示「按
+				// PotentialWorkThingRequest 扫描」）。以前这里直接 return null，导致机器人只会
+				// 「想着要研究」却永远拿不到研究台 Job。这里退回按 ResearchBench 分组自己扫。
+				things = pawn.Map.listerThings.ThingsInGroup(ThingRequestGroup.ResearchBench);
+			}
+			if (things == null)
+			{
 				return null;
 			}
 			foreach (Thing thing in things)
