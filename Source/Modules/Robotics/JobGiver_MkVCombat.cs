@@ -12,6 +12,9 @@ namespace ColonyKit.Modules.Robotics
 	/// </summary>
 	public class JobGiver_MkVCombat : ThinkNode_JobGiver
 	{
+		/// <summary>每次静态射击打几发就重新评估位置（边打边撤的关键）。</summary>
+		private const int KiteShots = 3;
+
 		protected override Job TryGiveJob(Pawn pawn)
 		{
 			if (pawn == null || pawn.Dead || pawn.Downed || !pawn.Spawned || pawn.Map == null)
@@ -38,19 +41,32 @@ namespace ColonyKit.Modules.Robotics
 			{
 				combat.SetEngaged(target);
 				float distance = pawn.Position.DistanceTo(target.Position);
+				Verb verb = pawn.TryGetAttackVerb(target, false);
 				if (distance <= 1.9f)
 				{
 					Job melee = JobMaker.MakeJob(JobDefOf.AttackMelee, target);
 					melee.expiryInterval = 300;
 					return melee;
 				}
-
-				Verb verb = pawn.TryGetAttackVerb(target, false);
 				if (verb == null)
 				{
 					combat.Clear();
 					return null;
 				}
+
+				// 着火 / 被贴脸 / 没有掩体：先挪到有掩体、离敌人更远、又能开火的位置。
+				if (MkVCombatTactics.NeedsReposition(pawn, target, verb))
+				{
+					IntVec3 spot = MkVCombatTactics.FindFiringPosition(pawn, target, verb);
+					if (spot.IsValid && spot != pawn.Position)
+					{
+						Job reposition = JobMaker.MakeJob(JobDefOf.Goto, spot);
+						reposition.locomotionUrgency = LocomotionUrgency.Jog;
+						reposition.expiryInterval = 120;
+						return reposition;
+					}
+				}
+
 				// 用 EffectiveRange 而不是 verbProps.range：电弧发射器在 Mk-V 手上还有 15 格专属加成。
 				if (distance > verb.EffectiveRange)
 				{
@@ -61,6 +77,9 @@ namespace ColonyKit.Modules.Robotics
 				}
 
 				Job attack = JobMaker.MakeJob(JobDefOf.AttackStatic, target);
+				// 打几发就结束、重新评估一次：敌人一逼近就能后撤，不会站着当固定靶。
+				attack.maxNumStaticAttacks = KiteShots;
+				attack.endIfCantShootTargetFromCurPos = true;
 				attack.expiryInterval = 300;
 				return attack;
 			}

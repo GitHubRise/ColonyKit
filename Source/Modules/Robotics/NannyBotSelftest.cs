@@ -1409,6 +1409,40 @@ namespace ColonyKit.Modules.Robotics
 					.Append(" aiAlertActive=").Append(MkVAlert.IsActive(map))
 					.Append(" aiAlertCell=").Append(MkVAlert.NearestHostileCell(map, mkv.Position).IsValid);
 
+				// 边打边撤 / 躲火：敌人贴近时要能退到更远处；脚下起火要先算作危险。
+				if (hostile != null)
+				{
+					Verb verb = mkv.TryGetAttackVerb(hostile, false);
+					IntVec3 kite = MkVCombatTactics.FindFiringPosition(
+						mkv, new LocalTargetInfo(hostile), verb);
+					builder.Append(" aiKiteCell=")
+						.Append(kite.IsValid
+							&& kite.DistanceTo(hostile.Position) > mkv.Position.DistanceTo(hostile.Position));
+				}
+				Thing fire = null;
+				try
+				{
+					fire = ThingMaker.MakeThing(ThingDefOf.Fire);
+					GenSpawn.Spawn(fire, mkv.Position, map);
+					builder.Append(" aiFireSpawn=").Append(fire.Spawned)
+						.Append(" aiFireDanger=").Append(MkVCombatTactics.InDanger(mkv));
+					if (hostile != null)
+					{
+						Verb verb = mkv.TryGetAttackVerb(hostile, false);
+						IntVec3 safe = MkVCombatTactics.FindFiringPosition(
+							mkv, new LocalTargetInfo(hostile), verb);
+						builder.Append(" aiFireAvoid=")
+							.Append(safe.IsValid && safe.DistanceTo(mkv.Position) > 1.5f);
+					}
+				}
+				finally
+				{
+					if (fire != null && !fire.Destroyed)
+					{
+						fire.Destroy(DestroyMode.Vanish);
+					}
+				}
+
 				// 自主动作的前置：组装 JobDef、下一个机器人研究。
 				builder.Append(" aiAssembleDef=").Append(
 						DefDatabase<JobDef>.GetNamedSilentFail("CK_MkVAssemble")?.driverClass != null)

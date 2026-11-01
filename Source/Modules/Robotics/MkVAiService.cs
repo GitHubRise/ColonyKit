@@ -296,7 +296,8 @@ namespace ColonyKit.Modules.Robotics
 				+ "② alert=true 表示刚收到敌袭预警：立刻放下家务，选 advance 或攻击候选，朝敌人方向主动出击，用远程武器在射程外开火，不要贴脸；"
 				+ "③ colonists=0 表示地图上没有殖民者：你是唯一的守卫，选 guard 主动承担护卫职责；"
 				+ "④ 没有威胁也没有紧急家务时：先 research_robotics 研究机器人科技，其次 assemble 制造同类；"
-				+ "⑤ 优先保护殖民者、避免无谓送死。没有合适动作时才选 work。不要编造 id。";
+				+ "⑤ 优先保护殖民者、避免无谓送死。没有合适动作时才选 work。不要编造 id。"
+				+ "⑥ 交战时边打边撤：敌人贴近就先退到射程边缘、掩体后面的位置再开火，别站着当固定靶；脚下或身边起火时先挪开再打。";
 			string user = "当前状态和候选动作（JSON）：\n" + promptJson + "\n请选择一个 action。";
 
 			StringBuilder body = new StringBuilder();
@@ -1201,6 +1202,19 @@ namespace ColonyKit.Modules.Robotics
 			{
 				float distance = pawn.Position.DistanceTo(target.Position);
 				Verb verb = pawn.TryGetAttackVerb(target, false);
+				if (verb != null && MkVCombatTactics.NeedsReposition(pawn, target, verb))
+				{
+					// 着火 / 被贴脸 / 没掩体：先挪到有掩体、离敌人更远又能开火的位置。
+					IntVec3 spot = MkVCombatTactics.FindFiringPosition(pawn, target, verb);
+					if (spot.IsValid && spot != pawn.Position)
+					{
+						Job reposition = JobMaker.MakeJob(JobDefOf.Goto, spot);
+						reposition.locomotionUrgency = LocomotionUrgency.Jog;
+						reposition.expiryInterval = 120;
+						StartJob(pawn, reposition);
+						return;
+					}
+				}
 				if (verb != null && distance > verb.EffectiveRange)
 				{
 					// 目标在射程外：先跑过去，下一轮再开火/砍。
@@ -1214,6 +1228,9 @@ namespace ColonyKit.Modules.Robotics
 					Job attack = JobMaker.MakeJob(
 						distance <= 1.9f ? JobDefOf.AttackMelee : JobDefOf.AttackStatic,
 						target);
+					// 打几发就重新评估：敌人逼近时能后撤，而不是站着当靶子。
+					attack.maxNumStaticAttacks = 3;
+					attack.endIfCantShootTargetFromCurPos = true;
 					attack.expiryInterval = 600;
 					StartJob(pawn, attack);
 				}

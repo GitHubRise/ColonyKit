@@ -6,6 +6,7 @@
 
 ### Added
 
+- **Mk-V 会边打边撤、找掩体、躲火**：新增 `MkVCombatTactics`：交战时只要敌人贴近（< 13 格）、脚下或身边起火，或者完全没有掩体又被敌人够得着，就先换到「离敌人更远、周围掩体分更高、还能打到目标」的格子再开火；每次静态射击只打 3 发就重新评估一次位置，敌人逼近时能及时后撤，不会站在原地当固定靶。新位置要比原地评分高 5 分才值得跑（还扣了跑路分），避免在两格之间来回抽动。常规索敌和 AI 的 attack 动作都走这套逻辑（`maxNumStaticAttacks = 3`、`endIfCantShootTargetFromCurPos = true`），掩体用 `CoverUtility.TotalSurroundingCoverScore` 打分。`-colonykit-nannybot-test` 新增 `aiKiteCell`（换位后离敌人更远）、`aiFireSpawn` / `aiFireDanger` / `aiFireAvoid`（脚下起火判为危险、换位不站火里）探针。
 - **Mk-V AI 会挑目标了**：攻击候选按威胁分排序——带范围武器的敌人（燃烧瓶、手雷、火箭筒、迫击炮、喷火器；识别武器 Def 上的爆炸投掷物、燃烧/爆炸伤害或 Grenade 标签）永远排最前，其次是单发伤害高、命中高、血少护甲薄的目标；候选里带 `threat` 分和「范围 / 高伤」标签，模型挑错时还会兜底改成范围目标（范围敌人比当前目标远 20 格以上时仍先打眼前的）。同一套排序也用在常规 AI 的索敌上，不再只挑最近的。`-colonykit-nannybot-test` 新增 `aiThreatMolotov` / `aiThreatRifle` / `aiThreatScore` / `aiThreatRankFirst` / `aiThreatRankLabel` / `aiAoeOverride` 探针（造一个燃烧瓶敌人 + 一个步枪敌人比较排序，并验证「模型挑了步枪、兜底改打燃烧瓶」）。
 - **Mk-V 会自己找活干**：地图上没有能行动的殖民者（全倒下、死光或全跟着远行队走了）时，Mk-V 思考树在「家务」之前插入护卫节点，主动站岗（守门/巡逻/看仓库），AI 候选里也会出现「守卫殖民地」；没有威胁也没有紧急家务时，AI 会自己研究机器人科技（沿 Mk-V 前置链往前找第一个能开工的项目，可能需要先研究电力、机械加工这类原版前置），研究齐了还会走到组装舱按下「开始组装」，造一台新的同类（新增 `CK_MkVAssemble` Job 与 `JobDriver_MkVAssemble`）。设置页「Mk-V AI」新增三项开关：敌袭预警时主动出击 / 空闲时研究机器人科技 / 空闲时组装同类，默认全开。
 - **敌袭预警主动出击**：收到原版威胁信（袭击、虫灾、机械集群这类 `Threat*` 信）且地图上还有敌人时算「预警中」：Mk-V 立刻放下手上的家务（`CanWork` 直接停摆、手头工作被打断），索敌范围放大到 250 格，主动朝最近敌人的方向推进并用远程武器在射程外开火；这期间 AI 思考间隔压到 5 秒，候选里多一个「朝敌袭警报方向主动出击」。预警与原来的「全图高危险」判定并存，威胁信过期或敌人清空后自动恢复家务。`-colonykit-nannybot-test` 新增 `aiAlertLetter` / `aiAlertActive` / `aiAlertCell` 探针（发一封 ThreatBig 信 + 放一个敌对派系敌人，验证预警与推进目标）。
