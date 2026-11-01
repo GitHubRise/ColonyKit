@@ -633,6 +633,21 @@ namespace ColonyKit.Modules.Robotics
 			listing.Gap();
 			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.Maintenance".Loc());
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Robotics.DurabilityHint".Loc());
+			data.mkvSelfRepair = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.MkvSelfRepair".Loc(),
+				ref data.mkvSelfRepair,
+				"ColonyKit.Settings.Robotics.MkvSelfRepair.Desc".Loc());
+			data.mkvSelfRepairRate = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkvSelfRepairRate".Loc(),
+				data.mkvSelfRepairRate,
+				RoboticsSettings.MinMkvSelfRepairRate,
+				RoboticsSettings.MaxMkvSelfRepairRate,
+				5f,
+				value => "CK.Robotics.DurabilityPerDay".Loc(value.ToString("0")));
+			SettingsWidgets.Description(
+				listing, "ColonyKit.Settings.Robotics.MkvSelfRepairRate.Desc".Loc());
 			data.sounds = SettingsWidgets.Checkbox(
 				listing,
 				"ColonyKit.Settings.Robotics.Sounds".Loc(),

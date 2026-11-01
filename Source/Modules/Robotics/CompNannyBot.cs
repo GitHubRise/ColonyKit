@@ -91,6 +91,13 @@ namespace ColonyKit.Modules.Robotics
 		/// <summary>正在被殖民者维修；维修期间不充电、不接新家务。</summary>
 		public bool repairing;
 
+		/// <summary>Mk-V 野外自修复进行中（地图上没人能来修，自己在极慢地补耐久）。</summary>
+		private bool selfRepairing;
+
+		/// <summary>下一次重新扫描「地图上有没有人能修」的时间与结果；缓存起来，避免每 tick 做寻路。</summary>
+		private int selfRepairScanTick;
+		private bool selfRepairHasRepairer;
+
 		/// <summary>Mk-V 的 AI 控制开关（每台独立）；总开关在设置页。</summary>
 		public bool AiControl = true;
 
@@ -612,6 +619,10 @@ namespace ColonyKit.Modules.Robotics
 				Scrap();
 				return;
 			}
+			if (NannyBotUtility.IsMkV(pawn))
+			{
+				TickSelfRepair(pawn);
+			}
 			if (lowPowerStandby && pawn.CurJobDef != NannyBotDefOf.CK_NannyCharge)
 			{
 				lowPowerStandby = false;
@@ -712,6 +723,54 @@ namespace ColonyKit.Modules.Robotics
 		public void Notify_RepairFinished()
 		{
 			repairing = false;
+		}
+
+		/// <summary>
+		/// 野外自修复：耐久没满、地图上又没有任何殖民者能来修时，按设置页的
+		/// 「每天 X 点」速率慢慢补耐久。有人能修（哪怕还在路上）就让给人修；
+		/// 已经报废（耐久归零）的不会再复活。
+		/// </summary>
+		private void TickSelfRepair(Pawn pawn)
+		{
+			RoboticsSettings settings = NannyBotUtility.Settings;
+			float rate = settings.mkvSelfRepairRate;
+			if (!settings.mkvSelfRepair || rate <= 0f
+				|| durability <= 0f || durability >= MaxDurability - 0.01f)
+			{
+				selfRepairing = false;
+				return;
+			}
+			// 每 250 tick 结算一次：查询「有没有人正在修」要遍历预定表，不能每 tick 都做。
+			if (!parent.IsHashIntervalTick(250))
+			{
+				return;
+			}
+			// 有殖民者正在赶来/正在维修时，自修复让路，避免两边同时生效。
+			if (repairing || NannyBotUtility.IsBeingRepaired(pawn))
+			{
+				selfRepairing = false;
+				return;
+			}
+
+			int now = Find.TickManager.TicksGame;
+			if (now >= selfRepairScanTick)
+			{
+				selfRepairScanTick = now + 1000;
+				selfRepairHasRepairer = NannyBotUtility.CanBeRepairedOnMap(pawn);
+			}
+			if (selfRepairHasRepairer)
+			{
+				selfRepairing = false;
+				return;
+			}
+
+			Repair(rate * 250f / 60000f);
+			if (!selfRepairing)
+			{
+				selfRepairing = true;
+				ModLog.Info("Robotics",
+					$"{pawn.LabelShort} started self-repair (no repairer on map, {rate:0} durability/day).");
+			}
 		}
 
 		public void SetPaint(int index)
@@ -916,6 +975,11 @@ namespace ColonyKit.Modules.Robotics
 			if (repairing)
 			{
 				lines.Add("CK.Robotics.Inspect.Repairing".Translate());
+			}
+			else if (selfRepairing)
+			{
+				lines.Add("CK.Robotics.Inspect.SelfRepairing".Translate(
+					NannyBotUtility.Settings.mkvSelfRepairRate.ToString("0")));
 			}
 			if (paused)
 			{

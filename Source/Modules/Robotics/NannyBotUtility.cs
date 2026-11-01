@@ -154,6 +154,48 @@ namespace ColonyKit.Modules.Robotics
 			return false;
 		}
 
+		/// <summary>
+		/// 当前地图上有没有人能来修这台机器人：需要一名没倒地、没征召、没发疯的殖民者，
+		/// 「建造」工作开着、这台机器人没被禁用，而且能拿到维修 Job 并走得到。
+		/// 全员倒地、全员征召、建造工作关闭、被墙隔开或地图上根本没有殖民者时返回 false。
+		/// </summary>
+		public static bool CanBeRepairedOnMap(Pawn robot)
+		{
+			if (robot?.Map == null || robot.Dead || !robot.Spawned)
+			{
+				return false;
+			}
+			WorkGiverDef giverDef = DefDatabase<WorkGiverDef>.GetNamedSilentFail("CK_RepairNannyBot");
+			if (giverDef?.Worker == null)
+			{
+				return false;
+			}
+			WorkTypeDef workType = giverDef.workType;
+			foreach (Pawn colonist in robot.Map.mapPawns.FreeColonistsSpawned)
+			{
+				if (colonist == null || colonist.Dead || colonist.Downed || colonist.Drafted
+					|| colonist.InMentalState)
+				{
+					continue;
+				}
+				if (workType != null && colonist.workSettings != null
+					&& (!colonist.workSettings.WorkIsActive(workType)
+						|| (workType.workTags != 0 && colonist.WorkTagIsDisabled(workType.workTags))))
+				{
+					continue;
+				}
+				if (robot.IsForbidden(colonist))
+				{
+					continue;
+				}
+				if (colonist.CanReserveAndReach(robot, PathEndMode.Touch, Danger.Deadly))
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
 		public static IEnumerable<Pawn> AllNannyBots()
 		{
 			if (Current.Game == null)

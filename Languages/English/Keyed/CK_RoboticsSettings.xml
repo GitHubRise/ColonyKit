@@ -124,6 +124,10 @@
 	<ColonyKit.Settings.Robotics.MkVHeightScale>Height scale</ColonyKit.Settings.Robotics.MkVHeightScale>
 	<ColonyKit.Settings.Robotics.Section.Maintenance>Maintenance</ColonyKit.Settings.Robotics.Section.Maintenance>
 	<ColonyKit.Settings.Robotics.DurabilityHint>Durability caps at 1000 for normal robots and 1800 for the Mk-V. It only drops when the robot takes damage (about 250 damage scraps it); daily work does not wear it down. At 0 it scraps into steel and components. Colonists repair it with the Construction work type. Charging is blocked while the robot is being repaired and resumes after repair finishes.</ColonyKit.Settings.Robotics.DurabilityHint>
+	<ColonyKit.Settings.Robotics.MkvSelfRepair>Self-repair in the field (Mk-V)</ColonyKit.Settings.Robotics.MkvSelfRepair>
+	<ColonyKit.Settings.Robotics.MkvSelfRepair.Desc>When the Mk-V is damaged and nobody on the current map can come repair it (no colonists left, everyone downed or drafted, Construction work switched off, or no path), it slowly patches itself. Colonists still take priority whenever they can repair it. Once scrapped (durability 0) it cannot self-repair.</ColonyKit.Settings.Robotics.MkvSelfRepair.Desc>
+	<ColonyKit.Settings.Robotics.MkvSelfRepairRate>Self-repair rate</ColonyKit.Settings.Robotics.MkvSelfRepairRate>
+	<ColonyKit.Settings.Robotics.MkvSelfRepairRate.Desc>Durability restored per day. Default 60; the Mk-V caps at 5000 durability, so climbing back from the brink of scrap takes dozens of days. Setting it to 0 turns self-repair off.</ColonyKit.Settings.Robotics.MkvSelfRepairRate.Desc>
 	<ColonyKit.Settings.Robotics.Sounds>Beeps</ColonyKit.Settings.Robotics.Sounds>
 	<ColonyKit.Settings.Robotics.Sounds.Desc>Occasional beeps while working; one low-battery warning.</ColonyKit.Settings.Robotics.Sounds.Desc>
 	<ColonyKit.Settings.Robotics.ChargingGlow>Charging glow</ColonyKit.Settings.Robotics.ChargingGlow>
@@ -138,6 +142,8 @@
 	<CK.Robotics.Inspect.Durability>Durability: {0} / {1}</CK.Robotics.Inspect.Durability>
 	<CK.Robotics.Inspect.Paused>Chores paused.</CK.Robotics.Inspect.Paused>
 	<CK.Robotics.Inspect.Repairing>Being repaired: charging waits until repair finishes.</CK.Robotics.Inspect.Repairing>
+	<CK.Robotics.Inspect.SelfRepairing>Self-repairing: no colonist on this map can repair it, recovering {0} durability/day.</CK.Robotics.Inspect.SelfRepairing>
+	<CK.Robotics.DurabilityPerDay>{0} durability/day</CK.Robotics.DurabilityPerDay>
 	<CK.Robotics.DisabledInSettings>Disabled in the robot settings page.</CK.Robotics.DisabledInSettings>
 	<CK.Robotics.Scrapped>{0} was scrapped into steel and components.</CK.Robotics.Scrapped>
 	<CK.Robotics.Name.Invalid>The name cannot be empty.</CK.Robotics.Name.Invalid>

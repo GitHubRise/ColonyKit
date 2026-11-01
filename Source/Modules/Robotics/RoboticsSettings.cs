@@ -121,6 +121,11 @@ namespace ColonyKit.Modules.Robotics
 		public const float DefaultMkvInsulationCold = 20f;
 		public const float DefaultMkvInsulationHeat = 30f;
 
+		// Mk-V 野外自修复：地图上没人能来维修时，每天自行恢复的耐久点数。
+		public const float MinMkvSelfRepairRate = 0f;
+		public const float MaxMkvSelfRepairRate = 300f;
+		public const float DefaultMkvSelfRepairRate = 60f;
+
 		public const float MinAiInterval = 5f;
 		public const float MaxAiInterval = 300f;
 		public const float DefaultAiInterval = 20f;
@@ -209,6 +214,8 @@ namespace ColonyKit.Modules.Robotics
 		public float mkvInsulationCold = DefaultMkvInsulationCold;
 		public float mkvInsulationHeat = DefaultMkvInsulationHeat;
 		public bool mkvRandomTraits = false;
+		public bool mkvSelfRepair = true;
+		public float mkvSelfRepairRate = DefaultMkvSelfRepairRate;
 
 		// Mk-V AI（DeepSeek/OpenAI 兼容接口）。
 		public bool aiEnabled = false;
@@ -292,6 +299,8 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref mkvInsulationCold, "mkvInsulationCold", DefaultMkvInsulationCold);
 			Scribe_Values.Look(ref mkvInsulationHeat, "mkvInsulationHeat", DefaultMkvInsulationHeat);
 			Scribe_Values.Look(ref mkvRandomTraits, "mkvRandomTraits", false);
+			Scribe_Values.Look(ref mkvSelfRepair, "mkvSelfRepair", true);
+			Scribe_Values.Look(ref mkvSelfRepairRate, "mkvSelfRepairRate", DefaultMkvSelfRepairRate);
 			Scribe_Values.Look(ref aiEnabled, "aiEnabled", false);
 			Scribe_Values.Look(ref aiApiKey, "aiApiKey", "");
 			Scribe_Values.Look(ref aiBaseUrl, "aiBaseUrl", DefaultAiBaseUrl);
@@ -440,6 +449,11 @@ namespace ColonyKit.Modules.Robotics
 			mkvInsulationHeat = ClampFloat(mkvInsulationHeat, MinMkvInsulation, MaxMkvInsulation);
 			changed |= !Approximately(insulationHeat, mkvInsulationHeat);
 
+			float selfRepairRate = mkvSelfRepairRate;
+			mkvSelfRepairRate = ClampFloat(
+				mkvSelfRepairRate, MinMkvSelfRepairRate, MaxMkvSelfRepairRate);
+			changed |= !Approximately(selfRepairRate, mkvSelfRepairRate);
+
 			float aiIntervalValue = aiInterval;
 			aiInterval = ClampFloat(aiInterval, MinAiInterval, MaxAiInterval);
 			changed |= !Approximately(aiIntervalValue, aiInterval);
@@ -566,6 +580,8 @@ namespace ColonyKit.Modules.Robotics
 			mkvInsulationCold = DefaultMkvInsulationCold;
 			mkvInsulationHeat = DefaultMkvInsulationHeat;
 			mkvRandomTraits = false;
+			mkvSelfRepair = true;
+			mkvSelfRepairRate = DefaultMkvSelfRepairRate;
 			aiEnabled = false;
 			aiApiKey = "";
 			aiBaseUrl = DefaultAiBaseUrl;
