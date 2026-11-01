@@ -730,8 +730,8 @@ namespace ColonyKit.Modules.Robotics
 		}
 
 		/// <summary>
-		/// 野外自修复：耐久没满、地图上又没有任何殖民者能来修时，按设置页的
-		/// 「每天 X 点」速率慢慢补耐久。有人能修（哪怕还在路上）就让给人修；
+		/// 野外自修复：耐久没满、又没人正在来修时，按设置页的「每天 X 点」速率慢慢补耐久。
+		/// 有殖民者来修（哪怕还在路上）自修复就让路，殖民者修得快得多；没人管的空档才自己补。
 		/// 已经报废（耐久归零）的不会再复活。
 		/// </summary>
 		private void TickSelfRepair(Pawn pawn)
@@ -756,16 +756,12 @@ namespace ColonyKit.Modules.Robotics
 				return;
 			}
 
+			// 每 1000 tick 扫一次地图上有没有人能修，只用来把检查面板的提示说清楚。
 			int now = Find.TickManager.TicksGame;
 			if (now >= selfRepairScanTick)
 			{
 				selfRepairScanTick = now + 1000;
 				selfRepairHasRepairer = NannyBotUtility.CanBeRepairedOnMap(pawn);
-			}
-			if (selfRepairHasRepairer)
-			{
-				selfRepairing = false;
-				return;
 			}
 
 			Repair(rate * 250f / 60000f);
@@ -773,7 +769,7 @@ namespace ColonyKit.Modules.Robotics
 			{
 				selfRepairing = true;
 				ModLog.Info("Robotics",
-					$"{pawn.LabelShort} started self-repair (no repairer on map, {rate:0} durability/day).");
+					$"{pawn.LabelShort} started self-repair ({rate:0} durability/day, repairer available={selfRepairHasRepairer}).");
 			}
 		}
 
@@ -982,8 +978,10 @@ namespace ColonyKit.Modules.Robotics
 			}
 			else if (selfRepairing)
 			{
-				lines.Add("CK.Robotics.Inspect.SelfRepairing".Translate(
-					NannyBotUtility.Settings.mkvSelfRepairRate.ToString("0")));
+				string key = selfRepairHasRepairer
+					? "CK.Robotics.Inspect.SelfRepairing"
+					: "CK.Robotics.Inspect.SelfRepairing.Alone";
+				lines.Add(key.Translate(NannyBotUtility.Settings.mkvSelfRepairRate.ToString("0")));
 			}
 			if (paused)
 			{

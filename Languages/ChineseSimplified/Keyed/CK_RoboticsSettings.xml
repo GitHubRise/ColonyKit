@@ -125,7 +125,7 @@
 	<ColonyKit.Settings.Robotics.Section.Maintenance>维护与表现</ColonyKit.Settings.Robotics.Section.Maintenance>
 	<ColonyKit.Settings.Robotics.DurabilityHint>普通机器人耐久上限 1000，Mk-V 为 1800。只有受到伤害时才会损耗（约 250 点伤害报废），日常工作不损耗；耐久为 0 时报废成钢和零部件，殖民者可在「建造」工作中维修。维修期间机器人不会充电，修完才恢复充电。</ColonyKit.Settings.Robotics.DurabilityHint>
 	<ColonyKit.Settings.Robotics.MkvSelfRepair>野外自我修复（Mk-V）</ColonyKit.Settings.Robotics.MkvSelfRepair>
-	<ColonyKit.Settings.Robotics.MkvSelfRepair.Desc>耐久没满、而当前地图上没有任何殖民者能来维修时（没人、全员倒地或已征召、建造工作关闭、被墙隔开走不到），Mk-V 会自己慢慢补耐久；有殖民者能修时仍然优先让殖民者维修。彻底报废（耐久归零）之后不会自我修复。</ColonyKit.Settings.Robotics.MkvSelfRepair.Desc>
+	<ColonyKit.Settings.Robotics.MkvSelfRepair.Desc>耐久没满、又没人正在来修时（地图上没人能修，或者有人能修但暂时没空过来），Mk-V 会自己慢慢补耐久；一旦有殖民者带着维修任务赶来，自修复立刻让路，让殖民者一次修好。彻底报废（耐久归零）之后不会自我修复。</ColonyKit.Settings.Robotics.MkvSelfRepair.Desc>
 	<ColonyKit.Settings.Robotics.MkvSelfRepairRate>自修复速率</ColonyKit.Settings.Robotics.MkvSelfRepairRate>
 	<ColonyKit.Settings.Robotics.MkvSelfRepairRate.Desc>每天自行恢复的耐久点数，默认 60；Mk-V 满耐久 5000，从濒临报废修回满要几十天。拖到 0 等同于关闭。</ColonyKit.Settings.Robotics.MkvSelfRepairRate.Desc>
 	<ColonyKit.Settings.Robotics.Sounds>滴滴声</ColonyKit.Settings.Robotics.Sounds>
@@ -142,7 +142,8 @@
 	<CK.Robotics.Inspect.Durability>耐久：{0} / {1}</CK.Robotics.Inspect.Durability>
 	<CK.Robotics.Inspect.Paused>已暂停自动家务。</CK.Robotics.Inspect.Paused>
 	<CK.Robotics.Inspect.Repairing>维修中：维修完成前不会充电。</CK.Robotics.Inspect.Repairing>
-	<CK.Robotics.Inspect.SelfRepairing>自我修复中：地图上没有能来维修的殖民者，正在以 {0} 耐久/天的速度慢慢恢复。</CK.Robotics.Inspect.SelfRepairing>
+	<CK.Robotics.Inspect.SelfRepairing>自我修复中：有殖民者能来修，但暂时还没人来，正在以 {0} 耐久/天的速度自行修补。</CK.Robotics.Inspect.SelfRepairing>
+	<CK.Robotics.Inspect.SelfRepairing.Alone>自我修复中：地图上没有能来维修的殖民者，正在以 {0} 耐久/天的速度慢慢恢复。</CK.Robotics.Inspect.SelfRepairing.Alone>
 	<CK.Robotics.DurabilityPerDay>{0} 耐久/天</CK.Robotics.DurabilityPerDay>
 	<CK.Robotics.DisabledInSettings>已在机器人设置页关闭。</CK.Robotics.DisabledInSettings>
 	<CK.Robotics.Scrapped>{0} 已报废，拆成了钢和零部件。</CK.Robotics.Scrapped>
