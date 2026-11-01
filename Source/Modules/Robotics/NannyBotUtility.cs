@@ -67,12 +67,34 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return false;
 			}
+			// 敌袭预警期间 Mk-V 放下家务，把位置让给战斗逻辑（AI 会选 advance / 攻击）。
+			if (IsMkV(pawn) && Settings.aiRaidAdvance && MkVAlert.IsActive(pawn.Map))
+			{
+				return false;
+			}
 			if (Settings.dangerAvoidance && HasNearbyThreat(pawn))
 			{
 				return false;
 			}
 			Need_RobotEnergy energy = Energy(pawn);
 			return energy == null || energy.CurLevel > 0.001f;
+		}
+
+		/// <summary>地图上还有没有能行动的自己人（殖民者）。全倒下、死光或全跟着远行队走了就是 false。</summary>
+		public static bool AnyColonistPresent(Map map)
+		{
+			if (map?.mapPawns == null)
+			{
+				return false;
+			}
+			foreach (Pawn colonist in map.mapPawns.FreeColonistsSpawned)
+			{
+				if (colonist != null && !colonist.Dead && !colonist.Downed)
+				{
+					return true;
+				}
+			}
+			return false;
 		}
 
 		/// <summary>工作范围检查：半径 + 家区域/自定义区域。</summary>

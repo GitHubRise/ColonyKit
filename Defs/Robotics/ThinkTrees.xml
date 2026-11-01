@@ -75,6 +75,12 @@
 				</li>
 				<li Class="ColonyKit.Modules.Robotics.JobGiver_MkVCombat" />
 				<li Class="ColonyKit.Modules.Robotics.JobGiver_MkVWeaponPickup" />
+				<!-- 地图上没有殖民者时，Mk-V 是唯一的守卫：先站岗，再谈家务。 -->
+				<li Class="ColonyKit.Modules.Robotics.ThinkNode_ConditionalNoColonists">
+					<subNodes>
+						<li Class="ColonyKit.Modules.Robotics.JobGiver_MkVGuard" />
+					</subNodes>
+				</li>
 				<!-- 原版 JobGiver_PickUpOpportunisticWeapon 不检查 IsForbidden；丢下的武器默认被禁用，会每 tick 重复下 Equip 并触发 started 10 jobs 报错。自动换枪交给上面的专用评分逻辑。 -->
 				<li Class="ThinkNode_Subtree">
 					<treeDef>CK_NannyBot</treeDef>

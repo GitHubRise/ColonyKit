@@ -26,7 +26,9 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return null;
 			}
-			if (!Rand.Chance(0.8f))
+			// 地图上没有殖民者时，Mk-V 就是唯一的守卫：不再抽签，见到岗位就站。
+			bool alone = !NannyBotUtility.AnyColonistPresent(pawn.Map);
+			if (!alone && !Rand.Chance(0.8f))
 			{
 				return null;
 			}

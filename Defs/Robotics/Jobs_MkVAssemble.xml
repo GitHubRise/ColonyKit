@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- Mk-V 自己走到组装舱旁边开机：只用于 AI 的「制造同类」候选。 -->
+	<JobDef>
+		<defName>CK_MkVAssemble</defName>
+		<driverClass>ColonyKit.Modules.Robotics.JobDriver_MkVAssemble</driverClass>
+		<reportString>CK.Robotics.Job.Assemble</reportString>
+		<casualInterruptible>true</casualInterruptible>
+		<suspendable>true</suspendable>
+	</JobDef>
+</Defs>

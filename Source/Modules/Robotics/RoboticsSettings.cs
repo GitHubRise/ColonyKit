@@ -236,6 +236,16 @@ namespace ColonyKit.Modules.Robotics
 		public bool aiAllowCombat = true;
 		public bool aiSpeech = true;
 		public bool aiThoughtLog = false;
+
+		// Mk-V AI 的自主行为。
+		/// <summary>收到敌袭预警时放下家务、主动远距出击。</summary>
+		public bool aiRaidAdvance = true;
+
+		/// <summary>没有任务时自己去研究机器人科技（会切换殖民地当前研究）。</summary>
+		public bool aiSelfResearch = true;
+
+		/// <summary>材料齐全时自己去组装舱制造同类。</summary>
+		public bool aiSelfAssemble = true;
 		public int mkvBurstShotCount = DefaultMkvBurstShotCount;
 		public float mkvBurstCooldown = DefaultMkvBurstCooldown;
 		public float robotPowerEfficiency = DefaultRobotPowerEfficiency;
@@ -322,6 +332,9 @@ namespace ColonyKit.Modules.Robotics
 			Scribe_Values.Look(ref aiAllowCombat, "aiAllowCombat", true);
 			Scribe_Values.Look(ref aiSpeech, "aiSpeech", true);
 			Scribe_Values.Look(ref aiThoughtLog, "aiThoughtLog", false);
+			Scribe_Values.Look(ref aiRaidAdvance, "aiRaidAdvance", true);
+			Scribe_Values.Look(ref aiSelfResearch, "aiSelfResearch", true);
+			Scribe_Values.Look(ref aiSelfAssemble, "aiSelfAssemble", true);
 			Scribe_Values.Look(ref mkvBurstShotCount, "mkvBurstShotCount", DefaultMkvBurstShotCount);
 			Scribe_Values.Look(ref mkvBurstCooldown, "mkvBurstCooldown", DefaultMkvBurstCooldown);
 			Scribe_Values.Look(ref robotPowerEfficiency, "robotPowerEfficiency", DefaultRobotPowerEfficiency);
@@ -611,6 +624,9 @@ namespace ColonyKit.Modules.Robotics
 			aiAllowCombat = true;
 			aiSpeech = true;
 			aiThoughtLog = false;
+			aiRaidAdvance = true;
+			aiSelfResearch = true;
+			aiSelfAssemble = true;
 			mkvBurstShotCount = DefaultMkvBurstShotCount;
 			mkvBurstCooldown = DefaultMkvBurstCooldown;
 			robotPowerEfficiency = DefaultRobotPowerEfficiency;

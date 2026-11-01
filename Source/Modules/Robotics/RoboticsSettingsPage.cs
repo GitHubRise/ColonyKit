@@ -628,6 +628,26 @@ namespace ColonyKit.Modules.Robotics
 				"ColonyKit.Settings.Robotics.Ai.ThoughtLog".Loc(),
 				ref data.aiThoughtLog,
 				"ColonyKit.Settings.Robotics.Ai.ThoughtLog.Desc".Loc());
+			listing.Gap(10f);
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Robotics.Ai.SelfHint".Loc());
+			listing.Gap(6f);
+			data.aiRaidAdvance = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.RaidAdvance".Loc(),
+				ref data.aiRaidAdvance,
+				"ColonyKit.Settings.Robotics.Ai.RaidAdvance.Desc".Loc());
+			listing.Gap(6f);
+			data.aiSelfResearch = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.SelfResearch".Loc(),
+				ref data.aiSelfResearch,
+				"ColonyKit.Settings.Robotics.Ai.SelfResearch.Desc".Loc());
+			listing.Gap(6f);
+			data.aiSelfAssemble = SettingsWidgets.Checkbox(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.SelfAssemble".Loc(),
+				ref data.aiSelfAssemble,
+				"ColonyKit.Settings.Robotics.Ai.SelfAssemble.Desc".Loc());
 			listing.Gap(6f);
 			if (SettingsWidgets.Button(listing, "ColonyKit.Settings.Robotics.Ai.Test".Loc()))
 			{

@@ -263,6 +263,13 @@
 	<ColonyKit.Settings.Robotics.Ai.Speech.Desc>Show the returned short line as floating text above the Mk-V.</ColonyKit.Settings.Robotics.Ai.Speech.Desc>
 	<ColonyKit.Settings.Robotics.Ai.ThoughtLog>Log AI thoughts</ColonyKit.Settings.Robotics.Ai.ThoughtLog>
 	<ColonyKit.Settings.Robotics.Ai.ThoughtLog.Desc>Each decision also appends a first-person thought to this Mk-V's Log tab (select the robot, then Log), so you can review what it saw and why it chose that action. Off by default because the log only keeps a limited number of entries.</ColonyKit.Settings.Robotics.Ai.ThoughtLog.Desc>
+	<ColonyKit.Settings.Robotics.Ai.SelfHint>Autonomy (all on by default): attack on raid warnings, research robotics when idle, assemble more of its kind when materials are ready. Turning all three off keeps threat-based targeting and guard duty.</ColonyKit.Settings.Robotics.Ai.SelfHint>
+	<ColonyKit.Settings.Robotics.Ai.RaidAdvance>Attack on raid warnings</ColonyKit.Settings.Robotics.Ai.RaidAdvance>
+	<ColonyKit.Settings.Robotics.Ai.RaidAdvance.Desc>After a threat letter (raid, infestation, mech cluster) the Mk-V drops its chores at once, advances toward the enemy and opens fire from range. When off, it only fights once enemies reach its engage range.</ColonyKit.Settings.Robotics.Ai.RaidAdvance.Desc>
+	<ColonyKit.Settings.Robotics.Ai.SelfResearch>Research robotics when idle</ColonyKit.Settings.Robotics.Ai.SelfResearch>
+	<ColonyKit.Settings.Robotics.Ai.SelfResearch.Desc>With no enemies and no urgent chores, the Mk-V switches the colony's current project to the next unfinished robotics research (Mk-V prerequisites first) and works the bench itself. This overrides the player's chosen project.</ColonyKit.Settings.Robotics.Ai.SelfResearch.Desc>
+	<ColonyKit.Settings.Robotics.Ai.SelfAssemble>Assemble more of its kind when idle</ColonyKit.Settings.Robotics.Ai.SelfAssemble>
+	<ColonyKit.Settings.Robotics.Ai.SelfAssemble.Desc>When research, power and materials are all ready, the Mk-V walks to the assembly bay and starts a new Mk-V. When off, only the player can start the bay.</ColonyKit.Settings.Robotics.Ai.SelfAssemble.Desc>
 	<ColonyKit.Settings.Robotics.Ai.Test>Test connection</ColonyKit.Settings.Robotics.Ai.Test>
 	<ColonyKit.Settings.Robotics.Ai.Cost>Every request consumes DeepSeek quota; the defaults are one request per 20 s and at most 2 concurrent requests. The API key is stored in the local Config folder; keep it safe.</ColonyKit.Settings.Robotics.Ai.Cost>
 
@@ -274,4 +281,7 @@
 	<CK.Robotics.Inspect.Ai.Caravan>joining the caravan</CK.Robotics.Inspect.Ai.Caravan>
 	<CK.Robotics.Log.Thought>{0} thinks: "{1}"</CK.Robotics.Log.Thought>
 	<CK.Robotics.Log.Thought.NoPawn>A Mk-V once thought: "{0}"</CK.Robotics.Log.Thought.NoPawn>
+	<CK.Robotics.Job.Assemble>Assembling a new Mk-V</CK.Robotics.Job.Assemble>
+	<CK.Robotics.Ai.Research.Robotics>Research robotics: {0}</CK.Robotics.Ai.Research.Robotics>
+	<CK.Robotics.Ai.Research.Prerequisite>Research prerequisite tech: {0}</CK.Robotics.Ai.Research.Prerequisite>
 </LanguageData>

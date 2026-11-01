@@ -263,6 +263,13 @@
 	<ColonyKit.Settings.Robotics.Ai.Speech.Desc>AI 返回的短句会以漂浮文字显示在 Mk-V 头顶。</ColonyKit.Settings.Robotics.Ai.Speech.Desc>
 	<ColonyKit.Settings.Robotics.Ai.ThoughtLog>把想法写进日志</ColonyKit.Settings.Robotics.Ai.ThoughtLog>
 	<ColonyKit.Settings.Robotics.Ai.ThoughtLog.Desc>每次决策时用第一人称写下的想法会追加到这台 Mk-V 的「日志」页（选中机器人 → 左下角日志），可以回看它当时看到了什么、为什么这样决定。默认关闭，因为日志位置有限。</ColonyKit.Settings.Robotics.Ai.ThoughtLog.Desc>
+	<ColonyKit.Settings.Robotics.Ai.SelfHint>自主行为（默认都开着）：预警时出击、空闲时研究机器人科技、材料齐全时组装同类。三项都关掉也不影响「按威胁选目标」和「没人时站岗」。</ColonyKit.Settings.Robotics.Ai.SelfHint>
+	<ColonyKit.Settings.Robotics.Ai.RaidAdvance>敌袭预警时主动出击</ColonyKit.Settings.Robotics.Ai.RaidAdvance>
+	<ColonyKit.Settings.Robotics.Ai.RaidAdvance.Desc>收到袭击、虫灾、机械集群这类威胁信后，Mk-V 立刻放下手上的家务，朝敌人方向主动推进，并用远程武器在射程外开火。关掉后只在敌人进入交战范围时才迎战。</ColonyKit.Settings.Robotics.Ai.RaidAdvance.Desc>
+	<ColonyKit.Settings.Robotics.Ai.SelfResearch>空闲时研究机器人科技</ColonyKit.Settings.Robotics.Ai.SelfResearch>
+	<ColonyKit.Settings.Robotics.Ai.SelfResearch.Desc>没有敌人、也没有紧急家务时，Mk-V 会把殖民地当前研究切到机器人研究页里还没完成的科技（优先 Mk-V 组装的前置），自己去研究台推进。注意：这会覆盖玩家选的当前研究。</ColonyKit.Settings.Robotics.Ai.SelfResearch.Desc>
+	<ColonyKit.Settings.Robotics.Ai.SelfAssemble>空闲时组装同类</ColonyKit.Settings.Robotics.Ai.SelfAssemble>
+	<ColonyKit.Settings.Robotics.Ai.SelfAssemble.Desc>研究、电力、材料都齐备时，Mk-V 会自己走到组装舱按下「开始组装」，造一台新的 Mk-V。关掉后只能由玩家手动开机。</ColonyKit.Settings.Robotics.Ai.SelfAssemble.Desc>
 	<ColonyKit.Settings.Robotics.Ai.Test>测试连接</ColonyKit.Settings.Robotics.Ai.Test>
 	<ColonyKit.Settings.Robotics.Ai.Cost>每次请求都会消耗 DeepSeek 额度；默认 20 秒一次、最多同时 2 个请求。API Key 只保存在本机 Config 里，请自行保管。</ColonyKit.Settings.Robotics.Ai.Cost>
 
@@ -274,4 +281,7 @@
 	<CK.Robotics.Inspect.Ai.Caravan>跟随远行队</CK.Robotics.Inspect.Ai.Caravan>
 	<CK.Robotics.Log.Thought>{0} 心想：「{1}」</CK.Robotics.Log.Thought>
 	<CK.Robotics.Log.Thought.NoPawn>某台 Mk-V 曾想：「{0}」</CK.Robotics.Log.Thought.NoPawn>
+	<CK.Robotics.Job.Assemble>组装新的 Mk-V</CK.Robotics.Job.Assemble>
+	<CK.Robotics.Ai.Research.Robotics>研究机器人科技：{0}</CK.Robotics.Ai.Research.Robotics>
+	<CK.Robotics.Ai.Research.Prerequisite>研究机器人所需科技：{0}</CK.Robotics.Ai.Research.Prerequisite>
 </LanguageData>

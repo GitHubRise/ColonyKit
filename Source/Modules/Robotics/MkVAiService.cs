@@ -137,9 +137,10 @@ namespace ColonyKit.Modules.Robotics
 			}
 
 			float decisionInterval = settings.aiInterval;
-			if (pawn.Map.dangerWatcher.DangerRating == StoryDanger.High)
+			if (pawn.Map.dangerWatcher.DangerRating == StoryDanger.High
+				|| (settings.aiRaidAdvance && MkVAlert.IsActive(pawn.Map)))
 			{
-				// 袭击进行中更频繁地重新决策，最多 5 秒一次。
+				// 袭击/敌袭预警期间更频繁地重新决策，最多 5 秒一次。
 				decisionInterval = Mathf.Min(decisionInterval, 5f);
 			}
 			comp.AiNextTick = ticks + Mathf.Max(1, Mathf.RoundToInt(decisionInterval * 60f));
@@ -289,8 +290,13 @@ namespace ColonyKit.Modules.Robotics
 				+ "只回复 JSON：{\"action\":\"<候选 id>\",\"say\":\"<不超过 20 字的中文短句>\","
 				+ "\"think\":\"<不超过 60 字、第一人称「我」的中文内心独白>\"}。"
 				+ "think 写你此刻看到了什么、为什么这样决定，用「我」像日记一样叙述；say 是你嘴上说的一句话。"
-				+ "不要编造 id。优先保护殖民者、避免无谓送死；只要 candidates 里有敌人，就优先攻击并主动接近，"
-				+ "不要缩在家里做家务。没有合适动作时才选 work。";
+				+ "选择规则："
+				+ "① 有敌人时优先攻击：先打带范围武器的目标（燃烧瓶、手雷、火箭筒、迫击炮、喷火器——候选里 tag 为「范围」，或 threat 最高），"
+				+ "其次打武器伤害高、命中高但脆弱的敌人，threat 越大越优先；"
+				+ "② alert=true 表示刚收到敌袭预警：立刻放下家务，选 advance 或攻击候选，朝敌人方向主动出击，用远程武器在射程外开火，不要贴脸；"
+				+ "③ colonists=0 表示地图上没有殖民者：你是唯一的守卫，选 guard 主动承担护卫职责；"
+				+ "④ 没有威胁也没有紧急家务时：先 research_robotics 研究机器人科技，其次 assemble 制造同类；"
+				+ "⑤ 优先保护殖民者、避免无谓送死。没有合适动作时才选 work。不要编造 id。";
 			string user = "当前状态和候选动作（JSON）：\n" + promptJson + "\n请选择一个 action。";
 
 			StringBuilder body = new StringBuilder();
@@ -324,6 +330,7 @@ namespace ColonyKit.Modules.Robotics
 			json.Append(",\"colonists\":").Append(prompt.colonists);
 			json.Append(",\"downed\":").Append(prompt.downed);
 			json.Append(",\"fires\":").Append(prompt.fires);
+			json.Append(",\"alert\":").Append(prompt.alert ? "true" : "false");
 			json.Append(",\"candidates\":[");
 			if (prompt.candidates != null)
 			{
@@ -340,12 +347,32 @@ namespace ColonyKit.Modules.Robotics
 					}
 					json.Append("{\"id\":\"").Append(EscapeJson(candidate.id ?? ""));
 					json.Append("\",\"kind\":\"").Append(EscapeJson(candidate.kind ?? ""));
-					json.Append("\",\"label\":\"").Append(EscapeJson(candidate.label ?? ""));
-					json.Append("\",\"dist\":").Append(candidate.dist).Append('}');
+					json.Append("\",\"label\":\"").Append(EscapeJson(candidate.label ?? "")).Append('"');
+					if (candidate.threat != 0)
+					{
+						json.Append(",\"threat\":").Append(candidate.threat);
+					}
+					if (!string.IsNullOrEmpty(candidate.tag))
+					{
+						json.Append(",\"tag\":\"").Append(EscapeJson(candidate.tag)).Append('"');
+					}
+					json.Append(",\"dist\":").Append(candidate.dist).Append('}');
 				}
 			}
 			json.Append("]}");
 			return json.ToString();
+		}
+
+		/// <summary>仅供 -colonykit-nannybot-test 使用：验证范围武器优先的兜底改目标。</summary>
+		internal static string PreferAreaTargetForTest(Pawn pawn, string action)
+		{
+			return PreferAreaTarget(pawn, action);
+		}
+
+		/// <summary>仅供 -colonykit-nannybot-test 使用：验证候选 JSON（threat / tag / alert）能被解析。</summary>
+		internal static string SerializePromptForTest(AiPrompt prompt)
+		{
+			return SerializePrompt(prompt);
 		}
 
 		private static AiPrompt BuildPrompt(Pawn pawn, RoboticsSettings settings)
@@ -359,30 +386,22 @@ namespace ColonyKit.Modules.Robotics
 
 			if (settings.aiAllowCombat)
 			{
-				int attacks = 0;
-				// 不按交战范围过滤：海盗可能刚在地图边缘集合，AI 需要能看到远处目标
-				// 并自己走过去（选中后近距攻击、远距 Goto）。
-				foreach (Pawn other in map.mapPawns.AllPawnsSpawned)
+				// 按威胁排序：范围武器最优先，其次是高伤/高命中，再考虑血少、护甲薄和距离。
+				// 顺序和 threat 分会一起发给模型，让它既有排序也有理由。
+				List<MkVThreat.Threat> ranked = MkVThreat.Rank(pawn, false);
+				hostiles = ranked.Count;
+				for (int i = 0; i < ranked.Count && i < 8; i++)
 				{
-					if (other == null || other == pawn || other.Dead || other.Downed
-						|| !other.Spawned || !other.HostileTo(Faction.OfPlayer)
-						|| other.Position.Fogged(map))
+					MkVThreat.Threat threat = ranked[i];
+					candidates.Add(new AiCandidate
 					{
-						continue;
-					}
-					float distance = other.Position.DistanceTo(pawn.Position);
-					hostiles++;
-					if (attacks < 8)
-					{
-						candidates.Add(new AiCandidate
-						{
-							id = "attack:" + other.thingIDNumber,
-							kind = "attack",
-							label = other.LabelShort,
-							dist = Mathf.RoundToInt(distance)
-						});
-						attacks++;
-					}
+						id = "attack:" + threat.pawn.thingIDNumber,
+						kind = "attack",
+						label = threat.label,
+						dist = Mathf.RoundToInt(threat.distance),
+						threat = threat.score,
+						tag = MkVThreat.Tag(threat.profile)
+					});
 				}
 			}
 
@@ -440,6 +459,38 @@ namespace ColonyKit.Modules.Robotics
 			AddChoreCandidate(candidates, pawn, "doctor", "治疗受伤的殖民者/囚犯");
 			AddChoreCandidate(candidates, pawn, "research", "推进当前研究");
 
+			// 地图上没有任何殖民者：Mk-V 就是唯一的守卫，给它一个主动站岗的候选。
+			bool alone = !NannyBotUtility.AnyColonistPresent(map);
+			if (alone)
+			{
+				candidates.Add(new AiCandidate
+				{
+					id = "guard",
+					kind = "guard",
+					label = "守卫殖民地（地图上没有殖民者）",
+					dist = 0
+				});
+			}
+
+			// 刚收到威胁信、敌人可能还在雾里赶路：主动出击，向他们的方向推进。
+			bool alert = settings.aiRaidAdvance && MkVAlert.IsActive(map);
+			if (alert)
+			{
+				IntVec3 advanceCell = MkVAlert.NearestHostileCell(map, pawn.Position);
+				if (advanceCell.IsValid)
+				{
+					candidates.Add(new AiCandidate
+					{
+						id = "advance",
+						kind = "advance",
+						label = "朝敌袭警报方向主动出击",
+						dist = Mathf.RoundToInt(pawn.Position.DistanceTo(advanceCell))
+					});
+				}
+			}
+
+			AddSelfWorkCandidates(candidates, pawn, settings);
+
 			candidates.Add(new AiCandidate
 			{
 				id = "return",
@@ -473,8 +524,73 @@ namespace ColonyKit.Modules.Robotics
 				colonists = colonists,
 				downed = downed,
 				fires = fires,
+				alert = alert,
 				candidates = candidates.ToArray()
 			};
+		}
+
+		/// <summary>空闲时的自主动作：研究机器人科技，或者在组装舱里制造一台新的同类。</summary>
+		private static void AddSelfWorkCandidates(
+			List<AiCandidate> candidates, Pawn pawn, RoboticsSettings settings)
+		{
+			if (settings.aiSelfResearch)
+			{
+				ResearchProjectDef project = MkVResearch.NextProject();
+				if (project != null)
+				{
+					candidates.Add(new AiCandidate
+					{
+						id = "research_robotics",
+						kind = "research",
+						label = MkVResearch.LabelFor(project),
+						dist = 0
+					});
+				}
+			}
+			if (settings.aiSelfAssemble)
+			{
+				Building bay = FindAssemblyBay(pawn);
+				if (bay != null)
+				{
+					candidates.Add(new AiCandidate
+					{
+						id = "assemble",
+						kind = "assemble",
+						label = "在组装舱制造一台新的 Mk-V",
+						dist = Mathf.RoundToInt(pawn.Position.DistanceTo(bay.Position))
+					});
+				}
+			}
+		}
+
+		/// <summary>找一台现在就能开机的组装舱：研究完成、通电、材料齐全、走得到。</summary>
+		private static Building FindAssemblyBay(Pawn pawn)
+		{
+			if (pawn?.Map == null)
+			{
+				return null;
+			}
+			ThingDef def = DefDatabase<ThingDef>.GetNamedSilentFail("CK_MkVAssemblyBay");
+			if (def == null)
+			{
+				return null;
+			}
+			List<Building> bays = pawn.Map.listerBuildings.AllBuildingsColonistOfDef(def);
+			for (int i = 0; i < bays.Count; i++)
+			{
+				Building bay = bays[i];
+				CompMkVAssemblyBay comp = bay.TryGetComp<CompMkVAssemblyBay>();
+				if (comp == null || !comp.CanStart(out _))
+				{
+					continue;
+				}
+				if (!pawn.CanReach(bay, PathEndMode.InteractionCell, Danger.Deadly))
+				{
+					continue;
+				}
+				return bay;
+			}
+			return null;
 		}
 
 		private static void AddChoreCandidate(
@@ -525,6 +641,11 @@ namespace ColonyKit.Modules.Robotics
 			}
 			// 全图高危险（袭击进行中）时允许打断家务，哪怕敌人还在远处集合。
 			if (map.dangerWatcher.DangerRating == StoryDanger.High)
+			{
+				return true;
+			}
+			// 刚收到敌袭预警：先放下手里的活，主动出击（敌人可能还在雾里赶路）。
+			if (NannyBotUtility.Settings.aiRaidAdvance && MkVAlert.IsActive(map))
 			{
 				return true;
 			}
@@ -865,11 +986,59 @@ namespace ColonyKit.Modules.Robotics
 			{
 				return;
 			}
+			// 范围武器优先：模型偶尔会挑近处的普通目标，这里按威胁分兜底换成带燃烧瓶/手雷的敌人。
+			comp.AiLastAction = PreferAreaTarget(pawn, comp.AiLastAction);
 			if (NannyBotUtility.Settings.aiSpeech && !string.IsNullOrEmpty(comp.AiLastSay))
 			{
 				MoteMaker.ThrowText(pawn.DrawPos, pawn.Map, comp.AiLastSay, 4f);
 			}
 			ExecuteAction(comp, pawn, comp.AiLastAction);
+		}
+
+		/// <summary>
+		/// 范围武器优先：目标是普通敌人、但视野里有带范围武器的敌人时，换成威胁分最高的那个。
+		/// 范围敌人比当前目标远 20 格以上时仍先打眼前的，避免为了追投弹手把后背留给近战。
+		/// </summary>
+		private static string PreferAreaTarget(Pawn pawn, string action)
+		{
+			if (string.IsNullOrEmpty(action) || !action.StartsWith("attack:", StringComparison.Ordinal))
+			{
+				return action;
+			}
+			int separator = action.IndexOf(':');
+			int chosenId;
+			if (separator < 0 || !int.TryParse(action.Substring(separator + 1), out chosenId))
+			{
+				return action;
+			}
+			Thing chosen = FindThing(pawn.Map, chosenId);
+			if (chosen is Pawn chosenPawn && MkVThreat.Describe(chosenPawn).area)
+			{
+				return action;
+			}
+			MkVThreat.Threat area = null;
+			foreach (MkVThreat.Threat threat in MkVThreat.Rank(pawn, false))
+			{
+				if (threat.profile.area)
+				{
+					area = threat;
+					break;
+				}
+			}
+			if (area == null)
+			{
+				return action;
+			}
+			float chosenDistance = chosen != null
+				? pawn.Position.DistanceTo(chosen.Position)
+				: float.MaxValue;
+			if (area.distance > chosenDistance + 20f)
+			{
+				return action;
+			}
+			ModLog.Debug("Robotics", "Mk-V "
+				+ pawn.LabelShort + " 改为优先攻击范围武器目标：" + area.label);
+			return "attack:" + area.pawn.thingIDNumber;
 		}
 
 		/// <summary>
@@ -924,6 +1093,77 @@ namespace ColonyKit.Modules.Robotics
 				Building station = NannyBotUtility.FindStation(pawn, false);
 				IntVec3 cell = station != null ? station.InteractionCell : pawn.Position;
 				StartJob(pawn, JobMaker.MakeJob(JobDefOf.Goto, cell));
+				return;
+			}
+			if (action == "advance")
+			{
+				// 敌袭预警：主动出击，但停在敌人前面的空地上；靠近后由战斗 ThinkNode 接手开火。
+				IntVec3 hostileCell = MkVAlert.NearestHostileCell(pawn.Map, pawn.Position);
+				if (!hostileCell.IsValid)
+				{
+					comp.AiLastError = "没有可追击的敌人";
+					return;
+				}
+				IntVec3 stand = CellFinder.StandableCellNear(hostileCell, pawn.Map, 6f);
+				if (!stand.IsValid)
+				{
+					stand = hostileCell;
+				}
+				Job advance = JobMaker.MakeJob(JobDefOf.Goto, stand);
+				advance.locomotionUrgency = LocomotionUrgency.Jog;
+				advance.expiryInterval = 600;
+				StartJob(pawn, advance);
+				return;
+			}
+			if (action == "guard")
+			{
+				// 地图上没有殖民者：主动站岗（守门 / 巡逻 / 看仓库）。
+				Job guard = new JobGiver_MkVGuard()
+					.TryIssueJobPackage(pawn, new JobIssueParams()).Job;
+				if (guard != null)
+				{
+					StartJob(pawn, guard);
+					return;
+				}
+				IntVec3 cell = CellFinder.RandomClosewalkCellNear(
+					pawn.Position, pawn.Map, 12, c => c.Standable(pawn.Map));
+				if (cell.IsValid)
+				{
+					StartJob(pawn, JobMaker.MakeJob(JobDefOf.Goto, cell));
+				}
+				return;
+			}
+			if (action == "research_robotics")
+			{
+				ResearchProjectDef project = MkVResearch.NextProject();
+				if (project == null || !MkVResearch.Select(project))
+				{
+					comp.AiLastError = "没有可研究的机器人科技";
+					return;
+				}
+				Job research = ChoreJob("research", pawn);
+				if (research != null)
+				{
+					StartJob(pawn, research);
+				}
+				else
+				{
+					comp.AiLastError = "研究台不可用";
+				}
+				return;
+			}
+			if (action == "assemble")
+			{
+				Building bay = FindAssemblyBay(pawn);
+				JobDef assembleDef = DefDatabase<JobDef>.GetNamedSilentFail("CK_MkVAssemble");
+				if (bay == null || assembleDef == null)
+				{
+					comp.AiLastError = "组装舱现在不能开工";
+					return;
+				}
+				Job assemble = JobMaker.MakeJob(assembleDef, bay);
+				assemble.expiryInterval = 1200;
+				StartJob(pawn, assemble);
 				return;
 			}
 			if (action == "patrol")

@@ -1,11 +1,15 @@
 using System.Linq;
 using RimWorld;
+using UnityEngine;
 using Verse;
 using Verse.AI;
 
 namespace ColonyKit.Modules.Robotics
 {
-	/// <summary>Mk-V 专用索敌：在设置的交战范围内找目标，超出后脱战并返回组装舱。</summary>
+	/// <summary>
+	/// Mk-V 专用索敌：优先打带范围武器的敌人，其次打高伤、高命中、脆弱的目标；
+	/// 收到敌袭预警时把索敌范围放大，并主动朝敌人方向推进。
+	/// </summary>
 	public class JobGiver_MkVCombat : ThinkNode_JobGiver
 	{
 		protected override Job TryGiveJob(Pawn pawn)
@@ -25,7 +29,11 @@ namespace ColonyKit.Modules.Robotics
 				return null;
 			}
 
-			Pawn target = FindTarget(pawn, combat.EngageRange);
+			bool alert = NannyBotUtility.Settings.aiRaidAdvance && MkVAlert.IsActive(pawn.Map);
+			float range = alert
+				? Mathf.Max(combat.EngageRange, MkVAlert.AlertEngageRange)
+				: combat.EngageRange;
+			Pawn target = FindTarget(pawn, range);
 			if (target != null)
 			{
 				combat.SetEngaged(target);
@@ -57,6 +65,27 @@ namespace ColonyKit.Modules.Robotics
 				return attack;
 			}
 
+			// 预警但敌人还在雾里：主动朝他们的方向推进，靠近后自然进入上面的索敌分支。
+			if (alert)
+			{
+				IntVec3 hostileCell = MkVAlert.NearestHostileCell(pawn.Map, pawn.Position);
+				if (hostileCell.IsValid && pawn.Position.DistanceTo(hostileCell) > 12f)
+				{
+					IntVec3 stand = CellFinder.StandableCellNear(hostileCell, pawn.Map, 6f);
+					if (!stand.IsValid)
+					{
+						stand = hostileCell;
+					}
+					if (pawn.CanReach(stand, PathEndMode.OnCell, Danger.Deadly))
+					{
+						Job advance = JobMaker.MakeJob(JobDefOf.Goto, stand);
+						advance.locomotionUrgency = LocomotionUrgency.Jog;
+						advance.expiryInterval = 300;
+						return advance;
+					}
+				}
+			}
+
 			if (combat.state == MkVCombatState.Engaged)
 			{
 				if (!NannyBotUtility.Settings.mkvReturnToBay)
@@ -78,22 +107,19 @@ namespace ColonyKit.Modules.Robotics
 			return null;
 		}
 
+		/// <summary>在范围内挑威胁分最高的敌人；同分时 MkVThreat 已经按距离排过序。</summary>
 		private static Pawn FindTarget(Pawn pawn, float range)
 		{
 			Pawn best = null;
-			float bestDistance = range;
-			foreach (Pawn other in pawn.Map.mapPawns.AllPawnsSpawned)
+			int bestScore = int.MinValue;
+			foreach (MkVThreat.Threat threat in MkVThreat.Rank(pawn, false))
 			{
-				if (other == null || other == pawn || other.Dead || other.Downed || !other.Spawned)
+				if (threat.distance > range)
 				{
 					continue;
 				}
-				if (!other.HostileTo(Faction.OfPlayer) || other.Position.Fogged(pawn.Map))
-				{
-					continue;
-				}
-				float distance = pawn.Position.DistanceTo(other.Position);
-				if (distance > range || distance >= bestDistance)
+				Pawn other = threat.pawn;
+				if (other == null || other.Dead || other.Downed || !other.Spawned)
 				{
 					continue;
 				}
@@ -105,8 +131,11 @@ namespace ColonyKit.Modules.Robotics
 				{
 					continue;
 				}
-				best = other;
-				bestDistance = distance;
+				if (threat.score > bestScore)
+				{
+					best = other;
+					bestScore = threat.score;
+				}
 			}
 			return best;
 		}

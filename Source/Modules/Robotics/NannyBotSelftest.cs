@@ -142,6 +142,7 @@ namespace ColonyKit.Modules.Robotics
 				builder.Append(' ').Append(ProbeBedRest(map, mkv));
 				builder.Append(' ').Append(SelfRepairProbe(mkv));
 				builder.Append(' ').Append(PassionProbe(mkv));
+				ProbeMkVThreat(map, mkv, builder);
 				mkv.Destroy(DestroyMode.Vanish);
 			}
 			bay.Destroy(DestroyMode.Vanish);
@@ -1340,6 +1341,141 @@ namespace ColonyKit.Modules.Robotics
 				{
 					otherComp.durability = otherDurability;
 				}
+			}
+		}
+
+		/// <summary>
+		/// AI 升级的确定性探针：范围武器识别、威胁分排序、敌袭预警、组装/研究/守卫候选的前置。
+		/// 只造几个临时假人，探完就销毁，不写回设置。
+		/// </summary>
+		private static void ProbeMkVThreat(Map map, Pawn mkv, StringBuilder builder)
+		{
+			Pawn molotov = null;
+			Pawn rifle = null;
+			Pawn hostile = null;
+			Letter letter = null;
+			try
+			{
+				// 守卫候选要在造「殖民者」假人之前测，否则 AnyColonistPresent 会被自己造的假人干扰。
+				builder.Append(" aiGuardAlone=").Append(!NannyBotUtility.AnyColonistPresent(map))
+					.Append(" aiGuardJob=")
+					.Append(new JobGiver_MkVGuard().TryIssueJobPackage(mkv, new JobIssueParams()).Job != null);
+
+				molotov = SpawnArmedPawn(map, mkv, Faction.OfPlayer, "Weapon_GrenadeMolotov");
+				rifle = SpawnArmedPawn(map, mkv, Faction.OfPlayer, "Gun_AssaultRifle");
+				MkVThreat.Profile molotovProfile = MkVThreat.Describe(molotov);
+				MkVThreat.Profile rifleProfile = MkVThreat.Describe(rifle);
+				builder.Append(" aiThreatMolotov=").Append(molotovProfile.area)
+					.Append(" aiThreatRifle=").Append(rifleProfile.area)
+					.Append(" aiThreatScore=")
+					.Append(MkVThreat.Score(molotovProfile, 8f) > MkVThreat.Score(rifleProfile, 8f));
+
+				// 敌对派系放一个燃烧瓶敌人，验证排序里它真的排第一。
+				Faction enemies = Faction.OfAncientsHostile;
+				if (enemies != null)
+				{
+					hostile = SpawnArmedPawn(map, mkv, enemies, "Weapon_GrenadeMolotov");
+				}
+				if (hostile != null)
+				{
+					List<MkVThreat.Threat> ranked = MkVThreat.Rank(mkv, true);
+					builder.Append(" aiThreatRankFirst=")
+						.Append(ranked.Count > 0 && ranked[0].pawn == hostile)
+						.Append(" aiThreatRankLabel=").Append(ranked.Count > 0 ? ranked[0].label : "none");
+
+					// 模型挑了拿步枪的那个时，兜底逻辑要改打燃烧瓶。
+					Pawn rifleman = SpawnArmedPawn(map, mkv, enemies, "Gun_AssaultRifle");
+					if (rifleman != null)
+					{
+						string chosen = "attack:" + rifleman.thingIDNumber;
+						string fixedAction = MkVAiService.PreferAreaTargetForTest(mkv, chosen);
+						builder.Append(" aiAoeOverride=")
+							.Append(fixedAction == "attack:" + hostile.thingIDNumber);
+						DestroyTestPawn(rifleman);
+					}
+				}
+
+				// 预警：威胁信 + 地图上的敌人。
+				Find.LetterStack.ReceiveLetter("自检威胁", "自检用威胁信", LetterDefOf.ThreatBig);
+				foreach (Letter candidate in Find.LetterStack.LettersListForReading)
+				{
+					if (candidate != null && candidate.def == LetterDefOf.ThreatBig)
+					{
+						letter = candidate;
+						break;
+					}
+				}
+				builder.Append(" aiAlertLetter=").Append(MkVAlert.HasRecentThreatLetter())
+					.Append(" aiAlertActive=").Append(MkVAlert.IsActive(map))
+					.Append(" aiAlertCell=").Append(MkVAlert.NearestHostileCell(map, mkv.Position).IsValid);
+
+				// 自主动作的前置：组装 JobDef、下一个机器人研究。
+				builder.Append(" aiAssembleDef=").Append(
+						DefDatabase<JobDef>.GetNamedSilentFail("CK_MkVAssemble")?.driverClass != null)
+					.Append(" aiResearchProject=").Append(MkVResearch.NextProject()?.defName ?? "none");
+
+				// 候选 JSON：新增的 alert / threat / tag 必须仍是合法 JSON，跑测试时用 ConvertFrom-Json 复核。
+				builder.Append(" aiPromptJson=").Append(MkVAiService.SerializePromptForTest(new AiPrompt
+				{
+					name = mkv.LabelShort,
+					alert = true,
+					colonists = 0,
+					candidates = new[]
+					{
+						new AiCandidate
+						{
+							id = "attack:1", kind = "attack", label = "海盗（燃烧瓶·范围）",
+							dist = 5, threat = 140, tag = "范围"
+						},
+						new AiCandidate { id = "guard", kind = "guard", label = "守卫殖民地", dist = 0 }
+					}
+				}));
+			}
+			catch (Exception exception)
+			{
+				builder.Append(" aiThreatError=").Append(exception.Message);
+			}
+			finally
+			{
+				if (letter != null)
+				{
+					Find.LetterStack.RemoveLetter(letter);
+				}
+				DestroyTestPawn(molotov);
+				DestroyTestPawn(rifle);
+				DestroyTestPawn(hostile);
+			}
+		}
+
+		/// <summary>临时造一个带指定武器的假人；武器 Def 不存在时返回 null。</summary>
+		private static Pawn SpawnArmedPawn(Map map, Pawn near, Faction faction, string weaponDefName)
+		{
+			ThingDef weaponDef = DefDatabase<ThingDef>.GetNamedSilentFail(weaponDefName);
+			if (weaponDef == null || faction == null || near?.Map == null)
+			{
+				return null;
+			}
+			Pawn pawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(
+				PawnKindDefOf.Colonist, faction, PawnGenerationContext.NonPlayer));
+			if (pawn == null)
+			{
+				return null;
+			}
+			IntVec3 cell = CellFinder.RandomClosewalkCellNear(near.Position, map, 5);
+			GenSpawn.Spawn(pawn, cell, map);
+			if (pawn.equipment != null)
+			{
+				pawn.equipment.DestroyAllEquipment();
+				pawn.equipment.AddEquipment((ThingWithComps)ThingMaker.MakeThing(weaponDef));
+			}
+			return pawn;
+		}
+
+		private static void DestroyTestPawn(Pawn pawn)
+		{
+			if (pawn != null && !pawn.Destroyed)
+			{
+				pawn.Destroy(DestroyMode.Vanish);
 			}
 		}
 	}

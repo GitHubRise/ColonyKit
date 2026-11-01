@@ -7,6 +7,12 @@ namespace ColonyKit.Modules.Robotics
 		public string kind;
 		public string label;
 		public int dist;
+
+		/// <summary>威胁分（越大越该先打）；只有攻击候选才有。</summary>
+		public int threat;
+
+		/// <summary>威胁标签：范围 / 高伤；普通目标留空。</summary>
+		public string tag;
 	}
 
 	/// <summary>发给模型的局势快照。</summary>
@@ -21,6 +27,10 @@ namespace ColonyKit.Modules.Robotics
 		public int colonists;
 		public int downed;
 		public int fires;
+
+		/// <summary>刚收到敌袭预警：该放下家务主动出击。</summary>
+		public bool alert;
+
 		public AiCandidate[] candidates;
 	}
 
