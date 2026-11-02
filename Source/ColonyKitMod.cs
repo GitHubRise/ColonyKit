@@ -85,6 +85,11 @@ namespace ColonyKit
 		/// <summary>
 		/// 打开设置前预选页面（深链接/自动化测试）。会按需创建控制器。
 		/// </summary>
+		/// <summary>打开设置前预选子页签（自动化测试）。</summary>
+		public bool SelectSettingsSubTab(int index)
+		{
+			return controller != null && controller.SelectSubTab(index);
+		}
 		public bool SelectSettingsPage(string pageId)
 		{
 			if (Settings == null)
