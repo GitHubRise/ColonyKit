@@ -14,65 +14,81 @@ namespace ColonyKit.Modules.Bubbles
 	/// </remarks>
 	public sealed class BubblesSettings : IColonyKitModuleSettings
 	{
+		/// <summary>「加速时自动隐藏」的关闭档位：等于它时不按游戏速度隐藏。</summary>
 		public const int AutoHideSpeedOff = 1;
 
+		/// <summary>听觉判定距离（格）。会按听者的听力能力缩放，所以实际可听范围还会浮动。</summary>
 		public const float MinHearingRange = 1f;
 		public const float MaxHearingRange = 32f;
 		public const float DefaultHearingRange = 10f;
 
+		/// <summary>基础高度：相机高度的基准值，数值越小气泡越大（原 Mod 的 AltitudeBase）。</summary>
 		public const int MinAltitudeBase = 3;
 		public const int MaxAltitudeBase = 44;
 		public const int DefaultAltitudeBase = 11;
 
+		/// <summary>最大可见高度：相机拉远到超过该值就完全不画气泡，避免远景糊成一片。</summary>
 		public const int MinAltitudeMax = 20;
 		public const int MaxAltitudeMax = 60;
 		public const int DefaultAltitudeMax = 40;
 
+		/// <summary>最大缩放：气泡随相机拉近放大的上限，1 = 100%。</summary>
 		public const float MinScaleMax = 1f;
 		public const float MaxScaleMax = 5f;
 		public const float DefaultScaleMax = 1.25f;
 
+		/// <summary>每个小人最多同时显示几条气泡；超出的旧气泡不再画。</summary>
 		public const int MinPawnMax = 1;
 		public const int MaxPawnMax = 15;
 		public const int DefaultPawnMax = 3;
 
+		/// <summary>字号（像素），会再乘上相机缩放。</summary>
 		public const int MinFontSize = 5;
 		public const int MaxFontSize = 30;
 		public const int DefaultFontSize = 12;
 
+		/// <summary>文字内边距（像素）；X/Y 分开是为了适配不同字体的行高。</summary>
 		public const int MinPadding = 1;
 		public const int MaxPadding = 40;
 		public const int DefaultPaddingX = 7;
 		public const int DefaultPaddingY = 5;
 
+		/// <summary>气泡最大宽度（像素）；超出后文字换行、气泡变高。</summary>
 		public const int MinWidthMax = 100;
 		public const int MaxWidthMax = 500;
 		public const int DefaultWidthMax = 256;
 
+		/// <summary>同一个小人多条气泡之间的间距（像素）。</summary>
 		public const int MinOffsetSpacing = 2;
 		public const int MaxOffsetSpacing = 12;
 		public const int DefaultOffsetSpacing = 2;
 
+		/// <summary>第一条气泡相对小人标签的起始偏移（像素）；调大可让气泡离头更远。</summary>
 		public const int MinOffsetStart = 0;
 		public const int MaxOffsetStart = 400;
 		public const int DefaultOffsetStart = 14;
 
+		/// <summary>偏移方向：0 下、1 右、2 上、3 左，直接对应 <see cref="Rot4"/> 的 int 值。</summary>
 		public const int MinOffsetDirection = 0;
 		public const int MaxOffsetDirection = 3;
 		public const int DefaultOffsetDirection = 0;
 
+		/// <summary>刚出现时的初始不透明度（0–1）。</summary>
 		public const float MinOpacityStart = 0.3f;
 		public const float MaxOpacityStart = 1f;
 		public const float DefaultOpacityStart = 0.9f;
 
+		/// <summary>鼠标悬停时的不透明度；调低可以「擦掉」气泡看下面的东西。</summary>
 		public const float MinOpacityHover = 0.05f;
 		public const float MaxOpacityHover = 1f;
 		public const float DefaultOpacityHover = 0.2f;
 
+		/// <summary>开始淡出前的停留时间（刻，60 刻 = 1 秒）。</summary>
 		public const int MinFadeStart = 100;
 		public const int MaxFadeStart = 5000;
 		public const int DefaultFadeStart = 500;
 
+		/// <summary>淡出过程持续的时间（刻）；淡出按游戏时间走，暂停时不会消失。</summary>
 		public const int MinFadeLength = 50;
 		public const int MaxFadeLength = 2500;
 		public const int DefaultFadeLength = 100;
