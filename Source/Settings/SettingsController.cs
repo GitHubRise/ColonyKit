@@ -158,22 +158,29 @@ namespace ColonyKit
 		private void DrawSubTabs(Rect inRect, SettingsPage page, IReadOnlyList<string> subTabs)
 		{
 			int current = GetSubTab(page);
-			float tabWidth = (inRect.width - (subTabs.Count - 1) * SubTabGap) / subTabs.Count;
+			// 圆角页签之间留 6px 缝，整体左右各缩 2px，跟主页签的方形页签明显区分。
+			float gap = 8f;
+			float tabWidth = (inRect.width - 4f - (subTabs.Count - 1) * gap) / subTabs.Count;
+			float height = inRect.height - 4f;
 
 			for (int i = 0; i < subTabs.Count; i++)
 			{
 				Rect tabRect = new Rect(
-					inRect.x + i * (tabWidth + SubTabGap),
-					inRect.y,
+					inRect.x + 2f + i * (tabWidth + gap),
+					inRect.y + 2f,
 					tabWidth,
-					inRect.height);
+					height);
 
 				bool selected = i == current;
-				Widgets.DrawOptionBackground(tabRect, selected);
-				if (!selected && Mouse.IsOver(tabRect))
-				{
-					Widgets.DrawHighlight(tabRect);
-				}
+				bool hover = Mouse.IsOver(tabRect);
+
+				Color fill = selected
+					? new Color(0.26f, 0.25f, 0.22f)
+					: (hover ? new Color(0.22f, 0.22f, 0.22f) : new Color(0.15f, 0.15f, 0.15f));
+				Color border = selected
+					? new Color(0.78f, 0.64f, 0.38f)
+					: new Color(0.32f, 0.32f, 0.32f);
+				RoundedRectUtility.DrawWithBorder(tabRect, fill, border);
 
 				if (Widgets.ButtonInvisible(tabRect, false))
 				{
@@ -188,7 +195,7 @@ namespace ColonyKit
 				Text.Font = GameFont.Small;
 				Text.Anchor = TextAnchor.MiddleCenter;
 				Color previousColor = GUI.color;
-				GUI.color = selected ? Color.white : new Color(1f, 1f, 1f, 0.72f);
+				GUI.color = selected ? Color.white : new Color(1f, 1f, 1f, 0.66f);
 				Widgets.Label(tabRect, subTabs[i].Loc());
 				GUI.color = previousColor;
 				Text.Anchor = previousAnchor;

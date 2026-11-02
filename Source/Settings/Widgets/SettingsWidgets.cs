@@ -192,18 +192,22 @@ namespace ColonyKit
 		/// <summary>
 		/// 显式框的起点：先给框外的标题留出高度，再返回记录用的作用域。
 		/// 内容照常往 listing 里画，结束时调用 <see cref="FrameEnd"/> 画框线和标题。
+		/// 框内内容整体缩进 8px，避免文字贴到左边框上。
 		/// </summary>
 		public static FrameScope FrameBegin(Listing_Standard listing, string title)
 		{
-			Rect titleRect = listing.GetRect(24f);
+			Rect titleRect = listing.GetRect(30f);
 			listing.Gap(6f);
+			float x = titleRect.x;
+			float width = titleRect.width;
+			listing.Indent(8f);
 			return new FrameScope
 			{
 				title = title,
 				titleRect = titleRect,
-				x = titleRect.x,
+				x = x,
 				y = titleRect.yMax + 7f,
-				width = titleRect.width,
+				width = width,
 				matches = SettingsSearch.PageMatches
 			};
 		}
@@ -212,10 +216,11 @@ namespace ColonyKit
 		public static void FrameEnd(Listing_Standard listing, FrameScope frame)
 		{
 			float bottom = listing.GetRect(0f).y;
+			listing.Outdent(8f);
 			bool matched = !SettingsSearch.Active || SettingsSearch.PageMatches > frame.matches;
 			if (!matched)
 			{
-				listing.Gap(10f);
+				listing.Gap(12f);
 				return;
 			}
 
@@ -228,10 +233,12 @@ namespace ColonyKit
 			Text.Font = previousFont;
 			GUI.color = previousColor;
 
+			// 边框贴着滚动视图内缘画（左 +1、宽 -2），否则左/右边框会被裁掉。
 			float height = Mathf.Max(18f, bottom - frame.y + 10f);
-			Rect box = new Rect(frame.x - 2f, frame.y - 4f, frame.width + 1f, height);
+			Rect box = new Rect(frame.x + 1f, frame.y - 4f, frame.width - 2f, height);
 			Widgets.DrawBox(box);
-			listing.Gap(12f);
+			// 框下方留一行空白，让相邻两组明显分开。
+			listing.Gap(18f);
 		}
 
 		/// <summary>显式框的作用域数据，页面只需要原样传回 <see cref="FrameEnd"/>。</summary>
