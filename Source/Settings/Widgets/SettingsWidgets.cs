@@ -150,7 +150,7 @@ namespace ColonyKit
 			Color previousColor = GUI.color;
 
 			// 不要在竖直方向收缩：GUI.Label 会按 rect 裁切，高度小于行高时文字只剩半截。
-			Rect labelRect = new Rect(rect.x + 8f, rect.y, rect.width - 8f, rect.height);
+			Rect labelRect = new Rect(rect.x + 10f, rect.y, rect.width - 10f, rect.height);
 			labelRect.width = Mathf.Max(0f, labelRect.width - (tag.NullOrEmpty() ? 30f : 76f));
 			Text.Anchor = TextAnchor.MiddleLeft;
 			GUI.color = enabled ? Color.white : new Color(1f, 1f, 1f, 0.45f);
@@ -170,7 +170,7 @@ namespace ColonyKit
 			Text.Anchor = previousAnchor;
 
 			const float checkSize = 18f;
-			float checkX = rect.xMax - checkSize - 6f;
+			float checkX = rect.xMax - checkSize - 10f;
 			float checkY = rect.y + (rect.height - checkSize) / 2f;
 			Widgets.CheckboxDraw(checkX, checkY, value, disabled: !enabled, size: checkSize);
 
@@ -196,17 +196,17 @@ namespace ColonyKit
 		/// </summary>
 		public static FrameScope FrameBegin(Listing_Standard listing, string title)
 		{
-			Rect titleRect = listing.GetRect(30f);
+			Rect titleRect = listing.GetRect(28f);
 			listing.Gap(6f);
 			float x = titleRect.x;
 			float width = titleRect.width;
-			listing.Indent(8f);
+			listing.Indent(10f);
 			return new FrameScope
 			{
 				title = title,
 				titleRect = titleRect,
 				x = x,
-				y = titleRect.yMax + 7f,
+				y = titleRect.yMax + 8f,
 				width = width,
 				matches = SettingsSearch.PageMatches
 			};
@@ -216,7 +216,7 @@ namespace ColonyKit
 		public static void FrameEnd(Listing_Standard listing, FrameScope frame)
 		{
 			float bottom = listing.GetRect(0f).y;
-			listing.Outdent(8f);
+			listing.Outdent(10f);
 			bool matched = !SettingsSearch.Active || SettingsSearch.PageMatches > frame.matches;
 			if (!matched)
 			{
@@ -234,11 +234,11 @@ namespace ColonyKit
 			GUI.color = previousColor;
 
 			// 边框贴着滚动视图内缘画（左 +1、宽 -2），否则左/右边框会被裁掉。
-			float height = Mathf.Max(18f, bottom - frame.y + 10f);
-			Rect box = new Rect(frame.x + 1f, frame.y - 4f, frame.width - 2f, height);
+			float height = Mathf.Max(20f, bottom - frame.y + 14f);
+			Rect box = new Rect(frame.x + 1f, frame.y - 6f, frame.width - 2f, height);
 			Widgets.DrawBox(box);
 			// 框下方留一行空白，让相邻两组明显分开。
-			listing.Gap(18f);
+			listing.Gap(20f);
 		}
 
 		/// <summary>显式框的作用域数据，页面只需要原样传回 <see cref="FrameEnd"/>。</summary>

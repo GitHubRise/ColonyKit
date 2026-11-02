@@ -161,13 +161,13 @@ namespace ColonyKit
 			// 圆角页签之间留 6px 缝，整体左右各缩 2px，跟主页签的方形页签明显区分。
 			float gap = 8f;
 			float tabWidth = (inRect.width - 4f - (subTabs.Count - 1) * gap) / subTabs.Count;
-			float height = inRect.height - 4f;
+			float height = 26f;
 
 			for (int i = 0; i < subTabs.Count; i++)
 			{
 				Rect tabRect = new Rect(
 					inRect.x + 2f + i * (tabWidth + gap),
-					inRect.y + 2f,
+					inRect.y + inRect.height - height,
 					tabWidth,
 					height);
 
@@ -180,7 +180,7 @@ namespace ColonyKit
 				Color border = selected
 					? new Color(0.78f, 0.64f, 0.38f)
 					: new Color(0.32f, 0.32f, 0.32f);
-				RoundedRectUtility.DrawWithBorder(tabRect, fill, border);
+				RoundedRectUtility.DrawTopWithBorder(tabRect, fill, border);
 
 				if (Widgets.ButtonInvisible(tabRect, false))
 				{
