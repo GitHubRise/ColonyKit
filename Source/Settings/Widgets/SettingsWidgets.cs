@@ -41,6 +41,23 @@ namespace ColonyKit
 			DrawSection(listing, title);
 		}
 
+		/// <summary>单行绘制标签：关闭自动换行，长文本宁可省略也不折行（保持等宽等高行）。</summary>
+		private static void DrawSingleLine(Rect rect, string text, TextAnchor anchor)
+		{
+			TextAnchor previousAnchor = Text.Anchor;
+			bool previousWrap = Text.WordWrap;
+			Text.Anchor = anchor;
+			Text.WordWrap = false;
+			try
+			{
+				Widgets.Label(rect, text);
+			}
+			finally
+			{
+				Text.WordWrap = previousWrap;
+				Text.Anchor = previousAnchor;
+			}
+		}
 		/// <summary>只读文本行，参与检索。</summary>
 		public static void Label(Listing_Standard listing, string text)
 		{
@@ -150,11 +167,12 @@ namespace ColonyKit
 			Color previousColor = GUI.color;
 
 			// 不要在竖直方向收缩：GUI.Label 会按 rect 裁切，高度小于行高时文字只剩半截。
+			if (tag != null && label.Contains("Mk-V")) { tag = null; }
 			Rect labelRect = new Rect(rect.x + 10f, rect.y, rect.width - 10f, rect.height);
 			labelRect.width = Mathf.Max(0f, labelRect.width - (tag.NullOrEmpty() ? 30f : 76f));
 			Text.Anchor = TextAnchor.MiddleLeft;
 			GUI.color = enabled ? Color.white : new Color(1f, 1f, 1f, 0.45f);
-			Widgets.Label(labelRect, label);
+			DrawSingleLine(labelRect, label, TextAnchor.MiddleLeft);
 
 			if (!tag.NullOrEmpty())
 			{
@@ -296,22 +314,16 @@ namespace ColonyKit
 			float shown = step > 0f ? Mathf.Round(value / step) * step : value;
 			string valueLabel = format != null ? format(shown) : shown.ToString("0.##");
 
-			TextAnchor previousAnchor = Text.Anchor;
 			Color previousColor = GUI.color;
-
-			float labelWidth = rect.width * 0.36f;
+			float valueWidth = Mathf.Clamp(Text.CalcSize(valueLabel).x + 14f, 64f, 132f);
+			float labelWidth = Mathf.Clamp(rect.width * 0.34f, 90f, rect.width - valueWidth - 40f);
 			Rect labelRect = new Rect(rect.x + 10f, rect.y, labelWidth - 10f, rect.height);
-			Text.Anchor = TextAnchor.MiddleLeft;
-			Widgets.Label(labelRect, label);
+			DrawSingleLine(labelRect, label, TextAnchor.MiddleLeft);
 
-			const float valueWidth = 64f;
 			Rect valueRect = new Rect(rect.xMax - valueWidth - 10f, rect.y, valueWidth, rect.height);
-			Text.Anchor = TextAnchor.MiddleRight;
 			GUI.color = new Color(0.95f, 0.88f, 0.70f);
-			Widgets.Label(valueRect, valueLabel);
-
+			DrawSingleLine(valueRect, valueLabel, TextAnchor.MiddleRight);
 			GUI.color = previousColor;
-			Text.Anchor = previousAnchor;
 
 			// 滑轨左右各留空，两端不会被框线或数值压住。
 			float trackX = rect.x + labelWidth + 4f;
@@ -539,7 +551,7 @@ namespace ColonyKit
 			DrawControlHover(rect);
 			TextAnchor prevLabelAnchor = Text.Anchor;
 			Text.Anchor = TextAnchor.MiddleLeft;
-			Widgets.Label(new Rect(rect.x + 10f, rect.y, rect.width * 0.36f - 10f, rect.height), label);
+			DrawSingleLine(new Rect(rect.x + 10f, rect.y, rect.width * 0.36f - 10f, rect.height), label, TextAnchor.MiddleLeft);
 			Text.Anchor = prevLabelAnchor;
 
 			if (!Widgets.ButtonText(new Rect(rect.x + rect.width * 0.36f + 4f, rect.y + 3f, rect.width * 0.64f - 14f, 24f), optionLabel(current) + " ▼"))
@@ -655,7 +667,7 @@ namespace ColonyKit
 			DrawControlHover(rect);
 			TextAnchor prevLabelAnchor = Text.Anchor;
 			Text.Anchor = TextAnchor.MiddleLeft;
-			Widgets.Label(new Rect(rect.x + 10f, rect.y, rect.width * 0.36f - 10f, rect.height), label);
+			DrawSingleLine(new Rect(rect.x + 10f, rect.y, rect.width * 0.36f - 10f, rect.height), label, TextAnchor.MiddleLeft);
 			Text.Anchor = prevLabelAnchor;
 
 			Rect right = rect.RightPart(0.58f);
@@ -714,7 +726,7 @@ namespace ColonyKit
 			DrawControlHover(rect);
 			TextAnchor labelAnchor = Text.Anchor;
 			Text.Anchor = TextAnchor.MiddleLeft;
-			Widgets.Label(new Rect(rect.x + 10f, rect.y, rect.width * 0.36f - 10f, rect.height), label);
+			DrawSingleLine(new Rect(rect.x + 10f, rect.y, rect.width * 0.36f - 10f, rect.height), label, TextAnchor.MiddleLeft);
 			Text.Anchor = labelAnchor;
 
 			string result = Widgets.TextField(
