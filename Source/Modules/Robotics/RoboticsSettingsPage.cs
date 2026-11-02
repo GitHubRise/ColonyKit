@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -725,6 +725,7 @@ namespace ColonyKit.Modules.Robotics
 			string tag = null)
 		{
 			string label = ("ColonyKit.Settings.Robotics." + key).Loc();
+			if (tag != null && label.Contains("Mk-V")) { tag = null; }
 			string descKey = "ColonyKit.Settings.Robotics." + key + ".Desc";
 			string tooltip = descKey.CanTranslate() ? descKey.Loc() : null;
 			bool value = GetField(data, key);
@@ -797,5 +798,6 @@ namespace ColonyKit.Modules.Robotics
 		}
 	}
 }
+
 
 

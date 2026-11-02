@@ -149,8 +149,9 @@ namespace ColonyKit
 			TextAnchor previousAnchor = Text.Anchor;
 			Color previousColor = GUI.color;
 
-			Rect labelRect = rect.ContractedBy(6f);
-			labelRect.width = Mathf.Max(0f, labelRect.width - (tag.NullOrEmpty() ? 28f : 74f));
+			// 不要在竖直方向收缩：GUI.Label 会按 rect 裁切，高度小于行高时文字只剩半截。
+			Rect labelRect = new Rect(rect.x + 8f, rect.y, rect.width - 8f, rect.height);
+			labelRect.width = Mathf.Max(0f, labelRect.width - (tag.NullOrEmpty() ? 30f : 76f));
 			Text.Anchor = TextAnchor.MiddleLeft;
 			GUI.color = enabled ? Color.white : new Color(1f, 1f, 1f, 0.45f);
 			Widgets.Label(labelRect, label);
@@ -194,14 +195,14 @@ namespace ColonyKit
 		/// </summary>
 		public static FrameScope FrameBegin(Listing_Standard listing, string title)
 		{
-			Rect titleRect = listing.GetRect(20f);
-			listing.Gap(2f);
+			Rect titleRect = listing.GetRect(24f);
+			listing.Gap(6f);
 			return new FrameScope
 			{
 				title = title,
 				titleRect = titleRect,
 				x = titleRect.x,
-				y = titleRect.yMax + 3f,
+				y = titleRect.yMax + 7f,
 				width = titleRect.width,
 				matches = SettingsSearch.PageMatches
 			};
@@ -227,8 +228,8 @@ namespace ColonyKit
 			Text.Font = previousFont;
 			GUI.color = previousColor;
 
-			float height = Mathf.Max(18f, bottom - frame.y + 8f);
-			Rect box = new Rect(frame.x - 3f, frame.y - 2f, frame.width + 6f, height);
+			float height = Mathf.Max(18f, bottom - frame.y + 10f);
+			Rect box = new Rect(frame.x - 2f, frame.y - 4f, frame.width + 1f, height);
 			Widgets.DrawBox(box);
 			listing.Gap(12f);
 		}
@@ -737,3 +738,6 @@ namespace ColonyKit
 		}
 	}
 }
+
+
+
