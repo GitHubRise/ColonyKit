@@ -315,7 +315,9 @@ namespace ColonyKit
 			string valueLabel = format != null ? format(shown) : shown.ToString("0.##");
 
 			Color previousColor = GUI.color;
-			float valueWidth = Mathf.Clamp(Text.CalcSize(valueLabel).x + 14f, 64f, 132f);
+			// 用「最大值」的文本宽度预留数值列：拖动时数字位数变化（200 → 2000）不会让滑轨宽度跟着跳。
+			string widestValue = format != null ? format(max) : max.ToString("0.##");
+			float valueWidth = Mathf.Clamp(Text.CalcSize(widestValue).x + 14f, 64f, 132f);
 			float labelWidth = Mathf.Clamp(rect.width * 0.34f, 90f, rect.width - valueWidth - 40f);
 			Rect labelRect = new Rect(rect.x + 10f, rect.y, labelWidth - 10f, rect.height);
 			DrawSingleLine(labelRect, label, TextAnchor.MiddleLeft);
