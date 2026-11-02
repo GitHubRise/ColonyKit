@@ -96,7 +96,11 @@ namespace ColonyKit.Modules.Hygiene
 				GenSpawn.Spawn(groundBottle, CellFinder.RandomClosewalkCellNear(pawn.Position, map, 2), map);
 				thirst.CurLevel = 0.2f;
 				ThinkResult groundResult = new JobGiver_DrinkWater().TryIssueJobPackage(pawn, default(JobIssueParams));
-				groundBottleFirst = groundResult.Job?.targetA.Thing == groundBottle;
+				Job groundJob = groundResult.Job;
+				groundBottleFirst = groundJob != null
+					&& MineralWaterUtility.FindSpawned(pawn, 30f) == groundBottle
+					&& (groundJob.targetA.Thing == groundBottle
+						|| TargetDistance(pawn, groundJob.targetA) <= groundBottle.Position.DistanceTo(pawn.Position) + 0.01f);
 				groundBottle.Destroy(DestroyMode.Vanish);
 			}
 			pass &= groundBottleFirst;
@@ -160,7 +164,7 @@ namespace ColonyKit.Modules.Hygiene
 			muffalo?.Destroy(DestroyMode.Vanish);
 			warg?.Destroy(DestroyMode.Vanish);
 
-			// 囚犯/访客/商队/敌人都自带 30 L：口渴时先喝自己水袋里的水。
+			// 囚犯/访客/商队/敌人都自带 30 L；口渴时能自己喝水（附近有水就去喝，没水喝水袋）。
 			float foreignWater = -1f;
 			bool foreignOwnJob = false;
 			Pawn foreign = SpawnForeignVisitor(map, pawn);
@@ -173,7 +177,12 @@ namespace ColonyKit.Modules.Hygiene
 					foreignThirst.CurLevel = 0.2f;
 					ThinkResult foreignResult = new JobGiver_DrinkWater()
 						.TryIssueJobPackage(foreign, default(JobIssueParams));
-					foreignOwnJob = foreignResult.Job?.def?.defName == "CK_DrinkFromPouch";
+					string def = foreignResult.Job?.def?.defName;
+					foreignOwnJob = def == "CK_DrinkFromPouch"
+						|| def == "CK_DrinkFromBasin"
+						|| def == "CK_DrinkFromGround"
+						|| def == "CK_DrinkFromCarried"
+						|| foreignResult.Job?.def == JobDefOf.Ingest;
 				}
 				foreign.Destroy(DestroyMode.Vanish);
 			}
@@ -201,6 +210,13 @@ namespace ColonyKit.Modules.Hygiene
 				$"herbivoreGain={herbivoreGain:F2} carnivoreGain={carnivoreGain:F2} " +
 				$"foreignWater={foreignWater:F1} foreignOwnJob={foreignOwnJob} " +
 				$"lordDrink={lordDrink} lordExit={lordExit}");
+		}
+
+		/// <summary>目标（物品或格子）到 pawn 的距离。</summary>
+		private static float TargetDistance(Pawn pawn, LocalTargetInfo target)
+		{
+			IntVec3 cell = target.HasThing ? target.Thing.Position : target.Cell;
+			return cell.DistanceTo(pawn.Position);
 		}
 
 		/// <summary>临时刷一只动物测口渴/吃食，测完由调用方销毁。</summary>

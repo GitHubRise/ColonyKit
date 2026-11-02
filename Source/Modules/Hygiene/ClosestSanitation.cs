@@ -19,6 +19,14 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return TryFindWaterCell(pawn, urgent ? 9999f : range);
 			}
+			// 野生动物只在自然水域喝水，不去殖民地的水槽/水盆排队，
+			// 免得一大群动物因为口渴全聚到基地里；家畜/宠物照常用水槽。
+			if (pawn.RaceProps.Animal
+				&& pawn.Faction != Faction.OfPlayer
+				&& pawn.HostFaction != Faction.OfPlayer)
+			{
+				return TryFindWaterCell(pawn, urgent ? 9999f : range);
+			}
 			Map map = pawn.Map;
 			Thing best = null;
 			float bestScore = float.MinValue;

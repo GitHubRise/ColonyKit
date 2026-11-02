@@ -570,7 +570,7 @@ namespace ColonyKit.Modules.Hygiene
 				}
 				if (bottleBill != null && bottleBill.repeatCount <= 0)
 				{
-					Thing bottle = MineralWaterUtility.Carried(pawn);
+					Thing bottle = FindAnyBottle(map);
 					Need_Thirst thirst = pawn?.needs?.TryGetNeed<Need_Thirst>();
 					if (bottle == null || thirst == null)
 					{
@@ -637,10 +637,16 @@ namespace ColonyKit.Modules.Hygiene
 					bool drinkJob = selfDrank;
 					if (!drinkJob && delivered != null)
 					{
-						// 囚徒自己那条线的证据：拿手里的瓶装水，JobGiver 应当发出 Ingest。
+						// 囚徒自己那条线的证据：附近的活水、手里的瓶装水或水袋，任一能喝的 Job 都算。
 						ThinkResult result = new JobGiver_DrinkWater().TryIssueJobPackage(
 							bringWaterTarget, default(JobIssueParams));
-						drinkJob = result.Job != null && result.Job.def == JobDefOf.Ingest;
+						string def = result.Job?.def?.defName;
+						drinkJob = result.Job != null
+							&& (result.Job.def == JobDefOf.Ingest
+								|| def == "CK_DrinkFromPouch"
+								|| def == "CK_DrinkFromBasin"
+								|| def == "CK_DrinkFromGround"
+								|| def == "CK_DrinkFromCarried");
 					}
 					bringWaterPhaseDone = true;
 					ModLog.Info(
@@ -813,6 +819,25 @@ namespace ColonyKit.Modules.Hygiene
 			}
 			Job job = JobMaker.MakeJob(def, waterPatient);
 			ForceJob(job, "water patient job rejected");
+		}
+
+		/// <summary>地图上任何一处的瓶装水：先看所有殖民者的物品栏，再看地上（谁去接的水都可能）。</summary>
+		private static Thing FindAnyBottle(Map map)
+		{
+			if (map == null)
+			{
+				return null;
+			}
+			foreach (Pawn colonist in map.mapPawns.FreeColonists)
+			{
+				Thing carried = MineralWaterUtility.Carried(colonist);
+				if (carried != null)
+				{
+					return carried;
+				}
+			}
+			Pawn any = map.mapPawns.FreeColonists.FirstOrDefault() ?? pawn;
+			return MineralWaterUtility.FindSpawned(any, 9999f);
 		}
 
 		private static void StartBottlePhase()

@@ -109,28 +109,41 @@ namespace ColonyKit.Modules.Hygiene
 			return null;
 		}
 
-		/// <summary>先找设施/地表水，再找地上的瓶装水和水桶/脸盆（敌人不给捡）。</summary>
+		/// <summary>
+		/// 找能喝的水：设施/地表水（敌人只认地表水）和地上的瓶装水/水桶一起比距离，
+		/// 谁近去谁那儿，远的那类不白跑。
+		/// </summary>
 		private static LocalTargetInfo FindDrinkTarget(
 			Pawn pawn, bool urgent, float range, bool allowGroundItems)
 		{
 			LocalTargetInfo target = ClosestSanitation.FindBestDrink(
 				pawn, urgent, range, allowColonyFixtures: !IsHostile(pawn));
-			if (target.IsValid || !allowGroundItems)
+			if (!allowGroundItems)
 			{
 				return target;
 			}
+			float best = target.IsValid
+				? DistanceSquared(pawn, target)
+				: float.MaxValue;
 			Thing bottle = MineralWaterUtility.FindSpawned(pawn, range);
-			if (bottle != null)
+			if (bottle != null && bottle.Position.DistanceToSquared(pawn.Position) < best)
 			{
-				return new LocalTargetInfo(bottle);
+				best = bottle.Position.DistanceToSquared(pawn.Position);
+				target = new LocalTargetInfo(bottle);
 			}
 			Thing container = WaterContainerUtility.FindSpawnedContainer(
 				pawn, requireWater: true, maxDistance: range);
-			if (container != null)
+			if (container != null && container.Position.DistanceToSquared(pawn.Position) < best)
 			{
-				return new LocalTargetInfo(container);
+				target = new LocalTargetInfo(container);
 			}
 			return target;
+		}
+
+		private static float DistanceSquared(Pawn pawn, LocalTargetInfo target)
+		{
+			IntVec3 cell = target.HasThing ? target.Thing.Position : target.Cell;
+			return cell.DistanceToSquared(pawn.Position);
 		}
 
 		private static bool IsHostile(Pawn pawn)
