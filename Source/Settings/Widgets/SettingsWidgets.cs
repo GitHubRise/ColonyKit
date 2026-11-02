@@ -201,7 +201,7 @@ namespace ColonyKit
 			float x = titleRect.x;
 			float width = titleRect.width;
 			// Indent 只移动 x、不会缩 ColumnWidth；这里手动收窄，否则右侧内容会伸出滚动视图被裁掉。
-			listing.ColumnWidth = Mathf.Max(40f, width - 24f);
+			listing.ColumnWidth = Mathf.Max(40f, width - 32f);
 			listing.Indent(12f);
 			return new FrameScope
 			{
@@ -233,13 +233,13 @@ namespace ColonyKit
 			Color previousColor = GUI.color;
 			Text.Font = GameFont.Medium;
 			GUI.color = new Color(0.88f, 0.74f, 0.44f);
-			Widgets.Label(frame.titleRect, frame.title);
+			Widgets.Label(new Rect(frame.titleRect.x + 8f, frame.titleRect.y, frame.titleRect.width - 8f, frame.titleRect.height), frame.title);
 			Text.Font = previousFont;
 			GUI.color = previousColor;
 
 			// 边框贴着滚动视图内缘画（左 +1、宽 -2），否则左/右边框会被裁掉。
 			float height = Mathf.Max(22f, bottom - frame.y + 18f);
-			Rect box = new Rect(frame.x + 1f, frame.y - 8f, frame.width - 2f, height);
+			Rect box = new Rect(frame.x + 2f, frame.y - 8f, frame.width - 14f, height);
 			Widgets.DrawBox(box);
 			// 框下方留一行空白，让相邻两组明显分开。
 			listing.Gap(26f);
