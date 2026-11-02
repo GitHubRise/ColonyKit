@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 「气泡对话」模块字符串；对应 Source/Modules/Bubbles 下的 .Loc() 调用。 -->
+<LanguageData>
+	<ColonyKit.Settings.Tab.Bubbles>气泡</ColonyKit.Settings.Tab.Bubbles>
+
+	<ColonyKit.Module.Bubbles.Name>气泡对话</ColonyKit.Module.Bubbles.Name>
+	<ColonyKit.Module.Bubbles.Desc>小人社交时在头顶显示对话气泡，移植自 Interaction Bubbles。</ColonyKit.Module.Bubbles.Desc>
+	<ColonyKit.Bubbles.Toggle>显示对话气泡</ColonyKit.Bubbles.Toggle>
+
+	<ColonyKit.Settings.Bubbles.Hint>把社交互动的文字显示在小人头顶，内容与社交日志一致。气泡按游戏时间淡出，暂停时不会消失；鼠标悬停会变得几乎透明。按住 Shift 点击播放设置里的气泡图标可打开本页。</ColonyKit.Settings.Bubbles.Hint>
+	<ColonyKit.Settings.Bubbles.Conflict>检测到独立的 Interaction Bubbles（Jaxe.Bubbles）已启用，内置气泡已自动停用；关掉原 Mod 后本模块才会生效。</ColonyKit.Settings.Bubbles.Conflict>
+
+	<ColonyKit.Settings.Bubbles.Section.Display>显示</ColonyKit.Settings.Bubbles.Section.Display>
+	<ColonyKit.Settings.Bubbles.Section.Appearance>外观</ColonyKit.Settings.Bubbles.Section.Appearance>
+	<ColonyKit.Settings.Bubbles.Section.Colors>颜色</ColonyKit.Settings.Bubbles.Section.Colors>
+
+	<ColonyKit.Settings.Bubbles.Enabled>启用气泡对话</ColonyKit.Settings.Bubbles.Enabled>
+	<ColonyKit.Settings.Bubbles.Enabled.Desc>关闭后不再收集和绘制气泡，并立刻清掉屏幕上已有的气泡；设置本身会保留。</ColonyKit.Settings.Bubbles.Enabled.Desc>
+
+	<ColonyKit.Settings.Bubbles.DoTextColors>显示彩色文字</ColonyKit.Settings.Bubbles.DoTextColors>
+	<ColonyKit.Settings.Bubbles.DoTextColors.Desc>保留互动文字自带的颜色标记；关闭后统一使用文字颜色。</ColonyKit.Settings.Bubbles.DoTextColors.Desc>
+
+	<ColonyKit.Settings.Bubbles.DoNonPlayer>显示其他派系</ColonyKit.Settings.Bubbles.DoNonPlayer>
+	<ColonyKit.Settings.Bubbles.DoNonPlayer.Desc>也显示访客、商队、敌人等非玩家阵营的互动。</ColonyKit.Settings.Bubbles.DoNonPlayer.Desc>
+
+	<ColonyKit.Settings.Bubbles.DoAnimals>显示动物互动</ColonyKit.Settings.Bubbles.DoAnimals>
+	<ColonyKit.Settings.Bubbles.DoAnimals.Desc>也显示动物参与的互动。</ColonyKit.Settings.Bubbles.DoAnimals.Desc>
+
+	<ColonyKit.Settings.Bubbles.DoDrafted>征召时显示</ColonyKit.Settings.Bubbles.DoDrafted>
+	<ColonyKit.Settings.Bubbles.DoDrafted.Desc>互动双方只要有人被征召，仍然显示气泡。</ColonyKit.Settings.Bubbles.DoDrafted.Desc>
+
+	<ColonyKit.Settings.Bubbles.HearingCheck>须被玩家控制单位听到（实验性）</ColonyKit.Settings.Bubbles.HearingCheck>
+	<ColonyKit.Settings.Bubbles.HearingCheck.Desc>只有附近有听力正常的殖民者时才显示气泡。</ColonyKit.Settings.Bubbles.HearingCheck.Desc>
+
+	<ColonyKit.Settings.Bubbles.HearingRange>听觉范围</ColonyKit.Settings.Bubbles.HearingRange>
+	<ColonyKit.Settings.Bubbles.HearingRange.Desc>判定距离（格），会按听者的听力能力缩放。</ColonyKit.Settings.Bubbles.HearingRange.Desc>
+
+	<ColonyKit.Settings.Bubbles.FontSize>字体大小</ColonyKit.Settings.Bubbles.FontSize>
+	<ColonyKit.Settings.Bubbles.PaddingX>文字内边距 X</ColonyKit.Settings.Bubbles.PaddingX>
+	<ColonyKit.Settings.Bubbles.PaddingY>文字内边距 Y</ColonyKit.Settings.Bubbles.PaddingY>
+	<ColonyKit.Settings.Bubbles.WidthMax>最大宽度</ColonyKit.Settings.Bubbles.WidthMax>
+	<ColonyKit.Settings.Bubbles.ScaleMax>最大缩放</ColonyKit.Settings.Bubbles.ScaleMax>
+	<ColonyKit.Settings.Bubbles.AltitudeBase>基础高度</ColonyKit.Settings.Bubbles.AltitudeBase>
+	<ColonyKit.Settings.Bubbles.AltitudeMax>最大可见高度</ColonyKit.Settings.Bubbles.AltitudeMax>
+	<ColonyKit.Settings.Bubbles.PawnMax>每个小人最大气泡数</ColonyKit.Settings.Bubbles.PawnMax>
+	<ColonyKit.Settings.Bubbles.OffsetSpacing>气泡间距</ColonyKit.Settings.Bubbles.OffsetSpacing>
+	<ColonyKit.Settings.Bubbles.OffsetStart>相对小人的偏移</ColonyKit.Settings.Bubbles.OffsetStart>
+	<ColonyKit.Settings.Bubbles.OffsetDirection>偏移方向</ColonyKit.Settings.Bubbles.OffsetDirection>
+	<ColonyKit.Settings.Bubbles.OpacityStart>初始不透明度</ColonyKit.Settings.Bubbles.OpacityStart>
+	<ColonyKit.Settings.Bubbles.OpacityHover>鼠标悬停不透明度</ColonyKit.Settings.Bubbles.OpacityHover>
+	<ColonyKit.Settings.Bubbles.FadeStart>开始淡出的刻数</ColonyKit.Settings.Bubbles.FadeStart>
+	<ColonyKit.Settings.Bubbles.FadeLength>淡出持续的刻数</ColonyKit.Settings.Bubbles.FadeLength>
+
+	<ColonyKit.Settings.Bubbles.AutoHideSpeed>加速时自动隐藏</ColonyKit.Settings.Bubbles.AutoHideSpeed>
+	<ColonyKit.Settings.Bubbles.AutoHideSpeed.Desc>游戏速度达到所选档位时不再绘制气泡；暂停时始终显示。</ColonyKit.Settings.Bubbles.AutoHideSpeed.Desc>
+	<ColonyKit.Settings.Bubbles.AutoHideSpeed.Off>关闭</ColonyKit.Settings.Bubbles.AutoHideSpeed.Off>
+	<ColonyKit.Settings.Bubbles.AutoHideSpeed.Fast>快（2 倍速）</ColonyKit.Settings.Bubbles.AutoHideSpeed.Fast>
+	<ColonyKit.Settings.Bubbles.AutoHideSpeed.Faster>更快（3 倍速）</ColonyKit.Settings.Bubbles.AutoHideSpeed.Faster>
+	<ColonyKit.Settings.Bubbles.AutoHideSpeed.Fastest>最快（4 倍速）</ColonyKit.Settings.Bubbles.AutoHideSpeed.Fastest>
+
+	<ColonyKit.Settings.Bubbles.Direction.Down>下</ColonyKit.Settings.Bubbles.Direction.Down>
+	<ColonyKit.Settings.Bubbles.Direction.Right>右</ColonyKit.Settings.Bubbles.Direction.Right>
+	<ColonyKit.Settings.Bubbles.Direction.Up>上</ColonyKit.Settings.Bubbles.Direction.Up>
+	<ColonyKit.Settings.Bubbles.Direction.Left>左</ColonyKit.Settings.Bubbles.Direction.Left>
+
+	<ColonyKit.Settings.Bubbles.Color.Background>背景颜色</ColonyKit.Settings.Bubbles.Color.Background>
+	<ColonyKit.Settings.Bubbles.Color.Foreground>文字颜色</ColonyKit.Settings.Bubbles.Color.Foreground>
+	<ColonyKit.Settings.Bubbles.Color.BackgroundSelected>背景颜色（选中时）</ColonyKit.Settings.Bubbles.Color.BackgroundSelected>
+	<ColonyKit.Settings.Bubbles.Color.ForegroundSelected>文字颜色（选中时）</ColonyKit.Settings.Bubbles.Color.ForegroundSelected>
+</LanguageData>

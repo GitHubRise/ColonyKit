@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 「气泡对话」模块字符串；对应 Source/Modules/Bubbles 下的 .Loc() 调用。 -->
+<LanguageData>
+	<ColonyKit.Settings.Tab.Bubbles>Bubbles</ColonyKit.Settings.Tab.Bubbles>
+
+	<ColonyKit.Module.Bubbles.Name>Interaction bubbles</ColonyKit.Module.Bubbles.Name>
+	<ColonyKit.Module.Bubbles.Desc>Speech bubbles above pawns for social interactions, ported from Interaction Bubbles.</ColonyKit.Module.Bubbles.Desc>
+	<ColonyKit.Bubbles.Toggle>Show interaction bubbles</ColonyKit.Bubbles.Toggle>
+
+	<ColonyKit.Settings.Bubbles.Hint>Shows the text of a social interaction in a bubble above the pawn, using the same text as the social log. Bubbles fade with game time, so pausing keeps them on screen; hover to make them nearly transparent. Shift-click the bubble icon in the play settings to open this page.</ColonyKit.Settings.Bubbles.Hint>
+	<ColonyKit.Settings.Bubbles.Conflict>The standalone Interaction Bubbles mod (Jaxe.Bubbles) is enabled, so the built-in bubbles are off. Disable it to use this module.</ColonyKit.Settings.Bubbles.Conflict>
+
+	<ColonyKit.Settings.Bubbles.Section.Display>Display</ColonyKit.Settings.Bubbles.Section.Display>
+	<ColonyKit.Settings.Bubbles.Section.Appearance>Appearance</ColonyKit.Settings.Bubbles.Section.Appearance>
+	<ColonyKit.Settings.Bubbles.Section.Colors>Colors</ColonyKit.Settings.Bubbles.Section.Colors>
+
+	<ColonyKit.Settings.Bubbles.Enabled>Enable interaction bubbles</ColonyKit.Settings.Bubbles.Enabled>
+	<ColonyKit.Settings.Bubbles.Enabled.Desc>Off stops collecting and drawing bubbles and clears the ones on screen; the settings are kept.</ColonyKit.Settings.Bubbles.Enabled.Desc>
+
+	<ColonyKit.Settings.Bubbles.DoTextColors>Show colored text</ColonyKit.Settings.Bubbles.DoTextColors>
+	<ColonyKit.Settings.Bubbles.DoTextColors.Desc>Keep the color tags that come with the interaction text; off uses the foreground color for everything.</ColonyKit.Settings.Bubbles.DoTextColors.Desc>
+
+	<ColonyKit.Settings.Bubbles.DoNonPlayer>Show for other factions</ColonyKit.Settings.Bubbles.DoNonPlayer>
+	<ColonyKit.Settings.Bubbles.DoNonPlayer.Desc>Also show interactions of visitors, caravans, raiders and other non-player factions.</ColonyKit.Settings.Bubbles.DoNonPlayer.Desc>
+
+	<ColonyKit.Settings.Bubbles.DoAnimals>Show animal interactions</ColonyKit.Settings.Bubbles.DoAnimals>
+	<ColonyKit.Settings.Bubbles.DoAnimals.Desc>Also show interactions where either side is an animal.</ColonyKit.Settings.Bubbles.DoAnimals.Desc>
+
+	<ColonyKit.Settings.Bubbles.DoDrafted>Show when drafted</ColonyKit.Settings.Bubbles.DoDrafted>
+	<ColonyKit.Settings.Bubbles.DoDrafted.Desc>Keep showing bubbles when the initiator or the recipient is drafted.</ColonyKit.Settings.Bubbles.DoDrafted.Desc>
+
+	<ColonyKit.Settings.Bubbles.HearingCheck>Must be heard by player-controlled (Experimental)</ColonyKit.Settings.Bubbles.HearingCheck>
+	<ColonyKit.Settings.Bubbles.HearingCheck.Desc>Only show a bubble when a colonist with working hearing is close enough to hear it.</ColonyKit.Settings.Bubbles.HearingCheck.Desc>
+
+	<ColonyKit.Settings.Bubbles.HearingRange>Hearing range</ColonyKit.Settings.Bubbles.HearingRange>
+	<ColonyKit.Settings.Bubbles.HearingRange.Desc>Distance in cells, scaled by the listener's Hearing capacity.</ColonyKit.Settings.Bubbles.HearingRange.Desc>
+
+	<ColonyKit.Settings.Bubbles.FontSize>Font size</ColonyKit.Settings.Bubbles.FontSize>
+	<ColonyKit.Settings.Bubbles.PaddingX>Text padding X</ColonyKit.Settings.Bubbles.PaddingX>
+	<ColonyKit.Settings.Bubbles.PaddingY>Text padding Y</ColonyKit.Settings.Bubbles.PaddingY>
+	<ColonyKit.Settings.Bubbles.WidthMax>Maximum width</ColonyKit.Settings.Bubbles.WidthMax>
+	<ColonyKit.Settings.Bubbles.ScaleMax>Maximum scale</ColonyKit.Settings.Bubbles.ScaleMax>
+	<ColonyKit.Settings.Bubbles.AltitudeBase>Base altitude</ColonyKit.Settings.Bubbles.AltitudeBase>
+	<ColonyKit.Settings.Bubbles.AltitudeMax>Maximum visible altitude</ColonyKit.Settings.Bubbles.AltitudeMax>
+	<ColonyKit.Settings.Bubbles.PawnMax>Maximum per pawn</ColonyKit.Settings.Bubbles.PawnMax>
+	<ColonyKit.Settings.Bubbles.OffsetSpacing>Bubble spacing</ColonyKit.Settings.Bubbles.OffsetSpacing>
+	<ColonyKit.Settings.Bubbles.OffsetStart>Offset from pawn</ColonyKit.Settings.Bubbles.OffsetStart>
+	<ColonyKit.Settings.Bubbles.OffsetDirection>Offset direction</ColonyKit.Settings.Bubbles.OffsetDirection>
+	<ColonyKit.Settings.Bubbles.OpacityStart>Starting opacity</ColonyKit.Settings.Bubbles.OpacityStart>
+	<ColonyKit.Settings.Bubbles.OpacityHover>Mouseover opacity</ColonyKit.Settings.Bubbles.OpacityHover>
+	<ColonyKit.Settings.Bubbles.FadeStart>Ticks to start fade</ColonyKit.Settings.Bubbles.FadeStart>
+	<ColonyKit.Settings.Bubbles.FadeLength>Ticks to fade</ColonyKit.Settings.Bubbles.FadeLength>
+
+	<ColonyKit.Settings.Bubbles.AutoHideSpeed>Auto hide at speed</ColonyKit.Settings.Bubbles.AutoHideSpeed>
+	<ColonyKit.Settings.Bubbles.AutoHideSpeed.Desc>Stop drawing bubbles when the game runs at or above the chosen speed; paused always shows them.</ColonyKit.Settings.Bubbles.AutoHideSpeed.Desc>
+	<ColonyKit.Settings.Bubbles.AutoHideSpeed.Off>Off</ColonyKit.Settings.Bubbles.AutoHideSpeed.Off>
+	<ColonyKit.Settings.Bubbles.AutoHideSpeed.Fast>Fast (2x)</ColonyKit.Settings.Bubbles.AutoHideSpeed.Fast>
+	<ColonyKit.Settings.Bubbles.AutoHideSpeed.Faster>Faster (3x)</ColonyKit.Settings.Bubbles.AutoHideSpeed.Faster>
+	<ColonyKit.Settings.Bubbles.AutoHideSpeed.Fastest>Fastest (4x)</ColonyKit.Settings.Bubbles.AutoHideSpeed.Fastest>
+
+	<ColonyKit.Settings.Bubbles.Direction.Down>Down</ColonyKit.Settings.Bubbles.Direction.Down>
+	<ColonyKit.Settings.Bubbles.Direction.Right>Right</ColonyKit.Settings.Bubbles.Direction.Right>
+	<ColonyKit.Settings.Bubbles.Direction.Up>Up</ColonyKit.Settings.Bubbles.Direction.Up>
+	<ColonyKit.Settings.Bubbles.Direction.Left>Left</ColonyKit.Settings.Bubbles.Direction.Left>
+
+	<ColonyKit.Settings.Bubbles.Color.Background>Background color</ColonyKit.Settings.Bubbles.Color.Background>
+	<ColonyKit.Settings.Bubbles.Color.Foreground>Text color</ColonyKit.Settings.Bubbles.Color.Foreground>
+	<ColonyKit.Settings.Bubbles.Color.BackgroundSelected>Background color (selected)</ColonyKit.Settings.Bubbles.Color.BackgroundSelected>
+	<ColonyKit.Settings.Bubbles.Color.ForegroundSelected>Text color (selected)</ColonyKit.Settings.Bubbles.Color.ForegroundSelected>
+</LanguageData>

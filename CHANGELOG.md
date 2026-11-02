@@ -21,6 +21,9 @@
 
 ### Added
 
+- **「气泡对话」模块（内置 Interaction Bubbles）**：把 Jaxe 的 Interaction Bubbles 4.2 移植进 ColonyKit，小人社交时在头顶冒出对话气泡，文字取自社交日志；气泡按游戏时间淡出（暂停时不消失），鼠标悬停变透明，点击可穿透。新增 `Source/Modules/Bubbles`：`Bubbler`（收集/绘制/清理）、`Bubble`（九宫格背景 + 淡出）、`BubblesSettings`（实现 `IColonyKitModuleSettings`，`ck_bubbles_*` 持久化）、`BubblesSettingsPage`（Order 40）、`BubblesModule`（Id `bubbles`，InitOrder 115）与 4 个 Harmony 补丁（`PlayLog.Add` Postfix 收集、`MapInterface.MapInterfaceOnGUI_BeforeMainTabs` Postfix 绘制、`PlaySettings.DoPlaySettingsGlobalControls` Postfix 加开关图标、`MemoryUtility.ClearAllMapsAndWorld` Prefix 清空）。贴图复制到 `Textures/ColonyKit/Bubbles/`（不走原 Mod 的 `Bubbles/` 路径，避免两者同开时互相顶掉）；播放设置里的图标支持 Shift+点击直接打开本模块设置页。设置覆盖显示条件（其他派系 / 动物 / 征召 / 听觉判定与范围）、外观（字号、内边距、最大宽度、最大缩放、基础/最大高度、每小人气泡数、间距、偏移起点与方向、不透明度、淡出刻数、加速自动隐藏）与四种颜色，全部字符串在中英文 `Keyed/CK_Bubbles.xml` 中提供。
+- **与原 Mod 互斥保护**：`BubblesFeature` 检测到 `Jaxe.Bubbles` 启用时内置气泡自动停用并写一条 Warning，避免同时画两套气泡；设置页顶部会显示冲突提示。模块关闭或绘制抛异常时同样会清空气泡，不会留下残影。
+
 - **动物口渴默认减半**：`Need_Thirst` 在 `RaceProps.Animal` 上乘一个 `animalThirstRate`（设置页「需求 → 动物口渴速度」，0.1–1.5，默认 **0.50**）。野生动物、家畜、宠物的口渴速度减半后，同样多的水能撑两倍时间，不会因为找不到水频繁渴死；人形不受影响，`CK_ThirstRateMultiplier`（仿生膀胱）照常叠乘。
 - **草食动物吃草、肉食动物吃肉各补水 0.1**：`Patch_Thing_Ingested_FoodWater` 对动物改用固定补水：`RaceProps.Eats(...)` 判定食谱，草食动物吃植物类食物（草、树、蔬果、菌菇、种子）每次 **+0.10**，肉食动物吃生肉或尸体每次 **+0.10**（营养 × 0.25 对一棵草只有 0.04 左右，撑不住野生动物找水的频率）。不在食谱里的食物仍走营养折算；两档水量在设置页「水与污染」里可调（0–0.5）。`-colonykit-thirst-test` 新增 `perLiter` / `bottle` / `animalNeed` / `animalRatio` / `herbivoreGain` / `carnivoreGain` 探针：临时刷一头牛和一只座狼，测「倍率切 1.0 与 0.5 的掉速比 ≈ 0.50」「牛吃干草 +0.10」「座狼吃肉 +0.10」，测完立刻销毁。
 

@@ -35,6 +35,13 @@ namespace ColonyKit
 				PrepareCarefullyBridge.Request(ModuleRegistry.IsEnabled("prepare-carefully"));
 
 				ModLog.Info("Bootstrap", $"loaded; modules={ModuleRegistry.All.Count} (discovered={discovered})");
+
+				// 截图式 UI 自动化：主菜单阶段就能跑，窗口由场景自己打开。
+				// 场景在模块的 OnDefsLoaded 里登记，平时不带这个参数不会启动。
+				if (GenCommandLine.CommandLineArgPassed("modtemplate-ui-test"))
+				{
+					UiAutomationService.RunAll();
+				}
 			}
 			catch (Exception e)
 			{
