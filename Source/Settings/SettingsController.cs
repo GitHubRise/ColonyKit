@@ -203,6 +203,21 @@ namespace ColonyKit
 			}
 		}
 
+		/// <summary>选中当前页的指定子页签；供深链接/自动化测试使用。</summary>
+		public bool SelectSubTab(int index)
+		{
+			SettingsPage page = pages[selectedIndex];
+			IReadOnlyList<string> subTabs = page.SubTabKeys;
+			if (subTabs == null || subTabs.Count == 0 || index < 0 || index >= subTabs.Count)
+			{
+				return false;
+			}
+
+			subTabIndexes[page.Id] = index;
+			scrollPositions[page.Id] = Vector2.zero;
+			pageHeights.Remove(page.Id);
+			return true;
+		}
 		private int GetSubTab(SettingsPage page)
 		{
 			IReadOnlyList<string> subTabs = page.SubTabKeys;

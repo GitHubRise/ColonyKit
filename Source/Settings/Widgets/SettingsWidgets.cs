@@ -134,7 +134,7 @@ namespace ColonyKit
 				return value;
 			}
 
-			Rect rect = listing.GetRect(26f);
+			Rect rect = listing.GetRect(30f);
 			if (Mouse.IsOver(rect))
 			{
 				Widgets.DrawBoxSolid(rect, new Color(1f, 1f, 1f, 0.05f));
@@ -150,7 +150,7 @@ namespace ColonyKit
 			Color previousColor = GUI.color;
 
 			// 不要在竖直方向收缩：GUI.Label 会按 rect 裁切，高度小于行高时文字只剩半截。
-			Rect labelRect = new Rect(rect.x + 10f, rect.y, rect.width - 10f, rect.height);
+			Rect labelRect = new Rect(rect.x + 12f, rect.y, rect.width - 12f, rect.height);
 			labelRect.width = Mathf.Max(0f, labelRect.width - (tag.NullOrEmpty() ? 30f : 76f));
 			Text.Anchor = TextAnchor.MiddleLeft;
 			GUI.color = enabled ? Color.white : new Color(1f, 1f, 1f, 0.45f);
@@ -170,7 +170,7 @@ namespace ColonyKit
 			Text.Anchor = previousAnchor;
 
 			const float checkSize = 18f;
-			float checkX = rect.xMax - checkSize - 10f;
+			float checkX = rect.xMax - checkSize - 12f;
 			float checkY = rect.y + (rect.height - checkSize) / 2f;
 			Widgets.CheckboxDraw(checkX, checkY, value, disabled: !enabled, size: checkSize);
 
@@ -196,18 +196,21 @@ namespace ColonyKit
 		/// </summary>
 		public static FrameScope FrameBegin(Listing_Standard listing, string title)
 		{
-			Rect titleRect = listing.GetRect(28f);
-			listing.Gap(6f);
+			Rect titleRect = listing.GetRect(30f);
+			listing.Gap(8f);
 			float x = titleRect.x;
 			float width = titleRect.width;
-			listing.Indent(10f);
+			// Indent 只移动 x、不会缩 ColumnWidth；这里手动收窄，否则右侧内容会伸出滚动视图被裁掉。
+			listing.ColumnWidth = Mathf.Max(40f, width - 24f);
+			listing.Indent(12f);
 			return new FrameScope
 			{
 				title = title,
 				titleRect = titleRect,
 				x = x,
-				y = titleRect.yMax + 8f,
+				y = titleRect.yMax + 10f,
 				width = width,
+				outerWidth = width,
 				matches = SettingsSearch.PageMatches
 			};
 		}
@@ -216,7 +219,8 @@ namespace ColonyKit
 		public static void FrameEnd(Listing_Standard listing, FrameScope frame)
 		{
 			float bottom = listing.GetRect(0f).y;
-			listing.Outdent(10f);
+			listing.Outdent(12f);
+			listing.ColumnWidth = frame.outerWidth;
 			bool matched = !SettingsSearch.Active || SettingsSearch.PageMatches > frame.matches;
 			if (!matched)
 			{
@@ -227,18 +231,18 @@ namespace ColonyKit
 			// 标题画在框外上方。
 			GameFont previousFont = Text.Font;
 			Color previousColor = GUI.color;
-			Text.Font = GameFont.Small;
-			GUI.color = new Color(0.85f, 0.72f, 0.44f);
+			Text.Font = GameFont.Medium;
+			GUI.color = new Color(0.88f, 0.74f, 0.44f);
 			Widgets.Label(frame.titleRect, frame.title);
 			Text.Font = previousFont;
 			GUI.color = previousColor;
 
 			// 边框贴着滚动视图内缘画（左 +1、宽 -2），否则左/右边框会被裁掉。
-			float height = Mathf.Max(20f, bottom - frame.y + 14f);
-			Rect box = new Rect(frame.x + 1f, frame.y - 6f, frame.width - 2f, height);
+			float height = Mathf.Max(22f, bottom - frame.y + 18f);
+			Rect box = new Rect(frame.x + 1f, frame.y - 8f, frame.width - 2f, height);
 			Widgets.DrawBox(box);
 			// 框下方留一行空白，让相邻两组明显分开。
-			listing.Gap(20f);
+			listing.Gap(26f);
 		}
 
 		/// <summary>显式框的作用域数据，页面只需要原样传回 <see cref="FrameEnd"/>。</summary>
@@ -249,6 +253,7 @@ namespace ColonyKit
 			public float x;
 			public float y;
 			public float width;
+			public float outerWidth;
 			public int matches;
 		}
 
@@ -263,21 +268,8 @@ namespace ColonyKit
 			string tooltip = null,
 			bool enabled = true)
 		{
-			if (!BeginControl(listing, label, tooltip))
-			{
-				return value;
-			}
-
-			Rect rect = listing.GetRect(Text.LineHeight);
-			DrawControlHover(rect);
-			Widgets.CheckboxLabeled(rect, label, ref value, disabled: !enabled);
-
-			if (!tooltip.NullOrEmpty())
-			{
-				TooltipHandler.TipRegion(rect, tooltip);
-			}
-
-			return value;
+			// 统一成行式开关，勾固定在框内右缘。
+			return ToggleRow(listing, label, ref value, tooltip, enabled);
 		}
 
 		/// <summary>
@@ -297,21 +289,43 @@ namespace ColonyKit
 				return value;
 			}
 
+			// 和开关行同宽同高：标签左、滑轨中、数值右，整行 30px。
 			Rect rect = listing.GetRect(30f);
 			DrawControlHover(rect);
-			Widgets.Label(rect.LeftPart(0.42f), label);
 
-			// 显示值也按步长吸附，否则拖动过程中会出现 1234 这种中间值。
 			float shown = step > 0f ? Mathf.Round(value / step) * step : value;
 			string valueLabel = format != null ? format(shown) : shown.ToString("0.##");
 
+			TextAnchor previousAnchor = Text.Anchor;
+			Color previousColor = GUI.color;
+
+			float labelWidth = rect.width * 0.36f;
+			Rect labelRect = new Rect(rect.x + 2f, rect.y, labelWidth - 2f, rect.height);
+			Text.Anchor = TextAnchor.MiddleLeft;
+			Widgets.Label(labelRect, label);
+
+			const float valueWidth = 64f;
+			Rect valueRect = new Rect(rect.xMax - valueWidth - 2f, rect.y, valueWidth, rect.height);
+			Text.Anchor = TextAnchor.MiddleRight;
+			GUI.color = new Color(0.95f, 0.88f, 0.70f);
+			Widgets.Label(valueRect, valueLabel);
+
+			GUI.color = previousColor;
+			Text.Anchor = previousAnchor;
+
+			// 滑轨左右各留空，两端不会被框线或数值压住。
+			float trackX = rect.x + labelWidth + 6f;
+			float trackWidth = Mathf.Max(40f, valueRect.x - trackX - 10f);
+			Rect track = new Rect(trackX, rect.y + 8f, trackWidth, 14f);
+			Widgets.DrawBoxSolid(track, new Color(0.07f, 0.07f, 0.07f, 0.95f));
+
 			float result = Widgets.HorizontalSlider(
-				rect.RightPart(0.58f),
+				track,
 				value,
 				min,
 				max,
-				middleAlignment: true,
-				label: valueLabel,
+				middleAlignment: false,
+				label: null,
 				roundTo: step);
 
 			if (step > 0f)
@@ -319,7 +333,7 @@ namespace ColonyKit
 				result = Mathf.Round(result / step) * step;
 			}
 
-			listing.Gap();
+			Widgets.DrawBoxSolid(new Rect(rect.x + 4f, rect.yMax - 1f, rect.width - 8f, 1f), new Color(1f, 1f, 1f, 0.07f));
 			return Mathf.Clamp(result, min, max);
 		}
 
@@ -690,11 +704,17 @@ namespace ColonyKit
 				return value;
 			}
 
-			Rect rect = listing.GetRect(Text.LineHeight);
+			Rect rect = listing.GetRect(30f);
 			DrawControlHover(rect);
-			Widgets.Label(rect.LeftPart(0.42f), label);
+			TextAnchor labelAnchor = Text.Anchor;
+			Text.Anchor = TextAnchor.MiddleLeft;
+			Widgets.Label(new Rect(rect.x + 2f, rect.y, rect.width * 0.36f - 2f, rect.height), label);
+			Text.Anchor = labelAnchor;
 
-			string result = Widgets.TextField(rect.RightPart(0.58f), value ?? "", maxLength);
+			string result = Widgets.TextField(
+				new Rect(rect.x + rect.width * 0.36f + 6f, rect.y + 3f, rect.width * 0.64f - 10f, 24f),
+				value ?? "",
+				maxLength);
 			if (!tooltip.NullOrEmpty())
 			{
 				TooltipHandler.TipRegion(rect, tooltip);
