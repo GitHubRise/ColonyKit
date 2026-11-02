@@ -20,7 +20,8 @@ namespace ColonyKit
 		{
 			ModContentPack content = ColonyKitMod.Instance?.Content;
 
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Section.Metadata".Loc());
+			SettingsWidgets.FrameScope frame = SettingsWidgets.FrameBegin(
+				listing, "ColonyKit.Settings.Section.Metadata".Loc());
 
 			SettingsWidgets.Label(listing, "ColonyKit.Settings.About.Name".Loc(content?.Name ?? "?"));
 			SettingsWidgets.Label(listing, "ColonyKit.Settings.About.PackageId".Loc(
@@ -28,8 +29,8 @@ namespace ColonyKit
 			SettingsWidgets.Label(listing, "ColonyKit.Settings.About.Version".Loc(
 				content?.ModMetaData?.ModVersion ?? "?"));
 
-			listing.Gap();
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.About.Hint".Loc());
+			SettingsWidgets.FrameEnd(listing, frame);
 		}
 	}
 }

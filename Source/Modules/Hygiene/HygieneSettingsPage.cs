@@ -1,10 +1,14 @@
+using System.Collections.Generic;
 using RimWorld;
 using UnityEngine;
 using Verse;
 
 namespace ColonyKit.Modules.Hygiene
 {
-	/// <summary>卫生设置页：需求速率、耗水、污染、DBH 策略与需求豁免。</summary>
+	/// <summary>
+	/// 卫生设置页：拆成 需求 / 水质与污染 / 瓶装水 / 污水 / 清洁与农业 / 兼容与豁免 六个子页签，
+	/// 每组参数一个显式框，开关统一用行式 <see cref="SettingsWidgets.ToggleRow"/>。
+	/// </summary>
 	public sealed class HygieneSettingsPage : SettingsPage
 	{
 		private static readonly HygieneDbhPolicy[] DbhPolicies =
@@ -14,122 +18,166 @@ namespace ColonyKit.Modules.Hygiene
 			HygieneDbhPolicy.Disabled
 		};
 
+		private static readonly string[] SubTabs =
+		{
+			"ColonyKit.Settings.Hygiene.Sub.Needs",
+			"ColonyKit.Settings.Hygiene.Sub.Water",
+			"ColonyKit.Settings.Hygiene.Sub.Bottled",
+			"ColonyKit.Settings.Hygiene.Sub.Sewage",
+			"ColonyKit.Settings.Hygiene.Sub.CleaningFarming",
+			"ColonyKit.Settings.Hygiene.Sub.Compat"
+		};
+
 		public override string Id => "hygiene";
 
 		public override string TitleKey => "ColonyKit.Settings.Tab.Hygiene";
 
 		public override int Order => 20;
 
+		public override IReadOnlyList<string> SubTabKeys => SubTabs;
+
 		public override void DoContents(Listing_Standard listing, ColonyKitSettings settings)
 		{
+			DoSubTabContents(0, listing, settings);
+		}
+
+		public override void DoSubTabContents(
+			int subTab,
+			Listing_Standard listing,
+			ColonyKitSettings settings)
+		{
 			HygieneSettings data = settings.GetModuleSettings<HygieneSettings>();
+			switch (subTab)
+			{
+				case 1:
+					DrawWater(listing, data);
+					break;
+				case 2:
+					DrawBottledWater(listing, data);
+					break;
+				case 3:
+					DrawSewage(listing, data);
+					break;
+				case 4:
+					DrawCleaningAndFarming(listing, data);
+					break;
+				case 5:
+					DrawCompat(listing, data);
+					break;
+				default:
+					DrawNeeds(listing, data);
+					break;
+			}
+		}
 
+		// ---------------------------------------------------------------- 需求
+
+		private static void DrawNeeds(Listing_Standard listing, HygieneSettings data)
+		{
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.Hint".Loc());
-			listing.Gap();
 
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Needs".Loc());
-			data.hygieneRateMultiplier = SettingsWidgets.Slider(
+			SettingsWidgets.FrameScope frame = SettingsWidgets.FrameBegin(
+				listing, "ColonyKit.Settings.Hygiene.Section.Needs".Loc());
+			data.hygieneRateMultiplier = Slider(
 				listing,
-				"ColonyKit.Settings.Hygiene.NeedsRate".Loc(),
+				"ColonyKit.Settings.Hygiene.NeedsRate",
 				data.hygieneRateMultiplier,
 				HygieneSettings.MinRate,
 				HygieneSettings.MaxRate,
 				0.05f,
 				value => "×" + value.ToString("0.00"));
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.NeedsRate.Desc".Loc());
-
-			data.bladderRateMultiplier = SettingsWidgets.Slider(
+			data.bladderRateMultiplier = Slider(
 				listing,
-				"ColonyKit.Settings.Hygiene.BladderRate".Loc(),
+				"ColonyKit.Settings.Hygiene.BladderRate",
 				data.bladderRateMultiplier,
 				HygieneSettings.MinRate,
 				HygieneSettings.MaxRate,
 				0.05f,
 				value => "×" + value.ToString("0.00"));
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.BladderRate.Desc".Loc());
-
-			data.thirstHoursToEmpty = SettingsWidgets.Slider(
+			data.thirstHoursToEmpty = Slider(
 				listing,
-				"ColonyKit.Settings.Hygiene.ThirstHours".Loc(),
+				"ColonyKit.Settings.Hygiene.ThirstHours",
 				data.thirstHoursToEmpty,
 				HygieneSettings.MinThirstHours,
 				HygieneSettings.MaxThirstHours,
 				1f,
 				value => value.ToString("0") + " h");
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.ThirstHours.Desc".Loc());
-
-			data.animalThirstRate = SettingsWidgets.Slider(
+			data.animalThirstRate = Slider(
 				listing,
-				"ColonyKit.Settings.Hygiene.AnimalThirst".Loc(),
+				"ColonyKit.Settings.Hygiene.AnimalThirst",
 				data.animalThirstRate,
 				HygieneSettings.MinAnimalThirstRate,
 				HygieneSettings.MaxAnimalThirstRate,
 				0.05f,
 				value => "×" + value.ToString("0.00"));
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.AnimalThirst.Desc".Loc());
+			SettingsWidgets.FrameEnd(listing, frame);
+		}
 
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Water".Loc());
-			data.foodWaterFactor = SettingsWidgets.Slider(
+		// ------------------------------------------------------- 水质与污染
+
+		private static void DrawWater(Listing_Standard listing, HygieneSettings data)
+		{
+			SettingsWidgets.FrameScope frame = SettingsWidgets.FrameBegin(
+				listing, "ColonyKit.Settings.Hygiene.Section.Water".Loc());
+			data.foodWaterFactor = Slider(
 				listing,
-				"ColonyKit.Settings.Hygiene.FoodWater".Loc(),
+				"ColonyKit.Settings.Hygiene.FoodWater",
 				data.foodWaterFactor,
 				HygieneSettings.MinFoodWater,
 				HygieneSettings.MaxFoodWater,
 				0.01f,
 				value => "×" + value.ToString("0.00"));
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.FoodWater.Desc".Loc());
-
-			data.herbivorePlantThirst = SettingsWidgets.Slider(
+			data.herbivorePlantThirst = Slider(
 				listing,
-				"ColonyKit.Settings.Hygiene.AnimalPlantThirst".Loc(),
+				"ColonyKit.Settings.Hygiene.AnimalPlantThirst",
 				data.herbivorePlantThirst,
 				0f,
 				HygieneSettings.MaxAnimalFoodThirst,
 				0.01f,
 				value => "+" + value.ToString("0.00"));
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.AnimalPlantThirst.Desc".Loc());
-
-			data.carnivoreMeatThirst = SettingsWidgets.Slider(
+			data.carnivoreMeatThirst = Slider(
 				listing,
-				"ColonyKit.Settings.Hygiene.AnimalMeatThirst".Loc(),
+				"ColonyKit.Settings.Hygiene.AnimalMeatThirst",
 				data.carnivoreMeatThirst,
 				0f,
 				HygieneSettings.MaxAnimalFoodThirst,
 				0.01f,
 				value => "+" + value.ToString("0.00"));
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.AnimalMeatThirst.Desc".Loc());
-			data.waterUseMultiplier = SettingsWidgets.Slider(
+			data.waterUseMultiplier = Slider(
 				listing,
-				"ColonyKit.Settings.Hygiene.WaterUse".Loc(),
+				"ColonyKit.Settings.Hygiene.WaterUse",
 				data.waterUseMultiplier,
 				HygieneSettings.MinWaterUse,
 				HygieneSettings.MaxWaterUse,
 				0.05f,
 				value => "×" + value.ToString("0.00"));
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.WaterUse.Desc".Loc());
-
-			data.hotWaterUseMultiplier = SettingsWidgets.Slider(
+			data.hotWaterUseMultiplier = Slider(
 				listing,
-				"ColonyKit.Settings.Hygiene.HotWaterUse".Loc(),
+				"ColonyKit.Settings.Hygiene.HotWaterUse",
 				data.hotWaterUseMultiplier,
 				HygieneSettings.MinHotWaterUse,
 				HygieneSettings.MaxHotWaterUse,
 				0.05f,
 				value => "×" + value.ToString("0.00"));
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.HotWaterUse.Desc".Loc());
-
-			data.contaminationChanceMultiplier = SettingsWidgets.Slider(
+			data.contaminationChanceMultiplier = Slider(
 				listing,
-				"ColonyKit.Settings.Hygiene.Contamination".Loc(),
+				"ColonyKit.Settings.Hygiene.Contamination",
 				data.contaminationChanceMultiplier,
 				HygieneSettings.MinContamination,
 				HygieneSettings.MaxContamination,
 				0.05f,
 				value => (value * 100f).ToString("0") + "%");
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.Contamination.Desc".Loc());
+			SettingsWidgets.FrameEnd(listing, frame);
+		}
 
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.BottledWater".Loc());
+		// ------------------------------------------------------------ 瓶装水
+
+		private static void DrawBottledWater(Listing_Standard listing, HygieneSettings data)
+		{
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.BottledWater.Hint".Loc());
+
+			SettingsWidgets.FrameScope frame = SettingsWidgets.FrameBegin(
+				listing, "ColonyKit.Settings.Hygiene.Water.PerLiter".Loc());
 			data.thirstPerLiter = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Hygiene.Water.PerLiter".Loc(),
@@ -139,7 +187,9 @@ namespace ColonyKit.Modules.Hygiene
 				0.01f,
 				value => value.ToString("0.00"));
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.Water.PerLiter.Desc".Loc());
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.Water.Mineral".Loc());
+			SettingsWidgets.FrameEnd(listing, frame);
+
+			frame = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Hygiene.Water.Mineral".Loc());
 			data.mineralWaterSatiety = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Hygiene.Water.Satiety".Loc(),
@@ -148,13 +198,14 @@ namespace ColonyKit.Modules.Hygiene
 				0.2f,
 				0.005f,
 				value => value.ToString("0.000"));
-			data.mineralWaterCanPoison = SettingsWidgets.Checkbox(
+			data.mineralWaterCanPoison = SettingsWidgets.ToggleRow(
 				listing,
 				"ColonyKit.Settings.Hygiene.Water.MineralPoison".Loc(),
 				ref data.mineralWaterCanPoison,
 				"ColonyKit.Settings.Hygiene.Water.MineralPoison.Desc".Loc());
+			SettingsWidgets.FrameEnd(listing, frame);
 
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.Water.Purified".Loc());
+			frame = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Hygiene.Water.Purified".Loc());
 			data.purifiedWaterSatiety = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Hygiene.Water.Satiety".Loc(),
@@ -171,8 +222,9 @@ namespace ColonyKit.Modules.Hygiene
 				20f,
 				1f,
 				value => "+" + value.ToString("0")));
+			SettingsWidgets.FrameEnd(listing, frame);
 
-			SettingsWidgets.Label(listing, "ColonyKit.Settings.Hygiene.Water.Boiled".Loc());
+			frame = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Hygiene.Water.Boiled".Loc());
 			data.boiledWaterSatiety = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Hygiene.Water.Satiety".Loc(),
@@ -202,139 +254,144 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				HygieneUtility.ApplyWaterRecipeSettings();
 			}
+			SettingsWidgets.FrameEnd(listing, frame);
+		}
 
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Sewage".Loc());
-			data.pumpCapacityMultiplier = SettingsWidgets.Slider(
+		// -------------------------------------------------------------- 污水
+
+		private static void DrawSewage(Listing_Standard listing, HygieneSettings data)
+		{
+			SettingsWidgets.FrameScope frame = SettingsWidgets.FrameBegin(
+				listing, "ColonyKit.Settings.Hygiene.Section.Sewage".Loc());
+			data.pumpCapacityMultiplier = Slider(
 				listing,
-				"ColonyKit.Settings.Hygiene.PumpCapacity".Loc(),
+				"ColonyKit.Settings.Hygiene.PumpCapacity",
 				data.pumpCapacityMultiplier,
 				HygieneSettings.MinPumpCapacity,
 				HygieneSettings.MaxPumpCapacity,
 				0.05f,
 				value => "×" + value.ToString("0.00"));
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.PumpCapacity.Desc".Loc());
-
-			data.groundWaterRequired = SettingsWidgets.Checkbox(
+			data.groundWaterRequired = SettingsWidgets.ToggleRow(
 				listing,
 				"ColonyKit.Settings.Hygiene.GroundWaterRequired".Loc(),
 				ref data.groundWaterRequired,
 				"ColonyKit.Settings.Hygiene.GroundWaterRequired.Desc".Loc());
-
-			data.sewageGridCapacity = SettingsWidgets.Slider(
+			data.sewageGridCapacity = Slider(
 				listing,
-				"ColonyKit.Settings.Hygiene.SewageGrid".Loc(),
+				"ColonyKit.Settings.Hygiene.SewageGrid",
 				data.sewageGridCapacity,
 				HygieneSettings.MinSewageGrid,
 				HygieneSettings.MaxSewageGrid,
 				0.05f,
 				value => "×" + value.ToString("0.00"));
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.SewageGrid.Desc".Loc());
-
-			data.sewageCleanupRate = SettingsWidgets.Slider(
+			data.sewageCleanupRate = Slider(
 				listing,
-				"ColonyKit.Settings.Hygiene.SewageCleanup".Loc(),
+				"ColonyKit.Settings.Hygiene.SewageCleanup",
 				data.sewageCleanupRate,
 				HygieneSettings.MinSewageCleanup,
 				HygieneSettings.MaxSewageCleanup,
 				0.05f,
 				value => "×" + value.ToString("0.00"));
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.SewageCleanup.Desc".Loc());
-
-			data.sewageProcRate = SettingsWidgets.Slider(
+			data.sewageProcRate = Slider(
 				listing,
-				"ColonyKit.Settings.Hygiene.SewageProc".Loc(),
+				"ColonyKit.Settings.Hygiene.SewageProc",
 				data.sewageProcRate,
 				HygieneSettings.MinSewageProc,
 				HygieneSettings.MaxSewageProc,
 				0.05f,
 				value => "×" + value.ToString("0.00"));
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.SewageProc.Desc".Loc());
+			SettingsWidgets.FrameEnd(listing, frame);
+		}
 
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Cleaning".Loc());
-			data.priorityIndoorCleaning = SettingsWidgets.Checkbox(
+		// ------------------------------------------------------- 清洁与农业
+
+		private static void DrawCleaningAndFarming(Listing_Standard listing, HygieneSettings data)
+		{
+			SettingsWidgets.FrameScope frame = SettingsWidgets.FrameBegin(
+				listing, "ColonyKit.Settings.Hygiene.Section.Cleaning".Loc());
+			data.priorityIndoorCleaning = SettingsWidgets.ToggleRow(
 				listing,
 				"ColonyKit.Settings.Hygiene.PriorityIndoorCleaning".Loc(),
 				ref data.priorityIndoorCleaning,
 				"ColonyKit.Settings.Hygiene.PriorityIndoorCleaning.Desc".Loc());
+			SettingsWidgets.FrameEnd(listing, frame);
 
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Agriculture".Loc());
-			data.terrainFertilityFactor = SettingsWidgets.Slider(
+			frame = SettingsWidgets.FrameBegin(
+				listing, "ColonyKit.Settings.Hygiene.Section.Agriculture".Loc());
+			data.showAgricultureOverlay = SettingsWidgets.ToggleRow(
 				listing,
-				"ColonyKit.Settings.Hygiene.TerrainFertility".Loc(),
+				"ColonyKit.Settings.Hygiene.ShowOverlay".Loc(),
+				ref data.showAgricultureOverlay,
+				"ColonyKit.Settings.Hygiene.ShowOverlay.Desc".Loc());
+			data.terrainFertilityFactor = Slider(
+				listing,
+				"ColonyKit.Settings.Hygiene.TerrainFertility",
 				data.terrainFertilityFactor,
 				HygieneSettings.MinTerrainFertility,
 				HygieneSettings.MaxTerrainFertility,
 				0.01f,
 				value => (value * 100f).ToString("0") + "%");
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.TerrainFertility.Desc".Loc());
-
-			data.showAgricultureOverlay = SettingsWidgets.Checkbox(
+			data.fertilizerStrength = Slider(
 				listing,
-				"ColonyKit.Settings.Hygiene.ShowOverlay".Loc(),
-				ref data.showAgricultureOverlay,
-				"ColonyKit.Settings.Hygiene.ShowOverlay.Desc".Loc());
-			data.fertilizerStrength = SettingsWidgets.Slider(
-				listing,
-				"ColonyKit.Settings.Hygiene.FertilizerStrength".Loc(),
+				"ColonyKit.Settings.Hygiene.FertilizerStrength",
 				data.fertilizerStrength,
 				HygieneSettings.MinFertilizerStrength,
 				HygieneSettings.MaxFertilizerStrength,
 				0.01f,
 				value => (value * 100f).ToString("0") + "%");
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.FertilizerStrength.Desc".Loc());
-
-			data.fertilizerMinFertility = SettingsWidgets.Slider(
+			data.fertilizerMinFertility = Slider(
 				listing,
-				"ColonyKit.Settings.Hygiene.FertilizerFloor".Loc(),
+				"ColonyKit.Settings.Hygiene.FertilizerFloor",
 				data.fertilizerMinFertility,
 				HygieneSettings.MinFertilizerFloor,
 				HygieneSettings.MaxFertilizerFloor,
 				0.05f,
 				value => (value * 100f).ToString("0") + "%");
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.FertilizerFloor.Desc".Loc());
-
-			data.fertilizerMaxFertility = SettingsWidgets.Slider(
+			data.fertilizerMaxFertility = Slider(
 				listing,
-				"ColonyKit.Settings.Hygiene.FertilizerCap".Loc(),
+				"ColonyKit.Settings.Hygiene.FertilizerCap",
 				data.fertilizerMaxFertility,
 				HygieneSettings.MinFertilizerCap,
 				HygieneSettings.MaxFertilizerCap,
 				0.05f,
 				value => (value * 100f).ToString("0") + "%");
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.FertilizerCap.Desc".Loc());
-
-			data.fertilizerLifespanDays = SettingsWidgets.Slider(
+			data.fertilizerLifespanDays = Slider(
 				listing,
-				"ColonyKit.Settings.Hygiene.FertilizerLifespan".Loc(),
+				"ColonyKit.Settings.Hygiene.FertilizerLifespan",
 				data.fertilizerLifespanDays,
 				HygieneSettings.MinFertilizerLifespan,
 				HygieneSettings.MaxFertilizerLifespan,
 				5f,
 				value => value.ToString("0") + " d");
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.FertilizerLifespan.Desc".Loc());
-
-			data.irrigationStrength = SettingsWidgets.Slider(
+			data.irrigationStrength = Slider(
 				listing,
-				"ColonyKit.Settings.Hygiene.IrrigationStrength".Loc(),
+				"ColonyKit.Settings.Hygiene.IrrigationStrength",
 				data.irrigationStrength,
 				HygieneSettings.MinIrrigationStrength,
 				HygieneSettings.MaxIrrigationStrength,
 				0.05f,
 				value => (value * 100f).ToString("0") + "%");
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.IrrigationStrength.Desc".Loc());
+			SettingsWidgets.FrameEnd(listing, frame);
 
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Bath".Loc());
-			data.doubleBathInviteChance = SettingsWidgets.Slider(
+			frame = SettingsWidgets.FrameBegin(
+				listing, "ColonyKit.Settings.Hygiene.Section.Bath".Loc());
+			data.doubleBathInviteChance = Slider(
 				listing,
-				"ColonyKit.Settings.Hygiene.InviteChance".Loc(),
+				"ColonyKit.Settings.Hygiene.InviteChance",
 				data.doubleBathInviteChance,
 				HygieneSettings.MinInviteChance,
 				HygieneSettings.MaxInviteChance,
 				0.01f,
 				value => (value * 100f).ToString("0") + "%");
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.InviteChance.Desc".Loc());
+			SettingsWidgets.FrameEnd(listing, frame);
+		}
 
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Dbh".Loc());
+		// ------------------------------------------------------- 兼容与豁免
+
+		private static void DrawCompat(Listing_Standard listing, HygieneSettings data)
+		{
+			SettingsWidgets.FrameScope frame = SettingsWidgets.FrameBegin(
+				listing, "ColonyKit.Settings.Hygiene.Section.Dbh".Loc());
 			HygieneDbhPolicy policy = data.dbhPolicy;
 			SettingsWidgets.Dropdown(
 				listing,
@@ -353,26 +410,26 @@ namespace ColonyKit.Modules.Hygiene
 				(data.DbhDetected
 					? "ColonyKit.Settings.Hygiene.Dbh.Detected"
 					: "ColonyKit.Settings.Hygiene.Dbh.NotDetected").Loc());
+			SettingsWidgets.FrameEnd(listing, frame);
 
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Hygiene.Section.Exemptions".Loc());
+			frame = SettingsWidgets.FrameBegin(
+				listing, "ColonyKit.Settings.Hygiene.Section.Exemptions".Loc());
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Hygiene.Exemptions.Hint".Loc());
 
 			bool beforePrisoners = data.prisonersGetHygiene;
-			data.prisonersGetHygiene = SettingsWidgets.Checkbox(
+			data.prisonersGetHygiene = SettingsWidgets.ToggleRow(
 				listing,
 				"ColonyKit.Settings.Hygiene.Prisoners".Loc(),
 				ref data.prisonersGetHygiene,
 				"ColonyKit.Settings.Hygiene.Prisoners.Desc".Loc());
-
 			bool beforeGuests = data.guestsGetHygiene;
-			data.guestsGetHygiene = SettingsWidgets.Checkbox(
+			data.guestsGetHygiene = SettingsWidgets.ToggleRow(
 				listing,
 				"ColonyKit.Settings.Hygiene.Guests".Loc(),
 				ref data.guestsGetHygiene,
 				"ColonyKit.Settings.Hygiene.Guests.Desc".Loc());
-
 			bool beforeNonHuman = data.allowNonHuman;
-			data.allowNonHuman = SettingsWidgets.Checkbox(
+			data.allowNonHuman = SettingsWidgets.ToggleRow(
 				listing,
 				"ColonyKit.Settings.Hygiene.NonHuman".Loc(),
 				ref data.allowNonHuman,
@@ -404,7 +461,6 @@ namespace ColonyKit.Modules.Hygiene
 				HygieneUtility.RefreshAllPawns();
 			}
 
-			listing.Gap();
 			if (SettingsWidgets.Button(listing, "ColonyKit.Settings.Hygiene.ApplyExemptions".Loc()))
 			{
 				HygieneUtility.RefreshAllPawns();
@@ -413,6 +469,27 @@ namespace ColonyKit.Modules.Hygiene
 					MessageTypeDefOf.NeutralEvent,
 					false);
 			}
+			SettingsWidgets.FrameEnd(listing, frame);
+		}
+
+		/// <summary>标签 + 描述（Desc 键可选）的滑块，减少重复代码。</summary>
+		private static float Slider(
+			Listing_Standard listing,
+			string labelKey,
+			float value,
+			float min,
+			float max,
+			float step,
+			System.Func<float, string> format)
+		{
+			float result = SettingsWidgets.Slider(
+				listing, labelKey.Loc(), value, min, max, step, format);
+			string descKey = labelKey + ".Desc";
+			if (descKey.CanTranslate())
+			{
+				SettingsWidgets.Description(listing, descKey.Loc());
+			}
+			return result;
 		}
 
 		public override void Reset(ColonyKitSettings settings)

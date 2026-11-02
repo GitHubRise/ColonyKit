@@ -25,7 +25,8 @@ namespace ColonyKit.Modules.Blueprint
 			BlueprintSettings data = settings.GetModuleSettings<BlueprintSettings>();
 
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Blueprint.Hint".Loc());
-			listing.Gap();
+			SettingsWidgets.FrameScope frame = SettingsWidgets.FrameBegin(
+				listing, "ColonyKit.Settings.Tab.Blueprint".Loc());
 
 			SettingsWidgets.Dropdown(
 				listing,
@@ -69,11 +70,12 @@ namespace ColonyKit.Modules.Blueprint
 			data.maxRecords = Mathf.Clamp(records, BlueprintSettings.MinMaxRecords, BlueprintSettings.MaxMaxRecords);
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Blueprint.MaxRecords.Desc".Loc());
 
-			data.verboseLog = SettingsWidgets.Checkbox(
+			data.verboseLog = SettingsWidgets.ToggleRow(
 				listing,
 				"ColonyKit.Settings.Blueprint.Verbose".Loc(),
 				ref data.verboseLog,
 				"ColonyKit.Settings.Blueprint.Verbose.Desc".Loc());
+			SettingsWidgets.FrameEnd(listing, frame);
 		}
 
 		public override void Reset(ColonyKitSettings settings)

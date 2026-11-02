@@ -508,4 +508,10 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<ColonyKit.Settings.Hygiene.PriorityIndoorCleaning.Desc>When on, cleaners handle filth under a roof inside the home area before outdoor filth.</ColonyKit.Settings.Hygiene.PriorityIndoorCleaning.Desc>
 	<ColonyKit.Settings.Hygiene.TerrainFertility>Base terrain fertility</ColonyKit.Settings.Hygiene.TerrainFertility>
 	<ColonyKit.Settings.Hygiene.TerrainFertility.Desc>Multiplier on the fertility every terrain provides, applied before fertilizer and irrigation bonuses; 100% is vanilla.</ColonyKit.Settings.Hygiene.TerrainFertility.Desc>
+	<ColonyKit.Settings.Hygiene.Sub.Needs>Needs</ColonyKit.Settings.Hygiene.Sub.Needs>
+	<ColonyKit.Settings.Hygiene.Sub.Water>Water</ColonyKit.Settings.Hygiene.Sub.Water>
+	<ColonyKit.Settings.Hygiene.Sub.Bottled>Bottled water</ColonyKit.Settings.Hygiene.Sub.Bottled>
+	<ColonyKit.Settings.Hygiene.Sub.Sewage>Sewage</ColonyKit.Settings.Hygiene.Sub.Sewage>
+	<ColonyKit.Settings.Hygiene.Sub.CleaningFarming>Cleaning & farming</ColonyKit.Settings.Hygiene.Sub.CleaningFarming>
+	<ColonyKit.Settings.Hygiene.Sub.Compat>Compatibility</ColonyKit.Settings.Hygiene.Sub.Compat>
 </LanguageData>

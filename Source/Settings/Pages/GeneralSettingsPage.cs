@@ -34,8 +34,11 @@ namespace ColonyKit
 		public override void DoContents(Listing_Standard listing, ColonyKitSettings settings)
 		{
 			GeneralSettings general = settings.general;
+			LocalizationSettings localization = settings.GetModuleSettings<LocalizationSettings>();
+			LoggingSettings logging = settings.logging;
 
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Section.DefaultLanguage".Loc());
+			SettingsWidgets.FrameScope frame = SettingsWidgets.FrameBegin(
+				listing, "ColonyKit.Settings.Section.DefaultLanguage".Loc());
 			SettingsWidgets.Dropdown(
 				listing,
 				"ColonyKit.Settings.Language".Loc(),
@@ -44,32 +47,28 @@ namespace ColonyKit
 				language => ("ColonyKit.Settings.Language." + language).Loc(),
 				language => general.language = language);
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Language.Desc".Loc());
+			SettingsWidgets.FrameEnd(listing, frame);
 
-			LocalizationSettings localization = settings.GetModuleSettings<LocalizationSettings>();
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Section.TranslationScheme".Loc());
-
+			frame = SettingsWidgets.FrameBegin(
+				listing, "ColonyKit.Settings.Section.TranslationScheme".Loc());
 			bool translationEnabled = localization.enabled;
-			SettingsWidgets.Checkbox(
+			localization.enabled = SettingsWidgets.ToggleRow(
 				listing,
 				"ColonyKit.Settings.Localization.Enabled".Loc(),
 				ref translationEnabled,
 				"ColonyKit.Settings.Localization.Enabled.Desc".Loc());
-			localization.enabled = translationEnabled;
-
 			SettingsWidgets.Label(
 				listing,
 				"ColonyKit.Settings.Localization.CurrentScheme".Loc(localization.Current.name));
-
 			if (SettingsWidgets.Button(listing, "ColonyKit.Settings.Localization.EditSchemes".Loc()))
 			{
 				Find.WindowStack.Add(new Dialog_LocalizationSchemes(localization));
 			}
-
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Localization.Hint".Loc());
+			SettingsWidgets.FrameEnd(listing, frame);
 
-			LoggingSettings logging = settings.logging;
-
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Section.LogOutput".Loc());
+			frame = SettingsWidgets.FrameBegin(
+				listing, "ColonyKit.Settings.Section.LogOutput".Loc());
 			SettingsWidgets.Dropdown(
 				listing,
 				"ColonyKit.Settings.Logging.Detail".Loc(),
@@ -86,7 +85,7 @@ namespace ColonyKit
 				level => logging.logLevel = level);
 
 			bool canLogSpawns = logging.detail == LogDetail.Verbose;
-			SettingsWidgets.Checkbox(
+			logging.verboseSpawnLog = SettingsWidgets.ToggleRow(
 				listing,
 				"ColonyKit.Settings.Logging.VerboseSpawn".Loc(),
 				ref logging.verboseSpawnLog,
@@ -122,21 +121,23 @@ namespace ColonyKit
 			{
 				ModLog.Info("Settings", "test log line from the settings page");
 			}
+			SettingsWidgets.FrameEnd(listing, frame);
 
+			frame = SettingsWidgets.FrameBegin(
+				listing, "ColonyKit.Settings.Section.Diagnostics".Loc());
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Diagnostics.Hint".Loc());
-
 			if (SettingsWidgets.Button(listing, "ColonyKit.Settings.Diagnostics.Dump".Loc()))
 			{
 				Diagnostics.Dump();
 				NotificationService.Message("ColonyKit.Notification.Diagnostics".Loc());
 			}
-
 			if (SettingsWidgets.Button(listing, "ColonyKit.Settings.Diagnostics.Reset".Loc()))
 			{
 				ModLog.ResetRuntimeState();
 				NotificationService.ResetThrottle();
 				ModLog.Info("Settings", "log/menu throttle state reset");
 			}
+			SettingsWidgets.FrameEnd(listing, frame);
 		}
 
 		public override void Reset(ColonyKitSettings settings)

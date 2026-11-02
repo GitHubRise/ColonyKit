@@ -508,4 +508,10 @@
 	<ColonyKit.Settings.Hygiene.PriorityIndoorCleaning.Desc>开启后清洁工优先处理居家区内、有屋顶的污渍，再去处理室外。</ColonyKit.Settings.Hygiene.PriorityIndoorCleaning.Desc>
 	<ColonyKit.Settings.Hygiene.TerrainFertility>地形基础肥力倍率</ColonyKit.Settings.Hygiene.TerrainFertility>
 	<ColonyKit.Settings.Hygiene.TerrainFertility.Desc>所有地形自身肥力的倍率，乘在施肥/灌溉加成之前；100% 为原版。</ColonyKit.Settings.Hygiene.TerrainFertility.Desc>
+	<ColonyKit.Settings.Hygiene.Sub.Needs>需求</ColonyKit.Settings.Hygiene.Sub.Needs>
+	<ColonyKit.Settings.Hygiene.Sub.Water>水质与污染</ColonyKit.Settings.Hygiene.Sub.Water>
+	<ColonyKit.Settings.Hygiene.Sub.Bottled>瓶装水</ColonyKit.Settings.Hygiene.Sub.Bottled>
+	<ColonyKit.Settings.Hygiene.Sub.Sewage>污水</ColonyKit.Settings.Hygiene.Sub.Sewage>
+	<ColonyKit.Settings.Hygiene.Sub.CleaningFarming>清洁与农业</ColonyKit.Settings.Hygiene.Sub.CleaningFarming>
+	<ColonyKit.Settings.Hygiene.Sub.Compat>兼容与豁免</ColonyKit.Settings.Hygiene.Sub.Compat>
 </LanguageData>

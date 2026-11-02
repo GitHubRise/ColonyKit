@@ -17,9 +17,10 @@ namespace ColonyKit.Modules.Insulation
 			InsulationSettings data = settings.GetModuleSettings<InsulationSettings>();
 
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Insulation.Hint".Loc());
-			listing.Gap();
+			SettingsWidgets.FrameScope frame = SettingsWidgets.FrameBegin(
+				listing, "ColonyKit.Settings.Tab.Insulation".Loc());
 
-			data.enabled = SettingsWidgets.Checkbox(
+			data.enabled = SettingsWidgets.ToggleRow(
 				listing,
 				"ColonyKit.Settings.Insulation.Enabled".Loc(),
 				ref data.enabled,
@@ -48,7 +49,7 @@ namespace ColonyKit.Modules.Insulation
 			data.maxLayers = Mathf.Clamp(layers, InsulationSettings.MinLayers, InsulationSettings.MaxLayers);
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Insulation.MaxLayers.Desc".Loc());
 
-			data.includeNaturalRock = SettingsWidgets.Checkbox(
+			data.includeNaturalRock = SettingsWidgets.ToggleRow(
 				listing,
 				"ColonyKit.Settings.Insulation.NaturalRock".Loc(),
 				ref data.includeNaturalRock,
@@ -56,7 +57,7 @@ namespace ColonyKit.Modules.Insulation
 
 			listing.Gap();
 
-			data.thickenRoof = SettingsWidgets.Checkbox(
+			data.thickenRoof = SettingsWidgets.ToggleRow(
 				listing,
 				"ColonyKit.Settings.Insulation.ThickenRoof".Loc(),
 				ref data.thickenRoof,
@@ -81,11 +82,12 @@ namespace ColonyKit.Modules.Insulation
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Insulation.RoofFormula".Loc());
 
 			listing.Gap();
-			data.cascadeFreeze = SettingsWidgets.Checkbox(
+			data.cascadeFreeze = SettingsWidgets.ToggleRow(
 				listing,
 				"ColonyKit.Settings.Insulation.Cascade".Loc(),
 				ref data.cascadeFreeze,
 				"ColonyKit.Settings.Insulation.Cascade.Desc".Loc());
+			SettingsWidgets.FrameEnd(listing, frame);
 		}
 
 		public override void Reset(ColonyKitSettings settings)
