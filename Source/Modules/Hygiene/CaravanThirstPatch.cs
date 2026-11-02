@@ -58,21 +58,8 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return;
 			}
-			// 先喝随身水袋：殖民者、商队成员、随行囚犯/访客都带着自己的水，
-			// 在路上不用为了口水去找河流，也不会去动殖民地仓库的瓶子。
-			float pouch = WaterPouchUtility.GetWater(pawn);
-			if (pouch >= 0.5f)
-			{
-				ContaminationLevel pouchQuality = WaterPouchUtility.GetQuality(pawn);
-				float fromPouch = WaterPouchUtility.TakeWater(pawn, Mathf.Min(LitersPerDrink, pouch));
-				if (fromPouch > 0.01f)
-				{
-					thirst.Drink(fromPouch * MineralWaterUtility.ThirstPerLiter);
-					SanitationUtil.ContaminationCheckDrinking(pawn, pouchQuality);
-					HygieneUtility.AddDrinkSatiety(pawn);
-					return;
-				}
-			}
+			// 先喝商队自带的瓶装水/水桶，其次按地块找河/雨，最后才动随身水袋：
+			// 和地图上的「附近有水先过去喝」同一套优先级，水袋留到最后。
 			Thing bottle = MineralWaterUtility.FindInCaravan(__instance.caravan);
 			if (bottle != null)
 			{
@@ -103,7 +90,23 @@ namespace ColonyKit.Modules.Hygiene
 					return;
 				}
 			}
-			TryForageWater(__instance.caravan, pawn, thirst);
+			if (TryForageWater(__instance.caravan, pawn, thirst))
+			{
+				return;
+			}
+			// 地块没水、也没有库存：喝自己水袋里的。
+			float pouch = WaterPouchUtility.GetWater(pawn);
+			if (pouch >= 0.5f)
+			{
+				ContaminationLevel pouchQuality = WaterPouchUtility.GetQuality(pawn);
+				float fromPouch = WaterPouchUtility.TakeWater(pawn, Mathf.Min(LitersPerDrink, pouch));
+				if (fromPouch > 0.01f)
+				{
+					thirst.Drink(fromPouch * MineralWaterUtility.ThirstPerLiter);
+					SanitationUtil.ContaminationCheckDrinking(pawn, pouchQuality);
+					HygieneUtility.AddDrinkSatiety(pawn);
+				}
+			}
 		}
 
 		/// <summary>

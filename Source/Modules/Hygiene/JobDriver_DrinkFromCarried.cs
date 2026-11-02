@@ -6,7 +6,7 @@ using Verse.AI;
 namespace ColonyKit.Modules.Hygiene
 {
 	/// <summary>
-	/// 直接喝随身容器（水桶/脸盆）里的水：口渴的小人不用跑回洗手池，
+	/// 喝水桶/脸盆里的水：可以是背包里随身带的，也可以是地上放着的（job.targetA 指定）。
 	/// 每 tick 喝一点、按喝掉的水量 × 每升解渴补水，喝完或解渴就结束；收尾按水质做污染判定。
 	/// </summary>
 	public class JobDriver_DrinkFromCarried : JobDriver
@@ -17,6 +17,9 @@ namespace ColonyKit.Modules.Hygiene
 
 		private bool drank;
 
+		private CompBasinWater TargetContainer =>
+			job.GetTarget(TargetIndex.A).Thing?.TryGetComp<CompBasinWater>();
+
 		public override void ExposeData()
 		{
 			base.ExposeData();
@@ -26,16 +29,26 @@ namespace ColonyKit.Modules.Hygiene
 
 		public override bool TryMakePreToilReservations(bool errorOnFailed)
 		{
-			return true;
+			if (!job.GetTarget(TargetIndex.A).HasThing)
+			{
+				return true;
+			}
+			return pawn.Reserve(job.GetTarget(TargetIndex.A), job, 1, -1, null, errorOnFailed);
 		}
 
 		protected override IEnumerable<Toil> MakeNewToils()
 		{
+			if (job.GetTarget(TargetIndex.A).HasThing)
+			{
+				this.FailOnDestroyedNullOrForbidden(TargetIndex.A);
+				yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.ClosestTouch);
+			}
 			Toil drink = ToilMaker.MakeToil("CK_DrinkFromCarried");
 			drink.defaultCompleteMode = ToilCompleteMode.Never;
 			drink.tickIntervalAction = delta =>
 			{
-				CompBasinWater container = WaterContainerUtility.CarriedContainer(pawn, requireWater: true);
+				CompBasinWater container = TargetContainer
+					?? WaterContainerUtility.CarriedContainer(pawn, requireWater: true);
 				Need_Thirst thirst = pawn.needs?.TryGetNeed<Need_Thirst>();
 				if (container == null || thirst == null)
 				{

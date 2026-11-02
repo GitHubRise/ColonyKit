@@ -184,14 +184,16 @@ namespace ColonyKit.Modules.Hygiene
 			return null;
 		}
 
-		/// <summary>地上任意能用的容器（脸盆或水桶），给手动打水用。</summary>
-		public static Thing FindSpawnedContainer(Pawn pawn, bool requireWater)
+		/// <summary>地上任意能用的容器（脸盆或水桶），给手动打水和就地喝水用。</summary>
+		public static Thing FindSpawnedContainer(Pawn pawn, bool requireWater, float maxDistance = 9999f)
 		{
 			Map map = pawn?.Map;
 			if (map == null)
 			{
 				return null;
 			}
+			Thing best = null;
+			float bestDistance = maxDistance * maxDistance;
 			foreach (Thing thing in map.listerThings.AllThings)
 			{
 				CompBasinWater container = thing.TryGetComp<CompBasinWater>();
@@ -202,12 +204,18 @@ namespace ColonyKit.Modules.Hygiene
 				{
 					continue;
 				}
+				float distance = thing.Position.DistanceToSquared(pawn.Position);
+				if (distance > bestDistance)
+				{
+					continue;
+				}
 				if (pawn.CanReserveAndReach(thing, PathEndMode.ClosestTouch, pawn.NormalMaxDanger()))
 				{
-					return thing;
+					bestDistance = distance;
+					best = thing;
 				}
 			}
-			return null;
+			return best;
 		}
 
 		/// <summary>自动取水用的水桶：背包里先找，其次地上找。</summary>

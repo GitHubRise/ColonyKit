@@ -3,7 +3,7 @@
 	<ColonyKit.Settings.Hygiene.ThirstHours>Time to empty</ColonyKit.Settings.Hygiene.ThirstHours>
 	<ColonyKit.Settings.Hygiene.ThirstHours.Desc>Hours from 80% thirst to empty (25°C, before heat acceleration and low-thirst slowdown). Default 20, range 4–72. Lower means thirstier pawns.</ColonyKit.Settings.Hygiene.ThirstHours.Desc>
 	<ColonyKit.Settings.Hygiene.AnimalThirst>Animal thirst rate</ColonyKit.Settings.Hygiene.AnimalThirst>
-	<ColonyKit.Settings.Hygiene.AnimalThirst.Desc>Thirst rate multiplier for animals (wild, livestock, pets); humanlikes are unaffected. Default 0.50, so the same water lasts twice as long and wild animals rarely die of thirst; 1.00 matches vanilla pacing.</ColonyKit.Settings.Hygiene.AnimalThirst.Desc>
+	<ColonyKit.Settings.Hygiene.AnimalThirst.Desc>Thirst rate multiplier for animals (wild, livestock, pets); humanlikes are unaffected. Default 0.25, so the same water lasts four times as long; animals also stagger their drink times by pawn id so a herd does not crowd one shoreline. 1.00 matches vanilla pacing.</ColonyKit.Settings.Hygiene.AnimalThirst.Desc>
 	<ColonyKit.Settings.Hygiene.FoodWater>Water in food</ColonyKit.Settings.Hygiene.FoodWater>
 	<ColonyKit.Settings.Hygiene.FoodWater.Desc>Every food restores thirst by nutrition × this factor. Default 0.25 (a 1.0-nutrition meal is about 1.25 bottles); 0 disables. Herbivores and carnivores eating their own food use the two fixed values below instead.</ColonyKit.Settings.Hygiene.FoodWater.Desc>
 	<ColonyKit.Settings.Hygiene.AnimalPlantThirst>Thirst from grazing</ColonyKit.Settings.Hygiene.AnimalPlantThirst>

@@ -80,14 +80,30 @@ namespace ColonyKit.Modules.Hygiene
 
 			WaterPouchUtility.AddWater(pawn, 5f, ContaminationLevel.Treated);
 			thirst.CurLevel = 0.2f;
+			bool waterNearby = ClosestSanitation.FindBestDrink(pawn, false, 30f, true).IsValid;
 			ThinkResult drinkResult = new JobGiver_DrinkWater().TryIssueJobPackage(pawn, default(JobIssueParams));
 			bool pouchJob = drinkResult.Job?.def?.defName == "CK_DrinkFromPouch";
-			pass &= pouchJob;
+			// 附近有能喝的水时应该先去喝水，没水才喝水袋——两种都算对。
+			bool drinkOrderOk = waterNearby ? !pouchJob : pouchJob;
+			pass &= drinkOrderOk;
+
+			// 地上的瓶装水：非敌对的人形口渴时会捡起来喝（新加的「地上有水也会过去喝」）。
+			ThingDef mineralDef = MineralWaterUtility.Def;
+			Thing groundBottle = mineralDef == null ? null : ThingMaker.MakeThing(mineralDef);
+			bool groundBottleFirst = false;
+			if (groundBottle != null)
+			{
+				GenSpawn.Spawn(groundBottle, CellFinder.RandomClosewalkCellNear(pawn.Position, map, 2), map);
+				thirst.CurLevel = 0.2f;
+				ThinkResult groundResult = new JobGiver_DrinkWater().TryIssueJobPackage(pawn, default(JobIssueParams));
+				groundBottleFirst = groundResult.Job?.targetA.Thing == groundBottle;
+				groundBottle.Destroy(DestroyMode.Vanish);
+			}
+			pass &= groundBottleFirst;
 
 			// 每升解渴：一瓶 1 L 现在按设置值折算（默认 0.65）。
 			HygieneSettings hygiene = HygieneSettings.Current;
 			float perLiter = MineralWaterUtility.ThirstPerLiter;
-			ThingDef mineralDef = MineralWaterUtility.Def;
 			float bottleGain = mineralDef == null
 				? perLiter
 				: MineralWaterUtility.ThirstFor(ThingMaker.MakeThing(mineralDef));
@@ -179,7 +195,8 @@ namespace ColonyKit.Modules.Hygiene
 				"Hygiene",
 				$"thirst selftest: pass={pass} pouch={start}->{WaterPouchUtility.GetWater(pawn)} " +
 				$"foodGain={gained:F3} expected={expected:F3} pouchJob={pouchJob} " +
-				$"perLiter={perLiter:F2} bottle={bottleGain:F2} " +
+				$"waterNearby={waterNearby} drinkOrderOk={drinkOrderOk} groundBottleFirst={groundBottleFirst} " +
+				$"perLiter={perLiter:F2} bottle={bottleGain:F2} animalRate={hygiene.animalThirstRate:F2} " +
 				$"animalNeed={animalNeedOk} animalRatio={animalRatio:F2} " +
 				$"herbivoreGain={herbivoreGain:F2} carnivoreGain={carnivoreGain:F2} " +
 				$"foreignWater={foreignWater:F1} foreignOwnJob={foreignOwnJob} " +

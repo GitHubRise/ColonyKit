@@ -1,4 +1,5 @@
 using RimWorld;
+using UnityEngine;
 using Verse;
 using Verse.AI;
 
@@ -7,10 +8,19 @@ namespace ColonyKit.Modules.Hygiene
 	/// <summary>
 	/// 「去喝水」的 JobGiver（DBH JobGiver_DrinkWater 的移植）：
 	/// 口渴低于 30% 才派活；快渴死时（如已脱水）用冲刺、把搜索范围放到全图。
+	/// 顺序是「附近的活水 → 自己的水袋 → 自己带的瓶装水/水桶」：
+	/// 地图上有河、湖、水龙头、取水点、水盆、地上的瓶装水/水桶时先走过去喝；
+	/// 附近真没水（野外、牢房、干旱图）才拿自己水袋里的水。
+	/// 动物另外加一点随机抖动，避免同一群动物同时口渴、同时挤到同一个水边。
 	/// </summary>
 	public class JobGiver_DrinkWater : ThinkNode_JobGiver
 	{
 		public virtual float MinLevel => 0.3f;
+
+		/// <summary>动物的口渴阈值在这个范围内随机，错开群体同时找水的时间。</summary>
+		private const float AnimalJitterMin = 0.75f;
+
+		private const float AnimalJitterMax = 1.25f;
 
 		public override float GetPriority(Pawn pawn)
 		{
@@ -19,11 +29,22 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return 0f;
 			}
-			if (thirst.CurLevel > MinLevel)
+			if (thirst.CurLevel > ThresholdFor(pawn))
 			{
 				return 0f;
 			}
 			return 9.6f;
+		}
+
+		/// <summary>人形按设置阈值；动物用编号做随机相位，让同一群动物错开找水的时间。</summary>
+		private float ThresholdFor(Pawn pawn)
+		{
+			if (!pawn.RaceProps.Animal)
+			{
+				return MinLevel;
+			}
+			float jitter = Rand.ValueSeeded(pawn.thingIDNumber ^ 0x5A17);
+			return MinLevel * Mathf.Lerp(AnimalJitterMin, AnimalJitterMax, jitter);
 		}
 
 		protected override Job TryGiveJob(Pawn pawn)
@@ -48,7 +69,18 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				range = 9999f;
 			}
-			// 随身水袋优先：30 L 能顶好几天，不用为每一口跑回水龙头。
+			bool hostile = pawn.Faction != null && pawn.Faction.HostileTo(Faction.OfPlayer);
+
+			// 1) 附近有能喝的水就先过去喝：地表水、水盆/水槽、水龙头/取水点，
+			//    非敌对的人形还会捡地上的瓶装水和桶/盆里的水（敌人只认地表水）。
+			LocalTargetInfo target = FindDrinkTarget(pawn, urgent, range, allowGroundItems: !hostile);
+			Job waterJob = MakeDrinkJob(target, urgency);
+			if (waterJob != null)
+			{
+				return waterJob;
+			}
+
+			// 2) 附近没有水：拿自己水袋里的水喝（30 L 能顶好几天）。
 			if (!pawn.RaceProps.Animal && WaterPouchUtility.GetWater(pawn) >= 0.1f)
 			{
 				JobDef pouchDef = DefDatabase<JobDef>.GetNamedSilentFail("CK_DrinkFromPouch");
@@ -58,60 +90,105 @@ namespace ColonyKit.Modules.Hygiene
 				}
 			}
 
-			// 瓶装水：病人/囚徒收到的瓶子谁都能喝；从地上/仓库找瓶子只给殖民者，
-			// 避免访客/敌人顺手拿走殖民地库存。
-			bool colonistLike = pawn.IsColonist || pawn.IsSlave;
+			// 3) 自己物品栏里的瓶装水/水桶（囚徒收到的瓶子、随身水桶）。
 			Thing bottle = MineralWaterUtility.Carried(pawn);
-			if (bottle == null && colonistLike && !pawn.RaceProps.Animal)
-			{
-				bottle = MineralWaterUtility.FindSpawned(pawn);
-			}
 			if (bottle != null)
 			{
-				Job bottleJob = JobMaker.MakeJob(JobDefOf.Ingest, bottle);
-				// JobMaker 默认把 count 留成 -1，而原版 Toils_Misc.TakeItemFromInventoryToCarrier
-				// 取的是 Mathf.Min(stackCount, count)，-1 等于一件也不拿、targetA 随即被清空，
-				// 下一个 toil 的全局失效检查就读到 null 抛空引用（整局 Update 刷红字、小人卡死）。
-				// 明确「喝 1 瓶」。
-				bottleJob.count = 1;
-				return bottleJob;
+				return MakeBottleJob(bottle, urgency);
 			}
-			// 随身带着水桶/脸盆时先喝自己的水，省得跑回洗手池。
 			if (!pawn.RaceProps.Animal && WaterContainerUtility.CarriedContainer(pawn, requireWater: true) != null)
 			{
 				JobDef carriedDef = DefDatabase<JobDef>.GetNamedSilentFail("CK_DrinkFromCarried");
 				if (carriedDef != null)
 				{
-					return JobMaker.MakeJob(carriedDef);
+					Job job = JobMaker.MakeJob(carriedDef);
+					job.locomotionUrgency = urgency;
+					return job;
 				}
 			}
-			// 敌人不许喝殖民地的水龙头/洗手池/水槽，只找地表水；
-			// 访客、商队、囚徒和殖民者可以用殖民地设施。
-			bool hostile = pawn.Faction != null && pawn.Faction.HostileTo(Faction.OfPlayer);
-			LocalTargetInfo target = ClosestSanitation.FindBestDrink(pawn, urgent, range, allowColonyFixtures: !hostile);
+			return null;
+		}
+
+		/// <summary>先找设施/地表水，再找地上的瓶装水和水桶/脸盆（敌人不给捡）。</summary>
+		private static LocalTargetInfo FindDrinkTarget(
+			Pawn pawn, bool urgent, float range, bool allowGroundItems)
+		{
+			LocalTargetInfo target = ClosestSanitation.FindBestDrink(
+				pawn, urgent, range, allowColonyFixtures: !IsHostile(pawn));
+			if (target.IsValid || !allowGroundItems)
+			{
+				return target;
+			}
+			Thing bottle = MineralWaterUtility.FindSpawned(pawn, range);
+			if (bottle != null)
+			{
+				return new LocalTargetInfo(bottle);
+			}
+			Thing container = WaterContainerUtility.FindSpawnedContainer(
+				pawn, requireWater: true, maxDistance: range);
+			if (container != null)
+			{
+				return new LocalTargetInfo(container);
+			}
+			return target;
+		}
+
+		private static bool IsHostile(Pawn pawn)
+		{
+			return pawn.Faction != null && pawn.Faction.HostileTo(Faction.OfPlayer);
+		}
+
+		private static Job MakeDrinkJob(LocalTargetInfo target, LocomotionUrgency urgency)
+		{
 			if (!target.IsValid)
 			{
 				return null;
 			}
-			Job job;
-			if (target.HasThing)
+			Job job = null;
+			Thing thing = target.Thing;
+			if (thing != null && MineralWaterUtility.IsBottledWater(thing))
 			{
-				JobDef def = DefDatabase<JobDef>.GetNamedSilentFail("CK_DrinkFromBasin");
-				if (def == null)
+				return MakeBottleJob(thing, urgency);
+			}
+			if (thing != null && thing.TryGetComp<CompBasinWater>() != null)
+			{
+				JobDef carriedDef = DefDatabase<JobDef>.GetNamedSilentFail("CK_DrinkFromCarried");
+				if (carriedDef != null)
 				{
-					return null;
+					job = JobMaker.MakeJob(carriedDef, thing);
 				}
-				job = JobMaker.MakeJob(def, target.Thing);
+			}
+			else if (thing != null)
+			{
+				JobDef basinDef = DefDatabase<JobDef>.GetNamedSilentFail("CK_DrinkFromBasin");
+				if (basinDef != null)
+				{
+					job = JobMaker.MakeJob(basinDef, thing);
+				}
 			}
 			else
 			{
-				JobDef def = DefDatabase<JobDef>.GetNamedSilentFail("CK_DrinkFromGround");
-				if (def == null)
+				JobDef groundDef = DefDatabase<JobDef>.GetNamedSilentFail("CK_DrinkFromGround");
+				if (groundDef != null)
 				{
-					return null;
+					job = JobMaker.MakeJob(groundDef, target.Cell);
 				}
-				job = JobMaker.MakeJob(def, target.Cell);
 			}
+			if (job != null)
+			{
+				job.locomotionUrgency = urgency;
+			}
+			return job;
+		}
+
+		private static Job MakeBottleJob(Thing bottle, LocomotionUrgency urgency)
+		{
+			Job job = JobMaker.MakeJob(JobDefOf.Ingest, bottle);
+			// JobMaker 默认把 count 留成 -1，而原版 Toils_Misc.TakeItemFromInventoryToCarrier
+			// 取的是 Mathf.Min(stackCount, count)，-1 等于一件也不拿、targetA 随即被清空，
+			// 下一个 toil 的全局失效检查就读到 null 抛空引用（整局 Update 刷红字、小人卡死）。
+			// 明确「喝 1 瓶」。
+			job.count = 1;
 			job.locomotionUrgency = urgency;
 			return job;
 		}

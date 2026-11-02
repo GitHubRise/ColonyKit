@@ -101,7 +101,10 @@ namespace ColonyKit.Modules.Hygiene
 			return TryFindWaterCell(pawn, urgent ? 9999f : range);
 		}
 
-		/// <summary>找最近的可达地表水格子（找到就是站到水边喝）。</summary>
+		/// <summary>
+		/// 找最近的可达地表水格子（找到就是站到水边喝）。
+		/// 动物在「最近一圈」的候选格里随机挑一个，避免整群动物挤到同一个水边格子。
+		/// </summary>
 		public static LocalTargetInfo TryFindWaterCell(Pawn pawn, float range)
 		{
 			Map map = pawn.Map;
@@ -115,8 +118,11 @@ namespace ColonyKit.Modules.Hygiene
 			{
 				return LocalTargetInfo.Invalid;
 			}
+			bool spread = pawn.RaceProps.Animal;
 			IntVec3 best = IntVec3.Invalid;
 			float bestDistance = float.MaxValue;
+			List<IntVec3> candidates = spread ? new List<IntVec3>() : null;
+			List<float> candidateDistances = spread ? new List<float>() : null;
 			int scanned = 0;
 			foreach (IntVec3 cell in GenRadial.RadialCellsAround(pawn.Position, radius, true))
 			{
@@ -148,7 +154,7 @@ namespace ColonyKit.Modules.Hygiene
 					}
 				}
 				float distance = stand.DistanceTo(pawn.Position);
-				if (distance >= bestDistance)
+				if (distance >= bestDistance && !spread)
 				{
 					continue;
 				}
@@ -156,10 +162,41 @@ namespace ColonyKit.Modules.Hygiene
 				{
 					continue;
 				}
-				bestDistance = distance;
-				best = stand;
+				if (!spread)
+				{
+					bestDistance = distance;
+					best = stand;
+					continue;
+				}
+				if (candidates.Count < 64)
+				{
+					candidates.Add(stand);
+					candidateDistances.Add(distance);
+				}
+				if (distance < bestDistance)
+				{
+					bestDistance = distance;
+				}
 			}
-			return best.IsValid ? new LocalTargetInfo(best) : LocalTargetInfo.Invalid;
+			if (!spread)
+			{
+				return best.IsValid ? new LocalTargetInfo(best) : LocalTargetInfo.Invalid;
+			}
+			// 只在「离最近水边不远」的格子里随机，既能喝到水，又不会分散到很远。
+			List<IntVec3> pool = new List<IntVec3>();
+			float limit = bestDistance * 1.3f + 3f;
+			for (int i = 0; i < candidates.Count; i++)
+			{
+				if (candidateDistances[i] <= limit)
+				{
+					pool.Add(candidates[i]);
+				}
+			}
+			if (pool.Count == 0)
+			{
+				return LocalTargetInfo.Invalid;
+			}
+			return new LocalTargetInfo(pool[Rand.Range(0, pool.Count)]);
 		}
 	}
 }

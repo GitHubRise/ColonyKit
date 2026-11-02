@@ -68,7 +68,7 @@ namespace ColonyKit.Modules.Hygiene
 		public const float DefaultThirstPerLiter = 0.65f;
 		public const float MinAnimalThirstRate = 0.1f;
 		public const float MaxAnimalThirstRate = 1.5f;
-		public const float DefaultAnimalThirstRate = 0.5f;
+		public const float DefaultAnimalThirstRate = 0.25f;
 		public const float MaxAnimalFoodThirst = 0.5f;
 		public const float DefaultHerbivorePlantThirst = 0.1f;
 		public const float DefaultCarnivoreMeatThirst = 0.1f;
@@ -96,8 +96,11 @@ namespace ColonyKit.Modules.Hygiene
 		/// <summary>每升水的解渴量（0.05–2）：瓶装水 1 L、水袋、水桶、水龙头与病人喂水都按这个折算。</summary>
 		public float thirstPerLiter = DefaultThirstPerLiter;
 
-		/// <summary>动物口渴速度倍率（0.1–1.5）：默认 0.5，即同样多的水能撑两倍时间。</summary>
+		/// <summary>动物口渴速度倍率（0.1–1.5）：默认 0.25，即同样多的水能撑四倍时间。</summary>
 		public float animalThirstRate = DefaultAnimalThirstRate;
+
+		/// <summary>动物口渴默认值迁移标记：0 = 旧档（默认 0.5），1 = 新默认 0.25。</summary>
+		public int animalThirstRevision = 1;
 
 		/// <summary>草食动物吃植物类食物（草、树、蔬果、菌菇、种子）一次补水，默认 0.1。</summary>
 		public float herbivorePlantThirst = DefaultHerbivorePlantThirst;
@@ -357,6 +360,16 @@ namespace ColonyKit.Modules.Hygiene
 			Scribe_Values.Look(ref contaminationChanceMultiplier, "contaminationChanceMultiplier", 1f);
 			Scribe_Values.Look(ref thirstPerLiter, "thirstPerLiter", DefaultThirstPerLiter);
 			Scribe_Values.Look(ref animalThirstRate, "animalThirstRate", DefaultAnimalThirstRate);
+			Scribe_Values.Look(ref animalThirstRevision, "animalThirstRevision", 0);
+			if (Scribe.mode == LoadSaveMode.PostLoadInit && animalThirstRevision < 1)
+			{
+				// 上一版默认 0.5；旧存档/旧设置里存的 0.5 自动降到新的 0.25。
+				if (Mathf.Abs(animalThirstRate - 0.5f) < 0.0001f)
+				{
+					animalThirstRate = DefaultAnimalThirstRate;
+				}
+				animalThirstRevision = 1;
+			}
 			Scribe_Values.Look(ref herbivorePlantThirst, "herbivorePlantThirst", DefaultHerbivorePlantThirst);
 			Scribe_Values.Look(ref carnivoreMeatThirst, "carnivoreMeatThirst", DefaultCarnivoreMeatThirst);
 			Scribe_Values.Look(ref mineralWaterSatiety, "mineralWaterSatiety", 0.02f);

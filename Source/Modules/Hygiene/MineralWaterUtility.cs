@@ -130,33 +130,63 @@ namespace ColonyKit.Modules.Hygiene
 			return null;
 		}
 
-		public static Thing FindSpawned(Pawn pawn)
+		public static Thing FindSpawned(Pawn pawn, float maxDistance = 9999f)
 		{
 			if (pawn?.Map == null)
 			{
 				return null;
 			}
-			return FindSpawnedDef(pawn, Def) ?? FindSpawnedDef(pawn, PurifiedDef) ?? FindSpawnedDef(pawn, BoiledDef);
+			Thing mineral = FindSpawnedDef(pawn, Def, maxDistance);
+			Thing purified = FindSpawnedDef(pawn, PurifiedDef, maxDistance);
+			Thing boiled = FindSpawnedDef(pawn, BoiledDef, maxDistance);
+			return Nearest(pawn, mineral, Nearest(pawn, purified, boiled));
 		}
 
-		private static Thing FindSpawnedDef(Pawn pawn, ThingDef def)
+		/// <summary>两件水里离 pawn 更近的那件（用于在三种瓶装水之间挑最近的一瓶）。</summary>
+		private static Thing Nearest(Pawn pawn, Thing a, Thing b)
+		{
+			if (a == null)
+			{
+				return b;
+			}
+			if (b == null)
+			{
+				return a;
+			}
+			return a.Position.DistanceToSquared(pawn.Position) <= b.Position.DistanceToSquared(pawn.Position)
+				? a
+				: b;
+		}
+
+		private static Thing FindSpawnedDef(Pawn pawn, ThingDef def, float maxDistance)
 		{
 			if (def == null)
 			{
 				return null;
 			}
+			Thing best = null;
+			float bestDistance = maxDistance * maxDistance;
 			foreach (Thing thing in pawn.Map.listerThings.ThingsOfDef(def))
 			{
 				if (thing.stackCount <= 0
 					|| thing.IsForbidden(pawn)
-					|| thing.IsBurning()
-					|| !pawn.CanReserveAndReach(thing, PathEndMode.ClosestTouch, pawn.NormalMaxDanger()))
+					|| thing.IsBurning())
 				{
 					continue;
 				}
-				return thing;
+				float distance = thing.Position.DistanceToSquared(pawn.Position);
+				if (distance > bestDistance)
+				{
+					continue;
+				}
+				if (!pawn.CanReserveAndReach(thing, PathEndMode.ClosestTouch, pawn.NormalMaxDanger()))
+				{
+					continue;
+				}
+				bestDistance = distance;
+				best = thing;
 			}
-			return null;
+			return best;
 		}
 
 		public static Thing FindInCaravan(Caravan caravan)
