@@ -150,7 +150,7 @@ namespace ColonyKit
 			Color previousColor = GUI.color;
 
 			// 不要在竖直方向收缩：GUI.Label 会按 rect 裁切，高度小于行高时文字只剩半截。
-			Rect labelRect = new Rect(rect.x + 12f, rect.y, rect.width - 12f, rect.height);
+			Rect labelRect = new Rect(rect.x + 10f, rect.y, rect.width - 10f, rect.height);
 			labelRect.width = Mathf.Max(0f, labelRect.width - (tag.NullOrEmpty() ? 30f : 76f));
 			Text.Anchor = TextAnchor.MiddleLeft;
 			GUI.color = enabled ? Color.white : new Color(1f, 1f, 1f, 0.45f);
@@ -300,12 +300,12 @@ namespace ColonyKit
 			Color previousColor = GUI.color;
 
 			float labelWidth = rect.width * 0.36f;
-			Rect labelRect = new Rect(rect.x + 2f, rect.y, labelWidth - 2f, rect.height);
+			Rect labelRect = new Rect(rect.x + 10f, rect.y, labelWidth - 10f, rect.height);
 			Text.Anchor = TextAnchor.MiddleLeft;
 			Widgets.Label(labelRect, label);
 
 			const float valueWidth = 64f;
-			Rect valueRect = new Rect(rect.xMax - valueWidth - 2f, rect.y, valueWidth, rect.height);
+			Rect valueRect = new Rect(rect.xMax - valueWidth - 10f, rect.y, valueWidth, rect.height);
 			Text.Anchor = TextAnchor.MiddleRight;
 			GUI.color = new Color(0.95f, 0.88f, 0.70f);
 			Widgets.Label(valueRect, valueLabel);
@@ -314,8 +314,8 @@ namespace ColonyKit
 			Text.Anchor = previousAnchor;
 
 			// 滑轨左右各留空，两端不会被框线或数值压住。
-			float trackX = rect.x + labelWidth + 6f;
-			float trackWidth = Mathf.Max(40f, valueRect.x - trackX - 10f);
+			float trackX = rect.x + labelWidth + 4f;
+			float trackWidth = Mathf.Max(40f, valueRect.x - trackX - 6f);
 			Rect track = new Rect(trackX, rect.y + 8f, trackWidth, 14f);
 			Widgets.DrawBoxSolid(track, new Color(0.07f, 0.07f, 0.07f, 0.95f));
 
@@ -537,9 +537,12 @@ namespace ColonyKit
 
 			Rect rect = listing.GetRect(30f);
 			DrawControlHover(rect);
-			Widgets.Label(rect.LeftPart(0.42f), label);
+			TextAnchor prevLabelAnchor = Text.Anchor;
+			Text.Anchor = TextAnchor.MiddleLeft;
+			Widgets.Label(new Rect(rect.x + 10f, rect.y, rect.width * 0.36f - 10f, rect.height), label);
+			Text.Anchor = prevLabelAnchor;
 
-			if (!Widgets.ButtonText(rect.RightPart(0.58f), optionLabel(current) + " ▼"))
+			if (!Widgets.ButtonText(new Rect(rect.x + rect.width * 0.36f + 4f, rect.y + 3f, rect.width * 0.64f - 14f, 24f), optionLabel(current) + " ▼"))
 			{
 				return;
 			}
@@ -650,7 +653,10 @@ namespace ColonyKit
 
 			Rect rect = listing.GetRect(30f);
 			DrawControlHover(rect);
-			Widgets.Label(rect.LeftPart(0.42f), label);
+			TextAnchor prevLabelAnchor = Text.Anchor;
+			Text.Anchor = TextAnchor.MiddleLeft;
+			Widgets.Label(new Rect(rect.x + 10f, rect.y, rect.width * 0.36f - 10f, rect.height), label);
+			Text.Anchor = prevLabelAnchor;
 
 			Rect right = rect.RightPart(0.58f);
 			const float arrowWidth = 30f;
@@ -708,11 +714,11 @@ namespace ColonyKit
 			DrawControlHover(rect);
 			TextAnchor labelAnchor = Text.Anchor;
 			Text.Anchor = TextAnchor.MiddleLeft;
-			Widgets.Label(new Rect(rect.x + 2f, rect.y, rect.width * 0.36f - 2f, rect.height), label);
+			Widgets.Label(new Rect(rect.x + 10f, rect.y, rect.width * 0.36f - 10f, rect.height), label);
 			Text.Anchor = labelAnchor;
 
 			string result = Widgets.TextField(
-				new Rect(rect.x + rect.width * 0.36f + 6f, rect.y + 3f, rect.width * 0.64f - 10f, 24f),
+				new Rect(rect.x + rect.width * 0.36f + 4f, rect.y + 3f, rect.width * 0.64f - 14f, 24f),
 				value ?? "",
 				maxLength);
 			if (!tooltip.NullOrEmpty())
