@@ -18,8 +18,10 @@ namespace ColonyKit
 
 		public override void DoContents(Listing_Standard listing, ColonyKitSettings settings)
 		{
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Section.Modules".Loc());
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Modules.Hint".Loc());
+
+			SettingsWidgets.FrameScope scope = SettingsWidgets.FrameBegin(
+				listing, "ColonyKit.Settings.Section.Modules".Loc());
 
 			foreach (IColonyKitModule module in ModuleRegistry.All)
 			{
@@ -32,12 +34,13 @@ namespace ColonyKit
 					tooltip += "\n" + "ColonyKit.Settings.Module.Locked".Loc();
 				}
 
-				SettingsWidgets.Checkbox(
+				SettingsWidgets.ToggleRow(
 					listing,
 					module.DisplayNameKey.Loc(),
 					ref enabled,
 					tooltip,
-					enabled: !module.Locked);
+					enabled: !module.Locked,
+					tag: module.Locked ? "锁定" : null);
 
 				if (enabled != before)
 				{
@@ -47,7 +50,7 @@ namespace ColonyKit
 				}
 			}
 
-			listing.Gap();
+			SettingsWidgets.FrameEnd(listing, scope);
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Modules.RestartHint".Loc());
 		}
 

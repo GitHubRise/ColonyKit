@@ -18,10 +18,12 @@ namespace ColonyKit.Modules.Storage
 			StorageSettings data = settings.GetModuleSettings<StorageSettings>();
 
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Storage.Hint".Loc());
-			listing.Gap();
+
+			SettingsWidgets.FrameScope scope = SettingsWidgets.FrameBegin(
+				listing, "ColonyKit.Settings.Tab.Storage".Loc());
 
 			bool beforeEnabled = data.enabled;
-			data.enabled = SettingsWidgets.Checkbox(
+			data.enabled = SettingsWidgets.ToggleRow(
 				listing,
 				"ColonyKit.Settings.Storage.Enabled".Loc(),
 				ref data.enabled,
@@ -86,13 +88,12 @@ namespace ColonyKit.Modules.Storage
 			}
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Storage.WarehouseStacks.Desc".Loc());
 
-			data.logChanges = SettingsWidgets.Checkbox(
+			data.logChanges = SettingsWidgets.ToggleRow(
 				listing,
 				"ColonyKit.Settings.Storage.LogChanges".Loc(),
 				ref data.logChanges,
 				"ColonyKit.Settings.Storage.LogChanges.Desc".Loc());
 
-			listing.Gap();
 			if (SettingsWidgets.Button(listing, "ColonyKit.Settings.Storage.Apply".Loc()))
 			{
 				if (data.enabled)
@@ -105,6 +106,7 @@ namespace ColonyKit.Modules.Storage
 				}
 				Messages.Message("ColonyKit.Settings.Storage.Applied".Loc(), MessageTypeDefOf.NeutralEvent, false);
 			}
+			SettingsWidgets.FrameEnd(listing, scope);
 		}
 
 		public override void Reset(ColonyKitSettings settings)

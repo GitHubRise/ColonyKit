@@ -26,6 +26,8 @@ namespace ColonyKit
 	{
 		private const float TabHeight = 32f;
 		private const float TabGap = 6f;
+		private const float SubTabHeight = 28f;
+		private const float SubTabGap = 5f;
 		private const float ToolbarHeight = 26f;
 		private const float ContentGap = 8f;
 		private const float ButtonWidth = 110f;
@@ -36,6 +38,7 @@ namespace ColonyKit
 		private readonly List<SettingsPage> pages;
 		private readonly Dictionary<string, Vector2> scrollPositions = new Dictionary<string, Vector2>();
 		private readonly Dictionary<string, float> pageHeights = new Dictionary<string, float>();
+		private readonly Dictionary<string, int> subTabIndexes = new Dictionary<string, int>();
 
 		private int selectedIndex;
 
@@ -122,10 +125,21 @@ namespace ColonyKit
 			Rect tabsRect = new Rect(inRect.x, inRect.y, inRect.width, TabHeight);
 			DrawTabs(tabsRect);
 
-			Rect toolbarRect = new Rect(inRect.x, tabsRect.yMax + 4f, inRect.width, ToolbarHeight);
+			SettingsPage page = pages[selectedIndex];
+			IReadOnlyList<string> subTabs = page.SubTabKeys;
+			float usedHeight = TabHeight + 4f;
+
+			if (subTabs != null && subTabs.Count > 0)
+			{
+				Rect subRect = new Rect(inRect.x, inRect.y + usedHeight, inRect.width, SubTabHeight);
+				DrawSubTabs(subRect, page, subTabs);
+				usedHeight += SubTabHeight + 4f;
+			}
+
+			Rect toolbarRect = new Rect(inRect.x, inRect.y + usedHeight, inRect.width, ToolbarHeight);
 			DrawToolbar(toolbarRect);
 
-			float usedHeight = TabHeight + 4f + ToolbarHeight + ContentGap;
+			usedHeight += ToolbarHeight + ContentGap;
 			Rect contentRect = new Rect(
 				inRect.x,
 				inRect.y + usedHeight,
@@ -138,6 +152,66 @@ namespace ColonyKit
 			}
 
 			DrawPage(contentRect);
+		}
+
+		/// <summary>第二级页签：宽度按数量均分，点击切换并回到顶部。</summary>
+		private void DrawSubTabs(Rect inRect, SettingsPage page, IReadOnlyList<string> subTabs)
+		{
+			int current = GetSubTab(page);
+			float tabWidth = (inRect.width - (subTabs.Count - 1) * SubTabGap) / subTabs.Count;
+
+			for (int i = 0; i < subTabs.Count; i++)
+			{
+				Rect tabRect = new Rect(
+					inRect.x + i * (tabWidth + SubTabGap),
+					inRect.y,
+					tabWidth,
+					inRect.height);
+
+				bool selected = i == current;
+				Widgets.DrawOptionBackground(tabRect, selected);
+				if (!selected && Mouse.IsOver(tabRect))
+				{
+					Widgets.DrawHighlight(tabRect);
+				}
+
+				if (Widgets.ButtonInvisible(tabRect, false))
+				{
+					subTabIndexes[page.Id] = i;
+					scrollPositions[page.Id] = Vector2.zero;
+					pageHeights.Remove(page.Id);
+					SoundDefOf.Click.PlayOneShotOnCamera();
+				}
+
+				TextAnchor previousAnchor = Text.Anchor;
+				GameFont previousFont = Text.Font;
+				Text.Font = GameFont.Small;
+				Text.Anchor = TextAnchor.MiddleCenter;
+				Color previousColor = GUI.color;
+				GUI.color = selected ? Color.white : new Color(1f, 1f, 1f, 0.72f);
+				Widgets.Label(tabRect, subTabs[i].Loc());
+				GUI.color = previousColor;
+				Text.Anchor = previousAnchor;
+				Text.Font = previousFont;
+			}
+		}
+
+		private int GetSubTab(SettingsPage page)
+		{
+			IReadOnlyList<string> subTabs = page.SubTabKeys;
+			if (subTabs == null || subTabs.Count == 0)
+			{
+				return 0;
+			}
+
+			if (!subTabIndexes.TryGetValue(page.Id, out int index)
+				|| index < 0
+				|| index >= subTabs.Count)
+			{
+				return 0;
+			}
+
+			return index;
 		}
 
 		private void DrawTabs(Rect inRect)
@@ -255,10 +329,12 @@ namespace ColonyKit
 			SettingsSearch.BeginPage();
 			SettingsWidgets.BeginPage();
 
+			int subTab = GetSubTab(page);
+
 			// AutoScrollView 用上一帧高度估算 viewRect：内容超过视口时自动出现滚动条。
 			AutoScrollView.Draw(contentRect, ref scroll, ref height, listing =>
 			{
-				page.DoContents(listing, settings);
+				page.DoSubTabContents(subTab, listing, settings);
 
 				if (SettingsSearch.Active && SettingsSearch.PageMatches == 0)
 				{

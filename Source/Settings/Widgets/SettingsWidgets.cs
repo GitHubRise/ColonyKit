@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using RimWorld;
 using UnityEngine;
 using Verse;
+using Verse.Sound;
 
 namespace ColonyKit
 {
@@ -89,6 +91,157 @@ namespace ColonyKit
 			}
 
 			return listing.ButtonText(label);
+		}
+
+		/// <summary>一行放两个按钮（如「全开 / 全关」），各占一半宽度。</summary>
+		public static bool ButtonPair(
+			Listing_Standard listing,
+			string leftLabel,
+			string rightLabel,
+			out bool leftClicked)
+		{
+			leftClicked = false;
+			bool rightClicked = false;
+			if (!BeginControl(listing, leftLabel + " " + rightLabel, null))
+			{
+				return false;
+			}
+
+			Rect rect = listing.GetRect(26f);
+			const float gap = 8f;
+			float width = (rect.width - gap) / 2f;
+			leftClicked = Widgets.ButtonText(new Rect(rect.x, rect.y, width, rect.height), leftLabel);
+			rightClicked = Widgets.ButtonText(
+				new Rect(rect.x + width + gap, rect.y, width, rect.height), rightLabel);
+			listing.Gap(2f);
+			return leftClicked || rightClicked;
+		}
+
+		/// <summary>
+		/// 一行式开关：标签在左、勾在右（框内右缘），整行可点。
+		/// 用来替代「勾选框 + 标签」横向铺开的老样式，长标签也不会把勾挤出框外。
+		/// </summary>
+		public static bool ToggleRow(
+			Listing_Standard listing,
+			string label,
+			ref bool value,
+			string tooltip = null,
+			bool enabled = true,
+			string tag = null)
+		{
+			if (!BeginControl(listing, label, tooltip))
+			{
+				return value;
+			}
+
+			Rect rect = listing.GetRect(26f);
+			if (Mouse.IsOver(rect))
+			{
+				Widgets.DrawBoxSolid(rect, new Color(1f, 1f, 1f, 0.05f));
+				Widgets.DrawBoxSolid(
+					new Rect(rect.x, rect.y, 3f, rect.height),
+					new Color(1f, 0.82f, 0.25f, 0.8f));
+			}
+			Widgets.DrawBoxSolid(
+				new Rect(rect.x + 4f, rect.yMax - 1f, rect.width - 8f, 1f),
+				new Color(1f, 1f, 1f, 0.07f));
+
+			TextAnchor previousAnchor = Text.Anchor;
+			Color previousColor = GUI.color;
+
+			Rect labelRect = rect.ContractedBy(6f);
+			labelRect.width = Mathf.Max(0f, labelRect.width - (tag.NullOrEmpty() ? 28f : 74f));
+			Text.Anchor = TextAnchor.MiddleLeft;
+			GUI.color = enabled ? Color.white : new Color(1f, 1f, 1f, 0.45f);
+			Widgets.Label(labelRect, label);
+
+			if (!tag.NullOrEmpty())
+			{
+				Rect tagRect = new Rect(rect.xMax - 56f, rect.y, 34f, rect.height);
+				GUI.color = new Color(1f, 1f, 1f, 0.38f);
+				Text.Font = GameFont.Tiny;
+				Text.Anchor = TextAnchor.MiddleRight;
+				Widgets.Label(tagRect, tag);
+				Text.Font = GameFont.Small;
+			}
+
+			GUI.color = previousColor;
+			Text.Anchor = previousAnchor;
+
+			const float checkSize = 18f;
+			float checkX = rect.xMax - checkSize - 6f;
+			float checkY = rect.y + (rect.height - checkSize) / 2f;
+			Widgets.CheckboxDraw(checkX, checkY, value, disabled: !enabled, size: checkSize);
+
+			if (enabled && Widgets.ButtonInvisible(rect))
+			{
+				value = !value;
+				SoundDefOf.Click.PlayOneShotOnCamera();
+			}
+
+			if (!tooltip.NullOrEmpty())
+			{
+				TooltipHandler.TipRegion(rect, tooltip);
+			}
+
+			listing.Gap(0f);
+			return value;
+		}
+
+		/// <summary>
+		/// 显式框的起点：先给框外的标题留出高度，再返回记录用的作用域。
+		/// 内容照常往 listing 里画，结束时调用 <see cref="FrameEnd"/> 画框线和标题。
+		/// </summary>
+		public static FrameScope FrameBegin(Listing_Standard listing, string title)
+		{
+			Rect titleRect = listing.GetRect(20f);
+			listing.Gap(2f);
+			return new FrameScope
+			{
+				title = title,
+				titleRect = titleRect,
+				x = titleRect.x,
+				y = titleRect.yMax + 3f,
+				width = titleRect.width,
+				matches = SettingsSearch.PageMatches
+			};
+		}
+
+		/// <summary>显式框的终点：画标题 + 1px 边框；检索时只有框内有命中才画。</summary>
+		public static void FrameEnd(Listing_Standard listing, FrameScope frame)
+		{
+			float bottom = listing.GetRect(0f).y;
+			bool matched = !SettingsSearch.Active || SettingsSearch.PageMatches > frame.matches;
+			if (!matched)
+			{
+				listing.Gap(10f);
+				return;
+			}
+
+			// 标题画在框外上方。
+			GameFont previousFont = Text.Font;
+			Color previousColor = GUI.color;
+			Text.Font = GameFont.Small;
+			GUI.color = new Color(0.85f, 0.72f, 0.44f);
+			Widgets.Label(frame.titleRect, frame.title);
+			Text.Font = previousFont;
+			GUI.color = previousColor;
+
+			float height = Mathf.Max(18f, bottom - frame.y + 8f);
+			Rect box = new Rect(frame.x - 3f, frame.y - 2f, frame.width + 6f, height);
+			Widgets.DrawBox(box);
+			listing.Gap(12f);
+		}
+
+		/// <summary>显式框的作用域数据，页面只需要原样传回 <see cref="FrameEnd"/>。</summary>
+		public struct FrameScope
+		{
+			public string title;
+			public Rect titleRect;
+			public float x;
+			public float y;
+			public float width;
+			public int matches;
 		}
 
 		/// <summary>

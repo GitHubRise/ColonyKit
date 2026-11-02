@@ -288,4 +288,32 @@
 	<CK.Robotics.Job.Assemble>Assembling a new Mk-V</CK.Robotics.Job.Assemble>
 	<CK.Robotics.Ai.Research.Robotics>Research robotics: {0}</CK.Robotics.Ai.Research.Robotics>
 	<CK.Robotics.Ai.Research.Prerequisite>Research prerequisite tech: {0}</CK.Robotics.Ai.Research.Prerequisite>
+	<ColonyKit.Settings.Robotics.Sub.Chores>Chores</ColonyKit.Settings.Robotics.Sub.Chores>
+	<ColonyKit.Settings.Robotics.Sub.Parameters>Parameters</ColonyKit.Settings.Robotics.Sub.Parameters>
+	<ColonyKit.Settings.Robotics.Sub.Combat>Combat</ColonyKit.Settings.Robotics.Sub.Combat>
+	<ColonyKit.Settings.Robotics.Sub.Charging>Charging</ColonyKit.Settings.Robotics.Sub.Charging>
+	<ColonyKit.Settings.Robotics.Sub.AreaMaintenance>Area &amp; upkeep</ColonyKit.Settings.Robotics.Sub.AreaMaintenance>
+	<ColonyKit.Settings.Robotics.Sub.Ai>Mk-V AI</ColonyKit.Settings.Robotics.Sub.Ai>
+	<ColonyKit.Settings.Robotics.Group.Cleaning>Cleaning</ColonyKit.Settings.Robotics.Group.Cleaning>
+	<ColonyKit.Settings.Robotics.Group.Hauling>Hauling &amp; storage</ColonyKit.Settings.Robotics.Group.Hauling>
+	<ColonyKit.Settings.Robotics.Group.Safety>Safety</ColonyKit.Settings.Robotics.Group.Safety>
+	<ColonyKit.Settings.Robotics.Group.Livestock>Livestock &amp; supply</ColonyKit.Settings.Robotics.Group.Livestock>
+	<ColonyKit.Settings.Robotics.Group.Production>Production</ColonyKit.Settings.Robotics.Group.Production>
+	<ColonyKit.Settings.Robotics.Group.Construction>Construction &amp; care</ColonyKit.Settings.Robotics.Group.Construction>
+	<ColonyKit.Settings.Robotics.Group.Power>Power &amp; thresholds</ColonyKit.Settings.Robotics.Group.Power>
+	<ColonyKit.Settings.Robotics.Group.Carrying>Carry capacity</ColonyKit.Settings.Robotics.Group.Carrying>
+	<ColonyKit.Settings.Robotics.Group.Electricity>Electricity</ColonyKit.Settings.Robotics.Group.Electricity>
+	<ColonyKit.Settings.Robotics.Group.CombatToggles>Combat toggles</ColonyKit.Settings.Robotics.Group.CombatToggles>
+	<ColonyKit.Settings.Robotics.Group.Engagement>Engagement &amp; defense</ColonyKit.Settings.Robotics.Group.Engagement>
+	<ColonyKit.Settings.Robotics.Group.ArcBlade>Arc blade</ColonyKit.Settings.Robotics.Group.ArcBlade>
+	<ColonyKit.Settings.Robotics.Group.ArcEmitter>Arc emitter</ColonyKit.Settings.Robotics.Group.ArcEmitter>
+	<ColonyKit.Settings.Robotics.Group.PassiveCharging>Passive charging</ColonyKit.Settings.Robotics.Group.PassiveCharging>
+	<ColonyKit.Settings.Robotics.Group.ActiveCharging>Active charging</ColonyKit.Settings.Robotics.Group.ActiveCharging>
+	<ColonyKit.Settings.Robotics.Group.Area>Work area</ColonyKit.Settings.Robotics.Group.Area>
+	<ColonyKit.Settings.Robotics.Group.Durability>Durability &amp; recovery</ColonyKit.Settings.Robotics.Group.Durability>
+	<ColonyKit.Settings.Robotics.Group.Appearance>Presentation</ColonyKit.Settings.Robotics.Group.Appearance>
+	<ColonyKit.Settings.Robotics.Group.Connection>Connection</ColonyKit.Settings.Robotics.Group.Connection>
+	<ColonyKit.Settings.Robotics.Group.Request>Request</ColonyKit.Settings.Robotics.Group.Request>
+	<ColonyKit.Settings.Robotics.Group.Behavior>Behavior</ColonyKit.Settings.Robotics.Group.Behavior>
+	<ColonyKit.Settings.Robotics.Group.Autonomy>Autonomy</ColonyKit.Settings.Robotics.Group.Autonomy>
 </LanguageData>

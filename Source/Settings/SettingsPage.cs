@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Verse;
 
 namespace ColonyKit
@@ -34,9 +35,26 @@ namespace ColonyKit
 		public virtual bool CanReset => true;
 
 		/// <summary>
+		/// 本页的子页签翻译键。返回 null 或空表示不分子页签。
+		/// </summary>
+		public virtual IReadOnlyList<string> SubTabKeys => null;
+
+		/// <summary>
 		/// 往 listing 里追加本页控件。滚动和边距由控制器处理，这里只管行内容。
 		/// </summary>
 		public abstract void DoContents(Listing_Standard listing, ColonyKitSettings settings);
+
+		/// <summary>
+		/// 子页签版本的内容入口：默认忽略索引，直接画整页。
+		/// 有子页签的页面重写它，按 <paramref name="subTab"/> 分派。
+		/// </summary>
+		public virtual void DoSubTabContents(
+			int subTab,
+			Listing_Standard listing,
+			ColonyKitSettings settings)
+		{
+			DoContents(listing, settings);
+		}
 
 		/// <summary>
 		/// 恢复本页默认值。默认空实现（只读页无需重置）。

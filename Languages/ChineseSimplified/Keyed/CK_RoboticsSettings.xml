@@ -288,4 +288,32 @@
 	<CK.Robotics.Job.Assemble>组装新的 Mk-V</CK.Robotics.Job.Assemble>
 	<CK.Robotics.Ai.Research.Robotics>研究机器人科技：{0}</CK.Robotics.Ai.Research.Robotics>
 	<CK.Robotics.Ai.Research.Prerequisite>研究机器人所需科技：{0}</CK.Robotics.Ai.Research.Prerequisite>
+	<ColonyKit.Settings.Robotics.Sub.Chores>家务</ColonyKit.Settings.Robotics.Sub.Chores>
+	<ColonyKit.Settings.Robotics.Sub.Parameters>参数</ColonyKit.Settings.Robotics.Sub.Parameters>
+	<ColonyKit.Settings.Robotics.Sub.Combat>作战</ColonyKit.Settings.Robotics.Sub.Combat>
+	<ColonyKit.Settings.Robotics.Sub.Charging>充电</ColonyKit.Settings.Robotics.Sub.Charging>
+	<ColonyKit.Settings.Robotics.Sub.AreaMaintenance>区域与维护</ColonyKit.Settings.Robotics.Sub.AreaMaintenance>
+	<ColonyKit.Settings.Robotics.Sub.Ai>Mk-V AI</ColonyKit.Settings.Robotics.Sub.Ai>
+	<ColonyKit.Settings.Robotics.Group.Cleaning>清洁</ColonyKit.Settings.Robotics.Group.Cleaning>
+	<ColonyKit.Settings.Robotics.Group.Hauling>搬运与库存</ColonyKit.Settings.Robotics.Group.Hauling>
+	<ColonyKit.Settings.Robotics.Group.Safety>安全</ColonyKit.Settings.Robotics.Group.Safety>
+	<ColonyKit.Settings.Robotics.Group.Livestock>牧场与供给</ColonyKit.Settings.Robotics.Group.Livestock>
+	<ColonyKit.Settings.Robotics.Group.Production>生产</ColonyKit.Settings.Robotics.Group.Production>
+	<ColonyKit.Settings.Robotics.Group.Construction>建造与照料</ColonyKit.Settings.Robotics.Group.Construction>
+	<ColonyKit.Settings.Robotics.Group.Power>电量与阈值</ColonyKit.Settings.Robotics.Group.Power>
+	<ColonyKit.Settings.Robotics.Group.Carrying>携带能力</ColonyKit.Settings.Robotics.Group.Carrying>
+	<ColonyKit.Settings.Robotics.Group.Electricity>电力</ColonyKit.Settings.Robotics.Group.Electricity>
+	<ColonyKit.Settings.Robotics.Group.CombatToggles>作战开关</ColonyKit.Settings.Robotics.Group.CombatToggles>
+	<ColonyKit.Settings.Robotics.Group.Engagement>交战与防御</ColonyKit.Settings.Robotics.Group.Engagement>
+	<ColonyKit.Settings.Robotics.Group.ArcBlade>电弧刃</ColonyKit.Settings.Robotics.Group.ArcBlade>
+	<ColonyKit.Settings.Robotics.Group.ArcEmitter>电弧发射器</ColonyKit.Settings.Robotics.Group.ArcEmitter>
+	<ColonyKit.Settings.Robotics.Group.PassiveCharging>被动充电</ColonyKit.Settings.Robotics.Group.PassiveCharging>
+	<ColonyKit.Settings.Robotics.Group.ActiveCharging>主动充电</ColonyKit.Settings.Robotics.Group.ActiveCharging>
+	<ColonyKit.Settings.Robotics.Group.Area>工作区域</ColonyKit.Settings.Robotics.Group.Area>
+	<ColonyKit.Settings.Robotics.Group.Durability>耐久与恢复</ColonyKit.Settings.Robotics.Group.Durability>
+	<ColonyKit.Settings.Robotics.Group.Appearance>表现</ColonyKit.Settings.Robotics.Group.Appearance>
+	<ColonyKit.Settings.Robotics.Group.Connection>连接</ColonyKit.Settings.Robotics.Group.Connection>
+	<ColonyKit.Settings.Robotics.Group.Request>请求参数</ColonyKit.Settings.Robotics.Group.Request>
+	<ColonyKit.Settings.Robotics.Group.Behavior>行为</ColonyKit.Settings.Robotics.Group.Behavior>
+	<ColonyKit.Settings.Robotics.Group.Autonomy>自主行为</ColonyKit.Settings.Robotics.Group.Autonomy>
 </LanguageData>

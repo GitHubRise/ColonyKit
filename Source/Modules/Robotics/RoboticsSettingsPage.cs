@@ -5,142 +5,138 @@ using Verse;
 
 namespace ColonyKit.Modules.Robotics
 {
-	/// <summary>机器人设置页：家务开关、阈值、电池容量、工作范围与表现。</summary>
+	/// <summary>
+	/// 机器人设置页：按「家务 / 参数 / 作战 / 充电 / 区域与维护 / Mk-V AI」分成子页签，
+	/// 每个参数组用显式框包起来，开关统一成「标签在左、勾在右」的行。
+	/// </summary>
 	public sealed class RoboticsSettingsPage : SettingsPage
 	{
+		private static readonly string[] SubTabs =
+		{
+			"ColonyKit.Settings.Robotics.Sub.Chores",
+			"ColonyKit.Settings.Robotics.Sub.Parameters",
+			"ColonyKit.Settings.Robotics.Sub.Combat",
+			"ColonyKit.Settings.Robotics.Sub.Charging",
+			"ColonyKit.Settings.Robotics.Sub.AreaMaintenance",
+			"ColonyKit.Settings.Robotics.Sub.Ai"
+		};
+
 		public override string Id => "robotics";
 
 		public override string TitleKey => "ColonyKit.Settings.Tab.Robotics";
 
 		public override int Order => 28;
 
+		public override IReadOnlyList<string> SubTabKeys => SubTabs;
+
 		public override void DoContents(Listing_Standard listing, ColonyKitSettings settings)
 		{
+			DoSubTabContents(0, listing, settings);
+		}
+
+		public override void DoSubTabContents(
+			int subTab,
+			Listing_Standard listing,
+			ColonyKitSettings settings)
+		{
 			RoboticsSettings data = settings.GetModuleSettings<RoboticsSettings>();
+			switch (subTab)
+			{
+				case 1:
+					DrawParameters(listing, data);
+					break;
+				case 2:
+					DrawCombat(listing, data);
+					break;
+				case 3:
+					DrawCharging(listing, data);
+					break;
+				case 4:
+					DrawAreaAndMaintenance(listing, data);
+					break;
+				case 5:
+					DrawAi(listing, data);
+					break;
+				default:
+					DrawChores(listing, data);
+					break;
+			}
+		}
 
+		// ---------------------------------------------------------------- 家务
+
+		private void DrawChores(Listing_Standard listing, RoboticsSettings data)
+		{
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Robotics.Hint".Loc());
-			listing.Gap();
 
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.Chores".Loc());
 			bool beforeSweep = data.sweep;
 			bool beforeScrub = data.scrub;
 			bool beforeHaul = data.haul;
 
-			data.sweep = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.Sweep".Loc(),
-				ref data.sweep,
-				"ColonyKit.Settings.Robotics.Sweep.Desc".Loc());
-			data.scrub = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.Scrub".Loc(),
-				ref data.scrub,
-				"ColonyKit.Settings.Robotics.Scrub.Desc".Loc());
-			data.haul = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.Haul".Loc(),
-				ref data.haul,
-				"ColonyKit.Settings.Robotics.Haul.Desc".Loc());
-			data.firefight = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.Firefight".Loc(),
-				ref data.firefight,
-				"ColonyKit.Settings.Robotics.Firefight.Desc".Loc());
-			data.butcher = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.Butcher".Loc(),
-				ref data.butcher,
-				"ColonyKit.Settings.Robotics.Butcher.Desc".Loc());
-			data.corpseDisposal = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.CorpseDisposal".Loc(),
-				ref data.corpseDisposal,
-				"ColonyKit.Settings.Robotics.CorpseDisposal.Desc".Loc());
-			data.refuel = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.Refuel".Loc(),
-				ref data.refuel,
-				"ColonyKit.Settings.Robotics.Refuel.Desc".Loc());
-			data.feedPrisoners = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.FeedPrisoners".Loc(),
-				ref data.feedPrisoners,
-				"ColonyKit.Settings.Robotics.FeedPrisoners.Desc".Loc());
-			data.hygiene = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.Hygiene".Loc(),
-				ref data.hygiene,
-				"ColonyKit.Settings.Robotics.Hygiene.Desc".Loc());
-			data.ropeAnimals = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.RopeAnimals".Loc(),
-				ref data.ropeAnimals,
-				"ColonyKit.Settings.Robotics.RopeAnimals.Desc".Loc());
-			data.storage = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.Storage".Loc(),
-				ref data.storage,
-				"ColonyKit.Settings.Robotics.Storage.Desc".Loc());
-			data.rescue = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.Rescue".Loc(),
-				ref data.rescue,
-				"ColonyKit.Settings.Robotics.Rescue.Desc".Loc());
-			data.cook = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.Cook".Loc(),
-				ref data.cook,
-				"ColonyKit.Settings.Robotics.Cook.Desc".Loc());
-			data.doctor = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.Doctor".Loc(),
-				ref data.doctor,
-				"ColonyKit.Settings.Robotics.Doctor.Desc".Loc());
-			data.research = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.Research".Loc(),
-				ref data.research,
-				"ColonyKit.Settings.Robotics.Research.Desc".Loc());
-			data.crafting = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.Crafting".Loc(),
-				ref data.crafting,
-				"ColonyKit.Settings.Robotics.Crafting.Desc".Loc());
-			data.construct = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.Construct".Loc(),
-				ref data.construct,
-				"ColonyKit.Settings.Robotics.Construct.Desc".Loc());
-			data.water = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.Water".Loc(),
-				ref data.water,
-				"ColonyKit.Settings.Robotics.Water.Desc".Loc());
-			data.plants = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.Plants".Loc(),
-				ref data.plants,
-				"ColonyKit.Settings.Robotics.Plants.Desc".Loc());
-			data.dangerAvoidance = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.DangerAvoidance".Loc(),
-				ref data.dangerAvoidance,
-				"ColonyKit.Settings.Robotics.DangerAvoidance.Desc".Loc());
+			SettingsWidgets.FrameScope scope =
+				SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Robotics.Group.Cleaning".Loc());
+			Toggle(listing, data, "Sweep");
+			Toggle(listing, data, "Scrub");
+			Toggle(listing, data, "Hygiene");
+			SettingsWidgets.FrameEnd(listing, scope);
+
+			scope = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Robotics.Group.Hauling".Loc());
+			Toggle(listing, data, "Haul");
+			Toggle(listing, data, "Storage");
+			Toggle(listing, data, "RopeAnimals");
+			SettingsWidgets.FrameEnd(listing, scope);
+
+			scope = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Robotics.Group.Safety".Loc());
+			Toggle(listing, data, "Firefight");
+			Toggle(listing, data, "DangerAvoidance");
+			Toggle(listing, data, "Rescue");
+			SettingsWidgets.FrameEnd(listing, scope);
+
+			scope = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Robotics.Group.Livestock".Loc());
+			Toggle(listing, data, "Butcher");
+			Toggle(listing, data, "CorpseDisposal", tag: "Mk-V");
+			Toggle(listing, data, "Refuel");
+			Toggle(listing, data, "FeedPrisoners");
+			SettingsWidgets.FrameEnd(listing, scope);
+
+			scope = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Robotics.Group.Production".Loc());
+			Toggle(listing, data, "Cook", tag: "Mk-V");
+			Toggle(listing, data, "Doctor", tag: "Mk-V");
+			Toggle(listing, data, "Research", tag: "Mk-V");
+			Toggle(listing, data, "Crafting", tag: "Mk-V");
+			SettingsWidgets.FrameEnd(listing, scope);
+
+			scope = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Robotics.Group.Construction".Loc());
+			Toggle(listing, data, "Construct");
+			Toggle(listing, data, "Water");
+			Toggle(listing, data, "Plants");
+			SettingsWidgets.FrameEnd(listing, scope);
 
 			if (data.sweep != beforeSweep || data.scrub != beforeScrub || data.haul != beforeHaul)
 			{
 				NannyBotUtility.SyncLegacyToggles();
 			}
+		}
 
-			listing.Gap();
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.Parameters".Loc());
+		// ---------------------------------------------------------------- 参数
 
+		private void DrawParameters(Listing_Standard listing, RoboticsSettings data)
+		{
+			SettingsWidgets.FrameScope scope = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Robotics.Group.Power".Loc());
 			data.chargeThreshold = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Robotics.ChargeThreshold".Loc(),
 				data.chargeThreshold,
 				RoboticsSettings.MinChargeThreshold,
 				RoboticsSettings.MaxChargeThreshold,
+				0.01f,
+				value => value.ToStringPercent());
+			data.refuelThreshold = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.RefuelThreshold".Loc(),
+				data.refuelThreshold,
+				RoboticsSettings.MinRefuelThreshold,
+				RoboticsSettings.MaxRefuelThreshold,
 				0.01f,
 				value => value.ToStringPercent());
 
@@ -158,6 +154,19 @@ namespace ColonyKit.Modules.Robotics
 				NannyBotUtility.ApplyBatteryCapacity(beforeCapacity, data.batteryCapacity);
 			}
 
+			data.workRadius = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.WorkRadius".Loc(),
+				data.workRadius,
+				RoboticsSettings.MinWorkRadius,
+				RoboticsSettings.MaxWorkRadius,
+				5f,
+				value => value <= 0.1f
+					? "ColonyKit.Settings.Robotics.Unlimited".Loc()
+					: "CK.Robotics.Cells".Loc(value.ToString("0")));
+			SettingsWidgets.FrameEnd(listing, scope);
+
+			scope = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Robotics.Group.Carrying".Loc());
 			data.robotCarryCapacity = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Robotics.RobotCarryCapacity".Loc(),
@@ -176,7 +185,9 @@ namespace ColonyKit.Modules.Robotics
 				value => "CK.Robotics.Kilograms".Loc(value.ToString("0")));
 			SettingsWidgets.Description(
 				listing, "ColonyKit.Settings.Robotics.CarryCapacityHint".Loc());
+			SettingsWidgets.FrameEnd(listing, scope);
 
+			scope = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Robotics.Group.Electricity".Loc());
 			data.robotPowerEfficiency = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Robotics.RobotPowerEfficiency".Loc(),
@@ -185,7 +196,6 @@ namespace ColonyKit.Modules.Robotics
 				RoboticsSettings.MaxRobotPowerEfficiency,
 				5f,
 				value => value.ToString("0") + "%");
-
 			data.chargePower = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Robotics.ChargePower".Loc(),
@@ -210,30 +220,39 @@ namespace ColonyKit.Modules.Robotics
 				RoboticsSettings.MaxPowerConversionRate,
 				1f,
 				value => value.ToString("0") + "%");
+			SettingsWidgets.FrameEnd(listing, scope);
+		}
 
-			data.refuelThreshold = SettingsWidgets.Slider(
+		// ---------------------------------------------------------------- 作战
+
+		private void DrawCombat(Listing_Standard listing, RoboticsSettings data)
+		{
+			SettingsWidgets.FrameScope scope = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Robotics.Group.CombatToggles".Loc());
+			data.mkvCombatEnabled = SettingsWidgets.ToggleRow(
 				listing,
-				"ColonyKit.Settings.Robotics.RefuelThreshold".Loc(),
-				data.refuelThreshold,
-				RoboticsSettings.MinRefuelThreshold,
-				RoboticsSettings.MaxRefuelThreshold,
-				0.01f,
-				value => value.ToStringPercent());
-
-			data.workRadius = SettingsWidgets.Slider(
+				"ColonyKit.Settings.Robotics.MkVCombatEnabled".Loc(),
+				ref data.mkvCombatEnabled,
+				"ColonyKit.Settings.Robotics.MkVCombatEnabled.Desc".Loc());
+			data.mkvReturnToBay = SettingsWidgets.ToggleRow(
 				listing,
-				"ColonyKit.Settings.Robotics.WorkRadius".Loc(),
-				data.workRadius,
-				RoboticsSettings.MinWorkRadius,
-				RoboticsSettings.MaxWorkRadius,
-				5f,
-				value => value <= 0.1f
-					? "ColonyKit.Settings.Robotics.Unlimited".Loc()
-					: "CK.Robotics.Cells".Loc(value.ToString("0")));
-
-			listing.Gap();
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.Combat".Loc());
-			// 0 = 不赠送；默认 1 台，和旧版「开局赠送 Mk-V」勾选框的效果一致。
+				"ColonyKit.Settings.Robotics.MkVReturnToBay".Loc(),
+				ref data.mkvReturnToBay,
+				"ColonyKit.Settings.Robotics.MkVReturnToBay.Desc".Loc());
+			data.mkvAutoPickupWeapons = SettingsWidgets.ToggleRow(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVAutoPickupWeapons".Loc(),
+				ref data.mkvAutoPickupWeapons,
+				"ColonyKit.Settings.Robotics.MkVAutoPickupWeapons.Desc".Loc());
+			data.mkvDualWield = SettingsWidgets.ToggleRow(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVDualWield".Loc(),
+				ref data.mkvDualWield,
+				"ColonyKit.Settings.Robotics.MkVDualWield.Desc".Loc());
+			data.mkvBayAutoStart = SettingsWidgets.ToggleRow(
+				listing,
+				"ColonyKit.Settings.Robotics.MkVBayAutoStart".Loc(),
+				ref data.mkvBayAutoStart,
+				"ColonyKit.Settings.Robotics.MkVBayAutoStart.Desc".Loc());
 			data.startWithMkVCount = Mathf.RoundToInt(SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Robotics.StartWithMkV".Loc(),
@@ -244,86 +263,9 @@ namespace ColonyKit.Modules.Robotics
 				value => "CK.Robotics.Robots".Loc(value.ToString("0"))));
 			SettingsWidgets.Description(
 				listing, "ColonyKit.Settings.Robotics.StartWithMkV.Desc".Loc());
-			data.mkvCombatEnabled = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.MkVCombatEnabled".Loc(),
-				ref data.mkvCombatEnabled,
-				"ColonyKit.Settings.Robotics.MkVCombatEnabled.Desc".Loc());
-			data.mkvReturnToBay = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.MkVReturnToBay".Loc(),
-				ref data.mkvReturnToBay,
-				"ColonyKit.Settings.Robotics.MkVReturnToBay.Desc".Loc());
-			data.mkvAutoPickupWeapons = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.MkVAutoPickupWeapons".Loc(),
-				ref data.mkvAutoPickupWeapons,
-				"ColonyKit.Settings.Robotics.MkVAutoPickupWeapons.Desc".Loc());
-			data.mkvDualWield = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.MkVDualWield".Loc(),
-				ref data.mkvDualWield,
-				"ColonyKit.Settings.Robotics.MkVDualWield.Desc".Loc());
-			data.mkvArcBladeDamage = SettingsWidgets.Slider(
-				listing,
-				"ColonyKit.Settings.Robotics.MkvArcBladeDamage".Loc(),
-				data.mkvArcBladeDamage,
-				RoboticsSettings.MinArcBladeDamage,
-				RoboticsSettings.MaxArcBladeDamage,
-				1f,
-				value => value.ToString("0"));
-			data.mkvArcBladeCooldown = SettingsWidgets.Slider(
-				listing,
-				"ColonyKit.Settings.Robotics.MkvArcBladeCooldown".Loc(),
-				data.mkvArcBladeCooldown,
-				RoboticsSettings.MinArcBladeCooldown,
-				RoboticsSettings.MaxArcBladeCooldown,
-				0.1f,
-				value => value.ToString("0.0") + " s");
-			data.mkvArcBladeArmorPenetration = SettingsWidgets.Slider(
-				listing,
-				"ColonyKit.Settings.Robotics.MkvArcBladeArmorPenetration".Loc(),
-				data.mkvArcBladeArmorPenetration,
-				RoboticsSettings.MinArcBladeArmorPenetration,
-				RoboticsSettings.MaxArcBladeArmorPenetration,
-				0.05f,
-				value => value.ToStringPercent());
-			SettingsWidgets.Description(
-				listing, "ColonyKit.Settings.Robotics.MkvArcBladeHint".Loc());
-			data.mkvArcBladeParalysisChance = SettingsWidgets.Slider(
-				listing,
-				"ColonyKit.Settings.Robotics.MkvArcBladeParalysisChance".Loc(),
-				data.mkvArcBladeParalysisChance,
-				RoboticsSettings.MinArcBladeChance,
-				RoboticsSettings.MaxArcBladeChance,
-				0.05f,
-				value => value.ToStringPercent());
-			data.mkvArcBladeParalysisHours = SettingsWidgets.Slider(
-				listing,
-				"ColonyKit.Settings.Robotics.MkvArcBladeParalysisHours".Loc(),
-				data.mkvArcBladeParalysisHours,
-				RoboticsSettings.MinArcBladeParalysisHours,
-				RoboticsSettings.MaxArcBladeParalysisHours,
-				1f,
-				value => "CK.Robotics.Hours".Loc(value.ToString("0.#")));
-			data.mkvArcBladeChainChance = SettingsWidgets.Slider(
-				listing,
-				"ColonyKit.Settings.Robotics.MkvArcBladeChainChance".Loc(),
-				data.mkvArcBladeChainChance,
-				RoboticsSettings.MinArcBladeChance,
-				RoboticsSettings.MaxArcBladeChance,
-				0.05f,
-				value => value.ToStringPercent());
-			data.mkvArcBladeChainRadius = SettingsWidgets.Slider(
-				listing,
-				"ColonyKit.Settings.Robotics.MkvArcBladeChainRadius".Loc(),
-				data.mkvArcBladeChainRadius,
-				RoboticsSettings.MinArcBladeChainRadius,
-				RoboticsSettings.MaxArcBladeChainRadius,
-				1f,
-				value => "CK.Robotics.Cells".Loc(value.ToString("0")));
-			// 面板数值改完立刻同步到 Def，武器信息卡和近战结算都读同一份数据。
-			MkVArcBlade.ApplySettings();
+			SettingsWidgets.FrameEnd(listing, scope);
+
+			scope = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Robotics.Group.Engagement".Loc());
 			data.mkvEngageRange = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Robotics.MkVEngageRange".Loc(),
@@ -390,11 +332,73 @@ namespace ColonyKit.Modules.Robotics
 				value => value.ToString("0") + "°C");
 			SettingsWidgets.Description(
 				listing, "ColonyKit.Settings.Robotics.MkVInsulationHint".Loc());
-			data.mkvRandomTraits = SettingsWidgets.Checkbox(
+			SettingsWidgets.FrameEnd(listing, scope);
+
+			// 电弧刃与电弧发射器是两套独立参数，各用一个框。
+			scope = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Robotics.Group.ArcBlade".Loc());
+			data.mkvArcBladeDamage = SettingsWidgets.Slider(
 				listing,
-				"ColonyKit.Settings.Robotics.MkvRandomTraits".Loc(),
-				ref data.mkvRandomTraits,
-				"ColonyKit.Settings.Robotics.MkvRandomTraits.Desc".Loc());
+				"ColonyKit.Settings.Robotics.MkvArcBladeDamage".Loc(),
+				data.mkvArcBladeDamage,
+				RoboticsSettings.MinArcBladeDamage,
+				RoboticsSettings.MaxArcBladeDamage,
+				1f,
+				value => value.ToString("0"));
+			data.mkvArcBladeCooldown = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkvArcBladeCooldown".Loc(),
+				data.mkvArcBladeCooldown,
+				RoboticsSettings.MinArcBladeCooldown,
+				RoboticsSettings.MaxArcBladeCooldown,
+				0.1f,
+				value => value.ToString("0.0") + " s");
+			data.mkvArcBladeArmorPenetration = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkvArcBladeArmorPenetration".Loc(),
+				data.mkvArcBladeArmorPenetration,
+				RoboticsSettings.MinArcBladeArmorPenetration,
+				RoboticsSettings.MaxArcBladeArmorPenetration,
+				0.05f,
+				value => value.ToStringPercent());
+			data.mkvArcBladeParalysisChance = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkvArcBladeParalysisChance".Loc(),
+				data.mkvArcBladeParalysisChance,
+				RoboticsSettings.MinArcBladeChance,
+				RoboticsSettings.MaxArcBladeChance,
+				0.05f,
+				value => value.ToStringPercent());
+			data.mkvArcBladeParalysisHours = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkvArcBladeParalysisHours".Loc(),
+				data.mkvArcBladeParalysisHours,
+				RoboticsSettings.MinArcBladeParalysisHours,
+				RoboticsSettings.MaxArcBladeParalysisHours,
+				1f,
+				value => "CK.Robotics.Hours".Loc(value.ToString("0.#")));
+			data.mkvArcBladeChainChance = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkvArcBladeChainChance".Loc(),
+				data.mkvArcBladeChainChance,
+				RoboticsSettings.MinArcBladeChance,
+				RoboticsSettings.MaxArcBladeChance,
+				0.05f,
+				value => value.ToStringPercent());
+			data.mkvArcBladeChainRadius = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.MkvArcBladeChainRadius".Loc(),
+				data.mkvArcBladeChainRadius,
+				RoboticsSettings.MinArcBladeChainRadius,
+				RoboticsSettings.MaxArcBladeChainRadius,
+				1f,
+				value => "CK.Robotics.Cells".Loc(value.ToString("0")));
+			SettingsWidgets.Description(
+				listing, "ColonyKit.Settings.Robotics.MkvArcBladeHint".Loc());
+			// 面板数值改完立刻同步到 Def，武器信息卡和近战结算都读同一份数据。
+			MkVArcBlade.ApplySettings();
+			SettingsWidgets.FrameEnd(listing, scope);
+
+			scope = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Robotics.Group.ArcEmitter".Loc());
 			data.mkvBurstShotCount = Mathf.RoundToInt(SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Robotics.MkvBurstShotCount".Loc(),
@@ -411,22 +415,20 @@ namespace ColonyKit.Modules.Robotics
 				RoboticsSettings.MaxMkvBurstCooldown,
 				0.1f,
 				value => value.ToString("0.0") + " s");
-			data.mkvBayAutoStart = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.MkVBayAutoStart".Loc(),
-				ref data.mkvBayAutoStart,
-				"ColonyKit.Settings.Robotics.MkVBayAutoStart.Desc".Loc());
+			SettingsWidgets.FrameEnd(listing, scope);
+		}
 
-			listing.Gap();
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.PassiveCharging".Loc());
+		// ---------------------------------------------------------------- 充电
 
-			// 太阳能/风能放在最上面：这两项是 Mk-V 在野外的主要补能方式。
-			data.mkvSolarCharging = SettingsWidgets.Checkbox(
+		private void DrawCharging(Listing_Standard listing, RoboticsSettings data)
+		{
+			SettingsWidgets.FrameScope scope = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Robotics.Group.PassiveCharging".Loc());
+			data.mkvSolarCharging = SettingsWidgets.ToggleRow(
 				listing,
 				"ColonyKit.Settings.Robotics.MkVSolarCharging".Loc(),
 				ref data.mkvSolarCharging,
 				"ColonyKit.Settings.Robotics.MkVSolarCharging.Desc".Loc());
-			data.mkvWindCharging = SettingsWidgets.Checkbox(
+			data.mkvWindCharging = SettingsWidgets.ToggleRow(
 				listing,
 				"ColonyKit.Settings.Robotics.MkVWindCharging".Loc(),
 				ref data.mkvWindCharging,
@@ -463,8 +465,9 @@ namespace ColonyKit.Modules.Robotics
 				RoboticsSettings.MaxMkvWindThreshold,
 				0.01f,
 				value => value.ToStringPercent());
+			SettingsWidgets.FrameEnd(listing, scope);
 
-			listing.Gap();
+			scope = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Robotics.Group.ActiveCharging".Loc());
 			data.mkvChargePower = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Robotics.MkVChargePower".Loc(),
@@ -489,10 +492,14 @@ namespace ColonyKit.Modules.Robotics
 				RoboticsSettings.MaxMkvPowerConversionRate,
 				1f,
 				value => value.ToString("0") + "%");
+			SettingsWidgets.FrameEnd(listing, scope);
+		}
 
-			listing.Gap();
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.Area".Loc());
+		// ------------------------------------------------------- 区域与维护
 
+		private void DrawAreaAndMaintenance(Listing_Standard listing, RoboticsSettings data)
+		{
+			SettingsWidgets.FrameScope scope = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Robotics.Group.Area".Loc());
 			List<RobotAreaMode> modes = new List<RobotAreaMode>
 			{
 				RobotAreaMode.Unrestricted,
@@ -548,127 +555,16 @@ namespace ColonyKit.Modules.Robotics
 						"ColonyKit.Settings.Robotics.AreaLabel.Desc".Loc());
 				}
 			}
+			SettingsWidgets.FrameEnd(listing, scope);
 
-			listing.Gap();
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.Ai".Loc());
-			data.aiEnabled = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.Ai.Enabled".Loc(),
-				ref data.aiEnabled,
-				"ColonyKit.Settings.Robotics.Ai.Enabled.Desc".Loc());
-			listing.Gap(6f);
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Robotics.Ai.Hint".Loc());
-			listing.Gap(6f);
-			data.aiApiKey = SettingsWidgets.TextField(
-				listing,
-				"ColonyKit.Settings.Robotics.Ai.ApiKey".Loc(),
-				data.aiApiKey,
-				200,
-				"ColonyKit.Settings.Robotics.Ai.ApiKey.Desc".Loc());
-			listing.Gap(6f);
-			data.aiBaseUrl = SettingsWidgets.TextField(
-				listing,
-				"ColonyKit.Settings.Robotics.Ai.BaseUrl".Loc(),
-				data.aiBaseUrl,
-				200,
-				"ColonyKit.Settings.Robotics.Ai.BaseUrl.Desc".Loc());
-			listing.Gap(6f);
-			data.aiModel = SettingsWidgets.TextField(
-				listing,
-				"ColonyKit.Settings.Robotics.Ai.Model".Loc(),
-				data.aiModel,
-				64,
-				"ColonyKit.Settings.Robotics.Ai.Model.Desc".Loc());
-			listing.Gap(6f);
-			data.aiInterval = SettingsWidgets.Slider(
-				listing,
-				"ColonyKit.Settings.Robotics.Ai.Interval".Loc(),
-				data.aiInterval,
-				RoboticsSettings.MinAiInterval,
-				RoboticsSettings.MaxAiInterval,
-				1f,
-				value => value.ToString("0") + " s");
-			listing.Gap(6f);
-			data.aiTimeout = SettingsWidgets.Slider(
-				listing,
-				"ColonyKit.Settings.Robotics.Ai.Timeout".Loc(),
-				data.aiTimeout,
-				RoboticsSettings.MinAiTimeout,
-				RoboticsSettings.MaxAiTimeout,
-				1f,
-				value => value.ToString("0") + " s");
-			listing.Gap(6f);
-			data.aiMaxTokens = Mathf.RoundToInt(SettingsWidgets.Slider(
-				listing,
-				"ColonyKit.Settings.Robotics.Ai.MaxTokens".Loc(),
-				data.aiMaxTokens,
-				RoboticsSettings.MinAiMaxTokens,
-				RoboticsSettings.MaxAiMaxTokens,
-				16f,
-				value => value.ToString("0")));
-			listing.Gap(6f);
-			data.aiTemperature = SettingsWidgets.Slider(
-				listing,
-				"ColonyKit.Settings.Robotics.Ai.Temperature".Loc(),
-				data.aiTemperature,
-				0f,
-				RoboticsSettings.MaxAiTemperature,
-				0.05f,
-				value => value.ToString("0.00"));
-			listing.Gap(6f);
-			data.aiAllowCombat = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.Ai.Combat".Loc(),
-				ref data.aiAllowCombat,
-				"ColonyKit.Settings.Robotics.Ai.Combat.Desc".Loc());
-			listing.Gap(6f);
-			data.aiSpeech = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.Ai.Speech".Loc(),
-				ref data.aiSpeech,
-				"ColonyKit.Settings.Robotics.Ai.Speech.Desc".Loc());
-			listing.Gap(6f);
-			data.aiThoughtLog = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.Ai.ThoughtLog".Loc(),
-				ref data.aiThoughtLog,
-				"ColonyKit.Settings.Robotics.Ai.ThoughtLog.Desc".Loc());
-			listing.Gap(10f);
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Robotics.Ai.SelfHint".Loc());
-			listing.Gap(6f);
-			data.aiRaidAdvance = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.Ai.RaidAdvance".Loc(),
-				ref data.aiRaidAdvance,
-				"ColonyKit.Settings.Robotics.Ai.RaidAdvance.Desc".Loc());
-			listing.Gap(6f);
-			data.aiSelfResearch = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.Ai.SelfResearch".Loc(),
-				ref data.aiSelfResearch,
-				"ColonyKit.Settings.Robotics.Ai.SelfResearch.Desc".Loc());
-			listing.Gap(6f);
-			data.aiSelfAssemble = SettingsWidgets.Checkbox(
-				listing,
-				"ColonyKit.Settings.Robotics.Ai.SelfAssemble".Loc(),
-				ref data.aiSelfAssemble,
-				"ColonyKit.Settings.Robotics.Ai.SelfAssemble.Desc".Loc());
-			listing.Gap(6f);
-			if (SettingsWidgets.Button(listing, "ColonyKit.Settings.Robotics.Ai.Test".Loc()))
-			{
-				MkVAiService.TestConnection(data);
-			}
-			listing.Gap(6f);
-			SettingsWidgets.Description(listing, "ColonyKit.Settings.Robotics.Ai.Cost".Loc());
-
-			listing.Gap();
-			SettingsWidgets.Section(listing, "ColonyKit.Settings.Robotics.Section.Maintenance".Loc());
+			scope = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Robotics.Group.Durability".Loc());
 			SettingsWidgets.Description(listing, "ColonyKit.Settings.Robotics.DurabilityHint".Loc());
-			data.mkvSelfRepair = SettingsWidgets.Checkbox(
+			data.mkvSelfRepair = SettingsWidgets.ToggleRow(
 				listing,
 				"ColonyKit.Settings.Robotics.MkvSelfRepair".Loc(),
 				ref data.mkvSelfRepair,
-				"ColonyKit.Settings.Robotics.MkvSelfRepair.Desc".Loc());
+				"ColonyKit.Settings.Robotics.MkvSelfRepair.Desc".Loc(),
+				tag: "Mk-V");
 			data.mkvSelfRepairRate = SettingsWidgets.Slider(
 				listing,
 				"ColonyKit.Settings.Robotics.MkvSelfRepairRate".Loc(),
@@ -679,7 +575,7 @@ namespace ColonyKit.Modules.Robotics
 				value => "CK.Robotics.DurabilityPerDay".Loc(value.ToString("0")));
 			SettingsWidgets.Description(
 				listing, "ColonyKit.Settings.Robotics.MkvSelfRepairRate.Desc".Loc());
-			data.robotBedRest = SettingsWidgets.Checkbox(
+			data.robotBedRest = SettingsWidgets.ToggleRow(
 				listing,
 				"ColonyKit.Settings.Robotics.RobotBedRest".Loc(),
 				ref data.robotBedRest,
@@ -694,16 +590,201 @@ namespace ColonyKit.Modules.Robotics
 				value => "CK.Robotics.DurabilityPerDay".Loc(value.ToString("0")));
 			SettingsWidgets.Description(
 				listing, "ColonyKit.Settings.Robotics.RobotBedRestRate.Desc".Loc());
-			data.sounds = SettingsWidgets.Checkbox(
+			SettingsWidgets.FrameEnd(listing, scope);
+
+			scope = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Robotics.Group.Appearance".Loc());
+			data.sounds = SettingsWidgets.ToggleRow(
 				listing,
 				"ColonyKit.Settings.Robotics.Sounds".Loc(),
 				ref data.sounds,
 				"ColonyKit.Settings.Robotics.Sounds.Desc".Loc());
-			data.chargingGlow = SettingsWidgets.Checkbox(
+			data.chargingGlow = SettingsWidgets.ToggleRow(
 				listing,
 				"ColonyKit.Settings.Robotics.ChargingGlow".Loc(),
 				ref data.chargingGlow,
 				"ColonyKit.Settings.Robotics.ChargingGlow.Desc".Loc());
+			SettingsWidgets.FrameEnd(listing, scope);
+		}
+
+		// ---------------------------------------------------------------- AI
+
+		private void DrawAi(Listing_Standard listing, RoboticsSettings data)
+		{
+			SettingsWidgets.FrameScope scope = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Robotics.Group.Connection".Loc());
+			data.aiEnabled = SettingsWidgets.ToggleRow(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.Enabled".Loc(),
+				ref data.aiEnabled,
+				"ColonyKit.Settings.Robotics.Ai.Enabled.Desc".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Robotics.Ai.Hint".Loc());
+			data.aiApiKey = SettingsWidgets.TextField(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.ApiKey".Loc(),
+				data.aiApiKey,
+				200,
+				"ColonyKit.Settings.Robotics.Ai.ApiKey.Desc".Loc());
+			data.aiBaseUrl = SettingsWidgets.TextField(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.BaseUrl".Loc(),
+				data.aiBaseUrl,
+				200,
+				"ColonyKit.Settings.Robotics.Ai.BaseUrl.Desc".Loc());
+			data.aiModel = SettingsWidgets.TextField(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.Model".Loc(),
+				data.aiModel,
+				64,
+				"ColonyKit.Settings.Robotics.Ai.Model.Desc".Loc());
+			SettingsWidgets.FrameEnd(listing, scope);
+
+			scope = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Robotics.Group.Request".Loc());
+			data.aiInterval = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.Interval".Loc(),
+				data.aiInterval,
+				RoboticsSettings.MinAiInterval,
+				RoboticsSettings.MaxAiInterval,
+				1f,
+				value => value.ToString("0") + " s");
+			data.aiTimeout = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.Timeout".Loc(),
+				data.aiTimeout,
+				RoboticsSettings.MinAiTimeout,
+				RoboticsSettings.MaxAiTimeout,
+				1f,
+				value => value.ToString("0") + " s");
+			data.aiMaxTokens = Mathf.RoundToInt(SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.MaxTokens".Loc(),
+				data.aiMaxTokens,
+				RoboticsSettings.MinAiMaxTokens,
+				RoboticsSettings.MaxAiMaxTokens,
+				16f,
+				value => value.ToString("0")));
+			data.aiTemperature = SettingsWidgets.Slider(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.Temperature".Loc(),
+				data.aiTemperature,
+				0f,
+				RoboticsSettings.MaxAiTemperature,
+				0.05f,
+				value => value.ToString("0.00"));
+			SettingsWidgets.FrameEnd(listing, scope);
+
+			scope = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Robotics.Group.Behavior".Loc());
+			data.aiAllowCombat = SettingsWidgets.ToggleRow(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.Combat".Loc(),
+				ref data.aiAllowCombat,
+				"ColonyKit.Settings.Robotics.Ai.Combat.Desc".Loc());
+			data.aiSpeech = SettingsWidgets.ToggleRow(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.Speech".Loc(),
+				ref data.aiSpeech,
+				"ColonyKit.Settings.Robotics.Ai.Speech.Desc".Loc());
+			data.aiThoughtLog = SettingsWidgets.ToggleRow(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.ThoughtLog".Loc(),
+				ref data.aiThoughtLog,
+				"ColonyKit.Settings.Robotics.Ai.ThoughtLog.Desc".Loc());
+			SettingsWidgets.FrameEnd(listing, scope);
+
+			scope = SettingsWidgets.FrameBegin(listing, "ColonyKit.Settings.Robotics.Group.Autonomy".Loc());
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Robotics.Ai.SelfHint".Loc());
+			data.aiRaidAdvance = SettingsWidgets.ToggleRow(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.RaidAdvance".Loc(),
+				ref data.aiRaidAdvance,
+				"ColonyKit.Settings.Robotics.Ai.RaidAdvance.Desc".Loc());
+			data.aiSelfResearch = SettingsWidgets.ToggleRow(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.SelfResearch".Loc(),
+				ref data.aiSelfResearch,
+				"ColonyKit.Settings.Robotics.Ai.SelfResearch.Desc".Loc());
+			data.aiSelfAssemble = SettingsWidgets.ToggleRow(
+				listing,
+				"ColonyKit.Settings.Robotics.Ai.SelfAssemble".Loc(),
+				ref data.aiSelfAssemble,
+				"ColonyKit.Settings.Robotics.Ai.SelfAssemble.Desc".Loc());
+			if (SettingsWidgets.Button(listing, "ColonyKit.Settings.Robotics.Ai.Test".Loc()))
+			{
+				MkVAiService.TestConnection(data);
+			}
+			SettingsWidgets.Description(listing, "ColonyKit.Settings.Robotics.Ai.Cost".Loc());
+			SettingsWidgets.FrameEnd(listing, scope);
+		}
+
+		// ------------------------------------------------------------- 辅助
+
+		/// <summary>用字段名开关家务：统一走 <see cref="SettingsWidgets.ToggleRow"/>。</summary>
+		private static void Toggle(
+			Listing_Standard listing,
+			RoboticsSettings data,
+			string key,
+			string tag = null)
+		{
+			string label = ("ColonyKit.Settings.Robotics." + key).Loc();
+			string descKey = "ColonyKit.Settings.Robotics." + key + ".Desc";
+			string tooltip = descKey.CanTranslate() ? descKey.Loc() : null;
+			bool value = GetField(data, key);
+			SettingsWidgets.ToggleRow(listing, label, ref value, tooltip, tag: tag);
+			SetField(data, key, value);
+		}
+
+		private static bool GetField(RoboticsSettings data, string key)
+		{
+			return key switch
+			{
+				"Sweep" => data.sweep,
+				"Scrub" => data.scrub,
+				"Haul" => data.haul,
+				"Firefight" => data.firefight,
+				"Butcher" => data.butcher,
+				"CorpseDisposal" => data.corpseDisposal,
+				"Refuel" => data.refuel,
+				"FeedPrisoners" => data.feedPrisoners,
+				"Hygiene" => data.hygiene,
+				"RopeAnimals" => data.ropeAnimals,
+				"Storage" => data.storage,
+				"Rescue" => data.rescue,
+				"Cook" => data.cook,
+				"Doctor" => data.doctor,
+				"Research" => data.research,
+				"Crafting" => data.crafting,
+				"Construct" => data.construct,
+				"Water" => data.water,
+				"Plants" => data.plants,
+				"DangerAvoidance" => data.dangerAvoidance,
+				_ => false
+			};
+		}
+
+		private static void SetField(RoboticsSettings data, string key, bool value)
+		{
+			switch (key)
+			{
+				case "Sweep": data.sweep = value; break;
+				case "Scrub": data.scrub = value; break;
+				case "Haul": data.haul = value; break;
+				case "Firefight": data.firefight = value; break;
+				case "Butcher": data.butcher = value; break;
+				case "CorpseDisposal": data.corpseDisposal = value; break;
+				case "Refuel": data.refuel = value; break;
+				case "FeedPrisoners": data.feedPrisoners = value; break;
+				case "Hygiene": data.hygiene = value; break;
+				case "RopeAnimals": data.ropeAnimals = value; break;
+				case "Storage": data.storage = value; break;
+				case "Rescue": data.rescue = value; break;
+				case "Cook": data.cook = value; break;
+				case "Doctor": data.doctor = value; break;
+				case "Research": data.research = value; break;
+				case "Crafting": data.crafting = value; break;
+				case "Construct": data.construct = value; break;
+				case "Water": data.water = value; break;
+				case "Plants": data.plants = value; break;
+				case "DangerAvoidance": data.dangerAvoidance = value; break;
+			}
 		}
 
 		public override void Reset(ColonyKitSettings settings)
@@ -716,3 +797,5 @@ namespace ColonyKit.Modules.Robotics
 		}
 	}
 }
+
+
