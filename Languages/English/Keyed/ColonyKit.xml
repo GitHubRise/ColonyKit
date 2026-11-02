@@ -514,4 +514,7 @@ Waiting to use: {0}</CK.Hygiene.Alert.FixtureBusyDesc>
 	<ColonyKit.Settings.Hygiene.Sub.Sewage>Sewage</ColonyKit.Settings.Hygiene.Sub.Sewage>
 	<ColonyKit.Settings.Hygiene.Sub.CleaningFarming>Cleaning & farming</ColonyKit.Settings.Hygiene.Sub.CleaningFarming>
 	<ColonyKit.Settings.Hygiene.Sub.Compat>Compatibility</ColonyKit.Settings.Hygiene.Sub.Compat>
+	<ColonyKit.Module.Category.Core>Core</ColonyKit.Module.Category.Core>
+	<ColonyKit.Module.Category.Features>Features</ColonyKit.Module.Category.Features>
+	<ColonyKit.Module.Category.Diagnostics>Diagnostics</ColonyKit.Module.Category.Diagnostics>
 </LanguageData>

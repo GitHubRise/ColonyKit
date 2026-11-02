@@ -11,6 +11,8 @@ namespace ColonyKit
 
 		public override string DescriptionKey => "ColonyKit.Module.Core.Desc";
 
+		public override string CategoryKey => "ColonyKit.Module.Category.Core";
+
 		public override int InitOrder => 0;
 
 		public override bool Locked => true;
@@ -65,6 +67,8 @@ namespace ColonyKit
 		public override string DisplayNameKey => "ColonyKit.Module.Diagnostics.Name";
 
 		public override string DescriptionKey => "ColonyKit.Module.Diagnostics.Desc";
+
+		public override string CategoryKey => "ColonyKit.Module.Category.Diagnostics";
 
 		public override int InitOrder => 90;
 

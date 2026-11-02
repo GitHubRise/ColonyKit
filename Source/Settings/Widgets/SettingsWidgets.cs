@@ -176,7 +176,7 @@ namespace ColonyKit
 
 			if (!tag.NullOrEmpty())
 			{
-				Rect tagRect = new Rect(rect.xMax - 56f, rect.y, 34f, rect.height);
+				Rect tagRect = new Rect(rect.xMax - 78f, rect.y, 40f, rect.height);
 				GUI.color = new Color(1f, 1f, 1f, 0.38f);
 				Text.Font = GameFont.Tiny;
 				Text.Anchor = TextAnchor.MiddleRight;

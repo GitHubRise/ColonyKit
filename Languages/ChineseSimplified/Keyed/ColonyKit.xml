@@ -514,4 +514,7 @@
 	<ColonyKit.Settings.Hygiene.Sub.Sewage>污水</ColonyKit.Settings.Hygiene.Sub.Sewage>
 	<ColonyKit.Settings.Hygiene.Sub.CleaningFarming>清洁与农业</ColonyKit.Settings.Hygiene.Sub.CleaningFarming>
 	<ColonyKit.Settings.Hygiene.Sub.Compat>兼容与豁免</ColonyKit.Settings.Hygiene.Sub.Compat>
+	<ColonyKit.Module.Category.Core>内核</ColonyKit.Module.Category.Core>
+	<ColonyKit.Module.Category.Features>功能</ColonyKit.Module.Category.Features>
+	<ColonyKit.Module.Category.Diagnostics>诊断</ColonyKit.Module.Category.Diagnostics>
 </LanguageData>

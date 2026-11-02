@@ -20,6 +20,9 @@ namespace ColonyKit
 		/// <summary>设置页说明的翻译键。</summary>
 		string DescriptionKey { get; }
 
+		/// <summary>设置页里的分类翻译键（内核 / 功能 / 诊断）。</summary>
+		string CategoryKey { get; }
+
 		/// <summary>初始化顺序，小者先。</summary>
 		int InitOrder { get; }
 
@@ -47,6 +50,8 @@ namespace ColonyKit
 		public abstract string DisplayNameKey { get; }
 
 		public abstract string DescriptionKey { get; }
+
+		public virtual string CategoryKey => "ColonyKit.Module.Category.Features";
 
 		public virtual int InitOrder => 100;
 
